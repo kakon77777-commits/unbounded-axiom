@@ -6,33 +6,24 @@ SOURCE_DIR = 'papers'
 DIST_DIR = 'dist'
 
 def build_site():
-    # 建立或清空輸出目錄
     if os.path.exists(DIST_DIR):
         shutil.rmtree(DIST_DIR)
     os.makedirs(DIST_DIR)
     
-    # 複製論文檔案到輸出目錄
-    shutil.copytree(SOURCE_DIR, os.path.join(DIST_DIR, 'papers'))
+    if os.path.exists(SOURCE_DIR):
+        shutil.copytree(SOURCE_DIR, os.path.join(DIST_DIR, 'papers'))
+    else:
+        print(f"Warning: {SOURCE_DIR} folder not found. Creating empty one.")
+        os.makedirs(os.path.join(DIST_DIR, 'papers'))
     
     links = []
-    files = sorted(os.listdir(SOURCE_DIR))
     
-    for i, filename in enumerate(files, 1):
-        if filename.endswith('.md'):
-            filepath = os.path.join(SOURCE_DIR, filename)
-            
-            # 讀取標題 (讀取第一行)
-            title = filename
-            with open(filepath, 'r', encoding='utf-8') as f:
-                first_line = f.readline().strip()
-                if first_line.startswith('#'):
-                    title = first_line.replace('#', '').strip()
-            
-            # 生成超連結 (數字 + 標題)
-            link = f'<div>{i}. <a href="papers/{filename}">{title}</a></div>'
+    if os.path.exists(SOURCE_DIR):
+        files = sorted(os.listdir(SOURCE_DIR))
+        for i, filename in enumerate(files, 1):
+            link = f'<div>{i}. <a href="papers/{filename}">{filename}</a></div>'
             links.append(link)
 
-    # 寫入最終的 index.html
     html_content = f"""
     <!DOCTYPE html>
     <html lang="zh-TW">
