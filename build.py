@@ -32,7 +32,7 @@ SUPPORTED_EXTS = {".docx", ".md", ".pdf", ".tex", ".ipynb"}
 SITE_TITLE   = "EVEMISSLAB Logic Matrix"
 SITE_VERSION = "V2.1"
 SITE_TAGLINE = "EveMissLab Theoretical Corpus Access Point"
-SITE_URL     = "https://unbounded-axiom.pages.dev"   # ← 改成你的實際網域
+SITE_URL     = "unbounded-axiom.neokpolaris.workers.dev"   # ← 改成你的實際網域
 SITE_AUTHOR  = "Neo.K (許筌崴)"
 SITE_ORG     = "EveMissLab / 一言諾科技有限公司"
 
