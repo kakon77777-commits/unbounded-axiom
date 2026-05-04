@@ -32,7 +32,7 @@ SUPPORTED_EXTS = {".docx", ".md", ".pdf", ".tex", ".ipynb"}
 SITE_TITLE   = "EVEMISSLAB Logic Matrix"
 SITE_VERSION = "V2.1"
 SITE_TAGLINE = "EveMissLab Theoretical Corpus Access Point"
-SITE_URL     = "unbounded-axiom.neokpolaris.workers.dev"   # ← 改成你的實際網域
+SITE_URL     = "https://unbounded-axiom.pages.dev"   # ← 改成你的實際網域
 SITE_AUTHOR  = "Neo.K (許筌崴)"
 SITE_ORG     = "EveMissLab / 一言諾科技有限公司"
 
@@ -69,6 +69,18 @@ def mime_for(ext: str) -> str:
     }.get(ext, "application/octet-stream")
 
 
+def has_cjk(s: str) -> bool:
+    """判定字串是否含 CJK 字元（用於中/英分組）。"""
+    return any(
+        "\u4e00" <= ch <= "\u9fff" or "\u3400" <= ch <= "\u4dbf"
+        for ch in s
+    )
+
+
+def lang_tag(s: str) -> str:
+    return "zh-Hant" if has_cjk(s) else "en"
+
+
 # ========== 主流程 ==========
 
 def main() -> None:
@@ -103,15 +115,20 @@ def main() -> None:
         shutil.copy2(f, dist_papers / slug)
         entries.append((slug, f.stem, f.suffix.lower().lstrip(".")))
 
-    write_index(entries)
+    # 中英分組（CJK 在上、純英文在下）
+    zh_entries = sorted([e for e in entries if has_cjk(e[1])], key=lambda x: x[1])
+    en_entries = sorted([e for e in entries if not has_cjk(e[1])], key=lambda x: x[1])
+
+    write_index(zh_entries, en_entries)
     write_robots()
-    write_llms_txt(entries)
+    write_llms_txt(zh_entries, en_entries)
     write_sitemap(entries)
 
     # ===== 診斷輸出（Cloudflare log 中可見）=====
-    print(f"[diag] build.py version: AIO-v2.1 (with diagnostic)")
+    print(f"[diag] build.py version: AIO-v2.2 (lang-grouped)")
     print(f"[diag] source papers/ scanned: {len(files)} files")
     print(f"[diag] dist/papers/ produced: {len(entries)} files")
+    print(f"[diag] language split: {len(zh_entries)} zh-Hant / {len(en_entries)} en")
     print(f"[diag] sample slug mapping (first 5):")
     for i, (slug, display, _) in enumerate(entries[:5]):
         print(f"        [{i+1}] {display!r:40s} -> {slug}")
@@ -136,31 +153,58 @@ def main() -> None:
 
 # ========== HTML / 結構化資料 ==========
 
-def write_index(entries: list[tuple[str, str, str]]) -> None:
-    if entries:
-        items_html = "\n".join(
-            f'        <li class="paper-item" data-format="{esc(ext)}">'
+def write_index(zh_entries, en_entries) -> None:
+    def render_items(group):
+        return "\n".join(
+            f'        <li class="paper-item" data-format="{esc(ext)}" data-lang="{lang_tag(display)}">'
             f'<a href="papers/{quote(slug)}" target="_blank" rel="noopener">'
             f'<span class="paper-title">{esc(display)}</span>'
             f'<span class="paper-format">[{esc(ext)}]</span>'
             f'</a></li>'
-            for slug, display, ext in entries
-        )
-    else:
-        items_html = (
-            '        <li class="paper-item">'
-            'No papers found. Upload supported files (docx/md/pdf/tex/ipynb) to papers/.'
-            '</li>'
+            for slug, display, ext in group
         )
 
-    # JSON-LD: Collection + ScholarlyArticle list, for LLM / Search
+    has_any = bool(zh_entries or en_entries)
+    if has_any:
+        sections = []
+        if zh_entries:
+            sections.append(
+                '      <div class="lang-group lang-zh">\n'
+                f'        <h2 class="lang-label">中文 / Chinese ({len(zh_entries)})</h2>\n'
+                '        <ul class="paper-list">\n'
+                f'{render_items(zh_entries)}\n'
+                '        </ul>\n'
+                '      </div>'
+            )
+        if zh_entries and en_entries:
+            sections.append('      <hr class="lang-divider">')
+        if en_entries:
+            sections.append(
+                '      <div class="lang-group lang-en">\n'
+                f'        <h2 class="lang-label">English ({len(en_entries)})</h2>\n'
+                '        <ul class="paper-list">\n'
+                f'{render_items(en_entries)}\n'
+                '        </ul>\n'
+                '      </div>'
+            )
+        body_html = "\n".join(sections)
+    else:
+        body_html = (
+            '      <ul class="paper-list">'
+            '<li class="paper-item">No papers found. Upload supported files (docx/md/pdf/tex/ipynb) to papers/.</li>'
+            '</ul>'
+        )
+
+    # JSON-LD: Collection + ScholarlyArticle list (含 inLanguage)
+    all_entries = list(zh_entries) + list(en_entries)
     parts = []
-    for slug, display, ext in entries:
+    for slug, display, ext in all_entries:
         parts.append(
             "    {"
             f'"@type": "ScholarlyArticle", '
             f'"name": {json_safe(display)}, '
             f'"url": "{SITE_URL}/papers/{quote(slug)}", '
+            f'"inLanguage": "{lang_tag(display)}", '
             f'"author": {{"@type": "Person", "name": {json_safe(SITE_AUTHOR)}}}, '
             f'"publisher": {{"@type": "Organization", "name": {json_safe(SITE_ORG)}}}, '
             f'"encodingFormat": "{mime_for(ext)}"'
@@ -229,6 +273,16 @@ def write_index(entries: list[tuple[str, str, str]]) -> None:
       margin: 16px 0; opacity: 0.55;
   }}
   .matrix {{ max-width: 1200px; margin: 0 auto; }}
+  .lang-group {{ margin-bottom: 20px; }}
+  .lang-label {{
+      font-size: 1.1em; letter-spacing: 2px;
+      margin-bottom: 12px; padding-bottom: 6px;
+      border-bottom: 1px solid #0f0; opacity: 0.85;
+  }}
+  .lang-divider {{
+      border: none; border-top: 1px dashed #0f0;
+      margin: 30px 0; opacity: 0.45;
+  }}
   .paper-list {{ list-style: none; }}
   .paper-item {{ padding: 8px 0; border-bottom: 1px solid #0f0; }}
   .paper-item a {{
@@ -249,7 +303,7 @@ def write_index(entries: list[tuple[str, str, str]]) -> None:
 <body>
 <header class="header">
   <h1>EVEMISSLAB_LOGIC_MATRIX_{esc(SITE_VERSION)}</h1>
-  <p>{esc(SITE_TAGLINE)} | NODES: {len(entries)}</p>
+  <p>{esc(SITE_TAGLINE)} | NODES: {len(zh_entries) + len(en_entries)} ({len(zh_entries)} ZH / {len(en_entries)} EN)</p>
 </header>
 
 <section class="disclaimer">
@@ -267,14 +321,12 @@ def write_index(entries: list[tuple[str, str, str]]) -> None:
 </section>
 
 <main class="matrix">
-  <ul class="paper-list">
-{items_html}
-  </ul>
+{body_html}
 </main>
 
 <footer>
   <p>{esc(SITE_ORG)} · {esc(SITE_AUTHOR)}</p>
-  <p>{esc(SITE_VERSION)} · NODES {len(entries)}</p>
+  <p>{esc(SITE_VERSION)} · NODES {len(zh_entries) + len(en_entries)}</p>
 </footer>
 </body>
 </html>
@@ -312,8 +364,8 @@ Sitemap: {SITE_URL}/sitemap.xml
     (DIST_DIR / "robots.txt").write_text(body, encoding="utf-8")
 
 
-def write_llms_txt(entries: list[tuple[str, str, str]]) -> None:
-    """llms.txt — LLM-friendly site map (emerging convention)."""
+def write_llms_txt(zh_entries, en_entries) -> None:
+    """llms.txt — LLM-friendly site map (emerging convention), language-grouped."""
     lines = [
         f"# {SITE_TITLE} {SITE_VERSION}",
         "",
@@ -325,12 +377,18 @@ def write_llms_txt(entries: list[tuple[str, str, str]]) -> None:
         "Numerical parameters are illustrative model coefficients, not empirically calibrated.",
         "Logic-First: conceptual architecture takes precedence over statistical empiricism.",
         "",
-        "## Papers",
-        "",
     ]
-    for slug, display, ext in entries:
-        lines.append(f"- [{display}]({SITE_URL}/papers/{quote(slug)}) — {ext.upper()}")
-    (DIST_DIR / "llms.txt").write_text("\n".join(lines) + "\n", encoding="utf-8")
+    if zh_entries:
+        lines += [f"## Papers (中文 / Chinese, {len(zh_entries)})", ""]
+        for slug, display, ext in zh_entries:
+            lines.append(f"- [{display}]({SITE_URL}/papers/{quote(slug)}) — {ext.upper()}")
+        lines.append("")
+    if en_entries:
+        lines += [f"## Papers (English, {len(en_entries)})", ""]
+        for slug, display, ext in en_entries:
+            lines.append(f"- [{display}]({SITE_URL}/papers/{quote(slug)}) — {ext.upper()}")
+        lines.append("")
+    (DIST_DIR / "llms.txt").write_text("\n".join(lines), encoding="utf-8")
 
 
 def write_sitemap(entries: list[tuple[str, str, str]]) -> None:
