@@ -1,0 +1,1382 @@
+﻿**經濟系統性崩潰的三維診斷框架：整合敘事背離、貨幣-****債務鏡像與流動性空間異質性**
+
+**作者：Neo.K**  
+**機構：一言諾科技有限公司（EveMissLab****）**  
+**日期：2026****年2****月**
+
+----------
+
+**摘要**
+
+本文建立經濟系統性崩潰的統一診斷框架，整合三個互補理論：（1）流動性空間異質性模型（算法層），（2）信用債務貨幣制度理論（機制層），（3）量子疊加態經濟統計學（本體層）。研究發現當前全球經濟同時觸發三層級紅色警戒：實體流通比率R_A降至0.35-0.4（健康閾值0.65），債務貨幣比DMR達2.56（臨界值2.48），敘事折扣率NDR突破300%（穩定上限200%）。透過整合分析，本文證明傳統單一指標監測系統存在結構性盲點，提出多維動態預警機制，並設計精準政策工具箱。實證分析顯示若維持當前軌跡，2025-2028年間發生系統性崩潰的概率達75-85%。本文貢獻在於：（1）建立可操作的三維診斷體系，（2）揭示敘事-債務-流動性的正反饋崩潰機制，（3）提供基於系統邏輯而非意識形態的政策框架。
+
+**關鍵詞：** 系統性風險、流動性異質性、貨幣-債務鏡像、敘事背離、量子疊加態、動態預警
+
+**JEL****分類：** E44, E51, E58, G01, P24
+
+----------
+
+**第一章　理論框架的三維建構**
+
+**1.1****　問題的提出**
+
+2008年全球金融危機後，各國央行實施史無前例的量化寬鬆政策，廣義貨幣供給M2暴增。以美國為例，M2從2008年的8兆美元增至2023年的21兆美元，增幅163%。根據傳統貨幣數量論（MV=PY），如此劇烈的貨幣擴張應導致嚴重通膨。然而實證結果顯示：2010-2019年美國年均CPI增長僅2.1%，遠低於預期。同期股市市值增長約300%，房價上漲80%，但這些資產價格暴漲未反映於CPI指標中。
+
+更弔詭的現象出現於大型轉型經濟體。以中國為例，官方統計顯示2020-2024年GDP年均增長5%，但民眾實際感受卻呈現系統性背離：人均豬肉消費量下降36%（2023 vs 2014），化妝品支出減少40億人民幣（2024H1 vs 2023H1），保時捷銷量下滑33%（2024），星巴克營收雙位數下跌。這種「統計增長」與「體感衰退」的矛盾，傳統經濟理論無法解釋。
+
+本文認為，這些看似孤立的異常現象，實際上源於同一結構性病灶：**貨幣流動的空間異質性、債務****-****貨幣的鏡像擴張、以及敘事-****現實的系統性背離形成三重正反饋崩潰機制**。傳統單維度監測體系（僅關注M、P或GDP）無法捕捉這種多維度耦合風險，需要全新的診斷框架。
+
+**1.2****　三維框架的邏輯結構**
+
+本文提出的診斷框架採取三層遞進結構，對應經濟系統崩潰的三個分析維度：
+
+**第一維：流動性空間異質性（算法層）**
+
+傳統理論將貨幣視為均質流體，假設新增貨幣會均勻分布於經濟系統。本文證明貨幣實際存在於三個隔離空間：
+
+-   **A****空間（實體經濟）**：商品生產與服務提供的時間創造域，特徵為高流速（V_A>5次/年）與正和博弈
+-   **B****空間（金融投機）**：資產價格炒作的零和博弈域，特徵為超高流速（V_B>100次/年）但不創造實際產出
+-   **C****空間（囤積靜止）**：長期不參與經濟活動的流動性黑洞，特徵為零流速（V_C≈0）
+
+定義**實體流通比率**R_A = M_A / M_total作為核心監測指標。當R_A<0.4時，系統進入高脆弱狀態。
+
+**第二維：貨幣-****債務鏡像機制（機制層）**
+
+現代信用貨幣制度（CDMS）的核心特徵是貨幣創造與債務生成的同步性：每新增1單位貨幣，對應等額新增債務。形式化為：
+
+<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAI0AAAAcCAMAAABrusxxAAAAAXNSR0IArs4c6QAAALRQTFRFAAAAAAAAAAA6AABmADo6ADpmADqQAGa2OgAAOgA6OgBmOjo6OjqQOma2OpC2OpDbZgAAZgA6ZgBmZjoAZjo6ZjpmZmYAZmY6ZmaQZma2ZpC2ZpDbZrbbZrb/kDoAkDo6kGY6kGaQkJA6kLaQkLbbkNv/tmYAtmY6tmZmtpA6tpCQtpC2ttv/tv/btv//25A625Bm25C227Zm27a229u22/+22////7Zm/9uQ/9u2//+2///bSbWM5gAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAB/0lEQVRYR+2V2VqDMBCFJ2IFa6u4r6VuxR3qVlLy/u/lzCRAAtjqZy+8YG6Awpw582eSAnTREegIdAQ6Av+CQLwxYx+pECO6xmKof9CRBb1nvMxvF5u1VIRYv/hlZ+qSSwPIYG3CNyoSO/azeX06S70EYGo+/6aMpeKDemCln8dboEEgku1Qp+Z7R3ijxseGlX49Ratp73l+YvNq1qlUQtItSC0wpK5KxenZJ2ehh92JSc382CdzkdPXE+VMgx7i4YixbXVncJbFKhW5SaQZZxntOdmgajA3bjIftACkO+nGTA4Km4XWmzs3mKfGZoaqmpYKk3Xd2DmWSSxXPBk3KhrhwCATXKJJ5r2MR5nTFsja3Mj+jTZv16xUgPjWV8rOwTkVZZSrYNxIwsWdyH4i+9dDsByT7l1tbjKxFTQGulLRsjJwVrs1B8s22MR6G6EEws5DL1Hu2MB7fW58jdKJSoVXXUXORkBeLTnQnBsEQotE+qhIwHVb+aE9hVZlMpt6L4/ODrNUqN+PfTqhWIJ7a80Ba0/hx4wUTzwOL0kF75M8pCutbQMAe6Le8/1eMTlmfkoVGeLt+hl61RLspjXHZisPKOu8Trx8Tn93erXpsATu/G9r/PwFze4fgyXu/65Dx3LyuvjsXWp1BRJFjTxaW/y3tNQMrEBieZHui44AwBfMeT+SiiSbiQAAAABJRU5ErkJggg==)<![endif]><![endif]><![if !supportLineBreakNewLine]>  
+<![endif]>
+
+定義**債務貨幣比**DMR = 全球債務 / M2，以及**新信用流依賴度超臨界**條件CCRD：當<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAAcCAMAAAD/XGWDAAAAAXNSR0IArs4c6QAAAMxQTFRFAAAAAAAAAAA6AABmADo6ADpmADqQAGa2OgAAOgA6OgBmOjo6OjpmOjqQOmZmOmaQOma2OpC2OpDbZgAAZgA6ZgBmZjoAZjpmZjqQZmYAZmaQZma2ZpC2ZpDbZra2ZrbbZrb/kDoAkDo6kGY6kGaQkLb/kNv/tmYAtmY6tpA6tpBmtpCQtpC2trb/ttu2ttvbttv/tv//25A625Bm25C227Zm27aQ27a229uQ29vb29v/2/+22//b2////7Zm/9uQ/9u2/9vb//+2///bLMvgzAAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAACZElEQVRYR+1ViXKbMBCVSA2kl6+WukcKxK0haeu6uDS9BAT9/z/lrSQH8DUw40mnM2gsxoZ9u28fT2vG+tUr0CvQK9Ar0CvQK/CvFEgmD1RZzn1xqlIPRprdxu5wdRraJyBdeNx6/6aNjD+8R3W52wO3eq1IyzkPCs9adBUjd8einLZ0WTG3Rr9NhU7ABquK9PUqev7uz8tvXUlHtmDlNGgLk3PEq9URqEEy5GbpNDJ02lauxSm++eOWvdaU7gY8oDTLzztbA6kUikTLoMDg/qRF+3zW8HQNeNay5Q3z2kHMdrFUem/5qvHcDeSn13hH8nIhrzavnpXaZ+Wrez7b06MChq29ZcrWSEe77ihn8Cv2sRXzwVcqSxYpXyyYjLkVsHwY8xHLXc5N1t05XQMWnpO6aBjDgAd0tT6y3HPWrp26kFKnrFZteoRqAgC/dicGmI0Yo63S4IkMbaEymCj9lKl3lIEd9JWX/q84YMlglT8T7PBEbQBvfp77EEeGY7FeSBDJbKHuTccYDSblPtLmHsVmEwNM0B+2/rVMndvl7K8ipaMACUE6R5PwNcXaAuJaYwGvUGEWHzomcgvoUPvUJtLhSgokDn2lj0p59HUjdgOk0rRNGsiWBSaDiqJAj3PrgtwLZ6Q4lChXfBCQvPACUv77gWoNIHUc+Z9TWxRvqdmCRhLuoWIyuUlVyqOkSTEDLGfLL7RNmihYXxhSStfGijA8nq7UIMUMyZ6oVsqw4cW9dSO4njq+smAMPlTGtnxjtQVLLF+nPLb0sdfAcmrjzw421mki4qEzmOFwNFP/sFfgf1TgDtENYMpkuCjEAAAAAElFTkSuQmCC)<![endif]><![endif]>時，系統進入龐氏階段，新增信貸僅用於償還舊債利息。
+
+**第三維：敘事-****現實背離（本體層）**
+
+在資訊控制環境下，官方統計可能與可觀測現實呈現系統性背離。借鑒量子力學的疊加態概念，定義經濟系統可同時處於「增長」與「衰退」的疊加態，觀測結果取決於數據來源選擇。
+
+定義**敘事折扣率**NDR = (敘事暗示值 - 觀察值) / 觀察值，以及**數據可信度加權指數**DCWI來校準真實經濟狀態。當NDR>200%時，敘事進入不穩定區間。
+
+**三維整合的系統邏輯**：
+
+三個維度形成正反饋崩潰迴路：
+
+敘事背離（NDR↑）→ 掩蓋實際問題 → 延誤政策調整
+
+↓
+
+債務失控（DMR↑）→ 償債壓力上升 → 消費投資萎縮
+
+↓
+
+流動枯竭（R_A↓）→ 實體經濟缺血 → 真實GDP下滑
+
+↓
+
+需要更大敘事掩蓋 → NDR進一步上升 → 惡性循環
+
+當三個指標同時觸發紅色警戒，系統性崩潰概率呈指數上升。
+
+**1.3****　與既有文獻的對話**
+
+**貨幣理論的突破**
+
+傳統貨幣數量論（Fisher, 1911）假設貨幣流速V為外生常數。Friedman (1956)雖承認V會變化，但認為變化緩慢且可預測。本文證明V是內生變量，受財富分配（Gini係數）、空間配置（R_A）等因素支配，且可能在短期內劇烈波動（如2008年美國V從1.9跌至1.3，僅2年下降32%）。
+
+Werner (2014)的銀行實證研究已證明貨幣由銀行放貸創造，但未深入分析創造後的流向。McLeay et al. (2014)揭示現代貨幣創造機制，但未建立空間異質性模型。本文填補此缺口。
+
+**債務理論的深化**
+
+Minsky (1986)的金融不穩定假說指出經濟存在從「對沖性融資」到「龐氏融資」的演化。本文的CCRD條件形式化了Minsky的龐氏階段判定標準，並加入債務-貨幣比率（DMR）作為量化指標。
+
+Mian et al. (2021)揭示債務與不平等的相互強化，但未連結到貨幣流動性問題。本文整合兩者，證明債務擴張→消費萎縮→流速下降的傳導機制。
+
+**敘事經濟學的拓展**
+
+Shiller (2019)的敘事經濟學關注自下而上的社會敘事。本文拓展至自上而下的國家敘事，特別是在資訊控制環境下敘事與現實的系統性背離。Akerlof & Shiller (2009)的動物精神理論強調心理預期，本文將其量化為可測量的NDR指標。
+
+**系統性風險文獻的整合**
+
+Adrian & Brunnermeier (2016)的CoVaR方法測量金融機構的系統性風險貢獻。本文將系統性風險分析從金融部門擴展至整體經濟，並建立多維聯動預警機制。Acemoglu et al. (2012)的網絡傳染模型關注企業間關聯，本文關注貨幣在不同空間的流動網絡。
+
+**1.4****　研究貢獻與論文結構**
+
+**核心貢獻**：
+
+1.  **理論創新**：建立經濟系統崩潰的三維診斷框架，整合流動性、債務、敘事三個分析維度
+2.  **方法創新**：提出R_A、DMR、NDR等新測量指標，以及DCWI的動態校準方法
+3.  **政策創新**：基於三維診斷提供精準政策工具箱，區別於傳統「盲目撒錢」或「一味緊縮」
+
+**論文結構**：
+
+第二章闡述流動性空間異質性理論，建立A-B-C三空間模型與R_A指標。第三章發展信用債務貨幣制度（CDMS）理論，建立DMR與CCRD判定標準。第四章提出量子疊加態經濟統計學，建立NDR與DCWI測量體系。第五章整合三維框架進行實證分析，評估當前全球主要經濟體的系統性風險。第六章設計基於三維診斷的政策工具箱。第七章總結並展望未來研究方向。
+
+----------
+
+**第二章　流動性空間異質性：A-B-C****三維模型**
+
+**2.1****　傳統貨幣流速理論的盲點**
+
+傳統費雪方程MV=PY預設貨幣在均質空間中流動，忽視流動的結構性差異。實證數據顯示此預設與現實嚴重背離。
+
+**美國貨幣流速V****的歷史演變**（基於M2）：
+
+**年代**
+
+**V****值**
+
+**同期M2****增幅**
+
+**CPI****增幅**
+
+1990年代
+
+1.8-2.0
+
++40%
+
++2.9%/年
+
+2000-2007
+
+1.7-1.9
+
++50%
+
++2.5%/年
+
+2008-2019
+
+1.9→1.1
+
++160%
+
++2.1%/年
+
+2020-2023
+
+1.1
+
++25%
+
++4.2%/年
+
+關鍵異常：2008-2019年M2暴增160%，但V崩跌42%，導致MV僅增52%，遠低於M的增幅。傳統理論無法解釋此現象。
+
+**根本問題**：傳統理論假設新增貨幣均勻分布，但實際上：
+
+-   2008-2019年QE印鈔約7兆美元，其中僅約7%（0.5兆）進入實體經濟
+-   約50%（3.5兆）流入金融市場（股票回購、資產投機）
+-   約43%（3兆）囤積於企業/富人（超額準備金、現金儲備）
+
+這種極端不均的流向分布，導致總流速V崩潰。
+
+**2.2****　三空間模型的形式化定義**
+
+**定義2.1****（貨幣空間分解）**：總貨幣供給M可分解為三個異質空間的貨幣量：
+
+<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKMAAAAcCAMAAAA6Lv8SAAAAAXNSR0IArs4c6QAAAKtQTFRFAAAAAAAAAAA6AABmADo6ADpmADqQAGa2OgAAOgA6OgBmOjqQOma2OpC2OpDbZgAAZgA6ZgBmZjoAZjpmZjqQZmYAZmY6ZmZmZpDbZrbbZrb/kDoAkDo6kGY6kJA6kLbbkLb/kNv/tmYAtmY6tpA6trbbtrb/ttu2ttvbttv/tv/btv//25A625Bm25C227Zm27aQ29uQ2/+22////7Zm/9uQ/9u2//+2///bc58ZVQAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAByklEQVRYR+1W2VbCMBCdFKFYlgriQosixb1xbWP6/1/mTBWaCOli9S15Yc7hzsydO8spgH1WAauAVcAqYBX4VwU4YwEliNgwaZ6oxJuPlXDtcFnIKJjoO6vmFKHEW+PYDicnJ8gxW5z2fiEjlHhrHNvhUjdyAfgoVFtjUBTV+H6bgkq8NY7tcHzMe4kYvPv5VDZ9Jd76PJqzVOOyxSrtPC6CtBM35Yd4g/eO3u1wwouFdzkEFLOa407uMm9Vn3a41AXpd+KsbBwj48r/8KbJ3j6Vo4ZLcaadYrKMOBBTxs7pLI7xfgR4emhl5PG24YoJcmbSWPOG9Gxo4KjhsPHwVLRN5ajhxOESONbCWa6R9OlX9BlzIbtgzlVhYrBUTa1OhOaNpbwNlGKU3DpODJLsurgiJpyhtQSnv9Je8mWOEk6Hqd7Kr1eYfX+vtVGnXiuHTttrBYgzvG9D1qgp5cHx2ZhRQMtbvU7UEsZqHQdsqDiqDqkVvCUgJ/Fzghp++MHGfPHub+Ts7raapPAeQNZInYNe92ukZaGAux2UIa4bjeMcclNOnXnYjaVf4y7hRI/xu0RdbENdEep9sKwumhrTrZa7RiALsQr8nQKfNT9HoeBmH60AAAAASUVORK5CYII=)<![endif]><![endif]><![if !supportLineBreakNewLine]>  
+<![endif]>
+
+其中：
+
+**A****空間（實體經濟）**：包含所有涉及實體勞動時間投入與實物商品/服務產出的交易，定義為：
+
+<![if !msEquation]><![if !vml]>![](data:image/png;base64,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)<![endif]><![endif]><![if !supportLineBreakNewLine]>  
+<![endif]>
+
+特徵：
+
+-   高流速：<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAcCAMAAADC4sagAAAAAXNSR0IArs4c6QAAAI1QTFRFAAAAAAAAAAA6AABmADo6ADqQAGa2OgAAOgA6OgBmOjoAOjqQOmaQOma2OpDbZgAAZgA6ZjoAZjqQZmZmZpCQZpDbZrbbZrb/kDoAkDo6kGY6kLbbkNv/tmYAtmY6tpA6ttv/tv//25A627Zm27aQ29uQ29v/2////7Zm/7aQ/9uQ/9u2/9vb//+2///bMJmlkAAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAA3ElEQVQ4T+1RyxKCMAxMAUVR8C2IgIivWqX//3mmdKalFcazjjl0mnY32WwA/vETDtAYgPnEPQIlZHDrnwm/MRANlZPhmbulBvN0a1IpFpRBBZrvBEXFs/CnLTZY6CqyZZwXnm6g0WyUAZt0iH6kTniVRe5+QJyNuCHa0qHa8LQ1+qmZsp7F7zoEoVVbpDwZNui11JGLTIWhW6N50lgIdBX2ecITNEEqaa7YYnlRo9p+80NAiLdvdS6yTmNsY2Ve4WbVwroh+pWNS6jnxj77KfWMRJATw5RPDb7p/wUMsBBKVs1LmwAAAABJRU5ErkJggg==)<![endif]><![endif]>  次/年
+-   正和博弈：創造實際商品與服務
+-   乘數效應：初始注入1元可創造k元GDP（k=3-5）
+
+**B****空間（金融投機）**：純金融資產的二級市場交易，定義為：
+
+<![if !msEquation]><![if !vml]>![](data:image/png;base64,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)<![endif]><![endif]><![if !supportLineBreakNewLine]>  
+<![endif]>
+
+特徵：
+
+-   超高流速：<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAAcCAMAAADm+0lgAAAAAXNSR0IArs4c6QAAAI1QTFRFAAAAAAAAAAA6AABmADo6ADpmADqQAGa2OgAAOgA6OgBmOjqQOmaQOma2OpDbZgAAZgA6ZjoAZjo6ZpCQZpC2ZpDbZrbbZrb/kDoAkDo6kGY6kLbbkNv/tmYAtmY6tpA6ttv/tv//25A625Bm27Zm27aQ29v/2/+22////7Zm/9uQ/9u2/9vb//+2///b6ULWdgAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAABDklEQVRIS+1S2RKCMBBrAbWeeKKieOFFlf7/57m74MqlM/rkjPYppU1IshXiv/4NfEUDWkl7KyIp6+eXfow/pfO9kpaXAztrCfvA3mT4xvcKcsAjAa08QQwGIsKtmaPKY11XqpNVDMcnlwQCMBq7jQxIBHa9kv/DwMnaiEnAzPAiqDAAL82l0O2qAi6+1T3ehROB2E0FGJBAMQC7MT5X+1wATioCoEalA4iPEagHagRcjTAADFJayaSSVdkBUSg/A9jSHDFGyIaLU8D/kHokPbFHAoO0WOzRrO+zKL0DPQSDzgQUQiVrNHIGqWOMUJ5labjPPwQ9ofv51/QGGyIC+dDavsXJXQ4w4+Jz/k8zbwd0GtS6kIFgAAAAAElFTkSuQmCC)<![endif]><![endif]>  次/年（高頻交易可達<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAcCAMAAACj+uTiAAAAAXNSR0IArs4c6QAAAG9QTFRFAAAAAAAAAAA6ADo6ADpmADqQAGa2OgAAOgBmOjo6OjqQOpDbZgAAZjo6ZmY6ZmaQZpC2ZpDbZrbbZrb/kDoAkDo6kGY6kNv/tmYAtv//25A625Bm27Zm29vb2/+22////7Zm/9uQ/9u2//+2///bhGhK1gAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAAlklEQVQoU92S/Q6CMAzEr6hMdIrOjymgrLL3f0a7DZEY4gPQf5bdL9dekwKzqde+bCeXcZtpHf5iHz3y11P0NooyA7AqCoqKCPFlZVBlFizNXC5CfXjqSG6rFp3OwWuLKhDINxB/3va4VrS8j0inP+QbOHn+kdA7DPv1RDENGyp1gyODRlIPxTsiWhxDfsk0ArM5g7TIG6QvCWaPYaOGAAAAAElFTkSuQmCC)<![endif]><![endif]>次/年）
+-   零和博弈：不創造實際產出，僅重新分配存量財富
+-   無乘數效應：對實體GDP貢獻接近零
+
+**C****空間（囤積靜止）**：長期不參與經濟活動的貨幣，定義為：
+
+<![if !msEquation]><![if !vml]>![](data:image/png;base64,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)<![endif]><![endif]><![if !supportLineBreakNewLine]>  
+<![endif]>
+
+特徵：
+
+-   零流速：<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAcCAMAAADC4sagAAAAAXNSR0IArs4c6QAAAHVQTFRFAAAAAAAAAAA6AABmADpmADqQAGa2OgAAOgA6OgBmOjqQOpDbZgAAZjoAZmaQZma2ZpCQZpDbZrbbZrb/kDoAkDo6kLbbkNv/tmYAtmY6tpC2ttv/tv//25A625Bm27Zm27a22////7Zm/9uQ/9u2//+2///brPgAOAAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAA4ElEQVQ4T+2S3Q6CMAyFW0GHOv8QEcWBUOD9H9FuMJ0zEm819qJJ19Pu2wGAf/yMAyQwuECNOK2cN9UizLlsUntWCpzEXKjJkXMW6K4N2lSKd0CxH05IxL2w1qk76JF7FFypMG/W9r6Mb27lbFCr5ZO1Z60qRMjrTXSJ7mdTAIqOQAsXmhvlM3crHbXHwRs87oe6lXuPA+DkcRtkQ9LKreGgFeJu4Lx63CysevguMRZSlIKyhr38TTXGUBrzzHv7/D4KgeHDZJpbt0aH7MfyPRwdonk+gv0yqtAF+wTnizQ3cbEPiggP6GEAAAAASUVORK5CYII=)<![endif]><![endif]>
+-   凍結狀態：對經濟無任何影響
+-   負乘數效應：抑制其他空間的流動
+
+**定義2.2****（實體流通比率R_A****）**：
+
+<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAwCAMAAACxOw3FAAAAAXNSR0IArs4c6QAAAJxQTFRFAAAAAAAAAAA6AABmADpmADqQAGa2OgAAOgBmOjqQOma2OpC2OpDbZgAAZgA6ZgBmZjoAZjpmZjqQZmYAZmY6ZmZmZrbbZrb/kDoAkDo6kGY6kJA6kLbbkLb/kNv/tmYAtmY6trbbtrb/ttu2ttvbttv/tv/btv//25A625C227Zm27aQ29uQ2/+22////7Zm/9uQ/9u2//+2///bSvuUZwAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAABnElEQVRYR+1WaVPCMBDdlKMFWlHUtni0eDaiNjH5///N3QBFKh4kcUZm2A90h5m+ed19u28BDnGowH5WgDOWEfOSDWsvX6BzFiOQDIPCCx6o8SkC6ulZzw9BEP2yD8BHOfH0ETzmvVoOXhNTSffQ00J0HqeZ6FTuYIQgo0pGl0NAmn4ARR9U0qn0soRUT7coY9B5hqoxPRHnQzc44MzITyXmqSYvA09fvuA1K6RXQJxC9qnZ9CcLUptKyOgB1FF7AHVOureZS6xjjCui3WZFipehJ9lT44mc+VkHLpRlWKiXFP8cuqqpRaZ79X1PVnx/fBqFxjBvt8Tlk6l6BErhPpcEgiU0yvExlwiCsiYZslG9p3PZNH9379w+lw3gzt75xVw2gAfvtNmeG+/8tXduJVjusqQ3vFOdNDfDhxQn7ff+t+GdMqRx1RcsuF6nuBGE9U7ldM3h4SB69SId1ZwWgrWLzNAuyI7xKFmlZYYHo+39qcbVU43s3pJslc6j+xs1ubu1U5PKA+SDJUzBpOo4SPNupRILQ7Nj8L/eegcbKCwZv2a5AAAAAABJRU5ErkJggg==)<![endif]><![endif]><![if !supportLineBreakNewLine]>  
+<![endif]>
+
+R_A衡量有多少比例的貨幣在實體經濟流通。健康經濟體應維持<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEQAAAAcCAMAAADvEOkaAAAAAXNSR0IArs4c6QAAAJNQTFRFAAAAAAAAAAA6AABmADo6ADpmADqQAGaQAGa2OgAAOgBmOjoAOjqQOmaQOma2OpC2OpDbZgAAZgA6ZjoAZjqQZmZmZpC2ZpDbZrbbZrb/kDoAkGY6kLbbkNv/tmYAtmY6tpA6ttv/tv//25A625Bm27Zm27aQ29uQ29v/2////7Zm/7aQ/9uQ/9u2/9vb//+2///bzBuBZwAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAABQUlEQVRIS+1S21KDQAzdYKmuaIXWC4K9IKXaFVz+/+vMBVgKzjh2fHGG88DMkuTk5CRKTZgc+DcOmGeSmgPCi39QXeheTl0EF69KGaoEJqmTK2Ty1n2WOo2PJ6yljl2OXd1mFDXEJLARcpWaCTt8brUkNtjMj5iI3dquAxJDIvhzisNq1smpkxCDxITIWwE9JTmGDnox5MB3lXqL90atI6mTyxTAx0k+dADek4hDc/yXbzgomEpzGzkSG80zVZGRhIKNpXgxHoYS+kqoRsYRwnYUXgu7If8xq6HnR98TrhdjZJuKTHAvCXO1eeicGW7HQMx6Sx3yqitsy6Q8Dp4anQnc4Qrv326a6xjdidpr8HGBRKJ2eHiP2HoXAMwGbm7XZUsipp0BOn93gmcQYEl5nSm7HJ3cr8hsBKHakD8T/sKBL7Q2G+sgD86zAAAAAElFTkSuQmCC)<![endif]><![endif]>。
+
+**命題2.1****（R_A****與經濟活力的關係）**：
+
+設<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAAcCAMAAACu5JSlAAAAAXNSR0IArs4c6QAAAIpQTFRFAAAAAAAAAAA6AABmADpmADqQAGa2OgAAOgA6OgBmOjqQOma2OpC2OpDbZgAAZgBmZjoAZjqQZrbbZrb/kDoAkDo6kGY6kGaQkLZmkNv/tmYAtmY6trbbtrb/ttu2ttvbttv/tv//25A625Bm27Zm27a229uQ29vb2////7Zm/9uQ/9u2//+2///bjXJAmAAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAAvklEQVQ4T+1S2Q7CMAxLuotjGzs5Oq6VAe3W/v/vkSKB9kAnIV7xYywnthWAP35qoI8wkCAQE8cawXYAOo2lg9dpCSCWbhM8hG7hUpNMedspmm577VTEp4EJKJec22RgOOX/CJ1bgiOGAEMWXqIETIOsBLNGRiI1Cn29zQqVmLq4N6WpYilII8a+7ACobBbLnuJy2lLb8y/QgKoIYdhIFchuftrr/Hh403plOzAV+mfQGSsqv9Wpy/hPD/Gd+AEPVw1/FQll0gAAAABJRU5ErkJggg==)<![endif]><![endif]>為實際GDP，則：
+
+<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEcAAAAwCAMAAAB0SZdUAAAAAXNSR0IArs4c6QAAALFQTFRFAAAAAAAAAAA6AABmADo6ADpmADqQAGa2OgAAOgA6OgBmOjqQOmaQOma2OpC2OpDbZgAAZgA6ZgBmZjoAZjqQZmYAZmZmZpDbZrbbZrb/kDoAkDo6kGY6kGaQkJBmkLZmkLbbkNv/tmYAtmY6tpA6tpCQtrbbtrb/ttu2ttvbttv/tv//25A625Bm27Zm27aQ27a229uQ29vb29v/2////7Zm/9uQ/9u2/9vb//+2///bIg0IjgAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAB9klEQVRIS+1Wa1fCMAxtp7CKAlNQt4EPhm/GEN2K7f//YSYtjKFDWOAcP2g+7HAOTZrc3OSWsX/7wwhE3N1L9ToMmBS8nrKY8zY9pDodMBY78FFeK6XHkcfgrLwAgjWpUWYd7lwbeCKXJRiQZFI0U+UZTLKDG3IYFgG4Bh4s7GBEysX4AiiyYfzNb6LJI0gFgLF1rUknwk7+bFIE+v7clZeMaSyx1FR3M/p3vPaS8CYcjDiyetZxx6LN9JA7AdN97kDwjECG1+mRn7V1z38bBjpspTHEjim4oSMOidNKkZ4RZNXbCE8JHOAIkLtsdpVm9TRpPD+o7tPjOpQTuNAv+1OdYdN0CLAx1XH8sDZS3qIBuu+vIi6Fb+eyon0MxclLwcew2CMtnUnnME9KhzhQa/myIclZ32m+mzN2MDEO39ZWYuu+RWwZpyI+5ngxH4SGVlcRHxPCglTNvvYr4z5Lqvf9G3/YWPDaN/rsU35gKrGF5WTfEgS7X3WII1696OUlRn7mq1ZQdgWSIpefDFMxH4IV5CcGTkwEYQXitUv5gZXBee2WkEuOiZEfnBkCtey9BflBZOYCuxCk7XMryI8dGbOasovKKOXyAyxE+nB4vqjulK73hRqGA0uoHQ3ng/5wyC+XDRAM+xDZxZQHD8V9LYBdEvlV308yyDRWk6J6NwAAAABJRU5ErkJggg==)<![endif]><![endif]><![if !supportLineBreakNewLine]>  
+<![endif]>
+
+證明：實際GDP由A空間的流通貨幣決定：
+
+<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOgAAAAcCAMAAABcdANFAAAAAXNSR0IArs4c6QAAAL1QTFRFAAAAAAAAAAA6AABmADpmADqQAGa2OgAAOgA6OgBmOjqQOmaQOma2OpCQOpC2OpDbZgAAZgA6ZgBmZjoAZjpmZjqQZmYAZmY6ZmZmZmaQZma2ZpCQZrbbZrb/kDoAkDo6kGY6kGaQkJA6kLZmkLbbkLb/kNv/tmYAtmY6trbbtrb/ttu2ttvbttv/tv/btv//25A625Bm25C227Zm27aQ27a229uQ29vb2/+22////7Zm/9uQ/9u2//+2///b6yV8lwAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAACxklEQVRYR+1WW5vSMBCdFCjLirQu4pUWrxQvK1V0tSnJ//9ZTpKW0uZWH3xLXjYfezLnzJmZpABhBQeCA8GB4EBwIDgQHAgONA7UczKroCQk+RdLEJ8JfEGWlfUchp4cgRJBYF8YipBoawaM4jEe1cnLaA/A0pVLjBaK59KYei4Od4su5b5+pYLJ0FBM7l0e8jxukTrMwmOM5yNnKdamVApHL3b3DBPlu+f9YknRmL6sNgAVifJdzwuNQvJfjgz+beEx6vSSFzGcbp31RF+b1eZFYzwF5SofNDxbL69Ey0TLHsQQSoAk0rBsPEawj5xO3rvzNEQtk3JW1bd/RDV6i60fpZfM6ps91L7YGAh+zvsdVeJsq+a38VgydZKztA07unOxHenk2y6j+sl6LrpXLUzU17ggSzz90KduE3XwGLW6yeWQOJfWb/XiWC/eLUFUY1DR9HFXUYzcb1yc2OEUMISfLI0Ldh5zRd3khrKoMIWNH2iM9/TkyJsRFfOqFlsnOKPtW8HS16pxO4AmUEynSNYIG/AYs+tUesh5YXvm2MZ2RRUJlibDlKRA+qKdMJX55QrlubKqA+hSBbu6Lw2wHg972gwu+tlt4aLSR14QgjTndfwdZfMDiTLgb0iE/M3DpIsriUyApfIv2zy0F077lL1UDjUVvwJosfCLQFzfBJ9xHdbjwS8AhAppH7vttcpx5L8ebrY04bvt70PG81VVCnrf7CrZh73nZvUCxsUR4y6so7NKbUep1MhFZth0JFrhs1FBgXX1vPRNdcQnnPPa9gJUIC/sgN0jpOHgtlu/Sj0qnsEpieH8tkLLTouvn9jmy2fj+Pd+rBf3wJ44Pn68ABXOC2N3xx9C2jnN2q1fpR4Vz8qhIlPUvY62+fTIUufHuNKHc5rgp333dg6t8QJGxgGWN7fHVm3HqBxJ7i9nQAQHggP/24G/csZsky+znQoAAAAASUVORK5CYII=)<![endif]><![endif]><![if !supportLineBreakNewLine]>  
+<![endif]>
+
+當<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACkAAAAcCAMAAADLCWbaAAAAAXNSR0IArs4c6QAAAIpQTFRFAAAAAAAAAAA6AABmADpmADqQAGa2OgAAOgBmOjqQOma2OpC2OpDbZgAAZgBmZjoAZjpmZjqQZmYAZmY6ZrbbZrb/kDoAkDo6kGY6kJA6kLb/kNv/tmYAtmY6trbbtrb/ttu2ttvbtv/btv//25A625C227Zm2/+22////7Zm/9uQ/9u2//+2///bF8mgQgAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAA50lEQVQ4T+2RUW/CIBSFL62ltRY3N6Gb4twG2wAv///vealxMzYpbyYmuy+chJPDx7kA/3MHDVjGZMLUrHXTuFGxjhyhLraZf+HyiZyxf64ykeC55gB2oVLy5NjOVi7Mf8RAOzGx3/rys5e+NBlnaExoXlug4IzTc0BRmjiFqYdadAdRSSopfQgffxEuJOCK3rNs8KNIZ6gZ4xBfWLH5k0Tl2xGYTc0Sh6/cSS6cTRWOa9lRfphTCIez1JK2MtoeLs2Xo7yDkGf53Xy84ep9f/U8qoISCHMNg8SHYq1mBkW2wdx6b3d/BODbE80WBhHoAAAAAElFTkSuQmCC)<![endif]><![endif]>和<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAcCAMAAACJShVNAAAAAXNSR0IArs4c6QAAAGBQTFRFAAAAAAAAAAA6AABmADqQAGa2OgAAOgA6OgBmOjqQOma2OpDbZgAAZgA6ZjqQZmZmZpCQZrb/kDoAkDo6kNv/tmYAtmY6ttv/tv//25A629uQ2////7Zm/9uQ//+2///bf0Ht/QAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAAeklEQVQoU81PSRKDMAyTWVugtNAECM3y/1+SOIHJnUt18Iw8siQDfw7TULlBE1W/2FQVwk9Zrqm4Dtx9w5LBXPXXW6YVMM907LeeZ2rADlOmDvwT1bJmDzdzIPS7S5y97bhnpsAi8hAootD7hHmssK+rox2oh6QYcAsHO38GB72pX6AAAAAASUVORK5CYII=)<![endif]><![endif]>給定時，<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAAcCAMAAACu5JSlAAAAAXNSR0IArs4c6QAAAIpQTFRFAAAAAAAAAAA6AABmADpmADqQAGa2OgAAOgA6OgBmOjqQOma2OpC2OpDbZgAAZgBmZjoAZjqQZrbbZrb/kDoAkDo6kGY6kGaQkLZmkNv/tmYAtmY6trbbtrb/ttu2ttvbttv/tv//25A625Bm27Zm27a229uQ29vb2////7Zm/9uQ/9u2//+2///bjXJAmAAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAAvklEQVQ4T+1S2Q7CMAxLuotjGzs5Oq6VAe3W/v/vkSKB9kAnIV7xYywnthWAP35qoI8wkCAQE8cawXYAOo2lg9dpCSCWbhM8hG7hUpNMedspmm577VTEp4EJKJec22RgOOX/CJ1bgiOGAEMWXqIETIOsBLNGRiI1Cn29zQqVmLq4N6WpYilII8a+7ACobBbLnuJy2lLb8y/QgKoIYdhIFchuftrr/Hh403plOzAV+mfQGSsqv9Wpy/hPD/Gd+AEPVw1/FQll0gAAAABJRU5ErkJggg==)<![endif]><![endif]>與<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAcCAMAAACwLaQWAAAAAXNSR0IArs4c6QAAAGlQTFRFAAAAAAAAAAA6AABmADpmADqQAGa2OgAAOgBmOjqQOma2OpC2OpDbZgAAZgA6ZjqQZmZmZrbbZrb/kDoAkLbbkNv/tmYAtmY6ttv/tv//25A627Zm27aQ29uQ2////7Zm/9uQ//+2///b7Xj5TgAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAAgUlEQVQoU9WQzRLCIBCDA63S1tY/WlpREXj/h3SXmQ5w92IOOQT4Ngvwl7KCJG9F96iPgJVLjsJ0B7wi2/Xh42S77MHhpYYcRE3gdi7AYRrxLN8kAqcsQ1PJCZMKEP7KNOrHdcTJIVzevas+eV18nfA2zaO447sN4VztIkYYZv5IX7b1BkS69oLBAAAAAElFTkSuQmCC)<![endif]><![endif]>正相關。□
+
+**2.3****　流速的內生性：財富分配的決定作用**
+
+傳統理論將V視為外生常數，本文證明V是內生變量，受財富分配支配。
+
+**定義2.3****（流速離散度**<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAcCAMAAACwLaQWAAAAAXNSR0IArs4c6QAAAGlQTFRFAAAAAAAAAAA6AABmADqQAGa2OgAAOgA6OjoAOjo6OjqQOma2OpDbZgAAZgA6ZmaQZpDbZrbbZrb/kDoAkDo6kNv/tmYAtmY6tpBmtv//25A625Bm27Zm29v/2////7Zm/9uQ//+2///bHuCZTAAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAAeElEQVQoU+VRSQ6DMBDzEAiUAm3CVsKS5f+PJOFAoNcea2kO1nhkjQ38EdynIKKkP1+29XM15RYjcG0G2CYqYHJPDJdRo9kEKDYpSjdNgQTNwiu4rj/GY+aUCMC1Evp9i3iQ9nVx9LtBjBfDIFaP6qsWnd5vfm1tBxG0BbtCB+EPAAAAAElFTkSuQmCC)<![endif]><![endif]>**）** ：
+
+<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEMAAAAwCAMAAAB9ojcuAAAAAXNSR0IArs4c6QAAAIRQTFRFAAAAAAAAAAA6AABmADpmADqQAGa2OgAAOgA6OgBmOjoAOjo6OjpmOjqQOma2OpDbZgAAZgA6ZgBmZmaQZpCQZpDbZrbbZrb/kDoAkDo6kNv/tmYAtmY6tmZmtpA6tpBmtraQttv/tv//25A625Bm27Zm29v/2////7Zm/9uQ//+2///bCmFoWgAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAABTUlEQVRIS+1VXU/DMAx0VkbHgG0MtoaFz4aypPn//49z0CQ6RtU4IF56L62m+mb7bB/RiLEDv9EBX6qiJqfUdC+ns5Mdgk3xKqcgxxzhnonEiBx2KY7nQD/bkb/OaMYnR2YlRO2qyqyEOe64Eqirzlib5qJO7k3QUVzUE56m+/D4IuKImniEtjdg4xch3DnKWiM8g8NUmBKedzkHl9FgUnI4DGS5Yln4JW9oj5oZnuegjLodEDR+iRi26O1q8Z65BkGzVqx3Hw5pnXzGbSRfQjB5LQ4HjmxRW5Tu+NoJwHk05TIeKPFqv5VqssUq6YrcRpDE1xBTtbd5Rwpzt334WZyBxmAv+yZ3mDG43pEcjaE7Kn9mDFB8kTCVp4wBq4H0hpME/d0Y+Cib9HPYMQa+XBbXJxEdY+A80h24awxoBm97Io6MwaXpkvhn//L5B6rzIosYBVwFAAAAAElFTkSuQmCC)<![endif]><![endif]><![if !supportLineBreakNewLine]>  
+<![endif]>
+
+其中<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAAcCAMAAAC9M9RRAAAAAXNSR0IArs4c6QAAAGZQTFRFAAAAAAAAAAA6AABmADpmADqQAGa2OgAAOgA6OgBmOjpmOjqQOpDbZgAAZgA6ZgBmZpCQZrb/kDoAkDo6kNv/tmYAtmZmtpA6traQttv/tv//25A627Zm2////7Zm/9uQ//+2///b5dhE5AAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAAlElEQVQoU+WSyRKCMBBEJyIKCihLVLaE/P9P2p0DRQJHb85p8jLV6Z6KyJ+VvapkEKNUOofJx1MHoJM+Woghdy0vg/J8LHbrs1kn9h6JYwr8QEVkKesDFfInVeBUnelpygf/lmu8UWi5dzq712fl3ovFcakwwWZT5gLJB1DEdY0U3EXIKTEhScw17Nxoh80+/M8/0xexsgjdignIHwAAAABJRU5ErkJggg==)<![endif]><![endif]>為收入最低10%的平均流速，<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAcCAMAAABBJv+bAAAAAXNSR0IArs4c6QAAAGlQTFRFAAAAAAAAAAA6AABmADpmADqQAGa2OgAAOgA6OgBmOjpmOjqQOma2OpDbZgAAZgA6ZgBmZpCQZrb/kDoAkDo6kNv/tmYAtmZmtpA6traQttv/tv//25A627Zm2////7Zm/9uQ//+2///b4lfGIAAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAAsUlEQVQ4T+1QyxKCMAxsRQTfClIfFFr6/x/pbkCGQ3txxps5dNJssruJUv/44gK+0FmrnNZ5H522qwZ1k73i3I5wuLEnFgLbY8qXLxvl93FhzABOUys1nKo0NeErqbGaXtN9t23JWeiD2Am1bAaB8Mj7cH8Sxg+sIyyuParDGY1M5DHLbdwGOpcJkVUsKnMYUFkedp5eGiZvhwtMMIRDLdpjGBjf0TgTiLqP89Q1f19/AyFJC+zVPVOSAAAAAElFTkSuQmCC)<![endif]><![endif]>為收入最高10%的平均流速。
+
+**個體流速的計算**：
+
+<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAAAwCAMAAADAb6MeAAAAAXNSR0IArs4c6QAAAEhQTFRFAAAAAAAAAAA6AABmADqQOgAAOgA6OjqQOpDbZgAAZpCQZrb/kDoAkDo6kNv/tmYAttv/tv//25A62////7Zm/9uQ//+2///bsTDt7AAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAC2UlEQVRYR+1X6VqDMBAE61WtV+3x/m8qyV6zS2gLpK0/QD8NIcdkZnaTNM3yLAwsDCwM1GOgbXGs7iW/p1r5InXWzvexltVQKSYqMIL0knHBA6ACPl1HJVRxVkHDjAWcPKniF165WSVMJBb/hTGNP0OdVY3cEUl1QfHkgoF14JmNJuc7t4YrgFJfy0SsntLXY8a+EK9Fz82W0cmThUg1ogf4nnBHEFdgqugHijrkTjhB66CiQd3ZRBVMWjZYK9FQCI0rghIl1O05KzqITJlZ3YSul0KLIZ4rNU9oE0wYljEgo9Tmy03iuekz1ZGn+wxqeUtQQpUwxYr14VwLlFcNNhWjEkoUpj6nUJ/9U7v6aXZt+/g7PRRBo2gXVoptFhPBUGLYPnx2aL5W39Mx1e+5S6COHwnZ/3kyqO3rKUDHjQg/R+MxS94/fzb7lxmGGjPZpW07UCSexS5vXYMxGnJm9demOazfs3h5R5DflN94s+8+3V6+w/otixdBUcWdnuMm54S0d9IDGe1OkJI2FHnGlOXlC0Axm7QFG7WaM22I3sWq0KHfJnPkbkbDoIZPkNRHsFoxHmJw6eBmfwtJcOjH/p1hCjyXi7DJun2tdIthavXoTA5mA+m8GZAypSftAVwKQnTKoJwrgbBQpAu0rMLwQyVPK8HGTJ0LPhmT0FGAgHJWhs3aYTNQ6OYQ8hB9Goon5OPF4pQRlDtJxROKM6VqVLjXXhBsEEwcsEoPycDDhnuC8R6I44sHeUdywCgcsbE3tnxlQZ0rwPdSjzxK9MXEMgpd2O183Ctj2spMDfcYBa2Gh2AehcY3dilByJCcgpOCw1U+5zgIkRl4clcEZWXLFj7aJF94ABIdMRAmY1MgdqCA5BOyDsamZBE7iehKZp8CAjt9lyCbARSmf1iJW94ktvrO5KXr0DYHR6pdQ/2W7TWfhCaaGAaBNIGWinm9SHKd8JuzoqVvBQb+APjiBxoFdUk3AAAAAElFTkSuQmCC)<![endif]><![endif]><![if !supportLineBreakNewLine]>  
+<![endif]>
+
+**實證數據（美國，2023****年估算）**：
+
+**群體**
+
+**年收入**
+
+**消費率**
+
+**平均持有貨幣**
+
+**流速V**
+
+後50%
+
+$3萬
+
+93%
+
+$0.4萬
+
+7次/年
+
+50-90%
+
+$8萬
+
+75%
+
+$3萬
+
+2次/年
+
+前10%
+
+$50萬
+
+30%
+
+$200萬
+
+0.075次/年
+
+前1%
+
+$1200萬
+
+1.7%
+
+$1200萬
+
+0.017次/年
+
+**關鍵發現**：
+
+-   窮人流速是富人的約400倍（7 / 0.017 ≈ 412）
+-   前1%的貨幣平均58年才流通一次
+
+**命題2.2****（流速與基尼係數的關係）**：
+
+<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJAAAAAcCAMAAAC56sYpAAAAAXNSR0IArs4c6QAAAM9QTFRFAAAAAAAAAAA6AABmADo6ADpmADqQAGa2OgAAOgA6OgBmOjoAOjo6OjpmOjqQOmZmOmaQOma2OpCQOpC2OpDbZgAAZgA6ZgBmZjoAZjo6ZmZmZmaQZma2ZpCQZpC2ZpDbZrbbZrb/kDoAkDo6kGY6kJDbkLbbkNvbkNv/tmYAtmY6tpA6tpBmtpCQtrbbtrb/ttuQttvbttv/tv+2tv/btv//25A625Bm27Zm27aQ27a229uQ29vb2/+22////7Zm/9uQ/9u2/9vb//+2///b4wJ/vAAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAACWElEQVRYR+1WbVfaMBhN6oDCVECJdhvTUqazzqGyEUBdG0n+/2/ak5eW8BJYWT3HD+Rw+NDmPrm59z5JEdqPvQJ7Bd5IAfYRezdvVHunsmkNxb2dkCWCKO5Y1dhViaV3KiVeWBuALMCS2PSaXe5UpkwQ7wKf+jUadxDzFa3lwT5ZwaKtYZmrr6kV15CIFmkAsYMRSjGuJgCgx/IfiTug++EGsUNX7hdhxWhLLbBqKdrsItYYLcKparb4QIphXoqoMkSvZ/A8BbLrhw1z8UllQqBqV+1yjR1Hv4DQcSIi26xUEhJ9ySpTL85pLOs5L2rBnPqIqCb5+I5uFv0e786eG0M0VvaYoSpT5SOrK4fsCtRMhU2YYR5YMLdhPGjb1cQ3kwyNgABx0k4oxoc2ZckCZJMzjEHU8snpmQVzE0I8aJE8s5ycJmbPGyBSFm0Y6KR2r4TWoc1FW+P/HLaxui9dyxWZ3TpDmU/jpKcNywhxtSdlyZzQimUWbJNC5CRXiBPo3AtHvq0anHzVhs0VkoRMeJwSWzA3IR7IAy/UE/7BLTVPRPklawITy6YnWmpnhiyYk5Du0axHOAmRuN1+f1qdbfYgm6H9QyOzLltZ1CwW1MZ+deJDMgDlQQbhfEqzPs/OoS/agbGPvWK31eqp4z6HNMOn53oIzfPnfCSi04RCH9/T5sW0tO+aFYPcJ7WRDDjAmaF/+nsmzRLpjlaBN0sObc8hcIAepZ2nSTWZNB4HPx8+n30fFFhx29Rpsdueg1dwiFEv5IEXRpXfUSuJ39eX6LYd79//rwJ/Ac+fTccX3TK8AAAAAElFTkSuQmCC)<![endif]><![endif]><![if !supportLineBreakNewLine]>  
+<![endif]>
+
+其中G為基尼係數，<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAcCAMAAAA6Aj1XAAAAAXNSR0IArs4c6QAAAIFQTFRFAAAAAAAAAAA6AABmADpmADqQAGaQAGa2OgAAOjqQOmaQOpDbZgAAZgA6ZmaQZma2ZpC2ZrbbZrb/kDoAkDo6kGY6kLbbkNv/tmYAtmY6tmZmtpA6tpC2ttv/tv/btv//25A625Bm27Zm27a22////7Zm/7aQ/9uQ/9u2//+2///bNkptIgAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAAw0lEQVQ4T+2R3RKCIBCFF9Sksh81SysTCxN9/weMFbAxa+qmq9orhv32cM4C8K8vbyAjnnj/xDVsFjuLVczN1Vlu9UWbEEJmRqTdWKxeCe4UAGWkqXgiQAa+EcksVqoDd3O51AJNgDg3nipqsSO2S+Yqwa5SRciOxZkeg/ODtwMhNDQjfvLCG/CpgJrNkePOqY+AJsfeMFTNonvSy9Cb6nU6hcrsg8L21vRgz23s5XohKSqmVIcZFa6Xrj/4o+fjP397A0cvDvVvHRNdAAAAAElFTkSuQmCC)<![endif]><![endif]>（經驗值）。
+
+當G從0.3上升至0.5時，V下降約62%。這解釋了2008年後美國V的崩潰：財富集中度大幅上升導致總流速下降。
+
+**2.4****QE****的空間配置失效**
+
+量化寬鬆政策的實際流向分析（美國2008-2020年，總額約7兆美元）：
+
+**階段1****：央行→****銀行（100%****進入金融體系）**
+
+聯儲購買資產的對手方：商業銀行40%、投資銀行30%、保險公司20%、其他10%。這7兆以「超額準備金」形式存入銀行在聯儲的帳戶。
+
+**階段2****：銀行的資金配置**
+
+**流向**
+
+**比例**
+
+**金額**
+
+**空間**
+
+超額準備金
+
+30%
+
+2.1兆
+
+C空間（凍結）
+
+購買金融資產
+
+50%
+
+3.5兆
+
+B空間（投機）
+
+貸款給大企業
+
+15%
+
+1.05兆
+
+A/B邊界
+
+貸款給中小企業/個人
+
+5%
+
+0.35兆
+
+A空間
+
+**階段3****：大企業的資金使用**
+
+1.05兆貸款中：股票回購40%、償債25%、囤積20%、實體投資10%、研發5%。
+
+**最終進入A****空間的比例**：
+
+<![if !msEquation]><![if !vml]>![](data:image/png;base64,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)<![endif]><![endif]><![if !supportLineBreakNewLine]>  
+<![endif]>
+
+**對R_A****的影響**：
+
+2008年前R_A約0.55，QE後雖然M_total增加，但M_A增幅極小：
+
+<![if !msEquation]><![if !vml]>![](data:image/png;base64,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)<![endif]><![endif]><![if !supportLineBreakNewLine]>  
+<![endif]>
+
+R_A反而**下降**約22%，加劇流動性失衡。
+
+**2.5****　直升機撒錢的空間優勢**
+
+對比分析：美國2020-2021年直升機撒錢（總額約3兆美元）。
+
+**資金流向**（基於經驗數據）：
+
+**收入群體**
+
+**消費占比**
+
+**儲蓄占比**
+
+**還債占比**
+
+<$40k
+
+80%
+
+10%
+
+10%
+
+$40-75k
+
+60%
+
+25%
+
+15%
+
+$75-150k
+
+40%
+
+40%
+
+20%
+
+>$150k
+
+20%
+
+60%
+
+20%
+
+加權平均（依人口分布）：消費率約60%。
+
+**進入A****空間比例**：
+
+<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGUAAAAwCAMAAAA/4US5AAAAAXNSR0IArs4c6QAAAJNQTFRFAAAAAAAAAAA6AABmADpmADqQAGaQAGa2OgAAOgBmOjoAOjqQOmaQOma2OpCQOpC2OpDbZgAAZgA6ZgBmZjoAZjo6ZmaQZma2ZpC2ZpDbZrbbZrb/kDoAkDo6kGY6kNv/tmYAtmY6tpA6ttv/tv//25A625Bm27Zm27aQ29u22/+22////7Zm/9uQ/9u2//+2///bhO12dgAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAB80lEQVRYR+1Wa1eCQBDdtSysTDDsoZSaoZXg7v//dc3OPgAPJ5eBOp0T80FAZufO3J29DGO99Qz0DPw1BuQ64INJfVY7eDV3r+Tu6uyNlr5MJnuW8gWuzsZ4yR/2+hrMWTpYmsAivtnQMMyqPNAoMrnE4PqJrYZ7JiL1l3vXAuZjZmkR8bgAkUlooFTslMqWTizj/NyywoCWSMVWJvBOFYSlXLyAI3FfMMLKkQ+VGIaOUEQ03LADMko1nbXO/7Z0r2KaWrRL1oY2hyLiEDtLmwLQm2MbI9X0NTaMYttVh3Q9lvE52wGZeWB8Dq7Opjjvs2L37Xm5NxlvA2wMRGGvcEQfaaU0zelf+FuRs9KXxxzlKiP2Sy1pVuSs9MnnpUxAqPCnK9MCaJpfSV9+DRqsOrPFMZYJN2b4sCLnpA9RAGzUQpKOKXAi56RPhU9D4CsLOJRkk/K91u+KFTmHIqKFghh+3m0OU6fFzTbomDEncvprpJQJahiL6TKD51VHDaA3X4lcWfrYOmSIopSjC1NCiCJnpc8elS5rKYmckT5AAb5AAkf0ffEqXx+VbTB4qnf/bnjyAvBxqgxPPgvoPu5TRg9xemUxPJ32pXpUhidqEI915eHJw53qUgxP1Ag+634cpTI8+WRE8ykPT7QI/aqegV9m4AuWAi9AXcItpwAAAABJRU5ErkJggg==)<![endif]><![endif]><![if !supportLineBreakNewLine]>  
+<![endif]>
+
+**對R_A****的提升**：
+
+假設原R_A=0.5，M_total=20兆：
+
+<![if !msEquation]><![if !vml]>![](data:image/png;base64,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)<![endif]><![endif]><![if !supportLineBreakNewLine]>  
+<![endif]>
+
+配合乘數效應（k≈3），實際M_A增加：
+
+<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALUAAAAcCAMAAAAQng69AAAAAXNSR0IArs4c6QAAALFQTFRFAAAAAAAAAAA6AABmADo6ADqQAGaQAGa2OgAAOgA6OgBmOjoAOjpmOjqQOmaQOma2OpCQOpC2OpDbZgAAZgA6ZgBmZjoAZjo6ZjqQZmYAZmY6ZmZmZmaQZma2ZpC2ZpDbZrbbZrb/kDoAkDo6kGY6kJA6kLbbkNv/tmYAtmY6tpA6tpBmttv/tv/btv//25A625Bm27Zm29uQ2/+22////7Zm/7aQ/9uQ/9u2//+2///bgAinTQAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAACS0lEQVRYR+1WXVfbMAyNW1izMghNtu4baAq0MIjHVs/Y//+HTZIdJ24jOMA5vGC/kDRX0tX1tUyWpZUUSAokBZICSYE3roBa7Aqw3t/Qj1II+roWhfuBXfa8TWPPhRBHHVyW/SAe10PZX7kYnXK1FOT3vBCic19Z56MVxdhaYM3wzpK+y117GPJuk91XkwCNWDM4VRBc/6RmbT3bgGADahJKjZt+h3ULlLPKCWQ+fYUHu/zmtedY/z75W/kihh5kF9BnzeFsjV0G1ai0p7BbMmZ9dewrm48rbxE1WUM6OavjXa5pj2B13BxZXBh6H94gOoplcGZexKTDG2z3VrGItSrajGqS6fdkEVmCaPowCMk6BKQJvr4WYnTWITnWNsKZ+VEsLso1vP7lB8H1+kPjK9t6AdbCILtcqfHtchHvyWCujrU83IBQJPCuTr3uejjE6jyiiV8fWHfOzEAQM0p40Rgg0fJ62ujpRdF3KUOmY+N93Z0YRustnKmO+1rLMLMGOic9qEc3TmigrN3YgCewiqnGjfW25jcND0+YP3QaH2Xtjl6LM/MSSgZfKSCt3VwZXp41fnSVQeC2GeCPdvH7rb4/kMfH5qWt92/4ydfW2MI5XbrJS7sdneKOPGHRIZ6W3zSv+riRgsa2qeiv+fKH9Zr+DEF7p5QIb5nRyfAtw+Haef3Dz2uiwLG+PoBal9gkIoAdO9nh89WKDP/kxWn25ETPCYDLXUSX0nOSvHaMnt5kcPu8dtmX1QP3lPA/FDv5X5Y9RScFkgJDCvwHkexKaW7bISsAAAAASUVORK5CYII=)<![endif]>  
+<![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAAAwCAMAAABwkIUsAAAAAXNSR0IArs4c6QAAALdQTFRFAAAAAAAAAAA6AABmADo6ADpmADqQAGaQAGa2OgAAOgA6OgBmOjoAOjo6OjpmOjqQOmaQOma2OpCQOpC2OpDbZgAAZgA6ZjoAZjo6ZjqQZmZmZmaQZma2ZpC2ZpDbZrbbZrb/kDoAkDo6kDpmkGY6kLbbkNv/tmYAtmY6tpA6tpBmtpC2ttv/tv//25A625Bm27Zm27aQ27a229uQ29u22/+22////7Zm/7aQ/9uQ/9u2//+2///b9hXjWwAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAADa0lEQVRoQ+1Yi3bSQBBNUKqxaMUWxUcFtAJVGsBHcUn+/7uc1+7O8hBJgyc5J9ueTSBkM3fmzszdRFEzGg80Hmg80Hig8UDjgaIeWA2L3nnq+/IbNm2RxK2Bf1h65c5XMQ4HwCSVwgJ2kz0mGURpa+ys1gAe3Skv5iOP5dTO/Yf159e/egRgcnYfZb2nhwFMX/ENlRkZ2ZOPkDKIQsa+CKy6fEN1BtuT9fYD+J104tZHtti8uKs+AGC5DB+QBRM//zQGrMO0SjGwEUD676YQWT6i9OCCpEpSBZgkjEDbORF4qBxQAPC0mhQC3w6ixc4ySrCQQiYhfNUCYPpAiMeYofMkbvs2oCKQ33bgJ1+wVSCArFc+g2KOOh1g0v+FObpBocLrHLrR9MFrtmjwkT/KDIf05ezQKv/reoqWacESpRfYeTa8rj7SqXmuqFGuraukjd5ZA8FoBIIqX3RQhEzIoVSRqZZpwWLOUaWIt8X/gge+lD8ofoGYKRGC+XCf4trzIS8aCKrsDYU+/wyzJD4dlBhUZc95nQGpmYD78lii+WA4hDZtz9bvRYFoQSWdg59HMMGTWOZoEsDP3KmkAX3PAHjiOZWWuqvHPgTRNzR8nrRFrQaCSmym5a0H0Y5l0nWP3EMNioZPZkR+Kg4tghzQgiofPbmJY4Emzyf/tW2+KMeqOiROl8K6I1Shw8P6dcwnWmcjBzSArHc2i9YsQGwA8Lpulo4Zli6+FQh/LIWMcK1sCk3DHOD9BAsqBsOut6zHI38Pv8KfWmpvR0BXJvSUT5aHUH7r3u9hDpDt4m7OYbLQpTNfZlX4DjPBU9tSxmWvyuBT5sAGJCuoUHRguV9zGKTsQBvDNhBfwt7v7Q/sYN6xjr2UA9iI8WDrkQpVqQHYXkwEFammW3hLcI0hIraEYzo2CMDX940IhKrodH2gqDtQUnB22PIYRoDW5WaGcTi2iuZfwXcoUPMpnFwWtXL/feZ8FmWvqYdJGhNlmD1iuu9loIWOS+F8BCRNQf+7k5IhgCC/AoXExFqiGv37KKRGbbXTyuXQgyp13Squn331tq5SFh4whisH7OH1Lq1GAHifgXk8Ufvk+gBIu+4NnUuG+lgPzAH7jYjeOgKgJgmbeuqTegNYkyCIZAXjl/DOpaZJXBNfN2Y2HqiVB/4AunhYo7i2eD8AAAAASUVORK5CYII=)<![endif]><![endif]><![if !supportLineBreakNewLine]>  
+<![endif]>
+
+成功提升R_A至健康區間！
+
+**效率對比**：
+
+**政策**
+
+**總額**
+
+**進入A****空間**
+
+**乘數k**
+
+**實際GDP****增長**
+
+**效率**
+
+QE
+
+7兆
+
+7%
+
+0.8
+
+0.39兆
+
+5.6%
+
+直升機撒錢
+
+3兆
+
+60%
+
+3.5
+
+6.3兆
+
+210%
+
+直升機撒錢效率是QE的**37.5****倍**。
+
+----------
+
+**第三章　信用債務貨幣制度：CDMS****理論框架**
+
+**3.1****　貨幣-****債務的鏡像關係**
+
+**定義3.1****（信用債務貨幣制度CDMS****）**：現代貨幣體系的核心特徵是新增貨幣單位的生成必然伴隨等額新增債務，形式化為：
+
+<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAAcCAYAAABSzUIsAAAAAXNSR0IArs4c6QAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUATWljcm9zb2Z0IE9mZmljZX/tNXEAAAl1SURBVHhe7Vw/c+JIFn9yOfflSiUCF6mvasUH4JATNlFAQrRyaF1AxuGDm4ytOgghWiVcFZETw/kDwFYtqYsASJ2fP8C6771uBEJIIGnAeHBraqo8ptXd7/f+/d7rZi7r9TrIRyIgETgvBC7PSxwpjURAIkAISMeWdiAROEMEpGOfoVKlSBIB6djSBiQCZ4iAdOwzVKoUSSIgHVvagETgDBGQjn2GSpUiSQSkY0sbkAicIQLSsc9QqVKk5AjUSlfsrtyHa3cEb72GknSG0tUzK08tqFbuYZLi/aTr7Ru/5dg3rw/MfGnBfHQPvca2gCSA7oz5vPaAgTrZHMPf7wIY9gDcTiF0jn2b+oyfJ8FltX/DALvqIka9xIbizcENBlzIv6Wf4zPiGXdPtVqJte/KMC2Otmxt1xx+O90ah7ZZVycrndDYXNkCdzRKba+9t7wyqgDOkwPLHbE0wSEuJivb+Ovre7nQVYQ3oq0NXOia2kW93mAbjk1RK6fToD48Le5D19HuXWj1dSDffpktQPWNWr9vgFU5H6dOhEtWGA0Z5LBdBtPUwWjN2Vd1zKTG6h9funllOUUHMly7mGymlZ0u9UFv8yCBBj4tFgAmEz6h0G0Wqiw8kSVZtdF7U0bVLFP0OxiwDpuEJMYk8+0aWyv95T2XeVCygxmMTf1i3s79mTHLSms2enf02sWGYy+e+gCtAdiOCf2nBeRDZ57DdGyDbXfhxe/UHLQyZG0Dxi8W3GoAvUNJceJ54uOCBlgVRtNoUIbNw8AeM7P/hNmgxsIY0IlF+9DlRfZ9gtvOficqXb2y5qwILitCUzFT7JPsdK0PmoB0cpM1GGDyekO/9hwdWnM4mBMWKtAydPjWrkT4TwpRQl75b/Mexj+14LeCDh1GA/4BvzgFcH4dAqbt9ZXSWu2G3SnPYM0LkJniZ1HGOHyELobPAXShO51DfpmyF5id+lYVrL4JhuUmojQewEuGHy25EV0irEoAVBJlR54xkcJRWdCap6ubRJSPictihoEOmcrSaDwh9GsDwZzC/DD63DsLZbkyCi3oGRI0xMyNKKt2TXYMPMmxakXMwrn23kDXe1MVFSagwQ0328QP14cNyzgLRLebmRFNo6BxiukWT9Afo85cDevq7RXSYEkyliyDOTuCeRJ7n6Hu0KQuGo3GCgd8/72d+6diWCZkFODUG3d/8fMv8N59mSkzxt7XGZs7bBXqWPgXKi1m6OF0fDFD872u4GJosP0ZlDo1pi3aIGoUgKYDkK1iuhZMJ9bDs1u+DvVwiuCb440CRuichQ4yDYxUkNGgVhDsAbC+ras9Beud0HdEHZYl2hQdsePigmxnbCAGJ2QqglY+Q3aAwQ3rev5vhCHNkwbPOOs0JqriWn2m5wD7OMdjMcSyxvjHVDCyA7AHtFeM+TxTr575FEcgDQ8x1+/BUstkAcbRwTyJvf8n1N4XMP0dfdmKRpw7thdB7GpH1B7aLViGA05ziI6xflmMw6yO1qvNvc0v4Am7idnqCLThHeZxGwbrEiaOrg8zZhmhLcAgo/SReaTP0t6G4uJC4+fE+7LVLabCf48OT62LfbEuLJI/8M3wOnOduaKYi5ZBMwW41jED4WJU8+UxWEYFw53Ap8BTOIOzYgtR8wuZxlBu3x6NrnLcl00ygSuWAIGgS0kqUjffg6V+jWGkD9iCOtkjMjZREkDKhg7ZI4Pw6ITziETI1wTg1EVEODQf3PwUZkTB0aDz2B1fXL2wuEbslzgJNYnq1qNnoalgdP6GTAJ/wipho7EXhjB1Munr6FhfhSsgJi6CrpMdbUY0r+lmtG5jlSZhkTy8Kx7FXHQotrLwTVd4IMCmXfpuego8eSBBQPcRL86U+shu7rUVKz6kBwT1IXBNGuAOiGVAuCT2HkbFvenGU4ocGfy7/X8qcMceEn+25hvGp91aYDgOPA47awchZWN9TY2GAhpzFjCrO5ihWQEKoGNURMKTsL6m9ZNQk6jsM3xEp8YIPeroQJ1P53GTbaQxnNi4hNTXnvLGlF2PZMCbwZGCiw4v2Px0sbTgjbqwwjEmEMfAk5auUaf7mxV5nBpze7uHheoD8ck9QnG0o+xazioCw+GwDG42ib2HUfFG44+NeppqcMzOf/rr7kuRVbDJwDR0WN8WPDrucxBSNtXXolDRgfpCRN+5o+M8ferYBHg/BykmoGmVKpyIgooeYBsVBu0n0O/3d2GDayfBhddzvvq6VCKZdVGWuOu1j4oF9QKojrwVx4xe83BWESVJ2Npe8OljUPcfxx0DT+7Uy654mmbeln6WR1fBvdO4oD4EFqgPPPpSfUdQkbVwCiw39rejdk9r48H3/vazDUrXgV+HJjbBdZgPm/D38U/w79+wbMOT6stgk8Gb4OFBVEIwFnRcb+dA578qU/3KsEvHG154QWXZOTZFbeWIz7kxUdDAowr6fZeaGHijxX8x4FBCBrub2n0VbOzOm9igabn7I3TYPuLiUsDG4Z1OEo5BVxyaij0842UBa4CZen2Wf2wsqCk1sF+YiTRc7OFZXI5Jo4dAt/gQeNKmeKbCnk2cmt+7CaZ4dmiiXIbBbGSE6o7LOvy9oD6WcxitrSOL0Fr4e7HcWbsfyOgbf6gXs7b9XjaxLw7wrv/L5qc/joZdcuygX4o6c3dVRDXoBIsUb1ywy9xoTBQVayuP6XufU83ltgzfzal97aN0UovaLk+ZiU/A90Nddvw5qiO+b6X4uGAt75N9NS+yml5jLe9HYDFRA7qciDOc6LXprHf7uOcYeO7DO/g57UHFzl+dun/+Z1VeRO89VB80R7A0WbLSsDsbybEUm1yznWRHvknxofG9/6kX/p4G2brng0e/K46sBG+hhZ8TphHmR34nDRYUYPIHuOoTtvbw7hGuD3B6cAqdHGLv/Fy9ajPHbGIpGv+m2E49IiV28ALXYBQobT8YpKM6tmhCvEIRT9H0K7xo4KOmHyznyZc7JRZRa09UdX1Z4+QIJdvAofZOtHvewi49XpqJc66+S4/e2TdR4oPdZEsGy2r0UR2bVrk2unhJAO8ADfAS/xHvzqaU/0NfOyUWp1z7Q0FOsRixonkVWDOXo2937f0CRxiW/IskTfx2Fzn1Z/x2VwpcIl+hWnd1o2yj5X7IVX6MuU6JxSnX/jG0Q/c3RE2/rycThSUvmdQ3cupPIfLRM/ankFJuQiLwxRCQjv3FFC7F/RoISMf+GnqWUn4xBP4PLwgzPbQKQ4oAAAAASUVORK5CYII=)<![endif]><![endif]><![if !supportLineBreakNewLine]>  
+<![endif]>
+
+其中<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAcCAMAAAC02HQrAAAAAXNSR0IArs4c6QAAAGZQTFRFAAAAAAAAAAA6AABmADqQAGa2OgAAOgBmOjqQOma2OpC2OpDbZgAAZgBmZjpmZmYAZmY6Zrb/kDoAkDo6kJA6kNv/tmYAtmY6tv/btv//25A625C22/+22////7Zm/9uQ//+2///bWvn8lwAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAAmElEQVQoU91RyxLCIBDbLaW1QlXAVkHL4/9/UkCBevdkLuyETDaZBfgbGESRyqw4baVUkMji7IZuqT39fI5cUJe+ysDSlQKYo0zqDwwz/eYOT55dM4JaLLkrYYmunBu1G68TRHHlLAXPiQ57u5VBkCJGSSv8KRkYzLE8T68bEGOGb5hdnvJza1UK5Wf9aNvfrJddC/6zI78A/m8HqcukbesAAAAASUVORK5CYII=)<![endif]><![endif]>為貨幣供給，<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAcCAMAAABf788oAAAAAXNSR0IArs4c6QAAAGBQTFRFAAAAAAAAAAA6AABmADo6ADpmADqQAGa2OgAAOgA6OpDbZgAAZgBmZjoAZjpmZpC2ZrbbZrb/kDoAkNv/tmYAtmY6tpA6ttv/tv//25A625C229u22////9uQ//+2///bEjBtcAAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAAdUlEQVQoU9WOSRKAIAwEwQ33BVFBBf7/SxMsg3dPzinVSbqGsR/FcEg2xsZeCuZXXhNxzQSzKs6H2GqG0aT6ASbsXkAJXMWXW2FLkgaFl9GJiqPLNzhzPYhtg7UG9NqS8+CjmFjuZgsWesW1eqe6yJ1MsMH3XB/dBY1lIY4pAAAAAElFTkSuQmCC)<![endif]><![endif]>為總債務存量，<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAcCAMAAACNv8VwAAAAAXNSR0IArs4c6QAAAFdQTFRFAAAAAAAAAAA6ADo6AGa2OgAAOgA6OjqQOpC2OpDbZgAAZgA6ZgBmZjpmZrbbZrb/kDoAkNv/tmY6tpBmtv//25A625C227Zm2////7Zm/9uQ//+2///bFBiy/QAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAAWklEQVQoU2NgGKJAnJWRkV0C6ngpNj4GKThPmlsQyVMywqyMnDC+NBcHTA9QSJJJkEFGSJBBmlcEpECIkZEZaA7QYBaEflG4XrASZJOleUTEEKZJCzDxkx+WALUHAzYH7CPsAAAAAElFTkSuQmCC)<![endif]><![endif]>為隨機擾動。
+
+**三要件**：
+
+1.  **同步生成**：廣義貨幣供應量的增量與新增債務額呈高度正相關
+2.  **未來索取權屬性**：每單位貨幣代表對未來資源的索取權，價值取決於債務人預期償付能力
+3.  **銷毀依賴清償**：貨幣供應變化由新增債務與債務清償的淨額決定：
+
+<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOUAAAAcCAMAAACpioj1AAAAAXNSR0IArs4c6QAAAM9QTFRFAAAAAAAAAAA6AABmADo6ADpmADqQAGaQAGa2OgAAOgA6OgBmOjqQOmaQOma2OpC2OpDbZgAAZgA6ZgBmZjoAZjpmZjqQZmYAZmY6ZmZmZpC2ZpDbZrbbZrb/kDoAkDo6kDpmkGY6kGaQkJA6kJBmkJDbkNv/tmYAtmY6tmZmtpA6tpBmtpC2tra2trbbtrb/ttu2ttvbttv/tv/btv//25A625Bm25C227Zm27aQ27a229uQ29u229vb2/+22////7Zm/9uQ/9u2//+2///byzorTAAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAADD0lEQVRYR+1Wa3eTQBDdJU2EpiZgYn0F8BlitbZWqNGqQHb//29yZndTOFDYBeOx58h8aLc9d+7O4+4whAw2VGCowFCBoQL/SQV4uMZME+obJVzGZU7NKbIE2301/jI2Cq2EY4urmgs7TQl7bEZldF8X0G5pXzsu4Rtq+bvl5IMzjgl/Ra1Jyjyb4PFokuoJFU7QkNyh2EpJky+B6tGaZDPxf+D8B/b95niVuTxc/dz4eAaZ8mCeJhBNAsnj0dWHpXCSBjwxF0VzfgPpnaQkwf8bUGkug65sHai7qGc0iknki3ZoTEQEVbbmKclcAmXHmCKIabMW4WHYOlM4RSO8hS8eID2sFz5yYFQWKYEkouuERHTWphiAUXq0AiB2AsQv64nBOj65bnjxhZeMKLPJ7jUGxTc2ySbpdvr5E1tcXqhjQ5IFi8IpGhQocEoaSO+b45+z08sLtoi/ylxyR80iHlDs7+3fDTfxwCb8TEChK1L80Bbgfv/WZe+0XnCzUBcdX+FP+hBmxNJaBeOYefCg5FHPInGSBvMDD+XLI+rCfBVsATxaYcncw4gBtHgCBx4+bX/8zENHIQDoSrT6uFVtefYiewDtudtKXiVAPmuAd2KBQHTvBJqtJJvZCE7mgUxaGlZb2j73/BjVkcAzRJ2cWTA7RD2hsfm0cW4XXuUETL+Me5+7WXhz8/eOoGzpCy82gTF88kv0qtkApLLs0od+XtUb+rLwwId+iTkcrrPRl9DPoEttJtWxH1kNyJoEjLwqZHUd9WFBUpy+Qn4ot3z6ZkZkvRoVKx9YDt/1LtbPq3pDb5YIo8VPAM525o1garXHL+TNA5P1pBRkP69qln1Z5LwQkoV8Ub6yS837H7b6xxLHTZclseTVRQIVbF8W8ZkFG8UJFZ9N5uHv5v0v93AneI6i7rAklry61KaS5GFYSqRG+58RqKa6gyzQHSrcop1i//tTUM2/V23+Ckux/7UkaQSq+xsVUPt4D8FS7H9tWd4uidqYSoCetalccRiWLnF3wxoVUEt5GBbtNQPgvlXgN0AaeaHnNYs7AAAAAElFTkSuQmCC)<![endif]><![endif]><![if !supportLineBreakNewLine]>  
+<![endif]>
+
+**3.2****　債務貨幣比率與系統脆弱性**
+
+**定義3.2****（債務貨幣比DMR****）**：
+
+<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAAAwCAMAAADAb6MeAAAAAXNSR0IArs4c6QAAAJBQTFRFAAAAAAAAAAA6AABmADo6ADpmADqQAGa2OgAAOgA6OgBmOjqQOma2OpC2OpDbZgAAZgBmZjoAZjpmZmYAZmY6ZpC2ZpDbZrbbZrb/kDoAkDo6kJA6kLbbkNv/tmYAtmY6tpA6tpBmttv/tv/btv//25A625C227Zm27aQ29u22/+22////7Zm/9uQ//+2///beWHf0AAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAC30lEQVRYR+1Xa3ebMAzFybrQNiHd1m4hW7OtDXs0GP7/v5skS7ZMH4esBs7Z4g8FY9e6XF1dkSw7jRMDJwZODAzJgKHDjcn8jXsgMWHFrfuBt3qeBl040eAQDP4GEFFghY4x0X78j7CeBpKmwTMiRGA8gOSD4waZqT38LBkgwqS4QhQBhCMBmeJ8CkUcn9McSE2EKxZJHDQkRoBTriRpnGiHTKnstcgiPblwHEHCOypFVx2mgtrTYVJ60elRby615pgibCq9WuipC7BT30FBQlqorm4ZesmlTeDT1efrn/IZRORMyVuHN7TkmLRMnU+Jd7IHSQ0yfmVY7GCR9F8r8/DaUoNc3I9fXCk8di2HYRCmxHe4ZbB0uOiUo8ea8lDC4wQ8+ddUZ/kAXISPkHV9KmS1eb9PC0qXoC9vb1rODtgiFV2+VaL8bG7MAlFViPvNJ77d4HVnlgdemNHC80OZTrfxi1S42/IyGbpbYvlppFXhQrXlImu/GZy1JV1sPrvlhayi29HGV47WrJGd3Vvgprn6AKDa7TVOMlqwOXE30miu9j8wdGbPEV01B4XVix1ktFqVRGKNJNEfGcAkD0KdfjTlzHFQUQACVRUwsZcPxB0t/MqX6UP3OBHJcelrt7f1/H67qREgCsyYsy8vnhDJPNmElQPSgYzZi729+Lxk7pp1kf2MZT54+oQBklRbYg7rBYh7vm+DpBDYFAOV8/vd2R2msAB0G8caJxTsAshMaLO9XtGu0TpvSOuGktWs6QqeipVoVgdvs70OHGuT2OxY8XrFEZvttVltArJD12q/52b28dgjnt3vbfbYE3XXasvVAcSQrD14mz0WVNy1SK7TFLMGHnctWBm3kT7NYdy10GWoeUw64q6FnnM5TBs/5i3jrgWY8Mtx6hF3rawGTHaabw7FRNy1LOYObXj0pqWTE3ct/sAowm+DqRMZxf+nmtaQzP510xoUlPw2GDLI/3L2H6HpKfKFOQuaAAAAAElFTkSuQmCC)<![endif]><![endif]><![if !supportLineBreakNewLine]>  
+<![endif]>
+
+**2024****年全球數據**：
+
+-   全球總債務：307兆美元
+-   全球M2：120兆美元
+-   DMR = 2.56
+
+**歷史演變與金融危機**：
+
+**時期**
+
+**DMR**
+
+**關鍵事件**
+
+2000
+
+1.82
+
+科技泡沫前夕
+
+2007
+
+2.31
+
+次貸危機前夕
+
+2019
+
+2.42
+
+疫情前
+
+2024
+
+2.56
+
+當前（歷史新高）
+
+**命題3.1****（DMR****臨界點）**：運用門檻回歸模型識別，當<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFYAAAAcCAMAAADMS7jPAAAAAXNSR0IArs4c6QAAAKJQTFRFAAAAAAAAAAA6AABmADo6ADpmADqQAGaQAGa2OgAAOgA6OgBmOjpmOjqQOmaQOma2OpCQOpC2OpDbZgAAZgBmZjoAZmYAZmY6ZpC2ZpDbZrbbZrb/kDoAkDo6kGY6kJA6kLbbkNv/tmYAtmY6tpA6tpBmttv/tv/btv//25A627Zm27aQ29u229v/2/+22////7Zm/9uQ/9u2/9vb//+2///byrBrqQAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAABh0lEQVRIS+1T3VqCQBDdRS3IlITsR1ATy9is2CX2/V+tObOLqHXbRd/HuZCR2Tlz5uwgRI/egd6BP3dAScJwgT4UZngWMq74n5QBJ36BfYlk8HhImAiVdkUlU6qlMA+FfZYJh/wwUbDxCaE4RMGCT7ew+ayixqzCVVJo88tK1GmIN02KXHFBVc3tHdHa5T3+uIRTQfjaRtPdmeomhQpge4PDjkpxtbmCHjUohdBhQZ3ULOfTGkL5x2M/H55KPvTUcSeuZm5PzrQqoU5m8tkl9lF8rLBeBfFH9wIiAHNdOloys70Nl4MJdrnRg9dlptECdkk5ejqb2654RIaauJDqML/K+I2JMKtrw7EZl2a8jr1+GPd2ZAEITtQqrAugsTKEzHsLVWytzaFBh9RkUNrO2u5OUH7qrSZWc7Do6H6dn0T4Ph/hkouE+DM/hbOFls/jfBMMHFBJe5ppSd3OLZhJ8TE8YBwleeQm5Sd9DNgKSevJ/v3YW567paUiXlz6HAIm69E78P8c+AZSjiyjCbPNUgAAAABJRU5ErkJggg==)<![endif]><![endif]>時，系統性金融危機概率顯著上升（β=0.85, p<0.01）。
+
+當前DMR=2.56已超過臨界值，處於高風險區。
+
+**3.3****　新信用流依賴度超臨界（CCRD****）**
+
+**定義3.3****（CCRD****條件）**：當債務增長率持續超過收入增長率與展期利率之和時，系統進入超臨界狀態：
+
+<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAAcCAMAAAD/XGWDAAAAAXNSR0IArs4c6QAAAMxQTFRFAAAAAAAAAAA6AABmADo6ADpmADqQAGa2OgAAOgA6OgBmOjo6OjpmOjqQOmZmOmaQOma2OpC2OpDbZgAAZgA6ZgBmZjoAZjpmZjqQZmYAZmaQZma2ZpC2ZpDbZra2ZrbbZrb/kDoAkDo6kGY6kGaQkLb/kNv/tmYAtmY6tpA6tpBmtpCQtpC2trb/ttu2ttvbttv/tv//25A625Bm25C227Zm27aQ27a229uQ29vb29v/2/+22//b2////7Zm/9uQ/9u2/9vb//+2///bLMvgzAAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAACZElEQVRYR+1ViXKbMBCVSA2kl6+WukcKxK0haeu6uDS9BAT9/z/lrSQH8DUw40mnM2gsxoZ9u28fT2vG+tUr0CvQK9Ar0CvQK/CvFEgmD1RZzn1xqlIPRprdxu5wdRraJyBdeNx6/6aNjD+8R3W52wO3eq1IyzkPCs9adBUjd8einLZ0WTG3Rr9NhU7ABquK9PUqev7uz8tvXUlHtmDlNGgLk3PEq9URqEEy5GbpNDJ02lauxSm++eOWvdaU7gY8oDTLzztbA6kUikTLoMDg/qRF+3zW8HQNeNay5Q3z2kHMdrFUem/5qvHcDeSn13hH8nIhrzavnpXaZ+Wrez7b06MChq29ZcrWSEe77ihn8Cv2sRXzwVcqSxYpXyyYjLkVsHwY8xHLXc5N1t05XQMWnpO6aBjDgAd0tT6y3HPWrp26kFKnrFZteoRqAgC/dicGmI0Yo63S4IkMbaEymCj9lKl3lIEd9JWX/q84YMlglT8T7PBEbQBvfp77EEeGY7FeSBDJbKHuTccYDSblPtLmHsVmEwNM0B+2/rVMndvl7K8ipaMACUE6R5PwNcXaAuJaYwGvUGEWHzomcgvoUPvUJtLhSgokDn2lj0p59HUjdgOk0rRNGsiWBSaDiqJAj3PrgtwLZ6Q4lChXfBCQvPACUv77gWoNIHUc+Z9TWxRvqdmCRhLuoWIyuUlVyqOkSTEDLGfLL7RNmihYXxhSStfGijA8nq7UIMUMyZ6oVsqw4cW9dSO4njq+smAMPlTGtnxjtQVLLF+nPLb0sdfAcmrjzw421mki4qEzmOFwNFP/sFfgf1TgDtENYMpkuCjEAAAAAElFTkSuQmCC)<![endif]><![endif]><![if !supportLineBreakNewLine]>  
+<![endif]>
+
+**命題3.2****（CCRD****的三特徵）**：在CCRD狀態下，系統呈現：
+
+1.  債務/GDP比率單調遞增：<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEQAAAAwCAMAAACffixXAAAAAXNSR0IArs4c6QAAAJ9QTFRFAAAAAAAAAAA6ADo6ADpmADqQAGa2OgAAOgA6OgBmOjpmOjqQOmaQOma2OpC2OpDbZgAAZgA6ZgBmZjoAZjpmZjqQZmaQZpDbZrbbZrb/kDoAkDo6kDpmkGY6kGZmkGaQkNv/tmYAtmY6tpA6trbbttvbttv/tv//25A625Bm25C227Zm27aQ29v/2////7Zm/9uQ/9u2/9vb//+2///bLes2LgAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAABh0lEQVRIS+1Ua1ODMBC80AdWxbbWB0XRUh9F0QZM/v9v8y4JBdqRANUZP3AznQHKLnu7lwPoq3egd+A/OJA9vJZkiOutuUtuG6mL2RJAoThjbKi4+DRmY6AfpF4TFnm/AYiRCOTdSj6NkA0fyWAJ6RnpWa9sLDJkA4QpIkgnGxBzxNDX+Ti7UT3FUwuJDC629JK4JBKO6tUV6RJzT/tCT2uLBK8JoUgivIpRlzJISWpEwkfbZPLyrNshWHKCUE4N4F+axNqOWDh+MDQNRBjOKYVDVooZM178aGziMscvN1oMxn6oecQy9PPZ0cDU9SF2KtFlj7thU3HnVQzb19o9Lw9kRO7NbK4fRvKxGOzkyIDaJabWlYWO96lQYpaToJUNqvIpGeqPFyRHKSE7OrRT9kThtTEtaj8dznxIqhFb2Q7mBN5cNqyMiZWjxQtqQR1bdBDFFZ3orqUXVOoy2oodK19Q1qNfx58vKPtOrWExCwqX3HuHQ2WIzYISgfMLCXW0tIf1Dvy9A9/YFibVi3lW2wAAAABJRU5ErkJggg==)<![endif]><![endif]>
+2.  利息支出佔收入比重上升：<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAAwCAMAAACWlYwtAAAAAXNSR0IArs4c6QAAAJZQTFRFAAAAAAAAAAA6AABmADo6ADpmADqQAGa2OgAAOgBmOjqQOmaQOma2OpC2OpDbZgAAZgA6ZgBmZjoAZjpmZjqQZmaQZpDbZrbbZrb/kDoAkDpmkGY6kGZmkGaQkNv/tmYAtmY6trbbttvbttv/tv//25A625Bm25C227Zm27aQ29v/2////7Zm/9uQ/9u2/9vb//+2///b4fP4vAAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAABdUlEQVRIS+1UaVODMBBNsAWqWLQeiKjggaIcJv//z7m7SSy0Q5MeH9kZMgGyL/veHoxNNikwKXBqBbqndw0pbmu9q+6dbin5A2Pk1fCzD1iXrOQBPW3kgiAfwasEECZTWPEVN+05QBYvNgSZ8Zlfkxdj7QJWurUJujskUi4tADK9rPGQuEaAJkAfjEVcRSQEfdllGGeBEhBAbsQAABW7FaDx62rx9qookBdIiI5AC81KQay8JJ1rEXPQXckmYq7Ij4tYhdxLeuRM8oeJM28yS0xtaJ82TFjp9XPUPVMhkYTG1oX0W4QXptDobw4cRWyTeCD/92q2DkOmSDH3LTna+N1lXvSjvolYA3C79VFkprPzD7BXCIMIkP5+FAYakIhKCDfbykLDE1YN0rgTaLsO2GfI59ZWdYuuf4pmyzGGPSVusDEPMTVb2pBjTx1gZrZYO3gM28wW+xgcQdCzBWbT10brOtLRs0Wk3pGZcLxvOjYpcEIF/gCrJSHQfCQULQAAAABJRU5ErkJggg==)<![endif]><![endif]>，其中<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADsAAAAcCAMAAADoUjcPAAAAAXNSR0IArs4c6QAAAGlQTFRFAAAAAAAAAAA6AABmADo6ADpmADqQAGa2OgAAOgA6OmZmOpDbZgAAZgBmZjoAZpC2ZrbbZrb/kDoAkGY6kNv/tmYAtpA6tpBmttv/tv//25A629u22/+22////7Zm/9uQ/9u2//+2///brNX7KwAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAAtklEQVQ4T+1SyxLCIAwkan3W1qJoRS01//+RNqQZZSwHDs54YI9kN9ksUSojJ/CTBCzALqHxQAdYHFiBevlI0KJeKTyP455lkyBVTDc8r5udxADZIXABj9D0lVSlv9sQ3c6v9GBjli+t2db3vScJWeisJf8RfJbGQYNbT2fP73VRh54V2wvBdLf2X9Ox8ylMlXw/+RpTRLVsLwSlc6uK1mcAENsX9ffNuJIuo045iNhW+f3PE3gBd10J26JSMJcAAAAASUVORK5CYII=)<![endif]><![endif]>
+3.  新增信貸主要用於償還舊債利息
+
+證明：設債務存量<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAcCAMAAABf788oAAAAAXNSR0IArs4c6QAAAGBQTFRFAAAAAAAAAAA6AABmADo6ADpmADqQAGa2OgAAOgA6OpDbZgAAZgBmZjoAZjpmZpC2ZrbbZrb/kDoAkNv/tmYAtmY6tpA6ttv/tv//25A625C229u22////9uQ//+2///bEjBtcAAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAAdUlEQVQoU9WOSRKAIAwEwQ33BVFBBf7/SxMsg3dPzinVSbqGsR/FcEg2xsZeCuZXXhNxzQSzKs6H2GqG0aT6ASbsXkAJXMWXW2FLkgaFl9GJiqPLNzhzPYhtg7UG9NqS8+CjmFjuZgsWesW1eqe6yJ1MsMH3XB/dBY1lIY4pAAAAAElFTkSuQmCC)<![endif]><![endif]>，收入<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAcCAMAAACNv8VwAAAAAXNSR0IArs4c6QAAAFdQTFRFAAAAAAAAAAA6AABmADqQAGa2OgAAOjqQOma2OpC2OpDbZgAAZgBmZjpmZrb/kDoAkLZmkNv/tmYAtmY6tv//25A625C227Zm2////7Zm/9uQ//+2///bI+551wAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAAbElEQVQoU82P2QJAIBBF70T2NaLk/7/TCOnRo/NS02wn4EdsGaUGmqjyUlqMgKtL4yNXd/xUPLpKYs2vDGOT4Q24NJnfb/nGgI1Tu+J9PLr15YpIAixxHg/6crmZ2CjgmnkJBnC9iPfEXR/uB4x8BAQjf6n1AAAAAElFTkSuQmCC)<![endif]><![endif]>，則：
+
+<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOQAAAAwCAMAAAA2JiaGAAAAAXNSR0IArs4c6QAAAMlQTFRFAAAAAAAAAAA6AABmADo6ADpmADqQAGa2OgAAOgA6OgBmOjo6OjpmOjqQOmaQOma2OpC2OpDbZgAAZgA6ZgBmZjoAZjo6ZjpmZjqQZmYAZmaQZma2ZpC2ZpDbZra2ZrbbZrb/kDoAkDo6kGY6kGaQkJBmkLZmkLb/kNv/tmYAtmY6tpA6tpBmtpCQtpC2tra2ttvbttv/tv//25A625Bm25C227Zm27aQ27a229uQ29u229vb2/+22////7Zm/9uQ/9u2//+2///b+uiR8gAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAETElEQVRoQ+1Y63raMAyN00HSdSuUjd03SHcpgd3adKzdFkL8/g81yXIuTmKIaSDdvvgHpcaSdSRZPpZldaPzQOeBzgOdBzoP3MUDPnOEePRsVq0mfqL8EJxe3mW7dmS5N8WNg8chfjIYDyaKJUH/1mX9EH87E9440XhDI98OLHVXClT08AqnuedYfEFg5EAnBDasiUdD9INlrY7E2qpRIX8fMFoRhpB7hCseYVh9iFs6EJKYDgYp7LwTFBAV8q2DXI+Z/RGPZHRMKUh/g3yofETkO9ZS5LMYQd4JCogK+bZBRu4gjEcIIslAMj8PkrJ5dfQpw7ghX8vybWMUaUkgkthAxArpSr/Eo3xwk7iXAZTl2wYpDhBVHAmSjlTkZmdO1l76IRlakGX5tjHSASTfS5Bihnu5IyfzWC2oWpBl+fZBulP+5aUTvU3PJGL9Ne7hbR8/F/eEKDsWp3or5/RnsizfOkhrwXqXSzYA+yk20QipwBvEE7kMmZCMmU//0Jy+upbl28eYsyC5J7OpQIRQvSxoLr1UNyKQa+8VyhKLmWNoZdlJLBVzGxlPhkmuVUBq6fE+XFHFsQsXfPz06kdYOHw0lxKHjZbJtcoaoscHG1Uc+6fyCok9e1o0h+bqvUIq5CU9PhjITRx7X0aUj/2+dkr0NrIj9/BhhkPLZXM40ssVCfO7V8aZu4OYnmM37N+UByelLXKHkjAb7bSLGG6ZxGGXv5UGFhWJSyghvSk9RsKssMQKXeUkETx7m1hBk55j1/evWbrm6bF5Dcrx7PoGNgGy/m4ipHRwiTDD9xXEXRBIMXzsPWwYOTF9X6Iof3iQ8kxGRJiBaJzP+CKtWHCvookJOy7BzcSoJVVrbOjT1JI3X5S4dc5639FQTFl8zPI5g+s3Op2zQcaOy+pzYuuxs3TBPfw9Y1P8tC+isXPt9pcuRpkU5pJHa2vSqDQHo5OgW2uFjSLh4RVEE+LHzye/59Aq611is0nHeBWxm9vjSfwi5N4wvJ6h2lX/G06Nhn8gH6RC2GbrPVlgrTWxwjsl17ssCCE07gFIepT74G04pyBiD0PIXTA1tKoYrzBXFXPQWaIDJz7BX4GD3/AfUoh7b81W0RUxL4Jq77KAEktPNGbMhgesyNQlFCEwcP0hhJCux1OMLLLj8lDE0D/+5OuyH65fo2vWcLPAFGRBcHYTkkKEL5tz+gChT/i8DpNRdKi9y6L6PD2GJyp7BMUV7iGosasTAb2KMatK8BihfxY2JCo7FQfTnlDez6A/PJEKt3Js2aiM8Qldv16TMWrvsmaWt7AsbVTuci7V3mUL1tfcMm1Ubk/qska1d1lzx8MvywgUljvTYUovTfU3tD5rVFK30mxsLdtm6va1WhKo6C3cpfzzhdk2hd6lmfAhV6eNyoBuNJNR6F2aiP5za+9jP7JxJ2rYWeP7tKlQy87aNKrpvbezs6Z37PR1HvgfPPAXnf+Z2qxF8JkAAAAASUVORK5CYII=)<![endif]><![endif]><![if !supportLineBreakNewLine]>  
+<![endif]>
+
+當<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGwAAAAcCAMAAACzmqo+AAAAAXNSR0IArs4c6QAAALpQTFRFAAAAAAAAAAA6AABmADo6ADpmADqQAGa2OgAAOgA6OgBmOjo6OjpmOjqQOmaQOma2OpC2OpDbZgAAZgA6ZgBmZjoAZjpmZjqQZmYAZmaQZma2ZpDbZra2ZrbbZrb/kDoAkDo6kGY6kGaQkLb/kNv/tmYAtmY6tpA6tpCQtpC2ttvbttv/tv//25A625Bm25C227Zm27aQ27a229uQ29vb29v/2/+22////7Zm/9uQ/9u2/9vb//+2///b1TnGFAAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAABn0lEQVRIS+1Ti06DQBDcOy1QH4VW8Q0UBapWKtbHccj9/2+5e1Sk1RoaExMNG3Ihx87s7OwC0EXnQOdA58A/c0CFnvi9ll4TazD9cbnCZfzitI3sB3e72V57YK1RWo4oR8N2mouQ28+L1I2AC0xsCChHfrtiACrEfB0bAgmi68idu3bFGp1tBqzoZT+qROaMsV69ATHH69VYmlkDuNVSKkjLV9cnJvozjtTk3SIoDzVBeVTzrG7jBzBoPQNIWO+W0snK8iAClTDugxwkzEYljKEOis//WQNYuGZmoVAVMubTya9AuubMMjIL264oAXKbDvIhR1bsR429p8SHtDeV+wLStVu6BJw/9r3yWKjAEbNIBUPIDaHvRs5LTQkQYDFpEWWMtVNDYDPcEegpASD5YnJVoytAk2STPKTDk5SnJr3Soynpi8sYP6fpoIMZLgumFZcCWyxcnzq9X/O3LwFJaezdZIYozkhkQSuOd2hMOpxnmrK5bTEu4x4uowpoJ/NdLaEMtNffRoxTJaUTjgaygR4c9xYjiSDlXkXZxV904A1iDTnjuJuOBQAAAABJRU5ErkJggg==)<![endif]><![endif]>時，<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAcCAMAAADRNYZUAAAAAXNSR0IArs4c6QAAAHVQTFRFAAAAAAAAAAA6AABmADo6ADpmADqQAGa2OgAAOgA6OjqQOma2OpC2OpDbZgAAZgA6ZgBmZjoAZjpmZpC2ZrbbZrb/kDoAkLZmkNv/tmYAtmY6tpA6ttv/tv//25A625C227Zm29u22////7Zm/9uQ//+2///bkI0BkAAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAA1klEQVQ4T+2QyRaCMAxFAyjghDOKSlWg/f9PNENbS49r3fg2kJfpNgB/fe0Cen2OdqkENTmMXJV3Q5nkHWByxRlTF2CuNpBaUx8BVIrzdLXs2NIVWtBgo1eftdZXC2sOM2JQlHBqeEtTwGPuepEhqrLsfXbyRdQSbZQ+RHnPF6yhlKd4dg8sHmOZOoBndpT70j+Nf26nN2recVrYwciz2RwquumeYrxjgozyZiyWSMxAiodYdueLGehCQ/jusRnEetPeuxEzYbEZVtXpeAzl9CczYvhZ+AJMDBAEq0zxuwAAAABJRU5ErkJggg==)<![endif]><![endif]>單調遞增。
+
+利息負擔<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEQAAAAcCAMAAADvEOkaAAAAAXNSR0IArs4c6QAAAHJQTFRFAAAAAAAAAAA6AABmADo6ADpmADqQAGa2OgAAOgA6OmZmOpDbZgAAZgBmZjoAZjpmZpC2ZrbbZrb/kDoAkGY6kNv/tmYAtmY6tpA6tpBmttv/tv//25A625C229u22/+22////7Zm/9uQ/9u2//+2///by/pJNwAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAA40lEQVRIS+2S2w6CMAyGNxTxAIhMp8I8gOz9X9F1UzqQkNQ7EnpBwrav/dv+jM0xT2BiE1Cc76iSDcP58oCYFqsnNYkWEdMXr3gT59QczDESq1fByUuiBSiFcC/0keevtPPEnNYbYNSi/JJqtJtrIbfZI7GvEXIM/kN7Y+HdIyQtg+30RtJv56O8W8Yx9brdaoWNDQoaurcj8bcqQ9Nvs29H1M/klHcDRnJPw8KcWtLYJjLC4DsYWvw6sY7BahnM1icV2bPtbpE8+1YhWQ/JJilv1lrk8MhGBHTr24L/k2S90wLeRekN3ONii0EAAAAASUVORK5CYII=)<![endif]><![endif]>，其佔收入比重：
+
+<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAAAwCAMAAACbi/xqAAAAAXNSR0IArs4c6QAAAIFQTFRFAAAAAAAAAAA6AABmADo6ADpmADqQAGa2OgAAOgA6OjqQOmZmOma2OpC2OpDbZgAAZgBmZjoAZjpmZpC2ZrbbZrb/kDoAkGY6kLZmkNv/tmYAtmY6tpA6tpBmttv/tv//25A625C227Zm29u22/+22////7Zm/9uQ/9u2//+2///bmEwXUgAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAABYElEQVRIS+2VyXLCMAyGbZZC6RKWYlq3BXchqf3+D1jJDoPsZKaROPSCDsnFn2TJkn6lrnatgKwCTutHLgmM1pMnigVzc+S6CWamwlsW3ldbrheVGEvj16MXtpvmFhk3PpxJx89JJYa6wTTZZiNDk5KXppmTF65pggOvFUuTv7CdQp38mhTrb19Ymq/VdA8nWxIaaaaaOX4HW1Nh822wyjnp2H18ipmRr/zWaf1Q0i8PH+yBiH4y0psRfyCSGzE56CWCwR2A1s5I2Ontz0owd3m4972923wvY19ls0iPnULHf/91ydC1bjKon+skpdJSuNgkQ9cTNC2FSy0Y8aCwQ8OEQn+wNaaDOWwsXz0wR6rE4g5199w0Ohg8xOeCeRcIWmL1+FngRZWYrwQ7HcuZYxKBwUVTSLaw1wssJOljKowqMRulhakw8FD9mFBhSkyoMAUmVJgSE+qEEONO3v+c/wXC2hvs7e5bYgAAAABJRU5ErkJggg==)<![endif]><![endif]><![if !supportLineBreakNewLine]>  
+<![endif]>
+
+由於<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAcCAMAAADRNYZUAAAAAXNSR0IArs4c6QAAAHVQTFRFAAAAAAAAAAA6AABmADo6ADpmADqQAGa2OgAAOgA6OjqQOma2OpC2OpDbZgAAZgA6ZgBmZjoAZjpmZpC2ZrbbZrb/kDoAkLZmkNv/tmYAtmY6tpA6ttv/tv//25A625C227Zm29u22////7Zm/9uQ//+2///bkI0BkAAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAA1klEQVQ4T+2QyRaCMAxFAyjghDOKSlWg/f9PNENbS49r3fg2kJfpNgB/fe0Cen2OdqkENTmMXJV3Q5nkHWByxRlTF2CuNpBaUx8BVIrzdLXs2NIVWtBgo1eftdZXC2sOM2JQlHBqeEtTwGPuepEhqrLsfXbyRdQSbZQ+RHnPF6yhlKd4dg8sHmOZOoBndpT70j+Nf26nN2recVrYwciz2RwquumeYrxjgozyZiyWSMxAiodYdueLGehCQ/jusRnEetPeuxEzYbEZVtXpeAzl9CczYvhZ+AJMDBAEq0zxuwAAAABJRU5ErkJggg==)<![endif]><![endif]>遞增，<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAcCAMAAAA3HE0QAAAAAXNSR0IArs4c6QAAAGBQTFRFAAAAAAAAAAA6AABmADpmADqQAGa2OgAAOgA6OjqQOma2OpC2OpDbZgAAZgA6ZgBmZjpmZrb/kDoAkLZmkNv/tmYAtmY6tv//25A625C227Zm2////7Zm/9uQ//+2///bH+BMBAAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAAu0lEQVQ4T+1QyRaCMAwMILjiUq1Ugfb//5IsTQs8Tx48OQdoJpNkEoA/vruAPz/Wha4oTplzdT9ui7qHTAeDoSKYG4ArsYtvj5H2LXKKoeooR6pD4kivsDzNNvDep7Y4NeWjxaG653wwzcIiBb6lSRFzC2yRBWtbUcwWEfrnwG7I95UzYhGCZVtC4j0awNPgF8ad7GMlElLguHS+TyJF8KRStahVTAr8pXv1S2tKRoEpZ3tp1Scy9fzlYwJx0As1+oFVvwAAAABJRU5ErkJggg==)<![endif]><![endif]>同樣遞增。當<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD8AAAAcCAMAAADhuZd1AAAAAXNSR0IArs4c6QAAAHhQTFRFAAAAAAAAAAA6AABmADo6ADpmADqQAGa2OgAAOgA6OjqQOma2OpC2OpDbZgAAZgA6ZgBmZjo6ZjpmZpC2ZpDbZrb/kDoAkGY6kGaQkLZmkNv/tmYAtmY6tv//25A625Bm25C227Zm2/+22////7Zm/9uQ//+2///b9lBVyAAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAABA0lEQVQ4T+1S2RLCIAykXvWsdz3Qam0L//+HJkAgTnGmzvim+wRLdkMWhPjjn8AXE1DL84duRZIsgqQYVc04GVXilW576sPekjqHaoLOgS16cAeVzQPdlpfjxOlV5hZYVPevKEWTWUukj97xtn2QrMZuBGlGkakop5HuNSN9W5jYy116df8Uk8OlQi3pdZ6+pIcbleEYHhCoh4+a9Hx8k57Rs0h4DJH+JjEHWnOOy2PzyyEmvjEmNj2hpRnTkcGA5e/vCN8kFTggpNBM7EtIu7NkHM0aEhns6LAwjflL4JZ9y3c+jr9gY0qPag3ZCWp1vVf27wVYshNU3ms/WJTsZPdDRU/9JBM4sZBlKAAAAABJRU5ErkJggg==)<![endif]><![endif]>時，所有新增收入僅用於支付利息，系統進入龐氏階段。□
+
+**全球主要經濟體CCRD****狀況**（2023-2024數據）：
+
+**經濟體**
+
+<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAcCAMAAAA+9+1qAAAAAXNSR0IArs4c6QAAAJNQTFRFAAAAAAAAAAA6AABmADpmADqQAGa2OgAAOgA6OgBmOjo6OjpmOjqQOmaQOma2OpC2OpDbZgAAZgA6ZgBmZjoAZjpmZmYAZmaQZpDbZra2ZrbbZrb/kDoAkDo6kGaQkNv/tmYAtmY6tpA6tpCQttvbttv/tv//25A625C227Zm29vb2////7Zm/9uQ/9u2//+2///bALP/bAAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAA0UlEQVQ4T+1Q21bCMBDcDS1FUWqhKpiWNkgpmKTJ/38dk1Q5PPXZ43GecpnLzhL9489vYChZ7N71ZE+b5doVL9O7aFNNrpCTpPhvH07TaYuGKLgZZk66H24r8HyDzaT/fJsT+brxB5BHuE30dq9jhOLkWH1HunVDXrGQZJ8Vr8hmzNCbFXhmBr7BDXpff3wpSX3S2SdNfWxdgWSzcGzh1qcaYpFrZJNBtoqT2ZJZbEM6ki4oAcNhr2E5lDI4n++33KLcEuV8FTqaxyh1Fcb7lbgCbq8S4FNNY7YAAAAASUVORK5CYII=)<![endif]><![endif]>
+
+<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADMAAAAcCAMAAAD7hXf7AAAAAXNSR0IArs4c6QAAAKVQTFRFAAAAAAAAAAA6AABmADpmADqQAGa2OgAAOgA6OgBmOjqQOmaQOma2OpC2OpDbZgAAZgA6ZgBmZjoAZjqQZmYAZmaQZma2ZpDbZra2ZrbbZrb/kDoAkDo6kGY6kGaQkLb/kNv/tmYAtmY6tpA6tpCQtpC2tra2ttvbttv/tv//25A625Bm27Zm27a229uQ29vb2/+22////7Zm/9uQ/9u2//+2///bO5wirAAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAA90lEQVQ4T+1R2XKDMAyU3GCnaYCGpAeQtEBPCGlqfPz/p0XyW97it3YmjEcjL1ppvQK4flcH/r4DtkDx/KBjhBqVapdnMRRoEw0ur2I4odzc9jEcM28gzJrw5lKiUZV/30gAX1+ur8PZF5eTPlvIUdFIv0OsOIpXU8i9SkbFGnyHgvtOSw6MTBIOP/PSrbWvU71vfJ3BlHwylKe/qx78tjx2zKmJYxQ73dJ1kNzELHhZHKkPQZTxxSgUafhTIIonStw9e1FBW36MibaPNENb8pSgIaNz0NTAvpytvkUZeG+CVOFdeJQowa16v21goJTg2XfMSv5J7QlTkBn+GRm0wwAAAABJRU5ErkJggg==)<![endif]><![endif]>
+
+<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADUAAAAcCAMAAAD2mwe8AAAAAXNSR0IArs4c6QAAAJZQTFRFAAAAAAAAAAA6AABmADpmADqQAGa2OgAAOgA6OjqQOmZmOma2OpC2OpDbZgAAZgBmZjoAZjqQZpC2ZpDbZrbbZrb/kDoAkDo6kGY6kGaQkLb/kNv/tmYAtmY6tpBmtrb/ttu2ttv/tv//25A625Bm27Zm27a229uQ29vb2/+22//b2////7Zm/9uQ/9u2/9vb//+2///becLSogAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAA3UlEQVQ4T+1Raw+CMAwsKIgPUJThayoIPjcm+/9/znZLjMZowkcNl1yyS9vtegNo0SbwswnohcPUxF03W2Cb88H0Mt43mwKd+g0nqL0KGrozb8jOmzuOaxK/gL8brGMBxM/QaUhFNfHLXgiYqLsCOUQLSKOwolNP6I3jYtim64HjKUhkSFdITxQMAGlVdvBvWXydJ+cNs11PFgoyWvUFSF/P10C0CgqcZVXPcUcCTNcTON5P76iI1XG2I1oFnJUzmlZLgeeXodr8My2SQB15gmgVpjnDSup0c7Bd/4s7tF4VsSyhalkAAAAASUVORK5CYII=)<![endif]><![endif]>
+
+**CCRD****判定**
+
+美國
+
+8.5%
+
+4.2%
+
+3.8%
+
+是（8.5>8.0）
+
+中國
+
+12%
+
+5%
+
+4.5%
+
+是（12>9.5）
+
+日本
+
+4%
+
+1%
+
+0.5%
+
+是（4>1.5）
+
+歐元區
+
+5.5%
+
+2.8%
+
+2.2%
+
+是（5.5>5.0）
+
+所有主要經濟體均處於CCRD狀態，系統性風險極高。
+
+**3.4****CDMS****與流動性的交互作用**
+
+**命題3.3****（債務-****流動性正反饋）**：CCRD狀態下的債務壓力會導致流動性枯竭：
+
+<![if !msEquation]><![if !vml]>![](data:image/png;base64,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)<![endif]><![endif]><![if !supportLineBreakNewLine]>  
+<![endif]>
+
+實證支持：面板數據回歸（2010-2023年，30個經濟體）：
+
+<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXcAAAAcCAYAAACahP/TAAAAAXNSR0IArs4c6QAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUATWljcm9zb2Z0IE9mZmljZX/tNXEAABBKSURBVHhe7V1NbBvHFX5D++6czdzKZWBZlx5UQLR6rFWSRayLVYAXqkBEupeIRq1LrVISrZwERJR7qMUUiHWRAaJAFEAk41wt0UDpQ4DKCkyytyrnKECP2u33ZrjkUuLPkiJpVZkFfCA1uzPvmzffvPneW/r66uoq6UsjoBHQCGgErhYC16+WOdoajYBGQCOgEWAENLlrP9AIaAQ0AlcQAU3uV3BStUkaAY2ARkCTu/YBjYBGQCNwBRHQ5H4FJ1WbpBHQCGgENLlrH9AIaAQ0AlcQAU3uV3BStUkaAY2ARkCT+wB9IHLj2IomMlSUzwxQLH9A3lJKDLAL/agaAhpr7Qoagc4I1Mk9cuOlZSQULTUuJqhtENTOz4agGIcobdP0SW82K/zGKV+xqLSTEvJzKE55a8sqpQZH8C3nKYB5Wjo/T862sbx1bqOZOF62QhlsQ7E8bW8Faac2zlH6Qj94jwprex0kkxGrsLlOa/WNm/fuAKW3D+gEc91LO7fYcjs/1qPVtBzVPGdCPs/qaqrpT/0SXeSDl2bU2hbFxOCe2etYeAz+haJgg2I5k56F/k1Pp/z08MCC/QHaKO9TwhCeVOpiNgNTc46ei4MFw7N6wWf1aqPdfpRjqJO7b2Gb0lmDEuN5WvWWpMMqgopSunJgOZ24X8Ou6n3J5IQVF8syUmdiZzt9/vGhmHt2nhTxRCkUMiiQrljOTaneFnv2YblKXseIkpEb1h1DnTBmFxvELsd+iX1hlFgzFozvJoBKUKyxcU8cY10cNs2v23ZuseV2G1k/1mOOwOYey6qcYp6FmueyuZxIDozgh+KoPTzU96myNXv/HUwVHm9qx0o+njcfhg9FbO85PQSx//SeyLgHMy5dU4csU6EjkEBsKUhUKsmB+sKzFEgk6KhCTcRw6ax43wMq7FKGF38DOirsIiRGRDzIqF2Z2TxPqRSfMKYpHytaoWyOtg+Slh2Bq7YxisUy5KQiRURRGo8FqHg4S2Ef0U4ThpfYF0aKNVEhDmIHhjiB1efSF5zBbBP5gZtaKe7bnZ2/9usMc/Dawnr8LWUyFiFq9fA8F2JFM5jNi7K1YBqUvHA0+76XDvcPH/ZEZifNh2+rggSssiLm5tScmM/tUyYo3luUfRmwucgYGuQuFw2OmojmTmyPrRxBP0Zk5/zuIr21ubce9ZxVhc62D6SpcrBQlw9aPS4ZmbA2o2tYkPwwpXtvUZwEIi2cQJqO0YMyxUnkMpKOI5I+BCEcBEEINpgD6q1aBlGfnxNjLIAI7wh07rh4TmMzlMfMZrBDT9dC9yoi/ezsEs1mQxSY3T6P53v0hW4ojRJr+3QTyzeIXZFRSXhXvUz2crhu26ldwOU6s+fZh72b9QrVFfluB0hgnqv4zo8/jfKXoXBqMuNTYZE5mKR0TSpheQPynhnOxMSeuUUhQX1tOL7Q7xFIrtH9sg/E/gc6evzqUhC7tI1ywsLpiaUwllX82Vnxbv9TMsTFpaJu/s5/j0z8x5wL/10cWEqJCwQ26Pn+Qtf+6+ReLSO2CzSiuMgEju2hZanHDluSkdHn9CqtTncz9YSJqG0jdWQP0SHGXAGx+qqbdCcaB7Vj20pXhmKH2pggyeDEk6RdS4goxdLbkLZ2hL34u1ll/72uJTuixLP3VnNZKmKets9F2+d74TkNjC0SDvJE2TJFtpKWwgT3HxCtJ4jGlxzhZ+0R79MXOmE1SKzlorHzJG3wllgjRnccZlsOz207vtkttvzM15Oz9ByB1UKD29260lDaFZ5WaHG/TGPQw7P5KkEIp2TlA3PKHxAb5WcUBrGf1bKVnj4O4n8G4m9PhqmdHz2P54tm2M8R+/NLQezwN/Pp1IqY/3OQMltqEiosb4w/Jr8HJ4oB5T06+nzkBvD9Vtzee0f7IcND1c3TqTlylQOV5G4vGkK0awiseMQKy4EYpfMgxP+jZGohHqIMR/e15CCT/Xgxob5b8GFjaIax1YlhWTYxuOKlkbDqdGKo5ihbVJF0ascrrMqMFTcMOkZmdRiJaOVcS+eibfk9SJ9ldD4rKNte0ix2AV8F+n+Ro/oq5aJZ3H5AvgJvec1S0rB94cJ4jxDr+pqILXWU1ty26xVbnk8L8+wHIeKXW+u+WH2L7zHPZwJ6V2TOZLV5xy8SxYZr2/6OB5jL6gP8KE1lGRk2R+GlH3/0lFI7NHHbMl8fVUAwBhXWF8jaKFPCfzGy41PBgymBpOo43Qv6cNquH1Zc2Xa2kbR1yi9UUlZdyjw/NiXYat+AKLi8nzhnq/yz9LdJuo9FJZ/BY/QIMb/XIPtOg1ObA/B2NYY2kbjPD0SIbhkIwhiTnRPP3btEL5486YpLLXJXGitHt5yQi9gJI37ggFWFViMahCyjonaWuR2yjTzach6htZTT6sTQunqjw4lBSlfjZAfAqZ2SWEwHLGMth9ODU//uOhe0czIt+BeY20X8DRsd4j77XC05GkiHG6QvHVONi2gMsfsRlVmOAWFMozyzeuMQhQiNzaAxuuH5woXxHiDWbG9nvGs4dNUk3bbjHt1h25hnpbfbNJeMfGDe8ZMIbIRYkuk5cmRtm6ZXmk7IratlTkAe7U/IbMnkmEH7+bj56908FROoPmkTxe78OO1ZgU+/ARm9abMEFLGviVtf5ij2UZi+LuAUELqY5CRtvbtCKyBC+2pdqfJTe1vZ37BGvlS8yscu8EmD7DsjpHIJ7sfQjqwNupcep88+ukYJyzID2Egl3i4SzIrcbR0QmbUTZNZUwihD2VwVKZzzlyyhg5JrV9U4W9jJOj73u5VzBiLLtNCiC9AdiohCtsGFO0PapFolTmUUTbNNwPGGGYXDLnWQXLrSfwsb7Y2R7Ww6nbBjQm/nhG6QTzAIVxIJTgwGKUiGlJI66u1dfKGfee5qX5cGbrBWOKt3DQIxzP1W5xxN+y4N4jRGc01Mq9Zu2/Wwzlro7XbUXZxEVL1gkAGthhVK9X1U8HpL+M7LIhfFvP39eXqwRvR4H/6EMLuDWtpxCCrCnhPWY1XuWNmYPPV/9lSUg0gYJxsJY7sdffmKFgZQFukGF+lvt3N1CQa8R8XJjQbZ4yEqOsf4hzAuuel5/OJfn+/R89Nn9dPFdG1X6da3JHdpBMihUTWhHNaZhLPBSGLxxI9jrOK2vBRRY0uoaSAyCrmzSzMHzUkpN+D23qYoK3u2aknNXVnTIC2k4+MJy1sr8ez9ua3vqB/JSenZXKUiTz0489lRtEqwrlNlYgwPObpQ12f19giSx3GU6Ul5ZbuZxHhOWW9X2XE1n7ElNQdBRPrZ8/uPQsqlL4x6nl1hzSeY6A3aRuLJVy1Q3AjR+sxCX5VebN/EOFnFxDotVfCuAkpckxFIXesGZcfUCZfxctuuF2ztebb19mrkVybmWdjzDGGhHrmpaFytN06uJpPc9ivB6w2xhKsIrx+nfJ2AvIdqFk6guokiW/XB5FR44BdcAllECSRH/74IKvQeZilf/ZRJvH6bioKlHiFzyyra3xX3Xj2j4BASm7bePglNZt+smt/89QfaPQ5AKgP61ae0WQ2bSbX5NI2rHyzb3lP4Cmt7kj4PIxwDzuj4dOKHb0X5T/UNrgUmX4uPX/2N/ivEtesyqSQFKOhOcT+iceWwkdmAlUiE6GU6b20vqDpoRdQ3aHGbKBptEFqd+GsJzQwSmhzVS7kACU7mkQxcE5qJ1SraHwQg0KLEEuSQELwtw/kCRDJbtEmHBuy6Y1fZDDp852M2KnLSRxQVQur0iIdhZqX+4pckQa+XkgZZCHT6vhjLuMFIOvIiL9HXLJLHtfmxH96Y0yjN4h0FOKBMWONtWV4UMuksC5MS6u/2CcutL/iwWfIzRjvPLrCGDyieYzsj1hj8wN+sYPWEf3CrQmlC5ZMiGWsZonQAz5xdVCdc+3LTzjW2SHjb8wy1lrsw+YUpe56hENTJVBK5Jygy83lVC1/ZPL2Dzyyp19abuZxZbtLsewKgQ+PJNJKe4f51dlsTZz0acaW8FNnPYfxFOpjbpNB+QhIoQo7TB56w2Jrfq9s5hc9cPbLlYV7Bm0+ZAdf9s6wJYiXU33sSwB8b2TPjj/Q2HKY5ylEx4/MsWIXTH1ZW6uMadII1VfrQk/vkrRn+yCMeWsoP5h8Dd5xcGBPuO/PJHnElj8WJ1jomOErN506vK93RFl8a5Ff/HpHfTq2crxBfozGQpg+k2eriEjHWmw85rYf7mHC38bnxxuegybV5FCWHLSAsucNPQ8Seps5VNn07vJSz8FbqwhZ5T7yiLmGVmqvG+36+40bG0gtbzpW+OebHbu6cU8bBeakyvsZznH/vxRdGPs89Yl3FG6VHOKmcXODtYLUxT1NjfSgkz2PavV0v2Lqd51Tqnx7Mg3loGYLfZU3tpDxYb403Tr14o3PA/42mIuWXgje44gXKeGw9epU18ZMXHHuwtOOhm3dpRX7ZpIV7Hm1MmuAVEDq3O/E8x+emt01X2yn6fa4+ljVvL4E4gyqf8OYJPaGbkNB5Bb7BeN/I8TrHZZer9tljy9tKHyJnseIQx9+8oJQytdE3PnCitY7Jze+urX7/xnT92zIq8kC8lxGI8fmKNddU14YGTJoim7OfB2n4MJ7Fi3D6zCs97fqRZW1dqimGMcbL8MxBzbNbvHvBmn93JufHhvsz+F2f6lu13myiPfu5m69wwpP9ncnV1VVYp4dI1O/9QjjL713depFG7G/3Yec+Exn+nf3s5tnwNc9dekF3u2VC8TApT9K9ro+V43jUGFe3G3oZQ7dnVTD3TZjUPi98Z9D3QMkVuatqDP7dFPV6vTrarxHeaJcX6/Bid4aQK8Rx/ZhmFgtEE0krGOTjOz7je+PGhEVn5INug7/Mf7c14EDXaorLbEV/Y1PzP7p57gVrJvb1GrHL/BDEuatK8kqWORYzjwqULwRNJM4Jn2nmGchvs2BC58Apu7+Xilp5hi2lWJBHwp7eq3X687aavg477z36hgqwE/5HD2DnPdhZhZ2RIdjJ9e10u/OIVcLTOa7RvTFc73uxGZOPgYm/UDj95V+S3cndqdGu5RZl9YysJ2e71wtSo2++MhSKjsmXiPgaC+CzOFS/kHiBI3K/jjGs++wKHyTWunbB1UV4q1peIeQezv4GTNcHXMoGo5tnt1irIAQVDco7kf/gNA9XTF/lC/MwN0Zle71N4rNHrTccsnsul+yEVF1K4aLGQcsgXafoC9h5CzXpilduBb7ABnMIaRk/UTDgxHG9hNGVnfa4fotRuXq3qKul7hsAA2Dybp/7Zq79gn537ZA+ASa/+Qdd6xq5N2m0NSIreVdlPbZdBA85lPJ4cYgTd0ovdGjc9punSOb9XK8GXjUEXGwIlxmrhk9crnnmvITKsTiuK+x3rLl7oQHzenth1yI61tuA5fb35pLwN8/NFdTnO3V4u4YdWvjI95kaEs3j6v5S0SABtPtekZjU+nZg8j0660rubgZU8npF34WubjrQbTQCGgGNgEagJwQGQu499agbawQ0AhoBjcDQEdDkPnSIdQcaAY2ARmD0CGhyHz3mukeNgEZAIzB0BP4HXZ91fXfqZOYAAAAASUVORK5CYII=)<![endif]><![endif]><![if !supportLineBreakNewLine]>  
+<![endif]>
+
+結果：
+
+**變量**
+
+**係數**
+
+**標準誤**
+
+**t****統計量**
+
+DMR
+
+-0.082***
+
+0.021
+
+-3.90
+
+CCRD（虛擬變量）
+
+-0.045**
+
+0.018
+
+-2.50
+
+ln(人均GDP)
+
+0.032*
+
+0.017
+
+1.88
+
+R²
+
+0.51
+
+注：***p<0.01, **p<0.05, *p<0.1
+
+DMR每上升1個標準差，R_A下降約8.2%，證實債務-流動性負向關聯。
+
+----------
+
+**第四章　量子疊加態經濟統計學：敘事-****現實背離分析**
+
+**4.1****　經濟疊加態的形式化**
+
+在資訊控制環境下，經濟系統可同時處於統計上矛盾的狀態。
+
+**定義4.1****（經濟疊加態）**：經濟系統狀態可表示為：
+
+<![if !msEquation]><![if !vml]>![](data:image/png;base64,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)<![endif]><![endif]><![if !supportLineBreakNewLine]>  
+<![endif]>
+
+其中<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHEAAAAcCAMAAABhyqBmAAAAAXNSR0IArs4c6QAAAI1QTFRFAAAAAAAAAAA6AABmADo6ADpmADqQAGa2OgAAOgA6OjpmOjqQOmaQOma2OpDbZgAAZgA6ZjoAZjo6ZmZmZma2ZpBmZpC2ZpDbZrbbZrb/kDoAkDo6kDpmkGY6kLb/kNv/tmYAtmY6tpA6ttv/tv//25A625Bm27Zm2/+22////7Zm/9uQ/9u2//+2///bjyHIkQAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAABWklEQVRIS+2U2WKDIBREJWlSutp9sYtJW0wU5f8/rxcEZNOIz/iUqMMZZi5mWbpSAimBRQkcMLquI5VLNBpBr+o2f48jLtFYBPb5N02sMFo5pk5omlUZXFLer8zVyG3/qqEh69+MrKWrkGZYnH31a00Tq2/Tjk/seOiNTbQ1Wg/9ziDCDhtjkz5RwHbnclnh3tEoYvVylCMx7LH9gEb0X/6DYoSkMSH0iQBj+42q2tCwAqTi2qphF3mYqXb5TU0v72VVwbQ9IivA4qsObqyh/gWPuAMzXa4dOWrLs35GL8qszd8UMo4oHFCsWwupvT2KGknI5YxUud2M79OcAufceEQxM4Mobo+wPbZ/3B6fIoisAIcHpKofPWkjPf6gTUnxWI/BWe3unuGLo2ucJNIHmNszPmUnvjlWrm6q+uhP5OIUE0l0Oybq6EcRfQ+z77BCNzhbk15MCSxM4B8z4ybU5AhMkAAAAABJRU5ErkJggg==)<![endif]><![endif]>，<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAcCAMAAABvY94JAAAAAXNSR0IArs4c6QAAAFFQTFRFAAAAAAAAAAA6ADpmADqQOgAAOgA6OjpmOma2OpDbZgAAZjoAZmZmZma2Zrb/kDo6kNv/tmYAtmY6tpA62/+22////7Zm/9uQ/9u2//+2///bs6hiagAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAASUlEQVQoU2NgGGxAgp+RiU+MSYCBQZKLQ1ScnZsT6EJBFlEgF0gAST4GBnFWIMEgzgZUBJIBC0gJ8bCI8ALZwozMAuKsYGHaAABj+wLOdKMWIAAAAABJRU5ErkJggg==)<![endif]><![endif]>為「增長」態的振幅（受官方敘事權重影響），<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAcCAMAAABvY94JAAAAAXNSR0IArs4c6QAAAF1QTFRFAAAAAAAAAAA6AABmADpmADqQAGa2OgAAOgA6OpDbZgAAZgA6ZpBmZpDbZrbbZrb/kDoAkNv/tmYAtmY6ttv/tv//25A625Bm27Zm2////7Zm/9uQ/9u2//+2///bGQ1xbAAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAAYklEQVQoU2NgoA8QZ2dk4gdbJcYsAsSiQJYsF1BECswEk0JsIHkgKSfMAhKUE+CXYuIFa5LmEGSQ4eIDMcFKxVglIUqBBIgpJwAkJRg5QaZy8wDtQiiF+E8MbDYYCIBUUQIAUvoEPfKM7YgAAAAASUVORK5CYII=)<![endif]><![endif]>為「衰退」態的振幅（受可觀測證據權重影響）。
+
+**觀測者效應**：測量結果取決於數據來源選擇：
+
+-   官方統計測量：<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAAcCAMAAAADZYwMAAAAAXNSR0IArs4c6QAAAJZQTFRFAAAAAAAAAAA6AABmADo6ADpmADqQAGa2OgAAOgBmOjqQOmaQOma2OpC2OpDbZgAAZgA6ZgBmZjoAZjo6ZjqQZmaQZma2ZpDbZrbbZrb/kDoAkDo6kGY6kLb/kNv/tmYAtmY6tpBmtrbbtrb/ttu2ttvbttv/tv//25A625Bm27Zm27aQ2////7Zm/9uQ/9u2//+2///bGs8QrgAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAABGklEQVQ4T+1TXVfCMAxtimBVZIKoUGWdgmO6D5v//+dM2k7GObzkQY4P5iU5d725yW2n1H/8lgP1AqaNvDkWDyXW9xs58+wMfDWgn+SyaMel6sxMzHSjPXHcpZTYmTVT3ER6H1UQRCtVTIykKxjXZ8GVqCsJtEw8MrU1wGuHhM956naolNMMulGpajPY0M9LPpvSqSH8ko3EAuBixd/xBfSGxIEFY/IZdSQc1n2lyf12etSOh24JrqJ6TNWMDL9tPvK+YrgKF/gT3TX1IthFOKYiV4wfKoIH24aTpPaV0XR3wY6Y/Hy3Zfyxrz6v3t/8crcdKvKKtCtPG9swMZs0aOGmCZVf6JUd77k84Vl6tNK3S79KfIEh/an4Bl2aHHwVJVFbAAAAAElFTkSuQmCC)<![endif]><![endif]>，坍縮至<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEQAAAAcCAMAAADvEOkaAAAAAXNSR0IArs4c6QAAAJlQTFRFAAAAAAAAAAA6AABmADo6ADpmADqQAGa2OgAAOgA6OgBmOjqQOmZmOmaQOma2OpCQOpC2OpDbZgAAZgA6ZgBmZjoAZjo6ZjqQZmZmZpC2ZpDbZrbbZrb/kDoAkDpmkGY6kLb/kNv/tmYAtmY6tpA6tpBmtrZmttv/tv//25A627Zm2/+22//b2////7Zm/9uQ/9u2//+2///bo+aP/gAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAABVElEQVRIS+1TyVaDMBTNo9rGqQqOreAQrC0qBPL/H+e77wVqF9bT042LZgEh3Ck3YMxhHBr45w10GaWI2N7XuDXJax84LCzR0fC4dR/+RHEu3xQJxfHStNd/ifjTFfP0yhnGiLJO4ka6vn2EUmjVRGGdmA4i3koyY8Iz5e0tdtneEV3UpiJmNGzhKOUyiDBNP6wU4aA2iFR9kMXSnc8+b1bG26s6FKkJBQORE7ahgFeXPTziVeT3IoL0Fi4yhQmCw4knXca+DbO0UW+hDTkB9yJdNujG5mVF7KpxXV5meXji0rRJxI7duvFaRMMxXLcPN3iKRzN6P/sq8hLO0oFcBcsbY97QicMBZ4AoTl7rQoOvxyVwYa+weBGmm/h5dBxE+FBo+sZmmglcS8kMbnJw0hD7UzLXkBVN6wj+8cUqdbehxewp4mLq3aw30fEH3EfiwP21gW970CWqT3tFowAAAABJRU5ErkJggg==)<![endif]><![endif]>態，概率<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAcCAMAAAA+9+1qAAAAAXNSR0IArs4c6QAAAGZQTFRFAAAAAAAAAAA6ADpmADqQOgAAOgA6OjpmOjqQOmaQOma2OpDbZgAAZjoAZmZmZma2Zrb/kDo6kDpmkLb/kNv/tmYAtmY6tpA6tv//25Bm27Zm2/+22////7Zm/9uQ/9u2//+2///ba/nVPwAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAAmElEQVQ4T+2R3Q6DIAxGqRPdlE23Of+GFd//JS3OsGhYuV5iLwglJx/lIMRRvIFewkUHJOFZj6oMm5weLUFDVHnR9bxbgnioey4JLEQ5g436QuMdotK1doMSADaQUZnG9JqvE25ucM0r1sIoWj7lhYwVgtJZ8UKYkAqbxiVRyFTf4nfBztTAqULJz7TX7n/djvolOfzdf0bMEjkKMQGjv9YAAAAASUVORK5CYII=)<![endif]><![endif]>
+-   草根觀察測量：<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAAAcCAMAAAD1LAmUAAAAAXNSR0IArs4c6QAAAKJQTFRFAAAAAAAAAAA6AABmADo6ADpmADqQAGa2OgAAOgA6OgBmOjo6OjqQOma2OpC2OpDbZgAAZgA6ZgBmZjoAZjo6ZjpmZmaQZpDbZrbbZrb/kDoAkDo6kGY6kGaQkJA6kLb/kNv/tmYAtmY6tpBmtrbbttvbttv/tv//25A625Bm25C227Zm27aQ27a229uQ2//b2////7Zm/9uQ/9u2//+2///brgZhiAAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAABOklEQVRIS+1UXVeDMAxNUKDziyl+QJ2OTgXmUEsh//+vmRY8sj1aHvQc85CcJvT25jYU4N/+qgJNiufanzxtbktqrtf+SL8OgZ4EBnf+tEiGJRiReCOpo4oxVOwLZERuIVTke/+1I0TSl9GIMPLyaK9fOpUHXj5G0gLNc2klNOJHCvU30zZog3ic2aZMiqdJl8ZbnilaYcD32AqMKucmef4pbXltBGI8fLKniVkUdF+8vS+yNiF5oesYeE0PH9bpr3wCbaStHhxqVsV9sj85KoH+qgLez+TONCieL5Py8+Lcd76NXZnDpnB9HL5AKqcVd2P32+N2Jy/P24KXzvHEjvlumdsyBz72VY/VaW87DB8HUgB9GmQyrBRipJ0b81Yb1nMIvQxyGKoT416hu7Rcfa3GWd4SXxrz7f8EihQjsQNGE4gAAAAASUVORK5CYII=)<![endif]><![endif]>，坍縮至<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFYAAAAcCAMAAADMS7jPAAAAAXNSR0IArs4c6QAAAJlQTFRFAAAAAAAAAAA6AABmADo6ADpmADqQAGa2OgAAOgA6OgBmOjqQOmaQOma2OpCQOpC2OpDbZgAAZgA6ZjoAZjo6ZjqQZpC2ZpDbZrbbZrb/kDoAkDpmkGY6kGaQkJC2kLbbkNv/tmYAtmY6tpA6tpBmttv/tv//25A625Bm27Zm27aQ2//b2////7Zm/9uQ/9u2/9vb//+2///byB7h3gAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAABg0lEQVRIS+1U2XLCMAyUoUBoSxP3JOlpWqBp7aT2/39cJdmOYYYZmAHe4oes5Sir1coA0K/egd6BcznQPmimNoOPUGItcA3mhxa0styVqvxponXVBGDdVdlH30yjnq1MM2a5iZbLN9lODftqpPf2lqslWt7xw70IQUVbxOGqCz8zIWYaPChR4NftvRDXmjLK9o5PQGHPW94i0082A7Ay19SilTPdXOkYmuES6gkECL3l2lUFfC3VzZtec/9eZ6fWVTix0buv97dAlcrbFMNmyuOMcLnCV5RB8nguXidvE62VBdRUyUohLh41ItscQ4A6Gy3xwAONhj5BGnxQc67yY+FanVracF4cccCNiTuvn0HFTD8SbK4h/SSDLO5oKZcbsHIOblEyts+rGJocr99YB3DVvC6JoZXUM/Vvxr+vpBMrJFr8MdC1FbmG70wMnvAVIrUbwhovAIYBQFGKwUy0yxthshES8nbzJrAxR69gRbq3RzP6gbHYU6/4V3Nq3p7vzA78Ax1NK98USlG6AAAAAElFTkSuQmCC)<![endif]><![endif]>態，概率<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAcCAMAAAA+9+1qAAAAAXNSR0IArs4c6QAAAGlQTFRFAAAAAAAAAAA6AABmADpmADqQAGa2OgAAOgA6OjqQOmaQOpDbZgAAZgA6ZpBmZpDbZrbbZrb/kDoAkDpmkLb/kNv/tmYAtmY6ttv/tv//25A625Bm27Zm2////7Zm/9uQ/9u2//+2///b4631eQAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAAsElEQVQ4T+2T2Q7CIBREuVTFpS5FWxVaaPn/jxQIWwnBdyOPc88dhklA6H/qDYwEjtOXkuRhmtsugzgBnGnq/taQwL1HWfNCrDFi1LlditBinMUa4o90w+BmPuycr13WPsJYRSc9V8+Nu83qkgDAClK0E/ganpJkTZzkvkdze/NUGbKR2NZ3V4Zs5KEOKarnI5yq1y3ni+47REpLjsFDi2lPuS3zLZYgpyka0vzO//kAA2IMCLDzsVEAAAAASUVORK5CYII=)<![endif]><![endif]>
+
+**4.2****　敘事折扣率（NDR****）**
+
+**定義4.2****（敘事折扣率）**：
+
+<![if !msEquation]><![if !vml]>![](data:image/png;base64,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)<![endif]><![endif]><![if !supportLineBreakNewLine]>  
+<![endif]>
+
+其中<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAAcCAMAAADm+0lgAAAAAXNSR0IArs4c6QAAAKVQTFRFAAAAAAAAAAA6AABmADpmADqQAGa2OgAAOgA6OgBmOjqQOma2OpC2OpDbZgAAZgA6ZgBmZjoAZjpmZjqQZpCQZpDbZrbbZrb/kDoAkDo6kGY6kGaQkNv/tmYAtmY6tpA6tpC2trbbtrb/ttu2ttvbttv/tv//25A625Bm25C227Zm27a229uQ29u229vb2//b2////7Zm/9uQ/9u2/9vb//+2///b8xMmmQAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAABHElEQVRIS+1Ta0/CMBS9LaxDZRNEtqLbVMAN56udtv//p3lvO5OZkBDLF03oh5Pck3tO7qsAp3eawJ+YQBezUQ2asUgF1tPwApXl6DFQD5oM7Ipcwp4zaJIwMam6SQHdeegAvMExDQCYND+mATK4/kUDe4q10u3x8DNX9d4kK90GPuaijfGY7A3jkcJoFyceewovjgmTCsq0MlK2YjwfOD6/TDKzUFZOVSOAIp147Cm/aoTXVnxuFu+r7K0aGgDK9IVbaIk8RpRO+E1V1CkBmugcC+LTH8tHWZndt5Fqz7YPzgQPnFB7yszqJ2VmmzWyuyVo7OV2aGAuC7jjhZnzTI5rzEZpjz0lsWWT4phKvsTjl2wc/H0Ob+xfZXwBP8sd1os9e9YAAAAASUVORK5CYII=)<![endif]><![endif]>為官方敘事暗示的經濟價值，<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAAcCAMAAAAKjix2AAAAAXNSR0IArs4c6QAAAKJQTFRFAAAAAAAAAAA6AABmADo6ADpmADqQAGa2OgAAOgA6OgBmOjo6OjqQOmaQOma2OpC2OpDbZgAAZgBmZjoAZjqQZpCQZpDbZrbbZrb/kDoAkDo6kDpmkGY6kGaQkLb/kNv/tmYAtmY6trbbttu2ttvbttv/tv//25A625Bm27Zm27a229uQ29u229vb2//b2////7Zm/9uQ/9u2/9vb//+2///b3E02RgAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAABIElEQVQ4T+2TW3OCMBCFN7Fc7EVRWklsLaEtF+0lgZL//9e6G3zAJzUzPnTGfWCYM+fb7B4CwLWuCVw0gTZmkwoMY6H2OKfmOVJqUnqwYAi2a+pwfjm4Ts4HiWinObT3PgsPsO/QAP1C+A5N8NNoaOWyP141E2Sycuzvl9Vxkqhn57NySNq+MP4K7UPBZgAmZmFlC8ZFl0ZNnODTylA7xVlvDu4U9TChroMSo8cE7eZnnX0XYvc5zUzytY1+3x8HBY+b68OY6GuZiHLHFtCmM40Xl8811BHNhWYj9gpZsceoEOkWAlfuUgFNDkqYCLqNxhdyKdGssLlT0Lq9/XgbwbRyBuaO8RVa6T+xkgUl7BNUJA8K9CnPZHBasCel/59Mf/XLHidAXXczAAAAAElFTkSuQmCC)<![endif]><![endif]>為可觀測現實的實際價值。
+
+**NDR****的穩定性分級**：
+
+**NDR****範圍**
+
+**系統狀態**
+
+**特徵**
+
+<50%
+
+正常統計噪音
+
+可接受誤差範圍
+
+50-200%
+
+中度扭曲
+
+敘事開始背離現實
+
+200-300%
+
+嚴重背離
+
+敘事高度不穩定
+
+>300%
+
+極端失真
+
+崩潰風險極高
+
+**案例：中國2024****年消費悖論**
+
+官方敘事：「消費升級與理性化」（暗示消費增長+10%）
+
+可觀測數據：
+
+-   豬肉消費：-36%
+-   化妝品支出：-4億人民幣（同比）
+-   保時捷銷量：-33%
+-   星巴克營收：-15%
+
+加權平均實際消費變化：約-20%
+
+<![if !msEquation]><![if !vml]>![](data:image/png;base64,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)<![endif]><![endif]><![if !supportLineBreakNewLine]>  
+<![endif]>
+
+取絕對值：NDR = 150%
+
+**GDP****層級的NDR**（中國2024估算）：
+
+官方：GDP增長+5.0%
+
+DCWI校準後：真實增長約+1.15%（詳見下節）
+
+<![if !msEquation]><![if !vml]>![](data:image/png;base64,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)<![endif]><![endif]><![if !supportLineBreakNewLine]>  
+<![endif]>
+
+超過300%臨界值，處於極端失真區。
+
+**4.3****　數據可信度加權指數（DCWI****）**
+
+**定義4.3****（DCWI****）**：
+
+<![if !msEquation]><![if !vml]>![](data:image/png;base64,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)<![endif]><![endif]><![if !supportLineBreakNewLine]>  
+<![endif]>
+
+約束條件：<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHsAAAAcCAMAAAB26DCvAAAAAXNSR0IArs4c6QAAAIpQTFRFAAAAAAAAAAA6AABmADo6ADqQAGa2OgAAOgBmOjqQOmaQOma2OpCQOpDbZgAAZgA6Zjo6ZjqQZma2ZpC2ZpDbZrb/kDoAkDo6kDpmkGY6kLb/kNv/tmYAtmY6tmZmtrZmtraQtv//25A625Bm27Zm27aQ2/+22//b2////7Zm/9uQ/9u2//+2///bgbzZIAAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAABQUlEQVRIS+2VW1+DMAzF0znEecEreKE4B1NLpd//6xkERlqpzZsPa1/595zmJL8AEE9MICYQEzieBOorRq0syNUxz3lAmiXLghyjfSr+y7u5/8h+vGtxCtCe7EAKN+K5JBbkkzKFGE+ixgC6wdsU6C3Ru7sunWhmbxb0l5SjPHqDTFSXrUpoadnuW1nQstTSUE3edaKqyyw3TzuXImPEgmCZ8meOvd5uPou86juwP6MPIN4EwiE9n/rWzwuJa6bMo7AoT+atWJcgVyhhXt+83gdIb9TXMCnDsbwPVHerfs/PfGnKXKeohP3sv2ifN4XAag/1tqj3O5KOVbe+wblfPzhZeL0trqGLwbNbcHxd8cAms709cPPCWLUAVmcYNzjeWHUb2oiAU2GKIEVfJLEPof+HThEKqppKiAtGsRE5ogS+AaNFIJ426Kf4AAAAAElFTkSuQmCC)<![endif]><![endif]>，<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEMAAAAcCAMAAAANzPJjAAAAAXNSR0IArs4c6QAAAIdQTFRFAAAAAAAAAAA6AABmADo6ADpmADqQAGa2OgAAOgA6OjqQOpCQOpC2OpDbZgAAZgA6ZgBmZjo6ZpC2ZpDbZrbbZrb/kDoAkDo6kDpmkGY6kNv/tmYAtmY6tmZmtrZmtrb/ttu2tv//25A625Bm27Zm2/+22//b2////7Zm/9uQ/9u2//+2///bVG6HCgAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAABJUlEQVRIS+2TXVfCMAyGm4FYRarINpFOkAGy0v7/32f6MdpKQC+88HjI1Zamz968yRi7xtWBP+CA4gAVqUMCjPY/UqjuFrZuy6Eo+wvm1VPb84zDFDDCuWcoXrK2cDTH+46h+CRR6BkSiVrcuvzmeSciowXMdoM1k5Bcs/UxHMPU9vx4oBOGqZEhkaEfg0ys9PXHcAwtzjIsWQtss0uumdq6kftxiYHGNmNRmfk6fpjWYa0ge0EvlvcfddVYi8xL6Ed660JETyM89YN1MFwwWWQG4BwfElM9o4OSbbFpz8kYiqMCL7GfHD4S+8E2HG7CgJRdn+GM2rE2V5P30r+lAyT2tInjPfWjz7xlRV93XT+9r9K7tI684oQh6B/oN/5bSts/zX0CF7AcThJSeV8AAAAASUVORK5CYII=)<![endif]><![endif]>
+
+**權重分配原則**：
+
+**政體類型**
+
+<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAcCAMAAABbGh8VAAAAAXNSR0IArs4c6QAAAGBQTFRFAAAAAAAAAAA6AABmADo6ADqQAGa2OgAAOgBmOjqQOpCQOpDbZgAAZgA6Zrb/kDoAkDpmkNv/tmYAtmY6tmZmtrZmtraQtv//25A627Zm2//b2////7Zm/9uQ//+2///brEL62QAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAAbUlEQVQoU+WRxw6AMAxDHfZsadhQ6P//JRFLnBE3fIpehmQH+KcGigDr92DKzwScFsSC1tJcoXA4r4VnYK8hYAjnOiuUq/o7Oeu36aRVrYSMyc4tBQbsyZprugMtsfTl4F4f6Km3iIluC9/8cgMsNAVVfCjnBgAAAABJRU5ErkJggg==)<![endif]><![endif]>**(****官方)**
+
+<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAcCAMAAAC02HQrAAAAAXNSR0IArs4c6QAAAGNQTFRFAAAAAAAAAAA6AABmADo6ADqQAGa2OgAAOjqQOmaQOpCQOpDbZgAAZgA6Zrb/kDoAkDpmkLb/kNv/tmYAtmY6trZmtv//25A625Bm27Zm2//b2////7Zm/9uQ/9u2//+2///bzWnN2AAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAAfklEQVQoU+1RORKDMAxcQcCEGENswmVx/P+VKEwCA5S0qJFmr2IF3IOaYoDDCo5e/zqmXDAn2JjZtSIX+VEHFrzKgDryZarNVFRbkxx+ki43pQFaRU//ZZgeFi4QZ5/4QQsll5IloYtzl/DLahbZbpr3GTLgg7BXRHQ2X372DIOzBYRw/+PYAAAAAElFTkSuQmCC)<![endif]><![endif]>**(****第三方)**
+
+<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAcCAMAAAC02HQrAAAAAXNSR0IArs4c6QAAAGxQTFRFAAAAAAAAAAA6AABmADo6ADqQAGa2OgAAOjqQOmaQOma2OpCQOpDbZgAAZgA6ZjqQZma2ZpDbZrb/kDoAkDo6kDpmkNv/tmYAtmY6trZmtv//25A627aQ2//b2////7Zm/9uQ/9u2//+2///bIqTHHwAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAAgklEQVQoU+1RSRLCMAyTWwJlCUsCSWjBKfH//4jZWgbO3NDFM5JtzUjAH+hoCuS6RaTVKw7xykXlyjoMEUXDxVYBeVgDOsNpaZ0c2jHJXB+bs3fJQfZEc74pmSYBsdLLsuHn037m1MTcdZy2jzlCvXbf9VysHr2jb1j8ByeJaPGDaq9syQbO3Vxa2wAAAABJRU5ErkJggg==)<![endif]><![endif]>**(****草根)**
+
+民主體（新聞自由）
+
+0.7
+
+0.2
+
+0.1
+
+混合體
+
+0.4
+
+0.3
+
+0.3
+
+集權體（資訊控制）
+
+0.2
+
+0.3
+
+0.5
+
+**動態調整機制**：權重應根據R_A動態調整：
+
+$$w_1(R_A) = \begin{cases} 0.7 & \text{if } R_A > 0.6 \ 0.7 - 0.5 \times (0.6 - R_A) & \text{if } 0.4 < R_A \leq 0.6 \ 0.2 & \text{if } R_A \leq 0.4 \end{cases}$$
+
+理由：R_A低意味著貨幣沒在實體流動，官方GDP統計（基於交易法）可能高估。
+
+**中國GDP****的DCWI****校準**（2024）：
+
+**來源**
+
+**數據**
+
+**權重**
+
+**貢獻**
+
+官方統計
+
++5.0%
+
+0.2
+
++1.0%
+
+IMF估算
+
++3.5%
+
+0.3
+
++1.05%
+
+草根綜合（消費、就業）
+
+-1.5%
+
+0.5
+
+-0.75%
+
+<![if !msEquation]><![if !vml]>![](data:image/png;base64,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)<![endif]><![endif]><![if !supportLineBreakNewLine]>  
+<![endif]>
+
+扣除CPI（1.8%）後的RGSI：
+
+<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANYAAAAcCAMAAAAqTrHOAAAAAXNSR0IArs4c6QAAAJlQTFRFAAAAAAAAAAA6AABmADo6ADpmADqQAGaQAGa2OgAAOgBmOjoAOjpmOjqQOmaQOma2OpC2OpDbZgAAZgA6ZgBmZjoAZjo6ZpC2ZpDbZrbbZrb/kDoAkDo6kGY6kLbbkNv/tmYAtmY6tpA6tpBmttv/tv//25A625Bm27Zm27aQ29u22/+22////7Zm/7aQ/9uQ/9u2//+2///bTGRPwAAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAACiUlEQVRYR+1V23LaMBCVKVDUtCWQNglxUwwlBhpcg/7/43rOyhf5FptOZvqifQCPtLdz9iKlvHgGPAOeAc+AZ8Az4Bl4BwaSp6aTOICMVrwwv3QQjNf42ODj807hbtEZ1jzn3qg+uoVi+j2YUz+ZnrrMSitlnhH5KzQHmFXcHRBOEkYkZh8gkboPE86UikcEE0526nyHr2i6U+mnF5x05wffGSwT3p7AwJMyP9YmxKH8tEtpBa2PJ3VezoaYVZylemUTJqwPL/LfCH1ZEqvGT5SpKDmiFB/NHPcPr7mWXNJD+gXwUN4YRLWLa2Wdx9NTv1nVWQSuL6DDhdXwkRA3fwSahR6iWmKUccIjqTakqF8F8+97dIX4nkmdO8WxYnpnYGuatUQrHZqQg0Fjp1oNH6BLHTVGIs6LxUa1vcu7IQmiwycgh3jiBVow0Z0z6cAyWzvUQ8ycLC5LB9YffROMHps+hJjJT9YDZU11IODMhnnJ0RBYUI1QWKRMTNPXbzsZ0bYiO7BiFDfVixazRky3fBVY1DxgrOuhqXRgr1ntou1sAxej39eE1hxVml/u1gnYiDq2Rukzmy3Q2DB7swntWGVNaLnDQc0HcUhKtmWLtouoWrZlS82q+8SyAtkslMDqeBlKKzvLeev3mLnxichma6VoKseH1RH8XO9kgsvsKKtx8sbsZ7VEF0mIYuPCX3+12HuymCQgu6THzIWVBCtpsDw0m7DmAw8ugQR4efg6zrd4ffgWjzHK9q5D0nvM5PhRhuOIb64MCFqQ85vPVt3YtZKAowdZSj1mNTd7bTcUGN3eIAtshqt9dAJrvbBP1l5zO10h/2hWifAePq5I2at6BjwDngHPwH9g4C9QsVQhfAuVzAAAAABJRU5ErkJggg==)<![endif]><![endif]><![if !supportLineBreakNewLine]>  
+<![endif]>
+
+實質衰退。
+
+**4.4****　崩潰概率函數**
+
+基於歷史數據（委內瑞拉2018-2020），建立崩潰概率模型：
+
+<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJoAAAAcCAMAAACuyFbgAAAAAXNSR0IArs4c6QAAAMNQTFRFAAAAAAAAAAA6AABmADo6ADpmADqQAGa2OgAAOgA6OgBmOjo6OjpmOjqQOmZmOmaQOma2OpC2OpDbZgAAZgA6ZgBmZjoAZjo6ZjpmZjqQZma2ZpC2ZpDbZrbbZrb/kDoAkDo6kGY6kGaQkLb/kNv/tmYAtmY6tpA6tpBmtrbbtrb/ttu2ttvbttv/tv+2tv//25A625Bm25C227Zm27aQ27a229uQ29vb2/+22//b2////7Zm/9uQ/9u2/9vb//+2///bsCiYywAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAACQklEQVRYR+1WbXuTMBQNuAKbL2vH7Fwn0G0Fp5s2teoq0CX//1d5bgjtRKDB6p594D4NbdKbm3PPfSGM9dIz0DPQM2DKALdOTFWfWE/e58MnPtL8ODFhTLybm2+o1czPZnqdH3/e09Zme+yy3LMsVy1wC2IHnW3z1+lmT/6yRFljRl6GO4wTGGCADf4GrPEy32TkMvmB1jtJfqRY11/Zi8YYLD1rF7Sti6++AFpSYhE+duaHHaHJSLkmE0dxp6c1zi0uVnSAkchpKCYPq7fzr0VAMkVks9f1RgtfhI9AqK28gAiMFBsSvUBKjdDk5SM9xpBowh+uIltvIKNLr8g7c9ERlJG20hLRZmjCH6Ut8VJu2u/NQRWamqWN4ZYTttCqlIKlh6Q5Xi10t8HV0LIybCW0LgGldDi42NZ59TyValWJsUijWTQ0+F2IEWsVc7tqLx7UlL04TxmNZilyC4Upb65J629yTfgBSryxRtBwteNULSHD075m2RCHYdDMSddj58aDB5lnOXOZWFRA2mNepmlZoX84k58hlw/qc3nhGWW5jEbpYkb9CfnDcTgGrXGXff9xGMjpjD5XP6fBPTlaaWTNfa1rfdXo5+q9Q8/MBQhGg2YxcGQnTJxiOh6meKfYI9L8PYIt8dwfG7haT4ixtR+K89tPNDBbHt19BDyZuGyB0ggzl62vVBI+DuGuhN4PHqr+OFXJFaAlO6kaYzuIBnNqCPgvps6N3wN9zfj2P24eHZ14xtc7bn516Oh0r/6vGfgFNKlGMIp7WrEAAAAASUVORK5CYII=)<![endif]><![endif]><![if !supportLineBreakNewLine]>  
+<![endif]>
+
+其中：
+
+<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJcAAAAcCAMAAABbNt1QAAAAAXNSR0IArs4c6QAAAKVQTFRFAAAAAAAAAAA6AABmADo6ADpmADqQAGZmAGa2OgAAOgA6OgBmOjqQOmaQOma2OpCQOpC2OpDbZgAAZgA6ZgBmZjoAZjo6ZmYAZmaQZma2ZpC2ZpDbZrbbZrb/kDoAkDo6kGY6kLbbkNv/tmYAtmY6tmZmtpA6tpBmttv/tv/btv//25A625Bm27Zm27aQ29u22/+22////7Zm/7aQ/9uQ//+2///bqrsDMwAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAB90lEQVRYR+1U2VbCMBBNQJS6oFRxwVqQ4kZApbb9/09zlqyUnuMDDz5kHno6bTL3zp2bCBEjKhAViApEBQ6twFIebw9d8wD1frL6etFVZ5PIXmZ+uqSZP3XsULIHxcxTSnlE2xW8eZWCzc0bgDzqTz5gM+viVSWZUAiE4RLYbHiVI/73oCVvcjkWosnhAc+haF4xp1dXKaSVX22BNxcMAMWyi1cBE65TKIlhk/X0OzW8CBDKmby+uYM93GlNq3Abv7pVLbHrFNl7GJiURhFoVgc7jtumwmHCiBT1ZOQDlsMNVKvOcUt1iuxUf6UhLE6LlqkQANap4bW7nrvQvPzE4wXELnSzuF2NcV1JEitqiHjh62fCM98XBc8kACyG8445/okX9KoHjaLCAIv+qiA5GQzbokEMnpnR7lSQO+kb8lL9D+P73R1sLauXSwK90kunV3W2Qu969qoS0BwbxPl2hBrpU+MBghm7zyP3ypbUjVMS+GtMp4gDB9jkJ85eTY7DRGcZa7e5lUCr4hlbQDrLs8ULeGBPlDKjPqlpkwS8mLU9aQVmSlp7fU0G7xbOjTuAokOisDswpgZEMwDLXtc1uU7kAOQnXkInorrF+5JvQnN/3dMk+D5lNasUV03J+hKZKgkXVTu0eZiXxdgrU/wYFYgKRAX+vwK/MVU/eJ9XSDIAAAAASUVORK5CYII=)<![endif]><![endif]><![if !supportLineBreakNewLine]>  
+<![endif]>
+
+**中國案例**（NDR=335%）：
+
+<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMMAAAAcCAMAAADryftiAAAAAXNSR0IArs4c6QAAAJZQTFRFAAAAAAAAAAA6AABmADo6ADpmADqQAGa2OgAAOjoAOjqQOmaQOma2OpCQOpC2OpDbZgAAZgA6ZjoAZjo6ZmaQZma2ZpC2ZpDbZrbbZrb/kDoAkDo6kGY6kLbbkNv/tmYAtmY6tmZmtpA6tpBmtv/btv//25A625Bm27Zm27aQ29u22/+22////7Zm/7aQ/9uQ//+2///b3qK70QAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAB/UlEQVRYR+1VyULCMBBNQaUoQgWXWtHiVlApaf7/55xksjcRPHDR5JRp0nnz3iwhJK2kQFIgKZAUSAr8XQVW2dn2yOza+2MBoOdd2V09xSA2eTYo1aEx2DISFFvBD1P4QW/ajK/gdfYKl+/63kPBGMSwZ/YQ40DzkjQDeWoMIKOCaicCkd6IVLJquiUNHOoNaYfvEYHMHeHBhur9YRBjnlcxDjVUWVeM0KU21rdfheLAKn5Kc0tobYhNnINw2hUzz3uIsY2IhH3PrVKaVSLxsLBDWMUBeOye0WkOpJtPXAqfC1l8uNnDQRH2oNw4BFdLpb7nrlAcfAlQJMnBNmyP3fxCaclDzrJTkVW12eVjq+h7ItcyyQ5UIBUWYshzPVpGaukgDpAFGQdCs1pKojdkg+3jpxk+NedyJP6CgwWhPDfDN9XTPgi2gs6DMZw8FJdWHuwS17WOTRNYzURNdQcqQNapJdNFuh3jc4mHj5UquUjD6YeZmClm6dD3cmiBAsXBJpTSUH26P3HgRIDDc3gAtllJNlAaNAceynA6DGGdzuTDWHzWG1lLfmSUF1LDJXC9hzKGHOBmwHPNx3c9iL2j61y0qEAh0iB0AWPjBB8n9T5cY1F8wJHoabVhL2O4+xgKS1aM5KC9h64qRB7HAZ7DhZu+JgWSAkmBpMD/UuAbSFc/aEFF2MYAAAAASUVORK5CYII=)<![endif]><![endif]><![if !supportLineBreakNewLine]>  
+<![endif]>
+
+2年內崩潰概率：
+
+<![if !msEquation]><![if !vml]>![](data:image/png;base64,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)<![endif]><![endif]><![if !supportLineBreakNewLine]>  
+<![endif]>
+
+約93%。
+
+**穩健性檢驗**：使用其他歷史案例（阿根廷2001、俄羅斯1998）校準，得到<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAcCAMAAACEVGUKAAAAAXNSR0IArs4c6QAAAFFQTFRFAAAAAAAAAAA6AABmADqQAGa2OgAAZgAAZgA6ZrbbZrb/kDoAkDo6kGY6kNv/tmYAtmY6tmZmtv/btv//25A62////7Zm/7aQ/9uQ//+2///bme1OkAAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAASklEQVQoU2NgoCUQYGQRBZsvzinJwQe1SYoHxmIQgLHEmKAsSXYYi5+VFyImwiwE0SHBxgXRK8XNygBkCQoz8DMLMzDwM3FR3RMAWA8CshLIbsEAAAAASUVORK5CYII=)<![endif]><![endif]>係數範圍0.8-1.5，預測區間89-95%。
+
+----------
+
+**第五章　三維整合診斷：全球系統性風險評估**
+
+**5.1****　診斷矩陣的建立**
+
+整合三個維度的指標，建立**三維風險矩陣**：
+
+**經濟體**
+
+**R_A**
+
+**DMR**
+
+**NDR**
+
+**綜合判定**
+
+**崩潰概率（5****年）**
+
+美國
+
+0.40
+
+2.35
+
+80%
+
+警戒
+
+35-45%
+
+中國
+
+0.35
+
+2.80
+
+335%
+
+**臨界**
+
+**85-93%**
+
+日本
+
+0.45
+
+2.60
+
+120%
+
+危險
+
+55-65%
+
+歐元區
+
+0.48
+
+2.40
+
+95%
+
+警戒
+
+30-40%
+
+全球加權
+
+0.42
+
+2.56
+
+150%
+
+危險
+
+70-80%
+
+**判定標準**：
+
+-   穩定：三指標中≤1個紅燈（R_A<0.5, DMR>2.5, NDR>200%）
+-   警戒：2個紅燈
+-   危險：3個紅燈但NDR<300%
+-   臨界：3個紅燈且NDR>300%
+
+**5.2****　正反饋崩潰迴路的實證驗證**
+
+**假說H1**：NDR上升會加劇債務失控（掩蓋問題→延誤調整）
+
+面板VAR模型（2015-2023，20個經濟體）：
+
+<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANIAAAAcCAMAAAAjpRG0AAAAAXNSR0IArs4c6QAAAK5QTFRFAAAAAAAAAAA6AABmADo6ADpmADqQAGZmAGa2OgAAOgA6OgBmOjpmOjqQOma2OpC2OpDbZgAAZgA6ZgBmZjoAZjpmZmYAZmY6ZmZmZma2ZpBmZpC2ZpDbZrbbZrb/kDoAkDo6kJA6kLbbkNv/tmYAtmY6tmZmtpA6tpBmtraQttv/tv/btv//25A625Bm25C227Zm27aQ29u22/+22////7Zm/9uQ/9u2//+2///bkNbJRwAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAACxklEQVRYR+1Wf3vSMBBOQCbdHNAx509oJ8XpJIoOsuT7fzHvLilc2sSi0398en/wpOVy7/vej6RC9NZnoM9An4E+A30G+gz8Xxn4msnB8t9KUnKwEqL+lVI+WyCggpUc0PKppmYsghreCzXcRGIS4gGcVFdysktyCcIG8WwhAdIWiGuLsbB3+ExLoVDtk41jmxy47qOSAnDioDOHH+eSlmTmN2c7YUvcTICigme31NnfaBGOTWoqyFbbOPj8BtNcvkImKS5pSfvxFnKhL3GzPkdh1Bd7TBD9JAyq683hgj2WMCbtPRwb1Nj1KNZ3AfgYVasptU6KSyBpm0lJEtDUzOQzsafEKWJHknD5PZskFUXTPNnpF9eOBjOGbQuQ/D78t+5CDj6DB335QE2T4sIl6fOFrwq4Y8dVw03lxpGEYeNRDUYffkcR7TP5oWa4t1lKbIPHPDh0DmcFAy9X++GXculnrs2l1SHmirWTvtjAyCzYKOkM8oyVw4ZMWztsavpYOomkK0fT3CgROHDSF7eT2jHBhVfJfsroQCHDjrPF8+Mo2QIRcSIw1MHqAFtIQdxoEOloESLwYthUCfJpxaHtHnwM2MONO4UjXBw+C2vyKctShduUPIzSj+vRvYels1OYl6TBBbAfP6clZUu7fn328KbpdcQmxlvIZyQO1q4GB4di6SoW49KShAWwaygCcnVXrC96jnfdO3+54ZEjpzsNRwkqq3lhoybsTo5WOqMyBV5HSebqLXw70Cg142gOTh1vcuKGl36DS0uSWNMlXXNNEazfIyH0hW8JBPiFJBYpIYndsafFaZALv0NcDbmlr6rADeqJdkKVUpKO79Xxjv0jSZ5Lsgpd/7uNZr75Rq3oc3IalbhXPe+xxutqFs4l5Vtz7YhlCvfd7CVV0IDtgjdjdHt1e0R41VySkjzXU9LT+/QZ6DPQkYGfLaJbERroddwAAAAASUVORK5CYII=)<![endif]>  
+<![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANMAAAAcCAMAAADMZ3qKAAAAAXNSR0IArs4c6QAAALdQTFRFAAAAAAAAAAA6AABmADo6ADpmADqQAGZmAGa2OgAAOgA6OgBmOjpmOjqQOmaQOma2OpC2OpDbZgAAZgA6ZgBmZjoAZjpmZmYAZmY6ZmZmZma2ZpBmZpC2ZpDbZrbbZrb/kDoAkDo6kDpmkJA6kLbbkLb/kNv/tmYAtmY6tmZmtpA6tpBmtraQttv/tv/btv//25A625Bm25C227Zm27aQ29u22/+22////7Zm/9uQ/9u2//+2///byQ/EigAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAC6ElEQVRYR+1WbXvSQBDMgVTSWoG09d0SqjZYrQTRwpH7/7/L3bkL2SR3QJ/qF5/sByBkMzs7O3eXKOqiU6BToFOgU6BToFPgv1VgGave9J92lyuKZ9dcg36iVqZGa1wp1cONp0Y+EQh5/z7K+wsfZq56t1zYfkpePiY11BqcSYeRuVNc1aT40jFj0tWQkPHzqSGrFwnptvH3ZAmY1JIRvLxMwj2hRpSd0GSKy9cMOXvDFxFu6PhvuERWRzsZkfQEEaDSZsY6Sl5+JuGe9CkjwAybIdfKx9Ap2vCI8BEIUtUFNODYzmiptJ+R1amEmQ+81iMCK6qnzxlO8vIzkairWCk8hshBCD3lE7rQ5w+YHG78ikeP8V2RjNb6xZVcPbZG9Y9JqeePddDd6sonRTKhzpq8/EwEqj69dlIA2dqAvUcz3/R/zKbW7JjC4PNjWgJKkeymxs82h8nyb5P6zlP2xKbL+ovMblQVrzaTJmpxIe1kbatjUlKfLfTZp5GbHCvGTghHy3vBFSgUhWDWG60gAsTkWiwn8AoxkdP/FmN7swHbmpSL0MyLpL+w2w5WEqPtooRYUWV/AAu7TUT+flnxFtUhP+fUMwDIpjPp82o5OV5NJq56hVokYykSS/b7anDPlSaEOLUzc27k7TwqXqEJC2G+fg/3FE/N/O3Jwzv29tauSkRVHSxXpGkjA2lEgM+l3XIqefG6kExaqKy/mdMMwFQnfLJ9wDaBo45mUx55vAeq8VrTlsJlSmLskEDcqcGtjq2xzE2VJhS9eE9vEXY5yQx0jsJuMUheXF4yafUUzfHaUDIN0RP/MyNOp7Ocm97TkwRbioOt6kketjLjCBq1eden3/bDITwaqoQ4rqflFy9sXh22gYx9bByTYMqh+7sHi8vFT3jT7RdH9UQz2HjeQNz+w9iBjH0tlUxCOYfuV88VqX2Ldj1l5MHWodqsAqvufas6nNFmXjIJ9uSYHjJed79ToFPgWAX+AOoMYQ7CCRsoAAAAAElFTkSuQmCC)<![endif]><![endif]><![if !supportLineBreakNewLine]>  
+<![endif]>
+
+結果：
+
+**因果方向**
+
+**係數**
+
+**Granger****檢驗p****值**
+
+DMR → NDR
+
+0.45***
+
+0.003
+
+NDR → DMR
+
+0.38**
+
+0.012
+
+證實雙向因果：債務壓力→需要更大敘事掩蓋；敘事掩蓋→延誤政策調整→債務惡化。
+
+**假說H2**：流動性枯竭會同時推高NDR與DMR
+
+三變量VAR：
+
+<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKkAAAAcCAMAAAAtDG/bAAAAAXNSR0IArs4c6QAAAKtQTFRFAAAAAAAAAAA6AABmADo6ADpmADqQAGZmAGa2OgAAOgA6OgBmOjo6OjqQOmaQOma2OpC2OpDbZgAAZgA6ZgBmZjoAZjo6ZjpmZjqQZmYAZmY6ZmZmZpC2ZrbbZrb/kDoAkDo6kJA6kLbbkNv/tmYAtmY6tmZmtpA6traQttv/tv/btv//25A625Bm25C227Zm27aQ29uQ29u22/+22////7Zm/9uQ//+2///b89fwmgAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAACjElEQVRYR+1Wf5OTMBCF1jvBevbA+uPUK9Vy1bPonVoC3/+Tuft2Q9MSCnbGGWckfzAlebz3srvZNAjGMUZgjMAYgTEC/0gEvsVhxFbM6/XfcVS8uBfiIqQxuT1XpbjcFQnTXO1ANiG/9knET0Ds18BsA1gyMA/nRHMEN88lBnVGISlY4JxRpVAIzGwrZCHZrjP2zsT1Z37v0DgAAGdi+Di2VE5BDi0Ti+AfjwfZongjssXN5S6oVzwpm8jpvUPDBSxueIerd4xuwZW9ZC08+gYFTAf4eOQ0wRs2z+T7MmLrBpUgcwUv+zVcQJRzZq9lwy04lRhT0fMxnvfZ7FhnAeaW/ARFUqUJ+cVvoecVv4YLSOjFXP2SWmrBQY9AXXw606jNuogi7fl0m8vpgF/OfoeGA1ity+nX1VI23IYj+hwDLbY+t57s26yrUz5XJr51ytTElE+/hpQpAPSdmX2caxracMhwTfDSPgrWMJoPjQc51t7RZF1iymmvs6f7Mq0zXnA19jSQV0BEHqZb5+RYSwIHVLKDRJXvpVqrN7AmTuvNlxNOtUxtneborHITcJh/vrrgrr3XALUacgEJTS4lvi04O6OqoCbLhy683gXV2x8SjBhz6rRplb6YNjvXY4y+r1lNua1/kOvAagi1ODUuAK2nSvXeOITrrh39u7V0F1hkTrq6mECbus+pLdOmn/pA7hzyVL0c0BLxlRagPbfKxFeY9Jo7IbJ12u20RlvHsAXbYxXUm6FGrZNDcjO7x2bLqFpsvyNpeqI6nVYpqlCGnv7TTi11X+h1XeFN5jBNNZLQjROx02wi/VcbAsVaPZ8UeBzwX8pSD3UKJ81/qaOvNt0taSD/CBsj8P9G4DePJVlV+4xvIwAAAABJRU5ErkJggg==)<![endif]>  
+<![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKoAAAAcCAMAAADGO9TYAAAAAXNSR0IArs4c6QAAALpQTFRFAAAAAAAAAAA6AABmADo6ADpmADqQAGZmAGa2OgAAOgA6OgBmOjo6OjqQOmaQOma2OpC2OpDbZgAAZgA6ZgBmZjoAZjo6ZjpmZjqQZmYAZmY6ZmZmZmaQZpC2ZpDbZra2ZrbbZrb/kDoAkDo6kJA6kLbbkNv/tmYAtmY6tmZmtpA6tpCQtraQttvbttv/tv/btv//25A625C227Zm27aQ29uQ29u22/+22////7Zm/9uQ/9u2//+2///b3XDu/wAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAACjklEQVRYR+1Wa3fSQBDNgmhirRAKKj5LsAR8VGKrkjX5/3/LuTOzSWwSAj39oifzIWcJu/feuTO7G8/ro3egd6B3oHfg33DAvlg/lNDk+bVAJWZAoO5pjHl0Ka8pBjy8TyTn+04QpijYlqCJzbhhnX0maeeRCfGkBz19L/+E3zz0EmRxn7BnO8E+BPIXG5PaQAjvrkuHDJfNFo/3Xr7CnGyK3GL6LUMbcK4nhyTeBVJlmy3g1+o1qOvrFC/1bygVywWzTyE4QQ4p8uNHS1A1NAQe8XtuBh/e7hWnC6TK5sfwf6Ip1sgT5kjCbBp6Kc2ksbyBVAxvg/FJhtpgsgeYpwXrAKmyhfTDnv/iqjaQMyAqHw93sXQ1C0YDsGejq5OU8kKuqojoAqmwrdbp8NtqqSnWybkA2AA2uKy0qg3IF5iDxmiPegNIe2NDqdTDINKqzEaL7NnHcfs6lorK59GTslXzCJagW7iWLhId38jebgrG4z2pUqsgYmE1eLqy+UQ23LndWCOX5o8hITFFq/6cj3DgShPgbfaStYnUfPvlgNRgmX9eYI0WsgTx0jfS9owmkpCPYwvp3VIcbiJnQDn6tRZTHMnv9AzGjjSTvQ0M5+Fc1ROz0daNGX0lxuIk4ZUA8bJXP6RujMZSbZWNWy2bshjcPnfIXZlayuleQyMY6O4CTrvUFL6Jn66SBfRmLaehZJxdHHuzqEE1vGbNG4HtdDWPSKoroTutFBJXqFw4jLY9VqlMLw+/w65ms913OX5lXrurdk7Gv3fiynsBa67hJO1gh9ZRSfe3Tpe7ojOyaMBHrkqNyZ/KudC+/Lb8sqIeDOlDxIdUReuklQkyvfiyOnLVA0zbcgv00TvwvzvwB70mYmQeGR+8AAAAAElFTkSuQmCC)<![endif]>  
+<![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKkAAAAcCAMAAAAtDG/bAAAAAXNSR0IArs4c6QAAAKtQTFRFAAAAAAAAAAA6AABmADo6ADpmADqQAGZmAGa2OgAAOgA6OgBmOjo6OjqQOmaQOma2OpC2OpDbZgAAZgA6ZgBmZjoAZjo6ZjpmZjqQZmYAZmY6ZmZmZpC2ZpDbZrbbZrb/kDoAkDo6kJA6kLbbkNv/tmYAtmY6tmZmtpA6traQttv/tv/btv//25A625C227Zm27aQ29uQ29u22/+22////7Zm/9uQ//+2///bM7QNDAAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAACkElEQVRYR+1W3XqbMAyFZN1gWZeSdr/dUrKVpuvipduK4f2fbJKObGgJ4H1fLnqBLoiJraPjI1kmiiabFJgUmBSYFHiGClSrOHO07Pvr4zA0b+8AZGKyF2sdXvFvES8fdGImE8FmXzt65pQgAN6LYeIZLXdPT+Opl30D0DpPovpWtKhz+bEpA8hEZGQYbHaxw1odDGMgXp0jtqfRiVzOBbVasY7FS5KguvjEnpvP/IIJm4rKoWZoc9g+qmAYg+JRpHrDYrRodLwUDQkzTLtMCpbxDGFKllMePUaSqMnO2IpsLwlxVTCMUSZ7WmylTlo0upGNBNAnMzUZvdjTv6KyTNyny1A5IeHlWgTQfI1gmKxaZaSPi6aCdb0AxzIi+5SGcv5zc4X/RbGT7/9DlGolIz/aJ7Y/gsFpL+a7AqfY0zjgJYKjPjgEnwK7+LbUMLxdTk6/dbPPNSRnSZkOY/BKm65bZSo0iNLTyMJUHnXOGlAaqtV8p/XLJcY+3oyO9+58d/cgZc5QyrSNAdHaxmmv81dNmYKGlOmjyCDJmH/enXBzLZA6bAz1wI0qqj5IkwDTevujl6nAF4n96uq0wYjKS6l4wVItKB53U1+mSqMbWeDsihvuF3RpyTXdM+jHDGHiswebylCZ+lZ5oCqwdb429CR7jKj6+Ju1AxaYIp5WX0PjQGSXooFKxBSLySHotuGt+O4+4Oj6qV9yc41mJImpzgOvEy24Dlpf5BvgujoNYerblGLyrSodRbC2gUSxuul5Y5pWF7tfXo5ATf2ZArhd3LGQZeKwxmJiXlc3HxMjblU+w02As1+QPK2O0Ot833xLySdWESfEVLECmcpq/y0V5nSUVVv9fDkK2AQyKfAMFfgHGw1br/mboCkAAAAASUVORK5CYII=)<![endif]><![endif]><![if !supportLineBreakNewLine]>  
+<![endif]>
+
+脈衝響應函數分析顯示：
+
+-   R_A下降1個標準差 → NDR在6個月內上升22%（掩蓋經濟惡化）
+-   R_A下降1個標準差 → DMR在12個月內上升18%（償債壓力上升）
+
+證實流動性枯竭是共同驅動因素。
+
+**5.3****　時間窗口估算**
+
+基於當前趨勢（假設無政策干預），推估關鍵時間點：
+
+**2025-2026****年**：
+
+-   全球DMR可能突破2.7（當前2.56）
+-   多個經濟體R_A跌破0.35
+-   累積壓力接近臨界
+
+**2027-2028****年**：
+
+-   觸發因素可能出現（如金融市場劇烈波動、地緣衝突、債務違約連鎖）
+-   系統性崩潰概率70-85%
+
+**改革時間窗口**：2024-2026年。2026年後系統可能過於脆弱，任何改革嘗試都可能觸發崩潰。
+
+----------
+
+**第六章　基於三維診斷的政策工具箱**
+
+**6.1****　精準診斷下的政策優先級**
+
+傳統政策的盲點：未區分不同病灶，一律「撒錢」或「緊縮」。
+
+**三維診斷的政策映射**：
+
+**主要病灶**
+
+**核心指標**
+
+**優先政策工具**
+
+流動性枯竭
+
+R_A<0.4
+
+UBI、就業保障（直接注入A空間）
+
+債務失控
+
+DMR>2.5, CCRD
+
+債務重組、財富稅（降低債務負擔）
+
+敘事背離
+
+NDR>200%
+
+資訊透明化、獨立統計（恢復可信度）
+
+**6.2****　流動性激活工具（針對R_A****）**
+
+**工具6.1****：普遍基本收入（UBI****）**
+
+設計參數：
+
+-   月發放額：$1000（美國）或¥2000（中國）
+-   覆蓋：所有公民
+-   資金來源：財富稅（2-3% on 淨資產>$5M）+ 金融交易稅（0.1%）
+
+效果推估（美國）：
+
+-   年總支出：約3.5兆美元（GDP的14%）
+-   進入A空間比例：65%
+-   對R_A的提升：
+
+<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMwAAAAwCAMAAABqrGWiAAAAAXNSR0IArs4c6QAAANtQTFRFAAAAAAAAAAA6AABmADo6ADpmADqQAGaQAGa2OgAAOgA6OgBmOjoAOjo6OjpmOjqQOmaQOma2OpCQOpC2OpDbZgAAZgA6ZgBmZjoAZjo6ZjpmZjqQZmYAZmY6ZmZmZmaQZma2ZpC2ZpDbZrbbZrb/kDoAkDo6kGY6kGaQkJA6kLbbkLb/kNvbkNv/tmYAtmY6tpA6tpBmtrbbtrb/ttu2ttvbttv/tv/btv//25A625Bm25C227Zm27aQ29uQ29u22/+22//b2////7Zm/7aQ/9uQ/9u2//+2///bomnkgwAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAEWUlEQVRoQ+1ZCXfaMAy2YXTN2q1jhZXu3iDtrtLuaslGd5AF5///okmWHTtOQkKApu8Nv9eSB5KsTzeCse3ZWmBrga0FthbYWsCyQDhazhwF9KLPe8sJWkgdcC71GvPuLE0YWNfE5x5vHdLnIceTD2YKZEMtJp7utyeL6Vl072yNYGJf2ibyWq5UC0zsH85YoACEqKE6YVc+RK/IEJE3ZIEWJAYPLyV4i545DCzaM8JWRyWOngGY+OT5juMYZnuGNCVv2MrF/q71CRuDENHHt0Ck/MgF4zCwIHPtKpDC3TFcGhz6mdh1wPw6VvGTsrQYdBOUoD8KQURwAu2QFD1LMQBxj837maCoCyjogXGig9/9TBKkwECidFQc/vX2eeuNvg+Cqa/tIOQTgYn9u6fAA0GUpgc0hgHcOGLRAxmNazjxyVnYvjoZpc0HiaSOiYJ4bBlwagpA5KlwYqCaASP6O5dsrkPNogdHJgyQ/x8/uYWnPipIwGjvXTcvdt2cIVXpJAkBAB5ZnkE1yTNErW1k6FMMUFSK6mIdSOEuSG9PKNpBEWO0TAHIBSMGPVnD6CAOJYrU1/ltgXcY/mjn1dHe4YEEjH2IW0+CCV9QqZUnVZrhY6y5QCeV1WFDmus6By1oyKZEJsnn4J4UvYKqGdA+QfvqrVtI6wELuEwEaMT4Kp7+PDBy7TC7PqYCgGAu9jm/857u023jpWL77mkyxi6ggb4GT9n0DgO2zMjrLC4A3ECzHkvxnp9FBWBKWTdCEB3LAiohwD+sSQE14vKD2Wh363KOdVLg7dYshHGOllVVFV/lbdH9SvNPtHfJxONKpOsEoWXJGpHMQqg2TTqIAd2i6dJNpEATOcCOuVXONqFysUzsn6aUYPVXnYBrPMSbvH+z6i13W4glSP6jo+bpJMwSaabcZzv7cldujhp1vPZMazDhRAWADjxVirPN6VlFspygOqriI4OZp2WcqdQxLssK1Y5q+pXGH+y3bjTZYabqmfo+lzdAVjHbDdBgtuiBSQ5VtmcwzNRfkkw3oFPtK2isk7WUhiqdGhBkGgh55vbnDLRMbDMcvp6roUpvBzBjUjmz3i+nta1fjVENVbqfEBg90tyOPlN5N5UMVRROtlMkoppRVryFyjdxnd1URpI1VOl4SoYZBFN3N1W8hSoFU7ibKou01FB1TVOzfSpPzS5j8RaqFIwkyNtNlYHZ2OfFW6hKYPJ3UxvTtkRw8RaqApjC3VQzaPK3UPm6LLObagTNgi1UBc8ASf5uqhEszNlC5SphLwar7aaawYJrYLOFEk+Sbb31CKOHtSWqsptqCEtqCxV5ODvFp7z1wTzCaKhWTaRild1UQ2CcZoW/e8C38nBnhjpjUwxwMrTX7e4+91YonqfEOW4AYfUDiaQfxyP4WaexZc4KlhJHkx8z8Mq8P9KP071vn8XTr19WkNoQq/Bb4AdImSGTj2LQGvqdCfxusZ41cUOwttf+Xxb4BwBsnItwJcZ5AAAAAElFTkSuQmCC)<![endif]><![endif]><![if !supportLineBreakNewLine]>  
+<![endif]>
+
+假設當前R_A=0.4，M_total=22兆，乘數k=3：
+
+<![if !msEquation]><![if !vml]>![](data:image/png;base64,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)<![endif]><![endif]><![if !supportLineBreakNewLine]>  
+<![endif]>
+
+成功提升至健康區間。
+
+**工具6.2****：金融交易稅（針對B****空間虹吸）**
+
+設計：
+
+-   股票、債券：0.1%
+-   衍生品：0.2-0.5%（視槓桿而定）
+-   高頻交易：累進稅率
+
+效果：
+
+-   降低B空間投機活動約50-60%
+-   釋放資金約1-2兆美元流向A空間
+-   R_A提升約3-5%
+
+**6.3****　債務減壓工具（針對DMR****）**
+
+**工具6.3****：財富稅（激活C****空間）**
+
+稅率表：
+
+**淨資產範圍**
+
+**年稅率**
+
+<$5M
+
+0%
+
+$5M-$50M
+
+1%
+
+$50M-$500M
+
+2%
+
+>$500M
+
+3%
+
+效果推估（美國）：
+
+-   年稅收：約0.8-1兆美元
+-   迫使富人提高消費率或投資（降低C空間囤積）
+-   降低TFI：從180% → 約140%（釋放約8兆美元的流動性）
+
+**工具6.4****：債務重組機制**
+
+針對CCRD狀態的經濟體（中國、日本）：
+
+-   地方政府債務：延長還款期限、降低利率
+-   企業債務：債轉股、破產重整
+-   家庭債務：房貸減免、學貸豁免
+
+目標：將<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAcCAMAAAA+9+1qAAAAAXNSR0IArs4c6QAAAJNQTFRFAAAAAAAAAAA6AABmADpmADqQAGa2OgAAOgA6OgBmOjo6OjpmOjqQOmaQOma2OpC2OpDbZgAAZgA6ZgBmZjoAZjpmZmYAZmaQZpDbZra2ZrbbZrb/kDoAkDo6kGaQkNv/tmYAtmY6tpA6tpCQttvbttv/tv//25A625C227Zm29vb2////7Zm/9uQ/9u2//+2///bALP/bAAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAA0UlEQVQ4T+1Q21bCMBDcDS1FUWqhKpiWNkgpmKTJ/38dk1Q5PPXZ43GecpnLzhL9489vYChZ7N71ZE+b5doVL9O7aFNNrpCTpPhvH07TaYuGKLgZZk66H24r8HyDzaT/fJsT+brxB5BHuE30dq9jhOLkWH1HunVDXrGQZJ8Vr8hmzNCbFXhmBr7BDXpff3wpSX3S2SdNfWxdgWSzcGzh1qcaYpFrZJNBtoqT2ZJZbEM6ki4oAcNhr2E5lDI4n++33KLcEuV8FTqaxyh1Fcb7lbgCbq8S4FNNY7YAAAAASUVORK5CYII=)<![endif]><![endif]>降至<![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHsAAAAcCAMAAAB26DCvAAAAAXNSR0IArs4c6QAAALpQTFRFAAAAAAAAAAA6AABmADpmADqQAGa2OgAAOgA6OgBmOjqQOmZmOmaQOma2OpC2OpDbZgAAZgA6ZgBmZjoAZjqQZmYAZmaQZma2ZpC2ZpDbZra2ZrbbZrb/kDoAkDo6kGY6kGaQkLb/kNv/tmYAtmY6tpA6tpBmtpCQtpC2tra2trb/ttu2ttvbttv/tv//25A625Bm27Zm27a229uQ29vb2/+22//b2////7Zm/9uQ/9u2/9vb//+2///b+qPA6wAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAABsklEQVRIS+1UaVODMBBNsEC9CpZ6VKAq1LO2QD04JP//b/k2wZaZOszEL44jOxOGhH27b99uYKy3XoFegV6BXoGNAonze2L88dyVx43Ls1xfv23d4ooHlWdEujFKe5TX7k9at819t4wPL97GK93csZmz2g30YCLkjQENE6GlF0B6y7TlvjZlQFuzVg619UYAiaLaC76nSaCVu9jFxmg/rQ4r7UDcn0IxEWrq3q473pW8nqCXWF0254NnSgvdK8/KbEiAseUBPY2b0rNS28xsqkvMudHm15rzUM4q8KntKCArjplccocvIjRzGaHxUl+ZVKyw2Ppl6IOqCEd5GgnEK8xHOnJHNMNi5r/Ov8/d1Eb4wlHAPIErltotMutjMXmXEZQXICFyl+CKnpOvRWTKA1KKnuCDI7zRprS5MerWEM5fQDGLwDbahAGDoIkgvcjR49yY0ryf0MwFLPYfMjOvzol6hTuAI2ibOOscRKrr7tzEvwHWk8UTrU2YdEqlUATp1baYWzL/rQG1+ZFsuuGzerwi9glecTxYdo4OnOmuK6Br4peFFssdJh4FqgjKq7f/psAnnCI7GvbQBz0AAAAASUVORK5CYII=)<![endif]><![endif]>以下，退出CCRD。
+
+**6.4****　敘事修復工具（針對NDR****）**
+
+**工具6.5****：獨立統計機構**
+
+建立政治獨立的統計機構（如瑞典統計局模式）：
+
+-   人事任命：非政治化
+-   預算：獨立財源
+-   方法透明：公開所有統計方法與原始數據
+-   第三方驗證：允許國際機構（IMF、World Bank）交叉驗證
+
+目標：降低NDR至100%以下，恢復數據可信度。
+
+**工具6.6****：DCWI****作為官方補充指標**
+
+建議各國央行/統計局定期發布DCWI校準後的GDP：
+
+-   官方GDP：維持傳統計算方法（保持連續性）
+-   DCWI-GDP：加權整合多來源數據的校準值
+-   差異說明：若兩者差距>10%，需公開解釋原因
+
+這提供**雙軌制透明度**，降低敘事操控空間。
+
+**6.5****　政策組合的模擬效果**
+
+**情境模擬：中國2025-2027****年**
+
+假設實施政策組合：
+
+1.  UBI（¥2000/月）
+2.  房地產空置稅（3%）
+3.  地方政府債務重組
+4.  建立獨立統計機構
+
+**預期效果**：
+
+**指標**
+
+**2024****基準**
+
+**2027****預測（無政策）**
+
+**2027****預測（有政策）**
+
+R_A
+
+0.35
+
+0.30
+
+0.55
+
+DMR
+
+2.80
+
+3.20
+
+2.45
+
+NDR
+
+335%
+
+400%+
+
+120%
+
+崩潰概率
+
+85-93%
+
+>95%
+
+20-30%
+
+政策組合可將崩潰概率從90%降至25%，避免系統性危機。
+
+----------
+
+**第七章　結論與未來研究方向**
+
+**7.1****　主要發現總結**
+
+本文建立經濟系統性崩潰的三維診斷框架，整合流動性空間異質性、貨幣-債務鏡像機制、敘事-現實背離分析，得出四項核心發現：
+
+**發現1****：空間配置失效是QE****無效的根本原因**
+
+2008-2020年全球QE總額約20兆美元，但僅7-10%進入實體經濟（A空間），導致R_A持續下降。傳統理論將V視為外生常數的假設被證偽，V是內生變量，受財富分配與空間配置支配。
+
+**發現2****：債務-****流動性形成正反饋崩潰迴路**
+
+當DMR>2.5且進入CCRD狀態時，償債壓力→消費萎縮→R_A下降→實際GDP萎縮→債務負擔更重，形成自我強化的惡性循環。當前全球DMR=2.56，多數主要經濟體處於CCRD，系統性風險極高。
+
+**發現3****：敘事背離掩蓋問題延誤調整**
+
+NDR>200%時，官方數據與可觀測現實嚴重背離，決策者基於扭曲數據制定政策，加劇失衡。中國NDR達335%，處於極端失真區，敘事崩潰概率>90%（2年內）。
+
+**發現4****：三維同時紅燈預示系統性崩潰**
+
+當R_A<0.4、DMR>2.5、NDR>200%同時觸發時，系統性崩潰概率呈指數上升。當前中國三指標全紅，全球加權指標接近臨界，2025-2028年崩潰風險達75-85%。
+
+**7.2****　理論貢獻**
+
+**貢獻1****：測量體系的本體論重構**
+
+提出量子疊加態經濟統計學，揭示在資訊控制環境下經濟可同時處於矛盾狀態，測量結果取決於數據來源選擇。NDR與DCWI提供系統性的數據校準方法，超越傳統「假設數據真實」的天真預設。
+
+**貢獻2****：貨幣非中性的空間機制**
+
+建立A-B-C三空間模型，證明貨幣流向比貨幣總量更重要。同樣印鈔2兆美元，QE進入B/C空間效率僅5%，UBI進入A空間效率達210%，差距42倍。這為「印鈔悖論」提供結構性解釋。
+
+**貢獻3****：債務-****流動性聯合監測框架**
+
+整合DMR與R_A雙指標，揭示債務擴張與流動性枯竭的因果迴路。填補Minsky金融不穩定假說（關注債務）與流動性理論（關注貨幣流速）之間的理論缺口。
+
+**貢獻4****：政策工具的精準化**
+
+基於三維診斷提供差異化政策工具箱，區別於傳統「一刀切」政策。R_A低→UBI直接注入；DMR高→債務重組；NDR高→統計獨立化。針對性處方優於盲目撒錢。
+
+**7.3****　政策含義**
+
+**對央行**：
+
+-   不應只盯M2與CPI，需監測R_A、DMR、NDR
+-   QE效率極低（7%），應轉向直升機撒錢或財政協調
+-   建立自動穩定器：當R_A<0.5時自動觸發UBI
+
+**對財政部**：
+
+-   實施財富稅（2-3%）激活C空間囤積
+-   推動UBI作為常態政策而非臨時救濟
+-   債務重組優於無限期展期
+
+**對統計機構**：
+
+-   建立政治獨立性，抵抗敘事操控壓力
+-   定期發布DCWI校準數據作為官方補充
+-   公開所有方法與原始數據，接受國際驗證
+
+**對國際組織（IMF/World Bank****）**：
+
+-   Article IV諮詢納入R_A、DMR、NDR評估
+-   對高NDR經濟體（>200%）給予數據折扣
+-   建立全球層級的DCWI數據庫
+
+**7.4****　研究局限與未來方向**
+
+**局限1****：數據可得性**
+
+C空間囤積（超級富豪財富）、真實通膨（官方CPI低估）難以精確測量。未來研究可發展替代估算方法（如衛星夜光、電力消耗、大數據分析）。
+
+**局限2****：因果識別**
+
+雖然VAR模型提供Granger因果，但難以排除遺漏變量。未來可用自然實驗（如政策突變）或工具變量法強化因果推論。
+
+**局限3****：跨國可比性**
+
+各國統計方法差異、資訊透明度不同，影響R_A與NDR的跨國比較。未來需建立標準化測量協議。
+
+**未來研究方向**：
+
+1.  **即時預警系統**：發展機器學習模型，基於高頻數據（如社交媒體情緒、電商交易）即時估算R_A與NDR
+2.  **微觀基礎**：從家計調查微觀數據重建A-B-C空間分布，驗證總量模型
+3.  **最優政策組合**：用動態隨機一般均衡（DSGE）模型模擬不同政策組合的長期效果
+4.  **國際傳染機制**：分析一國崩潰如何透過貿易、金融渠道傳染至其他國家
+
+**7.5****　最終命題**
+
+本文的核心貢獻不在於提出新的「意識形態」，而在於揭示**系統邏輯**：
+
+經濟崩潰 ≠ 道德失敗（富人貪婪、政府腐敗）
+
+= 系統性失衡的正反饋崩潰（流動枯竭+債務失控+敘事背離）
+
+政策不是「懲罰富人」或「救濟窮人」的道德問題，而是**恢復系統流動性的技術必需**。就像工程師面對過熱引擎必須降溫，經濟學家面對流動枯竭必須激活。
+
+**流動即生命，凍結即死亡**——這不是修辭，而是對經濟系統本體論的嚴格陳述。
+
+當前全球經濟處於三重臨界邊緣，改革時間窗口正在關閉。唯有正視系統邏輯，採取基於三維診斷的精準干預，才能避免歷史重演的暴力解決。
+
+----------
+
+**參考文獻**
+
+Acemoglu, D., Ozdaglar, A., & Tahbaz-Salehi, A. (2012). Systemic risk and stability in financial networks. _American Economic Review_, 105(2), 564-608.
+
+Adrian, T., & Brunnermeier, M. K. (2016). CoVaR. _American Economic Review_, 106(7), 1705-1741.
+
+Akerlof, G. A., & Shiller, R. J. (2009). _Animal Spirits: How Human Psychology Drives the Economy_. Princeton University Press.
+
+Fisher, I. (1911). _The Purchasing Power of Money_. Macmillan.
+
+Friedman, M. (1956). The quantity theory of money: A restatement. In M. Friedman (Ed.), _Studies in the Quantity Theory of Money_. University of Chicago Press.
+
+McLeay, M., Radia, A., & Thomas, R. (2014). Money creation in the modern economy. _Bank of England Quarterly Bulletin_, 54(1), 14-27.
+
+Mian, A., Straub, L., & Sufi, A. (2021). Indebted demand. _Quarterly Journal of Economics_, 136(4), 2243-2307.
+
+Minsky, H. P. (1986). _Stabilizing an Unstable Economy_. Yale University Press.
+
+Shiller, R. J. (2019). _Narrative Economics: How Stories Go Viral_. Princeton University Press.
+
+Werner, R. A. (2014). Can banks individually create money out of nothing? _International Review of Financial Analysis_, 36, 1-19.
+
+----------
+
