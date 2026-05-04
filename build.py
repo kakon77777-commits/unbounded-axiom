@@ -108,7 +108,30 @@ def main() -> None:
     write_llms_txt(entries)
     write_sitemap(entries)
 
-    print(f"[ok] Build complete. {len(entries)} papers indexed → {DIST_DIR}")
+    # ===== 診斷輸出（Cloudflare log 中可見）=====
+    print(f"[diag] build.py version: AIO-v2.1 (with diagnostic)")
+    print(f"[diag] source papers/ scanned: {len(files)} files")
+    print(f"[diag] dist/papers/ produced: {len(entries)} files")
+    print(f"[diag] sample slug mapping (first 5):")
+    for i, (slug, display, _) in enumerate(entries[:5]):
+        print(f"        [{i+1}] {display!r:40s} -> {slug}")
+
+    # 掃描 dist/ 確認無非 ASCII 殘留
+    bad = []
+    for p in DIST_DIR.rglob("*"):
+        if p.is_file():
+            try:
+                p.name.encode("ascii")
+            except UnicodeEncodeError:
+                bad.append(str(p.relative_to(DIST_DIR)))
+    if bad:
+        print(f"[diag] WARNING: {len(bad)} non-ASCII filename(s) in dist/:")
+        for b in bad[:10]:
+            print(f"        ✘ {b!r}")
+    else:
+        print(f"[diag] OK: all {sum(1 for _ in DIST_DIR.rglob('*') if _.is_file())} files in dist/ are ASCII-safe")
+
+    print(f"[ok] Build complete. {len(entries)} papers indexed -> {DIST_DIR}")
 
 
 # ========== HTML / 結構化資料 ==========
