@@ -3,7 +3,7 @@
 ### A Thought Experiment on the Riemann Hypothesis 3.0 — An Exploratory Approach, the Exact Point of Its Failure, All Derivations, and the Algorithmic Value of the Derived Formulas
 
 **作者：** Neo.K（一言諾科技有限公司 / EveMissLab）
-**日期：** 2025 年 12 月（最終版）
+**日期：** 2026 年 05 月（最終版）
 **性質：** 探索性筆記與公開更正（非證明）。對 RH 而言，本文是**啟發**；其延伸公式則是**可運行的演算法**。
 
 ---
