@@ -512,6 +512,16 @@ function animate() {{
   }}
   ctx.setLineDash([]);
   
+  // 3b. Draw faint background connecting threads to center (weaver links) in one batch (O(1) draw call)
+  ctx.strokeStyle = "rgba(0, 255, 0, 0.02)";
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  nodes.forEach(n => {{
+    ctx.moveTo(cx, cy);
+    ctx.lineTo(n.x, n.y);
+  }});
+  ctx.stroke();
+  
   // 4. Update and Draw Nodes
   let activeHover = null;
   
@@ -525,16 +535,18 @@ function animate() {{
     let targetX = cx + Math.cos(n.angle) * n.orbitRadius;
     let targetY = cy + Math.sin(n.angle) * n.orbitRadius;
     
-    // Mouse gravity field
+    // Mouse gravity field (Optimized: avoid Math.sqrt unless inside 180px bounding box)
     if (mouse.active) {{
       const dx = mouse.x - targetX;
       const dy = mouse.y - targetY;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < 180) {{
-        // Mild pull toward mouse
-        const pull = (180 - dist) * 0.15;
-        targetX += (dx / dist) * pull;
-        targetY += (dy / dist) * pull;
+      const distSq = dx * dx + dy * dy;
+      if (distSq < 32400) {{ // 180px squared
+        const dist = Math.sqrt(distSq);
+        if (dist > 0) {{
+          const pull = (180 - dist) * 0.15;
+          targetX += (dx / dist) * pull;
+          targetY += (dy / dist) * pull;
+        }}
       }}
     }}
     
@@ -545,30 +557,44 @@ function animate() {{
     // Check hover state
     const mx = mouse.x - n.x;
     const my = mouse.y - n.y;
-    const mouseDist = Math.sqrt(mx * mx + my * my);
-    if (mouseDist < n.size + 6) {{
+    const mouseDistSq = mx * mx + my * my;
+    if (mouseDistSq < (n.size + 6) * (n.size + 6)) {{
       n.hovered = true;
       activeHover = n;
     }} else {{
       n.hovered = false;
     }}
     
-    // Draw connecting thread to center (weaver link)
-    ctx.strokeStyle = n.hovered ? "rgba(0, 255, 255, 0.25)" : "rgba(0, 255, 0, 0.04)";
-    ctx.lineWidth = n.hovered ? 1.5 : 1;
-    ctx.beginPath();
-    ctx.moveTo(cx, cy);
-    ctx.lineTo(n.x, n.y);
-    ctx.stroke();
+    // Draw highlighted thread to center if hovered
+    if (n.hovered) {{
+      ctx.strokeStyle = "rgba(0, 255, 255, 0.5)";
+      ctx.lineWidth = 1.8;
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.lineTo(n.x, n.y);
+      ctx.stroke();
+    }}
     
-    // Draw glowing star node
-    ctx.shadowBlur = n.hovered ? 25 : 8;
-    ctx.shadowColor = n.color;
-    ctx.fillStyle = n.hovered ? "#fff" : n.color;
-    ctx.beginPath();
-    ctx.arc(n.x, n.y, n.hovered ? n.size * 1.3 : n.size, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.shadowBlur = 0;
+    // Draw glowing star node (Optimized: avoid CPU-heavy shadowBlur by using nested circles for simulated glow)
+    if (n.hovered) {{
+      ctx.shadowBlur = 25;
+      ctx.shadowColor = "#0ff";
+      ctx.fillStyle = "#fff";
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.size * 1.4, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.shadowBlur = 0;
+    }} else {{
+      ctx.fillStyle = n.color.replace("0.85", "0.12");
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.size * 2.2, 0, Math.PI * 2);
+      ctx.fill();
+      
+      ctx.fillStyle = n.color;
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.size, 0, Math.PI * 2);
+      ctx.fill();
+    }}
     
     // Draw text label next to node
     ctx.fillStyle = n.hovered ? "#0ff" : "rgba(0, 255, 0, 0.75)";
