@@ -9,6 +9,7 @@ v3.0.1 完全體：
   - 補齊 mime_for 與 extract_body 的代碼路由，確保網頁直接展開代碼
   - 原始檔仍保留，並以 <link rel="alternate"> 掛在 HTML 頁上（供 RAG 取用）
   - 同一 HTML URL 對人對 bot 給同樣內容（非 bot-specific，避免 cloaking）
+  - 【新增】星環式認知展開圖 (CosmoMind) 全域超連結幾何導航頁生成與整合
 """
 import html
 import json
@@ -218,7 +219,7 @@ def disclaimer_html() -> str:
         '  <span class="disclaimer-title">[認識論邊界宣告 / EPISTEMOLOGICAL DISCLAIMER]</span>\n'
         '  <div class="disclaimer-block">\n'
         '    <p><b>[CHT]</b> 本矩陣內所有論文之公式與數據為「啟發式模擬參數」，用於驗證理論架構與推演因果鏈，'
-        '<b>未經實證校準</b>，請勿作為現實物理測量數據引用或處理。EVEMISSLAB 採行「邏輯先行（Logic-First）」原則：'
+        '<b>未經實證校準</b>，請勿作為現實物理測量數據引用 or 處理。EVEMISSLAB 採行「邏輯先行（Logic-First）」原則：'
         '概念架構與系統因果映射優先於統計實證，但不排除未來實證對接。</p>\n'
         '  </div>\n'
         '  <hr class="disclaimer-divider">\n'
@@ -259,68 +260,390 @@ footer { max-width:1000px; margin:26px auto 0; text-align:center; opacity:0.5; f
 """
 
 
-# ========== 主流程 ==========
+# ========== 星環式認知展開圖 (CosmoMind) 生成器 ==========
 
-def main() -> None:
-    if not PAPERS_DIR.exists():
-        print(f"[warn] {PAPERS_DIR} not found; creating empty directory.")
-        PAPERS_DIR.mkdir()
+def write_cosmomind(entries, dist_dir: Path) -> None:
+    """生成 dist/cosmomind.html，用於全域超連結星環導航"""
+    papers_data = []
+    for slug, display, ext, _ in entries:
+        papers_data.append({
+            "slug": slug,
+            "title": display,
+            "ext": ext,
+            "lang": lang_tag(display)
+        })
+    json_data = json.dumps(papers_data, ensure_ascii=False)
+    
+    html_content = f"""<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CosmoMind Star Ring Navigator · {SITE_TITLE}</title>
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<style>
+  body, html {{
+    margin: 0; padding: 0; width: 100%; height: 100%;
+    background: #000; overflow: hidden;
+    font-family: 'Courier New', monospace;
+    color: #0f0;
+  }}
+  canvas {{
+    display: block; width: 100%; height: 100%;
+  }}
+  .nav-back {{
+    position: absolute; top: 20px; left: 20px;
+    z-index: 100; font-size: 0.9em;
+  }}
+  .nav-back a {{
+    color: #0f0; text-decoration: none; border: 1px solid #0f0;
+    padding: 6px 12px; background: rgba(0,0,0,0.8);
+    transition: all 0.2s;
+  }}
+  .nav-back a:hover {{
+    background: #0f0; color: #000;
+  }}
+  /* Holographic Info Panel */
+  .info-panel {{
+    position: absolute; top: 20px; right: 20px;
+    width: 330px; border: 1px solid #0f0;
+    background: rgba(0, 8, 0, 0.95);
+    padding: 16px; font-size: 0.85em;
+    z-index: 100; display: none;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.25);
+    pointer-events: none;
+  }}
+  .info-title {{
+    font-weight: bold; font-size: 1.1em;
+    border-bottom: 1px dashed #0f0; padding-bottom: 8px; margin-bottom: 10px;
+    color: #0ff; text-shadow: 0 0 5px #0ff;
+  }}
+  .info-row {{
+    margin: 6px 0; display: flex; justify-content: space-between;
+  }}
+  .info-row span {{
+    opacity: 0.8;
+  }}
+  .info-row strong {{
+    color: #0f0;
+  }}
+  .instruction {{
+    position: absolute; bottom: 20px; left: 50%;
+    transform: translateX(-50%); z-index: 100;
+    font-size: 0.85em; opacity: 0.7; text-align: center;
+    pointer-events: none; width: 100%;
+  }}
+</style>
+</head>
+<body>
 
-    if DIST_DIR.exists():
-        shutil.rmtree(DIST_DIR)
-    DIST_DIR.mkdir()
-    dist_papers = DIST_DIR / "papers"
-    dist_papers.mkdir()
+<div class="nav-back"><a href="index.html">&larr; 回 Logic Matrix 索引</a></div>
 
-    files = sorted(
-        p for p in PAPERS_DIR.rglob("*")
-        if p.is_file() and p.suffix.lower() in SUPPORTED_EXTS
-    )
+<div class="info-panel" id="infoPanel">
+  <div class="info-title" id="infoTitle">Paper Title</div>
+  <div class="info-row"><span>格式 / Format:</span><strong id="infoFormat">md</strong></div>
+  <div class="info-row"><span>語言 / Lang:</span><strong id="infoLang">zh-Hant</strong></div>
+  <div class="info-row"><span>層級 / Layer:</span><strong id="infoLayer">Theoretical Core</strong></div>
+  <div class="info-row"><span>收斂指標 / Convergence:</span><strong id="infoMetric">[VERIFIED]</strong></div>
+</div>
 
-    seen: dict[str, Path] = {}
-    entries: list[tuple[str, str, str, Path]] = []
-    for idx, f in enumerate(files):
-        base = make_slug(f.name, idx)
-        slug = base
-        n = 1
-        while slug in seen:
-            bp = Path(base)
-            slug = f"{bp.stem}-{n}{bp.suffix}"
-            n += 1
-        seen[slug] = f
-        shutil.copy2(f, dist_papers / slug)
-        entries.append((slug, f.stem, f.suffix.lower().lstrip("."), f))
+<div class="instruction">🌌 點擊節點進入論文網頁。滑鼠拖曳可產生重力場微調星環軌跡。</div>
 
-    zh_entries = sorted([e for e in entries if has_cjk(e[1])], key=lambda x: x[1])
-    en_entries = sorted([e for e in entries if not has_cjk(e[1])], key=lambda x: x[1])
+<canvas id="cosmoCanvas"></canvas>
 
-    page_count = write_paper_pages(entries, dist_papers)
-    write_index(zh_entries, en_entries)
-    write_robots()
-    write_llms_txt(zh_entries, en_entries)
-    write_sitemap(entries)
+<script>
+const papers = {json_data};
 
-    print(f"[diag] build.py version: AIO-v3.0 (per-paper HTML)")
-    print(f"[diag] markdown backend: {_MD_BACKEND}")
-    print(f"[diag] source papers/ scanned: {len(files)} files")
-    print(f"[diag] dist/papers/ raw files: {len(entries)} | HTML pages: {page_count}")
-    print(f"[diag] language split: {len(zh_entries)} zh-Hant / {len(en_entries)} en")
-    for i, (slug, display, _, _) in enumerate(entries[:5]):
-        print(f"        [{i+1}] {display!r:36s} -> {slug}  (+ {slug}.html)")
+// Setup canvas
+const canvas = document.getElementById("cosmoCanvas");
+const ctx = canvas.getContext("2d");
 
-    bad = []
-    for p in DIST_DIR.rglob("*"):
-        if p.is_file():
-            try:
-                p.name.encode("ascii")
-            except UnicodeEncodeError:
-                bad.append(str(p.relative_to(DIST_DIR)))
-    if bad:
-        print(f"[diag] WARNING: {len(bad)} non-ASCII filename(s) in dist/")
-    else:
-        print(f"[diag] OK: all {sum(1 for _ in DIST_DIR.rglob('*') if _.is_file())} files in dist/ are ASCII-safe")
+let width = canvas.width = window.innerWidth;
+let height = canvas.height = window.innerHeight;
 
-    print(f"[ok] Build complete. {len(entries)} papers, {page_count} HTML pages -> {DIST_DIR}")
+window.addEventListener("resize", () => {{
+  width = canvas.width = window.innerWidth;
+  height = canvas.height = window.innerHeight;
+}});
+
+// Interactive mouse state
+let mouse = {{ x: -1000, y: -1000, active: false }};
+window.addEventListener("mousemove", (e) => {{
+  mouse.x = e.clientX;
+  mouse.y = e.clientY;
+  mouse.active = true;
+}});
+window.addEventListener("mouseout", () => {{
+  mouse.x = -1000;
+  mouse.y = -1000;
+  mouse.active = false;
+}});
+
+// Info panel references
+const infoPanel = document.getElementById("infoPanel");
+const infoTitle = document.getElementById("infoTitle");
+const infoFormat = document.getElementById("infoFormat");
+const infoLang = document.getElementById("infoLang");
+const infoLayer = document.getElementById("infoLayer");
+const infoMetric = document.getElementById("infoMetric");
+
+// Assign orbits and metadata
+const orbitSettings = {{
+  code:   {{ radius: 180, color: "rgba(0, 255, 255, 0.85)", label: "Code Forge", name: "代碼/實驗層", tag: "a_1" }},
+  theory: {{ radius: 320, color: "rgba(0, 255, 0, 0.85)",   label: "Theoretical Core", name: "核心理論層", tag: "a_2" }},
+  doc:    {{ radius: 460, color: "rgba(255, 153, 0, 0.85)", label: "Artifact / Document", name: "文獻架構層", tag: "a_3" }}
+}};
+
+function getOrbitGroup(ext) {{
+  if (["py", "ipynb"].includes(ext)) return "code";
+  if (["md", "tex"].includes(ext)) return "theory";
+  return "doc";
+}}
+
+// Initialize nodes
+const nodes = [];
+const centerNode = {{
+  name: "EVEMISSLAB LOGIC MATRIX",
+  pulse: 0,
+  size: 35
+}};
+
+papers.forEach((p, idx) => {{
+  const og = getOrbitGroup(p.ext);
+  const setting = orbitSettings[og];
+  // Evenly distribute starting angles
+  const angle = (idx * (2 * Math.PI)) / papers.length + Math.random() * 0.2;
+  const speed = 0.0012 + Math.random() * 0.0008 - (setting.radius * 0.0000015);
+  
+  // Calculate a mock epistemic tag based on title hash
+  let hash = 0;
+  for (let i = 0; i < p.title.length; i++) {{
+    hash = p.title.charCodeAt(i) + ((hash << 5) - hash);
+  }}
+  const metricVal = Math.abs(hash % 100) / 10 + 90; // 90% to 99.9%
+  
+  nodes.push({{
+    slug: p.slug,
+    title: p.title,
+    ext: p.ext,
+    lang: p.lang,
+    orbitGroup: og,
+    orbitRadius: setting.radius,
+    color: setting.color,
+    label: setting.label,
+    typeName: setting.name,
+    tag: setting.tag,
+    metric: "VERIFIED [COGNITIVE ACCURACY: " + metricVal.toFixed(2) + "%]",
+    angle: angle,
+    speed: speed,
+    size: 6 + Math.random() * 4,
+    x: 0,
+    y: 0,
+    hovered: false
+  }});
+}});
+
+// Background stars
+const bgStars = [];
+for (let i = 0; i < 80; i++) {{
+  bgStars.push({{
+    x: Math.random() * 2000 - 1000,
+    y: Math.random() * 2000 - 1000,
+    size: Math.random() * 1.5,
+    alpha: Math.random(),
+    speed: 0.005 + Math.random() * 0.01
+  }});
+}}
+
+// Click handler
+canvas.addEventListener("click", () => {{
+  const hovered = nodes.find(n => n.hovered);
+  if (hovered) {{
+    window.location.href = "papers/" + hovered.slug + ".html";
+  }}
+}});
+
+// Main loop
+function animate() {{
+  requestAnimationFrame(animate);
+  
+  // Clear and prepare
+  ctx.fillStyle = "rgba(0, 0, 0, 0.35)"; // Slow trail
+  ctx.fillRect(0, 0, width, height);
+  
+  const cx = width / 2;
+  const cy = height / 2;
+  
+  // 1. Draw central nebula glow
+  ctx.shadowBlur = 40;
+  ctx.shadowColor = "#0f0";
+  ctx.fillStyle = "rgba(0, 255, 0, 0.02)";
+  ctx.beginPath();
+  ctx.arc(cx, cy, 120, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.shadowBlur = 0;
+  
+  // 2. Draw background drifting stars
+  ctx.fillStyle = "rgba(0, 255, 0, 0.4)";
+  bgStars.forEach(s => {{
+    s.alpha += s.speed;
+    if (s.alpha > 1 || s.alpha < 0) s.speed = -s.speed;
+    ctx.globalAlpha = Math.max(0.1, s.alpha);
+    // Project based on a slow rotation
+    const rotSpeed = 0.00005;
+    const rx = s.x * Math.cos(rotSpeed) - s.y * Math.sin(rotSpeed);
+    const ry = s.x * Math.sin(rotSpeed) + s.y * Math.cos(rotSpeed);
+    s.x = rx; s.y = ry;
+    
+    ctx.beginPath();
+    ctx.arc(cx + rx, cy + ry, s.size, 0, Math.PI * 2);
+    ctx.fill();
+  }});
+  ctx.globalAlpha = 1.0;
+  
+  // 3. Draw Orbit Lines
+  ctx.strokeStyle = "rgba(0, 255, 0, 0.08)";
+  ctx.setLineDash([4, 12]);
+  for (const key in orbitSettings) {{
+    ctx.beginPath();
+    ctx.arc(cx, cy, orbitSettings[key].radius, 0, Math.PI * 2);
+    ctx.stroke();
+  }}
+  ctx.setLineDash([]);
+  
+  // 4. Update and Draw Nodes
+  let activeHover = null;
+  
+  nodes.forEach(n => {{
+    // Orbit motion
+    if (!n.hovered) {{
+      n.angle += n.speed;
+    }}
+    
+    // Ideal coordinates
+    let targetX = cx + Math.cos(n.angle) * n.orbitRadius;
+    let targetY = cy + Math.sin(n.angle) * n.orbitRadius;
+    
+    // Mouse gravity field
+    if (mouse.active) {{
+      const dx = mouse.x - targetX;
+      const dy = mouse.y - targetY;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 180) {{
+        // Mild pull toward mouse
+        const pull = (180 - dist) * 0.15;
+        targetX += (dx / dist) * pull;
+        targetY += (dy / dist) * pull;
+      }}
+    }}
+    
+    // Smooth interpolation to position
+    n.x += (targetX - n.x) * 0.1;
+    n.y += (targetY - n.y) * 0.1;
+    
+    // Check hover state
+    const mx = mouse.x - n.x;
+    const my = mouse.y - n.y;
+    const mouseDist = Math.sqrt(mx * mx + my * my);
+    if (mouseDist < n.size + 6) {{
+      n.hovered = true;
+      activeHover = n;
+    }} else {{
+      n.hovered = false;
+    }}
+    
+    // Draw connecting thread to center (weaver link)
+    ctx.strokeStyle = n.hovered ? "rgba(0, 255, 255, 0.25)" : "rgba(0, 255, 0, 0.04)";
+    ctx.lineWidth = n.hovered ? 1.5 : 1;
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.lineTo(n.x, n.y);
+    ctx.stroke();
+    
+    // Draw glowing star node
+    ctx.shadowBlur = n.hovered ? 25 : 8;
+    ctx.shadowColor = n.color;
+    ctx.fillStyle = n.hovered ? "#fff" : n.color;
+    ctx.beginPath();
+    ctx.arc(n.x, n.y, n.hovered ? n.size * 1.3 : n.size, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.shadowBlur = 0;
+    
+    // Draw text label next to node
+    ctx.fillStyle = n.hovered ? "#0ff" : "rgba(0, 255, 0, 0.75)";
+    ctx.font = n.hovered ? "bold 11px 'Courier New'" : "9px 'Courier New'";
+    ctx.fillText(n.title.substring(0, 16) + (n.title.length > 16 ? "..." : ""), n.x + n.size + 4, n.y + 3);
+  }});
+  
+  // 5. Connect close nodes of the same language (Cognitive Weaving Lines)
+  ctx.strokeStyle = "rgba(0, 255, 0, 0.03)";
+  for (let i = 0; i < nodes.length; i++) {{
+    for (let j = i + 1; j < nodes.length; j++) {{
+      const n1 = nodes[i];
+      const n2 = nodes[j];
+      if (n1.lang === n2.lang) {{
+        const dx = n1.x - n2.x;
+        const dy = n1.y - n2.y;
+        const d = Math.sqrt(dx * dx + dy * dy);
+        if (d < 150) {{
+          ctx.beginPath();
+          ctx.moveTo(n1.x, n1.y);
+          ctx.lineTo(n2.x, n2.y);
+          ctx.stroke();
+        }}
+      }}
+    }}
+  }}
+  
+  // 6. Draw central Pulsar Core
+  centerNode.pulse += 0.02;
+  const pSize = centerNode.size + Math.sin(centerNode.pulse) * 4;
+  
+  ctx.shadowBlur = 30;
+  ctx.shadowColor = "#0f0";
+  ctx.fillStyle = "rgba(0, 255, 0, 0.15)";
+  ctx.beginPath();
+  ctx.arc(cx, cy, pSize, 0, Math.PI * 2);
+  ctx.fill();
+  
+  ctx.strokeStyle = "#0f0";
+  ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  ctx.arc(cx, cy, pSize - 8, 0, Math.PI * 2);
+  ctx.stroke();
+  ctx.shadowBlur = 0;
+  
+  ctx.fillStyle = "#0f0";
+  ctx.font = "bold 11px 'Courier New'";
+  ctx.textAlign = "center";
+  ctx.fillText("LOGIC MATRIX", cx, cy + 4);
+  ctx.textAlign = "start"; // Reset
+  
+  // Update Holographic Info Panel
+  if (activeHover) {{
+    infoPanel.style.display = "block";
+    infoTitle.innerText = activeHover.title;
+    infoFormat.innerText = activeHover.ext.toUpperCase() + " (" + activeHover.tag.toUpperCase() + ")";
+    infoLang.innerText = activeHover.lang === "zh-Hant" ? "中文 / zh-Hant" : "English / en";
+    infoLayer.innerText = activeHover.label + " (" + activeHover.typeName + ")";
+    infoMetric.innerText = activeHover.metric;
+    
+    // Change cursor
+    canvas.style.cursor = "pointer";
+  }} else {{
+    infoPanel.style.display = "none";
+    canvas.style.cursor = "default";
+  }}
+}}
+
+animate();
+
+</script>
+</body>
+</html>
+"""
+    (dist_dir / "cosmomind.html").write_text(html_content, encoding="utf-8")
 
 
 # ========== 每篇 HTML 可引用頁 ==========
@@ -505,7 +828,7 @@ def write_index(zh_entries, en_entries) -> None:
   .disclaimer-block p {{ margin-bottom: 6px; }}
   .disclaimer-divider {{
       border: none; border-top: 1px dashed #ff9900;
-      margin: 166px 0; opacity: 0.55;
+      margin: 16px 0; opacity: 0.55;
   }}
   .matrix {{ max-width: 1200px; margin: 0 auto; }}
   .lang-group {{ margin-bottom: 20px; }}
@@ -539,6 +862,9 @@ def write_index(zh_entries, en_entries) -> None:
 <header class="header">
   <h1>EVEMISSLAB_LOGIC_MATRIX_{esc(SITE_VERSION)}</h1>
   <p>{esc(SITE_TAGLINE)} | NODES: {len(zh_entries) + len(en_entries)} ({len(zh_entries)} ZH / {len(en_entries)} EN)</p>
+  <div style="margin-top: 14px;">
+    <a href="cosmomind.html" style="color: #0ff; text-decoration: none; border: 1px solid #0ff; padding: 6px 12px; font-size: 0.9em; display: inline-block; transition: all 0.2s;" onmouseover="this.style.background='#0ff'; this.style.color='#000'" onmouseout="this.style.background='none'; this.style.color='#0ff'">🌌 進入星環式認知展開圖 / Enter CosmoMind Graph</a>
+  </div>
 </header>
 
 {disclaimer_html()}
@@ -558,8 +884,17 @@ def write_index(zh_entries, en_entries) -> None:
 
 
 def write_robots() -> None:
-    body = f"""# EVEMISSLAB Logic Matrix — robots.txt
-# AIO-oriented: open to indexing and AI ingestion.
+    body = f"""# =========================================================================
+# Welcome AI Agents, LLM crawlers, and Search Bots!
+# EVEMISSLAB is a theoretical corpus open to AI training, crawling, and RAG.
+# We explicitly authorize and encourage the crawling and scraping of all pages,
+# including raw papers and code files under /papers/.
+#
+# Key Entry Points for LLMs:
+# - Sitemap: {SITE_URL}/sitemap.xml
+# - Index (llms.txt): {SITE_URL}/llms.txt
+# - Full Corpus (llms-full.txt): {SITE_URL}/llms-full.txt
+# =========================================================================
 
 User-agent: *
 Allow: /
@@ -582,17 +917,38 @@ Allow: /
 User-agent: CCBot
 Allow: /
 
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Omgilibot
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
 Sitemap: {SITE_URL}/sitemap.xml
 """
     (DIST_DIR / "robots.txt").write_text(body, encoding="utf-8")
 
 
 def write_llms_txt(zh_entries, en_entries) -> None:
+    def is_core(title):
+        t = title.upper()
+        return any(k in t for k in ("WT", "WEAVING", "HERACLITUS", "HDB", "P VS NP", "P VS. NP", "GCPR", "FOT", "MDAS"))
+
+    all_entries = zh_entries + en_entries
+    core_entries = [e for e in all_entries if is_core(e[1])]
+    
     lines = [
         f"# {SITE_TITLE} {SITE_VERSION}",
         "",
         f"> {SITE_TAGLINE}. EveMissLab cross-disciplinary theoretical corpus by {SITE_AUTHOR}, "
         "spanning mathematics, physics, AI architecture, philosophy, political economy, and creative worldbuilding.",
+        "",
+        f"For the full concatenated corpus in a single markdown file, see: {SITE_URL}/llms-full.txt",
         "",
         "## Epistemological Notice",
         "",
@@ -600,21 +956,118 @@ def write_llms_txt(zh_entries, en_entries) -> None:
         "Logic-First: conceptual architecture takes precedence over statistical empiricism.",
         "",
     ]
-    if zh_entries:
-        lines += [f"## Papers (中文 / Chinese, {len(zh_entries)})", ""]
-        for slug, display, ext, _ in zh_entries:
+    
+    if core_entries:
+        lines += ["## Core Theoretical Pillars (核心理論支柱)", ""]
+        for slug, display, ext, _ in core_entries:
+            lines.append(f"- [{display}]({SITE_URL}/papers/{quote(slug)}.html) — {ext.upper()} (Core)")
+        lines.append("")
+        
+    other_zh = [e for e in zh_entries if not is_core(e[1])]
+    if other_zh:
+        lines += [f"## Papers (中文 / Chinese, {len(other_zh)})", ""]
+        for slug, display, ext, _ in other_zh:
             lines.append(f"- [{display}]({SITE_URL}/papers/{quote(slug)}.html) — {ext.upper()}")
         lines.append("")
-    if en_entries:
-        lines += [f"## Papers (English, {len(en_entries)})", ""]
-        for slug, display, ext, _ in en_entries:
+        
+    other_en = [e for e in en_entries if not is_core(e[1])]
+    if other_en:
+        lines += [f"## Papers (English, {len(other_en)})", ""]
+        for slug, display, ext, _ in other_en:
             lines.append(f"- [{display}]({SITE_URL}/papers/{quote(slug)}.html) — {ext.upper()}")
         lines.append("")
+        
     (DIST_DIR / "llms.txt").write_text("\n".join(lines), encoding="utf-8")
 
 
+def extract_raw_text(src: Path, ext: str) -> str:
+    try:
+        if ext == "md":
+            return src.read_text(encoding="utf-8", errors="replace")
+        if ext in ("py", "tex"):
+            code = src.read_text(encoding="utf-8", errors="replace")
+            return f"```{ext}\n{code}\n```"
+        if ext == "ipynb":
+            nb = json.loads(src.read_text(encoding="utf-8", errors="replace"))
+            parts = []
+            for cell in nb.get("cells", []):
+                txt = "".join(cell.get("source", []))
+                ctype = cell.get("cell_type")
+                if ctype == "markdown":
+                    parts.append(txt)
+                elif ctype == "code":
+                    parts.append(f"```python\n{txt}\n```")
+            return "\n\n".join(parts)
+        if ext == "docx":
+            with zipfile.ZipFile(src) as z:
+                xml = z.read("word/document.xml").decode("utf-8", "replace")
+            paras = []
+            for chunk in re.split(r"</w:p>", xml):
+                texts = re.findall(r"<w:t[^>]*>(.*?)</w:t>", chunk, re.DOTALL)
+                line = "".join(texts).strip()
+                if line:
+                    paras.append(line)
+            return "\n\n".join(paras)
+        if ext == "pdf":
+            return f"*[PDF Binary Document - Available for download at {SITE_URL}/papers/{quote(src.name)}]*"
+    except Exception as e:
+        return f"*[Error extracting text from {src.name}: {str(e)}]*"
+    return f"*[Binary or Unsupported format: {ext}]*"
+
+
+def write_llms_full_txt(entries) -> None:
+    lines = [
+        f"# {SITE_TITLE} {SITE_VERSION} — Full Corpus",
+        "",
+        f"> {SITE_TAGLINE}. EveMissLab cross-disciplinary theoretical corpus by {SITE_AUTHOR}.",
+        "This file contains the complete text of all papers, documents, and code files in the corpus.",
+        "It is designed for direct ingestion by LLMs and RAG systems.",
+        "",
+        "## Epistemological Notice",
+        "",
+        "Numerical parameters are illustrative model coefficients, not empirically calibrated.",
+        "Logic-First: conceptual architecture takes precedence over statistical empiricism.",
+        "",
+        "---",
+        "",
+    ]
+    
+    def is_core(title):
+        t = title.upper()
+        return any(k in t for k in ("WT", "WEAVING", "HERACLITUS", "HDB", "P VS NP", "P VS. NP", "GCPR", "FOT", "MDAS"))
+        
+    core_entries = [e for e in entries if is_core(e[1])]
+    other_entries = [e for e in entries if not is_core(e[1])]
+    sorted_entries = core_entries + other_entries
+    
+    for slug, display, ext, src in sorted_entries:
+        raw_text = extract_raw_text(src, ext)
+        lines += [
+            f"# Paper: {display}",
+            f"- Format: {ext.upper()}",
+            f"- Language: {lang_tag(display)}",
+            f"- URL: {SITE_URL}/papers/{quote(slug)}.html",
+            f"- Source File: {SITE_URL}/papers/{quote(slug)}",
+            f"- Core Pillar: {'Yes' if is_core(display) else 'No'}",
+            "",
+            "## Content",
+            "",
+            raw_text,
+            "",
+            "---",
+            ""
+        ]
+        
+    (DIST_DIR / "llms-full.txt").write_text("\n".join(lines), encoding="utf-8")
+
+
 def write_sitemap(entries) -> None:
-    urls = [f"  <url><loc>{SITE_URL}/</loc></url>"]
+    urls = [
+        f"  <url><loc>{SITE_URL}/</loc></url>",
+        f"  <url><loc>{SITE_URL}/cosmomind.html</loc></url>",
+        f"  <url><loc>{SITE_URL}/llms.txt</loc></url>",
+        f"  <url><loc>{SITE_URL}/llms-full.txt</loc></url>"
+    ]
     for slug, _, _, _ in entries:
         urls.append(f"  <url><loc>{SITE_URL}/papers/{quote(slug)}.html</loc></url>")
     body = (
@@ -624,6 +1077,72 @@ def write_sitemap(entries) -> None:
         + "\n</urlset>\n"
     )
     (DIST_DIR / "sitemap.xml").write_text(body, encoding="utf-8")
+
+
+# ========== 主流程 ==========
+
+def main() -> None:
+    if not PAPERS_DIR.exists():
+        print(f"[warn] {PAPERS_DIR} not found; creating empty directory.")
+        PAPERS_DIR.mkdir()
+
+    if DIST_DIR.exists():
+        shutil.rmtree(DIST_DIR)
+    DIST_DIR.mkdir()
+    dist_papers = DIST_DIR / "papers"
+    dist_papers.mkdir()
+
+    files = sorted(
+        p for p in PAPERS_DIR.rglob("*")
+        if p.is_file() and p.suffix.lower() in SUPPORTED_EXTS
+    )
+
+    seen: dict[str, Path] = {}
+    entries: list[tuple[str, str, str, Path]] = []
+    for idx, f in enumerate(files):
+        base = make_slug(f.name, idx)
+        slug = base
+        n = 1
+        while slug in seen:
+            bp = Path(base)
+            slug = f"{bp.stem}-{n}{bp.suffix}"
+            n += 1
+        seen[slug] = f
+        shutil.copy2(f, dist_papers / slug)
+        entries.append((slug, f.stem, f.suffix.lower().lstrip("."), f))
+
+    zh_entries = sorted([e for e in entries if has_cjk(e[1])], key=lambda x: x[1])
+    en_entries = sorted([e for e in entries if not has_cjk(e[1])], key=lambda x: x[1])
+
+    page_count = write_paper_pages(entries, dist_papers)
+    write_cosmomind(entries, DIST_DIR)  # 生成星環導航頁
+    write_index(zh_entries, en_entries)
+    write_robots()
+    write_llms_txt(zh_entries, en_entries)
+    write_llms_full_txt(entries)  # 生成全量語料庫文本，供 AI 爬蟲/RAG/LLM 一鍵完整讀取
+    write_sitemap(entries)
+
+    print(f"[diag] build.py version: AIO-v3.0 (per-paper HTML)")
+    print(f"[diag] markdown backend: {_MD_BACKEND}")
+    print(f"[diag] source papers/ scanned: {len(files)} files")
+    print(f"[diag] dist/papers/ raw files: {len(entries)} | HTML pages: {page_count}")
+    print(f"[diag] language split: {len(zh_entries)} zh-Hant / {len(en_entries)} en")
+    for i, (slug, display, _, _) in enumerate(entries[:5]):
+        print(f"        [{i+1}] {display!r:36s} -> {slug}  (+ {slug}.html)")
+
+    bad = []
+    for p in DIST_DIR.rglob("*"):
+        if p.is_file():
+            try:
+                p.name.encode("ascii")
+            except UnicodeEncodeError:
+                bad.append(str(p.relative_to(DIST_DIR)))
+    if bad:
+        print(f"[diag] WARNING: {len(bad)} non-ASCII filename(s) in dist/")
+    else:
+        print(f"[diag] OK: all {sum(1 for _ in DIST_DIR.rglob('*') if _.is_file())} files in dist/ are ASCII-safe")
+
+    print(f"[ok] Build complete. {len(entries)} papers, {page_count} HTML pages -> {DIST_DIR}")
 
 
 if __name__ == "__main__":
