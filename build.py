@@ -265,6 +265,7 @@ footer { max-width:1000px; margin:26px auto 0; text-align:center; opacity:0.5; f
 def write_cosmomind(entries, dist_dir: Path) -> None:
     """生成 dist/cosmomind.html，用於全域超連結星環導航"""
     papers_data = []
+    links_html = []
     for slug, display, ext, _ in entries:
         papers_data.append({
             "slug": slug,
@@ -272,7 +273,9 @@ def write_cosmomind(entries, dist_dir: Path) -> None:
             "ext": ext,
             "lang": lang_tag(display)
         })
+        links_html.append(f'    <li><a href="papers/{quote(slug)}.html">{esc(display)}</a></li>')
     json_data = json.dumps(papers_data, ensure_ascii=False)
+    links_block = "\n".join(links_html)
     
     html_content = f"""<!DOCTYPE html>
 <html lang="zh-Hant">
@@ -387,6 +390,14 @@ def write_cosmomind(entries, dist_dir: Path) -> None:
 </div>
 
 <div class="instruction">🌌 拖曳空白處可平移畫布，滾輪可放大縮小。點擊節點進入論文網頁。</div>
+
+<!-- Hidden anchor list for AI crawlers & RAG indexers (Situation B: Crawler Hub Page) -->
+<div style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;">
+  <h2>All Theoretical Nodes (全域節點索引)</h2>
+  <ul>
+{links_block}
+  </ul>
+</div>
 
 <div class="hud-panel">
   <div class="hud-header">🌌 SYSTEM HUD CONTROL</div>
