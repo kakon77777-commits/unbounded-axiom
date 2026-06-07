@@ -252,8 +252,9 @@ article pre { background:rgba(0,255,0,0.06); border:1px solid #0f0; padding:12px
 article code { background:rgba(0,255,0,0.08); padding:1px 5px; }
 article pre code { background:none; padding:0; }
 article a { color:#0ff; }
-.nav { max-width:1000px; margin:0 auto 16px; font-size:0.9em; }
+.nav { max-width:1000px; margin:0 auto 16px; font-size:0.9em; display:flex; justify-content:space-between; }
 .nav a { color:#0f0; text-decoration:none; }
+.nav a:hover { color:#0ff; }
 .altbar { max-width:1000px; margin:14px auto 0; font-size:0.85em; opacity:0.7; }
 .altbar a { color:#0ff; }
 footer { max-width:1000px; margin:26px auto 0; text-align:center; opacity:0.5; font-size:0.82em; }
@@ -881,7 +882,10 @@ def write_paper_pages(entries, dist_papers: Path) -> int:
             f'<link rel="canonical" href="{page_url}">\n'
             f'<script type="application+json">\n{jsonld}\n</script>\n'
             f"<style>{PAGE_CSS}</style>\n</head>\n<body>\n"
-            '<div class="nav"><a href="../index.html">&larr; 回 Logic Matrix 索引</a></div>\n'
+            '<div class="nav">'
+            '<a href="../index.html">&larr; 回 Logic Matrix 索引</a>'
+            '<a href="../cosmomind.html">→ 星環式認知展開圖</a>'
+            '</div>\n'
             f'<header class="header"><h1>{esc(display)}</h1>'
             f'<p>{esc(SITE_TITLE)} · {esc(SITE_ORG)}</p></header>\n'
             f"{disclaimer_html()}\n"
