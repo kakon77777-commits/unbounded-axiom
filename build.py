@@ -54,7 +54,7 @@ def esc(s: str) -> str:
 
 
 def json_safe(s: str) -> str:
-    """產生可安全嵌入 <script> 的 JSON 字串字面值。"""
+    """產生可 safe 嵌入 <script> 的 JSON 字串字面值。"""
     return json.dumps(s, ensure_ascii=False).replace("</", "<\\/")
 
 
@@ -288,9 +288,14 @@ def write_cosmomind(entries, dist_dir: Path) -> None:
     background: #000; overflow: hidden;
     font-family: 'Courier New', monospace;
     color: #0f0;
+    user-select: none;
   }}
   canvas {{
     display: block; width: 100%; height: 100%;
+    cursor: grab;
+  }}
+  canvas:active {{
+    cursor: grabbing;
   }}
   .nav-back {{
     position: absolute; top: 20px; left: 20px;
@@ -348,7 +353,7 @@ def write_cosmomind(entries, dist_dir: Path) -> None:
   <div class="info-row"><span>收斂指標 / Convergence:</span><strong id="infoMetric">[VERIFIED]</strong></div>
 </div>
 
-<div class="instruction">🌌 點擊節點進入論文網頁。滑鼠拖曳可產生重力場微調星環軌跡。</div>
+<div class="instruction">🌌 拖曳空白處可平移畫布，滾輪可放大縮小。點擊節點進入論文網頁。</div>
 
 <canvas id="cosmoCanvas"></canvas>
 
@@ -367,18 +372,89 @@ window.addEventListener("resize", () => {{
   height = canvas.height = window.innerHeight;
 }});
 
+// Pan & Zoom Viewport state
+let scale = 1.0;
+let panX = 0;
+let panY = 0;
+let isDragging = false;
+let startX = 0;
+let startY = 0;
+
 // Interactive mouse state
 let mouse = {{ x: -1000, y: -1000, active: false }};
+
+// Event Listeners for dragging and zooming
+canvas.addEventListener("mousedown", (e) => {{
+  const hovered = nodes.find(n => n.hovered);
+  if (!hovered) {{
+    isDragging = true;
+    startX = e.clientX - panX;
+    startY = e.clientY - panY;
+  }}
+}});
+
 window.addEventListener("mousemove", (e) => {{
+  if (isDragging) {{
+    panX = e.clientX - startX;
+    panY = e.clientY - startY;
+  }}
   mouse.x = e.clientX;
   mouse.y = e.clientY;
   mouse.active = true;
 }});
-window.addEventListener("mouseout", () => {{
-  mouse.x = -1000;
-  mouse.y = -1000;
-  mouse.active = false;
+
+window.addEventListener("mouseup", () => {{
+  isDragging = false;
 }});
+
+// Touch support for mobile dragging
+canvas.addEventListener("touchstart", (e) => {{
+  if (e.touches.length === 1) {{
+    const touch = e.touches[0];
+    const hovered = nodes.find(n => n.hovered);
+    if (!hovered) {{
+      isDragging = true;
+      startX = touch.clientX - panX;
+      startY = touch.clientY - panY;
+    }}
+  }}
+}});
+
+canvas.addEventListener("touchmove", (e) => {{
+  if (e.touches.length === 1 && isDragging) {{
+    const touch = e.touches[0];
+    panX = touch.clientX - startX;
+    panY = touch.clientY - startY;
+  }}
+}});
+
+canvas.addEventListener("touchend", () => {{
+  isDragging = false;
+}});
+
+// Zoom with mouse wheel (Zoom to cursor)
+canvas.addEventListener("wheel", (e) => {{
+  e.preventDefault();
+  const zoomIntensity = 0.05;
+  const mouseX = e.clientX;
+  const mouseY = e.clientY;
+  
+  const wheel = e.deltaY < 0 ? 1 : -1;
+  const zoomFactor = Math.exp(wheel * zoomIntensity);
+  
+  const cx = width / 2;
+  const cy = height / 2;
+  
+  // Calculate cursor offset in universe space
+  const universeX = (mouseX - cx - panX) / scale;
+  const universeY = (mouseY - cy - panY) / scale;
+  
+  scale = Math.min(Math.max(scale * zoomFactor, 0.1), 5.0);
+  
+  // Back-calculate new pan values
+  panX = mouseX - cx - universeX * scale;
+  panY = mouseY - cy - universeY * scale;
+}}, {{ passive: false }});
 
 // Info panel references
 const infoPanel = document.getElementById("infoPanel");
@@ -388,7 +464,7 @@ const infoLang = document.getElementById("infoLang");
 const infoLayer = document.getElementById("infoLayer");
 const infoMetric = document.getElementById("infoMetric");
 
-// Assign orbits and metadata
+// Metadata categories
 const orbitSettings = {{
   code:   {{ radius: 180, color: "rgba(0, 255, 255, 0.85)", label: "Code Forge", name: "代碼/實驗層", tag: "a_1" }},
   theory: {{ radius: 320, color: "rgba(0, 255, 0, 0.85)",   label: "Theoretical Core", name: "核心理論層", tag: "a_2" }},
@@ -409,19 +485,32 @@ const centerNode = {{
   size: 35
 }};
 
+// Universe coordinate boundary size
+const universeBoundary = 3200;
+
 papers.forEach((p, idx) => {{
   const og = getOrbitGroup(p.ext);
   const setting = orbitSettings[og];
-  // Evenly distribute starting angles
-  const angle = (idx * (2 * Math.PI)) / papers.length + Math.random() * 0.2;
-  const speed = 0.0012 + Math.random() * 0.0008 - (setting.radius * 0.0000015);
+  
+  // Random coordinates in a 3200x3200px universe box (excluding center 180px area)
+  let ux = 0, uy = 0;
+  let dist = 0;
+  do {{
+    ux = (Math.random() - 0.5) * universeBoundary;
+    uy = (Math.random() - 0.5) * universeBoundary;
+    dist = Math.sqrt(ux * ux + uy * uy);
+  }} while (dist < 180);
+  
+  // Slow drift velocities
+  const vx = (Math.random() - 0.5) * 0.18;
+  const vy = (Math.random() - 0.5) * 0.18;
   
   // Calculate a mock epistemic tag based on title hash
   let hash = 0;
   for (let i = 0; i < p.title.length; i++) {{
     hash = p.title.charCodeAt(i) + ((hash << 5) - hash);
   }}
-  const metricVal = Math.abs(hash % 100) / 10 + 90; // 90% to 99.9%
+  const metricVal = Math.abs(hash % 100) / 10 + 90;
   
   nodes.push({{
     slug: p.slug,
@@ -429,18 +518,20 @@ papers.forEach((p, idx) => {{
     ext: p.ext,
     lang: p.lang,
     orbitGroup: og,
-    orbitRadius: setting.radius,
     color: setting.color,
     label: setting.label,
     typeName: setting.name,
     tag: setting.tag,
     metric: "VERIFIED [COGNITIVE ACCURACY: " + metricVal.toFixed(2) + "%]",
-    angle: angle,
-    speed: speed,
-    size: 6 + Math.random() * 4,
+    ux: ux,
+    uy: uy,
+    vx: vx,
+    vy: vy,
+    size: 5 + Math.random() * 4,
     x: 0,
     y: 0,
-    hovered: false
+    hovered: false,
+    isVisible: true
   }});
 }});
 
@@ -458,6 +549,7 @@ for (let i = 0; i < 80; i++) {{
 
 // Click handler
 canvas.addEventListener("click", () => {{
+  if (isDragging) return; // Prevent navigation during panning
   const hovered = nodes.find(n => n.hovered);
   if (hovered) {{
     window.location.href = "papers/" + hovered.slug + ".html";
@@ -469,56 +561,84 @@ function animate() {{
   requestAnimationFrame(animate);
   
   // Clear and prepare
-  ctx.fillStyle = "rgba(0, 0, 0, 0.35)"; // Slow trail
+  ctx.fillStyle = "rgba(0, 0, 0, 0.35)";
   ctx.fillRect(0, 0, width, height);
   
   const cx = width / 2;
   const cy = height / 2;
   
-  // 1. Draw central nebula glow
-  ctx.shadowBlur = 40;
-  ctx.shadowColor = "#0f0";
-  ctx.fillStyle = "rgba(0, 255, 0, 0.02)";
-  ctx.beginPath();
-  ctx.arc(cx, cy, 120, 0, Math.PI * 2);
-  ctx.fill();
-  ctx.shadowBlur = 0;
+  // Central Core positions based on Pan and Zoom
+  const ccx = cx + panX;
+  const ccy = cy + panY;
   
-  // 2. Draw background drifting stars
+  // 1. Draw central nebula glow (only if center is on screen)
+  const isCenterVisible = (ccx >= -150 && ccx <= width + 150 && ccy >= -150 && ccy <= height + 150);
+  if (isCenterVisible) {{
+    ctx.shadowBlur = 40 * Math.max(0.3, scale);
+    ctx.shadowColor = "#0f0";
+    ctx.fillStyle = "rgba(0, 255, 0, 0.02)";
+    ctx.beginPath();
+    ctx.arc(ccx, ccy, 120 * scale, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.shadowBlur = 0;
+  }}
+  
+  // 2. Draw background drifting stars with 3D Parallax Panning
   ctx.fillStyle = "rgba(0, 255, 0, 0.4)";
   bgStars.forEach(s => {{
     s.alpha += s.speed;
     if (s.alpha > 1 || s.alpha < 0) s.speed = -s.speed;
     ctx.globalAlpha = Math.max(0.1, s.alpha);
-    // Project based on a slow rotation
+    
     const rotSpeed = 0.00005;
     const rx = s.x * Math.cos(rotSpeed) - s.y * Math.sin(rotSpeed);
     const ry = s.x * Math.sin(rotSpeed) + s.y * Math.cos(rotSpeed);
     s.x = rx; s.y = ry;
     
-    ctx.beginPath();
-    ctx.arc(cx + rx, cy + ry, s.size, 0, Math.PI * 2);
-    ctx.fill();
+    // Apply parallax offset
+    const px = ccx + rx * 1.5 + panX * 0.08;
+    const py = ccy + ry * 1.5 + panY * 0.08;
+    
+    if (px >= 0 && px <= width && py >= 0 && py <= height) {{
+      ctx.beginPath();
+      ctx.arc(px, py, s.size, 0, Math.PI * 2);
+      ctx.fill();
+    }}
   }});
   ctx.globalAlpha = 1.0;
   
-  // 3. Draw Orbit Lines
-  ctx.strokeStyle = "rgba(0, 255, 0, 0.08)";
-  ctx.setLineDash([4, 12]);
-  for (const key in orbitSettings) {{
-    ctx.beginPath();
-    ctx.arc(cx, cy, orbitSettings[key].radius, 0, Math.PI * 2);
-    ctx.stroke();
-  }}
-  ctx.setLineDash([]);
+  // 3. Update drift coordinates
+  nodes.forEach(n => {{
+    if (!n.hovered) {{
+      n.ux += n.vx;
+      n.uy += n.vy;
+      // Bounce boundaries
+      const bound = universeBoundary / 2;
+      if (Math.abs(n.ux) > bound) n.vx *= -1;
+      if (Math.abs(n.uy) > bound) n.vy *= -1;
+    }}
+  }});
   
-  // 3b. Draw faint background connecting threads to center (weaver links) in one batch (O(1) draw call)
+  // 3b. Draw faint background connecting threads to center (weaver links) in one batch
   ctx.strokeStyle = "rgba(0, 255, 0, 0.02)";
-  ctx.lineWidth = 1;
+  ctx.lineWidth = 0.5;
   ctx.beginPath();
   nodes.forEach(n => {{
-    ctx.moveTo(cx, cy);
-    ctx.lineTo(n.x, n.y);
+    // Calculate base screen coordinate
+    const targetX = cx + panX + n.ux * scale;
+    const targetY = cy + panY + n.uy * scale;
+    
+    // Interpolation for smooth motion
+    n.x += (targetX - n.x) * 0.1;
+    n.y += (targetY - n.y) * 0.1;
+    
+    // Viewport culling check (太遠的先不渲染)
+    n.isVisible = (n.x >= -50 && n.x <= width + 50 && n.y >= -50 && n.y <= height + 50);
+    
+    if (n.isVisible) {{
+      ctx.moveTo(ccx, ccy);
+      ctx.lineTo(n.x, n.y);
+    }}
   }});
   ctx.stroke();
   
@@ -526,39 +646,29 @@ function animate() {{
   let activeHover = null;
   
   nodes.forEach(n => {{
-    // Orbit motion
-    if (!n.hovered) {{
-      n.angle += n.speed;
-    }}
+    if (!n.isVisible) return; // Viewport culling (太遠的先不渲染)
     
-    // Ideal coordinates
-    let targetX = cx + Math.cos(n.angle) * n.orbitRadius;
-    let targetY = cy + Math.sin(n.angle) * n.orbitRadius;
-    
-    // Mouse gravity field (Optimized: avoid Math.sqrt unless inside 180px bounding box)
-    if (mouse.active) {{
-      const dx = mouse.x - targetX;
-      const dy = mouse.y - targetY;
+    // Mouse gravity field (calculated in screen coordinates)
+    if (mouse.active && !isDragging) {{
+      const dx = mouse.x - n.x;
+      const dy = mouse.y - n.y;
       const distSq = dx * dx + dy * dy;
       if (distSq < 32400) {{ // 180px squared
         const dist = Math.sqrt(distSq);
         if (dist > 0) {{
           const pull = (180 - dist) * 0.15;
-          targetX += (dx / dist) * pull;
-          targetY += (dy / dist) * pull;
+          n.x += (dx / dist) * pull;
+          n.y += (dy / dist) * pull;
         }}
       }}
     }}
     
-    // Smooth interpolation to position
-    n.x += (targetX - n.x) * 0.1;
-    n.y += (targetY - n.y) * 0.1;
-    
-    // Check hover state
+    // Check hover state (only when not dragging viewport)
     const mx = mouse.x - n.x;
     const my = mouse.y - n.y;
     const mouseDistSq = mx * mx + my * my;
-    if (mouseDistSq < (n.size + 6) * (n.size + 6)) {{
+    const hoverRadius = (n.size * scale + 8);
+    if (mouseDistSq < hoverRadius * hoverRadius && !isDragging) {{
       n.hovered = true;
       activeHover = n;
     }} else {{
@@ -567,84 +677,100 @@ function animate() {{
     
     // Draw highlighted thread to center if hovered
     if (n.hovered) {{
-      ctx.strokeStyle = "rgba(0, 255, 255, 0.5)";
+      ctx.strokeStyle = "rgba(0, 255, 255, 0.4)";
       ctx.lineWidth = 1.8;
       ctx.beginPath();
-      ctx.moveTo(cx, cy);
+      ctx.moveTo(ccx, ccy);
       ctx.lineTo(n.x, n.y);
       ctx.stroke();
     }}
     
-    // Draw glowing star node (Optimized: avoid CPU-heavy shadowBlur by using nested circles for simulated glow)
+    // Draw glowing star node (glowing aura is simulated with transparent outer circle)
+    const renderSize = n.size * Math.max(0.4, scale);
     if (n.hovered) {{
       ctx.shadowBlur = 25;
       ctx.shadowColor = "#0ff";
       ctx.fillStyle = "#fff";
       ctx.beginPath();
-      ctx.arc(n.x, n.y, n.size * 1.4, 0, Math.PI * 2);
+      ctx.arc(n.x, n.y, renderSize * 1.4, 0, Math.PI * 2);
       ctx.fill();
       ctx.shadowBlur = 0;
     }} else {{
       ctx.fillStyle = n.color.replace("0.85", "0.12");
       ctx.beginPath();
-      ctx.arc(n.x, n.y, n.size * 2.2, 0, Math.PI * 2);
+      ctx.arc(n.x, n.y, renderSize * 2.2, 0, Math.PI * 2);
       ctx.fill();
       
       ctx.fillStyle = n.color;
       ctx.beginPath();
-      ctx.arc(n.x, n.y, n.size, 0, Math.PI * 2);
+      ctx.arc(n.x, n.y, renderSize, 0, Math.PI * 2);
       ctx.fill();
     }}
     
-    // Draw text label next to node
-    ctx.fillStyle = n.hovered ? "#0ff" : "rgba(0, 255, 0, 0.75)";
-    ctx.font = n.hovered ? "bold 11px 'Courier New'" : "9px 'Courier New'";
-    ctx.fillText(n.title.substring(0, 16) + (n.title.length > 16 ? "..." : ""), n.x + n.size + 4, n.y + 3);
+    // Draw text label next to node (hide when zoomed out far to prevent clutter, unless hovered)
+    if (n.hovered || scale > 0.45) {{
+      ctx.fillStyle = n.hovered ? "#0ff" : "rgba(0, 255, 0, 0.75)";
+      ctx.font = n.hovered ? "bold 11px 'Courier New'" : "9px 'Courier New'";
+      ctx.fillText(n.title.substring(0, 16) + (n.title.length > 16 ? "..." : ""), n.x + renderSize + 4, n.y + 3);
+    }}
   }});
   
   // 5. Connect close nodes of the same language (Cognitive Weaving Lines)
-  ctx.strokeStyle = "rgba(0, 255, 0, 0.03)";
-  for (let i = 0; i < nodes.length; i++) {{
-    for (let j = i + 1; j < nodes.length; j++) {{
-      const n1 = nodes[i];
+  // Optimized: batched draw calls, squared distance checks, and viewport culling (太遠的先不渲染)
+  ctx.strokeStyle = "rgba(0, 255, 0, 0.04)";
+  ctx.lineWidth = 0.5;
+  ctx.beginPath();
+  let lineCount = 0;
+  for (let i = 0; i < nodes.length; i += 2) {{
+    const n1 = nodes[i];
+    if (!n1.isVisible) continue;
+    for (let j = i + 1; j < nodes.length; j += 3) {{
       const n2 = nodes[j];
+      if (!n2.isVisible) continue;
       if (n1.lang === n2.lang) {{
         const dx = n1.x - n2.x;
         const dy = n1.y - n2.y;
-        const d = Math.sqrt(dx * dx + dy * dy);
-        if (d < 150) {{
-          ctx.beginPath();
+        const distSq = dx * dx + dy * dy;
+        const limitSq = (120 * scale) * (120 * scale);
+        if (distSq < limitSq) {{
           ctx.moveTo(n1.x, n1.y);
           ctx.lineTo(n2.x, n2.y);
-          ctx.stroke();
+          lineCount++;
+          if (lineCount > 150) break;
         }}
       }}
     }}
+    if (lineCount > 150) break;
   }}
-  
-  // 6. Draw central Pulsar Core
-  centerNode.pulse += 0.02;
-  const pSize = centerNode.size + Math.sin(centerNode.pulse) * 4;
-  
-  ctx.shadowBlur = 30;
-  ctx.shadowColor = "#0f0";
-  ctx.fillStyle = "rgba(0, 255, 0, 0.15)";
-  ctx.beginPath();
-  ctx.arc(cx, cy, pSize, 0, Math.PI * 2);
-  ctx.fill();
-  
-  ctx.strokeStyle = "#0f0";
-  ctx.lineWidth = 1.5;
-  ctx.beginPath();
-  ctx.arc(cx, cy, pSize - 8, 0, Math.PI * 2);
   ctx.stroke();
-  ctx.shadowBlur = 0;
   
-  ctx.fillStyle = "#0f0";
-  ctx.font = "bold 11px 'Courier New'";
-  ctx.textAlign = "center";
-  ctx.fillText("LOGIC MATRIX", cx, cy + 4);
-  ctx.textAlign = "start"; // Reset
+  // 6. Draw central Pulsar Core (Logic Matrix)
+  if (isCenterVisible) {{
+    centerNode.pulse += 0.02;
+    const pSize = (centerNode.size + Math.sin(centerNode.pulse) * 4) * Math.max(0.4, scale);
+    
+    ctx.shadowBlur = 30 * Math.max(0.3, scale);
+    ctx.shadowColor = "#0f0";
+    ctx.fillStyle = "rgba(0, 255, 0, 0.15)";
+    ctx.beginPath();
+    ctx.arc(ccx, ccy, pSize, 0, Math.PI * 2);
+    ctx.fill();
+    
+    ctx.strokeStyle = "#0f0";
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.arc(ccx, ccy, pSize - 8 * Math.max(0.4, scale), 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.shadowBlur = 0;
+    
+    if (scale > 0.35) {{
+      ctx.fillStyle = "#0f0";
+      ctx.font = "bold " + Math.max(8, Math.round(11 * scale)) + "px 'Courier New'";
+      ctx.textAlign = "center";
+      ctx.fillText("LOGIC MATRIX", ccx, ccy + 4 * scale);
+      ctx.textAlign = "start";
+    }}
+  }}
   
   // Update Holographic Info Panel
   if (activeHover) {{
@@ -655,11 +781,10 @@ function animate() {{
     infoLayer.innerText = activeHover.label + " (" + activeHover.typeName + ")";
     infoMetric.innerText = activeHover.metric;
     
-    // Change cursor
     canvas.style.cursor = "pointer";
   }} else {{
     infoPanel.style.display = "none";
-    canvas.style.cursor = "default";
+    canvas.style.cursor = isDragging ? "grabbing" : "grab";
   }}
 }}
 
