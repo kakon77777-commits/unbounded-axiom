@@ -1040,9 +1040,18 @@ def write_llms_full_txt(entries) -> None:
     other_entries = [e for e in entries if not is_core(e[1])]
     sorted_entries = core_entries + other_entries
     
+    # We want to keep the final file size strictly under 15MB to prevent Cloudflare Pages deployment failures.
+    MAX_BYTES = 15 * 1024 * 1024
+    current_bytes = len("\n".join(lines).encode("utf-8"))
+    truncated_count = 0
+    
     for slug, display, ext, src in sorted_entries:
+        if current_bytes > MAX_BYTES:
+            truncated_count += 1
+            continue
+            
         raw_text = extract_raw_text(src, ext)
-        lines += [
+        paper_block = [
             f"# Paper: {display}",
             f"- Format: {ext.upper()}",
             f"- Language: {lang_tag(display)}",
@@ -1057,6 +1066,22 @@ def write_llms_full_txt(entries) -> None:
             "---",
             ""
         ]
+        block_text = "\n".join(paper_block)
+        block_bytes = len(block_text.encode("utf-8"))
+        
+        if current_bytes + block_bytes > MAX_BYTES:
+            lines.append("# [WARNING: CORPUS TRUNCATION]")
+            lines.append(f"*[Truncated: Remaining papers omitted to stay within Cloudflare Pages size limits (15MB). Please access them via the index at {SITE_URL}/llms.txt]*")
+            lines.append("---")
+            current_bytes += len("\n".join(lines[-3:]).encode("utf-8"))
+            truncated_count += 1
+            break
+        else:
+            lines += paper_block
+            current_bytes += block_bytes
+
+    if truncated_count > 0:
+        print(f"[diag] llms-full.txt size limit reached. Truncated {truncated_count} papers from full text view.")
         
     (DIST_DIR / "llms-full.txt").write_text("\n".join(lines), encoding="utf-8")
 
