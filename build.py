@@ -339,6 +339,39 @@ def write_cosmomind(entries, dist_dir: Path) -> None:
     font-size: 0.85em; opacity: 0.7; text-align: center;
     pointer-events: none; width: 100%;
   }}
+  
+  /* Cyberpunk HUD Control Panel */
+  .hud-panel {{
+    position: absolute; bottom: 20px; left: 20px;
+    width: 260px; border: 1px solid #0f0;
+    background: rgba(0, 8, 0, 0.95);
+    padding: 12px; font-size: 0.8em;
+    z-index: 100;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.15);
+  }}
+  .hud-header {{
+    font-weight: bold; margin-bottom: 8px; border-bottom: 1px dashed #0f0;
+    padding-bottom: 4px; color: #0ff;
+  }}
+  .hud-control {{
+    margin: 8px 0; display: flex; flex-direction: column; gap: 4px;
+  }}
+  .hud-control label {{
+    opacity: 0.8; display: flex; justify-content: space-between;
+  }}
+  .hud-control input[type="range"] {{
+    width: 100%; accent-color: #0f0; background: #010; border: 1px solid #0f0;
+    outline: none; height: 6px; cursor: pointer;
+  }}
+  .hud-btn {{
+    width: 100%; border: 1px solid #0f0; background: transparent;
+    color: #0f0; padding: 4px; margin-top: 6px; cursor: pointer;
+    font-family: 'Courier New', monospace; font-size: 0.9em;
+    transition: all 0.2s;
+  }}
+  .hud-btn:hover {{
+    background: #0f0; color: #000;
+  }}
 </style>
 </head>
 <body>
@@ -355,12 +388,24 @@ def write_cosmomind(entries, dist_dir: Path) -> None:
 
 <div class="instruction">🌌 拖曳空白處可平移畫布，滾輪可放大縮小。點擊節點進入論文網頁。</div>
 
+<div class="hud-panel">
+  <div class="hud-header">🌌 SYSTEM HUD CONTROL</div>
+  <div class="hud-control">
+    <label><span>漂移速度 / Speed</span><span id="valSpeed">1.0x</span></label>
+    <input type="range" id="sliderSpeed" min="0" max="200" value="100">
+  </div>
+  <div class="hud-control">
+    <label><span>引力強度 / Gravity</span><span id="valGravity">1.0x</span></label>
+    <input type="range" id="sliderGravity" min="0" max="200" value="100">
+  </div>
+  <button class="hud-btn" id="btnFreeze">一鍵凍結 / FREEZE UNIVERSE</button>
+</div>
+
 <canvas id="cosmoCanvas"></canvas>
 
 <script>
 const papers = {json_data};
 
-// Setup canvas
 const canvas = document.getElementById("cosmoCanvas");
 const ctx = canvas.getContext("2d");
 
@@ -436,25 +481,51 @@ canvas.addEventListener("touchend", () => {{
 canvas.addEventListener("wheel", (e) => {{
   e.preventDefault();
   const zoomIntensity = 0.05;
-  const mouseX = e.clientX;
-  const mouseY = e.clientY;
-  
   const wheel = e.deltaY < 0 ? 1 : -1;
   const zoomFactor = Math.exp(wheel * zoomIntensity);
-  
   const cx = width / 2;
   const cy = height / 2;
-  
-  // Calculate cursor offset in universe space
-  const universeX = (mouseX - cx - panX) / scale;
-  const universeY = (mouseY - cy - panY) / scale;
-  
+  const universeX = (e.clientX - cx - panX) / scale;
+  const universeY = (e.clientY - cy - panY) / scale;
   scale = Math.min(Math.max(scale * zoomFactor, 0.1), 5.0);
-  
-  // Back-calculate new pan values
-  panX = mouseX - cx - universeX * scale;
-  panY = mouseY - cy - universeY * scale;
+  panX = e.clientX - cx - universeX * scale;
+  panY = e.clientY - cy - universeY * scale;
 }}, {{ passive: false }});
+
+// HUD controls integration
+const sliderSpeed = document.getElementById("sliderSpeed");
+const sliderGravity = document.getElementById("sliderGravity");
+const btnFreeze = document.getElementById("btnFreeze");
+const valSpeed = document.getElementById("valSpeed");
+const valGravity = document.getElementById("valGravity");
+
+let userSpeedMultiplier = 1.0;
+let userGravityMultiplier = 1.0;
+let isFrozen = false;
+
+sliderSpeed.addEventListener("input", (e) => {{
+  userSpeedMultiplier = e.target.value / 100;
+  valSpeed.innerText = userSpeedMultiplier.toFixed(1) + "x";
+}});
+
+sliderGravity.addEventListener("input", (e) => {{
+  userGravityMultiplier = e.target.value / 100;
+  valGravity.innerText = userGravityMultiplier.toFixed(1) + "x";
+}});
+
+btnFreeze.addEventListener("click", () => {{
+  isFrozen = !isFrozen;
+  btnFreeze.innerText = isFrozen ? "解凍宇宙 / UNFREEZE" : "一鍵凍結 / FREEZE UNIVERSE";
+  if (isFrozen) {{
+    sliderSpeed.value = 0;
+    userSpeedMultiplier = 0.0;
+    valSpeed.innerText = "0.0x";
+  }} else {{
+    sliderSpeed.value = 100;
+    userSpeedMultiplier = 1.0;
+    valSpeed.innerText = "1.0x";
+  }}
+}});
 
 // Info panel references
 const infoPanel = document.getElementById("infoPanel");
@@ -464,7 +535,6 @@ const infoLang = document.getElementById("infoLang");
 const infoLayer = document.getElementById("infoLayer");
 const infoMetric = document.getElementById("infoMetric");
 
-// Metadata categories
 const orbitSettings = {{
   code:   {{ radius: 180, color: "rgba(0, 255, 255, 0.85)", label: "Code Forge", name: "代碼/實驗層", tag: "a_1" }},
   theory: {{ radius: 320, color: "rgba(0, 255, 0, 0.85)",   label: "Theoretical Core", name: "核心理論層", tag: "a_2" }},
@@ -477,15 +547,8 @@ function getOrbitGroup(ext) {{
   return "doc";
 }}
 
-// Initialize nodes
 const nodes = [];
-const centerNode = {{
-  name: "EVEMISSLAB LOGIC MATRIX",
-  pulse: 0,
-  size: 35
-}};
-
-// Universe coordinate boundary size
+const centerNode = {{ pulse: 0, size: 35 }};
 const universeBoundary = 3200;
 
 papers.forEach((p, idx) => {{
@@ -501,11 +564,6 @@ papers.forEach((p, idx) => {{
     dist = Math.sqrt(ux * ux + uy * uy);
   }} while (dist < 180);
   
-  // Slow drift velocities
-  const vx = (Math.random() - 0.5) * 0.18;
-  const vy = (Math.random() - 0.5) * 0.18;
-  
-  // Calculate a mock epistemic tag based on title hash
   let hash = 0;
   for (let i = 0; i < p.title.length; i++) {{
     hash = p.title.charCodeAt(i) + ((hash << 5) - hash);
@@ -513,25 +571,12 @@ papers.forEach((p, idx) => {{
   const metricVal = Math.abs(hash % 100) / 10 + 90;
   
   nodes.push({{
-    slug: p.slug,
-    title: p.title,
-    ext: p.ext,
-    lang: p.lang,
-    orbitGroup: og,
-    color: setting.color,
-    label: setting.label,
-    typeName: setting.name,
-    tag: setting.tag,
-    metric: "VERIFIED [COGNITIVE ACCURACY: " + metricVal.toFixed(2) + "%]",
-    ux: ux,
-    uy: uy,
-    vx: vx,
-    vy: vy,
-    size: 5 + Math.random() * 4,
-    x: 0,
-    y: 0,
-    hovered: false,
-    isVisible: true
+    slug: p.slug, title: p.title, ext: p.ext, lang: p.lang,
+    orbitGroup: og, color: setting.color, label: setting.label,
+    typeName: setting.name, tag: setting.tag,
+    metric: "VERIFIED [COGNITIVE ACCURACY: " + metricVal.toFixed(2) + "%]", ux: ux, uy: uy,
+    vx: (Math.random() - 0.5) * 0.18, vy: (Math.random() - 0.5) * 0.18,
+    size: 5 + Math.random() * 4, x: 0, y: 0, hovered: false, isVisible: true
   }});
 }});
 
@@ -547,31 +592,22 @@ for (let i = 0; i < 80; i++) {{
   }});
 }}
 
-// Click handler
 canvas.addEventListener("click", () => {{
-  if (isDragging) return; // Prevent navigation during panning
+  if (isDragging) return;
   const hovered = nodes.find(n => n.hovered);
-  if (hovered) {{
-    window.location.href = "papers/" + hovered.slug + ".html";
-  }}
+  if (hovered) window.location.href = "papers/" + hovered.slug + ".html";
 }});
 
-// Main loop
 function animate() {{
   requestAnimationFrame(animate);
-  
-  // Clear and prepare
   ctx.fillStyle = "rgba(0, 0, 0, 0.35)";
   ctx.fillRect(0, 0, width, height);
   
   const cx = width / 2;
   const cy = height / 2;
-  
-  // Central Core positions based on Pan and Zoom
   const ccx = cx + panX;
   const ccy = cy + panY;
   
-  // 1. Draw central nebula glow (only if center is on screen)
   const isCenterVisible = (ccx >= -150 && ccx <= width + 150 && ccy >= -150 && ccy <= height + 150);
   if (isCenterVisible) {{
     ctx.shadowBlur = 40 * Math.max(0.3, scale);
@@ -595,7 +631,6 @@ function animate() {{
     const ry = s.x * Math.sin(rotSpeed) + s.y * Math.cos(rotSpeed);
     s.x = rx; s.y = ry;
     
-    // Apply parallax offset
     const px = ccx + rx * 1.5 + panX * 0.08;
     const py = ccy + ry * 1.5 + panY * 0.08;
     
@@ -610,9 +645,8 @@ function animate() {{
   // 3. Update drift coordinates
   nodes.forEach(n => {{
     if (!n.hovered) {{
-      n.ux += n.vx;
-      n.uy += n.vy;
-      // Bounce boundaries
+      n.ux += n.vx * userSpeedMultiplier;
+      n.uy += n.vy * userSpeedMultiplier;
       const bound = universeBoundary / 2;
       if (Math.abs(n.ux) > bound) n.vx *= -1;
       if (Math.abs(n.uy) > bound) n.vy *= -1;
@@ -624,15 +658,10 @@ function animate() {{
   ctx.lineWidth = 0.5;
   ctx.beginPath();
   nodes.forEach(n => {{
-    // Calculate base screen coordinate
     const targetX = cx + panX + n.ux * scale;
     const targetY = cy + panY + n.uy * scale;
-    
-    // Interpolation for smooth motion
     n.x += (targetX - n.x) * 0.1;
     n.y += (targetY - n.y) * 0.1;
-    
-    // Viewport culling check (太遠的先不渲染)
     n.isVisible = (n.x >= -50 && n.x <= width + 50 && n.y >= -50 && n.y <= height + 50);
     
     if (n.isVisible) {{
@@ -646,24 +675,23 @@ function animate() {{
   let activeHover = null;
   
   nodes.forEach(n => {{
-    if (!n.isVisible) return; // Viewport culling (太遠的先不渲染)
+    if (!n.isVisible) return;
     
-    // Mouse gravity field (calculated in screen coordinates)
-    if (mouse.active && !isDragging) {{
+    // Mouse gravity field (scaled by user settings)
+    if (mouse.active && !isDragging && userGravityMultiplier > 0) {{
       const dx = mouse.x - n.x;
       const dy = mouse.y - n.y;
       const distSq = dx * dx + dy * dy;
-      if (distSq < 32400) {{ // 180px squared
+      if (distSq < 32400) {{
         const dist = Math.sqrt(distSq);
         if (dist > 0) {{
-          const pull = (180 - dist) * 0.15;
+          const pull = (180 - dist) * 0.15 * userGravityMultiplier;
           n.x += (dx / dist) * pull;
           n.y += (dy / dist) * pull;
         }}
       }}
     }}
     
-    // Check hover state (only when not dragging viewport)
     const mx = mouse.x - n.x;
     const my = mouse.y - n.y;
     const mouseDistSq = mx * mx + my * my;
@@ -675,7 +703,6 @@ function animate() {{
       n.hovered = false;
     }}
     
-    // Draw highlighted thread to center if hovered
     if (n.hovered) {{
       ctx.strokeStyle = "rgba(0, 255, 255, 0.4)";
       ctx.lineWidth = 1.8;
@@ -685,7 +712,6 @@ function animate() {{
       ctx.stroke();
     }}
     
-    // Draw glowing star node (glowing aura is simulated with transparent outer circle)
     const renderSize = n.size * Math.max(0.4, scale);
     if (n.hovered) {{
       ctx.shadowBlur = 25;
@@ -707,7 +733,6 @@ function animate() {{
       ctx.fill();
     }}
     
-    // Draw text label next to node (hide when zoomed out far to prevent clutter, unless hovered)
     if (n.hovered || scale > 0.45) {{
       ctx.fillStyle = n.hovered ? "#0ff" : "rgba(0, 255, 0, 0.75)";
       ctx.font = n.hovered ? "bold 11px 'Courier New'" : "9px 'Courier New'";
@@ -716,7 +741,6 @@ function animate() {{
   }});
   
   // 5. Connect close nodes of the same language (Cognitive Weaving Lines)
-  // Optimized: batched draw calls, squared distance checks, and viewport culling (太遠的先不渲染)
   ctx.strokeStyle = "rgba(0, 255, 0, 0.04)";
   ctx.lineWidth = 0.5;
   ctx.beginPath();
@@ -744,7 +768,7 @@ function animate() {{
   }}
   ctx.stroke();
   
-  // 6. Draw central Pulsar Core (Logic Matrix)
+  // 6. Draw central Pulsar Core
   if (isCenterVisible) {{
     centerNode.pulse += 0.02;
     const pSize = (centerNode.size + Math.sin(centerNode.pulse) * 4) * Math.max(0.4, scale);
