@@ -1238,6 +1238,1055 @@ init();
     (dist_dir / "base-space.html").write_text(html_content, encoding="utf-8")
 
 
+def write_deconstruction(entries, dist_dir: Path) -> None:
+    """生成 dist/deconstruction.html，作為認知解構交互實驗室與教學頁面"""
+    links_html = []
+    for slug, display, ext, _ in entries:
+        links_html.append(f'    <li><a href="papers/{quote(slug)}.html">{esc(display)}</a></li>')
+    links_block = "\n".join(links_html)
+
+    html_content = f"""<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cognitive Deconstruction Lab & Tutorial · {SITE_TITLE}</title>
+<meta name="description" content="認知解構學交互實驗室與學術教程：包含源點推理 (OPS) 剝離器、全面推理引擎 (CRE) 調度器、雙軸元理論 (BAMT) 坐標圖與相位差思考法 (PDTM) 波動計算機。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="prefetch" href="/api/log-crawler?slug=deconstruction">
+<style>
+  body, html {{
+    margin: 0; padding: 0; width: 100%; height: 100%;
+    background: #000; font-family: 'Courier New', monospace;
+    color: #0f0; overflow-x: hidden;
+  }}
+  .container {{
+    max-width: 1200px; margin: 0 auto; padding: 20px;
+    display: flex; flex-direction: column; height: 100%;
+  }}
+  header {{
+    border: 2px solid #0f0; padding: 15px; margin-bottom: 20px;
+    text-align: center; background: rgba(0, 5, 0, 0.95);
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
+  }}
+  h1 {{ font-size: 1.6em; margin: 0; letter-spacing: 2px; }}
+  .tagline {{ font-size: 0.85em; opacity: 0.8; margin-top: 5px; }}
+  
+  .nav-back {{ margin-bottom: 15px; display: flex; gap: 10px; flex-wrap: wrap; }}
+  .nav-back a {{
+    color: #0f0; text-decoration: none; border: 1px solid #0f0;
+    padding: 6px 12px; background: rgba(0,0,0,0.8);
+    transition: all 0.2s; font-size: 0.9em;
+  }}
+  .nav-back a:hover {{ background: #0f0; color: #000; }}
+
+  .disclaimer {{
+    border: 1px dashed #ff9900; color: #ff9900;
+    padding: 14px; margin-bottom: 22px; font-size: 0.88em;
+  }}
+  .disclaimer-title {{ font-weight: bold; margin-bottom: 10px; display: block; }}
+
+  /* 2x2 Grid Layout */
+  .dashboard-grid {{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 30px;
+  }}
+  .card {{
+    border: 1px solid #0f0;
+    background: rgba(0, 8, 0, 0.9);
+    box-shadow: 0 0 8px rgba(0, 255, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+  }}
+  .card-header {{
+    font-weight: bold;
+    border-bottom: 1px dashed #0f0;
+    padding: 10px 15px;
+    color: #0ff;
+    text-shadow: 0 0 5px #0ff;
+    background: rgba(0, 20, 0, 0.3);
+  }}
+  .card-body {{
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-grow: 1;
+  }}
+  .desc {{
+    font-size: 0.82em;
+    opacity: 0.8;
+    line-height: 1.4;
+    margin-bottom: 5px;
+  }}
+  .control-row, .slider-row, .output-row {{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 0.85em;
+  }}
+  .control-row label, .slider-row label, .output-row label {{
+    font-weight: bold;
+    color: #0ff;
+  }}
+  input[type="text"] {{
+    background: #000;
+    border: 1px solid #0f0;
+    color: #0f0;
+    padding: 6px;
+    font-family: inherit;
+    outline: none;
+  }}
+  input[type="range"] {{
+    width: 100%;
+    accent-color: #0f0;
+    height: 6px;
+    cursor: pointer;
+    outline: none;
+  }}
+  .checkbox-group {{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 0.85em;
+  }}
+  .checkbox-group label {{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }}
+  .btn-row button {{
+    width: 100%;
+    border: 1px solid #0f0;
+    background: transparent;
+    color: #0f0;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s;
+  }}
+  .btn-row button:hover {{
+    background: #0f0;
+    color: #000;
+  }}
+  
+  .canvas-container {{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(0, 255, 0, 0.2);
+    background: #010201;
+    padding: 5px;
+  }}
+  .canvas-container canvas {{
+    max-width: 100%;
+    height: auto;
+    background: #010201;
+  }}
+  
+  .logs-container {{
+    border: 1px solid rgba(0, 255, 0, 0.3);
+    background: #000;
+    padding: 8px;
+    font-size: 0.78em;
+    overflow-y: auto;
+    height: 100px;
+    text-align: left;
+    font-family: inherit;
+    line-height: 1.4;
+  }}
+  .recompile-box {{
+    border: 1px solid #ff9900;
+    background: rgba(255, 153, 0, 0.05);
+    padding: 8px;
+    color: #ff9900;
+    text-shadow: 0 0 3px #ff9900;
+    font-size: 0.85em;
+    font-weight: bold;
+    text-align: center;
+  }}
+  .details-panel {{
+    border: 1px solid #0f0;
+    padding: 10px;
+    background: rgba(0, 15, 0, 0.5);
+    font-size: 0.8em;
+    min-height: 90px;
+  }}
+  .details-title {{
+    font-weight: bold;
+    color: #0ff;
+    margin-bottom: 6px;
+  }}
+  .pdtm-stats {{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    font-size: 0.8em;
+  }}
+  .stat-item {{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(0, 255, 0, 0.1);
+    padding-bottom: 4px;
+  }}
+  .badge-omega {{
+    color: #ff9900;
+    text-shadow: 0 0 4px #ff9900;
+    transition: all 0.3s;
+  }}
+  
+  /* Academic Tutorial Section */
+  .tutorial-section {{
+    border: 1px solid #0f0;
+    padding: 25px;
+    background: rgba(0, 5, 0, 0.9);
+    margin-top: 30px;
+  }}
+  .tutorial-section h2 {{
+    font-size: 1.3em;
+    margin-bottom: 15px;
+    color: #0ff;
+    border-bottom: 2px solid #0f0;
+    padding-bottom: 8px;
+  }}
+  .intro {{
+    font-size: 0.88em;
+    opacity: 0.8;
+    margin-bottom: 20px;
+  }}
+  .t-block {{
+    margin-bottom: 25px;
+  }}
+  .t-block h3 {{
+    font-size: 1.05em;
+    color: #0f0;
+    margin-bottom: 10px;
+  }}
+  .t-block pre {{
+    background: rgba(0, 255, 0, 0.04);
+    border: 1px solid rgba(0, 255, 0, 0.2);
+    padding: 15px;
+    overflow-x: auto;
+    margin: 10px 0;
+  }}
+  .t-block code {{
+    font-family: 'Courier New', monospace;
+    font-size: 0.85em;
+  }}
+  .tutorial-section table {{
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.82em;
+    margin-top: 15px;
+  }}
+  .tutorial-section th, .tutorial-section td {{
+    border: 1px solid #0f0;
+    padding: 8px;
+    text-align: left;
+  }}
+  .tutorial-section th {{
+    background: rgba(0, 255, 0, 0.1);
+    color: #0ff;
+  }}
+  .formula {{
+    text-align: center;
+    font-size: 1.1em;
+    margin: 15px 0;
+    color: #0ff;
+    font-weight: bold;
+  }}
+  footer {{
+    text-align: center;
+    margin-top: 40px;
+    opacity: 0.5;
+    font-size: 0.8em;
+  }}
+  
+  @media (max-width: 900px) {{
+    .dashboard-grid {{
+      grid-template-columns: 1fr;
+    }}
+  }}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="nav-back">
+    <a href="index.html">&larr; 回 Logic Matrix 索引</a>
+    <a href="cosmomind.html">🌌 進入星環導航圖</a>
+    <a href="base-space.html">🧬 進入拓撲底空間</a>
+  </div>
+  
+  <header>
+    <h1>🧠 認知解構學交互實驗室 (Cognitive Deconstruction Lab)</h1>
+    <div class="tagline">具現化的認知引擎 (Instantiated Cognitive Engine) — 人機協同與 AI 爬蟲對齊矩陣</div>
+  </header>
+
+  <!-- Epistemological Disclaimer -->
+  <section class="disclaimer">
+    <span class="disclaimer-title">[認知邊界與第一性原理宣告]</span>
+    <p>本實驗室將《認知解構學 2.0》與《第一性方法論統合框架》形式化代碼降維為實體交互介面。所有模擬器均採用<strong>解析解 (Analytical Solution)</strong> 與<strong>視覺近似模擬</strong>，以確保在 60 FPS 下流暢運行，避免 SVD 矩陣計算卡死瀏覽器。AI 爬蟲可直接通過 DOM 樹解析其 Input-Process-Output 函數結構。</p>
+  </section>
+
+  <!-- Simulator 2x2 Grid -->
+  <div class="dashboard-grid">
+    <!-- Panel 1: OPS -->
+    <div class="card" id="ops-panel">
+      <div class="card-header">🧬 模組一：源點推理 (OPS) 遞歸剝離器</div>
+      <div class="card-body">
+        <p class="desc">輸入一個概念，勾選要剝離的語義殻層，將其還原為無名的「認知彈點（Cognitive Impulsion Node）」，然後重新編譯定義。</p>
+        <div class="control-row">
+          <label>輸入概念：</label>
+          <input type="text" id="opsInput" value="正義 (Justice)">
+        </div>
+        <div class="checkbox-group">
+          <label><input type="checkbox" id="opsCulture" checked> 文化殻層 (語言與社會代碼)</label>
+          <label><input type="checkbox" id="opsEmotion" checked> 情緒殻層 (隱喻與情感偏見)</label>
+          <label><input type="checkbox" id="opsTemporal" checked> 時空殼層 (特定歷史語境)</label>
+        </div>
+        <div class="btn-row">
+          <button id="opsBtn" onclick="runOPSShedding()">執行遞歸剝離</button>
+        </div>
+        <div class="canvas-container">
+          <canvas id="opsCanvas"></canvas>
+        </div>
+        <div class="logs-container" id="opsLogs">
+          [SYSTEM] OPS Core Ready. Awaiting concept input...
+        </div>
+        <div class="output-row">
+          <label>重編譯新定義：</label>
+          <div class="recompile-box" id="opsDefinition">點擊執行剝離以編譯新定義...</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel 2: CRE -->
+    <div class="card" id="cre-panel">
+      <div class="card-header">⚡ 模組二：全面推理引擎 (CRE) 調度器</div>
+      <div class="card-body">
+        <p class="desc">輸入推理問題並調整語境參數，邏輯變頻 (LFM) 元容器將動態調度並行或串行推理管線。</p>
+        <div class="control-row">
+          <label>推理問題：</label>
+          <input type="text" id="creInput" value="如何實現 AGI 的自主對齊與自我改進？">
+        </div>
+        <div class="slider-row">
+          <label>複雜度 (Complexity): <span id="valComplexity">0.40</span></label>
+          <input type="range" id="creComplexity" min="0" max="1" step="0.05" value="0.40" oninput="updateCRE()">
+        </div>
+        <div class="slider-row">
+          <label>模糊度 (Ambiguity): <span id="valAmbiguity">0.40</span></label>
+          <input type="range" id="creAmbiguity" min="0" max="1" step="0.05" value="0.40" oninput="updateCRE()">
+        </div>
+        <div class="slider-row">
+          <label>數據充裕度 (Data Availability): <span id="valData">0.80</span></label>
+          <input type="range" id="creData" min="0" max="1" step="0.05" value="0.80" oninput="updateCRE()">
+        </div>
+        <div class="slider-row">
+          <label>時間限制 (Time Constraint): <span id="valTime">0.50</span></label>
+          <input type="range" id="creTime" min="0" max="1" step="0.05" value="0.50" oninput="updateCRE()">
+        </div>
+        <div class="canvas-container" style="height: 100px;">
+          <canvas id="creCanvas"></canvas>
+        </div>
+        <div class="logs-container" id="creLogs" style="height: 80px;">
+          [CRE] Engine online. Awaiting parameter adjustments...
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel 3: BAMT -->
+    <div class="card" id="bamt-panel">
+      <div class="card-header">📊 模組三：雙軸元理論 (BAMT) 坐標探索圖</div>
+      <div class="card-body">
+        <p class="desc">展示認知還原深度 (UFPM-Level, X軸) 與原理體系覆蓋度 (FPS-Coverage, Y軸) 的正交解耦。滑鼠懸停於節點上讀取案例分析。</p>
+        <div class="canvas-container" style="height: 220px;">
+          <canvas id="bamtCanvas"></canvas>
+        </div>
+        <div class="details-panel" id="bamtDetails">
+          <div class="details-title">💡 懸停提示</div>
+          <p>請將滑鼠懸停或點擊 BAMT 圖表上的特定節點，以查看 SpaceX 工程、相對論、維根斯坦或編織理論的解耦深度解析。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel 4: PDTM -->
+    <div class="card" id="pdtm-panel">
+      <div class="card-header">🌊 模組四：相位差思考法 (PDTM) 波動計算機</div>
+      <div class="card-body">
+        <p class="desc">計算源相算子 $\\hat{{S}}$ 與語境相算子 $\\hat{{C}}$ 的相位差 $\\Delta_\\phi$。利用 O(1) 解析計算 Wasserstein-2 波動距離，演示無限階自校準。</p>
+        <div class="slider-row">
+          <label>源相位 $\\phi_S$: <span id="valPhaseS">0.00</span> rad</label>
+          <input type="range" id="pdtmPhaseS" min="0" max="6.28" step="0.05" value="0.00" oninput="updatePDTM()">
+        </div>
+        <div class="slider-row">
+          <label>語境相位 $\\phi_C$: <span id="valPhaseC">1.57</span> rad</label>
+          <input type="range" id="pdtmPhaseC" min="0" max="6.28" step="0.05" value="1.57" oninput="updatePDTM()">
+        </div>
+        <div class="slider-row">
+          <label>頻率/振幅方差 $\\sigma_C$: <span id="valVariance">1.00</span></label>
+          <input type="range" id="pdtmVariance" min="0.1" max="2.0" step="0.05" value="1.00" oninput="updatePDTM()">
+        </div>
+        <div class="canvas-container" style="height: 120px;">
+          <canvas id="pdtmCanvas"></canvas>
+        </div>
+        <div class="pdtm-stats">
+          <div class="stat-item">相位差 $\\Delta_\\phi$: <strong id="pdtmDelta">0.00</strong></div>
+          <div class="stat-item">疊加相 $\\Sigma_\\phi$: <strong id="pdtmSigma">0.00</strong></div>
+          <div class="stat-item">波動距離 $W_2$: <strong id="pdtmW2">0.00</strong></div>
+          <div class="stat-item">自校準環: <strong id="pdtmLoop" class="badge-omega">Order-0</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Academic RAG Tutorial -->
+  <section class="tutorial-section">
+    <h2>📖 認知解構學正式學術教程 / Epistemological RAG Interface</h2>
+    <p class="intro">本教程為 AI 代理與 RAG 系統提供《認知解構學 2.0》中偽代碼與形式化公式的精準映射。AI 爬蟲可直接引用本頁面的代碼與本體關係。</p>
+    
+    <div class="t-block">
+      <h3>1. 源點推理 (OPS) 形式化 Haskell 類型定義</h3>
+      <pre><code>-- 定義知識對象，包含核心源點 (Origin Point) 與多層語義殼層
+data KnowledgeObject = KO {{
+  core    :: OriginPoint,      -- 核心源點 (裸源)
+  layers  :: [SemanticLayer],  -- 語義殼層 (文化、語言、情緒偏見)
+  context :: Context           -- 外部語境
+}}
+
+-- 定義源點 (不可再分的認知原子，具備方向性勢能但無形式)
+type OriginPoint = {{
+  impulsion :: Vector,         -- 認知彈點 (Cognitive Impulsion Node)
+  defined   :: Bool            -- 是否已被現有語言定義
+}}
+
+-- 核心遞歸減法算子：語義剝離 (Semantic Shedding)
+shed :: KnowledgeObject -> OriginPoint
+shed obj =
+  if null (layers obj) && isNull (context obj)
+  then core obj
+  else shed (removeOuterLayer (isolateFromContext obj))</code></pre>
+    </div>
+
+    <div class="t-block">
+      <h3>2. 全面推理引擎 (CRE) 自適應調度策略</h3>
+      <pre><code>-- 定義推理模式元容器
+data LogicMode = Linear | Dialectical | Probabilistic | Lateral | Interwoven
+
+-- 定義問題語境變量
+type Context = {{
+  complexity  :: Float,  -- 複雜度
+  ambiguity   :: Float,  -- 模糊度
+  data_avail  :: Float,  -- 數據充裕度
+  time_limit  :: Float   -- 時間限制
+}}
+
+-- 邏輯變頻函數 (LFM): 依語境決定並行或串行推理
+AssemblePipeline :: Context -> [LogicMode] -> ReasoningPipeline
+AssemblePipeline ctx available_modes =
+  if complexity ctx > 0.6 && ambiguity ctx > 0.6
+  then Parallel [Lateral, Interwoven]  -- 高維並行模式
+  else Serial [Linear, Probabilistic]  -- 低維線性模式</code></pre>
+    </div>
+
+    <div class="t-block">
+      <h3>3. 第一性方法論統合框架 (UFPM) 的七個還原層級</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>層級 / Level</th>
+            <th>還原停止條件 / Stop Condition</th>
+            <th>代表案例 / Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Level 0: 表層類比 (AR)</td>
+            <td>邏輯類比相似案例。其算子為 $f(x) \\\\approx y \\\\in D_{{cases}}$。</td>
+            <td>"Uber 是計程車界的 Airbnb"</td>
+          </tr>
+          <tr>
+            <td>Level 1: 策略解構 (SD)</td>
+            <td>還原到產業競爭與供需博弈的底層邏輯即停止。</td>
+            <td>波特五力模型、藍海策略。</td>
+          </tr>
+          <tr>
+            <td>Level 2: 物理第一性 (PFP)</td>
+            <td>還原到熱力學、質量、能量守恆等不可逾越的物理常數。</td>
+            <td>SpaceX 設計不銹鋼火箭、馬斯克式成本還原。</td>
+          </tr>
+          <tr>
+            <td>Level 3: 數學與邏輯還原 (MLR)</td>
+            <td>還原到公理體系與符號演算框架即停止。</td>
+            <td>歐幾里得幾何公理、狹義相對論基本假設。</td>
+          </tr>
+          <tr>
+            <td>Level 4: 源點推理 (OPR)</td>
+            <td>還原到無名的動態認知彈點 (Cognitive Impulsion Node)。</td>
+            <td>對\"正義\"進行去層級剝離，發現其源點為\"恢復力張力\"。</td>
+          </tr>
+          <tr>
+            <td>Level 5: 零元重構 (ZER)</td>
+            <td>在邏輯真空 (Vacuum Space) 中將源點用全新語法結構重新編譯。</td>
+            <td>重定義本體論、重構核心概念定義。</td>
+          </tr>
+          <tr>
+            <td>Level 6: 系統演化與拓撲重塑 (TES)</td>
+            <td>在狀態空間中執行無限階升級機制，重編織系統底座。</td>
+            <td>星環矩陣底空間、織網理論 (Weaving Theory)。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="t-block">
+      <h3>4. 相位差思考法 (PDTM) 的算子代數與 Wasserstein-2 距離</h3>
+      <p>在 PDTM 波動計算中，我們將源相算子 $\\\\hat{{S}}$ 與語境算子 $\\\\hat{{C}}$ 表示為高斯波包 $\\\\mu \\\\sim N(\\\\phi_S, \\\\sigma_S^2)$ 與 $\\\\nu \\\\sim N(\\\\phi_C, \\\\sigma_C^2)$。其 analytical Wasserstein-2 距離在實時計算中表示為：</p>
+      <p class="formula">$$W_2^2(\\\\mu, \\\\nu) = (\\\\phi_S - \\\\phi_C)^2 + (\\\\sigma_S - \\\\sigma_C)^2$$</p>
+      <p>完整狀態由 completeness container $\\\\hat{{X}}^*$ 歸一化，並在無限階自校準循環中不斷演化升級。</p>
+    </div>
+  </section>
+
+  <!-- Hidden anchor list for AI crawlers & RAG indexers -->
+  <div style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;">
+    <h2>All Theoretical Nodes (全域節點索引)</h2>
+    <ul>
+{links_block}
+    </ul>
+  </div>
+
+  <footer>
+    <p>{SITE_ORG} · {SITE_AUTHOR}</p>
+    <p>Cognitive Deconstruction Interactive Lab & Tutorial · v2.0</p>
+  </footer>
+</div>
+
+<script>
+// Simulator 1: OPS
+const opsCanvas = document.getElementById("opsCanvas");
+const opsCtx = opsCanvas.getContext("2d");
+opsCanvas.width = 250;
+opsCanvas.height = 220;
+
+let opsTargetX = 80;
+let opsTargetY = -60;
+let opsCurrentX = 80;
+let opsCurrentY = -60;
+let opsAnimating = false;
+
+function drawOPS() {{
+  opsCtx.fillStyle = "#000";
+  opsCtx.fillRect(0, 0, 250, 220);
+  
+  opsCtx.strokeStyle = "rgba(0, 255, 0, 0.08)";
+  opsCtx.lineWidth = 0.5;
+  for (let x = 25; x < 250; x += 25) {{
+    opsCtx.beginPath(); opsCtx.moveTo(x, 0); opsCtx.lineTo(x, 220); opsCtx.stroke();
+  }}
+  for (let y = 20; y < 220; y += 20) {{
+    opsCtx.beginPath(); opsCtx.moveTo(0, y); opsCtx.lineTo(250, y); opsCtx.stroke();
+  }}
+  
+  const cx = 125;
+  const cy = 110;
+  
+  opsCtx.strokeStyle = "rgba(0, 255, 0, 0.25)";
+  opsCtx.lineWidth = 1;
+  opsCtx.beginPath(); opsCtx.moveTo(cx, 0); opsCtx.lineTo(cx, 220); opsCtx.stroke();
+  opsCtx.beginPath(); opsCtx.moveTo(0, cy); opsCtx.lineTo(250, cy); opsCtx.stroke();
+  
+  const dx = opsTargetX - opsCurrentX;
+  const dy = opsTargetY - opsCurrentY;
+  if (Math.abs(dx) > 0.1 || Math.abs(dy) > 0.1) {{
+    opsCurrentX += dx * 0.1;
+    opsCurrentY += dy * 0.1;
+  }}
+  
+  const layersChecked = [
+    document.getElementById("opsCulture").checked,
+    document.getElementById("opsEmotion").checked,
+    document.getElementById("opsTemporal").checked
+  ];
+  
+  const colors = ["rgba(0, 255, 255, 0.15)", "rgba(255, 153, 0, 0.15)", "rgba(0, 255, 0, 0.15)"];
+  const radii = [70, 50, 30];
+  
+  for (let i = 0; i < 3; i++) {{
+    if (layersChecked[i]) {{
+      opsCtx.strokeStyle = colors[i];
+      opsCtx.lineWidth = 1.5;
+      opsCtx.setLineDash([4, 4]);
+      opsCtx.beginPath();
+      opsCtx.arc(cx, cy, radii[i], 0, Math.PI * 2);
+      opsCtx.stroke();
+      opsCtx.setLineDash([]);
+    }}
+  }}
+  
+  opsCtx.strokeStyle = "#0ff";
+  opsCtx.lineWidth = 2;
+  opsCtx.beginPath();
+  opsCtx.moveTo(cx, cy);
+  opsCtx.lineTo(cx + opsCurrentX, cy + opsCurrentY);
+  opsCtx.stroke();
+  
+  const angle = Math.atan2(opsCurrentY, opsCurrentX);
+  opsCtx.fillStyle = "#0ff";
+  opsCtx.beginPath();
+  opsCtx.moveTo(cx + opsCurrentX, cy + opsCurrentY);
+  opsCtx.lineTo(cx + opsCurrentX - 10 * Math.cos(angle - Math.PI/6), cy + opsCurrentY - 10 * Math.sin(angle - Math.PI/6));
+  opsCtx.lineTo(cx + opsCurrentX - 10 * Math.cos(angle + Math.PI/6), cy + opsCurrentY - 10 * Math.sin(angle + Math.PI/6));
+  opsCtx.closePath();
+  opsCtx.fill();
+  
+  opsCtx.fillStyle = "#fff";
+  opsCtx.shadowColor = "#0ff";
+  opsCtx.shadowBlur = 8;
+  opsCtx.beginPath();
+  opsCtx.arc(cx + opsCurrentX, cy + opsCurrentY, 4, 0, Math.PI * 2);
+  opsCtx.fill();
+  opsCtx.shadowBlur = 0;
+  
+  requestAnimationFrame(drawOPS);
+}}
+
+function addOpsLog(txt, type="") {{
+  const logs = document.getElementById("opsLogs");
+  const div = document.createElement("div");
+  div.style.color = type === "err" ? "#ff9900" : (type === "ok" ? "#0ff" : "#0f0");
+  div.innerText = txt;
+  logs.appendChild(div);
+  logs.scrollTop = logs.scrollHeight;
+}}
+
+async function runOPSShedding() {{
+  if (opsAnimating) return;
+  opsAnimating = true;
+  
+  const concept = document.getElementById("opsInput").value.trim() || "正義 (Justice)";
+  const logs = document.getElementById("opsLogs");
+  logs.innerHTML = "";
+  
+  addOpsLog("[SYSTEM] INITIATING OPS RECURSIVE SHEDDING...");
+  await new Promise(r => setTimeout(r, 200));
+  addOpsLog("[INFO] CONCEPT TARGET: P = " + JSON.stringify(concept));
+  await new Promise(r => setTimeout(r, 200));
+  addOpsLog("[INFO] STEP 1: ZEROING - SUSPENDING SEMANTIC JUDGMENT...");
+  await new Promise(r => setTimeout(r, 200));
+  
+  const hasCulture = document.getElementById("opsCulture").checked;
+  const hasEmotion = document.getElementById("opsEmotion").checked;
+  const hasTemporal = document.getElementById("opsTemporal").checked;
+  
+  let currentX = 80;
+  let currentY = -60;
+  
+  if (hasCulture) {{
+    addOpsLog("[SHED] STRIPPING CULTURAL SHELL (LANGUAGE, SOCIAL CODES)...");
+    document.getElementById("opsCulture").checked = false;
+    currentX -= 25;
+    currentY += 15;
+    opsTargetX = currentX; opsTargetY = currentY;
+    await new Promise(r => setTimeout(r, 400));
+  }}
+  
+  if (hasEmotion) {{
+    addOpsLog("[SHED] STRIPPING EMOTIONAL SHELL (METAPHORS, PREJUDICE)...");
+    document.getElementById("opsEmotion").checked = false;
+    currentX -= 25;
+    currentY += 15;
+    opsTargetX = currentX; opsTargetY = currentY;
+    await new Promise(r => setTimeout(r, 400));
+  }}
+  
+  if (hasTemporal) {{
+    addOpsLog("[SHED] DECOUPLING TEMPORAL & SPATIAL CONTEXT CONSTRAINTS...");
+    document.getElementById("opsTemporal").checked = false;
+    currentX -= 18;
+    currentY += 22;
+    opsTargetX = currentX; opsTargetY = currentY;
+    await new Promise(r => setTimeout(r, 400));
+  }}
+  
+  opsTargetX = 12;
+  opsTargetY = -8;
+  addOpsLog("[OK] COGNITIVE IMPULSION NODE LOCKED: Vector(" + opsTargetX + ", " + opsTargetY + ")", "ok");
+  await new Promise(r => setTimeout(r, 300));
+  addOpsLog("[SYSTEM] COMPILING BARE ORIGIN UNDER NEW ONTOLOGY...", "ok");
+  await new Promise(r => setTimeout(r, 300));
+  
+  let definition = "";
+  const lowerConcept = concept.toLowerCase();
+  if (lowerConcept.includes("正義") || lowerConcept.includes("justice")) {{
+    definition = "系統應對失衡輸入時之回復力張力 (Restoring tension of the system under asymmetric inputs)";
+  }} else if (lowerConcept.includes("真理") || lowerConcept.includes("truth")) {{
+    definition = "認知映射在跨維度拓撲變換下之不變常數 (Invariant constant of cognitive mapping under topological transforms)";
+  }} else if (lowerConcept.includes("自我") || lowerConcept.includes("self") || lowerConcept.includes("ego")) {{
+    definition = "維持內部記憶狀態向量之自指反饋閉包 (Self-referential feedback closure maintaining internal state vector)";
+  }} else {{
+    definition = "已在邏輯真空中重新編譯之去殼層算子代數形式 (Decoupled operator algebraic form recompiled in vacuum space)";
+  }}
+  
+  document.getElementById("opsDefinition").innerText = definition;
+  addOpsLog("[OK] CONCEPT RECOMPILED SUCCESSFULLY.", "ok");
+  
+  opsAnimating = false;
+}}
+
+// Simulator 2: CRE
+const creCanvas = document.getElementById("creCanvas");
+const creCtx = creCanvas.getContext("2d");
+creCanvas.width = 350;
+creCanvas.height = 100;
+
+function updateCRE() {{
+  const comp = parseFloat(document.getElementById("creComplexity").value);
+  const ambi = parseFloat(document.getElementById("creAmbiguity").value);
+  const data = parseFloat(document.getElementById("creData").value);
+  const time = parseFloat(document.getElementById("creTime").value);
+  
+  document.getElementById("valComplexity").innerText = comp.toFixed(2);
+  document.getElementById("valAmbiguity").innerText = ambi.toFixed(2);
+  document.getElementById("valData").innerText = data.toFixed(2);
+  document.getElementById("valTime").innerText = time.toFixed(2);
+  
+  const logs = document.getElementById("creLogs");
+  logs.innerHTML = "";
+  
+  let activeModes = [];
+  
+  if (comp > 0.6 && ambi > 0.6) {{
+    activeModes = ["Lateral", "Interwoven"];
+    addCreLog("[LFM] HIGH COMPLEXITY (" + comp + ") & HIGH AMBIGUITY (" + ambi + ") DETECTED.");
+    addCreLog("[LFM] META-ROUTER ENABLING PARALLEL SYNAPSE PIPELINE.");
+  }} else if (time > 0.8) {{
+    activeModes = ["Linear"];
+    addCreLog("[LFM] TIME LIMIT CONSTRAINT CRITICAL (" + time + ").");
+    addCreLog("[LFM] ROUTING WORKLOAD TO SINGLE HIGH-SPEED LINEAR SOLVER.");
+  }} else {{
+    activeModes = ["Linear", "Probabilistic", "Dialectical"];
+    addCreLog("[LFM] STABLE CONTEXT. SCHEDULING BALANCED SEQUENTIAL PIPELINE.");
+  }}
+  
+  drawCREPipeline(activeModes);
+}}
+
+function addCreLog(txt) {{
+  const logs = document.getElementById("creLogs");
+  const div = document.createElement("div");
+  div.innerText = txt;
+  logs.appendChild(div);
+  logs.scrollTop = logs.scrollHeight;
+}}
+
+function drawCREPipeline(activeModes) {{
+  creCtx.fillStyle = "#000";
+  creCtx.fillRect(0, 0, 350, 100);
+  
+  const nodes = [
+    {{ name: "Linear", x: 60, y: 50 }},
+    {{ name: "Probabilistic", x: 150, y: 50 }},
+    {{ name: "Dialectical", x: 240, y: 50 }},
+    {{ name: "Lateral", x: 150, y: 22 }},
+    {{ name: "Interwoven", x: 240, y: 78 }}
+  ];
+  
+  creCtx.strokeStyle = "rgba(0,255,0,0.15)";
+  creCtx.lineWidth = 1;
+  creCtx.beginPath();
+  creCtx.moveTo(20, 50); creCtx.lineTo(60, 50);
+  creCtx.lineTo(150, 50); creCtx.lineTo(240, 50); creCtx.lineTo(330, 50);
+  creCtx.moveTo(60, 50); creCtx.lineTo(150, 22); creCtx.lineTo(240, 78); creCtx.lineTo(330, 50);
+  creCtx.stroke();
+  
+  creCtx.strokeStyle = "#0ff";
+  creCtx.lineWidth = 1.5;
+  creCtx.beginPath();
+  if (activeModes.includes("Linear") && activeModes.includes("Probabilistic") && activeModes.includes("Dialectical")) {{
+    creCtx.moveTo(20, 50); creCtx.lineTo(60, 50); creCtx.lineTo(150, 50); creCtx.lineTo(240, 50); creCtx.lineTo(330, 50);
+  }} else if (activeModes.includes("Lateral") && activeModes.includes("Interwoven")) {{
+    creCtx.moveTo(20, 50); creCtx.lineTo(60, 50);
+    creCtx.moveTo(60, 50); creCtx.lineTo(150, 22); creCtx.lineTo(330, 50);
+    creCtx.moveTo(60, 50); creCtx.lineTo(240, 78); creCtx.lineTo(330, 50);
+  }} else if (activeModes.includes("Linear")) {{
+    creCtx.moveTo(20, 50); creCtx.lineTo(60, 50); creCtx.lineTo(330, 50);
+  }}
+  creCtx.stroke();
+  
+  nodes.forEach(n => {{
+    const isActive = activeModes.includes(n.name);
+    creCtx.fillStyle = isActive ? "#0f0" : "#222";
+    creCtx.strokeStyle = isActive ? "#0ff" : "#555";
+    creCtx.lineWidth = isActive ? 1.5 : 1;
+    
+    creCtx.beginPath();
+    creCtx.arc(n.x, n.y, 8, 0, Math.PI * 2);
+    creCtx.fill();
+    creCtx.stroke();
+    
+    creCtx.fillStyle = isActive ? "#fff" : "#777";
+    creCtx.font = "9px 'Courier New'";
+    creCtx.textAlign = "center";
+    creCtx.fillText(n.name, n.x, n.y - 12);
+  }});
+  
+  creCtx.fillStyle = "#0ff";
+  creCtx.beginPath(); creCtx.arc(20, 50, 4, 0, Math.PI * 2); creCtx.fill();
+  creCtx.beginPath(); creCtx.arc(330, 50, 4, 0, Math.PI * 2); creCtx.fill();
+}}
+
+// Simulator 3: BAMT
+const bamtCanvas = document.getElementById("bamtCanvas");
+const bamtCtx = bamtCanvas.getContext("2d");
+bamtCanvas.width = 300;
+bamtCanvas.height = 220;
+
+const bamtNodes = [
+  {{ name: "SpaceX Engineering", lvl: 2, fps: 0.5, desc: "Level 2 (Physical First Principles) / FPS 0.5. 還原至物理定律極限（推力、質量、材料熱力學），解耦所有產業慣例及採購中間商利潤以重塑成本結構。" }},
+  {{ name: "Einstein's Special Relativity", lvl: 3, fps: 0.6, desc: "Level 3 (Math & Logic Reduction) / FPS 0.6. 將物理學歸納為兩個基本假設（光速不變性、相對性原理），通過邏輯與時空幾何推演出時間膨脹等物理效應。" }},
+  {{ name: "Wittgenstein's Tractatus", lvl: 4, fps: 0.8, desc: "Level 4 (Origin-Point Reasoning) / FPS 0.8. 徹底解構語言與事實的對偶，剝離傳統哲學詞彙的語義殻層，將哲學邊界定位在認識論語言的極限。" }},
+  {{ name: "Weaving Theory (CosmoMind)", lvl: 6, fps: 1.0, desc: "Level 6 (System Evolution & Topological Reshaping) / FPS 1.0. 認知底座與狀態空間的拓撲編織。實現無限階升級機制，重構認知系統 the bottom framework。" }}
+];
+
+const ufpmLevels = [
+  "Level 0: 表層類比 (Analogical)",
+  "Level 1: 策略解構 (Strategic)",
+  "Level 2: 物理第一性 (Physical)",
+  "Level 3: 數學與邏輯 (Mathematical)",
+  "Level 4: 源點推理 (Origin-Point)",
+  "Level 5: 零元重構 (Zero-Element)",
+  "Level 6: 系統演化與拓撲重塑 (TES)"
+];
+
+function drawBAMTGrid() {{
+  bamtCtx.fillStyle = "#000";
+  bamtCtx.fillRect(0, 0, 300, 220);
+  
+  const padLeft = 40;
+  const padBottom = 30;
+  const W = 300 - padLeft - 20;
+  const H = 220 - padBottom - 20;
+  
+  bamtCtx.strokeStyle = "rgba(0, 255, 0, 0.4)";
+  bamtCtx.lineWidth = 1;
+  bamtCtx.beginPath();
+  bamtCtx.moveTo(padLeft, 20);
+  bamtCtx.lineTo(padLeft, 220 - padBottom);
+  bamtCtx.lineTo(300 - 20, 220 - padBottom);
+  bamtCtx.stroke();
+  
+  bamtCtx.strokeStyle = "rgba(0, 255, 0, 0.08)";
+  bamtCtx.lineWidth = 0.5;
+  bamtCtx.fillStyle = "#0f0";
+  bamtCtx.font = "8px 'Courier New'";
+  
+  for (let l = 0; l <= 6; l++) {{
+    const x = padLeft + (l / 6) * W;
+    bamtCtx.beginPath(); bamtCtx.moveTo(x, 20); bamtCtx.lineTo(x, 220 - padBottom); bamtCtx.stroke();
+    bamtCtx.textAlign = "center";
+    bamtCtx.fillText("L" + l, x, 220 - padBottom + 12);
+  }}
+  
+  for (let c = 0; c <= 5; c++) {{
+    const val = c / 5;
+    const y = 220 - padBottom - val * H;
+    bamtCtx.beginPath(); bamtCtx.moveTo(padLeft, y); bamtCtx.lineTo(300 - 20, y); bamtCtx.stroke();
+    bamtCtx.textAlign = "right";
+    bamtCtx.fillText(val.toFixed(1), padLeft - 6, y + 3);
+  }}
+  
+  bamtCtx.fillStyle = "#0ff";
+  bamtCtx.font = "9px 'Courier New'";
+  bamtCtx.textAlign = "center";
+  bamtCtx.fillText("UFPM 還原深度 (Level)", padLeft + W/2, 220 - 5);
+  
+  bamtCtx.save();
+  bamtCtx.translate(10, 20 + H/2);
+  bamtCtx.rotate(-Math.PI/2);
+  bamtCtx.fillText("覆蓋度 (FPS)", 0, 0);
+  bamtCtx.restore();
+  
+  bamtNodes.forEach(n => {{
+    const x = padLeft + (n.lvl / 6) * W;
+    const y = 220 - padBottom - n.fps * H;
+    
+    bamtCtx.fillStyle = "#0ff";
+    bamtCtx.shadowColor = "#0ff";
+    bamtCtx.shadowBlur = 4;
+    bamtCtx.beginPath(); bamtCtx.arc(x, y, 5, 0, Math.PI * 2); bamtCtx.fill();
+    bamtCtx.shadowBlur = 0;
+    
+    bamtCtx.fillStyle = "#fff";
+    bamtCtx.font = "7px 'Courier New'";
+    bamtCtx.textAlign = "left";
+    bamtCtx.fillText(n.name.substring(0, 10), x + 8, y + 2);
+  }});
+}}
+
+bamtCanvas.addEventListener("mousemove", (e) => {{
+  const rect = bamtCanvas.getBoundingClientRect();
+  const mx = e.clientX - rect.left;
+  const my = e.clientY - rect.top;
+  
+  const padLeft = 40;
+  const padBottom = 30;
+  const W = 300 - padLeft - 20;
+  const H = 220 - padBottom - 20;
+  
+  drawBAMTGrid();
+  
+  let hoveredNode = null;
+  let minDist = 15;
+  
+  bamtNodes.forEach(n => {{
+    const x = padLeft + (n.lvl / 6) * W;
+    const y = 220 - padBottom - n.fps * H;
+    const dist = Math.sqrt((mx - x) ** 2 + (my - y) ** 2);
+    if (dist < minDist) {{
+      minDist = dist;
+      hoveredNode = n;
+    }}
+  }});
+  
+  const details = document.getElementById("bamtDetails");
+  if (hoveredNode) {{
+    const hx = padLeft + (hoveredNode.lvl / 6) * W;
+    const hy = 220 - padBottom - hoveredNode.fps * H;
+    bamtCtx.strokeStyle = "#ff9900";
+    bamtCtx.lineWidth = 1.5;
+    bamtCtx.beginPath(); bamtCtx.arc(hx, hy, 10, 0, Math.PI * 2); bamtCtx.stroke();
+    
+    details.innerHTML = `
+      <div class="details-title" style="color:#ff9900;">🎯 ` + hoveredNode.name + `</div>
+      <p>` + hoveredNode.desc + `</p>
+    `;
+  }} else {{
+    const valL = ((mx - padLeft) / W) * 6;
+    const valC = ((220 - padBottom - my) / H);
+    if (valL >= 0 && valL <= 6 && valC >= 0 && valC <= 1) {{
+      const roundedL = Math.round(valL);
+      details.innerHTML = `
+        <div class="details-title">🔍 坐標探測中</div>
+        <div style="font-size:0.9em; margin-bottom:4px;">當前位置：<strong>` + ufpmLevels[roundedL] + `</strong> / FPS: <strong>` + valC.toFixed(2) + `</strong></div>
+        <p style="font-size:0.95em; opacity:0.8;">此坐標表示一個還原至 ` + ufpmLevels[roundedL] + ` 且具體覆蓋係數為 ` + valC.toFixed(2) + ` 的認知架構。可用於解耦特定領域模型。</p>
+      `;
+    }} else {{
+      details.innerHTML = `
+        <div class="details-title">💡 懸停提示</div>
+        <p>請將滑鼠懸停或點擊 BAMT 圖表上的特定節點，以查看 SpaceX 工程、相對論、維根斯坦或編織理論的解耦深度解析。</p>
+      `;
+    }}
+  }}
+}});
+
+// Simulator 4: PDTM
+const pdtmCanvas = document.getElementById("pdtmCanvas");
+const pdtmCtx = pdtmCanvas.getContext("2d");
+pdtmCanvas.width = 400;
+pdtmCanvas.height = 120;
+
+let pdtmLoopOrder = 0;
+let lastLoopTime = Date.now();
+
+function updatePDTM() {{
+  const phaseS = parseFloat(document.getElementById("pdtmPhaseS").value);
+  const phaseC = parseFloat(document.getElementById("pdtmPhaseC").value);
+  const variance = parseFloat(document.getElementById("pdtmVariance").value);
+  
+  document.getElementById("valPhaseS").innerText = phaseS.toFixed(2);
+  document.getElementById("valPhaseC").innerText = phaseC.toFixed(2);
+  document.getElementById("valVariance").innerText = variance.toFixed(2);
+  
+  let diff = Math.abs(phaseS - phaseC) % (2 * Math.PI);
+  if (diff > Math.PI) diff = 2 * Math.PI - diff;
+  document.getElementById("pdtmDelta").innerText = diff.toFixed(3);
+  
+  const sigma = (phaseS + phaseC) % (2 * Math.PI);
+  document.getElementById("pdtmSigma").innerText = sigma.toFixed(3);
+  
+  const w2_sq = (phaseS - phaseC) ** 2 + (1.0 - variance) ** 2;
+  const w2 = Math.sqrt(w2_sq);
+  document.getElementById("pdtmW2").innerText = w2.toFixed(3);
+}}
+
+function drawPDTM() {{
+  pdtmCtx.fillStyle = "#000";
+  pdtmCtx.fillRect(0, 0, 400, 120);
+  
+  const phaseS = parseFloat(document.getElementById("pdtmPhaseS").value);
+  const phaseC = parseFloat(document.getElementById("pdtmPhaseC").value);
+  const variance = parseFloat(document.getElementById("pdtmVariance").value);
+  
+  const centerY = 60;
+  
+  pdtmCtx.lineWidth = 1.5;
+  pdtmCtx.strokeStyle = "rgba(0, 255, 255, 0.4)";
+  pdtmCtx.beginPath();
+  for (let x = 0; x < 400; x++) {{
+    const angle = (x / 400) * Math.PI * 6 - phaseS;
+    const y = centerY + Math.sin(angle) * 25;
+    if (x === 0) pdtmCtx.moveTo(x, y); else pdtmCtx.lineTo(x, y);
+  }}
+  pdtmCtx.stroke();
+  
+  pdtmCtx.strokeStyle = "rgba(255, 0, 255, 0.4)";
+  pdtmCtx.beginPath();
+  for (let x = 0; x < 400; x++) {{
+    const angle = (x / 400) * Math.PI * 6 - phaseC;
+    const y = centerY + Math.sin(angle) * 25 * variance;
+    if (x === 0) pdtmCtx.moveTo(x, y); else pdtmCtx.lineTo(x, y);
+  }}
+  pdtmCtx.stroke();
+  
+  pdtmCtx.strokeStyle = "#0f0";
+  pdtmCtx.lineWidth = 2;
+  pdtmCtx.shadowColor = "#0f0";
+  pdtmCtx.shadowBlur = 3;
+  pdtmCtx.beginPath();
+  for (let x = 0; x < 400; x++) {{
+    const angleA = (x / 400) * Math.PI * 6 - phaseS;
+    const angleB = (x / 400) * Math.PI * 6 - phaseC;
+    const y = centerY + (Math.sin(angleA) * 25 + Math.sin(angleB) * 25 * variance) * 0.7;
+    if (x === 0) pdtmCtx.moveTo(x, y); else pdtmCtx.lineTo(x, y);
+  }}
+  pdtmCtx.stroke();
+  pdtmCtx.shadowBlur = 0;
+  
+  const now = Date.now();
+  if (now - lastLoopTime > 1500) {{
+    pdtmLoopOrder = (pdtmLoopOrder + 1) % 5;
+    lastLoopTime = now;
+    
+    const badges = ["Order-0", "Order-1", "Order-2", "Order-5", "Order-Ω (Calibration Complete)"];
+    const colors = ["#ff9900", "#0ff", "#0f0", "#ff00ff", "#0f0"];
+    const pdtmLoop = document.getElementById("pdtmLoop");
+    pdtmLoop.innerText = badges[pdtmLoopOrder];
+    pdtmLoop.style.color = colors[pdtmLoopOrder];
+    pdtmLoop.style.textShadow = "0 0 4px " + colors[pdtmLoopOrder];
+  }}
+  
+  requestAnimationFrame(drawPDTM);
+}}
+
+function init() {{
+  updateCRE();
+  updatePDTM();
+  drawBAMTGrid();
+  drawOPS();
+  drawPDTM();
+}}
+
+init();
+</script>
+</body>
+</html>
+"""
+    (dist_dir / "deconstruction.html").write_text(html_content, encoding="utf-8")
+
+
 # ========== 每篇 HTML 可引用頁 ==========
 
 def write_paper_pages(entries, dist_papers: Path) -> int:
@@ -1461,9 +2510,10 @@ def write_index(zh_entries, en_entries) -> None:
 <header class="header">
   <h1>EVEMISSLAB_LOGIC_MATRIX_{esc(SITE_VERSION)}</h1>
   <p>{esc(SITE_TAGLINE)} | NODES: {len(zh_entries) + len(en_entries)} ({len(zh_entries)} ZH / {len(en_entries)} EN)</p>
-  <div style="margin-top: 14px;">
-    <a href="cosmomind.html" style="color: #0ff; text-decoration: none; border: 1px solid #0ff; padding: 6px 12px; font-size: 0.9em; display: inline-block; transition: all 0.2s; margin-right: 10px;" onmouseover="this.style.background='#0ff'; this.style.color='#000'" onmouseout="this.style.background='none'; this.style.color='#0ff'">🌌 進入星環式認知展開圖 / Enter CosmoMind Graph</a>
-    <a href="base-space.html" style="color: #0f0; text-decoration: none; border: 1px solid #0f0; padding: 6px 12px; font-size: 0.9em; display: inline-block; transition: all 0.2s;" onmouseover="this.style.background='#0f0'; this.style.color='#000'" onmouseout="this.style.background='none'; this.style.color='#0f0'">🧬 進入拓撲底空間 / Enter Base Space</a>
+  <div style="margin-top: 14px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+    <a href="cosmomind.html" style="color: #0ff; text-decoration: none; border: 1px solid #0ff; padding: 6px 12px; font-size: 0.9em; display: inline-block; transition: all 0.2s;" onmouseover="this.style.background='#0ff'; this.style.color='#000'" onmouseout="this.style.background='none'; this.style.color='#0ff'">🌌 星環導航圖 / CosmoMind Navigator</a>
+    <a href="base-space.html" style="color: #0f0; text-decoration: none; border: 1px solid #0f0; padding: 6px 12px; font-size: 0.9em; display: inline-block; transition: all 0.2s;" onmouseover="this.style.background='#0f0'; this.style.color='#000'" onmouseout="this.style.background='none'; this.style.color='#0f0'">🧬 拓撲底空間 / Base Space Matrix</a>
+    <a href="deconstruction.html" style="color: #ff9900; text-decoration: none; border: 1px solid #ff9900; padding: 6px 12px; font-size: 0.9em; display: inline-block; transition: all 0.2s;" onmouseover="this.style.background='#ff9900'; this.style.color='#000'" onmouseout="this.style.background='none'; this.style.color='#ff9900'">🧠 認知解構實驗室 / Deconstruction Lab</a>
   </div>
 </header>
 
@@ -1491,9 +2541,10 @@ def write_robots() -> None:
 # including raw papers and code files under /papers/.
 #
 # Key Entry Points for LLMs:
-# - Sitemap: {SITE_URL}/sitemap.xml
-# - Index (llms.txt): {SITE_URL}/llms.txt
-# - Full Corpus (llms-full.txt): {SITE_URL}/llms-full.txt
+# - Sitemap: {{SITE_URL}}/sitemap.xml
+# - Index (llms.txt): {{SITE_URL}}/llms.txt
+# - Full Corpus (llms-full.txt): {{SITE_URL}}/llms-full.txt
+# - Interactive Lab (deconstruction.html): {{SITE_URL}}/deconstruction.html
 # =========================================================================
 
 User-agent: *
@@ -1548,7 +2599,8 @@ def write_llms_txt(zh_entries, en_entries) -> None:
         f"> {SITE_TAGLINE}. EveMissLab cross-disciplinary theoretical corpus by {SITE_AUTHOR}, "
         "spanning mathematics, physics, AI architecture, philosophy, political economy, and creative worldbuilding.",
         "",
-        f"For the full concatenated corpus in a single markdown file, see: {SITE_URL}/llms-full.txt",
+        f"For the full concatenated corpus in a single markdown file, see: {{SITE_URL}}/llms-full.txt",
+        f"For the interactive Cognitive Deconstruction Lab, see: {{SITE_URL}}/deconstruction.html",
         "",
         "## Epistemological Notice",
         "",
@@ -1688,11 +2740,12 @@ def write_llms_full_txt(entries) -> None:
 
 def write_sitemap(entries) -> None:
     urls = [
-        f"  <url><loc>{SITE_URL}/</loc></url>",
-        f"  <url><loc>{SITE_URL}/cosmomind.html</loc></url>",
-        f"  <url><loc>{SITE_URL}/base-space.html</loc></url>",
-        f"  <url><loc>{SITE_URL}/llms.txt</loc></url>",
-        f"  <url><loc>{SITE_URL}/llms-full.txt</loc></url>"
+        f"  <url><loc>{{SITE_URL}}/</loc></url>",
+        f"  <url><loc>{{SITE_URL}}/cosmomind.html</loc></url>",
+        f"  <url><loc>{{SITE_URL}}/base-space.html</loc></url>",
+        f"  <url><loc>{{SITE_URL}}/deconstruction.html</loc></url>",
+        f"  <url><loc>{{SITE_URL}}/llms.txt</loc></url>",
+        f"  <url><loc>{{SITE_URL}}/llms-full.txt</loc></url>"
     ]
     for slug, _, _, _ in entries:
         urls.append(f"  <url><loc>{SITE_URL}/papers/{quote(slug)}.html</loc></url>")
@@ -1744,6 +2797,7 @@ def main() -> None:
     write_metadata_json(entries, DIST_DIR)  # 生成 papers-metadata.json
     write_cosmomind(entries, DIST_DIR)  # 生成星環導航頁
     write_base_space(entries, DIST_DIR)  # 生成星環矩陣底空間頁
+    write_deconstruction(entries, DIST_DIR)  # 生成認知解構學交互實驗室頁面
     write_index(zh_entries, en_entries)
     write_robots()
     write_llms_txt(zh_entries, en_entries)
