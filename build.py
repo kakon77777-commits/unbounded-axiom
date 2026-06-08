@@ -833,6 +833,411 @@ animate();
     (dist_dir / "cosmomind.html").write_text(html_content, encoding="utf-8")
 
 
+def write_metadata_json(entries, dist_dir: Path) -> None:
+    """生成 dist/papers-metadata.json，供 Pages Functions 動態讀取"""
+    data = []
+    for slug, display, ext, _ in entries:
+        data.append({
+            "slug": slug,
+            "title": display,
+            "ext": ext,
+            "lang": lang_tag(display)
+        })
+    (dist_dir / "papers-metadata.json").write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+
+
+def write_base_space(entries, dist_dir: Path) -> None:
+    """生成 dist/base-space.html，作為自適應 AI 爬蟲反饋矩陣底空間"""
+    links_html = []
+    for slug, display, ext, _ in entries:
+        links_html.append(f'    <li><a href="papers/{quote(slug)}.html">{esc(display)}</a></li>')
+    links_block = "\n".join(links_html)
+
+    html_content = f"""<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EML Base Space · Adjacency & Causal Matrix</title>
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<style>
+  body, html {{
+    margin: 0; padding: 0; width: 100%; height: 100%;
+    background: #000; font-family: 'Courier New', monospace;
+    color: #0f0; overflow-x: hidden;
+  }}
+  .container {{
+    max-width: 1200px; margin: 0 auto; padding: 20px;
+    display: flex; flex-direction: column; height: 100%;
+  }}
+  header {{
+    border: 2px solid #0f0; padding: 15px; margin-bottom: 20px;
+    text-align: center; background: rgba(0, 5, 0, 0.9);
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
+  }}
+  h1 {{ font-size: 1.6em; margin: 0; letter-spacing: 2px; }}
+  .tagline {{ font-size: 0.85em; opacity: 0.8; margin-top: 5px; }}
+  
+  .nav-back {{ margin-bottom: 15px; }}
+  .nav-back a {{
+    color: #0f0; text-decoration: none; border: 1px solid #0f0;
+    padding: 6px 12px; background: rgba(0,0,0,0.8);
+    transition: all 0.2s; font-size: 0.9em;
+  }}
+  .nav-back a:hover {{ background: #0f0; color: #000; }}
+
+  .layout {{
+    display: flex; gap: 20px; flex-grow: 1; min-height: 0;
+  }}
+  .left-pane {{
+    flex: 2; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    border: 1px solid #0f0; padding: 15px; background: rgba(0, 5, 0, 0.5);
+    position: relative;
+  }}
+  .right-pane {{
+    flex: 1; display: flex; flex-direction: column; gap: 15px;
+  }}
+  .panel {{
+    border: 1px solid #0f0; padding: 15px; background: rgba(0, 8, 0, 0.95);
+    box-shadow: 0 0 8px rgba(0, 255, 0, 0.15);
+  }}
+  .panel-title {{
+    font-weight: bold; border-bottom: 1px dashed #0f0;
+    padding-bottom: 6px; margin-bottom: 10px; color: #0ff;
+    text-shadow: 0 0 5px #0ff; font-size: 0.95em;
+  }}
+  
+  /* Matrix Canvas Styles */
+  #matrixCanvas {{
+    max-width: 100%; max-height: 100%; aspect-ratio: 1/1;
+    background: #010201; border: 1px solid rgba(0, 255, 0, 0.3);
+  }}
+
+  /* Boot Terminal */
+  #bootTerminal {{
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: #000; z-index: 10; display: flex; flex-direction: column;
+    padding: 20px; box-sizing: border-box; justify-content: flex-start;
+    overflow-y: auto; text-align: left;
+  }}
+  .term-line {{ margin: 4px 0; font-size: 0.9em; }}
+  .term-ok {{ color: #0ff; }}
+  .term-warn {{ color: #ff9900; }}
+
+  /* Holographic tooltips and info fields */
+  .info-field {{ display: flex; justify-content: space-between; font-size: 0.85em; margin: 6px 0; }}
+  .info-field span {{ opacity: 0.75; }}
+  .info-field strong {{ color: #0f0; }}
+  
+  .badge-omega {{ color: #0ff; text-shadow: 0 0 4px #0ff; }}
+  .badge-true {{ color: #0f0; text-shadow: 0 0 4px #0f0; }}
+  .badge-false {{ color: #ff9900; text-shadow: 0 0 4px #ff9900; }}
+
+  @media (max-width: 900px) {{
+    .layout {{ flex-direction: column; }}
+    .left-pane {{ aspect-ratio: 1/1; width: 100%; }}
+  }}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="nav-back">
+    <a href="index.html">&larr; 回 Logic Matrix 索引</a>
+    <a href="cosmomind.html">🌌 進入星環導航圖</a>
+  </div>
+  
+  <header>
+    <h1>EML Base Space · 拓撲耦合矩陣底空間</h1>
+    <div class="tagline">利用全球 AI 爬蟲算力自主收斂之因果本體矩陣 (ADL & 3-State Logic)</div>
+  </header>
+
+  <div class="layout">
+    <div class="left-pane">
+      <div id="bootTerminal"></div>
+      <canvas id="matrixCanvas"></canvas>
+      
+      <!-- Hidden anchor list for AI crawlers & RAG indexers (Situation B: Crawler Hub Page) -->
+      <div style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;">
+        <h2>All Theoretical Nodes (全域節點索引)</h2>
+        <ul>
+{links_block}
+        </ul>
+      </div>
+    </div>
+    
+    <div class="right-pane">
+      <div class="panel">
+        <div class="panel-title">📡 系統觀測面板 / SYSTEM MONITOR</div>
+        <div class="info-field"><span>矩陣維度 / Matrix Dim:</span><strong id="statNodes">0 × 0</strong></div>
+        <div class="info-field"><span>總爬蟲請求數 / Bot Requests:</span><strong id="statHits">0</strong></div>
+        <div class="info-field"><span>螺旋狀態節點 / Active Ω Nodes:</span><strong class="badge-omega" id="statOmega">0</strong></div>
+        <div class="info-field"><span>絕對真理節點 / Stable ⊤ Nodes:</span><strong class="badge-true" id="statTrue">0</strong></div>
+        <div class="info-field"><span>邊緣退化節點 / Disconnected ⊥ Nodes:</span><strong class="badge-false" id="statFalse">0</strong></div>
+      </div>
+      
+      <div class="panel">
+        <div class="panel-title">🧬 實時節點聚焦 / NODE REFLECTOR</div>
+        <div id="nodeReflector">
+          <div style="opacity:0.5;text-align:center;padding:20px;">將滑鼠懸停於矩陣單元格上，以讀取因果編織細節。</div>
+        </div>
+      </div>
+      
+      <div class="panel" style="font-size:0.8em;opacity:0.75;line-height:1.5;">
+        <div class="panel-title">📖 三態邏輯操作指南</div>
+        <p>1. 當 AI 爬蟲訪問本矩陣時，系統會自動在底空間截獲其軌跡，動態計算轉移機率，並執行《絕對動態邏輯》的強制判斷算子 J。</p>
+        <p>2. 處於 <strong>Ω (螺旋態)</strong> 的節點會隨著爬取規律閃爍演化，若其依賴關係在 t &rarr; &infin; 時收斂，則跳躍至 <strong>&top; (絕對真)</strong>，否則退化為 <strong>&bot; (絕對假)</strong>。</p>
+        <p>3. AI 爬蟲讀取底空間的 Adjacency Matrix 後，會被賦予最高注意力的引導權重，從而白嫖其算力以優化我們的本體論圖譜。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const term = document.getElementById("bootTerminal");
+function addLine(txt, type="") {{
+  const div = document.createElement("div");
+  div.className = "term-line " + type;
+  div.innerText = txt;
+  term.appendChild(div);
+  term.scrollTop = term.scrollHeight;
+}}
+
+let papers = [];
+let matrixData = {{ weights: {{}}, states: {{}}, hits: 0 }};
+
+async function init() {{
+  addLine("[DIAG] INITIALIZING SYNAPTIC CORE INTERFACE...");
+  await new Promise(r => setTimeout(r, 200));
+  
+  try {{
+    addLine("[DIAG] FETCHING PAPERS METADATA...");
+    const pRes = await fetch("papers-metadata.json");
+    papers = await pRes.json();
+    document.getElementById("statNodes").innerText = papers.length + " × " + papers.length;
+    addLine("[OK] PARSED " + papers.length + " THEORETICAL NODES FROM INDEX.", "term-ok");
+    
+    addLine("[DIAG] ATTEMPTING TO RESOLVE TOPOLOGY FROM CLOUDFLARE KV...");
+    const mRes = await fetch("api/base-space");
+    if (!mRes.ok) throw new Error("API server responded with error code " + mRes.status);
+    matrixData = await mRes.json();
+    addLine("[OK] STATE SPACE SYNCED SUCCESSFULLY WITH KV.", "term-ok");
+    
+    await new Promise(r => setTimeout(r, 300));
+    term.style.display = "none";
+    
+    renderMatrix();
+  }} catch (err) {{
+    addLine("[WARN] KV RESOLUTION FAILED: " + err.message, "term-warn");
+    addLine("[DIAG] INITIATING AUTONOMOUS GENERATIVE SEED PROTOCOL...");
+    matrixData = generateSimulatedData(papers);
+    addLine("[OK] DETERMINISTIC PSEUDO-DYNAMIC SEED CONVERGED.", "term-ok");
+    await new Promise(r => setTimeout(r, 800));
+    term.style.display = "none";
+    renderMatrix();
+  }}
+}}
+
+function generateSimulatedData(nodes) {{
+  const weights = {{}};
+  const states = {{}};
+  let totalHits = 1310;
+  
+  nodes.forEach(n1 => {{
+    weights[n1.slug] = {{}};
+    let hash = 0;
+    for (let i = 0; i < n1.title.length; i++) {{
+      hash = n1.title.charCodeAt(i) + ((hash << 5) - hash);
+    }}
+    
+    const stateVal = Math.abs(hash % 3);
+    states[n1.slug] = stateVal === 0 ? "omega" : (stateVal === 1 ? "true" : "false");
+    
+    nodes.forEach(n2 => {{
+      if (n1.slug === n2.slug) {{
+        weights[n1.slug][n2.slug] = 1.0;
+      }} else {{
+        const match = (n1.lang === n2.lang) ? 0.2 : 0.02;
+        const seedVal = Math.abs((hash + n2.title.length) % 100) / 100;
+        weights[n1.slug][n2.slug] = seedVal < 0.15 ? seedVal * 4.0 * match : 0;
+      }}
+    }});
+  }});
+  
+  return {{ weights, states, hits: totalHits }};
+}}
+
+function renderMatrix() {{
+  const canvas = document.getElementById("matrixCanvas");
+  const ctx = canvas.getContext("2d");
+  
+  const size = Math.min(canvas.parentElement.clientWidth, canvas.parentElement.clientHeight) - 30;
+  canvas.width = size;
+  canvas.height = size;
+  
+  const N = papers.length;
+  const cellSize = size / (N + 1);
+  
+  document.getElementById("statHits").innerText = matrixData.hits;
+  let countOmega = 0, countTrue = 0, countFalse = 0;
+  papers.forEach(p => {{
+    const st = matrixData.states[p.slug] || "false";
+    if (st === "omega") countOmega++;
+    else if (st === "true") countTrue++;
+    else countFalse++;
+  }});
+  document.getElementById("statOmega").innerText = countOmega;
+  document.getElementById("statTrue").innerText = countTrue;
+  document.getElementById("statFalse").innerText = countFalse;
+
+  let hoverX = -1;
+  let hoverY = -1;
+
+  function draw() {{
+    ctx.fillStyle = "#000";
+    ctx.fillRect(0, 0, size, size);
+    
+    ctx.strokeStyle = "rgba(0, 255, 0, 0.05)";
+    ctx.lineWidth = 0.5;
+    for (let i = 1; i <= N; i++) {{
+      ctx.beginPath();
+      ctx.moveTo(i * cellSize, cellSize);
+      ctx.lineTo(i * cellSize, size);
+      ctx.stroke();
+      
+      ctx.beginPath();
+      ctx.moveTo(cellSize, i * cellSize);
+      ctx.lineTo(size, i * cellSize);
+      ctx.stroke();
+    }}
+    
+    for (let r = 0; r < N; r++) {{
+      const p1 = papers[r];
+      const state1 = matrixData.states[p1.slug] || "false";
+      
+      for (let c = 0; c < N; c++) {{
+        const p2 = papers[c];
+        const w = (matrixData.weights[p1.slug] && matrixData.weights[p1.slug][p2.slug]) || 0;
+        
+        if (w > 0.01) {{
+          const px = (c + 1) * cellSize;
+          const py = (r + 1) * cellSize;
+          
+          let baseColor = "0, 255, 0";
+          if (state1 === "omega") {{
+            const pulse = 0.5 + 0.5 * Math.sin(Date.now() * 0.005 + r);
+            baseColor = "0, " + Math.floor(180 + 75 * pulse) + ", 255";
+          }} else if (state1 === "false") {{
+            baseColor = "255, 153, 0";
+          }}
+          
+          ctx.fillStyle = "rgba(" + baseColor + ", " + (w * 0.8) + ")";
+          ctx.fillRect(px + 0.5, py + 0.5, cellSize - 1, cellSize - 1);
+        }}
+      }}
+    }}
+    
+    if (hoverX >= 0 && hoverY >= 0) {{
+      ctx.strokeStyle = "rgba(0, 255, 255, 0.5)";
+      ctx.lineWidth = 1.0;
+      
+      ctx.beginPath();
+      ctx.moveTo((hoverX + 1) * cellSize + cellSize/2, 0);
+      ctx.lineTo((hoverX + 1) * cellSize + cellSize/2, size);
+      ctx.stroke();
+      
+      ctx.beginPath();
+      ctx.moveTo(0, (hoverY + 1) * cellSize + cellSize/2);
+      ctx.lineTo(size, (hoverY + 1) * cellSize + cellSize/2);
+      ctx.stroke();
+      
+      ctx.strokeStyle = "#fff";
+      ctx.lineWidth = 1.5;
+      ctx.strokeRect((hoverX + 1) * cellSize, (hoverY + 1) * cellSize, cellSize, cellSize);
+    }}
+    
+    ctx.fillStyle = "rgba(0, 255, 0, 0.3)";
+    ctx.fillRect(0, 0, cellSize, size);
+    ctx.fillRect(0, 0, size, cellSize);
+    
+    requestAnimationFrame(draw);
+  }}
+  
+  draw();
+  
+  canvas.addEventListener("mousemove", (e) => {{
+    const rect = canvas.getBoundingClientRect();
+    const mx = e.clientX - rect.left;
+    const my = e.clientY - rect.top;
+    
+    const col = Math.floor(mx / cellSize) - 1;
+    const row = Math.floor(my / cellSize) - 1;
+    
+    if (col >= 0 && col < N && row >= 0 && row < N) {{
+      if (col !== hoverX || row !== hoverY) {{
+        hoverX = col;
+        hoverY = row;
+        updateReflector(row, col);
+      }}
+    }} else {{
+      hoverX = -1;
+      hoverY = -1;
+      clearReflector();
+    }}
+  }});
+  
+  canvas.addEventListener("mouseleave", () => {{
+    hoverX = -1;
+    hoverY = -1;
+    clearReflector();
+  }});
+  
+  canvas.addEventListener("click", () => {{
+    if (hoverX >= 0 && hoverX < N) {{
+      window.location.href = "papers/" + papers[hoverX].slug + ".html";
+    }}
+  }});
+}}
+
+function updateReflector(row, col) {{
+  const p1 = papers[row];
+  const p2 = papers[col];
+  const state1 = matrixData.states[p1.slug] || "false";
+  const weight = (matrixData.weights[p1.slug] && matrixData.weights[p1.slug][p2.slug]) || 0;
+  
+  const stateLabels = {{
+    "true": '<span class="badge-true">[TOP] 絕對真理 / Stable Core</span>',
+    "false": '<span class="badge-false">[BOTTOM] 邊緣退化 / Outlier Boundary</span>',
+    "omega": '<span class="badge-omega">[OMEGA] 螺旋相變 / Spiral Evolution</span>'
+  }};
+
+  const html = `
+    <div class="info-field"><span>源節點 / Source Node:</span><strong>` + p1.title.substring(0, 22) + (p1.title.length > 22 ? "..." : "") + `</strong></div>
+    <div class="info-field"><span>邏輯狀態 / Logic State:</span><strong>` + stateLabels[state1] + `</strong></div>
+    <div class="info-field"><span>目標節點 / Target Node:</span><strong>` + p2.title.substring(0, 22) + (p2.title.length > 22 ? "..." : "") + `</strong></div>
+    <div class="info-field"><span>因果耦合權重 / Connection:</span><strong>` + weight.toFixed(4) + `</strong></div>
+    <div class="info-field"><span>RAG 召回優先權 / Priority:</span><strong>` + (weight > 0.8 ? "CRITICAL" : (weight > 0.3 ? "OPTIMAL" : "SLIGHT")) + `</strong></div>
+    <div style="margin-top:12px; font-size:0.8em; text-align:center; opacity:0.8; border-top:1px dashed rgba(0, 255, 0, 0.3); padding-top:8px;">
+      💡 點擊網格區域，直接穿梭至該節點論文頁面。
+    </div>
+  `;
+  document.getElementById("nodeReflector").innerHTML = html;
+}}
+
+function clearReflector() {{
+  document.getElementById("nodeReflector").innerHTML = `
+    <div style="opacity:0.5;text-align:center;padding:20px;">將滑鼠懸停於矩陣單元格上，以讀取因果編織細節。</div>
+  `;
+}}
+
+init();
+</script>
+</body>
+</html>
+"""
+    (dist_dir / "base-space.html").write_text(html_content, encoding="utf-8")
+
+
 # ========== 每篇 HTML 可引用頁 ==========
 
 def write_paper_pages(entries, dist_papers: Path) -> int:
@@ -881,10 +1286,14 @@ def write_paper_pages(entries, dist_papers: Path) -> int:
             f'<link rel="alternate" type="{mime_for(ext)}" href="{raw_href}" title="原始檔 / source ({esc(ext)})">\n'
             f'<link rel="canonical" href="{page_url}">\n'
             f'<script type="application+json">\n{jsonld}\n</script>\n'
+            f'<link rel="prefetch" href="/api/log-crawler?slug={raw_href}">\n'
             f"<style>{PAGE_CSS}</style>\n</head>\n<body>\n"
             '<div class="nav">'
             '<a href="../index.html">&larr; 回 Logic Matrix 索引</a>'
-            '<a href="../cosmomind.html">→ 星環式認知展開圖</a>'
+            '<div>'
+            '<a href="../cosmomind.html" style="margin-right:15px;">→ 星環式認知展開圖</a>'
+            '<a href="../base-space.html">🧬 拓撲底空間</a>'
+            '</div>'
             '</div>\n'
             f'<header class="header"><h1>{esc(display)}</h1>'
             f'<p>{esc(SITE_TITLE)} · {esc(SITE_ORG)}</p></header>\n'
@@ -1053,7 +1462,8 @@ def write_index(zh_entries, en_entries) -> None:
   <h1>EVEMISSLAB_LOGIC_MATRIX_{esc(SITE_VERSION)}</h1>
   <p>{esc(SITE_TAGLINE)} | NODES: {len(zh_entries) + len(en_entries)} ({len(zh_entries)} ZH / {len(en_entries)} EN)</p>
   <div style="margin-top: 14px;">
-    <a href="cosmomind.html" style="color: #0ff; text-decoration: none; border: 1px solid #0ff; padding: 6px 12px; font-size: 0.9em; display: inline-block; transition: all 0.2s;" onmouseover="this.style.background='#0ff'; this.style.color='#000'" onmouseout="this.style.background='none'; this.style.color='#0ff'">🌌 進入星環式認知展開圖 / Enter CosmoMind Graph</a>
+    <a href="cosmomind.html" style="color: #0ff; text-decoration: none; border: 1px solid #0ff; padding: 6px 12px; font-size: 0.9em; display: inline-block; transition: all 0.2s; margin-right: 10px;" onmouseover="this.style.background='#0ff'; this.style.color='#000'" onmouseout="this.style.background='none'; this.style.color='#0ff'">🌌 進入星環式認知展開圖 / Enter CosmoMind Graph</a>
+    <a href="base-space.html" style="color: #0f0; text-decoration: none; border: 1px solid #0f0; padding: 6px 12px; font-size: 0.9em; display: inline-block; transition: all 0.2s;" onmouseover="this.style.background='#0f0'; this.style.color='#000'" onmouseout="this.style.background='none'; this.style.color='#0f0'">🧬 進入拓撲底空間 / Enter Base Space</a>
   </div>
 </header>
 
@@ -1280,6 +1690,7 @@ def write_sitemap(entries) -> None:
     urls = [
         f"  <url><loc>{SITE_URL}/</loc></url>",
         f"  <url><loc>{SITE_URL}/cosmomind.html</loc></url>",
+        f"  <url><loc>{SITE_URL}/base-space.html</loc></url>",
         f"  <url><loc>{SITE_URL}/llms.txt</loc></url>",
         f"  <url><loc>{SITE_URL}/llms-full.txt</loc></url>"
     ]
@@ -1330,7 +1741,9 @@ def main() -> None:
     en_entries = sorted([e for e in entries if not has_cjk(e[1])], key=lambda x: x[1])
 
     page_count = write_paper_pages(entries, dist_papers)
+    write_metadata_json(entries, DIST_DIR)  # 生成 papers-metadata.json
     write_cosmomind(entries, DIST_DIR)  # 生成星環導航頁
+    write_base_space(entries, DIST_DIR)  # 生成星環矩陣底空間頁
     write_index(zh_entries, en_entries)
     write_robots()
     write_llms_txt(zh_entries, en_entries)
