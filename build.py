@@ -26,7 +26,7 @@ PAPERS_DIR = ROOT / "papers"
 DIST_DIR = ROOT / "dist"
 
 # 【修正一】全面開放 .py 進入掃描防區
-SUPPORTED_EXTS = {".docx", ".md", ".pdf", ".tex", ".ipynb", ".py"}
+SUPPORTED_EXTS = {".docx", ".md", ".pdf", ".tex", ".ipynb", ".py", ".lean"}
 
 SITE_TITLE   = "EVEMISSLAB Logic Matrix"
 SITE_VERSION = "V2.1"
@@ -66,6 +66,7 @@ def mime_for(ext: str) -> str:
         "tex":   "application/x-tex",
         "ipynb": "application/x-ipynb+json",
         "py":    "text/x-python", # 補齊 Python 媒體類型，利於 AI 識別
+        "lean":  "text/x-lean",
     }.get(ext, "application/octet-stream")
 
 
@@ -193,7 +194,7 @@ def extract_body(src: Path, ext: str):
             return "\n".join(parts) or None, "full" if parts else "landing"
         
         # 【修正二】讓 .py 與 .tex 完美共享高保真原始碼檢視通道
-        if ext in ("tex", "py"):
+        if ext in ("tex", "py", "lean"):
             return "<pre><code>" + esc(src.read_text(encoding="utf-8", errors="replace")) + "</code></pre>", "source"
             
         if ext == "docx":
@@ -2636,7 +2637,7 @@ def extract_raw_text(src: Path, ext: str) -> str:
     try:
         if ext == "md":
             return src.read_text(encoding="utf-8", errors="replace")
-        if ext in ("py", "tex"):
+        if ext in ("py", "tex", "lean"):
             code = src.read_text(encoding="utf-8", errors="replace")
             return f"```{ext}\n{code}\n```"
         if ext == "ipynb":
