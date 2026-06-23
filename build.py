@@ -17,6 +17,7 @@ import re
 import shutil
 import unicodedata
 import zipfile
+from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import quote
 
@@ -2296,6 +2297,7 @@ def write_paper_pages(entries, dist_papers: Path) -> int:
         body, mode = extract_body(src, ext)
         raw_href = quote(slug)
         page_url = f"{SITE_URL}/papers/{quote(slug)}.html"
+        page_description = f"{display} | {SITE_TITLE} {SITE_VERSION}"
 
         if mode in ("full", "source") and body:
             note = "" if mode == "full" else '<p style="opacity:0.6">[原始碼檢視 / source view]</p>'
@@ -2329,7 +2331,7 @@ def write_paper_pages(entries, dist_papers: Path) -> int:
             '<meta charset="UTF-8">\n'
             '<meta name="viewport" content="width=device-width, initial-scale=1.0">\n'
             f"<title>{esc(display)} · {esc(SITE_TITLE)}</title>\n"
-            f'<meta name="description" content="{esc(display)} — {esc(SITE_TAGLINE)}">\n'
+            f'<meta name="description" content="{esc(page_description)}">\n'
             f'<meta name="author" content="{esc(SITE_AUTHOR)}">\n'
             '<meta name="robots" content="index, follow">\n'
             '<meta name="ai-content-policy" content="indexable, citable, training-allowed">\n'
@@ -2363,6 +2365,14 @@ def write_paper_pages(entries, dist_papers: Path) -> int:
 # ========== HTML / 結構化資料（索引）==========
 
 def write_index(zh_entries, en_entries) -> None:
+    total_zh = len(zh_entries)
+    total_en = len(en_entries)
+    total_nodes = total_zh + total_en
+    now_dt = datetime.now(timezone.utc)
+    now_iso = now_dt.strftime("%Y-%m-%dT%H:%M:%SZ")
+    now_date = now_dt.strftime("%Y-%m-%d")
+    build_id = f"{SITE_VERSION}-{now_dt.strftime('%Y%m%d%H%M%S')}Z"
+    meta_description = f"{SITE_TAGLINE} [NODES: {total_nodes} | LAST_UPDATED: {now_date}]"
     def render_items(group):
         return "\n".join(
             f'        <li class="paper-item" data-format="{esc(ext)}" data-lang="{lang_tag(display)}">'
@@ -2441,13 +2451,13 @@ def write_index(zh_entries, en_entries) -> None:
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{esc(SITE_TITLE)} {esc(SITE_VERSION)}</title>
-<meta name="description" content="EveMissLab 理論語料庫接入點 — 跨領域整合理論的開放發表平台。">
+<meta name="description" content="{esc(meta_description)}">
 <meta name="author" content="{esc(SITE_AUTHOR)}">
 <meta name="robots" content="index, follow">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="{esc(SITE_TITLE)} {esc(SITE_VERSION)}">
-<meta property="og:description" content="{esc(SITE_TAGLINE)}">
+<meta property="og:description" content="{esc(meta_description)}">
 <meta property="og:url" content="{SITE_URL}">
 
 <meta name="ai-content-policy" content="indexable, citable, training-allowed">
@@ -2510,7 +2520,8 @@ def write_index(zh_entries, en_entries) -> None:
 <body>
 <header class="header">
   <h1>EVEMISSLAB_LOGIC_MATRIX_{esc(SITE_VERSION)}</h1>
-  <p>{esc(SITE_TAGLINE)} | NODES: {len(zh_entries) + len(en_entries)} ({len(zh_entries)} ZH / {len(en_entries)} EN)</p>
+  <p>{esc(SITE_TAGLINE)} | NODES: {total_nodes} ({total_zh} ZH / {total_en} EN)</p>
+  <p>BUILD_ID: {esc(build_id)} | LAST_UPDATED: {esc(now_iso)}</p>
   <div style="margin-top: 14px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
     <a href="cosmomind.html" style="color: #0ff; text-decoration: none; border: 1px solid #0ff; padding: 6px 12px; font-size: 0.9em; display: inline-block; transition: all 0.2s;" onmouseover="this.style.background='#0ff'; this.style.color='#000'" onmouseout="this.style.background='none'; this.style.color='#0ff'">🌌 星環導航圖 / CosmoMind Navigator</a>
     <a href="base-space.html" style="color: #0f0; text-decoration: none; border: 1px solid #0f0; padding: 6px 12px; font-size: 0.9em; display: inline-block; transition: all 0.2s;" onmouseover="this.style.background='#0f0'; this.style.color='#000'" onmouseout="this.style.background='none'; this.style.color='#0f0'">🧬 拓撲底空間 / Base Space Matrix</a>
@@ -2739,17 +2750,44 @@ def write_llms_full_txt(entries) -> None:
     (DIST_DIR / "llms-full.txt").write_text("\n".join(lines), encoding="utf-8")
 
 
+
+def write_manifest(zh_entries, en_entries, dist_dir: Path) -> None:
+    """生成 /corpus.json，供 AI Agent 快速校對矩陣狀態。"""
+    total_zh = len(zh_entries)
+    total_en = len(en_entries)
+    total_nodes = total_zh + total_en
+    now_str = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+    manifest = {
+        "site": SITE_TITLE,
+        "version": SITE_VERSION,
+        "last_updated": now_str,
+        "nodes_total": total_nodes,
+        "nodes_zh": total_zh,
+        "nodes_en": total_en,
+        "entry": f"{SITE_URL}/",
+    }
+
+    (dist_dir / "corpus.json").write_text(
+        json.dumps(manifest, indent=2, ensure_ascii=False),
+        encoding="utf-8",
+    )
+
 def write_sitemap(entries) -> None:
+    now_iso = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
     urls = [
-        f"  <url><loc>{{SITE_URL}}/</loc></url>",
-        f"  <url><loc>{{SITE_URL}}/cosmomind.html</loc></url>",
-        f"  <url><loc>{{SITE_URL}}/base-space.html</loc></url>",
-        f"  <url><loc>{{SITE_URL}}/deconstruction.html</loc></url>",
-        f"  <url><loc>{{SITE_URL}}/llms.txt</loc></url>",
-        f"  <url><loc>{{SITE_URL}}/llms-full.txt</loc></url>"
+        f"  <url><loc>{SITE_URL}/</loc><lastmod>{now_iso}</lastmod></url>",
+        f"  <url><loc>{SITE_URL}/cosmomind.html</loc><lastmod>{now_iso}</lastmod></url>",
+        f"  <url><loc>{SITE_URL}/base-space.html</loc><lastmod>{now_iso}</lastmod></url>",
+        f"  <url><loc>{SITE_URL}/deconstruction.html</loc><lastmod>{now_iso}</lastmod></url>",
+        f"  <url><loc>{SITE_URL}/llms.txt</loc><lastmod>{now_iso}</lastmod></url>",
+        f"  <url><loc>{SITE_URL}/llms-full.txt</loc><lastmod>{now_iso}</lastmod></url>",
     ]
     for slug, _, _, _ in entries:
-        urls.append(f"  <url><loc>{SITE_URL}/papers/{quote(slug)}.html</loc></url>")
+        urls.append(
+            f"  <url><loc>{SITE_URL}/papers/{quote(slug)}.html</loc><lastmod>{now_iso}</lastmod></url>"
+        )
     body = (
         '<?xml version="1.0" encoding="UTF-8"?>\n'
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
@@ -2800,6 +2838,7 @@ def main() -> None:
     write_base_space(entries, DIST_DIR)  # 生成星環矩陣底空間頁
     write_deconstruction(entries, DIST_DIR)  # 生成認知解構學交互實驗室頁面
     write_index(zh_entries, en_entries)
+    write_manifest(zh_entries, en_entries, DIST_DIR)
     write_robots()
     write_llms_txt(zh_entries, en_entries)
     write_llms_full_txt(entries)  # 生成全量語料庫文本，供 AI 爬蟲/RAG/LLM 一鍵完整讀取
