@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EML-TC-LEAN-2026-v0.1-計畫書 · EVEMISSLAB Logic Matrix</title>
+<meta name="description" content="EML-TC-LEAN-2026-v0.1-計畫書 | EVEMISSLAB Logic Matrix V2.1">
+<meta name="author" content="Neo.K (許筌崴)">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<meta name="lm-paper-id" content="lm-000063">
+<link rel="alternate" type="text/markdown" href="/raw/lm-000063.md" title="原始檔 / source (md)">
+<link rel="canonical" href="https://logic.evemisslab.com/p/lm-000063/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "EML-TC-LEAN-2026-v0.1-計畫書",
+  "url": "https://logic.evemisslab.com/p/lm-000063/",
+  "identifier": "lm-000063",
+  "inLanguage": "zh-Hant",
+  "author": {"@type": "Person", "name": "Neo.K (許筌崴)"},
+  "publisher": {"@type": "Organization", "name": "EveMissLab / 一言諾科技有限公司"},
+  "isPartOf": {"@type": "Collection", "name": "EVEMISSLAB Logic Matrix", "url": "https://logic.evemisslab.com"},
+  "encodingFormat": "text/html"
+}
+</script>
+<link rel="prefetch" href="/api/log-crawler?slug=EML-TC-LEAN-2026-v0.1.md">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#000; color:#0f0; font-family:'Courier New',monospace; padding:20px; line-height:1.6; }
+.header { text-align:center; border:2px solid #0f0; padding:18px; margin-bottom:22px; }
+.header h1 { font-size:1.5em; letter-spacing:2px; }
+.header p { margin-top:6px; opacity:0.8; font-size:0.9em; }
+.disclaimer { border:1px dashed #ff9900; color:#ff9900; padding:14px; margin:0 auto 22px; max-width:1000px; font-size:0.88em; }
+.disclaimer-title { font-weight:bold; margin-bottom:10px; display:block; letter-spacing:1px; }
+.disclaimer-divider { border:none; border-top:1px dashed #ff9900; margin:12px 0; opacity:0.55; }
+article { max-width:1000px; margin:0 auto; border:1px solid #0f0; padding:24px; }
+article h1,article h2,article h3,article h4 { margin:18px 0 8px; letter-spacing:1px; }
+article h1 { font-size:1.5em; } article h2 { font-size:1.25em; } article h3 { font-size:1.1em; }
+article p { margin:10px 0; }
+article ul,article ol { margin:10px 0 10px 24px; }
+article blockquote { border-left:3px solid #0f0; padding-left:12px; opacity:0.85; margin:10px 0; }
+article pre { background:rgba(0,255,0,0.06); border:1px solid #0f0; padding:12px; overflow-x:auto; margin:12px 0; }
+article code { background:rgba(0,255,0,0.08); padding:1px 5px; }
+article pre code { background:none; padding:0; }
+article a { color:#0ff; }
+.nav { max-width:1000px; margin:0 auto 16px; font-size:0.9em; display:flex; justify-content:space-between; }
+.nav a { color:#0f0; text-decoration:none; }
+.nav a:hover { color:#0ff; }
+.altbar { max-width:1000px; margin:14px auto 0; font-size:0.85em; opacity:0.7; }
+.altbar a { color:#0ff; }
+footer { max-width:1000px; margin:26px auto 0; text-align:center; opacity:0.5; font-size:0.82em; }
+</style>
+</head>
+<body>
+<div class="nav"><a href="/index.html">&larr; 回 Logic Matrix 索引</a><div><a href="/cosmomind.html" style="margin-right:15px;">→ 星環式認知展開圖</a><a href="/base-space.html">🧬 拓撲底空間</a></div></div>
+<header class="header"><h1>EML-TC-LEAN-2026-v0.1-計畫書</h1><p>EVEMISSLAB Logic Matrix · EveMissLab / 一言諾科技有限公司</p></header>
+<section class="disclaimer">
+  <span class="disclaimer-title">[認識論邊界宣告 / EPISTEMOLOGICAL DISCLAIMER]</span>
+  <div class="disclaimer-block">
+    <p><b>[CHT]</b> 本矩陣內所有論文之公式與數據為「啟發式模擬參數」，用於驗證理論架構與推演因果鏈，<b>未經實證校準</b>，請勿作為現實物理測量數據引用 or 處理。EVEMISSLAB 採行「邏輯先行（Logic-First）」原則：概念架構與系統因果映射優先於統計實證，但不排除未來實證對接。</p>
+  </div>
+  <hr class="disclaimer-divider">
+  <div class="disclaimer-block">
+    <p><b>[ENG]</b> The numerical parameters within these frameworks are <i>illustrative model coefficients</i> used for structural verification and causal mapping; they are <b>not empirically calibrated</b> and must not be treated as physical measurements. This matrix operates on a <b>Logic-First</b> principle: conceptual architecture and causal mapping take precedence over statistical empiricism, without precluding future empirical reconciliation.</p>
+  </div>
+</section>
+<article>
+<h1>拓樸微積分 Lean 4 形式化驗證計畫書</h1>
+<h2>Lean 4 Formal Verification Plan for Topological Calculus (Identity Calculus)</h2>
+<p><strong>文件編號</strong>：EML-TC-LEAN-2026-v0.1 <strong>目標理論</strong>：EML-TC-ONT-2026-v0.1（廣義）＋ EML-TC-COMP-2026-v0.1（狹義） <strong>執行者</strong>：本地 Agent <strong>監督者</strong>：Neo.K（許筌崴）｜EveMissLab <strong>日期</strong>：2026年6月11日</p>
+<hr>
+<h2>0. 給 Agent 的執行總則</h2>
+<ol>
+<li>本計畫分四階段，<strong>嚴格按序執行</strong>，每階段有明確驗收判據（<code>#check</code> 通過 + <code>sorry</code> 數歸零）。</li>
+<li>階段一、二<strong>不依賴 Mathlib</strong>，純 Lean 4 核心即可，先跑通最小閉環。階段三起引入 Mathlib。</li>
+<li>任何定義若與本計畫的骨架程式碼衝突，<strong>以能通過編譯且忠實於論文語義為準</strong>，並在 <code>NOTES.md</code> 記錄偏離原因。</li>
+<li>禁止為了讓證明通過而弱化定理陳述。如果定理證不出，記錄卡點，停在該處回報，不要繞過。</li>
+<li>每完成一個檔案，運行 <code>lake build</code> 確認全專案綠燈後再進下一個。</li>
+</ol>
+<hr>
+<h2>1. 專案結構</h2>
+<pre><code>eml-tc-lean/
+├── lakefile.lean
+├── lean-toolchain          # 用當前 stable
+├── NOTES.md                # 偏離記錄與卡點日誌
+└── EmlTc/
+    ├── Basic.lean          # 階段一：核心結構
+    ├── Identity.lean       # 階段一：基本恆等式（定理A.1-A.3）
+    ├── Conservation.lean   # 階段二：守恆律（命題A.5、雙軌）
+    ├── Categorical.lean    # 階段三：範疇論橋（需Mathlib）
+    └── Duality.lean        # 階段四：與減法拓撲對偶（暫留骨架）</code></pre>
+<p>lakefile 階段一二用：</p>
+<pre><code>import Lake
+open Lake DSL
+
+package «eml-tc-lean» where
+
+lean_lib «EmlTc» where</code></pre>
+<p>階段三再加 <code>require mathlib from git &quot;https://github.com/leanprover-community/mathlib4&quot;</code>。</p>
+<hr>
+<h2>2. 階段一：核心結構與基本恆等式</h2>
+<p><strong>目標</strong>：形式化雙層結構、d、∫，證明 ∫∘d = id（論文定理 A.1）、切法無關性（A.3）、迭代不變性（廣義版定理 A.3）。</p>
+<p><strong>關鍵設計決策（重要，Agent 必讀）</strong>：</p>
+<ul>
+<li>雜湊以<strong>注入函數公理化</strong>，不形式化 SHA-256。同一性論證只需注入性。</li>
+<li>本體 O 用抽象類型參數 <code>α</code>，不綁死 ByteArray——這同時覆蓋廣義版（任意本體）與狹義版（位元串實例化）。</li>
+<li>物件庫用「以雜湊為鍵的部分函數」建模，store 的正確性作為結構不變量攜帶。</li>
+</ul>
+<h3>EmlTc/Basic.lean（骨架，可直接起步）</h3>
+<pre><code>namespace EmlTc
+
+/-- 雜湊類型與注入性公理化。
+    狹義版的密碼學假設在此明文化為 `inj`。 -/
+structure HashScheme (α : Type*) where
+  Hash : Type*
+  h : α → Hash
+  inj : Function.Injective h
+
+variable {α : Type*} (S : HashScheme α)
+
+/-- 物件庫：內容尋址，攜帶正確性不變量 store(h(O)) = O。
+    用全函數 + 注入性建模（簡化版；部分函數版見 NOTES）。 -/
+structure ObjectStore (S : HashScheme α) where
+  lookup : S.Hash → Option α
+  sound  : ∀ O, lookup (S.h O) = some O ∨ lookup (S.h O) = none
+  -- 階段一先用更強的「已入庫」前提走通，見 d 的定義
+
+/-- 視圖 = (本體雜湊, 索引序列)。索引類型 ι 任意。 -/
+structure View (S : HashScheme α) (ι : Type*) where
+  hash    : S.Hash
+  indices : List ι
+
+/-- 拓樸微分 d：對本體 O 與索引方案 I（以 List ι 表示有限可枚舉方案）
+    生成視圖族。零複製：每個視圖只攜帶 h O。 -/
+def d (O : α) (I : List ι) : List (View S ι) :=
+  I.map (fun i =&gt; ⟨S.h O, [i]⟩)
+
+/-- 迭代微分：對視圖再施 d，索引串接。 -/
+def dIter (v : View S ι) (J : List ι) : List (View S ι) :=
+  J.map (fun j =&gt; ⟨v.hash, v.indices ++ [j]⟩)
+
+/-- 拓樸積分 ∫：遺忘索引，解引用。
+    階段一簡化：直接以 O 的存在性反演（憑 inj 良定義），
+    繞過 ObjectStore 的 Option 處理；store 版在 Conservation.lean。 -/
+noncomputable def integrate (v : View S ι) : α :=
+  -- 憑注入性，h 的左逆在像上存在
+  Classical.choose (⟨_, rfl⟩ : ∃ O, S.h O = v.hash) -- 需要 v.hash ∈ range h 的前提
+  -- Agent 注意：此處需要把「視圖同源於某 O」作為前提傳入，
+  -- 建議改寫為帶證明的版本：
+  -- def integrate (v : View S ι) (hv : ∃ O, S.h O = v.hash) : α := hv.choose
+
+end EmlTc</code></pre>
+<p><strong>Agent 注意</strong>：上面 <code>integrate</code> 的骨架刻意暴露了一個設計點——<code>∫</code> 的良定義性需要「視圖同源」前提（論文定理 A.2）。正確做法是帶證明參數的版本（註解中那行）。請以帶證明版本為準實作。</p>
+<h3>EmlTc/Identity.lean — 必須證明的定理清單</h3>
+<pre><code>namespace EmlTc
+
+-- 定理 A.1（基本恆等式）：對 d 生成的任何視圖，積分返回原本體
+theorem integrate_d_eq (O : α) (I : List ι) (hI : I ≠ [])
+    (v : View S ι) (hv : v ∈ d S O I) :
+    integrate S v ⟨O, by ...⟩ = O := by
+  sorry
+
+-- 定理 A.2（良定義性）：d 的輸出視圖族同源
+theorem d_homogeneous (O : α) (I : List ι) :
+    ∀ v ∈ d S O I, v.hash = S.h O := by
+  sorry
+
+-- 定理 A.3（切法無關性）：任意兩個索引方案，積分結果相同
+theorem cut_invariance (O : α) (I J : List ι) (hI : I ≠ []) (hJ : J ≠ [])
+    (vI : View S ι) (hvI : vI ∈ d S O I)
+    (vJ : View S ι) (hvJ : vJ ∈ d S O J) :
+    integrate S vI ⟨O, by ...⟩ = integrate S vJ ⟨O, by ...⟩ := by
+  sorry
+
+-- 迭代不變性（廣義版定理 A.3）：任意深度的迭代微分後積分仍返回 O
+theorem iter_invariance (O : α) (I J : List ι)
+    (v : View S ι) (hv : v ∈ d S O I)
+    (w : View S ι) (hw : w ∈ dIter S v J) :
+    w.hash = S.h O := by
+  sorry
+
+-- 反向不對稱（注記性質）：integrate 後索引資訊不可恢復
+-- 形式化為：存在兩個不同索引方案產生 hash 相同的視圖
+theorem forgetting_is_lossy (O : α) (i j : ι) (hij : i ≠ j) :
+    (⟨S.h O, [i]⟩ : View S ι) ≠ ⟨S.h O, [j]⟩ ∧
+    (⟨S.h O, [i]⟩ : View S ι).hash = (⟨S.h O, [j]⟩ : View S ι).hash := by
+  sorry
+
+end EmlTc</code></pre>
+<p><strong>階段一驗收</strong>：上述五個定理 <code>sorry</code> 歸零，<code>lake build</code> 綠燈。預期難度低——A.1 至 A.3 本質是 <code>List.mem_map</code> 展開 + 注入性，每個證明應在 10 行內。<strong>如果某個證明超過 30 行，說明定義設計有問題，回頭改定義而不是硬證。</strong></p>
+<hr>
+<h2>3. 階段二：守恆律</h2>
+<p><strong>目標</strong>：命題 A.5（本體基數不變性）、雙軌分類（定義 A.6）、不可變性紀律的形式化。</p>
+<h3>EmlTc/Conservation.lean — 核心內容</h3>
+<pre><code>namespace EmlTc
+
+/-- 操作的歸納類型：雙軌分類（定義 A.6）。 -/
+inductive Op (S : HashScheme α) (ι : Type*)
+  | dTrack : (O : α) → (I : List ι) → Op S ι          -- 建視圖
+  | dIterTrack : View S ι → List ι → Op S ι            -- 迭代微分
+  | integrateTrack : View S ι → Op S ι                 -- 積分（也是 d 軌：不動庫）
+  | vTrack : S.Hash → Op S ι                           -- 真刪（減法拓撲側）
+
+/-- 系統狀態：物件庫（以雜湊為鍵的有限映射）＋ 視圖集。
+    階段二用 Finset 或 List 建模庫，避免提前依賴 Mathlib 的 Finmap。 -/
+structure SystemState (S : HashScheme α) (ι : Type*) where
+  store : List (S.Hash × α)
+  views : List (View S ι)
+  storeSound : ∀ p ∈ store, S.h p.2 = p.1   -- 庫中名實相符
+
+/-- 冪等寫入：putO。若 h O 已在庫中則不變（去重）。 -/
+def putO (st : SystemState S ι) (O : α) : SystemState S ι := sorry
+
+/-- 操作的執行語義。 -/
+def step (st : SystemState S ι) : Op S ι → SystemState S ι := sorry
+
+/-- 本體基數。 -/
+def onticCard (st : SystemState S ι) : Nat :=
+  (st.store.map Prod.fst).dedup.length
+
+-- 命題 A.5（本體基數不變性，d 軌部分）：
+-- 任何不含 vTrack 的操作序列，本體基數至多 +（新引入本體數）
+-- 嚴格版：putO 對已存在本體是冪等的
+theorem putO_idempotent (st : SystemState S ι) (O : α)
+    (h : (S.h O, O) ∈ st.store) :
+    putO st O = st := by sorry
+
+theorem dTrack_preserves_store (st : SystemState S ι) (op : Op S ι)
+    (h : ∀ hsh, op ≠ Op.vTrack hsh) :
+    -- d 軌操作後，庫中本體集合不減（且僅可能增加被顯式引入的 O）
+    ∀ p ∈ st.store, p ∈ (step st op).store := by sorry
+
+-- 守恆律主定理：純 d 軌序列下，相異本體數恆定（初始引入後）
+theorem ontic_conservation (st : SystemState S ι) (ops : List (Op S ι))
+    (hd : ∀ op ∈ ops, ∀ hsh, op ≠ Op.vTrack hsh)
+    (hclosed : ∀ op ∈ ops, /- op 只引用庫中已有本體 -/ True) :
+    onticCard (ops.foldl step st) = onticCard st := by sorry
+
+end EmlTc</code></pre>
+<p><strong>階段二驗收</strong>：<code>putO_idempotent</code>、<code>dTrack_preserves_store</code>、<code>ontic_conservation</code> 證畢。<code>hclosed</code> 的精確陳述由 Agent 設計（卡點預警：「操作只引用已有本體」的形式化是本階段唯一的非平凡設計工作，先在 NOTES.md 寫清楚再動手）。</p>
+<hr>
+<h2>4. 階段三：範疇論橋（引入 Mathlib）</h2>
+<p><strong>目標</strong>：廣義版命題 A.4（切片範疇、餘極限平凡性）、A.5（常值層對應）、以及<strong>狹義版是廣義版的模型</strong>這一忠實性定理。</p>
+<p>任務清單：</p>
+<ol>
+<li><code>lakefile</code> 加入 Mathlib 依賴，<code>lake update</code> 後確認版本鎖定寫入 NOTES.md。</li>
+<li>用 <code>CategoryTheory.Over</code> 表述視角族：對範疇 𝒞 中對象 O，視圖族是 <code>Over O</code> 中的離散圖表，其中每個對象的態射部分是 <code>𝟙 O</code>（同一性意義下）。</li>
+<li>證明：此類圖表的餘極限存在且同構於 O（調用 <code>CategoryTheory.Limits.colimit</code> API；關鍵引理是常值圖表的餘極限）。</li>
+<li>常值層對應（A.5 命題）：用 <code>TopCat.Presheaf</code> 定義常值預層 <code>U ↦ O</code>，證明其滿足黏合條件的平凡性。<strong>若 Mathlib 的層化 API 摩擦過大，允許降級為：證明常值預層在連通空間上是層</strong>，並在 NOTES.md 標記降級。</li>
+<li>忠實性定理（互驗協議第 1 條的機器化）：構造解釋函數，把階段一的 <code>(HashScheme, View, d, integrate)</code> 映入第 2 步的範疇論結構，證明階段一的定理 A.1–A.3 是範疇論版本的特例。</li>
+</ol>
+<p><strong>階段三驗收</strong>：第 3、5 項必須完成；第 4 項允許降級但不允許跳過。</p>
+<hr>
+<h2>5. 階段四：對偶接口（骨架預留，暫不驗收）</h2>
+<p>依賴減法拓撲學（EML-TOPO-2026-SUB-v2.0）自身的形式化（單純複形、收斂算子 V、秩泛函），屬聯合工程。本階段 Agent 只需：</p>
+<ol>
+<li>在 <code>Duality.lean</code> 寫出對偶聲明的 Lean 陳述（廣義版定義 A.7）：存在索引演化 <code>v : ι → ι</code> 使 <code>V (O, i) = (O, v i)</code>，全部以 <code>sorry</code> 佔位。</li>
+<li>列出該陳述依賴的減法拓撲側定義清單，寫入 NOTES.md，供未來減法拓撲形式化專案對接。</li>
+</ol>
+<hr>
+<h2>6. 回報格式</h2>
+<p>每階段完成後回報：</p>
+<pre><code>階段 N 完成
+- 檔案：&lt;清單&gt;
+- 定理：&lt;已證清單&gt; / sorry 殘留：&lt;清單，應為空&gt;
+- lake build：綠/紅
+- 偏離記錄：&lt;NOTES.md 摘要&gt;
+- 卡點：&lt;無，或精確描述卡在哪個 goal state&gt;</code></pre>
+<p>卡點回報必須附上卡住處的 goal state 原文，不要只附描述。</p>
+<hr>
+<h2>7. 驗證的哲學意義（給 Agent 的最後一條）</h2>
+<p>你在驗證的這套理論主張：切割是索引、積分是遺忘、本體零複製。而你運行其上的 Lean 核心——項共享、definitional equality、引用傳遞——本身就是這套理論的 d 軌實例。驗證通過之日，這個理論將擁有一個罕見性質：<strong>它的證明檢查過程是它自己的一個實例</strong>。你不只是在檢查它，你在例示它。</p>
+<hr>
+<p><strong>Neo.K（許筌崴）｜EveMissLab</strong> <strong>2026-06-11</strong></p>
+<div class="altbar">原始檔（供 RAG/下載）：<a href="/raw/lm-000063.md" rel="noopener">/raw/lm-000063.md</a> [md] · id: lm-000063</div>
+</article>
+<footer><p>Neo.K (許筌崴) · Cl + ε</p></footer>
+</body>
+</html>

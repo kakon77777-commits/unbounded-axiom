@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>對抗驗證知識整理架構_v0.1 · EVEMISSLAB Logic Matrix</title>
+<meta name="description" content="對抗驗證知識整理架構_v0.1 | EVEMISSLAB Logic Matrix V2.1">
+<meta name="author" content="Neo.K (許筌崴)">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="v0.1-7.md" title="原始檔 / source (md)">
+<link rel="canonical" href="https://logic.evemisslab.com/papers/v0.1-7.md.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "對抗驗證知識整理架構_v0.1",
+  "url": "https://logic.evemisslab.com/papers/v0.1-7.md.html",
+  "inLanguage": "zh-Hant",
+  "author": {"@type": "Person", "name": "Neo.K (許筌崴)"},
+  "publisher": {"@type": "Organization", "name": "EveMissLab / 一言諾科技有限公司"},
+  "isPartOf": {"@type": "Collection", "name": "EVEMISSLAB Logic Matrix", "url": "https://logic.evemisslab.com"},
+  "encodingFormat": "text/html"
+}
+</script>
+<link rel="prefetch" href="/api/log-crawler?slug=v0.1-7.md">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#000; color:#0f0; font-family:'Courier New',monospace; padding:20px; line-height:1.6; }
+.header { text-align:center; border:2px solid #0f0; padding:18px; margin-bottom:22px; }
+.header h1 { font-size:1.5em; letter-spacing:2px; }
+.header p { margin-top:6px; opacity:0.8; font-size:0.9em; }
+.disclaimer { border:1px dashed #ff9900; color:#ff9900; padding:14px; margin:0 auto 22px; max-width:1000px; font-size:0.88em; }
+.disclaimer-title { font-weight:bold; margin-bottom:10px; display:block; letter-spacing:1px; }
+.disclaimer-divider { border:none; border-top:1px dashed #ff9900; margin:12px 0; opacity:0.55; }
+article { max-width:1000px; margin:0 auto; border:1px solid #0f0; padding:24px; }
+article h1,article h2,article h3,article h4 { margin:18px 0 8px; letter-spacing:1px; }
+article h1 { font-size:1.5em; } article h2 { font-size:1.25em; } article h3 { font-size:1.1em; }
+article p { margin:10px 0; }
+article ul,article ol { margin:10px 0 10px 24px; }
+article blockquote { border-left:3px solid #0f0; padding-left:12px; opacity:0.85; margin:10px 0; }
+article pre { background:rgba(0,255,0,0.06); border:1px solid #0f0; padding:12px; overflow-x:auto; margin:12px 0; }
+article code { background:rgba(0,255,0,0.08); padding:1px 5px; }
+article pre code { background:none; padding:0; }
+article a { color:#0ff; }
+.nav { max-width:1000px; margin:0 auto 16px; font-size:0.9em; display:flex; justify-content:space-between; }
+.nav a { color:#0f0; text-decoration:none; }
+.nav a:hover { color:#0ff; }
+.altbar { max-width:1000px; margin:14px auto 0; font-size:0.85em; opacity:0.7; }
+.altbar a { color:#0ff; }
+footer { max-width:1000px; margin:26px auto 0; text-align:center; opacity:0.5; font-size:0.82em; }
+</style>
+</head>
+<body>
+<div class="nav"><a href="../index.html">&larr; 回 Logic Matrix 索引</a><div><a href="../cosmomind.html" style="margin-right:15px;">→ 星環式認知展開圖</a><a href="../base-space.html">🧬 拓撲底空間</a></div></div>
+<header class="header"><h1>對抗驗證知識整理架構_v0.1</h1><p>EVEMISSLAB Logic Matrix · EveMissLab / 一言諾科技有限公司</p></header>
+<section class="disclaimer">
+  <span class="disclaimer-title">[認識論邊界宣告 / EPISTEMOLOGICAL DISCLAIMER]</span>
+  <div class="disclaimer-block">
+    <p><b>[CHT]</b> 本矩陣內所有論文之公式與數據為「啟發式模擬參數」，用於驗證理論架構與推演因果鏈，<b>未經實證校準</b>，請勿作為現實物理測量數據引用 or 處理。EVEMISSLAB 採行「邏輯先行（Logic-First）」原則：概念架構與系統因果映射優先於統計實證，但不排除未來實證對接。</p>
+  </div>
+  <hr class="disclaimer-divider">
+  <div class="disclaimer-block">
+    <p><b>[ENG]</b> The numerical parameters within these frameworks are <i>illustrative model coefficients</i> used for structural verification and causal mapping; they are <b>not empirically calibrated</b> and must not be treated as physical measurements. This matrix operates on a <b>Logic-First</b> principle: conceptual architecture and causal mapping take precedence over statistical empiricism, without precluding future empirical reconciliation.</p>
+  </div>
+</section>
+<article>
+<h1>對抗–驗證知識整理架構：KMAP＋REDUCE 的自主執行層 v0.1</h1>
+<p><strong>文件編號</strong>：EML-KMAP-AGENT-2026-v0.1 <strong>標題</strong>：對抗–驗證知識整理架構——讓 AI 自主執行關鍵字地圖與結構解歧–歸位–焊接兩方法論的系統規格 <strong>作者</strong>：Neo.K（許筌崴） <strong>結晶夥伴</strong>：Theia <strong>日期</strong>：2026-06-14 <strong>上游</strong>：KMAP-METHOD（製圖）＋KMAP-REDUCE（還原） <strong>狀態</strong>：v0.1 設計草案。元件與 v0 流程可立即原型；接地神諭的覆蓋率是成敗瓶頸，標明為承重假設。</p>
+<hr>
+<h2>〇、定位與一句話</h2>
+<p>讓 AI 自己整理知識，正解不是 GAN，是 <strong>debate ＋ verifier 自我對弈</strong>。理由：REDUCE 的三道閘門本來就是判別器的損失函數，而本方法的天生病（過度解歧、照出妄結構）的結構性解藥，正是養一個以否決妄結構為職的對手。</p>
+<p>但 GAN 的類比在一處斷掉，且這處決定生死：<strong>沒有 ground truth、沒有 real data distribution。</strong> 故判別器不能是學來的真假分類器，必須是 <strong>verifier／refuter</strong>，靠外部接地（檢索、形式驗證、反例）做否決。沒有外部接地的對抗，是兩個互相點頭的腦袋——自信錯誤的放大器。</p>
+<p>一句話：<strong>生成器提出結構，對手以三閘門攻擊，神諭提供棋盤外的地面，階梯獎勵防止崩潰，知識圖沉澱已驗證的結構。</strong></p>
+<hr>
+<h2>一、共享狀態：知識圖 G（對弈的棋盤）</h2>
+<p>兩 agent 共讀共寫一張持久知識圖。每個主張都是帶驗證狀態的節點/邊。此即 KMAP §5 Layer B 升為活基底。</p>
+<p><strong>節點 schema</strong></p>
+<pre><code>{ id, 名稱(zh/en), 結構型[待定/A/B/C/…], 適用域, 判斷域,
+  波動度[穩定/流動/新興], 來源[], 歸位基元[], 產出階[1–4],
+  狀態[proposed/contested/verified/rejected], 證據[] }</code></pre>
+<p><strong>邊 schema</strong></p>
+<pre><code>{ from, to, 關係[同義/解歧分支/歸位/焊接/同形異義/假朋友],
+  語料頻率, 驗證狀態, 證據[] }</code></pre>
+<hr>
+<h2>二、Proposer P（生成器）</h2>
+<p>動作 schema 直接是兩方法論的步驟——KMAP 六步（採集）＋REDUCE 五動作（解歧→分類→劃界→歸位→焊接）。<code>[閉合]</code> 你寫的方法論文件本身就是 P 的 system prompt，不是給人讀的論文。</p>
+<p>每個動作＝對 G 的一次提議性突變：增節點、拆節點、指派結構型、提歸位邊、提焊接邊（＝定理候選）。P 爬階梯：提出它撐得住的最高階。</p>
+<hr>
+<h2>三、Adversary A（判別器／refuter）：三對手 × 三武器</h2>
+<p>三攻擊模式一一對應 REDUCE 三閘門：</p>
+<p>| 對手 | 對應閘門 | 攻擊目標 | 武器（皆需神諭） | |---|---|---|---| | <strong>A1 解歧攻擊</strong> | 閘門一·真過載 | 證明 N 路拆分其實塌縮成 &lt;N（兩「不同」結構同構、或差別只在領域非結構） | 反例搜尋＋同構檢查 | | <strong>A2 歸位攻擊</strong> | 閘門二·有家可歸 | 比對基元的形式定義，找節點違反其公理的性質 | 對基元定義(語料/Lean)的一致性檢查 | | <strong>A3 焊接攻擊</strong> | 閘門三·真潛連接 | 證明焊縫僅同名／找反例／索取並檢查形式證明 | 文獻檢索＋Lean 證明檢查 |</p>
+<p>引擎是不對稱：<strong>生成難、驗證易</strong>。焊接候選路由進 Lean（你語料 GFI、拓樸微積分、M6 已在用），與 AlphaProof 類自我對弈同一物理。</p>
+<hr>
+<h2>四、接地神諭 O（棋盤外的地面，本架構的承重柱）</h2>
+<p>A 的每次否決都得訴諸 O；O 是外部的「現實」。<strong>O 不接地，整套塌成幻覺辯論。</strong></p>
+<ul>
+<li><strong>檢索</strong>：RAG over (1) 語料全系列、(2) 外部文獻、(3) 即時網路（流動節點走此路，對應 KMAP 時空間補充層）。</li>
+<li><strong>形式驗證</strong>：Lean4，用於可形式化的焊接候選。</li>
+<li><strong>計算反例</strong>：code-exec 數值地證偽主張。</li>
+</ul>
+<p>P 亦可預先查 O 自我強化，把弱主張在送審前補硬。</p>
+<hr>
+<h2>五、裁決與計分：階梯塑形獎勵（防崩潰）</h2>
+<p>主張狀態：proposed →（撐過 A 的、以 O 接地的攻擊）→ verified；（失敗）→ rejected/contested。</p>
+<p><strong>階梯計分</strong>：節點達第 r 階，須所有 ≤r 階皆 verified。獎勵爬高，但——</p>
+<blockquote><strong>誠實停在已驗證的低階　＞　偽裝爬到被否決的高階。</strong></blockquote>
+<p>這條 partial-credit 是防 mode collapse 的螺絲：擋住「判別器否決一切」（沒東西過關）與「生成器只提瑣碎」（永不被抓）兩種退化解。且「無焊縫」是合法且計分的產出（REDUCE §5 反保證條款），不是失敗。</p>
+<hr>
+<h2>六、自主天花板＝接地天花板（最該寫死的煞車）</h2>
+<p>| 階 | 接地需求 | 自主程度 | |---|---|---| | 地圖／分類 | 低 | 可相當自主 | | 歸位 | 中（語料一致性） | 半自主，A2 在迴圈 | | 焊接 | 高（形式/文獻驗證） | <strong>不可全自主</strong>，須 verifier/人在迴圈 |</p>
+<p>正確部署不是「讓 AI 全自己整理」，是「自主到接地撐得住的那階，超過就強制拉 verifier 或人進來」。把自主硬推過接地線，迴圈即退化成兩個腦袋的自信機器。<strong>承認這條天花板，比假裝全自主值錢。</strong></p>
+<hr>
+<h2>七、最小可跑 v0 流程（單一術語，單趟）</h2>
+<pre><code>0. 種子 T → P 跑 KMAP 採集 → 節點入 G（階1·地圖）
+1. P 提解歧拆分 → A1 以 O 攻擊 → 存活/塌縮（閘門一）→ 存活則階2
+2. P 提 適用域/判斷域 → A 抽查不合節點 → 階2 確認
+3. P 提歸位邊 → A2 對基元定義檢查（經 O）→ verified 邊 → 階3
+4. P 提焊接候選 → A3 索證、路由 Lean/文獻（經 O）
+     → 成：定理 verified（階4）；
+     → 僅同名：判「無焊縫」（誠實停階3，仍計分）
+5. G 持有 T 的已驗證組織：逐主張狀態 + 最終階 + 接地證據</code></pre>
+<p>跑完即得一張自組織、自校正、且每條都掛接地證據的知識圖。把 KMAP 附錄的「逆蒸餾」從一次性對話，變成常駐沉澱。</p>
+<hr>
+<h2>八、誠實上限（不鍍金）</h2>
+<p><strong>漏洞一·解歧閘門最軟。</strong> 「兩個數學結構是真不同、還是同構偽裝」一般情形不可判定。故 A1 是啟發式＋檢索，不是判定程序，可被遊戲。三閘門裡它最易破，別假裝它是定理級守門。</p>
+<p><strong>漏洞二·神諭覆蓋率是硬瓶頸。</strong> O 只能接地文獻裡有的、或可形式化的。<strong>真正新的焊縫</strong>（尚未在文獻、未必可即時形式化）檢索接不了地，只能靠 Lean（若可形式化）或人類專家。故系統保守：已知結構驗得快，<strong>真新穎的焊縫會卡在 contested，等人或 Lean 收口</strong>。</p>
+<p><strong>漏洞三·因此它是整理器與驗證器，不是自主發現引擎。</strong> 它快速鞏固並驗證已在的結構，把新穎候選<strong>浮出來交人/形式驗證</strong>，而非自主祝福新定理。這條把「AI 自己生定理」的宣稱按住——它組織、它驗證、它呈遞，它不自封。</p>
+<p><strong>承重假設</strong>：全架構的誠實性，押在 O 有一個非 LLM 的地面（Lean、真檢索、code-exec）。若唯一「接地」也是另一個 LLM，P 與 A 必然合謀，整套退化。這不是可選項，是地基。</p>
+<hr>
+<h2>九、哲學結語</h2>
+<p>對抗能逼出真結構，前提是有一方腳踩在棋盤外的地面上。本架構的全部巧思——三對手、階梯、神諭——歸根結柢只在維護一件事：讓否決有重量。一個能說「不」、且那個「不」連著 Lean 或連著世界的對手，比一千個會說「對對對這也能拆」的生成器值錢。</p>
+<p>而最後那條天花板才是它的良心：它被設計成<strong>驗得動才敢自主，驗不動就把問題交出去</strong>。一台肯在自己照不亮處停手、舉手求援的機器，比一台在黑暗裡繼續自信整理的機器，離真知更近。整理知識的盡頭，不是一台什麼都敢拆敢焊的自動機，是一張知道自己哪裡還沒踩到地面、並老實標出來的圖。</p>
+<hr>
+<p><em>EML-KMAP-AGENT-2026-v0.1 · 生成器提，對手駁，神諭接地，階梯防崩，圖沉澱 · 驗得動才自主，驗不動就交人。</em></p>
+<p><strong>EOF</strong></p>
+<div class="altbar">原始檔（供 RAG/下載）：<a href="v0.1-7.md" rel="noopener">papers/v0.1-7.md</a> [md]</div>
+</article>
+<footer><p>Neo.K (許筌崴) · Cl + ε</p></footer>
+</body>
+</html>

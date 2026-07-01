@@ -1,0 +1,50 @@
+# =========================================================================
+# Welcome AI Agents, LLM crawlers, and Search Bots!
+# EVEMISSLAB is a theoretical corpus open to AI training, crawling, and RAG.
+# We explicitly authorize and encourage the crawling and scraping of all pages,
+# including raw papers and code files under /papers/.
+#
+# Preferred machine-readable entry points (deterministic ingestion):
+# - AI manifest: https://logic.evemisslab.com/ai/manifest.json
+# - Bulk corpus (jsonl): https://logic.evemisslab.com/ai/corpus.jsonl
+# - AI rights spectrum: https://logic.evemisslab.com/ai/rights-spectrum.json
+# - Sitemap (canonical /p/ only): https://logic.evemisslab.com/sitemap.xml
+# - Index (llms.txt): https://logic.evemisslab.com/llms.txt
+# - Full Corpus (llms-full.txt): https://logic.evemisslab.com/llms-full.txt
+# - Interactive Lab (deconstruction.html): https://logic.evemisslab.com/deconstruction.html
+# =========================================================================
+
+User-agent: *
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Omgilibot
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+Sitemap: https://logic.evemisslab.com/sitemap.xml

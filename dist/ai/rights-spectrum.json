@@ -1,0 +1,95 @@
+{
+  "version": "0.1",
+  "protocol": "AILP",
+  "name": "AI Learning Permission Protocol",
+  "rights_framework": "AIRS",
+  "rights_holder": "Neo.K (許筌崴) / EveMissLab / 一言諾科技有限公司",
+  "canonical_domain": "https://logic.evemisslab.com",
+  "last_updated": "2026-07-01T10:24:30Z",
+  "default_policy": {
+    "search_indexing": 1.0,
+    "metadata_indexing": 1.0,
+    "snippet_indexing": 0.8,
+    "semantic_indexing": 1.0,
+    "ai_answer_input": 1.0,
+    "rag_retrieval": 1.0,
+    "temporary_session_use": 1.0,
+    "context_injection": 1.0,
+    "embedding_generation": 0.8,
+    "embedding_storage": 0.8,
+    "semantic_cache": 0.8,
+    "vector_database_use": 0.7,
+    "non_commercial_training": 0.8,
+    "commercial_training": "license_required",
+    "continued_pretraining": "license_required",
+    "domain_training": "license_required",
+    "fine_tuning": "license_required",
+    "instruction_tuning": "license_required",
+    "alignment_tuning": "license_required",
+    "style_tuning": 0.0,
+    "domain_adaptation": "license_required",
+    "model_distillation": "license_required",
+    "synthetic_data_generation": "license_required",
+    "student_model_training": "license_required",
+    "capability_transfer": "license_required",
+    "long_term_memory": 0.7,
+    "verbatim_memorization": 0.0,
+    "persistent_user_memory": 0.5,
+    "model_weight_integration": "license_required",
+    "summary_generation": 1.0,
+    "short_quote_generation": 0.8,
+    "long_quote_generation": 0.0,
+    "style_imitation": 0.0,
+    "substitutive_generation": 0.0,
+    "derivative_generation": "license_required",
+    "citation_required": true,
+    "attribution_required": true,
+    "link_required": true,
+    "commercial_license_required": true,
+    "compensation_required_for_commercial_training": true
+  },
+  "paths": [
+    {
+      "path": "/p/",
+      "description": "Canonical paper pages.",
+      "policy": {
+        "search_indexing": 1.0,
+        "ai_answer_input": 1.0,
+        "rag_retrieval": 1.0,
+        "summary_generation": 1.0,
+        "commercial_training": "license_required",
+        "citation_required": true,
+        "attribution_required": true
+      }
+    },
+    {
+      "path": "/raw/",
+      "description": "Raw source files for machine ingestion.",
+      "policy": {
+        "search_indexing": 1.0,
+        "ai_answer_input": 1.0,
+        "rag_retrieval": 1.0,
+        "embedding_storage": 0.8,
+        "commercial_training": "license_required",
+        "verbatim_memorization": 0.0
+      }
+    },
+    {
+      "path": "/ai/",
+      "description": "AI-native ingestion, manifest, governance, corpus.",
+      "policy": {
+        "search_indexing": 1.0,
+        "ai_answer_input": 1.0,
+        "rag_retrieval": 1.0,
+        "embedding_storage": 1.0,
+        "non_commercial_training": 1.0,
+        "commercial_training": "license_required"
+      }
+    }
+  ],
+  "contact": {
+    "licensing": "mailto:kakon77777@gmail.com",
+    "rights": "https://logic.evemisslab.com/ai/governance/ai-learning-policy.md"
+  },
+  "notice": "This file is a machine-readable permission and preference declaration. It is not a substitute for a signed legal contract for commercial training, fine-tuning, distillation, or derivative model development."
+}

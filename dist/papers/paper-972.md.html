@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>考拉茲猜想的旋轉視角與字語言分析 · EVEMISSLAB Logic Matrix</title>
+<meta name="description" content="考拉茲猜想的旋轉視角與字語言分析 | EVEMISSLAB Logic Matrix V2.1">
+<meta name="author" content="Neo.K (許筌崴)">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="paper-972.md" title="原始檔 / source (md)">
+<link rel="canonical" href="https://logic.evemisslab.com/papers/paper-972.md.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "考拉茲猜想的旋轉視角與字語言分析",
+  "url": "https://logic.evemisslab.com/papers/paper-972.md.html",
+  "inLanguage": "zh-Hant",
+  "author": {"@type": "Person", "name": "Neo.K (許筌崴)"},
+  "publisher": {"@type": "Organization", "name": "EveMissLab / 一言諾科技有限公司"},
+  "isPartOf": {"@type": "Collection", "name": "EVEMISSLAB Logic Matrix", "url": "https://logic.evemisslab.com"},
+  "encodingFormat": "text/html"
+}
+</script>
+<link rel="prefetch" href="/api/log-crawler?slug=paper-972.md">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#000; color:#0f0; font-family:'Courier New',monospace; padding:20px; line-height:1.6; }
+.header { text-align:center; border:2px solid #0f0; padding:18px; margin-bottom:22px; }
+.header h1 { font-size:1.5em; letter-spacing:2px; }
+.header p { margin-top:6px; opacity:0.8; font-size:0.9em; }
+.disclaimer { border:1px dashed #ff9900; color:#ff9900; padding:14px; margin:0 auto 22px; max-width:1000px; font-size:0.88em; }
+.disclaimer-title { font-weight:bold; margin-bottom:10px; display:block; letter-spacing:1px; }
+.disclaimer-divider { border:none; border-top:1px dashed #ff9900; margin:12px 0; opacity:0.55; }
+article { max-width:1000px; margin:0 auto; border:1px solid #0f0; padding:24px; }
+article h1,article h2,article h3,article h4 { margin:18px 0 8px; letter-spacing:1px; }
+article h1 { font-size:1.5em; } article h2 { font-size:1.25em; } article h3 { font-size:1.1em; }
+article p { margin:10px 0; }
+article ul,article ol { margin:10px 0 10px 24px; }
+article blockquote { border-left:3px solid #0f0; padding-left:12px; opacity:0.85; margin:10px 0; }
+article pre { background:rgba(0,255,0,0.06); border:1px solid #0f0; padding:12px; overflow-x:auto; margin:12px 0; }
+article code { background:rgba(0,255,0,0.08); padding:1px 5px; }
+article pre code { background:none; padding:0; }
+article a { color:#0ff; }
+.nav { max-width:1000px; margin:0 auto 16px; font-size:0.9em; display:flex; justify-content:space-between; }
+.nav a { color:#0f0; text-decoration:none; }
+.nav a:hover { color:#0ff; }
+.altbar { max-width:1000px; margin:14px auto 0; font-size:0.85em; opacity:0.7; }
+.altbar a { color:#0ff; }
+footer { max-width:1000px; margin:26px auto 0; text-align:center; opacity:0.5; font-size:0.82em; }
+</style>
+</head>
+<body>
+<div class="nav"><a href="../index.html">&larr; 回 Logic Matrix 索引</a><div><a href="../cosmomind.html" style="margin-right:15px;">→ 星環式認知展開圖</a><a href="../base-space.html">🧬 拓撲底空間</a></div></div>
+<header class="header"><h1>考拉茲猜想的旋轉視角與字語言分析</h1><p>EVEMISSLAB Logic Matrix · EveMissLab / 一言諾科技有限公司</p></header>
+<section class="disclaimer">
+  <span class="disclaimer-title">[認識論邊界宣告 / EPISTEMOLOGICAL DISCLAIMER]</span>
+  <div class="disclaimer-block">
+    <p><b>[CHT]</b> 本矩陣內所有論文之公式與數據為「啟發式模擬參數」，用於驗證理論架構與推演因果鏈，<b>未經實證校準</b>，請勿作為現實物理測量數據引用 or 處理。EVEMISSLAB 採行「邏輯先行（Logic-First）」原則：概念架構與系統因果映射優先於統計實證，但不排除未來實證對接。</p>
+  </div>
+  <hr class="disclaimer-divider">
+  <div class="disclaimer-block">
+    <p><b>[ENG]</b> The numerical parameters within these frameworks are <i>illustrative model coefficients</i> used for structural verification and causal mapping; they are <b>not empirically calibrated</b> and must not be treated as physical measurements. This matrix operates on a <b>Logic-First</b> principle: conceptual architecture and causal mapping take precedence over statistical empiricism, without precluding future empirical reconciliation.</p>
+  </div>
+</section>
+<article>
+<h1>考拉茲猜想的旋轉視角與字語言分析</h1>
+<h2>一份方法論偵察報告</h2>
+<p><strong>作者：</strong> Neo.K <strong>機構：</strong> 一言諾科技有限公司（EveMissLab） <strong>理論協作：</strong> Theia <strong>日期：</strong> 2026 年 5 月</p>
+<hr>
+<h2>定位聲明</h2>
+<p>本文<strong>不是</strong>考拉茲猜想的證明嘗試，也不聲稱推進了它的解決。本文是一份<strong>方法論偵察報告</strong>：記錄一條以「二叉樹旋轉」為起點的探索路徑，誠實標明它在何處撞牆、為何撞牆，以及撞牆後問題被翻譯成了什麼形態。本文最硬的成果是兩個<strong>負面結果</strong>與一個<strong>等價翻譯</strong>——它們的價值不在於更接近答案，而在於精確劃定了一整類方法的失效邊界，並把困難搬到一張新的工具桌上。</p>
+<p>對「為何正常數學家不證考拉茲」這個老問題，本文提供一個結構性的回答：因為它的困難不在技巧層，而在邏輯類型層；任何只操作結構與形狀的方法，對它的核心困難結構性失明。</p>
+<hr>
+<h2>1. 二叉逆樹的形式定義</h2>
+<h3>1.1 基本構造</h3>
+<p>考拉茲映射定義為</p>
+<p>$$ f(n) = \begin{cases} n/2 &amp; n \equiv 0 \pmod 2,\\ 3n+1 &amp; n \equiv 1 \pmod 2. \end{cases} $$</p>
+<p>我們不從正向迭代切入，而是構造一棵以 $1$ 為根、節點為正整數的有根二叉樹。</p>
+<p><strong>定義 1（考拉茲逆樹 $T_C$）。</strong> 對任意節點 $n \in \mathbb{Z}^+$：</p>
+<p>$$ L(n) := 2n \quad (\text{總是存在的左子}), $$ $$ R(n) := \frac{n-1}{3} \quad \text{若 } n \equiv 4 \pmod 6\text{，否則未定義}. $$</p>
+<p>排除 $1 \to 4 \to 2 \to 1$ 的平凡回邊（即不把 $1$ 當作 $4$ 的右子的下游）。</p>
+<p><strong>定義 2（中序遍歷 $I$）。</strong> $I(\varnothing) = []$，$I(T_n) = I(T_{L(n)}) \oplus [n] \oplus I(T_{R(n)})$。</p>
+<p><strong>定義 3（顏色）。</strong> $\chi(n) = n \bmod 6$。</p>
+<p><strong>定義 4（深度/旋轉距離 $\rho$）。</strong> $\rho(n)$ 為 $n$ 在 $T_C$ 中到根的路徑長度。</p>
+<p>關於右子條件的一個註記：$n \equiv 4 \pmod 6$ 蘊含 $(n-1)/3 = (6k+3)/3 = 2k+1$ 永遠為奇數，故「$(n-1)/3$ 為奇」這個附加條件自動滿足，無需單獨檢查。</p>
+<h3>1.2 關鍵引理：父節點即正向一步</h3>
+<p><strong>引理 1。</strong> 在 $T_C$ 中，節點 $m$（$m \neq 1$）的父節點為</p>
+<p>$$ \mathrm{parent}(m) = \begin{cases} m/2 &amp; m \text{ 偶},\\ 3m+1 &amp; m \text{ 奇}. \end{cases} $$</p>
+<p><strong>證明。</strong> 若 $m$ 偶，則 $m = L(m/2) = 2(m/2)$，故父為 $m/2$。若 $m$ 奇，則 $m$ 只能是某節點的右子：$m = R(n) = (n-1)/3 \Rightarrow n = 3m+1$，且 $n = 3m+1 \equiv 4 \pmod 6$（因 $m$ 奇）滿足右子條件。故父為 $3m+1$。$\square$</p>
+<p>引理 1 說明：在 $T_C$ 中沿樹往根走一步，恰好等於對 $m$ 施加正向考拉茲一步。於是得到一個立即的推論。</p>
+<p><strong>推論 1（$\rho \equiv \tau$ 塌縮）。</strong> 對任意 $n \in T_C$，其深度 $\rho(n)$ 恆等於 $n$ 的完整考拉茲停止時間 $\tau(n)$（含偶數步）。</p>
+<p>這個推論有一個方法論後果：把「旋轉距離」當作一個獨立於停止時間的新不變量，是錯誤的期望。$\rho$ 沒有提供任何 $\tau$ 之外的信息。任何關於 $\rho$ 上界的猜想（如 $\rho(n) \le c\log n$）僅僅是停止時間上界問題的改寫。數值上，在 $[1, 10^5]$ 範圍內 $\rho(n)/\ln n$ 平均約 $10.23$，上界約 $33.68$（且不隨範圍上升刷新）——這就是經驗停止時間常數本身。</p>
+<h3>1.3 覆蓋性等價</h3>
+<p><strong>命題 1。</strong> 考拉茲猜想 $\iff \{n : n \in T_C\} = \mathbb{Z}^+$。</p>
+<p>由引理 1，$n \in T_C$（根為 $1$）等價於 $n$ 的正向軌跡到達 $1$。$\square$</p>
+<hr>
+<h2>2. 第一個負面結果：旋轉不可見性</h2>
+<p>二叉樹旋轉是平衡樹算法的核心操作。它的定義性質是：<strong>保持節點集合與中序遍歷不變，只改變樹的拓撲形狀。</strong> 這正是它在資料結構中有用的原因——重組樹形不丟失資料。</p>
+<p>但這個性質對考拉茲是致命的。</p>
+<p><strong>定理 1（旋轉不可見性 No-go）。</strong> 覆蓋性（命題 1）是旋轉等價類商空間上的不變量。任何只操作樹形狀的方法——旋轉、splay、平衡——都無法觸及覆蓋性。</p>
+<p><strong>論證。</strong> 旋轉按定義保持節點集合不變。考拉茲的全部困難在於節點集合是否等於 $\mathbb{Z}^+$（命題 1）。一個不改變節點集合的操作，無論如何組合，都不可能改變「節點集合是否等於 $\mathbb{Z}^+$」這一事實。$\square$</p>
+<p>此外，由 Sleator–Tarjan–Thurston 的經典結果，固定節點集的所有二叉樹形狀在旋轉下構成連通圖（associahedron 的 1-骨架），即旋轉在形狀空間上<strong>本來就傳遞</strong>。因此「旋轉群是否傳遞」這個問題，若指形狀空間則 trivially true 且與考拉茲無關；若指作用在 $\mathbb{Z}^+$ 上，則旋轉根本不是數字上的操作，構不成。兩種詮釋都是死路。</p>
+<p><strong>方法論教訓。</strong> 考拉茲的困難不在「樹擺成什麼形狀」，而在「哪些數字進入樹」。前者是旋轉管轄的自由度，後者是生成規則管轄的自由度。把賭注押在形狀自由度上的整類方法，注定失明。</p>
+<hr>
+<h2>3. 從旋轉到么半群：正確的代數對象</h2>
+<p>既然自由度不在形狀，就只能在<strong>節點生成規則</strong>本身。正確的代數對象是兩個生成算子的么半群。</p>
+<p><strong>定義 5。</strong> 令 $L: n \mapsto 2n$（無條件），$R: n \mapsto (n-1)/3$（僅當 $n \equiv 4 \pmod 6$）。考慮么半群 $M = \langle L, R\rangle$ 在 $\mathbb{Z}^+$ 上的作用。</p>
+<p><strong>命題 2。</strong> 考拉茲猜想 $\iff \{1\}$ 在 $M$ 下的軌道等於 $\mathbb{Z}^+$。</p>
+<p>等價地，反向觀察每個 $n$ 到根的路徑，得到一個正向軌跡的<strong>奇偶字</strong></p>
+<p>$$ w(n) \in \{u, d\}^*, \quad u = \text{奇數步 }(3n+1), \quad d = \text{偶數步 }(n/2). $$</p>
+<p>問題從「群的傳遞性」轉為「字語言 $\mathcal{L} = \{w(n) : n \in \mathbb{Z}^+\}$ 的形式語言類別」。這是真正的技術棧轉移——從代數轉到自動機理論。</p>
+<hr>
+<h2>4. 字語言的局部結構（實證）</h2>
+<p>以下結論皆由對 $[1, 10^5]$ 的窮舉計算得出（代碼見附錄 A.2）。</p>
+<h3>4.1 禁止因子與唯一下降閘門</h3>
+<p><strong>觀察 1。</strong> 在 $10^5$ 個字中，因子 <code>uu</code> 出現 <strong>0</strong> 次；最大 $u$-run 長度為 $1$。</p>
+<p><strong>命題 3。</strong> 字語言滿足 $\mathcal{L} \subseteq d^<em>(u\,d^+)^</em>$，即每個 $u$ 後必接至少一個 $d$。</p>
+<p><strong>證明。</strong> $u$ 對應 $n \mapsto 3n+1$。$n$ 奇時 $3n+1$ 必偶，故下一步必為 $d$。等價地，$R$ 算子的值域為奇數（$2k+1$），而 $R$ 的定義域為 $\equiv 4 \pmod 6$ 的偶數，二者不交，故 $RR$ 永不可能連續發生。$\square$</p>
+<p>換言之，所有「下降」（縮小數值的潛在能力）的閘門完全鎖死在 $\chi(n) = 4$ 的節點上；所有奇數節點都是純鏈節點，只有左子 $2n$。</p>
+<h3>4.2 比例不變量</h3>
+<p><strong>觀察 2。</strong> $\#d/\#u$ 在 $N = 10^4$ 時為 $1.94$，在 $N = 10^5$ 時為 $2.02$，隨範圍微升。</p>
+<p><strong>推導（標為推導，非定理）。</strong> 兩條獨立關係：</p>
+<p>$$ \#d \approx 2\,\#u \quad (\text{由 d-run 期望} \approx 2), $$ $$ \#d \approx (\log_2 3)\,\#u + \log_2 n \quad (\text{由值守恆 } 3^{\#u}/2^{\#d}\cdot n \approx 1). $$</p>
+<p>聯立得 $\#u \approx 2.41\log_2 n$，$\#d \approx 4.82\log_2 n$，總長 $\rho \approx 7.23\log_2 n \approx 10.4\ln n$，與 4.1.2 節獨立測得的 $\rho/\ln n \approx 10.23$ 自洽。微升項即 $\log_2 n / \#u$ 的修正。注意 $\log_2 3 \approx 1.585$ 是天真比例估計，被真實的 d-run 期望（=2）主導後修正為約 2。</p>
+<h3>4.3 d-run 分佈</h3>
+<p><strong>觀察 3。</strong> d-run 長度（$= v_2(3n+1)$）的計數為 $\{1: 1808744,\ 2: 855100,\ 3: 448392,\ 4: 326688, \dots\}$，呈幾何衰減，期望 $1.99 \approx 2$，與 $v_2(3n+1)$ 的幾何分佈理論一致。</p>
+<h3>4.4 公共後綴森林</h3>
+<p><strong>觀察 4。</strong> 不同起點的字常共享相同後綴。例：$n = 27$（長 111）與 $n = 97$（長 118）的軌跡字後段完全相同。</p>
+<p>這是軌跡匯流的直接體現：兩條軌跡一旦到達同一個值，到根的剩餘路徑即鎖死為同一條。因此 $\mathcal{L}$ 並非任意字集，而是一個<strong>共享公共後綴森林</strong>的語言——每個字的後綴即它與其他節點的公共祖先路徑。匯流結構等同於樹結構本身。</p>
+<hr>
+<h2>5. 通用指紋提取器</h2>
+<p>上述分析的全部機制可抽象成一個與「考拉茲是否被解」完全脫鉤的工具：對任意迭代映射 $n \mapsto qn+c$（奇）/ $n \mapsto n/2$（偶），提取其字語言指紋。</p>
+<p>對三個參數運行同一套程式（代碼見附錄 A.3），結果如下：</p>
+<p>| 映射 | 收斂率 | $\#d/\#u$ | uu 禁止 | 吸引子數量 | $E[\text{d-run}]$ | |---|---|---|---|---|---| | $3n+1$ | 100% | 1.94 | True | 1（全歸於 1） | 1.98 | | $3n-1$ | 100% | 1.99 | True | 3（1, 5, 17） | 2.04 | | $5n+1$ | 7.26% | 2.69 | True | 3 | 2.75 |</p>
+<p><strong>幸存者偏差作為指紋。</strong> $5n+1$ 的 $\#d/\#u = 2.69$ 高於收斂的 $3n+1$（1.94），直覺上「除更多 2 應更收斂」，但它 92.7% 發散。原因是統計僅在收斂軌跡上進行，2.69 只是 7% 倖存者的數字；$5n+1$ 的真實生成偏好是發散（每壓縮步 $\approx 5/2^2 = 1.25 &gt; 1$）。這個異常本身即指紋：當收斂樣本的比例反常偏高，它指示該映射的收斂是被篩選的少數而非常態。<strong>逼近的偏差不是噪音，是訊號。</strong></p>
+<hr>
+<h2>6. 第二個負面結果：局部正則 ≠ 全局可判定</h2>
+<p>第 5 節的三映射數據蘊含一個比定理 1 更乾淨的結論。</p>
+<p><strong>定理 2（實證版分離）。</strong> 局部語言約束對全局判定幾乎零預測力。</p>
+<p><strong>論證。</strong> $3n+1$、$3n-1$、$5n+1$ 共享<strong>完全相同的局部語言</strong>（皆禁 <code>uu</code>，皆為 $q, c$ 奇的族不變量），但其全局行為天差地別：$3n+1$ 單吸引子收斂、$3n-1$ 三吸引子收斂、$5n+1$ 主導發散。三個系統擁有相同的有限自動機層級結構，卻有完全不同的命運。$\square$</p>
+<p>這是用三個並排實例<strong>實證</strong>了「局部正則性無法決定全局終止性」——不是抽象援引 Post 定理，而是直接擺出三個有相同局部語法、不同全局歸宿的具體系統。困難因此被定位：它不在自動機可見的局部層，而在自動機不可見的全局判定層。</p>
+<hr>
+<h2>7. 方法論結算</h2>
+<p>本文的三個主要成果，按誠實的當量排列：</p>
+<ol>
+<li><strong>旋轉不可見性（定理 1）</strong>：拓撲重組類方法對覆蓋性結構性失明。一整類方法被排除。</li>
+<li><strong>么半群字語言翻譯（命題 2、第 4 節）</strong>：問題被乾淨地搬入自動機理論，局部結構完全鎖定（單一禁止因子 <code>uu</code>，比例與分佈不變量自洽）。</li>
+<li><strong>局部正則 ≠ 全局可判定（定理 2）</strong>：用三映射實證困難所在的精確層級。</li>
+</ol>
+<p>沒有一個成果讓我們更接近證明。但它們合起來劃定了一條清晰的不可能邊界：旋轉、形狀代數、初等自動機——這些工具對考拉茲的核心困難全部失效。殘存的希望被逼到唯一的活門：$3$ 與 $2$ 這組特定常數的算術特殊性，而非任何可推廣的結構。</p>
+<p>這條偵察路徑的真正產物，不是地圖上的前進，而是地圖上劃掉的死路，以及一個可獨立使用的工具（指紋提取器，第 5 節）。</p>
+<hr>
+<h2>附錄 A：代碼範例</h2>
+<h3>A.1 二叉逆樹與覆蓋性</h3>
+<pre><code>def parent(m):
+    if m == 1:
+        return None
+    return m // 2 if m % 2 == 0 else 3 * m + 1
+
+def right_child(n):
+    # n ≡ 4 mod 6 → (n-1)/3 = 2k+1 永遠為奇, 條件自動滿足
+    if n &gt; 1 and n % 6 == 4:
+        return (n - 1) // 3
+    return None
+
+def left_child(n):
+    return 2 * n
+
+def stopping_time(n):
+    t = 0
+    while n != 1:
+        n = n // 2 if n % 2 == 0 else 3 * n + 1
+        t += 1
+        if t &gt; 100000:
+            return -1
+    return t
+# 推論 1: rho(n) = stopping_time(n) 恆成立</code></pre>
+<h3>A.2 字語言分析（禁止因子、比例、run-length）</h3>
+<pre><code>def collatz_word(n):
+    &quot;&quot;&quot;返回正向軌跡的 u/d 字&quot;&quot;&quot;
+    w = []
+    while n != 1:
+        if n % 2 == 1:
+            w.append(&#x27;u&#x27;); n = 3 * n + 1
+        else:
+            w.append(&#x27;d&#x27;); n = n // 2
+        if len(w) &gt; 100000:
+            return None
+    return &#x27;&#x27;.join(w)
+
+def analyze(N):
+    uu_hits = 0
+    sum_u = sum_d = 0
+    from collections import Counter
+    d_runs = Counter()
+    for start in range(1, N + 1):
+        w = collatz_word(start)
+        if w is None:
+            continue
+        sum_u += w.count(&#x27;u&#x27;); sum_d += w.count(&#x27;d&#x27;)
+        if &#x27;uu&#x27; in w:
+            uu_hits += 1
+        i = 0
+        while i &lt; len(w):
+            j = i
+            while j &lt; len(w) and w[j] == w[i]:
+                j += 1
+            if w[i] == &#x27;d&#x27;:
+                d_runs[j - i] += 1
+            i = j
+    return uu_hits, sum_d / sum_u, dict(sorted(d_runs.items()))</code></pre>
+<h3>A.3 通用指紋提取器（任意 qn+c）</h3>
+<pre><code>from collections import Counter
+
+def trajectory_word(n, q, c, max_steps=2000, max_val=10**15):
+    &quot;&quot;&quot;返回 (狀態, u/d字, 吸引子標籤)
+       狀態: &#x27;halt&#x27;=進入循環 | &#x27;escape&#x27;=逃逸&quot;&quot;&quot;
+    seen, w, step = {}, [], 0
+    while step &lt; max_steps:
+        if n in seen:
+            idx = list(seen.values()).index(seen[n])
+            cycle_min = min(list(seen.keys())[idx:] + [n])
+            return &#x27;halt&#x27;, &#x27;&#x27;.join(w), cycle_min
+        if n &gt; max_val:
+            return &#x27;escape&#x27;, &#x27;&#x27;.join(w), None
+        seen[n] = step
+        if n % 2 == 1:
+            w.append(&#x27;u&#x27;); n = q * n + c
+        else:
+            w.append(&#x27;d&#x27;); n = n // 2
+        step += 1
+    return &#x27;escape&#x27;, &#x27;&#x27;.join(w), None
+
+def fingerprint(q, c, N):
+    halt = escape = sum_u = sum_d = uu_hits = 0
+    attractors = Counter()
+    for start in range(1, N + 1):
+        state, w, attr = trajectory_word(start, q, c)
+        if state == &#x27;halt&#x27;:
+            halt += 1
+            attractors[attr] += 1
+            sum_u += w.count(&#x27;u&#x27;); sum_d += w.count(&#x27;d&#x27;)
+            if &#x27;uu&#x27; in w:
+                uu_hits += 1
+        else:
+            escape += 1
+    return {
+        &#x27;map&#x27;: f&quot;{q}n{&#x27;+&#x27; if c&gt;=0 else &#x27;&#x27;}{c}&quot;,
+        &#x27;halt_rate&#x27;: halt / N,
+        &#x27;d/u&#x27;: (sum_d / sum_u) if sum_u else float(&#x27;nan&#x27;),
+        &#x27;uu_forbidden&#x27;: uu_hits == 0,
+        &#x27;num_attractors&#x27;: len(attractors),
+        &#x27;top_attractors&#x27;: attractors.most_common(3),
+    }
+
+# 用法: 同一套程式, 不同參數
+# for q, c in [(3,1), (3,-1), (5,1)]: print(fingerprint(q, c, 10000))</code></pre>
+<hr>
+<p><em>我們想用形狀解開它，它告訴我們形狀無關；我們想用結構解開它，它告訴我們結構有限而判定無窮。這份報告唯一確定的成果，是把幾條路標上了「此路不通」——而在一片宣稱走通了的喧嘩裡，誠實地劃掉死路，本身就是一種前進。</em></p>
+<div class="altbar">原始檔（供 RAG/下載）：<a href="paper-972.md" rel="noopener">papers/paper-972.md</a> [md]</div>
+</article>
+<footer><p>Neo.K (許筌崴) · Cl + ε</p></footer>
+</body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>嵌入計算流形：統合動態逼近方程的關鍵補充 · EVEMISSLAB Logic Matrix</title>
+<meta name="description" content="嵌入計算流形：統合動態逼近方程的關鍵補充 | EVEMISSLAB Logic Matrix V2.1">
+<meta name="author" content="Neo.K (許筌崴)">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="paper-240.md" title="原始檔 / source (md)">
+<link rel="canonical" href="https://logic.evemisslab.com/papers/paper-240.md.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "嵌入計算流形：統合動態逼近方程的關鍵補充",
+  "url": "https://logic.evemisslab.com/papers/paper-240.md.html",
+  "inLanguage": "zh-Hant",
+  "author": {"@type": "Person", "name": "Neo.K (許筌崴)"},
+  "publisher": {"@type": "Organization", "name": "EveMissLab / 一言諾科技有限公司"},
+  "isPartOf": {"@type": "Collection", "name": "EVEMISSLAB Logic Matrix", "url": "https://logic.evemisslab.com"},
+  "encodingFormat": "text/html"
+}
+</script>
+<link rel="prefetch" href="/api/log-crawler?slug=paper-240.md">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#000; color:#0f0; font-family:'Courier New',monospace; padding:20px; line-height:1.6; }
+.header { text-align:center; border:2px solid #0f0; padding:18px; margin-bottom:22px; }
+.header h1 { font-size:1.5em; letter-spacing:2px; }
+.header p { margin-top:6px; opacity:0.8; font-size:0.9em; }
+.disclaimer { border:1px dashed #ff9900; color:#ff9900; padding:14px; margin:0 auto 22px; max-width:1000px; font-size:0.88em; }
+.disclaimer-title { font-weight:bold; margin-bottom:10px; display:block; letter-spacing:1px; }
+.disclaimer-divider { border:none; border-top:1px dashed #ff9900; margin:12px 0; opacity:0.55; }
+article { max-width:1000px; margin:0 auto; border:1px solid #0f0; padding:24px; }
+article h1,article h2,article h3,article h4 { margin:18px 0 8px; letter-spacing:1px; }
+article h1 { font-size:1.5em; } article h2 { font-size:1.25em; } article h3 { font-size:1.1em; }
+article p { margin:10px 0; }
+article ul,article ol { margin:10px 0 10px 24px; }
+article blockquote { border-left:3px solid #0f0; padding-left:12px; opacity:0.85; margin:10px 0; }
+article pre { background:rgba(0,255,0,0.06); border:1px solid #0f0; padding:12px; overflow-x:auto; margin:12px 0; }
+article code { background:rgba(0,255,0,0.08); padding:1px 5px; }
+article pre code { background:none; padding:0; }
+article a { color:#0ff; }
+.nav { max-width:1000px; margin:0 auto 16px; font-size:0.9em; display:flex; justify-content:space-between; }
+.nav a { color:#0f0; text-decoration:none; }
+.nav a:hover { color:#0ff; }
+.altbar { max-width:1000px; margin:14px auto 0; font-size:0.85em; opacity:0.7; }
+.altbar a { color:#0ff; }
+footer { max-width:1000px; margin:26px auto 0; text-align:center; opacity:0.5; font-size:0.82em; }
+</style>
+</head>
+<body>
+<div class="nav"><a href="../index.html">&larr; 回 Logic Matrix 索引</a><div><a href="../cosmomind.html" style="margin-right:15px;">→ 星環式認知展開圖</a><a href="../base-space.html">🧬 拓撲底空間</a></div></div>
+<header class="header"><h1>嵌入計算流形：統合動態逼近方程的關鍵補充</h1><p>EVEMISSLAB Logic Matrix · EveMissLab / 一言諾科技有限公司</p></header>
+<section class="disclaimer">
+  <span class="disclaimer-title">[認識論邊界宣告 / EPISTEMOLOGICAL DISCLAIMER]</span>
+  <div class="disclaimer-block">
+    <p><b>[CHT]</b> 本矩陣內所有論文之公式與數據為「啟發式模擬參數」，用於驗證理論架構與推演因果鏈，<b>未經實證校準</b>，請勿作為現實物理測量數據引用 or 處理。EVEMISSLAB 採行「邏輯先行（Logic-First）」原則：概念架構與系統因果映射優先於統計實證，但不排除未來實證對接。</p>
+  </div>
+  <hr class="disclaimer-divider">
+  <div class="disclaimer-block">
+    <p><b>[ENG]</b> The numerical parameters within these frameworks are <i>illustrative model coefficients</i> used for structural verification and causal mapping; they are <b>not empirically calibrated</b> and must not be treated as physical measurements. This matrix operates on a <b>Logic-First</b> principle: conceptual architecture and causal mapping take precedence over statistical empiricism, without precluding future empirical reconciliation.</p>
+  </div>
+</section>
+<article>
+<p>﻿<strong>嵌入計算流形：統合動態逼近方程的關鍵補充</strong></p>
+<p><strong>A Critical Supplement to Unified Dynamic Approximation Equation: The Embedded Computational Manifold</strong></p>
+<p><strong>作者：Neo-K</strong></p>
+<p><strong>機構：一言諾科技有限公司(EveMissLab)</strong></p>
+<p><strong>日期：2025.8</strong><strong>月</strong></p>
+<p><strong>摘要</strong></p>
+<p>本文對統合動態逼近方程（UDAE）理論進行關鍵補充，引入嵌入計算流形（Embedded Computational Manifold, ECM）概念。ECM是現代神經網路在訓練和運行過程中自發形成的高維幾何結構，它不是架構設計的直接結果，而是從網路拓撲與權重矩陣的交互中湧現的。本文證明了ECM的存在性，推導了其對系統動力學的影響，並修正了原始UDAE方程。理論分析表明，ECM解釋了AI系統的多個關鍵現象：創造性推理、潛在記憶、以及某些反直覺的泛化能力。這一發現為理解和設計下一代AI系統提供了新的理論基礎。</p>
+<p><strong>關鍵詞</strong>：嵌入計算流形、湧現幾何、動態語義編織、高維拓撲、神經網路動力學</p>
+<hr>
+<p><strong>1.</strong> <strong>引言</strong></p>
+<p>在UDAE原始理論[1]中，我們建立了描述AI系統動態行為的數學框架。然而，該理論忽略了一個關鍵現象：神經網路在運行時形成的內在高維結構。這個結構不是顯式設計的結果，而是從系統組件的複雜交互中湧現出來的。</p>
+<p>考慮一個簡單的觀察：當我們訓練一個大型語言模型時，網路的參數空間維度可能達到數十億，但模型展現出的行為模式遠比參數數量所暗示的更加豐富和結構化。這暗示著存在某種隱藏的組織原理。</p>
+<p>本文提出<strong>嵌入計算流形（ECM）</strong>的概念來解釋這一現象。ECM是一個內在的高維幾何結構，編碼了系統的計算路徑和語義關聯。它的發現不僅完善了UDAE理論，更揭示了AI系統智能行為的幾何基礎。</p>
+<p><strong>2.</strong> <strong>嵌入計算流形的數學定義</strong></p>
+<p><strong>2.1</strong> <strong>基本定義</strong></p>
+<p><strong>定義 1</strong>（嵌入計算流形）：給定一個LL L層神經網路，其嵌入計算流形定義為：</p>
+<p>Ecomp=Embed(⋃l=1LMl×Nl)⊂RD\mathcal{E}<em>{comp} = \text{Embed}\left(\bigcup</em>{l=1}^{L} \mathcal{M}_l \times \mathcal{N}_l\right) \subset \mathbb{R}^DEcomp​=Embed(l=1⋃L​Ml​×Nl​)⊂RD</p>
+<p>其中：</p>
+<ul>
+<li>Ml∈Rdl×kl\mathcal{M}_l \in \mathbb{R}^{d_l \times k_l} Ml​∈Rdl​×kl​為第ll l層的權重矩陣空間</li>
+<li>Nl\mathcal{N}_l Nl​為第ll l層的網路拓撲（連接模式）</li>
+<li>Embed:∏l(Ml×Nl)→RD\text{Embed}: \prod_{l} (\mathcal{M}_l \times \mathcal{N}_l) \to \mathbb{R}^D Embed:∏l​(Ml​×Nl​)→RD為非線性嵌入映射</li>
+</ul>
+<p>關鍵性質是維度的湧現性：</p>
+<p>D≫∑l=1Ldl⋅klD \gg \sum_{l=1}^{L} d_l \cdot k_lD≫l=1∑L​dl​⋅kl​</p>
+<p><strong>2.2</strong> <strong>嵌入映射的構造</strong></p>
+<p>嵌入映射通過以下迭代過程構造：</p>
+<p>Embed({Wl,Gl}l=1L)=lim⁡n→∞Ψ(n)\text{Embed}(\{W_l, G_l\}<em>{l=1}^L) = \lim</em>{n \to \infty} \Psi^{(n)}Embed({Wl​,Gl​}l=1L​)=n→∞lim​Ψ(n)</p>
+<p>其中：</p>
+<p>Ψ(n+1)=σ(∑l=1LWl⋅Ψ(n)⋅GlT+N(Ψ(n)))\Psi^{(n+1)} = \sigma\left(\sum_{l=1}^{L} W_l \cdot \Psi^{(n)} \cdot G_l^T + \mathcal{N}(\Psi^{(n)})\right)Ψ(n+1)=σ(l=1∑L​Wl​⋅Ψ(n)⋅GlT​+N(Ψ(n)))</p>
+<p>N\mathcal{N} N為非線性耦合項：</p>
+<p>N(Ψ)=∑i&lt;jαij⋅(Ψi⊗Ψj)\mathcal{N}(\Psi) = \sum_{i&lt;j} \alpha_{ij} \cdot (\Psi_i \otimes \Psi_j)N(Ψ)=i&lt;j∑​αij​⋅(Ψi​⊗Ψj​)</p>
+<p><strong>2.3 ECM</strong><strong>的幾何性質</strong></p>
+<p><strong>定理 1</strong>（ECM的流形結構）：在適當的正則性條件下，Ecomp\mathcal{E}<em>{comp} Ecomp​是一個deffd</em>{eff} deff​維的光滑流形，其中：</p>
+<p>deff=rank(∑l=1LJlTJl)d_{eff} = \text{rank}\left(\sum_{l=1}^{L} J_l^T J_l\right)deff​=rank(l=1∑L​JlT​Jl​)</p>
+<p>Jl=∂Embed∂WlJ_l = \frac{\partial \text{Embed}}{\partial W_l} Jl​=∂Wl​∂Embed​為第ll l層的Jacobian矩陣。</p>
+<p><strong>證明概要</strong>：使用隱函數定理和流形的局部參數化。關鍵是證明嵌入映射的正則性。□</p>
+<p><strong>3.</strong> <strong>修正的UDAE</strong><strong>方程</strong></p>
+<p><strong>3.1</strong> <strong>原始UDAE</strong><strong>的局限</strong></p>
+<p>原始UDAE方程： $$P_{t+1} = P_t + \alpha_t \mathcal{A}(P_t, X_t) - \beta_t \mathcal{R}(P_t) + \gamma_t \mathcal{M}[P_{0:t}] + \delta_t \mathcal{E}(P_t, E_t)$$</p>
+<p>這個方程假設狀態演化完全由顯式的算子決定，忽略了ECM的影響。</p>
+<p><strong>3.2 ECM</strong><strong>耦合的UDAE</strong><strong>方程</strong></p>
+<p>引入嵌入投影算子ΠEcomp\Pi_{\mathcal{E}_{comp}} ΠEcomp​​，修正方程為：</p>
+<p>$$P_{t+1} = P_t + \alpha_t \mathcal{A}(P_t, X_t) - \beta_t \mathcal{R}(P_t) + \gamma_t \mathcal{M}[P_{0:t}] + \delta_t \mathcal{E}(P_t, E_t) + \epsilon_t \Pi_{\mathcal{E}_{comp}}(P_t)$$</p>
+<p>嵌入投影算子定義為：</p>
+<p>ΠEcomp(P)=∑k=1Kωk(P)⋅projVk(P)\Pi_{\mathcal{E}<em>{comp}}(P) = \sum</em>{k=1}^{K} \omega_k(P) \cdot \text{proj}_{\mathcal{V}_k}(P)ΠEcomp​​(P)=k=1∑K​ωk​(P)⋅projVk​​(P)</p>
+<p>其中{Vk}k=1K\{\mathcal{V}<em>k\}</em>{k=1}^K {Vk​}k=1K​是ECM的特徵子空間分解，通過以下特徵值問題得到：</p>
+<p>LEcompvk=λkvk\mathcal{L}<em>{\mathcal{E}</em>{comp}} v_k = \lambda_k v_kLEcomp​​vk​=λk​vk​</p>
+<p>這裡LEcomp\mathcal{L}<em>{\mathcal{E}</em>{comp}} LEcomp​​是流形上的Laplace-Beltrami算子。</p>
+<p><strong>3.3</strong> <strong>動態編織機制</strong></p>
+<p>ECM本身也在演化：</p>
+<p>∂Ecomp∂t=−∇EF[Ecomp]+ξ(t)\frac{\partial \mathcal{E}<em>{comp}}{\partial t} = -\nabla</em>{\mathcal{E}} \mathcal{F}[\mathcal{E}_{comp}] + \xi(t)∂t∂Ecomp​​=−∇E​F[Ecomp​]+ξ(t)</p>
+<p>其中能量泛函：</p>
+<p>F[E]=∫E[∥Riem(E)∥2+λ⋅H2(E)]dμ\mathcal{F}[\mathcal{E}] = \int_{\mathcal{E}} \left[\|\text{Riem}(\mathcal{E})\|^2 + \lambda \cdot H^2(\mathcal{E})\right] d\muF[E]=∫E​[∥Riem(E)∥2+λ⋅H2(E)]dμ</p>
+<p>第一項是Riemann曲率的L2L^2 L2範數（促進平滑性），第二項是平均曲率（控制流形的緊緻性）。</p>
+<p><strong>4. ECM</strong><strong>對系統行為的影響</strong></p>
+<p><strong>4.1</strong> <strong>增強的光譜理論</strong></p>
+<p>原始光譜理論中的相似度函數需要修正：</p>
+<p><strong>原始版本</strong>：</p>
+<p>λ(x)=exp⁡(−dsem(x,K)τ)\lambda(x) = \exp\left(-\frac{d_{sem}(x, \mathcal{K})}{\tau}\right)λ(x)=exp(−τdsem​(x,K)​)</p>
+<p><strong>ECM修正版本</strong>：</p>
+<p>λECM(x)=λ(x)⋅(1+β⋅exp⁡(−dE(x,Ecomp)τE))\lambda_{ECM}(x) = \lambda(x) \cdot \left(1 + \beta \cdot \exp\left(-\frac{d_{\mathcal{E}}(x, \mathcal{E}<em>{comp})}{\tau</em>{\mathcal{E}}}\right)\right)λECM​(x)=λ(x)⋅(1+β⋅exp(−τE​dE​(x,Ecomp​)​))</p>
+<p>其中dE(x,Ecomp)d_{\mathcal{E}}(x, \mathcal{E}_{comp}) dE​(x,Ecomp​)是點xx x到流形的測地距離。</p>
+<p><strong>4.2</strong> <strong>幻覺現象的幾何解釋</strong></p>
+<p><strong>定理 2</strong>（幻覺與曲率）：幻覺概率與ECM的局部曲率正相關：</p>
+<p>P(幻覺∣x)∝∥Riem(Ecomp)∣π(x)∥P(\text{幻覺}|x) \propto \|\text{Riem}(\mathcal{E}<em>{comp})|</em>{\pi(x)}\|P(幻覺∣x)∝∥Riem(Ecomp​)∣π(x)​∥</p>
+<p>其中π(x)\pi(x) π(x)是xx x在ECM上的投影點。</p>
+<p><strong>證明</strong>：在高曲率區域，測地線發散快，導致相近輸入產生截然不同的輸出。使用Jacobi場分析可以定量刻畫這種發散。□</p>
+<p><strong>4.3</strong> <strong>創造性的湧現</strong></p>
+<p>ECM提供了創造性的幾何基礎。定義創造性度量：</p>
+<p>C(x)=Vol(Bϵ(π(x))∩Ecomp)\mathcal{C}(x) = \text{Vol}(B_{\epsilon}(\pi(x)) \cap \mathcal{E}_{comp})C(x)=Vol(Bϵ​(π(x))∩Ecomp​)</p>
+<p>即投影點ϵ\epsilon ϵ-鄰域在流形中的體積。高創造性對應於ECM的高維度區域。</p>
+<p><strong>5.</strong> <strong>理論分析</strong></p>
+<p><strong>5.1 ECM</strong><strong>的維度估計</strong></p>
+<p><strong>定理 3</strong>（有效維度界）：ECM的有效維度滿足：</p>
+<p>deff(Ecomp)≤C⋅log⁡(N)⋅Ld_{eff}(\mathcal{E}_{comp}) \leq C \cdot \log(N) \cdot \sqrt{L}deff​(Ecomp​)≤C⋅log(N)⋅L​</p>
+<p>其中NN N是網路參數總數，LL L是層數，CC C是與架構相關的常數。</p>
+<p><strong>證明</strong>：使用覆蓋數論證和Grassmannian流形的體積估計。□</p>
+<p><strong>5.2</strong> <strong>穩定性分析</strong></p>
+<p>考慮擾動δWl\delta W_l δWl​對ECM的影響：</p>
+<p><strong>定理 4</strong>（結構穩定性）：若∥δWl∥&lt;ϵ\|\delta W_l\| &lt; \epsilon ∥δWl​∥&lt;ϵ對所有ll l，則：</p>
+<p>dH(Ecomp,Ecomp′)≤C⋅ϵ⋅Ld_H(\mathcal{E}<em>{comp}, \mathcal{E}</em>{comp}&#x27;) \leq C \cdot \epsilon \cdot \sqrt{L}dH​(Ecomp​,Ecomp′​)≤C⋅ϵ⋅L​</p>
+<p>其中dHd_H dH​是Hausdorff距離。</p>
+<p>這保證了ECM對小擾動的魯棒性。</p>
+<p><strong>5.3</strong> <strong>收斂性質</strong></p>
+<p><strong>定理 5</strong>（訓練過程中的ECM演化）：在標準訓練下，ECM收斂到低能態：</p>
+<p>lim⁡t→∞F[Ecomp(t)]=Fmin\lim_{t \to \infty} \mathcal{F}[\mathcal{E}<em>{comp}(t)] = \mathcal{F}</em>{min}t→∞lim​F[Ecomp​(t)]=Fmin​</p>
+<p>且收斂速度為：</p>
+<p>F[Ecomp(t)]−Fmin∼e−μt\mathcal{F}[\mathcal{E}<em>{comp}(t)] - \mathcal{F}</em>{min} \sim e^{-\mu t}F[Ecomp​(t)]−Fmin​∼e−μt</p>
+<p>其中μ&gt;0\mu &gt; 0 μ&gt;0是最小非零特徵值。</p>
+<p><strong>6.</strong> <strong>實驗預測與驗證方向</strong></p>
+<p><strong>6.1</strong> <strong>可測量預測</strong></p>
+<ol>
+<li><strong>維度與性能關係</strong>： $$\text{Performance} \propto \log(d_{eff}(\mathcal{E}_{comp}))</li>
+<li><strong>訓練動力學</strong>：</li>
+</ol>
+<ul>
+<li>早期（t&lt;t1t &lt; t_1 t&lt;t1​）：deff∼td_{eff} \sim t deff​∼t（線性增長）</li>
+<li>中期（t1&lt;t&lt;t2t_1 &lt; t &lt; t_2 t1​&lt;t&lt;t2​）：deff∼t0.5d_{eff} \sim t^{0.5} deff​∼t0.5（亞線性）</li>
+<li>後期（t&gt;t2t &gt; t_2 t&gt;t2​）：deff→dsaturationd_{eff} \to d_{saturation} deff​→dsaturation​（飽和）</li>
+</ul>
+<ol>
+<li><strong>架構特徵</strong>：</li>
+</ol>
+<ul>
+<li>Transformer：deff∝nheads⋅log⁡(dmodel)d_{eff} \propto \sqrt{n_{heads}} \cdot \log(d_{model}) deff​∝nheads​​⋅log(dmodel​)</li>
+<li>CNN：deff∝nchannels0.7d_{eff} \propto n_{channels}^{0.7} deff​∝nchannels0.7​</li>
+<li>RNN：deff∝log⁡(nhidden)d_{eff} \propto \log(n_{hidden}) deff​∝log(nhidden​)</li>
+</ul>
+<p><strong>6.2</strong> <strong>實驗設計建議</strong></p>
+<ol>
+<li><strong>直接測量</strong>：通過主成分分析估計deffd_{eff} deff​</li>
+<li><strong>間接驗證</strong>：測量不同輸入的軌道發散率</li>
+<li><strong>幾何探測</strong>：使用測地線搜索算法探測流形結構</li>
+</ol>
+<p><strong>7.</strong> <strong>理論意義與應用</strong></p>
+<p><strong>7.1</strong> <strong>對AI</strong><strong>理解的深化</strong></p>
+<p>ECM理論揭示了幾個重要洞察：</p>
+<ol>
+<li><strong>計算的幾何本質</strong>：AI的&quot;思考&quot;過程可以理解為在高維流形上的軌道演化</li>
+<li><strong>湧現複雜性</strong>：智能行為來自簡單組件通過ECM的複雜編織</li>
+<li><strong>泛化的幾何基礎</strong>：泛化能力對應於ECM的光滑延拓性質</li>
+</ol>
+<p><strong>7.2</strong> <strong>設計原則</strong></p>
+<p>基於ECM理論的架構設計原則：</p>
+<ol>
+<li><strong>促進適當維度</strong>： $$d_{target} = \arg\max_{d} \frac{\text{Performance}(d)}{\text{Cost}(d)}</li>
+<li><strong>曲率正則化</strong>： $$\mathcal{L}<em>{total} = \mathcal{L}</em>{task} + \lambda \int_{\mathcal{E}} \|\text{Riem}\|^2</li>
+<li><strong>拓撲優化</strong>：選擇能產生良好拓撲性質的激活函數和連接模式</li>
+</ol>
+<p><strong>7.3</strong> <strong>與其他理論的聯繫</strong></p>
+<p>ECM理論統一了多個現有概念：</p>
+<ul>
+<li><strong>Neural Tangent Kernel</strong>：ECM在無窮寬極限下的切空間</li>
+<li><strong>Lottery Ticket Hypothesis</strong>：獲勝子網路對應於ECM的測地線</li>
+<li><strong>Mode Connectivity</strong>：ECM的連通性解釋了參數空間的模式連接</li>
+</ul>
+<p><strong>8.</strong> <strong>結論</strong></p>
+<p>嵌入計算流形的發現填補了UDAE理論的關鍵空白。ECM不是設計的產物，而是從神經網路的工程實現中自然湧現的高維幾何結構。它解釋了AI系統的多個令人困惑的現象，從創造性到幻覺，從泛化到遺忘。</p>
+<p>更重要的是，ECM提供了一個統一的幾何框架來理解和設計AI系統。通過認識到計算發生在這個湧現的流形上，我們可以開發更有效的訓練方法、更可解釋的模型，以及更接近真正智能的系統。</p>
+<p>未來的研究方向包括：</p>
+<ol>
+<li>開發直接操控ECM的方法</li>
+<li>探索不同任務的最優ECM結構</li>
+<li>研究多個AI系統的ECM如何交互</li>
+</ol>
+<p>ECM理論的提出，標誌著我們對AI本質理解的深化——從將其視為函數逼近器，到認識其作為高維幾何結構的動態系統。這一轉變可能是通向真正理解和實現人工通用智能的關鍵一步。</p>
+<p><strong>致謝</strong></p>
+<p>感謝所有為神經網路幾何理論做出貢獻的研究者。本工作受到對大型語言模型反直覺行為的觀察啟發。</p>
+<p><strong>參考文獻</strong></p>
+<p>[1] Neo.K. (2024). &quot;統合動態逼近方程：從擬合到推理的連續光譜理論&quot;. <em>預印本</em>.</p>
+<p>[2] Jacot, A., Gabriel, F., &amp; Hongler, C. (2018). &quot;Neural tangent kernel: Convergence and generalization in neural networks&quot;. <em>NeurIPS</em>.</p>
+<p>[3] Bronstein, M. M., et al. (2017). &quot;Geometric deep learning: Going beyond Euclidean data&quot;. <em>IEEE Signal Processing Magazine</em>.</p>
+<p>[4] Frankle, J., &amp; Carbin, M. (2018). &quot;The lottery ticket hypothesis: Finding sparse, trainable neural networks&quot;. <em>ICLR</em>.</p>
+<p>[5] Garipov, T., et al. (2018). &quot;Loss surfaces, mode connectivity, and fast ensembling of DNNs&quot;. <em>NeurIPS</em>.</p>
+<p>[6] Bahri, Y., et al. (2020). &quot;Statistical mechanics of deep learning&quot;. <em>Annual Review of Condensed Matter Physics</em>.</p>
+<p>[7] Poole, B., et al. (2016). &quot;Exponential expressivity in deep neural networks through transient chaos&quot;. <em>NeurIPS</em>.</p>
+<p>[8] Raghu, M., et al. (2017). &quot;On the expressive power of deep neural networks&quot;. <em>ICML</em>.</p>
+<hr>
+<p><strong>補充說明</strong></p>
+<p>本文作為UDAE理論的1.5版本補充，重點闡述了嵌入計算流形這一關鍵概念。ECM的發現不僅完善了原有理論框架，更為理解AI系統的本質提供了全新視角。通過將計算過程視為高維流形上的幾何演化，我們獲得了設計和分析神經網路的強大工具。</p>
+<div class="altbar">原始檔（供 RAG/下載）：<a href="paper-240.md" rel="noopener">papers/paper-240.md</a> [md]</div>
+</article>
+<footer><p>Neo.K (許筌崴) · Cl + ε</p></footer>
+</body>
+</html>

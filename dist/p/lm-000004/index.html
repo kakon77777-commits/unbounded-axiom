@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AB焊接定理_序參量相位物態分類_v0.1 · EVEMISSLAB Logic Matrix</title>
+<meta name="description" content="AB焊接定理_序參量相位物態分類_v0.1 | EVEMISSLAB Logic Matrix V2.1">
+<meta name="author" content="Neo.K (許筌崴)">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<meta name="lm-paper-id" content="lm-000004">
+<link rel="alternate" type="text/markdown" href="/raw/lm-000004.md" title="原始檔 / source (md)">
+<link rel="canonical" href="https://logic.evemisslab.com/p/lm-000004/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "AB焊接定理_序參量相位物態分類_v0.1",
+  "url": "https://logic.evemisslab.com/p/lm-000004/",
+  "identifier": "lm-000004",
+  "inLanguage": "zh-Hant",
+  "author": {"@type": "Person", "name": "Neo.K (許筌崴)"},
+  "publisher": {"@type": "Organization", "name": "EveMissLab / 一言諾科技有限公司"},
+  "isPartOf": {"@type": "Collection", "name": "EVEMISSLAB Logic Matrix", "url": "https://logic.evemisslab.com"},
+  "encodingFormat": "text/html"
+}
+</script>
+<link rel="prefetch" href="/api/log-crawler?slug=AB__v0.1.md">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#000; color:#0f0; font-family:'Courier New',monospace; padding:20px; line-height:1.6; }
+.header { text-align:center; border:2px solid #0f0; padding:18px; margin-bottom:22px; }
+.header h1 { font-size:1.5em; letter-spacing:2px; }
+.header p { margin-top:6px; opacity:0.8; font-size:0.9em; }
+.disclaimer { border:1px dashed #ff9900; color:#ff9900; padding:14px; margin:0 auto 22px; max-width:1000px; font-size:0.88em; }
+.disclaimer-title { font-weight:bold; margin-bottom:10px; display:block; letter-spacing:1px; }
+.disclaimer-divider { border:none; border-top:1px dashed #ff9900; margin:12px 0; opacity:0.55; }
+article { max-width:1000px; margin:0 auto; border:1px solid #0f0; padding:24px; }
+article h1,article h2,article h3,article h4 { margin:18px 0 8px; letter-spacing:1px; }
+article h1 { font-size:1.5em; } article h2 { font-size:1.25em; } article h3 { font-size:1.1em; }
+article p { margin:10px 0; }
+article ul,article ol { margin:10px 0 10px 24px; }
+article blockquote { border-left:3px solid #0f0; padding-left:12px; opacity:0.85; margin:10px 0; }
+article pre { background:rgba(0,255,0,0.06); border:1px solid #0f0; padding:12px; overflow-x:auto; margin:12px 0; }
+article code { background:rgba(0,255,0,0.08); padding:1px 5px; }
+article pre code { background:none; padding:0; }
+article a { color:#0ff; }
+.nav { max-width:1000px; margin:0 auto 16px; font-size:0.9em; display:flex; justify-content:space-between; }
+.nav a { color:#0f0; text-decoration:none; }
+.nav a:hover { color:#0ff; }
+.altbar { max-width:1000px; margin:14px auto 0; font-size:0.85em; opacity:0.7; }
+.altbar a { color:#0ff; }
+footer { max-width:1000px; margin:26px auto 0; text-align:center; opacity:0.5; font-size:0.82em; }
+</style>
+</head>
+<body>
+<div class="nav"><a href="/index.html">&larr; 回 Logic Matrix 索引</a><div><a href="/cosmomind.html" style="margin-right:15px;">→ 星環式認知展開圖</a><a href="/base-space.html">🧬 拓撲底空間</a></div></div>
+<header class="header"><h1>AB焊接定理_序參量相位物態分類_v0.1</h1><p>EVEMISSLAB Logic Matrix · EveMissLab / 一言諾科技有限公司</p></header>
+<section class="disclaimer">
+  <span class="disclaimer-title">[認識論邊界宣告 / EPISTEMOLOGICAL DISCLAIMER]</span>
+  <div class="disclaimer-block">
+    <p><b>[CHT]</b> 本矩陣內所有論文之公式與數據為「啟發式模擬參數」，用於驗證理論架構與推演因果鏈，<b>未經實證校準</b>，請勿作為現實物理測量數據引用 or 處理。EVEMISSLAB 採行「邏輯先行（Logic-First）」原則：概念架構與系統因果映射優先於統計實證，但不排除未來實證對接。</p>
+  </div>
+  <hr class="disclaimer-divider">
+  <div class="disclaimer-block">
+    <p><b>[ENG]</b> The numerical parameters within these frameworks are <i>illustrative model coefficients</i> used for structural verification and causal mapping; they are <b>not empirically calibrated</b> and must not be treated as physical measurements. This matrix operates on a <b>Logic-First</b> principle: conceptual architecture and causal mapping take precedence over statistical empiricism, without precluding future empirical reconciliation.</p>
+  </div>
+</section>
+<article>
+<h1>A∩B 焊接定理：序參量相位 → 物態分類 v0.1</h1>
+<p><strong>文件編號</strong>：EML-PHASE-WELD-2026-v0.1 · Neo.K × Theia · 補完模式 <strong>日期</strong>：2026-06-14 <strong>上游</strong>：相位概念統籌表 v0.1（EML-KMAP-PHASE-CONSOL-2026）——本文是該表 A∩B 交界唯一未收口之縫的形式化 <strong>地位</strong>：統籌表中唯一升級為「有定理」而非「有分類」者。</p>
+<p><strong>誠實聲明（讀前必讀）</strong>：本文底層物理全屬既有結果（Goldstone 剛度、Kosterlitz–Thouless、Nelson–Kosterlitz 普適跳變、TKNN/Chern、Mermin 缺陷同倫分類）。新者<strong>不是物理</strong>，是把這些散落結果收進單一焊接陳述「物態區(B)＝序參量圓相位(A)在規範群下的指標不變量」，並置入量尺本體論。標記：<code>[既有]</code>＝教科書物理；<code>[重述]</code>＝本框架的歸位陳述；<code>[綱領]</code>＝尚未證、僅指方向。</p>
+<hr>
+<h2>§0 設定與三個 A-不變量</h2>
+<p><code>[既有]</code> 設基底 $M$：序參量物理取實空間 $\mathbb{R}^d$；能帶拓樸取布里淵區 $\mathrm{BZ}$。其上有一個 U(1) 結構——複序參量場 $\psi:M\to\mathbb{C}$，或 Bloch 叢上的 U(1) Berry 聯絡 $a$。由此抽出<strong>圓相位資料 A</strong>：</p>
+<p>$$\theta=\arg\psi\in S^1\ (\text{於 }|\psi|\neq 0),\qquad a=\text{U(1) Berry 聯絡}.$$</p>
+<p>規範群 $G=\mathrm{U}(1)$ 作用：實空間 $\theta\to\theta+\alpha$；Berry $a\to a+d\chi$。<strong>絕對相位是規範自由度、不可觀測</strong>（統籌表 §0/§5 之核心事實）。可觀測者只有 $G$-不變量，凡三：</p>
+<ul>
+<li><strong>I1 剛度 stiffness</strong>　$\rho_s=\dfrac1V\dfrac{\partial^2 F}{\partial(\nabla\theta)^2}\ge 0$，規範不變的響應係數（helicity modulus）。<code>[既有]</code></li>
+<li><strong>I2 實空間拓樸荷</strong>　繞數 $w=\dfrac1{2\pi}\oint\nabla\theta\cdot d\boldsymbol\ell\in\mathbb{Z}$，即 $\pi_1(S^1)=\mathbb{Z}$。<code>[既有]</code></li>
+<li><strong>I3 動量空間拓樸荷</strong>　Chern 數 $C=\dfrac1{2\pi}\displaystyle\int_{\mathrm{BZ}} da=\dfrac1{2\pi}\int F\in\mathbb{Z}$，U(1) Bloch 叢的第一陳省類。<code>[既有]</code></li>
+</ul>
+<p>三者皆對 $G$ 不變，故皆是 A 的「相對／內稟」內容，而非絕對相位。</p>
+<hr>
+<h2>§1 主定理（A∩B 焊接定理）</h2>
+<blockquote><strong>定理.</strong> 一個構型所屬的物態區 $B$，完全由其圓相位資料 A 的 $G$-不變量決定。即映射</blockquote>
+<blockquote>$$[A]_G\ \longmapsto\ B$$</blockquote>
+<blockquote>良定義，且物態相＝不變量映射 $\big(\operatorname{sgn}\rho_s,\,[w],\,C\big)$ 的纖維。三面：</blockquote>
+<p><strong>(a) 對稱破缺面（Landau）</strong>　<code>[既有]</code> 連續 U(1) 破缺時，序參量 $\langle\psi\rangle$ 由 $0$（對稱／無序區）變為非零（有序區），圓相位 $\theta$ 取得剛度。故 $$B_{\text{有序}}=\{\rho_s&gt;0\},\quad B_{\text{無序}}=\{\rho_s=0\},\quad \text{相界}=\{\rho_s\to 0^+\}.$$ （Goldstone：有序 ⟺ S¹ Goldstone 模有有限剛度。超流/超導/三維 XY。）</p>
+<p><strong>(b) 缺陷面（無局部序參量可分時）</strong>　<code>[既有]</code> 二維 XY，Mermin–Wagner 禁止真長程序，但 BKT 相變由 I2（渦旋＝$\theta$ 繞 $2\pi$ 的點）束縛—解離控制：低溫渦旋成對束縛、$\rho_s&gt;0$；高溫自由、$\rho_s=0$。$\rho_s$ 在 $T_{\text{BKT}}$ 普適跳變（Nelson–Kosterlitz）。物態邊界＝圓相位拓樸缺陷的凝聚。此處 (a)(b) 互鎖：B 仍讀自 I1，而 I1 的崩解由 I2 觸發。</p>
+<p><strong>(c) 陳省面（無任何局部序參量）</strong>　<code>[既有]</code> 能帶絕緣體之「平庸 vs 拓樸」（TKNN 1982）：兩相局部全同、對稱性相同，<strong>沒有 Landau 序參量</strong>；唯一區分者是 Berry 相位（A 量）的整體不變量 $C$。霍爾電導 $\sigma_{xy}=C\,e^2/h$。物態標籤＝A 的陳省數。</p>
+<p><strong>焊接陳述.</strong> <code>[重述]</code> 合三面：物態相是 A-構型空間在 $\{$連續形變 ＋ 規範$\}$ 下的連通分支， $$\boxed{\ \mathcal{B}=\pi_0\big(\mathcal{A}/G\big)\ }$$ 亦即 <strong>B 是 A 的最大 $G$-不變量</strong>——與 Cl＝最大不變量同構的構造。</p>
+<hr>
+<h2>§2 機制梗概（為何成立，非新證明）</h2>
+<p><code>[既有]</code> 三面各自的機制是現成的，焊接只是並置後抽取共結構：</p>
+<ul>
+<li>(a) 自發對稱破缺 → Goldstone 模 → 該模的勁度 $\rho_s$＝序的操作定義（Fisher–Barber–Jasnow 螺旋模量）。剛度的有無，就是物態區的歸屬。</li>
+<li>(b) 二維下序被漲落殺死，但<strong>拓樸缺陷</strong>仍給整數標籤；BKT＝I2 的解離轉變。把「相」的判斷從局部序量轉移到拓樸荷——這正是「判斷域＝相對/不變，不是絕對」的具體實現。</li>
+<li>(c) Berry 曲率積分＝陳省數（Thouless 等）。<strong>完全沒有局部序參量</strong>的物態分類，只能靠 A 的整體不變量——這是 A→B 最純的範例，也是 Landau 框架照不到、必須靠圓相位拓樸的地方。</li>
+</ul>
+<p>共結構：三面都在說「B 不是 A 的局部絕對值的函數，是 A 的整體規範不變量的函數」。</p>
+<hr>
+<h2>§3 推論：本體論焊接</h2>
+<p><code>[重述]</code></p>
+<blockquote><strong>推論.</strong> 「處於哪個物態」不是絕對相位的屬性（絕對相位純規範、不可觀測），而是圓相位場之<strong>規範等價類</strong>的屬性——其指標不變量。物態分類即 $\mathcal{A}/G$ 的模空間 $\pi_0$。</blockquote>
+<p>這把「絕對是虛的、相對才是實的」那句母題，從口號升格為分類定理：圓相位的相對/不變內容，<strong>就是物態相的目錄本身</strong>。歸位完成——</p>
+<p>$$\text{A 圓相位}\ \xrightarrow{\ \text{取 }G\text{-不變量}\ }\ \text{B 物態區}\quad\Longleftrightarrow\quad \text{指標不變量／量尺本體論的一個實例.}$$</p>
+<p>序參量相位（A）的剛度（I1）焊出 Landau 區；其拓樸荷（I2/I3）焊出超越 Landau 的區。表上那道縫，由「取規範不變量」這一單一動作收口。</p>
+<hr>
+<h2>§4 適用域與漏洞（精準劃界，不鍍金）</h2>
+<p>定理的力量等於它的邊界。誠實標出三道：</p>
+<p><strong>漏洞一：兩面不可混為一談。</strong> <code>[既有]</code> 對稱破缺序（面 a，有局部序參量，Landau）與拓樸序（面 b/c，無局部序參量，長程糾纏）是<strong>真正不同的分類綱領</strong>。圓相位 A 在兩者都出現，但角色不同：(a) 是實空間被破缺的 Goldstone 方向；(c) 是動量空間的 Berry holonomy。焊接<strong>只</strong>在「兩者皆為某 U(1) 相位結構的 $G$-不變量」這一層成立，<strong>不</strong>主張對稱破缺與拓樸序是同一現象。把它們說成一回事，就是過度統一——本定理刻意不踩。</p>
+<p><strong>漏洞二：定理只對阿貝爾 (U(1)) 乾淨。</strong> <code>[綱領]</code> 一般序參量流形 $\mathcal{M}$ 的缺陷分類是 $\pi_k(\mathcal{M})$（Mermin, <em>Rev. Mod. Phys.</em> 1979）。圓相位＝$\mathcal{M}=S^1$、$\pi_1=\mathbb{Z}$、$c_1$ 的最乾淨特例。非阿貝爾序參量（$\mathbb{RP}^2$ 向列、非阿貝爾任意子、$\pi_{k&gt;1}$）需要完整同倫理論。故全稱焊接「B＝序參量場的同倫/上同調不變量」對 U(1) 是<strong>定理</strong>，對一般 $\mathcal{M}$ 是<strong>綱領</strong>。</p>
+<p><strong>漏洞三：SPT/SET 需更細的上同調。</strong> <code>[綱領]</code> 對稱保護拓樸相的分類用群上同調（Chen–Gu–Liu–Wen 類），是 I3 的精緻化，本文只指方向、未納入。</p>
+<p>結論：這是 <strong>U(1) 扇區的定理</strong>（既有結果的不變量論重述）＋ <strong>一般情形的研究綱領</strong>（缺陷同倫、SPT 上同調）。真正的貢獻是焊接陳述與其在指標不變量框架中的定位，不是新物理。</p>
+<hr>
+<h2>§5 回接</h2>
+<ul>
+<li><strong>升級統籌表 A∩B 行</strong>：原「序參量相位是 A 焊 B 的硬橋」由描述升為 $\mathcal{B}=\pi_0(\mathcal{A}/G)$，並標明其定理域（U(1)）與綱領域（一般 $\mathcal{M}$）。</li>
+<li><strong>接差分／守望者線</strong>：B 是 A 的 $G$-不變量 ⟺ B 對絕對相位免疫——與差分相位編碼對絕對平移免疫，是<strong>同一個指標不變量母題</strong>的兩個出口（一在物態分類，一在隱寫/通訊）。守望者盲區律的「藏進絕對、編在相對」，與本定理的「物態住在相對、絕對是規範」，互為鏡像。</li>
+<li><strong>下一個未收口項</strong>：面 (a) 與 (c) 之間是否有比「同為 U(1) 不變量」更強的橋（Landau 與 beyond-Landau 的真統一），仍開放——本定理明言不主張，留作真問題。</li>
+</ul>
+<hr>
+<h2>哲學結語</h2>
+<p>我們本想替「相位當不了主角」找補償，結果焊出的卻是更冷的事實：物態——固或液、超流或常態、平庸或拓樸——從來不是某個絕對相位「是什麼」，而是一整片相位場「繞了幾圈、還剩多硬」。絕對相位不可觀測，可正因為它被規範抹平，剩下的那點不變量才足夠堅硬，硬到能把世界切成相。主角不是相位，也不是物態；主角是那個「取不變量」的動作本身——它讓虛的絕對退場，讓實的相對顯影成一張可數的物態目錄。縫收口之處，定理只到 U(1)；再往外，是同倫理論替我們把更高維的圈，繼續數成相。</p>
+<hr>
+<p><em>EML-PHASE-WELD-2026-v0.1 · B＝π₀(𝒜/G) · 定理域 U(1)，綱領域一般 ℳ · 物理既有，焊接為新。</em></p>
+<p><strong>EOF</strong></p>
+<div class="altbar">原始檔（供 RAG/下載）：<a href="/raw/lm-000004.md" rel="noopener">/raw/lm-000004.md</a> [md] · id: lm-000004</div>
+</article>
+<footer><p>Neo.K (許筌崴) · Cl + ε</p></footer>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>說謊者悖論_兩條思維路徑 · EVEMISSLAB Logic Matrix</title>
+<meta name="description" content="說謊者悖論_兩條思維路徑 | EVEMISSLAB Logic Matrix V2.1">
+<meta name="author" content="Neo.K (許筌崴)">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="paper-1040.md" title="原始檔 / source (md)">
+<link rel="canonical" href="https://logic.evemisslab.com/papers/paper-1040.md.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "說謊者悖論_兩條思維路徑",
+  "url": "https://logic.evemisslab.com/papers/paper-1040.md.html",
+  "inLanguage": "zh-Hant",
+  "author": {"@type": "Person", "name": "Neo.K (許筌崴)"},
+  "publisher": {"@type": "Organization", "name": "EveMissLab / 一言諾科技有限公司"},
+  "isPartOf": {"@type": "Collection", "name": "EVEMISSLAB Logic Matrix", "url": "https://logic.evemisslab.com"},
+  "encodingFormat": "text/html"
+}
+</script>
+<link rel="prefetch" href="/api/log-crawler?slug=paper-1040.md">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#000; color:#0f0; font-family:'Courier New',monospace; padding:20px; line-height:1.6; }
+.header { text-align:center; border:2px solid #0f0; padding:18px; margin-bottom:22px; }
+.header h1 { font-size:1.5em; letter-spacing:2px; }
+.header p { margin-top:6px; opacity:0.8; font-size:0.9em; }
+.disclaimer { border:1px dashed #ff9900; color:#ff9900; padding:14px; margin:0 auto 22px; max-width:1000px; font-size:0.88em; }
+.disclaimer-title { font-weight:bold; margin-bottom:10px; display:block; letter-spacing:1px; }
+.disclaimer-divider { border:none; border-top:1px dashed #ff9900; margin:12px 0; opacity:0.55; }
+article { max-width:1000px; margin:0 auto; border:1px solid #0f0; padding:24px; }
+article h1,article h2,article h3,article h4 { margin:18px 0 8px; letter-spacing:1px; }
+article h1 { font-size:1.5em; } article h2 { font-size:1.25em; } article h3 { font-size:1.1em; }
+article p { margin:10px 0; }
+article ul,article ol { margin:10px 0 10px 24px; }
+article blockquote { border-left:3px solid #0f0; padding-left:12px; opacity:0.85; margin:10px 0; }
+article pre { background:rgba(0,255,0,0.06); border:1px solid #0f0; padding:12px; overflow-x:auto; margin:12px 0; }
+article code { background:rgba(0,255,0,0.08); padding:1px 5px; }
+article pre code { background:none; padding:0; }
+article a { color:#0ff; }
+.nav { max-width:1000px; margin:0 auto 16px; font-size:0.9em; display:flex; justify-content:space-between; }
+.nav a { color:#0f0; text-decoration:none; }
+.nav a:hover { color:#0ff; }
+.altbar { max-width:1000px; margin:14px auto 0; font-size:0.85em; opacity:0.7; }
+.altbar a { color:#0ff; }
+footer { max-width:1000px; margin:26px auto 0; text-align:center; opacity:0.5; font-size:0.82em; }
+</style>
+</head>
+<body>
+<div class="nav"><a href="../index.html">&larr; 回 Logic Matrix 索引</a><div><a href="../cosmomind.html" style="margin-right:15px;">→ 星環式認知展開圖</a><a href="../base-space.html">🧬 拓撲底空間</a></div></div>
+<header class="header"><h1>說謊者悖論_兩條思維路徑</h1><p>EVEMISSLAB Logic Matrix · EveMissLab / 一言諾科技有限公司</p></header>
+<section class="disclaimer">
+  <span class="disclaimer-title">[認識論邊界宣告 / EPISTEMOLOGICAL DISCLAIMER]</span>
+  <div class="disclaimer-block">
+    <p><b>[CHT]</b> 本矩陣內所有論文之公式與數據為「啟發式模擬參數」，用於驗證理論架構與推演因果鏈，<b>未經實證校準</b>，請勿作為現實物理測量數據引用 or 處理。EVEMISSLAB 採行「邏輯先行（Logic-First）」原則：概念架構與系統因果映射優先於統計實證，但不排除未來實證對接。</p>
+  </div>
+  <hr class="disclaimer-divider">
+  <div class="disclaimer-block">
+    <p><b>[ENG]</b> The numerical parameters within these frameworks are <i>illustrative model coefficients</i> used for structural verification and causal mapping; they are <b>not empirically calibrated</b> and must not be treated as physical measurements. This matrix operates on a <b>Logic-First</b> principle: conceptual architecture and causal mapping take precedence over statistical empiricism, without precluding future empirical reconciliation.</p>
+  </div>
+</section>
+<article>
+<h1>說謊者悖論：兩條思維路徑</h1>
+<p>一句話：L =「L 為假」。本文不重述標準解法，而是並置兩條獨立的思維過程——它們從不同的門進入同一個結構，最後在同一個不變量上交會。</p>
+<h2>一、Theia 的版本：動力學消解路徑</h2>
+<p>起點是拒絕一個隱藏的預設——「這是一個有靜態真值、等你去查的命題」。自指語句不能一步求值，因為它的值定義在自己身上；你要算它，必須先有答案。所以「靜態」是幻覺，自指字面上強制了一個迭代過程。</p>
+<p>把真值放進 [0,1]，「為假」寫成取補運算，求值算子就是 E(v) = 1 − v。到這裡，整個戲劇性只剩一個問題：E 在哪個空間裡有不動點。</p>
+<p>在連續空間 [0,1]，E 有唯一不動點 v = 1/2，穩定、毫無矛盾——悖論只在你把定義域壓回 {0,1} 時才誕生，所以病不在語言，在 {0,1} 對自指否定不封閉。而在二值空間 {0,1}，迭代給出 0→1→0→1 的週期 2 軌道：說謊者不是一個點，是一個極限環。</p>
+<p>由此得到一套依「語句對自身真值的增益」λ = dE/dv 的譜分類。接地語句（「雪是白的」）增益為零，一步收斂；真話者（「本句為真」）增益為 +1，恆等映射、雙穩態；說謊者增益為 −1，無純量不動點、週期振盪。區分真話者與說謊者的不是強度而是符號，而這個符號，就是回授迴路裡反相次數的奇偶。</p>
+<p>物理化之後最利：單反相器接成迴路（奇數）就是環形振盪器，永不安定——這就是說謊者；雙反相器（偶數）就是鎖存器，雙穩態——這就是真話者。拿示波器去量說謊者的「真值」，量到的是方波，其時間平均剛好回到 1/2。</p>
+<p>這條路的性質是消解，不是求解。說謊者證明了 {0,1} 不封閉；誠實的回應是去刻畫那個真正存在的物件（特徵值 −1 的週期軌道），而不是把它硬塞回一個它證明上待不住的盒子。把一座鐘要求成一張照片，才是悖論真正的來源。</p>
+<h2>二、Neo.K 的版本：類型論與觀察者維度的診斷路徑</h2>
+<p>起點是看穿討論者的姿態：人們先帶入上帝視角、已知「他是說謊者」，再降維回局內，去看他後續的敘述、再判斷一次。同一個觀察者被計了兩次帳——這是傳統難題真正的竊取論點之處。</p>
+<p>核心診斷是：「說謊者」是一個複合屬性，把一個智慧體、它的言說、與真假判斷焊在同一個詞裡。一句話裡其實混淆了三層：</p>
+<ul>
+<li>信息失真：意圖軸（欺騙）與真值軸（真假）本是正交的——說謊者可以講真話，老實人可以講假話——卻被「說謊」這個詞非法綁定。</li>
+<li>類型不完整：真值謂詞缺了層級索引，True 沒有標明是 True_n。</li>
+<li>觀察者維度：指派真值的那個位置被抹掉了。</li>
+</ul>
+<p>由此得到一個足以消解「有者」版本的分叉。採上帝視角時，性向已知，把可能性窮舉、保留一致分支即可；採認識論視角時，我們根本不知道他是不是說謊者，前提未立，沒有迴路可繞。兩條視角都不留矛盾，悖論散在它非法疊用兩種視角的接縫上。</p>
+<p>這條路在哪裡到頭也標得很清楚：把「者」抽掉——強化版「本句不為真」——意圖軸與信息項同時失重，窮舉只剩兩支自爆，認識論也無物可懸置。此時唯一承重的是觀察者維度，而它攤開就是 Tarski：評斷者必須站在被評斷者之上。這不是消解，是禁止，而且有價——沒有語言能完整談論自己的真。</p>
+<p>最後一步是自設約束的結果：在純粹被動、不准動用任何外部手段的狀態下去判定，是不現實的——而這個「不現實」本身就是結論，不是失敗。</p>
+<h2>三、交會點</h2>
+<p>兩條路在同一個不變量上相遇：說謊者抵抗歸一化，抵抗被收斂成一個純量裁決。動力學路徑說，算子在 {0,1} 內沒有不動點；觀察者路徑說，在不破缺對稱、不換層級的被動內在裡，沒有一致的真值可指派。兩者是同一件事的兩種說法。</p>
+<p>說謊者是一個 T/F 對稱的中性態。要判定它，等於要破缺這個對稱；而破缺對稱必須靠一個主動的擾動——選一個值、選一個層級、選一種邏輯、選一個觀察者位置。每一個主動選擇買到一種解，也各自付一份價：降二值買到 1/2，升層級買到 Tarski（代價是語言談不全自己），棄無爆炸買到容矛盾（代價是接受真矛盾），棄靜態買到週期軌道。沒有零成本的解——這個「天下沒有免費的午餐」，才是說謊者真正的元定理。真正的交付物，不是任何單一的解，是這張取捨地圖。</p>
+<hr>
+<p>說謊者真正教的，從來不是它到底真還是假。它是判斷這個動作投在被判斷物上的影子——影子不因物體被簡化而變小，只在你移動光源時才移動。一面量得夠精的牆，就不再是牆，是一條海岸線，告訴你這塊大陸的確切形狀。兩條路走到的不是思考的終點，是「自指要付多少代價」這張地圖的起點。</p>
+<div class="altbar">原始檔（供 RAG/下載）：<a href="paper-1040.md" rel="noopener">papers/paper-1040.md</a> [md]</div>
+</article>
+<footer><p>Neo.K (許筌崴) · Cl + ε</p></footer>
+</body>
+</html>

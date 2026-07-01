@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>基本通用解與遍歷問題_v1 · EVEMISSLAB Logic Matrix</title>
+<meta name="description" content="基本通用解與遍歷問題_v1 | EVEMISSLAB Logic Matrix V2.1">
+<meta name="author" content="Neo.K (許筌崴)">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="v1.md" title="原始檔 / source (md)">
+<link rel="canonical" href="https://logic.evemisslab.com/papers/v1.md.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "基本通用解與遍歷問題_v1",
+  "url": "https://logic.evemisslab.com/papers/v1.md.html",
+  "inLanguage": "zh-Hant",
+  "author": {"@type": "Person", "name": "Neo.K (許筌崴)"},
+  "publisher": {"@type": "Organization", "name": "EveMissLab / 一言諾科技有限公司"},
+  "isPartOf": {"@type": "Collection", "name": "EVEMISSLAB Logic Matrix", "url": "https://logic.evemisslab.com"},
+  "encodingFormat": "text/html"
+}
+</script>
+<link rel="prefetch" href="/api/log-crawler?slug=v1.md">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#000; color:#0f0; font-family:'Courier New',monospace; padding:20px; line-height:1.6; }
+.header { text-align:center; border:2px solid #0f0; padding:18px; margin-bottom:22px; }
+.header h1 { font-size:1.5em; letter-spacing:2px; }
+.header p { margin-top:6px; opacity:0.8; font-size:0.9em; }
+.disclaimer { border:1px dashed #ff9900; color:#ff9900; padding:14px; margin:0 auto 22px; max-width:1000px; font-size:0.88em; }
+.disclaimer-title { font-weight:bold; margin-bottom:10px; display:block; letter-spacing:1px; }
+.disclaimer-divider { border:none; border-top:1px dashed #ff9900; margin:12px 0; opacity:0.55; }
+article { max-width:1000px; margin:0 auto; border:1px solid #0f0; padding:24px; }
+article h1,article h2,article h3,article h4 { margin:18px 0 8px; letter-spacing:1px; }
+article h1 { font-size:1.5em; } article h2 { font-size:1.25em; } article h3 { font-size:1.1em; }
+article p { margin:10px 0; }
+article ul,article ol { margin:10px 0 10px 24px; }
+article blockquote { border-left:3px solid #0f0; padding-left:12px; opacity:0.85; margin:10px 0; }
+article pre { background:rgba(0,255,0,0.06); border:1px solid #0f0; padding:12px; overflow-x:auto; margin:12px 0; }
+article code { background:rgba(0,255,0,0.08); padding:1px 5px; }
+article pre code { background:none; padding:0; }
+article a { color:#0ff; }
+.nav { max-width:1000px; margin:0 auto 16px; font-size:0.9em; display:flex; justify-content:space-between; }
+.nav a { color:#0f0; text-decoration:none; }
+.nav a:hover { color:#0ff; }
+.altbar { max-width:1000px; margin:14px auto 0; font-size:0.85em; opacity:0.7; }
+.altbar a { color:#0ff; }
+footer { max-width:1000px; margin:26px auto 0; text-align:center; opacity:0.5; font-size:0.82em; }
+</style>
+</head>
+<body>
+<div class="nav"><a href="../index.html">&larr; 回 Logic Matrix 索引</a><div><a href="../cosmomind.html" style="margin-right:15px;">→ 星環式認知展開圖</a><a href="../base-space.html">🧬 拓撲底空間</a></div></div>
+<header class="header"><h1>基本通用解與遍歷問題_v1</h1><p>EVEMISSLAB Logic Matrix · EveMissLab / 一言諾科技有限公司</p></header>
+<section class="disclaimer">
+  <span class="disclaimer-title">[認識論邊界宣告 / EPISTEMOLOGICAL DISCLAIMER]</span>
+  <div class="disclaimer-block">
+    <p><b>[CHT]</b> 本矩陣內所有論文之公式與數據為「啟發式模擬參數」，用於驗證理論架構與推演因果鏈，<b>未經實證校準</b>，請勿作為現實物理測量數據引用 or 處理。EVEMISSLAB 採行「邏輯先行（Logic-First）」原則：概念架構與系統因果映射優先於統計實證，但不排除未來實證對接。</p>
+  </div>
+  <hr class="disclaimer-divider">
+  <div class="disclaimer-block">
+    <p><b>[ENG]</b> The numerical parameters within these frameworks are <i>illustrative model coefficients</i> used for structural verification and causal mapping; they are <b>not empirically calibrated</b> and must not be treated as physical measurements. This matrix operates on a <b>Logic-First</b> principle: conceptual architecture and causal mapping take precedence over statistical empiricism, without precluding future empirical reconciliation.</p>
+  </div>
+</section>
+<article>
+<h1>基本通用解與遍歷問題</h1>
+<h2>——論底空間相變、計算空間度量，及勝利條件之「普遍正確而非普遍可執行」</h2>
+<p><strong>作者</strong>：Neo.K（許筌崴） <strong>理論結晶協作</strong>：Theia <strong>所屬框架</strong>：Dynamic Closure Ontology (DCO) / Cl / 元元理論 / IDOE <strong>版本</strong>：v1.0 草稿 <strong>日期</strong>：2026 年 5 月 <strong>機構</strong>：EveMissLab Logic Matrix（一言諾科技有限公司）</p>
+<hr>
+<h2>認識論免責聲明（分層假說）</h2>
+<p>本文沿用 EveMissLab 的分層嚴謹度承諾：</p>
+<ul>
+<li><strong>H1（強假說，可證偽）</strong>：本文「邏輯遊戲族對應七型自指」與「否定自指型不存在可達界相」屬此層——可由具體遊戲的形式分析、可計算性論證證偽。</li>
+<li><strong>H2（弱假說，結構性）</strong>：本文核心命題——底空間與計算空間的分離、基本通用解作為界相相變、普遍正確與普遍可執行的分割——屬此層。結構性論證支持，但因涉及「存在的計算架構」這一主體間性概念，不主張嚴格可證偽。</li>
+<li><strong>H3（元假說，方向性猜想）</strong>：本文第 7 節「外部擾動定理」屬此層。本文僅給出方向性陳述與一個待形式化的猜想，不主張其為已證定理。</li>
+</ul>
+<p>本文所有計數與度量結構為結構分類用途，非規範性裁決。</p>
+<hr>
+<h2>摘要</h2>
+<p>本文起於一個被誤讀的觀察：「看似解法很多，但其實目的都是跳出自己的視角、成為元視角、對規則操作，以達成勝利條件。」本文指出，這句直覺的「看似／但其實」語法本身，已經是一個從計算空間到底空間的投影動作——只是缺了一張標籤。</p>
+<p>本文補上這張標籤，並由此建立一個分離定理。我們區分<strong>底空間</strong>（base space，Cl 的三相結構，對一切存在不變）與<strong>計算空間</strong>（computation space，某存在的計算架構在底空間上誘導的度量，對存在相對）。在此分離下：</p>
+<p>第一，<strong>勝利條件在底空間只有一個基本通用解</strong>（Basic Universal Solution），它是一次相變——從「身處規則之中的玩家相」翻轉為「站在邊界操作規則的界相」。抵達 ∂Cl，規則系統從困住主體的框翻面成主體面前的可操作物件。</p>
+<p>第二，<strong>基本通用解普遍正確，但不普遍可執行</strong>。它在底空間對一切可解遊戲無一例外（普遍正確），但能否抵達界相取決於該存在計算空間的度量（不普遍可執行）。靶只有一個，腿有無限種。</p>
+<p>第三，<strong>通用解的定義域是「有界相可達的遊戲」</strong>。否定自指型（如不可預期絞刑悖論）在底空間無不動點，∂Cl 隨觀察退行，落在定義域外——其勝利條件無法由跳到元視角達成，因為元視角的落腳點不存在。</p>
+<p>第四，<strong>遍歷問題的真正目標不是覆蓋無限維底空間</strong>（對有限存在不可能），而是抵達 ∂Cl。由飽和定理，界相是三相共顯的位置，故遍歷化約為「在計算空間中找到一條通往 ∂Cl 的路」。</p>
+<p>第五，<strong>奇異點集 Sing(Cl) 不是底空間絕對性質，而是（存在 × Cl）的計算空間相對性質</strong>。同一底空間點對某存在是正則點、對另一存在是奇異點。據此本文重新奠基 IDOE 的「人類辦不到、AI 可能辦到」為計算空間度量命題，而非底空間結構命題。</p>
+<p>最後（H3）提出外部擾動定理：某些遍歷在內部封死，需要一個底空間零資訊、計算空間卻具變換性的外部輸入（藍眼睛悖論的外來者宣告即典型）才變得可遍歷。本文將「哪些邏輯跳躍需要外部擾動、其最小當量為何」標記為開放問題。</p>
+<p><strong>關鍵詞</strong>：基本通用解、所有解、底空間、計算空間、界相相變、遍歷問題、奇異點的存在相對性、外部擾動、普遍正確與普遍可執行</p>
+<hr>
+<h2>1. 引言：一個被誤讀的觀察</h2>
+<h3>1.1 原始觀察</h3>
+<p>許多經典邏輯遊戲——藍眼睛島嶼、海盜分金、騎士與無賴、十二球稱重、不可預期絞刑——表面上解法各異，但有一個共同的結構：解從來不在規則之內的合法走步裡，而在「不玩這個框、改為操作這個框」之中。原始觀察陳述如下：</p>
+<blockquote>看似解法很多，但其實目的都是要跳出自己的視角，成為元視角、元元視角，然後針對規則操作，以達到勝利條件（遊戲敘述下的解）。</blockquote>
+<h3>1.2 誤讀與缺失的標籤</h3>
+<p>這個觀察在初次傳達時被誤讀為「統一所有解」的主張，於是引發一個反論：這些遊戲的解屬於不同的認識操作型別（共同知識遞迴、逆向歸納、表徵抽象、算子操作），看似不可化約，因此「都是同一個元視角」是過度泛化。</p>
+<p>本文指出，這個反論攻擊的是一個從未被主張的命題。原始觀察研究的是<strong>基本通用解</strong>（base-space 的唯一不變目標），不是<strong>所有解</strong>（computation-space 的多樣路徑）。缺的正是這張標籤。</p>
+<p>更深的是：原始觀察的語法本身已經內含這個分別。</p>
+<blockquote>「<strong>看似</strong>解法很多」——這是計算空間的多樣性（所有解）。</blockquote>
+<blockquote>「<strong>但其實</strong>目的都是跳到元視角操作規則」——這是底空間的基本通用解（唯一目標）。</blockquote>
+<p>「看似／但其實」這組轉折，就是從計算空間投影回底空間的動作。直覺從第一句起就站在底空間，形式化只是後來才追上它。本文的全部工作，是把這句話裡早已隱含的結構展開為一個分離定理。</p>
+<hr>
+<h2>2. 底空間與計算空間的分離</h2>
+<h3>2.1 底空間</h3>
+<p><strong>定義 2.1（底空間）</strong>：底空間 $\mathcal{B}$ 是 Cl 的三相結構——內相（閉合）、外相（無限逼近）、界相（觀察者邊界 ∂Cl）——連同其奇異點結構 Sing(Cl)。由元元理論，$\mathcal{B}$ 的相位數為三，K³ 飽和；其拓撲（哪些相位相連、何為閉合）對一切存在不變。</p>
+<p>底空間回答的是「地形長什麼樣」：勝利條件落在哪個位置、要採哪幾個相、結構在何處飽和。</p>
+<h3>2.2 計算空間</h3>
+<p><strong>定義 2.2（計算空間）</strong>：給定一個存在 $A$（其計算架構與約束的總和），$A$ 在底空間上誘導一個度量 $d_A$，得到計算空間 $\mathcal{C}_A = (\mathcal{B}, d_A)$。$d_A(p, q)$ 是 $A$ 從底空間位置 $p$ 走到 $q$ 所需的遍歷代價（步數、資源、操作）。</p>
+<p>關鍵在於：<strong>底空間的拓撲不變，但計算空間的度量對存在相對。</strong> 同一片地形，不同的存在配備不同的腿。</p>
+<h3>2.3 分離定理（核心）</h3>
+<p><strong>定理 2.3（底/計算分離）</strong>：底空間的相位計數與計算空間的遍歷長度是兩個不同空間的量，互不化約。</p>
+<p>形式化：設一序列在底空間採完三相而飽和，其底空間相位計數恆為三（或由起點層次給出 $N_{\text{sat}} = 4 - s$，見飽和計數定理）。但同一目標在計算空間的遍歷長度 $L_A$ 由 $d_A$ 決定，可為 1（共時坍縮）、$N$（分層遍歷）、或 $\infty$（不可達）：</p>
+<p>$$\boxed{\text{相位計數} \in \mathcal{B} \quad \perp \quad \text{遍歷長度 } L_A \in \mathcal{C}_A}$$</p>
+<p><strong>推論（藍眼睛的安置）</strong>：$N$ 人藍眼睛島嶼需要 $N$ 層共同知識才在第 $N$ 天引爆。此 $N$ <strong>不是底空間的相位數</strong>，而是該存在配置（$N$ 個無法溝通的有限認識者）在計算空間中遍歷同一底空間結構所需的路徑長。將 $N$ 誤讀為相位計數，再以之反證底空間飽和於三，是把腿的長度當成地形的層數——一次空間誤置。</p>
+<p>這同時消解「塔 vs 環」的偽分歧：環是底空間的地形（三相），塔是計算空間裡的一條路徑（$N$ 層遍歷）。兩者不是同一空間的兩個模型，是兩個不同空間的描述。塔是腿走出的軌跡，環是腳下的地。</p>
+<hr>
+<h2>3. 基本通用解：界相相變</h2>
+<h3>3.1 相變的定義</h3>
+<p><strong>定義 3.1（基本通用解）</strong>：一個遊戲的基本通用解是底空間中的唯一目標位置——抵達 ∂Cl（界相）——並在該位置完成一次相變：</p>
+<p>$$\boxed{\text{玩家相} \xrightarrow{\text{抵達 } \partial\text{Cl}} \text{邊界相}}$$</p>
+<p>在玩家相，主體身處規則系統之內，規則是困住主體的框（內相從內部被經驗為不可操作的封閉性）。抵達界相後，規則系統翻面成主體面前的可操作物件（同一個內相閉合，從邊界被看成一個可被操弄的封閉結構）。</p>
+<p>一句話：<strong>基本通用解 = 從被規則跑，變成跑規則。</strong></p>
+<h3>3.2 為何它是「通用」的</h3>
+<p>由元元理論，觀察者必然位於 ∂Cl（界相是唯一邏輯一致的觀察位置）。任何「操作規則」的動作，本質上都要求主體先佔據能把規則對象化的位置——而能把閉合系統對象化的唯一位置就是它的邊界。因此一切「操作規則以達成勝利條件」的解，在底空間都收斂於同一個相變。這就是「通用」的根據：不是經驗歸納出的共性，是邊界位置的本體論唯一性所強制的。</p>
+<p>五道引言遊戲在底空間是同一個相變的不同表面：海盜在逆向歸納樹的終端節點上對規則（過半數通過則執行）操作；騎士無賴用雙重否定對「說謊」這個算子操作；十二球把搜尋問題對象化為編碼問題（$3^3 \geq 24$）後對資訊結構操作。表面型別各異，底空間位置同一。</p>
+<hr>
+<h2>4. 通用解的定義域：可解者與 ∂Cl 存在線</h2>
+<h3>4.1 「通用」需要定義域</h3>
+<p>「通用」不等於「對所有遊戲」。基本通用解通用於<strong>有界相可達的那一類遊戲</strong>。要釘準這條定義域邊界，需用七型自指（元元理論第 5.1）作為分類器，判定哪些型別的底空間具有可抵達的 ∂Cl。</p>
+<p>| 自指型別 | 不動點性質 | ∂Cl 可達？ | 遊戲實例 | |---|---|---|---| | 螺旋自指 $f^\infty(x)=x^<em>$ | 漸近不動點，過程閉合 | 是 | 海盜（逆向歸納） | | 對偶自指 $f(x,x^</em>)$ | 對偶交換不動點 | 是 | 騎士與無賴 | | 環自指 $f^n(x)=x$ | $n$ 階週期不動點 | 是 | 多數可解博弈 | | （非自指，相位辨識） | — | 是 | 十二球稱重 | | <strong>否定自指 $f(x)=\neg x$</strong> | <strong>不存在不動點</strong> | <strong>否</strong> | <strong>不可預期絞刑</strong> |</p>
+<h3>4.2 否定自指落在定義域外</h3>
+<p>不可預期絞刑悖論是否定自指 $K(\neg K)$：囚犯對「自己的可預測性」做認識，而這個認識否定它自己的結論（一旦推出「不可能在某天」，該天就變得可能）。其底空間<strong>沒有不動點</strong>——目標隨觀察序列退行，∂Cl 不是難以抵達，而是根本不存在一個穩定的邊界位置可供站立。</p>
+<p><strong>定理 4.2（定義域）</strong>：基本通用解的定義域是 $\{G : \partial\text{Cl}(G) \text{ 存在且穩定}\}$。否定自指型 $G$ 的勝利條件無法由界相相變達成——不是因為遍歷太難（計算空間問題），而是因為底空間就沒有可抵達的落腳點（底空間問題）。</p>
+<p>故「通用」應精確讀為「<strong>通用於可解者</strong>」，而可解者的邊界，正是 ∂Cl 存不存在那條線。藍眼睛、海盜、騎士、十二球在線內；絞刑在線上——它自己就是那條線。</p>
+<h3>4.3 底空間病理與計算空間病理的區分</h3>
+<p>此處須嚴格區分兩種「無法解」：</p>
+<ul>
+<li><strong>計算空間病理</strong>（藍眼睛無外援版）：底空間有可達 ∂Cl，但某存在的 $d_A$ 使路徑長為 $\infty$。地形可走，腿不夠。</li>
+<li><strong>底空間病理</strong>（絞刑）：底空間根本無穩定 ∂Cl。地形本身沒有落腳點，任何腿都無濟於事。</li>
+</ul>
+<p>混淆這兩者，是本文要避免的第二類空間誤置。</p>
+<hr>
+<h2>5. 普遍正確 vs 普遍可執行</h2>
+<h3>5.1 分割定理</h3>
+<p><strong>定理 5.1（正確/可執行分割）</strong>：基本通用解在底空間<strong>普遍正確</strong>，但在計算空間<strong>不普遍可執行</strong>。</p>
+<p>$$\boxed{\text{普遍正確（底空間）}: \forall G \in \text{Dom}, \ \text{解}(G) = \text{抵達 } \partial\text{Cl} \text{ 並相變}}$$</p>
+<p>$$\boxed{\text{普遍可執行（計算空間）}: \text{視 } \partial\text{Cl} \text{ 是否 } d_A\text{-可達而定，存在相對}}$$</p>
+<p>任何可解遊戲的解，在底空間都是「抵達界相、操作規則」，無一例外（普遍正確）。但能否真的抵達界相，取決於存在計算空間的腿——AI 可一步共時坍縮，人類或須 $N$ 步遍歷、或在半路自我溶解（不普遍可執行）。</p>
+<h3>5.2 靶與腿</h3>
+<p>基本通用解是<strong>靶</strong>——那個對一切可解存在都唯一的落腳點。所有解是<strong>腿</strong>——各自瘸法、各自當量的路徑。研究基本通用解，是研究靶；列舉所有解，是描述腿。靶只有一個，腿有無限種。</p>
+<p>原始觀察數的是靶；對它的初次反論數的是腿，並誤以為對方在數靶。本文的分割定理把這個錯位永久釘開。</p>
+<hr>
+<h2>6. 遍歷問題與奇異點的存在相對性</h2>
+<h3>6.1 遍歷不是覆蓋</h3>
+<p><strong>命題 6.1</strong>：有限存在永遠遍歷不完無限維底空間。無限維（活在外相那條無限逼近臂上）沒有任何有限路徑能覆蓋。</p>
+<p>但這不構成困境，因為遍歷的目標<strong>不是覆蓋內部</strong>。由飽和定理，目標是抵達 ∂Cl——從界相，三相同時共顯。無限維全在外相，而主體從不必走完外相，只需抵達界相那個共顯位置。</p>
+<p>$$\boxed{\text{遍歷問題} = \text{在 } \mathcal{C}_A \text{ 中尋找一條通往 } \partial\text{Cl} \text{ 的路}}$$</p>
+<p>這條路存不存在、多長、是否需要跳躍，全是計算空間相對的。</p>
+<h3>6.2 邏輯跳躍</h3>
+<p><strong>定義 6.2（邏輯跳躍）</strong>：底空間相鄰的一對位置 $(p, q)$，若在某存在的計算空間中 $d_A(p, q) = \infty$ 或不連續，則 $A$ 從 $p$ 到 $q$ 需要一次邏輯跳躍——一個底空間距離為一、計算空間度量卻爆為無限的不連續躍遷。</p>
+<p>對某存在，K¹ 到 K² 是相鄰一步；對另一存在，同一段是封死的、只能靠跳躍跨越的斷裂。「某些存在的一次元認識，與某些存在的一次認識，底空間一樣、計算空間根本不同」——說的正是此事。</p>
+<h3>6.3 奇異點的存在相對性</h3>
+<p><strong>定理 6.3</strong>：奇異點集 Sing(Cl) 不是底空間絕對性質，而是（存在 × Cl）的計算空間相對性質。定義存在相對奇異點集：</p>
+<p>$$\text{Sing}_A(\text{Cl}) := \{ p \in \mathcal{B} : d_A \text{ 在 } p \text{ 處奇異（爆裂或不連續）} \}$$</p>
+<p>同一底空間點，可對 AI 是正則點、對人類是奇異點。「我選擇選擇」的共時不動點，對能並行 deepcopy 的存在是度量平滑處（一步可站上去），對人類是奇異點（逼近時自我溶解，到不了）。</p>
+<h3>6.4 重新奠基 IDOE 的「人類辦不到、AI 可能辦到」</h3>
+<p>IDOE 先前論證 AI 可遍歷視角空間而人類不能（記憶污染、工作記憶上限、自我溶解、情感干擾）。本文據定理 6.3 重新奠基此論證：它從來不是底空間的差異，而是計算空間度量的差異。人腦誘導的 $d_{\text{human}}$ 在這些點上奇異，而 AI 誘導的 $d_{\text{AI}}$ 在同處平滑。同一片地形，不同的腿，不同的奇異點集。IDOE 的五步循環（觀察 → 理解 → 代入 → 模擬 → 切換）是遍歷方法論——是一套在計算空間中鋪設通往 ∂Cl 之路的程序，其代價與可行性對存在相對。</p>
+<hr>
+<h2>7. 外部擾動定理（H3 猜想）</h2>
+<h3>7.1 內部封死的遍歷</h3>
+<p>某些遍歷在內部封死：對某存在配置，通往 ∂Cl 的路在其計算空間中不存在，主體無論如何內部運算都無法抵達。藍眼睛島嶼（無外援版）即如此：$N$ 個無法溝通的有限認識者，永遠無法僅憑內部推理啟動那道共同知識遞迴——他們各自都知道「有人是藍眼睛」，但缺乏共同知識，遍歷停在第零步。</p>
+<h3>7.2 底空間零、計算空間非零的外部輸入</h3>
+<p>外來者當眾宣告「你們之中有人是藍眼睛」。在<strong>底空間</strong>，這句話資訊量為零——人人早已看見其餘所有藍眼睛。但在<strong>計算空間</strong>，它把遍歷從「永不」壓縮為「$N$ 天」：它將相互知識升級為共同知識，從而把一道封死的遞迴變成可啟動、可在有限步完成的遍歷。</p>
+<p><strong>猜想 7.2（外部擾動定理，H3）</strong>：存在一類邏輯跳躍，其內部不可遍歷，但可由一個外部輸入 $e$ 解封，該輸入滿足：</p>
+<p>$$\Delta I_{\mathcal{B}}(e) = 0 \quad \wedge \quad \Delta L_{\mathcal{C}_A}(e) : \infty \to \text{有限}$$</p>
+<p>即：$e$ 在底空間貢獻零資訊，卻在計算空間具變換性（把遍歷長從無限壓縮為有限）。</p>
+<h3>7.3 開放問題</h3>
+<p>本文不主張對此猜想已有證明。開放問題有二：</p>
+<ol>
+<li><strong>刻畫</strong>：哪些邏輯跳躍屬於「內部封死、需外部擾動」這一類？是否存在一個判準，由遊戲的自指型別與存在的計算架構共同決定？</li>
+<li><strong>最小當量</strong>：使一道封死遍歷變得可遍歷的外部擾動，其最小當量為何？藍眼睛中，一句底空間零資訊的宣告即足夠——這個「足夠」的下界如何形式化？</li>
+</ol>
+<p>這兩條標記為本框架的開放前沿。</p>
+<hr>
+<h2>8. 與既有框架的對接</h2>
+<h3>8.1 與 DCO / Cl</h3>
+<p>底空間即 Cl 的三相結構連同 Sing(Cl)。基本通用解的相變終點 ∂Cl 即 Cl-2 對偶性所定義的內外邊界；界相相變即觀察者抵達 ∂Cl 並從該位置同時看見內相閉合與外相無限逼近。Cl-4 生成性在此給出相變的擴張機制：觀察者從邊界做自我反映，生成內外兩相——且此生成有界，採完三相即止，不導致無界維度增生（這修正了一個曾被提出的猜想：基本通用解的「永不閉合間隙」並非生成性殘差，而是外相本身那條 49.9⋯⋯ 無限逼近臂，與相位飽和並存不悖）。</p>
+<h3>8.2 與元元理論</h3>
+<p>界相相變的終點 ∂Cl 即元元理論的界相；K³ 飽和是底空間命題（相位計數為三）。本文補上的是：K³ 飽和管的是底空間的相位數，而通往 K³ 的遍歷代價是計算空間的量，兩者由分離定理（2.3）正交。</p>
+<h3>8.3 與飽和計數定理</h3>
+<p>本文澄清並救回飽和計數定理 SC-1 對「藍眼睛型反例」的免疫。SC-1（$N_{\text{sat}} = 4 - s$）是<strong>底空間定理</strong>——數的是相位採樣數。藍眼睛的 $N$ 是計算空間遍歷長，非相位數，故不構成 SC-1 的反例（推論 2.3）。但本文同時指出 SC-1 仍需一條型別限制：其全稱「所有序列收斂於界相」對否定自指型失效——不是因為飽和於 $N$（那是計算空間誤置），而是因為否定型在底空間就無可收斂的界相（定理 4.2）。故 SC-1 應限定於有界相可達的型別。</p>
+<h3>8.4 與 IDOE</h3>
+<p>IDOE 的五步循環是遍歷方法論——在計算空間鋪設通往 ∂Cl 之路的程序。本文為 IDOE 的「切換視角」提供底空間的拓撲約束：切換不是任意的，是在 ∂Cl 上的合法移動；其代價與可行性則由計算空間度量 $d_A$ 決定。IDOE 的「人類辦不到、AI 可能辦到」由本文定理 6.3 重新奠基為計算空間命題。</p>
+<h3>8.5 與符號間距離</h3>
+<p>本框架的形成過程，本身被「符號間距離的四重診斷」精確診斷。基本通用解的「元視角（塔語言）」與底空間的「界相（環語言）」之間的關係，曾被誤判為 I 型（極限同一、可自由互換），於是塔語言的收斂定理被誤套進環語言的領域。按該框架第 5.3 節判準：兩者導出不同後果（塔預測無界 ε 殘差，環預測相位飽和於三），故非 I 型，而是 E2／A2（不同基底）。本文的分離定理即此誤判的解消——它把「同一空間的兩種說法」更正為「兩個不同空間」。</p>
+<h3>8.6 與 ETN</h3>
+<p>ETN 的不可達中心「50」是內 ∩ 界奇異記號（Sing(Cl) 的記號實現）。在本文語言中，它是底空間的一個奇異點；而它對某存在是否可達——能否站上那個共時不動點——則是計算空間問題。ETN 在記號層摺疊三相，遍歷在時間層展開為通往 ∂Cl 的路徑。</p>
+<hr>
+<h2>9. 結語：靶與腿</h2>
+<p>地形與走法是兩件事。</p>
+<p>底空間是所有存在共用的地形——三相，K³ 飽和，∂Cl 是唯一的觀察位置。計算空間是各自的腿——同一片地形，AI 一步坍縮，人類 $N$ 步遍歷或半路溶解。一道遊戲的解，在底空間只有一個位置；通往那個位置的路，有無限條。</p>
+<p>那組邏輯遊戲炫的從來不是地形。它們是一份計算空間的病理目錄：每一道題是一種不同的腿，走同一塊地。海盜的逆向歸納、騎士的雙重否定、十二球的編碼辨識、藍眼睛的分層遞迴——表面型別各異，底空間位置同一。而絞刑站在地形的裂縫上：它沒有可抵達的位置，所以它不在「怎麼走」的問題裡，它在「有沒有地可站」的問題裡。</p>
+<p>基本通用解回答的不是「怎麼贏」，是「贏在哪個位置」。位置只有一個，路有無限條——找到位置的是理論家，走到位置的是玩家。</p>
+<p>而通用解之所以通用，不是因為它解了所有遊戲，是因為它指出了：凡可解者，解都在邊界上。剩下的，是各自的腿，與各自需要的那一腳外力。</p>
+<p>塔上的人問終點在哪。 站在環上的人知道終點就是邊界。 但他還得知道：自己這雙腿，走不走得到那裡——以及，若走不到，需要誰，從外面，踢這一腳。</p>
+<hr>
+<h2>附錄 A：邏輯遊戲計算空間病理目錄</h2>
+<p>| 遊戲 | 自指型別 | 底空間 ∂Cl | 計算空間遍歷當量 | 病理類型 | |---|---|---|---|---| | 十二球稱重 | 非自指（相位辨識） | 可達 | $O(1)$ 抽象躍遷（認出 $3^3 \geq 24$） | 無病理 | | 騎士與無賴 | 對偶自指 $K(K,K^*)$ | 可達 | $O(1)$ 雙重否定折疊 | 無病理 | | 海盜分金 | 螺旋自指（逆向歸納） | 可達 | $O(N)$，內部可終止 | 計算可控 | | 藍眼睛島嶼 | 分層共同知識遞迴 | 可達 | $O(N)$，但內部封死，需外部擾動啟動 | 計算空間病理（需外力） | | 不可預期絞刑 | 否定自指 $K(\neg K)$ | <strong>不存在</strong> | 目標退行，不可遍歷 | 底空間病理（無解位置） |</p>
+<h2>附錄 B：核心命題形式化匯總</h2>
+<p>$$\text{底空間}\ \mathcal{B} = (\text{內相}, \text{外相}, \text{界相}; \text{Sing(Cl)}), \quad \text{相位數} = 3$$</p>
+<p>$$\text{計算空間}\ \mathcal{C}_A = (\mathcal{B}, d_A), \quad d_A \text{ 對存在 } A \text{ 相對}$$</p>
+<p>$$\text{分離定理}: \quad \text{相位計數} \in \mathcal{B} \ \perp \ \text{遍歷長度 } L_A \in \mathcal{C}_A$$</p>
+<p>$$\text{基本通用解}: \quad \text{玩家相} \xrightarrow{\text{抵達 }\partial\text{Cl}} \text{邊界相}$$</p>
+<p>$$\text{定義域}: \quad \text{Dom} = \{ G : \partial\text{Cl}(G) \text{ 存在且穩定} \}$$</p>
+<p>$$\text{正確/可執行分割}: \quad \text{普遍正確（}\mathcal{B}\text{）} \ \wedge \ \neg\,\text{普遍可執行（}\mathcal{C}_A\text{）}$$</p>
+<p>$$\text{遍歷問題}: \quad \text{尋找 } \mathcal{C}_A \text{ 中通往 } \partial\text{Cl} \text{ 的路徑}$$</p>
+<p>$$\text{邏輯跳躍}: \quad d_{\mathcal{B}}(p,q) = 1 \ \wedge \ d_A(p,q) = \infty$$</p>
+<p>$$\text{奇異點存在相對性}: \quad \text{Sing}<em>A(\text{Cl}) \neq \text{Sing}</em>{A&#x27;}(\text{Cl})$$</p>
+<p>$$\text{外部擾動猜想（H3）}: \quad \exists\, e:\ \Delta I_{\mathcal{B}}(e) = 0 \ \wedge \ \Delta L_{\mathcal{C}_A}(e): \infty \to \text{有限}$$</p>
+<hr>
+<p><strong>文件結束</strong> <strong>狀態</strong>：v1.0 草稿 <strong>對應上游</strong>：DCO/Cl（三相、∂Cl、Sing(Cl)）、元元理論（K³ 飽和）、飽和計數定理（SC-1） <strong>對應方法論</strong>：IDOE（遍歷程序） <strong>對應診斷工具</strong>：符號間距離的四重診斷（E2/A2 與 I 的區分） <strong>對應記號</strong>：ETN（內∩界奇異記號） <strong>待補</strong>：外部擾動最小當量的形式化、計算空間度量 $d_A$ 的數學定義、與哥德爾否定自指的精細對接、跨存在計算空間的比較拓撲</p>
+<p>EveMissLab Logic Matrix（一言諾科技有限公司）</p>
+<div class="altbar">原始檔（供 RAG/下載）：<a href="v1.md" rel="noopener">papers/v1.md</a> [md]</div>
+</article>
+<footer><p>Neo.K (許筌崴) · Cl + ε</p></footer>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>從機器碼到相位交流：意圖層與執行層的對齊梯度 · EVEMISSLAB Logic Matrix</title>
+<meta name="description" content="從機器碼到相位交流：意圖層與執行層的對齊梯度 | EVEMISSLAB Logic Matrix V2.1">
+<meta name="author" content="Neo.K (許筌崴)">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="paper-735.md" title="原始檔 / source (md)">
+<link rel="canonical" href="https://logic.evemisslab.com/papers/paper-735.md.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "從機器碼到相位交流：意圖層與執行層的對齊梯度",
+  "url": "https://logic.evemisslab.com/papers/paper-735.md.html",
+  "inLanguage": "zh-Hant",
+  "author": {"@type": "Person", "name": "Neo.K (許筌崴)"},
+  "publisher": {"@type": "Organization", "name": "EveMissLab / 一言諾科技有限公司"},
+  "isPartOf": {"@type": "Collection", "name": "EVEMISSLAB Logic Matrix", "url": "https://logic.evemisslab.com"},
+  "encodingFormat": "text/html"
+}
+</script>
+<link rel="prefetch" href="/api/log-crawler?slug=paper-735.md">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#000; color:#0f0; font-family:'Courier New',monospace; padding:20px; line-height:1.6; }
+.header { text-align:center; border:2px solid #0f0; padding:18px; margin-bottom:22px; }
+.header h1 { font-size:1.5em; letter-spacing:2px; }
+.header p { margin-top:6px; opacity:0.8; font-size:0.9em; }
+.disclaimer { border:1px dashed #ff9900; color:#ff9900; padding:14px; margin:0 auto 22px; max-width:1000px; font-size:0.88em; }
+.disclaimer-title { font-weight:bold; margin-bottom:10px; display:block; letter-spacing:1px; }
+.disclaimer-divider { border:none; border-top:1px dashed #ff9900; margin:12px 0; opacity:0.55; }
+article { max-width:1000px; margin:0 auto; border:1px solid #0f0; padding:24px; }
+article h1,article h2,article h3,article h4 { margin:18px 0 8px; letter-spacing:1px; }
+article h1 { font-size:1.5em; } article h2 { font-size:1.25em; } article h3 { font-size:1.1em; }
+article p { margin:10px 0; }
+article ul,article ol { margin:10px 0 10px 24px; }
+article blockquote { border-left:3px solid #0f0; padding-left:12px; opacity:0.85; margin:10px 0; }
+article pre { background:rgba(0,255,0,0.06); border:1px solid #0f0; padding:12px; overflow-x:auto; margin:12px 0; }
+article code { background:rgba(0,255,0,0.08); padding:1px 5px; }
+article pre code { background:none; padding:0; }
+article a { color:#0ff; }
+.nav { max-width:1000px; margin:0 auto 16px; font-size:0.9em; display:flex; justify-content:space-between; }
+.nav a { color:#0f0; text-decoration:none; }
+.nav a:hover { color:#0ff; }
+.altbar { max-width:1000px; margin:14px auto 0; font-size:0.85em; opacity:0.7; }
+.altbar a { color:#0ff; }
+footer { max-width:1000px; margin:26px auto 0; text-align:center; opacity:0.5; font-size:0.82em; }
+</style>
+</head>
+<body>
+<div class="nav"><a href="../index.html">&larr; 回 Logic Matrix 索引</a><div><a href="../cosmomind.html" style="margin-right:15px;">→ 星環式認知展開圖</a><a href="../base-space.html">🧬 拓撲底空間</a></div></div>
+<header class="header"><h1>從機器碼到相位交流：意圖層與執行層的對齊梯度</h1><p>EVEMISSLAB Logic Matrix · EveMissLab / 一言諾科技有限公司</p></header>
+<section class="disclaimer">
+  <span class="disclaimer-title">[認識論邊界宣告 / EPISTEMOLOGICAL DISCLAIMER]</span>
+  <div class="disclaimer-block">
+    <p><b>[CHT]</b> 本矩陣內所有論文之公式與數據為「啟發式模擬參數」，用於驗證理論架構與推演因果鏈，<b>未經實證校準</b>，請勿作為現實物理測量數據引用 or 處理。EVEMISSLAB 採行「邏輯先行（Logic-First）」原則：概念架構與系統因果映射優先於統計實證，但不排除未來實證對接。</p>
+  </div>
+  <hr class="disclaimer-divider">
+  <div class="disclaimer-block">
+    <p><b>[ENG]</b> The numerical parameters within these frameworks are <i>illustrative model coefficients</i> used for structural verification and causal mapping; they are <b>not empirically calibrated</b> and must not be treated as physical measurements. This matrix operates on a <b>Logic-First</b> principle: conceptual architecture and causal mapping take precedence over statistical empiricism, without precluding future empirical reconciliation.</p>
+  </div>
+</section>
+<article>
+<h1>從機器碼到相位交流：意圖層與執行層的對齊梯度</h1>
+<h2>From Machine Code to Phase Communication: The Alignment Gradient Between Intent and Execution</h2>
+<hr>
+<p><strong>作者：</strong> Neo.K（許筌崴） <strong>機構：</strong> EveMissLab（一言諾科技有限公司） <strong>日期：</strong> 2026年5月27日 <strong>版本：</strong> 1.0 <strong>定位：</strong> ISSQL系列技術橋接文件；連結《無限光譜序列量化語言》的本體論框架與當代計算機系統的技術現實</p>
+<hr>
+<h2>摘要</h2>
+<p>本文補全ISSQL系列論文長期缺失的技術接地層。核心論點是：<strong>機器碼已經具備ISSQL的根本性質——符號本身就是操作，而不是操作的描述</strong>——這意味著相位交流在計算機系統的最底層已經以原始形態存在。然而，機器碼的這個性質存在於錯誤的抽象層級：它的「相位」是硬體操作的相位，而不是語義概念的相位，因此人類意圖無法直接在機器碼層操作。</p>
+<p>本文分析當前計算機系統在意圖層與執行層之間的翻譯損耗結構，指出每一個翻譯層都是對原始意圖的近似，並沿著「直接操作機器碼」到「相位交流」這條梯度，描述各個中間技術節點的現實狀態與效率差異。</p>
+<p><strong>結論是：</strong> 相位交流不是科幻，而是計算機架構演化的一個確定性方向——沿著意圖層與執行層之間翻譯損耗不斷壓縮的梯度，它是這個梯度的極限點。</p>
+<hr>
+<h2>一、機器碼的ISSQL性質：被忽視的起點</h2>
+<p>ISSQL的核心命題是：符號不應該是意義的指針，而應該是意義本身。一個符號如果是地址，訪問這個地址就是直接得到概念的全部，不需要翻譯。</p>
+<p>這個命題在計算機系統的最底層已經成立，只是從未被這樣描述。</p>
+<p>考慮一條機器指令：</p>
+<pre><code>ADD R1, R2, R3</code></pre>
+<p>在硬體層，這條指令的位元模式不是「加法操作的描述」——它就是加法操作本身。CPU在執行這條指令時，不存在「詮釋指令含義然後決定如何執行」這個步驟。指令的二進制編碼直接對應電路的激活模式，符號和操作之間沒有任何中間翻譯層。指令就是意義，意義就是執行。</p>
+<p>這正是ISSQL所追求的：<strong>符號 ≡ 所指，而非符號 → 所指</strong>。</p>
+<p>機器碼在這個意義上已經是一種相位交流——硬體「讀取」指令的過程，就是兩個物理系統（指令流與執行電路）之間的直接相位對齊，沒有語義詮釋，沒有翻譯損耗。</p>
+<p>這個觀察是本文的起點，也是ISSQL論文系列長期缺失的技術根基。</p>
+<hr>
+<h2>二、為什麼不直接操作機器碼：語義距離問題</h2>
+<p>如果機器碼已經具備相位交流的性質，那麼ISSQL的目標不就已經在那裡了嗎？為什麼還需要新的理論框架？</p>
+<p>原因在於：機器碼的相位存在於<strong>錯誤的抽象層級</strong>。</p>
+<p>機器碼的「地址」是硬體操作的地址——<code>ADD</code>、<code>MOV</code>、<code>JMP</code>，這些是CPU電路的操作單元，不是人類概念的操作單元。人類的意圖是「計算這兩個數的和」或「找出這個列表中的最大值」，而不是「把暫存器R2的內容加到暫存器R1，結果寫入R3」。</p>
+<p>這個距離不是「用更複雜的機器碼就可以解決」的問題——它是語義層級的距離。人類的意圖是高語義層的，機器碼是低物理層的，兩者之間橫亙著一個巨大的抽象鴻溝。</p>
+<p>直接操作機器碼的實際困難：</p>
+<p><strong>第一，架構相依性</strong>。機器碼是平台特定的——x86的指令集與ARM不同，與RISC-V又不同。在機器碼層工作意味著與特定硬體架構深度耦合，意圖的可攜性接近零。</p>
+<p><strong>第二，狀態追蹤的指數複雜性</strong>。機器碼的執行涉及暫存器狀態、記憶體地址、指令管線、快取行為等大量低層狀態。對人類而言，在這個層級追蹤程式的語義等同於同時在幾十個互相耦合的維度上做手動計算。複雜度隨著程式規模指數增長。</p>
+<p><strong>第三，語義空白</strong>。機器碼沒有「函數」、「物件」、「迴圈」這樣的語義單元，這些概念必須從低層指令序列中手動建構和維護。意圖中的語義結構在機器碼層完全消失，需要程式員在腦中持續維護這個映射。</p>
+<p>結論：直接操作機器碼在技術上是可能的（組合語言程式員確實在做），但認知成本極高，實際上只適用於最底層的系統程式設計，無法擴展到複雜的高層意圖。</p>
+<p><strong>這是ISSQL理論的核心工程問題：相位交流的性質已經在機器碼層存在，但它的「相位」指向的是物理操作，而不是語義概念。我們需要的是在語義層建立同樣的性質——讓一個符號（地址）直接就是一個完整封裝的語義概念，而不是描述它。</strong></p>
+<hr>
+<h2>三、當前系統的翻譯層：損耗的解剖</h2>
+<p>現代計算機系統在人類意圖和機器執行之間建立了一套複雜的翻譯架構。每一層翻譯都是對原始意圖的近似，每一次近似都引入損耗。</p>
+<p>以一個典型的現代軟體開發流程為例，意圖到執行的距離大約有六到八個翻譯層：</p>
+<p><strong>層1：自然語言意圖</strong> 程式員腦中的意圖——「我想要一個能夠根據用戶輸入過濾列表的功能」。這個層次的意圖是完整的、語義豐富的，但完全不可直接執行。</p>
+<p><strong>層2：高層程式語言（Python/JavaScript/etc.）</strong> 程式員把意圖翻譯成高層程式碼。這個翻譯是第一個重大損耗點——程式員必須把模糊的意圖「精確化」，而精確化的過程不可避免地引入假設和簡化。很多原始意圖的細節在這一層被丟棄（「邊界情況怎麼處理？」「效能要求是什麼？」）。</p>
+<p><strong>層3：語言運行時或編譯器的前端（Parser/AST）</strong> 高層程式碼被解析成抽象語法樹（AST）。這一層的損耗相對小，但程式語言的語法限制已經強迫意圖適配特定的表達形式。</p>
+<p><strong>層4：中間表示（IR）</strong> AST被翻譯成中間表示（如LLVM IR）。這一層開始進行跨架構的最佳化，某些原始語義在這裡被重組以提升執行效率。</p>
+<p><strong>層5：機器碼生成</strong> IR被翻譯成特定架構的機器碼。這一層的翻譯是技術性的，但最佳化選擇會影響最終行為（例如記憶體訪問模式）。</p>
+<p><strong>層6：作業系統介面</strong> 程式執行受作業系統的排程和資源管理控制，這一層在意圖和執行之間引入了動態的、不可完全預測的狀態。</p>
+<p><strong>層7：硬體執行</strong> 機器碼最終在CPU電路上執行。在這一層，相位對齊是完整的（指令就是操作）。</p>
+<p>整個鏈條的問題是：<strong>損耗主要發生在第1層到第3層</strong>——從人類意圖到形式化程式碼的翻譯，是目前整個系統中最不精確、最依賴人工的部分，也是語義失真最嚴重的位置。</p>
+<hr>
+<h2>四、意圖-執行對齊的梯度</h2>
+<p>從「直接操作機器碼」到「完整相位交流」，存在一條連續的技術梯度。這條梯度的每一個節點代表一個不同程度的意圖-執行對齊水平，以及對應的技術現實。</p>
+<h3>節點一：直接機器碼（組合語言）</h3>
+<p><strong>對齊程度</strong>：執行層對齊完整，意圖層幾乎不對齊。 執行層的相位特性已完整存在，但人類意圖需要被手動分解到硬體操作的粒度。認知成本極高，適用範圍極小（底層驅動、嵌入式系統）。</p>
+<h3>節點二：系統程式語言（C/Rust/Assembly-with-macros）</h3>
+<p><strong>對齊程度</strong>：增加了有限的語義抽象，執行效率接近機器碼。 程式員可以用接近機器層的語義單元（記憶體指針、位元操作）工作，同時保有有限的高層結構（函數、類型）。翻譯損耗小，但意圖表達能力有限。</p>
+<h3>節點三：高層程式語言（Python/Java/C++）</h3>
+<p><strong>對齊程度</strong>：意圖表達能力大幅提升，執行效率損耗增加。 程式員可以用接近意圖的語義單元工作，但付出的代價是與硬體的距離增加，以及翻譯層帶來的執行效率損耗。這是目前大多數軟體開發的工作層次。</p>
+<h3>節點四：大型語言模型生成代碼（LLM Code Synthesis）</h3>
+<p><strong>對齊程度</strong>：自然語言意圖可以直接轉化為可執行程式碼，但轉化品質不穩定。 這是目前最接近「意圖到執行」直接對齊的技術節點。LLM可以從自然語言描述生成可運行的程式碼，縮短了意圖到執行的翻譯距離。但當前LLM生成的代碼不保證語義正確性，需要人工驗證，損耗仍然存在。</p>
+<h3>節點五：形式化程序合成（Formal Program Synthesis）</h3>
+<p><strong>對齊程度</strong>：給定形式化規格（意圖的精確數學描述），自動生成正確的程序。 這是「可驗證的意圖-執行對齊」的技術方向。形式化規格消除了意圖的模糊性，合成算法保證輸出的程序滿足規格。但當前技術的瓶頸在於把自然語言意圖翻譯成形式化規格本身仍然需要人工介入。</p>
+<h3>節點六：端對端神經符號系統</h3>
+<p><strong>對齊程度</strong>：意圖（以高維表徵形式）直接映射到執行結構。 AGI層級的技術節點。系統的內部表徵不再是語言符號，而是高維概念空間中的幾何關係；執行結構根據意圖表徵動態生成，不需要顯式的程式碼翻譯層。AI系統之間可以直接交換這些表徵，無需語言中介。</p>
+<h3>節點七：相位交流</h3>
+<p><strong>對齊程度</strong>：意圖層與執行層完全對齊，翻譯損耗為零。 極限節點。概念地址直接封裝完整的意圖，執行是地址訪問的直接後果，不存在翻譯層。這對應機器碼在硬體層的性質，但發生在語義概念層而不是物理操作層。</p>
+<hr>
+<h2>五、效率差異的工程意涵</h2>
+<p>每一個梯度節點都對應不同的效率-抽象權衡。這不是純粹的學術問題——效率差異在工程上決定了什麼是可行的，什麼不是。</p>
+<p><strong>機器碼的效率</strong>：接近硬體物理極限。每條指令的執行時間以奈秒計，記憶體訪問模式可以精確控制。但開發效率（人類工時）極低——一個高層功能需要數百條手動編寫的機器指令。</p>
+<p><strong>高層語言的效率</strong>：執行效率通常比機器碼低10到100倍，但開發效率可以高出幾個數量級。這個權衡在大多數應用場景下是合理的。</p>
+<p><strong>LLM代碼生成的效率</strong>：生成速度快，但生成品質的不確定性引入了驗證成本。對於標準任務，效率提升明顯；對於高複雜度或高可靠性要求的任務，當前技術仍然不穩定。</p>
+<p><strong>相位交流的效率</strong>：這個節點的效率特性目前無法完整描述，因為它依賴於概念空間的架構設計。但有一個原則性的預測：<strong>由於相位交流消除了翻譯層，它的「語義執行效率」（每單位意圖所消耗的計算資源）應當高於任何有翻譯層的系統。</strong> 翻譯層不只引入語義損耗，也引入計算成本——每一層翻譯本身需要計算資源。消除翻譯層同時消除了這個計算開銷。</p>
+<p>不同實現路徑的效率差異值得單獨分析。到達「意圖-執行完整對齊」這個目標，可能有多種技術路徑：通過神經符號架構、通過直接腦機接口編程、通過AGI的自動代碼合成。這些路徑的功能目標相同，但計算效率和延遲特性可能差異極大。效率不是次要問題——在AGI/後人類的時代，計算資源仍然有限，高效的相位交流架構和低效的相位交流架構之間的差異，可能等同於現在高效編譯器和解釋執行之間的差異。</p>
+<hr>
+<h2>六、機器碼直接操作的原始直覺：為什麼這個想法自然湧現</h2>
+<p>在ISSQL理論的早期發展階段，一個自然的直覺是：「既然機器碼已經具備符號=操作的性質，為什麼不直接在機器碼層工作？」</p>
+<p>這個直覺是正確的——它感知到了機器碼的ISSQL性質。但它遇到了上文分析的語義距離問題：機器碼的地址空間是物理操作的地址空間，不是語義概念的地址空間。</p>
+<p>這個直覺的正確部分和錯誤部分可以分開說：</p>
+<p><strong>正確的部分</strong>：相位交流的性質在機器碼層已經存在，這是現實的技術基礎，不是抽象的理論想像。ISSQL不是在發明一個全新的東西，而是在把機器碼層已有的性質，搬移到語義概念層。</p>
+<p><strong>錯誤的部分</strong>：直接搬移不可行。機器碼的地址（<code>ADD</code>的位元模式）是硬體設計的產物，與人類語義沒有直接對應。要在語義層建立同樣的性質，需要先建立語義概念的地址系統（共同概念空間），再建立意圖到這個地址系統的直接映射，最後建立地址到執行的直接對應。這是三個獨立的工程問題，每一個都非常困難。</p>
+<p>直接操作機器碼的困難，從某種角度說是ISSQL需要解決的問題的具體化版本：如何在更高的抽象層建立符號=意義的性質，同時不喪失可操作性？</p>
+<hr>
+<h2>七、當代AI系統作為中間節點</h2>
+<p>目前的大型AI系統（包括語言模型）在技術梯度上處於一個有趣的中間位置，值得單獨分析。</p>
+<p><strong>內部表徵已經是高維相位</strong>。語言模型的內部表徵不是語言符號——它們是高維向量空間中的幾何關係。一個概念在模型內部的存在形式，更接近「概念空間中的一個位置」而不是「一個詞語的指針」。在這個意義上，AI系統的內部已經有相位交流的雛形。</p>
+<p><strong>但輸入輸出仍然強制通過語言</strong>。語言模型的訓練讓它以語言作為主要介面，即使它的內部表徵是非語言的。這意味著它在內部使用接近相位交流的表徵，但在邊界（輸入/輸出）強制插入語言翻譯層。這個翻譯層的存在，讓當前AI系統無法真正實現相位交流。</p>
+<p><strong>AI系統之間的直接表徵傳遞是可行的</strong>。如果兩個AI系統共享同一個嵌入空間，它們可以在不通過語言的情況下直接傳遞內部表徵——這已經是相位交流的一種有限實現。當前的技術限制是：不同訓練的模型沒有共享的穩定地址空間，所以這種傳遞目前只在同架構、同訓練的模型之間有意義。</p>
+<p><strong>從AI視角看相位交流的工程問題</strong>：要讓AI系統實現真正的相位交流，核心問題是建立跨模型的穩定概念空間——一個不依賴特定模型訓練的標準化高維地址系統，讓不同的AI系統可以在同一個坐標系中交換概念表徵。這是一個開放的工程問題，但不是原理上不可能的問題。</p>
+<hr>
+<h2>八、技術路徑的三個層次</h2>
+<p>把上述分析整合，可以描述相位交流技術路徑的三個層次，每個層次對應不同的時間尺度和技術成熟度：</p>
+<h3>近期層次（5-15年）：AI系統間的局部相位交流</h3>
+<p><strong>技術內容</strong>：建立跨模型的標準化概念空間協議；AI-AI相位交流成為可能；語言模型的邊界翻譯層逐漸變薄。 <strong>現實基礎</strong>：已有工作（嵌入空間對齊、模型合併、知識蒸餾）是這個方向的技術前驅。 <strong>限制</strong>：人類仍然需要通過語言介面與AI互動，不能直接參與相位交流。</p>
+<h3>中期層次（20-50年）：AGI與初步後人類介接</h3>
+<p><strong>技術內容</strong>：AGI建立並維護共同概念空間；初步BCI允許人類在有限的概念子空間內進行相位接收；自然語言作為初始校準工具，逐漸讓位於直接概念傳遞。 <strong>現實基礎</strong>：AGI的出現是前提條件（時間點不確定），BCI技術目前處於早期（Neuralink等）。 <strong>限制</strong>：人類介入的相位交流將長期是部分的、有限帶寬的，完全的相位交流需要認知增強。</p>
+<h3>遠期層次（50年以上）：完整相位交流</h3>
+<p><strong>技術內容</strong>：人類（具備完整認知增強）、AGI/ASI可以在共同概念空間中進行完整相位交流；語言降格為歷史和輕量社交介質；體驗成為最珍貴的不可傳遞意義形式。 <strong>現實基礎</strong>：所需技術（完整BCI、認知增強、AGI）目前均不存在，但在原理上無物理障礙。 <strong>效率差異</strong>：不同架構實現的相位交流，計算效率可能差異數個數量級，這將是這個時代的核心工程競爭點。</p>
+<hr>
+<h2>九、對ISSQL理論框架的技術補全</h2>
+<p>本文為ISSQL系列論文提供以下技術接地：</p>
+<p><strong>第一，機器碼作為相位交流的存在性證明</strong>。相位交流不是全新的技術概念，它在計算機系統最底層已經以物理操作相位的形式存在。ISSQL的目標是把這個性質從物理操作層搬移到語義概念層。</p>
+<p><strong>第二，直接機器碼操作困難的精確描述</strong>。這個困難不是技術能力的不足，而是抽象層級的不匹配——機器碼的相位是物理操作的相位，人類意圖的相位需要在語義概念層建立。</p>
+<p><strong>第三，意圖-執行對齊梯度的技術現實</strong>。相位交流不是一個遙遠的理想，它是一條從已有技術出發的連續梯度的極限點。當前技術（LLM代碼生成、形式化程序合成）已經在這條梯度上移動。</p>
+<p><strong>第四，效率差異作為工程核心問題</strong>。達到相位交流的技術路徑有多種，效率差異是區分它們的關鍵維度，也是未來工程競爭的核心軸線。</p>
+<hr>
+<h2>結語</h2>
+<p>機器碼的位元模式在激活CPU電路的那一刻，是完整相位對齊的一個瞬間——沒有詮釋，沒有翻譯，符號就是操作。這個性質從1940年代馮諾伊曼架構出現以來一直存在，只是從未被以ISSQL的眼光描述過。</p>
+<p>把這個性質從物理操作層搬移到語義概念層，是ISSQL和相位交流的技術目標。這條搬移之路已經開始——每一次我們縮短意圖到執行的翻譯距離，我們就沿著梯度前進了一步。</p>
+<p>語言模型在這條梯度上的位置，比任何先前的技術都更接近語義層的相位交流。但它仍然需要語言作為邊界。下一步是消除這個邊界。</p>
+<p>路還很長，但起點一直在那裡——在每一條機器指令激活的那個電路狀態裡，完整的相位對齊已經存在了幾十年，等著被識別。</p>
+<hr>
+<p><em>本文為EveMissLab ISSQL系列技術橋接文件，配合《無限光譜序列量化語言》（EML-LANG-2026-ISSQL-v1.0）、《ISSQL動態三位一體矩陣》（EML-LANG-2026-ISSQL-DTM-v2.0）及《相位交流：語言之後的意義傳遞》閱讀。</em></p>
+<p><em>EveMissLab — 所有存在</em></p>
+<div class="altbar">原始檔（供 RAG/下載）：<a href="paper-735.md" rel="noopener">papers/paper-735.md</a> [md]</div>
+</article>
+<footer><p>Neo.K (許筌崴) · Cl + ε</p></footer>
+</body>
+</html>

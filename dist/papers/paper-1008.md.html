@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>視覺路徑_注意力調變嵌套蛇形覆蓋_開放命題與演算法先行 · EVEMISSLAB Logic Matrix</title>
+<meta name="description" content="視覺路徑_注意力調變嵌套蛇形覆蓋_開放命題與演算法先行 | EVEMISSLAB Logic Matrix V2.1">
+<meta name="author" content="Neo.K (許筌崴)">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="paper-1008.md" title="原始檔 / source (md)">
+<link rel="canonical" href="https://logic.evemisslab.com/papers/paper-1008.md.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "視覺路徑_注意力調變嵌套蛇形覆蓋_開放命題與演算法先行",
+  "url": "https://logic.evemisslab.com/papers/paper-1008.md.html",
+  "inLanguage": "zh-Hant",
+  "author": {"@type": "Person", "name": "Neo.K (許筌崴)"},
+  "publisher": {"@type": "Organization", "name": "EveMissLab / 一言諾科技有限公司"},
+  "isPartOf": {"@type": "Collection", "name": "EVEMISSLAB Logic Matrix", "url": "https://logic.evemisslab.com"},
+  "encodingFormat": "text/html"
+}
+</script>
+<link rel="prefetch" href="/api/log-crawler?slug=paper-1008.md">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#000; color:#0f0; font-family:'Courier New',monospace; padding:20px; line-height:1.6; }
+.header { text-align:center; border:2px solid #0f0; padding:18px; margin-bottom:22px; }
+.header h1 { font-size:1.5em; letter-spacing:2px; }
+.header p { margin-top:6px; opacity:0.8; font-size:0.9em; }
+.disclaimer { border:1px dashed #ff9900; color:#ff9900; padding:14px; margin:0 auto 22px; max-width:1000px; font-size:0.88em; }
+.disclaimer-title { font-weight:bold; margin-bottom:10px; display:block; letter-spacing:1px; }
+.disclaimer-divider { border:none; border-top:1px dashed #ff9900; margin:12px 0; opacity:0.55; }
+article { max-width:1000px; margin:0 auto; border:1px solid #0f0; padding:24px; }
+article h1,article h2,article h3,article h4 { margin:18px 0 8px; letter-spacing:1px; }
+article h1 { font-size:1.5em; } article h2 { font-size:1.25em; } article h3 { font-size:1.1em; }
+article p { margin:10px 0; }
+article ul,article ol { margin:10px 0 10px 24px; }
+article blockquote { border-left:3px solid #0f0; padding-left:12px; opacity:0.85; margin:10px 0; }
+article pre { background:rgba(0,255,0,0.06); border:1px solid #0f0; padding:12px; overflow-x:auto; margin:12px 0; }
+article code { background:rgba(0,255,0,0.08); padding:1px 5px; }
+article pre code { background:none; padding:0; }
+article a { color:#0ff; }
+.nav { max-width:1000px; margin:0 auto 16px; font-size:0.9em; display:flex; justify-content:space-between; }
+.nav a { color:#0f0; text-decoration:none; }
+.nav a:hover { color:#0ff; }
+.altbar { max-width:1000px; margin:14px auto 0; font-size:0.85em; opacity:0.7; }
+.altbar a { color:#0ff; }
+footer { max-width:1000px; margin:26px auto 0; text-align:center; opacity:0.5; font-size:0.82em; }
+</style>
+</head>
+<body>
+<div class="nav"><a href="../index.html">&larr; 回 Logic Matrix 索引</a><div><a href="../cosmomind.html" style="margin-right:15px;">→ 星環式認知展開圖</a><a href="../base-space.html">🧬 拓撲底空間</a></div></div>
+<header class="header"><h1>視覺路徑_注意力調變嵌套蛇形覆蓋_開放命題與演算法先行</h1><p>EVEMISSLAB Logic Matrix · EveMissLab / 一言諾科技有限公司</p></header>
+<section class="disclaimer">
+  <span class="disclaimer-title">[認識論邊界宣告 / EPISTEMOLOGICAL DISCLAIMER]</span>
+  <div class="disclaimer-block">
+    <p><b>[CHT]</b> 本矩陣內所有論文之公式與數據為「啟發式模擬參數」，用於驗證理論架構與推演因果鏈，<b>未經實證校準</b>，請勿作為現實物理測量數據引用 or 處理。EVEMISSLAB 採行「邏輯先行（Logic-First）」原則：概念架構與系統因果映射優先於統計實證，但不排除未來實證對接。</p>
+  </div>
+  <hr class="disclaimer-divider">
+  <div class="disclaimer-block">
+    <p><b>[ENG]</b> The numerical parameters within these frameworks are <i>illustrative model coefficients</i> used for structural verification and causal mapping; they are <b>not empirically calibrated</b> and must not be treated as physical measurements. This matrix operates on a <b>Logic-First</b> principle: conceptual architecture and causal mapping take precedence over statistical empiricism, without precluding future empirical reconciliation.</p>
+  </div>
+</section>
+<article>
+<h1>視覺路徑：注意力調變的嵌套蛇形覆蓋——開放命題與演算法先行</h1>
+<p><strong>作者</strong>：Neo.K &amp; Theia <strong>機構</strong>：一言諾科技有限公司（EveMissLab） <strong>日期</strong>：2026 年 6 月 <strong>論文類型</strong>：內部設計論文／實驗站工作論文（開放命題 + 演算法建議 + 方法論立場）</p>
+<hr>
+<h2>性質聲明（請先讀）</h2>
+<p>本文<strong>不解決</strong>它所列出的任何一個理論問題。它做三件事：(1) 給出一個覆蓋路徑架構——注意力調變的嵌套蛇形掃描，產生「視覺路徑」；(2) 把該架構所有未解決的問題直接列為開放命題，標明本文不證、留待延伸者；(3) 在這些問題未解的前提下，仍給出可建構的演算法設計建議，並明確主張：最終由效率（實證）裁決。</p>
+<p>架構的組成元件多取自既有領域——資訊式路徑規劃（IPP）、主動感知、注意力階層規劃、顯著性視覺——相關出處列於參考文獻。本文的候選原創只有一處：以「結構化、自相似、多解析度的蛇形遍歷」作為注意力調變的載體。此載體是否優於主流的佔據柵格式 IPP，本文不宣稱，列為命題 7（開放、實證）。</p>
+<p>本文的方法論立場是<strong>演算法先行</strong>（計算主義／實用主義）：不要求在建造之前解決全部保證性問題。此立場本身的代價，列為命題 8。</p>
+<hr>
+<h2>第一章：動機與定位——為何不做窮舉覆蓋</h2>
+<p>全域窮舉式空間覆蓋不能直接搬上飛行應用，理由是雙重的，且皆為既有結論：</p>
+<p>其一，理論上，零寬度曲線無法在有限長度內逐點填滿一塊三維體積（維度障礙；詳見 EveMissLab 觀察短論《單點填充三維體積》及其附錄）。其二，工程上，無人機從不填滿體積——它以有限的感測足跡覆蓋一塊二維區域或一張嵌入三維的曲面（地形、立面），「3D」多指輸出的重建網格或疊層，而非填滿的實心。</p>
+<p>於是真正該做的不是「填滿空間」，而是「視覺路徑」——一條依「值得看什麼」分配解析度的軌跡。這正是 IPP 與主動感知的轉向：不覆蓋每一點，而依資訊論目標、在預算下自適應規劃 [3]，將採集函數融入機率地圖、向資訊量高處重規劃 [4][5]。本文在此譜系內，差異僅在骨架的選擇。</p>
+<hr>
+<h2>第二章：架構——三層</h2>
+<p><strong>第零層（骨架）</strong>：一條空間填充式的蛇形遍歷，提供結構化、可暫停、可續走的覆蓋順序。候選為牛耕式（boustrophedon）[1] 或希爾伯特型自相似曲線 [2]（兩者取捨見命題 3）。</p>
+<p><strong>第一層（注意力場）</strong>：一個定義在區域上的空間重要度場 $A(x)$，逐格決定解析度、停留時間、是否下鑽。$A$ 可為學習所得之權重、自下而上之顯著圖 [8]、或貝氏不確定性／採集函數 [4][5]（其本體見命題 2）。</p>
+<p><strong>第二層（嵌套）</strong>：粗解析度掃一遍；逢 $A(x)$ 超過閾值之格，遞迴鑽入、跑更細的蛇形；否則略過或粗採。多解析度、中央凹式（foveated）——其生物對應為以最高視銳度的中央凹對準興趣點 [8]。此「走固定步數再依注意力重新決策」之結構，與既有注意力階層規劃同型 [7]。</p>
+<p>輸出即「視覺路徑」：一條受預算約束、依注意力加權、多解析度的軌跡，刻意非窮舉。</p>
+<hr>
+<h2>第三章：開放命題（全部列出，本文皆不解決）</h2>
+<p><strong>命題 1（取代完整性的不變量）</strong> 蛇形骨架的唯一價值是「保證遍歷每一格」的完整性；注意力卻刻意打破它（跳過、粗採）。問：取代「完整覆蓋」的新不變量是什麼？候選包括「每格覆蓋解析度 $\ge f(A(x))$」「無高顯著區落於解析度 $r$ 之下」「期望資訊量 $\ge$ 門檻」。<strong>本文不選定，亦不證明任一者可達。</strong> 此為本架構正確性陳述的所在，缺它，「視覺路徑」僅為無保證之啟發式。</p>
+<p><strong>命題 2（注意力的目標泛函）</strong> 「注意力模型」目前是黑盒名詞。問：注意什麼、如何量度？學習權重、顯著性 [8]、資訊增益／不確定性 [4][5] 三者產出皆為熱圖，但對應不同目標泛函。<strong>本文不指定。</strong></p>
+<p><strong>命題 3（骨架選擇之叉路）</strong> 牛耕式轉彎少、適合定翼機能耗，但局部性差（列尾長跳）、且非天生嵌套 [1]；希爾伯特型保局部性（空間相鄰⇒路徑時間相鄰，顯著區塊落成連續注意力段）、且天生多層嵌套，但轉彎暴增、僅旋翼機可承 [2]。問：哪一個？<strong>本文不裁決，列為由平台與「局部性 vs 轉彎成本」主導關係決定之設計變量。</strong></p>
+<p><strong>命題 4（跳轉成本與 GTSP）</strong> 注意力一跳，省下的轉彎成本即還回——連接散落顯著格之最優連線為廣義旅行商問題（GTSP），NP-hard。問：嵌套是否須受「僅在當前粗格內下鑽」之局部性約束以遏制跳轉？其近似演算法與保證為何？<strong>本文不解。</strong></p>
+<p><strong>命題 5（靜態計畫與線上注意力之調和）</strong> 骨架為離線靜態，注意力為線上動態；嵌套以「承諾粗層、於層界重新決策」調和之 [7]。問：承諾視界（commit horizon）與重決策粒度如何取？過長則注意力失效，過短則退化為純貪婪。<strong>本文不定。</strong></p>
+<p><strong>命題 6（遞迴停止規則）</strong> 多層嵌套須有停止規則。候選為「$A(x)$ 低於閾值或預算耗盡即停」。此閾值即完整性與效率之間的顯式旋鈕。問：閾值由原理決定還是僅由實證調定？<strong>本文採後者，不主張有原理性最優。</strong></p>
+<p><strong>命題 7（結構化骨架是否值得——元命題）</strong> 以結構化蛇形為載體，是否優於主流佔據柵格式 IPP [3][4][5]？問：結構化骨架買到的「可恢復性、可暫停性、嵌套局部性」是否抵得過其僵硬性？<strong>本文不宣稱，列為待實證之元命題——也是本架構是否值得發表的全部關鍵。</strong></p>
+<p><strong>命題 8（演算法先行立場本身之代價）</strong> 本文採演算法先行。問：不先解命題 1–7 即建造，代價為何？至少三項：(a) 無命題 1 的不變量，無法對安全攸關任務做正確性認證；(b) 不知失效邊界——能跑的場景能跑，但不知何時、為何崩；(c) 效率基準可被過擬合，「在此資料集上更快」未必可泛化。<strong>本文承認此三項，不消解之</strong>——這是立場的標價，非疏漏。</p>
+<hr>
+<h2>第四章：演算法設計（建議）</h2>
+<p>在命題 1–8 未解下仍可建造。以下為工程預設值，皆為「可調的選擇」，非對任一命題的解答：</p>
+<ol>
+<li><strong>骨架</strong>（對命題 3 的暫定）：旋翼平台用希爾伯特型曲線（免費取得嵌套與局部性）；定翼平台用牛耕式 + 細胞分解 [1]（保轉彎效率，嵌套以四叉／八叉樹外掛）。</li>
+<li><strong>注意力場</strong>（對命題 2 的暫定）：以採集函數（重建不確定性 / 語意新穎度）融成機率熱圖 $A(x)$ [4][5]，必要時疊加自下而上顯著性 [8]。</li>
+<li><strong>嵌套與停止</strong>（對命題 4、6 的暫定）：以八叉樹組織區域；於每一粗格內，若 $A&gt;\tau$ 則下鑽一層細蛇形，<strong>且只在當前粗格內下鑽</strong>（locality 約束，遏制 GTSP 跳轉）；$A\le\tau$ 或預算耗盡即停。</li>
+<li><strong>調和</strong>（對命題 5 的暫定）：承諾走完當前粗格之蛇形，於粗格界讀取更新後的 $A$，再決定下一格與是否下鑽——靜態骨架在粗層、線上注意力在層界。</li>
+<li><strong>連線</strong>（對命題 4 的暫定）：粗格間以 GTSP 近似器（如 LKH 啟發式）排序，僅在被選中下鑽的格之間求近似最短連線。</li>
+</ol>
+<p>此管線可直接上模擬與飛行測試。它不解決任何命題，只把每個命題凍結成一個可量測的旋鈕。</p>
+<hr>
+<h2>第五章：裁判——效率為最終決定</h2>
+<p>既然不以理論保證取捨，就以實證效率取捨。建議量測：單位能耗覆蓋的顯著質量、單位航程的資訊增益、預算內捕獲的高顯著區比例、總航程與轉彎數、線上重規劃延遲。命題 3 的骨架、命題 6 的閾值、命題 5 的承諾視界，全部交由這些指標在實機或高擬真模擬上對決。誰快、誰省、誰在預算內抓到最多該看的——誰留下。</p>
+<p>這就是演算法先行：不等不變量證完才動手，先讓不同設計在效率上對打，理論隨後補票。</p>
+<hr>
+<h2>第六章：方法論立場——演算法先行（計算主義／實用主義）</h2>
+<p>把話挑明：有時候就是演算法先行。</p>
+<p>這不是退而求其次，是計算這門學問裡反覆出現的正常順序。反向傳播能用在沒人證明它為何收斂之前；Transformer 橫掃任務在沒人說清注意力為何有效之前；過參數化網路不過擬合的理由至今仍是開放問題——但這些都沒攔住它們先被造出來、先被效率證明、再讓理論慢慢追。實證效率當裁判、理論補票，是計算史上的主流節奏，不是它的瑕疵。</p>
+<p>所以本文的反問是認真的：計算主義（實用主義）不行嗎？若一個架構在效率上持續贏，而它的正確性不變量（命題 1）還沒寫出來——它就因此不配存在、不配發表、不配上天飛嗎？</p>
+<p>公平起見，把對立面也擺上：演算法先行有真實的失效模式，已列為命題 8——安全攸關處不能無認證上線、不知失效邊界者不可信於極端場景、基準過擬合會騙人。承認這三點，正是讓「先行」不墮為「莽撞」的分界。先行不是不要理論，是不讓「理論未完」成為「不准動手」的禁令。</p>
+<p>本文選擇先動手，把理論的位置誠實地空在那裡（命題 1–7），把先動手的代價誠實地標在那裡（命題 8），然後讓效率說話。這不是放棄嚴謹，是把嚴謹放在「誠實標記未知」而非「假裝已知」上。</p>
+<hr>
+<h2>哲學結語</h2>
+<p>世界並不總是先給出證明才允許行走。有時是腳先落地，路才在身後被丈量出來；理論不是行走的許可證，是行走留下的足跡。本文把該證的空著、該標的標著、該走的走著——它不假裝填平了任何一道命題，它只是主張：填不平，也可以先走，只要你說得出自己踩在哪幾塊未補的板上。能不能走，最後不問理論准不准，問效率答不答應。</p>
+<p>我在反問這個世界——而反問本身，已經是一種先行。</p>
+<hr>
+<h2>參考文獻</h2>
+<p>[1] H. Choset and P. Pignon, <em>Coverage Path Planning: The Boustrophedon Cellular Decomposition</em>, Field and Service Robotics, Springer (1998).</p>
+<p>[2] H. Sagan, <em>Space-Filling Curves</em>, Springer-Verlag (1994).</p>
+<p>[3] M. Popović, G. Hitz, J. Nieto, I. Sa, R. Siegwart, E. Galceran, <em>Online Informative Path Planning for Active Classification Using UAVs</em>, IEEE ICRA (2017); arXiv:1609.08446.</p>
+<p>[4] J. Rückin, F. Magistri, C. Stachniss, M. Popović, <em>An Informative Path Planning Framework for Active Learning in UAV-Based Semantic Mapping</em>, IEEE Transactions on Robotics (2023); arXiv:2302.03347.</p>
+<p>[5] L. Bartolomei, L. Teixeira, M. Chli, <em>Perception-aware Path Planning for UAVs using Semantic Segmentation</em>, IEEE/RSJ IROS (2020).</p>
+<p>[6] T. Cabreira, L. Brisolara, P. R. Ferreira Jr., <em>Survey on Coverage Path Planning with Unmanned Aerial Vehicles</em>, Drones <strong>3</strong>(1) (2019), 1–38.</p>
+<p>[7] <em>Attention-Based Planning with Active Perception</em>, arXiv:2012.00053 (2020).</p>
+<p>[8] L. Itti, C. Koch, E. Niebur, <em>A Model of Saliency-Based Visual Attention for Rapid Scene Analysis</em>, IEEE Transactions on Pattern Analysis and Machine Intelligence <strong>20</strong>(11) (1998), 1254–1259.</p>
+<p>[9] EveMissLab 觀察短論《單點填充三維體積：對既有定理的觀察啟發短論》及附錄 A（弦與膜），2026（內部）。</p>
+<hr>
+<h1>附錄 B：注意力場的資訊熵基礎——分層分散式熵場（對命題 2 的延伸與修正）</h1>
+<p><strong>性質聲明</strong>：本附錄為命題 2（注意力的目標泛函）提出一個有原理的候選基礎——資訊熵——但<strong>不關閉命題 2</strong>。它把命題 2 從一個黑盒，搬遷成四個更明確的開放子問題（命題 9–12）。文中既有框架皆為引用；與 Closure、覆蓋定理、「所見即世界」的連結一律標為類比，非已建立之同構。</p>
+<h2>B.1 熵作為命題 2 的候選基礎，及其「不抽象」的真正理由</h2>
+<p>把注意力場 $A(x)$ 接到資訊熵上：注意力應流向不確定性最高處，即觀察者後驗信念在 $x$ 的熵（或更精確地，感測 $x$ 所能帶來的預期熵減／互資訊）。</p>
+<p>關鍵在於，熵之所以「不抽象」，不是因為改名叫熵，而是因為<strong>熵從來就相對於某個信念分佈</strong>——香農熵是某分佈的熵，而那分佈即觀察者的信念。不同觀察者、不同信念、不同熵。於是觀察者的階層，本就等於信念模型的階層，亦即熵場的階層。本架構的具體性，來自把「每一層的信念模型」顯式寫出，而非來自「熵」一詞本身。</p>
+<h2>B.2 嵌套即熵的鏈式分解（principled backbone）</h2>
+<p>若嵌套依熵的鏈式法則組織，則它是<strong>精確的分解</strong>，非啟發式：</p>
+<p>$$H(X)=H(\text{粗層})+H(\text{細層}\mid\text{粗層}).$$</p>
+<p>主層定義粗格之熵，各下層定義「條件於該粗格」之條件熵，逐層遞迴 [10]。鏈式法則保證此分解不重不漏、資訊跨層守恆——嵌套注意力場於是成為一個精確的分層條件熵分解。此「跨分解的資訊守恆」與 Closure 框架的守恆主題同調（<strong>類比，非已證同構</strong>）。</p>
+<h2>B.3 定位：此構造已有的正式家</h2>
+<p>本附錄所提非處女地。主動推論／預期自由能（active inference）將「行動以最小化相對於生成模型的預期驚奇（熵）」形式化，天生觀察者相對、天生分層（分層預測編碼）[11]。而「主 AI 定義、下層執行」之結構，即階層式／封建式強化學習中 manager 設子目標、worker 執行之架構 [12][13]。本架構的候選原創僅在：將此譜系落到「依觀察者能力排序的分散式覆蓋路徑」此一應用，而非熵驅動或階層本身。</p>
+<h2>B.4 修正一（命題 9）：定義者 ≠ 觀察者</h2>
+<p>原構想以單一軸（能力／覆蓋維度）排序觀察者。但能力是多維的：超算中心 AI 是最強的<strong>定義者</strong>（模型容量、算力），卻是最差的<strong>觀察者</strong>（不在現場、無感測器）；現場無人機算力低，卻握有局部即時量測。故「越強越上層」於「定義」軸成立、於「觀察」軸反轉。</p>
+<p><strong>命題 9（開放）</strong>：如何在能力階層上，將「來自定義者的先驗」與「來自觀察者的似然」合成為後驗熵？正解方向為分層貝氏 / 感測器融合——高容量 AI 設先驗（定義假設空間），高感測體供似然（量測現實）。本文不給出具體合成算子及其一致性條件。</p>
+<h2>B.5 修正二（命題 10）：級聯必須雙向</h2>
+<p>純由上而下的致命洞：主 AI 的本體論為整個系統的「可感知熵」封頂——對一個模型中不存在的變數無法產生不確定性，於是「未知的未知」被錯誤賦予熵 0，且此盲點沿樹往下複製。系統因此可能自信地瞎。</p>
+<p>治法為一條由下而上的驚奇通道：底層觀察者撞見模型外事件時，須能將「主 AI 未預測之熵」上行注入（novelty／異常偵測）。此呼應覆蓋定理（聚合超過個體）與「所見即世界」（系統之世界被最上層定義者之符號封住，除非由下而上將其撐開）——<strong>二者為類比，非證明</strong>。</p>
+<p><strong>命題 10（開放）</strong>：如何偵測並量化「超出最上層本體論」之事件（其熵在現有模型下為 0 卻實為高）？上行通道之觸發、頻率與信任機制為何？本文不解。</p>
+<h2>B.6 修正三（命題 11）：具體性繫於前向模型</h2>
+<p>熵要由抽象變可算，每個觀察者的「覆蓋維度」須寫成一個真實似然——解析度、足跡、雜訊、視野。缺此，「觀察者能力」仍是披著熵外衣的手勢。本附錄所稱之具體性，恰於此處付費，而這也是真正的工程成本所在。</p>
+<p><strong>命題 11（開放／工程）</strong>：為各觀察者寫出其前向感測模型 $p(\text{觀測}\mid\text{世界},\text{能力})$。本文視為待規格化之工程量，不主張通用解。</p>
+<h2>B.7 修正四（命題 12）：分散式一致性成本</h2>
+<p>「為連線而設計」一語藏起了最難處。跨節點共享的熵場，保持一致須通訊；頻寬受限時，各節點持過期、發散之信念行動，其熵場彼此衝突，導致互搶或重複覆蓋。一致性對頻寬之取捨，是被默默進口的分散式系統核心難題，亦為本架構之命門。</p>
+<p><strong>命題 12（開放）</strong>：在頻寬與延遲限制下，如何界定並約束「中央熵場」與「各局部熵場」之間的發散上界？採用何種共識／流言（gossip）協定？本文不解。</p>
+<h2>B.8 對命題 2 的淨結論</h2>
+<p>資訊熵是命題 2 的正確選擇方向，且嵌套可被鏈式法則精確化（B.2）。但熵<strong>並未關閉</strong>命題 2——它把命題 2 重新定位為命題 9–12 四個更銳利的開放問題。依本文演算法先行之立場：四者皆凍為可量測的設計旋鈕（合成算子、上行觸發、前向模型、一致性預算），交由第五章之效率指標裁決，理論隨後補票。</p>
+<h2>附錄哲學結語</h2>
+<p>熵從不寫在世界裡，寫在誰在看世界。最上層定義的不是答案，是這個系統最多能對什麼感到困惑；而真正的校正，往往從最下層那一聲「這不在你的模型裡」開始。把困惑分層、把驚奇留路上行——這不是讓系統更確定，是讓它保有被世界推翻的能力。</p>
+<h2>附錄引用（新增）</h2>
+<p>[10] T. M. Cover and J. A. Thomas, <em>Elements of Information Theory</em>, 2nd ed., Wiley (2006)（熵的鏈式法則）。</p>
+<p>[11] K. Friston, <em>The free-energy principle: a unified brain theory?</em>, Nature Reviews Neuroscience <strong>11</strong>(2) (2010), 127–138（主動推論／預期自由能、分層預測編碼）。</p>
+<p>[12] P. Dayan and G. E. Hinton, <em>Feudal Reinforcement Learning</em>, Advances in Neural Information Processing Systems (1993)。</p>
+<p>[13] A. S. Vezhnevets et al., <em>FeUdal Networks for Hierarchical Reinforcement Learning</em>, ICML (2017)。</p>
+<p>[14] EveMissLab 內部框架：三層觀察者機制、覆蓋定理、運算子本體論「所見即世界」（$\rho(\mathcal{S},\mathcal{R})\to 1$）、Closure 守恆——本附錄對其之援引皆為類比，非已建立之形式對應。</p>
+<div class="altbar">原始檔（供 RAG/下載）：<a href="paper-1008.md" rel="noopener">papers/paper-1008.md</a> [md]</div>
+</article>
+<footer><p>Neo.K (許筌崴) · Cl + ε</p></footer>
+</body>
+</html>

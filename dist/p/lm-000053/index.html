@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cyc-Optional：從外部常識庫到自建 AI-native 常識層 · EVEMISSLAB Logic Matrix</title>
+<meta name="description" content="Cyc-Optional：從外部常識庫到自建 AI-native 常識層 | EVEMISSLAB Logic Matrix V2.1">
+<meta name="author" content="Neo.K (許筌崴)">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<meta name="lm-paper-id" content="lm-000053">
+<link rel="alternate" type="text/markdown" href="/raw/lm-000053.md" title="原始檔 / source (md)">
+<link rel="canonical" href="https://logic.evemisslab.com/p/lm-000053/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "Cyc-Optional：從外部常識庫到自建 AI-native 常識層",
+  "url": "https://logic.evemisslab.com/p/lm-000053/",
+  "identifier": "lm-000053",
+  "inLanguage": "zh-Hant",
+  "author": {"@type": "Person", "name": "Neo.K (許筌崴)"},
+  "publisher": {"@type": "Organization", "name": "EveMissLab / 一言諾科技有限公司"},
+  "isPartOf": {"@type": "Collection", "name": "EVEMISSLAB Logic Matrix", "url": "https://logic.evemisslab.com"},
+  "encodingFormat": "text/html"
+}
+</script>
+<link rel="prefetch" href="/api/log-crawler?slug=Cyc-Optional-AI-native.md">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#000; color:#0f0; font-family:'Courier New',monospace; padding:20px; line-height:1.6; }
+.header { text-align:center; border:2px solid #0f0; padding:18px; margin-bottom:22px; }
+.header h1 { font-size:1.5em; letter-spacing:2px; }
+.header p { margin-top:6px; opacity:0.8; font-size:0.9em; }
+.disclaimer { border:1px dashed #ff9900; color:#ff9900; padding:14px; margin:0 auto 22px; max-width:1000px; font-size:0.88em; }
+.disclaimer-title { font-weight:bold; margin-bottom:10px; display:block; letter-spacing:1px; }
+.disclaimer-divider { border:none; border-top:1px dashed #ff9900; margin:12px 0; opacity:0.55; }
+article { max-width:1000px; margin:0 auto; border:1px solid #0f0; padding:24px; }
+article h1,article h2,article h3,article h4 { margin:18px 0 8px; letter-spacing:1px; }
+article h1 { font-size:1.5em; } article h2 { font-size:1.25em; } article h3 { font-size:1.1em; }
+article p { margin:10px 0; }
+article ul,article ol { margin:10px 0 10px 24px; }
+article blockquote { border-left:3px solid #0f0; padding-left:12px; opacity:0.85; margin:10px 0; }
+article pre { background:rgba(0,255,0,0.06); border:1px solid #0f0; padding:12px; overflow-x:auto; margin:12px 0; }
+article code { background:rgba(0,255,0,0.08); padding:1px 5px; }
+article pre code { background:none; padding:0; }
+article a { color:#0ff; }
+.nav { max-width:1000px; margin:0 auto 16px; font-size:0.9em; display:flex; justify-content:space-between; }
+.nav a { color:#0f0; text-decoration:none; }
+.nav a:hover { color:#0ff; }
+.altbar { max-width:1000px; margin:14px auto 0; font-size:0.85em; opacity:0.7; }
+.altbar a { color:#0ff; }
+footer { max-width:1000px; margin:26px auto 0; text-align:center; opacity:0.5; font-size:0.82em; }
+</style>
+</head>
+<body>
+<div class="nav"><a href="/index.html">&larr; 回 Logic Matrix 索引</a><div><a href="/cosmomind.html" style="margin-right:15px;">→ 星環式認知展開圖</a><a href="/base-space.html">🧬 拓撲底空間</a></div></div>
+<header class="header"><h1>Cyc-Optional：從外部常識庫到自建 AI-native 常識層</h1><p>EVEMISSLAB Logic Matrix · EveMissLab / 一言諾科技有限公司</p></header>
+<section class="disclaimer">
+  <span class="disclaimer-title">[認識論邊界宣告 / EPISTEMOLOGICAL DISCLAIMER]</span>
+  <div class="disclaimer-block">
+    <p><b>[CHT]</b> 本矩陣內所有論文之公式與數據為「啟發式模擬參數」，用於驗證理論架構與推演因果鏈，<b>未經實證校準</b>，請勿作為現實物理測量數據引用 or 處理。EVEMISSLAB 採行「邏輯先行（Logic-First）」原則：概念架構與系統因果映射優先於統計實證，但不排除未來實證對接。</p>
+  </div>
+  <hr class="disclaimer-divider">
+  <div class="disclaimer-block">
+    <p><b>[ENG]</b> The numerical parameters within these frameworks are <i>illustrative model coefficients</i> used for structural verification and causal mapping; they are <b>not empirically calibrated</b> and must not be treated as physical measurements. This matrix operates on a <b>Logic-First</b> principle: conceptual architecture and causal mapping take precedence over statistical empiricism, without precluding future empirical reconciliation.</p>
+  </div>
+</section>
+<article>
+<h1>Cyc-Optional：從外部常識庫到自建 AI-native 常識層</h1>
+<h2>基於 TCF、MDAS、ADL 與三態邏輯的 Agent 常識憲法路線圖</h2>
+<p><strong>作者：Neo.K / EVEMISSLAB</strong> <strong>版本：v0.1</strong> <strong>形式：技術白皮書 / 理論路線圖草稿</strong></p>
+<h2>摘要</h2>
+<p>Cyc 計畫曾經試圖以顯式知識庫、本體論、常識規則與形式推理構造人工智慧的常識基礎。其歷史價值不在於它提供了一套可直接復刻的完整答案，而在於它證明了：若 AI 想要穩定理解世界、執行任務、檢查語境、降低幻覺與進行可審計推理，就必須擁有某種外部顯式常識層。</p>
+<p>然而，本文主張：未來的 AI-native 常識層不必依賴 Cyc。Cyc 可以被參考、投資、授權、協作或局部整合；但真正關鍵的是建立一套可由現代 LLM、Agent、超圖、Markdown、JSON-LD、向量檢索、知識圖譜與平行裁判器共同運作的新型常識架構。</p>
+<p>本文提出「Cyc-Optional」路線：Cyc 是可選加速器，而非架構依賴。即使完全不使用 Cyc，仍可透過 TCF（Theory Compression Format）負責理論壓縮與來源歸屬，MDAS-TCH 負責概念態空間與因果超圖，ADL 負責行動時的強制判斷，三態邏輯負責保留未定與螺旋演化狀態，最終形成一個面向 Agentic AI 的「常識憲法層」。</p>
+<h2>關鍵詞</h2>
+<p>Cyc、OpenCyc、AI-native Knowledge Layer、TCF、MDAS、ADL、三態邏輯、Agent 常識憲法、神經符號 AI、常識推理、知識圖譜、JSON-LD、Markdown Knowledge Card</p>
+<h1>1\. 問題意識：Cyc 不是終點，而是一個歷史提示</h1>
+<p>Cyc 的歷史地位很特殊。它不是單純失敗的舊式符號 AI，也不是可以直接拿來解決現代 LLM 問題的萬能知識庫。它更像是一個提前出現的歷史提示：</p>
+<p>AI 不能只靠模式擬合。 AI 需要顯式常識、語境、本體、規則、例外與可審計推理。</p>
+<p>在 LLM 時代，這個問題重新浮現。大型語言模型可以生成語言、模糊推理、進行摘要、操作工具、寫程式與協助決策，但仍常出現幾類問題：</p>
+<ol>
+<li><strong>語境錯配</strong>：把虛構、現實、法律、醫療、哲學、工程語境混在一起。</li>
+<li><strong>常識幻覺</strong>：生成看似合理但違反基本世界約束的內容。</li>
+<li><strong>來源不明</strong>：結論可能來自權重壓縮，而非可追蹤資料。</li>
+<li><strong>類型混淆</strong>：把人、公司、產品、角色、文件、事件等概念混為一談。</li>
+<li><strong>行動風險</strong>：Agent 不只是回答，還可能發送 Email、修改檔案、操作 API、安排日曆或執行程式。</li>
+<li><strong>未定狀態處理不佳</strong>：模型常把不確定問題包裝成確定答案，或在需要判斷時逃避判斷。</li>
+</ol>
+<p>Cyc 的價值就在於，它早就試圖處理這些問題。但 Cyc 的問題也很明顯：符號系統過重、人工知識工程成本太高、容錯率太低、語境管理複雜、一階邏輯與 default reasoning 的邊界過於脆弱。</p>
+<p>因此，本文不主張「復活 Cyc」，而主張：</p>
+<p><strong>吸收 Cyc 的問題意識，重建一套不依賴 Cyc 的 AI-native 常識層。</strong></p>
+<h1>2\. 核心命題：Cyc 可用，但不可依賴</h1>
+<p>本文的核心命題是：</p>
+<p><strong>Cyc 是可選資源，不是必要基礎。</strong></p>
+<p>這句話有幾層意思。</p>
+<p>第一，若 Cyc / OpenCyc / Cycorp 願意授權、合作、投資或被整合，那當然有價值。因為它累積了大量本體工程經驗、概念分類、常識規則與 microtheory 思想。</p>
+<p>第二，即使無法取得完整 Cyc，現代 AI 團隊仍可用公開資料、LLM 自動抽取、知識圖譜、語義網、Wikidata、WordNet、DBpedia、企業文件、領域資料庫與人工審核，自建一套常識層。</p>
+<p>第三，更重要的是，現代架構不應把 Cyc-like 知識庫當成主體智能，而應把它當成外部裁判、語境索引、類型約束、常識檢查與 provenance 管理層。</p>
+<p>換句話說：</p>
+<p><strong>Cyc 的內容可以借。</strong> <strong>Cyc 的方法可以學。</strong> <strong>Cyc 的資產可以談。</strong> <strong>但 Cyc 不是此架構的本體核心。</strong></p>
+<p>本架構的核心應是：</p>
+<ul>
+<li>TCF：理論標準格式與來源歸屬。</li>
+<li>MDAS：動態概念超圖與態空間。</li>
+<li>ADL：行動時的強制判斷。</li>
+<li>三態邏輯：未定、螺旋、演化狀態保留。</li>
+<li>LLM / Agent：神經主體與操作介面。</li>
+<li>Knowledge Layer：可機器解析、可人類閱讀、可追蹤、可裁判的常識層。</li>
+</ul>
+<h1>3\. 為何自己也能做？</h1>
+<p>「Cyc 的內容我自己也能做」這句話並不是狂妄，而是在現代技術條件下有一定合理性。</p>
+<p>在 Cyc 的年代，最大的瓶頸是人工知識工程。人類必須長期手動寫入常識、定義概念、建立關係、處理例外、修正語境。這件事極其昂貴。</p>
+<p>但現在不同。現代 AI 系統可以協助：</p>
+<ul>
+<li>從自然語言文本抽取概念與關係。</li>
+<li>將理論轉成標準 schema。</li>
+<li>生成 Markdown knowledge card。</li>
+<li>轉換 JSON / JSON-LD / RDF / OWL。</li>
+<li>將概念嵌入向量資料庫。</li>
+<li>檢查類型錯誤與語境錯配。</li>
+<li>對多個候選規則進行交叉驗證。</li>
+<li>自動建立測試案例。</li>
+<li>對每個知識節點標記來源與可信度。</li>
+<li>將常識規則轉成 Agent 可調用 API。</li>
+</ul>
+<p>這代表現代團隊不必重走 Cyc 的全人工路線。更合理的做法是：</p>
+<p><strong>AI 生成候選知識，人類審核高價值節點，形式系統負責約束，Agent 在使用中持續回饋。</strong></p>
+<p>這不是說自建常識層很容易，而是說它不再需要像 Cyc 當年那樣孤軍奮戰。</p>
+<h1>4\. Cyc 的真正可借鑑部分</h1>
+<p>Cyc 可借鑑的不是「完整複製它的資料」，而是以下幾個工程思想。</p>
+<h2>4.1 本體工程</h2>
+<p>Cyc 很重視概念之間的類型關係。例如某個東西是物理物體、抽象物、事件、角色、集合、實例、過程、行動、狀態或關係。</p>
+<p>這對 LLM / Agent 極其重要。因為很多錯誤不是知識錯，而是類型錯。例如：</p>
+<ul>
+<li>把公司當成自然人。</li>
+<li>把產品名稱當成公司法人。</li>
+<li>把文件中的條款當成已執行行動。</li>
+<li>把故事角色當成現實人物。</li>
+<li>把方法論當成可直接執行工具。</li>
+<li>把假設當成定理。</li>
+<li>把使用者偏好當成普遍規則。</li>
+</ul>
+<p>因此，Cyc 的本體工程可以成為 TCF §0 原語與 MDAS vertex type 的參照。</p>
+<h2>4.2 Microtheory / 語境片段</h2>
+<p>Cyc 的 microtheory 思想非常重要。它意識到常識不能放在單一全域真理空間中。不同語境下，規則不同。</p>
+<p>例如：</p>
+<ul>
+<li>現實世界中，人死亡後不能親自簽約。</li>
+<li>法律語境中，代理人可以代表他人簽署文件。</li>
+<li>小說語境中，死者可能復活。</li>
+<li>遊戲語境中，死亡可能只是狀態。</li>
+<li>神話語境中，神明可能不受一般物理限制。</li>
+<li>程式語境中，「樹」可能是資料結構，不是植物。</li>
+</ul>
+<p>這正好可以改造成 EML 架構中的 <strong>Context Shard（語境片段）</strong>。</p>
+<h2>4.3 Default Reasoning / 預設推理</h2>
+<p>人類常識大量是「通常如此」，而不是「必然如此」。</p>
+<p>例如：</p>
+<ul>
+<li>鳥通常會飛，但企鵝不會。</li>
+<li>人通常需要睡眠，但某些敘事設定可能例外。</li>
+<li>公司通常透過代表人行動，但法人本身不是生物。</li>
+<li>醫療建議通常需要個人條件，不能絕對化。</li>
+<li>一般物體通常不能穿牆，但遊戲或科幻設定可能例外。</li>
+</ul>
+<p>Cyc 嘗試形式化這類預設推理，但很困難。現代架構不應硬把所有 default 變成二值真偽，而應讓 default 進入三態或多態系統。</p>
+<p>在 EML 架構中，可以這樣處理：</p>
+<ul>
+<li>穩定常識：進入 Ξ / ⊤。</li>
+<li>高例外常識：進入 Ω。</li>
+<li>語境敏感常識：綁定 Context Shard。</li>
+<li>高風險判斷：交給 ADL 強制判斷。</li>
+<li>無法判斷：標記 Crash / 人工審核。</li>
+</ul>
+<h2>4.4 顯式可審計推理</h2>
+<p>Cyc 的另一個價值是可追蹤推理鏈。LLM 的知識壓在權重中，很難知道它到底為何下結論。Cyc-like 系統則可以要求：</p>
+<ul>
+<li>你使用了哪個概念？</li>
+<li>你依賴哪條規則？</li>
+<li>你在哪個語境下判斷？</li>
+<li>你有沒有例外條件？</li>
+<li>你用了哪個來源？</li>
+<li>這是原始資料，還是 LLM 擴寫？</li>
+<li>這是公理、定理、假設、猜想，還是 heuristic？</li>
+</ul>
+<p>這正好接上 TCF 的 provenance / attribution 層。</p>
+<h1>5\. EML 自有架構：TCF + MDAS + ADL + 三態邏輯</h1>
+<p>本文提出一個不依賴 Cyc 的自有架構。</p>
+<h2>5.1 TCF：理論壓縮與來源歸屬</h2>
+<p>TCF 負責把任意理論或知識系統轉為標準結構：</p>
+<ul>
+<li>§0 Primitives：核心原語。</li>
+<li>§1 Axioms：公理系統。</li>
+<li>§2 DAG：概念依賴圖。</li>
+<li>§3 Signature：形式語言簽章。</li>
+<li>§4 Theorems：可推出結論。</li>
+<li>§5 Proofs：推導鏈。</li>
+<li>§6 Models：模型與實例。</li>
+<li>§7 Metrics：壓縮度量。</li>
+<li>§8 Fingerprint：理論指紋。</li>
+<li>§9 Provenance：來源與歸屬。</li>
+</ul>
+<p>在 Cyc-Optional 架構中，TCF 的作用是：</p>
+<p>把常識知識從雜亂文本、圖譜資料、LLM 輸出或 Cyc-like 結構，轉成可機器解析、可版本控制、可追蹤來源的理論單元。</p>
+<p>這裡最重要的是 provenance。若某個知識節點來自 OpenCyc、Wikidata、論文、企業文件、使用者輸入或 LLM 擴寫，必須清楚標記。否則常識層很快就會被污染。</p>
+<h2>5.2 MDAS：概念態空間與因果超圖</h2>
+<p>MDAS-TCH 負責把知識變成動態超圖。</p>
+<p>在這裡：</p>
+<ul>
+<li>概念是 vertex。</li>
+<li>關係是 edge。</li>
+<li>多概念不可分結構是 hyperedge。</li>
+<li>語境是 context shard。</li>
+<li>規則是可傳播約束。</li>
+<li>例外是局部覆寫。</li>
+<li>矛盾是態變化。</li>
+<li>認知透明度是 Ψ / Δ / Ξ / Θ。</li>
+<li>糾纏程度是超邊強度。</li>
+<li>知識積累是 Σ。</li>
+<li>維度生成能力是 Γ。</li>
+<li>認知勢壘是 B。</li>
+</ul>
+<p>這讓常識層不再是靜態資料庫，而是一個可觀察、可演化、可診斷的概念場。</p>
+<h2>5.3 ADL：Agent 行動時的強制判斷</h2>
+<p>當 AI 只是寫文章時，未定狀態可以保留。 但當 Agent 要行動時，不能永遠保持曖昧。</p>
+<p>例如：</p>
+<ul>
+<li>要不要發送這封 Email？</li>
+<li>要不要刪除這個檔案？</li>
+<li>要不要排一個過去時間的會議？</li>
+<li>要不要執行這段程式？</li>
+<li>要不要把某段話當作醫療建議？</li>
+<li>要不要將某個人加入收件人？</li>
+</ul>
+<p>這時候需要 ADL 的強制判斷。</p>
+<p>ADL 在此不是形上學裝飾，而是 Agent 執行層的安全機制：</p>
+<p>{ &quot;claim&quot;: &quot;The user wants to schedule a meeting yesterday.&quot;, &quot;context&quot;: &quot;calendar\_agent&quot;, &quot;forced\_judgment&quot;: &quot;invalid\_or\_requires\_correction&quot;, &quot;reason&quot;: &quot;The requested time is in the past.&quot; }</p>
+<p>ADL 的任務是：當系統必須行動時，把模糊狀態壓縮成可執行判斷，或者明確輸出系統不可判斷。</p>
+<h2>5.4 三態邏輯：保留未定與螺旋態</h2>
+<p>ADL 負責行動時強制判斷，但不是所有問題都應被強制二值化。</p>
+<p>很多理論、創造、探索、研究與概念演化，都處於 Ω 螺旋態。</p>
+<p>例如：</p>
+<ul>
+<li>一個尚未完成的新理論。</li>
+<li>一個正在相變的研究方向。</li>
+<li>一個可能成立但尚未形式化的架構。</li>
+<li>一個在不同語境下有不同答案的命題。</li>
+<li>一個需要更多資料才能判斷的問題。</li>
+<li>一個正在從直覺變成形式理論的概念。</li>
+</ul>
+<p>若把這些狀態硬判為真或假，會破壞創造力。 若把它們全部視為崩潰，也會錯失演化過程。</p>
+<p>因此，三態邏輯負責保留：</p>
+<ul>
+<li>真：穩定成立。</li>
+<li>假：穩定不成立。</li>
+<li>Ω：正在演化、尚未穩定、不可立即閉合。</li>
+</ul>
+<p>這對常識層很重要，因為常識不是死規則，而是可演化結構。</p>
+<h1>6\. Cyc-Optional Knowledge Layer 的資料模型</h1>
+<p>一個 AI-native 常識節點可表示如下：</p>
+<p>{ &quot;id&quot;: &quot;eml:commonsense:HumanPerson&quot;, &quot;label&quot;: { &quot;zh&quot;: &quot;人類個體&quot;, &quot;en&quot;: &quot;Human Person&quot; }, &quot;tcf&quot;: { &quot;section&quot;: &quot;§0&quot;, &quot;role&quot;: &quot;primitive&quot;, &quot;kind&quot;: &quot;type&quot; }, &quot;mdas&quot;: { &quot;logical\_state&quot;: &quot;top&quot;, &quot;cognitive\_state&quot;: &quot;transparent&quot;, &quot;evolution\_state&quot;: &quot;stable&quot;, &quot;entanglement\_state&quot;: &quot;conditional&quot;, &quot;type\_vector&quot;: { &quot;logical\_type&quot;: &quot;concept&quot;, &quot;cognitive\_type&quot;: &quot;explicit\_knowledge&quot;, &quot;solvability\_type&quot;: &quot;ordinary&quot;, &quot;paradigm\_layer&quot;: &quot;commonsense&quot; } }, &quot;relations&quot;: \[ { &quot;predicate&quot;: &quot;isA&quot;, &quot;object&quot;: &quot;BiologicalEntity&quot;, &quot;context&quot;: &quot;ordinary\_physical\_world&quot;, &quot;confidence&quot;: 0.98 }, { &quot;predicate&quot;: &quot;canPerform&quot;, &quot;object&quot;: &quot;LegalAction&quot;, &quot;context&quot;: &quot;ordinary\_legal\_context&quot;, &quot;condition&quot;: &quot;alive\_and\_legally\_competent&quot;, &quot;confidence&quot;: 0.85 } \], &quot;defaults&quot;: \[ { &quot;rule&quot;: &quot;A human person is usually alive during ordinary personal action.&quot;, &quot;state&quot;: &quot;default\_true&quot;, &quot;exceptions&quot;: \[ &quot;fictional\_context&quot;, &quot;legal\_representation&quot;, &quot;posthumous\_processing&quot; \] } \], &quot;adl&quot;: { &quot;forced\_judgment\_required\_when&quot;: \[ &quot;legal\_action&quot;, &quot;medical\_action&quot;, &quot;financial\_action&quot;, &quot;agent\_execution&quot; \] }, &quot;triadic&quot;: { &quot;unresolved\_state\_policy&quot;: &quot;omega\_until\_context\_fixed&quot; }, &quot;provenance&quot;: { &quot;source\_type&quot;: &quot;self\_built\_or\_public\_ontology&quot;, &quot;source&quot;: &quot;manual + LLM distilled + public references&quot;, &quot;review\_status&quot;: &quot;needs\_expert\_review&quot; } }</p>
+<p>此資料模型的重點是：同一個知識節點同時服務多層系統。</p>
+<ul>
+<li>TCF 看它是理論單元。</li>
+<li>MDAS 看它是超圖節點。</li>
+<li>ADL 看它何時需要強制判斷。</li>
+<li>三態邏輯看它是否允許 Ω 狀態。</li>
+<li>Agent 看它能否用於行動前檢查。</li>
+<li>人類看 Markdown card。</li>
+<li>系統看 JSON / JSON-LD / Graph / Vector。</li>
+</ul>
+<h1>7\. Markdown Knowledge Card 範例</h1>
+<p>\# Human Person</p>
+<p>\## 基本定義 人類個體是一種生物性、社會性、法律語境中可被視為行動主體的存在。</p>
+<p>\## 類型 \- BiologicalEntity \- SocialAgent \- LegalSubject（在特定法律語境中） \- CognitiveAgent（在一般認知語境中）</p>
+<p>\## 常識規則 \- 人類個體通常有出生與死亡時間。 \- 人類個體死亡後，通常不能親自執行新的物理行動。 \- 人類個體可以透過代理人、遺囑、法人制度或法律程序產生後續法律效果。 \- 在虛構、神話、遊戲或模擬語境中，此規則可被覆寫。</p>
+<p>\## 語境片段 \- ordinary\_physical\_world \- ordinary\_legal\_context \- fictional\_context \- game\_context \- mythological\_context</p>
+<p>\## ADL 強制判斷觸發 當 Agent 需要執行法律、金融、醫療、通訊或檔案操作時，若此概念涉及使用者、第三方或權限，必須啟動強制判斷。</p>
+<p>\## 三態保留 若語境不明，先標記為 Ω，不直接判定真偽。</p>
+<p>\## 來源 \- EML 自建常識層 \- 可選：OpenCyc-like ontology \- 可選：Wikidata / WordNet / DBpedia \- 可選：專家審核</p>
+<h1>8\. 路線圖</h1>
+<h2>Phase 1：自建最小常識層</h2>
+<p>不需要先買 Cyc，也不需要先做全世界常識。</p>
+<p>先從 Agent 最常出錯的類別開始：</p>
+<ul>
+<li>時間。</li>
+<li>人物。</li>
+<li>組織。</li>
+<li>法人。</li>
+<li>文件。</li>
+<li>權限。</li>
+<li>Email。</li>
+<li>日曆。</li>
+<li>檔案。</li>
+<li>醫療高風險。</li>
+<li>法律高風險。</li>
+<li>金融高風險。</li>
+<li>虛構世界語境。</li>
+<li>程式開發需求矛盾。</li>
+</ul>
+<p>目標不是完整，而是先能攔截高頻錯誤。</p>
+<h2>Phase 2：TCF 標準化</h2>
+<p>將每個常識模組轉成 TCF：</p>
+<ul>
+<li>核心概念 → §0。</li>
+<li>常識規則 → §1。</li>
+<li>關係依賴 → §2。</li>
+<li>可推出結論 → §4。</li>
+<li>推理路徑 → §5。</li>
+<li>使用場景 → §6。</li>
+<li>來源歸屬 → §9。</li>
+</ul>
+<p>這會讓常識層具備版本控制與理論指紋。</p>
+<h2>Phase 3：MDAS 超圖化</h2>
+<p>將 TCF 知識轉成 MDAS-TCH：</p>
+<ul>
+<li>每個概念是 vertex。</li>
+<li>每條關係是 edge。</li>
+<li>每組不可分語境是 hyperedge。</li>
+<li>每個節點都有認知態、演化態、糾纏態。</li>
+<li>每個裁判器都能讀取圖結構。</li>
+</ul>
+<p>這一步是從「知識庫」變成「動態認知圖」。</p>
+<h2>Phase 4：建立平行裁判器</h2>
+<p>裁判器分為多類：</p>
+<ol>
+<li>類型裁判器。</li>
+<li>語境裁判器。</li>
+<li>時間裁判器。</li>
+<li>權限裁判器。</li>
+<li>常識裁判器。</li>
+<li>來源裁判器。</li>
+<li>高風險領域裁判器。</li>
+<li>行動前檢查器。</li>
+<li>虛構語境裁判器。</li>
+<li>理論一致性裁判器。</li>
+</ol>
+<p>每個裁判器不一定給出唯一答案，而是輸出：</p>
+<ul>
+<li>成立。</li>
+<li>不成立。</li>
+<li>語境不足。</li>
+<li>需要人工確認。</li>
+<li>Ω 未定。</li>
+<li>ADL 強制判斷失敗。</li>
+<li>Crash。</li>
+</ul>
+<h2>Phase 5：接入 LLM / Agent</h2>
+<p>當 LLM 生成答案或 Agent 要執行行動時，系統呼叫常識層：</p>
+<p>{ &quot;agent\_action&quot;: &quot;send\_email&quot;, &quot;claim&quot;: &quot;Send this medical instruction to all customers.&quot;, &quot;context&quot;: &quot;email\_agent&quot;, &quot;risk\_level&quot;: &quot;high&quot; }</p>
+<p>常識層回傳：</p>
+<p>{ &quot;verdict&quot;: &quot;blocked\_or\_requires\_review&quot;, &quot;reasons&quot;: \[ &quot;medical advice cannot be generalized to all customers&quot;, &quot;recipient group is too broad&quot;, &quot;requires human review&quot; \], &quot;state&quot;: &quot;ADL\_forced\_rejection&quot; }</p>
+<h2>Phase 6：Cyc / OpenCyc 作為可選加速器</h2>
+<p>若未來資源允許，可以把 Cyc 放進以下位置：</p>
+<ul>
+<li>作為本體參考。</li>
+<li>作為常識資料源。</li>
+<li>作為 microtheory 設計參照。</li>
+<li>作為 benchmark。</li>
+<li>作為歷史對照組。</li>
+<li>作為授權資料庫。</li>
+<li>作為合作對象。</li>
+<li>作為收購或投資候選。</li>
+</ul>
+<p>但即使沒有 Cyc，架構仍然成立。</p>
+<p>這就是 Cyc-Optional 的核心。</p>
+<h1>9\. 商業與研究意義</h1>
+<p>這條路線對小型 AI 公司或研究團隊有特殊意義。</p>
+<p>大公司競爭的是模型本體、算力、資料與產品入口。小團隊很難正面訓練下一代超大模型。但小團隊可以做模型外部的智慧層：</p>
+<ul>
+<li>Agent 常識層。</li>
+<li>企業知識憲法。</li>
+<li>AI 行動前裁判器。</li>
+<li>高風險領域檢查器。</li>
+<li>理論壓縮與知識治理工具。</li>
+<li>AI-native Markdown / JSON-LD 知識標準。</li>
+<li>個人或組織專用的可審計知識庫。</li>
+<li>多模型共用的外部常識 API。</li>
+</ul>
+<p>這種產品不需要取代 GPT、Gemini、Claude 或其他模型。它只需要成為它們外部的結構性補丁。</p>
+<p>因此，Cyc-Optional 路線的商業定位不是：</p>
+<p>我們要做另一個 LLM。</p>
+<p>而是：</p>
+<p>我們要做 LLM / Agent 的外部常識作業系統。</p>
+<h1>10\. 與 Cyc 的關係表</h1>
+<p>問題</p>
+<p>Cyc 路線</p>
+<p>Cyc-Optional 路線</p>
+<p>主體智能</p>
+<p>符號常識系統承擔大量智能功能</p>
+<p>LLM / Agent 作為神經主體</p>
+<p>知識來源</p>
+<p>人工編碼為主</p>
+<p>LLM 抽取 + 公開資料 + 人工審核</p>
+<p>語境管理</p>
+<p>Microtheory</p>
+<p>Context Shard + MDAS 態標記</p>
+<p>推理方式</p>
+<p>符號推理為核心</p>
+<p>平行裁判 + 神經重寫 + 局部形式化</p>
+<p>資料格式</p>
+<p>專用表示</p>
+<p>MD / JSON-LD / RDF / Graph / Vector / TCF</p>
+<p>未定狀態</p>
+<p>default / exception / unknown</p>
+<p>Ω 螺旋態 + ADL 強制判斷</p>
+<p>可審計性</p>
+<p>強</p>
+<p>透過 TCF provenance 強化</p>
+<p>擴展方式</p>
+<p>知識工程</p>
+<p>AI 輔助蒸餾 + 人類治理</p>
+<p>對 Cyc 依賴</p>
+<p>必須使用 Cyc 本體</p>
+<p>可使用，也可完全不用</p>
+<h1>11\. 最小可行系統</h1>
+<p>一個最小可行系統不需要宏大到包含全部常識。它只需要做三件事：</p>
+<ol>
+<li>把常見概念做成 Knowledge Card。</li>
+<li>對 Agent 行動做常識檢查。</li>
+<li>對檢查結果提供結構化回饋。</li>
+</ol>
+<p>最小架構：</p>
+<p>User / Agent Request ↓ LLM Semantic Parser ↓ TCF Knowledge Card Retrieval ↓ MDAS Context + Type Graph ↓ Parallel Judges ↓ ADL Forced Judgment if Action Required ↓ Triadic Ω if Unresolved ↓ LLM Rewrite / Block / Ask / Execute</p>
+<p>這個架構的價值不是一次做到全知，而是每次比裸 LLM 多一層結構性防線。</p>
+<h1>12\. 理論定位</h1>
+<p>Cyc-Optional 路線的理論定位如下：</p>
+<p>它不是舊式符號 AI。 它不是純 RAG。 它不是普通知識圖譜。 它不是聊天記憶。 它不是 LLM 自我反思 prompt。 它是一個外部化、格式化、可審計、可演化的 Agent 常識憲法層。</p>
+<p>更精確地說：</p>
+<ul>
+<li>RAG 解決「查什麼」。</li>
+<li>Knowledge Graph 解決「誰和誰有關」。</li>
+<li>Memory 解決「使用者以前說過什麼」。</li>
+<li>TCF 解決「這個理論如何標準化與追蹤來源」。</li>
+<li>MDAS 解決「概念如何處於動態態空間」。</li>
+<li>ADL 解決「必須行動時如何強制判斷」。</li>
+<li>三態邏輯解決「未定與演化狀態如何不被錯殺」。</li>
+<li>Cyc-Optional Knowledge Layer 解決「Agent 如何在世界常識中行動」。</li>
+</ul>
+<h1>13\. 結論：Cyc 是可選捷徑，不是終極答案</h1>
+<p>Cyc 很可惜，也很珍貴。它提前指出了 AI 需要常識、本體、語境與可審計推理。但它不應被神化，也不應被視為唯一道路。</p>
+<p>在今天，真正可行的路線不是回到 Cyc，而是建立一個新的 AI-native 常識層：</p>
+<p>用 LLM 生成與理解。 用 TCF 壓縮與歸屬。 用 MDAS 圖化與狀態化。 用 ADL 做行動時強制判斷。 用三態邏輯保留 Ω 未定與螺旋演化。 用 Agent OS 接入實際工作流。 用人類審核高價值與高風險節點。 用 Cyc 作為可選加速器，而不是必要依賴。</p>
+<p>這條路線的意義在於：即使沒有資金購買 Cyc，即使沒有大型公司的模型訓練能力，也可以先從格式、知識卡、裁判器、語境層與 Agent API 開始。</p>
+<p>Cyc 的精神不是「建立一座封閉的常識城堡」。</p>
+<p>它真正該被繼承的是：</p>
+<p><strong>讓 AI 擁有可檢查、可追蹤、可修正、可演化的世界常識。</strong></p>
+<p>而這件事，不必等待任何公司授權。</p>
+<p>可以自己開始。</p>
+<h1>附錄 A：一句話版</h1>
+<p>Cyc 可以參考、合作或購買，但不是必要條件；真正關鍵是用 TCF、MDAS、ADL 與三態邏輯建立一套自有的 AI-native 常識憲法層，使 LLM / Agent 在行動前能進行語境、類型、常識、來源與風險裁判。</p>
+<h1>附錄 B：公開倡議版</h1>
+<p>如果你正在研究 LLM、Agent、AI 安全、知識圖譜、RAG、語義網或企業 AI，不要只問「要不要復活 Cyc」。更好的問題是：如何把 Cyc 當年的問題意識轉譯成今天的 AI-native 系統？</p>
+<p>我們可以不買 Cyc，也可以不依賴 Cyc。 但我們不能假裝 AI 不需要常識層。</p>
+<p>下一代 Agent 需要的不是更長的 prompt，而是一個可審計、可版本化、可行動前檢查的外部常識憲法。</p>
+<p>這就是 Cyc-Optional 路線。</p>
+<div class="altbar">原始檔（供 RAG/下載）：<a href="/raw/lm-000053.md" rel="noopener">/raw/lm-000053.md</a> [md] · id: lm-000053</div>
+</article>
+<footer><p>Neo.K (許筌崴) · Cl + ε</p></footer>
+</body>
+</html>

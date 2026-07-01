@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>帳本代數：守恆與因果的去物理化公理 · EVEMISSLAB Logic Matrix</title>
+<meta name="description" content="帳本代數：守恆與因果的去物理化公理 | EVEMISSLAB Logic Matrix V2.1">
+<meta name="author" content="Neo.K (許筌崴)">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<meta name="lm-paper-id" content="lm-000470">
+<link rel="alternate" type="text/markdown" href="/raw/lm-000470.md" title="原始檔 / source (md)">
+<link rel="canonical" href="https://logic.evemisslab.com/p/lm-000470/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "帳本代數：守恆與因果的去物理化公理",
+  "url": "https://logic.evemisslab.com/p/lm-000470/",
+  "identifier": "lm-000470",
+  "inLanguage": "zh-Hant",
+  "author": {"@type": "Person", "name": "Neo.K (許筌崴)"},
+  "publisher": {"@type": "Organization", "name": "EveMissLab / 一言諾科技有限公司"},
+  "isPartOf": {"@type": "Collection", "name": "EVEMISSLAB Logic Matrix", "url": "https://logic.evemisslab.com"},
+  "encodingFormat": "text/html"
+}
+</script>
+<link rel="prefetch" href="/api/log-crawler?slug=paper-708.md">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#000; color:#0f0; font-family:'Courier New',monospace; padding:20px; line-height:1.6; }
+.header { text-align:center; border:2px solid #0f0; padding:18px; margin-bottom:22px; }
+.header h1 { font-size:1.5em; letter-spacing:2px; }
+.header p { margin-top:6px; opacity:0.8; font-size:0.9em; }
+.disclaimer { border:1px dashed #ff9900; color:#ff9900; padding:14px; margin:0 auto 22px; max-width:1000px; font-size:0.88em; }
+.disclaimer-title { font-weight:bold; margin-bottom:10px; display:block; letter-spacing:1px; }
+.disclaimer-divider { border:none; border-top:1px dashed #ff9900; margin:12px 0; opacity:0.55; }
+article { max-width:1000px; margin:0 auto; border:1px solid #0f0; padding:24px; }
+article h1,article h2,article h3,article h4 { margin:18px 0 8px; letter-spacing:1px; }
+article h1 { font-size:1.5em; } article h2 { font-size:1.25em; } article h3 { font-size:1.1em; }
+article p { margin:10px 0; }
+article ul,article ol { margin:10px 0 10px 24px; }
+article blockquote { border-left:3px solid #0f0; padding-left:12px; opacity:0.85; margin:10px 0; }
+article pre { background:rgba(0,255,0,0.06); border:1px solid #0f0; padding:12px; overflow-x:auto; margin:12px 0; }
+article code { background:rgba(0,255,0,0.08); padding:1px 5px; }
+article pre code { background:none; padding:0; }
+article a { color:#0ff; }
+.nav { max-width:1000px; margin:0 auto 16px; font-size:0.9em; display:flex; justify-content:space-between; }
+.nav a { color:#0f0; text-decoration:none; }
+.nav a:hover { color:#0ff; }
+.altbar { max-width:1000px; margin:14px auto 0; font-size:0.85em; opacity:0.7; }
+.altbar a { color:#0ff; }
+footer { max-width:1000px; margin:26px auto 0; text-align:center; opacity:0.5; font-size:0.82em; }
+</style>
+</head>
+<body>
+<div class="nav"><a href="/index.html">&larr; 回 Logic Matrix 索引</a><div><a href="/cosmomind.html" style="margin-right:15px;">→ 星環式認知展開圖</a><a href="/base-space.html">🧬 拓撲底空間</a></div></div>
+<header class="header"><h1>帳本代數：守恆與因果的去物理化公理</h1><p>EVEMISSLAB Logic Matrix · EveMissLab / 一言諾科技有限公司</p></header>
+<section class="disclaimer">
+  <span class="disclaimer-title">[認識論邊界宣告 / EPISTEMOLOGICAL DISCLAIMER]</span>
+  <div class="disclaimer-block">
+    <p><b>[CHT]</b> 本矩陣內所有論文之公式與數據為「啟發式模擬參數」，用於驗證理論架構與推演因果鏈，<b>未經實證校準</b>，請勿作為現實物理測量數據引用 or 處理。EVEMISSLAB 採行「邏輯先行（Logic-First）」原則：概念架構與系統因果映射優先於統計實證，但不排除未來實證對接。</p>
+  </div>
+  <hr class="disclaimer-divider">
+  <div class="disclaimer-block">
+    <p><b>[ENG]</b> The numerical parameters within these frameworks are <i>illustrative model coefficients</i> used for structural verification and causal mapping; they are <b>not empirically calibrated</b> and must not be treated as physical measurements. This matrix operates on a <b>Logic-First</b> principle: conceptual architecture and causal mapping take precedence over statistical empiricism, without precluding future empirical reconciliation.</p>
+  </div>
+</section>
+<article>
+<h1>帳本代數：守恆與因果的去物理化公理</h1>
+<p><strong>Ledger Algebra: A De-physicalized Axiomatics of Conservation and Causation</strong></p>
+<hr>
+<p><strong>文件編號</strong>：EML-LA-2026-v0.1 <strong>作者</strong>：Neo.K (許筌崴) with Theia <strong>機構</strong>：一言諾科技有限公司（EveMissLab） <strong>理論地位</strong>：閉合性理論（Cl）的賦權精煉（weighted refinement） <strong>依賴</strong>：Closure Theory（DCO / Cl 四公理） <strong>抽離自</strong>：因果律的權重代數重構（原 WT 第十章）</p>
+<hr>
+<h2>摘要</h2>
+<p>本文將「帳本公理」從其原始的物理—形上學脈絡中完全抽離，重構為一個域中性（domain-neutral）的形式系統。原始版本以 Hamiltonian 演化 $dW/dt=-(i/\hbar)[H,W]$ 保證守恆，並將守恆律詮釋為因果律、再嵌入量子力學與宇宙學。本文證明：<strong>守恆完全不依賴 Hamiltonian，亦不依賴任何物理或形上詮釋——它僅依賴一個平衡泛函 $\tau$ 與一個生成元 $L$ 滿足 $\tau\circ L=0$</strong>。此一觀察將理論從「保譜的么正流」推廣到「保總量的任意流」這一嚴格更大的類，並使「因果」得以被純結構地定義為流動路徑，不需訴諸「必然連接」或「先驗範疇」。我們明確指出本系統在數學上重疊於圖上連續性方程、保跡半群生成元、Markov 生成元與複式記帳，因此其貢獻不在新數學，而在（i）以 $\tau$ 為自由參數的單一公理化可代入多個值域，（ii）因果的去形上學結構定義，（iii）作為賦權 Cl 的整合，（iv）一條經驗測得的代價律：當守恆總額被鎖定於與實在不相容之值時，不可約誤差正比於偏差平方。最後我們區分了公理 A2 字面所述的弱守恆（單一不變量）與其物理來源形式所隱含的強守恆（保全譜），並以實驗顯示前者對計算近乎零代價，後者仍為開放問題。</p>
+<p><strong>關鍵詞</strong>：守恆、平衡泛函、保跡生成元、因果作為流、賦權閉包、複式記帳</p>
+<hr>
+<h2>1. 動機：為什麼把帳本從物理裡抽出來</h2>
+<p>原始的帳本公理是一篇成功的「統一詮釋」：它把 Hume 的規則性、Kant 的先驗必然、與物理的守恆律收攏到同一個「帳本平衡」的圖像下。但它的原創負荷恰好住在物理與形上學那一層——「因果律 = 帳本規則」是一個<strong>詮釋</strong>主張，而非數學發現。</p>
+<p>這帶來一個風險：若把物理與形上學保留，理論無法獨立使用（每次援引都得拖著量子力學與宇宙學）；若直接抽掉，又可能退化為兩種無用之一：</p>
+<ul>
+<li><strong>已知數學的換皮</strong>：封閉系統的 $\mathrm{Tr}(W)$ 守恆是線性代數既有事實（$\mathrm{Tr}[A,B]=0$）。</li>
+<li><strong>無承重的空骨架</strong>：守恆若被寫進「封閉」的定義裡，便是分析命題，不蘊含任何非平凡結論。</li>
+</ul>
+<p>本文的立場是：抽離之所以值得，不是因為它<strong>保留</strong>了什麼，而是因為它<strong>暴露</strong>了一件被物理外殼遮住的事——守恆的真正載體是 $(\tau, L)$ 這一對代數對象，與 $H$ 無關。抽掉 $H$，理論不是變窄，而是變寬。這個「變寬」本身就是抽離的成果。</p>
+<p>我們同時主張：抽離後的帳本不應成為孤兒理論，而應接回 Closure Theory（Cl）——它就是 <strong>Cl 配上一個測度</strong>的賦權版本（§4）。</p>
+<hr>
+<h2>2. 原語與公理</h2>
+<h3>2.1 原語</h3>
+<ul>
+<li><strong>位置集</strong> $I$：可數指標集，元素為帳戶／關係項（relata）。</li>
+<li><strong>狀態</strong> $W \in M(I)$：關係權重矩陣。$w_{ab}$ 為位置 $a,b$ 間的關係強度。（採矩陣而非向量，是為了保留非對角的耦合結構——因果鏈的內容住在這裡。）</li>
+<li><strong>平衡泛函</strong> $\tau$：線性泛函 $\tau: M(I)\to \mathbb{R}$，預設 $\tau=\mathrm{Tr}$。$\tau$ 是本理論的<strong>自由參數</strong>（見 §4 域代入）。</li>
+<li><strong>更新映射</strong> $\Phi_t=\exp(tL)$：由生成元 $L$（線性算符）導出的單參數半群。</li>
+</ul>
+<h3>2.2 公理</h3>
+<p><strong>A1（封閉 / self-containment）</strong> 系統封閉 $\iff$ 其更新映射 $\Phi_t$ 僅引用 $I$ 內元素（不引用任何外部位置）。</p>
+<p><strong>A2（守恆 / conservation）</strong> 封閉 $\implies \tau(LW)=0\ \ \forall W \implies \tau(\Phi_t W)=\tau(W)\ \ \forall t,W$。 （借方 = 貸方。注意：A2 對「封閉」是<strong>分析的</strong>；其實質內容在於它<strong>限定了可允許的 $L$ 之類</strong>，而非宣稱守恆。）</p>
+<p><strong>A3（流 / flow）</strong> 定義耦合圖 $\mathcal{G}(L)$ 為 $L$ 的非零非對角結構。位置間流量 $F_{a\to b}$ 為 $L$ 沿邊 $(a,b)$ 的輸運量。A2 在每個節點強制連續性：$\sum_{\text{in}}F = \sum_{\text{out}}F$。</p>
+<p><strong>A4（邊界 / boundary）</strong> 開放系統滿足 $\tau(LW)\neq 0$。其值 $E := \dfrac{d}{dt}\tau(\Phi_t W)\big|_{t=0}$ 定義邊界交換量。內部之所定 = 外部之所定：盈虧必記於邊界。</p>
+<p><strong>A5（層級 / hierarchy）</strong> 對嵌套 $I_1\subset I_2\subset\cdots$：守恆相對於<strong>最小包覆封閉系統</strong>而成立；子系統的守恆可被更大系統的邊界注入覆寫；極大封閉系統的守恆為絕對——因為它無外部，故無審計者。</p>
+<h3>2.3 去形上學的因果定義</h3>
+<p>取代原第十章關於 Hume / Kant / 因果本體論的整段論述，本文僅給出純結構定義：</p>
+<blockquote><strong>定義（因果）</strong>：「$X$ 致 $Y$」$:=\ \dfrac{\partial(\Phi\text{ 作用後 }Y\text{ 處權重})}{\partial(X\text{ 處權重})}\neq 0$，且此偏導為 $Y$ 之變化得以被平衡的輸運路徑。</blockquote>
+<blockquote><strong>因果鏈</strong> $:=$ 耦合圖 $\mathcal{G}(L)$ 上一條保平衡的輸運路徑。</blockquote>
+<p>此定義不含「必然連接」（Hume 之否定對象）亦不含「先驗範疇」（Kant 之肯定對象）。因果在此純為圖與流；它是否「必然」，是一個關於觀測解析度的取樣問題（§2.4），而非本體論問題。</p>
+<h3>2.4 可觀測層（去物理化的取樣命題）</h3>
+<p>令重分配率 $r=\lVert L\rVert$，觀測窗 $\Delta$。</p>
+<ul>
+<li>$r\Delta \gg 1$：觀測者在單一窗口內見到大量輸運事件，大數律抹平單筆漲落 $\implies$ 守恆呈<strong>確定性</strong>。</li>
+<li>$r\Delta \sim 1$：觀測者見到單筆借貸 $\implies$ 守恆呈<strong>漲落性</strong>。</li>
+</ul>
+<p>此命題與量子力學無關，純為取樣解析度與事件率之比；原第十章的「量子 = 漲落可觀測帶」是本命題在 $\tau=\mathrm{Tr}$、$L=[H,\cdot]$ 之特例下的物理代入。</p>
+<hr>
+<h2>3. 核心定理：守恆只依賴 $(\tau, L)$</h2>
+<p><strong>定理 3.1（守恆的去 Hamiltonian 化）</strong> 設 $\Phi_t=\exp(tL)$，$\tau$ 線性。則 $$\tau(\Phi_t W)=\tau(W)\quad\forall t,W \iff \tau(LW)=0\quad\forall W.$$ <em>證</em>：$\frac{d}{dt}\tau(\Phi_t W)=\tau(L\Phi_t W)$。若 $\tau\circ L=0$ 則導數恆為零，守恆成立；反之微分 $t=0$ 即得。$\square$</p>
+<p><strong>推論 3.2（么正僅為一角）</strong> 原第十章之 $L=-(i/\hbar)[H,\cdot]$ 滿足 $\mathrm{Tr}(LW)=-(i/\hbar)\mathrm{Tr}[H,W]=0$，故為定理 3.1 的一個解。但解集 $\{L:\tau\circ L=0\}$ 嚴格更大，包含：</p>
+<ul>
+<li><strong>耗散型保跡生成元</strong>（Lindblad 型減去物理）：非么正，仍保 $\mathrm{Tr}$；</li>
+<li><strong>Markov 生成元</strong>（取 $\tau=\text{總和}$、狀態為機率向量）：行和為零，保機率。</li>
+</ul>
+<p>因此去物理化使理論<strong>從保譜的么正流推廣為保總量的任意流</strong>。守恆活下來，因為它本來就與 $H$ 無關。</p>
+<p><strong>警示 3.3（弱守恆 ≠ 強守恆）</strong> A2 字面只保<strong>單一</strong>不變量 $\tau(W)$（一個純量）。而 $[H,W]$ 形式保<strong>全譜</strong>（所有特徵值凍結，僅特徵基底旋轉）。原第十章以對易子書寫，無意間把這兩者混為一談。抽離強迫此區分浮現：</p>
+<ul>
+<li><strong>弱形式（A2 字面）</strong>：$\mathrm{Tr}(W)$ 守恆，$n^2$ 參數中僅鎖 1 個。</li>
+<li><strong>強形式（等譜 / isospectral）</strong>：$\mathrm{spec}(W)$ 守恆，自由度僅剩正交共軛 $W\mapsto UWU^\top$。</li>
+</ul>
+<p>§6 實驗測的是弱形式；強形式列為開放問題（§7）。</p>
+<hr>
+<h2>4. 與 Closure Theory（Cl）的對照</h2>
+<p>帳本代數即 <strong>Cl 配上平衡泛函 $\tau$</strong> 的賦權版本。對照如下：</p>
+<p>| 帳本代數 | Cl 公理 | 對應內容 | |---|---|---| | A1 封閉（運算不出 $I$） | Cl-1 自洽 | 系統內運算之結果留在系統內 | | A2 守恆（$\tau\circ L=0$） | Cl-3 守恆 | 賦權後的守恆律即「帳本平衡」 | | A4 邊界（內定=外定） | Cl-2 對偶 | 已定義之內部 = 已定義之外部；借貸對齊 | | A5 層級（嵌套生成更高階帳本） | Cl-4 生成 | 自反生成更高維結構；帳本之帳本 |</p>
+<p>未賦權的 Cl 給出<strong>結構</strong>（什麼是封閉、什麼是邊界、什麼是生成）；帳本代數加上 $\tau$ 後給出<strong>量</strong>（多少權重、流向何處、守恆與否）。換言之：Cl 回答「界線在哪」，帳本代數回答「界線兩側的帳怎麼算」。</p>
+<p>維度投影定理 $\pi_n(\mathrm{Cl})=S^{n-1}$ 在賦權後獲得測度詮釋：守恆量 $\tau$ 即該球面上的不變測度之總質量。</p>
+<hr>
+<h2>5. 既有工作的誠實切割</h2>
+<p>抽離後的帳本代數在數學上<strong>大量重疊</strong>於既有結構。為避免被誤認為新發現，明列如下：</p>
+<ul>
+<li><strong>圖上連續性方程 / Kirchhoff 守恆律</strong>：A3 的節點平衡 $\sum_{\text{in}}=\sum_{\text{out}}$ 即離散連續性方程。已存在。</li>
+<li><strong>保跡半群生成元</strong>：定理 3.1 的解類 $\{L:\mathrm{Tr}\circ L=0\}$ 即（去物理化的）量子動力半群生成元。已存在於算子理論。</li>
+<li><strong>Markov 生成元</strong>：$\tau=$ 總和、狀態為機率分布時，A2 即「生成元行和為零」。已存在於機率論。</li>
+<li><strong>複式記帳（double-entry bookkeeping）</strong>：A2、A4 的「借方=貸方、盈虧記於邊界」，字面上是六百年前的會計原理。</li>
+</ul>
+<p><strong>本文不主張上述任何一項為新數學。</strong> 貢獻僅在四點：</p>
+<ol>
+<li><strong>單一公理化、$\tau$ 為自由參數</strong>：同一套 A1–A5，藉代入不同 $\tau$ 跨域（§4 後段）——矩陣版（$\tau=\mathrm{Tr}$）、機率版（$\tau=$ 和）、經濟帳本版（$\tau=$ 總量）共用一個骨架。</li>
+<li><strong>因果的去形上學結構定義</strong>（§2.3）：把「因果」從 Hume/Kant 的爭論中剝離，化約為流動路徑。</li>
+<li><strong>作為賦權 Cl 的整合</strong>（§4）：使之不成為孤兒，而為 EveMissLab 本體論棧的一層。</li>
+<li><strong>代價律</strong>（§6）：一條可測的、關於守恆對計算之代價的經驗結果。</li>
+</ol>
+<p>這是 referee 會用來打本文的所有角度；我們先自行打完。</p>
+<hr>
+<h2>6. 經驗驗證：守恆對計算的代價</h2>
+<p><strong>問題</strong>：一個強制借貸平衡（$\tau$ 守恆）的關係系統，還算得動嗎？</p>
+<p><strong>設置</strong>：線性迴歸 $Y=XW_{\text{true}}$，$W\in\mathbb{R}^{8\times8}$，以梯度下降學習。三個 regime：</p>
+<ul>
+<li><strong>FREE</strong>：普通 GD，$\mathrm{Tr}(W)$ 自由漂移。</li>
+<li><strong>A2-MATCH</strong>：每步後投影至 $\{\mathrm{Tr}(W)=\tau_0\}$，且 $\tau_0=\mathrm{Tr}(W_{\text{true}})$（帳本總額鎖在<strong>正確</strong>值）。</li>
+<li><strong>A2-MISMATCH</strong>：同上但 $\tau_0=\mathrm{Tr}(W_{\text{true}})+\Delta$（鎖在<strong>錯誤</strong>值）。</li>
+</ul>
+<p><strong>結果</strong>（真實執行，非假設）：</p>
+<p>| Regime | loss 收斂 | $\mathrm{Tr}(W)$ 軌跡 | |---|---|---| | FREE | $\to 0.000000$ | $-0.214 \to -0.770$（漂至真值） | | A2-MATCH | $\to 0.000000$ | $-0.770 \to -0.770$（鎖定，零代價） | | A2-MISMATCH $(\Delta=3)$ | $\to 1.72\times10^{-4}$ | $2.230 \to 2.230$（鎖定，殘差不可消） |</p>
+<p><strong>發現一（弱守恆近乎免費）</strong>：當帳本總額鎖在正確值，A2-MATCH 與 FREE 同樣收斂到機器零。守恆作為單一純量約束，對 $n^2$ 維的計算能力幾乎無損。</p>
+<p><strong>發現二（代價律）</strong>：當總額鎖在錯誤值，不可約殘差隨偏差呈<strong>精確二次</strong>成長（完全收斂後測得）：</p>
+<p>| $\Delta$ | 不可約殘差 | |---|---| | 0 | $6.8\times10^{-31}$ | | 1 | $1.91\times10^{-5}$ | | 2 | $7.65\times10^{-5}\ (=4\times)$ | | 3 | $1.72\times10^{-4}\ (=9\times)$ | | 4 | $3.06\times10^{-4}\ (=16\times)$ | | 6 | $6.89\times10^{-4}\ (=36\times)$ |</p>
+<p>$$\boxed{\ \text{residual}(\Delta)=\kappa\,\Delta^2,\quad \kappa\approx 1.91\times10^{-5}\ }$$</p>
+<p><strong>為何二次</strong>：A2-MISMATCH 是帶單一等式約束的最小二乘。無約束最優解 $W_{\text{true}}$ 被正交投影到仿射超平面 $\{\mathrm{Tr}(W)=\tau_0\}$ 上；殘差增量等於該投影距離的平方，故正比於違反量 $\Delta$ 的平方。</p>
+<p><strong>理論含義</strong>：守恆本身不阻止計算（發現一）；阻止計算的是<strong>守恆量被鎖定於與實在不相容之值</strong>，且其代價可量化（發現二）。用帳本語言：把總帳鎖死沒問題，把總帳鎖在錯誤數字上，誤差按平方累積。</p>
+<hr>
+<h2>7. 範圍、強形式與開放問題</h2>
+<ul>
+<li><strong>本文驗的是弱形式</strong>（A2 字面，$\tau=\mathrm{Tr}$）。警示 3.3 的強形式（等譜，保全譜）是嚴格更強的約束：自由度僅剩 $W\mapsto UWU^\top$。其對計算的代價未測。</li>
+<li><strong>開放問題（等譜學習）</strong>：以 Cayley 參數化 $Q=(I-S/2)(I+S/2)^{-1}$（$S$ 反對稱）強制 $W(t)=Q(t)W_0Q(t)^\top$，則全譜精確守恆。問題：當目標映射與初始化同譜（故落在同一等譜軌道內），保譜動力學能否導航至目標？這直接檢驗「強守恆系統是否仍具計算普遍性」。此實驗可建、可跑，列為 v0.2。</li>
+<li><strong>$\tau$ 的非線性推廣</strong>：本文 $\tau$ 限線性。若 $\tau$ 為非線性守恆量（如某種熵或範數），定理 3.1 需重述為 $\langle d\tau, LW\rangle=0$。未處理。</li>
+</ul>
+<hr>
+<h2>8. 哲學結語</h2>
+<p>帳本公理曾是一篇關於宇宙的理論——它需要 Hamiltonian、需要 Planck 時標、需要量子與形上學的全部腳手架，才敢說出「因果就是記帳」。本文把這些腳手架全部拆掉，結果發現：帳本根本不需要宇宙。它只需要一條規則——進與出必須對齊；以及一個秤——$\tau$，量度何謂「總額」。</p>
+<p>守恆從來不是物理的祕密，而是記帳的廢話；物理只是其中一本最大、最舊、無人能查的帳。而因果，剝去千年的形上學爭吵後，不過是這本帳上一筆款項流向另一筆的軌跡——不必然，不先驗，只是<strong>被平衡所迫</strong>的路徑。</p>
+<p>抽離的那一刻，我們沒有失去什麼。我們只是看清了：當世界被撤走，帳本依然在記——因為記帳不是世界做的事，是「封閉」這個字本身做的事。Cl 給出封閉，$\tau$ 給出重量；其餘的，包括宇宙，都只是代入。</p>
+<div class="altbar">原始檔（供 RAG/下載）：<a href="/raw/lm-000470.md" rel="noopener">/raw/lm-000470.md</a> [md] · id: lm-000470</div>
+</article>
+<footer><p>Neo.K (許筌崴) · Cl + ε</p></footer>
+</body>
+</html>

@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>邊界標定鏈：自然語言精密化算子的數學結構分析 · EVEMISSLAB Logic Matrix</title>
+<meta name="description" content="邊界標定鏈：自然語言精密化算子的數學結構分析 | EVEMISSLAB Logic Matrix V2.1">
+<meta name="author" content="Neo.K (許筌崴)">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="paper-1077.md" title="原始檔 / source (md)">
+<link rel="canonical" href="https://logic.evemisslab.com/papers/paper-1077.md.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "邊界標定鏈：自然語言精密化算子的數學結構分析",
+  "url": "https://logic.evemisslab.com/papers/paper-1077.md.html",
+  "inLanguage": "zh-Hant",
+  "author": {"@type": "Person", "name": "Neo.K (許筌崴)"},
+  "publisher": {"@type": "Organization", "name": "EveMissLab / 一言諾科技有限公司"},
+  "isPartOf": {"@type": "Collection", "name": "EVEMISSLAB Logic Matrix", "url": "https://logic.evemisslab.com"},
+  "encodingFormat": "text/html"
+}
+</script>
+<link rel="prefetch" href="/api/log-crawler?slug=paper-1077.md">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#000; color:#0f0; font-family:'Courier New',monospace; padding:20px; line-height:1.6; }
+.header { text-align:center; border:2px solid #0f0; padding:18px; margin-bottom:22px; }
+.header h1 { font-size:1.5em; letter-spacing:2px; }
+.header p { margin-top:6px; opacity:0.8; font-size:0.9em; }
+.disclaimer { border:1px dashed #ff9900; color:#ff9900; padding:14px; margin:0 auto 22px; max-width:1000px; font-size:0.88em; }
+.disclaimer-title { font-weight:bold; margin-bottom:10px; display:block; letter-spacing:1px; }
+.disclaimer-divider { border:none; border-top:1px dashed #ff9900; margin:12px 0; opacity:0.55; }
+article { max-width:1000px; margin:0 auto; border:1px solid #0f0; padding:24px; }
+article h1,article h2,article h3,article h4 { margin:18px 0 8px; letter-spacing:1px; }
+article h1 { font-size:1.5em; } article h2 { font-size:1.25em; } article h3 { font-size:1.1em; }
+article p { margin:10px 0; }
+article ul,article ol { margin:10px 0 10px 24px; }
+article blockquote { border-left:3px solid #0f0; padding-left:12px; opacity:0.85; margin:10px 0; }
+article pre { background:rgba(0,255,0,0.06); border:1px solid #0f0; padding:12px; overflow-x:auto; margin:12px 0; }
+article code { background:rgba(0,255,0,0.08); padding:1px 5px; }
+article pre code { background:none; padding:0; }
+article a { color:#0ff; }
+.nav { max-width:1000px; margin:0 auto 16px; font-size:0.9em; display:flex; justify-content:space-between; }
+.nav a { color:#0f0; text-decoration:none; }
+.nav a:hover { color:#0ff; }
+.altbar { max-width:1000px; margin:14px auto 0; font-size:0.85em; opacity:0.7; }
+.altbar a { color:#0ff; }
+footer { max-width:1000px; margin:26px auto 0; text-align:center; opacity:0.5; font-size:0.82em; }
+</style>
+</head>
+<body>
+<div class="nav"><a href="../index.html">&larr; 回 Logic Matrix 索引</a><div><a href="../cosmomind.html" style="margin-right:15px;">→ 星環式認知展開圖</a><a href="../base-space.html">🧬 拓撲底空間</a></div></div>
+<header class="header"><h1>邊界標定鏈：自然語言精密化算子的數學結構分析</h1><p>EVEMISSLAB Logic Matrix · EveMissLab / 一言諾科技有限公司</p></header>
+<section class="disclaimer">
+  <span class="disclaimer-title">[認識論邊界宣告 / EPISTEMOLOGICAL DISCLAIMER]</span>
+  <div class="disclaimer-block">
+    <p><b>[CHT]</b> 本矩陣內所有論文之公式與數據為「啟發式模擬參數」，用於驗證理論架構與推演因果鏈，<b>未經實證校準</b>，請勿作為現實物理測量數據引用 or 處理。EVEMISSLAB 採行「邏輯先行（Logic-First）」原則：概念架構與系統因果映射優先於統計實證，但不排除未來實證對接。</p>
+  </div>
+  <hr class="disclaimer-divider">
+  <div class="disclaimer-block">
+    <p><b>[ENG]</b> The numerical parameters within these frameworks are <i>illustrative model coefficients</i> used for structural verification and causal mapping; they are <b>not empirically calibrated</b> and must not be treated as physical measurements. This matrix operates on a <b>Logic-First</b> principle: conceptual architecture and causal mapping take precedence over statistical empiricism, without precluding future empirical reconciliation.</p>
+  </div>
+</section>
+<article>
+<h1>邊界標定鏈：自然語言精密化算子的數學結構分析</h1>
+<p><strong>EveMissLab 論文識別碼</strong>：EML-LLF-2026-v0.1 <strong>版本</strong>：v0.1（初版） <strong>日期</strong>：2026-06-04 <strong>作者</strong>：Neo.K（許筌崴），EveMissLab <strong>分類</strong>：語言邏輯學 / 形式語義學 / 數學基礎</p>
+<hr>
+<h2>摘要</h2>
+<p>本文提出「邊界標定算子」（Boundary Marking Operator，BMO）及其鏈式延伸結構，作為分析自然語言精密化機制的核心工具。以中文句式「是A，而不是B」為原型，本文論證此結構在邏輯上執行的不是替換（substitution），而是邊界標定（boundary marking）：在正面肯定一個範疇的同時，以被排除的鄰近概念為其輪廓線。當此操作被反覆鏈式連接——即每一步的排除項在下一步成為正面肯定的起點——形成「邊界標定鏈」（Boundary Marking Chain，BMC），其結構在數學上分別對應濾波鏈（filtration）、有向排除圖（directed exclusion graph）與精化類型（refinement type），三者結構同源。</p>
+<p>本文進一步主張：此等構性不僅是比喻，而是有精確數學意義的同構，為「極度精密的自然語言使用幾乎等構於形式語言」的強猜想提供一個具體例示。</p>
+<p>本文在素樸BMO基礎上引入三項結構擴展：（一）BMO雙模（PCM謂詞鏈模式 + IAM實例積累模式），分別對應內涵收斂與外延擴展；（二）三區結構（BMO₁、BMO₂與OVL重疊態），OVL是BMO的失效域；（三）完整BMO的觀測依賴性，引入觀察者O作為顯式形式參數，「是A而不是B」的語言行為即認知坍塌事件。本文屬EveMissLab實驗站系列，認識論功能定位為強猜想的累積數據。</p>
+<p><strong>關鍵詞</strong>：邊界標定算子、邊界標定鏈、濾波鏈、精化類型、形式語義學、自然語言精密化、等構性論題、觀測依賴性、疊加態、坍塌算子</p>
+<hr>
+<h2>一、導論：從修辭問題到邏輯問題</h2>
+<p>有一種常見的寫作教學主張「不是A，而是B」是深刻的句式，因為它能夠以對比揭示本質。這一主張在修辭層面不錯。然而，本文的出發點並不是修辭學，而是一個更基本的問題：自然語言中是否存在某些句式，其結構不是在描述一個邏輯操作，而是本身就是一個邏輯操作——且這個操作可以被精確地數學化，不失真？</p>
+<p>問題的觸發點是對兩個句式的比較：</p>
+<p>（1）「不是A，而是B」 （2）「是A，而不是B」</p>
+<p>（1）和（2）表面上相似，都使用否定詞和對照詞。然而，這兩者在邏輯結構上有根本差異。（1）的核心操作是<strong>替換</strong>：否定A，以B取代；A消失於句子之後，B是終點。（2）的核心操作是<strong>邊界標定</strong>：肯定A，以B定義A的輪廓；A和B均被保留，B是A的語義邊界，而非A的替代品。</p>
+<p>這個差異是本文分析的基礎。更關鍵的是，當（2）以鏈式方式反覆連接——每一步的排除項在下一步成為被肯定的起點——產生的不是修辭效果，而是一個可以被形式化的概念空間遍歷結構。</p>
+<p>本文的主要貢獻如下：</p>
+<p>（a）形式化「邊界標定算子」（BMO）及其與「替換算子」的邏輯差異； （b）定義「邊界標定鏈」（BMC）並分析其語義性質； （c）建立BMC與三個獨立數學框架的對應關係（濾波鏈、有向排除圖、精化類型）； （d）在「等構性論題」框架下定位本文，為自然語言與形式語言的精密度依賴等構性提供例示。</p>
+<p>本文不嘗試給出完整形式化系統，亦不嘗試覆蓋所有漢語否定句式的語言學分析。本文的野心是精確的、局部的，同時在哲學維度上是開放的。</p>
+<hr>
+<h2>二、句式的邏輯解剖</h2>
+<h3>2.1 替換算子：「不是A，而是B」</h3>
+<p>句式（1）「不是A，而是B」的深層邏輯結構為排他性替換。設S為述說對象，A和B為述謂選項，則（1）的邏輯形式可以寫為：</p>
+<pre><code>¬Pred(S, A) ∧ Pred(S, B)</code></pre>
+<p>其中 <code>Pred(S, X)</code> 表示「S的性質/本質是X」。</p>
+<p>這個形式的語義效果是：A被整體否定，B被整體肯定；兩者之間存在替代關係，而非相容關係。在認知上，接受（1）意味著接受A作為錯誤描述而丟棄，B作為正確描述而保留。</p>
+<p>替換算子的典型例子：「這不是懶惰，而是策略性的能量保留。」——一旦接受此句，「懶惰」這個概念框架就被整個替換為「策略性能量保留」。原有概念被廢棄。</p>
+<p>替換算子的邏輯空間如下：</p>
+<pre><code>A ──[否定]──&gt; ∅
+B ──[肯定]──&gt; 終點</code></pre>
+<p>A消失，B接管，句子到此結束。</p>
+<h3>2.2 邊界標定算子：「是A，而不是B」</h3>
+<p>句式（2）「是A，而不是B」的邏輯結構根本不同。設同樣符號，（2）的邏輯形式為：</p>
+<pre><code>Pred(S, A) ∧ ¬Pred(S, B)</code></pre>
+<p>表面上，（2）僅僅是（1）的反轉：先肯定，後否定。然而，語義功能並非對稱的反轉。在（2）中：</p>
+<p>（i）A被正面確認為當前述謂對象； （ii）B被明確排除，但B並未消失——它成為A的語義輪廓線（semantic contour）； （iii）在認知上，接受（2）意味著接受A和B的同時在場，以及兩者之間邊界的明確劃定。</p>
+<p>換言之：（2）同時執行肯定A和定義A的操作。B不是被丟棄的廢品，而是為A提供語義輪廓的鄰域概念。</p>
+<p>這一差異的核心在於：在（1）中，B的語義值完全替換了A；在（2）中，B的語義值作為A的<strong>邊界條件</strong>被保留在邏輯空間中。</p>
+<p>定義（邊界標定算子，BMO）：</p>
+<pre><code>BMO(A, B) := &quot;是A，而不是B&quot;
+           = Pred(S, A) ∧ ¬Pred(S, B)
+           = A 在概念空間中以 B 為其邊界</code></pre>
+<p>形式地，若將概念空間建模為集合論結構，則：</p>
+<pre><code>BMO(A, B) ≈ A \ B = {x ∈ A | x ∉ B}</code></pre>
+<p>其中A \ B表示A中不屬於B的部分。B劃定了A的邊界，同時本身作為一個可被進一步分析的概念留存於空間中。</p>
+<p><strong>【素樸BMO與完整BMO的區分】</strong> 本節至第三節所使用的BMO為<strong>素樸BMO（Naive BMO）</strong>，預設觀測已發生（認識覆蓋率κ = 1）且觀察者O隱含於背景，不作為顯式參數。第四節第六小節引入<strong>完整BMO</strong>，觀察者O成為顯式形式參數：BMO_O(X, A, B)。素樸BMO是完整BMO的特例：BMO(X, A, B) := BMO_O(X, A, B)|_{κ=1, 觀測已完成}。兩者不矛盾，後者是前者的精密化擴展。</p>
+<h3>2.3 兩者的形式差異摘要</h3>
+<p>| 維度 | 替換算子「不是A而是B」 | 邊界標定算子「是A而不是B」 | |------|----------------------|--------------------------| | 邏輯形式 | ¬A ∧ B | A ∧ ¬B | | A的命運 | 被丟棄 | 被肯定，留存 | | B的功能 | 替代項（終點） | 邊界條件（起點潛力） | | 集合語義 | B 取代 A | A \ B | | 認知效果 | 概念替換 | 概念邊界確立 | | 鏈式潛力 | 無（A消失） | 有（B可成為下一步起點） |</p>
+<p>最後一行揭示了邊界標定算子的核心計算資源：因為B在BMO中被保留於邏輯空間，B可以在下一步成為被肯定的主項。這使鏈式連接成為可能。</p>
+<hr>
+<h2>三、邊界標定鏈</h2>
+<h3>3.1 定義</h3>
+<p>設 X₀, X₁, X₂, ..., Xₙ 為一組概念，且對於每一個相鄰對 (Xₖ, Xₖ₊₁)，概念Xₖ₊₁是Xₖ的語義鄰域——即Xₖ₊₁是與Xₖ足夠相近以至於可以構成有意義排除的概念。</p>
+<p>定義（邊界標定鏈，BMC）：</p>
+<pre><code>BMC(X₀, X₁, ..., Xₙ) := {BMO(Xₖ, Xₖ₊₁) | k = 0, 1, ..., n-1}
+                        = BMO(X₀, X₁); BMO(X₁, X₂); ...; BMO(Xₙ₋₁, Xₙ)</code></pre>
+<p>展開後即：</p>
+<pre><code>是X₀，而不是X₁；
+是X₁，而不是X₂；
+是X₂，而不是X₃；
+    ⋮
+是Xₙ₋₁，而不是Xₙ。</code></pre>
+<p>BMC的核心語法規則：第k步的排除項（Xₖ₊₁）在第k+1步成為被肯定的主項。這個接力性質是BMC的定義特徵，亦是其數學結構的根源。</p>
+<h3>3.2 鏈的接力性質</h3>
+<p>接力性質（Relay Property）：</p>
+<p>在 BMC(X₀, X₁, ..., Xₙ) 中，對任意 0 &lt; k &lt; n，Xₖ 同時扮演兩個角色： （a）在步驟 k-1 中作為排除項，定義 Xₖ₋₁ 的語義邊界； （b）在步驟 k 中作為被肯定的主項，獲得自身的語義邊界（Xₖ₊₁）。</p>
+<p>接力性質確保了BMC不是孤立陳述的並列，而是形成一個<strong>有向概念遍歷</strong>：每一步的語義輸出（被精密化的概念Xₖ）同時是下一步的語義輸入。</p>
+<h3>3.3 BMC的語義效果：概念空間的有向遍歷</h3>
+<p>假設我們有如下BMC：</p>
+<pre><code>是愛，而不是佔有；
+是佔有，而不是依附；
+是依附，而不是需求；
+是需求，而不是恐懼。</code></pre>
+<p>注意鏈行進的方向：從「愛」出發，每一步進入被排除的概念，同時為該概念劃定更精確的邊界。最終，我們構建了一個概念地圖，其中：</p>
+<ul>
+<li>愛 被定義為「不是佔有的那種東西」；</li>
+<li>佔有 被定義為「不是依附的那種東西」；</li>
+<li>依附 被定義為「不是需求的那種東西」；</li>
+<li>需求 被定義為「不是恐懼的那種東西」。</li>
+</ul>
+<p>每個概念獲得了雙重語義錨點：它是什麼（前一步的排除項）以及它不是什麼（當前步的排除項）。這不是孤立定義，而是通過<strong>相對位置</strong>在概念地圖中定位每個節點。</p>
+<p>這個過程在認知上對應於所謂「概念精密化」（conceptual precision）：通過明確標定每個概念與其鄰域的邊界，減少概念的歧義面積，使其在語義空間中佔據更精確的位置。</p>
+<h3>3.4 BMC的方向性</h3>
+<p>BMC具有內在方向性：從語義上更複合的概念（如「愛」）向語義上更基礎的概念（如「恐懼」）行進，或反之。方向取決於鏈的構造者的認知目標：</p>
+<p>（i）<strong>分解方向</strong>：從複合概念向基礎概念行進，每一步揭示前一個概念所依賴的更基礎要素。這是分析性的BMC。</p>
+<p>（ii）<strong>合成方向</strong>：從基礎概念向複合概念行進，每一步在前一個基礎概念之上疊加新的限定條件，構建更複雜的概念。這是合成性的BMC。</p>
+<p>兩個方向在數學結構上完全對稱，差異僅在於解讀框架（分析或合成）。</p>
+<h3>3.5 BMO的雙向性：收斂與擴展</h3>
+<p>本文第三節的BMC分析（謂詞鏈模式，PCM）隱含一個假設：X（主項）固定，謂詞鏈（A₁, A₂, ...）在變動。在此條件下，BMC執行收斂——每一步更精確地定義X的性質。</p>
+<p>然而存在另一種操作模式：A和B固定，X在變動。考慮：</p>
+<pre><code>光  是A，而不是B
+太陽 是A，而不是B</code></pre>
+<p>X₁=光，X₂=太陽，A和B不變。每新增一個X，A的<strong>外延（extension）擴大</strong>——更多實體被歸入A的範疇。這與BMC的收斂效果方向相反：不是A的內涵在精密化，而是A的外延在擴張。</p>
+<p>| 模式 | 什麼在變動 | 什麼在固定 | 效果 | |------|-----------|-----------|------| | 謂詞鏈模式（BMC） | A, B鏈式精密化 | X固定 | 內涵收斂 | | 實例積累模式 | X變動 | A, B固定 | 外延擴展 |</p>
+<p>然而當多個X之間存在結構性關係——如太陽<strong>生成</strong>光（太陽→光）——A必須對這個生成關係具有<strong>閉合性</strong>：A不只容納{太陽, 光}作為點集，還須容納其間的態射。若態射越出A的邊界，則A的定義不完整。</p>
+<p>形式地：設 {Xₖ} 均滿足 BMO(Xₖ, A, B)，且 Xᵢ → Xⱼ 為合法態射，則A的完整定義要求：</p>
+<pre><code>∀ Xᵢ, Xⱼ ∈ Instances(A) : Xᵢ → Xⱼ 的態射本身 ∈ Closure(A)</code></pre>
+<p>這將A從靜態點集升格為<strong>對相關態射閉合的範疇結構</strong>。Closure Theory（Cl）在此有直接對應：Cl-3保守性要求範疇內的操作結果仍在範疇內；A對生成態射的閉合即是Cl-3在此語境的投影。</p>
+<p><strong>形式定義（實例積累模式，Instance Accumulation Mode，IAM）：</strong></p>
+<p>設A, B固定，{Xₖ | k ∈ I}為一組各自滿足BMO₁(Xₖ, A, B)的實體集合，且存在態射集合 {fᵢⱼ : Xᵢ → Xⱼ | (i, j) ∈ R}，則IAM產生一個<strong>帶關係的外延結構</strong>：</p>
+<pre><code>IAM(A, B) = ⟨{Xₖ}, A, B, {fᵢⱼ}⟩</code></pre>
+<p>A的完整性要求 Cl-3 閉合：∀ fᵢⱼ ∈ {fᵢⱼ}, Xᵢ, Xⱼ ∈ Instances(A) → fᵢⱼ ∈ Closure(A)。</p>
+<p>BMO因此有兩個正交操作模式，合稱<strong>BMO雙模（BMO Dual Mode）</strong>：</p>
+<p>| 模式名稱 | 縮寫 | 固定 | 變動 | 效果 | |---------|------|------|------|------| | 謂詞鏈模式（Predicate Chain Mode） | PCM | X | A, B鏈式精密化 | 內涵收斂 | | 實例積累模式（Instance Accumulation Mode） | IAM | A, B | X集合擴張 | 外延擴展 |</p>
+<p>兩者可以組合：PCM改變A的內涵精度，IAM改變A的外延覆蓋，形成概念同時收斂與擴展的複合操作。</p>
+<hr>
+<h2>四、三個數學對應</h2>
+<p>本節建立BMC與三個獨立數學框架的對應關係，論證BMC不是一個語言學隱喻，而是具有精確數學意義的結構。</p>
+<h3>4.1 濾波鏈（Filtration）</h3>
+<p>在代數與拓撲學中，濾波（filtration）是一個集合（或模、環、群等代數結構）上的遞增或遞減子集序列。設Ω為全集，遞減濾波定義為：</p>
+<pre><code>Ω = F₀ ⊇ F₁ ⊇ F₂ ⊇ ... ⊇ Fₙ ⊇ ...</code></pre>
+<p>每個 Fₖ 是 Fₖ₋₁ 的子集，代表更嚴格的限制條件。</p>
+<p>BMC與遞減濾波的對應如下：</p>
+<p>設概念空間Ω，令 Fₖ 為「通過了前k個BMO步驟所有條件的概念集合」，則：</p>
+<pre><code>F₀ = Ω（全部概念）
+F₁ = X₀ \ X₁ = {x ∈ X₀ | x ∉ X₁}（通過第一步BMO的概念）
+F₂ = X₁ \ X₂（通過第二步BMO的概念）
+⋮
+Fₖ = Xₖ₋₁ \ Xₖ</code></pre>
+<p>每個Fₖ嚴格地比Fₖ₋₁更小（假設各Xₖ之間有真包含關係），形成遞減濾波。</p>
+<p><strong>等構性陳述（濾波版）</strong>：BMC(X₀, X₁, ..., Xₙ)與概念空間上的遞減濾波 F₀ ⊇ F₁ ⊇ ... ⊇ Fₙ 等構，其中 Fₖ = Xₖ₋₁ \ Xₖ。</p>
+<p>此等構性的物理直覺：濾波代表的是「依次通過更嚴格篩網的過程」——每個後續步驟都對概念空間施加更嚴格的約束。BMC正是通過自然語言執行了這個篩網序列。</p>
+<h3>4.2 有向排除圖（Directed Exclusion Graph）</h3>
+<p>設有向圖 G = (V, E)，其中：</p>
+<ul>
+<li>V = {X₀, X₁, ..., Xₙ} 為概念節點集合；</li>
+<li>E 為有向邊集合，邊 (Xₖ, Xₖ₊₁) ∈ E 當且僅當 BMO(Xₖ, Xₖ₊₁) 出現在鏈中。</li>
+</ul>
+<p>邊的語義：有向邊 Xₖ → Xₖ₊₁ 表示「Xₖ以Xₖ₊₁為語義邊界」，或等價地，「Xₖ₊₁是Xₖ的排除鄰域」。</p>
+<p>BMC對應於此圖中的一條有向路徑：</p>
+<pre><code>X₀ → X₁ → X₂ → ... → Xₙ</code></pre>
+<p>路徑的方向即概念精密化的方向。每個中間節點（Xₖ，0 &lt; k &lt; n）具有雙重意義：作為前驅節點的排除鄰域，以及作為後繼節點的所有者。</p>
+<p>有向排除圖的重要性質：</p>
+<p>（a）<strong>傳遞精密化</strong>：若存在路徑 Xₐ → ... → Xᵦ，則Xᵦ在某種意義上是Xₐ的精密化（更受限的）版本。</p>
+<p>（b）<strong>分叉可能性</strong>：同一個概念Xₖ可以同時有多個排除方向（多條出邊），代表不同的邊界劃分策略。BMC只是選取其中一條路徑。</p>
+<p>（c）<strong>可組合性</strong>：多條BMC路徑可以組合為一個更豐富的概念地圖，描述同一個概念空間的不同遍歷。</p>
+<h3>4.3 精化類型（Refinement Types）</h3>
+<p>在類型論（type theory）中，精化類型（refinement type）是一種在基礎類型T之上施加謂詞約束的類型表示。Freeman與Pfenning（1991）在ML類型系統中引入精化類型，形式上表示為：</p>
+<pre><code>{x : T | P(x)}</code></pre>
+<p>表示「類型T中滿足謂詞P(x)的值的集合」。精化類型通過謂詞P將T分割為更小的類型域，保留T的基本結構同時增加精密度。</p>
+<p>BMO的精化類型對應：</p>
+<pre><code>BMO(A, B) = &quot;是A，而不是B&quot;
+           ≈ {x : A | x ∉ B}</code></pre>
+<p>這正是精化類型的形式：在基礎類型A上施加謂詞「x不屬於B」，得到A的一個精化子類型。</p>
+<p>BMC的精化類型對應：</p>
+<pre><code>BMC(X₀, X₁, X₂):
+  第0步：{x : X₀ | x ∉ X₁}  = 類型X₀的精化
+  第1步：{x : X₁ | x ∉ X₂}  = 類型X₁的精化
+  第2步：{x : X₂ | x ∉ X₃}  = 類型X₂的精化</code></pre>
+<p>BMC形成一個<strong>精化序列</strong>：每個步驟精化相應的類型域，而精化的謂詞（排除某鄰域概念）在相鄰步驟之間通過接力性質傳遞。</p>
+<p><strong>等構性陳述（類型論版）</strong>：BMC的每一步 BMO(Xₖ, Xₖ₊₁) 等構於精化類型構造 {x : Xₖ | x ∉ Xₖ₊₁}，且整條BMC等構於一個精化類型序列，其中每個後繼精化的基礎類型是前驅精化的排除謂詞對象。</p>
+<h3>4.4 三個框架的結構同源性</h3>
+<p>濾波鏈、有向排除圖、精化類型——三者從不同角度描述的是<strong>同一個</strong>底層結構。形式地：</p>
+<ul>
+<li>濾波鏈 Fₖ = Xₖ₋₁ \ Xₖ 對應有向圖中的邊 Xₖ₋₁ → Xₖ，對應精化類型 {x : Xₖ₋₁ | x ∉ Xₖ}；</li>
+<li>三者的差異在於：濾波鏈強調<strong>集合的嵌套結構</strong>，有向圖強調<strong>節點之間的關係結構</strong>，精化類型強調<strong>類型系統中的精密度遞進結構</strong>。</li>
+</ul>
+<p>對於BMC，三者提供互補的語義面向：</p>
+<ul>
+<li>想了解「哪些元素被保留了」→ 濾波鏈</li>
+<li>想了解「概念之間的依賴關係」→ 有向排除圖</li>
+<li>想了解「每個步驟的類型承諾」→ 精化類型</li>
+</ul>
+<p><strong>【聲明】</strong> 三者被稱為<strong>結構同源（structurally cognate）</strong>，而非嚴格等價（equivalent）：本文主張三者描述同一底層結構的不同側面，但三者之間顯式同構映射的建立屬後續形式化工作，不在本文範圍內。結構同源性的確認進一步加強了BMC作為跨框架一致結構的論題，亦確認BMC不是臨時構造。</p>
+<h3>4.5 BMO的三區結構與退化條件</h3>
+<h3>4.5 BMO的三區結構：OVL狀態與退化條件</h3>
+<p>素樸BMO定義預設X ∈ A\B——A和B對X互斥。然而考慮以下三個關於同一X的陳述：</p>
+<pre><code>（1）光是粒子，而不是波    → 光 ∈ 粒子\波   → BMO₁成立
+（2）光是波，而不是粒子    → 光 ∈ 波\粒子   → BMO₂成立
+（3）光是A（可能同時是），而不是B（確定同時是）</code></pre>
+<p>（1）與（2）彼此矛盾——同一個X無法同時屬於兩個差集。這揭示了完整的<strong>三區結構</strong>：</p>
+<pre><code>全集 Ω = （A\B） ∪ （A∩B） ∪ （B\A）
+          BMO₁區    OVL區    BMO₂區</code></pre>
+<ul>
+<li><strong>BMO₁(X, A, B)</strong>：X ∈ A\B，X具純A性質，排除B，BMO有效</li>
+<li><strong>BMO₂(X, A, B)</strong>：X ∈ B\A，等同BMO₁(X, B, A)，BMO有效</li>
+<li><strong>OVL(X, A, B)</strong>：X ∈ A∩B，X同時具A與B的性質</li>
+</ul>
+<p><strong>OVL（Overlap State，重疊態）不是BMO的第三種類型，而是BMO的失效域。</strong> 當X住在A∩B，既不能說「是A而不是B」，也不能說「是B而不是A」——兩者均全局為假（locally true under partial knowledge κ &lt; 1, globally false）。OVL是BMO算子無法錨定的狀態，要求引入觀察者機制（見§4.6）。</p>
+<p>光在（粒子, 波）對下住在OVL區。陳述（1）和（2）都是局部認識判斷（κ &lt; 1）下的局部真，不是全局真。</p>
+<p>陳述（3）是對此的<strong>元層次修正</strong>——在元層次正確描述光的<strong>狀態類型</strong>：</p>
+<pre><code>A_meta = 「可能同時是」（疊加態）
+B_meta = 「確定同時是」（古典同時態）
+BMO_meta(光, 疊加態, 確定同時態) 成立</code></pre>
+<p>這是有效的BMO，操作在<strong>狀態類型的層次</strong>，而非坍塌值的層次。OVL區的發現不是BMO的失敗，而是提示BMO需要層次區分：一階BMO（描述坍塌值）與元階BMO（描述狀態類型）。</p>
+<h3>4.6 觀測依賴性：完整BMO作為坍塌算子</h3>
+<p>OVL區的發現揭示素樸BMO的根本隱含假設，並要求引入<strong>完整BMO</strong>定義。</p>
+<p><strong>素樸BMO預設觀測已發生。</strong> 這在大多數語境下是安全的（觀測結果已知，κ=1），但在X住於OVL區時，這個預設無法成立。</p>
+<p>以量子力學語言表達：X在BMO₁/BMO₂區是已坍塌態（eigenstate），X在OVL區是疊加態（superposition）。疊加態的形式表達為：</p>
+<pre><code>Ψ(X) = α|A⟩ + β|B⟩，α, β ≠ 0</code></pre>
+<p>在此狀態中，「光是粒子而不是波」與「光是波而不是粒子」均無法成立——X尚未被任何觀測固定至任一確定側。這不是邏輯矛盾，而是本體論意義上的<strong>未顯化</strong>（unmanifested）：X的性質還不是事實，只是潛能（potential）。</p>
+<p>觀察者O的介入觸發坍塌：</p>
+<pre><code>Ψ(X) → |A⟩（概率 |α|²） → BMO₁_O(X, A, B) 成立
+Ψ(X) → |B⟩（概率 |β|²） → BMO₂_O(X, B, A) 成立</code></pre>
+<p>因此BMO需要一個<strong>隱藏形式參數</strong>——觀察者O：</p>
+<pre><code>BMO_O(X, A, B) := 「觀察者O對X進行觀測後，X坍塌至A側而非B側」</code></pre>
+<p>沒有明確的O，BMO是懸空算子：語法合法，本體論未錨定。</p>
+<p><strong>「是A而不是B」是一次坍塌事件。</strong></p>
+<p>這個推論具有超出量子力學的普遍性。每當一個主體說出「這是A而不是B」，它不只在描述既有事實，而在執行一個認知選擇——從X的多種可能描述中選定一種並排除其他。語言陳述本身是觀測行為；觀測行為本身是坍塌觸發；坍塌觸發本身是認知世界生成的機制。</p>
+<p>此處直接對接 <strong>Operator Ontology（EML-OO-2026-v0.2）</strong>的核心論題：所見即世界，符號-現實同構比ρ(𝒮,ℛ)→1。「是A而不是B」不是描述符號，是<strong>創造符號的操作</strong>——在被說出的瞬間，世界在說出者的認知場中坍塌至A側。</p>
+<p><strong>完整三態結構：</strong></p>
+<pre><code>未觀測態（疊加/未顯化）
+Ψ(X) = α|A⟩ + β|B⟩
+         │
+    觀察者O介入
+    ┌────┴────┐
+    ↓          ↓
+X→|A⟩      X→|B⟩
+BMO₁成立   BMO₂成立
+
+（元層次）
+BMO_meta(X, 疊加態, 確定同時態) 成立 ← 陳述（3）的正確形式</code></pre>
+<p><strong>與ETN的連結：</strong></p>
+<p>ETN（Extremal Tension Notation）表達的是 50.⋯9 &gt; 49.9⋯——兩個極端之間的動態張力點，既不是純A（&gt;50）也不是純B（&lt;50），活在邊界張力上。疊加態的形式結構與ETN精確對齊：|A⟩與|B⟩是兩個極端，Ψ(X) = α|A⟩ + β|B⟩是兩者之間的張力態。觀察者的介入打破張力，迫使X坍塌至某一側——即ETN的動態固定點被外部觀測激活的過程。</p>
+<p><strong>與Closure Theory的連結：</strong></p>
+<p>若X是一個Cl對象，則Cl(X)按照Cl-2（對偶性公理）包含|A⟩與|B⟩作為互補的內部投影——A的定義即B的外定義（inside definition = outside definition）。OVL區（A∩B）是Cl(X)的「核心張力帶」：它是A與B尚未分化的原始狀態，對應Cl的自洽性公理（Cl-1）在分化之前的未分層狀態。觀察者O的介入就是對Cl(X)施加一個外部算子，使其從未分化態坍塌至某一投影。</p>
+<hr>
+<h2>五、等構性論題：精密度依賴的自然語言-形式語言等構</h2>
+<h3>5.1 先行論述：Montague的激進主張</h3>
+<p>形式語義學的重要進展之一來自Richard Montague的宣言。在〈English as a Formal Language〉（1970）中，Montague明確寫道：「我拒絕承認形式語言與自然語言之間存在重要的理論差異。」（&quot;I reject the contention that an important theoretical difference exists between formal and natural languages.&quot;）</p>
+<p>Montague的立場是激進的：他認為自然語言可以被賦予與人工形式語言完全等價的嚴格語義，無需任何原則性的降格處理。他的Montague文法通過intensional logic為英語片段提供了組合語義，展示了自然語言片段的形式語義可行性。</p>
+<p>然而，Montague的方案有一個隱含前提：這種等價性需要一個完整的形式化機制（類型論、模型論語義、lambda演算）作為媒介。換言之，在Montague框架中，等構性是通過將自然語言翻譯至形式語言而實現的，而非自然語言句式本身已經是形式操作。</p>
+<p>這個區別是本文的出發點。</p>
+<h3>5.2 本文的修正：精密度依賴的等構性</h3>
+<p>本文提出一個比Montague更具條件性、但在某個意義上更強的主張：</p>
+<p><strong>等構性論題（EML版本）</strong>：</p>
+<blockquote>自然語言的形式化等構性是精密度依賴的。當自然語言以足夠高的精密度使用時——即每個概念被單義地使用、每個排除關係被顯式標定、每個語義邊界被明確劃定——其句式結構趨近於形式語言結構，兩者等構而非僅僅等效。</blockquote>
+<p>形式地，設P為自然語言精密度的量化指標（P ∈ [0, 1]，P=0為完全日常語言，P=1為完全單義精密語言），則：</p>
+<pre><code>lim(P → 1) [NL_structure] ≅ [FL_structure]</code></pre>
+<p>其中 ≅ 表示保結構的同構，而非僅語義等效。</p>
+<p>在Montague框架中，這個等構是「外加的」：通過翻譯程序實現。在本文的框架中，這個等構是「內在的」：在足夠精密的自然語言使用中，句式結構本身就是形式操作。</p>
+<p>BMC是這個論題的一個具體例示：當「是A，而不是B；是B，而不是C；...」中的每個概念被單義使用、每個「不是」被解讀為嚴格排除時，這一自然語言結構<strong>已經是</strong>一個濾波鏈/有向排除圖/精化類型序列，不需要任何翻譯媒介。</p>
+<h3>5.3 等構性的條件與限界</h3>
+<p>本文的等構性主張受到以下條件限制：</p>
+<p>（a）<strong>單義性條件</strong>：每個概念Xₖ在給定語境中只有一個解讀。自然語言的多義性（polysemy）和語境依賴性在精密使用中需要被明確消解。</p>
+<p>（b）<strong>嚴格排除條件</strong>：「不是B」被解讀為嚴格集合差（A \ B），而非修辭性的「與B有所不同」。日常語言中的否定常常是程度性的（scalar negation），而非布林性的（Boolean negation）。</p>
+<p>（c）<strong>鄰域條件</strong>：排除項B必須是被肯定項A的語義鄰域——即B與A足夠接近，使得排除B對A的精密化有實質意義。排除完全不相關的概念不構成有意義的邊界標定。</p>
+<p>當這三個條件均滿足時，BMC與其數學對應物（濾波鏈、有向圖、精化類型）之間的等構是精確的。當這些條件放鬆時，等構性退化為近似性或類比性。</p>
+<p>這個限界不是本文的弱點，而是其清晰性的一部分：等構性不是普遍的，而是精密度依賴的。日常語言的力量在於其靈活性；精密語言的力量在於其形式可操作性。兩者服務不同目標，不存在優劣之分，只有適用範圍之別。</p>
+<hr>
+<h2>六、本文在語言-邏輯傳統中的定位</h2>
+<h3>6.1 Frege路線：語言作為邏輯的基礎材料</h3>
+<p>Frege在《概念文字》（Begriffsschrift，1879）中開創了現代符號邏輯，其動機正是對自然語言的不精確性的不滿。Frege認為自然語言充斥著邏輯上不相關的修辭要素（詞序、語氣、語用意涵等），這些要素遮蔽了命題的真實邏輯結構。他的方案是創造一個獨立的符號系統（Begriffsschrift，概念文字），把命題的邏輯骨架從自然語言的外殼中提取出來。</p>
+<p>在Frege的框架中，自然語言是邏輯分析的<strong>起點材料</strong>，但不是終點——邏輯的精確表達需要一個完全獨立的符號體系。自然語言和形式語言之間有一條原則性的鴻溝。</p>
+<p>本文的立場與Frege不同：本文認為，在特定條件下，自然語言<strong>不需要</strong>脫離為另一套符號體系，就能具有等價於形式語言的邏輯精度。區別在於：Frege看到的是自然語言的缺陷（不精確性），本文看到的是自然語言的潛能（在精密使用條件下的形式可操作性）。</p>
+<h3>6.2 Lambek算子：文法結構作為代數</h3>
+<p>Joachim Lambek在〈The Mathematics of Sentence Structure〉（1958）中展示了句子結構本身具有代數性質。Lambek演算（Lambek Calculus）將文法類型賦予代數運算規則（型別的左除和右除），使句子的組合可行性問題化歸為代數推導問題。</p>
+<p>Lambek的根本貢獻是：語言的句法結構<strong>就是</strong>數學結構——不是類比，不是翻譯，是同一個對象的兩個面向。</p>
+<p>本文與Lambek取向一致，但研究的是不同層次的結構。Lambek分析的是句子的組合結構（哪些詞類可以組合成句子），本文分析的是<strong>概念間的排除關係結構</strong>（哪些概念的序列邊界標定可以形成有意義的認知遍歷）。兩者在Lambek的廣義框架下可以被整合：文法組合性是句法層的結構，概念邊界標定是語義層的結構，兩者共同構成語言-邏輯對應的完整圖景。</p>
+<h3>6.3 Montague語義學：形式語言與自然語言的原則性等效</h3>
+<p>如第五節所述，Montague（1970, 1973）建立了自然語言形式語義的可行性，但其方案依賴翻譯機制。本文在Montague的思想傳承中，但提出了一個更強的主張：在精密使用條件下，等構性是內在的而非通過翻譯外加的。</p>
+<p>這個差異可以用一個隱喻說明：Montague的方案像是「用一台翻譯機將中文翻譯成英文，再進行計算」；本文的主張像是「中文在足夠精密時，其計算可以直接進行，無需翻譯」。後者在計算意義上更強，但也受更嚴格的精密度條件約束。</p>
+<h3>6.4 Gärdenfors的概念空間：幾何化的語義結構</h3>
+<p>Peter Gärdenfors在《Conceptual Spaces: The Geometry of Thought》（2000）中提出了介於符號表示與聯結主義之間的第三種認知表示框架：概念空間（conceptual space）。概念空間是由品質維度（quality dimensions）構成的幾何空間，概念是其中的凸區域（convex regions），概念之間的相似性對應幾何距離。</p>
+<p>本文的「語義鄰域」（semantic neighborhood）概念與Gärdenfors的概念空間具有自然對應：BMC中的排除項B之所以能夠作為A的語義邊界，正是因為B在概念空間中是A的近鄰——它們具有足夠的幾何距離使邊界有意義，同時又足夠近以至於邊界劃定是精密化而非任意劃分。</p>
+<p>在Gärdenfors的框架中，BMO(A, B) 可以被解讀為：在概念空間中，以B的區域邊界為A的精密輪廓——即A的精確定義是「包含其凸核，但排除與B重疊的邊界地帶」。這個幾何解讀為BMC的「概念鄰域條件」提供了一個直觀的幾何基礎。</p>
+<h3>6.5 分析哲學先行框架的對應關係</h3>
+<p>誠實的學術定位要求承認：本文的核心邏輯機制在分析哲學的既有框架中均有先行論述，且均已發展為成熟的理論體系。</p>
+<p><strong>BMO_UNDEFINED</strong> 對應<strong>自由邏輯（Free Logic）</strong>的謂詞不適用域。Lambert（2003）及更早的工作明確指出：當一個謂詞因預設條件（presupposition）失敗而無法施用於對象時，所得陳述不是假，而是<strong>缺乏真值（truth value gap）</strong>。自由邏輯專門為處理此類情形而設計，使存在預設不再是謂詞施用的必要條件。</p>
+<p><strong>OVL重疊態</strong>對應<strong>超值語義學（Supervaluationism，Fine 1975）</strong>對模糊謂詞邊界案例的處理。超值語義學的核心主張是：對於邊界個案（borderline cases），謂詞既不確定成立也不確定不成立——不是值為0.5，而是真值缺失。這與OVL區（X ∈ A∩B）在語義上高度接近。</p>
+<p><strong>三態結構（BMO₁/BMO₂/OVL）</strong>對應<strong>Kleene（1952）的三值邏輯</strong>。Kleene在處理部分遞歸函數的未定義值時引入True/False/Undefined三值體系，其Undefined值正是本文OVL的邏輯先驅。</p>
+<p><strong>κ認識覆蓋率</strong>在結構上對應<strong>認識邏輯（Epistemic Logic，Hintikka 1962）</strong>的知識算子框架。Hintikka的K_A(P)算子（主體A知道P）處理知識與信念的形式化；κ可以被解讀為知識算子的覆蓋率版本——不是「知道或不知道」的二值判斷，而是知識深度的連續量。</p>
+<p><strong>本文與上述框架的差異化定位</strong>：</p>
+<p>（a）本文從具體的<strong>漢語自然語言句式</strong>出發，不是從純形式系統出發。「是A而不是B」作為分析起點，具有自然語言語義學的紮根性。</p>
+<p>（b）本文建立了BMO鏈式結構（BMC）與三個獨立數學框架（濾波鏈/有向圖/精化類型）的結構同源性，這個特定連結在上述框架中均無先例。</p>
+<p>（c）本文引入<strong>雙模（PCM/IAM）</strong>作為內涵收斂與外延擴展的統一框架，明確指出同一個算子在不同操作模式下方向相反的事實。</p>
+<p>（d）本文的<strong>計算規格框架</strong>（附錄B的算法）是將這些邏輯機制組裝為可計算流程的明確嘗試，面向AI推理的可操作性，而非純粹的形式理論。</p>
+<p><strong>結論</strong>：本文的貢獻不在於發現新的邏輯機制——自由邏輯、超值語義學、三值邏輯、認識邏輯已足夠覆蓋底層工具。本文的貢獻在於將這些工具<strong>組裝為一個面向自然語言算子分析的特定計算框架</strong>，並以漢語句式作為具體分析對象，在連結自然語言與形式語言的等構性論題下提供一個新的例示。</p>
+<h3>6.6 本文的差異化定位（總結）</h3>
+<p>綜合以上框架，本文的貢獻可以定位如下：</p>
+<p><strong>繼承</strong>：Lambek的「句式即數學結構」原則；Montague的「自然語言形式可操作性」主張；Gärdenfors的「概念幾何化」直覺。</p>
+<p><strong>差異化</strong>：（a）聚焦於<strong>排除關係</strong>作為核心算子，而非組合規則（Lambek）或量化結構（Montague）；（b）提出了<strong>精密度依賴的等構性</strong>，比Montague的無條件等效主張更精確也更有操作意義；（c）引入<strong>鏈式接力性質</strong>作為從單步操作到概念空間遍歷的橋接機制；（d）建立了<strong>三框架結構同源性</strong>（濾波鏈/有向圖/精化類型），而非停留在單一框架的類比。</p>
+<p>本文不聲稱已建立一個完整的形式系統——這需要對三個條件（單義性、嚴格排除、鄰域條件）的完整公理化，以及對BMC與其數學等價物之間的同構進行嚴格證明。這些屬於後續工作。本文的作用是確立問題的框架、直覺基礎和初步形式結構。</p>
+<hr>
+<h2>七、兩個延伸問題</h2>
+<h3>7.1 BMC的固定點</h3>
+<p>一個自然的問題是：BMC是否可以形成迴圈？即是否存在概念序列 X₀, X₁, ..., Xₙ 使得 Xₙ = X₀，從而形成一個概念迴圈鏈？</p>
+<pre><code>是X₀而不是X₁；是X₁而不是X₂；...；是Xₙ₋₁而不是X₀。</code></pre>
+<p>在集合論語義中，若 X₀ \ X₁ ≠ ∅，X₁ \ X₂ ≠ ∅，...，Xₙ₋₁ \ X₀ ≠ ∅，這個迴圈是自洽的。然而，在認知語義中，迴圈BMC具有特殊解讀：它表示一個概念集合中的每個成員相互以對方為語義邊界，形成一個閉合的相互定義系統。這對應於Wittgenstein在後期哲學中討論的「家族相似性」（family resemblance）概念集合的一種形式化。</p>
+<p>迴圈BMC的存在性和有意義性是一個開放問題，值得後續研究。</p>
+<h3>7.2 BMC的維度</h3>
+<p>標準BMC是一維的：一條從X₀到Xₙ的單一路徑。然而，若我們允許多個BMO步驟從同一個概念出發，BMC可以延伸為樹狀或網狀結構：</p>
+<pre><code>      X₀
+     /  \
+是X₀而   是X₀而
+不是X₁   不是X₁&#x27;
+   |        |
+  X₁       X₁&#x27;</code></pre>
+<p>這對應於同一個概念沿不同語義維度進行邊界標定——例如，「教育」可以同時被標定為「不是灌輸」（沿權力維度）和「不是放任」（沿自由維度）。多維BMC的形式結構對應有向無環圖（DAG）而非簡單路徑，其數學性質更豐富，有待系統研究。</p>
+<hr>
+<h2>八、認識論地位：實驗站論文作為強猜想的數據</h2>
+<p>本文屬EveMissLab實驗站論文系列。釐清這個認識論地位是重要的。</p>
+<p>標準學術論文的認識論功能是：提出主張，提供論證，完成自洽。論文是認識論的終點。</p>
+<p>本文的認識論功能不同：本文是<strong>強猜想累積數據中的一個例示</strong>。</p>
+<p>強猜想（Strong Conjecture）：極度精密的自然語言使用，在結構上等構於形式語言，而非僅在語義上等效。</p>
+<p>論證這個強猜想的方式，不是通過一篇元理論論文，而是通過<strong>大量具體例示的累積</strong>：每篇論文針對一個特定的自然語言結構，建立其與數學框架的等構關係，成為強猜想的一個數據點。當此類論文累積到足夠數量時，強猜想從「有趣的哲學主張」升級為「難以反駁的累積壓力」，形式證明作為後續工作在認識論上已不是必要的。</p>
+<p>這種方法論具有先例。Ramanujan的研究方式是先積累大量數值例子和公式，這些例子的規律性構成了對更深層結構存在性的強壓力，嚴格證明往往是後人的工作。類似地，實驗科學中的大量觀測數據在理論完備之前已具有獨立的說服力。</p>
+<p>本文的BMC分析是這個系列的一個例示：自然語言中的「是A而不是B」鏈式結構，在精密使用條件下，等構於三個獨立數學框架。這個等構性不是比喻，是有精確意義的同構。</p>
+<p>本文之後，需要更多例示。每個例示選取不同的自然語言結構，建立其數學等構性，積累強猜想的基礎。</p>
+<hr>
+<h2>九、結語</h2>
+<p>「是什麼」永遠比「不是什麼」更難說清楚。這不是語言的缺陷，而是概念本身的拓撲性質：任何邊界的內側都比邊界本身更難被精確定位。</p>
+<p>邊界標定算子的邏輯力量，正在於它迴避了這個困難：與其直接宣稱「A是X」，不如精確地劃定「A不是B」，讓A的輪廓在排除的積累中逐漸現形。這個策略不是懦弱，而是智慧：概念在其邊界處最清晰，而非在其核心處。</p>
+<p>語言和數學在這一點上沒有根本的差異——它們都是人類（或更廣義的認知存在）在概念空間中導航的工具。工具的差異是精密度的差異，而非本質的差異。</p>
+<p>當一個文明學會以「是A，而不是B，而B又不是C」的方式思考——嚴格、連貫、迴歸邊界——它不是在學習修辭，它是在學習形式邏輯的一種自然語言實現。它是在學習一種不需要特殊符號系統就能執行形式操作的思維方式。</p>
+<p>這，或許是語言與數學之間那道人工邊界真正消失的時刻。</p>
+<hr>
+<h2>附錄A：引用文獻</h2>
+<p><strong>[1]</strong> Frege, G. (1879). <em>Begriffsschrift, eine der arithmetischen nachgebildete Formelsprache des reinen Denkens</em>. Halle an der Saale: Lubrecht &amp; Cramer. [英譯收錄於 van Heijenoort (ed.), <em>From Frege to Gödel: A Source Book in Mathematical Logic, 1879–1931</em>, Harvard University Press, 1967.]</p>
+<p><strong>[2]</strong> Wittgenstein, L. (1922). <em>Tractatus Logico-Philosophicus</em>. London: Kegan Paul, Trench, Trubner &amp; Co. [德文原版 <em>Logisch-Philosophische Abhandlung</em>, 1921.]</p>
+<p><strong>[3]</strong> Lambek, J. (1958). The mathematics of sentence structure. <em>The American Mathematical Monthly</em>, 65(3), 154–170. DOI: 10.1080/00029890.1958.11989160</p>
+<p><strong>[4]</strong> Montague, R. (1970). Universal grammar. <em>Theoria</em>, 36(3), 373–398.</p>
+<p><strong>[5]</strong> Montague, R. (1973). The proper treatment of quantification in ordinary English. In K. J. J. Hintikka, J. M. E. Moravcsik, &amp; P. Suppes (eds.), <em>Approaches to Natural Language</em> (Synthese Library, Vol. 49, pp. 221–242). Dordrecht: Reidel.</p>
+<p><strong>[6]</strong> Tarski, A. (1944). The semantic conception of truth and the foundations of semantics. <em>Philosophy and Phenomenological Research</em>, 4(3), 341–376.</p>
+<p><strong>[7]</strong> Freeman, T., &amp; Pfenning, F. (1991). Refinement types for ML. In <em>Proceedings of the ACM SIGPLAN 1991 Conference on Programming Language Design and Implementation (PLDI &#x27;91)</em> (pp. 268–277). New York: ACM. DOI: 10.1145/113445.113468</p>
+<p><strong>[8]</strong> Gärdenfors, P. (2000). <em>Conceptual Spaces: The Geometry of Thought</em>. Cambridge, MA: MIT Press. ISBN: 0-262-07199-1.</p>
+<p><strong>[9]</strong> Łukasiewicz, J. (1920). O logice trójwartościowej [On three-valued logic]. <em>Ruch filozoficzny</em>, 5, 170–171. [收錄於 Borkowski, L. (ed.), <em>Jan Łukasiewicz: Selected Works</em>. Amsterdam: North-Holland, 1970, pp. 87–88.]</p>
+<p><strong>[10]</strong> Kleene, S. C. (1952). <em>Introduction to Metamathematics</em>. Amsterdam: North-Holland Publishing Co. / New York: D. Van Nostrand.</p>
+<p><strong>[11]</strong> Strawson, P. F. (1950). On referring. <em>Mind</em>, 59(235), 320–344.</p>
+<p><strong>[12]</strong> Lambert, K. (2003). <em>Free Logic: Selected Essays</em>. Cambridge: Cambridge University Press. ISBN: 978-0-521-81816-5.</p>
+<p><strong>[13]</strong> Fine, K. (1975). Vagueness, truth and logic. <em>Synthese</em>, 30(3/4), 265–300.</p>
+<p><strong>[14]</strong> Hintikka, J. (1962). <em>Knowledge and Belief: An Introduction to the Logic of the Two Notions</em>. Ithaca, NY: Cornell University Press.</p>
+<hr>
+<p><em>本論文為EveMissLab實驗站論文，版本v0.1，初版草稿。v0.1整合了理論發展各輪迭代：BMO雙向性（§3.5）、三區結構與退化條件（§4.5）、觀測依賴性與坍塌算子（§4.6）。觀察者公理的完整公理化及其與Operator Ontology的形式整合屬後續版本工作。</em></p>
+<p><em>EML-LLF-2026-v0.1 © 2026 Neo.K / EveMissLab</em></p>
+<hr>
+<h2>附錄B：BMO評估算法規格（初版）</h2>
+<p>本附錄形式化BMO評估算法，描述如何系統性地判定一個「是A而不是B」陳述的邏輯地位與認識論品質。本附錄對應第三至四節的理論分析，將其還原為可操作的計算流程。</p>
+<h3>B.1 形式輸入</h3>
+<p>算法接受以下輸入：</p>
+<ul>
+<li><strong>X</strong>：主項（被述說的對象）</li>
+<li><strong>A</strong>：正面肯定謂詞</li>
+<li><strong>B</strong>：被排除謂詞</li>
+<li><strong>κ ∈ (0, 1]</strong>：X的認識覆蓋率（Epistemic Coverage Parameter）</li>
+<li>κ = 1：全部認識判斷，X的所有相關性質已知</li>
+<li>κ &lt; 1：局部認識判斷，X僅被部分認識</li>
+</ul>
+<p>κ的操作性定義：κ ≈ |已知相關性質| / |X的全部相關性質|（有限情況）。實踐中κ往往只能被估計或比較，而非精確計算。全部認識判斷（κ = 1）是理想邊界，類同ETN的極端狀態。</p>
+<h3>B.2 前置條件（Pre-conditions）</h3>
+<p>BMO評估前須驗證三個前置條件，任一不滿足則算子<strong>未定義（UNDEFINED）</strong>，而非偽（FALSE）：</p>
+<pre><code>（C1）非退化條件：    A ≠ B
+（C2）語義適用域條件：A ∈ Nbhd(X) ∧ B ∈ Nbhd(X)
+（C3）最低認識條件：  κ &gt; 0</code></pre>
+<p>其中 Nbhd(X) 為X的語義鄰域——概念空間中與X距離足夠近的概念集合（參照Gärdenfors 2000的幾何語義框架）。</p>
+<p><strong>BMO_UNDEFINED ≠ BMO_FALSE</strong> 是本算法的核心區分：</p>
+<pre><code>「是紅色而不是藍色」施用於「質數」→ BMO_UNDEFINED（C2不滿足，語義域外）
+「是質數而不是質數」            → BMO_UNDEFINED（C1不滿足，退化）
+「是質數而不是偶數」施用於「7」  → BMO₁（C1, C2, C3均滿足，7∈質數\偶數）</code></pre>
+<h3>B.3 主算法流程</h3>
+<pre><code>算法 BMO_Evaluate(X, A, B, κ):
+
+步驟1：前置條件檢查
+  若 (C1)∧(C2)∧(C3) 不成立 → 返回 BMO_UNDEFINED，終止
+
+步驟2：認識展開
+  X_κ ← Expand(X, κ)
+  // κ=1: X_κ 等於X的完整面向
+  // κ&lt;1: X_κ 是X的某個局部投影
+
+步驟3：初始化語義回饋迭代
+  A₀ ← A,  B₀ ← B,  n ← 0
+
+步驟4：三區分類
+  若 X_κ ∈ Aₙ \ Bₙ  → 分類 = BMO₁，跳至步驟5
+  若 X_κ ∈ Bₙ \ Aₙ  → 分類 = BMO₂，跳至步驟5
+  若 X_κ ∈ Aₙ ∩ Bₙ  → 分類 = OVL，跳至步驟6
+
+步驟5（BMO₁/BMO₂路徑）：語義回饋迭代
+  Aₙ₊₁ ← Update_A(Aₙ, X_κ, 分類)
+  Bₙ₊₁ ← Update_B(Bₙ, X_κ, 分類)
+  若 Aₙ₊₁ = Aₙ ∧ Bₙ₊₁ = Bₙ → 語義穩定，跳至步驟7
+  若 n &gt; N_max              → 返回 BMO_UNSTABLE，終止
+  n ← n+1，返回步驟4
+
+步驟6（OVL路徑）：觀察者激活
+  若 觀察者O已指定：
+    O執行觀測 → X坍塌至A側或B側 → 返回步驟4（以坍塌後X重新分類）
+  否則：
+    返回 OVL_PENDING(X, A, B)，等待觀測，終止
+
+步驟7：輸出
+  返回 BMO_κ(X, A, B, 分類)
+  // 輸出附帶認識覆蓋率κ與確定度標記</code></pre>
+<h3>B.4 輸出類型</h3>
+<p>| 輸出類型 | 含義 | |---------|------| | BMO₁_κ(X, A, B) | X在A\B區，確定度κ | | BMO₂_κ(X, A, B) | X在B\A區，確定度κ | | OVL_PENDING(X, A, B) | X在A∩B區，等待觀察者O | | BMO_UNDEFINED | 前置條件不滿足，算子不適用 | | BMO_UNSTABLE | 語義回饋未收斂，A/B邊界不穩定 |</p>
+<h3>B.5 語義回饋的收斂條件（初步）</h3>
+<p>語義回饋在以下條件下傾向於收斂：</p>
+<p>（i）A和B是相對穩定的範疇，不隨X的語義壓力大幅漂移； （ii）X的認識覆蓋率κ足夠高，局部認識放大不穩定性； （iii）X在A∩B的交集面積相對小，深度交集增加不收斂風險。</p>
+<p><strong>BMO_UNSTABLE不應被視為算法失敗</strong>，而是一個有價值的本體論信號：表明X與(A, B)對的語義關係本身結構性不穩定，這要求重新選擇A或B，或提升對X的認識覆蓋率κ。</p>
+<h3>B.6 算法與論文主體的對應關係</h3>
+<p>| 算法元素 | 論文對應節次 | |---------|------------| | κ覆蓋率參數 | §3節（認識判斷維度，本版首入） | | 前置條件C1-C3 | §4.5（三區結構）、§2.3（非退化條件） | | 三區分類（步驟4） | §4.5（BMO₁/BMO₂/OVL） | | 觀察者激活（步驟6） | §4.6（坍塌算子） | | 語義回饋（步驟5） | §3.5（語義內外相互影響） | | BMO_UNDEFINED | §4.5（退化條件）新增明確化 |</p>
+<div class="altbar">原始檔（供 RAG/下載）：<a href="paper-1077.md" rel="noopener">papers/paper-1077.md</a> [md]</div>
+</article>
+<footer><p>Neo.K (許筌崴) · Cl + ε</p></footer>
+</body>
+</html>

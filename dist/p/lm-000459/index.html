@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>崁套對沖場論：數學驗證文件_Mathematical Verification Nested Hedge Field Framework · EVEMISSLAB Logic Matrix</title>
+<meta name="description" content="崁套對沖場論：數學驗證文件_Mathematical Verification Nested Hedge Field Framework | EVEMISSLAB Logic Matrix V2.1">
+<meta name="author" content="Neo.K (許筌崴)">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<meta name="lm-paper-id" content="lm-000459">
+<link rel="alternate" type="text/markdown" href="/raw/lm-000459.md" title="原始檔 / source (md)">
+<link rel="canonical" href="https://logic.evemisslab.com/p/lm-000459/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "崁套對沖場論：數學驗證文件_Mathematical Verification Nested Hedge Field Framework",
+  "url": "https://logic.evemisslab.com/p/lm-000459/",
+  "identifier": "lm-000459",
+  "inLanguage": "zh-Hant",
+  "author": {"@type": "Person", "name": "Neo.K (許筌崴)"},
+  "publisher": {"@type": "Organization", "name": "EveMissLab / 一言諾科技有限公司"},
+  "isPartOf": {"@type": "Collection", "name": "EVEMISSLAB Logic Matrix", "url": "https://logic.evemisslab.com"},
+  "encodingFormat": "text/html"
+}
+</script>
+<link rel="prefetch" href="/api/log-crawler?slug=Mathematical-Verification-Nested-Hedge-Field-Framework.md">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#000; color:#0f0; font-family:'Courier New',monospace; padding:20px; line-height:1.6; }
+.header { text-align:center; border:2px solid #0f0; padding:18px; margin-bottom:22px; }
+.header h1 { font-size:1.5em; letter-spacing:2px; }
+.header p { margin-top:6px; opacity:0.8; font-size:0.9em; }
+.disclaimer { border:1px dashed #ff9900; color:#ff9900; padding:14px; margin:0 auto 22px; max-width:1000px; font-size:0.88em; }
+.disclaimer-title { font-weight:bold; margin-bottom:10px; display:block; letter-spacing:1px; }
+.disclaimer-divider { border:none; border-top:1px dashed #ff9900; margin:12px 0; opacity:0.55; }
+article { max-width:1000px; margin:0 auto; border:1px solid #0f0; padding:24px; }
+article h1,article h2,article h3,article h4 { margin:18px 0 8px; letter-spacing:1px; }
+article h1 { font-size:1.5em; } article h2 { font-size:1.25em; } article h3 { font-size:1.1em; }
+article p { margin:10px 0; }
+article ul,article ol { margin:10px 0 10px 24px; }
+article blockquote { border-left:3px solid #0f0; padding-left:12px; opacity:0.85; margin:10px 0; }
+article pre { background:rgba(0,255,0,0.06); border:1px solid #0f0; padding:12px; overflow-x:auto; margin:12px 0; }
+article code { background:rgba(0,255,0,0.08); padding:1px 5px; }
+article pre code { background:none; padding:0; }
+article a { color:#0ff; }
+.nav { max-width:1000px; margin:0 auto 16px; font-size:0.9em; display:flex; justify-content:space-between; }
+.nav a { color:#0f0; text-decoration:none; }
+.nav a:hover { color:#0ff; }
+.altbar { max-width:1000px; margin:14px auto 0; font-size:0.85em; opacity:0.7; }
+.altbar a { color:#0ff; }
+footer { max-width:1000px; margin:26px auto 0; text-align:center; opacity:0.5; font-size:0.82em; }
+</style>
+</head>
+<body>
+<div class="nav"><a href="/index.html">&larr; 回 Logic Matrix 索引</a><div><a href="/cosmomind.html" style="margin-right:15px;">→ 星環式認知展開圖</a><a href="/base-space.html">🧬 拓撲底空間</a></div></div>
+<header class="header"><h1>崁套對沖場論：數學驗證文件_Mathematical Verification Nested Hedge Field Framework</h1><p>EVEMISSLAB Logic Matrix · EveMissLab / 一言諾科技有限公司</p></header>
+<section class="disclaimer">
+  <span class="disclaimer-title">[認識論邊界宣告 / EPISTEMOLOGICAL DISCLAIMER]</span>
+  <div class="disclaimer-block">
+    <p><b>[CHT]</b> 本矩陣內所有論文之公式與數據為「啟發式模擬參數」，用於驗證理論架構與推演因果鏈，<b>未經實證校準</b>，請勿作為現實物理測量數據引用 or 處理。EVEMISSLAB 採行「邏輯先行（Logic-First）」原則：概念架構與系統因果映射優先於統計實證，但不排除未來實證對接。</p>
+  </div>
+  <hr class="disclaimer-divider">
+  <div class="disclaimer-block">
+    <p><b>[ENG]</b> The numerical parameters within these frameworks are <i>illustrative model coefficients</i> used for structural verification and causal mapping; they are <b>not empirically calibrated</b> and must not be treated as physical measurements. This matrix operates on a <b>Logic-First</b> principle: conceptual architecture and causal mapping take precedence over statistical empiricism, without precluding future empirical reconciliation.</p>
+  </div>
+</section>
+<article>
+<h1>崁套對沖場論：數學驗證文件</h1>
+<h2>Mathematical Verification: Nested Hedge Field Framework</h2>
+<p><strong>EveMissLab EML-STM-2026-v0.2 · Neo.K / Theia</strong></p>
+<hr>
+<h2>定義前置</h2>
+<p>設 G = (V, E) 為有限連通無向圖，N(v) 為 v 的鄰居集，deg(v) = |N(v)|。</p>
+<p><strong>Graph Laplacian 調和函數（GL-Harmonic）</strong>：函數 φ: V → ℝ 若對所有內部節點 v（非邊界）滿足</p>
+<p>$$\phi(v) = \frac{1}{\deg(v)} \sum_{w \in N(v)} \phi(w)$$</p>
+<p>則稱 φ 為圖上的調和函數。給定邊界條件 φ(s) = 1，φ(e) = 0，由連通性知解唯一存在。記此解為 φ_{s→e}。</p>
+<hr>
+<h2>定理 1：互補性（Complementarity）</h2>
+<p><strong>命題</strong>：φ_{s→e}(v) + φ_{e→s}(v) = 1 對所有 v ∈ V 成立。</p>
+<p><strong>證明</strong>：</p>
+<p>設 φ = φ_{s→e}，定義 ψ = 1 − φ。驗證 ψ 滿足邊界條件及內部方程：</p>
+<p><em>邊界條件</em>： $$\psi(s) = 1 - \phi(s) = 1 - 1 = 0, \quad \psi(e) = 1 - \phi(e) = 1 - 0 = 1$$</p>
+<p>因此 ψ 的邊界條件為 ψ(e) = 1，ψ(s) = 0，即 φ_{e→s} 的邊界條件。</p>
+<p><em>內部方程</em>：對任意內部節點 v， $$\psi(v) = 1 - \phi(v) = 1 - \frac{1}{\deg(v)}\sum_{w \in N(v)}\phi(w)$$ $$= \frac{1}{\deg(v)}\sum_{w \in N(v)}(1 - \phi(w)) = \frac{1}{\deg(v)}\sum_{w \in N(v)}\psi(w)$$</p>
+<p>故 ψ 滿足 GL-Harmonic 方程，且邊界條件與 φ_{e→s} 一致。由唯一性，ψ = φ_{e→s}。</p>
+<p>即 φ_{e→s} = 1 − φ_{s→e}，故 φ_{s→e} + φ_{e→s} = 1。□</p>
+<p><strong>推論 1.1（張力場單次計算）</strong>：</p>
+<p>$$T(v) = \phi_{A \to B}(v) - \phi_{B \to A}(v) = \phi_{A \to B}(v) - (1 - \phi_{A \to B}(v)) = 2\phi_{A \to B}(v) - 1$$</p>
+<p>僅需一次 GL-SOR 求解，計算量減半。</p>
+<p><strong>推論 1.2（隨機遊走解釋）</strong>：</p>
+<p>φ_{s→e}(v) = P(從 v 出發的簡單隨機遊走首先到達 s，而非 e)</p>
+<p>由此 φ_{s→e}(v) + φ_{e→s}(v) = 1 即是機率完備性：從 v 出發，必然先到達 s 或先到達 e，兩者互為對立事件。□</p>
+<hr>
+<h2>定理 2：路徑線性衰減（Linear Decay on Path）</h2>
+<p><strong>命題</strong>：設 G 為路徑圖 s = v₀ − v₁ − ... − v_n = e（相鄰節點間有且僅有一條邊）。則</p>
+<p>$$\phi_{s \to e}(v_k) = 1 - \frac{k}{n}, \quad k = 0, 1, ..., n$$</p>
+<p><strong>證明</strong>：</p>
+<p><em>邊界條件驗證</em>：φ(v₀) = 1 - 0/n = 1 = φ(s) ✓，φ(v_n) = 1 - n/n = 0 = φ(e) ✓</p>
+<p><em>內部節點驗證</em>：對 k ∈ {1, ..., n−1}，N(v_k) = {v_{k-1}, v_{k+1}}，deg(v_k) = 2，</p>
+<p>$$\frac{1}{\deg(v_k)}\sum_{w \in N(v_k)}\phi(w) = \frac{\phi(v_{k-1}) + \phi(v_{k+1})}{2}$$ $$= \frac{(1 - \frac{k-1}{n}) + (1 - \frac{k+1}{n})}{2} = \frac{2 - \frac{2k}{n}}{2} = 1 - \frac{k}{n} = \phi(v_k) \checkmark$$</p>
+<p>由唯一性，此線性插值即為唯一解。□</p>
+<p><strong>推論 2.1（一般迷宮路徑）</strong>：</p>
+<p>在迷宮中，從 s 到 e 的唯一路徑（perfect maze 保證唯一性）上，φ 值以接近線性的速度從 1 遞減至 0。偏差來自分叉口對場值的「拉扯」效應，但主路徑的單調性由最大值原理保證。</p>
+<hr>
+<h2>定理 3：死巷平台性質（Dead-End Plateau）</h2>
+<p><strong>命題</strong>：設 v 為死巷（dead-end）節點，即 N(v) = {j}（僅與分支口 j 相連）。則 φ(v) = φ(j)。</p>
+<p><strong>證明</strong>：</p>
+<p>$$\phi(v) = \frac{1}{\deg(v)}\sum_{w \in N(v)}\phi(w) = \frac{\phi(j)}{1} = \phi(j)$$</p>
+<p>□</p>
+<p><strong>推論 3.1（φ-BFS 不進入死巷）</strong>：</p>
+<p>在 φ 嚴格遞增的路徑方向上，φ(j) 對應路徑下一步（假設 j 在路徑上），而 φ(v) = φ(j) 對死巷 v。</p>
+<p>φ-BFS 從 e 出發，在分支口 j 處，路徑方向的鄰居 j&#x27; 滿足 φ(j&#x27;) &gt; φ(j)（路徑單調性），而死巷 v 滿足 φ(v) = φ(j) &lt; φ(j&#x27;)。</p>
+<p>φ-BFS 優先展開 φ 值最高的節點，因此 j&#x27; 先於 v 被展開，死巷不影響路徑主幹。□</p>
+<hr>
+<h2>命題 4：張力場 T 的幾何意義</h2>
+<p><strong>命題</strong>：T(v) = 0 等價於 v 在 A 和 B 的隨機遊走意義下等距，即 φ_{A→B}(v) = 1/2。</p>
+<p><strong>證明</strong>：</p>
+<p>T(v) = 2φ_{A→B}(v) − 1 = 0 ⟺ φ_{A→B}(v) = 1/2</p>
+<p>由隨機遊走解釋：φ_{A→B}(v) = 1/2 ⟺ P(RW from v → A first) = P(RW from v → B first)</p>
+<p>即 v 在隨機遊走意義下對 A 和 B 等距。T = 0 的節點集構成圖上的 <strong>Graph Voronoi Boundary</strong>（廣義 Voronoi 圖邊界）。□</p>
+<p><strong>推論 4.1</strong>：Nash 均衡前線為 T = 0。若追逐者 A 在 T &gt; 0 的區域，A 從圖拓撲上更接近 B；在 T &lt; 0 的區域則 B 更佔優。</p>
+<hr>
+<h2>命題 5：對沖場 H 非調和，且可能存在內部極值</h2>
+<p><strong>命題</strong>：H(v) = φ_g(v) · (1 − φ_e(v)) 一般不是調和函數，且可存在局部最大值。</p>
+<p><strong>證明（非調和性）</strong>：</p>
+<p>若 H 為調和函數，則對所有內部節點 v：</p>
+<p>$$H(v) = \frac{1}{\deg(v)}\sum_{w \in N(v)} H(w)$$</p>
+<p>然而 H = φ_g · (1 − φ_e) 是兩個調和函數的逐點乘積。一般而言，兩個調和函數的乘積不再是調和函數（除非兩者成比例或其中之一為常數）。</p>
+<p>反例（三節點路徑）：設 G = g − m − e，φ_g(m) = 1/2，φ_e(m) = 1/2（由線性衰減）。</p>
+<p>$$H(m) = \frac{1}{2} \cdot \frac{1}{2} = \frac{1}{4}$$ $$\text{mean}(H(\text{neighbors})) = \frac{H(g) + H(e)}{2} = \frac{1 \cdot 0 + 0 \cdot 1}{2} = 0$$</p>
+<p>H(m) = 1/4 ≠ 0 = mean of neighbors → H 不滿足調和方程。□</p>
+<p><strong>內部極值的存在性構造</strong>：</p>
+<p>考慮以下圖（六節點）：</p>
+<pre><code>source=e          source=g
+(threat)          (goal)
+   e -------- j -------- g
+               \
+                b (bridge to safe zone)
+                |
+                f (far from both e and g)</code></pre>
+<p>設場邊界條件（目標場 φ_g 源於 g，匯於 e）：</p>
+<p>若圖上存在節點 f，其 φ_g(f) 中等（f 不特別接近 g），且 φ_e(f) 極低（f 遠離 e），則 H(f) = φ_g(f) · (1 − φ_e(f)) ≈ φ_g(f) · 1 = φ_g(f)。</p>
+<p>若 g 本身旁邊緊鄰 e（φ_e(g) 很高），則 H(g) = 1 · (1 − φ_e(g)) &lt; 1。</p>
+<p>可選取 φ_g(f) &gt; H(g)，使得 H(f) &gt; H(g)，即 H 在 f（非目標）處比在 g（目標）處更高。H 的全局最大值不在目標節點，而在「接近目標且遠離威脅」的中間節點。□</p>
+<p><strong>實際意義</strong>：φ-BFS 以 H 為優先函數仍保完備性（connected 圖上必能找到路徑），但因 H 非調和，H(g) 未必是全局最大值，φ-BFS 可能探索多餘節點。在威脅遠離目標的典型場景下，H(g) ≈ 1，此問題不顯著。</p>
+<hr>
+<h2>定理 6：φ-BFS 在 H 場上的完備性</h2>
+<p><strong>命題</strong>：設 G 為有限連通圖，H: V → [0, ∞)，起點 s，目標 g。φ-BFS 保證在有限步內找到從 s 到 g 的路徑。</p>
+<p><strong>證明（非正式）</strong>：</p>
+<p>φ-BFS 是 BFS 的優先佇列變體。每個可通行節點最多被訪問一次（visited 集合確保）。由 G 連通性，BFS 在訪問所有可達節點後必訪問 g。優先函數 H 僅影響節點展開順序，不影響完備性。□</p>
+<p><strong>注意</strong>：完備性不等於最優性。H 場引導的路徑可能長於 A* 最優路徑（因繞避威脅）。路徑品質由安全得分 S = (1/|path|)·Σ_{v∈path}(1−φ_e(v)) 衡量（越高越安全）。</p>
+<hr>
+<h2>數值驗證指標（Empirical Verification Metrics）</h2>
+<p>以下指標由算法驗證工具（互動式 widget）計算：</p>
+<p>| 指標 | 定義 | 預期值 | |------|------|--------| | E₁：互補性誤差 | max_v \|φ_A(v) + φ_B(v) − 1\| | &lt; 1e-4（SOR 收斂後） | | E₂：死巷平台誤差 | max_{dead-end d} \|φ(d) − φ(junction(d))\| | &lt; 1e-5 | | E₃：T 前線寬度 | \|{v : \|T(v)\| &lt; 0.01}\| / \|V\| | 應為薄帶狀（&lt; 5%） | | E₄：H 非調和節點比 | \|{v : \|H(v) − mean_H(N(v))\| &gt; 0.01}\| / \|passable\| | &gt; 0（必然存在） | | E₅：對沖路徑安全增益 | S_hedge / S_astar | 應 &gt; 1（對沖更安全） | | E₆：路徑長度代價 | \|P_hedge\| / \|P_astar\| | 可能 &gt; 1（繞路代價） |</p>
+<hr>
+<p><em>本文件為理論框架的形式驗證部分，實驗數值見對應的互動驗證工具。</em> <em>EML-STM-2026-v0.2 · EveMissLab Working Paper</em></p>
+<div class="altbar">原始檔（供 RAG/下載）：<a href="/raw/lm-000459.md" rel="noopener">/raw/lm-000459.md</a> [md] · id: lm-000459</div>
+</article>
+<footer><p>Neo.K (許筌崴) · Cl + ε</p></footer>
+</body>
+</html>

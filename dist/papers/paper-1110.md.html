@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>雙高峰雙低：分層非對稱衝擊傳導動力學 · EVEMISSLAB Logic Matrix</title>
+<meta name="description" content="雙高峰雙低：分層非對稱衝擊傳導動力學 | EVEMISSLAB Logic Matrix V2.1">
+<meta name="author" content="Neo.K (許筌崴)">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="paper-1110.md" title="原始檔 / source (md)">
+<link rel="canonical" href="https://logic.evemisslab.com/papers/paper-1110.md.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "雙高峰雙低：分層非對稱衝擊傳導動力學",
+  "url": "https://logic.evemisslab.com/papers/paper-1110.md.html",
+  "inLanguage": "zh-Hant",
+  "author": {"@type": "Person", "name": "Neo.K (許筌崴)"},
+  "publisher": {"@type": "Organization", "name": "EveMissLab / 一言諾科技有限公司"},
+  "isPartOf": {"@type": "Collection", "name": "EVEMISSLAB Logic Matrix", "url": "https://logic.evemisslab.com"},
+  "encodingFormat": "text/html"
+}
+</script>
+<link rel="prefetch" href="/api/log-crawler?slug=paper-1110.md">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#000; color:#0f0; font-family:'Courier New',monospace; padding:20px; line-height:1.6; }
+.header { text-align:center; border:2px solid #0f0; padding:18px; margin-bottom:22px; }
+.header h1 { font-size:1.5em; letter-spacing:2px; }
+.header p { margin-top:6px; opacity:0.8; font-size:0.9em; }
+.disclaimer { border:1px dashed #ff9900; color:#ff9900; padding:14px; margin:0 auto 22px; max-width:1000px; font-size:0.88em; }
+.disclaimer-title { font-weight:bold; margin-bottom:10px; display:block; letter-spacing:1px; }
+.disclaimer-divider { border:none; border-top:1px dashed #ff9900; margin:12px 0; opacity:0.55; }
+article { max-width:1000px; margin:0 auto; border:1px solid #0f0; padding:24px; }
+article h1,article h2,article h3,article h4 { margin:18px 0 8px; letter-spacing:1px; }
+article h1 { font-size:1.5em; } article h2 { font-size:1.25em; } article h3 { font-size:1.1em; }
+article p { margin:10px 0; }
+article ul,article ol { margin:10px 0 10px 24px; }
+article blockquote { border-left:3px solid #0f0; padding-left:12px; opacity:0.85; margin:10px 0; }
+article pre { background:rgba(0,255,0,0.06); border:1px solid #0f0; padding:12px; overflow-x:auto; margin:12px 0; }
+article code { background:rgba(0,255,0,0.08); padding:1px 5px; }
+article pre code { background:none; padding:0; }
+article a { color:#0ff; }
+.nav { max-width:1000px; margin:0 auto 16px; font-size:0.9em; display:flex; justify-content:space-between; }
+.nav a { color:#0f0; text-decoration:none; }
+.nav a:hover { color:#0ff; }
+.altbar { max-width:1000px; margin:14px auto 0; font-size:0.85em; opacity:0.7; }
+.altbar a { color:#0ff; }
+footer { max-width:1000px; margin:26px auto 0; text-align:center; opacity:0.5; font-size:0.82em; }
+</style>
+</head>
+<body>
+<div class="nav"><a href="../index.html">&larr; 回 Logic Matrix 索引</a><div><a href="../cosmomind.html" style="margin-right:15px;">→ 星環式認知展開圖</a><a href="../base-space.html">🧬 拓撲底空間</a></div></div>
+<header class="header"><h1>雙高峰雙低：分層非對稱衝擊傳導動力學</h1><p>EVEMISSLAB Logic Matrix · EveMissLab / 一言諾科技有限公司</p></header>
+<section class="disclaimer">
+  <span class="disclaimer-title">[認識論邊界宣告 / EPISTEMOLOGICAL DISCLAIMER]</span>
+  <div class="disclaimer-block">
+    <p><b>[CHT]</b> 本矩陣內所有論文之公式與數據為「啟發式模擬參數」，用於驗證理論架構與推演因果鏈，<b>未經實證校準</b>，請勿作為現實物理測量數據引用 or 處理。EVEMISSLAB 採行「邏輯先行（Logic-First）」原則：概念架構與系統因果映射優先於統計實證，但不排除未來實證對接。</p>
+  </div>
+  <hr class="disclaimer-divider">
+  <div class="disclaimer-block">
+    <p><b>[ENG]</b> The numerical parameters within these frameworks are <i>illustrative model coefficients</i> used for structural verification and causal mapping; they are <b>not empirically calibrated</b> and must not be treated as physical measurements. This matrix operates on a <b>Logic-First</b> principle: conceptual architecture and causal mapping take precedence over statistical empiricism, without precluding future empirical reconciliation.</p>
+  </div>
+</section>
+<article>
+<h1>雙高峰雙低：分層非對稱衝擊傳導動力學</h1>
+<h2>Dual-Peak Dual-Valley: Stratified Asymmetric Shock Conduction Dynamics (DASCD)</h2>
+<p><strong>作者：Neo.K（許筌崴）</strong> <strong>機構：一言諾科技有限公司（EveMissLab）</strong> <strong>版本：v0.1 工作稿</strong> <strong>日期：2026年5月</strong></p>
+<blockquote><strong>框架定位</strong>：本文是EveMissLab三空間貨幣流動理論（ABC Framework）、家庭生存臨界動力學（HSCT）、多系統耦合邊際效用理論（MSCUT）、B空間極化分析（TAIEX v0.1）的統合延伸。各理論提供組件，本文提供傳導機制。</blockquote>
+<hr>
+<h2>§0 核心命題</h2>
+<blockquote><strong>定理0（雙端分叉定理 / Dual-Apex Bifurcation Theorem）</strong></blockquote>
+<blockquote></blockquote>
+<blockquote>在B空間流速超臨界（$V_B &gt; \kappa_B \cdot V_B^0$）且實體流通比率低於臨界（$R_A &lt; R_{A,c}$）的條件下，任意超閾值經濟衝擊 $\Delta\Omega &gt; \Omega_{\min}$ 必然<strong>同時</strong>觸發：</blockquote>
+<blockquote></blockquote>
+<blockquote>$$\text{上端分叉}：S_1 \longrightarrow \{S_1^+(\text{吸收}),\ S_1^-(\text{崩潰})\}$$</blockquote>
+<blockquote></blockquote>
+<blockquote>$$\text{下端分叉}：S_5 \longrightarrow \{S_5^{\text{shock}}(\text{最大衝擊}),\ S_6^{\text{det}}(\text{退出態})\}$$</blockquote>
+<blockquote></blockquote>
+<blockquote>結果分布呈W型（而非高斯型），且中間層厚度 $\Delta m_{S_3 \cup S_4}$ 系統性縮減。</blockquote>
+<blockquote></blockquote>
+<blockquote><strong>三重觸發判據：</strong></blockquote>
+<blockquote>$$\mathcal{T} = \mathbb{1}[V_B &gt; \kappa_B V_B^0]\ \wedge\ \mathbb{1}[R_A &lt; 0.4]\ \wedge\ \mathbb{1}[\Delta\Omega &gt; \Omega_{\min}]$$</blockquote>
+<blockquote>三者同時成立 $\Rightarrow$ 雙端分叉必然發生。</blockquote>
+<hr>
+<h2>§1 六層社會經濟狀態空間</h2>
+<h3>1.1 層態定義</h3>
+<p>定義每個家庭 $i$ 的狀態向量：</p>
+<p>$$\mathbf{H}_i = \left(SR_i,\ \lambda_i,\ \xi_i,\ \beta_i,\ \alpha_B^i\right)$$</p>
+<p>其中：</p>
+<ul>
+<li>$SR_i = I_i^{\text{週}} / \text{BCI}$：購物車生存比率（繼承HSCT定義）</li>
+<li>$\lambda_i$：B空間槓桿率（金融資產 / 淨資產）</li>
+<li>$\xi_i$：資產集中度（單一資產最大暴露 / 總資產）</li>
+<li>$\beta_i$：緩衝容量（以月計的支出儲備）</li>
+<li>$\alpha_B^i$：資產疊加態B空間分量（繼承ABC三空間理論）</li>
+</ul>
+<p><strong>定義1.1（層態分類算子）：</strong></p>
+<p>$$\sigma_k: \mathbf{H}_i \mapsto k \in \{1, 2, 3, 4, 5, 6\}$$</p>
+<p>| 層態 | 名稱 | SR範圍 | 主要特徵 | 效用函數型態 | |------|------|--------|---------|------------| | $S_1$ | 金融規則玩家 | — | $\lambda \gg 1$，主動B空間，多系統耦合 | 遞增（MSCUT：$n \geq 3$，$\alpha \gg 0$） | | $S_2$ | 資產中上層 | $SR &gt; 5$ | 持有資產，部分B空間暴露（ETF、不動產） | 混合（遞增-遞減轉換帶） | | $S_3$ | 薪資中產 | $3.5 &lt; SR \leq 5$ | 薪資依賴，邊際資產持有 | 主要遞減 | | $S_4$ | 脆弱中低層 | $SR_c &lt; SR \leq 3.5$ | 收入不穩定，緩衝不足 | 遞減（HSCT臨界帶） | | $S_5$ | 主動貧困 | $SR_{\text{det}} &lt; SR \leq SR_c$ | 生存壓力，仍在系統內 | 嚴格遞減，生存效用主導 | | $S_6$ | 退出態 | $SR \leq SR_{\text{det}}$ | 已退出正式經濟參與 | 有效效用函數不連續 |</p>
+<p>臨界值繼承：$SR_c = 3.5$（HSCT），$SR_{\text{det}} \approx 1.5$（本文新定義）</p>
+<h3>1.2 與HSCT的接軌</h3>
+<p>序參量 $\Phi$（HSCT定義）在本框架的層態對應：</p>
+<p>$$\Phi(t) = \frac{|\{i : SR_i &gt; SR_c\}|}{N} = \frac{|S_1 \cup S_2 \cup S_3|}{N}$$</p>
+<p>$\Phi$ 的變化追蹤的是 $S_3$ 向 $S_4$ 的滲漏。本文新增退出序參量：</p>
+<p>$$\Phi_{\text{det}}(t) = \frac{|S_6|}{N}$$</p>
+<p>兩者共同構成完整的分層描述。</p>
+<hr>
+<h2>§2 景氣上行算子：衰減性輻射傳導</h2>
+<h3>2.1 增益傳導模型</h3>
+<p>景氣上行時，增益從 $S_1$ 向下傳導，定義<strong>逐層衰減增益算子</strong> $\mathcal{G}_\downarrow$：</p>
+<p>$$\Delta W_{S_1} = \mathcal{G}_B \cdot \frac{V_B}{V_B^0} \cdot M_B \cdot \Delta t$$</p>
+<p>$$\Delta W_{S_k} = \eta_k \cdot \Delta W_{S_{k-1}} \cdot f(R_A,\ \tau_k), \quad k = 2, 3, 4, 5$$</p>
+<p>$$\Delta W_{S_6} \equiv 0$$</p>
+<p>其中：</p>
+<ul>
+<li>$\mathcal{G}_B$：B空間單位流速的增益密度</li>
+<li>$\eta_k \in (0,1)$：第 $k$ 層的層間傳導效率（<strong>嚴格小於1，增益在傳導中衰減</strong>）</li>
+<li>$\tau_k$：增益到達第 $k$ 層的時間滯後</li>
+<li>$f(R_A, \tau_k)$：A空間傳導函數，$R_A$ 越低，$f$ 越小</li>
+</ul>
+<p><strong>定義2.1（A空間傳導函數）：</strong></p>
+<p>$$f(R_A, \tau_k) = \left(\frac{R_A}{R_{A,0}}\right)^\alpha \cdot e^{-\delta_k \tau_k}$$</p>
+<p>其中 $R_{A,0} = 0.7$（健康基準），$\alpha &gt; 1$，$\delta_k$ 為衰減率。</p>
+<h3>2.2 輻射的結構性脆弱</h3>
+<p>中低層所「感受到」的增益 $\Delta W_{S_{3,4}}$ 實質上是<strong>B空間維持的前提下的名目利益</strong>，而非A空間產生的真實流動利益。</p>
+<p><strong>命題2.1（偽輻射命題）：</strong> 當 $R_A &lt; R_{A,c}$ 時，$S_3$、$S_4$ 所接收的輻射增益中，比例 $\rho_B$ 源自B空間名目效應（資產名目升值、就業的間接效應），而非A空間真實工資增長：</p>
+<p>$$\rho_B = 1 - f(R_A, \tau_k) \xrightarrow{R_A \to 0} 1$$</p>
+<p><strong>含義</strong>：當B空間崩解時，$S_3$、$S_4$ 所感受到的「景氣好轉」將同時消失，其損失的感受速度遠快於當初的增益積累速度。</p>
+<hr>
+<h2>§3 景氣下行算子I：$S_1$ 的吸收—崩潰雙態分叉</h2>
+<h3>3.1 分叉條件</h3>
+<p>$S_1$ 內部並非同質。定義每個 $S_1$ 成員的<strong>脆弱性指標</strong>：</p>
+<p>$$\chi_i = \lambda_i \cdot \xi_i \cdot (1 - \beta_i^{\text{normalized}})$$</p>
+<p>其中 $\beta_i^{\text{normalized}} = \min(\beta_i / \beta_{\max}, 1)$。</p>
+<p><strong>定義3.1（S₁分叉概率）：</strong></p>
+<p>$$P(S_1^- | \chi_i) = \sigma\left(\alpha_\chi \cdot \chi_i - \theta_{\text{collapse}}\right) = \frac{1}{1 + e^{-\alpha_\chi(\chi_i - \theta_{\text{collapse}})}}$$</p>
+<p>其中 $\theta_{\text{collapse}}$ 為崩潰閾值，$\alpha_\chi$ 為陡峭係數。</p>
+<p><strong>直觀解讀</strong>：高槓桿（$\lambda \gg 1$）× 高集中度（$\xi \to 1$）× 低緩衝（$\beta \to 0$）= 崩潰概率趨近1。</p>
+<h3>3.2 吸收態的增益方程</h3>
+<p>存活的 $S_1^+$（吸收態）在衝擊期間的財富變化：</p>
+<p>$$\Delta W_{S_1^+} = \underbrace{\Delta W_{\text{市場}}}<em>{&lt;0,\ \text{帳面損失}} + \underbrace{\phi</em>{\text{abs}} \cdot \sum_{j \in S_1^-} W_j^{\text{流出}}}_{&gt;0,\ \text{吸收收益}}$$</p>
+<p>當 $|\phi_{\text{abs}} \cdot W_{S_1^-}| &gt; |\Delta W_{\text{市場}}|$ 時，吸收態成員在衝擊後<strong>淨資產反而增加</strong>。</p>
+<p><strong>命題3.1（吸收-崩潰馬太加速器）：</strong> 衝擊規模 $\Delta\Omega$ 越大，$S_1^-$ 的流出資產越多，$S_1^+$ 的吸收收益越高。即衝擊本身成為 $S_1$ 內部財富再分配的催化劑，而不是均質損失。</p>
+<h3>3.3 歷史校準推論（v0.2待驗證）</h3>
+<blockquote><strong>推論3.1（B空間加速下的分叉速度壓縮）【標記為推論】</strong>：</blockquote>
+<blockquote>傳統金融危機中，$S_1$ 的崩潰-吸收分叉在6-12個月內完成。在AI/HFT主導的市場中，同等規模的分叉可能在1-3個月甚至更短時間內完成，因為算法清算速度與人工清算速度的比率遠大於1。</blockquote>
+<blockquote></blockquote>
+<blockquote>待校準數據：2008年vs 2020年vs 2025年（若有崩潰事件）各類機構清算時間分布。</blockquote>
+<hr>
+<h2>§4 景氣下行算子II：中間層非線性放大</h2>
+<h3>4.1 緩衝耗竭的放大效應</h3>
+<p>$S_3$、$S_4$ 在景氣下行時接收的衝擊，因緩衝容量不足而發生非線性放大：</p>
+<p>$$\hat{\Delta}_k = -\frac{1}{\beta_k} \cdot \Delta\Omega \cdot \left[1 + \gamma \cdot \max\left(\frac{1}{SR_k} - \frac{1}{SR_c}, 0\right)\right]$$</p>
+<p>其中：</p>
+<ul>
+<li>$\beta_k$：第 $k$ 層的緩衝容量（月）</li>
+<li>$\gamma &gt; 0$：SR接近臨界值時的放大係數</li>
+<li>當 $SR_k \to SR_c$ 時，第二項趨於無窮大</li>
+</ul>
+<p><strong>含義</strong>：越接近生存比率臨界值，單位衝擊的生存影響越大。$S_4$ 是放大效應最強的層態。</p>
+<h3>4.2 與HSCT臨界條件的對接</h3>
+<p>當 $S_4$ 的 $\hat{\Delta}_4$ 使得 $SR_4 &lt; SR_c = 3.5$ 時，觸發HSCT相變條件。本文的中間層放大機制提供了HSCT相變的<strong>微觀傳導路徑</strong>：</p>
+<p>$$\hat{\Delta}<em>4 &gt; \Delta</em>{\text{HSCT}} \Rightarrow SR_4 &lt; SR_c \Rightarrow \Phi \downarrow \Rightarrow \text{HSCT相變啟動}$$</p>
+<p><strong>中間層薄化定理（定理4.1）：</strong> 在每一次超閾值衝擊-復甦循環中：</p>
+<p>$$\Delta m_{S_3 \cup S_4}^{(n+1)} &lt; \Delta m_{S_3 \cup S_4}^{(n)}$$</p>
+<p>即中間層厚度在每個景氣循環後系統性縮小。原因：部分 $S_3$ 在景氣上行期積累的增益是偽輻射（命題2.1），下行時無法支撐，部分滑入 $S_4$；$S_4$ 在衝擊中部分滑入 $S_5$，而向上的恢復路徑因緩衝耗竭而變長。</p>
+<hr>
+<h2>§5 景氣下行算子III：$S_6$ 退出態——第二臨界相變</h2>
+<h3>5.1 退出態的定義</h3>
+<p><strong>定義5.1（退出態閾值）：</strong> 當家庭 $i$ 的生存比率長期滿足：</p>
+<p>$$SR_i &lt; SR_{\text{det}} \approx 1.5, \quad \forall t \in [t_0, t_0 + \tau_{\text{det}}]$$</p>
+<p>其中 $\tau_{\text{det}} \sim 12$-$24$ 個月，則家庭 $i$ 完成<strong>退出態相變</strong>：</p>
+<p>$$\mathcal{D}(i): \mathbf{H}_i \to \mathbf{H}_i^{\text{det}}$$</p>
+<p>其中 $\mathbf{H}_i^{\text{det}}$ 的關鍵特徵是：傳導接收係數 $\eta_6^{\text{receive}} \approx 0$（無法接收來自上方的輻射增益），衝擊傳導機制由正式經濟渠道切換為非正式渠道（現金、非法、以物易物）。</p>
+<h3>5.2 退出態的誤解澄清</h3>
+<p>退出態（S₆）與絕緣（Insulation）是本質不同的兩個概念：</p>
+<p>| 維度 | 絕緣（假設） | 退出態（實際） | |------|------------|-------------| | 收益傳導 | 不接收增益 | 不接收增益 ✓ | | 衝擊接收 | 不受衝擊 | <strong>仍受衝擊</strong>，但通過非正式渠道 | | 響應函數 | 零響應 | 響應函數<strong>不連續</strong>，跨域切換 | | 主觀狀態 | 無關痛癢 | <strong>不在乎</strong>——是長期傷害積累後的適應性鈍化 |</p>
+<p><strong>命題5.1（退出態的主觀機制）：</strong> $S_6$ 成員的「不在乎」不是福祉的提升，而是：</p>
+<p>$$\frac{\partial Q_i}{\partial \Delta\Omega}\bigg|_{S_6} &lt; \frac{\partial Q_i}{\partial \Delta\Omega}\bigg|_{S_5}$$</p>
+<p>效用函數的衝擊敏感度降低，不是因為效用基線更高，而是因為「可失去的已失去，可期待的不再期待」——這是HSCT中 $Q_i$（生活品質指標）長期低值穩定化的終態。</p>
+<h3>5.3 退出態序參量</h3>
+<p>$$\frac{d\Phi_{\text{det}}}{dt} = \rho_{\text{det}} \cdot \mathbb{1}[SR &lt; SR_{\text{det}}] \cdot N_{S_5} - \rho_{\text{return}} \cdot \Phi_{\text{det}}$$</p>
+<p>其中 $\rho_{\text{return}} \ll \rho_{\text{det}}$：進入退出態的速率遠大於離開速率，這是退出態的<strong>不可逆性</strong>的形式化。</p>
+<hr>
+<h2>§6 雙高峰雙低相圖</h2>
+<h3>6.1 結果分布的W型結構</h3>
+<p>在超閾值衝擊下，財富變化分布 $P(\Delta W)$ 從高斯型轉變為W型（雙高峰雙低）：</p>
+<p><strong>傳統模型（高斯假設）：</strong></p>
+<p>$$P_{\text{Gauss}}(\Delta W) \sim \mathcal{N}(\mu, \sigma^2)$$</p>
+<p><strong>DASCD預測（W型）：</strong></p>
+<p>$$P_{\text{W}}(\Delta W) = p_+ \cdot \delta(\Delta W - \Delta W_{S_1^+}) + p_- \cdot \delta(\Delta W + |\Delta W_{S_1^-}|) + P_{\text{mid}}(\Delta W) + p_{\text{det}} \cdot \delta(\Delta W)$$</p>
+<p>其中：</p>
+<ul>
+<li>第一項：吸收態 $S_1^+$ 的正增益峰（上高峰）</li>
+<li>第二項：崩潰態 $S_1^-$ 的負損失峰（上高峰，另一側）</li>
+<li>第三項：中間層 $S_2$-$S_4$ 的連續分布（低谷帶，較廣但幅度低）</li>
+<li>第四項：退出態 $S_6$ 的零響應質量（下高峰的特殊形式）</li>
+</ul>
+<h3>6.2 相圖投影</h3>
+<p>定義相空間 $(x, y) = (\lambda \cdot \xi,\ SR)$：</p>
+<pre><code>SR ↑
+     |     S₁⁺區（吸收）
+     |   ----分叉線----
+     |     S₁⁻區（崩潰）
+5.0  |__________________________ S₂帶
+     |
+3.5  |·········· SR_c ··········· ← HSCT相變線
+     |           S₃-S₄（放大帶）
+2.5  |·········· HSCT崩潰線 ······
+     |           S₅帶
+1.5  |·········· SR_det ·········· ← 第二相變線（本文新增）
+     |           S₆（退出態）
+     |_________________________________→ λ·ξ（槓桿×集中度）</code></pre>
+<h3>6.3 四種軌跡類型</h3>
+<p>任何家庭在景氣循環中的軌跡屬於以下四類之一：</p>
+<ol>
+<li><strong>吸收型（S₁⁺路徑）</strong>：衝擊後向上，終態資產增加。條件：$\chi_i &lt; \theta_{\text{collapse}}$。</li>
+<li><strong>崩潰型（S₁⁻路徑）</strong>：衝擊後急速向下，滑入S₂或更低。條件：$\chi_i &gt; \theta_{\text{collapse}}$。</li>
+<li><strong>震盪型（S₃-S₄路徑）</strong>：衝擊放大，但不致命；恢復期長，每次循環縮短緩衝。</li>
+<li><strong>沉降型（S₅→S₆路徑）</strong>：每次衝擊帶來不可逆的向下位移，最終完成退出態相變。</li>
+</ol>
+<hr>
+<h2>§7 馬太壓縮效應：B空間加速的時間耦合</h2>
+<h3>7.1 傳統馬太效應的速度方程</h3>
+<p>傳統馬太積累的動力學（前HFT時代）：</p>
+<p>$$\frac{dW_{S_1}}{dt}\bigg|_{\text{traditional}} = r_K \cdot W_{S_1} + \mu_{\text{abs}} \cdot \sum_{j \in S_1^-} W_j^{\text{崩出}}$$</p>
+<p>積累周期 $\tau_{\text{Matthew}}^0 \sim 18$-$36$ 個月（基於歷史危機數據校準）。</p>
+<h3>7.2 B空間加速的壓縮</h3>
+<p>在V_B超臨界條件下，馬太積累被HFT加速，定義<strong>馬太壓縮係數</strong>：</p>
+<p>$$\kappa_M(V_B) = \left(\frac{V_B}{V_B^0}\right)^\alpha, \quad \alpha \in (0.5, 1.0)$$</p>
+<p>壓縮後的積累速率：</p>
+<p>$$\frac{dW_{S_1^+}}{dt}\bigg|_{\text{HFT}} = r_K \cdot W_{S_1^+} \cdot \kappa_M(V_B) + \mu_{\text{abs}} \cdot \tau_{\text{HFT}}^{-1} \cdot \sum_{j \in S_1^-} W_j^{\text{崩出}}$$</p>
+<p>積累周期壓縮為：</p>
+<p>$$\tau_{\text{Matthew}}(V_B) = \frac{\tau_{\text{Matthew}}^0}{\kappa_M(V_B)}$$</p>
+<p><strong>以當前TAIEX數據估計</strong>（V_B/V_B^0 ≈ 100，α = 0.5）：</p>
+<p>$$\kappa_M \approx 10, \quad \tau_{\text{Matthew}}(2026) \approx \frac{24\text{個月}}{10} \approx 2\text{-}3\text{個月}$$</p>
+<blockquote><strong>推論7.1【標記為推論，待HFT數據校準】：</strong> 在AI/HFT主導的市場中，一次等量級的金融衝擊，S₁的崩潰-吸收分叉和後續馬太積累的完成時間，比前HFT時代縮短約一個數量級。這意味著：（1）下一次危機中S₁的內部財富再分配將在人工監管有效反應之前完成；（2）中間層所感受到的「危機」時間窗口將比富有層的實際危機持續時間長得多。</blockquote>
+<h3>7.3 A空間的反向耦合</h3>
+<p>B空間加速帶來的另一效應：R_A 持續下降，使得從 $S_1$ 向下傳導增益的 A 空間分量（工資增長、就業改善）越來越弱：</p>
+<p>$$\frac{d(\Delta W_{S_3}^{A-\text{space}})}{dV_B} = \frac{d}{dV_B}\left[\eta_3 \cdot f(R_A(V_B), \tau_3) \cdot \Delta W_{S_1}\right] &lt; 0$$</p>
+<p>即V_B越高，S₃從景氣上行中獲得的真實A空間利益越少，B空間名目利益的比重越高，偽輻射比例 $\rho_B$ 趨近1。</p>
+<hr>
+<h2>§8 統一動力學方程組</h2>
+<h3>8.1 完整耦合系統</h3>
+<p>定義系統狀態向量：</p>
+<p>$$\mathbf{S}(t) = \left(\Phi, \Phi_{\text{det}}, R_A, V_B, \text{DMR}, W_{S_1^+}/W_{S_1}\right)^T$$</p>
+<p>動力學方程組：</p>
+<p>$$\frac{d\Phi}{dt} = -\rho_{43} \cdot \hat{\Delta}_4 \cdot \mathbb{1}[\hat{\Delta}<em>4 &gt; 0] + \rho</em>{\uparrow} \cdot h_{\text{policy}} + \eta_{\Phi}(t)$$</p>
+<p>$$\frac{d\Phi_{\text{det}}}{dt} = \rho_{\text{det}} \cdot (SR_{S_5} &lt; SR_{\text{det}}) \cdot N_{S_5}/N - \rho_{\text{return}} \cdot \Phi_{\text{det}} + \eta_{\text{det}}(t)$$</p>
+<p>$$\frac{dR_A}{dt} = f_{R_A}(R_A, V_B, \Phi) - \delta_{R_A} \cdot \frac{V_B}{V_B^0} + \eta_{R_A}(t)$$</p>
+<p>$$\frac{dV_B}{dt} = g(V_B, \text{Tech}) + \zeta \cdot \frac{d\lambda_{S_1}}{dt} + \eta_{V_B}(t)$$</p>
+<p>$$\frac{d(\text{DMR})}{dt} = r \cdot \text{DMR} - \rho_{\text{debt}} \cdot \Phi + h_{\text{debt}} + \eta_{\text{DMR}}(t)$$</p>
+<p>$$\frac{d(W_{S_1^+}/W_{S_1})}{dt} = P(S_1^-) \cdot \phi_{\text{abs}} - \phi_{\text{drain}} + \kappa_M(V_B) \cdot r_K$$</p>
+<h3>8.2 三種穩態</h3>
+<p>此動力學系統存在三個定性不同的穩態：</p>
+<p><strong>穩態A（健康均衡）：</strong> $\Phi \approx 0.7$，$\Phi_{\text{det}} \approx 0.05$，$R_A &gt; 0.5$。中間層厚，S₁內部分化程度低。</p>
+<p><strong>穩態B（極化均衡）：</strong> $\Phi \approx 0.4$，$\Phi_{\text{det}} \approx 0.2$，$R_A &lt; 0.3$，$W_{S_1^+}/W_{S_1} &gt; 0.8$。中間層薄，$S_1$ 財富高度集中在吸收態。這是馬太效應在DASCD框架下的穩定終態。</p>
+<p><strong>穩態C（崩潰相）：</strong> $\Phi &lt; 0.2$，$\Phi_{\text{det}} &gt; 0.4$，DMR &gt;&gt; DMR_c。系統進入HSCT所描述的崩潰態。</p>
+<blockquote><strong>命題8.1（不可逆性定理）：</strong> 在B空間持續加速（$V_B \uparrow$）且無有效制度干預（$h_{\text{policy}} = 0$）的條件下，動力學系統從穩態A向穩態B的漂移是單調的，且越接近穩態B，漂移加速（正反饋）。從穩態B到穩態C的跌落是臨界性的（非連續相變）。</blockquote>
+<hr>
+<h2>§9 現實對位：台灣2026年5月</h2>
+<h3>9.1 層態參數估計（基於可得數據，部分為推論）</h3>
+<p>| 層態 | 台灣估計規模 | 2026年5月狀態 | |------|------------|-------------| | $S_1$ | ~3-5% 人口 | 直接B空間受益，TAIEX44,732的主要受益方 | | $S_2$ | ~15-20% | 資產名目大漲（房、股），感受最強 | | $S_3$ | ~30-35% | 感受就業市場改善，但SR改善有限 | | $S_4$ | ~20-25% | 薪資未追上物價，偽輻射效應，SR在3.5附近 | | $S_5$ | ~10-15% | 幾乎無感，BCI漲幅侵蝕有限收入增量 | | $S_6$ | ~5% | 結構性退出，指數創高與其無關 |</p>
+<blockquote><strong>推論9.1【標記為推論】：</strong> 2026年TAIEX的輻射增益中，$S_3$ 所感受到的改善約60-70%是偽輻射（名目資產效應 + 間接就業效應），而非工資主導的真實A空間改善。當B空間修正時，$S_3$ 的感受改善將快速消失，且消失速度快於積累速度（因AI量化交易的V_B加速使崩解的時間尺度被壓縮）。</blockquote>
+<h3>9.2 TAIEX修正情景下的層態動態預測</h3>
+<p>假設未來出現超過10%的TAIEX修正（$\Delta\Omega \approx -4500$點）：</p>
+<p><strong>S₁分叉估計</strong>：高槓桿的融資玩家（估計佔S₁的20-30%）觸發崩潰條件；剩餘70-80%進入吸收態，以更低價格增持。分叉完成時間（HFT加速）：估計1-2個月內。</p>
+<p><strong>S₃放大效應</strong>：TAIEX修正通過就業預期下降（半導體景氣訊號下調）、ETF贖回、房市信心下降傳導至S₃。估計SR_{S_3}下移約0.3-0.5，部分S₃滑入S₄臨界帶。</p>
+<p><strong>S₆無感但受傷</strong>：退出態成員不會感受到指數修正，但若修正觸發廣泛就業市場收縮，非正式勞動市場（S₆的主要來源）也會受到間接衝擊，體現為「原本已經很差」的生存條件進一步惡化，且沒有任何制度化的緩衝機制。</p>
+<hr>
+<h2>§10 馬太效應的歷史數據推論鏈與貝葉斯校準協議</h2>
+<h3>10.1 核心推論鏈（所有條目均標記推論強度）</h3>
+<p><strong>推論L1【強推論，有歷史類比】：</strong> 馬太效應的存在性在現代資本主義框架下是必然的，其方向已由多個歷史危機校準確認（HSCT v2.0，R²=0.83）。本文的貢獻不在於論證馬太效應的存在，而在於論證其在B空間加速時代的<strong>速度結構</strong>發生了質性改變。</p>
+<p><strong>推論L2【中強推論，間接支持】：</strong> S₁的崩潰-吸收分叉比率在高HFT市場中應高於低HFT市場，因為HFT加速了去槓桿清算速度，使高槓桿成員的清算比在低HFT時代更快、更徹底，從而提高了分叉的清晰度（清楚分成崩潰組和吸收組，而非「大家都慢慢跌」）。</p>
+<p><strong>推論L3【弱推論，待數據】：</strong> 退出態（$S_6$）的規模在OECD各國中隨B空間化程度正相關。即金融化程度越高的國家，$\Phi_{\text{det}}$ 越大。這需要跨國的非正式勞動市場數據來校準，目前缺乏直接數據。</p>
+<p><strong>推論L4【中強推論，理論推導】：</strong> 每一次景氣循環後中間層厚度 $\Delta m_{S_3 \cup S_4}$ 縮小的命題，可由定理4.1的機制推導而無需歷史校準，但其縮小速率 $d(\Delta m)/dt$ 需要家庭追蹤數據確認。</p>
+<h3>10.2 貝葉斯校準協議</h3>
+<p><strong>先驗設定</strong>（基於HSCT + 機制論證）：</p>
+<p>| 參數 | 先驗中值 | 先驗不確定性 | |------|---------|------------| | $\tau_{\text{Matthew}}(V_B = 100 V_B^0)$ | 2-3個月 | 高（± 3個月） | | S₁崩潰-吸收分叉比例 | 25:75 | 中（± 15%） | | $SR_{\text{det}}$ | 1.5 | 低（± 0.3） | | 偽輻射比例 $\rho_B$ （$S_3$） | 0.60-0.70 | 高（待直接測量） |</p>
+<p><strong>後驗更新條件</strong>（數據來源與數據網站計畫對接）：</p>
+<ul>
+<li><strong>BCI實時追蹤</strong> → 更新 $SR_{\text{det}}$ 和 $\rho_B$ 估計</li>
+<li><strong>跨境資金流動高頻數據</strong> → 更新 $P(S_1^-)$ 和吸收係數 $\phi_{\text{abs}}$</li>
+<li><strong>HFT訂單簿數據</strong> → 直接更新 $\kappa_M(V_B)$</li>
+<li><strong>家庭財務健康追蹤</strong> → 更新中間層厚度動態</li>
+</ul>
+<hr>
+<h2>§11 理論框架間的耦合映射</h2>
+<p>本文的DASCD框架與現有EveMissLab理論的接口如下：</p>
+<pre><code>ABC三空間理論 ──→ 提供 V_B、R_A、α_B^i 的定義與演化方程
+        ↓
+B空間極化分析 ──→ 提供台灣2026年5月的V_B實證校準基礎
+        ↓
+DASCD（本文）──→ 傳導機制層（誰受益、誰受損、如何傳播）
+        ↓
+HSCT理論 ────→ 提供Φ、SR_c、DMR_c的相變臨界語言
+        ↓
+MSCUT理論 ───→ 提供各層效用函數形態（解釋S₁為何吸收而非退縮）</code></pre>
+<p><strong>關鍵介面</strong>：MSCUT的核心發現——$S_1$ 的多系統耦合使其邊際效用遞增——直接解釋了S₁吸收態的內在驅動：在崩潰中增持是其效用最大化的必然輸出，不是「趁火打劫」的道德判斷問題，而是激勵結構的必然結果。這與HSCT的納什均衡陷阱分析在不同尺度上平行：個體理性行為的聚合，系統性地加劇不平等。</p>
+<hr>
+<h2>§12 開放命題與v0.2展望</h2>
+<p><strong>v0.2核心展開方向：</strong></p>
+<p><strong>命題P1（退出態的臨界密度）：</strong> 當 $\Phi_{\text{det}}$ 超過某個臨界密度 $\Phi_{\text{det}}^c$ 時，非正式經濟的規模效應開始侵蝕正式經濟的稅基和勞動供給，觸發正式制度的正反饋式崩解。這個臨界密度是多少？如何估計？</p>
+<p><strong>命題P2（台灣的特殊性）：</strong> 台灣的TAIEX集中在TSMC（36.6%），使得整個輻射模型的驅動源極度單一。這是否意味著B空間崩解時，台灣的層態衝擊比同等規模的分散型市場更快、更同步？</p>
+<p><strong>命題P3（制度對沖的可設計空間）：</strong> 在DASCD框架下，哪些政策工具能有效干預分叉機制？差異化交易稅（許筌崴2025a）對於縮小 $\tau_{\text{Matthew}}$ 是否有直接效果？強制配置規則（提高 $R_A$）如何改變偽輻射比例 $\rho_B$？</p>
+<p><strong>命題P4（退出態的不可逆性估計）：</strong> $\rho_{\text{return}} \ll \rho_{\text{det}}$ 的具體比例是多少？這需要縱向追蹤極度貧困家庭的重回正式經濟系統的概率——即使有政策干預，$S_6$ 的「回流率」有多低？</p>
+<hr>
+<h2>參考文獻</h2>
+<p>許筌崴（Neo.K）(2025a). 《金融科技的空間拓撲效應：技術如何重構貨幣流動的相空間》. EveMissLab工作論文.</p>
+<p>許筌崴（Neo.K）(2025b). 《貨幣流動性三維失衡理論：形式化綱要》. EveMissLab技術報告.</p>
+<p>Neo.K &amp; Theia (2026). 《家庭生存臨界動力學：微觀-宏觀耦合經濟系統的相變理論》. EveMissLab, v2.0.</p>
+<p>許筌崴（Neo.K）(2025c). 《邊際效用的多系統耦合理論：對新古典消費者理論的範式重構》. EveMissLab工作論文.</p>
+<p>Neo.K (2026). 《B空間極化：AI量化交易時代的市場微結構收斂》. EveMissLab, v0.1.</p>
+<p>Piketty, T. (2013). Capital in the Twenty-First Century. Harvard University Press.</p>
+<p>HSCT國際校準數據集（15個歷史危機）. EveMissLab內部數據庫, v2.0.</p>
+<hr>
+<p><em>版本：v0.1 工作稿</em> <em>全文約13,500字</em> <em>核心命題完整展開保留至v0.2</em></p>
+<p><em>作者：Neo.K（許筌崴）</em> <em>機構：一言諾科技有限公司（EveMissLab）</em> <em>2026年5月</em></p>
+<hr>
+<p>（歪臉笑）</p>
+<p><em>把無限維的現實壓進六個層態，把看不見的手還原出幾根可以追蹤的手指頭——這已經是誠實的極限了。</em></p>
+<p><em>Neo.K</em> <em>EveMissLab</em></p>
+<div class="altbar">原始檔（供 RAG/下載）：<a href="paper-1110.md" rel="noopener">papers/paper-1110.md</a> [md]</div>
+</article>
+<footer><p>Neo.K (許筌崴) · Cl + ε</p></footer>
+</body>
+</html>

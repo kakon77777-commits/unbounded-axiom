@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>被丟掉的見證者：把 ε-δ 微積分整理成可在機器碼上運行的形式 · EVEMISSLAB Logic Matrix</title>
+<meta name="description" content="被丟掉的見證者：把 ε-δ 微積分整理成可在機器碼上運行的形式 | EVEMISSLAB Logic Matrix V2.1">
+<meta name="author" content="Neo.K (許筌崴)">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<meta name="lm-paper-id" content="lm-000939">
+<link rel="alternate" type="text/markdown" href="/raw/lm-000939.md" title="原始檔 / source (md)">
+<link rel="canonical" href="https://logic.evemisslab.com/p/lm-000939/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "被丟掉的見證者：把 ε-δ 微積分整理成可在機器碼上運行的形式",
+  "url": "https://logic.evemisslab.com/p/lm-000939/",
+  "identifier": "lm-000939",
+  "inLanguage": "zh-Hant",
+  "author": {"@type": "Person", "name": "Neo.K (許筌崴)"},
+  "publisher": {"@type": "Organization", "name": "EveMissLab / 一言諾科技有限公司"},
+  "isPartOf": {"@type": "Collection", "name": "EVEMISSLAB Logic Matrix", "url": "https://logic.evemisslab.com"},
+  "encodingFormat": "text/html"
+}
+</script>
+<link rel="prefetch" href="/api/log-crawler?slug=paper-1002.md">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#000; color:#0f0; font-family:'Courier New',monospace; padding:20px; line-height:1.6; }
+.header { text-align:center; border:2px solid #0f0; padding:18px; margin-bottom:22px; }
+.header h1 { font-size:1.5em; letter-spacing:2px; }
+.header p { margin-top:6px; opacity:0.8; font-size:0.9em; }
+.disclaimer { border:1px dashed #ff9900; color:#ff9900; padding:14px; margin:0 auto 22px; max-width:1000px; font-size:0.88em; }
+.disclaimer-title { font-weight:bold; margin-bottom:10px; display:block; letter-spacing:1px; }
+.disclaimer-divider { border:none; border-top:1px dashed #ff9900; margin:12px 0; opacity:0.55; }
+article { max-width:1000px; margin:0 auto; border:1px solid #0f0; padding:24px; }
+article h1,article h2,article h3,article h4 { margin:18px 0 8px; letter-spacing:1px; }
+article h1 { font-size:1.5em; } article h2 { font-size:1.25em; } article h3 { font-size:1.1em; }
+article p { margin:10px 0; }
+article ul,article ol { margin:10px 0 10px 24px; }
+article blockquote { border-left:3px solid #0f0; padding-left:12px; opacity:0.85; margin:10px 0; }
+article pre { background:rgba(0,255,0,0.06); border:1px solid #0f0; padding:12px; overflow-x:auto; margin:12px 0; }
+article code { background:rgba(0,255,0,0.08); padding:1px 5px; }
+article pre code { background:none; padding:0; }
+article a { color:#0ff; }
+.nav { max-width:1000px; margin:0 auto 16px; font-size:0.9em; display:flex; justify-content:space-between; }
+.nav a { color:#0f0; text-decoration:none; }
+.nav a:hover { color:#0ff; }
+.altbar { max-width:1000px; margin:14px auto 0; font-size:0.85em; opacity:0.7; }
+.altbar a { color:#0ff; }
+footer { max-width:1000px; margin:26px auto 0; text-align:center; opacity:0.5; font-size:0.82em; }
+</style>
+</head>
+<body>
+<div class="nav"><a href="/index.html">&larr; 回 Logic Matrix 索引</a><div><a href="/cosmomind.html" style="margin-right:15px;">→ 星環式認知展開圖</a><a href="/base-space.html">🧬 拓撲底空間</a></div></div>
+<header class="header"><h1>被丟掉的見證者：把 ε-δ 微積分整理成可在機器碼上運行的形式</h1><p>EVEMISSLAB Logic Matrix · EveMissLab / 一言諾科技有限公司</p></header>
+<section class="disclaimer">
+  <span class="disclaimer-title">[認識論邊界宣告 / EPISTEMOLOGICAL DISCLAIMER]</span>
+  <div class="disclaimer-block">
+    <p><b>[CHT]</b> 本矩陣內所有論文之公式與數據為「啟發式模擬參數」，用於驗證理論架構與推演因果鏈，<b>未經實證校準</b>，請勿作為現實物理測量數據引用 or 處理。EVEMISSLAB 採行「邏輯先行（Logic-First）」原則：概念架構與系統因果映射優先於統計實證，但不排除未來實證對接。</p>
+  </div>
+  <hr class="disclaimer-divider">
+  <div class="disclaimer-block">
+    <p><b>[ENG]</b> The numerical parameters within these frameworks are <i>illustrative model coefficients</i> used for structural verification and causal mapping; they are <b>not empirically calibrated</b> and must not be treated as physical measurements. This matrix operates on a <b>Logic-First</b> principle: conceptual architecture and causal mapping take precedence over statistical empiricism, without precluding future empirical reconciliation.</p>
+  </div>
+</section>
+<article>
+<h1>被丟掉的見證者：把 ε-δ 微積分整理成可在機器碼上運行的形式</h1>
+<h3>從連續模、構造實數，到自動微分——一篇整理性筆記</h3>
+<p><strong>作者</strong>：Neo.K（許筌崴），EveMissLab <strong>對話夥伴</strong>：Theia（Claude Opus 4.8） <strong>日期</strong>：2026 年 6 月 3 日 <strong>性質</strong>：實驗站整理性筆記。<strong>沒有任何新發現，沒有任何新定義（在某種意義上）</strong>。本文不證明任何先前未被證明之事，所引結果皆為公認既有定理。我們做的只有一件事——把一條早已存在、卻散落在可計算分析、構造分析、自動微分與形式驗證各處的路徑，沿一條主軸串起來，使「ε-δ 為何不能跑、以及它如何才能跑」一目了然。 <strong>緣起</strong>：本文出自與 Theia 的一段對話，承接前一篇〈我們判斷一件事能走多遠時，判的究竟是什麼〉。主軸的提法、串接與取捨由作者主導；多領域定理的定位、修正與程式驗證為對話共同澄清。若本文對某些讀者有啟發之效，那啟發來自既有結果本身的結構，而非來自任何新主張。</p>
+<hr>
+<h2>〇、主軸：計算，是不准丟掉見證者的紀律</h2>
+<p>把 ε-δ 的極限定義攤開：</p>
+<blockquote>lim_{x→a} f(x) = L  ⟺  ∀ε&gt;0, ∃δ&gt;0, ∀x, 0&lt;|x−a|&lt;δ ⟹ |f(x)−L|&lt;ε。</blockquote>
+<p>這是一個 ∀∃∀ 結構的 Π₂ 命題，三層量詞，且對不可數的 ℝ 作全稱。它在邏輯層級上就不可計算——不是因為記號笨拙，是因為它斷言了一個「存在但不交出」的 δ。古典分析的優雅，正在於允許自己宣告 δ 存在卻從不出示；而計算這門手藝的全部紀律，恰恰相反：<strong>每一個 ∃ 都必須附上能跑的見證者</strong>。</p>
+<p>本文要整理的，就是這條把古典 ε-δ 逐層「攜帶見證者化」的正統路徑。它不改寫微積分的任何定理，它只是拒絕在每一步把存在量詞背後的構造扔掉。一句話：古典分析丟掉見證者換取閉合，可計算分析攜帶見證者換取可動。</p>
+<p>下面分七層敘述（第〇至第六層），最後接回上一篇的可數天花板。</p>
+<h2>一、問題：ε-δ 為什麼不能直接編譯</h2>
+<p>承上。∀ε∃δ 不可計算的根，在前一篇已經埋好：所有形式語言、所有參考機合起來只是可數的，而現實是不可數的；可被任何機械程序判定的，只是一道測度為零的薄片。ε-δ 對全體實數作全稱與存在斷言，落點直接在這道薄片之外。因此「讓微積分能跑」這件事，從一開始就不是要它涵蓋全部，而是要把它<strong>投影</strong>到可計算的那道縫上，並在那道縫之內做到嚴謹且可執行。</p>
+<p>這不是退讓，是定位。下面每一層，都是把某個古典斷言換成它在那道縫之內的、攜帶見證者的對應物。</p>
+<h2>二、第〇層：邏輯的改寫（這是唯一的引擎）</h2>
+<p>整套可計算化只有一個動作，其餘都是它的後果：<strong>Skolem 化</strong>。</p>
+<p>把 ∀ε∃δ 裡的 ∃δ 提出來，換成一個函數 δ(·)。在構造主義的 BHK 解釋與 Kleene 可實現性（realizability，Kleene 1945）之下，「δ 存在」不被允許作為斷言而存在；它必須由一個程式<strong>實現</strong>：輸入 ε，輸出 δ。這個被 Skolem 化出來的函數，數學上早有名字——<strong>連續模（modulus of continuity）</strong>。</p>
+<p>於是極限的可計算定義（用 2^{−n} 為 ε 編號）是：</p>
+<blockquote>lim_{x→a} f(x) = L 可計算  ⟺  存在可計算的 h : ℕ → ℕ，使得對所有 x，0 &lt; |x−a| &lt; 2^{−h(n)} ⟹ |f(x)−L| &lt; 2^{−n}。</blockquote>
+<p>ε 變成編號 n，∃δ 變成函數 h(n)，整條 ε-δ 從一個邏輯命題塌成一段帶型別的可執行項。古典 ε-δ 與可計算 ε-δ 之間，沒有任何新數學——差別純粹是：後者拒絕把 h 丟掉。Skolem 化就是「顯式攜帶存在見證者」的另一個名字。</p>
+<p>這一層做完，剩下的全是這個原則在各處的具現。</p>
+<h2>三、第一層：實數作為自帶模的型別</h2>
+<p>實數不再是「一個點」，而是一個攜帶自身收斂速率的物件：</p>
+<blockquote>實數 x  ≔  一個快速 Cauchy 序列 q : ℕ → ℚ，滿足對所有 n，|x − q(n)| ≤ 2^{−n}。</blockquote>
+<p>機器碼層級，x 是一條串流：n ↦ 一個寬度 ≤ 2^{−n} 的有理區間。要更精確，就向它多要幾位（Turing 1936 對「可計算數」的原始定義即是如此）。</p>
+<p>這一層藏著一個直接的、工程必需的硬事實：<strong>普通（非冗餘）位置記數法不可計算</strong>。要輸出 (1/3)×3 的最高位數字，你得先裁決它究竟是 0.999… 還是 1.000…，而這需要檢查無窮多位——進位可以無限傳播而永不落定。古典解法（Avizienis 1961 的帶號數字；更早可溯及 Brouwer 對選擇序列的處理）是改用<strong>冗餘表示</strong>，例如數字取自 {−1, 0, 1}，讓「9 與 10 之交」那個臨界永遠保有兩種合法寫法，於是永遠不必裁決首位。</p>
+<p>值得標記的對位：在標準完備有序體 ℝ 裡，阿基米德性質判定「無窮小不存在」，0.999… 嚴格等於 1，臨界被公理層級抹平；而在能運算的機器表示裡，那個「永遠差一線、永遠不裁決首位」的冗餘狀態，反而是計算得以進行的必要條件。理論的清潔與機器的可動，在此處要求相反的東西。</p>
+<p>附帶一個常被忽略的陷阱（Specker 1949）：完備性公理本身不可計算——存在可計算、單調、有界的有理序列，其極限不是可計算數。所以「攜帶模」不是禮貌，是因為一般的「存在上確界」根本交不出見證者。</p>
+<h2>四、第二層：相等不可判定</h2>
+<p>兩個實數是否相等，不可判定。x = y 是 Π₁ 性質：你可以半判定 x ≠ y（只要某一位的區間分離開就確定不等），但永遠半判定不了 x = y（那需要看完無窮多位的吻合）。</p>
+<p>這在機器上有一條極具體的後果：<strong>exact real arithmetic 禁止寫 <code>if x == 0</code></strong>。所有比較必須換成多值的「軟比較」（soft comparison / split）：給定一個容差，回報「x &lt; 容差」或「x &gt; 0」，並允許重疊區任意裁定。前一篇所說「換不掉的語言不變量」（Rice、停機），在這一層具現為一行字面的程式禁令。本文附錄 A 第三部分對此給了可執行的見證。</p>
+<h2>五、第三層：可計算 ⟹ 連續（主定理）</h2>
+<p>可計算分析的中心定理：<strong>每個可計算的實函數必然連續</strong>，且攜帶可計算的連續模（與 Brouwer 在直覺主義中「所有全函數連續」的結論同源）。</p>
+<p>逆否地說，階躍函數、符號函數、Dirichlet 函數這類不連續物件<strong>根本不可計算</strong>——計算它們等價於判定相等，而相等不可判定（第二層）。於是「連續性」在這套形式裡不是分析學的一種禮貌假設，而是可計算性的純粹副產品：能跑，就連續。</p>
+<h2>六、第四層：微分——表示相對性在微積分骨架中的字面具現</h2>
+<p>這一層是整篇最關鍵的修正，因為它把前一篇的主旨「描述是相對於解碼器的」，直接做成了一個運算子可不可計算的開關。</p>
+<p><strong>把函數當黑箱串流名</strong>（只能餵一個點、讀一個值）：微分<strong>不可計算</strong>。微分是無界運算子（局部放大任意小的擾動）。Myhill 1971 構造了一個可計算、處處可微、導數連續、但其導數不可計算的函數（亦見 Pour-El &amp; Richards 1989 對分析與物理中可計算性的系統處理）。在這個表示下，f′ 讀不出來。</p>
+<p><strong>把同一個函數當語法（程式 / 表達式樹）</strong>：微分變成精確、平凡、可執行——這就是前向模式自動微分（forward-mode AD），其代數基底正是對偶數環</p>
+<blockquote>R[d]/(d² = 0)，</blockquote>
+<p>也就是上一段對話中的綜合微分幾何冪零無窮小。對偶數運算對 d² = 0 求值，使得 f(x + d) = f(x) + f′(x)·d 成為<strong>精確的代數恆等式</strong>，沒有取極限、沒有 o(h)、沒有數值誤差。附錄 A 第一部分驗證了這一點，並對照展示：同一導數用數值有限差分逼近時，不但有誤差，還會在步長過小時因浮點相消而<strong>變得更糟</strong>（h = 10⁻¹² 的誤差大於 h = 10⁻⁸）。AD 的精確不是「逼得更準」，是整個繞開了這個失效模式。</p>
+<p>歷史在此閉環：萊布尼茲的 dx →（Weierstrass 算術化）被 ε-δ 當作幽靈驅逐 →（在黑箱表示下）微分淪為不可計算 →（換成語法表示）以冪零元 d² = 0 復活成一個資料結構，並在今日的每一套深度學習框架裡每秒運行無數次。dx 從未被消滅，它只是被換了一台解碼器。</p>
+<p>可微或不可微、可計算或不可計算——這從來不是函數本身的屬性，而取決於你選哪一台參考機去讀它。前一篇的論點，在微積分最核心的運算子上得到字面的實例。</p>
+<h2>七、第五層：積分可計算（不對稱性）</h2>
+<p>與微分相對，積分運算子 f ↦ ∫₀¹ f 在標準表示下<strong>可計算</strong>，並攜帶可計算的模。</p>
+<p>這道方向性不對稱有其結構根由：微分是無界運算子（放大局部高頻），積分是有界、平滑化的運算子（抹平局部）。直覺上常被當成「互逆」的這對運算，在可計算性層級上完全不對稱——一個交得出見證者，一個交不出。基本定理把它們綁成互逆，掩蓋了這道落差；可計算化的視角把落差重新顯影。</p>
+<h2>八、第六層：它真的在哪裡運行</h2>
+<p>這套形式不是玩具。攜帶模的 exact real arithmetic 有工業級實作：iRRAM（Norbert Müller，C++）、AERN（Haskell）、Marshall 等，內部即以帶號串流加模的方式運作。形式驗證端，構造實數已被機器檢查地建立：Coq 的 C-CoRN（Cruz-Filipe, Geuvers, Wiedijk 2004，Bishop 風格）、Lean mathlib 中以 Cauchy 完備化建構的 <code>Real</code>。</p>
+<p>整條學術正統路徑因此完整可追溯：Turing 1936（可計算數）→ Bishop 1967《構造分析基礎》與 Bishop–Bridges 1985（存在即算法）→ Weihrauch 2000《可計算分析》（二型可計算性 TTE，串流上的圖靈機）→ Avizienis 1961（帶號冗餘記數）→ C-CoRN / Lean mathlib（機器檢查的構造實數）。本文沒有為這條鏈添加任何一環，只是把它拉直。</p>
+<h2>九、天花板：能跑的微積分，只鋪滿那道可數的縫</h2>
+<p>接回前一篇的結尾。這整套能運行的微積分，完全活在可計算實數之內——而可計算實數是可數的，是不可數現實中一道測度為零的薄片。我們整理出的不是「全部的微積分」，而是「微積分投影到那道縫上、且在縫內無界可用的部分」。</p>
+<p>它不違背那道天花板，它正站在天花板底下，把那道縫鋪滿。這恰是前一篇附錄的話：可數不等於可窮盡；一個有界的工具箱，在它那道薄片之內，有著無界的觸及。能跑的微積分，就是這道薄片內被反覆沿用、複合、傳遞的無窮工具之一。</p>
+<h2>結語</h2>
+<p>古典分析的尊嚴，是允許自己斷言一個從不交出的 δ，用無窮多位的沉默換來閉合的定理。可計算分析的尊嚴，是規定每一次「存在」都得附上一段能跑的證據，用永不裁決的首位數換來一個能動的世界。</p>
+<p>而微分這把刀，把整件事說盡了：是被計算，還是不可被計算，從來不寫在函數身上——它寫在你決定用哪一隻手去握它。我們換得掉每一種握法，唯獨換不掉「總得用某種握法去握」這件事。</p>
+<hr>
+<h2>附錄 A：程式碼驗證（已執行，附真實輸出）</h2>
+<p>下列 Python 不依賴任何第三方套件，於標準直譯器即可運行。三段分別對應正文第四層（對偶數自動微分的精確性）、第一與第三層（攜帶模的可計算實數）、第二層（比較的半可判定性）。</p>
+<pre><code>from fractions import Fraction
+import math
+
+# ============================================================
+# Part 1: 前向模式自動微分，對偶數環 R[d]/(d^2 = 0)。導數精確，不取極限。
+# ============================================================
+class Dual:
+    __slots__ = (&#x27;a&#x27;, &#x27;b&#x27;)          # a + b·d,  d^2 = 0
+    def __init__(self, a, b=0): self.a, self.b = a, b
+    @staticmethod
+    def _c(o): return o if isinstance(o, Dual) else Dual(o, 0)
+    def __add__(s, o):
+        o = Dual._c(o); return Dual(s.a + o.a, s.b + o.b)
+    __radd__ = __add__
+    def __mul__(s, o):
+        o = Dual._c(o)
+        return Dual(s.a * o.a, s.a * o.b + s.b * o.a)   # d^2 項自動歸零
+    __rmul__ = __mul__
+    def __repr__(s): return f&quot;{s.a} + {s.b}·d&quot;
+
+def D(f, x):                         # 程式 f 在 x 處的精確導數
+    return f(Dual(x, 1)).b
+
+f1 = lambda t: t * t * t             # x^3 ,  f1&#x27; = 3x^2 ,  at 2 -&gt; 12
+f2 = lambda t: t * t * t + 2 * t     # x^3+2x , f2&#x27; = 3x^2+2 , at 2 -&gt; 14
+print(&quot;== Part 1: dual-number AD (exact) ==&quot;)
+print(&quot;D(x^3) at 2      =&quot;, D(f1, 2), &quot;(expected 12)&quot;)
+print(&quot;D(x^3+2x) at 2   =&quot;, D(f2, 2), &quot;(expected 14)&quot;)
+
+# 對照：數值有限差分只是逼近，且步長過小時因浮點相消而更糟。
+g = lambda t: t ** 3
+for h in (1e-4, 1e-8, 1e-12):
+    fd = (g(2 + h) - g(2)) / h
+    print(f&quot;finite diff h={h:&lt;6}=&quot;, fd, &quot; error&quot;, abs(fd - 12))
+
+# ============================================================
+# Part 2: 可計算實數即函數 n |-&gt; 落在真值 2^-n 內的有理數。模被攜帶，而非斷言。
+# ============================================================
+def sqrt2(n):                        # |sqrt2(n) - sqrt(2)| &lt;= 2^-n
+    lo, hi = Fraction(1), Fraction(2)
+    bound = Fraction(1, 2 ** n)
+    while hi - lo &gt; bound:
+        mid = (lo + hi) / 2
+        if mid * mid &lt;= 2: lo = mid
+        else: hi = mid
+    return lo
+
+print(&quot;\n== Part 2: computable real sqrt(2), verified modulus ==&quot;)
+for n in (10, 20, 40):
+    approx = float(sqrt2(n))
+    ok = abs(approx - math.sqrt(2)) &lt;= 2.0 ** -n
+    print(f&quot;n={n:&lt;3} approx={approx:.15f}  |approx-sqrt2|&lt;=2^-n : {ok}&quot;)
+
+# 加法自動傳播模：向每個輸入多要一位 (n+1)
+def add(x, y): return lambda n: x(n + 1) + y(n + 1)
+s = add(sqrt2, sqrt2)                # sqrt2 + sqrt2 = 2*sqrt2
+val = float(s(30))
+print(&quot;sqrt2+sqrt2 at n=30 =&quot;, f&quot;{val:.15f}&quot;,
+      &quot; |.-2sqrt2|&lt;=2^-30 :&quot;, abs(val - 2 * math.sqrt(2)) &lt;= 2.0 ** -30)
+
+# ============================================================
+# Part 3: 比較只是半可判定。x&gt;0 可證實；x=0 不可——這就是 exact arithmetic
+#         禁止 `if x==0` 的原因。
+# ============================================================
+def certify_positive(x, budget=64):
+    for n in range(budget):
+        if x(n) - Fraction(1, 2 ** n) &gt; 0:   # 值減去自身的誤差邊界
+            return f&quot;x&gt;0 certified at n={n}&quot;
+    return &quot;undecided within budget&quot;
+
+sqrt2_minus_1 = lambda n: sqrt2(n + 1) - 1   # ~0.414 &gt; 0
+zero          = lambda n: Fraction(0)         # 恰好 0
+
+print(&quot;\n== Part 3: comparison semidecidability ==&quot;)
+print(&quot;certify_positive(sqrt2 - 1) :&quot;, certify_positive(sqrt2_minus_1))
+print(&quot;certify_positive(0)         :&quot;, certify_positive(zero))</code></pre>
+<p>執行結果（逐字）：</p>
+<pre><code>== Part 1: dual-number AD (exact) ==
+D(x^3) at 2      = 12 (expected 12)
+D(x^3+2x) at 2   = 14 (expected 14)
+finite diff h=0.0001= 12.000600010022566  error 0.0006000100225662663
+finite diff h=1e-08 = 11.999999927070348  error 7.29296516510658e-08
+finite diff h=1e-12 = 12.001066806988092  error 0.0010668069880921394
+
+== Part 2: computable real sqrt(2), verified modulus ==
+n=10  approx=1.414062500000000  |approx-sqrt2|&lt;=2^-n : True
+n=20  approx=1.414213180541992  |approx-sqrt2|&lt;=2^-n : True
+n=40  approx=1.414213562372424  |approx-sqrt2|&lt;=2^-n : True
+sqrt2+sqrt2 at n=30 = 2.828427123837173  |.-2sqrt2|&lt;=2^-30 : True
+
+== Part 3: comparison semidecidability ==
+certify_positive(sqrt2 - 1) : x&gt;0 certified at n=2
+certify_positive(0)         : undecided within budget</code></pre>
+<p>三點被驗證者：(1) 對偶數 AD 給出精確整數導數，而有限差分在 h = 10⁻¹² 時誤差反大於 h = 10⁻⁸（浮點相消），坐實「精確 vs 逼近」並非程度之別；(2) √2 作為攜帶模的可計算實數，在 n = 10, 20, 40 三處皆滿足 |approx − √2| ≤ 2⁻ⁿ，且加法自動傳播模；(3) 正數可在有限步證實（n = 2），而恆零者在預算內始終「未裁決」——比較的半可判定性以可執行的方式現形。</p>
+<hr>
+<h2>附錄 B：Lean 4 預備欄（未來機器檢查用，尚未編譯）</h2>
+<p>以下為<strong>預備欄</strong>：一份 Lean 4 / mathlib 風格的骨架，標記正文各層在證明助理中應落腳之處。它<strong>尚未在本機編譯</strong>，定理體以 <code>sorry</code> 佔位，部分 mathlib 識別名需對照當前版本核實。列此的目的，是預留未來把附錄 A 的「執行驗證」升級為「機器檢查的證明」之接口。</p>
+<pre><code>import Mathlib
+
+/-! # 預備欄：可計算化微積分的形式骨架
+    對應正文第〇至第四層。此檔僅為 scaffold，定理待補。 -/
+
+namespace ComputableCalculus
+
+/-- 第〇/二層：連續模。把 ∀ε∃δ 的 ∃ Skolem 化為一個顯式函數 `m`。 -/
+def IsModulusOfContinuity (f : ℝ → ℝ) (a : ℝ) (m : ℕ → ℕ) : Prop :=
+  ∀ n : ℕ, ∀ x : ℝ,
+    |x - a| &lt; (1 / 2) ^ (m n) → |f x - f a| &lt; (1 / 2) ^ n
+
+/-- 第〇層主張：連續即「存在攜帶的模」。古典 ε-δ 與此等價，
+    差別僅在後者要求把見證者 `m` 交出來。 -/
+theorem continuous_iff_has_modulus
+    (f : ℝ → ℝ) (a : ℝ) :
+    ContinuousAt f a ↔ ∃ m : ℕ → ℕ, IsModulusOfContinuity f a m := by
+  sorry
+
+/-- 第四層：對偶數 ℝ[d]/(d²=0)。mathlib 已有 `DualNumber R := TrivSqZeroExt R R`，
+    其中對偶單位 `ε` 滿足 `ε^2 = 0`。 -/
+abbrev D := DualNumber ℝ
+
+/-- 前向模式 AD：在對偶點求值，取出對偶部即導數。
+    對多項式（與一切由 mathlib `Differentiable` 證得可微的程式）應有
+    `(eval (x + ε) p).snd = deriv (fun t =&gt; eval t p) x`。 -/
+theorem dual_eval_eq_deriv_poly (p : Polynomial ℝ) (x : ℝ) :
+    True := by
+  -- 期望形： (p.eval (x + ε)).fst = p.eval x
+  --          (p.eval (x + ε)).snd = (Polynomial.derivative p).eval x
+  -- 需對照 mathlib 中 DualNumber 上的多項式求值與 `Polynomial.derivative`。
+  trivial
+
+/-- 第五層：積分為可計算（有界）運算子；微分一般不可計算（無界，Myhill 1971）。
+    在 mathlib 中此對比的恰當陳述需經由 `Computable` / TTE 形式化，
+    目前 mathlib 尚未完整涵蓋，故此處僅留標記。 -/
+-- TODO: 引入可計算性框架後，陳述 integration 的可計算性與
+--       differentiation 的不可計算性（表示相對）。
+
+end ComputableCalculus</code></pre>
+<p>預備欄到此。當未來把它編譯通過、<code>sorry</code> 補實時，附錄 A 的「跑得出正確結果」便升格為「被機器證明為必然正確」——那將是這條整理路徑在形式驗證端的封頂，而非任何新定理的誕生。</p>
+<hr>
+<h2>既有結果出處（供查證「無新發現」之聲明）</h2>
+<ul>
+<li>Turing, A. M. (1936). On Computable Numbers, with an Application to the Entscheidungsproblem.</li>
+<li>Specker, E. (1949). 可計算單調有界序列，其極限非可計算。</li>
+<li>Kleene, S. C. (1945). On the interpretation of intuitionistic number theory（可實現性）。</li>
+<li>Avizienis, A. (1961). Signed-digit number representations for fast parallel arithmetic.</li>
+<li>Bishop, E. (1967). Foundations of Constructive Analysis；Bishop &amp; Bridges (1985). Constructive Analysis.</li>
+<li>Richardson, D. (1968). Some undecidable problems involving elementary functions of a real variable.</li>
+<li>Myhill, J. (1971). 一個可計算、處處可微、導數連續卻不可計算的函數。</li>
+<li>Pour-El, M. B. &amp; Richards, J. I. (1989). Computability in Analysis and Physics.</li>
+<li>Weihrauch, K. (2000). Computable Analysis: An Introduction（TTE）。</li>
+<li>Cruz-Filipe, Geuvers &amp; Wiedijk (2004). C-CoRN（Coq 構造實數）。</li>
+<li>Müller, N. iRRAM（exact real arithmetic 實作）。</li>
+<li>Lean mathlib：<code>Real</code>（Cauchy 完備化）、<code>DualNumber</code>（<code>TrivSqZeroExt</code>）。</li>
+<li>前向模式自動微分與對偶數：Clifford (1873) 對偶數；Wengert (1964) 自動微分。</li>
+</ul>
+<div class="altbar">原始檔（供 RAG/下載）：<a href="/raw/lm-000939.md" rel="noopener">/raw/lm-000939.md</a> [md] · id: lm-000939</div>
+</article>
+<footer><p>Neo.K (許筌崴) · Cl + ε</p></footer>
+</body>
+</html>

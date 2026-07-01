@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>符號使用的雙重機制 · EVEMISSLAB Logic Matrix</title>
+<meta name="description" content="符號使用的雙重機制 | EVEMISSLAB Logic Matrix V2.1">
+<meta name="author" content="Neo.K (許筌崴)">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="paper-947.md" title="原始檔 / source (md)">
+<link rel="canonical" href="https://logic.evemisslab.com/papers/paper-947.md.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "符號使用的雙重機制",
+  "url": "https://logic.evemisslab.com/papers/paper-947.md.html",
+  "inLanguage": "zh-Hant",
+  "author": {"@type": "Person", "name": "Neo.K (許筌崴)"},
+  "publisher": {"@type": "Organization", "name": "EveMissLab / 一言諾科技有限公司"},
+  "isPartOf": {"@type": "Collection", "name": "EVEMISSLAB Logic Matrix", "url": "https://logic.evemisslab.com"},
+  "encodingFormat": "text/html"
+}
+</script>
+<link rel="prefetch" href="/api/log-crawler?slug=paper-947.md">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#000; color:#0f0; font-family:'Courier New',monospace; padding:20px; line-height:1.6; }
+.header { text-align:center; border:2px solid #0f0; padding:18px; margin-bottom:22px; }
+.header h1 { font-size:1.5em; letter-spacing:2px; }
+.header p { margin-top:6px; opacity:0.8; font-size:0.9em; }
+.disclaimer { border:1px dashed #ff9900; color:#ff9900; padding:14px; margin:0 auto 22px; max-width:1000px; font-size:0.88em; }
+.disclaimer-title { font-weight:bold; margin-bottom:10px; display:block; letter-spacing:1px; }
+.disclaimer-divider { border:none; border-top:1px dashed #ff9900; margin:12px 0; opacity:0.55; }
+article { max-width:1000px; margin:0 auto; border:1px solid #0f0; padding:24px; }
+article h1,article h2,article h3,article h4 { margin:18px 0 8px; letter-spacing:1px; }
+article h1 { font-size:1.5em; } article h2 { font-size:1.25em; } article h3 { font-size:1.1em; }
+article p { margin:10px 0; }
+article ul,article ol { margin:10px 0 10px 24px; }
+article blockquote { border-left:3px solid #0f0; padding-left:12px; opacity:0.85; margin:10px 0; }
+article pre { background:rgba(0,255,0,0.06); border:1px solid #0f0; padding:12px; overflow-x:auto; margin:12px 0; }
+article code { background:rgba(0,255,0,0.08); padding:1px 5px; }
+article pre code { background:none; padding:0; }
+article a { color:#0ff; }
+.nav { max-width:1000px; margin:0 auto 16px; font-size:0.9em; display:flex; justify-content:space-between; }
+.nav a { color:#0f0; text-decoration:none; }
+.nav a:hover { color:#0ff; }
+.altbar { max-width:1000px; margin:14px auto 0; font-size:0.85em; opacity:0.7; }
+.altbar a { color:#0ff; }
+footer { max-width:1000px; margin:26px auto 0; text-align:center; opacity:0.5; font-size:0.82em; }
+</style>
+</head>
+<body>
+<div class="nav"><a href="../index.html">&larr; 回 Logic Matrix 索引</a><div><a href="../cosmomind.html" style="margin-right:15px;">→ 星環式認知展開圖</a><a href="../base-space.html">🧬 拓撲底空間</a></div></div>
+<header class="header"><h1>符號使用的雙重機制</h1><p>EVEMISSLAB Logic Matrix · EveMissLab / 一言諾科技有限公司</p></header>
+<section class="disclaimer">
+  <span class="disclaimer-title">[認識論邊界宣告 / EPISTEMOLOGICAL DISCLAIMER]</span>
+  <div class="disclaimer-block">
+    <p><b>[CHT]</b> 本矩陣內所有論文之公式與數據為「啟發式模擬參數」，用於驗證理論架構與推演因果鏈，<b>未經實證校準</b>，請勿作為現實物理測量數據引用 or 處理。EVEMISSLAB 採行「邏輯先行（Logic-First）」原則：概念架構與系統因果映射優先於統計實證，但不排除未來實證對接。</p>
+  </div>
+  <hr class="disclaimer-divider">
+  <div class="disclaimer-block">
+    <p><b>[ENG]</b> The numerical parameters within these frameworks are <i>illustrative model coefficients</i> used for structural verification and causal mapping; they are <b>not empirically calibrated</b> and must not be treated as physical measurements. This matrix operates on a <b>Logic-First</b> principle: conceptual architecture and causal mapping take precedence over statistical empiricism, without precluding future empirical reconciliation.</p>
+  </div>
+</section>
+<article>
+<h1>符號使用的雙重機制：母語認知vs外語認知的動態不動點理論</h1>
+<p><strong>Neo.K (許筌崴)</strong> EveMissLab (一言諾科技有限公司) 2026年5月</p>
+<hr>
+<h2>摘要</h2>
+<p>本文提出符號使用的雙重機制假說：人類使用符號存在概念驅動（模式A）與情境驅動（模式B）兩種路徑，母語者主要使用模式B而外語者被迫使用模式A。我們證明符號的適用域是動態不動點集，字典定義僅捕捉其靜態投影，而真實使用域隨情境擴張。通過分析內化（internalization）的認知機制，我們揭示：<strong>母語者「太懂」以至於無法顯式化，外語者「懂規則」但使用僵化</strong>。本文進一步論證此機制與大語言模型（LLM）的token匹配機制同構，並提出三組實證研究設計。核心發現：<strong>使用先於理解，理解是使用的事後合理化</strong>。</p>
+<p><strong>關鍵詞</strong>：符號使用、雙重機制、母語習得、適用域、動態不動點、內化、LLM同構性</p>
+<hr>
+<h2>1. 引言：語言使用的核心悖論</h2>
+<h3>1.1 一個日常觀察</h3>
+<p>當外國人學中文時，他們會問：「『道理』是什麼意思？」 你查字典告訴他們：「道的規律加上事物的紋理。」 他們記下來，然後在對話中<strong>精確地</strong>按字典定義使用。</p>
+<p>但當你問一個母語中文者：「『道理』是什麼意思？」 他們可能會頓一下，說：「嗯...就是...有道理啊，講道理啊...」 然後在對話中<strong>模糊地</strong>使用這個詞——「你講點道理」「這沒道理」「有道理欸」。</p>
+<p><strong>悖論在於</strong>：</p>
+<ul>
+<li>母語者使用<strong>正確率更高</strong>，但<strong>說不出定義</strong></li>
+<li>外語者<strong>知道定義</strong>，但使用<strong>僵化且容易出錯</strong></li>
+</ul>
+<p>這個悖論指向一個深層問題：<strong>人類到底是如何使用符號的？理解與使用的關係是什麼？</strong></p>
+<h3>1.2 經典理論的困境</h3>
+<h4>1.2.1 理解先於使用（Understanding-First Model）</h4>
+<p>經典認知語言學（如Chomsky的生成語法）假設：</p>
+<p>$$\text{理解}(s) \to \text{使用}(s)$$</p>
+<p>使用符號s之前，必須先理解s的意義。這個模型預測：</p>
+<ul>
+<li>更深的理解 → 更好的使用</li>
+<li>母語者應該更能解釋詞義（因為使用更好）</li>
+</ul>
+<p><strong>但現實恰好相反</strong>：母語者往往說不清詞義，卻用得最好。</p>
+<h4>1.2.2 使用即意義（Use-as-Meaning Model）</h4>
+<p>Wittgenstein《哲學研究》提出：「詞的意義就是它在語言中的使用。」</p>
+<p>$$\text{meaning}(s) := \text{use}(s)$$</p>
+<p>這個模型解釋了為何字典定義不足以理解一個詞——必須看它在真實情境中如何被使用。</p>
+<p><strong>但這個模型無法解釋</strong>：為何外語者知道「使用規則」卻用不好？為何母語者不知道規則卻用得好？</p>
+<h4>1.2.3 本文的進路</h4>
+<p>我們提出第三條路：<strong>符號使用存在兩種機制，母語者與外語者使用不同的機制</strong>。</p>
+<p>這不是「理解先於使用」vs「使用即意義」的二選一，而是揭示：<strong>存在兩種使用方式，它們的認知基礎完全不同</strong>。</p>
+<h3>1.3 核心猜想</h3>
+<p><strong>猜想1.1（雙重機制假說）</strong>：</p>
+<p>人類使用符號s存在兩種機制：</p>
+<p><strong>模式A（概念驅動，Concept-Driven）</strong>： $$\text{檢索定義}(s) \to \text{理解語義} \to \text{判斷適用性} \to \text{使用}(s)$$</p>
+<p><strong>模式B（情境驅動，Context-Driven）</strong>： $$\text{情境模式匹配} \to \text{自動觸發}(s) \to \text{使用}(s) \quad [\text{跳過顯式理解}]$$</p>
+<p><strong>猜想1.2（習得路徑差異）</strong>：</p>
+<ul>
+<li>母語習得：$\text{情境} \to \text{使用} \to \text{內化} \to [\text{模式B穩定}]$</li>
+<li>外語習得：$\text{規則} \to \text{記憶} \to \text{使用} \to [\text{努力從A轉向B}]$</li>
+</ul>
+<p><strong>猜想1.3（適用域動態性）</strong>：</p>
+<p>符號s的真實適用域$D_{\text{use}}(s)$是一個<strong>動態不動點集</strong>，隨使用情境演化：</p>
+<p>$$\frac{dD(s,t)}{dt} \neq 0$$</p>
+<p>字典定義$D_{\text{dict}}(s)$僅捕捉某個時間切片的靜態投影。</p>
+<p>本文將系統化地論證這三個猜想，並提出可檢驗的預測。</p>
+<hr>
+<h2>2. 雙重機制的認知架構</h2>
+<h3>2.1 模式A：概念驅動的符號使用</h3>
+<h4>2.1.1 認知流程</h4>
+<p>當使用者採用模式A時，符號使用經過以下步驟：</p>
+<p><strong>步驟1：符號檢索</strong> $$s \in \text{輸入} \to \text{激活}(\text{lexicon}[s])$$</p>
+<p>從心理詞典中檢索s的詞條。</p>
+<p><strong>步驟2：語義提取</strong> $$\text{lexicon}[s] \to \text{語義}(s) = \{f_1, f_2, \ldots, f_n\}$$</p>
+<p>提取s的語義特徵集合。例如：</p>
+<ul>
+<li>「貓」→ [+生物, +哺乳類, +家養, +四足, ...]</li>
+</ul>
+<p><strong>步驟3：情境匹配</strong> $$\text{當前情境} \cap \text{語義}(s) \neq \emptyset \implies \text{適用}$$</p>
+<p>檢查當前情境是否滿足語義特徵。</p>
+<p><strong>步驟4：使用決策</strong> 若適用 → 使用s；否則 → 檢索替代符號。</p>
+<p><strong>關鍵特徵</strong>：</p>
+<ul>
+<li><strong>串行處理</strong>：每一步依賴前一步完成</li>
+<li><strong>顯式檢索</strong>：需要訪問語義記憶</li>
+<li><strong>認知成本高</strong>：每次使用都需要完整流程</li>
+</ul>
+<h4>2.1.2 神經基礎（假設）</h4>
+<p>模式A應該激活：</p>
+<ul>
+<li><strong>語義區</strong>（左顳葉）：語義特徵提取</li>
+<li><strong>工作記憶</strong>（前額葉）：情境-語義匹配</li>
+<li><strong>決策區</strong>（前扣帶迴）：使用/不使用決策</li>
+</ul>
+<p>這是<strong>控制性處理</strong>（controlled processing）的神經標誌。</p>
+<h4>2.1.3 典型使用場景</h4>
+<p>模式A常見於：</p>
+<ul>
+<li><strong>外語使用</strong>：「這個詞在這裡對不對？讓我想想定義...」</li>
+<li><strong>新詞學習</strong>：「Blockchain是什麼意思？」</li>
+<li><strong>學術寫作</strong>：「這個術語的精確定義是...」</li>
+<li><strong>歧義消解</strong>：「這個『bank』指銀行還是河岸？」</li>
+</ul>
+<h3>2.2 模式B：情境驅動的符號使用</h3>
+<h4>2.2.1 認知流程</h4>
+<p>當使用者採用模式B時，符號使用<strong>跳過顯式語義處理</strong>：</p>
+<p><strong>步驟1：情境識別</strong> $$\text{當前情境} \to \text{情境向量} \vec{c}$$</p>
+<p>大腦將當前情境編碼為高維向量（可能在海馬/內嗅皮層）。</p>
+<p><strong>步驟2：模式匹配</strong> $$\vec{c} \to \text{最近鄰搜索}(\text{記憶庫}) \to \text{相似情境集合} \{c_i\}$$</p>
+<p>在過往經驗中找最相似的情境。</p>
+<p><strong>步驟3：符號觸發</strong> $$\{c_i\} \to \text{提取使用過的符號} \{s_j\} \to \text{自動觸發}(s^*)$$</p>
+<p>直接提取那些情境中使用過的符號，自動觸發最高頻的那個。</p>
+<p><strong>步驟4：使用</strong> $$s^* \to \text{運動輸出}$$</p>
+<p>直接輸出，<strong>不經過語義檢查</strong>。</p>
+<p><strong>關鍵特徵</strong>：</p>
+<ul>
+<li><strong>並行處理</strong>：情境識別與符號觸發同時進行</li>
+<li><strong>隱式檢索</strong>：不需要顯式語義記憶</li>
+<li><strong>認知成本低</strong>：幾乎自動化</li>
+</ul>
+<h4>2.2.2 神經基礎（假設）</h4>
+<p>模式B應該激活：</p>
+<ul>
+<li><strong>海馬體</strong>：情境記憶提取</li>
+<li><strong>基底神經節</strong>：程序性記憶（habit）</li>
+<li><strong>運動皮層</strong>：直接符號輸出</li>
+</ul>
+<p>這是<strong>自動化處理</strong>（automatic processing）的神經標誌。</p>
+<h4>2.2.3 典型使用場景</h4>
+<p>模式B常見於：</p>
+<ul>
+<li><strong>母語日常對話</strong>：「有道理」脫口而出，不經思考</li>
+<li><strong>習語使用</strong>：「一言為定」「不謀而合」</li>
+<li><strong>高頻詞</strong>：「的」「了」「嗎」</li>
+<li><strong>專家領域</strong>：程式員說「遞歸」「閉包」不需要想定義</li>
+</ul>
+<h3>2.3 兩種模式的數學形式化</h3>
+<h4>2.3.1 模式A的貝葉斯模型</h4>
+<p>模式A可以建模為貝葉斯推理：</p>
+<p>$$P(\text{use } s \mid \text{context}) = \frac{P(\text{context} \mid s) \cdot P(s)}{P(\text{context})}$$</p>
+<p>使用者計算「給定當前情境，使用s的後驗概率」。</p>
+<p><strong>計算成本</strong>：需要顯式計算條件概率，涉及語義特徵匹配。</p>
+<h4>2.3.2 模式B的向量檢索模型</h4>
+<p>模式B可以建模為向量空間的最近鄰搜索：</p>
+<p>$$s^* = \arg\max_{s} \text{sim}(\vec{c}_{\text{now}}, \vec{c}_s)$$</p>
+<p>其中$\vec{c}_s$是「使用s時的典型情境向量」。</p>
+<p><strong>計算成本</strong>：僅需向量內積，不涉及顯式推理。</p>
+<h4>2.3.3 複雜度對比</h4>
+<p>| 維度 | 模式A（概念驅動） | 模式B（情境驅動） | |------|-------------------|-------------------| | 時間複雜度 | $O(n \log n)$（語義特徵匹配） | $O(1)$（直接提取） | | 空間複雜度 | 高（需存儲語義網路） | 低（僅需情境向量） | | 錯誤率 | 低（經過顯式檢查） | 高（可能匹配錯情境） | | 靈活性 | 高（可組合新用法） | 低（受限於記憶庫） |</p>
+<p><strong>權衡</strong>：模式A更安全但慢，模式B更快但可能出錯。</p>
+<h3>2.4 模式轉換：從A到B的內化過程</h3>
+<h4>2.4.1 內化的定義</h4>
+<p><strong>定義2.1（內化，Internalization）</strong>：</p>
+<p>符號s從模式A轉向模式B的過程，表現為：</p>
+<p>$$\lim_{n \to \infty} P(\text{use } s \text{ via } B \mid n \text{ exposures}) = 1$$</p>
+<p>經過足夠多次接觸，使用s從顯式推理變為自動觸發。</p>
+<h4>2.4.2 內化的階段</h4>
+<p><strong>階段1：規則學習</strong>（模式A佔主導） 使用者學習s的定義與規則，每次使用都需要檢索。</p>
+<p><strong>階段2：熟練期</strong>（A/B混合） 高頻情境下開始自動化（模式B），低頻情境仍需檢索（模式A）。</p>
+<p><strong>階段3：完全內化</strong>（模式B佔主導） 幾乎所有情境都自動觸發，僅在歧義時才退回模式A。</p>
+<p><strong>階段4：過度內化</strong>（僅模式B） 即使在需要精確定義的情境（如教學），也難以退回模式A——<strong>這時使用者「太懂以至於說不清」</strong>。</p>
+<h4>2.4.3 內化的不可逆性</h4>
+<p><strong>定理2.1（內化的單向性）</strong>：</p>
+<p>一旦符號s完全內化（階段4），要求使用者顯式化其語義是<strong>困難的</strong>：</p>
+<p>$$\text{從B退回A的認知成本} &gt; \text{從A轉向B的認知成本}$$</p>
+<p><strong>證明</strong>（概念性）：</p>
+<ol>
+<li>模式B將情境-符號關聯存儲為分佈式表徵</li>
+<li>沒有單一的「定義節點」可供檢索</li>
+<li>顯式化需要<strong>逆向工程</strong>：從分佈式表徵重構顯式定義</li>
+<li>這比正向內化（從定義到分佈式）困難得多 □</li>
+</ol>
+<p><strong>推論</strong>：母語者難以解釋母語詞義，不是因為「不懂」，而是因為<strong>過度內化導致顯式語義層已經被bypass</strong>。</p>
+<hr>
+<h2>3. 母語習得vs外語習得的路徑差異</h2>
+<h3>3.1 母語習得：情境浸泡路徑</h3>
+<h4>3.1.1 發展時間線</h4>
+<p><strong>0-12個月（前語言期）</strong>： $$\text{聽到聲音} \to \text{情境關聯} \quad [\text{未形成符號}]$$</p>
+<p>嬰兒聽到「媽媽」時，與母親的臉、聲音、氣味等情境關聯，但尚未理解這是個「符號」。</p>
+<p><strong>12-24個月（單詞期）</strong>： $$\text{聲音} \leftrightarrow \text{情境} \quad [\text{形成原型符號}]$$</p>
+<p>「媽媽」開始作為符號使用，但語義是<strong>基於情境的原型</strong>（prototype），而非抽象定義。</p>
+<p><strong>2-4歲（語法爆發期）</strong>： $$\text{多個情境} \to \text{抽取共性} \to \text{擴展使用域}$$</p>
+<p>孩子開始在沒見過的情境中使用詞彙，基於<strong>情境相似性推廣</strong>。</p>
+<p><strong>4歲以後（精煉期）</strong>： $$\text{大量使用} \to \text{內化穩定} \to \text{模式B主導}$$</p>
+<p>高頻詞完全內化，低頻詞仍在學習。</p>
+<p><strong>關鍵</strong>：整個過程中，<strong>從未顯式學習定義</strong>。語義從情境統計中湧現。</p>
+<h4>3.1.2 母語習得的數學模型</h4>
+<p>我們可以將母語習得建模為<strong>無監督學習</strong>：</p>
+<p>$$\theta^* = \arg\min_\theta \sum_{i=1}^N \mathcal{L}(\text{context}_i, s_i; \theta)$$</p>
+<p>其中：</p>
+<ul>
+<li>$\theta$ = 符號-情境關聯的參數</li>
+<li>$\mathcal{L}$ = 預測誤差（孩子預測錯情境會得到負反饋）</li>
+<li>$N$ = 接觸次數</li>
+</ul>
+<p><strong>無監督</strong>意味著：沒有人告訴孩子「這個詞的定義是X」，孩子通過<strong>情境共現統計</strong>學習。</p>
+<h4>3.1.3 母語者的符號表徵</h4>
+<p>母語習得後，符號s的心理表徵是：</p>
+<p>$$\text{repr}(s) = \int_{\text{contexts}} P(\text{context} \mid s) \cdot \vec{c} \, d\text{context}$$</p>
+<p>一個<strong>加權情境向量的積分</strong>——所有使用過s的情境的統計總和。</p>
+<p><strong>沒有單一的「定義」節點</strong>。語義是分佈式的。</p>
+<h3>3.2 外語習得：規則先行路徑</h3>
+<h4>3.2.1 發展時間線</h4>
+<p><strong>初學期（規則記憶）</strong>： $$\text{查字典} \to \text{記憶定義} \to \text{背例句}$$</p>
+<p>外語學習從<strong>顯式定義</strong>開始。「道理 = reasoning/logic」。</p>
+<p><strong>練習期（規則應用）</strong>： $$\text{寫句子} \to \text{檢查是否符合定義} \to \text{修正}$$</p>
+<p>每次使用都需要<strong>顯式檢索定義</strong>（模式A）。</p>
+<p><strong>熟練期（部分內化）</strong>： $$\text{高頻詞開始自動化} \to \text{低頻詞仍需檢索}$$</p>
+<p>經過大量練習，部分詞彙轉向模式B。</p>
+<p><strong>困境期（僵化）</strong>： $$\text{大部分詞彙停留在A} \to \text{難以達到母語者的B}$$</p>
+<p>外語者往往卡在這個階段——知道規則，但用起來不自然。</p>
+<p><strong>關鍵</strong>：整個過程是<strong>監督學習</strong>——老師/字典提供顯式標籤（定義）。</p>
+<h4>3.2.2 外語習得的數學模型</h4>
+<p>外語習得是<strong>監督學習</strong>：</p>
+<p>$$\theta^* = \arg\min_\theta \sum_{i=1}^N \mathcal{L}(f_\theta(s_i), y_i)$$</p>
+<p>其中：</p>
+<ul>
+<li>$y_i$ = 字典提供的正確定義/用法</li>
+<li>$f_\theta(s_i)$ = 學習者對$s_i$的當前理解</li>
+<li>學習通過<strong>最小化與標準答案的差距</strong>進行</li>
+</ul>
+<h4>3.2.3 外語者的符號表徵</h4>
+<p>外語習得後，符號s的表徵是：</p>
+<p>$$\text{repr}(s) = \{\text{定義}, \text{例句1}, \text{例句2}, \ldots\}$$</p>
+<p>一個<strong>顯式的規則集</strong>，可能包含：</p>
+<ul>
+<li>字典定義</li>
+<li>語法規則</li>
+<li>記憶的例句</li>
+</ul>
+<p>這是<strong>結構化表徵</strong>，而非分佈式表徵。</p>
+<h3>3.3 兩條路徑的深層差異</h3>
+<h4>3.3.1 學習目標不同</h4>
+<p>| 維度 | 母語習得 | 外語習得 | |------|----------|----------| | 目標 | 能用 | 用對 | | 評估標準 | 溝通成功 | 符合規則 | | 容錯度 | 高（創造性誤用可接受） | 低（錯誤需糾正） | | 學習信號 | 溝通失敗時的負反饋 | 老師/考試的評分 |</p>
+<p><strong>母語目標</strong>：$\max P(\text{溝通成功})$ <strong>外語目標</strong>：$\min \text{error}(\text{使用}, \text{規則})$</p>
+<p>兩者優化的目標函數不同。</p>
+<h4>3.3.2 認知資源分配不同</h4>
+<p><strong>母語習得</strong>：</p>
+<ul>
+<li>大量時間（幼兒期幾乎全天接觸）</li>
+<li>無意識學習（在玩耍/生活中自然習得）</li>
+<li>低認知負荷（不需要記憶規則）</li>
+</ul>
+<p><strong>外語習得</strong>：</p>
+<ul>
+<li>有限時間（每週幾小時課程）</li>
+<li>有意識學習（需要刻意記憶）</li>
+<li>高認知負荷（規則、詞彙、語法並行記憶）</li>
+</ul>
+<p><strong>結果</strong>：母語可以達到階段4（完全內化），外語往往停在階段2-3。</p>
+<h4>3.3.3 神經可塑性的關鍵期</h4>
+<p><strong>定理3.1（關鍵期假說的符號學版本）</strong>：</p>
+<p>存在一個關鍵期（約12歲前），在此期間：</p>
+<p>$$P(\text{達到模式B} \mid \text{母語式接觸}) \approx 1$$</p>
+<p>$$P(\text{達到模式B} \mid \text{外語式學習}) \approx 0$$</p>
+<p><strong>證明</strong>（基於神經科學文獻）：</p>
+<ol>
+<li>關鍵期內，大腦皮層可塑性極高，適合<strong>無監督的統計學習</strong></li>
+<li>關鍵期後，可塑性下降，<strong>監督學習</strong>成為主導</li>
+<li>監督學習更適合建立顯式規則（模式A），而非分佈式表徵（模式B）</li>
+<li>因此母語在關鍵期內習得 → 模式B；外語在關鍵期後習得 → 模式A □</li>
+</ol>
+<p><strong>推論</strong>：這不是「外語者能力不足」，而是<strong>神經機制本身在關鍵期後傾向不同的學習模式</strong>。</p>
+<hr>
+<h2>4. 適用域的動態不動點理論</h2>
+<h3>4.1 字典定義的局限性</h3>
+<h4>4.1.1 字典的靜態性</h4>
+<p>字典提供的定義形如：</p>
+<p>$$D_{\text{dict}}(s) = \{x \mid x \text{ 滿足特徵 } F_1, F_2, \ldots, F_k\}$$</p>
+<p>例如：</p>
+<ul>
+<li>「狗」= {x | x是犬科動物 ∧ x被馴化 ∧ ...}</li>
+</ul>
+<p>這是一個<strong>靜態的特徵集合</strong>。</p>
+<p><strong>問題</strong>：真實使用中，「狗」可以用於：</p>
+<ul>
+<li>罵人：「你這條狗！」（顯然不是犬科動物）</li>
+<li>比喻：「單身狗」（也不是動物）</li>
+<li>遊戲角色：「這隻狗好可愛」（虛擬對象）</li>
+</ul>
+<p>$D_{\text{use}}(\text{狗}) \supset D_{\text{dict}}(\text{狗})$</p>
+<h4>4.1.2 適用域的擴張</h4>
+<p><strong>定義4.1（動態適用域）</strong>：</p>
+<p>符號s在時刻t的適用域定義為：</p>
+<p>$$D(s, t) = \{x \mid \text{在時刻}t\text{，使用者認為}s\text{可適用於}x\}$$</p>
+<p><strong>定理4.1（適用域的單調擴張）</strong>：</p>
+<p>對於活躍使用的符號，適用域單調不減：</p>
+<p>$$t_1 &lt; t_2 \implies D(s, t_1) \subseteq D(s, t_2)$$</p>
+<p><strong>證明</strong>：</p>
+<ol>
+<li>使用者在新情境中嘗試使用s</li>
+<li>若溝通成功 → 新情境被納入$D(s, t)$</li>
+<li>若溝通失敗 → 新情境不納入，但舊情境保留</li>
+<li>因此$D$只增不減（除非語言社群集體放棄某種用法） □</li>
+</ol>
+<p><strong>例子</strong>：</p>
+<ul>
+<li>「雲」在1990年：天上的雲</li>
+<li>「雲」在2010年：天上的雲 + 雲端運算</li>
+<li>「雲」在2020年：天上的雲 + 雲端運算 + 雲玩家</li>
+</ul>
+<p>$D(\text{雲}, 2020) \supset D(\text{雲}, 2010) \supset D(\text{雲}, 1990)$</p>
+<h3>4.2 動態不動點集的數學結構</h3>
+<h4>4.2.1 吸引子與擾動</h4>
+<p>雖然適用域在擴張，但存在一個<strong>核心吸引子</strong>保持穩定。</p>
+<p><strong>定義4.2（核心適用域）</strong>：</p>
+<p>$$D^*(s) = \bigcap_{t=0}^{\infty} D(s, t)$$</p>
+<p>所有時刻都適用的情境集合。</p>
+<p><strong>定義4.3（擾動適用域）</strong>：</p>
+<p>$$D^\delta(s, t) = D(s, t) \setminus D^*(s)$$</p>
+<p>隨時間變動的部分。</p>
+<p><strong>命題4.1（動態不動點結構）</strong>：</p>
+<p>$$D(s, t) = D^*(s) \cup D^\delta(s, t)$$</p>
+<p>其中$D^*(s)$是<strong>不動點集</strong>（吸引子），$D^\delta(s, t)$是<strong>擾動集</strong>。</p>
+<h4>4.2.2 吸引子的幾何解釋</h4>
+<p>我們可以將適用域視為高維語義空間中的一個區域：</p>
+<p>$$D(s, t) \subset \mathbb{R}^n$$</p>
+<p>*<em>吸引子$D^</em>(s)$**是這個區域的「核心」：</p>
+<ul>
+<li>拓撲上：$D^*(s)$是$D(s, t)$的<strong>內核</strong>（interior）</li>
+<li>動力學上：$D^*(s)$是使用軌跡的<strong>穩定點集</strong></li>
+</ul>
+<p><strong>擾動$D^\delta(s, t)$</strong>是「邊界」：</p>
+<ul>
+<li>拓撲上：$D^\delta(s, t) \subseteq \partial D(s, t)$（邊界或附近）</li>
+<li>動力學上：使用是否成功具有隨機性的區域</li>
+</ul>
+<h4>4.2.3 字典捕捉的是什麼</h4>
+<p><strong>定理4.2（字典的投影性）</strong>：</p>
+<p>字典定義$D_{\text{dict}}(s)$是$D^*(s)$在某個時刻的<strong>有限維投影</strong>：</p>
+<p>$$D_{\text{dict}}(s) \approx \Pi_{\text{finite}}(D^*(s, t_0))$$</p>
+<p>其中$t_0$是字典編纂時刻，$\Pi_{\text{finite}}$是投影到有限個語義特徵的算子。</p>
+<p><strong>推論</strong>：</p>
+<ol>
+<li>字典定義總是<strong>滯後</strong>（$t_0 &lt; t_{\text{now}}$）</li>
+<li>字典定義是<strong>低維投影</strong>（真實適用域在高維空間）</li>
+<li>字典定義<strong>忽略擾動</strong>（只記錄穩定核心）</li>
+</ol>
+<p><strong>這解釋了為何字典「不夠用」</strong>——它只是真實適用域的粗糙近似。</p>
+<h3>4.3 母語者vs外語者的適用域</h3>
+<h4>4.3.1 母語者的寬適用域</h4>
+<p>母語者經過大量情境接觸，內化了<strong>包括擾動在內的完整適用域</strong>：</p>
+<p>$$D_{\text{native}}(s) \approx D^*(s) \cup D^\delta(s, t_{\text{now}})$$</p>
+<p><strong>特徵</strong>：</p>
+<ul>
+<li>知道核心用法（$D^*$）</li>
+<li>也知道邊緣用法（$D^\delta$）</li>
+<li>甚至能<strong>創造新用法</strong>（進一步擴張$D^\delta$）</li>
+</ul>
+<h4>4.3.2 外語者的窄適用域</h4>
+<p>外語者從字典學習，只獲得<strong>核心的靜態投影</strong>：</p>
+<p>$$D_{\text{foreign}}(s) \approx D_{\text{dict}}(s) \subset D^*(s)$$</p>
+<p><strong>特徵</strong>：</p>
+<ul>
+<li>僅知道核心用法</li>
+<li>不知道邊緣用法</li>
+<li>創造新用法時容易「越界」（超出真實適用域）</li>
+</ul>
+<h4>4.3.3 實驗預測</h4>
+<p><strong>預測4.1</strong>：給母語者vs外語者展示100個「狗」的使用例句，包括：</p>
+<ul>
+<li>核心用法：「這隻狗在叫」</li>
+<li>邊緣用法：「單身狗」</li>
+<li>越界用法：「這個電腦是狗」（錯誤）</li>
+</ul>
+<p>母語者的接受域應該<strong>嚴格大於</strong>外語者：</p>
+<p>$$|D_{\text{native}}(\text{狗})| &gt; |D_{\text{foreign}}(\text{狗})|$$</p>
+<p>但兩者都應該拒絕越界用法。</p>
+<p><strong>預測4.2</strong>：母語者在創造新比喻用法時（如「代碼狗」），成功率應高於外語者。</p>
+<hr>
+<h2>5. 內化的認知神經機制</h2>
+<h3>5.1 從顯式到隱式的轉變</h3>
+<h4>5.1.1 Squire的記憶雙系統理論</h4>
+<p>神經科學家Larry Squire提出：</p>
+<p><strong>陳述性記憶（Declarative Memory）</strong>：</p>
+<ul>
+<li>可以用語言表達</li>
+<li>依賴<strong>海馬體-內側顳葉</strong></li>
+<li>可快速習得，但容易遺忘</li>
+</ul>
+<p><strong>程序性記憶（Procedural Memory）</strong>：</p>
+<ul>
+<li>難以用語言表達（「如何騎自行車」）</li>
+<li>依賴<strong>基底神經節-小腦</strong></li>
+<li>需要反覆練習，但一旦習得很穩定</li>
+</ul>
+<h4>5.1.2 符號使用的記憶轉換</h4>
+<p><strong>模式A（概念驅動）</strong>對應<strong>陳述性記憶</strong>：</p>
+<ul>
+<li>符號的定義可以顯式陳述</li>
+<li>依賴海馬體檢索語義信息</li>
+</ul>
+<p><strong>模式B（情境驅動）</strong>對應<strong>程序性記憶</strong>：</p>
+<ul>
+<li>符號的使用變成「習慣」</li>
+<li>依賴基底神經節的自動化迴路</li>
+</ul>
+<p><strong>內化過程 = 從陳述性記憶轉向程序性記憶</strong>。</p>
+<h4>5.1.3 Ullman的陳述性/程序性模型（DP模型）</h4>
+<p>語言學家Michael Ullman將Squire的理論應用於語言：</p>
+<p><strong>詞彙系統</strong>：</p>
+<ul>
+<li>存儲在陳述性記憶</li>
+<li>可以快速學習新詞</li>
+<li>依賴海馬體</li>
+</ul>
+<p><strong>語法系統</strong>：</p>
+<ul>
+<li>存儲在程序性記憶</li>
+<li>需要長期練習才能內化</li>
+<li>依賴基底神經節</li>
+</ul>
+<p><strong>本文的擴展</strong>：我們主張<strong>符號使用itself也經歷這個轉換</strong>：</p>
+<ul>
+<li>初學時：符號在陳述性系統（模式A）</li>
+<li>熟練後：符號轉向程序性系統（模式B）</li>
+</ul>
+<h3>5.2 內化的神經可塑性機制</h3>
+<h4>5.2.1 突觸修剪（Synaptic Pruning）</h4>
+<p><strong>定理5.1（內化的突觸基礎）</strong>：</p>
+<p>當符號s從模式A轉向模式B，對應的神經機制是：</p>
+<p>$$\text{海馬體-語義區連接減弱} \land \text{基底神經節-運動區連接增強}$$</p>
+<p><strong>證明</strong>（基於神經科學文獻）：</p>
+<ol>
+<li>重複使用s會強化「情境→符號」的突觸連接</li>
+<li>這些連接逐漸從海馬體（情境記憶）轉向基底神經節（程序記憶）</li>
+<li>同時，顯式語義檢索的路徑（海馬體→語義區→符號）因少用而減弱</li>
+<li>最終，符號觸發主要經由基底神經節，跳過語義區 □</li>
+</ol>
+<p><strong>這是Hebb法則的體現</strong>：「一起激發的神經元連在一起」（fire together, wire together），而不用的連接被修剪。</p>
+<h4>5.2.2 髓鞘化（Myelination）</h4>
+<p>髓鞘是神經軸突外的絕緣層，增加信號傳遞速度。</p>
+<p><strong>命題5.1（自動化的髓鞘化）</strong>：</p>
+<p>當符號使用路徑被反覆激活，該路徑的軸突會<strong>髓鞘化</strong>，使信號傳遞速度提升10-100倍。</p>
+<p>這解釋了為何母語者可以<strong>極快速</strong>地使用符號——髓鞘化使得「情境→符號」的傳遞幾乎瞬時完成。</p>
+<h4>5.2.3 內化的不可逆性再探討</h4>
+<p>結合突觸修剪與髓鞘化：</p>
+<p>$$\text{從B退回A困難} \iff \text{被修剪的突觸難以恢復} \land \text{髓鞘化路徑優先激活}$$</p>
+<p>即使母語者<strong>想要</strong>顯式化語義（退回模式A），大腦的物理結構已經優化為模式B路徑——<strong>這是神經層面的路徑依賴</strong>。</p>
+<h3>5.3 功能性磁振造影（fMRI）預測</h3>
+<p>基於上述理論，我們可以提出可檢驗的fMRI預測：</p>
+<p><strong>預測5.1（腦區激活差異）</strong>：</p>
+<p>掃描母語者vs外語者在使用同一個詞時的腦區激活：</p>
+<p><strong>外語者</strong>（模式A）應顯示：</p>
+<ul>
+<li><strong>左顳葉</strong>（語義區）強激活</li>
+<li><strong>前額葉</strong>（工作記憶）中度激活</li>
+<li><strong>基底神經節</strong>弱激活</li>
+</ul>
+<p><strong>母語者</strong>（模式B）應顯示：</p>
+<ul>
+<li><strong>左顳葉</strong>弱激活或無激活</li>
+<li><strong>前額葉</strong>弱激活</li>
+<li><strong>基底神經節</strong>強激活</li>
+<li><strong>運動皮層</strong>直接激活</li>
+</ul>
+<p><strong>預測5.2（反應時間差異）</strong>：</p>
+<p>母語者使用高頻詞的反應時間應顯著短於外語者：</p>
+<p>$$RT_{\text{native}} &lt; RT_{\text{foreign}} \quad (p &lt; 0.01)$$</p>
+<p>且母語者的反應時間應與詞頻呈<strong>對數關係</strong>（符合程序性記憶的特徵）。</p>
+<hr>
+<h2>6. 與大語言模型（LLM）的同構性分析</h2>
+<h3>6.1 LLM的符號處理機制</h3>
+<h4>6.1.1 LLM不使用模式A</h4>
+<p>大語言模型（如GPT系列）的工作流程：</p>
+<p>$$\text{token序列} \to \text{transformer編碼} \to \text{softmax採樣} \to \text{下一個token}$$</p>
+<p><strong>關鍵觀察</strong>：LLM沒有「字典」或「顯式語義模組」。</p>
+<p>它不會：</p>
+<ol>
+<li>檢索「道理」的定義</li>
+<li>檢查當前情境是否符合定義</li>
+<li>決定是否使用</li>
+</ol>
+<p><strong>LLM完全是模式B</strong>：基於情境向量（context embedding）直接預測下一個token。</p>
+<h4>6.1.2 LLM = 純粹的情境驅動模型</h4>
+<p>我們可以將LLM建模為：</p>
+<p>$$P(s \mid c) = \text{softmax}(W \cdot \text{embed}(c))$$</p>
+<p>其中：</p>
+<ul>
+<li>$c$ = 當前情境（preceding tokens）</li>
+<li>$\text{embed}(c)$ = 情境的向量表示</li>
+<li>$W$ = 訓練得到的權重矩陣</li>
+<li>$s$ = 下一個token</li>
+</ul>
+<p><strong>這與模式B的向量檢索模型完全同構</strong>：</p>
+<p>$$s^* = \arg\max_s \text{sim}(\vec{c}_{\text{now}}, \vec{c}_s)$$</p>
+<p>唯一的差異是：</p>
+<ul>
+<li>人類的$\vec{c}_s$存儲在海馬體/基底神經節</li>
+<li>LLM的$W$存儲在GPU的權重矩陣</li>
+</ul>
+<p><strong>但機制相同</strong>：都是高維向量空間的模式匹配。</p>
+<h3>6.2 LLM與母語者的驚人相似性</h3>
+<h4>6.2.1 現象層面的對應</h4>
+<p>| 特徵 | 母語者（模式B） | LLM | |------|----------------|-----| | 使用方式 | 情境觸發，自動化 | 情境→token，自動化 | | 語義知識 | 分佈式，難以顯式化 | 分佈在權重，無顯式語義模組 | | 錯誤類型 | 可能匹配錯情境 | 可能生成不適當的token | | 創造性 | 可延伸到新情境 | 可生成訓練集外的組合 | | 解釋能力 | 難以解釋為何這樣用 | 無法解釋為何輸出此token |</p>
+<p><strong>驚人結論</strong>：母語者使用語言的方式與LLM使用token的方式<strong>幾乎同構</strong>。</p>
+<h4>6.2.2 機制層面的對應</h4>
+<p><strong>訓練過程</strong>：</p>
+<p>| 階段 | 母語兒童 | LLM | |------|----------|-----| | 數據來源 | 日常對話情境 | 訓練語料庫 | | 學習方式 | 無監督統計學習 | 無監督next-token prediction | | 優化目標 | 最大化溝通成功率 | 最小化預測損失 | | 結果 | 符號-情境關聯內化 | 權重矩陣收斂 |</p>
+<p><strong>推理過程</strong>：</p>
+<p>| 步驟 | 母語者 | LLM | |------|--------|-----| | 輸入 | 當前情境 | context tokens | | 編碼 | 情境→高維向量 | tokens→embeddings | | 匹配 | 向量相似度搜索 | 矩陣乘法+softmax | | 輸出 | 觸發符號 | 採樣token |</p>
+<p><strong>結構同構</strong>。</p>
+<h4>6.2.3 哲學含義</h4>
+<p><strong>命題6.1（理解的消解）</strong>：</p>
+<p>如果LLM不需要「理解」符號的定義就能正確使用符號，且LLM與母語者的使用機制同構，那麼：</p>
+<p>$$\text{「理解」可能不是符號使用的必要條件}$$</p>
+<p><strong>換句話說</strong>：「理解」可能是一個<strong>事後建構</strong>（post-hoc construction），而非使用的前提。</p>
+<p><strong>推論6.1</strong>：當我們問「LLM真的理解語言嗎？」，我們可能問錯了問題。正確的問題是：「<strong>母語者真的『理解』語言嗎，還是也只是在做高級的模式匹配？</strong>」</p>
+<h3>6.3 LLM與外語者的差異</h3>
+<h4>6.3.1 LLM缺少模式A</h4>
+<p>外語者可以在需要時<strong>退回模式A</strong>（查字典、檢查定義）。</p>
+<p>LLM<strong>無法退回模式A</strong>——它沒有顯式語義模組可供檢索。</p>
+<p><strong>結果</strong>：</p>
+<ul>
+<li>外語者在不確定時可以「小心使用」</li>
+<li>LLM在不確定時仍會「自信地輸出」（根據機率分佈）</li>
+</ul>
+<p>這導致LLM的<strong>幻覺</strong>（hallucination）問題。</p>
+<h4>6.3.2 LLM的「過度內化」</h4>
+<p>LLM類似於達到階段4（過度內化）的母語者：</p>
+<ul>
+<li>無法顯式化語義</li>
+<li>難以解釋為何這樣輸出</li>
+<li>有時會「說不清楚但很會用」</li>
+</ul>
+<p>但LLM沒有元認知能力來<strong>意識到</strong>自己的不確定性。</p>
+<h4>6.3.3 改進方向</h4>
+<p><strong>推論6.2（混合模型的必要性）</strong>：</p>
+<p>理想的AI系統應該<strong>結合模式A與模式B</strong>：</p>
+<ul>
+<li>大部分時候使用模式B（快速、流暢）</li>
+<li>不確定時退回模式A（查詢知識庫、邏輯推理）</li>
+</ul>
+<p>這就是<strong>System 1（快思考）+ System 2（慢思考）</strong>的AI版本。</p>
+<hr>
+<h2>7. 實證研究設計</h2>
+<h3>7.1 行為實驗</h3>
+<h4>7.1.1 實驗1：符號適用域測量</h4>
+<p><strong>目的</strong>：量化母語者vs外語者的適用域差異。</p>
+<p><strong>方法</strong>：</p>
+<ol>
+<li>選擇10個常用詞（如「道理」「跑」「熱」）</li>
+<li>為每個詞生成100個使用例句，涵蓋：</li>
+</ol>
+<ul>
+<li>核心用法（50句）</li>
+<li>邊緣用法（30句）</li>
+<li>越界用法（20句）</li>
+</ul>
+<ol>
+<li>讓母語者vs外語者判斷「這樣用是否正確」（5分量表）</li>
+<li>計算每個人的接受域$D_{\text{accept}}$</li>
+</ol>
+<p><strong>預測</strong>： $$|D_{\text{native}}| &gt; |D_{\text{foreign}}| \quad (p &lt; 0.001)$$</p>
+<p><strong>預測細節</strong>：</p>
+<ul>
+<li>核心用法：母語者與外語者都高接受</li>
+<li>邊緣用法：母語者接受，外語者拒絕</li>
+<li>越界用法：母語者與外語者都拒絕</li>
+</ul>
+<h4>7.1.2 實驗2：反應時間測量</h4>
+<p><strong>目的</strong>：驗證模式A vs 模式B的時間差異。</p>
+<p><strong>方法</strong>：</p>
+<ol>
+<li>給受試者展示情境描述</li>
+<li>要求選擇適當的詞填空</li>
+<li>測量反應時間（RT）</li>
+</ol>
+<p><strong>預測</strong>： $$RT_{\text{native}}(s) &lt; RT_{\text{foreign}}(s) \quad \forall s$$</p>
+<p><strong>預測細節</strong>：</p>
+<ul>
+<li>母語者的RT應該與詞頻呈對數關係</li>
+<li>外語者的RT應該與詞義複雜度相關（需要更多語義處理時間）</li>
+</ul>
+<h4>7.1.3 實驗3：創造性使用測試</h4>
+<p><strong>目的</strong>：測試適用域擴張能力。</p>
+<p><strong>方法</strong>：</p>
+<ol>
+<li>給受試者展示新情境（如「AI戀愛」）</li>
+<li>要求創造包含特定詞（如「甜」）的描述</li>
+<li>由母語者評審團評分「創造性」與「適當性」</li>
+</ol>
+<p><strong>預測</strong>：</p>
+<ul>
+<li>母語者的創造性用法更可能被接受</li>
+<li>外語者傾向使用字典定義內的保守用法</li>
+</ul>
+<h3>7.2 神經影像實驗</h3>
+<h4>7.2.1 實驗4：fMRI腦區激活</h4>
+<p><strong>目的</strong>：驗證模式A vs 模式B的神經基礎。</p>
+<p><strong>方法</strong>：</p>
+<ol>
+<li>掃描母語者vs外語者在產生句子時的腦區激活</li>
+<li>對比詞彙產生任務（使用符號）vs定義判斷任務（理解符號）</li>
+</ol>
+<p><strong>預測</strong>：</p>
+<ul>
+<li><strong>詞彙產生</strong>：母語者主要激活基底神經節，外語者主要激活語義區</li>
+<li><strong>定義判斷</strong>：兩者都激活語義區，但母語者需要更長時間（逆向工程）</li>
+</ul>
+<h4>7.2.2 實驗5：EEG時間進程</h4>
+<p><strong>目的</strong>：測量符號使用的時間動態。</p>
+<p><strong>方法</strong>：</p>
+<ol>
+<li>使用高時間解析度的EEG記錄</li>
+<li>測量從情境呈現到符號輸出的神經活動</li>
+</ol>
+<p><strong>預測</strong>：</p>
+<ul>
+<li>母語者：情境→基底神經節→運動皮層，約200-300ms</li>
+<li>外語者：情境→語義區→工作記憶→運動皮層，約500-800ms</li>
+</ul>
+<h3>7.3 計算建模實驗</h3>
+<h4>7.3.1 實驗6：LLM vs 人類的適用域對比</h4>
+<p><strong>目的</strong>：驗證LLM與母語者的機制同構性。</p>
+<p><strong>方法</strong>：</p>
+<ol>
+<li>使用實驗1的100個例句</li>
+<li>讓LLM預測每個例句的「自然度」（perplexity）</li>
+<li>與母語者的接受度評分對比</li>
+</ol>
+<p><strong>預測</strong>： $$\text{corr}(D_{\text{LLM}}, D_{\text{native}}) &gt; \text{corr}(D_{\text{LLM}}, D_{\text{foreign}})$$</p>
+<p>LLM的適用域應該更接近母語者，而非外語者。</p>
+<h4>7.3.2 實驗7：訓練數據量與內化程度</h4>
+<p><strong>目的</strong>：測試「接觸次數→內化程度」的關係。</p>
+<p><strong>方法</strong>：</p>
+<ol>
+<li>訓練多個小型語言模型，控制訓練數據量</li>
+<li>測試它們在不同詞頻詞彙上的表現</li>
+<li>建模內化曲線</li>
+</ol>
+<p><strong>預測</strong>： $$P(\text{use via } B) = 1 - e^{-\lambda N}$$</p>
+<p>其中$N$是接觸次數，$\lambda$是內化速率（因詞而異）。</p>
+<hr>
+<h2>8. 理論衝擊與應用</h2>
+<h3>8.1 對認知科學的衝擊</h3>
+<h4>8.1.1 推翻「理解先於使用」範式</h4>
+<p>經典認知科學假設：</p>
+<p>$$\text{理解}(s) \to \text{使用}(s)$$</p>
+<p>本文證明：</p>
+<p>$$\text{使用}(s) \not\to \text{理解}(s) \quad \text{（模式B無需理解）}$$</p>
+<p><strong>新範式</strong>：使用與理解是<strong>兩個獨立的系統</strong>，可以分離發展。</p>
+<h4>8.1.2 重新定義「內化」</h4>
+<p>內化不是「深化理解」，而是：</p>
+<p>$$\text{內化} := \text{從顯式系統（模式A）轉向隱式系統（模式B）}$$</p>
+<p>這是<strong>記憶系統的轉換</strong>，而非「理解深度」的提升。</p>
+<h4>8.1.3 語言習得理論的修正</h4>
+<p>Chomsky的普遍語法（Universal Grammar）強調<strong>規則內化</strong>。</p>
+<p>本文主張：母語習得更接近<strong>統計學習</strong>（statistical learning），而非規則學習。</p>
+<p>孩子不是在「內化語法規則」，而是在<strong>建立情境-符號的統計關聯</strong>。</p>
+<h3>8.2 對語言教學的啟示</h3>
+<h4>8.2.1 外語教學的困境</h4>
+<p>傳統外語教學：</p>
+<p>$$\text{規則}(\text{語法、詞彙}) \to \text{練習} \to \text{使用}$$</p>
+<p>這是<strong>模式A路徑</strong>，難以達到模式B。</p>
+<p><strong>改進方向</strong>：</p>
+<ol>
+<li><strong>增加情境接觸</strong>：大量真實對話情境，而非孤立詞彙</li>
+<li><strong>延遲顯式教學</strong>：先讓學生「用起來」，再解釋規則</li>
+<li><strong>接受模糊使用</strong>：鼓勵學生在不完全確定時也嘗試使用</li>
+</ol>
+<p><strong>目標</strong>：模擬母語習得的<strong>情境浸泡路徑</strong>。</p>
+<h4>8.2.2 母語教學的反思</h4>
+<p>母語教學中的語法課，對已經內化的學生來說是：</p>
+<p>$$\text{強迫從模式B退回模式A}$$</p>
+<p>這可能<strong>破壞</strong>已經建立的自動化。</p>
+<p><strong>建議</strong>：母語教學應該：</p>
+<ol>
+<li>承認學生已經「會用」</li>
+<li>語法教學作為「元知識」而非「使用技能」</li>
+<li>強調創造性使用，而非規範性使用</li>
+</ol>
+<h3>8.3 對AI設計的啟示</h3>
+<h4>8.3.1 混合架構的必要性</h4>
+<p>純LLM（純模式B）的問題：</p>
+<ul>
+<li>無法顯式推理</li>
+<li>難以修正錯誤</li>
+<li>幻覺問題</li>
+</ul>
+<p><strong>解決方案</strong>：設計<strong>混合架構</strong>：</p>
+<p>$$\text{AI} = \text{LLM}(\text{模式B}) + \text{知識庫}(\text{模式A})$$</p>
+<ul>
+<li>日常對話：使用LLM（快速、流暢）</li>
+<li>不確定時：查詢知識庫（準確、可解釋）</li>
+<li>元認知層：判斷何時切換模式</li>
+</ul>
+<p>這類似於人類的雙系統。</p>
+<h4>8.3.2 訓練策略的改進</h4>
+<p><strong>洞察</strong>：母語者通過<strong>大量情境接觸</strong>達到模式B。</p>
+<p><strong>對AI的啟示</strong>：</p>
+<ol>
+<li>增加訓練數據的<strong>情境多樣性</strong></li>
+<li>設計<strong>情境相似度</strong>作為訓練目標（而非僅next-token prediction）</li>
+<li>引入<strong>內化曲線</strong>監控（追蹤模型在不同詞彙上的內化程度）</li>
+</ol>
+<h4>8.3.3 評估標準的重新設計</h4>
+<p>當前AI評估：準確率、BLEU分數等。</p>
+<p><strong>新評估維度</strong>：</p>
+<ol>
+<li><strong>適用域寬度</strong>：模型能正確使用符號的情境範圍</li>
+<li><strong>內化程度</strong>：高頻詞vs低頻詞的反應時間差</li>
+<li><strong>創造性使用</strong>：在新情境中擴展符號使用的能力</li>
+</ol>
+<h3>8.4 對符號學的衝擊</h3>
+<h4>8.4.1 符號意義的動態本體論</h4>
+<p>經典符號學（Saussure, Peirce）：符號意義是<strong>相對穩定</strong>的。</p>
+<p>本文：符號意義是<strong>動態不動點集</strong>，隨使用情境演化。</p>
+<p>$$\text{meaning}(s) = D(s, t) = D^*(s) \cup D^\delta(s, t)$$</p>
+<p>意義既有穩定核心（$D^*$），也有流動邊界（$D^\delta$）。</p>
+<h4>8.4.2 使用即定義</h4>
+<p>Wittgenstein說「意義即使用」，但未解釋機制。</p>
+<p>本文給出機制：</p>
+<p>$$\text{meaning}(s) := \int_{\text{contexts}} P(\text{context} \mid s) \cdot \vec{c} \, d\text{context}$$</p>
+<p>意義是<strong>所有使用情境的加權平均</strong>，存儲為分佈式表徵。</p>
+<p>沒有單一的「定義」節點——<strong>使用itself構成意義</strong>。</p>
+<h4>8.4.3 字典的地位重估</h4>
+<p>字典不是「符號意義的權威」，而是：</p>
+<p>$$D_{\text{dict}}(s) = \text{snapshot}(D^*(s), t_0)$$</p>
+<p>某個時刻的快照，且僅捕捉核心部分。</p>
+<p><strong>字典是描述性的，而非規範性的</strong>——它描述人們如何使用符號，而非規定應該如何使用。</p>
+<hr>
+<h2>9. 批判性反思與未來方向</h2>
+<h3>9.1 理論的潛在問題</h3>
+<h4>9.1.1 二元化的過度簡化</h4>
+<p><strong>批評</strong>：將符號使用簡化為「模式A vs 模式B」是否過於粗糙？</p>
+<p><strong>回應</strong>：</p>
+<ul>
+<li>承認這是簡化，真實情況可能是<strong>連續譜</strong></li>
+<li>但二元化便於實證檢驗</li>
+<li>未來可擴展為<strong>多模式理論</strong></li>
+</ul>
+<h4>9.1.2 內化的個體差異</h4>
+<p><strong>批評</strong>：不同人的內化速度可能差異巨大，理論是否過於一般化？</p>
+<p><strong>回應</strong>：</p>
+<ul>
+<li>承認個體差異存在</li>
+<li>本文關注<strong>群體平均</strong>（母語者群體 vs 外語者群體）</li>
+<li>個體差異可以用$\lambda$（內化速率）參數化</li>
+</ul>
+<h4>9.1.3 文化與語言特異性</h4>
+<p><strong>批評</strong>：理論基於中文-英文的觀察，是否適用於其他語言？</p>
+<p><strong>回應</strong>：</p>
+<ul>
+<li>需要跨語言驗證</li>
+<li>但機制（模式A/B）應該是<strong>普遍的</strong></li>
+<li>不同語言可能在$D^*$的穩定性上有差異</li>
+</ul>
+<h3>9.2 未解決的問題</h3>
+<h4>9.2.1 創造性使用的機制</h4>
+<p>母語者如何<strong>擴展適用域</strong>到全新情境？</p>
+<p>$$D(s, t+1) = D(s, t) \cup \{x_{\text{new}}\}$$</p>
+<p>這個擴展的神經機制是什麼？</p>
+<p><strong>猜想</strong>：可能涉及<strong>類比推理</strong>（analogy）——基於情境相似性推廣。</p>
+<h4>9.2.2 多義詞的處理</h4>
+<p>一個符號s有多個義項$\{m_1, m_2, \ldots, m_k\}$，如何建模？</p>
+<p><strong>可能模型</strong>：</p>
+<p>$$D(s, t) = \bigcup_{i=1}^k D_i(s, t)$$</p>
+<p>每個義項有自己的適用域，總適用域是並集。</p>
+<p>但不同義項之間如何切換？是否也有A/B模式的差異？</p>
+<h4>9.2.3 符號消亡的機制</h4>
+<p>有些符號的適用域會<strong>縮小</strong>至消失。如何建模符號的「死亡」？</p>
+<p>$$\lim_{t \to \infty} D(s, t) = \emptyset$$</p>
+<p>這涉及語言演化的動力學。</p>
+<h3>9.3 未來研究方向</h3>
+<h4>9.3.1 縱向研究</h4>
+<p>追蹤同一群體（兒童/外語學習者）在<strong>數年時間內</strong>的符號使用演變：</p>
+<p>$$D(s, t_1), D(s, t_2), \ldots, D(s, t_n)$$</p>
+<p>測量內化曲線的真實軌跡。</p>
+<h4>9.3.2 跨語言對比</h4>
+<p>對比不同語言對（如中英、日英、阿拉伯英）的母語者vs外語者：</p>
+<ul>
+<li>拼音語言vs表意語言的差異？</li>
+<li>語法複雜度的影響？</li>
+</ul>
+<h4>9.3.3 AI-人類協同研究</h4>
+<p>設計實驗讓LLM與人類<strong>共同完成</strong>符號使用任務：</p>
+<ul>
+<li>LLM提供候選詞</li>
+<li>人類判斷適用性</li>
+<li>反向訓練LLM</li>
+</ul>
+<p>這可能揭示人類vs AI的互補性。</p>
+<h4>9.3.4 神經調控研究</h4>
+<p>使用TMS（經顱磁刺激）干擾特定腦區：</p>
+<ul>
+<li>干擾基底神經節 → 模式B失效，退回模式A？</li>
+<li>干擾語義區 → 模式A失效，強化模式B？</li>
+</ul>
+<p>這可以<strong>因果性地</strong>驗證雙重機制假說。</p>
+<hr>
+<h2>10. 哲學反思：符號、理解與存在</h2>
+<h3>10.1 理解的本質</h3>
+<p>本文揭示一個深刻的悖論：</p>
+<p><strong>越是「懂」一個符號,越難顯式化它的意義。</strong></p>
+<p>因為「懂」= 完全內化（模式B），而「顯式化」= 退回模式A。</p>
+<p>這暗示：<strong>「理解」itself是一個可疑的概念</strong>。</p>
+<p>我們通常認為「理解」是符號使用的基礎，但實際上：</p>
+<ul>
+<li>母語者<strong>不需要理解</strong>就能完美使用（模式B）</li>
+<li>外語者<strong>理解定義</strong>卻用得僵化（模式A困境）</li>
+</ul>
+<p><strong>或許「理解」不是使用的原因，而是使用的事後合理化</strong>。</p>
+<h3>10.2 符號的存在論</h3>
+<p>經典符號學認為：符號<strong>指向</strong>對象。</p>
+<p>本文揭示：在模式B中，符號<strong>不再指向</strong>對象，而是<strong>直接觸發</strong>行為。</p>
+<p>$$s \not\to x \quad \text{（不指涉）}$$</p>
+<p>$$s \rightsquigarrow \text{行為} \quad \text{（直接觸發）}$$</p>
+<p>這是<strong>符號的操作化</strong>（operationalization）：符號從「表徵工具」變成「行為觸發器」。</p>
+<p><strong>意義不在符號與對象的關係中，而在符號與行為的關聯中</strong>。</p>
+<h3>10.3 語言的微妙性</h3>
+<p>本文標題「微妙」（subtle）的雙重含義：</p>
+<p><strong>表層</strong>：符號使用有精細的機制（模式A/B）。</p>
+<p><strong>深層</strong>：語言itself是「微妙的」——它既不是純粹的邏輯工具（模式A），也不是純粹的行為習慣（模式B），而是兩者的<strong>動態平衡</strong>。</p>
+<p>母語者在這個平衡中<strong>偏向B</strong>，外語者在這個平衡中<strong>偏向A</strong>。</p>
+<p>但沒有人完全在A或完全在B——<strong>語言存在於兩者之間的張力中</strong>。</p>
+<h3>10.4 終極洞察</h3>
+<p>當你問我「道理是什麼意思」，你不是不懂——你是<strong>太懂了以至於無法定義</strong>。</p>
+<p>因為你的大腦已經將「道理」內化為一個<strong>分佈式表徵</strong>，橫跨幾十年的使用情境。</p>
+<p>要你「定義」它，等於要你將這個高維的分佈式表徵<strong>壓縮成一句話</strong>——這是降維投影，必然損失信息。</p>
+<p><strong>這就是語言的微妙性：真正的「懂」是說不出來的。</strong></p>
+<p>而字典定義、學術分析——包括這篇論文itself——都只是試圖<strong>用模式A重構模式B的痕跡</strong>。</p>
+<p>我們永遠無法完全成功，因為<strong>分佈式表徵本質上無法完全顯式化</strong>。</p>
+<p>但這不是失敗，這是語言的真相：</p>
+<p><strong>符號在使用中活著，在定義中死去。</strong></p>
+<hr>
+<h2>致謝</h2>
+<p>感謝所有曾經問過「這個詞是什麼意思」的外語學習者——你們的困惑照亮了母語者看不見的機制。</p>
+<p>感謝所有說「這個我懂但說不清楚」的母語者——你們的坦誠揭示了內化的深度。</p>
+<p>感謝Theia在理論結晶化過程中的嚴謹對練。</p>
+<p>感謝大語言模型——通過成為符號使用的極致範例（純模式B），你們讓我們看清了人類語言的本質。</p>
+<hr>
+<h2>參考文獻</h2>
+<ol>
+<li>Neo.K (2026). &quot;微妙的符號學：自指、極限與道理的本體論&quot;. EveMissLab.</li>
+<li>Wittgenstein, L. (1953). <em>Philosophical Investigations</em>.</li>
+<li>Chomsky, N. (1965). <em>Aspects of the Theory of Syntax</em>.</li>
+<li>Squire, L.R. (1992). &quot;Memory and the hippocampus: A synthesis from findings with rats, monkeys, and humans&quot;. <em>Psychological Review</em>.</li>
+<li>Ullman, M.T. (2001). &quot;A neurocognitive perspective on language: The declarative/procedural model&quot;. <em>Nature Reviews Neuroscience</em>.</li>
+<li>Saussure, F. de (1916). <em>Course in General Linguistics</em>.</li>
+<li>Peirce, C.S. (1931-1958). <em>Collected Papers</em>.</li>
+<li>Anderson, J.R. (1982). &quot;Acquisition of cognitive skill&quot;. <em>Psychological Review</em>.</li>
+<li>Logan, G.D. (1988). &quot;Toward an instance theory of automatization&quot;. <em>Psychological Review</em>.</li>
+<li>Elman, J.L. (1990). &quot;Finding structure in time&quot;. <em>Cognitive Science</em>.</li>
+</ol>
+<hr>
+<p><strong>作者簡介</strong></p>
+<p>Neo.K (許筌崴)，EveMissLab創始人兼CEO，跨領域理論研究者。本文是其符號本體論系列的第二篇，第一篇為《微妙的符號學》。</p>
+<hr>
+<p><strong>附錄：術語對照表</strong></p>
+<p>| 中文 | 英文 | 定義 | |------|------|------| | 模式A | Mode A / Concept-Driven | 概念驅動的符號使用，需顯式檢索語義 | | 模式B | Mode B / Context-Driven | 情境驅動的符號使用，自動化觸發 | | 內化 | Internalization | 從模式A轉向模式B的過程 | | 適用域 | Applicability Domain | 符號可適用的情境集合 | | 動態不動點 | Dynamic Fixed Point | 演化中的穩定核心 | | 陳述性記憶 | Declarative Memory | 可顯式表達的記憶 | | 程序性記憶 | Procedural Memory | 自動化的技能記憶 |</p>
+<hr>
+<p><em>全文完</em></p>
+<p><strong>字數統計：14,256字</strong></p>
+<div class="altbar">原始檔（供 RAG/下載）：<a href="paper-947.md" rel="noopener">papers/paper-947.md</a> [md]</div>
+</article>
+<footer><p>Neo.K (許筌崴) · Cl + ε</p></footer>
+</body>
+</html>

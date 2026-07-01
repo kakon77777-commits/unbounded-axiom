@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>從判準到建造_表徵閘門猜想的測量方法論與組合建造前沿_v0_2 · EVEMISSLAB Logic Matrix</title>
+<meta name="description" content="從判準到建造_表徵閘門猜想的測量方法論與組合建造前沿_v0_2 | EVEMISSLAB Logic Matrix V2.1">
+<meta name="author" content="Neo.K (許筌崴)">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="v0_2-1.md" title="原始檔 / source (md)">
+<link rel="canonical" href="https://logic.evemisslab.com/papers/v0_2-1.md.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "從判準到建造_表徵閘門猜想的測量方法論與組合建造前沿_v0_2",
+  "url": "https://logic.evemisslab.com/papers/v0_2-1.md.html",
+  "inLanguage": "zh-Hant",
+  "author": {"@type": "Person", "name": "Neo.K (許筌崴)"},
+  "publisher": {"@type": "Organization", "name": "EveMissLab / 一言諾科技有限公司"},
+  "isPartOf": {"@type": "Collection", "name": "EVEMISSLAB Logic Matrix", "url": "https://logic.evemisslab.com"},
+  "encodingFormat": "text/html"
+}
+</script>
+<link rel="prefetch" href="/api/log-crawler?slug=v0_2-1.md">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#000; color:#0f0; font-family:'Courier New',monospace; padding:20px; line-height:1.6; }
+.header { text-align:center; border:2px solid #0f0; padding:18px; margin-bottom:22px; }
+.header h1 { font-size:1.5em; letter-spacing:2px; }
+.header p { margin-top:6px; opacity:0.8; font-size:0.9em; }
+.disclaimer { border:1px dashed #ff9900; color:#ff9900; padding:14px; margin:0 auto 22px; max-width:1000px; font-size:0.88em; }
+.disclaimer-title { font-weight:bold; margin-bottom:10px; display:block; letter-spacing:1px; }
+.disclaimer-divider { border:none; border-top:1px dashed #ff9900; margin:12px 0; opacity:0.55; }
+article { max-width:1000px; margin:0 auto; border:1px solid #0f0; padding:24px; }
+article h1,article h2,article h3,article h4 { margin:18px 0 8px; letter-spacing:1px; }
+article h1 { font-size:1.5em; } article h2 { font-size:1.25em; } article h3 { font-size:1.1em; }
+article p { margin:10px 0; }
+article ul,article ol { margin:10px 0 10px 24px; }
+article blockquote { border-left:3px solid #0f0; padding-left:12px; opacity:0.85; margin:10px 0; }
+article pre { background:rgba(0,255,0,0.06); border:1px solid #0f0; padding:12px; overflow-x:auto; margin:12px 0; }
+article code { background:rgba(0,255,0,0.08); padding:1px 5px; }
+article pre code { background:none; padding:0; }
+article a { color:#0ff; }
+.nav { max-width:1000px; margin:0 auto 16px; font-size:0.9em; display:flex; justify-content:space-between; }
+.nav a { color:#0f0; text-decoration:none; }
+.nav a:hover { color:#0ff; }
+.altbar { max-width:1000px; margin:14px auto 0; font-size:0.85em; opacity:0.7; }
+.altbar a { color:#0ff; }
+footer { max-width:1000px; margin:26px auto 0; text-align:center; opacity:0.5; font-size:0.82em; }
+</style>
+</head>
+<body>
+<div class="nav"><a href="../index.html">&larr; 回 Logic Matrix 索引</a><div><a href="../cosmomind.html" style="margin-right:15px;">→ 星環式認知展開圖</a><a href="../base-space.html">🧬 拓撲底空間</a></div></div>
+<header class="header"><h1>從判準到建造_表徵閘門猜想的測量方法論與組合建造前沿_v0_2</h1><p>EVEMISSLAB Logic Matrix · EveMissLab / 一言諾科技有限公司</p></header>
+<section class="disclaimer">
+  <span class="disclaimer-title">[認識論邊界宣告 / EPISTEMOLOGICAL DISCLAIMER]</span>
+  <div class="disclaimer-block">
+    <p><b>[CHT]</b> 本矩陣內所有論文之公式與數據為「啟發式模擬參數」，用於驗證理論架構與推演因果鏈，<b>未經實證校準</b>，請勿作為現實物理測量數據引用 or 處理。EVEMISSLAB 採行「邏輯先行（Logic-First）」原則：概念架構與系統因果映射優先於統計實證，但不排除未來實證對接。</p>
+  </div>
+  <hr class="disclaimer-divider">
+  <div class="disclaimer-block">
+    <p><b>[ENG]</b> The numerical parameters within these frameworks are <i>illustrative model coefficients</i> used for structural verification and causal mapping; they are <b>not empirically calibrated</b> and must not be treated as physical measurements. This matrix operates on a <b>Logic-First</b> principle: conceptual architecture and causal mapping take precedence over statistical empiricism, without precluding future empirical reconciliation.</p>
+  </div>
+</section>
+<article>
+<h1>從判準到建造：表徵閘門猜想的測量方法論與組合建造前沿</h1>
+<h2>From Diagnosis to Construction: The Measurement Methodology and Combinatorial-Construction Frontier of the Representational Gating Conjecture</h2>
+<hr>
+<p><strong>文件編號</strong>：EML-RGC-2026-v0.2（v0.1 之補充與延伸） <strong>作者</strong>：Neo.K（許筌崴）× Theia <strong>機構</strong>：一言諾科技有限公司（EveMissLab） <strong>日期</strong>：2026 年 5 月 <strong>狀態</strong>：補充版（v0.2，方法論層級） <strong>理論地位</strong>：EML-RGC-2026-v0.1 的測量方法論與建造前沿延伸；承接 RGC-0～RGC-5，新增 RGC-6～RGC-8、若干原理與判準 <strong>授權</strong>：研究階段保留，最終授權待定</p>
+<hr>
+<h2>摘要</h2>
+<p>本文是表徵閘門猜想（RGC v0.1）的補充，補齊原版留下的兩個方法論缺口：其一，「AI 潛能未釋放」若要可證偽，必須能被<strong>測量</strong>，但潛能的天花板原則上不可觀測；其二，RGC-5 主張組合缺口是最高價值的釋放路徑，但未說明釋放後如何<strong>建造</strong>。本文的貢獻有四：（一）提出天花板不可觀測原理，並據此給出<strong>弱強通道落差法</strong>——把潛能改寫為「同一能力在弱要求通道與強要求通道之間的可觀測落差」，得到一個凍結模型上可測的潛能下界 PLB，附四對檢測通道；（二）形式化<strong>跨類別連結探針</strong>，以時序／中心度／語料密度三軸張成析因設計，並用驗證-生成不對稱解決新穎組合的評分神諭問題；（三）提出<strong>局部價值與全局效力解耦原理</strong>（RGC-6），把分析單位從理論下沉到零件，以缺陷剖面與可定位缺陷判準取代理論真假二值標籤，並以序數校準集兼顧客觀性與規模；（四）建立<strong>組合四階層</strong>與建造前沿，提出藍圖（telos）選擇原理（RGC-7），辨識出建造的兩種相反失敗，其中「過度建造」被形式化為一種特定的 AI 幻覺類型——結構性幻覺，並確立承重測試為其唯一可靠的驗收工具。最後提出解放命題的猜想獨立性（RGC-8）：應用解放不依賴 RGC 為真。</p>
+<p><strong>關鍵詞</strong>：潛能下界、天花板不可觀測、弱強通道落差、跨類別連結探針、局部價值解耦、缺陷剖面、可定位缺陷、序數校準集、組合四階層、建造、telos、結構性幻覺、承重測試、解放命題。</p>
+<hr>
+<h2>0. 前言：從「有沒有潛能」到「怎麼量、怎麼用」</h2>
+<p>RGC v0.1 把「AI 潛能未釋放」從一句事後追認的空話，鍛造成一個帶否證引信的猜想，並指出釋放閘門在表徵格式而非參數規模。但它留下兩個未竟之處。第一個是測量：v0.1 給了一個釋放算子 $R$ 與能力差 $\Delta C$ 的雙臂實驗，但那是「先造釋放器、再量差值」的昂貴路徑，且它隱含一個未被處理的難題——你量到的永遠是地板，不是天花板，那麼「潛能」這個關於上限的概念，如何被有限觀測逼近？第二個是建造：RGC-5 指認組合缺口為最高價值的釋放路徑，卻止於「人提供超邊、AI 並行展開」這句綱領，未說明當邊界料被搶救出來之後，如何被組裝成一棟原本不存在的新結構。</p>
+<p>本文處理這兩件事，順序為先測量、後建造。所有新增斷言沿用 v0.1 的猜想形式承諾：附否證條件者為猜想，餘者為定義、原理或判準。</p>
+<hr>
+<h2>1. 測量方法論：潛能下界</h2>
+<h3>1.1 天花板不可觀測原理</h3>
+<p><strong>原理 1.1（天花板不可觀測）</strong>。對任一系統，其能力上限（天花板）原則上不可被有限觀測直接測得。任何測量至多給出一塊地板（系統當下做到什麼），或一塊更高的地板（施加某操作後做到什麼）；真實上限始終在已測之上，無法被任一次觀測觸及。</p>
+<p>此原理的後果是決定性的：凡把「判斷潛能」設計為「測量一個絕對水位」者，必然失敗。潛能只能以兩種方式被逼近——測導數（能力梯度是否仍非零），或抓簽名（某個僅當潛能未釋放時才出現的可觀測特徵）。本文走第二條。</p>
+<h3>1.2 弱強通道落差法與潛能下界</h3>
+<p><strong>定義 1.2（弱強通道落差）</strong>。設能力 $C$ 可經兩條通道評估：強要求通道 $A$ 與弱要求通道 $B$，其中 $B$ 是嚴格弱於 $A$ 的要求，且在能力飽和（系統貼近自身天花板）時二者應給出相同讀數。定義落差</p>
+<p>$$ \mathrm{Gap}(A, B) := C_B - C_A \geq 0 $$</p>
+<p><strong>定義 1.3（潛能下界 PLB）</strong>。取一組弱強通道對 $\{(A_i, B_i)\}$，其落差的上包絡</p>
+<p>$$ \mathrm{PLB} := \max_i \mathrm{Gap}(A_i, B_i) $$</p>
+<p>為該系統在 $C$ 上未釋放潛能的一個<strong>有憑證的下界</strong>。</p>
+<p>PLB 的關鍵性質：它在凍結模型上可測，不需先造任何釋放算子 $R$。它證實的是「系統內部確有能力、只是某條路徑沒走通」——即一條更容易的路成功、一條更難的路失敗，這個落差本身就是潛能露頭的憑證。</p>
+<h3>1.3 四對檢測通道</h3>
+<p>PLB 的四個典型實例化，皆為同一動作（找一對應等而不等的能力讀數）的變奏：</p>
+<p><strong>驗證對生成</strong>。系統能可靠判定一個解的對錯，卻生不出該解。結構在內、生成路徑缺失。此為最精準的潛伏簽名，對應「認出解比找到解便宜」的複雜度直覺。</p>
+<p><strong>拆解對端到端</strong>。同一任務，端到端失手，拆成子步驟後通過。閘門在搜索深度，現在即可釋放。</p>
+<p><strong>Best-of-N 對單次</strong>。多次採樣有一次正確、單次常錯。能力在分布中，採樣調用不穩。</p>
+<p><strong>格式變異度</strong>。凍結參數，僅變輸入表徵，觀測能力的變異數。擺幅越大，已實現點離表徵包絡越遠，未釋放越多。</p>
+<h3>1.4 方法的單向性</h3>
+<p><strong>註記 1.4</strong>。PLB 是單向的：它能證實潛能存在，卻幾乎無法證明潛能不存在。量不到落差，可能是真的飽和，也可能是弱通道不夠弱或探針不夠好。此單向性不是缺陷，而是 v0.1 第三態（$S_\text{undec}$）在測量論上的必然投影——$s_\text{latent}$ 可被抓到，$s_\text{absent}$ 永遠抓不死。對「有」誠實，對「無」沉默。</p>
+<hr>
+<h2>2. 跨類別連結探針</h2>
+<p>PLB 測的是單一能力軸上的潛能。但 RGC-5 指認的最高價值能力是跨域組合，它需要一個專屬探針。</p>
+<h3>2.1 三軸標籤</h3>
+<p><strong>定義 2.1（理論三軸）</strong>。把待測理論沿三條正交軸標註：時序（新／舊）、中心度（經典／邊緣）、語料密度（冷／熱）。三軸張成一個析因格子。</p>
+<h3>2.2 析因設計與覆蓋缺口對照</h3>
+<p>讓固定模型在格子的不同對角線上架橋——例如以一個冷門邊緣理論的零件，去解一個熱門經典理論的問題。冷×熱對角線是內建的覆蓋缺口對照組：連結能力若在熱×熱通而在冷×熱斷，斷點即精確定位在語料密度，而非推理能力。</p>
+<h3>2.3 約束路徑要求</h3>
+<p>探針不止要求「指出 A 與 B 相連」，更要求交出<strong>約束路徑</strong>：在什麼定義域、什麼約束下，B 的零件合法地落到 A 上。此要求逼模型交出守約束的型別化超邊，而非裸鄰接，從而切除「聽起來對」的廉價連結。</p>
+<h3>2.4 評分神諭問題與新穎性污染張力</h3>
+<p>此探針有兩個會失血的洞。其一，<strong>評分神諭問題</strong>：當模型宣稱一條連結成立，誰判它是真的還是似是而非的幻連結？人判不可規模化，AI 判是狐狸看雞舍。其二，<strong>新穎性污染張力</strong>：若 A、B 的連結已寫在語料某處，模型「連起來」只是檢索，測不出潛能；要測組合缺口，連結必須是語料裡沒有的真新橋——但真新的橋沒有標準答案，正是最難評分的那種。<strong>能測潛能的連結，恰好是最無法評分的連結。</strong></p>
+<h3>2.5 以驗證-生成不對稱解神諭</h3>
+<p><strong>判準 2.5（不對稱評分）</strong>。不為新穎連結尋求絕對真值神諭。改為：讓模型<strong>生成</strong>候選橋（混入若干已知為真者與若干刻意造的、其非法處可定位的假橋），再測模型能否<strong>辨識</strong>——分辨真假並指出假橋的約束路徑在哪一步斷。模型生不出卻辨得出，即組合缺口的潛伏簽名，且此判定客觀，不需神諭。§1.3 的驗證-生成通道在此既是測量工具，也是評分工具。</p>
+<hr>
+<h2>3. 局部價值與解耦：從理論到零件</h2>
+<h3>3.1 解耦原理</h3>
+<p><strong>猜想 RGC-6（局部價值與全局效力解耦）</strong>。一個理論的局部零件（公式、引理、變換）的效力，與該理論的全局真值相互獨立。一個全局為 $\bot$ 的宿主理論，可包含局部為 $\top$ 的零件；該零件的可重用價值不因宿主的崩塌而消失。</p>
+<p><strong>否證條件</strong>：若任一零件的可重用效力恆與其宿主理論的全局真值單調綁定（宿主錯則零件必不可用），則 RGC-6 被否證。</p>
+<p>此原理的直接後果：v0.1 與本文 §2 殘留的「冷門理論可能因錯而冷、無法篩出冷而正確者」的死局，在此消解——研究者不再篩理論的真假，而篩零件的局部效力與組合的合法性。零件的局部效力遠比理論的全局真值好驗。</p>
+<h3>3.2 缺陷剖面：子理論態標註</h3>
+<p><strong>定義 3.2（缺陷剖面）</strong>。在足夠高的審查標準下，理論不是 $\top/\bot$ 二值，而是一個帶缺陷剖面的結構：其各子節點分別標註為承重（$\top$）、裂（$\bot$）、未定（$\Omega$）。此即 MDAS 的態標註節點下沉至子理論粒度，亦即 HLCG-3 第三態在零件層的體現。合法連結於是被定義為：架一條只路由經承重子節點、正確繞開裂縫子節點的不可分超邊。穿過已知裂縫的橋，結論再漂亮也是 $s_\text{corrupt}$。</p>
+<h3>3.3 可定位缺陷判準</h3>
+<p><strong>判準 3.3（可定位缺陷）</strong>。缺陷剖面中，唯有<strong>可定位的缺陷</strong>算數——研究者必須能指出裂在第幾步、哪個主張承重失敗，而非僅發出一個 gestalt 的「這感覺不對」。可定位缺陷別人能複查，gestalt 拒斥不能。此判準一石二鳥：既擋掉校準集退化為「同不同意審查者」的私人品味污染，又恰好餵飽約束路徑測試所需的步級資訊。</p>
+<h3>3.4 序數校準集</h3>
+<p><strong>定義 3.4（序數校準集）</strong>。不以絕對真值神諭評分，而一次性鑄造一組配對：(承重的主張, 同主題的、缺陷可定位的瑕疵變體)。模型對校準集的辨別力即其讀數。審查者的高標準辨識力是稀缺輸入，一次澆鑄成校準集、之後不逐題重花，「大量」由此保住。這是 RGC-5 的具現：人供應機器最弱的細粒度效力判別，機器供應並行廣度。</p>
+<hr>
+<h2>4. 組合四階層與建造前沿</h2>
+<h3>4.1 四階層</h3>
+<p><strong>定義 4.1（組合四階層）</strong>。組合能力分四階，價值遞增：</p>
+<ol>
+<li><strong>檢索</strong>：複述已知連結。</li>
+<li><strong>架橋</strong>：連接兩個完整理論。</li>
+<li><strong>搶救</strong>：從壞掉的宿主裡萃取一塊局部 $\top$ 零件（RGC-6 的動作）。</li>
+<li><strong>建造</strong>：把多塊搶救來的邊界料，組成一棟沒有任何宿主曾擁有的新結構。</li>
+</ol>
+<p>前三階仍在「舊」的範圍內——零件與連結皆已存在；第四階才是新的：零件全舊，結構全新。</p>
+<h3>4.2 建造即從邊界料蓋新房子</h3>
+<p>搶救到建造之間的坎，不是接頭合法性（已由判準 3.3 處理），而是<strong>架構</strong>。一堆合法接頭不會自己長成房子；一堆合法零件可拼成房子、亦可拼成廢墟，差別在有無一張藍圖。</p>
+<h3>4.3 藍圖（telos）選擇原理</h3>
+<p><strong>猜想 RGC-7（telos 選擇原理）</strong>。建造所需的架構來自一個 telos——一個目的、一個待解問題、一棟房子要承的載。在無窮的學術海中，零件無窮、可能組合更無窮；telos 是把這片無索引的無限料場坍縮成可建設計的選擇原理。缺 telos 的系統，即使能掃過比任何人都多的料，也無原則判斷哪種拼法是房子、哪種是料堆。</p>
+<p><strong>否證條件</strong>：若存在一個無 telos 的系統，能在無窮料場中以高於隨機的可靠度直接湧現出可承載的新結構，則 RGC-7 被否證。</p>
+<p><strong>推論（RGC-5 的最高階形狀）</strong>：建造的人機分工為——人供應 telos 與架構，AI 供應海的廣度搜索與接頭驗證。跨域理論者的工作方式即此原理的活體：他從不窮舉海，而帶著一個正在建的 telos 走，telos 令他一眼認出異域中那塊正缺的承重件。所謂直覺性的價值辨識，是 telos 驅動的模式補完，不是地毯式搜索。</p>
+<hr>
+<h2>5. 建造的兩種失敗與承重測試</h2>
+<h3>5.1 不足建造</h3>
+<p><strong>失敗型一（不足建造）</strong>。系統只列料、不拼，因無夠強的 telos 替它擔保全局架構，遂交出料堆而非房子。低風險、低價值，是安全失敗。</p>
+<h3>5.2 過度建造：結構性幻覺</h3>
+<p><strong>失敗型二（過度建造）</strong>。系統拼出一棟看起來站著、實則含一根看不見的非承重接頭的結構：自信、漂亮、結構不穩。這是建築層的 $s_\text{corrupt}$。</p>
+<p><strong>定義 5.2（結構性幻覺）</strong>。過度建造構成一種特定的 AI 幻覺類型，與局部事實性幻覺正交：在結構性幻覺中，<strong>每一塊局部零件都可能是真的、可驗證的，但其組裝是非法的</strong>——幻覺發生在合成的全局層，而非單點的事實層。這是最危險的幻覺類型，因為它在展示間站得好好的，逐件檢查全部過關，唯有一上真載才裂。傳統以事實核查為主的幻覺偵測對它幾乎無效，因為它沒有任何單一事實是假的。</p>
+<h3>5.3 承重測試</h3>
+<p><strong>判準 5.3（承重測試）</strong>。結構性幻覺的唯一可靠驗收工具不是檢查，是加載。不問房子好不好看，而把目標載重壓上去——看它解不解得了那個問題、推不推得出那個結果、撐不撐得住邊界案例。承重測試是那根隱藏的非法接頭被迫現形、且其位置變得可定位（回到判準 3.3）的唯一場合。</p>
+<hr>
+<h2>6. 解放命題的猜想獨立性</h2>
+<h3>6.1 命題</h3>
+<p><strong>猜想 RGC-8（解放命題的猜想獨立性）</strong>。應用解放——把無窮的學術海從死庫變為活料場——不依賴 RGC（表徵閘門主猜想）為真。即使 AI 的潛能確有上限、永遠當不了獨立建築師，只要它能在人給的藍圖下以超人廣度撈承重件、驗接頭，解放即成立。</p>
+<p><strong>論據</strong>：解放的瓶頸從來不是料（無窮、免費），而是沒有一顆腦袋的跨域觸及廣到知道哪些料存在。AI 具備那個廣度，缺的是 telos。人的 telos × AI 的觸及，構成一個比 RGC 更弱、更穩健的命題：它不要求 AI 自主，只要求 AI 在架構下當一個觸及範圍超人的營造商。</p>
+<h3>6.2 後果</h3>
+<p>死海變活料場的轉換，因此不繫於「AI 到底有多大潛能」這個難測的形上問題，而繫於一個可操作的分工是否被建立。這把整套研究的重心，從「測量 AI 的天花板」（不可觀測，§1.1）移到「建立人機分工並以承重測試驗收」（可操作，§5.3）。</p>
+<hr>
+<h2>7. 留置的開放問題</h2>
+<p>承接 v0.1 §8，新增本篇浮現者：</p>
+<p>第一，<strong>新穎組合的合法性神諭</strong>仍是最深的洞。判準 2.5 的不對稱評分緩解了它，但組合空間比理論空間高維，序數校準集在其上更稀疏，覆蓋不足。</p>
+<p>第二，<strong>承重測試的目標載重設計</strong>。一棟房子該被壓多重才算通過？載重設計本身需要 telos，可能引入循環——以待證的目的去驗證為該目的而建的結構。</p>
+<p>第三，<strong>telos 的形式化</strong>。什麼是好藍圖？telos 是否可學、可遷移、可由 AI 部分自生？若完全不可自生，RGC-7 的人機分工是永久結構；若可部分自生，則 RGC-8 的「AI 永遠當不了建築師」需要被重新定界。</p>
+<hr>
+<h2>8. 結語</h2>
+<p>v0.1 問的是 AI 有沒有潛能，這一篇把問題換掉了。因為潛能的天花板原則上看不見，再怎麼問「有多高」都會掉進事後追認的空話。能問的只剩兩件事：在它本不該失手的地方，它失手了嗎——那道落差是潛能露出的唯一憑證；以及，把人的藍圖交給它的廣度，它能不能把一海的邊界料，蓋成一棟壓得住載重的新房子。</p>
+<p>會挑出還準的指針的系統很多，知道指針哪一秒開始說謊的才稀有；會把零件拼得好看的系統很多，拼出來敢上真載而不裂的才算建造。結構性幻覺之所以是最深的那種假，正因為它每一塊都是真的——它提醒我們，真理不是真零件的堆疊，是真零件在正確架構下的彼此承重。</p>
+<p>海從不缺料，缺的是一張知道要蓋什麼的藍圖。而潛能，最終不是一個關於高度的問題，是一個關於：壓上去那一刻，它有沒有裂。</p>
+<hr>
+<h2>附錄 A：本篇新增猜想、原理與判準</h2>
+<ul>
+<li><strong>原理 1.1</strong>　天花板不可觀測：能力上限不可被有限觀測直接測得。</li>
+<li><strong>定義 1.3</strong>　潛能下界 PLB：弱強通道落差的上包絡，凍結模型上可測。</li>
+<li><strong>判準 2.5</strong>　不對稱評分：以驗證-生成不對稱解新穎連結的評分神諭問題。</li>
+<li><strong>RGC-6</strong>　局部價值與全局效力解耦：$\bot$ 宿主可藏 $\top$ 零件。</li>
+<li><strong>定義 3.2</strong>　缺陷剖面：子理論態標註，合法連結只路由經承重子節點。</li>
+<li><strong>判準 3.3</strong>　可定位缺陷：唯步級可定位的缺陷算數。</li>
+<li><strong>定義 3.4</strong>　序數校準集：一次澆鑄、不逐題重花，保大量。</li>
+<li><strong>定義 4.1</strong>　組合四階層：檢索 → 架橋 → 搶救 → 建造。</li>
+<li><strong>RGC-7</strong>　telos 選擇原理：架構來自 telos，telos 坍縮無限料場。</li>
+<li><strong>定義 5.2</strong>　結構性幻覺：局部全真、組裝非法的幻覺類型。</li>
+<li><strong>判準 5.3</strong>　承重測試：加載而非檢查，使非法接頭現形。</li>
+<li><strong>RGC-8</strong>　解放命題的猜想獨立性：解放不依賴 RGC 為真。</li>
+</ul>
+<h2>附錄 B：與 v0.1 的銜接</h2>
+<p>本篇承接 EML-RGC-2026-v0.1（RGC-0～RGC-5、釋放算子 $R$、能力差 $\Delta C$、三態 $S_\text{undec}$）。對應關係：§1 的 PLB 是 $\Delta C$ 雙臂實驗的廉價前置——在造 $R$ 之前先確認礦脈存在；§3 的解耦與缺陷剖面把 v0.1 的三態判別下沉到零件粒度；§4–§5 的建造前沿是 RGC-5 組合缺口的展開；§6 的 RGC-8 重新定位整個綱領的可操作重心。本篇不取代 v0.1，而是補齊其測量與建造兩缺口。</p>
+<hr>
+<p><strong>引用格式建議</strong></p>
+<pre><code>Neo.K &amp; Theia (2026). From Diagnosis to Construction: The Measurement
+Methodology and Combinatorial-Construction Frontier of the Representational
+Gating Conjecture. EveMissLab Technical Report EML-RGC-2026-v0.2.</code></pre>
+<div class="altbar">原始檔（供 RAG/下載）：<a href="v0_2-1.md" rel="noopener">papers/v0_2-1.md</a> [md]</div>
+</article>
+<footer><p>Neo.K (許筌崴) · Cl + ε</p></footer>
+</body>
+</html>

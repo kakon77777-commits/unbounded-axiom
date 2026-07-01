@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>邏輯層級論 MVP（LHT v1.0） · EVEMISSLAB Logic Matrix</title>
+<meta name="description" content="邏輯層級論 MVP（LHT v1.0） | EVEMISSLAB Logic Matrix V2.1">
+<meta name="author" content="Neo.K (許筌崴)">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="MVP-LHT-v1.0.md" title="原始檔 / source (md)">
+<link rel="canonical" href="https://logic.evemisslab.com/papers/MVP-LHT-v1.0.md.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "邏輯層級論 MVP（LHT v1.0）",
+  "url": "https://logic.evemisslab.com/papers/MVP-LHT-v1.0.md.html",
+  "inLanguage": "zh-Hant",
+  "author": {"@type": "Person", "name": "Neo.K (許筌崴)"},
+  "publisher": {"@type": "Organization", "name": "EveMissLab / 一言諾科技有限公司"},
+  "isPartOf": {"@type": "Collection", "name": "EVEMISSLAB Logic Matrix", "url": "https://logic.evemisslab.com"},
+  "encodingFormat": "text/html"
+}
+</script>
+<link rel="prefetch" href="/api/log-crawler?slug=MVP-LHT-v1.0.md">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#000; color:#0f0; font-family:'Courier New',monospace; padding:20px; line-height:1.6; }
+.header { text-align:center; border:2px solid #0f0; padding:18px; margin-bottom:22px; }
+.header h1 { font-size:1.5em; letter-spacing:2px; }
+.header p { margin-top:6px; opacity:0.8; font-size:0.9em; }
+.disclaimer { border:1px dashed #ff9900; color:#ff9900; padding:14px; margin:0 auto 22px; max-width:1000px; font-size:0.88em; }
+.disclaimer-title { font-weight:bold; margin-bottom:10px; display:block; letter-spacing:1px; }
+.disclaimer-divider { border:none; border-top:1px dashed #ff9900; margin:12px 0; opacity:0.55; }
+article { max-width:1000px; margin:0 auto; border:1px solid #0f0; padding:24px; }
+article h1,article h2,article h3,article h4 { margin:18px 0 8px; letter-spacing:1px; }
+article h1 { font-size:1.5em; } article h2 { font-size:1.25em; } article h3 { font-size:1.1em; }
+article p { margin:10px 0; }
+article ul,article ol { margin:10px 0 10px 24px; }
+article blockquote { border-left:3px solid #0f0; padding-left:12px; opacity:0.85; margin:10px 0; }
+article pre { background:rgba(0,255,0,0.06); border:1px solid #0f0; padding:12px; overflow-x:auto; margin:12px 0; }
+article code { background:rgba(0,255,0,0.08); padding:1px 5px; }
+article pre code { background:none; padding:0; }
+article a { color:#0ff; }
+.nav { max-width:1000px; margin:0 auto 16px; font-size:0.9em; display:flex; justify-content:space-between; }
+.nav a { color:#0f0; text-decoration:none; }
+.nav a:hover { color:#0ff; }
+.altbar { max-width:1000px; margin:14px auto 0; font-size:0.85em; opacity:0.7; }
+.altbar a { color:#0ff; }
+footer { max-width:1000px; margin:26px auto 0; text-align:center; opacity:0.5; font-size:0.82em; }
+</style>
+</head>
+<body>
+<div class="nav"><a href="../index.html">&larr; 回 Logic Matrix 索引</a><div><a href="../cosmomind.html" style="margin-right:15px;">→ 星環式認知展開圖</a><a href="../base-space.html">🧬 拓撲底空間</a></div></div>
+<header class="header"><h1>邏輯層級論 MVP（LHT v1.0）</h1><p>EVEMISSLAB Logic Matrix · EveMissLab / 一言諾科技有限公司</p></header>
+<section class="disclaimer">
+  <span class="disclaimer-title">[認識論邊界宣告 / EPISTEMOLOGICAL DISCLAIMER]</span>
+  <div class="disclaimer-block">
+    <p><b>[CHT]</b> 本矩陣內所有論文之公式與數據為「啟發式模擬參數」，用於驗證理論架構與推演因果鏈，<b>未經實證校準</b>，請勿作為現實物理測量數據引用 or 處理。EVEMISSLAB 採行「邏輯先行（Logic-First）」原則：概念架構與系統因果映射優先於統計實證，但不排除未來實證對接。</p>
+  </div>
+  <hr class="disclaimer-divider">
+  <div class="disclaimer-block">
+    <p><b>[ENG]</b> The numerical parameters within these frameworks are <i>illustrative model coefficients</i> used for structural verification and causal mapping; they are <b>not empirically calibrated</b> and must not be treated as physical measurements. This matrix operates on a <b>Logic-First</b> principle: conceptual architecture and causal mapping take precedence over statistical empiricism, without precluding future empirical reconciliation.</p>
+  </div>
+</section>
+<article>
+<h1>邏輯層級論 MVP（LHT v1.0）</h1>
+<p>對應論文：《邏輯層級論：跨範疇矛盾的四種命運、偽矛盾定理與 Ω-不確定性原理》</p>
+<h2>內容</h2>
+<p>單檔 <code>lht_mvp.py</code>，純 Python 標準庫，零外部依賴。</p>
+<h2>涵蓋功能</h2>
+<ol>
+<li><strong>Σ_18 標籤向量</strong>：18 維離散/連續欄位的 dataclass</li>
+<li><strong>圖結構</strong>：Vertex / Edge / Hyperedge / HyperGraph</li>
+<li><strong>跨範疇矛盾偵測</strong>：<code>detect_contradiction(g, vid)</code></li>
+<li><strong>四種命運判定</strong>：<code>classify_fate(g, vid)</code> → ASCENSION / ANNIHILATION / CYCLING / SPLITTING</li>
+<li><strong>Ω-不確定性檢測</strong>：<code>check_omega_uncertainty(theory)</code> → 四項硬約束</li>
+<li><strong>揚升塔構造</strong>：<code>build_ascension_tower(base, n)</code></li>
+</ol>
+<h2>六個 Demo 案例</h2>
+<p>| # | 案例 | 預期命運 | 對應論文章節 | |---|------|---------|------------| | 1 | 羅素悖論（樸素集合論） | 消滅 (→⊥) | §3.2, §4.4.1 | | 2 | 連續統假設 CH | 分裂 (⊚) | §3.4 | | 3 | 選擇公理 AC | 循環 (⊙) | §3.3 | | 4 | 平行公設 → 黎曼幾何 | 揚升 (Ω_spiral) | §3.1 | | 5 | Ω-不確定性檢測 | 違反 vs 通過 | §6.3 | | 6 | 揚升塔（PA 四階） | — | §5.1 |</p>
+<h2>執行</h2>
+<pre><code>python3 lht_mvp.py</code></pre>
+<h2>MVP 範圍說明</h2>
+<p>本 MVP 為概念驗證版本（proof of concept），優先確認：</p>
+<p>—資料結構能承載完整 Σ_18 —四種命運的判定流程可運行且結果與論文一致 —Ω-不確定性的四項硬約束可機械檢測 —揚升塔結構可程式化展開</p>
+<p><strong>尚未實作</strong>（留待 v2.0+）：</p>
+<p>—自動偽矛盾定理證明（給定 R_0、P，自動構造 R_1） —Σ_18 完整語意推理（目前部分判定簡化為單欄位檢查） —超圖視覺化（plotly 3D / d3.js） —批量範式宇宙比較（多個理論的 Σ_18 並列分析） —JSON / RDF 序列化與外部資料導入</p>
+<h2>後續計畫</h2>
+<p>按 BOSS 指示，下一階段為<strong>圖像化</strong>——把超圖、四種命運、揚升塔、Σ_18 投影到視覺空間。</p>
+<div class="altbar">原始檔（供 RAG/下載）：<a href="MVP-LHT-v1.0.md" rel="noopener">papers/MVP-LHT-v1.0.md</a> [md]</div>
+</article>
+<footer><p>Neo.K (許筌崴) · Cl + ε</p></footer>
+</body>
+</html>

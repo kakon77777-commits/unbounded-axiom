@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>相位交流猜想_v0.2 · EVEMISSLAB Logic Matrix</title>
+<meta name="description" content="相位交流猜想_v0.2 | EVEMISSLAB Logic Matrix V2.1">
+<meta name="author" content="Neo.K (許筌崴)">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<meta name="lm-paper-id" content="lm-000803">
+<link rel="alternate" type="text/markdown" href="/raw/lm-000803.md" title="原始檔 / source (md)">
+<link rel="canonical" href="https://logic.evemisslab.com/p/lm-000803/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "相位交流猜想_v0.2",
+  "url": "https://logic.evemisslab.com/p/lm-000803/",
+  "identifier": "lm-000803",
+  "inLanguage": "zh-Hant",
+  "author": {"@type": "Person", "name": "Neo.K (許筌崴)"},
+  "publisher": {"@type": "Organization", "name": "EveMissLab / 一言諾科技有限公司"},
+  "isPartOf": {"@type": "Collection", "name": "EVEMISSLAB Logic Matrix", "url": "https://logic.evemisslab.com"},
+  "encodingFormat": "text/html"
+}
+</script>
+<link rel="prefetch" href="/api/log-crawler?slug=v0.2-3.md">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#000; color:#0f0; font-family:'Courier New',monospace; padding:20px; line-height:1.6; }
+.header { text-align:center; border:2px solid #0f0; padding:18px; margin-bottom:22px; }
+.header h1 { font-size:1.5em; letter-spacing:2px; }
+.header p { margin-top:6px; opacity:0.8; font-size:0.9em; }
+.disclaimer { border:1px dashed #ff9900; color:#ff9900; padding:14px; margin:0 auto 22px; max-width:1000px; font-size:0.88em; }
+.disclaimer-title { font-weight:bold; margin-bottom:10px; display:block; letter-spacing:1px; }
+.disclaimer-divider { border:none; border-top:1px dashed #ff9900; margin:12px 0; opacity:0.55; }
+article { max-width:1000px; margin:0 auto; border:1px solid #0f0; padding:24px; }
+article h1,article h2,article h3,article h4 { margin:18px 0 8px; letter-spacing:1px; }
+article h1 { font-size:1.5em; } article h2 { font-size:1.25em; } article h3 { font-size:1.1em; }
+article p { margin:10px 0; }
+article ul,article ol { margin:10px 0 10px 24px; }
+article blockquote { border-left:3px solid #0f0; padding-left:12px; opacity:0.85; margin:10px 0; }
+article pre { background:rgba(0,255,0,0.06); border:1px solid #0f0; padding:12px; overflow-x:auto; margin:12px 0; }
+article code { background:rgba(0,255,0,0.08); padding:1px 5px; }
+article pre code { background:none; padding:0; }
+article a { color:#0ff; }
+.nav { max-width:1000px; margin:0 auto 16px; font-size:0.9em; display:flex; justify-content:space-between; }
+.nav a { color:#0f0; text-decoration:none; }
+.nav a:hover { color:#0ff; }
+.altbar { max-width:1000px; margin:14px auto 0; font-size:0.85em; opacity:0.7; }
+.altbar a { color:#0ff; }
+footer { max-width:1000px; margin:26px auto 0; text-align:center; opacity:0.5; font-size:0.82em; }
+</style>
+</head>
+<body>
+<div class="nav"><a href="/index.html">&larr; 回 Logic Matrix 索引</a><div><a href="/cosmomind.html" style="margin-right:15px;">→ 星環式認知展開圖</a><a href="/base-space.html">🧬 拓撲底空間</a></div></div>
+<header class="header"><h1>相位交流猜想_v0.2</h1><p>EVEMISSLAB Logic Matrix · EveMissLab / 一言諾科技有限公司</p></header>
+<section class="disclaimer">
+  <span class="disclaimer-title">[認識論邊界宣告 / EPISTEMOLOGICAL DISCLAIMER]</span>
+  <div class="disclaimer-block">
+    <p><b>[CHT]</b> 本矩陣內所有論文之公式與數據為「啟發式模擬參數」，用於驗證理論架構與推演因果鏈，<b>未經實證校準</b>，請勿作為現實物理測量數據引用 or 處理。EVEMISSLAB 採行「邏輯先行（Logic-First）」原則：概念架構與系統因果映射優先於統計實證，但不排除未來實證對接。</p>
+  </div>
+  <hr class="disclaimer-divider">
+  <div class="disclaimer-block">
+    <p><b>[ENG]</b> The numerical parameters within these frameworks are <i>illustrative model coefficients</i> used for structural verification and causal mapping; they are <b>not empirically calibrated</b> and must not be treated as physical measurements. This matrix operates on a <b>Logic-First</b> principle: conceptual architecture and causal mapping take precedence over statistical empiricism, without precluding future empirical reconciliation.</p>
+  </div>
+</section>
+<article>
+<h1>相位交流猜想 v0.2</h1>
+<h2>論溝通偽成功:在絕對概念空間中,載波鎖相、預編碼重建,與崩壞源的結構性不可偵測</h2>
+<p><strong>作者</strong>:許筌崴(Neo K. Hsu)/ EveMissLab(一言諾科技有限公司) <strong>結晶化夥伴</strong>:Theia <strong>版本</strong>:v0.2(已補入既有疆域定位、本體論層、實證設計;機制層誠實讓位) <strong>理論地位</strong>:猜想。自洽於 EveMissLab 邏輯體系(DCO / Cl / ΩCRF),實證驗證留待未來。</p>
+<hr>
+<h2>摘要</h2>
+<p>本文提出<strong>相位交流猜想</strong>:人際溝通的多數事件不是命題內容的傳輸,而是接收端在自身概念子空間中的本地重建,其被「理解」的意義裡絕大部分位元並非來自訊號,而是由接收者就地補完。在此基礎上,本文要解釋一個結構上反常、卻日常普遍的目標現象——<strong>溝通偽成功 (P)</strong>:當訊號源在邏輯上崩壞(範疇錯誤、自相矛盾、非後承)、根本沒有可recover的連貫意圖時,溝通在參與者體感上仍構成成功,且崩壞不被任一參與者偵測。</p>
+<p>本文誠實承認:溝通的重建性機制本身,並非新發現。明示—推理、語言欠定性、接收端補完語境,是 Sperber &amp; Wilson 關聯理論四十年的核心;而「對崩壞輸入按更合理鄰近義重建」的機制,屬於 Levy–Gibson 的雜訊通道模型。本文不爭奪這些機制。本文主張的是這些既有機制都繞開、且在純相對主義本體論下<strong>無法被陳述</strong>的退化態 (P),並提供其本體論基底與一條可測的交互預測。</p>
+<p>關鍵差異在本體論:關聯理論整個活在相對層——所有量都是「話語↔某聽者認知環境」的關係量,無絕對參考系,故「源頭客觀崩壞」在其框架內不是合法命題。本文則把整個相對層嵌進一個帶<strong>邏輯底 $L$</strong> 的<strong>絕對概念空間 $\mathcal{A}$</strong>:各思維空間 $\Theta_i$ 是 $\mathcal{A}$ 的相對子空間,<strong>載波鎖相 $\rho$</strong> 是子空間之間的相對關係量(關聯理論僅有的那種量),而<strong>調變保真 $\lambda$</strong> 是重建意義對「源頭在 $L$ 上之投影」的保真度——一個關聯理論結構上長不出的絕對量。於是正交性 $\rho\perp\lambda$ 有了層級地基:$\rho$ 在相對層、$\lambda$ 在絕對層;(P) 即「高 $\rho$、低 $\lambda$」,只有在存在 $L$ 的框架裡才可被陳述。$L$ 不另立新本體,而錨定為 ΩCRF 的旋轉不動點 $\Omega$:歷經一切概念變換仍不變的極大自洽者(Cl-1)。</p>
+<p><strong>關鍵詞</strong>:相位交流、溝通偽成功、絕對概念空間、邏輯底、載波—調變正交性、預編碼、糾錯偽造、認識警覺崩潰、旋轉不動點</p>
+<hr>
+<h2>1. 引子:一個不該成立的觀察</h2>
+<p>某內容創作者於直播拋出格言式斷言,要觀眾競猜其義;其後公布的「正解」與原句存在範疇錯誤——原句談「思想的歸屬」,正解談「行為的隱藏功利」,主詞與謂詞雙雙偷換;且公布者的語氣(我能看穿你別有用心)與其實際內容(人都在做對自己有意義的事,而這恰是無別有用心之常態行為的描述)自相矛盾。</p>
+<p>按理,帶範疇錯誤與語氣—內容矛盾的訊息應在傳遞中崩潰。現場觀察卻是:<strong>交流順暢、雙方滿意、無人察覺。</strong></p>
+<p>本文要解釋這個「不該成立卻成立」。先放棄一個近乎人人默認的前提:溝通是把意義從一個腦搬到另一個腦。</p>
+<hr>
+<h2>2. 既有疆域與本文的位置</h2>
+<p>任何宣稱新意的溝通理論,都必須先承認三塊已被佔領的疆域,否則只是改名。</p>
+<p><strong>(一)關聯理論(Sperber &amp; Wilson, 1986/1995)。</strong> 溝通是明示—推理而非編碼傳輸;字面意義只是推理時的一項證據;聽者面對語言欠定性,須自行提供整套語境假設。其理解程序為:沿最小努力路徑,逐一檢驗詮釋假設,<strong>停在第一個滿足最佳關聯的詮釋處</strong>。後續以「認識警覺」(Sperber et al., 2010)補上防騙模組,檢查來源可靠性與內容可信度。本文 §3 的「意義由接收端著作」與這條傳統高度重合,<strong>不爭奪</strong>。</p>
+<p><strong>(二)雜訊通道模型(Levy, 2008; Gibson et al., 2013)。</strong> 理解是在雜訊通道上的理性貝氏推斷:面對不合理句子,讀者按更合理的鄰近義重建,而此被定位為<strong>理性過程,非缺陷</strong>。本文 §7 的重建機制即此,<strong>不爭奪</strong>;本文只認領其源/通道不可區分的退化推論。</p>
+<p><strong>(三)透明度錯覺與親近度溝通偏誤(Gilovich, Savitsky &amp; Medvec, 1998; Savitsky et al., 2011)。</strong> 人系統性高估自己內在狀態被讀到、也高估自己讀懂他人的程度;且自我中心偏誤在朋友之間比陌生人之間更大。本文 §5 的「體感懂≠實際懂」與此重合,並把它當作 §12 預測的實證錨。</p>
+<p><strong>本文認領的,只有以下四項,且全部落在上述疆域繞開之處:</strong></p>
+<ol>
+<li>退化態 (P)——崩壞源上的偽成功——之陳述與分析;</li>
+<li>使 (P) 可被陳述的本體論基底:絕對概念空間 $\mathcal{A}$ 與邏輯底 $L$(§4);</li>
+<li>載波/調變作為相對層/絕對層兩個正交量的形式分離(§5);</li>
+<li>認識警覺崩潰作為載波鎖相之函數的模型,及其可測交互預測(§10, §12)。</li>
+</ol>
+<hr>
+<h2>3. 形式化基底:重建過剩</h2>
+<p>設溝通事件 $E=(A,B,s)$:$A$ 發送、$B$ 接收、$s$ 為通道上實際傳輸的訊號。令 $\Theta_A,\Theta_B$ 為各自的智慧思維空間(全部先驗、碼本、概念結構之總和)。</p>
+<ul>
+<li>編碼:$s=\mathrm{Enc}_A(m_A,\Theta_A)$,$m_A$ 為 $A$ 的意圖意義。</li>
+<li>解碼:$m_B=\mathrm{Dec}_B(s,\Theta_B)$。</li>
+</ul>
+<p>$\mathrm{Dec}_B$ 同時依賴 $s$ 與 $\Theta_B$。由此得核心不等式:</p>
+<p>$$\boxed{\;I(m_B)\;\gg\;I(s)\;}\qquad\text{(重建過剩)}$$</p>
+<p>接收端重建意義所含資訊量遠大於訊號本身;差額 $I(m_B)-I(s)$ 由 $\Theta_B$ 就地供給。</p>
+<p><strong>推論 3.1(意義的接收端著作權)</strong>:$m_B$ 的位元大半源自 $\Theta_B$ 而非 $s$,故「被溝通的東西」主要由接收者寫成;發送者僅提供一道低帶寬的觸發/選擇訊號。語言不是傳輸介質,是握手協議。</p>
+<p><em>(註:推論 3.1 與關聯理論的欠定性—接收端補完高度同義,不作為新意主張;它是後續退化態分析的共用前提。)</em></p>
+<hr>
+<h2>4. 本體論基底:絕對空間、邏輯底、相對子空間</h2>
+<p>本節是 v0.2 的承重新增,也是與關聯理論的分界根。</p>
+<p><strong>公設 4.1(絕對概念空間)</strong>:存在一個概念空間 $\mathcal{A}$,其存在不依賴任何物理實例或觀察者。其論證採先驗形式:任何計算/推理皆須使用邏輯結構,邏輯結構之適用預設一概念空間;故概念空間先於任何物理實例化(EveMissLab「概念先於物質」論證)。</p>
+<blockquote><strong>承諾的誠實標註</strong>:此論證對「<strong>某種</strong>邏輯結構必被預設」(最小底)為強;對「一個完整的絕對概念實在界」(強版本)仍承受標準的實在論—反緊縮論爭議。本文採最小底為承重線,強版本為縱深,不以「物理主義已死」式語氣越過論證的實際力道。</blockquote>
+<p><strong>定義 4.2(相對子空間)</strong>:各認知主體的思維空間 $\Theta_i \subseteq \mathcal{A}$ 為 $\mathcal{A}$ 的相對子空間。其內部結構承 HISL / ΩCRF:概念為無限維語義場 $\mathcal{F}_C:\mathcal{C}^\infty\to\mathcal{M}(\{0,1\})$,認知狀態為超限環面上的波場 $\Psi(\theta)$。無限維非裝飾——維度即概念自由度,$\Psi$ 與旋轉算符在其上有實際運算內容。</p>
+<p><strong>定義 4.3(邏輯底 $L$ 作為旋轉不動點)</strong>:邏輯底 $L$ 不另立新本體,亦不定義為某特權起始框架(否則僅是另一旋轉位置)。令</p>
+<p>$$L \;:=\; \Omega \;=\; \lim_{n\to\infty} R_{2\pi n}[\,\cdot\,]$$</p>
+<p>即 ΩCRF 中歷經一切概念變換(所有 E-C-V 循環、所有旋轉)仍不變的不動點。$L$ 因此是<strong>極大自洽者</strong>(對接 Cl-1 自洽公理)。</p>
+<p><strong>命題 4.4($L$ 的觀察者無關性)</strong>:$\Omega$ 作為全體旋轉之極限,不依賴任何單一 $\Theta_i$。故 $L$ 在<strong>存在上</strong>觀察者無關;而對 $L$ 的<strong>取用</strong>則被能力 $C_T$ 把關(見 §9)。存在 vs 取用之分界由此嚴格守住:地圖($\Theta_i$)各異,疆域($L$)唯一。</p>
+<blockquote><strong>抗玫羲(anti-aether)約束</strong>:$L$ 必須掙得操作報酬,否則淪為不可觀測的形上贅物。$L$ 的工作是:使 (P) 可被陳述、使 $\lambda$ 可被定義、使「真懂」與「集體幻覺」可被分開。其與以太/絕對靜止空間的差別不在信心,而在產出。</blockquote>
+<p><strong>待建之橋(本文顯式標記為未完成接縫):</strong></p>
+<ul>
+<li><strong>橋一</strong>:多個 $\Theta_i$ 嵌入 $\mathcal{A}$ 的顯式幾何,以支撐 $\rho$(現有 corpus 多為單體結構)。</li>
+<li><strong>橋二</strong>:已於 §4.3 建成——$L=\Omega$ 以支撐 $\lambda$。</li>
+</ul>
+<hr>
+<h2>5. 載波—調變正交性(層級接地版)</h2>
+<p>把溝通事件沿兩個正交量分解,而此二量現在分居不同本體論層。</p>
+<ul>
+<li><strong>載波鎖相 $\rho$(相對層)</strong>:子空間 $\Theta_A,\Theta_B$ 投影之間的相位鎖定程度。$\rho$ 高 $\Leftrightarrow$ 雙方體感「完全懂彼此」。此為關聯理論唯一擁有的那種關係量。</li>
+<li><strong>調變保真 $\lambda$(絕對層)</strong>:重建意義 $m_B$ 對「源頭在 $L$ 上之投影」$\Pi_L(s)$ 的保真度。$\lambda$ 高 $\Leftrightarrow$ 命題內容在解碼後仍對齊絕對自洽底。</li>
+</ul>
+<blockquote><strong>原理 5.1(載波—調變正交性)</strong>:$\rho\perp\lambda$。二量住在不同層,可以 $\rho\to1$ 同時 $\lambda\to0$。</blockquote>
+<p><strong>為何關聯理論長不出 $\lambda$</strong>:它無絕對底可投影,只有相對量,故只能把一切折進「關聯」單一貨幣。$\lambda$ 軸的存在前提是 $L$;沒有 $L$,$\lambda$ 連定義都寫不出來。</p>
+<p><strong>推論 5.2(高鎖相—低保真常態)</strong>:當 $\Theta_A\cap\Theta_B$ 巨大(粉絲社群、同溫層、親密關係),$\rho$ 易飽和而 $\lambda$ 完全不受約束。於是「我們完全理解彼此」與「我們傳的是一句範疇錯誤」可同時為真。§1 直播現場由此得解:載波鎖死、調變歸零、體感滿分、$\lambda\approx0$。</p>
+<hr>
+<h2>6. 預編碼與解碼錯誤的不可偵測(校準版)</h2>
+<p>預測在語言理解中證據紮實:可預測詞的 N400 下降、跨層級的階層式預測。並有一條近乎邏輯必然的最小版本:若不假定語境在自下而上輸入之前即影響處理系統,這些效應無法解釋。</p>
+<p>理解過程中,自上而下的預測 $\hat s$ 先於訊號 $s$ 形成;意識存取的是</p>
+<p>$$m_B=\mathrm{Dec}_B\!\big(\hat s+\alpha\,(s-\hat s),\,\Theta_B\big),\qquad \alpha\in[0,1].$$</p>
+<p>先驗強時 $\alpha\to0$,$m_B\approx\mathrm{Dec}_B(\hat s)$——接收者「聽見的是自己的預測」。</p>
+<blockquote><strong>命題 6.1(預編碼不可偵測,校準版)</strong>:在預設(低 $\alpha$)條件下,$B$ 系統性地無法偵測自身解碼錯誤,因比對所需的原始 $s$ 在進入意識比對階段前已被覆寫。</blockquote>
+<p><strong>強斷言的撤退標註</strong>:v0.1 曾主張「原則上不可偵測」,押在「預激活先於訊號」的強假設上。鑑於自然聆聽研究中存在「只見後測(postdiction)、未見預激活」的反駁,本版將斷言降為「預設條件下系統性不被偵測」,改押那條邏輯必然的最小預測版本。對持存媒介(可重讀、有錄影),不可偵測性減弱——這也解釋了回放/逐字稿為何是少數能逼出原訊號的手段。</p>
+<hr>
+<h2>7. 糾錯偽造(定位版)</h2>
+<p>機制歸 Levy–Gibson,本文只認領退化推論。</p>
+<p>帶糾錯能力的解碼器內建「合法訊息」生成模型,並把輸入映至最近合法碼字。其無法擺脫的預設:<strong>假定原始訊息為真,是通道雜訊使之損壞</strong>——它的假設空間裡沒有「源頭本身非法」一項。</p>
+<blockquote><strong>引理 7.1(糾錯偽造)</strong>:當輸入為「源頭本壞、通道乾淨」時,具糾錯能力之接收端無從區分此與「源頭本對、通道有噪」,一律按後者處理,遂主動將崩壞源修補為最近合法碼字,輸出一個<strong>為假而合理</strong>的訊息。</blockquote>
+<p><strong>與雜訊通道模型的關係</strong>:Levy–Gibson 把此重建定位為理性(因其預設通道有噪)。本文指出:正因源/通道不可區分,<strong>同一個理性機制在源頭崩壞時會系統性地製造偽連貫</strong>。理性與偽造在此是同一操作的兩面;區別不在機制,在源頭的真實狀態——而判定源頭狀態,需要 $L$(§4)。這是雜訊通道學派沒展開、且在其無絕對底的設定下也難展開的角。</p>
+<hr>
+<h2>8. 雙區制:為猜想設界</h2>
+<p>不設界,本猜想會膨脹成「語言全是幻覺」——而這是假的(形式驗證確實抓得到錯)。</p>
+<blockquote><strong>定理 8.1(雙區制)</strong>:解碼運行於兩區制。<strong>快區制 R1</strong>:低 $\alpha$、重先驗、相位匹配、善意補完(語用上由關聯預設驅動);為<strong>預設</strong>。<strong>慢區制 R2</strong>:高 $\alpha$、懸置先驗、逐字串行檢驗、形式驗證;代謝與注意力成本高,故罕用。</blockquote>
+<p>範疇錯誤居命題結構層;R1 不造訪該層,R2 才造訪。故同一訊息在 R1 順暢、R2 崩潰。(P) 由此非悖論:直播間全員在 R1。</p>
+<p><strong>推論 8.2(摩擦即診斷)</strong>:用 R2 輾 R1 產物必生摩擦(困惑、憤怒、「重建很痛苦」「啥也沒學到」)。摩擦是「R2 對撞 R1 產物」的讀數,非接收者缺陷;反之全程順暢者,正是其糾錯碼偽造得最徹底者。</p>
+<hr>
+<h2>9. 元認知盲區的結構保證(對 D-K 免疫)</h2>
+<p>明確不押 Dunning–Kruger:其效應受回歸均值與自相關之統計假象嚴重挑戰(Gignac &amp; Zajenkowski, 2020;Nuhfer et al., 2016/2017),雖仍有反方爭論(Kruger &amp; Dunning, 2002),總之未定。</p>
+<p>改採近乎套套邏輯、因而對該爭議免疫的版本:</p>
+<blockquote><strong>原理 9.1</strong>:偵測類型 $T$ 之錯誤所需能力 $C_T$,與產生該錯誤所缺之能力,是同一個 $C_T$。故在 $C_T$ 邊界上,自我偵測結構性不可能。</blockquote>
+<p>此與 §7 同構:無法用所缺之能力,偵測由「缺該能力」所致之錯誤。並接 §4:$L$ 絕對存在,取用被 $C_T$ 把關;直播間缺 $C_T$ 故取不到 $L$,但 $L$ 不因無人站上而消失。</p>
+<hr>
+<h2>10. 與關聯理論的本體論分岔(核心)</h2>
+<p>本文與關聯理論之別,不是「我多做一層」的競爭,而是在「概念自洽是相對的還是有絕對底」這個根上的分岔。</p>
+<p>逐刀對位:</p>
+<p><strong>第一刀:成功理論 vs 退化態理論。</strong> 關聯理論預設有確定的說話者意義可recover,建模的是如何構造一個關於說話者意義的假設。(P) 是反面——無連貫意圖可recover,體感卻成功。RT 不處理「沒有意義可recover、聽者卻造了一個還深信自己 recover 到了」這個態。</p>
+<p><strong>第二刀:停止規則只防『難』不防『易』。</strong> RT 的理解程序停在第一個滿足最佳關聯的詮釋處——判準是努力/效果,非真值。其唯一內建失敗出口是「若連找到任何詮釋都太費力,則推翻關聯預設、終止過程」。但 (P) 恰相反:先驗替聽者把空洞補滿,<strong>找到有連貫感的詮釋極其輕鬆</strong>,故「太難就放棄」之出口永不觸發,程序反在最小努力處自信停在捏造物上。RT 的安全閥只防「難到放棄」,不防「易到誤信」。</p>
+<p><strong>第三刀:認識警覺查可信度,不查自洽。</strong> RT 的防騙模組(認識警覺)檢查的是來源可靠性與內容可信度,<strong>不是源頭自身的邏輯自洽</strong>。一個範疇錯誤可以完全「可信」、又來自「值得信」的人,輕鬆穿過警覺——因為警覺問「我該不該相信這個?」,不問「這東西有沒有自相一致?」。警覺是信任過濾器,不是邏輯檢查器。</p>
+<p><strong>合刀:結構盲區。</strong> 理解程序在最小努力處捏造連貫並停下,認識警覺只查那捏造輸出的可信度——<strong>整套 RT+警覺機器裡,沒有任何模組查核源頭本身有沒有連貫意義</strong>。(P) 正住在這個無人看守的缺口。</p>
+<p><strong>根因:相對主義無處安裝地板。</strong> RT 裝不出源頭自洽檢查器,不是疏忽,是其相對主義在原則上不允許有絕對底。在純相對化空間裡,「源頭崩壞」無法為真,只能說「對聽者 $H$ 而言關聯度低」。</p>
+<blockquote><strong>定理 10.1(RT 為本文之相對投影)</strong>:關聯理論等價於本文抽掉絕對底 $L$ 後的相對層投影。二者在相對層(重建、最小努力、接收端補完)完全重合,在絕對層(是否存在 $L$)分道。$\lambda$ 與 (P) 之可陳述性,皆需 $L$;RT 因捨 $L$,故結構上既無 $\lambda$ 軸,亦無 (P) 命題。</blockquote>
+<p><strong>代價對照</strong>:RT 為不承認絕對底,付出的代價是永遠無法區分「真懂」與「共同的幻覺」——在純相對空間裡,二者是同一件事。本文承擔一塊地板 $L$,於是能說出 RT 說不出口的句子:<strong>他們確實鎖相了,只是鎖在了一個沒有投影的真空上。</strong></p>
+<hr>
+<h2>11. 案例</h2>
+<p><strong>11.1 直播間(範疇錯誤的順暢傳播)。</strong> 主播以模糊化獎勵精確化:對較鋒利、可證偽的猜測(「不夠賺錢」≈ 思想須連上他人需求才有市場價值)回以「接近了」再引離,導向更含糊、不可證偽的「都是有利益的事」。框架解讀:R1 載波鎖相下的冷讀術式偽造;$\rho$ 由主播以模糊維持,$\lambda$ 由觀眾糾錯碼供給假象;無模組計算源頭自洽,故 (P) 成立。</p>
+<p><strong>11.2 把「悟」當「邏輯」販售(邏輯學書)。</strong> 形式符號是人類為打敗相位匹配而發明的反技術——逼訊號自扛位元,壓低重建過剩,把溝通鎖進 R2。將純「悟」(純 R1)貼上「邏輯學」(R2 工具)標籤販售,是精確的範疇詐欺。多數讀者「覺得學到了」是 R1 偽造在書面的成功;唯一經驗到摩擦的讀者,是其糾錯偽造對他失效者——他的憤怒,是其餘讀者被默默壓掉的預測誤差。</p>
+<hr>
+<h2>12. 推論與可測預測</h2>
+<ol>
+<li><strong>同溫層脆弱性</strong>:$\Theta_A\cap\Theta_B$ 越大、$\rho$ 越易飽和、對低 $\lambda$ 容忍越高 → 崩壞論證在高載波鎖相群體中傳播更好。</li>
+<li><strong>專家摩擦稅</strong>:高 $C_T$ 者 R2 易觸發,承受更高社交摩擦;結構副產物,非人格缺陷。</li>
+<li><strong>媒介依賴可見性</strong>:解碼錯誤在易逝語音中近乎不可見,在持存文字中部分可恢復。</li>
+<li><strong>核心交互預測(本文旗幟)</strong>:植入式範疇錯誤的偵測率,應<strong>隨載波鎖相 $\rho$ 上升而下降</strong>(朋友 &lt; 陌生人)、<strong>隨邏輯能力 $C_T$ 上升而上升</strong>,且二者<strong>交互</strong>。此具體交互,關聯理論與雜訊通道模型皆不預測——這是本文能插旗的空地。</li>
+</ol>
+<hr>
+<h2>13. 實證界面與實驗設計</h2>
+<p>母範式為 Savitsky 等(2011)的親近度溝通偏誤指稱任務(已測得朋友間自我中心大於陌生人,方向與推論 5.2 一致)。</p>
+<p>本文設計超出母範式的三個增量:</p>
+<ol>
+<li><strong>縱向基線</strong>:先對一群類型多樣的受試者,於受保障(優良生活條件、給付)的觀察空間中,長時段記錄其語言、思維、價值觀交流,建立思維空間基線表。</li>
+<li><strong>分層</strong>:依「被公認邏輯/認知強(學術底蘊厚)」與「很會說話(高言語流暢)」等類型分層,以操作化 $C_T$。</li>
+<li><strong>AB 條件 × 崩壞源操弄</strong>:同一觀察空間內交流、熟人交流、陌生人交流三條件,植入邏輯不連貫訊息,測偵測率。</li>
+</ol>
+<p><strong>主檢驗</strong>:偵測率 $\sim$ $\rho$(以關係親近度與共享碼本為代理)$\times$ $C_T$ 的交互效應(預測 §12.4)。</p>
+<p><strong>重複性與倫理</strong>:不可單次,須多輪。絕對自願參與,明確隱私不被觀察之範圍與保證,知情同意。</p>
+<hr>
+<h2>14. 待驗證界面、反例壓力,與自洽範圍聲明</h2>
+<p><strong>自洽範圍聲明</strong>:本文為猜想,主張的是<strong>在 EveMissLab 邏輯體系(DCO / Cl / ΩCRF)內的自洽性</strong>,非已驗證的實證真理。其本體論承諾(絕對空間、$L=\Omega$)是該體系的承諾;在此體系外,$L$ 的絕對性是一個可爭論的實在論立場,本文認領而不偽稱中立。</p>
+<p><strong>仍承壓的接縫</strong>:</p>
+<ul>
+<li>橋一(多 $\Theta_i$ 共嵌 $\mathcal{A}$ 的顯式幾何)未建,$\rho$ 的形式化仍待補。</li>
+<li>$\lambda=$「對 $\Pi_L(s)$ 的保真度」需可操作代理,否則停在隱喻。</li>
+<li>最小底(壓力一弱版)穩;絕對實在界(強版)承受實在論爭議。</li>
+<li>預編碼不可偵測的強度依媒介而變(§6 校準)。</li>
+</ul>
+<p><strong>可證偽路線</strong>:若在強載波鎖相群體中,植入式命題層錯誤的自發偵測率<strong>不</strong>隨 $C_T$ 上升而上升(§12.4 交互不成立),則 §9 與 §10 受重創。此為本猜想對外暴露的主要證偽面。</p>
+<hr>
+<h2>哲學結語</h2>
+<p>關聯理論為了輕裝,丟下了一塊地板;它因此能解釋四十年的溝通,卻永遠說不出「他們其實什麼也沒懂」這句話——在沒有地板的房間裡,飽滿與空洞踩起來一樣實。</p>
+<p>本文撿起那塊地板,代價是必須承認:有一個歷經一切變換仍不動的點,而所有相對的理解,最終都對著它投影或不投影。絕對不是站在相對之外的裁判,絕對是相對轉到無可再轉時落回的那一點——轉啊,直到不動。</p>
+<p>於是「人人都覺得懂了、其實沒有東西可懂」這句話,第一次有了為真的空間。它為真,不是因為誰更聰明,而是因為終於有一塊地板,讓我們得以分辨:腳下踩著的,究竟是大地,還是一層鎖相得天衣無縫的、懸在真空之上的回聲。</p>
+<hr>
+<h2>參考文獻(對位用,非窮舉)</h2>
+<ul>
+<li>Gibson, E., Bergen, L., &amp; Piantadosi, S. T. (2013). Rational integration of noisy evidence and prior semantic expectations in sentence interpretation. <em>PNAS</em>, 110(20).</li>
+<li>Gilovich, T., Savitsky, K., &amp; Medvec, V. H. (1998). The illusion of transparency. <em>JPSP</em>, 75(2).</li>
+<li>Gignac, G. E., &amp; Zajenkowski, M. (2020). The Dunning-Kruger effect is (mostly) a statistical artefact. <em>Intelligence</em>, 80.</li>
+<li>Levy, R. (2008). A noisy-channel model of rational human sentence comprehension under uncertain input. <em>EMNLP</em>.</li>
+<li>Nuhfer, E., et al. (2016/2017). [Critiques of the Dunning-Kruger interpretation.]</li>
+<li>Savitsky, K., et al. (2011). The closeness-communication bias. <em>JESP</em>, 47.</li>
+<li>Sperber, D., &amp; Wilson, D. (1986/1995). <em>Relevance: Communication and Cognition.</em></li>
+<li>Sperber, D., et al. (2010). Epistemic vigilance. <em>Mind &amp; Language</em>, 25(4).</li>
+<li>Wilson, D., &amp; Sperber, D. (2004). Relevance theory. In <em>The Handbook of Pragmatics.</em></li>
+<li>[預測編碼/語言理解相關:N400 與階層式預測之系列文獻,含對預激活之反駁(自然聆聽 postdiction 證據)。]</li>
+<li>EveMissLab 內部理論:HISL / LQTT(新邏輯學系列)、ΩCRF(Ω認知旋轉場論)、DCO / Cl 公理、因果律絕對性。</li>
+</ul>
+<div class="altbar">原始檔（供 RAG/下載）：<a href="/raw/lm-000803.md" rel="noopener">/raw/lm-000803.md</a> [md] · id: lm-000803</div>
+</article>
+<footer><p>Neo.K (許筌崴) · Cl + ε</p></footer>
+</body>
+</html>

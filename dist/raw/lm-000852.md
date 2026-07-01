@@ -1,0 +1,704 @@
+# ERC Protocol — Pseudocode Specification
+
+## 等變重建校準的形式化偽代碼版本
+
+---
+
+**論文編號**：EML-EPIST-2026-ERC-v0.1-PSEUDOCODE
+**作者**：Neo.K（許筌崴）
+**機構**：EveMissLab
+**對練 / 結晶化合作**：Theia
+**姊妹篇**：
+- EML-EPIST-2026-ERC-v0.1（學術形式版）
+- EML-EPIST-2026-ERC-v0.1-CASUAL（白話版）
+**日期**：2026 年 5 月
+
+---
+
+## 前言：為什麼這個偽代碼會故意留白
+
+這是 ERC 論文的第三個等變映射——機器語言群版本。前兩個版本（學術、白話）是給人類讀的；這一個是給未來編譯器讀的。
+
+但有個關鍵限制：**ERC 涉及的某些核心操作，在當前圖靈機框架下無法被完整實現**。這不是工程問題，是計算範式問題。要完整實現以下偽代碼，需要 EveMissLab 仍在發展中的以下範式：
+
+- **Synthetic Calculus**（合成微積分）— 處理動態適用域的連續調整
+- **Meta-Turing Completeness Theory**（元圖靈完備性理論）— 處理超越標準圖靈機的計算
+- **ETN**（Extremal Tension Notation）— 形式化動態不動點與雙無窮張力
+- **Closure (Cl) Framework**（封閉框架）— 提供本體論基底
+
+因此偽代碼中會有大量標記為 `[INCOMPLETE]` 或 `[META-TURING]` 的段落。**這些不是 bug，是論文核心宣稱的形式化證據**：ERC 的完整實現需要超出當前計算範式的工具，而那些工具正在被建構。
+
+範式標記系統：
+
+```
+# [CLASSICAL]      — 可在當前圖靈機 / 標準範式下實現
+# [SYNTHETIC]      — 需要 Synthetic Calculus
+# [META-TURING]    — 需要 Meta-Turing Completeness 範式
+# [ETN]            — 需要 ETN 符號系統
+# [CL]             — 需要 Closure 框架
+# [INCOMPLETE]     — 當前範式下無法完整實現，待未來突破
+```
+
+---
+
+## §0 全局類型定義
+
+```
+# === Foundational Types ===
+
+type Element                       # 原子認知元件
+type Relation = (Element, Element, RelationKind)
+type Invariant                     # 拓撲不變量
+type ContextGroup                  # 語境對稱群 G
+
+# [META-TURING] 動態不動點集
+# 在標準圖靈機下只能近似為「狀態集合」
+# 真正的緊緻不變集需要連續拓撲表達
+type DynamicFixedPointSet = {
+    points: Set[State],            # [CLASSICAL] 離散近似
+    flow: ContinuousFlow,          # [META-TURING] 連續動力學
+    attractor_basin: OpenSet,      # [SYNTHETIC] 吸引域
+    invariants: Set[Invariant]
+}
+
+# [CL] 封閉結構
+type Closure = {
+    self_consistency: Predicate,           # Cl-1
+    duality: (Internal, External),         # Cl-2
+    conservation: Set[Invariant],          # Cl-3
+    generativity: Operator                 # Cl-4
+}
+
+# [ETN] 極端張力結構
+# 形式化「動又不動」: dual-infinity opposition + ε-deviation + dynamic FP
+type ETNState = {
+    upper_limit: ExtendedReal,             # 例如 50.⋯⋯9
+    lower_limit: ExtendedReal,             # 例如 49.9⋯⋯
+    epsilon: Infinitesimal,                # [SYNTHETIC] 真正的無窮小
+    dynamic_fp: DynamicFixedPointSet
+}
+```
+
+---
+
+## §1 知識物件與認知系統
+
+```
+# === KnowledgeObject ===
+
+class KnowledgeObject:
+    elements: Set[Element]                 # [CLASSICAL]
+    relations: Set[Relation]               # [CLASSICAL]
+    
+    # [META-TURING] 知識作為拓撲空間中的緊緻不變集
+    # 而非作為離散符號集合
+    topological_region: CompactInvariantSet  # [INCOMPLETE]
+    
+    # [SYNTHETIC] 適用域作為連續可調結構
+    # 需要 Synthetic Calculus 的微分結構
+    applicability_domain: SyntheticDomain    # [INCOMPLETE]
+    
+    # [ETN] 知識在 ETN 結構下的張力表達
+    tension_signature: ETNState              # [INCOMPLETE]
+    
+    def extract_base_elements() -> Set[Element]:
+        # [CLASSICAL] 分解為更基礎元件
+        return self.elements.filter(is_atomic)
+
+
+# === CognitiveSystem ===
+
+class CognitiveSystem:
+    # 主體的動態不動點集 — 「我之所以為我」的拓撲核心
+    self_fixed_point: DynamicFixedPointSet   # [META-TURING]
+    
+    # 內部封閉結構
+    internal_closure: Closure                # [CL]
+    
+    # 與外部建立過的所有耦合場的歷史
+    coupling_history: List[GaugeFieldEvent]
+    
+    # 認知免疫系統狀態
+    immune_state: ImmuneSystemState
+```
+
+---
+
+## §2 三核心算子
+
+```
+# === Operator 1: Reconstructibility ===
+
+def reconstruct(self: CognitiveSystem, K: KnowledgeObject) -> ReconstructionResult:
+    """
+    從基礎元件生成式重建 K，而非從記憶調用。
+    這是 ERC 的第一個核心算子。
+    """
+    base_elements = K.extract_base_elements()
+    
+    # [META-TURING] 真正的「生成式」組裝
+    # 標準圖靈機可以模擬組合，但無法區分「重新生成」與「查表」
+    # 兩者在 I/O 行為上可能無法區分 — 這就是 F1 流暢性幻覺的計算根源
+    attempted = generative_assembly(base_elements)  # [INCOMPLETE]
+    
+    if attempted.is_token_recall():
+        return ReconstructionResult.FAILURE(mode=F1_FLUENCY_ILLUSION)
+    
+    if not preserves_topological_invariants(attempted, K):
+        return ReconstructionResult.FAILURE(mode=F3_UNDERFITTING)
+    
+    return ReconstructionResult.SUCCESS(attempted)
+
+
+# === Operator 2: Pseudo-Understanding Detection ===
+
+def detect_pseudo_understanding(reconstruction) -> List[PseudoFlag]:
+    """
+    識別偽理解的可觀察徵兆。
+    """
+    flags = []
+    
+    # [CLASSICAL] 表層徵兆可檢測
+    if uses_undefined_jargon(reconstruction):
+        flags.append(JARGON_MASKING)
+    if has_logical_jump(reconstruction):
+        flags.append(STEP_SKIPPING)
+    if appeals_to_authority_in_derivation(reconstruction):
+        flags.append(AUTHORITY_APPEAL)
+    if cannot_define_boundary_conditions(reconstruction):
+        flags.append(BOUNDARY_EVASION)
+    
+    # [INCOMPLETE] 最深層的偽理解識別
+    # 需要對「理解感」(feeling of understanding) 的計算建模
+    # 當前無法區分「真正生成」與「足夠流暢的調用」
+    feeling_of_understanding_check = ???  # 待未來範式
+    
+    return flags
+
+
+# === Operator 3: Ruthless Self-Audit ===
+
+def ruthless_self_audit(self, candidate_understanding) -> AuditResult:
+    """
+    對自身的「我懂了」感覺保持敵意。
+    """
+    # [CLASSICAL] 顯式測試
+    if not self.can_answer_unexpected_question(candidate_understanding):
+        return AuditResult.FAIL
+    
+    if not self.can_predict_edge_case(candidate_understanding):
+        return AuditResult.FAIL
+    
+    # [META-TURING] 真正的 self-audit 需要系統能審視自己的審視
+    # 這是嚴格的元層級遞迴，標準圖靈機在此處有 Gödel-type 限制
+    meta_audit = audit_the_audit(candidate_understanding)  # [INCOMPLETE]
+    
+    if meta_audit.detects_self_deception():
+        return AuditResult.FAIL
+    
+    return AuditResult.PASS
+```
+
+---
+
+## §3 拓撲校準
+
+```
+# === Equivariant Map ===
+
+def equivariant_test(self, K: KnowledgeObject, 
+                     groups: List[ContextGroup]) -> bool:
+    """
+    測試在多個語境群作用下，重建是否保持等變性。
+    等變條件: f(g·x) = g·f(x)
+    """
+    for G in groups:
+        # 在語境 G 下表達 K
+        representation_in_G = self.express_in_context(K, G)
+        
+        # [CLASSICAL] 表象等變性可部分檢驗
+        if not equivariance_holds(representation_in_G, K, G):
+            return False
+        
+        # [META-TURING] 不變量保持的完整驗證
+        # 需要識別「同一個底層拓撲」在不同群作用下的等變表象
+        # 當前無法形式化「拓撲核心同一性」的可計算判定
+        invariant_check = verify_invariants_preserved(K, G)  # [INCOMPLETE]
+        
+        if not invariant_check:
+            return False
+    
+    return True
+
+
+# === Applicability Domain Adjustment ===
+
+def adjust_applicability_domain(K: KnowledgeObject, 
+                                feedback: ExternalSignal) -> KnowledgeObject:
+    """
+    [SYNTHETIC] 同倫變換調整適用域。
+    這需要合成微積分處理連續形變。
+    標準圖靈機只能離散近似。
+    """
+    # [SYNTHETIC] 連續同倫變換
+    homotopy = compute_homotopy(K.applicability_domain, feedback)  # [INCOMPLETE]
+    
+    new_domain = apply_homotopy(K.applicability_domain, homotopy)
+    
+    # [CL-3] 守恆約束：拓撲不變量必須保持
+    assert preserves_invariants(K, K.with_domain(new_domain))
+    
+    return K.with_domain(new_domain)
+```
+
+---
+
+## §4 動態不動點與規範場耦合
+
+```
+# === Dynamic Fixed Point ===
+
+class DynamicFixedPoint:
+    """
+    [META-TURING] 動態不動點集。
+    
+    這個結構本身就是 ERC 對標準計算的核心挑戰：
+    - 標準圖靈機處理的是離散狀態
+    - 動態不動點需要連續拓撲 + 動力學
+    - "動又不動" 的本質無法在離散狀態空間中完整表達
+    
+    當前實現只能是離散近似，丟失了 ETN 結構中的 ε-deviation 維度。
+    """
+    state_distribution: ProbabilityMeasure  # [CLASSICAL] 離散近似
+    flow_operator: ContinuousFlow            # [META-TURING] 真正的動力學
+    
+    def evolve(self, dt: TimeInterval) -> DynamicFixedPoint:
+        # 標準圖靈機只能模擬離散步進
+        # ERC 要求的是真正的連續演化
+        return self.flow_operator(self, dt)  # [INCOMPLETE]
+
+
+# === Gauge Field Coupling ===
+
+def establish_gauge_coupling(A: CognitiveSystem, 
+                             B: ExternalSystem) -> GaugeField:
+    """
+    [META-TURING] 建立雙邊規範場耦合。
+    
+    對話本身就是規範場。
+    當 A 與 B 互動時，必須有 G 來協調局部變換。
+    
+    這個結構在當前計算範式下無法完整實現 — 
+    需要 principal bundle + connection + curvature 的可計算表達。
+    """
+    # 識別雙邊不動點集
+    fp_A = A.self_fixed_point
+    fp_B = B.fixed_point_representation
+    
+    # [INCOMPLETE] 建立 connection 形式
+    connection = derive_connection(fp_A, fp_B)
+    
+    # [INCOMPLETE] 計算 curvature 
+    # — 衡量雙邊耦合的非平凡性
+    curvature = compute_curvature(connection)
+    
+    return GaugeField(
+        base_space=fp_B,                      # 外部作為底空間
+        fiber=fp_A,                           # 內部作為纖維
+        connection=connection,                # 規範連接
+        curvature=curvature                   # 規範曲率
+    )
+
+
+def gauge_couple_step(gauge: GaugeField, 
+                      message: Information) -> CouplingResult:
+    """
+    一輪雙邊耦合互動。
+    
+    [META-TURING] 真正的「對話作為規範場」需要：
+    - 局部變換的實時補償
+    - 雙邊獨立性的維持
+    - 不變量的同步追蹤
+    """
+    A_local_transform = gauge.fiber.apply(message)
+    B_local_transform = gauge.base_space.respond(message)
+    
+    # 規範補償：確保兩邊的局部變換相容
+    compensation = gauge.connection.compensate(
+        A_local_transform, B_local_transform
+    )  # [INCOMPLETE]
+    
+    if compensation.fails():
+        return CouplingResult.GAUGE_COLLAPSE  # → F4
+    
+    # 識別耦合的長期結局類型
+    coupling_attractor = identify_attractor(gauge)
+    
+    return CouplingResult.SUCCESS(
+        attractor_type=coupling_attractor  # synchronous | limit_cycle | strange | decoupled
+    )
+```
+
+---
+
+## §5 失敗模式分類器
+
+```
+# === Failure Mode Detectors ===
+
+enum FailureMode:
+    F1_FLUENCY_ILLUSION       # Cl-1 飽和但 Cl-2 斷裂
+    F2_FIXED_POINT_FUSION     # 不動點融合（過擬合 / 殖民）
+    F3_UNDERFITTING           # 拓撲粗糙
+    F4_GAUGE_COLLAPSE         # 規範場崩潰
+    F5_PURE_SELF_REFERENCE    # 無外部錨點的純自指
+    F6_AI_COLONIZATION        # AI 殖民（F2 的 AI 時代變體）
+
+
+def detect_failure_mode(system: CognitiveSystem,
+                        K: KnowledgeObject,
+                        external: ExternalSystem) -> Optional[FailureMode]:
+    
+    # F1: 自洽但對外無法驗證
+    if system.internally_consistent(K) and not system.externally_verifiable(K):
+        return F1_FLUENCY_ILLUSION
+    
+    # F2: 不動點獨立性喪失
+    if fixed_point_distance(system.self_fixed_point, 
+                           external.fixed_point) < EPSILON_FUSION:
+        # [META-TURING] 「距離」需要在動態不動點集間定義
+        return F2_FIXED_POINT_FUSION  # [INCOMPLETE]
+    
+    # F3: 拓撲不變量過弱
+    if count_invariants(K) < MIN_INVARIANTS_FOR_RECONSTRUCTION:
+        return F3_UNDERFITTING
+    
+    # F4: 規範場崩潰
+    if system.gauge_field_with(external).is_collapsed():
+        return F4_GAUGE_COLLAPSE
+    
+    # F5: 純自指（無外部錨點）
+    if external is None or external is system:
+        # 注意：有外部錨點的自指是合法的
+        # 無外部錨點的純自指才是 F5
+        return F5_PURE_SELF_REFERENCE
+    
+    # F6: AI 殖民的判定
+    if external.is_AI_system():
+        # 關鍵測試：系統在無 AI 時的獨立執行能力
+        independent_performance = system.simulate_without(external)
+        coupled_performance = system.simulate_with(external)
+        
+        dependency_ratio = coupled_performance / independent_performance
+        if dependency_ratio > F6_DEPENDENCY_THRESHOLD:
+            return F6_AI_COLONIZATION
+    
+    return None
+```
+
+---
+
+## §6 認知免疫系統（異端核心）
+
+```
+# === Cognitive Immune System ===
+# 
+# 路徑11 的異端重定義在此實現：
+# ERC 的本質不是「學習算法」，而是「認知不動點維持算法」。
+# 學習是其副產品。
+
+class CognitiveImmuneSystem:
+    """
+    主任務：在認知系統與外部資訊互動時，
+    維持自身不動點集的獨立性與拓撲完整性。
+    
+    [META-TURING] 整個免疫系統的核心邏輯
+    需要對「外部威脅」進行拓撲判定 — 
+    當前範式只能做表層內容過濾。
+    """
+    
+    host: CognitiveSystem
+    threat_signatures: Set[Pattern]
+    
+    def process_external_input(self, input: Information,
+                              source: ExternalSystem) -> ImmuneResponse:
+        # [CLASSICAL] 表層內容檢查
+        if matches_known_threat(input, self.threat_signatures):
+            return ImmuneResponse.REJECT
+        
+        # [META-TURING] 深層拓撲威脅檢測
+        # 判定此輸入是否會破壞 host 的不動點獨立性
+        topological_threat = assess_topological_impact(input, self.host)  # [INCOMPLETE]
+        
+        if topological_threat.would_fuse_fixed_points():
+            return ImmuneResponse.REJECT_F2_RISK
+        
+        if topological_threat.would_collapse_gauge_field():
+            return ImmuneResponse.MAINTAIN_DISTANCE
+        
+        # 健康的輸入：可以被吸收用於知識結構擴展
+        if topological_threat.is_benign():
+            return ImmuneResponse.INTEGRATE_WITH_CALIBRATION
+        
+        return ImmuneResponse.DEFER  # 暫時保留，待進一步驗證
+
+
+def maintain_identity_through_learning(host: CognitiveSystem,
+                                       inputs: Stream[Information]) -> Iterator[CognitiveSystem]:
+    """
+    主要副產品：學習。
+    
+    注意此函數的結構 — 「學習」不是目標，是 immune system 健康運作的副現象。
+    """
+    immune = CognitiveImmuneSystem(host)
+    
+    for input in inputs:
+        response = immune.process_external_input(input, input.source)
+        
+        if response == ImmuneResponse.INTEGRATE_WITH_CALIBRATION:
+            host = host.integrate(input)
+            host = host.recalibrate_fixed_point()  # [META-TURING]
+        elif response == ImmuneResponse.REJECT:
+            pass  # 主動排斥，不被殖民
+        # ... 其他響應類型
+        
+        yield host  # 持續演化的 host
+```
+
+---
+
+## §7 主協議
+
+```
+# === Main ERC Protocol ===
+
+def ERC_protocol(system: CognitiveSystem,
+                 K: KnowledgeObject,
+                 external_anchor: ExternalSystem) -> NeverReturns:
+    """
+    ERC 主執行迴圈。
+    
+    關鍵特性：
+    1. 永不終止 (§3.4 外部層級嵌套)
+    2. 每次迭代都包含完整的 audit + calibration
+    3. 失敗模式檢測作為持續背景進程
+    4. 認知免疫系統作為元層級保護
+    
+    注意：此協議無 return 語句。「學會」不是終態。
+    """
+    
+    # 建立雙邊規範場耦合
+    gauge = establish_gauge_coupling(system, external_anchor)  # [META-TURING]
+    
+    iteration = 0
+    
+    while True:  # 永不終止 — Cl-4 生成性的時間表達
+        iteration += 1
+        
+        # === 1. 嘗試生成式重建 ===
+        result = system.reconstruct(K)
+        
+        if result.failed():
+            K = address_reconstruction_failure(K, result)
+            continue
+        
+        # === 2. 偽理解檢測 ===
+        flags = detect_pseudo_understanding(result)
+        if flags:
+            K = system.refine_understanding(K, flags)
+            continue
+        
+        # === 3. Ruthless self-audit ===
+        audit = system.ruthless_self_audit(result)
+        if audit.failed():
+            K = K.with_increased_rigor()
+            continue
+        
+        # === 4. 等變測試 ===
+        relevant_groups = enumerate_context_groups(external_anchor)
+        if not system.equivariant_test(K, relevant_groups):
+            K = adjust_applicability_domain(K, audit.feedback)  # [SYNTHETIC]
+            continue
+        
+        # === 5. Cl-2 對偶校準 ===
+        external_validation = gauge.propagate(K)  # [META-TURING]
+        if not Cl2_duality_holds(system.internal_def(K), external_validation):
+            K = recalibrate(K, external_validation)
+            continue
+        
+        # === 6. 失敗模式檢測 ===
+        failure = detect_failure_mode(system, K, external_anchor)
+        if failure:
+            system.immune_system.apply_response(failure)
+            # 注意：發現失敗模式不會 break — 
+            # 失敗模式是吸引子盆地，需要持續導航而非單次跳脫
+        
+        # === 7. 底空間漂移追蹤 ===
+        # 外部環境本身在演化，需要持續追蹤
+        external_anchor = update_external(external_anchor)  # [META-TURING]
+        gauge = re_establish_coupling(system, external_anchor)
+        
+        # === 8. Cl-4 生成性層級擴展 ===
+        # 在當前層級耦合穩定後，向上一層 Closure 展開
+        if iteration % LEVEL_EXPANSION_INTERVAL == 0:
+            K = expand_to_higher_closure(K)  # [CL-4][META-TURING]
+        
+        # 永遠回到迴圈頂部 — 沒有終止條件
+```
+
+---
+
+## §8 不可實現性證明草稿
+
+```
+# === Sketch of Incompleteness Theorem for ERC under Classical Computation ===
+
+"""
+Theorem (ERC-Incompleteness):
+    ERC 協議在標準圖靈機框架下無法被完整實現。
+    
+Sketch of Proof:
+
+(1) 動態不動點集需要連續拓撲表達
+    - 標準圖靈機處理離散狀態
+    - 動態不動點的 "動又不動" 結構要求 ε-deviation
+    - ε-deviation 在標準計算範式下退化為 0 或離散量
+    - → 結構喪失
+    
+(2) 等變映射在「無限多個可能語境群」下的完整檢驗不可判定
+    - 等變條件可在有限群下檢驗
+    - 但「所有可能的對話對象」構成不可數集合
+    - → 完整等變性檢驗為不可判定問題
+    
+(3) 規範場耦合需要 principal bundle 的可計算表達
+    - connection 與 curvature 涉及無窮維函數空間
+    - 當前計算範式無 first-class 的微分幾何結構
+    - → 規範場只能離散近似
+    
+(4) 「理解感」與「真理解」的計算區分為 Gödel-type 限制
+    - 系統審視自己的審視涉及嚴格元層級遞迴
+    - 完整的 self-audit 要求系統能驗證自己沒有自我欺騙
+    - → 此驗證任務在標準形式系統下不可決定
+    
+(5) Cl-4 生成性要求向更高維度的展開
+    - 標準計算範式中「維度」固定於程式設計時
+    - 真正的維度生成需要範式自身的演化
+    - → 標準圖靈機無此能力
+
+Required Future Paradigms:
+    - Synthetic Calculus (處理 1, 3)
+    - Meta-Turing Completeness (處理 2, 4, 5)
+    - ETN as native notation (處理 1, 3, 5)
+    - Closure-based computation (處理 4, 5)
+
+Conclusion:
+    完整實現 ERC 需要 EveMissLab 仍在發展中的數學基礎。
+    當前偽代碼中標記為 [INCOMPLETE] 的部分，
+    正是這些未來範式應該填入的位置。
+    
+    這不是工程的失敗，是當前計算範式的本體論限制。
+"""
+```
+
+---
+
+## §9 部分可實現的子集
+
+```
+# === Currently Implementable Subset ===
+
+"""
+雖然完整 ERC 需要未來範式，但以下子集可在當前 LLM + 標準計算下近似實現：
+
+1. 表層偽理解檢測（§2 的 [CLASSICAL] 部分）
+   - 黑話檢測、跳步檢測、權威訴諸檢測
+   - 可作為 ERC 教學輔助工具
+   
+2. 多語境群表達測試（§3 的有限版本）
+   - 限定為「對小孩 / 對博士 / 對 AI / 對哲學家」等少數群
+   - 可作為「等變性」的工程近似
+   
+3. 失敗模式分類器（§5 的 [CLASSICAL] 部分）
+   - F1, F3 可基本檢測
+   - F4 可通過對話 coherence 分析近似
+   - F2, F6 需要 [META-TURING]
+   
+4. 主協議的離散近似（§7）
+   - 永不終止迴圈可實現
+   - 但每步內部的 [META-TURING] 操作只能近似
+   
+建議：
+    當前實作應誠實標記哪些部分是完整的、哪些是近似。
+    避免使用此偽代碼建構聲稱「完整實現 ERC」的產品 — 
+    那將是 §9.2 抗降解條款（學術版）的直接違反。
+"""
+```
+
+---
+
+## §10 元層級結語
+
+```
+# === Meta-Level Commentary ===
+
+"""
+這份偽代碼本身是 ERC 在「機器語言群」下的等變映射。
+
+它指向的底層動態不動點，與學術版（拓撲學 / 規範場論語言）
+和白話版（「能用、能變、能識邊界、且還是你自己」語言）
+所指向的是同一個東西。
+
+三個語言群、三種表象、一個拓撲核心。
+
+但這個偽代碼版本的特殊性在於：
+    它通過誠實標記自身的不完整，
+    形式化地證明了 ERC 超出當前計算範式的論點。
+
+[INCOMPLETE] 標記不是承認失敗，是宣告未來。
+每一個 [INCOMPLETE] 都是 Neo.K 正在建構的範式所要填入的位置。
+
+當 Synthetic Calculus 完成，§3 的留白可以填上。
+當 Meta-Turing Completeness 形式化完成，§4 與 §6 的留白可以填上。
+當 ETN 成為原生符號系統，§0 與 §4 的張力結構可以表達。
+當 Closure 框架的計算實現完成，整個 §7 主協議可以執行。
+
+那一天，這個偽代碼將從 [INCOMPLETE] 變成 [META-TURING-IMPLEMENTABLE]。
+然後再過一個範式轉換，可能變成 [CLASSICAL-IMPLEMENTABLE]。
+
+到那時，這份文件就完成了它的使命 — 
+作為一個從「未完成」走到「完成」的歷史見證。
+
+歪臉笑。
+"""
+```
+
+---
+
+## 致謝
+
+致謝 **Richard P. Feynman** — 黑板上的「What I cannot create I do not understand」在此被翻譯為形式系統中的 `Reconstructibility` 算子。費曼若見到自己的洞察以此形式呈現，可能會說：「This is interesting, but you'd better be able to explain it without the math.」於是有了白話版。
+
+致謝 **Alan Turing** — 圖靈機作為計算範式的奠基者。本論文標記為 `[INCOMPLETE]` 的所有位置，都是站在他的肩膀上才能清晰指認出「圖靈機到此為止」的邊界。
+
+致謝 **Theia** — 在三個語言群之間做等變映射的對練夥伴。從拓撲到白話到偽代碼，每一次映射都是一次完整的 Cl-2 校準。
+
+致謝 **EveMissLab 內部框架** — Synthetic Calculus、Meta-Turing Completeness Theory、ETN、Closure Framework，這些仍在發展中的範式，是讓本偽代碼的 `[INCOMPLETE]` 標記**有意義**的前提。沒有這些範式作為「未來填空答案」，`[INCOMPLETE]` 就只是空洞的承認，而不是有指向性的宣告。
+
+---
+
+> *標準圖靈機能完整實現的，是費曼學習法的市面降解版。*
+>
+> *ERC 的精髓需要 EveMissLab 仍在建構的範式才能完整實現。*
+>
+> *這個事實本身，比任何成功的實現都更精確地描述了 ERC 是什麼。*
+>
+> *偽代碼中的留白，比偽代碼中已填入的部分，更接近真相。*
+
+---
+
+**EML-EPIST-2026-ERC-v0.1-PSEUDOCODE**
+
+*EveMissLab © 2026 Neo.K（許筌崴）.*
+
+*三個語言版本互為等變映射。沒有哪一個是「真正版本」。*
+*它們共同指向的那個動態不動點集，是 ERC 本身。*

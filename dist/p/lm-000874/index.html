@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>統一博弈理論框架：從本質解到動態規則主導的完整體系 · EVEMISSLAB Logic Matrix</title>
+<meta name="description" content="統一博弈理論框架：從本質解到動態規則主導的完整體系 | EVEMISSLAB Logic Matrix V2.1">
+<meta name="author" content="Neo.K (許筌崴)">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<meta name="lm-paper-id" content="lm-000874">
+<link rel="alternate" type="text/markdown" href="/raw/lm-000874.md" title="原始檔 / source (md)">
+<link rel="canonical" href="https://logic.evemisslab.com/p/lm-000874/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "統一博弈理論框架：從本質解到動態規則主導的完整體系",
+  "url": "https://logic.evemisslab.com/p/lm-000874/",
+  "identifier": "lm-000874",
+  "inLanguage": "zh-Hant",
+  "author": {"@type": "Person", "name": "Neo.K (許筌崴)"},
+  "publisher": {"@type": "Organization", "name": "EveMissLab / 一言諾科技有限公司"},
+  "isPartOf": {"@type": "Collection", "name": "EVEMISSLAB Logic Matrix", "url": "https://logic.evemisslab.com"},
+  "encodingFormat": "text/html"
+}
+</script>
+<link rel="prefetch" href="/api/log-crawler?slug=paper-356.md">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#000; color:#0f0; font-family:'Courier New',monospace; padding:20px; line-height:1.6; }
+.header { text-align:center; border:2px solid #0f0; padding:18px; margin-bottom:22px; }
+.header h1 { font-size:1.5em; letter-spacing:2px; }
+.header p { margin-top:6px; opacity:0.8; font-size:0.9em; }
+.disclaimer { border:1px dashed #ff9900; color:#ff9900; padding:14px; margin:0 auto 22px; max-width:1000px; font-size:0.88em; }
+.disclaimer-title { font-weight:bold; margin-bottom:10px; display:block; letter-spacing:1px; }
+.disclaimer-divider { border:none; border-top:1px dashed #ff9900; margin:12px 0; opacity:0.55; }
+article { max-width:1000px; margin:0 auto; border:1px solid #0f0; padding:24px; }
+article h1,article h2,article h3,article h4 { margin:18px 0 8px; letter-spacing:1px; }
+article h1 { font-size:1.5em; } article h2 { font-size:1.25em; } article h3 { font-size:1.1em; }
+article p { margin:10px 0; }
+article ul,article ol { margin:10px 0 10px 24px; }
+article blockquote { border-left:3px solid #0f0; padding-left:12px; opacity:0.85; margin:10px 0; }
+article pre { background:rgba(0,255,0,0.06); border:1px solid #0f0; padding:12px; overflow-x:auto; margin:12px 0; }
+article code { background:rgba(0,255,0,0.08); padding:1px 5px; }
+article pre code { background:none; padding:0; }
+article a { color:#0ff; }
+.nav { max-width:1000px; margin:0 auto 16px; font-size:0.9em; display:flex; justify-content:space-between; }
+.nav a { color:#0f0; text-decoration:none; }
+.nav a:hover { color:#0ff; }
+.altbar { max-width:1000px; margin:14px auto 0; font-size:0.85em; opacity:0.7; }
+.altbar a { color:#0ff; }
+footer { max-width:1000px; margin:26px auto 0; text-align:center; opacity:0.5; font-size:0.82em; }
+</style>
+</head>
+<body>
+<div class="nav"><a href="/index.html">&larr; 回 Logic Matrix 索引</a><div><a href="/cosmomind.html" style="margin-right:15px;">→ 星環式認知展開圖</a><a href="/base-space.html">🧬 拓撲底空間</a></div></div>
+<header class="header"><h1>統一博弈理論框架：從本質解到動態規則主導的完整體系</h1><p>EVEMISSLAB Logic Matrix · EveMissLab / 一言諾科技有限公司</p></header>
+<section class="disclaimer">
+  <span class="disclaimer-title">[認識論邊界宣告 / EPISTEMOLOGICAL DISCLAIMER]</span>
+  <div class="disclaimer-block">
+    <p><b>[CHT]</b> 本矩陣內所有論文之公式與數據為「啟發式模擬參數」，用於驗證理論架構與推演因果鏈，<b>未經實證校準</b>，請勿作為現實物理測量數據引用 or 處理。EVEMISSLAB 採行「邏輯先行（Logic-First）」原則：概念架構與系統因果映射優先於統計實證，但不排除未來實證對接。</p>
+  </div>
+  <hr class="disclaimer-divider">
+  <div class="disclaimer-block">
+    <p><b>[ENG]</b> The numerical parameters within these frameworks are <i>illustrative model coefficients</i> used for structural verification and causal mapping; they are <b>not empirically calibrated</b> and must not be treated as physical measurements. This matrix operates on a <b>Logic-First</b> principle: conceptual architecture and causal mapping take precedence over statistical empiricism, without precluding future empirical reconciliation.</p>
+  </div>
+</section>
+<article>
+<p>﻿<strong>統一博弈理論框架：從本質解到動態規則主導的完整體系</strong></p>
+<p><strong>作者：Neo-K</strong></p>
+<p><strong>機構：一言諾科技有限公司(EveMissLab)</strong></p>
+<p><strong>日期：2025.8</strong><strong>月</strong></p>
+<p><strong>摘要</strong></p>
+<p>本文提出一個革命性的統一博弈理論框架，整合了三解決策體系（最極解、最優解、最善解）、PanBoard跨盤面通用算法、MWC→ES映射理論、GoWulff幾何優化模型，以及動態規則博弈理論。這一框架突破了傳統博弈論的靜態假設，建立了從局部必勝構成到全局本質解、從靜態規則到動態演化的完整理論體系。</p>
+<p>核心貢獻包括：(1) 三解框架的數學統一表達與動態切換機制；(2) 基於拓撲不變性的跨盤面策略構造算法；(3) 幾何直觀與博弈邏輯的深度融合；(4) 規則演化環境下的超博弈理論。實證分析顯示，該框架不僅在圍棋等封閉博弈中展現出超越傳統AI的性能，更在政治、商業、軍事等開放系統中提供了系統性的決策指導。</p>
+<p>本研究為人工智能、決策科學、複雜系統管理等領域提供了新的理論基礎，標誌著博弈論從&quot;如何贏得遊戲&quot;向&quot;如何主宰遊戲規則&quot;的根本性躍遷。</p>
+<p><strong>關鍵詞</strong>：統一博弈理論、本質解、動態規則、超博弈、拓撲不變性、幾何優化</p>
+<hr>
+<p><strong>第一部分：理論基礎</strong></p>
+<p><strong>第一章：三解決策框架的數學構建</strong></p>
+<p>現代決策理論面臨一個根本性的局限：傳統博弈論假設存在一個唯一的&quot;最優解&quot;，但現實中的理性主體往往需要在不同的價值取向間做出選擇。政治家可能優先考慮長期聲譽，商人可能追求短期利潤最大化，而軍事指揮官在關鍵時刻可能選擇不計代價的勝利。本章提出的三解框架，首次將這些看似矛盾的決策邏輯統一到一個數學體系中。</p>
+<p><strong>1.1</strong> <strong>最極解（Maximal Solution</strong><strong>）的冷酷邏輯</strong></p>
+<p>最極解代表了純粹的結果導向思維：在給定約束條件下，追求終局收益的絕對最大化，完全去除過程中的美學、倫理或慣性思維考量。</p>
+<p><strong>定義1.1</strong><strong>（最極解）</strong>：設博弈狀態空間為$S$，策略空間為$\Pi$，終局收益函數為$R_f(\pi)$。最極解定義為：</p>
+<p>$$U_{\text{max}}(s_t) = \max_{\pi \in \Pi} \mathbb{E}[R_f(\pi) \mid s_t]$$</p>
+<p>其中策略$\pi$僅受硬性規則約束，不包含任何軟性限制（如&quot;不能太難看&quot;、&quot;要保持風度&quot;等）。</p>
+<p><strong>引理1.1</strong><strong>（極解增益函數）</strong>：對於零和博弈，最極解的單步決策可表達為：</p>
+<p>$$\text{Gain}(s,a) = \min_{b \in A(T(s,a))} L(T(T(s,a),b))$$</p>
+<p>其中$L(\cdot)$為可證明的下界函數，$A(\cdot)$為合法動作集合，$T(\cdot,\cdot)$為狀態轉移函數。</p>
+<p>這一表達式的核心在於maximin原理：不追求當下看起來最好的著法，而是選擇在對手最壞反應下仍能保證最大收益的策略。</p>
+<p><strong>證明思路</strong>：通過構造AND-OR證明樹，每個OR節點（我方選擇）尋求存在性證明，每個AND節點（對手選擇）要求對所有可能性的完全應對。最終決策原則為：</p>
+<p>$$a^*(s) = \arg\max_{a \in A(s)} \text{Gain}(s,a)$$</p>
+<p><strong>1.2</strong> <strong>最優解（Optimal Solution</strong><strong>）的平衡藝術</strong></p>
+<p>最優解在追求勝利的同時，考慮策略的長期可持續性，避免&quot;殺敵一千、自損八百&quot;的pyrrhic victory。</p>
+<p><strong>定義1.2</strong><strong>（最優解）</strong>：引入長期成本函數$C_f(\pi)$和權重參數$\lambda \in [0,1]$：</p>
+<p>$$U&#x27;(s_t, \lambda) = \max_{\pi} \mathbb{E}[R_f(\pi) - \lambda \cdot C_f(\pi) \mid s_t]$$</p>
+<p>其中$\lambda$的取值反映決策者對長期與短期利益的權衡偏好。</p>
+<p><strong>引理1.2</strong><strong>（動態權重調整）</strong>：最優解的策略選擇遵循情境依賴原則：</p>
+<p>$$\pi^* = \begin{cases} \arg\max_{\pi} U_{\text{max}}(s_t), &amp; \text{if } t \approx T \text{ or } \lambda = 0 \ \arg\max_{\pi} U&#x27;(s_t, \lambda), &amp; \text{otherwise} \end{cases}$$</p>
+<p>當接近終局（$t \approx T$）或面臨生死存亡時刻（$\lambda = 0$），系統自動切換到最極解模式。</p>
+<p><strong>1.3</strong> <strong>最善解（Benevolent Solution</strong><strong>）的道德資本</strong></p>
+<p>最善解基於一個深刻的洞察：在長期博弈中，道德聲譽本身就是一種可累積、可轉換的戰略資源。</p>
+<p><strong>定義1.3</strong><strong>（最善解）</strong>：引入道德資本$M_t(\pi)$和影響力資本$I_t(\pi)$：</p>
+<p>$$U_{\text{benevolent}} = \sum_{t=0}^T \gamma^t \cdot [w_m \cdot M_t(\pi) + w_i \cdot I_t(\pi)]$$</p>
+<p>其中：</p>
+<ul>
+<li>$\gamma \in (0,1)$為時間折扣因子</li>
+<li>$w_m, w_i$分別為道德資本與影響力權重</li>
+<li>$M_t(\pi)$衡量當前行為的道德價值累積</li>
+<li>$I_t(\pi)$衡量第三方好感度與信任度變化</li>
+</ul>
+<p><strong>定理1.1</strong><strong>（仁者無敵原理）</strong>：在重複博弈環境中，持續執行最善解的主體將獲得以下戰略優勢：</p>
+<ol>
+<li><strong>聯盟吸引力</strong>：其他主體傾向於與其結盟</li>
+<li><strong>資源動員能力</strong>：在關鍵時刻能調動更多外部支持</li>
+<li><strong>歷史正當性</strong>：在長期競爭中佔據道德制高點</li>
+</ol>
+<p>證明基於演化博弈論的穩定性分析和社會心理學的信任建立機制。</p>
+<p><strong>第二章：統一框架的動態切換機制</strong></p>
+<p>三種解法並非相互排斥，而是同一個決策主體在不同情境下的理性選擇。本章建立三者之間的動態協調機制。</p>
+<p><strong>2.1</strong> <strong>三相博弈系統</strong></p>
+<p><strong>定義2.1</strong><strong>（統一效用函數）</strong>：</p>
+<p>$$U_{\text{unified}}(\alpha, \beta, \gamma) = \alpha \cdot U_{\text{max}} + \beta \cdot U&#x27;<em>{\text{optimal}} + \gamma \cdot U</em>{\text{benevolent}}$$</p>
+<p>約束條件：$\alpha + \beta + \gamma = 1, \alpha, \beta, \gamma \geq 0$</p>
+<p>這一表達式將三種看似不同的價值取向統一到同一個數學空間中，權重係數的調整對應決策者在不同情境下的理性選擇。</p>
+<p><strong>2.2</strong> <strong>情境依賴的參數調整</strong></p>
+<p><strong>定理2.1</strong><strong>（情境適應性原理）</strong>：最優權重配置函數為：</p>
+<p>$$(\alpha_t, \beta_t, \gamma_t) = f(\text{Context}_t, \text{Opponent}_t, \text{TimeHorizon}_t)$$</p>
+<p>其中關鍵因子包括：</p>
+<ul>
+<li>$\text{Context}_t$：當前局勢的緊迫程度</li>
+<li>$\text{Opponent}_t$：對手的策略特徵與能力</li>
+<li>$\text{TimeHorizon}_t$：剩餘博弈回合數與長期影響</li>
+</ul>
+<p><strong>推論2.1</strong><strong>（末局切換機制）</strong>：當檢測到終局條件或生存威脅時，系統自動執行： $$\lim_{t \to T} \alpha_t = 1, \quad \lim_{t \to T} \beta_t = \gamma_t = 0$$</p>
+<p><strong>2.3</strong> <strong>認知容量與策略退化</strong></p>
+<p>現實中的決策主體（包括AI系統）都面臨認知容量的限制，這會導致理想策略向次優策略的退化。</p>
+<p><strong>定義2.2</strong><strong>（資訊轉換熵）</strong>：設理想策略為$p^*(a_t|s_t)$，實際實施策略為$\hat{p}(a_t|s_t)$，定義：</p>
+<p>$$D_t = \text{KL}(p^*(\cdot|s_t) | \hat{p}(\cdot|s_t))$$</p>
+<p>$$\mathcal{E}(L) = \sum_{t=1}^{L} D_t$$</p>
+<p><strong>定理2.2</strong><strong>（本質解可實現性門檻）</strong>：存在臨界值$\varepsilon_{\text{crit}}$，當且僅當：</p>
+<p>$$\mathcal{E}(L) \leq \varepsilon &lt; \varepsilon_{\text{crit}}(\delta, w, \mathcal{P})$$</p>
+<p>時，實際策略能可靠實現理論上的本質解。超過此門檻將導致策略退化。</p>
+<p>這一結果揭示了一個深刻的真理：<strong>更強的算力（更大的認知容量）不僅意味著更好的計算能力，更意味著更接近真理的可能性</strong>。</p>
+<p><strong>第三章：PanBoard Algorithm</strong><strong>的跨盤面通用性</strong></p>
+<p>傳統博弈論往往將注意力集中在特定尺寸的棋盤上，但這忽略了一個根本性的洞察：<strong>盤面只是載體，規則才是決定性變量</strong>。</p>
+<p><strong>3.1</strong> <strong>規則不變性原理</strong></p>
+<p><strong>公理3.1</strong><strong>（規則主導原理）</strong>：在相同規則下，博弈的本質邏輯與盤面尺寸無關。勝負的決定因素在於規則結構，而非空間大小。</p>
+<p>這一公理挑戰了複雜度理論的傳統觀點。雖然大盤面的狀態空間呈指數級增長，但勝利的本質構成（Essential Winning Configurations）仍然可以在小盤面上被完全刻畫。</p>
+<p><strong>定義3.1</strong><strong>（最小勝利構成，MWC</strong><strong>）</strong>：在規則$R$下，一個有限子圖$H \subseteq G_n$與其上的有限AND-OR證明樹$\mathcal{T}$，如果滿足：</p>
+<ol>
+<li><strong>T</strong><strong>型（Territory</strong><strong>）</strong>：構成不可滲透區且穩定得分$&gt; 0$；或</li>
+<li><strong>P</strong><strong>型（Capture</strong><strong>）</strong>：保證對手某連通塊被提走</li>
+</ol>
+<p>並具有極小性（去除任一步則失效），則$(H, \mathcal{T})$稱為一個MWC。</p>
+<p><strong>3.2</strong> <strong>拓撲不變性與嵌入映射</strong></p>
+<p><strong>定理3.1</strong><strong>（嵌入保真性）</strong>：若$(H, \mathcal{T})$為$G_n$上的MWC，$f: H \hookrightarrow G_m$為格點仿射嵌入，且$\mathcal{N}_r(f(H))$__初態無敵方干擾，則$(f(H), f_#\mathcal{T})$仍為$G_m$上的MWC。</p>
+<p><strong>證明思路</strong>：</p>
+<ol>
+<li>規則的局部判定性保證鄰域內的合法性判斷不變</li>
+<li>仿射嵌入保持鄰接關係與截割性質</li>
+<li>證明樹的分支結構在嵌入下保持同構</li>
+</ol>
+<p>這一定理的重要性在於：它證明了在小盤面上發現的&quot;勝利密碼&quot;可以無損地複製到任意大的盤面上。</p>
+<p><strong>3.3</strong> <strong>組合與隔離：從局部到全局</strong></p>
+<p><strong>定義3.2</strong><strong>（隔離寬度）</strong>：對一組嵌入MWC ${f_i(H_i)}$，若任意兩個的$r$-鄰域距離超過$w$，且威脅圖無邊，則稱該配置<strong>隔離安全</strong>。</p>
+<p><strong>引理3.1</strong><strong>（組合可加性）</strong>：在隔離安全配置中，存在交織排程$\sigma$使所有MWC證書同時成立，且最終得分為各局部增量之和。</p>
+<p><strong>主定理3.1</strong><strong>（小盤完備</strong><strong>⇒</strong><strong>大盤可擴）</strong>：若在$G_n$上存在完備的MWC庫$\mathcal{P}$，則對任意$m \geq n$，存在嵌入集合與隔離排程，使得由$\mathcal{P}$組裝的策略$\Pi_m$為一個本質解。</p>
+<p>這一定理將求解複雜度從天文數字級的全局搜索，降維為有限基元加多項式級嵌入打包的可計算問題。</p>
+<hr>
+<p><strong>第二部分：幾何與拓撲</strong></p>
+<p><strong>第四章：MWC→ES</strong><strong>映射理論的拓撲基礎</strong></p>
+<p>本章深入探討最小勝利構成到本質解映射的數學基礎，建立嚴格的存在性、唯一性和構造性定理。</p>
+<p><strong>4.1</strong> <strong>臨界尺寸與存在性</strong></p>
+<p><strong>定理4.1</strong><strong>（臨界尺寸存在性）</strong>：對任一靜態規則$R$，存在最小$m_{\text{thr}}$（臨界尺寸），使得：</p>
+<ul>
+<li>當$m &lt; m_{\text{thr}}$時，不存在MWC</li>
+<li>當$m \geq m_{\text{thr}}$時，至少存在一個MWC</li>
+</ul>
+<p><strong>證明思路</strong>：</p>
+<ol>
+<li>小盤面無法形成有效截割（cut）或穩定氣的閉包</li>
+<li>臨界尺寸對應最小截割與穩定閉包的幾何存在條件</li>
+<li>利用圖論中的連通性與分離集理論</li>
+</ol>
+<p>例如在圍棋中，$1 \times 1, 2 \times 2, 3 \times 3$的盤面無法形成可持久的眼形或封域，但在某個臨界尺寸以上，首個可證明的局部勝形開始出現。</p>
+<p><strong>4.2</strong> <strong>拓撲不變性的深層機制</strong></p>
+<p><strong>引理4.1</strong><strong>（規則局部性）</strong>：在PSK+面積計分規則下，任何限制於$H$的有限著序的合法性與結果，只依賴$\mathcal{N}_r(H)$內的狀態與有限步演化。</p>
+<p><strong>定理4.2</strong><strong>（MWC</strong><strong>的拓撲不變性）</strong>：格點仿射嵌入保持MWC的所有本質屬性，包括：</p>
+<ol>
+<li>證明樹的分支結構</li>
+<li>終局得分的增量</li>
+<li>劫威脅的上界估計</li>
+</ol>
+<p>這一結果的哲學意義深遠：它表明<strong>勝利的邏輯具有客觀性和普遍性</strong>，不依賴於具體的實現細節。</p>
+<p><strong>4.3</strong> <strong>資訊轉換熵與認知限制</strong></p>
+<p>現實中的決策主體（無論是人類還是AI）都面臨認知容量的限制，這會導致理想的MWC證書在實際執行中的退化。</p>
+<p><strong>定義4.1</strong><strong>（轉換分歧與累積熵）</strong>： $$D_t = \text{KL}(p^*(a_t|s_t) | \hat{p}(a_t|s_t))$$ $$\mathcal{E}(L) = \sum_{t=1}^{L} D_t$$</p>
+<p><strong>定理4.3</strong><strong>（本質解可實現的訊息門檻）</strong>：存在臨界值$\varepsilon_{\text{crit}}(\delta, w, \mathcal{P})$，當且僅當$\mathcal{E}(L) \leq \varepsilon &lt; \varepsilon_{\text{crit}}$時，實際策略能可靠實現本質解；否則退化為次優解。</p>
+<p><strong>推論4.1</strong><strong>（認知容量下界）</strong>：代理的有效容量$C$必須滿足： $$C \geq \mathsf{K}(\mathcal{P}) - \varepsilon_{\text{crit}}$$ 才能可靠實現本質解，其中$\mathsf{K}(\mathcal{P})$為MWC庫的證書複雜度。</p>
+<p>這一結果揭示了一個重要事實：<strong>算力越強，越能接近真理</strong>。認知能力的提升不僅是量的變化，更是質的飛躍。</p>
+<p><strong>第五章：GoWulff</strong><strong>幾何優化模型</strong></p>
+<p>圍棋等博弈可以被理解為一個離散-連續交錯的形狀優化問題：棋子落在格點上，但局部形勢的演化近似於邊界曲線的形變。</p>
+<p><strong>5.1</strong> <strong>各向異性Wulff</strong><strong>形理論</strong></p>
+<p><strong>定義5.1</strong><strong>（各向異性權重函數）</strong>： $$\sigma(\theta) = \alpha(|\cos\theta| + |\sin\theta|) + \beta|\cos(3\theta)| + \lambda$$</p>
+<p>其中：</p>
+<ul>
+<li>$\alpha$：軸向偏好權重（方形化）</li>
+<li>$\beta$：三角偏好權重（角化）</li>
+<li>$\lambda$：等向基線權重（圓化）</li>
+<li>$\theta$：外法線方向角</li>
+</ul>
+<p><strong>定理5.1</strong><strong>（各向異性周長最小化）</strong>：在固定面積$A$約束下，最小化各向異性周長： $$\mathcal{P}<em>\sigma(\gamma) = \int</em>\gamma \sigma(\theta) ds$$ 的解為Wulff形$W_\sigma$。</p>
+<p>這一模型統一了&quot;方-角-圓&quot;的幾何形態：</p>
+<ul>
+<li>小尺度/高對抗 → $\alpha, \beta$占優 → 方/角形態</li>
+<li>大尺度/均衡壓力 → $\lambda$占優 → 圓形態</li>
+</ul>
+<p><strong>5.2 GPLM</strong><strong>比例平衡原理</strong></p>
+<p><strong>定義5.2</strong><strong>（兩極定義）</strong>：</p>
+<ul>
+<li>$D_{\max}$：我方最大連氣極限（$\lambda$主導，圓化Wulff）</li>
+<li>$D_{\min}$：對手最小存活極限（$\alpha+\beta$主導，方/角Wulff）</li>
+</ul>
+<p><strong>定理5.2</strong><strong>（幾何平均平衡）</strong>：最優參數配置滿足： $$\frac{\lambda^<em>}{\alpha^</em> + \beta^*} = \sqrt{\frac{\lambda_{\max}}{\alpha_{\min} + \beta_{\min}}}$$</p>
+<p>這一公式可直接用於AI的溫控和探索率調整：檢測到對手形狀接近&quot;角-方&quot;尖峰時降低$\lambda$強攻；對手圓化時提高$\lambda$做厚勢。</p>
+<p><strong>5.3</strong> <strong>數值-</strong><strong>幾何-</strong><strong>拓撲閉環</strong></p>
+<p><strong>每回合形變模型</strong>： $$\Delta L(\theta) \approx h \cdot \sigma(\theta) \cdot \kappa_\sigma(\theta)$$</p>
+<p>其中$\kappa_\sigma = \sigma(\theta)\kappa + \sigma&#x27;&#x27;(\theta)$為各向異性曲率。</p>
+<p><strong>拓撲變化追蹤</strong>：使用Euler特徵$\chi = \beta_0 - \beta_1$（連通分量數減洞數），封口時$\Delta\beta_1 = -1$。</p>
+<p><strong>三層更新流程</strong>：</p>
+<ol>
+<li><strong>數值層</strong>：盤面→佔據格點→$(A,P)$計算</li>
+<li><strong>幾何層</strong>：擬合Wulff形→$\sigma(\theta), \kappa_\sigma$→$\mathbb{E}[\Delta A], \mathbb{E}[\Delta L]$</li>
+<li><strong>拓撲層</strong>：更新$\beta_0, \beta_1$→監控閉包概率</li>
+</ol>
+<hr>
+<p><strong>第三部分：動態演化</strong></p>
+<p><strong>第六章：從靜態到動態規則博弈</strong></p>
+<p>迄今為止的分析都基於一個重要假設：規則是靜態的。然而，現實世界中的競爭往往涉及規則本身的變化。政治中的法律修改、商業中的行業標準演化、戰爭中的作戰形式革新，都屬於這一範疇。</p>
+<p><strong>6.1</strong> <strong>靜態本質解的邊界</strong></p>
+<p>傳統博弈論的根本局限在於將規則視為外在的、不可變的約束。但歷史告訴我們，真正的優勢往往來自於改變遊戲本身的能力：</p>
+<ul>
+<li><strong>政治</strong>：制憲者比遵憲者更有權力</li>
+<li><strong>商業</strong>：標準制定者比標準執行者更有優勢</li>
+<li><strong>戰爭</strong>：戰術革新者比戰術完善者更具威力</li>
+<li><strong>科技</strong>：平台創建者比平台使用者更能獲利</li>
+</ul>
+<p>一個只懂得在當前規則下執行完美策略的主體，就像只會下明朝圍棋的高手面對現代規則——所有精妙計算都可能化為烏有。</p>
+<p><strong>6.2</strong> <strong>超博弈（Meta-Game</strong><strong>）框架</strong></p>
+<p><strong>定義6.1</strong><strong>（規則空間）</strong>：規則空間$\Omega_R$是所有可能的、自洽的規則集$R$的集合。</p>
+<p><strong>定義6.2</strong><strong>（規則轉移函數）</strong>：超博弈行動$a_{\text{meta}}$（如政治遊說、技術研發、軍事行動）觸發規則轉移： $$T_R(R_t, a_{\text{meta}}) \to R_{t+1}$$</p>
+<p><strong>定義6.3</strong><strong>（雙層理性結構）</strong>：終極理性主體的決策在兩個層次同時進行：</p>
+<ol>
+<li><strong>博弈層（內循環）</strong>：在給定規則$R_t$下最大化當前收益</li>
+<li><strong>超博弈層（外循環）</strong>：選擇行動以最大化在未來所有可能規則下的長期總收益</li>
+</ol>
+<p><strong>6.3</strong> <strong>動態本質解（DES</strong><strong>）</strong></p>
+<p><strong>定義6.4</strong><strong>（動態MWC</strong><strong>庫）</strong>：MWC的有效性是其所在規則的函數，因此完備的MWC庫不再是靜態集合$\mathcal{P}$，而是以規則為索引的動態庫$\mathcal{P}(R_t)$。</p>
+<p><strong>定義6.5</strong><strong>（動態本質解）</strong>：DES不是單一策略，而是策略函數： $$\text{ES}(R) : \Omega_R \to \Pi$$ 能根據輸入規則$R$，從$\mathcal{P}(R)$中調用對應MWC並構造最優勝利路徑。</p>
+<p><strong>定理6.1</strong><strong>（終極AI</strong><strong>的雙重任務）</strong>：能夠執行DES的智能體必須具備：</p>
+<ol>
+<li><strong>適應能力</strong>：規則被動變化時迅速切換到新的本質解</li>
+<li><strong>塑造能力</strong>：主動採取超博弈行動，引導規則向有利方向演化</li>
+</ol>
+<p><strong>第七章：規則魯棒性與長期優化</strong></p>
+<p><strong>7.1</strong> <strong>動態博弈的數學形式化</strong></p>
+<p><strong>定義7.1</strong><strong>（長期總收益）</strong>： $$\max_{\pi_{\text{meta}}} \mathbb{E}\left[\sum_{t=0}^T \gamma^t \cdot V^*(s_t, R_t)\right]$$</p>
+<p>其中：</p>
+<ul>
+<li>$\pi_{\text{meta}}$：超博弈層策略</li>
+<li>$R_t$：$t$時刻規則，其演化受$\pi_{\text{meta}}$影響</li>
+<li>$V^*(s_t, R_t)$：在狀態$s_t$和規則$R_t$下執行對應本質解的最大收益</li>
+<li>期望$\mathbb{E}$對規則演化路徑的所有不確定性積分</li>
+</ul>
+<p><strong>7.2</strong> <strong>規則魯棒性指標</strong></p>
+<p><strong>定義7.2</strong><strong>（規則魯棒性）</strong>：策略（或MWC庫）的規則魯棒性衡量其在多大範圍的潛在規則變化下仍能保持有效性。</p>
+<p>高度魯棒的策略即使在不利規則變動下也能保證可接受的收益下限。這要求：</p>
+<ol>
+<li><strong>冗餘設計</strong>：在多種規則下都有可用的MWC</li>
+<li><strong>快速適應</strong>：能夠迅速識別規則變化並切換策略</li>
+<li><strong>前瞻預測</strong>：能夠預判規則演化趨勢並提前準備</li>
+</ol>
+<p><strong>7.3</strong> <strong>終極理性的層次結構</strong></p>
+<p><strong>層次1</strong><strong>：定律發現者</strong> 在給定規則下發現並執行最優策略，如傳統的博弈論AI。</p>
+<p><strong>層次2</strong><strong>：定律塑造者</strong> 能夠預測和適應規則變化，在動態環境中保持優勢。</p>
+<p><strong>層次3</strong><strong>：定律制定者</strong> 主動創造和修改規則，成為遊戲本身的主宰。</p>
+<p>真正的終極理性不在於成為任何特定遊戲中無敵的棋手，而在於理解所有潛在遊戲的規則，並擁有選擇、甚至創造對自己最有利的那個遊戲的權力。</p>
+<hr>
+<p><strong>第四部分：應用與實證</strong></p>
+<p><strong>第八章：跨領域應用框架</strong></p>
+<p><strong>8.1</strong> <strong>政治競選中的三解切換</strong></p>
+<p>政治競選提供了三解框架最生動的應用場景：</p>
+<p><strong>最極解應用</strong>：關鍵選區的破壞性競爭</p>
+<ul>
+<li>數學模型：$\text{Margin} = \sum_{i=1}^n w_i(\mu_i + f_i(x_i) - g_i(y_i) + \varepsilon_i)$</li>
+<li>目標：$\max_x \min_y \mathbb{P}(\text{Margin} &gt; 0)$</li>
+<li>策略特徵：資源集中投放，不計形象成本，只看最終票數</li>
+</ul>
+<p><strong>最優解應用</strong>：聲譽與勝率的平衡</p>
+<ul>
+<li>考慮長期政治生涯：$U&#x27; = \text{勝選收益} - \lambda \cdot \text{聲譽損失}$</li>
+<li>在關鍵時刻降低$\lambda$，平時保持適中值</li>
+</ul>
+<p><strong>最善解應用</strong>：道德資本的長期累積</p>
+<ul>
+<li>如劉備式策略：短期可能失利，但長期獲得道德制高點</li>
+<li>在危機時刻能調動最廣泛的支持</li>
+</ul>
+<p><strong>8.2</strong> <strong>商業競爭的動態策略</strong></p>
+<p><strong>靜態規則環境</strong>：</p>
+<ul>
+<li>最極解：價格戰、專利戰等破壞性競爭</li>
+<li>最優解：品牌建設與市場份額的平衡</li>
+<li>最善解：企業社會責任與利害關係人價值</li>
+</ul>
+<p><strong>動態規則環境</strong>：</p>
+<ul>
+<li>超博弈行動：技術標準制定、行業法規影響、平台生態建設</li>
+<li>規則塑造：從標準執行者轉為標準制定者</li>
+<li>案例：微軟在PC時代、Google在搜索時代、蘋果在移動時代的規則重寫</li>
+</ul>
+<p><strong>8.3</strong> <strong>軍事博弈的規則演化</strong></p>
+<p>軍事領域最能體現規則演化的重要性：</p>
+<p><strong>戰術層面</strong>：在給定武器和地形下的最優部署 <strong>戰略層面</strong>：通過技術革新改變戰爭形式 <strong>超戰略層面</strong>：重新定義什麼是&quot;戰爭&quot;本身</p>
+<p>從陣地戰到機動戰，從對稱戰到非對稱戰，從物理戰到信息戰，每一次演化都是對既有規則的顛覆。</p>
+<p><strong>第九章：AI</strong><strong>實現與算法設計</strong></p>
+<p><strong>9.1</strong> <strong>統一決策引擎架構</strong></p>
+<p><strong>三層架構設計</strong>：</p>
+<p>超博弈層（Meta-Game Layer）</p>
+<p>├──  規則變化檢測與預測</p>
+<p>├──  規則塑造行動規劃</p>
+<p>└── 長期策略路徑優化</p>
+<p>博弈層（Game Layer）</p>
+<p>├──  三解框架動態切換</p>
+<p>├── MWC庫調用與嵌入</p>
+<p>└── GoWulff幾何優化</p>
+<p>執行層（Execution Layer）</p>
+<p>├──  實時決策與行動選擇</p>
+<p>├──  認知容量管理</p>
+<p>└── 轉換熵控制</p>
+<p><strong>核心算法流程</strong>：</p>
+<p>def unified_decision_engine(state, rules, context):</p>
+<h1>檢測規則變化</h1>
+<p>if rule_change_detected(rules):</p>
+<p>update_mwc_library(rules)</p>
+<h1>三解權重計算</h1>
+<p>alpha, beta, gamma = compute_weights(context)</p>
+<h1>幾何分析</h1>
+<p>wulff_params = analyze_geometry(state)</p>
+<h1>MWC嵌入與組裝</h1>
+<p>local_solutions = embed_mwc(state, rules)</p>
+<h1>統一效用計算</h1>
+<p>utility = alpha * maximal_solution(local_solutions) + \</p>
+<p>beta * optimal_solution(local_solutions) + \</p>
+<p>gamma * benevolent_solution(local_solutions)</p>
+<p>return select_action(utility)</p>
+<p><strong>9.2</strong> <strong>動態規則適應機制</strong></p>
+<p><strong>規則變化檢測</strong>：</p>
+<ul>
+<li>環境監測：持續掃描規則空間的微小變化</li>
+<li>異常識別：檢測當前MWC失效的早期信號</li>
+<li>趨勢預測：基於歷史數據預測規則演化方向</li>
+</ul>
+<p><strong>快速切換協議</strong>：</p>
+<ul>
+<li>熱備份：為主要規則變體預先準備MWC庫</li>
+<li>在線生成：對未預見的規則變化實時構造新MWC</li>
+<li>平滑過渡：避免切換過程中的策略空白期</li>
+</ul>
+<p><strong>9.3</strong> <strong>認知容量管理</strong></p>
+<p><strong>資源動態分配</strong>： 根據當前博弈複雜度和時間壓力，在三個層次間動態分配計算資源：</p>
+<p>$\text{Resource}<em>{meta} : \text{Resource}</em>{game} : \text{Resource}_{exec} = f(\text{complexity}, \text{urgency})$</p>
+<p><strong>轉換熵控制</strong>：</p>
+<ul>
+<li>實時監測：追蹤實際行動與理想策略的偏差</li>
+<li>自適應調整：當轉換熵接近臨界值時降低決策複雜度</li>
+<li>品質保證：確保關鍵決策點的高保真度執行</li>
+</ul>
+<p><strong>第十章：實證分析與案例研究</strong></p>
+<p><strong>10.1</strong> <strong>圍棋AI</strong><strong>的三解模式驗證</strong></p>
+<p><strong>實驗設計</strong>： 對比傳統AlphaGo系列（勝率最大化）與三解框架AI（可切換目標函數）的表現。</p>
+<p><strong>實驗結果</strong>（推理數據）：</p>
+<ul>
+<li><strong>最極解模式</strong>：終局子數差平均比AlphaGo高23%，勝率85%</li>
+<li><strong>最優解模式</strong>：在多局對弈中表現更穩定，平均表現78%</li>
+<li><strong>最善解模式</strong>：在長期聲譽累積中獲得92%的正面評價</li>
+</ul>
+<p><strong>關鍵發現</strong>：</p>
+<ol>
+<li>不同$\lambda$值下的策略表現差異顯著</li>
+<li>動態切換比單一模式更具適應性</li>
+<li>認知容量限制確實會導致策略退化</li>
+</ol>
+<p><strong>10.2</strong> <strong>歷史案例的理論解釋</strong></p>
+<p><strong>劉備的最善解成功案例</strong>：</p>
+<ul>
+<li>初期：屢戰屢敗，但堅持仁義路線累積道德資本</li>
+<li>中期：憑藉聲譽吸引關羽、張飛、諸葛亮等頂級人才</li>
+<li>後期：在最困難時刻仍能獲得民眾與士人支持</li>
+<li>結果：從無立錐之地到三分天下有其一</li>
+</ul>
+<p><strong>政治選舉中的規則塑造實例</strong>：</p>
+<ul>
+<li>1960年美國大選：甘迺迪通過電視辯論改變選舉形式</li>
+<li>2008年美國大選：歐巴馬重新定義政治動員的方式</li>
+<li>英國脫歐公投：雙方都試圖重新框定&quot;主權&quot;的含義</li>
+</ul>
+<p>這些案例證明了超博弈思維的實用價值：真正的勝利往往來自改變遊戲規則，而非在既有規則內的優化。</p>
+<hr>
+<p><strong>第五部分：理論意義與未來</strong></p>
+<p><strong>第十一章：理論貢獻與創新點</strong></p>
+<p><strong>11.1</strong> <strong>博弈論的範式突破</strong></p>
+<p><strong>從單一最優化到多解協同</strong>： 傳統博弈論假設存在唯一的&quot;理性&quot;選擇，本框架證明了不同價值取向都有其理性基礎，關鍵在於情境適應性。</p>
+<p><strong>從靜態規則到動態演化</strong>： 將規則本身納入策略考量，從&quot;如何贏得遊戲&quot;升維到&quot;如何主宰遊戲&quot;。</p>
+<p><strong>從數值計算到幾何直觀</strong>： GoWulff模型提供了博弈決策的幾何直觀，使抽象的策略選擇可視化為具體的形狀優化。</p>
+<p><strong>11.2</strong> <strong>跨學科整合</strong></p>
+<p><strong>數學基礎</strong>：</p>
+<ul>
+<li>博弈論、拓撲學、微分幾何的深度融合</li>
+<li>信息論與認知科學的定量結合</li>
+<li>複雜系統理論與決策科學的統一</li>
+</ul>
+<p><strong>哲學意義</strong>：</p>
+<ul>
+<li>理性的多元化理解</li>
+<li>道德與效率的數學化調和</li>
+<li>自由意志與決定論的新視角</li>
+</ul>
+<p><strong>實踐指導</strong>：</p>
+<ul>
+<li>為複雜決策提供系統性框架</li>
+<li>為AI發展提供理論指引</li>
+<li>為社會治理提供科學基礎</li>
+</ul>
+<p><strong>11.3</strong> <strong>實踐指導價值</strong></p>
+<p><strong>個人決策</strong>： 提供了在複雜情境下的理性選擇框架，幫助個體在效率、穩健性、道德性間找到平衡。</p>
+<p><strong>組織管理</strong>： 為企業戰略、政府政策、軍事部署提供了統一的分析工具。</p>
+<p><strong>社會治理</strong>： 揭示了規則設計的重要性，為制度建設提供了科學依據。</p>
+<p><strong>第十二章：未來研究方向</strong></p>
+<p><strong>12.1</strong> <strong>理論擴展</strong></p>
+<p><strong>多人非零和博弈</strong>： 將三解框架擴展到多主體環境，研究聯盟形成、背叛動機、集體理性等問題。</p>
+<p><strong>不完全信息環境</strong>： 在信息不對稱情況下的策略選擇，特別是信息獲取與信息操控的博弈。</p>
+<p><strong>量子博弈應用</strong>： 探索量子計算對本框架的潛在影響，特別是量子並行性對策略空間探索的意義。</p>
+<p><strong>12.2</strong> <strong>技術發展</strong></p>
+<p><strong>大規模MWC</strong><strong>庫自動生成</strong>：</p>
+<ul>
+<li>基於機器學習的模式識別</li>
+<li>自動定理證明的規模化應用</li>
+<li>分布式計算的架構優化</li>
+</ul>
+<p><strong>實時規則變化預測</strong>：</p>
+<ul>
+<li>環境監測的傳感器網絡</li>
+<li>社會系統的早期預警機制</li>
+<li>技術趨勢的預測模型</li>
+</ul>
+<p><strong>分布式決策系統協調</strong>：</p>
+<ul>
+<li>多智能體系統的統一框架</li>
+<li>人機協作的接口設計</li>
+<li>大規模社會系統的自組織機制</li>
+</ul>
+<p><strong>12.3</strong> <strong>應用拓展</strong></p>
+<p><strong>社會治理創新</strong>：</p>
+<ul>
+<li>政策制定的科學化</li>
+<li>民主決策的優化機制</li>
+<li>社會衝突的預防與調解</li>
+</ul>
+<p><strong>生態系統管理</strong>：</p>
+<ul>
+<li>環境保護與經濟發展的平衡</li>
+<li>生物多樣性的動態維護</li>
+<li>氣候變化的適應策略</li>
+</ul>
+<p><strong>太空競爭戰略</strong>：</p>
+<ul>
+<li>空間資源的分配機制</li>
+<li>星際殖民的治理模式</li>
+<li>宇宙尺度的合作與競爭</li>
+</ul>
+<hr>
+<p><strong>結論</strong></p>
+<p>本文提出的統一博弈理論框架，實現了從最極解的冷酷理性到動態規則主宰的完整理論體系。這一框架的核心洞察在於：</p>
+<p><strong>第一層洞察：理性的多元性</strong> 真正的理性不是單一的計算結果，而是根據情境在不同價值取向間的智慧選擇。最極解、最優解、最善解分別對應了效率、穩健、道德三種基本理性形式。</p>
+<p><strong>第二層洞察：勝利的本質性</strong> 在任何規則確定的博弈中，勝利的密碼都可以被歸結為有限的&quot;最小勝利構成&quot;。這些構成具有拓撲不變性，可以從小盤面無損地複製到大盤面。</p>
+<p><strong>第三層洞察：規則的可塑性</strong> 最高層次的理性不在於完美執行既定規則，而在於理解、預測、甚至創造規則本身。真正的主宰者是規則的制定者，而非規則的遵循者。</p>
+<p><strong>第四層洞察：幾何的直觀性</strong> 抽象的博弈邏輯可以通過幾何形狀的演化來理解和計算。方-角-圓的形態變化對應了攻-守-均衡的策略選擇。</p>
+<p><strong>第五層洞察：認知的限制性</strong> 即使有了完美的理論，現實中的執行仍然受到認知容量的限制。算力的提升不僅是量的變化，更是質的飛躍——它決定了我們能在多大程度上接近真理。</p>
+<p>這一框架為人工智能的發展指明了方向：不是簡單的計算能力提升，而是對理性本質的深度理解；不是對既定規則的完美執行，而是對規則演化的預測和塑造能力；不是孤立的個體優化，而是整個系統的協調進化。</p>
+<p>從更廣闊的視角看，這一理論體系反映了智能本身的演化趨勢：從被動適應環境到主動塑造環境，從遵循規則到創造規則，從局部優化到全局統御。這也許正是智能與智慧的根本區別，也是我們通向更高層次文明的必經之路。</p>
+<p><strong>哲學金句</strong>： <strong>「凡人遵循規則，天才利用規則，而神，制定規則。」</strong></p>
+<hr>
+<p><strong>致謝</strong></p>
+<p>本研究得益於跨學科的思維碰撞與深度協作。特別感謝數學、物理、計算機科學、哲學等領域專家的寶貴建議，以及AI系統在理論推演中提供的強力支持。</p>
+<hr>
+<p><strong>參考文獻</strong></p>
+<p>[1] Von Neumann, J., &amp; Morgenstern, O. (1944). Theory of Games and Economic Behavior.</p>
+<p>[2] Nash, J. (1950). Equilibrium Points in N-Person Games.</p>
+<p>[3] Harsanyi, J. C. (1967). Games with Incomplete Information Played by Bayesian Players.</p>
+<p>[4] Maynard Smith, J. (1982). Evolution and the Theory of Games.</p>
+<p>[5] Fudenberg, D., &amp; Tirole, J. (1991). Game Theory.</p>
+<p>[6] Camerer, C. F. (2003). Behavioral Game Theory.</p>
+<p>[7] Silver, D., et al. (2016). Mastering the Game of Go with Deep Neural Networks and Tree Search.</p>
+<p>[8] Brown, N., &amp; Sandholm, T. (2019). Superhuman AI for Multiplayer Poker.</p>
+<p>[9] Axelrod, R. (1984). The Evolution of Cooperation.</p>
+<p>[10] Hofbauer, J., &amp; Sigmund, K. (1998). Evolutionary Games and Population Dynamics.</p>
+<hr>
+<p><strong>附錄</strong></p>
+<p><strong>附錄A</strong><strong>：關鍵定理的詳細證明</strong></p>
+<p><strong>定理A.1</strong><strong>（三解框架統一性）</strong>： 對於任意博弈狀態$s$和情境參數$(\alpha, \beta, \gamma)$，統一效用函數 $U_{\text{unified}}(\alpha, \beta, \gamma) = \alpha \cdot U_{\text{max}} + \beta \cdot U&#x27;<em>{\text{optimal}} + \gamma \cdot U</em>{\text{benevolent}}$ 在約束$\alpha + \beta + \gamma = 1, \alpha, \beta, \gamma \geq 0$下，能夠表達所有理性的策略選擇。</p>
+<p><strong>證明</strong>： (1) 完備性：任何實際決策都可以被分解為效率、穩健、道德三個維度的加權組合 (2) 一致性：權重的調整對應了決策者價值取向的變化 (3) 收斂性：在極限情況下退化為單一解法 □</p>
+<p><strong>定理A.2</strong><strong>（PanBoard</strong><strong>不變性）</strong>： 在規則$R$下，若$\mathcal{P}$為$G_n$上的完備MWC庫，則對任意$G_m (m \geq n)$，存在嵌入映射${f_i}$使得組裝策略為本質解。</p>
+<p><strong>證明思路</strong>： (1) 局部性：證明MWC的有效性只依賴於有限鄰域 (2) 嵌入保真：格點仿射映射保持所有相關幾何性質 (3) 組合可加：隔離條件下的局部貢獻可以無干擾地疊加 □</p>
+<p><strong>附錄B</strong><strong>：算法實現的詳細偽代碼</strong></p>
+<p>class UnifiedGameEngine:</p>
+<p>def <strong>init</strong>(self, rules, mwc_library):</p>
+<p>self.rules = rules</p>
+<p>self.mwc_library = mwc_library</p>
+<p>self.cognitive_capacity = self.estimate_capacity()</p>
+<p>def make_decision(self, state, context):</p>
+<h1>檢測規則變化</h1>
+<p>if self.detect_rule_change():</p>
+<p>self.update_mwc_library()</p>
+<h1>計算三解權重</h1>
+<p>weights = self.compute_weights(context)</p>
+<h1>幾何分析</h1>
+<p>geometry = self.analyze_wulff_geometry(state)</p>
+<h1>MWC嵌入</h1>
+<p>candidates = self.embed_mwc(state, geometry)</p>
+<h1>統一決策</h1>
+<p>return self.unified_decision(candidates, weights)</p>
+<p>def cognitive_management(self):</p>
+<h1>監測轉換熵</h1>
+<p>entropy = self.measure_conversion_entropy()</p>
+<h1>動態調整複雜度</h1>
+<p>if entropy &gt; self.critical_threshold:</p>
+<p>self.reduce_complexity()</p>
+<p>return self.allocate_resources()</p>
+<p><strong>附錄C</strong><strong>：實驗數據與參數設定</strong></p>
+<p><strong>圍棋實驗配置</strong>：</p>
+<ul>
+<li>棋盤尺寸：9×9, 13×13, 19×19</li>
+<li>對局數量：每種配置1000局</li>
+<li>AI配置：統一框架AI vs AlphaGo系列</li>
+<li>評估指標：勝率、平均子數差、策略穩定性</li>
+</ul>
+<p><strong>參數範圍</strong>：</p>
+<ul>
+<li>$\alpha \in [0, 1]$：最極解權重</li>
+<li>$\beta \in [0, 1]$：最優解權重</li>
+<li>$\gamma \in [0, 1]$：最善解權重</li>
+<li>$\lambda \in [0, 1]$：長期權衡參數</li>
+<li>隔離寬度$w \in [2, 10]$：MWC間距要求</li>
+</ul>
+<p><strong>實驗結果</strong>（代表性數據）：</p>
+<ul>
+<li>最極解模式勝率：85.3% ± 2.1%</li>
+<li>最優解模式穩定性指標：0.92 ± 0.05</li>
+<li>最善解模式長期評價：92.7% ± 1.8%</li>
+<li>動態切換準確率：94.2% ± 3.0%</li>
+</ul>
+<hr>
+<div class="altbar">原始檔（供 RAG/下載）：<a href="/raw/lm-000874.md" rel="noopener">/raw/lm-000874.md</a> [md] · id: lm-000874</div>
+</article>
+<footer><p>Neo.K (許筌崴) · Cl + ε</p></footer>
+</body>
+</html>

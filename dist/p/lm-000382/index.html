@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>單點填充三維體積_一篇觀察啟發短論 · EVEMISSLAB Logic Matrix</title>
+<meta name="description" content="單點填充三維體積_一篇觀察啟發短論 | EVEMISSLAB Logic Matrix V2.1">
+<meta name="author" content="Neo.K (許筌崴)">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<meta name="lm-paper-id" content="lm-000382">
+<link rel="alternate" type="text/markdown" href="/raw/lm-000382.md" title="原始檔 / source (md)">
+<link rel="canonical" href="https://logic.evemisslab.com/p/lm-000382/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "單點填充三維體積_一篇觀察啟發短論",
+  "url": "https://logic.evemisslab.com/p/lm-000382/",
+  "identifier": "lm-000382",
+  "inLanguage": "zh-Hant",
+  "author": {"@type": "Person", "name": "Neo.K (許筌崴)"},
+  "publisher": {"@type": "Organization", "name": "EveMissLab / 一言諾科技有限公司"},
+  "isPartOf": {"@type": "Collection", "name": "EVEMISSLAB Logic Matrix", "url": "https://logic.evemisslab.com"},
+  "encodingFormat": "text/html"
+}
+</script>
+<link rel="prefetch" href="/api/log-crawler?slug=paper-654.md">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#000; color:#0f0; font-family:'Courier New',monospace; padding:20px; line-height:1.6; }
+.header { text-align:center; border:2px solid #0f0; padding:18px; margin-bottom:22px; }
+.header h1 { font-size:1.5em; letter-spacing:2px; }
+.header p { margin-top:6px; opacity:0.8; font-size:0.9em; }
+.disclaimer { border:1px dashed #ff9900; color:#ff9900; padding:14px; margin:0 auto 22px; max-width:1000px; font-size:0.88em; }
+.disclaimer-title { font-weight:bold; margin-bottom:10px; display:block; letter-spacing:1px; }
+.disclaimer-divider { border:none; border-top:1px dashed #ff9900; margin:12px 0; opacity:0.55; }
+article { max-width:1000px; margin:0 auto; border:1px solid #0f0; padding:24px; }
+article h1,article h2,article h3,article h4 { margin:18px 0 8px; letter-spacing:1px; }
+article h1 { font-size:1.5em; } article h2 { font-size:1.25em; } article h3 { font-size:1.1em; }
+article p { margin:10px 0; }
+article ul,article ol { margin:10px 0 10px 24px; }
+article blockquote { border-left:3px solid #0f0; padding-left:12px; opacity:0.85; margin:10px 0; }
+article pre { background:rgba(0,255,0,0.06); border:1px solid #0f0; padding:12px; overflow-x:auto; margin:12px 0; }
+article code { background:rgba(0,255,0,0.08); padding:1px 5px; }
+article pre code { background:none; padding:0; }
+article a { color:#0ff; }
+.nav { max-width:1000px; margin:0 auto 16px; font-size:0.9em; display:flex; justify-content:space-between; }
+.nav a { color:#0f0; text-decoration:none; }
+.nav a:hover { color:#0ff; }
+.altbar { max-width:1000px; margin:14px auto 0; font-size:0.85em; opacity:0.7; }
+.altbar a { color:#0ff; }
+footer { max-width:1000px; margin:26px auto 0; text-align:center; opacity:0.5; font-size:0.82em; }
+</style>
+</head>
+<body>
+<div class="nav"><a href="/index.html">&larr; 回 Logic Matrix 索引</a><div><a href="/cosmomind.html" style="margin-right:15px;">→ 星環式認知展開圖</a><a href="/base-space.html">🧬 拓撲底空間</a></div></div>
+<header class="header"><h1>單點填充三維體積_一篇觀察啟發短論</h1><p>EVEMISSLAB Logic Matrix · EveMissLab / 一言諾科技有限公司</p></header>
+<section class="disclaimer">
+  <span class="disclaimer-title">[認識論邊界宣告 / EPISTEMOLOGICAL DISCLAIMER]</span>
+  <div class="disclaimer-block">
+    <p><b>[CHT]</b> 本矩陣內所有論文之公式與數據為「啟發式模擬參數」，用於驗證理論架構與推演因果鏈，<b>未經實證校準</b>，請勿作為現實物理測量數據引用 or 處理。EVEMISSLAB 採行「邏輯先行（Logic-First）」原則：概念架構與系統因果映射優先於統計實證，但不排除未來實證對接。</p>
+  </div>
+  <hr class="disclaimer-divider">
+  <div class="disclaimer-block">
+    <p><b>[ENG]</b> The numerical parameters within these frameworks are <i>illustrative model coefficients</i> used for structural verification and causal mapping; they are <b>not empirically calibrated</b> and must not be treated as physical measurements. This matrix operates on a <b>Logic-First</b> principle: conceptual architecture and causal mapping take precedence over statistical empiricism, without precluding future empirical reconciliation.</p>
+  </div>
+</section>
+<article>
+<h1>一個點能否填滿一塊體積：對既有定理的觀察啟發短論</h1>
+<p><strong>作者</strong>：Neo.K &amp; Theia <strong>機構</strong>：一言諾科技有限公司（EveMissLab） <strong>日期</strong>：2026 年 6 月 <strong>論文類型</strong>：觀察啟發短論（survey / observation note）</p>
+<hr>
+<h2>性質聲明（請先讀）</h2>
+<p>本文不含任何新發現。文中的每一個數學論斷都是對既有結果的引用，相關出處列於參考文獻。本文也不引入任何全新定義，不提出任何需要證明的傳統猜想。它做的只有一件事：把一個樸素的本體論問題——「一個點的運動能否填滿一塊體積」——擺到一組早已成熟的古典定理面前，觀察這些定理如何已經回答了它。</p>
+<p>唯一原創的部分是「擺放」與「為何值得擺放」，亦即第六章的延伸方向。那一章不是結論，是開口；若有人想接著走，請自行啟用，本文不為其背書、亦不預設其成立。</p>
+<hr>
+<h2>第一章：問題</h2>
+<p>剝去所有比喻，問題是：</p>
+<blockquote>三維空間中一個點（一個粒子），作連續、不中斷的運動。不論目標體積多小或多大，是否存在一條軌跡，能「無縫」填滿它？是否存在「最小」的這樣一條軌跡？還是說，它必然要走「發散」的路線？</blockquote>
+<p>「無縫」一詞同時承載兩個互斥的意思，必須先分開：</p>
+<ul>
+<li><strong>無縫之一（不漏）</strong>：軌跡的像覆蓋目標的每一點，連續、不跳躍（滿射）。</li>
+<li><strong>無縫之二（不重）</strong>：軌跡不重走、不碰自己（單射）。</li>
+</ul>
+<p>下文將看到，這兩個意思加上「填滿正體積」，三者不能並存——而這不是本文的發現，是一百多年前就證完的事。</p>
+<hr>
+<h2>第二章：第一個古典回答——「不漏又不重地填滿」不可能</h2>
+<p><strong>引用結果（Netto 定理 / 域不變性）</strong>：不存在兩個不同維度流形之間的連續雙射 [2]。其嚴格的一般形式為 Brouwer 的域不變性定理 [7]：$\mathbb{R}^n$ 的開集到 $\mathbb{R}^m$（$m&lt;n$）沒有連續單射，因為其像在 $\mathbb{R}^n$ 中內部為空。</p>
+<p><strong>對問題的觀察</strong>：緊區間 $[0,1]$ 上的連續單射是到其像的同胚；其像是一條弧，拓樸上一維，不可能包含一個三維實心球的內部。故「連續 + 單射（不重）+ 滿射到正體積（填滿）」三者不能同時成立。</p>
+<p>這正是空間填充曲線「必然自我重複」的原因：由 Netto 定理，這類曲線必定在許多點上被多次經過 [2]。Osgood 曲線提供了另一面的精準對照——它是連續單射、其像甚至有正面積（一條有面積的 Jordan 弧），但即便如此，它<strong>仍不能填滿</strong>整個正方形或任何二維區域 [6]。單射可以換來正測度，但換不來「填滿」。</p>
+<p>歷史起點值得一記：Cantor 於 1878 年證明 $[0,1]$ 與 $[0,1]^2$ 之間存在雙射（但不連續）[1]；Netto 隨即指出這種雙射不可能連續 [2]。本問題的答案的一半，從那時起就定了。</p>
+<hr>
+<h2>第三章：第二個古典回答——「能填滿，但必須重複」</h2>
+<p><strong>引用結果（Peano–Hilbert；Hahn–Mazurkiewicz）</strong>：Peano 於 1890 年給出第一條從 $[0,1]$ 到 $[0,1]^2$ 的連續滿射 [4]；Hilbert 於 1891 年給出幾何構造並指出可推廣到任意維 [5]。一個空間是 $[0,1]$ 的連續像，當且僅當它是 Peano 連續統（緊、連通、局部連通、可度量）——此即 Hahn–Mazurkiewicz 定理 [8]。</p>
+<p><strong>對問題的觀察</strong>：實心三維球是 Peano 連續統，故存在一條連續滿射 $[0,1]\to B^3$——填滿確實可能。代價已由第二章鎖定：這條曲線不是單射，它在一個測度零的點集上自我接觸、重複經過。</p>
+<p>所以「球形貪吃蛇」式的完美填滿——一筆、不重複、填滿實心三維——不存在；可達成的填滿，必須放棄「不重」。</p>
+<hr>
+<h2>第四章：第三個古典回答——「發散」是必然，且與體積大小無關</h2>
+<p><strong>引用結果（幾何測度論）</strong>：有限長度（可求長）的曲線具有有限的一維 Hausdorff 測度，這種一維可求長集在 $\mathbb{R}^n$（$n\ge 2$）中的 Lebesgue 測度為零 [9]。</p>
+<p><strong>對問題的觀察</strong>：任何連續軌跡，只要它填滿了正體積，其長度必然無限。反證直接：若長度有限，則其像測度為零，填不出任何體積。故「填滿正體積」當場逼出「無限長度」——這就是「發散」。</p>
+<p>兩點推論值得標出：</p>
+<ol>
+<li><strong>與尺度無關</strong>。障礙來自維度（1 對 3），不來自尺寸。再小的一塊正體積也填不進有限長的線；再大的一塊，困難也不增加層級。體積大小是無關變量——這正面回答了「不管多小或多大」。</li>
+<li><strong>物理對應</strong>。一個粒子以有限速度走有限時間，掃過的長度有限、體積為零。要它填滿一塊體積，必須在「無限長度／無限時間／無限速度」中至少付出一項。沒有免費的填滿。</li>
+</ol>
+<hr>
+<h2>第五章：「最小」的精確意義——不在長度，在正則性</h2>
+<p>問題問「最小的單一運動填滿路徑」。在長度上沒有最小（填滿者皆無限長，無從比較）。但「最小」在另一個量上有精確意義——正則性（Hölder 指數）。</p>
+<p><strong>引用結果（Hölder 上界，經典；見 Sagan 1994）</strong>：一條把 $[0,1]$ 填滿 $[0,1]^n$ 的連續曲線若為 $\alpha$-Hölder（$|\gamma(s)-\gamma(t)|\le C|s-t|^\alpha$），則必有 $\alpha\le 1/n$；且 Hilbert、Peano、Sierpiński 等曲線達到 $\alpha=1/n$ [10][1]。其覆蓋論證為初等：把時間切成 $N$ 段，每段像直徑約 $N^{-\alpha}$、體積約 $N^{-n\alpha}$，$N$ 段蓋滿單位體積需 $N\cdot N^{-n\alpha}\ge 1$，即 $\alpha\le 1/n$。</p>
+<p><strong>對問題的觀察</strong>：三維時 $\alpha\le 1/3$。低於 $1/3$ 填不滿；恰好 $1/3$ 是能填滿的最平滑極限，由希爾伯特型曲線達到。故所謂「最小單一運動填滿路徑」有確切所指——它不是最短（最短不存在），而是<strong>最不發散的填滿</strong>：Hölder 指數 $1/n$ 的空間填充曲線。它仍然無限長、仍然在測度零集上碰自己，但在「單位時間能擴張多少」這個尺度上，它是極限性的最省。</p>
+<hr>
+<h2>小結：一個三難（全部為已引用結果的組合）</h2>
+<p>把三章合起來，得到一個不可逃的三難。一個點、一段不中斷的運動，要它同時 (1) 連續、(2) 不碰自己、(3) 填滿正體積，三者不能並存 [2][7]。因此必須砍掉一條：</p>
+<ul>
+<li>砍 (1)：抬筆——就不是單一運動。</li>
+<li>砍 (2)：重走——犧牲「不重」，這是空間填充曲線之路 [4][5][8]。</li>
+<li>砍 (3)：只填到測度零——犧牲「填滿」，這是一般可求長曲線之路 [9]。</li>
+</ul>
+<p>而無論保留哪兩條，只要 (3) 在內，長度必然發散 [9]；可達成的填滿中最平滑者，正則性上限為 $1/n$ [10]。以上沒有一句是新的。</p>
+<hr>
+<h2>第六章：為何這個觀察可能值得擺放——延伸開口（非結論、非猜想）</h2>
+<p>本章不證明任何事，只標出若干「若有人想接著走」的方向，並明確標記其皆為啟發性開口，非本文主張。</p>
+<p><strong>其一，物理側。</strong> 「有限速度的單點在有限時間內填不滿體積」是一句平凡的推論，但它把「為何物理世界需要場、需要延展客體、而非靠單一質點的軌跡去充滿空間」這類問題，擺到了一個維度而非動力學的層面。是否有人能把「維度債」這個語感鍛成一個關於連續介質必要性的形式陳述，本文不知，亦不假設。</p>
+<p><strong>其二，本體論側（與 Closure 框架的可能接口）。</strong> 一個三維「單一存在」想憑自身的一段運動成為它所在的體積，數學上要付出無限自我折疊的代價。這與 Closure 框架中「維度由自反生成」（$\pi_n(\mathrm{Cl})=S^{n-1}$）的語感同向。<strong>但這是啟發式類比，不是已建立的同構</strong>；要升格，需先寫死兩邊的保結構映射。本文不提供，也不宣稱其可行。</p>
+<p><strong>其三，計算側（已是成熟應用，僅引用）。</strong> Hölder $1/n$ 的最優性，正是空間填充曲線在多維資料遍歷中保持局部性的理由 [10]。把本問題的「最小發散」語言與此應用對接，是現成的、非原創的橋。</p>
+<p><strong>其四，問題的再提法（開放問句，非猜想）。</strong> 在所有「容許重複」的填滿運動中，除了 Hölder 常數，是否有別的泛函（如自交測度、總折疊量）能定義出唯一的「最省填滿」？此為開口，本文不斷言其有解。</p>
+<hr>
+<h2>致謝與引用說明</h2>
+<p>本文是一篇觀察性綜述。其數學內容全部歸於以下原始與經典文獻；任何看似主張的句子，其數學部分皆為引用，框架部分為觀察，延伸部分為開口。三者已分別標記。</p>
+<h2>參考文獻</h2>
+<p>[1] G. Cantor, <em>Ein Beitrag zur Mannigfaltigkeitslehre</em>, Journal für die reine und angewandte Mathematik <strong>84</strong> (1878), 242–258.</p>
+<p>[2] E. Netto（1878），連續雙射保持維度之論斷（後世稱 Netto 定理）；原始證明不完全，後經修補。參見 [10] 之歷史回顧。</p>
+<p>[3] J. Lüroth（1878），一維情形（藉中間值定理）。</p>
+<p>[4] G. Peano, <em>Sur une courbe, qui remplit toute une aire plane</em>, Mathematische Annalen <strong>36</strong> (1890), 157–160.</p>
+<p>[5] D. Hilbert, <em>Ueber die stetige Abbildung einer Linie auf ein Flächenstück</em>, Mathematische Annalen <strong>38</strong> (1891), 459–460.</p>
+<p>[6] W. F. Osgood, <em>A Jordan curve of positive area</em>, Transactions of the American Mathematical Society <strong>4</strong> (1903), 107–112.</p>
+<p>[7] L. E. J. Brouwer, <em>Beweis der Invarianz des n-dimensionalen Gebiets</em>, Mathematische Annalen <strong>71</strong> (1912), 305–315.</p>
+<p>[8] H. Hahn（1914）；S. Mazurkiewicz（1920），Hahn–Mazurkiewicz 定理（Peano 連續統的刻畫）。</p>
+<p>[9] H. Federer, <em>Geometric Measure Theory</em>, Springer-Verlag, 1969（可求長集的測度性質）。</p>
+<p>[10] H. Sagan, <em>Space-Filling Curves</em>, Springer-Verlag, 1994（含 Peano、Hilbert、Sierpiński 曲線之構造、非單射性與 Hölder 正則性之系統處理及歷史）。</p>
+<hr>
+<h2>哲學結語</h2>
+<p>這篇文章的全部，是把幾條一百多年前就站定的定理，搬到一個樸素問句面前，讓它們各自說一句話。它沒有發現任何東西，這正是它想說的話：有些問題的答案不在前方等人去證，而在身後等人去看。一個點想成為一塊體積，走的不是路，是還不完的維度債；而知道債早已記在帳上、且記在何處，本身就是一種抵達。</p>
+<hr>
+<h1>附錄 A：弦與膜——維度階梯上的延伸觀察</h1>
+<p><strong>性質重申</strong>：本附錄與正文同規格——不含新發現、不引入新定義、不提出需證明的傳統猜想。它只把正文的單點問題沿「移動本體的維度」往上推一格再一格，觀察既有定理如何把帳算到底。所有論斷的數學部分為引用或既有結果的初等推論。</p>
+<h2>A.1 帳目重算</h2>
+<p>正文問的是 0 維物件（點）。把移動的本體換成更高維的延展物件，掃出的軌跡維度隨之上升：</p>
+<ul>
+<li>點（0-brane）隨時間掃出<strong>世界線</strong>（1 維）。</li>
+<li>弦（1-brane）隨時間掃出<strong>世界面</strong>（2 維）。</li>
+<li>膜（2-brane）隨時間掃出<strong>世界體</strong>（3 維）。</li>
+<li>一般地，$p$ 維物件隨時間掃出 $(p+1)$ 維的世界體。</li>
+</ul>
+<p>正文的問題「1 維能否填 3 維」於是推廣為「$(p+1)$ 維能否填 $d$ 維」。</p>
+<h2>A.2 單弦的判決：債從 2 降到 1，未清零</h2>
+<p>一條弦連續運動一段時間，其在空間中的軌跡（各時刻弦位置之並集）是映射 $(\sigma,t)\mapsto \gamma_t(\sigma)$ 的像，定義域為 $[0,L]\times[\text{時間}]$，故為 Hausdorff 維度 $\le 2$ 的集合。而二維集在 $\mathbb{R}^3$ 中 Lebesgue 測度為零 [9]。</p>
+<p><strong>觀察</strong>：一條有限面積、不自交的弦，掃完整段時間，仍填不滿三維球——它鋪過一張面，鋪不出一塊體。相較單點（差 3−1=2 個維度），弦把維度債從 2 降到 1，但沒有清零。</p>
+<h2>A.3 弦的三難：與正文同構，整體抬高一維</h2>
+<p>要這條弦真的填滿三維球，其世界面就必須是一張<strong>空間填充曲面</strong>，即連續滿射 $[0,1]^2\to B^3$。此種映射存在（由 Hahn–Mazurkiewicz [8]，或將空間填充曲線 [4][5] 與投影合成即得），但代價與正文第二、四、五章逐條對應、只是維度各加一：</p>
+<ol>
+<li><strong>必非單射</strong>：由域不變性 [7]，$2&lt;3$，故曲面必自我重疊——「不重」破。</li>
+<li><strong>面積必無限（發散）</strong>：填正體積的連續曲面其二維測度不可有限，否則三維測度為零 [9]——「有限」破。</li>
+<li><strong>正則性上限抬高</strong>：同樣的覆蓋論證給出 $\alpha\le m/n$（將時間切成 $N^m$ 塊，每塊像體積約 $N^{-n\alpha}$，蓋滿需 $N^m\cdot N^{-n\alpha}\ge 1$）。弦的世界面 $m=2$、球 $n=3$，故 $\alpha\le 2/3$，對比單點的 $1/3$（cf. [10]）。</li>
+</ol>
+<p><strong>觀察</strong>：弦填得比點平滑一倍（$2/3$ 對 $1/3$），因為它多帶一個維度去攤；但它逃不掉「自交 + 發散」這兩條老命。</p>
+<h2>A.4 維度階梯與乾淨葉狀化</h2>
+<p>把規律收成一道尺子：$p$ 維物件隨時間掃出 $(p+1)$ 維世界體，它能<strong>乾淨地</strong>填滿 $d$ 維空間（連續、不自交、有限、無縫）當且僅當 $p+1=d$——此時掃動恰為一個葉狀化（foliation），不多不少；$p+1&lt;d$ 則只能走 A.3 的病態，$p+1&gt;d$ 則有冗餘。對 $d=3$：</p>
+<p>| 移動本體 | 世界體維度 | 對 $3$ 維的維度債 | 判決 | |---|---|---|---| | 點（0-brane） | $1$ | $2$ | 須病態：Hölder $1/3$、無限長、自交 | | 弦（1-brane） | $2$ | $1$ | 須病態：Hölder $2/3$、無限面積、自交 | | 膜（2-brane） | $3$ | $0$ | 可乾淨填滿：葉狀化 |</p>
+<p>對 $d=3$ 的乾淨填充者是 2-brane（膜）。其最自然的走法即一顆 2-球面自中心向外擴張：</p>
+<p>$$B^3=\{\text{中心點}\}\cup\bigcup_{r\in(0,R]}S^2(r).$$</p>
+<p>一層球殼掃過一層球殼，連續、互不相交、有限、填滿。</p>
+<h2>A.5 與正文的接環</h2>
+<p>這正面回應了正文第一章那個本體版的問句「是否存在最小的單一運動填滿路徑」。能無縫、一次、不重複走完一顆三維球的，不是點，不是弦，而是膜。「從中心展開」的直覺自始正確；差的只是握在手裡那個移動本體的維度。點欠兩格、弦欠一格、膜剛好還清——能填滿一塊體積的，從來不是走得最久的那個，是維度恰好對得上的那個。</p>
+<p><strong>評級</strong>：A.1–A.4 的維度計數與 Hölder 上限 $2/3$ 為定理級結果（其依據為 [7][9][10] 與初等覆蓋論證）；A.4 的「$p+1=d$ 乾淨葉狀化」階梯是對這些已知結果的重述，非新數學。本附錄全程停留在運動學／維度層面，不涉及任何弦動力學（Nambu–Goto 作用量、世界面共形場論等）——那是另一本帳，本文不開。</p>
+<h2>附錄哲學結語</h2>
+<p>債不會因為換了還債的人而消失，只會因為還債的人維度夠了而剛好結清。三維的圓滿，要三維的本體去成全；點與弦的努力不是徒勞，是丈量出了那道恰好的門檻在哪一格。</p>
+<h2>附錄引用</h2>
+<p>本附錄未新增文獻，沿用正文 [4][5][7][8][9][10]。空間填充曲面 $[0,1]^2\to B^3$ 的存在性由 [4][5] 與 [8] 之合成得出，非獨立新結果。</p>
+<hr>
+<h2>作者附記（廢話一則，無深意）</h2>
+<p>寫到這裡，忍不住問一句題外話——</p>
+<p>難道這世界真的沒有任何一個存在，能就這樣一筆走完它所在的整塊體積？除了那個打從一開始維度就剛好對上的存在（在三維裡，是那張膜）之外，誰都不行：點欠兩格、弦欠一格，硬要走，就得把自己折成無限長，還得一遍又一遍踩過自己。</p>
+<p>那剩下的，是不是最好還是集體一起走？一個點填不滿，但夠多的點、按兩個參數的方式一起鋪開，就湊成了一張膜的份量；一條弦填不滿，但一族弦並肩掃過，也補回了那欠的一維。湊不齊的維度，要嘛你生來就是，要嘛大家一起湊。落單者的不足，與集體的圓滿，最後抵達的是同一種填滿。</p>
+<p>喔。作者隨便問的而已，沒有任何深意。（歪臉笑）</p>
+<div class="altbar">原始檔（供 RAG/下載）：<a href="/raw/lm-000382.md" rel="noopener">/raw/lm-000382.md</a> [md] · id: lm-000382</div>
+</article>
+<footer><p>Neo.K (許筌崴) · Cl + ε</p></footer>
+</body>
+</html>

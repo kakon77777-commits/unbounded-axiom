@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>對稱場消矩測積法：不規則圖形的非成像總量式面積量測原理 · EVEMISSLAB Logic Matrix</title>
+<meta name="description" content="對稱場消矩測積法：不規則圖形的非成像總量式面積量測原理 | EVEMISSLAB Logic Matrix V2.1">
+<meta name="author" content="Neo.K (許筌崴)">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="paper-698.md" title="原始檔 / source (md)">
+<link rel="canonical" href="https://logic.evemisslab.com/papers/paper-698.md.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "對稱場消矩測積法：不規則圖形的非成像總量式面積量測原理",
+  "url": "https://logic.evemisslab.com/papers/paper-698.md.html",
+  "inLanguage": "zh-Hant",
+  "author": {"@type": "Person", "name": "Neo.K (許筌崴)"},
+  "publisher": {"@type": "Organization", "name": "EveMissLab / 一言諾科技有限公司"},
+  "isPartOf": {"@type": "Collection", "name": "EVEMISSLAB Logic Matrix", "url": "https://logic.evemisslab.com"},
+  "encodingFormat": "text/html"
+}
+</script>
+<link rel="prefetch" href="/api/log-crawler?slug=paper-698.md">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#000; color:#0f0; font-family:'Courier New',monospace; padding:20px; line-height:1.6; }
+.header { text-align:center; border:2px solid #0f0; padding:18px; margin-bottom:22px; }
+.header h1 { font-size:1.5em; letter-spacing:2px; }
+.header p { margin-top:6px; opacity:0.8; font-size:0.9em; }
+.disclaimer { border:1px dashed #ff9900; color:#ff9900; padding:14px; margin:0 auto 22px; max-width:1000px; font-size:0.88em; }
+.disclaimer-title { font-weight:bold; margin-bottom:10px; display:block; letter-spacing:1px; }
+.disclaimer-divider { border:none; border-top:1px dashed #ff9900; margin:12px 0; opacity:0.55; }
+article { max-width:1000px; margin:0 auto; border:1px solid #0f0; padding:24px; }
+article h1,article h2,article h3,article h4 { margin:18px 0 8px; letter-spacing:1px; }
+article h1 { font-size:1.5em; } article h2 { font-size:1.25em; } article h3 { font-size:1.1em; }
+article p { margin:10px 0; }
+article ul,article ol { margin:10px 0 10px 24px; }
+article blockquote { border-left:3px solid #0f0; padding-left:12px; opacity:0.85; margin:10px 0; }
+article pre { background:rgba(0,255,0,0.06); border:1px solid #0f0; padding:12px; overflow-x:auto; margin:12px 0; }
+article code { background:rgba(0,255,0,0.08); padding:1px 5px; }
+article pre code { background:none; padding:0; }
+article a { color:#0ff; }
+.nav { max-width:1000px; margin:0 auto 16px; font-size:0.9em; display:flex; justify-content:space-between; }
+.nav a { color:#0f0; text-decoration:none; }
+.nav a:hover { color:#0ff; }
+.altbar { max-width:1000px; margin:14px auto 0; font-size:0.85em; opacity:0.7; }
+.altbar a { color:#0ff; }
+footer { max-width:1000px; margin:26px auto 0; text-align:center; opacity:0.5; font-size:0.82em; }
+</style>
+</head>
+<body>
+<div class="nav"><a href="../index.html">&larr; 回 Logic Matrix 索引</a><div><a href="../cosmomind.html" style="margin-right:15px;">→ 星環式認知展開圖</a><a href="../base-space.html">🧬 拓撲底空間</a></div></div>
+<header class="header"><h1>對稱場消矩測積法：不規則圖形的非成像總量式面積量測原理</h1><p>EVEMISSLAB Logic Matrix · EveMissLab / 一言諾科技有限公司</p></header>
+<section class="disclaimer">
+  <span class="disclaimer-title">[認識論邊界宣告 / EPISTEMOLOGICAL DISCLAIMER]</span>
+  <div class="disclaimer-block">
+    <p><b>[CHT]</b> 本矩陣內所有論文之公式與數據為「啟發式模擬參數」，用於驗證理論架構與推演因果鏈，<b>未經實證校準</b>，請勿作為現實物理測量數據引用 or 處理。EVEMISSLAB 採行「邏輯先行（Logic-First）」原則：概念架構與系統因果映射優先於統計實證，但不排除未來實證對接。</p>
+  </div>
+  <hr class="disclaimer-divider">
+  <div class="disclaimer-block">
+    <p><b>[ENG]</b> The numerical parameters within these frameworks are <i>illustrative model coefficients</i> used for structural verification and causal mapping; they are <b>not empirically calibrated</b> and must not be treated as physical measurements. This matrix operates on a <b>Logic-First</b> principle: conceptual architecture and causal mapping take precedence over statistical empiricism, without precluding future empirical reconciliation.</p>
+  </div>
+</section>
+<article>
+<h1>對稱場消矩測積法：不規則圖形的非成像總量式面積量測原理</h1>
+<p><strong>版本</strong>：v0.2 重構稿 <strong>提出者</strong>：Neo.K <strong>協作整理</strong>：Aletheia <strong>審查參照</strong>：Theia 嚴格審查意見 <strong>核心名稱</strong>：SFM / DMR <strong>中文名</strong>：對稱場消矩測積法；雙場消矩測積法 <strong>英文名</strong>：Symmetric Field Moment-Cancellation Method for Area Measurement <strong>定位修正</strong>：本方法不主張作為一般數位面積演算法；其核心價值在於非成像、總量式、類比場量測條件下，利用互補代理場消去一階矩污染並恢復不規則區域面積。</p>
+<hr>
+<h2>v0.2 重構聲明</h2>
+<p>v0.1 將「雙環消矩測積法」放在不規則圖形數位計算方法論中心，並以旋轉體體積公式作為主要展示。經嚴格審查後，v0.2 對方法定位做出根本修正。</p>
+<p>v0.1 中的代數關係是正確的：</p>
+<p>\[ V_L=2\pi(RA+M_x) \]</p>
+<p>\[ V_R=2\pi(RA-M_x) \]</p>
+<p>\[ A=\frac{V_L+V_R}{4\pi R} \]</p>
+<p>但若在數位環境中先由遮罩直接求出 \(A\) 與 \(M_x\)，再合成 \(V_L,V_R\)，再回推 \(A\)，此流程只能證明恆等式 \(A=A\)，不能證明一個獨立測量方法。即使改成逐像素加權求 \(V_L,V_R\)，它仍依賴對內容區像素的完整列舉；而像素列舉本身已足以直接求面積。因此，數位版 DCV/DMR 應被降級為「原理展示、sanity check、幾何矩解碼示範」，而非主方法。</p>
+<p>v0.2 將核心翻轉為：本方法真正有生命的位置不是數位演算法，而是<strong>非成像、總量式、類比場量測</strong>。當儀器無法直接取得完整圖像、無法追蹤邊界、無法施加完美均勻場，卻能施加兩個互補權重場並取得總量訊號時，對稱場消矩測積法可透過兩次互補量測消除一階矩污染，恢復目標區域面積。</p>
+<p>因此，本文從「雙環旋轉體求面積」改寫為「對稱代理場消矩測積」。旋轉體版本只是幾何例子；真正的 Kernel 是：</p>
+<p>\[ Q_+=\int_D(a+b_xx+b_yy)\,dA \]</p>
+<p>\[ Q_-=\int_D(a-b_xx-b_yy)\,dA \]</p>
+<p>兩者相加：</p>
+<p>\[ Q_++Q_-=2a\int_DdA=2aA \]</p>
+<p>故：</p>
+<p>\[ \boxed{A=\frac{Q_++Q_-}{2a}} \]</p>
+<p>這是 v0.2 的主軸。</p>
+<hr>
+<h2>摘要</h2>
+<p>不規則圖形面積測量通常被理解為影像分割、像素計數、多邊形逼近、蒙地卡羅取樣、秤重或幾何積分問題。然而，許多實際量測場景並不允許取得完整圖像，也不允許追蹤圖形邊界；儀器可能只能取得一個總量訊號，例如總光通量、總吸收量、總熱反應、總電容耦合、總壓力響應或總質量變化。在這類條件下，面積測量的問題不再是「如何從完整形狀計算面積」，而是「如何從少量總量訊號中恢復目標面積」。</p>
+<p>本文提出「對稱場消矩測積法」（Symmetric Field Moment-Cancellation Method, SFM；亦可稱 Dual Moment Removal, DMR）。其核心思想是：單一非均勻代理場對不規則區域的總量響應，通常不只包含面積，還會混入區域的一階矩，即質心偏移資訊。若場強沿空間呈線性梯度，則單次總量量測形式為：</p>
+<p>\[ Q_+=aA+b_xM_x+b_yM_y \]</p>
+<p>其中 \(A\) 是面積，\(M_x,M_y\) 是一階矩。若只量一次，面積與質心偏移無法分離。本文方法設計第二個互補場：</p>
+<p>\[ Q_-=aA-b_xM_x-b_yM_y \]</p>
+<p>兩次總量相加後，一階矩項抵消：</p>
+<p>\[ Q_++Q_-=2aA \]</p>
+<p>因此可由兩個互補場總量直接恢復面積：</p>
+<p>\[ A=\frac{Q_++Q_-}{2a} \]</p>
+<p>此方法的重點不是在數位遮罩上多做一次加權求和；那會退化為同義反覆。其真正價值在於非成像類比儀器：例如用兩個相反線性梯度光場照射不規則孔洞，只用總光量感測器接收通過光，而不拍攝影像、不追蹤邊界、不重建形狀。若兩個光場的均勻項相同、梯度項相反，則總光量之和消去質心污染，只保留孔洞面積。此原理可推廣到光學、熱場、電場、壓力場、化學反應場或其他可控代理場。</p>
+<p>本文也重新定位旋轉體版本。將平面區域繞左右對稱外軸旋轉，得到：</p>
+<p>\[ V_L=2\pi(RA+M_x),\qquad V_R=2\pi(RA-M_x) \]</p>
+<p>這是對稱場消矩法的一個幾何實現，其中權重場為 \(2\pi(R\pm x)\)。但若體積由 \(A,M_x\) 反向合成，則只是恆等式驗證；若體積由獨立物理掃掠或獨立三維量測取得，才具有測量意義。</p>
+<p>本文建立此方法的 Kernel、Runtime、Boundary、Error Model 與 Unit Test，並明確區分：數位版是教學/驗算工具；物理/類比場版才是方法本體。本文的主張不是「提出比像素法更有效的數位面積算法」，而是「提出一種在非成像、總量式量測條件下消除一階矩污染的對稱代理場原理」。</p>
+<hr>
+<h2>關鍵詞</h2>
+<p>不規則圖形、面積量測、非成像測量、總量式感測、代理場、對稱場、消矩、一階矩、質心污染、光通量、梯度場、旋轉體、帕普斯定理、積分幾何、SFM、DMR、雙場消矩測積法。</p>
+<hr>
+<h1>1. 問題重新定位：不是「算面積」，而是「從總量訊號恢復面積」</h1>
+<h2>1.1 一般不規則圖形計算的預設</h2>
+<p>傳統面積計算方法通常預設至少能取得以下資訊之一：圖形完整邊界、完整內部遮罩、可列舉像素集合、可取樣判定函數、可剪下或稱重的實物區域、或可被掃描/成像的完整圖像。</p>
+<p>若這些條件成立，最直接的方法通常已經足夠。多邊形有鞋帶公式，影像有像素計數，紙片有秤重法，解析區域有積分，複雜判定區域有蒙地卡羅。此時若額外引入旋轉體、三維體素或複雜代理場，往往只是把簡單問題複雜化。</p>
+<p>因此，若把 SFM/DMR 放在「一般數位面積算法」的位置，它會被以下批評擊中：既然已經能列舉內容區，面積早就能直接得到；再用內容區去計算加權總量，最後回推面積，只是在做一個繞路的恆等式。</p>
+<p>這個批評是正確的。</p>
+<h2>1.2 真正問題：只有總量，沒有圖像</h2>
+<p>本文真正要處理的是另一類問題：</p>
+<blockquote>給定一個不規則區域 \(D\)，儀器無法或不欲取得其完整圖像與邊界，只能取得某種總量響應 \(Q\)。如何從少數總量訊號中恢復面積 \(A\)？</blockquote>
+<p>這類問題與一般數位面積計算不同。其資料不是完整遮罩，而是類似：</p>
+<p>\[ Q=\int_D w(x,y)\,dA \]</p>
+<p>其中 \(w(x,y)\) 是儀器場、光場、熱場、電場、壓力場或反應場。儀器回傳的是一個總量，而非每一點的局部值。</p>
+<p>若 \(w(x,y)\) 是常數：</p>
+<p>\[ w(x,y)=a \]</p>
+<p>則：</p>
+<p>\[ Q=aA \]</p>
+<p>面積可直接得到。但現實儀器很常無法提供完美均勻場。若場具有線性梯度：</p>
+<p>\[ w(x,y)=a+b_xx+b_yy \]</p>
+<p>則：</p>
+<p>\[ Q=aA+b_xM_x+b_yM_y \]</p>
+<p>此時單次量測不再只反映面積，而混入了一階矩，也就是圖形質心偏移。這就是本文所說的「一階矩污染」。</p>
+<p>SFM/DMR 的目的不是從完整資料中重算面積，而是在總量式量測中設計第二個互補場，使污染項被消去。</p>
+<hr>
+<h1>2. 基本定義</h1>
+<p>令 \(D\subset\mathbb R^2\) 為可測不規則區域。面積定義為：</p>
+<p>\[ A=M_{00}=\int_D1\,dA \]</p>
+<p>一階矩定義為：</p>
+<p>\[ M_x=M_{10}=\int_Dx\,dA \]</p>
+<p>\[ M_y=M_{01}=\int_Dy\,dA \]</p>
+<p>質心為：</p>
+<p>\[ \bar x=\frac{M_x}{A},\qquad \bar y=\frac{M_y}{A} \]</p>
+<p>代理場或權重場為：</p>
+<p>\[ w:\mathbb R^2\to\mathbb R \]</p>
+<p>總量式量測為：</p>
+<p>\[ Q_w(D)=\int_Dw(x,y)\,dA \]</p>
+<p>若 \(w\) 為仿射場：</p>
+<p>\[ w(x,y)=a+b_xx+b_yy \]</p>
+<p>則：</p>
+<p>\[ Q_w(D)=aA+b_xM_x+b_yM_y \]</p>
+<p>這裡的重點是：總量訊號 \(Q_w\) 同時包含面積與一階矩。若 \(M_x,M_y\) 未知，單一 \(Q_w\) 不能唯一決定 \(A\)。</p>
+<hr>
+<h1>3. 單通道代理場的失敗：面積與質心混疊</h1>
+<h2>3.1 一維梯度情形</h2>
+<p>先考慮簡化情形：</p>
+<p>\[ w_+(x)=R+x \]</p>
+<p>則量測值：</p>
+<p>\[ Q_+=\int_D(R+x)dA \]</p>
+<p>展開：</p>
+<p>\[ Q_+=R\int_DdA+\int_Dx\,dA \]</p>
+<p>\[ Q_+=RA+M_x \]</p>
+<p>若只知道 \(Q_+\)，則同時包含 \(A\) 與 \(M_x\)。不同形狀、不同面積、不同質心可能產生同一個 \(Q_+\)。因此單通道梯度場不是可靠面積量測器。</p>
+<h2>3.2 質心污染</h2>
+<p>若區域 \(D\) 整體偏向正 \(x\) 方向，\(M_x&gt;0\)，則 \(Q_+\) 偏大。若偏向負 \(x\) 方向，\(M_x&lt;0\)，則 \(Q_+\) 偏小。因此單一梯度場下，總量訊號不只反映「有多少面積」，也反映「面積分布在哪裡」。</p>
+<p>這不是誤差，而是訊號本身的混合結構。若儀器場無法均勻，面積量測便會被位置分布污染。</p>
+<h2>3.3 為什麼平場不是總能解決？</h2>
+<p>若能施加完美均勻場，直接量測：</p>
+<p>\[ Q_0=aA \]</p>
+<p>即可。那 SFM/DMR 就沒有必要。但在以下情況中，均勻場可能不可得或不可靠：光源、熱源或電場天然有梯度；感測器靈敏度隨位置變化；樣品只能通過某個非均勻場區域；快速產線上無法做完整影像校正；場的均勻化成本高於做兩次互補量測；儀器幾何限制導致均勻場不可實現；量測目標很小、很快、很難成像；只能取得總量訊號，不能取得空間分布。</p>
+<p>在這些場景中，方法的目標不是追求最完美的場，而是利用可控的非均勻性，設計互補場，使干擾項相互抵消。</p>
+<hr>
+<h1>4. 對稱場消矩原理</h1>
+<h2>4.1 一維版本</h2>
+<p>設兩個互補場：</p>
+<p>\[ w_+(x)=R+x \]</p>
+<p>\[ w_-(x)=R-x \]</p>
+<p>對同一區域 \(D\) 做兩次總量量測：</p>
+<p>\[ Q_+=\int_D(R+x)dA=RA+M_x \]</p>
+<p>\[ Q_-=\int_D(R-x)dA=RA-M_x \]</p>
+<p>相加：</p>
+<p>\[ Q_++Q_-=2RA \]</p>
+<p>故：</p>
+<p>\[ \boxed{A=\frac{Q_++Q_-}{2R}} \]</p>
+<p>相減：</p>
+<p>\[ Q_+-Q_-=2M_x \]</p>
+<p>故：</p>
+<p>\[ \boxed{M_x=\frac{Q_+-Q_-}{2}} \]</p>
+<p>於是兩個量測通道同時給出面積與一階矩。體系的重點在於：未知的 \(M_x\) 不需要事先測出，它在相加時自動抵消，而在相減時可被讀出。</p>
+<h2>4.2 二維仿射場版本</h2>
+<p>設：</p>
+<p>\[ w_+(x,y)=a+b_xx+b_yy \]</p>
+<p>\[ w_-(x,y)=a-b_xx-b_yy \]</p>
+<p>量測：</p>
+<p>\[ Q_+=\int_D(a+b_xx+b_yy)dA \]</p>
+<p>\[ Q_-= \int_D(a-b_xx-b_yy)dA \]</p>
+<p>展開：</p>
+<p>\[ Q_+=aA+b_xM_x+b_yM_y \]</p>
+<p>\[ Q_-=aA-b_xM_x-b_yM_y \]</p>
+<p>相加：</p>
+<p>\[ Q_++Q_-=2aA \]</p>
+<p>因此：</p>
+<p>\[ \boxed{A=\frac{Q_++Q_-}{2a}} \]</p>
+<p>相減：</p>
+<p>\[ Q_+-Q_-=2(b_xM_x+b_yM_y) \]</p>
+<p>這給出沿梯度方向的一階矩投影。若做多個方向的互補場，可恢復 \(M_x,M_y\)。</p>
+<h2>4.3 多方向版本</h2>
+<p>令有兩組互補場：</p>
+<p>\[ w_{x+}=a+b x,\quad w_{x-}=a-b x \]</p>
+<p>\[ w_{y+}=a+b y,\quad w_{y-}=a-b y \]</p>
+<p>則：</p>
+<p>\[ A_x=\frac{Q_{x+}+Q_{x-}}{2a} \]</p>
+<p>\[ A_y=\frac{Q_{y+}+Q_{y-}}{2a} \]</p>
+<p>理想情況：</p>
+<p>\[ A_x=A_y=A \]</p>
+<p>一階矩：</p>
+<p>\[ M_x=\frac{Q_{x+}-Q_{x-}}{2b} \]</p>
+<p>\[ M_y=\frac{Q_{y+}-Q_{y-}}{2b} \]</p>
+<p>質心：</p>
+<p>\[ \bar x=\frac{M_x}{A},\qquad \bar y=\frac{M_y}{A} \]</p>
+<p>多方向版本具備自校驗意義，但只有在各通道為<strong>獨立物理量測</strong>時才有意義。若所有 \(Q\) 都由同一數位遮罩計算而來，則 \(A_x,A_y\) 的一致性只是恆等式，不是真正誤差檢查。</p>
+<hr>
+<h1>5. 旋轉體版本的正確定位</h1>
+<h2>5.1 旋轉體是權重場的一個幾何實現</h2>
+<p>若將區域 \(D\) 繞左軸 \(x=-R\) 旋轉，點 \((x,y)\) 的旋轉半徑是 \(R+x\)。面元 \(dA\) 掃出的微小體積是：</p>
+<p>\[ dV_L=2\pi(R+x)dA \]</p>
+<p>故：</p>
+<p>\[ V_L=\int_D2\pi(R+x)dA=2\pi(RA+M_x) \]</p>
+<p>同理繞右軸 \(x=R\) 旋轉：</p>
+<p>\[ V_R=\int_D2\pi(R-x)dA=2\pi(RA-M_x) \]</p>
+<p>相加：</p>
+<p>\[ V_L+V_R=4\pi RA \]</p>
+<p>故：</p>
+<p>\[ A=\frac{V_L+V_R}{4\pi R} \]</p>
+<p>這個結果正確，但它只是 SFM/DMR 的一個特例，其中代理場為：</p>
+<p>\[ w_L=2\pi(R+x),\qquad w_R=2\pi(R-x) \]</p>
+<p>因此旋轉體不是方法的本體，而是幾何化的展示與可能的物理實作。</p>
+<h2>5.2 什麼時候旋轉體版本有測量意義？</h2>
+<p>只有當 \(V_L,V_R\) 是獨立於 \(A,M_x\) 被取得時，它才有測量意義。例如：真的把薄片掃掠成三維實體並測其體積；由 CAD 根據實物輪廓生成旋轉體，再用外部體積演算法量測；3D 掃描得到旋轉體，而非由已知面積合成；使用流體、沉積、材料成型等物理過程生成可量測體積。</p>
+<p>若 \(V_L,V_R\) 是由以下方式得到：</p>
+<p>\[ V_L=2\pi(RA+M_x) \]</p>
+<p>\[ V_R=2\pi(RA-M_x) \]</p>
+<p>其中 \(A,M_x\) 已由原圖直接算出，則該流程不是驗證方法，而是代數回路。</p>
+<h2>5.3 數位旋轉體驗證的降級</h2>
+<p>數位 voxel 旋轉體可保留，但其用途應明確限定為：視覺化、教學展示、幾何一致性檢查、軟體 pipeline 測試與 sanity check。</p>
+<p>它不能被當作「比像素法更有效的面積算法」。因為若已有 2D 遮罩，像素法已經能直接給出面積；把它轉成 3D voxel 再回推只會增加計算成本與體素誤差。</p>
+<hr>
+<h1>6. 非成像光學版本：最小可行儀器模型</h1>
+<h2>6.1 裝置構想</h2>
+<p>考慮一個不規則孔洞或遮罩 \(D\)。目標是測其開口面積，但不使用相機、不取得圖像、不追蹤邊界，只用總光量感測器。</p>
+<p>裝置包含：可控制光場的照明模組、樣品平面、後方總光量感測器、兩次互補曝光控制、暗電流與背景校正、標準面積孔徑校準片。</p>
+<p>第一次曝光施加：</p>
+<p>\[ I_+(x,y)=I_0(a+b_xx+b_yy) \]</p>
+<p>第二次曝光施加：</p>
+<p>\[ I_-(x,y)=I_0(a-b_xx-b_yy) \]</p>
+<p>透過孔洞的總光量：</p>
+<p>\[ \Phi_+=\int_DI_+(x,y)dA \]</p>
+<p>\[ \Phi_-=\int_DI_-(x,y)dA \]</p>
+<p>展開：</p>
+<p>\[ \Phi_+=I_0(aA+b_xM_x+b_yM_y) \]</p>
+<p>\[ \Phi_-=I_0(aA-b_xM_x-b_yM_y) \]</p>
+<p>相加：</p>
+<p>\[ \Phi_++\Phi_-=2I_0aA \]</p>
+<p>面積：</p>
+<p>\[ \boxed{A=\frac{\Phi_++\Phi_-}{2I_0a}} \]</p>
+<p>若 \(I_0a\) 不直接已知，可用已知面積 \(A_{\text{cal}}\) 的標準孔徑校準：</p>
+<p>\[ K=2I_0a=\frac{\Phi_{+,\text{cal}}+\Phi_{-,\text{cal}}}{A_{\text{cal}}} \]</p>
+<p>則未知面積：</p>
+<p>\[ \boxed{A_{\text{unknown}}=\frac{\Phi_{+,\text{unknown}}+\Phi_{-,\text{unknown}}}{K}} \]</p>
+<p>這個版本才真正避免循環：面積不是由像素數得到，而是由兩次獨立總光量量測恢復。</p>
+<h2>6.2 為什麼它不是普通光通量法？</h2>
+<p>普通光通量法要求均勻光場：</p>
+<p>\[ \Phi=IA \]</p>
+<p>若光場不均，需知道整個場分布或使用平場校正。SFM/DMR 的不同之處在於，它不要求每次光場均勻，而要求兩次光場互補，使一階不均項抵消。</p>
+<p>普通光通量法要求：</p>
+<p>\[ I(x,y)\approx I_0 \]</p>
+<p>SFM/DMR 要求：</p>
+<p>\[ I_+(x,y)+I_-(x,y)\approx 2I_0a \]</p>
+<p>也就是說，單次不均可以接受；兩次總和必須均勻。這降低了單次場均勻性的要求，改為要求場的互補可控性。</p>
+<h2>6.3 真正優勢場景</h2>
+<p>此法可能有價值的場景包括：高速產線孔洞面積檢測、微孔/遮罩量測、高溫高壓或封閉環境中的非成像測量、低成本總量感測器、自然存在梯度的照明系統、只關心面積不關心形狀的快速檢測，以及樣品快速通過場區而只能取得時間序列總量訊號的情境。</p>
+<hr>
+<h1>7. 類比場的一般化</h1>
+<p>SFM/DMR 不限於光學。只要能建立總量式響應：</p>
+<p>\[ Q=\int_Dw(x,y)dA \]</p>
+<p>就可以使用互補場。</p>
+<h2>7.1 熱場版本</h2>
+<p>若區域 \(D\) 吸收熱量，且局部熱通量為：</p>
+<p>\[ H_+(x,y)=a+b_xx+b_yy \]</p>
+<p>\[ H_-(x,y)=a-b_xx-b_yy \]</p>
+<p>總吸收熱量：</p>
+<p>\[ Q_+=\int_DH_+dA \]</p>
+<p>\[ Q_-=\int_DH_-dA \]</p>
+<p>則：</p>
+<p>\[ A=\frac{Q_++Q_-}{2a} \]</p>
+<p>適合在無法成像、但可測總熱響應的場景中使用。</p>
+<h2>7.2 電場/電容版本</h2>
+<p>若一個不規則導電或介電區域在非均勻電場中產生總耦合訊號：</p>
+<p>\[ C=\int_Dw(x,y)dA \]</p>
+<p>則可用互補電極設計，讓一階位置偏差抵消。</p>
+<h2>7.3 壓力場版本</h2>
+<p>若薄片、孔洞或接觸區域在壓力敏感場中產生總力：</p>
+<p>\[ F=\int_Dp(x,y)dA \]</p>
+<p>且壓力場可做成互補梯度，則可由兩次總力恢復面積。</p>
+<h2>7.4 化學反應場版本</h2>
+<p>若某不規則區域暴露於濃度梯度場，總反應量為：</p>
+<p>\[ Q=\int_Dc(x,y)dA \]</p>
+<p>則兩個互補濃度場可消去位置偏差，恢復暴露面積。</p>
+<h2>7.5 數位濾波版本的正確用途</h2>
+<p>在數位影像中也能做：</p>
+<p>\[ Q_+=\sum_{i\in D}w_+(x_i,y_i)\Delta A \]</p>
+<p>\[ Q_-=\sum_{i\in D}w_-(x_i,y_i)\Delta A \]</p>
+<p>但此版本不應宣稱是面積算法，因為遮罩已給出面積。它的合理用途是：模擬物理儀器、驗證場設計、測試誤差傳播、產生合成資料、教學展示幾何矩解碼。</p>
+<hr>
+<h1>8. 誤差模型</h1>
+<h2>8.1 背景與暗訊號</h2>
+<p>總量感測器通常有背景項 \(B\)：</p>
+<p>\[ S_+=Q_++B_+ \]</p>
+<p>\[ S_-=Q_-+B_- \]</p>
+<p>需先做空場或遮蔽校正：</p>
+<p>\[ Q_+=S_+-B_+ \]</p>
+<p>\[ Q_-=S_--B_- \]</p>
+<p>若背景估計誤差為 \(\Delta B_+,\Delta B_-\)，則面積誤差：</p>
+<p>\[ \Delta A_B=\frac{\Delta B_++\Delta B_-}{2a} \]</p>
+<h2>8.2 均勻項校準誤差</h2>
+<p>面積公式：</p>
+<p>\[ A=\frac{Q_++Q_-}{2a} \]</p>
+<p>若 \(a\) 有相對誤差 \(\Delta a/a\)，則：</p>
+<p>\[ \frac{\Delta A}{A}\approx-\frac{\Delta a}{a} \]</p>
+<p>因此需用標準面積校準片測得有效係數：</p>
+<p>\[ K=2a \]</p>
+<p>或在光學版本中：</p>
+<p>\[ K=2I_0a \]</p>
+<h2>8.3 互補不完全誤差</h2>
+<p>理想情況：</p>
+<p>\[ w_++w_-=2a \]</p>
+<p>若實際為：</p>
+<p>\[ w_++w_-=2a+\eta(x,y) \]</p>
+<p>則：</p>
+<p>\[ Q_++Q_-=2aA+\int_D\eta(x,y)dA \]</p>
+<p>面積估計偏差：</p>
+<p>\[ \Delta A_\eta=\frac{1}{2a}\int_D\eta(x,y)dA \]</p>
+<p>若 \(\eta\) 很小且平均接近零，誤差可控；若 \(\eta\) 有系統性空間結構，則需要校準或增加更多互補場。</p>
+<h2>8.4 二階場殘差</h2>
+<p>若場不是仿射，而含二階項：</p>
+<p>\[ w_+(x,y)=a+b_xx+b_yy+c_{xx}x^2+c_{yy}y^2+c_{xy}xy \]</p>
+<p>若 \(w_-\) 只反轉一階項，但二階項相同，則相加後：</p>
+<p>\[ Q_++Q_-=2aA+2c_{xx}M_{20}+2c_{yy}M_{02}+2c_{xy}M_{11} \]</p>
+<p>此時面積估計會被二階矩污染。解法包括：場設計時讓二階項也互補抵消；做多組場並解聯立方程；使用校準樣品估計二階殘差；限制樣品尺寸，使二階項可忽略；改用正交場基底。</p>
+<h2>8.5 樣品定位誤差</h2>
+<p>若樣品座標相對場中心偏移，在單通道量測中會造成一階偏差。SFM/DMR 的一階互補結構可抵消主要位置偏差，但前提是兩次曝光中樣品位置不變，或位置變化可忽略。</p>
+<p>若兩次量測之間樣品移動，則：</p>
+<p>\[ Q_+=aA+bM_x^{(1)} \]</p>
+<p>\[ Q_-=aA-bM_x^{(2)} \]</p>
+<p>相加：</p>
+<p>\[ Q_++Q_-=2aA+b(M_x^{(1)}-M_x^{(2)}) \]</p>
+<p>若 \(M_x^{(1)}\neq M_x^{(2)}\)，消矩不完全。因此高速或動態系統需同步曝光、快速切換或同時雙通道量測。</p>
+<h2>8.6 感測器非線性</h2>
+<p>若感測器輸出不是線性的：</p>
+<p>\[ S=f(Q) \]</p>
+<p>則不能直接相加。需在線性區操作，或先做反函數校正：</p>
+<p>\[ Q=f^{-1}(S) \]</p>
+<p>SFM/DMR 要求代理量在合成前可線性相加。</p>
+<h2>8.7 雜訊傳播</h2>
+<p>若兩次量測噪聲標準差為 \(\sigma_+,\sigma_-\)，且獨立，則：</p>
+<p>\[ \sigma_A=\frac{\sqrt{\sigma_+^2+\sigma_-^2}}{2a} \]</p>
+<p>若兩通道噪聲相關，需加入協方差：</p>
+<p>\[ \sigma_A^2=\frac{\sigma_+^2+\sigma_-^2+2\operatorname{Cov}(Q_+,Q_-)}{(2a)^2} \]</p>
+<hr>
+<h1>9. 非循環驗證標準</h1>
+<p>v0.2 必須明確規定：什麼樣的驗證才算真正驗證方法，而不是驗證恆等式。</p>
+<h2>9.1 無效驗證</h2>
+<p>以下流程無效：</p>
+<ol>
+<li>從遮罩直接算 \(A\)；</li>
+<li>從遮罩直接算 \(M_x\)；</li>
+<li>用公式合成 \(Q_+=aA+bM_x\)、\(Q_-=aA-bM_x\)；</li>
+<li>再用 \(Q_++Q_-\) 回推 \(A\)。</li>
+</ol>
+<p>這只是代數閉環。</p>
+<h2>9.2 弱驗證</h2>
+<p>以下流程可作為 sanity check，但不能證明方法有測量價值：</p>
+<ol>
+<li>從遮罩逐像素計算 \(Q_+,Q_-\)；</li>
+<li>用公式回推面積；</li>
+<li>與像素面積比較。</li>
+</ol>
+<p>原因是逐像素列舉已包含面積資訊。此流程可驗證程式實作與公式一致，但不能證明比像素法更有用。</p>
+<h2>9.3 有效數值模擬驗證</h2>
+<p>有效數值模擬應模擬儀器限制：</p>
+<ol>
+<li>產生未知區域 \(D\)，但測量器不能直接讀出 \(A\)；</li>
+<li>只允許測量器接收總量訊號 \(Q_+,Q_-\)；</li>
+<li>加入場不均、暗電流、噪聲、二階殘差；</li>
+<li>用校準片估計 \(K\)；</li>
+<li>用兩次總量訊號回推 \(A\)；</li>
+<li>最後才用真值 \(A\) 做誤差評估。</li>
+</ol>
+<p>關鍵在於：演算法主流程不能直接使用 \(A\) 或完整像素面積，只能使用總量。</p>
+<h2>9.4 有效物理驗證</h2>
+<p>有效物理驗證應包含：標準面積孔徑校準、未知不規則孔洞樣品、兩個互補場、總量感測器、背景扣除、場互補性測試、與獨立方法比較如顯微影像像素法或秤重法，以及誤差與適用範圍報告。</p>
+<p>若 \(Q_+,Q_-\) 來自真實儀器，而非由已知面積合成，則方法才真正成立為量測方法。</p>
+<hr>
+<h1>10. 實驗設計草案</h1>
+<h2>10.1 光學最小實驗</h2>
+<h3>器材</h3>
+<ol>
+<li>可調亮度螢幕或投影面板；</li>
+<li>不規則孔洞遮罩；</li>
+<li>光電二極體或照度感測器；</li>
+<li>暗箱；</li>
+<li>已知面積校準孔；</li>
+<li>控制程式。</li>
+</ol>
+<h3>步驟</h3>
+<ol>
+<li>建立第一張光場圖案 \(I_+(x)=I_0(a+bx)\)；</li>
+<li>建立第二張光場圖案 \(I_-(x)=I_0(a-bx)\)；</li>
+<li>用已知面積孔校準 \(K\)；</li>
+<li>放入未知不規則孔洞；</li>
+<li>量測通過總光量 \(\Phi_+,\Phi_-\)；</li>
+<li>扣除暗電流與背景；</li>
+<li>計算：</li>
+</ol>
+<p>\[ A=\frac{\Phi_++\Phi_-}{K} \]</p>
+<ol>
+<li>用相機拍攝後像素法作為獨立真值比較。</li>
+</ol>
+<h3>成功標準</h3>
+<ol>
+<li>單次梯度場估計會隨孔洞位置偏移；</li>
+<li>雙場相加後對位置偏移不敏感；</li>
+<li>面積估計接近像素法或標準孔徑結果；</li>
+<li>誤差隨互補場校準改善而下降。</li>
+</ol>
+<h2>10.2 位置偏移測試</h2>
+<p>將同一孔洞遮罩在 \(x\) 方向移動。理論上：</p>
+<p>單通道：</p>
+<p>\[ Q_+=aA+bM_x \]</p>
+<p>會隨位置改變。</p>
+<p>雙通道：</p>
+<p>\[ Q_++Q_-=2aA \]</p>
+<p>應近似不變。</p>
+<p>這是 SFM/DMR 最關鍵的實驗展示：它不是單純測面積，而是抵抗一階位置污染。</p>
+<h2>10.3 非均勻場測試</h2>
+<p>設計故意不均勻的光場，讓普通單通量法失效。比較三種方法：單一梯度場、假設均勻場的普通光通量法、SFM/DMR 雙場法。</p>
+<p>若雙場法在一階不均下恢復面積，則其獨特性得到支持。</p>
+<h2>10.4 二階殘差測試</h2>
+<p>加入二階場：</p>
+<p>\[ I(x)=a+bx+cx^2 \]</p>
+<p>若只做一階互補，殘差會出現。測試目標是估計方法邊界，而不是假裝它萬能。</p>
+<hr>
+<h1>11. 方法比較</h1>
+<p>| 方法 | 是否需成像 | 是否需邊界 | 是否需均勻場 | 是否抗一階位置污染 | 核心限制 | |---|---:|---:|---:|---:|---| | 像素法 | 是 | 間接需要 | 否 | 是 | 需完整影像與分割 | | 多邊形法 | 是/需輪廓 | 是 | 否 | 是 | 需乾淨邊界 | | 秤重法 | 否 | 否 | 不適用 | 是 | 材料面密度需均勻 | | 普通光通量法 | 否 | 否 | 是 | 否 | 光場需均勻 | | 單梯度場量測 | 否 | 否 | 否 | 否 | 混入質心 | | SFM/DMR 雙場法 | 否 | 否 | 不要求單次均勻，只要求互補 | 是，一階 | 需互補場與線性總量感測 |</p>
+<p>這張表說明：SFM/DMR 的價值不在取代像素法，而在取代「不均勻場下的單通道總量量測」。</p>
+<hr>
+<h1>12. Kernel / Runtime / Boundary / Unit Test</h1>
+<h2>12.1 Kernel Layer</h2>
+<p>核心形式：</p>
+<p>\[ Q_+=\int_D(a+\ell(x,y))dA \]</p>
+<p>\[ Q_-=\int_D(a-\ell(x,y))dA \]</p>
+<p>其中 \(\ell(x,y)\) 是一階線性項：</p>
+<p>\[ \ell(x,y)=b_xx+b_yy \]</p>
+<p>則：</p>
+<p>\[ Q_++Q_-=2aA \]</p>
+<p>\[ A=\frac{Q_++Q_-}{2a} \]</p>
+<p>若 \(\ell\) 可被方向化設計，差分可取得一階矩投影：</p>
+<p>\[ Q_+-Q_-=2\int_D\ell(x,y)dA \]</p>
+<h2>12.2 Runtime Layer</h2>
+<h3>類比量測 Runtime</h3>
+<pre><code>Input:
+    unknown aperture/region D
+    complementary fields w+, w-
+    total-response sensor
+    calibration aperture
+
+Process:
+    1. measure background B+, B-
+    2. measure calibration responses C+, C-
+    3. compute K = (C+ + C-) / A_cal
+    4. place unknown D
+    5. measure S+, S-
+    6. subtract background: Q+ = S+ - B+, Q- = S- - B-
+    7. estimate A = (Q+ + Q-) / K
+    8. optionally estimate moment projection from Q+ - Q-
+    9. report uncertainty</code></pre>
+<h3>數位模擬 Runtime</h3>
+<pre><code>Input:
+    hidden test region D
+    simulated fields w+, w-
+    sensor model with noise and background
+
+Restriction:
+    measurement module may not directly output pixel count area
+
+Process:
+    1. generate Q+ = sensor_integral(D, w+)
+    2. generate Q- = sensor_integral(D, w-)
+    3. apply calibration
+    4. estimate A
+    5. compare to ground truth only after estimate is produced</code></pre>
+<h2>12.3 Boundary Layer</h2>
+<h3>下界必要條件</h3>
+<ol>
+<li>區域 \(D\) 的總量響應可被定義；</li>
+<li>場響應近似線性可加；</li>
+<li>兩個場具有可校準的互補關係；</li>
+<li>均勻項 \(a\) 或總校準係數 \(K\) 可取得；</li>
+<li>樣品在兩次量測中不發生不可忽略變形或位移；</li>
+<li>背景訊號可扣除；</li>
+<li>二階以上場殘差可忽略、可校準或可建模。</li>
+</ol>
+<h3>上界排除條件</h3>
+<p>以下情況不應宣稱 SFM/DMR 有效：兩個場不互補；感測器嚴重非線性且未校正；樣品在兩次量測間移動；場含大量二階以上殘差且未處理；用已知 \(A\) 合成 \(Q\) 再回推 \(A\)；已有完整數位遮罩卻宣稱 SFM 是更有效面積算法；把旋轉體視覺化當作獨立實驗驗證；把一階抵消誇大成任意誤差抵消。</p>
+<h2>12.4 Unit Test</h2>
+<h3>Test 1：標準孔徑</h3>
+<p>已知面積 \(A_{\text{cal}}\)，檢查：</p>
+<p>\[ K=\frac{Q_++Q_-}{A_{\text{cal}}} \]</p>
+<p>是否穩定。</p>
+<h3>Test 2：同面積不同位置</h3>
+<p>同一圖形平移。單通道 \(Q_+\) 應變化，雙通道和 \(Q_++Q_-\) 應近似不變。</p>
+<h3>Test 3：不同形狀同面積</h3>
+<p>測試不同形狀但同面積樣品。雙通道估計應接近相同面積；差分則反映不同質心。</p>
+<h3>Test 4：二階殘差</h3>
+<p>故意加入二階場，觀察估計偏差。用於界定方法上界。</p>
+<h3>Test 5：與獨立方法比較</h3>
+<p>使用像素法、秤重法或標準孔徑作為外部參照，不得用 SFM 自己生成真值。</p>
+<hr>
+<h1>13. 與帕普斯定理的關係</h1>
+<p>帕普斯定理說明，平面區域繞不相交外軸旋轉，體積等於面積乘以質心路徑長度：</p>
+<p>\[ V=2\pi A\bar r \]</p>
+<p>若旋轉軸為 \(x=-R\)，則：</p>
+<p>\[ \bar r=R+\bar x \]</p>
+<p>\[ V_L=2\pi A(R+\bar x) \]</p>
+<p>因為：</p>
+<p>\[ M_x=A\bar x \]</p>
+<p>故：</p>
+<p>\[ V_L=2\pi(RA+M_x) \]</p>
+<p>單軸版本需要質心，因此不能單靠 \(V_L\) 求 \(A\)。雙軸版本引入右軸：</p>
+<p>\[ V_R=2\pi(RA-M_x) \]</p>
+<p>相加消去 \(M_x\)。因此，旋轉體形式可理解為：</p>
+<blockquote>帕普斯關係的雙通道消矩化。</blockquote>
+<p>但 v0.2 更進一步指出，帕普斯只是其中一個幾何例子。SFM/DMR 的本體是互補代理場，不必真的旋轉，也不必真的生成三維體。</p>
+<hr>
+<h1>14. 與積分幾何與矩理論的關係</h1>
+<p>SFM/DMR 可被放在幾何矩框架中理解。面積是零階矩：</p>
+<p>\[ M_{00}=\int_D1\,dA \]</p>
+<p>質心資訊來自一階矩：</p>
+<p>\[ M_{10}=\int_Dx\,dA \]</p>
+<p>\[ M_{01}=\int_Dy\,dA \]</p>
+<p>單一仿射場量測得到的是零階矩與一階矩的線性組合：</p>
+<p>\[ Q=aM_{00}+b_xM_{10}+b_yM_{01} \]</p>
+<p>兩個互補場相當於建立一組線性方程，使 \(M_{00}\) 可被分離。若增加更多場，可進一步求解更高階矩。</p>
+<p>因此，SFM/DMR 的更一般表述是：</p>
+<blockquote>透過可控代理場取得幾何矩的線性觀測，再透過對稱設計或聯立解碼分離目標矩。</blockquote>
+<p>這可連接到更廣義的形狀量測、矩特徵、非成像感測與壓縮感知式幾何測量。但本文 v0.2 僅主張一階消矩測積，不主張已完成完整形狀重建理論。</p>
+<hr>
+<h1>15. 命名修正</h1>
+<p>v0.1 使用 DCV（Dual Curvature Volume Method）。經審查後，此名稱不夠準確，原因是方法真正雙的不是曲率，而是代理場、量測通道與一階矩符號。</p>
+<p>建議名稱：</p>
+<ul>
+<li>中文正式名：<strong>對稱場消矩測積法</strong></li>
+<li>中文簡稱：<strong>雙場消矩法</strong></li>
+<li>英文正式名：<strong>Symmetric Field Moment-Cancellation Method for Area Measurement</strong></li>
+<li>英文縮寫：<strong>SFM</strong> 或 <strong>DMR</strong></li>
+</ul>
+<p>本文保留 DMR 作為方法族縮寫，SFM 作為具體場量測版本縮寫。</p>
+<hr>
+<h1>16. 方法論判決：它到底是不是一個方法？</h1>
+<p>答案取決於它所處的資料環境。</p>
+<h2>16.1 在完整數位遮罩環境中</h2>
+<p>若已知每個像素是否屬於 \(D\)，則面積可直接計算：</p>
+<p>\[ A=N\Delta A \]</p>
+<p>此時 SFM/DMR 不是必要方法，只是展示：</p>
+<p>\[ \int_D1\,dA \]</p>
+<p>可被寫成兩個互補權重積分的平均。</p>
+<p>判決：<strong>教學工具，不是主算法。</strong></p>
+<h2>16.2 在旋轉體由公式合成時</h2>
+<p>若 \(V_L,V_R\) 由已知 \(A,M_x\) 合成，則是恆等式。</p>
+<p>判決：<strong>sanity check，不是驗證。</strong></p>
+<h2>16.3 在獨立物理旋轉體量測時</h2>
+<p>若 \(V_L,V_R\) 由真實掃掠體積量得，則可回推面積。</p>
+<p>判決：<strong>可作為物理測量方法，但工程成本需評估。</strong></p>
+<h2>16.4 在非成像總量式互補場量測時</h2>
+<p>若 \(Q_+,Q_-\) 由兩個互補物理場獨立量得，且儀器無法直接取得完整圖像，則 SFM/DMR 能消去一階矩污染並恢復面積。</p>
+<p>判決：<strong>方法本體成立。</strong></p>
+<hr>
+<h1>17. 與 v0.1 的差異摘要</h1>
+<p>| 項目 | v0.1 | v0.2 | |---|---|---| | 主名稱 | 雙環消矩測積法 / DCV | 對稱場消矩測積法 / SFM-DMR | | 主體 | 旋轉體積 | 互補代理場總量量測 | | 數位版定位 | 主要驗證之一 | 降級為 sanity check | | 類比場定位 | 未來工作 | 核心章節 | | 創新點 | 雙旋轉體消質心 | 雙代理場消一階矩污染 | | 驗證要求 | 公式與 voxel 測試 | 非循環、總量式、獨立量測 | | 應用場景 | 不規則圖形計算 | 非成像面積量測、抗場梯度污染 | | 命名問題 | Dual Curvature 不準 | Symmetric Field / Dual Moment Removal |</p>
+<hr>
+<h1>18. 結論</h1>
+<p>v0.2 對方法做出根本修正。本文不再把雙環旋轉體版本宣稱為一般不規則圖形數位面積算法，而是將其重新定位為「對稱場消矩測積法」的一個幾何例子。方法的真正核心是：當總量式量測訊號混入一階矩，即質心偏移污染時，設計兩個互補代理場，使一階項以相反符號出現，並在相加時抵消，只保留零階面積項。</p>
+<p>核心公式為：</p>
+<p>\[ Q_+=aA+b_xM_x+b_yM_y \]</p>
+<p>\[ Q_-=aA-b_xM_x-b_yM_y \]</p>
+<p>\[ A=\frac{Q_++Q_-}{2a} \]</p>
+<p>這使方法從「漂亮的面積恆等式」轉為「抗一階場不均/位置偏移污染的非成像總量式量測原理」。</p>
+<p>它不應與像素法在完整數位圖像場景中競爭；在那裡它必然多餘。它應該進入的戰場，是無法或不欲成像、無法追邊界、只能取得總量訊號、且單通道總量會被場梯度污染的類比測量場景。若在這樣的場景中，\(Q_+,Q_-\) 能由獨立物理量測取得，並透過校準消除背景與互補誤差，則 SFM/DMR 成立為一種真正的測量方法。</p>
+<p>因此，本文最終主張是：</p>
+<blockquote>不規則圖形面積可以被視為零階矩。單一非均勻代理場會把零階矩與一階矩混合；對稱互補場可以使一階矩湮滅，將面積從總量訊號中解碼出來。</blockquote>
+<p>這是從「計算面積」走向「設計代理場與量測結構」的升級。</p>
+<hr>
+<h1>附錄 A：最小公式集</h1>
+<p>\[ A=\int_DdA \]</p>
+<p>\[ M_x=\int_Dx\,dA \]</p>
+<p>\[ M_y=\int_Dy\,dA \]</p>
+<p>\[ Q_+=\int_D(a+b_xx+b_yy)dA \]</p>
+<p>\[ Q_-= \int_D(a-b_xx-b_yy)dA \]</p>
+<p>\[ Q_+=aA+b_xM_x+b_yM_y \]</p>
+<p>\[ Q_-=aA-b_xM_x-b_yM_y \]</p>
+<p>\[ A=\frac{Q_++Q_-}{2a} \]</p>
+<p>\[ b_xM_x+b_yM_y=\frac{Q_+-Q_-}{2} \]</p>
+<p>一維版本：</p>
+<p>\[ Q_+=RA+M_x \]</p>
+<p>\[ Q_-=RA-M_x \]</p>
+<p>\[ A=\frac{Q_++Q_-}{2R} \]</p>
+<p>旋轉體版本：</p>
+<p>\[ V_L=2\pi(RA+M_x) \]</p>
+<p>\[ V_R=2\pi(RA-M_x) \]</p>
+<p>\[ A=\frac{V_L+V_R}{4\pi R} \]</p>
+<hr>
+<h1>附錄 B：非循環驗證偽代碼</h1>
+<pre><code>Given:
+    hidden region D
+    calibration region C with known area A_C
+    complementary fields w_plus, w_minus
+    sensor model Sensor(D, w) -&gt; scalar
+
+Calibration:
+    B_plus  = Sensor(empty, w_plus)
+    B_minus = Sensor(empty, w_minus)
+
+    C_plus  = Sensor(C, w_plus)  - B_plus
+    C_minus = Sensor(C, w_minus) - B_minus
+
+    K = (C_plus + C_minus) / A_C
+
+Unknown:
+    S_plus  = Sensor(D, w_plus)  - B_plus
+    S_minus = Sensor(D, w_minus) - B_minus
+
+Estimate:
+    A_hat = (S_plus + S_minus) / K
+
+Validation:
+    Compare A_hat with external ground truth only after estimate is produced.</code></pre>
+<hr>
+<h1>附錄 C：一句話版本</h1>
+<p>對稱場消矩測積法不是用數位遮罩繞路算面積，而是在只能取得總量訊號的非成像量測中，用兩個互補場讓質心偏移項互相湮滅，從而把不規則區域的面積解碼出來。</p>
+<hr>
+<h1>附錄 D：版本註記</h1>
+<p>v0.2 是對 v0.1 的定位修正版。其主要變更為：</p>
+<ol>
+<li>將方法本體從旋轉體積改為互補代理場；</li>
+<li>將數位版降級為 sanity check；</li>
+<li>將類比場版本升為核心；</li>
+<li>新增非循環驗證標準；</li>
+<li>新增光學最小實驗設計；</li>
+<li>修正命名，降低「Dual Curvature」用語；</li>
+<li>明確指出適用邊界與不應宣稱的場景。</li>
+</ol>
+<p>後續 v0.3 可補：可執行的非循環感測模擬程式、光學實驗圖示、場互補誤差的數值測試、二階殘差補償、與平場光通量法的實驗比較，以及更嚴格的命題/證明格式。</p>
+<div class="altbar">原始檔（供 RAG/下載）：<a href="paper-698.md" rel="noopener">papers/paper-698.md</a> [md]</div>
+</article>
+<footer><p>Neo.K (許筌崴) · Cl + ε</p></footer>
+</body>
+</html>

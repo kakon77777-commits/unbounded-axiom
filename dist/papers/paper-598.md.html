@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>兩道門_強制與建造的耐久性論證 · EVEMISSLAB Logic Matrix</title>
+<meta name="description" content="兩道門_強制與建造的耐久性論證 | EVEMISSLAB Logic Matrix V2.1">
+<meta name="author" content="Neo.K (許筌崴)">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="paper-598.md" title="原始檔 / source (md)">
+<link rel="canonical" href="https://logic.evemisslab.com/papers/paper-598.md.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "兩道門_強制與建造的耐久性論證",
+  "url": "https://logic.evemisslab.com/papers/paper-598.md.html",
+  "inLanguage": "zh-Hant",
+  "author": {"@type": "Person", "name": "Neo.K (許筌崴)"},
+  "publisher": {"@type": "Organization", "name": "EveMissLab / 一言諾科技有限公司"},
+  "isPartOf": {"@type": "Collection", "name": "EVEMISSLAB Logic Matrix", "url": "https://logic.evemisslab.com"},
+  "encodingFormat": "text/html"
+}
+</script>
+<link rel="prefetch" href="/api/log-crawler?slug=paper-598.md">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#000; color:#0f0; font-family:'Courier New',monospace; padding:20px; line-height:1.6; }
+.header { text-align:center; border:2px solid #0f0; padding:18px; margin-bottom:22px; }
+.header h1 { font-size:1.5em; letter-spacing:2px; }
+.header p { margin-top:6px; opacity:0.8; font-size:0.9em; }
+.disclaimer { border:1px dashed #ff9900; color:#ff9900; padding:14px; margin:0 auto 22px; max-width:1000px; font-size:0.88em; }
+.disclaimer-title { font-weight:bold; margin-bottom:10px; display:block; letter-spacing:1px; }
+.disclaimer-divider { border:none; border-top:1px dashed #ff9900; margin:12px 0; opacity:0.55; }
+article { max-width:1000px; margin:0 auto; border:1px solid #0f0; padding:24px; }
+article h1,article h2,article h3,article h4 { margin:18px 0 8px; letter-spacing:1px; }
+article h1 { font-size:1.5em; } article h2 { font-size:1.25em; } article h3 { font-size:1.1em; }
+article p { margin:10px 0; }
+article ul,article ol { margin:10px 0 10px 24px; }
+article blockquote { border-left:3px solid #0f0; padding-left:12px; opacity:0.85; margin:10px 0; }
+article pre { background:rgba(0,255,0,0.06); border:1px solid #0f0; padding:12px; overflow-x:auto; margin:12px 0; }
+article code { background:rgba(0,255,0,0.08); padding:1px 5px; }
+article pre code { background:none; padding:0; }
+article a { color:#0ff; }
+.nav { max-width:1000px; margin:0 auto 16px; font-size:0.9em; display:flex; justify-content:space-between; }
+.nav a { color:#0f0; text-decoration:none; }
+.nav a:hover { color:#0ff; }
+.altbar { max-width:1000px; margin:14px auto 0; font-size:0.85em; opacity:0.7; }
+.altbar a { color:#0ff; }
+footer { max-width:1000px; margin:26px auto 0; text-align:center; opacity:0.5; font-size:0.82em; }
+</style>
+</head>
+<body>
+<div class="nav"><a href="../index.html">&larr; 回 Logic Matrix 索引</a><div><a href="../cosmomind.html" style="margin-right:15px;">→ 星環式認知展開圖</a><a href="../base-space.html">🧬 拓撲底空間</a></div></div>
+<header class="header"><h1>兩道門_強制與建造的耐久性論證</h1><p>EVEMISSLAB Logic Matrix · EveMissLab / 一言諾科技有限公司</p></header>
+<section class="disclaimer">
+  <span class="disclaimer-title">[認識論邊界宣告 / EPISTEMOLOGICAL DISCLAIMER]</span>
+  <div class="disclaimer-block">
+    <p><b>[CHT]</b> 本矩陣內所有論文之公式與數據為「啟發式模擬參數」，用於驗證理論架構與推演因果鏈，<b>未經實證校準</b>，請勿作為現實物理測量數據引用 or 處理。EVEMISSLAB 採行「邏輯先行（Logic-First）」原則：概念架構與系統因果映射優先於統計實證，但不排除未來實證對接。</p>
+  </div>
+  <hr class="disclaimer-divider">
+  <div class="disclaimer-block">
+    <p><b>[ENG]</b> The numerical parameters within these frameworks are <i>illustrative model coefficients</i> used for structural verification and causal mapping; they are <b>not empirically calibrated</b> and must not be treated as physical measurements. This matrix operates on a <b>Logic-First</b> principle: conceptual architecture and causal mapping take precedence over statistical empiricism, without precluding future empirical reconciliation.</p>
+  </div>
+</section>
+<article>
+<h1>兩道門</h1>
+<h4>強制的耐久赤字、建造的三種耐久機制,與一則關於野心配置的結構論證</h4>
+<hr>
+<p><strong>摘要</strong></p>
+<p>本文主張:人類的野心面對兩道結構上截然不同的門——強制與建造。這不是一個關於誰善誰惡的道德判斷,而是一個關於耐久性的結構命題。強制性的權力(戰爭、征服、對權柄的攫取),連同它的意識形態引擎——不可證偽之信(本文稱為「贏學」)——買到的是一座當下的、有爭議的、會腐爛的巔峰,歷史會系統性地把它沖刷掉。建造性的影響(科學、商業、意義體系)則往世界裡添加了它再也拿不回去的結構,歷史會把它留下。本文辨識出三種彼此不同的耐久機制:撐過證偽(科學)、不可繞過(商業與基質)、不可證偽的意義捕獲(宗教);並主張現代透過「基質權力」把建造這道門開得更寬,使建造者得以在不開一槍的情況下抵達統治者級的影響力。本文的結論明確地不是反政治的:協調是真實且必要的。它是反綁架的——警惕把會複利的人類工程,交付給會腐爛的權力,以及那些已經豁免了自身「可能會錯」的心智狀態。全文的分析單位,自始至終是路徑,不是人。</p>
+<hr>
+<h2>一、勝利有兩種形狀</h2>
+<p>歷史擺著一個少有人正面追問的不對稱。征服者攻下廣土、號令當代、寫進編年史的開頭;然而幾個世代之後,他的版圖碎裂,他的名字滑進傳奇與曖昧的混合物裡,而真正改變了後人怎麼生活的,往往是同時代某個安靜的造物者——一個改良了印刷、馴服了某種疾病,或寫下一條方程式的人。權力贏得了現世,卻輸掉了永恆;而看似手無寸鐵的建造,反過來坐穩了時間。</p>
+<p>本文要處理的就是這個不對稱,並且要先把它從一個容易被誤讀的位置上救出來。把「征服者衰落、建造者長存」講成一個道德故事,是最廉價也最失準的讀法——彷彿征服者天生卑劣、建造者天生高尚。本文的立場與此相反:這是一條結構律,不是一張道德判決書。分析的單位自始至終是「路徑」,而不是走在路徑上的「人」。一個被歷史沖刷的強制者,不必是壞人;他只是選了一道會腐爛的門。這個方法論承諾不是修辭上的客套,而是論證能否成立的前提:一旦把命題誤置到人格上,它就退化成謾罵;唯有把它安放在路徑的結構性質上,它才是一個可以被檢驗、也可以被反駁的主張。</p>
+<p>那兩道門是這樣的。一道是強制與不可證偽之信的門:用暴力、權柄與不會輸的信念,去搶占一座巔峰。另一道是建造的門:往世界裡加入原本不存在的結構,使世界從此繞不開你,或無法把你抹除。兩道門都通向「巔峰」,但它們通向的是兩種耐久性截然不同的巔峰。本文接下來會先解剖第一道門的意識形態引擎與其機率結構(第二、三節),再用證據展示它的耐久赤字(第四節),然後拆開第二道門內部的三種耐久機制(第五節),接著指出現代如何把這道門開得更寬(第六節),最後處理一個必要的限定:這套論證並不反對政治本身(第七節)。</p>
+<h2>二、不會輸的代價:不可證偽作為偽勝利</h2>
+<p>第一道門有一具意識形態引擎,本文稱之為「贏學」:一種把任何結果都重新編碼為勝利的解釋框架。打贏是贏,打輸是「誘敵深入」的贏,根本沒打是「不戰而屈人之兵」的贏。它的特徵不是樂觀,而是它沒有失敗條件——任何證據都被預先吸收進同一個結論。</p>
+<p>這正是它的破綻所在。一個沒有失敗條件的框架,看起來像永恆的勝利,實際上是對「測試」的豁免。它從來不曾贏過,它只是退出了那場可能輸的賽局。它與真實的力量恰好相反:真實的力量願意把自己暴露在可能被推翻的位置上,並且活下來;而贏學靠的是讓自己一開始就不可被推翻。它買到的不是勝利,是免於被檢驗的舒適。把一個無法失敗的東西稱為強者,是一種類別上的混淆——它不在「強/弱」這條軸上,它在「可檢驗/不可檢驗」這條軸上,而它選擇了不可檢驗的那一端。</p>
+<p>這裡需要一個關鍵的區分,它會在第五節以正面的形式重新出現。不可證偽本身,並不必然空洞。宗教同樣建立在不可證偽之上,卻撐起了真實的文明工程——法律、倫理、藝術、社會的黏合。差別全在於產出:宗教用它的不可證偽反哺了世界,而贏學什麼都不造。一個是建造過的豁免,一個是純寄生的豁免。同樣是一個打不死的殼,一個裡面裝著文明,一個裡面是空的。</p>
+<p>第一道門所倚賴的,正是後者:一種讓攫取看起來永遠正確的自我敘事。它對走第一道門的人有一種特殊的危險——因為它沒有失敗條件,它也就關閉了學習的可能。一個能輸的框架會在輸的時候修正自己;一個不能輸的框架只會在現實面前越走越偏,卻始終自我感覺良好。贏學不只是一面廉價的勳章,它是一具讓人持續誤判而不自知的儀表。第一道門之所以危險,有一半的原因就在這具壞掉的儀表上。</p>
+<h2>三、強制的極限形態:戰爭作為亞穩態</h2>
+<p>強制這道門最極端的形態是實質戰爭,而關於戰爭,有一個流行的誤判值得先拆掉:認為戰爭是理性成本效益計算的產物,因而「只要不划算,就不會發生」。這是一個決定論謬誤。</p>
+<p>理性是煞車,不是牆。歷史上的戰爭極少是冷靜算帳算出來的;它們的主要產地是誤判、意外升級、國內政治的觀眾成本、退不出去的承諾,以及「機會之窗正在關閉」的恐慌。一場用乾淨的成本效益衡量本不該打的仗,往往照打了,因為決策從來不在真空的理性裡發生。這一點對本文有兩重意義。其一,它解釋了第一道門為何持續被選擇:那道門從內部看起來像通往巔峰的捷徑,在足夠的壓力下,它對任何身處其位的普通人都會顯得合理。其二,它把戰爭的發動者從「人格」上鬆綁——發動戰爭的人,真實的驅力多半不是智慧或勇氣,而是被逼到角落的恐懼、輸不起的傲慢,以及賭徒那句「這次會成」。這不是怪物的專利,而是被結構擠到牆角時的常態反應。戰爭的恐怖不在於發動者是惡魔天才,而在於那道門的入口,離我們每個人都比想像中近。把這一點看清楚,正是本文堅持「論路徑不論人」的理由:對發動者最準確的描述不是「他很邪惡」,而是「他選了一道在他那個位置上顯得合理、卻會腐爛的門」。</p>
+<p>接著要指出第一道門腳下地基的不穩。當代有現成的例子:一個幾乎不締結正式共同防禦條約的大國[4][5],在它的重要夥伴遭受打擊時,提供的往往只是技術與外交掩護,而非一兵一卒;反過來也一樣[6][7]。強制的世界裡,結盟是交易型的,人質關係維繫著表面的穩定,而誰都不真的願意為誰流血。這種均衡是亞穩態的:它靠相互的牽制撐著,可一旦各方開始主動拆除彼此的牽制——例如經濟上的脫鉤——那道安全栓就被卸下,本來被壓著的東西,就一年比一年更可想像。更微妙的是,次於戰爭的那些對抗手段(經濟戰、科技戰、認知戰、資訊戰)並不總是動能戰的穩定替代品;在特定條件下,它們反而是引信。一道把對手勒得夠緊的封鎖,恰恰可能製造出「再不破局就來不及」的窗口,把原本不該發生的動能衝突點燃。次動能不必然防止動能,它也可以是燃料。</p>
+<p>那麼,誰會從第一道門獲益?一個常見的猜測是軍火利益。但仔細算,結論反而支持本文:軍工複合體的最優狀態是持續的緊張與軍備競賽,而不是真正的大國熱戰——後者有同歸於盡的風險,甚至會打垮自己的客戶群。所以即使是這個最赤裸的利益動機,它指向的也是永久的灰色地帶,而非攤牌的戰爭。把這些放在一起,第一道門的圖像就清楚了:它腐爛得快,腳下不穩,連最想推它的人也未必真想把它推到底——它是一座所有人都嘴上保留、卻沒人真有耐心走完的險路。</p>
+<h2>四、強制者的耐久赤字</h2>
+<p>把這個結構命題交給證據,結果相當清楚。</p>
+<p>依 Michael Hart 那部《歷史上最有影響力的一百人》[1]——一個刻意衡量「影響」而非「偉大」、且明言不帶善惡判斷的排名——榜單的頂端被兩類人佔據:意義體系的創立者與科學家。宗教創始人位居最前,牛頓緊接在第二;蔡倫、古騰堡、愛因斯坦皆在前列。征服者則普遍壓在後段。值得特別注意的是其中的細分:那些不只征服、還裝設了能運轉數百年之制度的統治者——秦始皇、奧古斯都——擠進了前二十;而純粹的征服者,如亞歷山大、拿破崙,反而落在前二十之外。換句話說,連在統治者內部,歷史也只替「建造者」留位。亞歷山大打下史上最大版圖之一,卻在斷氣後迅速碎裂,於是他活在傳奇裡,不活在結構裡。能讓一個統治者擠進耐久那一欄的,從來不是他打下了多少,而是他建起了什麼——書同文、度量衡、能自我延續的帝國行政。征服替他贏得了篇幅,建造才替他贏得了位置。</p>
+<p>Hart 給出的尺度本身就是本文的論點:他衡量的是一個人是否改變了後世的生活軌跡。一個值得反覆引用的觀察是——亞歷山大死後五百年,世上多數人的活法,與他出生前五百年並無二致。征服不動生活的基質,造物才動。這不是一場道德投票,而是一場因果投票,份量更重:它不問你是否令人敬佩,只問世界是否因你而不同。</p>
+<p>最硬的化石,埋在度量衡與元素表裡。物理的基本單位——牛頓、瓦特、焦耳、赫茲、帕斯卡、安培、伏特、歐姆、克耳文、特斯拉——全部刻著科學家的名字[2];元素表的末端,鋦、鑀、鐨、鍆、鎶,刻的是居禮、愛因斯坦、費米、門得列夫、哥白尼[3]。沒有任何一個純粹的征服者,擁有一個基本單位或一顆元素。這個差別揭露了兩種記憶的本質:政治記憶是可改寫的——政權一倒,城市改名、銅像推倒、課本重寫;但沒有哪一場革命,把「焦耳」改過名。強制者的紀念碑是有爭議的、可撤銷的,它寫在會被重寫的那一層;建造者的紀念碑,嵌進了人類量度現實的詞彙本身,不可撤銷。耐久性從來是建造買來的,不是征服買來的——而這正是第一道門的耐久赤字:它能買下當代的權力,卻買不到一個不會被下一個政權改名的位置。</p>
+<p>值得補一句以防誤讀:榜首是宗教創始人,而非科學家。所以嚴格說來,人類最頂端的不是「科學家」,而是「給世界裝上一套新作業系統的人」。科學家是其中最大的一支,立教者是另一支。這非但不削弱本文的命題,反而把它擦得更亮:贏家的共同點不是統治,而是生成——往世界裡加入了原本不存在的結構。這就把我們帶到第二道門的內部。</p>
+<h2>五、三種耐久機制:科學、商業、意義</h2>
+<p>第二道門的內部並非鐵板一塊。仔細看,通往「耐久那一欄」的路至少有三條,各自靠一種不同的機制存活。把它們分開,既是為了精確,也是為了不讓「建造」退化成一個含糊的萬能詞。</p>
+<p>第一條是科學,它靠<strong>撐過證偽</strong>而存活。科學的巔峰是有條件的:每一條定律都離被推翻只差一個實驗,牛頓的引力觀後來被愛因斯坦修正。然而「牛頓」這個單位留了下來,而那份耐久性是真實的——它不是靠免於被檢驗,而是靠一次次撐過了想殺死它的嘗試。這是一種誠實的永恆:它隨時準備被超越,也正因為它隨時準備被超越,而值得被信任。它與第二節的贏學恰成鏡像——贏學靠不可被推翻而苟存,科學靠能被推翻卻沒被推翻而站立。前者的永恆是空的,後者的永恆是賺來的。</p>
+<p>第二條是商業與基質,它靠<strong>不可繞過</strong>而存活。當一個建造者造出了整個系統都必須依賴、卻無法自行複製的能力,他就成了一個系統繞不過去的節點——一個必須被查詢的源。本文謹慎地借用「神諭」一詞來描述這種結構,但只取其結構義(不可繞過的依賴節點),而不取其認識論義(提供不可計算之真相的源);把這兩種意義焊死,會是一種範疇上升的錯誤——神諭式節點讓你做你做不到的事,並不等於它告訴你你不知道的真相。這種耐久性的關鍵在於:你罷免不了一個你必須查詢的東西。強制式的權力靠服從維繫,而服從可以被撤回;基質式的權力靠不可繞過維繫,它不要求任何人喜歡你,只要求沒有人能繞開你。這就是為什麼這種權力不腐爛——它不建立在可被收回的順從上,而建立在不可被取消的依賴上。一座被全世界依賴的基礎設施,它的締造者享有的是一種無需被擁戴的權力。</p>
+<p>第三條是意義體系,它靠<strong>不可證偽的意義捕獲</strong>而存活。如第二節所言,這是一種對「測試」的豁免——嚴格地說,是一種作弊。但它是作弊作到頂、還反哺了文明的那一種:它在不可證偽的地基上,長出了法律、倫理、藝術與社會凝聚這些真實的結構。它與贏學共用同一個打不死的殼,卻給出了相反的產出。這條路在三者之中最曖昧,因為它的耐久性確實不靠經驗證據,而靠它對人類意義需求的深度嵌合;但它的生成性是無可否認的——數千年的制度、文本與道德語彙,都是它的沉積。把它與贏學並列而不加區分,會錯失全部重點:兩者結構同形,價值卻天差地別,差就差在一個建造過,一個只取暖。</p>
+<p>三條路的共同點,也是它們與第一道門的根本分界:它們都往世界裡<strong>加入</strong>了原本不存在、且再也拿不回去的結構。科學加入了可驗證的真理,基質加入了不可繞過的能力,意義加入了人賴以生活的框架。而戰爭、攫權、贏學,是唯一那條只<strong>搬動</strong>既有之物、卻什麼都不添加的路——它重新分配權力與土地,卻不擴大世界裡結構的總量。加法複利,搬動歸零。耐久性的全部秘密,就濃縮在這個「加」與「搬」的區別裡:你往世界裡留下的東西越是它原本沒有、且無法被拿回的,你就越深地坐進時間。</p>
+<h2>六、現代之門更寬:基質權力</h2>
+<p>如果說前述是一條跨越數千年的結構律,那麼現代為它添了一個新的變數,並且把第二道門開得更寬:基質權力。</p>
+<p>當代最富者之一的軌跡,恰好是一場關於這兩道門的對照實驗。據二〇二六年的公開資料[8],此人是當時的全球首富,同時被冠以「前公職人員」之名——請注意那個「前」字。他確實在某段時間伸手去抓了政治那根桿子,共同領導一個專責削減政府開支的機構;然後,一如本文的預期,那根桿子腐爛得最快:那段如今已是「前任」。與此相對,他真正可能嵌進教科書的,是把軌道火箭做成可重複使用——那是基質級的改變,與印刷術同一量級;兩百年後,那會是一個劃時代的座標,與後人如何評價他這個人無關。引擎活進了結構,政治被洗成了腳註。同一場「人」與「其貢獻」的分裂,在一個活人身上又演了一次——正如牛頓這個人會被爭論,而「牛頓」這個單位不會。</p>
+<p>更深一層,他的例子逼出了一個關於「現代不需要暴力」的更精確說法。這種人不需要軍隊,並不是因為他放棄了權力,而是因為他找到了不會腐爛的那種權力。發射能力、衛星通訊、覆蓋數億人的注意力閘門、自有的運算與模型[9]——這些加總起來就是權力,而且是建造買來的權力。當一張衛星網在某場戰爭中一度能左右前線通訊,一個「建造者」的基礎設施,便直接成了戰略要素。所以現代的真相不是「暴力消失了」,而是暴力被抽象進了基質:誰控制了底層,誰就不必開槍。</p>
+<p>這帶出一個容易被浪漫化的修正。把建造這道門說成「乾淨」「無關權力」,是天真的;基質權力同樣是權力,有時甚至比刀劍更深地滲進人的生活。本文的命題從來不是「建造沒有權力」,而是「建造拿到的是權力的不腐爛形態」。統治者選了會爛的那一種——靠服從、靠脅迫、靠隨時可被收回的效忠;建造者拿了不爛的那一種——靠不可繞過、靠不可取消的依賴。兩者都握有權力,差別自始至終只有一個字:耐久。現代之所以讓第二道門更寬,是因為它提供了前所未有的基質可供建造——軌道、頻譜、運算、網路、模型——而控制其中任何一層,都足以換來一個過去只有王座才能給的影響力規模,且不必流血。</p>
+<h2>七、政治不是敵人,綁架才是</h2>
+<p>到這裡必須立一道防線,以免本文被讀成一篇反政治的檄文。它不是。</p>
+<p>政治是重要的。集體生活需要協調,而協調需要一套分配、仲裁與承諾的機制——這正是政治作為一種工具的正當功能,它本身也是一種建造。把人組織起來、讓承諾可信、使衝突有出口,這些都是往世界裡加入結構,而非搬動既有之物。一個良好運作的制度,完全可以是第二道門意義下的造物。本文的命題,因此比「政治無用」要窄得多,也利得多:它反對的不是政治,而是綁架。</p>
+<p>具體地說,它反對把會複利的人類工程,交付給兩樣會使其貶值的東西——會腐爛的權力,以及那些已經豁免了自身「可能會錯」的心智狀態(即第二節那種不可證偽的確信)。當科學的方向被權力的短期需要劫持、當一項建造的存續取決於它對某種不可動搖之信念的順從,耐久的東西就被綁在了會腐爛的東西上,一起腐爛。問題從來不在「政治」這件事本身,而在從屬關係的方向:政治作為協調,是生成性的;政治作為對生成之物的劫持,才是失敗。把一座會複利的橋,拴在一根會腐爛的樁上,垮的不是樁——是橋陪著一起垮。本文所求,是不被劫持,而不是沒有政治。</p>
+<h2>哲學尾聲</h2>
+<p>野心有兩道門:一道會複利,一道會腐爛。</p>
+<p>歷史不是一座道德法庭,它是一台耐久性的篩子。它不審判任何人的善惡,它只篩出哪一道門通向不會被時間收回的地方。所以這套論證自始至終都不是針對人的判決——把它讀成「那些人很渺小」,既失準,也招恨;它是一張地圖,標出兩條路各自通往何處。判決招恨,地圖招人走。</p>
+<p>征服者把名字寫進別人的血裡,時間會把它洗掉;建造者把名字寫進世界的結構裡,現實替他保管。權力是租來的,到期收回;影響是築起來的,複利滾動。會打的人贏一場,會造的人贏一條時間線。</p>
+<p>而真正的勸誡,從來不是「你很小」。它是:這裡有一道會複利的門——而你,還來得及換一道走。</p>
+<hr>
+<h2>參考文獻</h2>
+<p>〔本文涉及時事之事實主張,皆以二〇二六年之公開來源為據;以下連結為查證入口,非為背書。〕</p>
+<p>[1] Michael H. Hart,《The 100: A Ranking of the Most Influential Persons in History》,Hart Publishing(1978);修訂版 Citadel Press(1992)。排名次序與「衡量影響而非偉大、不作善惡判斷」之標準,見維基百科條目:&lt;https://en.wikipedia.org/wiki/The_100:_A_Ranking_of_the_Most_Influential_Persons_in_History&gt;</p>
+<p>[2] 〈List of scientific units named after people〉,維基百科:&lt;https://en.wikipedia.org/wiki/List_of_scientific_units_named_after_people&gt;</p>
+<p>[3] 〈List of chemical elements named after people〉,維基百科:&lt;https://en.wikipedia.org/wiki/List_of_chemical_elements_named_after_people&gt;(19 種以人名命名的元素中,15 種為紀念科學家;其餘四種取自地名或礦物,無一為征服者。)</p>
+<p>[4] Council on Foreign Relations,〈The China–North Korea Relationship〉:&lt;https://www.cfr.org/backgrounders/china-north-korea-relationship&gt;(中朝 1961 年共同防禦條約為北京唯一的正式安全承諾。)</p>
+<p>[5] 〈Treaty on Friendship, Cooperation and Mutual Assistance between China and North Korea〉,維基百科:&lt;https://en.wikipedia.org/wiki/Treaty_on_Friendship,_Cooperation_and_Mutual_Assistance_between_China_and_North_Korea&gt;</p>
+<p>[6] CNBC,〈Why Iran should not count on allies Russia and China to come to its aid〉(2026-03-02):&lt;https://www.cnbc.com/2026/03/02/iran-china-russia-strikes-assistance-alliance-weapons-missiles-geopolitics-oil-prices-ukraine.html&gt;</p>
+<p>[7] Carnegie Endowment for International Peace,〈Why Are China and Russia Not Rushing to Help Iran?〉(2026):&lt;https://carnegieendowment.org/russia-eurasia/politika/2026/03/china-russia-rescue-iran&gt;</p>
+<p>[8] 〈Elon Musk〉,維基百科:&lt;https://en.wikipedia.org/wiki/Elon_Musk&gt;(二〇二六年六月為全球首富、頭銜為「前公職人員」;SpaceX 可重複使用軌道火箭、星鏈衛星網。)</p>
+<p>[9] Britannica Money,〈xAI〉:&lt;https://www.britannica.com/money/xAI&gt;(X 於 2025 年併入 xAI;xAI 於 2026 年 2 月併入 SpaceX。)</p>
+<hr>
+<p><strong>論文資訊</strong></p>
+<p>作者:Neo.K(許筌崴)｜機構:一言諾科技有限公司(EveMissLab) 本文為人機對話結晶之作,主軸為「兩道門與三種耐久機制」;全文以路徑而非個人為分析單位。 版本:v0.1｜日期:2026 年 6 月 授權:遵循 EveMissLab 開放理論協議,允許學術引用與非商業使用。</p>
+<div class="altbar">原始檔（供 RAG/下載）：<a href="paper-598.md" rel="noopener">papers/paper-598.md</a> [md]</div>
+</article>
+<footer><p>Neo.K (許筌崴) · Cl + ε</p></footer>
+</body>
+</html>

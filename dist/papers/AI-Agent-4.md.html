@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>時間迴圈分類學：面向長時程程式、AI Agent 與自適應系統的通用控制流理論 · EVEMISSLAB Logic Matrix</title>
+<meta name="description" content="時間迴圈分類學：面向長時程程式、AI Agent 與自適應系統的通用控制流理論 | EVEMISSLAB Logic Matrix V2.1">
+<meta name="author" content="Neo.K (許筌崴)">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="AI-Agent-4.md" title="原始檔 / source (md)">
+<link rel="canonical" href="https://logic.evemisslab.com/papers/AI-Agent-4.md.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "時間迴圈分類學：面向長時程程式、AI Agent 與自適應系統的通用控制流理論",
+  "url": "https://logic.evemisslab.com/papers/AI-Agent-4.md.html",
+  "inLanguage": "zh-Hant",
+  "author": {"@type": "Person", "name": "Neo.K (許筌崴)"},
+  "publisher": {"@type": "Organization", "name": "EveMissLab / 一言諾科技有限公司"},
+  "isPartOf": {"@type": "Collection", "name": "EVEMISSLAB Logic Matrix", "url": "https://logic.evemisslab.com"},
+  "encodingFormat": "text/html"
+}
+</script>
+<link rel="prefetch" href="/api/log-crawler?slug=AI-Agent-4.md">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#000; color:#0f0; font-family:'Courier New',monospace; padding:20px; line-height:1.6; }
+.header { text-align:center; border:2px solid #0f0; padding:18px; margin-bottom:22px; }
+.header h1 { font-size:1.5em; letter-spacing:2px; }
+.header p { margin-top:6px; opacity:0.8; font-size:0.9em; }
+.disclaimer { border:1px dashed #ff9900; color:#ff9900; padding:14px; margin:0 auto 22px; max-width:1000px; font-size:0.88em; }
+.disclaimer-title { font-weight:bold; margin-bottom:10px; display:block; letter-spacing:1px; }
+.disclaimer-divider { border:none; border-top:1px dashed #ff9900; margin:12px 0; opacity:0.55; }
+article { max-width:1000px; margin:0 auto; border:1px solid #0f0; padding:24px; }
+article h1,article h2,article h3,article h4 { margin:18px 0 8px; letter-spacing:1px; }
+article h1 { font-size:1.5em; } article h2 { font-size:1.25em; } article h3 { font-size:1.1em; }
+article p { margin:10px 0; }
+article ul,article ol { margin:10px 0 10px 24px; }
+article blockquote { border-left:3px solid #0f0; padding-left:12px; opacity:0.85; margin:10px 0; }
+article pre { background:rgba(0,255,0,0.06); border:1px solid #0f0; padding:12px; overflow-x:auto; margin:12px 0; }
+article code { background:rgba(0,255,0,0.08); padding:1px 5px; }
+article pre code { background:none; padding:0; }
+article a { color:#0ff; }
+.nav { max-width:1000px; margin:0 auto 16px; font-size:0.9em; display:flex; justify-content:space-between; }
+.nav a { color:#0f0; text-decoration:none; }
+.nav a:hover { color:#0ff; }
+.altbar { max-width:1000px; margin:14px auto 0; font-size:0.85em; opacity:0.7; }
+.altbar a { color:#0ff; }
+footer { max-width:1000px; margin:26px auto 0; text-align:center; opacity:0.5; font-size:0.82em; }
+</style>
+</head>
+<body>
+<div class="nav"><a href="../index.html">&larr; 回 Logic Matrix 索引</a><div><a href="../cosmomind.html" style="margin-right:15px;">→ 星環式認知展開圖</a><a href="../base-space.html">🧬 拓撲底空間</a></div></div>
+<header class="header"><h1>時間迴圈分類學：面向長時程程式、AI Agent 與自適應系統的通用控制流理論</h1><p>EVEMISSLAB Logic Matrix · EveMissLab / 一言諾科技有限公司</p></header>
+<section class="disclaimer">
+  <span class="disclaimer-title">[認識論邊界宣告 / EPISTEMOLOGICAL DISCLAIMER]</span>
+  <div class="disclaimer-block">
+    <p><b>[CHT]</b> 本矩陣內所有論文之公式與數據為「啟發式模擬參數」，用於驗證理論架構與推演因果鏈，<b>未經實證校準</b>，請勿作為現實物理測量數據引用 or 處理。EVEMISSLAB 採行「邏輯先行（Logic-First）」原則：概念架構與系統因果映射優先於統計實證，但不排除未來實證對接。</p>
+  </div>
+  <hr class="disclaimer-divider">
+  <div class="disclaimer-block">
+    <p><b>[ENG]</b> The numerical parameters within these frameworks are <i>illustrative model coefficients</i> used for structural verification and causal mapping; they are <b>not empirically calibrated</b> and must not be treated as physical measurements. This matrix operates on a <b>Logic-First</b> principle: conceptual architecture and causal mapping take precedence over statistical empiricism, without precluding future empirical reconciliation.</p>
+  </div>
+</section>
+<article>
+<h1>時間迴圈分類學：面向長時程程式、AI Agent 與自適應系統的通用控制流理論</h1>
+<h2>0\. 摘要</h2>
+<p>時間迴圈分類學不是某一種程式語言的專屬語法，而是一套重新理解程式控制流的通用理論。</p>
+<p>傳統程式語言將迴圈主要理解為「重複執行」：</p>
+<p>for / while / do-while</p>
+<p>但在現代軟體系統、AI Agent、工作流引擎、分散式任務、部署系統、排程系統與人機協作場景中，許多迴圈的本質已不只是重複，而是：</p>
+<p>等待條件成熟 保存狀態 釋放資源 延遲決策 外部事件喚醒 跨時間片恢復</p>
+<p>這類迴圈可稱為「時間迴圈」。</p>
+<p>時間迴圈的核心不在於程式是否重複執行，而在於程式是否能將「時間」視為控制流的一部分。</p>
+<h2>1\. 問題：傳統迴圈分類不足</h2>
+<p>傳統程式語言通常只有幾種表面迴圈形式：</p>
+<p>for item in items: process(item)</p>
+<p>while condition: update()</p>
+<p>但實際工程中，同樣寫成 while，語義可能完全不同：</p>
+<p>\# 1. 普通重複 while i &lt; n: i += 1</p>
+<p>\# 2. 收斂求解 while error &gt; epsilon: optimize()</p>
+<p>\# 3. 事件監聽 while True: event = queue.get() handle(event)</p>
+<p>\# 4. 重試 while retry\_count &lt; max\_retry: try\_request()</p>
+<p>\# 5. 等待人類確認 while not user\_confirmed: sleep(60)</p>
+<p>\# 6. 等待外部條件成熟 while not deployment\_window\_open: suspend\_until(next\_window)</p>
+<p>表面上都是迴圈，實際上它們的差異包括：</p>
+<ol>
+<li>終止條件不同。</li>
+<li>時間關係不同。</li>
+<li>是否佔用資源不同。</li>
+<li>是否需要保存狀態不同。</li>
+<li>是否依賴外部事件不同。</li>
+<li>是否需要人類決策不同。</li>
+<li>是否可以被中斷、恢復、遷移不同。</li>
+<li>錯誤處理策略不同。</li>
+</ol>
+<p>因此，傳統 for / while 是語法分類，不是語義分類。</p>
+<p>時間迴圈分類學的目的，是將「迴圈的時間語義」顯式化。</p>
+<h2>2\. 時間迴圈的基本定義</h2>
+<p>令：</p>
+<p>S\_t = 程式在時間 t 的狀態 Φ(S\_t, E\_t, T\_t) = 條件判定函數 E\_t = 外部事件集合 T\_t = 時間上下文</p>
+<p>則時間迴圈可定義為：</p>
+<p>若 Φ(S\_t, E\_t, T\<em>t) = True： 執行下一步，產生 S\</em>{t+1}</p>
+<p>若 Φ(S\_t, E\_t, T\_t) = False： 保存 S\_t 暫停執行 釋放資源 等待未來時間或外部事件 在 t + Δt 或事件觸發時恢復</p>
+<p>簡化形式：</p>
+<p>TemporalLoop(S\_t) = Proceed(S\_t) if condition is mature Suspend(S\_t, wake\_rule) otherwise</p>
+<p>它與普通迴圈的差異是：</p>
+<p>普通迴圈：條件不滿足時繼續嘗試或結束。 時間迴圈：條件不成熟時保存狀態並進入時間等待。</p>
+<p>因此，時間迴圈不是單純的 sleep()，也不是單純的 callback，而是：</p>
+<p>state + condition + time + event + resume</p>
+<p>五者共同構成的控制流單位。</p>
+<h2>3\. 時間迴圈的五個構成元</h2>
+<p>一個完整時間迴圈至少包含五個元素。</p>
+<h3>3.1 狀態 State</h3>
+<p>程式目前已經完成到哪一步？</p>
+<p>例如：</p>
+<p>{ &quot;task&quot;: &quot;deploy\_system&quot;, &quot;version&quot;: &quot;v1.2.0&quot;, &quot;compiled&quot;: true, &quot;tests\_passed&quot;: true, &quot;waiting\_for&quot;: &quot;human\_confirmation&quot; }</p>
+<p>沒有狀態保存，時間迴圈就會退化成普通輪詢。</p>
+<h3>3.2 條件 Condition</h3>
+<p>什麼情況下可以繼續？</p>
+<p>例如：</p>
+<p>user\_confirmed == true api\_rate\_limit\_reset == true deployment\_window\_open == true test\_environment\_ready == true other\_agent\_finished == true</p>
+<p>時間迴圈的條件通常不是純內部條件，而是混合條件：</p>
+<p>內部狀態 + 外部事件 + 時間窗口 + 人類決策</p>
+<h3>3.3 時間規則 Time Rule</h3>
+<p>何時重新檢查？</p>
+<p>例如：</p>
+<p>每 60 秒檢查一次 明天早上 9 點喚醒 部署窗口開始時喚醒 Webhook 到達時喚醒 最多等待 1 小時</p>
+<p>時間規則決定時間迴圈的節奏。</p>
+<h3>3.4 喚醒機制 Wake Trigger</h3>
+<p>誰負責喚醒？</p>
+<p>常見喚醒源：</p>
+<ol>
+<li>固定時間。</li>
+<li>排程器。</li>
+<li>Webhook。</li>
+<li>Message queue。</li>
+<li>File watcher。</li>
+<li>Database change。</li>
+<li>Human approval。</li>
+<li>Agent completion signal。</li>
+<li>External API state change。</li>
+</ol>
+<h3>3.5 恢復策略 Resume Policy</h3>
+<p>醒來後怎麼接續？</p>
+<p>例如：</p>
+<p>從原狀態繼續 重新驗證條件 重新載入上下文 重新執行上一階段 放棄任務 轉交人工 啟動補救流程</p>
+<p>沒有恢復策略，時間迴圈會變成脆弱的非同步碎片。</p>
+<h2>4\. 時間迴圈與普通迴圈的差異</h2>
+<p>類型</p>
+<p>普通迴圈</p>
+<p>時間迴圈</p>
+<p>核心</p>
+<p>重複執行</p>
+<p>跨時間保持控制流</p>
+<p>條件</p>
+<p>多為內部條件</p>
+<p>常依賴外部條件</p>
+<p>資源</p>
+<p>可能持續佔用</p>
+<p>可釋放資源</p>
+<p>狀態</p>
+<p>通常在記憶體中</p>
+<p>需要可保存 / 可恢復</p>
+<p>等待</p>
+<p>blocking / busy waiting / sleep</p>
+<p>suspend / schedule / event wake</p>
+<p>錯誤處理</p>
+<p>異常或跳出</p>
+<p>超時、降級、轉交、重排程</p>
+<p>適用場景</p>
+<p>計算任務</p>
+<p>長時程任務、人機協作、Agent 工作流</p>
+<p>一句話：</p>
+<p>普通迴圈處理「重複」。 時間迴圈處理「尚未成熟的未來」。</p>
+<h2>5\. 時間迴圈分類學</h2>
+<p>時間迴圈可以依照「等待原因」與「喚醒方式」分類。</p>
+<h2>5.1 延遲時間迴圈：Delay Loop</h2>
+<h3>定義</h3>
+<p>在固定時間後恢復。</p>
+<p>Suspend(state, wake\_at = now + Δt)</p>
+<h3>例子</h3>
+<p>await sleep(60) retry()</p>
+<h3>適用場景</h3>
+<ol>
+<li>API rate limit。</li>
+<li>重試冷卻。</li>
+<li>定時檢查。</li>
+<li>排程任務。</li>
+<li>暫緩執行。</li>
+</ol>
+<h3>特徵</h3>
+<p>這是最簡單的時間迴圈，只依賴時間，不依賴複雜外部事件。</p>
+<h2>5.2 條件成熟迴圈：Condition-Maturation Loop</h2>
+<h3>定義</h3>
+<p>等待某個條件成熟。</p>
+<p>while not condition(): suspend() resume()</p>
+<h3>例子</h3>
+<p>while not deployment\_window\_open(): await sleep(60)</p>
+<p>deploy()</p>
+<h3>適用場景</h3>
+<ol>
+<li>等測試環境可用。</li>
+<li>等資料同步完成。</li>
+<li>等檔案生成。</li>
+<li>等服務恢復。</li>
+<li>等市場資料更新。</li>
+</ol>
+<h3>特徵</h3>
+<p>條件不是立刻可被程式改變的，只能等待外部世界演化。</p>
+<h2>5.3 事件喚醒迴圈：Event-Wakeup Loop</h2>
+<h3>定義</h3>
+<p>不是定時檢查，而是由事件喚醒。</p>
+<p>Suspend(state, wake\_on = event)</p>
+<h3>例子</h3>
+<p>await wait\_for\_webhook(&quot;payment\_completed&quot;) ship\_order()</p>
+<h3>適用場景</h3>
+<ol>
+<li>Webhook。</li>
+<li>Message queue。</li>
+<li>File watcher。</li>
+<li>Database trigger。</li>
+<li>IoT sensor。</li>
+<li>GitHub action event。</li>
+<li>Slack / Gmail / Calendar event。</li>
+</ol>
+<h3>特徵</h3>
+<p>事件喚醒迴圈比輪詢更節省資源。</p>
+<h2>5.4 人類決策迴圈：Human-Decision Loop</h2>
+<h3>定義</h3>
+<p>等待人類判斷、批准、拒絕或補充資訊。</p>
+<p>Suspend(state, waiting\_for = human\_decision)</p>
+<h3>例子</h3>
+<p>request\_approval(&quot;Deploy v1.2.0&quot;) await human\_confirmed() deploy()</p>
+<h3>適用場景</h3>
+<ol>
+<li>部署確認。</li>
+<li>高風險刪除。</li>
+<li>財務付款。</li>
+<li>法律審核。</li>
+<li>內容發布。</li>
+<li>Agent 不確定時請人類選路。</li>
+</ol>
+<h3>特徵</h3>
+<p>人類決策迴圈是 AI Agent 最重要的時間迴圈之一。</p>
+<p>它不是失敗，也不是中斷，而是明確承認：</p>
+<p>此處需要外部主體決策。</p>
+<h2>5.5 多 Agent 協作迴圈：Inter-Agent Coordination Loop</h2>
+<h3>定義</h3>
+<p>等待其他 Agent 完成子任務。</p>
+<p>Suspend(state, waiting\_for = agent\_B.done)</p>
+<h3>例子</h3>
+<p>Agent A: 寫 parser Agent B: 寫 emitter Agent C: 等 A/B 完成後整合 CLI</p>
+<h3>適用場景</h3>
+<ol>
+<li>多 Agent 軟體開發。</li>
+<li>文件生成。</li>
+<li>測試修復。</li>
+<li>分散式規劃。</li>
+<li>Pipeline orchestration。</li>
+</ol>
+<h3>特徵</h3>
+<p>這類迴圈需要明確的任務狀態、完成訊號、失敗訊號與重試規則。</p>
+<h2>5.6 超時降級迴圈：Timeout-Degradation Loop</h2>
+<h3>定義</h3>
+<p>等待條件成熟，但若超過期限，就啟動降級策略。</p>
+<p>wait until condition or timeout if timeout: degrade()</p>
+<h3>例子</h3>
+<p>try: await wait\_for\_service(max\_wait=300) except Timeout: use\_cached\_result()</p>
+<h3>適用場景</h3>
+<ol>
+<li>外部 API 不穩。</li>
+<li>等人工回覆但逾時。</li>
+<li>等部署窗口但錯過時間。</li>
+<li>等模型輸出但太久。</li>
+<li>Agent 卡住時轉交人工。</li>
+</ol>
+<h3>特徵</h3>
+<p>這是工程上最實用的時間迴圈之一。</p>
+<p>它避免系統無限等待。</p>
+<h2>5.7 週期巡檢迴圈：Periodic Inspection Loop</h2>
+<h3>定義</h3>
+<p>定期醒來檢查狀態，但不是持續工作。</p>
+<p>Every Δt: wake inspect sleep</p>
+<h3>例子</h3>
+<p>while True: check\_health() await sleep(300)</p>
+<h3>適用場景</h3>
+<ol>
+<li>系統健康檢查。</li>
+<li>定期備份。</li>
+<li>定期爬取。</li>
+<li>資料同步。</li>
+<li>Agent 定期回顧任務狀態。</li>
+</ol>
+<h3>特徵</h3>
+<p>它和普通永恆迴圈不同，因為重點不是持續執行，而是週期性醒來。</p>
+<h2>5.8 長時程任務迴圈：Long-Horizon Task Loop</h2>
+<h3>定義</h3>
+<p>任務跨越多個時間片，每次只推進一部分。</p>
+<p>state\_t → partial progress → suspend → resume later</p>
+<h3>例子</h3>
+<p>Day 1: 收集資料 Day 2: 清洗資料 Day 3: 訓練模型 Day 4: 評估 Day 5: 發布</p>
+<h3>適用場景</h3>
+<ol>
+<li>長期研究。</li>
+<li>大型軟體開發。</li>
+<li>AI Agent 長任務。</li>
+<li>自動化營運。</li>
+<li>多日資料處理。</li>
+</ol>
+<h3>特徵</h3>
+<p>這類迴圈不是一次執行完，而是把任務切成時間片。</p>
+<h2>5.9 演化選路迴圈：Evolutionary Decision Loop</h2>
+<h3>定義</h3>
+<p>等待多個候選路徑產生結果，再選擇下一步。</p>
+<p>explore candidates wait for evaluations select best path continue</p>
+<h3>例子</h3>
+<p>生成三種 parser 架構 各自跑 benchmark 等待測試結果 選擇最佳架構</p>
+<h3>適用場景</h3>
+<ol>
+<li>A/B testing。</li>
+<li>多方案設計。</li>
+<li>模型超參數搜索。</li>
+<li>Agent 多路徑探索。</li>
+<li>產品策略選擇。</li>
+</ol>
+<h3>特徵</h3>
+<p>這類迴圈與普通時間迴圈不同，因為它等待的不是單一條件，而是多條路徑的結果。</p>
+<h2>5.10 螺旋推進迴圈：Spiral Progress Loop</h2>
+<h3>定義</h3>
+<p>方向已知，但每一輪推進都需要時間、檢查與修正。</p>
+<p>v0.1 → v0.2 → v0.3 → v1.0</p>
+<h3>例子</h3>
+<p>先完成 MVP 再加測試 再加 CLI 再加 Editor 再加 Agent integration</p>
+<h3>適用場景</h3>
+<ol>
+<li>產品開發。</li>
+<li>技術路線圖。</li>
+<li>研究計畫。</li>
+<li>書籍寫作。</li>
+<li>系統迭代。</li>
+</ol>
+<h3>特徵</h3>
+<p>它不是隨機探索，而是沿著已知方向逐步逼近。</p>
+<h2>6\. 時間迴圈的工程接口</h2>
+<p>一個通用時間迴圈 runtime 可以長這樣：</p>
+<p>class TemporalLoop: def \_\<em>init\</em>\_( self, condition, body, max\_wait=None, check\_interval=None, wake\_trigger=None, timeout\_policy=None, persistence=True, ): self.condition = condition self.body = body self.max\_wait = max\_wait self.check\_interval = check\_interval self.wake\_trigger = wake\_trigger self.timeout\_policy = timeout\_policy self.persistence = persistence</p>
+<p>async def run(self, state): while True: if await self.condition(state): return await self.body(state)</p>
+<p>if self.max\_wait and exceeded(self.max\_wait): return await self.timeout\_policy(state)</p>
+<p>save\_state(state)</p>
+<p>await suspend( interval=self.check\_interval, trigger=self.wake\_trigger, )</p>
+<p>state = load\_state()</p>
+<p>它至少需要以下 metadata：</p>
+<p>{ &quot;loopType&quot;: &quot;human\_decision&quot;, &quot;condition&quot;: &quot;user\_confirmed&quot;, &quot;statePersistence&quot;: true, &quot;wakeTrigger&quot;: &quot;approval\_event&quot;, &quot;maxWait&quot;: 3600, &quot;timeoutPolicy&quot;: &quot;cancel\_or\_escalate&quot;, &quot;resourcePolicy&quot;: &quot;suspend\_not\_busy\_wait&quot;, &quot;resumePolicy&quot;: &quot;reload\_and\_validate&quot; }</p>
+<p>這份 metadata 比語法本身更重要。</p>
+<p>因為任何語言都可以實作它：</p>
+<ol>
+<li>Python。</li>
+<li>JavaScript / TypeScript。</li>
+<li>Go。</li>
+<li>Rust。</li>
+<li>Java。</li>
+<li>C#。</li>
+<li>Workflow engine。</li>
+<li>Agent runtime。</li>
+<li>Serverless orchestration。</li>
+<li>CI/CD pipeline。</li>
+</ol>
+<h2>7\. 為什麼要這樣用？</h2>
+<h3>7.1 因為現代程式不再只是短時程計算</h3>
+<p>傳統程式模型假設：</p>
+<p>輸入 → 計算 → 輸出</p>
+<p>但現代系統常常是：</p>
+<p>輸入 → 部分計算 → 等待 → 外部事件 → 恢復 → 決策 → 再等待 → 完成</p>
+<p>例如：</p>
+<ol>
+<li>部署系統等待人類批准。</li>
+<li>Agent 等另一個 Agent 完成。</li>
+<li>工作流等待付款完成。</li>
+<li>爬蟲等待 rate limit 重置。</li>
+<li>長任務等待資料更新。</li>
+<li>AI 系統等待用戶補充上下文。</li>
+<li>CI/CD 等測試環境可用。</li>
+</ol>
+<p>這些都不是普通 while 能清楚表達的。</p>
+<h3>7.2 因為 busy waiting 是錯誤抽象</h3>
+<p>錯誤寫法：</p>
+<p>while not ready(): pass</p>
+<p>稍好但仍粗糙：</p>
+<p>while not ready(): await sleep(60)</p>
+<p>更好的抽象：</p>
+<p>await temporal\_wait( condition=ready, state=current\_state, wake\_on=\[&quot;event&quot;, &quot;timer&quot;\], timeout=3600, resume=continue\_task )</p>
+<p>時間迴圈的核心是把「等待」從低階技巧提升成高階控制流。</p>
+<h3>7.3 因為 AI Agent 天然需要時間迴圈</h3>
+<p>Agent 的工作不是一次性函式呼叫，而是長時程狀態推進。</p>
+<p>典型 Agent loop：</p>
+<p>計畫 → 行動 → 觀察 → 修正 → 行動</p>
+<p>但真正的 Agent runtime 還需要：</p>
+<p>等待工具完成 等待人類批准 等待網路結果 等待資料更新 等待其他 Agent 等待明天再做 等待條件成熟後恢復</p>
+<p>因此，時間迴圈是 Agent runtime 的基礎控制流。</p>
+<h3>7.4 因為它可以統一排程、事件、工作流與人機協作</h3>
+<p>現在工程中常把這些東西拆開：</p>
+<ol>
+<li>cron。</li>
+<li>queue。</li>
+<li>webhook。</li>
+<li>retry。</li>
+<li>state machine。</li>
+<li>workflow engine。</li>
+<li>async task。</li>
+<li>human approval。</li>
+<li>Agent loop。</li>
+</ol>
+<p>時間迴圈分類學可以把它們統一理解為：</p>
+<p>不同喚醒條件與狀態恢復策略下的時間化迴圈。</p>
+<p>這不是取代現有工具，而是給現有工具一套共同語義。</p>
+<h3>7.5 因為它可以讓 runtime 更安全</h3>
+<p>一旦迴圈類型被標記，runtime 就可以自動調整策略：</p>
+<p>loop type</p>
+<p>runtime policy</p>
+<p>delay loop</p>
+<p>使用 timer，不 busy wait</p>
+<p>human decision loop</p>
+<p>保存狀態，等待 approval event</p>
+<p>timeout loop</p>
+<p>超時後降級</p>
+<p>event wakeup loop</p>
+<p>註冊 webhook / queue listener</p>
+<p>agent coordination loop</p>
+<p>監控子任務狀態</p>
+<p>evolutionary loop</p>
+<p>收集候選結果並比較</p>
+<p>spiral loop</p>
+<p>按 roadmap checkpoint 推進</p>
+<p>這樣系統就能知道：</p>
+<p>這個 loop 不該無限跑。 這個 loop 應該暫停。 這個 loop 要保存狀態。 這個 loop 超時要轉交人工。 這個 loop 要等待外部事件。</p>
+<h2>8\. 時間迴圈與專利 / 開源</h2>
+<p>時間迴圈分類學本身比較像一種通用程式設計理論。</p>
+<p>它的價值不一定在「獨占某個語法」，而在於：</p>
+<ol>
+<li>命名。</li>
+<li>分類。</li>
+<li>標準化。</li>
+<li>開源實作。</li>
+<li>runtime contract。</li>
+<li>Agent protocol。</li>
+<li>教育與文件。</li>
+<li>工具鏈採用。</li>
+</ol>
+<p>如果公開釋放，它可以成為一種公共語彙：</p>
+<p>這不是普通 retry。 這是 timeout-degradation temporal loop。</p>
+<p>這不是 event loop。 這是 event-wakeup temporal loop。</p>
+<p>這不是 workflow hack。 這是 state-persistent temporal loop。</p>
+<p>這種語彙本身就有價值。</p>
+<h2>9\. 最小實作建議</h2>
+<p>不需要先做新語言。可以先做一個 Python / TypeScript library。</p>
+<h3>Python 版本</h3>
+<p>@temporal\_loop( type=&quot;human\_decision&quot;, condition=check\_user\_confirmed, max\_wait=3600, check\_interval=60, timeout\_policy=&quot;cancel&quot;, persistence=True, ) async def deploy\_task(state): deploy(state\[&quot;version&quot;\])</p>
+<h3>TypeScript 版本</h3>
+<p>await temporalLoop({ type: &quot;event\_wakeup&quot;, condition: () =&gt; paymentCompleted(orderId), wakeOn: \[&quot;webhook:payment.completed&quot;\], maxWait: &quot;24h&quot;, persistence: true, resume: async (state) =&gt; shipOrder(state.orderId), });</p>
+<h3>Agent 版本</h3>
+<p>{ &quot;task&quot;: &quot;deploy\_v1\_2&quot;, &quot;loopType&quot;: &quot;human\_decision&quot;, &quot;waitingFor&quot;: &quot;approval&quot;, &quot;state&quot;: { &quot;compiled&quot;: true, &quot;testsPassed&quot;: true }, &quot;resumeAction&quot;: &quot;deploy&quot;, &quot;timeoutPolicy&quot;: &quot;ask\_again\_or\_cancel&quot; }</p>
+<h2>10\. 結論</h2>
+<p>時間迴圈分類學的核心命題是：</p>
+<p>迴圈不只是重複。 迴圈是狀態在時間中的控制流軌跡。</p>
+<p>普通迴圈處理已經成熟的計算。</p>
+<p>時間迴圈處理尚未成熟的未來。</p>
+<p>在 AI Agent、長時程自動化、人機協作、分散式系統與自適應程式中，真正困難的不是「如何重複」，而是：</p>
+<p>何時等待？ 等待什麼？ 如何保存狀態？ 誰來喚醒？ 醒來後如何恢復？ 超時後如何降級？ 多條路徑如何選擇？</p>
+<p>因此，時間迴圈分類學不是 EML 的附屬品，而是一套可以被任何語言、任何 runtime、任何 Agent 系統採用的通用程式設計理論。</p>
+<div class="altbar">原始檔（供 RAG/下載）：<a href="AI-Agent-4.md" rel="noopener">papers/AI-Agent-4.md</a> [md]</div>
+</article>
+<footer><p>Neo.K (許筌崴) · Cl + ε</p></footer>
+</body>
+</html>

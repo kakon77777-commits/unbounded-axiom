@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EML-OPN-fanwai · EVEMISSLAB Logic Matrix</title>
+<meta name="description" content="EML-OPN-fanwai | EVEMISSLAB Logic Matrix V2.1">
+<meta name="author" content="Neo.K (許筌崴)">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/x-python" href="EML-OPN-fanwai.py" title="原始檔 / source (py)">
+<link rel="canonical" href="https://logic.evemisslab.com/papers/EML-OPN-fanwai.py.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "EML-OPN-fanwai",
+  "url": "https://logic.evemisslab.com/papers/EML-OPN-fanwai.py.html",
+  "inLanguage": "en",
+  "author": {"@type": "Person", "name": "Neo.K (許筌崴)"},
+  "publisher": {"@type": "Organization", "name": "EveMissLab / 一言諾科技有限公司"},
+  "isPartOf": {"@type": "Collection", "name": "EVEMISSLAB Logic Matrix", "url": "https://logic.evemisslab.com"},
+  "encodingFormat": "text/html"
+}
+</script>
+<link rel="prefetch" href="/api/log-crawler?slug=EML-OPN-fanwai.py">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#000; color:#0f0; font-family:'Courier New',monospace; padding:20px; line-height:1.6; }
+.header { text-align:center; border:2px solid #0f0; padding:18px; margin-bottom:22px; }
+.header h1 { font-size:1.5em; letter-spacing:2px; }
+.header p { margin-top:6px; opacity:0.8; font-size:0.9em; }
+.disclaimer { border:1px dashed #ff9900; color:#ff9900; padding:14px; margin:0 auto 22px; max-width:1000px; font-size:0.88em; }
+.disclaimer-title { font-weight:bold; margin-bottom:10px; display:block; letter-spacing:1px; }
+.disclaimer-divider { border:none; border-top:1px dashed #ff9900; margin:12px 0; opacity:0.55; }
+article { max-width:1000px; margin:0 auto; border:1px solid #0f0; padding:24px; }
+article h1,article h2,article h3,article h4 { margin:18px 0 8px; letter-spacing:1px; }
+article h1 { font-size:1.5em; } article h2 { font-size:1.25em; } article h3 { font-size:1.1em; }
+article p { margin:10px 0; }
+article ul,article ol { margin:10px 0 10px 24px; }
+article blockquote { border-left:3px solid #0f0; padding-left:12px; opacity:0.85; margin:10px 0; }
+article pre { background:rgba(0,255,0,0.06); border:1px solid #0f0; padding:12px; overflow-x:auto; margin:12px 0; }
+article code { background:rgba(0,255,0,0.08); padding:1px 5px; }
+article pre code { background:none; padding:0; }
+article a { color:#0ff; }
+.nav { max-width:1000px; margin:0 auto 16px; font-size:0.9em; display:flex; justify-content:space-between; }
+.nav a { color:#0f0; text-decoration:none; }
+.nav a:hover { color:#0ff; }
+.altbar { max-width:1000px; margin:14px auto 0; font-size:0.85em; opacity:0.7; }
+.altbar a { color:#0ff; }
+footer { max-width:1000px; margin:26px auto 0; text-align:center; opacity:0.5; font-size:0.82em; }
+</style>
+</head>
+<body>
+<div class="nav"><a href="../index.html">&larr; 回 Logic Matrix 索引</a><div><a href="../cosmomind.html" style="margin-right:15px;">→ 星環式認知展開圖</a><a href="../base-space.html">🧬 拓撲底空間</a></div></div>
+<header class="header"><h1>EML-OPN-fanwai</h1><p>EVEMISSLAB Logic Matrix · EveMissLab / 一言諾科技有限公司</p></header>
+<section class="disclaimer">
+  <span class="disclaimer-title">[認識論邊界宣告 / EPISTEMOLOGICAL DISCLAIMER]</span>
+  <div class="disclaimer-block">
+    <p><b>[CHT]</b> 本矩陣內所有論文之公式與數據為「啟發式模擬參數」，用於驗證理論架構與推演因果鏈，<b>未經實證校準</b>，請勿作為現實物理測量數據引用 or 處理。EVEMISSLAB 採行「邏輯先行（Logic-First）」原則：概念架構與系統因果映射優先於統計實證，但不排除未來實證對接。</p>
+  </div>
+  <hr class="disclaimer-divider">
+  <div class="disclaimer-block">
+    <p><b>[ENG]</b> The numerical parameters within these frameworks are <i>illustrative model coefficients</i> used for structural verification and causal mapping; they are <b>not empirically calibrated</b> and must not be treated as physical measurements. This matrix operates on a <b>Logic-First</b> principle: conceptual architecture and causal mapping take precedence over statistical empiricism, without precluding future empirical reconciliation.</p>
+  </div>
+</section>
+<article>
+<p style="opacity:0.6">[原始碼檢視 / source view]</p><pre><code>#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+&quot;&quot;&quot;
+EML-OPN 番外篇
+純中文數字系統（算籌）× 幾何語言表示論（弦圖 / Cl(2,0) / 矩陣）
+EML-OPN-fanwai.py
+EveMissLab | Theia · 2026年6月
+
+驗證兩項延伸命題：
+  甲  相同的三層守恆結構，在純中文數字 / 算籌系統中完整成立
+  乙  勾股定理（幾何真值）在三種表示語言下擁有同一不動點，
+      表示論是不同幾何語言之間等價性的保證機制
+&quot;&quot;&quot;
+
+# ══════════════════════════════════════════════════════════════════
+#  A  中文數字工具
+# ══════════════════════════════════════════════════════════════════
+
+DIGITS = &#x27;零一二三四五六七八九&#x27;
+
+def to_cn(n):
+    &quot;&quot;&quot;非負整數 → 中文數字串。&quot;&quot;&quot;
+    if n &lt; 10:  return DIGITS[n]
+    if n &lt; 20:  return &#x27;十&#x27; + (DIGITS[n % 10] if n % 10 else &#x27;&#x27;)
+    if n &lt; 100:
+        t, o = n // 10, n % 10
+        return DIGITS[t] + &#x27;十&#x27; + (DIGITS[o] if o else &#x27;&#x27;)
+    if n &lt; 1000:
+        h, rest = n // 100, n % 100
+        if rest == 0:   return DIGITS[h] + &#x27;百&#x27;
+        if rest &lt; 10:   return DIGITS[h] + &#x27;百零&#x27; + DIGITS[rest]
+        return DIGITS[h] + &#x27;百&#x27; + to_cn(rest)
+    return str(n)   # 超出範圍時回退 Arabic
+
+# ══════════════════════════════════════════════════════════════════
+#  B  表達式樹（與主程式完全相同，重新定義以避免導入問題）
+# ══════════════════════════════════════════════════════════════════
+
+class Node:
+    def __init__(self, op, left=None, right=None, value=None):
+        self.op, self.left, self.right, self.value = op, left, right, value
+    def __repr__(self):
+        if self.op == &#x27;val&#x27;: return str(self.value)
+        return f&quot;({self.left} {self.op} {self.right})&quot;
+    def __eq__(self, other):
+        if not isinstance(other, Node) or self.op != other.op: return False
+        if self.op == &#x27;val&#x27;: return self.value == other.value
+        return self.left == other.left and self.right == other.right
+
+def Val(n):    return Node(&#x27;val&#x27;, value=n)
+def Add(l, r): return Node(&#x27;+&#x27;, l, r)
+def Mul(l, r): return Node(&#x27;*&#x27;, l, r)
+
+# ══════════════════════════════════════════════════════════════════
+#  C  算籌求值器
+#  邏輯與主程式 fully_expanded_eval 完全相同；
+#  差異僅在顯示層：數值以中文呈現，術語取自古算語彙。
+#  此函數的存在本身即第一直接證據：
+#  符號系統（中文 ↔ 阿拉伯）的替換不改變計算結構。
+# ══════════════════════════════════════════════════════════════════
+
+def suanpan_eval(tree, log=None, depth=0):
+    if log is None: log = []
+    pad = &#x27;  &#x27; * depth
+
+    if tree.op == &#x27;val&#x27;:
+        log.append(f&quot;{pad}末算  {to_cn(tree.value)}&quot;)
+        return tree.value
+
+    lv = suanpan_eval(tree.left,  log, depth + 1)
+    rv = suanpan_eval(tree.right, log, depth + 1)
+
+    if tree.op == &#x27;+&#x27;:
+        r = lv + rv
+        log.append(f&quot;{pad}以{to_cn(lv)}加{to_cn(rv)}，得{to_cn(r)}&quot;)
+        return r
+
+    # 乘法 → 重複加法（算籌逐次累加）
+    times, addend = (lv, rv) if lv &lt;= rv else (rv, lv)
+    marks = &#x27;＋&#x27;.join([to_cn(addend)] * times)
+    log.append(f&quot;{pad}以{to_cn(addend)}累加{to_cn(times)}次（{marks}）&quot;)
+    r = 0
+    for _ in range(times): r += addend
+    log.append(f&quot;{pad}乘得{to_cn(r)}&quot;)
+    return r
+
+# ══════════════════════════════════════════════════════════════════
+#  D  幾何代數 Cl(2,0)
+#  基底：{1, e₁, e₂, e₁₂}，分量記為 (s, v1, v2, b)
+#  乘法規則：e₁²=1  e₂²=1  e₁e₂=e₁₂  e₂e₁=−e₁₂  e₁₂²=−1
+# ══════════════════════════════════════════════════════════════════
+
+class Cl2:
+    def __init__(self, s=0., v1=0., v2=0., b=0.):
+        self.s, self.v1, self.v2, self.b = float(s), float(v1), float(v2), float(b)
+
+    @classmethod
+    def vec(cls, a, b): return cls(0, a, b, 0)
+
+    def __add__(self, o):
+        return Cl2(self.s+o.s, self.v1+o.v1, self.v2+o.v2, self.b+o.b)
+
+    def __mul__(self, o):
+        # 完整 Cl(2,0) 幾何積，基底乘法表展開
+        a, b = self, o
+        return Cl2(
+            a.s*b.s  + a.v1*b.v1 + a.v2*b.v2 - a.b*b.b,   # scalar
+            a.s*b.v1 + a.v1*b.s  - a.v2*b.b  + a.b*b.v2,   # e₁
+            a.s*b.v2 + a.v1*b.b  + a.v2*b.s  - a.b*b.v1,   # e₂
+            a.s*b.b  + a.v1*b.v2 - a.v2*b.v1 + a.b*b.s     # e₁₂
+        )
+
+    def norm_sq(self):
+        &quot;&quot;&quot;向量範數平方 = v1²+v2²（grade-1 向量自乘之純量部分）&quot;&quot;&quot;
+        return (self * self).s
+
+    def __repr__(self):
+        t = []
+        for v, name in [(self.s,&#x27;&#x27;), (self.v1,&#x27;e₁&#x27;), (self.v2,&#x27;e₂&#x27;), (self.b,&#x27;e₁₂&#x27;)]:
+            if abs(v) &gt; 1e-10: t.append(f&quot;{v:g}{name}&quot;)
+        return &#x27; + &#x27;.join(t) or &#x27;0&#x27;
+
+# ══════════════════════════════════════════════════════════════════
+#  E  矩陣表示（Cl(2,0) 的 2×2 實矩陣同構）
+#  e₁ ↦ [[1,0],[0,−1]]   e₂ ↦ [[0,1],[1,0]]   e₁₂ ↦ [[0,1],[−1,0]]
+#  向量 ae₁+be₂ ↦ [[a,b],[b,−a]]
+#  表示論保證：Cl(2,0) 中成立的等式，在此表示下也成立
+# ══════════════════════════════════════════════════════════════════
+
+def mat_mul(A, B):
+    return [[A[0][0]*B[0][0]+A[0][1]*B[1][0], A[0][0]*B[0][1]+A[0][1]*B[1][1]],
+            [A[1][0]*B[0][0]+A[1][1]*B[1][0], A[1][0]*B[0][1]+A[1][1]*B[1][1]]]
+
+def mat_add(A, B):
+    return [[A[i][j]+B[i][j] for j in range(2)] for i in range(2)]
+
+def vec_to_mat(a, b):
+    &quot;&quot;&quot;向量 ae₁ + be₂ → 矩陣表示&quot;&quot;&quot;
+    return [[a, b], [b, -a]]
+
+def mat_norm_sq(M):
+    &quot;&quot;&quot;‖v‖² = trace(M²)/2（對 grade-1 向量的矩陣表示成立）&quot;&quot;&quot;
+    M2 = mat_mul(M, M)
+    return (M2[0][0] + M2[1][1]) / 2
+
+# ══════════════════════════════════════════════════════════════════
+#  F  弦圖面積計算（出入相補原理，純加法）
+#  外正方形面積 = 四三角形合計 + 中央小正方形
+#  弦² = 2×gou×gu + (gu−gou)² = gou² + gu²
+# ══════════════════════════════════════════════════════════════════
+
+def xian_tu(gou, gu):
+    &quot;&quot;&quot;
+    以純加法實現弦圖的面積計算。
+    返回 (弦², 四三角形合計面積, 中央正方形面積, 中央正方形邊長)
+    &quot;&quot;&quot;
+    # 四個三角形面積總和 = 4×gou×gu（純加法）
+    four_gou_gu = 0
+    for _ in range(4):
+        for _ in range(gou):
+            four_gou_gu += gu
+    two_gou_gu = four_gou_gu // 2   # = 2×gou×gu
+
+    # 中央小正方形邊長 = |gu - gou|，面積（純加法）
+    side = abs(gu - gou)
+    inner = 0
+    for _ in range(side): inner += side
+
+    return two_gou_gu + inner, two_gou_gu, inner, side
+
+# ══════════════════════════════════════════════════════════════════
+#  主驗證
+# ══════════════════════════════════════════════════════════════════
+
+LINE  = &#x27;═&#x27; * 64
+LINE2 = &#x27;─&#x27; * 52
+
+def section(title):
+    print(f&quot;\n{LINE}\n  {title}\n{LINE}&quot;)
+
+def run():
+    print(f&quot;\n{&#x27;=&#x27;*64}&quot;)
+    print(&quot;  EML-OPN 番外篇&quot;)
+    print(&quot;  純中文數字（算籌） × 幾何語言表示論（弦圖/Cl(2,0)/矩陣）&quot;)
+    print(&quot;  EveMissLab | Theia  ·  2026年6月&quot;)
+    print(f&quot;{&#x27;=&#x27;*64}&quot;)
+
+    results = {}
+
+    # ──────────────────────────────────────────────────────────────
+    #  番外甲：算籌系統三層守恆
+    # ──────────────────────────────────────────────────────────────
+    section(&quot;番外甲：算籌系統（中文數字顯示）——三層守恆&quot;)
+
+    # ── 甲-一：第一層（約定守恆 / 語言歧義）────────────────────
+    print(f&quot;&quot;&quot;
+  【甲-一】語言歧義對照（對應附錄 B 前置）
+
+  字串：「二加三乘四」
+
+  讀法一（中文從左至右自然閱讀，等同加法優先 S₊）：
+    （二加三）乘四
+
+  讀法二（古算顯式語序，等同乘法優先 S×）：
+    以三乘四得十二，再加二
+
+  古典算書（如《九章算術》）採顯式語序避免歧義，
+  即：自然語言的古算表達傾向完整展開系統。
+    &quot;&quot;&quot;)
+
+    T_read1 = Mul(Add(Val(2), Val(3)), Val(4))   # 讀法一的樹
+    T_read2 = Add(Val(2), Mul(Val(3), Val(4)))   # 讀法二的樹
+
+    log1, log2 = [], []
+    v1 = suanpan_eval(T_read1, log1)
+    v2 = suanpan_eval(T_read2, log2)
+
+    print(&quot;  讀法一（加法優先）的算籌步驟：&quot;)
+    for s in log1: print(f&quot;    {s}&quot;)
+    print(f&quot;  不動點：{to_cn(v1)}（{v1}）\n&quot;)
+
+    print(&quot;  讀法二（乘法優先）的算籌步驟：&quot;)
+    for s in log2: print(f&quot;    {s}&quot;)
+    print(f&quot;  不動點：{to_cn(v2)}（{v2}）&quot;)
+
+    assert v1 == 20 and v2 == 14
+    print(f&quot;\n  ✓  {to_cn(v1)}（{v1}） ≠ {to_cn(v2)}（{v2}）&quot;)
+    print(f&quot;     → 約定決定語義，此層守恆為前提層&quot;)
+    results[&#x27;cn_layer1&#x27;] = (v1, v2)
+
+    # ── 甲-二：第二層（值守恆）──────────────────────────────────
+    print(f&quot;\n  {LINE2}&quot;)
+    print(&quot;  【甲-二】值守恆（對應附錄 B、C）&quot;)
+
+    T = Add(Val(2), Mul(Val(3), Val(4)))
+    la, lb = [], []
+    va = suanpan_eval(T, la)
+    vb = suanpan_eval(T, lb)
+
+    assert va == vb == 14
+    assert la == lb
+
+    print(f&quot;  確定意圖為讀法二（以三乘四得十二，加以二）&quot;)
+    for s in la: print(f&quot;    {s}&quot;)
+    print(f&quot;  算籌步驟序列唯一，不動點：{to_cn(va)}（{va}）&quot;)
+    print(f&quot;  ✓  兩次計算步驟逐條完全一致（log_a == log_b）&quot;)
+    print(f&quot;     中文數字系統值守恆通過&quot;)
+    results[&#x27;cn_layer2&#x27;] = va
+
+    # ── 甲-三：第三層（代數路徑守恆 / 交換律）───────────────────
+    print(f&quot;\n  {LINE2}&quot;)
+    print(&quot;  【甲-三】代數路徑守恆（乘法兩種展開路徑）&quot;)
+
+    # 路徑甲：以四累加三次（三×四，按定義方向：三出現四次）
+    path_a = 0
+    steps_a = []
+    for _ in range(4):
+        path_a += 3
+        steps_a.append(to_cn(3))
+    # 路徑乙：以三累加四次（四×三，交換律等價形式：四出現三次）
+    path_b = 0
+    steps_b = []
+    for _ in range(3):
+        path_b += 4
+        steps_b.append(to_cn(4))
+
+    print(f&quot;  路徑甲（以三累加四次）：{&#x27;＋&#x27;.join(steps_a)} = {to_cn(path_a)}&quot;)
+    print(f&quot;  路徑乙（以四累加三次）：{&#x27;＋&#x27;.join(steps_b)} = {to_cn(path_b)}&quot;)
+    assert path_a == path_b == 12
+    print(f&quot;  ✓  兩條路徑均得{to_cn(path_a)}（{path_a}），代數路徑守恆通過&quot;)
+    results[&#x27;cn_layer3&#x27;] = path_a
+
+    # ──────────────────────────────────────────────────────────────
+    #  番外乙：勾股定理三重表示
+    # ──────────────────────────────────────────────────────────────
+    section(&quot;番外乙：幾何語言表示論——勾股定理三重表示&quot;)
+
+    gou, gu = 3, 4
+    xian_sq_expected = gou**2 + gu**2  # = 25
+
+    print(f&quot;\n  勾 = {to_cn(gou)}，股 = {to_cn(gu)}&quot;)
+    print(f&quot;  驗證命題：弦² = 勾² + 股² = {to_cn(gou)}² + {to_cn(gu)}² = {to_cn(xian_sq_expected)}&quot;)
+    print(f&quot;\n  三種表示語言分別獨立計算，確認不動點一致。&quot;)
+
+    # ── 乙-一：弦圖（幾何語言，出入相補）────────────────────────
+    print(f&quot;\n  {LINE2}&quot;)
+    print(&quot;  【表示一】弦圖（出入相補原理，純加法）&quot;)
+
+    xian_sq_geo, two_gou_gu, inner_area, side_inner = xian_tu(gou, gu)
+
+    print(f&quot;  以四個勾{to_cn(gou)}股{to_cn(gu)}的直角三角形圍成外正方形：&quot;)
+    print(f&quot;  四個三角形合計面積 = 四×勾×股÷二&quot;)
+    print(f&quot;    = 四×{to_cn(gou)}×{to_cn(gu)}÷二（純加法計算）= {to_cn(two_gou_gu)}&quot;)
+    print(f&quot;  中央小正方形邊長 = |股−勾| = |{to_cn(gu)}−{to_cn(gou)}| = {to_cn(side_inner)}&quot;)
+    print(f&quot;  中央小正方形面積 = {to_cn(side_inner)}² = {to_cn(inner_area)}&quot;)
+    print(f&quot;  弦² = {to_cn(two_gou_gu)} + {to_cn(inner_area)} = {to_cn(xian_sq_geo)}&quot;)
+    assert xian_sq_geo == xian_sq_expected
+    print(f&quot;  ✓  弦圖語言得弦² = {to_cn(xian_sq_geo)}（{xian_sq_geo}）&quot;)
+    results[&#x27;geo_xiantu&#x27;] = xian_sq_geo
+
+    # ── 乙-二：幾何代數 Cl(2,0)────────────────────────────────
+    print(f&quot;\n  {LINE2}&quot;)
+    print(&quot;  【表示二】幾何代數 Cl(2,0)&quot;)
+    print(f&quot;  基底 {{1, e₁, e₂, e₁₂}}，規則：e₁²=e₂²=1，e₁₂²=−1，e₁e₂=−e₂e₁=e₁₂&quot;)
+
+    a = Cl2.vec(gou, 0)    # 勾向量 = gou·e₁
+    b = Cl2.vec(0, gu)     # 股向量 = gu·e₂（與 a 垂直）
+    c = a + b              # 弦向量
+
+    ab = a * b
+    ba = b * a
+    inner_ab = (ab.s + ba.s) / 2   # 內積 = (ab+ba)/2 的純量部分
+
+    print(f&quot;\n  a（勾向量）= {a}  →  a·a = {a.norm_sq():.0f}&quot;)
+    print(f&quot;  b（股向量）= {b}  →  b·b = {b.norm_sq():.0f}&quot;)
+    print(f&quot;  a×b = {ab}  （幾何積）&quot;)
+    print(f&quot;  b×a = {ba}  （幾何積）&quot;)
+    print(f&quot;  內積 a·b = (ab+ba)/2 的純量部分 = {inner_ab:.0f}  ← 垂直確認&quot;)
+    print(f&quot;  c（弦向量）= a+b = {c}&quot;)
+
+    c_sq = c.norm_sq()
+    print(f&quot;  c·c（幾何積純量部分）= {c_sq:.0f}&quot;)
+
+    assert abs(inner_ab) &lt; 1e-9, &quot;垂直條件失敗&quot;
+    assert abs(c_sq - xian_sq_expected) &lt; 1e-9
+    print(f&quot;  ✓  Cl(2,0) 語言得弦² = {c_sq:.0f}&quot;)
+    results[&#x27;geo_cl2&#x27;] = c_sq
+
+    # ── 乙-三：矩陣表示（表示論投影）────────────────────────────
+    print(f&quot;\n  {LINE2}&quot;)
+    print(&quot;  【表示三】矩陣表示（Cl(2,0) 的 2×2 實矩陣同構）&quot;)
+    print(f&quot;  表示論保證：Cl(2,0) 中成立的等式，在所有忠實表示中均成立&quot;)
+
+    Ma = vec_to_mat(gou, 0)
+    Mb = vec_to_mat(0, gu)
+    Mc = mat_add(Ma, Mb)
+
+    nsa = mat_norm_sq(Ma)
+    nsb = mat_norm_sq(Mb)
+    nsc = mat_norm_sq(Mc)
+
+    print(f&quot;\n  M(a) = [[{Ma[0][0]}, {Ma[0][1]}], [{Ma[1][0]}, {Ma[1][1]}]]&quot;)
+    print(f&quot;  M(b) = [[{Mb[0][0]}, {Mb[0][1]}], [{Mb[1][0]}, {Mb[1][1]}]]&quot;)
+    print(f&quot;  M(c) = M(a)+M(b) = [[{Mc[0][0]}, {Mc[0][1]}], [{Mc[1][0]}, {Mc[1][1]}]]&quot;)
+    print(f&quot;  ‖a‖² = trace(M(a)²)/2 = {nsa:.0f}&quot;)
+    print(f&quot;  ‖b‖² = trace(M(b)²)/2 = {nsb:.0f}&quot;)
+    print(f&quot;  ‖c‖² = trace(M(c)²)/2 = {nsc:.0f}&quot;)
+
+    assert abs(nsc - xian_sq_expected) &lt; 1e-9
+    print(f&quot;  ✓  矩陣語言得弦² = {nsc:.0f}&quot;)
+    results[&#x27;geo_mat&#x27;] = nsc
+
+    # ── 三重不動點匯流確認 ────────────────────────────────────────
+    print(f&quot;\n  {LINE2}&quot;)
+    print(&quot;  三重表示不動點對照&quot;)
+    print(f&quot;  弦圖（幾何語言）         弦² = {xian_sq_geo}&quot;)
+    print(f&quot;  幾何代數 Cl(2,0)         弦² = {int(c_sq)}&quot;)
+    print(f&quot;  矩陣表示（表示論投影）   弦² = {int(nsc)}&quot;)
+
+    assert xian_sq_geo == int(c_sq) == int(nsc) == xian_sq_expected
+    print(f&quot;\n  ✓  三種語言，同一不動點：{to_cn(xian_sq_expected)}（{xian_sq_expected}）&quot;)
+    print(f&quot;     {to_cn(gou)}² + {to_cn(gu)}² = {to_cn(gou**2)} + {to_cn(gu**2)} = {to_cn(xian_sq_expected)} = 弦²&quot;)
+
+    # ──────────────────────────────────────────────────────────────
+    #  總結
+    # ──────────────────────────────────────────────────────────────
+    section(&quot;番外篇驗證總結&quot;)
+
+    print(f&quot;&quot;&quot;
+  番外甲（算籌 / 中文數字系統）
+  ──────────────────────────────────────────────────────
+  甲-一  語言歧義對照
+         讀法一 →（二加三）乘四 = {to_cn(results[&#x27;cn_layer1&#x27;][0])}
+         讀法二 → 以三乘四得十二加二 = {to_cn(results[&#x27;cn_layer1&#x27;][1])}
+         不同意圖，不同不動點                    通過  ✓
+  甲-二  值守恆
+         確定意圖後，算籌步驟序列唯一
+         不動點 = {to_cn(results[&#x27;cn_layer2&#x27;])}
+         log_a == log_b，路徑未分叉              通過  ✓
+  甲-三  代數路徑守恆（乘法交換律）
+         兩種展開路徑均得{to_cn(results[&#x27;cn_layer3&#x27;])}              通過  ✓
+
+  番外乙（幾何語言表示論）
+  ──────────────────────────────────────────────────────
+  勾 = {to_cn(gou)}，股 = {to_cn(gu)}，預期弦² = {to_cn(xian_sq_expected)}
+
+  弦圖（幾何語言 / 出入相補）  弦² = {to_cn(results[&#x27;geo_xiantu&#x27;])}          通過  ✓
+  幾何代數 Cl(2,0)              弦² = {to_cn(int(results[&#x27;geo_cl2&#x27;]))}          通過  ✓
+  矩陣表示（表示論投影）        弦² = {to_cn(int(results[&#x27;geo_mat&#x27;]))}          通過  ✓
+  三種語言，同一不動點           = {to_cn(xian_sq_expected)}              通過  ✓
+  ──────────────────────────────────────────────────────
+
+  命題延伸：
+  不僅算術真值，幾何真值同樣是表示系統選擇下的不動點。
+  表示論（Representation Theory）是形式化地保證
+  「不同語言描述同一數學對象」的機制。
+  符號語言（算籌、坐標、Clifford 代數、矩陣）各有投影的邊界，
+  而它們所指向的實在，在所有邊界之外，自行存在。
+    &quot;&quot;&quot;)
+
+    return True
+
+if __name__ == &#x27;__main__&#x27;:
+    success = run()
+    exit(0 if success else 1)
+</code></pre>
+<div class="altbar">原始檔（供 RAG/下載）：<a href="EML-OPN-fanwai.py" rel="noopener">papers/EML-OPN-fanwai.py</a> [py]</div>
+</article>
+<footer><p>Neo.K (許筌崴) · Cl + ε</p></footer>
+</body>
+</html>

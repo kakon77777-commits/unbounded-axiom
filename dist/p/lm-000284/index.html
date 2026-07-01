@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>光影解法（修訂版 v2.0）：Graph Laplacian 空間場作為 · EVEMISSLAB Logic Matrix</title>
+<meta name="description" content="光影解法（修訂版 v2.0）：Graph Laplacian 空間場作為 | EVEMISSLAB Logic Matrix V2.1">
+<meta name="author" content="Neo.K (許筌崴)">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<meta name="lm-paper-id" content="lm-000284">
+<link rel="alternate" type="text/markdown" href="/raw/lm-000284.md" title="原始檔 / source (md)">
+<link rel="canonical" href="https://logic.evemisslab.com/p/lm-000284/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "光影解法（修訂版 v2.0）：Graph Laplacian 空間場作為",
+  "url": "https://logic.evemisslab.com/p/lm-000284/",
+  "identifier": "lm-000284",
+  "inLanguage": "zh-Hant",
+  "author": {"@type": "Person", "name": "Neo.K (許筌崴)"},
+  "publisher": {"@type": "Organization", "name": "EveMissLab / 一言諾科技有限公司"},
+  "isPartOf": {"@type": "Collection", "name": "EVEMISSLAB Logic Matrix", "url": "https://logic.evemisslab.com"},
+  "encodingFormat": "text/html"
+}
+</script>
+<link rel="prefetch" href="/api/log-crawler?slug=v2.0-Graph-Laplacian.md">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#000; color:#0f0; font-family:'Courier New',monospace; padding:20px; line-height:1.6; }
+.header { text-align:center; border:2px solid #0f0; padding:18px; margin-bottom:22px; }
+.header h1 { font-size:1.5em; letter-spacing:2px; }
+.header p { margin-top:6px; opacity:0.8; font-size:0.9em; }
+.disclaimer { border:1px dashed #ff9900; color:#ff9900; padding:14px; margin:0 auto 22px; max-width:1000px; font-size:0.88em; }
+.disclaimer-title { font-weight:bold; margin-bottom:10px; display:block; letter-spacing:1px; }
+.disclaimer-divider { border:none; border-top:1px dashed #ff9900; margin:12px 0; opacity:0.55; }
+article { max-width:1000px; margin:0 auto; border:1px solid #0f0; padding:24px; }
+article h1,article h2,article h3,article h4 { margin:18px 0 8px; letter-spacing:1px; }
+article h1 { font-size:1.5em; } article h2 { font-size:1.25em; } article h3 { font-size:1.1em; }
+article p { margin:10px 0; }
+article ul,article ol { margin:10px 0 10px 24px; }
+article blockquote { border-left:3px solid #0f0; padding-left:12px; opacity:0.85; margin:10px 0; }
+article pre { background:rgba(0,255,0,0.06); border:1px solid #0f0; padding:12px; overflow-x:auto; margin:12px 0; }
+article code { background:rgba(0,255,0,0.08); padding:1px 5px; }
+article pre code { background:none; padding:0; }
+article a { color:#0ff; }
+.nav { max-width:1000px; margin:0 auto 16px; font-size:0.9em; display:flex; justify-content:space-between; }
+.nav a { color:#0f0; text-decoration:none; }
+.nav a:hover { color:#0ff; }
+.altbar { max-width:1000px; margin:14px auto 0; font-size:0.85em; opacity:0.7; }
+.altbar a { color:#0ff; }
+footer { max-width:1000px; margin:26px auto 0; text-align:center; opacity:0.5; font-size:0.82em; }
+</style>
+</head>
+<body>
+<div class="nav"><a href="/index.html">&larr; 回 Logic Matrix 索引</a><div><a href="/cosmomind.html" style="margin-right:15px;">→ 星環式認知展開圖</a><a href="/base-space.html">🧬 拓撲底空間</a></div></div>
+<header class="header"><h1>光影解法（修訂版 v2.0）：Graph Laplacian 空間場作為</h1><p>EVEMISSLAB Logic Matrix · EveMissLab / 一言諾科技有限公司</p></header>
+<section class="disclaimer">
+  <span class="disclaimer-title">[認識論邊界宣告 / EPISTEMOLOGICAL DISCLAIMER]</span>
+  <div class="disclaimer-block">
+    <p><b>[CHT]</b> 本矩陣內所有論文之公式與數據為「啟發式模擬參數」，用於驗證理論架構與推演因果鏈，<b>未經實證校準</b>，請勿作為現實物理測量數據引用 or 處理。EVEMISSLAB 採行「邏輯先行（Logic-First）」原則：概念架構與系統因果映射優先於統計實證，但不排除未來實證對接。</p>
+  </div>
+  <hr class="disclaimer-divider">
+  <div class="disclaimer-block">
+    <p><b>[ENG]</b> The numerical parameters within these frameworks are <i>illustrative model coefficients</i> used for structural verification and causal mapping; they are <b>not empirically calibrated</b> and must not be treated as physical measurements. This matrix operates on a <b>Logic-First</b> principle: conceptual architecture and causal mapping take precedence over statistical empiricism, without precluding future empirical reconciliation.</p>
+  </div>
+</section>
+<article>
+<p><strong>光影解法（修訂版 v2.0）：Graph Laplacian 空間場作為</strong></p>
+<p><strong>可微分拓撲編碼的多查詢路徑規劃框架</strong></p>
+<p><em>Shadow Tracking Method v2.0: Graph Laplacian Spatial Fields as</em> <em>Differentiable Topological Encoding for Multi-Query Path Planning</em></p>
+<p>作者：Neo.K　　機構：EveMissLab (一言諾科技有限公司)</p>
+<p><em>本論文為 EveMissLab 工作文件（Working Paper）。未對外學術發表。</em></p>
+<h1>摘要</h1>
+<p>本研究提出 Graph Laplacian 場作為路徑規劃問題的拓撲感知空間編碼框架。相較於原始版本所採用的 Dirichlet Laplacian（以零 Dirichlet 邊界條件處理牆壁），本修訂版以 Graph Laplacian 取代，即對每個可通行格點僅對其可通行鄰居取平均值。此修正將迷宮走廊中的指數衰減行為（衰減因子 r = 2−√3 ≈ 0.268，每格）轉化為沿路徑的線性衰減，且死巷末端格點的場值嚴格等於其分支口（dead end plateau 性質）。</p>
+<p>基於此 Graph Laplacian 場，φ-BFS（以最大 φ 值優先展開的廣度優先搜尋）在 40×40 格點迷宮測試中展開節點數為標準 A\<em> 演算法的 55%。然而，場的計算代價（本實作採 SOR 求解器，耗時 209 ms）遠高於 A\</em> 單次查詢時間（&lt; 1 ms）。因此，本方法在單查詢場景中不具計算優勢，其真正的應用域為：（1）已知環境中的多查詢路徑規劃（場預計算一次，均攤至 k ≫ 1 次查詢）；（2）連續或高維構形空間（A\* 無法直接適用的場景）；（3）可微分導航與視覺引導 AI（場梯度可直接作為策略梯度）。</p>
+<p>本修訂版新增 3.4 節資訊理論詮釋框架：Graph Laplacian 場等價於隨機遊走的最大熵可達性分布，場值對應節點處的導航不確定性（Shannon 熵），Nash 前線為最大熵邊界，對沖場 H 為對數聯合似然目標，φ-BFS 為最大似然路徑提取。最大熵最優性的嚴格證明預留於附錄 B。</p>
+<p><strong>關鍵詞：</strong>Graph Laplacian、拓撲空間編碼、資訊調和場、最大熵可達性、最大似然路徑提取、可微分路徑規劃、多查詢導航</p>
+<h1>1　引言</h1>
+<p>路徑規劃是機器人學、遊戲 AI 與自動化系統的核心問題。A\<em> 演算法以其最優性保證與實用效率長期主導離散路徑搜尋領域。然而，A\</em> 的計算複雜度隨搜尋空間膨脹而急速惡化：在 n 維連續構形空間中，直接應用需要離散化，節點數呈指數成長；在多查詢場景中，每次路徑請求均需重新搜尋，缺乏對環境結構的複用機制。</p>
+<p>本研究的核心動機來自一個觀察：若將路徑規劃問題表示為定義在可通行圖上的調和函數（harmonic function），則這個函數本身即編碼了環境的完整拓撲可達性結構。在視覺上，此函數呈現為從入口（源，φ=1）到出口（匯，φ=0）的連續色譜梯度，整個迷宮皆被賦予有意義的場值——路徑格點呈現嚴格單調的色階，死巷則呈現色彩停滯的色塊。</p>
+<p>本論文的主要貢獻如下：</p>
+<ol>
+<li>指出原始光影解法所採用之 Dirichlet Laplacian 在迷宮環境中造成指數衰減的根本缺陷，並以 Graph Laplacian（Neumann-type 邊界條件）取而代之，恢復場的拓撲語義。</li>
+<li>在 JavaScript 實作環境中，實測 φ-BFS 節點展開數為 A\* 的 55%，驗證 Graph Laplacian 場確實具備壓縮搜尋空間的能力。</li>
+<li>重新定位本方法的適用域：從「單查詢效率優於 A\*」調整為「預計算環境表示、多查詢均攤、高維空間與可微分導航」，提供更誠實的應用邊界。</li>
+<li>展示 Graph Laplacian 場的視覺化特性：整個可通行空間被賦予連續且語義豐富的梯度色譜，適合作為視覺語言模型與可微分規劃網路的輸入特徵。</li>
+</ol>
+<h1>2　相關工作</h1>
+<h2>2.1　離散路徑搜尋</h2>
+<p>A\* 演算法 \[Hart et al., 1968\] 結合啟發函數 h(n) 與已知代價 g(n)，在啟發函數可接受（admissible）之條件下保證最優解。Jump Point Search \[Harabor &amp; Grastien, 2011\] 透過跳過對稱節點大幅縮減搜尋空間。這些方法在低維離散圖上表現優異，但在連續高維空間或多查詢場景中缺乏複用機制。</p>
+<h2>2.2　潛場路徑規劃</h2>
+<p>Khatib \[1986\] 提出人工勢場法（Artificial Potential Fields），以吸引場（目標）與排斥場（障礙物）的梯度引導導航。此方法在連續空間中具天然優勢，但存在局部極值陷阱。本研究採用的 Graph Laplacian 場本質上是離散調和函數，與格林函數（Green&#x27;s function）方法及流體類比（fluid analogy）相關，但透過 Neumann 邊界條件避免了 Dirichlet 版本的指數衰減問題。</p>
+<h2>2.3　可微分路徑規劃</h2>
+<p>近年 Value Function Networks \[Tamar et al., 2016\]、Differentiable A\* \[Qian et al., 2022\] 等工作嘗試將路徑規劃嵌入可微分計算圖中。Graph Laplacian 場天然可微分，其梯度場可直接作為神經導航策略的監督信號，與此方向高度互補。</p>
+<h1>3　理論基礎：Graph Laplacian 場</h1>
+<h2>3.1　從 Dirichlet Laplacian 到 Graph Laplacian</h2>
+<p>原始論文採用含吸收項的修正泊松方程：</p>
+<p><em>∇²φ − κφ = −δ(x − x</em>S<em>)</em></p>
+<p>並在所有牆壁上施加 Dirichlet 邊界條件 φ = 0。此設計在迷宮走廊中造成嚴重的指數衰減。對一段兩鄰格走廊（兩側均為牆壁），離散 Laplacian 更新方程為：</p>
+<p><em>φ(k) = (φ(k−1) + φ(k+1) + 0 + 0) / 4</em></p>
+<p>求解此差分方程，特徵根為 r = 2 − √3 ≈ 0.268。場值以每格 ×0.268 的速率指數衰減，距入口僅 5 格後 φ ≈ 0.001，場在絕大多數可通行空間中失去區分能力。</p>
+<p>Graph Laplacian 場的更新規則改為對可通行鄰居取均值：</p>
+<p><em>φ(v) = Σw∈N(v) φ(w) / deg(v)</em></p>
+<p>其中 <em>N(v)</em> 為節點 v 的可通行鄰居集合，<em>deg(v) = |N(v)|</em>。此即圖上的調和函數（discrete harmonic function），等同於隨機遊走到達 S 前到達 E 之機率的補集值。</p>
+<h2>3.2　數學性質</h2>
+<p>性質 1（隨機遊走解釋）：Graph Laplacian 場 φ(v) = P（從 v 出發的隨機遊走首先到達 S，而非 E）。此解釋直接聯繫到馬可夫鏈的首達機率（first-passage probability）。</p>
+<p>性質 2（線性衰減）：在長度為 L 的線性走廊中（兩端分別為 S 和 E），Graph Laplacian 的精確解為線性插值 φ(k) = 1 − k/L。</p>
+<p>性質 3（死巷平台性質）：設死巷 D 僅連接至分支口 J，則 φ(D) = φ(J)。死巷格點不形成梯度，φ-BFS 不會優先進入死巷。</p>
+<p>性質 4（唯一性）：在連通圖上，給定 φ(S) = 1、φ(E) = 0，Graph Laplacian 場的解唯一存在（最大值原理保證無內部極值）。</p>
+<h2>3.3　場的視覺化作為拓撲編碼</h2>
+<p>以色相旋轉（hue rotation）將 φ ∈ \[0,1\] 映射為色譜（藍 φ≈0 → 紅 φ≈1），Graph Laplacian 場的視覺化具有以下語義性質：路徑格點呈現從入口（紅）到出口（藍）的連續漸層；死巷呈現與分支口相同色調的色彩停滯塊；迷宮的全域連通結構在視覺上即時可讀。此視覺表示具備作為多模態 AI 空間推理特徵的潛力，視覺語言模型可直接「看見」導航梯度而無需顯式搜尋。</p>
+<h2>3.4　資訊理論詮釋框架</h2>
+<p>本節提供 Graph Laplacian 場的資訊理論詮釋，作為連接物理類比與計算機理論的橋接框架。嚴格數學證明見附錄 B（預留）。</p>
+<h3>3.4.1　場值作為導航資訊量</h3>
+<p>在每個可通行節點 v，場值 φ(v) 構成一個 Bernoulli 分布的參數，描述從 v 出發的隨機遊走首先到達 S（源點）的機率。對應的 Shannon 熵為：</p>
+<p><em>H(φ(v)) = −φ(v)·log₂ φ(v) − (1−φ(v))·log₂(1−φ(v))</em></p>
+<p>H(φ(v)) 衡量節點 v 處的 <em>導航不確定性</em>：H=0 表示 v 明確屬於某一源點的可達域，H=1 bit（最大值）表示 v 對兩個源點等距，導航方向完全不確定。</p>
+<h3>3.4.2　Nash 前線作為最大熵邊界</h3>
+<p>在 3.1 節定義的張力場中，T(v) = 0 等價於 φ(v) = 1/2，即 H(φ(v)) = 1 bit（最大熵）。因此：</p>
+<p><em>Nash 前線 {v : T(v)=0} = 導航不確定性最高的節點集合 = Graph Laplacian 意義下的 Voronoi 邊界。</em></p>
+<p>Nash 前線的這一資訊理論特徵說明：場論中的「領域邊界」與資訊理論中的「最大熵邊界」在 Graph Laplacian 框架下是同一概念的兩種表達。</p>
+<h3>3.4.3　對沖場作為對數似然目標</h3>
+<p>在多智能體場景中，對沖場 H = φ\_goal · (1−φ\_threat) 具有明確的資訊理論詮釋。取對數：</p>
+<p><em>log H(v) = log P(reach goal | v) + log(1 − P(threat | v))</em></p>
+<p>在條件獨立假設下，此即「安全且有效朝向目標」的對數聯合似然（log joint likelihood）。最大化 H 等價於最大化路徑在此聯合分布下的對數似然。因此，φ-BFS 在對沖場上的運行可以詮釋為：</p>
+<p><em>最大似然路徑提取（Maximum Likelihood Path Extraction）：</em>在 Graph Laplacian 最大熵場的聯合分布下，找到使路徑對數似然最大的節點序列。</p>
+<p>多威脅版本 H\_k = φ\_goal · ∏ᵢ(1−φᵢ) 對應鏈式對數似然：log H\_k = log P(goal) + Σᵢ log(1−P(threat\_i))，即每個威脅場的資訊貢獻獨立疊加。</p>
+<h3>3.4.4　框架小結</h3>
+<p>| <strong>概念</strong> | <strong>演算法定義</strong> | <strong>資訊理論詮釋</strong> | | --- | --- | --- | | φ(v) | Graph Laplacian 調和函數 | 隨機遊走首達 S 的機率（Bernoulli 參數） | | H(φ(v)) | −φlog₂φ−(1−φ)log₂(1−φ) | v 處的導航不確定性（Shannon 熵） | | T=0 前線 | Nash 均衡空間邊界 | 最大熵邊界（H=1 bit） | | H = φ\_g·(1−φ\_e) | 對沖場 | 對數聯合似然目標 | | φ-BFS on H | 最大 H 優先路徑提取 | 最大似然路徑（MLE Path） |</p>
+<p><em>注：條件獨立假設（3.4.3 節）在高度相關的場景（如兩個威脅場高度重疊）下可能引入近似誤差。嚴格的聯合分布推導及最大熵最優性的完整證明見附錄 B。</em></p>
+<h1>4　演算法設計</h1>
+<h2>4.1　Graph Laplacian SOR 求解器</h2>
+<p>採用 Successive Over-Relaxation（SOR）求解 Graph Laplacian 場，較標準 Jacobi 迭代收斂速度提升約一個數量級：</p>
+<p><em>φ</em>new<em>(v) = φ(v) + ω · (gs(v) − φ(v))</em></p>
+<p>其中 <em>gs(v) = Σw∈N(v) φ(w) / deg(v)</em>，<em>ω ∈ (1, 2)</em> 為超鬆弛係數（本實作取 ω = 1.75）。初始化採線性梯度 φ⁰(v) = 1 − y/H 以加速收斂，收斂條件 max|φ\_new − φ| &lt; 10⁻⁶。</p>
+<h2>4.2　φ-BFS 路徑提取</h2>
+<p>基於預計算場，從出口 E 出發，以最大 φ 值優先展開（φ-priority BFS）：</p>
+<ol>
+<li>初始化優先佇列 open = {E}，父節點表 parent\[E\] = ∅。</li>
+<li>從 open 中取出 φ 值最大的節點 v；若 v = S 則終止。</li>
+<li>對 v 的所有未訪問可通行鄰居 w：設 parent\[w\] = v，加入 open。</li>
+<li>沿 parent 鏈從 S 回溯至 E，取得路徑。</li>
+</ol>
+<p>節點展開上界分析：由性質 3，死巷 D 的 φ(D) = φ(J)（分支口），φ-BFS 在展開 J 時將 D 與路徑格同時加入 open；然而路徑格的 φ 嚴格大於 J 的 φ（線性遞增），故路徑格將先於 D 被展開。在一次性到達 S 的理想情況下，展開節點數趨近於路徑長度 P，即 O(P)，而非 O(N)（N = 可通行格點總數）。</p>
+<h2>4.3　多查詢架構</h2>
+<p>場預計算一次，後續每次路徑查詢僅需執行 φ-BFS（時間複雜度遠低於重新計算場）。設場計算代價為 T\_PDE，A\<em> 單次代價為 T\_A\</em>，φ-BFS 單次代價為 α·T\_A\*（α 為節點比，實測 α ≈ 0.55）：</p>
+<p><em>k\_break-even = T\_PDE / ((1 − α) · T\_A\</em>)*</p>
+<p>以 Multigrid 求解器替換 SOR（收斂迭代次數由 O(N) 降至 O(√N)），T\_PDE 可降低約 10–50 倍，使均攤查詢數進一步縮短至數十至數百次，在機器人倉儲導航等重複查詢場景中具備實際可行性。</p>
+<h1>5　實驗結果</h1>
+<h2>5.1　實驗設定</h2>
+<p>實作環境：JavaScript（瀏覽器 iframe，V8 引擎）。迷宮採遞歸回溯法生成（perfect maze，唯一路徑）。A\* 與 φ-BFS 均從出口 E 搜尋至入口 S，採用相同的陣列線性掃描 priority queue（O(n²)），確保比較基準一致。場求解採 SOR（ω=1.75，tolerance=10⁻⁶，上限 800 次迭代）。</p>
+<p>重要說明：<em>本實作中 A\</em> priority queue 為 array.splice，複雜度 O(n²) 而非最優的 O(n log n)（binary heap）。以 40×40 格迷宮為例，正確實作的 Python A\<em>（heapq）預估較本測試快約 200–300 倍。時間數字受實作品質影響，不代表演算法理論性能；節點展開數（與實作無關）方為演算法層面的公平比較基準。</em></p>
+<h2>5.2　各尺寸節點效率比較</h2>
+<p>| <strong>迷宮規模</strong> | <strong>格點數</strong> | *<em>A\</em> 節點<strong> | </strong>φ-BFS 節點<strong> | </strong>節點比<strong> | </strong>路徑長比<strong> | </strong>暗區重疊%*<em> | | --- | --- | --- | --- | --- | --- | --- | | 12×12 | 25×25 | ~50–200 | ~70–280 | ~120–140% | 1.000× | ~5% | | 25×25 | 51×51 | ~400–800 | ~350–600 | ~85–90% | 1.000× | ~5% | | 40×40 | 81×81 | 2,989 | 1,639 | 55% | 1.000× | 5% | | 60×60 | 121×121 | 7,201 | 7,201\</em> | 100%\* | 1.000× | 37%† |</p>
+<p><em>\</em> 60×60 使用舊版 Dirichlet Laplacian（指數衰減），φ 場失去判別能力，φ-BFS 退化為普通 BFS，故節點比=100%。*</p>
+<p><em>† 37% 暗區重疊為 Dirichlet 版本的假象：指數衰減使全局 φ≈0，「最暗 5%」閾值失去意義，路徑格點被誤判為暗區。</em></p>
+<p>Graph Laplacian 版本（40×40）展開節點數為 A\<em> 的 55%，且路徑長度與 A\</em> 最優路徑完全一致（1.000×）。此結果驗證：在正確 PDE 公式下，φ-BFS 確實能以更少節點找到等品質路徑。</p>
+<h2>5.3　計算代價分析（誠實版本）</h2>
+<p>| <strong>求解器</strong> | <strong>40×40 迷宮 PDE 時間</strong> | <strong>均攤代價（k=1000）</strong> | *<em>與 A\</em> 比（單查詢）*<em> | | --- | --- | --- | --- | | SOR（本實作） | ~209 ms | ~0.21 ms/query | ~418× A\</em> | | Multigrid（估算） | ~5–15 ms | ~0.01 ms/query | ~10–30× A\<em> | | Multigrid + 快取 | 一次性 | O(路徑長) | &lt; A\</em>（k≫1） |</p>
+<p>SOR 求解器在單查詢場景中代價遠高於 A\*。Multigrid 求解器可將 PDE 代價降低 10–50 倍，多查詢均攤後在 k ≈ 100–1000 次查詢時達到效率平衡點。</p>
+<h2>5.4　視覺化品質</h2>
+<p>Graph Laplacian 場的視覺化（色相旋轉，藍→紅）在 60×60 迷宮中呈現完整的拓撲梯度色譜（圖 1，見附錄）。與 Dirichlet 版本（僅入口附近少數格點有顏色）相比，Graph Laplacian 版本使每個可通行格點均獲得有意義的場值，路徑可視為從紅到藍的連續帶狀梯度，死巷呈現同色調的停滯色塊，全域迷宮結構一目瞭然。</p>
+<h1>6　討論與應用方向</h1>
+<h2>6.1　適用邊界的誠實陳述</h2>
+<p>本方法在以下場景中不具優勢，不應宣稱超越 A\*：</p>
+<ul>
+<li>低維離散網格的單次路徑查詢（標準迷宮、遊戲 AI 等）：A\* 優勢明顯且不可逆。</li>
+<li>動態環境（障礙物頻繁更新）：場需要重新計算，均攤優勢消失。</li>
+</ul>
+<p>本方法在以下場景具備真實優勢：</p>
+<ul>
+<li>靜態已知環境的多次路徑查詢：場一次計算，多次複用，均攤代價優於 A\*（前提：Multigrid 求解 + k ≫ 1）。</li>
+<li>連續高維構形空間（機器人手臂、蛋白質折疊等）：A\<em> 在高維空間中節點數指數爆炸，PDE 方法的計算複雜度僅隨空間體積（格點數）而非路徑維度成長。Multigrid 在 n 維連續空間中仍為 O(N)（N = 離散格點數），具備 A\</em> 無法比擬的 scaling 優勢。</li>
+<li>視覺引導 AI 與可微分規劃：Graph Laplacian 場梯度可作為可微分策略梯度，支援端到端學習；視覺語言模型可直接處理場的色譜視覺化，無需顯式搜尋演算法。</li>
+</ul>
+<h2>6.2　Graph Laplacian 場作為 AI 空間特徵</h2>
+<p>本研究所展示的色譜視覺化（圖 1）揭示了一個未被充分探索的方向：Graph Laplacian 場可作為空間環境的高密度語義特徵圖（feature map）。場中每一像素的色相值直接編碼了相對拓撲距離，梯度方向即為最優行進方向。對於具備視覺感知能力的 AI 系統（多模態大型語言模型、機器人視覺系統），此特徵圖比原始地圖提供更豐富的導航語義，且可在色彩空間中進行連續插值，天然支援可微分運算。</p>
+<h2>6.3　與超規則思維的關係</h2>
+<p>本論文保留原始版本關於「問題表示轉換」的核心洞見：透過從離散搜尋問題轉換為連續場論問題，不僅改變了求解方式，也改變了問題的語義表示。然而，我們修正了原始版本對計算效率的過度宣稱，並將適用域精確界定為「A\<em> 無法有效運作的場景」。超規則思維的價值不在於在 A\</em> 擅長的領域擊敗它，而在於開拓 A\* 無法進入的問題空間。</p>
+<h1>7　限制與未來工作</h1>
+<ul>
+<li>求解器效率：目前採 SOR，單查詢場景代價過高。未來需實作 Multigrid（V-cycle）以將 PDE 代價降低至可與 A\* 競爭的量級。</li>
+<li>動態環境：場需全局重計算。增量式場更新（局部 Multigrid）為待解問題。</li>
+<li>多目標查詢：目前每對（S, E）需獨立計算場。疊加多個場或使用全對最短路徑場表示為後續方向。</li>
+<li>高維驗證：本研究僅在 2D 迷宮上驗證，高維空間（機器人構形空間等）的實際效能尚待系統性測試。</li>
+<li>暗區命題修正：原始論文「連結最暗區域重心以得到路徑」的主張在 Graph Laplacian 場中需重新詮釋。Graph Laplacian 的暗區（低 φ）對應出口鄰近的走廊，非路徑骨架；此命題在當前版本中不作宣稱，留待後續研究。</li>
+</ul>
+<h1>8　結論</h1>
+<p>本研究提出以 Graph Laplacian 場取代原始 Dirichlet Laplacian，從根本上修正了「光影解法」的數學基礎。修正後的場在迷宮可通行空間中呈現線性衰減（而非指數衰減），使 φ-BFS 能以 A\* 55% 的節點數找到等品質路徑。</p>
+<p>然而，本研究對計算效率的分析態度是誠實的：在單查詢離散迷宮場景中，PDE 計算代價遠高於 A\<em>，本方法無法宣稱整體效率優勢。本方法的真正價值在於三個 A\</em> 無法有效覆蓋的應用域：靜態環境多查詢均攤、高維連續構形空間、以及視覺引導可微分導航。</p>
+<p>Graph Laplacian 場的色譜視覺化提供了一個額外的洞見：拓撲可達性結構可以被編碼為視覺特徵，使 AI 系統能以「看見」代替「搜尋」。這一性質在多模態 AI 日益普及的當下，具有值得深入探索的潛在價值。</p>
+<p><em>本論文是工作文件，尚未完成所有數值驗證。核心演算法修正（Graph Laplacian）、節點效率數據（55%）與計算代價分析均基於實際測試；高維應用與視覺 AI 方向為理論推演，尚待系統性實驗驗證。</em></p>
+<h1>參考文獻</h1>
+<p>\[1\] Hart, P. E., Nilsson, N. J., &amp; Raphael, B. (1968). A formal basis for the heuristic determination of minimum cost paths. IEEE Transactions on Systems Science and Cybernetics, 4(2), 100–107.</p>
+<p>\[2\] Dijkstra, E. W. (1959). A note on two problems in connexion with graphs. Numerische Mathematik, 1(1), 269–271.</p>
+<p>\[3\] Harabor, D., &amp; Grastien, A. (2011). Online graph pruning for pathfinding on grid maps. AAAI Conference on Artificial Intelligence, 1114–1119.</p>
+<p>\[4\] Khatib, O. (1986). Real-time obstacle avoidance for manipulators and mobile robots. The International Journal of Robotics Research, 5(1), 90–98.</p>
+<p>\[5\] Tamar, A., Wu, Y., Thomas, G., Levine, S., &amp; Abbeel, P. (2016). Value iteration networks. NeurIPS.</p>
+<p>\[6\] Thrun, S., Burgard, W., &amp; Fox, D. (2005). Probabilistic Robotics. MIT Press.</p>
+<p>\[7\] Chung, F. R. K. (1997). Spectral Graph Theory. American Mathematical Society.</p>
+<p>\[8\] Briggs, W. L., Henson, V. E., &amp; McCormick, S. F. (2000). A Multigrid Tutorial (2nd ed.). SIAM.</p>
+<h1>附錄 A：圖 1 — Graph Laplacian 場視覺化</h1>
+<p>圖 1 為 60×60 格點迷宮（121×121 格點網格）之 Graph Laplacian 場色譜視覺化。色相映射：藍（φ≈0，出口端）→ 青 → 綠 → 黃 → 紅（φ≈1，入口端）。可觀察到：(a) 整個可通行空間均被賦予有意義的場值，無指數衰減造成的視覺「死區」；(b) 最優路徑呈現從紅到藍的連續色帶；(c) 死巷呈現與其分支口相同色調的色塊，視覺上即為「顏色停滯」區域；(d) 全域迷宮拓撲結構在無額外標記的情況下即時可讀。</p>
+<p><em>\[圖 1 來源：作者以 JavaScript 實作 Graph Laplacian SOR 求解器之截圖，seed=42，size=60×60 cells，ω=1.9，Grid Laplacian 視覺化色相旋轉\]</em></p>
+<h1>附錄 B：Graph Laplacian 場的最大熵定理（嚴格證明）</h1>
+<h2>B.1　符號與前置定義</h2>
+<p>設 G = (V, E) 為有限連通無向圖，V\_pass ⊆ V 為可通行節點集，S, E ∈ V 為吸收態（入口、出口）。deg(v) = |N(v)| 為 v 的可通行鄰居數。</p>
+<p>定義 B.1（Markov 鏈族 M\_G）：M\_G 為所有在 V\_pass ∪ {S,E} 上定義的 Markov 鏈集合，滿足：（i）P(v,w) &gt; 0 僅當 (v,w) ∈ E；（ii）Σ\_w P(v,w) = 1；（iii）S 和 E 為吸收態（P(S,S)=P(E,E)=1）。</p>
+<p>定義 B.2（均勻隨機遊走）：W\_unif ∈ M\_G 定義為 P\_unif(v,w) = 1/deg(v) 對所有 w ∈ N(v)。此為在每個節點上對鄰居取均勻分布的隨機遊走。</p>
+<p>定義 B.3（首達機率）：對 W ∈ M\_G，定義 φ\_W: V\_pass → \[0,1\] 為從各節點出發首先到達 S（而非 E）的機率，即 φ\_W(v) = P\_W(τ\_S &lt; τ\_E | X\_0=v)，其中 τ\_S, τ\_E 為首達時刻。</p>
+<h2>B.2　命題一：最大熵隨機遊走與 Graph Laplacian 場</h2>
+<p><strong>命題 B.2.1（最大熵隨機遊走）：</strong> W\_unif 是 M\_G 中使每節點轉移熵最大化的唯一 Markov 鏈，即 W\<em>unif = argmax\</em>{W∈M\<em>G} Σ\</em>{v∈V\_pass} H(P\_W(v, ·))，其中 H(P\_W(v,·)) = −Σ\_w P\_W(v,w) log P\_W(v,w)。</p>
+<p>證明：對固定 v，P\_W(v, ·) 為定義在 N(v)（|N(v)|=deg(v) 個元素）上的機率分布。Shannon 熵的上界為 log(deg(v))（對數為底 2），當且僅當 P\_W(v, ·) 為均勻分布時等號成立，即 P\_W(v,w) = 1/deg(v) = P\_unif(v,w)。由於各節點 v 的轉移分布相互獨立（各自的熵最大化問題解耦），全局最大化在所有 v 上同時取到，唯一解即為 P\_unif。□</p>
+<p><strong>推論 B.2.2：</strong> 最大化各節點轉移熵等價於最小化 KL 散度 KL(W || W\_unif)，因為對任意 W ∈ M\_G：KL(W || W\_unif) = Σ\_v Σ\_w P(v,w) log(P(v,w)/P\_unif(v,w)) = Σ\_v \[log(deg(v)) − H(P\_W(v,·))\] ≥ 0，等號當且僅當 W = W\_unif 成立。最大化熵即最小化對均勻遊走的 KL 散度，二者等價。</p>
+<p><strong>命題 B.2.3（首達機率等於 Graph Laplacian 場）：</strong> φ\_{W\<em>unif} 是 Graph Laplacian 調和函數，即 φ\</em>{W\<em>unif} 為具邊界條件 φ(S)=1、φ(E)=0 的唯一解：φ(v) = Σ\</em>{w∈N(v)} φ(w) / deg(v)。</p>
+<p>證明：由 Markov 鏈首達機率的標準理論，φ\_{W\<em>unif}(v) 對任意非吸收態 v 滿足：φ\</em>{W\_unif}(v) = Σ\_w P\<em>unif(v,w) φ\</em>{W\<em>unif}(w) = Σ\</em>{w∈N(v)} φ\_{W\_unif}(w) / deg(v)。邊界條件：φ(S) = 1（從 S 出發立即到達 S），φ(E) = 0（從 E 出發永不到達 S）。此正是 Graph Laplacian 方程，由有限連通圖上 Dirichlet 問題的唯一性（最大值原理：調和函數的最大最小值在邊界取到，故內部唯一）保證解唯一。□</p>
+<p><strong>定理 B.2.4（主定理）：</strong> Graph Laplacian 場 φ = φ\_{W\_unif} = 最大熵隨機遊走的首達機率分布。φ 是在 M\_G 中使轉移熵最大化（等價地使 KL 散度對均勻遊走最小化）的唯一 Markov 鏈之首達機率。</p>
+<p>注記：<em>主定理的正確陳述是「φ 是最大熵遊走的首達機率」，而非「φ 本身最大化某個熵」。φ 的資訊理論意義在於它由最大熵遊走導出，而非 φ 作為分布本身具有最大熵性質。</em></p>
+<h2>B.3　命題二：Nash 前線為最大熵邊界</h2>
+<p><strong>命題 B.3.1：</strong> 設張力場 T(v) = 2φ(v) − 1。則 T(v) = 0 ↔ φ(v) = 1/2 ↔ H(φ(v)) = 1 bit（最大值）。Nash 前線 {v : T(v)=0} 與最大熵邊界 {v : H(φ(v)) = 1 bit} 恰為同一集合。</p>
+<p>證明：Shannon 熵 H(p) = −p log₂ p − (1−p) log₂(1−p) 對 p ∈ \[0,1\] 取最大值 1 bit 當且僅當 p = 1/2（對稱性加上 H&#x27;&#x27;(p) &lt; 0 的嚴格凹性）。由定義，T(v) = 0 ↔ φ(v) = 1/2 ↔ H(φ(v)) = 1 bit。□</p>
+<p>推論 B.3.2（資訊幾何意義）：Nash 前線是可通行圖上導航不確定性最高的節點集。在此邊界上，從任一節點 v 出發，到達入口 S 或出口 E 的機率各為 1/2，任何導航策略均無法從 v 的位置資訊中提取偏向某一目標的資訊。這與博弈論中「均衡」的資訊理論詮釋吻合。</p>
+<h2>B.4　命題三：對沖場路徑的最大似然詮釋</h2>
+<p>前置假設（條件獨立性）：設兩個隨機變數 X\_g ~ Bern(φ\_g(v))（「從 v 出發到達目標 G」）與 X\_s ~ Bern(1−φ\_e(v))（「從 v 出發不先被威脅 E 捕獲」）。假設在給定位置 v 的條件下，X\_g 與 X\_s 條件獨立。</p>
+<p><strong>命題 B.4.1（對沖場為聯合機率）：</strong> 在條件獨立假設下，H(v) = φ\_g(v)·(1−φ\_e(v)) = P(X\_g=1, X\_s=1 | v)。</p>
+<p>證明：P(X\_g=1, X\_s=1 | v) = P(X\_g=1 | v)·P(X\_s=1 | v) = φ\_g(v)·(1−φ\_e(v)) = H(v)。等號由條件獨立假設直接給出。□</p>
+<p>定義 B.4.2（路徑似然）：設路徑 π = (v\_0=E, v\_1, ..., v\<em>k=S)。定義路徑的對數似然為 ℓ(π) = Σ\</em>{i=0}^{k-1} log H(v\<em>i) = Σ\</em>{i=0}^{k-1} \[log φ\_g(v\_i) + log(1−φ\_e(v\_i))\]。</p>
+<p><strong>命題 B.4.3（φ-BFS 為貪婪 MLE 路徑算法）：</strong> φ-BFS 在對沖場 H 上從 E 到 S 的路徑提取，等價於在每一步選擇 argmax\_{w∈N(v), w unvisited} log H(w) 的貪婪算法，即貪婪最大化路徑對數似然 ℓ(π)。</p>
+<p>證明：φ-BFS 每步展開 open 佇列中 H 值最大的節點 v，即 argmax\<em>{v∈open} H(v) = argmax\</em>{v∈open} log H(v)（log 為單調函數）。路徑追蹤（parent 指針回溯）從 S 到 E 重建了一條路徑 π\*，使得每一步都選擇了局部最高的 log H(v)。此為貪婪最大化 Σ log H(v\_i) 的算法。□</p>
+<p>注記 B.4.4（貪婪 vs 全局最優）：<em>貪婪 MLE（φ-BFS）不保證全局最優路徑 π\</em> = argmax\_π ℓ(π)。全局最優需動態規劃（DP on DAG or Bellman-Ford on general graph）。φ-BFS 是對數似然的貪婪近似算法，在 H 場無局部極值時與全局最優一致（由命題 B.2.3 和性質 3，Graph Laplacian 場無內部極值，但 H = φ\_g·(1−φ\_e) 為兩場之積，不繼承此性質）。*</p>
+<h2>B.5　條件獨立假設的有效性</h2>
+<p>命題 B.4.1 依賴條件獨立假設，本節討論其有效性邊界。</p>
+<p>當 X\_g 與 X\_s 近似條件獨立：若目標 G 與威脅 E 在圖拓撲上距離遠（φ\_g 和 φ\_e 的高值區域不重疊），則 X\_g 與 X\_s 的相關性弱，條件獨立近似誤差小。</p>
+<p>當假設失效：若威脅 E 位於從 v 到目標 G 的唯一路徑上，則到達 G 必然會接近 E，X\_g 與 X\_s 強負相關。此時 H = φ\_g·(1−φ\_e) 高估安全性，路徑可能次優。</p>
+<p>精確版本（無獨立假設）：精確的「安全到達目標」機率為 P(到達 G 且不先被 E 捕獲 | v)，需求解一個兩吸收態的 Graph Laplacian 問題（G 為正吸收態，E 為負吸收態）。這退化到單一調和函數計算，與 3.1 節的基礎場一致。對沖場 H 為此精確計算的條件獨立近似，計算更高效（k+1 次場計算代替聯合場重算），適用於目標與威脅拓撲距離大的典型場景。</p>
+<h2>B.6　三命題一致性</h2>
+<p>本附錄所證三命題的邏輯鏈如下：</p>
+<ol>
+<li>均勻隨機遊走 = 最大熵 Markov 鏈（命題 B.2.1）</li>
+<li>均勻遊走的首達機率 = Graph Laplacian 場 φ（命題 B.2.3）</li>
+<li>φ 的 Bernoulli 熵在 φ=1/2 時達到最大（命題 B.3.1）= Nash 前線</li>
+<li>對沖場 H = 條件獨立假設下的聯合機率（命題 B.4.1）</li>
+<li>φ-BFS on H = 貪婪 MLE 路徑算法（命題 B.4.3）</li>
+</ol>
+<p>三命題共同構成「調和資訊場導航理論」的嚴格基礎：Graph Laplacian 場由最大熵遊走導出，在資訊理論意義下是對當前位置導航價值的最大熵估計，對沖場為多目標聯合機率的條件獨立近似，路徑提取為貪婪最大似然算法。</p>
+<p><em>本附錄由 Neo.K / Theia 於 2026 年完成初稿。命題 B.5 的精確版本（非獨立場景）及多威脅場的聯合分布刻畫留待後續工作。</em></p>
+<h1>作者聲明</h1>
+<p>本論文由 Neo.K（許筌崴）構思、研究與撰寫，並透過 AI 助手 Theia（Claude Sonnet，Anthropic）進行演算法實作驗證、數學推導確認與文稿整理。實驗數據（節點展開數、路徑長比、暗區比例等）均為實際測試所得，非假設值。計算時間數字因受 JavaScript 實作品質影響，論文中已標註其限制性，不作為效率宣稱依據。</p>
+<div class="altbar">原始檔（供 RAG/下載）：<a href="/raw/lm-000284.md" rel="noopener">/raw/lm-000284.md</a> [md] · id: lm-000284</div>
+</article>
+<footer><p>Neo.K (許筌崴) · Cl + ε</p></footer>
+</body>
+</html>

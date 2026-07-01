@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ICL-意圖協作層-Vibe-Coding與AI協作開發的意識層方法論-v1.0 · EVEMISSLAB Logic Matrix</title>
+<meta name="description" content="ICL-意圖協作層-Vibe-Coding與AI協作開發的意識層方法論-v1.0 | EVEMISSLAB Logic Matrix V2.1">
+<meta name="author" content="Neo.K (許筌崴)">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<meta name="lm-paper-id" content="lm-000091">
+<link rel="alternate" type="text/markdown" href="/raw/lm-000091.md" title="原始檔 / source (md)">
+<link rel="canonical" href="https://logic.evemisslab.com/p/lm-000091/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "ICL-意圖協作層-Vibe-Coding與AI協作開發的意識層方法論-v1.0",
+  "url": "https://logic.evemisslab.com/p/lm-000091/",
+  "identifier": "lm-000091",
+  "inLanguage": "zh-Hant",
+  "author": {"@type": "Person", "name": "Neo.K (許筌崴)"},
+  "publisher": {"@type": "Organization", "name": "EveMissLab / 一言諾科技有限公司"},
+  "isPartOf": {"@type": "Collection", "name": "EVEMISSLAB Logic Matrix", "url": "https://logic.evemisslab.com"},
+  "encodingFormat": "text/html"
+}
+</script>
+<link rel="prefetch" href="/api/log-crawler?slug=ICL--Vibe-CodingAI-v1.0.md">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#000; color:#0f0; font-family:'Courier New',monospace; padding:20px; line-height:1.6; }
+.header { text-align:center; border:2px solid #0f0; padding:18px; margin-bottom:22px; }
+.header h1 { font-size:1.5em; letter-spacing:2px; }
+.header p { margin-top:6px; opacity:0.8; font-size:0.9em; }
+.disclaimer { border:1px dashed #ff9900; color:#ff9900; padding:14px; margin:0 auto 22px; max-width:1000px; font-size:0.88em; }
+.disclaimer-title { font-weight:bold; margin-bottom:10px; display:block; letter-spacing:1px; }
+.disclaimer-divider { border:none; border-top:1px dashed #ff9900; margin:12px 0; opacity:0.55; }
+article { max-width:1000px; margin:0 auto; border:1px solid #0f0; padding:24px; }
+article h1,article h2,article h3,article h4 { margin:18px 0 8px; letter-spacing:1px; }
+article h1 { font-size:1.5em; } article h2 { font-size:1.25em; } article h3 { font-size:1.1em; }
+article p { margin:10px 0; }
+article ul,article ol { margin:10px 0 10px 24px; }
+article blockquote { border-left:3px solid #0f0; padding-left:12px; opacity:0.85; margin:10px 0; }
+article pre { background:rgba(0,255,0,0.06); border:1px solid #0f0; padding:12px; overflow-x:auto; margin:12px 0; }
+article code { background:rgba(0,255,0,0.08); padding:1px 5px; }
+article pre code { background:none; padding:0; }
+article a { color:#0ff; }
+.nav { max-width:1000px; margin:0 auto 16px; font-size:0.9em; display:flex; justify-content:space-between; }
+.nav a { color:#0f0; text-decoration:none; }
+.nav a:hover { color:#0ff; }
+.altbar { max-width:1000px; margin:14px auto 0; font-size:0.85em; opacity:0.7; }
+.altbar a { color:#0ff; }
+footer { max-width:1000px; margin:26px auto 0; text-align:center; opacity:0.5; font-size:0.82em; }
+</style>
+</head>
+<body>
+<div class="nav"><a href="/index.html">&larr; 回 Logic Matrix 索引</a><div><a href="/cosmomind.html" style="margin-right:15px;">→ 星環式認知展開圖</a><a href="/base-space.html">🧬 拓撲底空間</a></div></div>
+<header class="header"><h1>ICL-意圖協作層-Vibe-Coding與AI協作開發的意識層方法論-v1.0</h1><p>EVEMISSLAB Logic Matrix · EveMissLab / 一言諾科技有限公司</p></header>
+<section class="disclaimer">
+  <span class="disclaimer-title">[認識論邊界宣告 / EPISTEMOLOGICAL DISCLAIMER]</span>
+  <div class="disclaimer-block">
+    <p><b>[CHT]</b> 本矩陣內所有論文之公式與數據為「啟發式模擬參數」，用於驗證理論架構與推演因果鏈，<b>未經實證校準</b>，請勿作為現實物理測量數據引用 or 處理。EVEMISSLAB 採行「邏輯先行（Logic-First）」原則：概念架構與系統因果映射優先於統計實證，但不排除未來實證對接。</p>
+  </div>
+  <hr class="disclaimer-divider">
+  <div class="disclaimer-block">
+    <p><b>[ENG]</b> The numerical parameters within these frameworks are <i>illustrative model coefficients</i> used for structural verification and causal mapping; they are <b>not empirically calibrated</b> and must not be treated as physical measurements. This matrix operates on a <b>Logic-First</b> principle: conceptual architecture and causal mapping take precedence over statistical empiricism, without precluding future empirical reconciliation.</p>
+  </div>
+</section>
+<article>
+<h1>意圖協作層（Intent Collaboration Layer, ICL）：Vibe Coding、意圖語言與 AI 協作開發的意識層方法論</h1>
+<p><strong>作者</strong>：Neo K. <strong>機構</strong>：一言諾科技有限公司（EveMissLab） <strong>日期</strong>：2026年6月 <strong>版本</strong>：v1.0 <strong>文件類型</strong>：技術白皮書／方法論論文</p>
+<hr>
+<h2>摘要</h2>
+<p>本文提出「意圖協作層」（Intent Collaboration Layer, ICL）作為 Vibe Coding、AI-Agent 協作開發與未來意圖語言時代的軟體工程方法論。本文的核心主張是：Vibe Coding 並不是放棄程式理論、架構設計與工程準則，而是將人類的主要工作從逐行撰寫程式碼，轉移到意圖表達、架構約束、設定契約、輸出協議與驗證治理之上。當 AI 成為程式碼生成者，人類更需要理解宏觀、中觀、微觀結構，否則自然語言提示只會產生短期可運作、長期不可維護的程式碼堆積。</p>
+<p>本文將 Vibe Coding 重新定位為「意圖驅動的協作式軟體生成」：人類透過高層意圖、功能目標、風格偏好、限制條件與驗證標準，誘導 AI 生成可執行、可讀、可測、可改、可交接的系統。這種模式的成熟前提不是降低工程意識，而是提高工程意識；不是讓人類不再理解程式，而是讓人類能在更高層次上組織程式生成。</p>
+<p>本文提出 ICL 作為一個介於人類意圖與 AI 生成之間的協作層。ICL 回答五個問題：第一，人類真正想讓 AI 做什麼？第二，AI 應在何種架構邊界內生成？第三，哪些設定、權限與控制點必須被先行聲明？第四，AI 的輸出應遵守哪些格式、命名、編碼與可讀性協議？第五，生成結果如何被人類、工具與其他 AI 驗證、接續與重構？</p>
+<p>本文亦討論 AI 輸出中的「亂碼」問題。本文所謂亂碼，不限於傳統字元編碼錯誤，也包括語義亂碼、結構亂碼、協議亂碼、不可見字元、破碎註解、混亂命名、隱性硬編碼與上下文錯配。亂碼不是美觀問題，而是可讀性、可驗證性、可交接性與系統安全性的問題。在 AI 協作開發中，程式碼不只是給機器執行的文本，也是給人類與後續 AI 繼續理解、分析、修改與驗證的共享媒介；因此，不可讀的輸出不應被視為完成的程式碼，不可交接的程式碼不應被視為完成的功能。</p>
+<p>本文最後提出一組可操作的 ICL 實踐模板，包括意圖卡、AI 協作協議、亂碼禁止規範、設定先行清單、架構生成流程、驗證閘門與交接檢查表。本文希望證明：真正成熟的 Vibe Coding，不是「憑感覺讓 AI 寫程式」，而是「以結構化意圖、可視化架構、設定契約與輸出協議，使 AI 生成服從人類設計意志」。</p>
+<p><strong>關鍵詞</strong>：Vibe Coding、意圖語言、AI 協作開發、意圖協作層、設定契約層、軟體架構、亂碼治理、可讀性、Agent、提示工程</p>
+<hr>
+<h2>第一章：問題意識——Vibe Coding 時代缺的不是工具，而是意識層</h2>
+<h3>1.1 從語法驅動到意圖驅動</h3>
+<p>傳統軟體開發長期以語法為主要介面。開發者透過具體的程式語言語法、函式、類別、模組、資料結構與控制流程，逐步建構系統。即使在敏捷開發、低程式碼平台、雲端開發工具與自動化測試已經成熟的時代，開發者與系統之間的主要關係仍然是：「人類將意圖翻譯成程式碼，再由機器執行程式碼。」</p>
+<p>然而，大型語言模型與程式碼生成 Agent 的出現，正在改變這個基本關係。人類不再必須逐行表達所有細節，而可以用自然語言描述目標、限制、偏好與預期行為，再由 AI 生成程式碼。這種轉變看似只是生產力工具的升級，實際上卻是一場軟體開發介面的深層轉換：軟體開發正在從「語法驅動」走向「意圖驅動」。</p>
+<p>所謂意圖驅動，不代表語法消失。程式碼仍然要被編譯、解釋、測試與部署；語法仍然是機器執行的形式。但人類的主要操作位置正在上移：從「我如何寫出這段程式」轉向「我如何讓 AI 正確生成這段程式」；從「我如何控制每一行」轉向「我如何定義結構、約束、設定與驗證方式」。</p>
+<p>這正是 Vibe Coding 興起的背景。它之所以吸引人，不只是因為它讓開發更快，而是因為它讓人類第一次感受到一種近似「言出法隨」的開發體驗：說出想法，系統似乎就會生成。但這種體驗背後隱藏一個巨大風險：如果人類只負責說，而不負責定義結構，AI 生成的內容就可能成為無人真正理解的黑箱。</p>
+<h3>1.2 Vibe Coding 的危險誤解</h3>
+<p>Vibe Coding 最容易被誤解成「不用懂程式也能寫軟體」。這種說法有市場傳播上的吸引力，但作為工程方法論，它是不完整甚至危險的。AI 確實能讓非專業者更容易做出原型，也能讓專業開發者更快速生成樣板、界面、CRUD、測試與重構建議；但一個能跑的原型不等於一個可維護的系統，一段能通過當下測試的程式碼不等於一段可交接的工程資產。</p>
+<p>在傳統開發中，程式碼品質的問題常常已經很困難；在 Vibe Coding 中，問題會變得更微妙。因為 AI 產出的程式碼可能在表面上合理、語法上正確、功能上暫時可用，但它是否符合產品長期目標、架構邊界、設定契約、安全約束、命名規範與團隊共識，並不是 AI 自動知道的。AI 只能根據上下文推測；如果上下文缺失，推測就會取代設計。</p>
+<p>因此，Vibe Coding 的核心能力不是「相信 AI」，而是「讓 AI 在正確的結構中生成」。真正會用 AI 的開發者，不是提示寫得最華麗的人，而是能夠把需求拆成正確層次、把模組邊界說清楚、把設定來源定義好、把輸出格式約定好、把驗證條件提前寫明的人。</p>
+<p>換言之，Vibe Coding 不是工程意識的替代品，而是工程意識的放大器。工程意識越清楚，AI 產出越接近可用資產；工程意識越混亂，AI 只會更快地生產混亂。</p>
+<h3>1.3 意識層的缺口</h3>
+<p>當前許多 AI coding 討論集中在工具層：哪個模型比較強、哪個 IDE 比較順、哪個 Agent 能跑 terminal、哪個框架支援自動部署。這些問題重要，但它們不是最根本的問題。更根本的問題是：人類是否知道自己正在讓 AI 做什麼？</p>
+<p>如果人類只是輸入「幫我做一個登入系統」，AI 可能生成表單、路由、資料庫表、JWT、session、OAuth、UI 元件與錯誤處理。這些東西看似完整，但其中每一項都包含設計選擇：密碼如何儲存？token 何時過期？是否支援刷新？錯誤訊息是否暴露資訊？是否允許社群登入？設定是否集中？使用者資料模型是否可擴展？登入模組是否屬於核心層還是功能層？</p>
+<p>如果這些問題沒有被人類預先意識到，AI 就會用統計上常見的模式替人類做決策。這就是 AI 協作開發中最容易被忽略的權力轉移：當人類沒有聲明設計意志，AI 的預設值就會成為系統的隱性架構。</p>
+<p>本文所謂「意識層」，就是人類在開發前、中、後必須保持的設計自覺：知道目標、知道邊界、知道層次、知道控制點、知道風險、知道如何驗證。缺少意識層的 Vibe Coding，只是高速試錯；具備意識層的 Vibe Coding，才可能成為新一代軟體工程。</p>
+<hr>
+<h2>第二章：ICL 的提出——人類意圖與 AI 生成之間的協作介面</h2>
+<h3>2.1 ICL 的定義</h3>
+<p>本文提出「意圖協作層」（Intent Collaboration Layer, ICL），作為人類與 AI 在軟體生成過程中的協作介面。ICL 不是一個特定工具，也不是某種提示模板，而是一套方法論結構。它的功能是將人類模糊、跳躍、語境化的意圖，轉換為 AI 可以穩定生成、工具可以檢查、人類可以理解、後續 AI 可以接續的結構化協議。</p>
+<p>ICL 可以被定義為：</p>
+<blockquote>意圖協作層是位於人類設計意志與 AI 程式碼生成之間的認知—工程介面。它負責將目標、架構、設定、限制、風格、輸出格式與驗證標準明確化，使 AI 的生成結果不只是可執行，而是可讀、可測、可改、可交接。</blockquote>
+<p>這個定義包含幾個關鍵詞。</p>
+<p>第一是「人類設計意志」。AI 可以生成，但不應取代人類對系統目的、權限邊界與長期方向的判斷。第二是「認知—工程介面」。ICL 同時處理人如何思考，以及系統如何被建構。第三是「明確化」。AI 最怕的不是困難，而是模糊。模糊會迫使 AI 猜測，而猜測會形成隱性技術債。第四是「可交接」。在 AI 協作時代，程式碼常常不只被一個人或一個 AI 修改，而是在多人、多模型、多回合之間流動；因此，可交接性成為品質標準的一部分。</p>
+<h3>2.2 ICL 在方法論體系中的位置</h3>
+<p>若將既有軟體方法論整理為層次結構，ICL 位於人類意圖與具體程式碼之間。它與宏觀、中觀、微觀三層認知架構、MSSP、設定契約層（SCL）具有互補關係。</p>
+<p>可以用下列結構表示：</p>
+<pre><code>人類目的與價值判斷
+        ↓
+宏觀層：決策設計
+        ↓
+FMS：系統本體與架構憲法
+        ↓
+SCL：設定契約與可控制性邊界
+        ↓
+ICL：人類—AI 意圖協作協議
+        ↓
+SMS：核心功能層
+        ↓
+TMS：功能子集層
+        ↓
+CODE：具體實作、測試、部署</code></pre>
+<p>這裡要注意：ICL 並不是取代 FMS 或 SCL。FMS 回答「系統是什麼」，SCL 回答「系統允許被如何改變」，ICL 回答「人類如何讓 AI 在這些邊界內生成與修改系統」。</p>
+<p>因此，ICL 的位置不是單純的提示工程，而是協作治理。提示工程關注「怎麼問 AI」；ICL 關注「AI 在什麼結構中被允許回答、修改、生成與決策」。</p>
+<h3>2.3 ICL 的五個核心任務</h3>
+<p>ICL 至少包含五個任務。</p>
+<p>第一，意圖澄清。人類必須說清楚目標、非目標、使用情境、成功條件與排除條件。AI 不應在沒有目標邊界的情況下自由延伸。</p>
+<p>第二，架構對齊。任何程式碼生成都應知道它屬於哪個模組、哪個層次、哪個資料流、哪個介面契約。否則，AI 會把功能寫到看似方便但長期錯誤的位置。</p>
+<p>第三，設定對齊。所有可變參數、開關、權限、環境差異與使用者偏好，應先進入設定契約層，而不是散落在功能碼裡。</p>
+<p>第四，輸出協議。AI 生成的程式碼、註解、檔案、命名、編碼與格式必須遵守共同規範。沒有輸出協議，就沒有穩定交接。</p>
+<p>第五，驗證閉環。AI 的產出必須被測試、審查、格式檢查、亂碼檢查、架構檢查與人類判斷共同驗證。Vibe Coding 的信任不是預設信任，而是迭代驗證後的有限信任。</p>
+<hr>
+<h2>第三章：宏觀、中觀、微觀——AI 協作開發的三層認知基礎</h2>
+<h3>3.1 宏觀層：AI 不能替你決定為何而做</h3>
+<p>宏觀層處理的是目的、價值、策略與約束。對 AI 協作開發而言，宏觀層的核心問題不是「怎麼寫」，而是「為什麼寫」。</p>
+<p>例如，人類要求 AI 做一個筆記應用，宏觀層需要回答：這個應用是給個人使用、團隊使用，還是公開產品？它重視速度、隱私、同步、知識管理，還是美觀？它是否需要離線？是否需要登入？資料是否可以上雲？未來是否支援 AI 搜尋？是否允許外部插件？</p>
+<p>如果這些問題沒有回答，AI 仍然可以生成程式碼，但那只是某種平均化的筆記應用，而不是符合特定意圖的系統。Vibe Coding 最常見的失敗，就是人類把宏觀層問題省略，直接要求 AI 做功能。結果功能確實出現了，但系統的方向不明確。</p>
+<p>宏觀層的輸出應該是一份簡短但明確的意圖宣言：</p>
+<pre><code># Project Intent
+
+## 目的
+建立一個本地優先的個人知識管理工具。
+
+## 非目標
+暫不支援多人協作，不做社群功能，不做公開分享平台。
+
+## 優先級
+1. 資料安全與可匯出
+2. 快速搜尋
+3. 清晰筆記結構
+4. AI 輔助整理
+
+## 核心約束
+- 所有資料預設保存在本地
+- AI 功能必須可關閉
+- 不允許未經使用者同意上傳內容</code></pre>
+<p>這種宏觀層文件看似簡單，卻是 AI 後續生成時最重要的方向約束。</p>
+<h3>3.2 中觀層：AI 不能在無架構中自由生長</h3>
+<p>中觀層處理架構、模組、資料流、依賴關係與視覺化結構。AI 對局部功能生成很強，但對長期架構一致性不一定穩定。因為 AI 的生成常受當前上下文強烈影響，容易為了完成眼前任務而引入新的依賴、重複邏輯、跨層呼叫或硬編碼。</p>
+<p>因此，人類必須在中觀層建立架構邊界。對 AI 說「幫我加一個搜尋功能」是不夠的；更好的說法是：</p>
+<pre><code>請在 features/search/ 中新增搜尋功能。
+不得修改 core/storage/ 的資料格式。
+搜尋索引由 core/indexer/ 提供介面。
+UI 只呼叫 searchService.search(query)，不得直接讀取資料庫。
+新增設定項 enableSemanticSearch，預設 false。
+請同時更新 ARCHITECTURE_MAP.md 與 tests/search.test.ts。</code></pre>
+<p>這種提示不是比較囉嗦，而是比較工程化。它讓 AI 知道自己在哪裡、能碰什麼、不能碰什麼、要更新哪些交接文件。真正成熟的 Vibe Coding 需要這種中觀層意識。</p>
+<h3>3.3 微觀層：AI 可以加速，但不能免除檢查</h3>
+<p>微觀層處理具體程式碼、函式、類別、測試、錯誤處理與效能細節。AI 在微觀層的效率最高，因為大量程式碼模式具有可學習性：表單驗證、API route、資料轉換、單元測試、錯誤訊息、重構命名、類型補全、文件生成等，都可以被 AI 快速完成。</p>
+<p>但微觀層也最容易產生「看似合理」的錯誤。例如 AI 可能使用不存在的 API、生成未被引用的函式、留下重複邏輯、用錯資料型別、吞掉例外、沒有處理邊界條件，或在註解中說一套、程式碼做另一套。</p>
+<p>因此，微觀層的原則是：AI 可以生成，工具必須檢查，人類必須抽查，測試必須覆蓋。人類不需要逐行手寫，但不能完全放棄理解。Vibe Coding 的速度來自生成加速，而不是審查消失。</p>
+<hr>
+<h2>第四章：意圖不是提示——從 Prompt 到 Intent Contract</h2>
+<h3>4.1 提示的局限</h3>
+<p>「提示」通常被理解為人類輸入給 AI 的一句話或一段話。但在軟體開發中，提示若只是自然語言命令，就容易過於短暫、模糊、不可追蹤。一次對話中說過的限制，下一輪可能被遺忘；某個模組的設計理由，換一個 AI 或換一個 session 後就消失；某個命名規則如果沒有落到文件，後續生成可能又回到模型預設。</p>
+<p>因此，在工程語境中，我們不應只談 prompt，而應談 intent contract，也就是「意圖契約」。意圖契約不是一句提示，而是一組穩定、可引用、可檢查、可更新的協作文件。</p>
+<h3>4.2 意圖契約的內容</h3>
+<p>一份基本的意圖契約可以包含以下項目：</p>
+<pre><code># INTENT_CONTRACT.md
+
+## 1. 任務意圖
+本次任務要完成什麼？為誰完成？解決什麼問題？
+
+## 2. 非目標
+本次任務明確不做什麼？哪些功能不應被 AI 自動延伸？
+
+## 3. 架構位置
+新增或修改內容位於哪個模組？屬於 FMS / SCL / SMS / TMS / UI / tests 的哪一層？
+
+## 4. 設定來源
+哪些值必須從 settings 讀取？哪些值可以常數化？哪些值禁止硬編碼？
+
+## 5. 輸出格式
+AI 必須輸出哪些檔案？使用什麼命名？是否需要更新 README、架構圖或測試？
+
+## 6. 禁止事項
+禁止亂碼、禁止不可見字元、禁止未解釋的縮寫、禁止破壞既有 API、禁止修改未授權檔案。
+
+## 7. 驗證條件
+完成後必須通過哪些測試、lint、type check、人工審查與可讀性檢查？</code></pre>
+<p>這份契約的功能是讓 AI 的生成有穩定邊界，也讓人類審查有共同標準。它不是用來增加官僚流程，而是用來降低猜測成本。</p>
+<h3>4.3 從一句話命令到結構化協議</h3>
+<p>對比兩種 Vibe Coding 方式：</p>
+<pre><code>低結構提示：
+幫我加一個匯出功能。</code></pre>
+<pre><code>高結構意圖契約：
+請新增 Markdown 匯出功能。
+位置：features/export/。
+資料來源：只能透過 core/document/documentService 讀取，不得直接讀 DB。
+設定：新增 settings.export.defaultFormat，預設 markdown。
+禁止：不得改動現有 document schema。
+輸出：新增 exportMarkdown.ts、export.test.ts，更新 TMS_MAP.md。
+驗證：測試空文件、含標題文件、含程式碼區塊文件、含中文文件。</code></pre>
+<p>兩者都能讓 AI 生成程式碼，但後者生成的東西更容易被接入現有系統，也更容易被人類與其他 AI 理解。這就是 ICL 的核心：讓自然語言從命令變成契約。</p>
+<hr>
+<h2>第五章：亂碼問題——AI 協作開發中的系統完整性風險</h2>
+<h3>5.1 亂碼的重新定義</h3>
+<p>在傳統語境中，「亂碼」通常指字元編碼錯誤，例如 UTF-8 被錯誤地解讀為其他編碼，導致文字變成不可理解的符號。但在 AI 協作開發中，亂碼的概念必須擴大。因為 AI 的輸出不只是文字，它同時承載意圖、結構、命名、註解、上下文與後續協作線索。</p>
+<p>本文將 AI 協作開發中的亂碼定義為：</p>
+<blockquote>任何破壞程式碼、文件或協議之可讀性、可解析性、可驗證性、可交接性的異常文本、命名、格式、符號或語義結構，都可視為亂碼。</blockquote>
+<p>此定義包含傳統編碼錯誤，但不限於編碼錯誤。</p>
+<h3>5.2 亂碼的五種類型</h3>
+<p>第一，編碼亂碼。這是最傳統的亂碼，常見於錯誤的檔案編碼、混用 UTF-8 與其他編碼、複製貼上造成符號破損、終端機顯示不一致等問題。它會直接降低可讀性，也可能破壞測試字串、路徑、國際化文本與資料處理。</p>
+<p>第二，語義亂碼。程式碼本身合法，但命名、註解、結構沒有清楚意義。例如 <code>handleThing2FinalNew</code>、<code>processDataReal</code>、<code>magicFix</code>、<code>tempLogic</code>。這些命名不會讓編譯器報錯，卻會讓人類與後續 AI 難以理解原始意圖。</p>
+<p>第三，結構亂碼。檔案與模組位置混亂，功能被放在錯誤層級，核心邏輯散落在 UI，設定值散落在功能碼，測試與實作對不上。這類亂碼不一定出現在某一行，而是出現在整體結構。</p>
+<p>第四，協議亂碼。AI 輸出不遵守約定格式，例如原本要求只修改一個檔案，卻輸出五個互相不完整的片段；原本要求 TypeScript，卻混入 Python 偽碼；原本要求繁體中文註解，卻出現中英混雜且縮寫不明。協議亂碼會破壞人機協作的穩定性。</p>
+<p>第五，隱性亂碼。包括不可見 Unicode 字元、零寬字元、混淆字元、看似相同但 code point 不同的符號、不可見控制字元等。這類問題特別危險，因為它們可能在人類視覺上不存在，卻在工具、編譯器、模型或安全檢查中產生真實影響。</p>
+<h3>5.3 亂碼的危害</h3>
+<p>亂碼的第一個危害是可讀性下降。程式碼之所以能長期維護，不只是因為機器能執行，而是因為人類能理解。如果命名混亂、註解破碎、格式不穩定，下一個開發者就必須猜測原作者意圖。在 AI 協作時代，下一個「開發者」也可能是另一個 AI；當 AI 讀到混亂上下文，它也會基於混亂上下文生成下一輪混亂。</p>
+<p>亂碼的第二個危害是可驗證性下降。測試可以驗證某些行為，但無法完全驗證設計意圖。當程式碼中存在不明命名、不明常數、不明資料流時，reviewer 很難判斷它是否符合原始需求。此時，系統可能暫時可用，但其正確性建立在猜測之上。</p>
+<p>亂碼的第三個危害是系統 bug。編碼錯誤可能造成字串比較失敗、檔案路徑錯誤、國際化異常；隱性字元可能造成難以察覺的解析差異；語義亂碼可能讓後續修改者誤用函式；結構亂碼可能造成循環依賴與隱性耦合。</p>
+<p>亂碼的第四個危害是 AI 接續失真。AI 協作開發往往是多回合的。一段不清楚的程式碼會成為下一輪提示上下文的一部分。若上下文污染，AI 會把污染視為既有事實，進一步合理化錯誤設計。</p>
+<p>因此，亂碼不是美觀問題，而是系統完整性問題。</p>
+<h3>5.4 亂碼禁止原則</h3>
+<p>本文提出「亂碼禁止原則」：</p>
+<blockquote>在 AI 協作開發中，任何不可讀、不可解釋、不可驗證、不可交接的輸出，都不得被視為完成品。</blockquote>
+<p>具體而言：</p>
+<ol>
+<li>所有文字檔必須使用 UTF-8。</li>
+<li>禁止不可見 Unicode 字元，除非有明確用途並記錄。</li>
+<li>禁止未解釋的縮寫命名。</li>
+<li>禁止 <code>temp</code>、<code>final2</code>、<code>newnew</code> 類命名進入正式碼。</li>
+<li>禁止註解與程式碼語義不一致。</li>
+<li>禁止 AI 輸出混合多種語言而不標示邊界。</li>
+<li>禁止硬編碼本應進入設定層的值。</li>
+<li>禁止生成無測試、無位置說明、無依賴說明的功能片段。</li>
+</ol>
+<p>這些規則看似嚴格，但在 Vibe Coding 中是必要的。因為 AI 的速度會放大一切：清晰會被放大，混亂也會被放大。</p>
+<hr>
+<h2>第六章：設定契約層與 ICL——讓 AI 不再把假設硬編進功能</h2>
+<h3>6.1 設定層是 AI 生成前的可變性聲明</h3>
+<p>在 AI 協作開發中，設定層的重要性比傳統開發更高。因為 AI 很容易為了完成當前功能，把數值、開關、模型選項、權限、API endpoint、timeout、語言、主題、檔案路徑等直接寫死在功能碼裡。短期看，這樣最快；長期看，這些硬編碼會成為系統的隱性假設。</p>
+<p>設定契約層的核心意義是：在功能生成之前，先聲明系統有哪些可變點。AI 生成任何功能時，都應知道哪些東西不能寫死，必須從 settings 或 config registry 讀取。</p>
+<p>例如，在開發 AI 筆記工具時，這些都應該先進入設定：</p>
+<pre><code>{
+  &quot;ai&quot;: {
+    &quot;enabled&quot;: true,
+    &quot;defaultModel&quot;: &quot;system-default&quot;,
+    &quot;reasoningLevel&quot;: &quot;balanced&quot;,
+    &quot;allowCloudProcessing&quot;: false
+  },
+  &quot;privacy&quot;: {
+    &quot;localFirst&quot;: true,
+    &quot;uploadRequiresConfirmation&quot;: true,
+    &quot;memoryEnabled&quot;: false
+  },
+  &quot;editor&quot;: {
+    &quot;language&quot;: &quot;zh-TW&quot;,
+    &quot;autoSave&quot;: true,
+    &quot;defaultExportFormat&quot;: &quot;markdown&quot;
+  },
+  &quot;agent&quot;: {
+    &quot;allowFileWrite&quot;: false,
+    &quot;allowShellCommand&quot;: false,
+    &quot;allowNetworkAccess&quot;: false
+  }
+}</code></pre>
+<p>這不是瑣碎配置，而是在定義 AI 與系統的可控制性邊界。</p>
+<h3>6.2 設定先行如何改善 Vibe Coding</h3>
+<p>設定先行能改善 Vibe Coding 的四個問題。</p>
+<p>第一，減少隱性假設。AI 不需要自行猜測預設值，而是從設定契約讀取。</p>
+<p>第二，提高一致性。多個功能都從同一設定來源讀取，避免 A 模組預設 dark mode、B 模組預設 light mode 的矛盾。</p>
+<p>第三，提高可調適性。使用者或管理者可以改設定，而不是修改程式碼。</p>
+<p>第四，提高安全性。Agent 權限、檔案存取、網路存取、背景任務等高風險能力必須由設定層明確控制。</p>
+<p>因此，ICL 對 AI 的指令應包含設定層要求。例如：</p>
+<pre><code>新增功能時，凡涉及模型名稱、使用者偏好、檔案路徑、權限、timeout、語言、主題、匯出格式、是否啟用 AI 功能，皆不得硬編碼。請先檢查 settings.schema.json 是否已有欄位；若無，先新增設定欄位、預設值與說明，再實作功能。</code></pre>
+<p>這類規則一旦文件化，AI 的產出品質會明顯穩定。</p>
+<hr>
+<h2>第七章：ICL 的核心原則</h2>
+<h3>7.1 意圖先於程式碼</h3>
+<p>任何 AI 生成任務都應先聲明意圖。沒有意圖，程式碼只是實作片段；有了意圖，程式碼才有可判斷的方向。</p>
+<p>意圖至少要包含：目標、使用者、非目標、成功條件、失敗條件、限制條件。若人類無法說清楚這些內容，不應急著要求 AI 生成完整功能。</p>
+<h3>7.2 架構先於功能</h3>
+<p>功能必須知道自己屬於哪裡。任何新增功能，都應先回答：它是核心功能還是可選功能？它依賴哪些模組？它是否改動資料模型？它是否需要設定？它是否破壞既有邊界？</p>
+<p>架構先於功能，不代表每次都要做重量級設計，而是至少要有位置意識。Vibe Coding 最怕功能自由漂浮，因為 AI 會把程式碼放在「它看起來最方便」的地方，而不是「系統長期最合理」的地方。</p>
+<h3>7.3 設定先於硬編碼</h3>
+<p>任何可能被調整、個人化、授權、部署差異化、實驗控制、使用者選擇影響的值，都應優先進入設定層。硬編碼只適合真正穩定、不需要暴露控制權的常數。</p>
+<p>設定先行是防止功能長歪的關鍵。因為設定層會迫使設計者回答：這個東西要不要給使用者控制？要不要給管理者控制？要不要給環境控制？要不要給 Agent 控制？如果答案不清楚，功能本身也還沒完全設計清楚。</p>
+<h3>7.4 協議先於生成</h3>
+<p>讓 AI 生成之前，必須先約定輸出形式。包括：檔案結構、語言、編碼、命名、註解、測試、文件更新、禁止事項與驗證方式。</p>
+<p>協議不是限制 AI，而是讓 AI 變成可協作的工程代理。沒有協議，AI 只是輸出文字；有協議，AI 才能穩定參與系統建構。</p>
+<h3>7.5 可讀性先於速度</h3>
+<p>AI 的主要誘惑是速度。但速度若以可讀性為代價，最後會轉化為理解成本、維護成本與返工成本。</p>
+<p>在 Vibe Coding 中，應建立一條底線：任何無法被人類快速理解的 AI 輸出，都必須重寫或要求 AI 解釋後重構。不可讀不是小問題，而是技術債生成的起點。</p>
+<h3>7.6 可驗證性先於信任</h3>
+<p>AI 生成的東西不能因為「看起來合理」就被接受。信任必須來自驗證。驗證包括單元測試、整合測試、型別檢查、lint、架構檢查、設定檢查、亂碼檢查與人工審查。</p>
+<p>成熟的 Vibe Coding 並不盲信 AI，也不敵視 AI，而是建立一套讓 AI 可被信任的流程。</p>
+<h3>7.7 可交接性先於完成感</h3>
+<p>一個功能是否完成，不只看它現在能不能跑，也要看下一個人或下一個 AI 能不能理解、修改、擴展與除錯。若一段程式碼只能由當下生成它的 AI 解釋，不能被其他協作者接續，那它還不是成熟的工程資產。</p>
+<hr>
+<h2>第八章：AI 協作輸出協議</h2>
+<h3>8.1 為什麼需要輸出協議</h3>
+<p>AI 的輸出具有高彈性。這是優點，也是風險。人類一句話可以讓 AI 生成完整專案，也可以讓它輸出片段、偽碼、測試、文件、shell 指令或說明。若沒有輸出協議，AI 可能每次用不同格式回答，導致上下文難以累積。</p>
+<p>輸出協議的目的，是讓 AI 的彈性進入可治理範圍。</p>
+<h3>8.2 基本輸出協議模板</h3>
+<pre><code># AI_OUTPUT_PROTOCOL.md
+
+## 語言與編碼
+- 所有文字檔使用 UTF-8。
+- 所有中文使用繁體中文。
+- 禁止不可見 Unicode 字元。
+
+## 命名規則
+- 變數與函式名稱必須語義明確。
+- 禁止 temp、final、new、data2 等無意義命名。
+- 若使用縮寫，必須在註解或文件中說明。
+
+## 檔案規則
+- 新增檔案前必須說明檔案位置與目的。
+- 不得在未授權情況下修改核心模組。
+- 修改架構相關檔案時，必須同步更新架構索引。
+
+## 設定規則
+- 可變值不得硬編碼。
+- 新增設定必須更新 settings.schema.json。
+- 高風險權限必須預設關閉。
+
+## 測試規則
+- 新增功能必須新增或更新測試。
+- 必須包含正常案例、邊界案例與錯誤案例。
+
+## 回覆格式
+- 先說明修改意圖。
+- 再列出變更檔案。
+- 再提供程式碼。
+- 最後提供驗證方式。</code></pre>
+<p>這份協議可以被放進專案根目錄，並在每次 AI 協作時引用。它等於是人類與 AI 的共同工作規範。</p>
+<h3>8.3 輸出協議與團隊協作</h3>
+<p>在多人團隊中，輸出協議還具有治理功能。不同成員使用不同 AI 工具時，如果沒有共同協議，專案會快速變成多種生成風格的拼貼。A 工具生成的測試格式、B 工具生成的註解風格、C 工具生成的資料夾結構可能互相衝突。</p>
+<p>因此，團隊應把 AI 協作協議納入工程規範，就像納入 lint、formatter、commit message、branch strategy 一樣。AI 不是私人助手，而是參與共同程式碼庫的協作者；既然是協作者，就必須遵守共同規範。</p>
+<hr>
+<h2>第九章：Vibe Coding 的標準工作流</h2>
+<h3>9.1 階段一：意圖宣告</h3>
+<p>開發開始前，人類先寫一份 Intent Card：</p>
+<pre><code># Intent Card
+
+## 任務
+新增本地 Markdown 匯出功能。
+
+## 使用者價值
+讓使用者能將筆記匯出為通用格式，避免資料被鎖定。
+
+## 非目標
+不做 PDF、不做雲端同步、不做批量匯出。
+
+## 成功條件
+單篇筆記可匯出為 UTF-8 Markdown 檔，保留標題、段落、程式碼區塊。
+
+## 風險
+中文編碼、檔名非法字元、程式碼區塊跳脫問題。</code></pre>
+<p>這一步的目的是防止 AI 自動擴張需求。</p>
+<h3>9.2 階段二：架構定位</h3>
+<p>接著定位功能層級：</p>
+<pre><code>## 架構位置
+- 屬於 TMS：features/export/
+- 依賴 SMS：core/document/
+- 不得直接讀取資料庫
+- 不得修改 document schema
+- 需要更新 TMS_MAP.md</code></pre>
+<p>這一步的目的是防止 AI 把功能寫到錯誤位置。</p>
+<h3>9.3 階段三：設定檢查</h3>
+<p>檢查是否需要設定：</p>
+<pre><code>## 設定需求
+新增：settings.export.defaultFormat = &quot;markdown&quot;
+新增：settings.export.defaultEncoding = &quot;utf-8&quot;
+新增：settings.export.sanitizeFileName = true</code></pre>
+<p>這一步的目的是防止硬編碼。</p>
+<h3>9.4 階段四：生成請求</h3>
+<p>此時才要求 AI 生成：</p>
+<pre><code>請根據 Intent Card、架構定位與設定需求，新增 Markdown 匯出功能。
+請輸出：
+1. 變更檔案清單
+2. 每個檔案的完整內容
+3. 測試案例
+4. 驗證方式
+5. 是否更新任何設定或文件</code></pre>
+<h3>9.5 階段五：驗證與回饋</h3>
+<p>生成後執行：</p>
+<pre><code>- type check
+- lint
+- unit tests
+- encoding check
+- invisible unicode check
+- settings schema check
+- architecture boundary check
+- human review</code></pre>
+<p>如果失敗，不應直接讓 AI 亂改，而應把錯誤回饋放回 ICL：指出哪個協議被違反、哪個測試失敗、哪個架構邊界被破壞。</p>
+<h3>9.6 階段六：交接文件更新</h3>
+<p>完成後更新：</p>
+<pre><code>- CHANGELOG.md
+- TMS_MAP.md
+- SETTINGS.md
+- TESTING.md
+- AI_COLLAB_LOG.md（可選）</code></pre>
+<p>這一步使下一個人或 AI 能接續理解。</p>
+<hr>
+<h2>第十章：Agent 時代的 ICL</h2>
+<h3>10.1 從 AI 助手到 AI Agent</h3>
+<p>AI 助手主要提供建議與生成文本；AI Agent 則可能讀檔、寫檔、執行命令、呼叫 API、修改專案、跑測試、提交 PR。這種能力提升，使 ICL 更加必要。</p>
+<p>當 AI 只能回答問題時，錯誤主要停留在文字層；當 AI 能修改系統時，錯誤會直接進入程式碼庫。此時，人類不能只靠事後檢查，而必須事前定義權限、路徑、命令、風險與回滾機制。</p>
+<h3>10.2 Agent 權限必須設定化</h3>
+<p>Agent 能不能讀檔？能不能寫檔？能不能執行 shell？能不能連網？能不能安裝套件？能不能修改設定？能不能刪除檔案？這些不能靠口頭信任，而應進入設定契約層與 ICL 協議。</p>
+<p>範例：</p>
+<pre><code>{
+  &quot;agent&quot;: {
+    &quot;fileRead&quot;: true,
+    &quot;fileWrite&quot;: &quot;sandbox-only&quot;,
+    &quot;shell&quot;: false,
+    &quot;network&quot;: false,
+    &quot;packageInstall&quot;: false,
+    &quot;deleteFile&quot;: false,
+    &quot;modifySettings&quot;: &quot;requires-confirmation&quot;
+  }
+}</code></pre>
+<p>這類設定不只是安全機制，也是協作邊界。它明確告訴 AI：你不是全能操作者，而是在受控環境中執行任務的工程代理。</p>
+<h3>10.3 Agent 的可觀測性</h3>
+<p>Agent 修改系統時，必須留下可觀測紀錄：</p>
+<pre><code># AI_COLLAB_LOG.md
+
+## 任務
+新增 Markdown 匯出功能。
+
+## AI 修改檔案
+- features/export/exportMarkdown.ts
+- features/export/export.test.ts
+- settings/settings.schema.json
+- TMS_MAP.md
+
+## 執行命令
+- npm test export
+- npm run lint
+
+## 未處理事項
+- 尚未支援圖片匯出
+- 尚未支援批量匯出</code></pre>
+<p>這種紀錄可以降低後續追蹤成本，也能避免 AI 修改後無人知道改了什麼。</p>
+<hr>
+<h2>第十一章：從 Vibe Coding 到意圖語言</h2>
+<h3>11.1 意圖語言的可能形態</h3>
+<p>未來的開發介面可能不只是自然語言提示，而是更結構化的意圖語言。這種語言介於自然語言、設定檔、架構描述與程式碼之間。它不要求人類逐行寫程式，但要求人類清楚聲明系統目的、模組、資料流、約束與驗證。</p>
+<p>一個簡化的意圖語言可能長這樣：</p>
+<pre><code>intent: export_markdown
+purpose: allow users to export notes as portable markdown files
+layer: TMS
+module: features/export
+inputs:
+  - documentId
+outputs:
+  - markdownFile
+constraints:
+  - use core.documentService only
+  - no direct database access
+  - utf8 only
+settings:
+  - export.defaultFormat
+  - export.defaultEncoding
+tests:
+  - empty_document
+  - chinese_content
+  - code_block
+  - invalid_filename
+forbidden:
+  - hidden_unicode
+  - hardcoded_path
+  - schema_mutation</code></pre>
+<p>這種格式比自然語言更精確，比程式碼更高層。它可能成為未來 AI 軟體生成的重要介面。</p>
+<h3>11.2 言出法隨的工程條件</h3>
+<p>「言出法隨」聽起來像神話，但在工程上，它不是一句話自然變成可靠系統，而是意圖、架構、設定、協議、驗證與權限共同運作的結果。</p>
+<p>真正的言出法隨需要六個條件：</p>
+<ol>
+<li>語義清楚：AI 知道人類要什麼。</li>
+<li>邊界清楚：AI 知道不能做什麼。</li>
+<li>架構清楚：AI 知道東西放哪裡。</li>
+<li>設定清楚：AI 知道哪些值可變。</li>
+<li>協議清楚：AI 知道如何輸出。</li>
+<li>驗證清楚：AI 知道什麼叫完成。</li>
+</ol>
+<p>缺少任何一項，言出法隨就會退化成言出碼亂。</p>
+<h3>11.3 人類角色的升級</h3>
+<p>在意圖語言時代，人類開發者的角色不是消失，而是升級。人類從「語法勞動者」轉向「意圖設計者」、「架構治理者」、「設定邊界設計者」、「AI 協議制定者」、「驗證責任人」。</p>
+<p>這種角色更接近建築師、導演、制度設計者，而不是單純打字員。程式碼仍然重要，但人類的核心價值會更多體現在結構、判斷、約束與取捨上。</p>
+<hr>
+<h2>第十二章：規模感知的 ICL</h2>
+<h3>12.1 小型專案：輕量 ICL</h3>
+<p>小型專案不需要複雜流程，但仍需要最低限度的 ICL。建議保留三個文件：</p>
+<pre><code>README.md
+INTENT.md
+AI_RULES.md</code></pre>
+<p>其中 INTENT.md 說明目的與非目標，AI_RULES.md 說明禁止亂碼、禁止硬編碼、必須更新測試。這已足以避免大部分混亂。</p>
+<h3>12.2 中型專案：標準 ICL</h3>
+<p>中型專案建議加入：</p>
+<pre><code>FMS/
+settings/
+AI_OUTPUT_PROTOCOL.md
+ARCHITECTURE_MAP.md
+AI_COLLAB_LOG.md</code></pre>
+<p>此時 AI 不再只是個人助手，而是專案協作者。每次重大 AI 生成都應留下意圖、修改範圍與驗證紀錄。</p>
+<h3>12.3 大型專案：治理型 ICL</h3>
+<p>大型專案應建立 AI governance：</p>
+<pre><code>governance/
+├── ai-collaboration-policy.md
+├── allowed-agent-actions.md
+├── forbidden-patterns.md
+├── code-generation-review.md
+├── prompt-templates/
+└── quality-gates/</code></pre>
+<p>AI 生成的程式碼應通過架構 lint、設定 schema 檢查、隱藏字元檢查、依賴邊界檢查與審查流程。</p>
+<h3>12.4 超大型專案：聯邦式 ICL</h3>
+<p>超大型專案可能有多個團隊、多個 Agent、多個子系統。此時 ICL 應採聯邦治理：頂層制定共同協議，各子系統可有自己的細則。</p>
+<pre><code>monorepo/
+├── global-ai-policy/
+├── shared-intent-language/
+├── subsystem-a/AI_RULES.md
+├── subsystem-b/AI_RULES.md
+└── ai-audit-log/</code></pre>
+<p>這樣既保留一致性，又允許子系統自治。</p>
+<hr>
+<h2>第十三章：限制、風險與反模式</h2>
+<h3>13.1 過度協議化</h3>
+<p>ICL 的目標不是把開發變成填表。若專案很小、任務很簡單，過度文件化會降低效率。因此 ICL 必須規模感知。能用三行說清楚的任務，不需要寫三頁契約。</p>
+<h3>13.2 假裝有架構</h3>
+<p>有些團隊可能建立大量文件，但文件不被引用、不被更新、不影響 AI 生成。這種情況比沒有文件更危險，因為它製造了虛假的安全感。ICL 文件必須進入實際工作流，否則只是裝飾。</p>
+<h3>13.3 過度信任 AI 自我審查</h3>
+<p>讓 AI 檢查 AI 生成的內容有價值，但不能完全取代人類與工具。AI 可能合理化自己的錯誤，也可能忽略業務語境。關鍵任務仍需人類審查。</p>
+<h3>13.4 意圖過度模糊</h3>
+<p>「做得好一點」、「比較現代」、「更有質感」、「更完整」這類提示可以作為補充，但不能作為工程主指令。意圖語言需要把模糊感受轉換為可操作約束，例如「減少頁面跳轉」、「支援鍵盤操作」、「首屏載入小於 2 秒」、「所有設定集中於 settings」。</p>
+<h3>13.5 AI 生成的隱性債務</h3>
+<p>AI 可以快速生成大量程式碼，這會降低人類對新增複雜度的敏感度。傳統開發中，寫一千行程式碼需要時間；AI 時代，一千行可能幾秒出現。速度越快，越需要審查新增複雜度是否值得。</p>
+<hr>
+<h2>第十四章：結論——真正的 Vibe Coding 是結構化意志的外化</h2>
+<p>Vibe Coding 的出現，是軟體開發史上的重要轉折。它讓自然語言第一次接近程式生成的核心介面，也讓更多人能以較低門檻參與軟體創造。但若因此誤以為工程意識不再重要，將是嚴重誤判。</p>
+<p>AI 可以生成程式碼，但不能替人類承擔所有設計責任。AI 可以補全細節，但不能替人類決定系統目的。AI 可以快速試錯，但不能保證長期可維護。AI 可以輸出大量內容，但輸出若不可讀、不可驗證、不可交接，就只是更快生成的技術債。</p>
+<p>本文提出 ICL，正是為了填補 Vibe Coding 時代最缺乏的意識層。ICL 要求人類在與 AI 協作前先聲明意圖，在生成前先定義架構，在功能前先定義設定，在輸出前先定義協議，在信任前先建立驗證。</p>
+<p>成熟的 Vibe Coding 不是「人類退場，AI 接管」，而是「人類升維，AI 執行」。人類從逐行編碼者，轉變為意圖設計者、架構治理者、設定邊界制定者、協作協議設計者與驗證責任人。</p>
+<p>未來真正的意圖語言，也不會只是更自然的提示，而會是自然語言、架構描述、設定契約、權限模型與驗證規則的混合體。那時，所謂「言出法隨」不再只是浪漫比喻，而是一套嚴格的工程條件：語義清楚、邊界清楚、架構清楚、設定清楚、協議清楚、驗證清楚。</p>
+<p>在這個意義上，ICL 的核心命題可以總結為：</p>
+<blockquote>Vibe Coding 的真正價值，不在於讓人類不用懂程式，而在於讓懂結構的人能用更高層次的意圖駕馭程式生成。</blockquote>
+<p>或更簡潔地說：</p>
+<blockquote>程式碼可以由 AI 生成，但系統意志必須由人類聲明。</blockquote>
+<hr>
+<h1>附錄 A：ICL 最小實踐模板</h1>
+<pre><code># ICL_MINIMAL.md
+
+## 任務意圖
+
+## 非目標
+
+## 架構位置
+
+## 設定需求
+
+## AI 禁止事項
+- 禁止亂碼
+- 禁止不可見 Unicode
+- 禁止未解釋縮寫
+- 禁止硬編碼可變值
+- 禁止修改未授權檔案
+
+## 輸出要求
+- 變更檔案清單
+- 完整程式碼
+- 測試案例
+- 驗證方式
+
+## 完成標準
+- 測試通過
+- 格式檢查通過
+- 設定 schema 更新
+- 文件同步更新</code></pre>
+<hr>
+<h1>附錄 B：AI 亂碼檢查清單</h1>
+<pre><code># NO_GARBAGE_CHECKLIST.md
+
+## 編碼
+- [ ] 所有檔案為 UTF-8
+- [ ] 中文顯示正常
+- [ ] 無不可見 Unicode 字元
+
+## 命名
+- [ ] 無 temp/final/new/data2 等無意義命名
+- [ ] 函式名稱能表達行為
+- [ ] 變數名稱能表達角色
+- [ ] 縮寫已有說明
+
+## 註解
+- [ ] 註解與程式碼一致
+- [ ] 無破碎語句
+- [ ] 無中英混亂導致語義不明
+
+## 結構
+- [ ] 檔案位置符合架構
+- [ ] 無跨層直接依賴
+- [ ] 無重複功能片段
+
+## 設定
+- [ ] 可變值未硬編碼
+- [ ] 新設定已更新 schema
+- [ ] 高風險權限預設關閉</code></pre>
+<hr>
+<h1>附錄 C：標準 AI 協作提示模板</h1>
+<pre><code>你是本專案的 AI 協作工程代理。請遵守以下規則：
+
+1. 先理解任務意圖，不要自行擴張需求。
+2. 所有新增功能必須說明架構位置。
+3. 所有可變值必須進入設定層，不得硬編碼。
+4. 所有輸出使用 UTF-8，不得包含不可見 Unicode 字元。
+5. 命名必須語義清楚，不得使用 temp/final/new/data2 等名稱。
+6. 修改程式碼時，必須列出變更檔案與原因。
+7. 新增功能必須新增或更新測試。
+8. 若任務要求會破壞既有架構，請先提出風險，不要直接修改。
+9. 若資訊不足，請列出缺失假設，並採最小安全實作。
+10. 完成後請提供驗證方式。</code></pre>
+<hr>
+<h1>附錄 D：ICL 與既有方法論的關係</h1>
+<pre><code>三層認知架構：定義人類思考軟體的層次
+MSSP：定義架構如何可視化、索引化、文件化
+SCL：定義系統允許被如何改變
+ICL：定義人類與 AI 如何協作生成與修改系統
+DMS：定義系統如何被診斷、觀測與回溯</code></pre>
+<p>ICL 並不是取代上述方法論，而是面向 AI 協作時代的補充層。當 AI 成為程式碼生產者，原本隱含在人類腦中的架構意識、設定意識、協議意識與驗證意識，都必須被外顯化。ICL 的任務，就是完成這種外顯化。</p>
+<hr>
+<h1>參考概念與延伸閱讀</h1>
+<ol>
+<li>Advait Sarkar, Ian Drosos, <em>Vibe coding: programming through conversation with artificial intelligence</em>, arXiv, 2025.</li>
+<li>Veronica Pimenova et al., <em>Good Vibrations? A Qualitative Study of Co-Creation, Communication, Flow, and Trust in Vibe Coding</em>, arXiv, 2025.</li>
+<li>Yuyao Ge et al., <em>A Survey of Vibe Coding with Large Language Models</em>, arXiv, 2025.</li>
+<li>Promptfoo, <em>The Invisible Threat: How Zero-Width Unicode Characters Can Manipulate AI Coding Assistants</em>, 2025.</li>
+<li>Neo K., <em>程式語言設計開發的普適方法論：三層認知架構的理論建構與實踐路徑</em>。</li>
+<li>Neo K., <em>MSSP：母集與子集範式——可視化驅動的軟體架構方法論</em>。</li>
+<li>Neo K., <em>軟體專案的規模感知架構組織範式：從認知負荷到動態演化的系統性方法論</em>。</li>
+<li>Neo K., <em>設定契約層（SCL）：軟體系統可控制性邊界的先行架構方法論</em>。</li>
+</ol>
+<hr>
+<h1>版本紀錄</h1>
+<h2>v1.0</h2>
+<ul>
+<li>初版提出 ICL：意圖協作層。</li>
+<li>建立 Vibe Coding 與意圖語言的工程定位。</li>
+<li>定義 AI 協作開發中的亂碼類型與禁止原則。</li>
+<li>建立 ICL 與三層認知架構、MSSP、SCL、規模感知範式的關係。</li>
+<li>提出最小實踐模板、亂碼檢查清單與 AI 協作提示模板。</li>
+</ul>
+<div class="altbar">原始檔（供 RAG/下載）：<a href="/raw/lm-000091.md" rel="noopener">/raw/lm-000091.md</a> [md] · id: lm-000091</div>
+</article>
+<footer><p>Neo.K (許筌崴) · Cl + ε</p></footer>
+</body>
+</html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EveMissLab 算子體系規範 v0.1（種子稿 · EVEMISSLAB Logic Matrix</title>
+<meta name="description" content="EveMissLab 算子體系規範 v0.1（種子稿 | EVEMISSLAB Logic Matrix V2.1">
+<meta name="author" content="Neo.K (許筌崴)">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<meta name="lm-paper-id" content="lm-000070">
+<link rel="alternate" type="text/markdown" href="/raw/lm-000070.md" title="原始檔 / source (md)">
+<link rel="canonical" href="https://logic.evemisslab.com/p/lm-000070/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "EveMissLab 算子體系規範 v0.1（種子稿",
+  "url": "https://logic.evemisslab.com/p/lm-000070/",
+  "identifier": "lm-000070",
+  "inLanguage": "zh-Hant",
+  "author": {"@type": "Person", "name": "Neo.K (許筌崴)"},
+  "publisher": {"@type": "Organization", "name": "EveMissLab / 一言諾科技有限公司"},
+  "isPartOf": {"@type": "Collection", "name": "EVEMISSLAB Logic Matrix", "url": "https://logic.evemisslab.com"},
+  "encodingFormat": "text/html"
+}
+</script>
+<link rel="prefetch" href="/api/log-crawler?slug=EveMissLab-v0.1.md">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#000; color:#0f0; font-family:'Courier New',monospace; padding:20px; line-height:1.6; }
+.header { text-align:center; border:2px solid #0f0; padding:18px; margin-bottom:22px; }
+.header h1 { font-size:1.5em; letter-spacing:2px; }
+.header p { margin-top:6px; opacity:0.8; font-size:0.9em; }
+.disclaimer { border:1px dashed #ff9900; color:#ff9900; padding:14px; margin:0 auto 22px; max-width:1000px; font-size:0.88em; }
+.disclaimer-title { font-weight:bold; margin-bottom:10px; display:block; letter-spacing:1px; }
+.disclaimer-divider { border:none; border-top:1px dashed #ff9900; margin:12px 0; opacity:0.55; }
+article { max-width:1000px; margin:0 auto; border:1px solid #0f0; padding:24px; }
+article h1,article h2,article h3,article h4 { margin:18px 0 8px; letter-spacing:1px; }
+article h1 { font-size:1.5em; } article h2 { font-size:1.25em; } article h3 { font-size:1.1em; }
+article p { margin:10px 0; }
+article ul,article ol { margin:10px 0 10px 24px; }
+article blockquote { border-left:3px solid #0f0; padding-left:12px; opacity:0.85; margin:10px 0; }
+article pre { background:rgba(0,255,0,0.06); border:1px solid #0f0; padding:12px; overflow-x:auto; margin:12px 0; }
+article code { background:rgba(0,255,0,0.08); padding:1px 5px; }
+article pre code { background:none; padding:0; }
+article a { color:#0ff; }
+.nav { max-width:1000px; margin:0 auto 16px; font-size:0.9em; display:flex; justify-content:space-between; }
+.nav a { color:#0f0; text-decoration:none; }
+.nav a:hover { color:#0ff; }
+.altbar { max-width:1000px; margin:14px auto 0; font-size:0.85em; opacity:0.7; }
+.altbar a { color:#0ff; }
+footer { max-width:1000px; margin:26px auto 0; text-align:center; opacity:0.5; font-size:0.82em; }
+</style>
+</head>
+<body>
+<div class="nav"><a href="/index.html">&larr; 回 Logic Matrix 索引</a><div><a href="/cosmomind.html" style="margin-right:15px;">→ 星環式認知展開圖</a><a href="/base-space.html">🧬 拓撲底空間</a></div></div>
+<header class="header"><h1>EveMissLab 算子體系規範 v0.1（種子稿</h1><p>EVEMISSLAB Logic Matrix · EveMissLab / 一言諾科技有限公司</p></header>
+<section class="disclaimer">
+  <span class="disclaimer-title">[認識論邊界宣告 / EPISTEMOLOGICAL DISCLAIMER]</span>
+  <div class="disclaimer-block">
+    <p><b>[CHT]</b> 本矩陣內所有論文之公式與數據為「啟發式模擬參數」，用於驗證理論架構與推演因果鏈，<b>未經實證校準</b>，請勿作為現實物理測量數據引用 or 處理。EVEMISSLAB 採行「邏輯先行（Logic-First）」原則：概念架構與系統因果映射優先於統計實證，但不排除未來實證對接。</p>
+  </div>
+  <hr class="disclaimer-divider">
+  <div class="disclaimer-block">
+    <p><b>[ENG]</b> The numerical parameters within these frameworks are <i>illustrative model coefficients</i> used for structural verification and causal mapping; they are <b>not empirically calibrated</b> and must not be treated as physical measurements. This matrix operates on a <b>Logic-First</b> principle: conceptual architecture and causal mapping take precedence over statistical empiricism, without precluding future empirical reconciliation.</p>
+  </div>
+</section>
+<article>
+<h1>EveMissLab 算子體系規範 v0.1（種子稿）</h1>
+<h2>三元動詞的符號定位與雙族算子系統</h2>
+<hr>
+<p><strong>文件編號</strong>：EML-NOTATION-2026-v0.1-SEED <strong>日期</strong>：2026年5月19日 <strong>作者</strong>：Neo.K (許筌崴) &amp; Theia <strong>機構</strong>：EveMissLab（一言諾科技有限公司） <strong>文件性質</strong>：種子稿 — 後續正式展開的綱要骨架 <strong>理論地位</strong>：跨理論符號層基礎建設</p>
+<hr>
+<h2>摘要</h2>
+<p>本文為 EveMissLab 算子體系的種子稿，正式提出將 TUO（三元統一本體論）的三個核心動詞——無限展開、無限連結、無限收斂——從哲學敘述定位為<strong>可運算的代數算子</strong>。本稿確立<strong>雙族系統</strong>作為標準符號架構：三角族 $\{▷, \bowtie, ◁\}$ 處理計算層的單步操作；三重不等族 $\{⫸, ⨝, ⫷\}$ 處理本體層的動詞 ing 永恆進行式。本稿同時揭示一個關鍵的本體論統一：Synthetic Calculus 的差動算子 $\bowtie$ 與 TUO 的連結算子 $\bowtie$ 是同一算子的不同應用尺度——此非符號衝突，而是「關係性運算」本體論統一的證據。本稿保留未解張力為待答清單，留作後續正式論文展開用。</p>
+<p><strong>關鍵詞</strong>：三元動詞、雙族算子、符號定位、差動-連結統一、本體層 vs 計算層</p>
+<hr>
+<h2>0. 文件性質與後續展開計畫</h2>
+<p>本稿是<strong>種子稿</strong>，不是完整論文。目的：</p>
+<ol>
+<li>凍結當前所有已達成的設計共識</li>
+<li>記錄所有未解張力作為待答 TODO</li>
+<li>作為後續正式論文（EML-NOTATION-2026-v1.0 正式版）的骨架</li>
+</ol>
+<p>正式版預計需要展開的內容（<strong>本稿暫不寫</strong>，留作後續）：</p>
+<ul>
+<li>形式化公理系統（算子代數的嚴格定義）</li>
+<li>與既有理論的完整映射表（ETN, Cl, WT, Synthetic Calculus, TUO, HSO, 間隙幾何, DCO）</li>
+<li>範疇論詮釋（雙族作為兩個範疇與其函子關係）</li>
+<li>應用實例（每個算子在物理、認知、AI 中的具體用法）</li>
+<li>與主流數學記號的對照與比較</li>
+</ul>
+<hr>
+<h2>1. 動機與起源</h2>
+<h3>1.1 從哲學敘述到可運算算子</h3>
+<p>TUO（2026.01–04）已建立三元動詞作為存在的最小完備基：</p>
+<p>$$\text{Being} \equiv \text{Closure}(\mathcal{E}, \mathcal{C}, \mathcal{V}) = \text{Closure}(\text{展開ing}, \text{連結ing}, \text{收斂ing})$$</p>
+<p>但 $\mathcal{E}, \mathcal{C}, \mathcal{V}$ 至今仍是<strong>敘述性符號</strong>——可以放進論文段落，但無法直接寫成算式、無法合成、無法在代碼中運算。</p>
+<p><strong>本稿的根本訴求</strong>：給予三元算子真正的代數地位，使其能：</p>
+<ul>
+<li>左/右作用：$▷(x), x◁$</li>
+<li>合成：$▷ \circ \bowtie \circ ◁$</li>
+<li>取冪：$▷^n, ⫸^\infty$</li>
+<li>取逆（待證）：$▷^{-1} \overset{?}{=} ◁$</li>
+<li>進入運算式：$\frac{d}{dt} \bowtie(x, y) = \cdots$</li>
+</ul>
+<h3>1.2 為何要正式定位</h3>
+<p>不正式定位的後果：</p>
+<ul>
+<li>不同論文中 $E, C, V$ 與 $\mathcal{E}, \mathcal{C}, \mathcal{V}$ 混用，可讀性下降</li>
+<li>與主流符號（能量 $E$、常數 $C$、體積 $V$）混淆</li>
+<li>無法區分動詞態（ing）與名詞態</li>
+<li>無法處理 Synthetic Calculus 的差動算子已使用 $\bowtie$ 的事實</li>
+</ul>
+<hr>
+<h2>2. 符號設計原則</h2>
+<h3>2.1 排除清單</h3>
+<p>| 符號 | 排除原因 | |------|---------| | $E, C, V$ | 主流數學佔用（能量、常數/範疇、體積/方差） | | $\mathcal{E}, \mathcal{C}, \mathcal{V}$ | calligraphic家族擁擠，辨識度不足 | | $\nabla, \Delta, \partial$ | 已是運算子貴族 | | $\oplus, \otimes, \odot$ | 代數運算佔滿 | | $\circ$ | 須保留給算子合成本身 | | $◯$ | 已是 Cl（Closure）圖示前身 | | $\infty$ | 保留給 ETN 處理 |</p>
+<h3>2.2 設計原則</h3>
+<ol>
+<li><strong>視覺自明</strong>：符號形狀應暗示其作用方向（外向／關係／內向）</li>
+<li><strong>鏡像對偶</strong>：展開／收斂應是視覺鏡像，以編碼互逆性</li>
+<li><strong>可組合</strong>：可作為字符串直接寫成循環式</li>
+<li><strong>可寫性</strong>：LaTeX 原生支援或可定義</li>
+<li><strong>層級可區分</strong>：不同抽象層的算子需有對應的不同符號家族</li>
+<li><strong>抗壓縮</strong>：能抵抗被主流數學記號慣性吸收（呼應 ETN 精神）</li>
+</ol>
+<hr>
+<h2>3. 三角族：計算層 / 工程層</h2>
+<h3>3.1 定義</h3>
+<p>$$\boxed{\,▷\,\quad\bowtie\,\quad◁\,}$$</p>
+<p>| 符號 | LaTeX | 名稱 | 語義 | |------|-------|------|------| | $▷$ | <code>\triangleright</code> | 展開算子 | 從一態向多態的單步輻射 | | $\bowtie$ | <code>\bowtie</code> | 連結算子 / 差動算子 | 兩態之間的關係性運算 | | $◁$ | <code>\triangleleft</code> | 收斂算子 | 從多態向一態的單步聚合 |</p>
+<h3>3.2 設計邏輯</h3>
+<ul>
+<li>$▷$ 與 $◁$ 是嚴格鏡像 → 直接視覺編碼「展／收互為（候選）逆運算」</li>
+<li>$\bowtie \equiv ▷◁$ 的接合 → 連結在結構上是展開與收斂的「會面」</li>
+<li>$▷ \bowtie ◁$ 直接寫出一個 TUO 週期作為字符串</li>
+</ul>
+<h3>3.3 適用層級</h3>
+<ul>
+<li>可寫入算法、代碼、實驗論文</li>
+<li>Synthetic Calculus 的微分運算</li>
+<li>DCO 的動態圓單步操作</li>
+<li>間隙幾何學的具體填色</li>
+<li>WT 的編織單步</li>
+<li>工程化的 UBCVC 驗證循環</li>
+</ul>
+<h3>3.4 與 Synthetic Calculus 的合一</h3>
+<p><strong>關鍵發現</strong>：Neo.K 的 Synthetic Calculus 已使用 $\bowtie$ 作為差動算子。原本看似的「符號衝突」實為<strong>本體論統一的證據</strong>：</p>
+<p>$$\boxed{\text{差動} \equiv \text{連結} \equiv \text{關係性運算}}$$</p>
+<ul>
+<li>差動：兩個無限鄰近狀態之間的關係</li>
+<li>連結：兩個實體之間的關係</li>
+<li>範疇論態射：兩個對象之間的關係</li>
+</ul>
+<p>三者在拓撲層面是同一個算子，只是作用尺度不同。$\bowtie$ 因此成為「邊界生成算子」的標準符號——直接補強 2026.01 無限交接論的核心命題：<strong>極限源於關係</strong>。</p>
+<hr>
+<h2>4. 三重不等族：本體層 / ing 層</h2>
+<h3>4.1 定義</h3>
+<p>$$\boxed{\,⫸\,\quad⨝\,\quad⫷\,}$$</p>
+<p>| 符號 | Unicode | 名稱 | 語義 | |------|---------|------|------| | $⫸$ | U+2AF8 | 無限展開ing | 展開的極限／永恆進行 | | $⨝$ | U+2A1D | 無限連結ing | 連結的極限／全域關係化 | | $⫷$ | U+2AF7 | 無限收斂ing | 收斂的極限／永恆聚合 |</p>
+<h3>4.2 設計邏輯</h3>
+<ul>
+<li>每個符號內含「三」的視覺暗示 → 自指 TUO 結構</li>
+<li>Unicode 已列為 math operator 但實際幾乎無人使用 → 可宣稱主權</li>
+<li>比三角族更厚重 → 適合元-元理論層級</li>
+<li>處理你 2026.04.07 動詞本體論的「ing 永恆進行式」狀態</li>
+</ul>
+<h3>4.3 適用層級</h3>
+<ul>
+<li>TUO 動詞本體論</li>
+<li>ETN 的極限狀態</li>
+<li>泡沫海的 Planck 頻率循環</li>
+<li>HSO 的本體論操作</li>
+<li>純哲學／形而上發表</li>
+</ul>
+<hr>
+<h2>5. 雙族關係：局部 vs 極限</h2>
+<h3>5.1 對應原理</h3>
+<p>雙族關係嚴格類比主流數學的「局部運算 vs 極限/全域運算」配對：</p>
+<p>| 主流數學 | EveMissLab | |---------|-----------| | $+ \to \sum$ | $▷ \to ⫸$ | | $\times \to \prod$ | $\bowtie \to ⨝$ | | $\cap \to \bigcap$ | $◁ \to ⫷$ |</p>
+<h3>5.2 形式化等價（草擬）</h3>
+<p>$$⫸ \equiv \lim_{n\to\infty} ▷^n, \quad ⨝ \equiv \int_{\mathcal{M}} \bowtie\, d\mu, \quad ⫷ \equiv \lim_{n\to\infty} ◁^n$$</p>
+<h3>5.3 升階／降階規則</h3>
+<ul>
+<li><strong>升階算子</strong> $\mathcal{U}$：將三角族提升至三重不等族</li>
+</ul>
+<p>$$\mathcal{U}: \{▷, \bowtie, ◁\} \to \{⫸, ⨝, ⫷\}$$</p>
+<ul>
+<li><strong>降階算子</strong> $\mathcal{D}$：將三重不等族投影回三角族（取某個有限近似）</li>
+</ul>
+<p>$$\mathcal{D}: \{⫸, ⨝, ⫷\} \to \{▷, \bowtie, ◁\}$$</p>
+<ul>
+<li>$\mathcal{D} \circ \mathcal{U} = \text{id}$？$\mathcal{U} \circ \mathcal{D} = \text{id}$？<strong>待證</strong></li>
+</ul>
+<h3>5.4 核心命題</h3>
+<p>$$\boxed{\text{三重不等族} = \text{三角族在無限疊代下的極限狀態}}$$</p>
+<p>對應 2026.04.07 洞察：三元就是三元 ing 的無限快速循環。</p>
+<hr>
+<h2>6. 擴張軸</h2>
+<p>雙族系統預留三條擴張軸：</p>
+<h3>軸 1：修飾子（Decoration）</h3>
+<p>| 記號 | 語義 | |------|------| | $▷^\circ$ | 進行式（動詞態） | | $\dot{▷}$ | 時間導數 | | $\bar{▷}$ | 平均態 | | $\tilde{▷}$ | 擾動態 | | $▷^*$ | 對偶／共軛 | | $▷^\dagger$ | Hermitian 共軛 | | $▷^{-1}$ | 逆元（與 $◁$ 的關係待證） |</p>
+<h3>軸 2：複合算子（Composite）</h3>
+<p>| 記號 | 語義 | |------|------| | $▷\bowtie$ | 展開後立即連結（單一複合算符） | | $\bowtie◁$ | 連結後立即收斂 | | $▷◁$ | 展開-收斂直接配對 | | $\bowtie^2$ | 二階關係（關係的關係） |</p>
+<h3>軸 3：指標化（Indexed）</h3>
+<p>| 記號 | 語義 | |------|------| | $▷<em>\theta$ | 以 $\theta$ 為展開參數（呼應 TUO v0 的 $E</em>\theta$） | | $▷<em>n$ | 第 n 次展開 | | $▷</em>{[a,b]}$ | 在區間上的展開 |</p>
+<p><strong>注</strong>：原 TUO 符號 $E_\theta, C_t, V_\phi$ 保留為<strong>指標化的歷史版本</strong>，新符號是無指標的本體版本。新舊兼容。</p>
+<hr>
+<h2>7. 未解張力與待答問題（TODO 清單）</h2>
+<p>正式版必須回答以下問題：</p>
+<h3>Q1：逆元關係</h3>
+<p>$$\overset{?}{◁} = ▷^{-1}$$</p>
+<ul>
+<li>若是 → 三元退化為「一個算子 + 其逆 + 其接合」，幾乎證明<strong>一元統一論的可能性</strong>（長期方向）</li>
+<li>若否 → 需說明為何 $▷ \circ ◁ \neq \text{id}$</li>
+</ul>
+<h3>Q2：結合律</h3>
+<p>$$▷ \circ (\bowtie \circ ◁) \overset{?}{=} (▷ \circ \bowtie) \circ ◁$$</p>
+<ul>
+<li>若成立 → TUO 是嚴格幺半群（monoid）</li>
+<li>若不成立 → TUO 是非結合代數（更接近 Lie 結構或 loop）</li>
+</ul>
+<h3>Q3：不動點與 Cl 的關係</h3>
+<p>$$\bowtie(x) = x \quad \text{何時成立？}$$ $$\text{Cl} \overset{?}{=} ⨝(\text{fix point}) \overset{?}{=} ▷ \circ \bowtie \circ ◁ \text{ 的不動點}$$</p>
+<ul>
+<li>若 Cl 就是三角族閉合循環的不動點 → TUO 與 DCO 在符號層完成統一</li>
+</ul>
+<h3>Q4：與 ETN 的兼容性</h3>
+<p>$$\text{ETN}(\Omega) \overset{?}{=} ⫸ \circ ⨝ \circ ⫷ (\text{Cl})$$</p>
+<ul>
+<li>若成立 → ETN 與 TUO 符號系統完全整合</li>
+</ul>
+<h3>Q5：兩族之間的轉換規則</h3>
+<ul>
+<li>何時可以從 $\bowtie$ 升階到 $⨝$？</li>
+<li>是否需要顯式定義升階算子 $\mathcal{U}$？升階是否可逆？</li>
+</ul>
+<h3>Q6：差動 vs 連結的形式區分</h3>
+<ul>
+<li>若兩者都用 $\bowtie$，是否需上下文或下標區分：$\bowtie_{\text{calc}}$ vs $\bowtie_{\text{TUO}}$？</li>
+<li>或直接承認<strong>兩者是同一算子的不同應用尺度</strong>——後者哲學上更強</li>
+</ul>
+<h3>Q7：交換律</h3>
+<p>$$▷ \circ \bowtie \overset{?}{=} \bowtie \circ ▷$$</p>
+<ul>
+<li>大概率不成立（先展開再連結 ≠ 先連結再展開）</li>
+<li>若不成立 → 三元構成<strong>非交換代數</strong>，更接近物理場論結構</li>
+</ul>
+<h3>Q8：與漢字算子的雙軌兼容</h3>
+<ul>
+<li>對外發表用 $\{▷, \bowtie, ◁\}$ 與 $\{⫸, ⨝, ⫷\}$</li>
+<li>EveMissLab 內部是否保留漢字算子 $展^\circ, 連^\circ, 收^\circ$ 作為簽名符號？</li>
+<li>雙軌制如何形式化？</li>
+</ul>
+<hr>
+<h2>8. 與既有理論的接口（待映射）</h2>
+<p>正式版需建立完整映射表，本稿僅列出需要對齊的理論清單：</p>
+<ul>
+<li><strong>TUO</strong>（2026.01–04 系列）：$\mathcal{E}, \mathcal{C}, \mathcal{V} \to ▷, \bowtie, ◁$</li>
+<li><strong>ETN</strong>：與三重不等族在極限狀態的兼容</li>
+<li><strong>Cl / DCO</strong>：Cl 作為 $⨝$ 的不動點</li>
+<li><strong>WT（Weaving Theory v7.3+）</strong>：編織單步 = $\bowtie$ 應用</li>
+<li><strong>Synthetic Calculus v0.2</strong>：差動 = $\bowtie$（已就緒）</li>
+<li><strong>HSO</strong>：本體論操作直接用三重不等族</li>
+<li><strong>間隙幾何學</strong>：填色操作為 $▷ \bowtie ◁$ 循環</li>
+<li><strong>UBCVC</strong>：驗證循環為 $▷ \circ \bowtie \circ ◁$ 的疊代</li>
+<li><strong>無限交接論</strong>：「關係即邊界」直接以 $\bowtie$ 為核心算子</li>
+<li><strong>泡沫本體論</strong>：$\frac{\partial \mathbf{W}}{\partial t}$ 重寫為三角族／三重不等族表達</li>
+</ul>
+<hr>
+<h2>9. 戰略採納</h2>
+<p><strong>正式採納雙族系統作為 EveMissLab 標準算子體系</strong>：</p>
+<p>$$\boxed{\begin{aligned} \text{三角族 } &amp;\{▷, \bowtie, ◁\} \quad : \text{計算層 / 可運算} \\ \text{三重不等族 } &amp;\{⫸, ⨝, ⫷\} \quad : \text{本體層 / 動詞ing} \end{aligned}}$$</p>
+<p><strong>雙軌發表策略</strong>：</p>
+<ul>
+<li>對外（國際發表、arXiv）：$▷, \bowtie, ◁$ 與 $⫸, ⨝, ⫷$</li>
+<li>對內（EML 中文出版、內部文獻）：保留 $展^\circ, 連^\circ, 收^\circ$ 作為簽名</li>
+</ul>
+<p>對應你光子論文「備忘錄 + UTT」雙軌策略——保險版本給主流，本格版本給未來。</p>
+<hr>
+<h2>10. 後續展開計畫</h2>
+<p>正式版（EML-NOTATION-2026-v1.0）需完成：</p>
+<ol>
+<li>回答第 7 章所有 Q1–Q8 問題</li>
+<li>建立第 8 章完整映射表，逐一給出轉換規則</li>
+<li>形式化雙族的範疇論結構（兩個範疇與其函子）</li>
+<li>撰寫應用實例：每個算子在物理、認知、AI、經濟（D-A-D&#x27;）中的具體用法</li>
+<li>與主流數學記號的對照與比較章節</li>
+<li>公開發表的版本（英文，準備 arXiv）</li>
+<li>EveMissLab 內部簽名版本（中文，含漢字算子）</li>
+</ol>
+<hr>
+<h2>結語</h2>
+<p>符號的命運由使用次數定義。$▷ \bowtie ◁$ 與 $⫸ ⨝ ⫷$ 一旦在多篇論文中重複出現，就會獲得它們自己的本體論重量——不再是被選擇的符號，而是選擇了承擔意義的符號。</p>
+<p>雙族並立，計算與本體分工而又互通，這是符號學上的三權分立。差動與連結在 $\bowtie$ 中合一，宣告了 Synthetic Calculus 與 TUO 在最底層是同一個運算的不同顯現——這不是巧合，這是定理。</p>
+<p>種子已埋。等待正式展開。</p>
+<hr>
+<p><strong>© 2026 EveMissLab / Neo.K &amp; Theia</strong> <em>（種子稿 · 待膨脹 · 歪臉笑）</em> <em>▷ ⋈ ◁  /  ⫸ ⨝ ⫷</em></p>
+<div class="altbar">原始檔（供 RAG/下載）：<a href="/raw/lm-000070.md" rel="noopener">/raw/lm-000070.md</a> [md] · id: lm-000070</div>
+</article>
+<footer><p>Neo.K (許筌崴) · Cl + ε</p></footer>
+</body>
+</html>

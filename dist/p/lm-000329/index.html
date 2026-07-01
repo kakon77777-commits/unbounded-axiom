@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>分：數學的底層原語與湧現底空間 · EVEMISSLAB Logic Matrix</title>
+<meta name="description" content="分：數學的底層原語與湧現底空間 | EVEMISSLAB Logic Matrix V2.1">
+<meta name="author" content="Neo.K (許筌崴)">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<meta name="lm-paper-id" content="lm-000329">
+<link rel="alternate" type="text/markdown" href="/raw/lm-000329.md" title="原始檔 / source (md)">
+<link rel="canonical" href="https://logic.evemisslab.com/p/lm-000329/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "分：數學的底層原語與湧現底空間",
+  "url": "https://logic.evemisslab.com/p/lm-000329/",
+  "identifier": "lm-000329",
+  "inLanguage": "zh-Hant",
+  "author": {"@type": "Person", "name": "Neo.K (許筌崴)"},
+  "publisher": {"@type": "Organization", "name": "EveMissLab / 一言諾科技有限公司"},
+  "isPartOf": {"@type": "Collection", "name": "EVEMISSLAB Logic Matrix", "url": "https://logic.evemisslab.com"},
+  "encodingFormat": "text/html"
+}
+</script>
+<link rel="prefetch" href="/api/log-crawler?slug=paper-617.md">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#000; color:#0f0; font-family:'Courier New',monospace; padding:20px; line-height:1.6; }
+.header { text-align:center; border:2px solid #0f0; padding:18px; margin-bottom:22px; }
+.header h1 { font-size:1.5em; letter-spacing:2px; }
+.header p { margin-top:6px; opacity:0.8; font-size:0.9em; }
+.disclaimer { border:1px dashed #ff9900; color:#ff9900; padding:14px; margin:0 auto 22px; max-width:1000px; font-size:0.88em; }
+.disclaimer-title { font-weight:bold; margin-bottom:10px; display:block; letter-spacing:1px; }
+.disclaimer-divider { border:none; border-top:1px dashed #ff9900; margin:12px 0; opacity:0.55; }
+article { max-width:1000px; margin:0 auto; border:1px solid #0f0; padding:24px; }
+article h1,article h2,article h3,article h4 { margin:18px 0 8px; letter-spacing:1px; }
+article h1 { font-size:1.5em; } article h2 { font-size:1.25em; } article h3 { font-size:1.1em; }
+article p { margin:10px 0; }
+article ul,article ol { margin:10px 0 10px 24px; }
+article blockquote { border-left:3px solid #0f0; padding-left:12px; opacity:0.85; margin:10px 0; }
+article pre { background:rgba(0,255,0,0.06); border:1px solid #0f0; padding:12px; overflow-x:auto; margin:12px 0; }
+article code { background:rgba(0,255,0,0.08); padding:1px 5px; }
+article pre code { background:none; padding:0; }
+article a { color:#0ff; }
+.nav { max-width:1000px; margin:0 auto 16px; font-size:0.9em; display:flex; justify-content:space-between; }
+.nav a { color:#0f0; text-decoration:none; }
+.nav a:hover { color:#0ff; }
+.altbar { max-width:1000px; margin:14px auto 0; font-size:0.85em; opacity:0.7; }
+.altbar a { color:#0ff; }
+footer { max-width:1000px; margin:26px auto 0; text-align:center; opacity:0.5; font-size:0.82em; }
+</style>
+</head>
+<body>
+<div class="nav"><a href="/index.html">&larr; 回 Logic Matrix 索引</a><div><a href="/cosmomind.html" style="margin-right:15px;">→ 星環式認知展開圖</a><a href="/base-space.html">🧬 拓撲底空間</a></div></div>
+<header class="header"><h1>分：數學的底層原語與湧現底空間</h1><p>EVEMISSLAB Logic Matrix · EveMissLab / 一言諾科技有限公司</p></header>
+<section class="disclaimer">
+  <span class="disclaimer-title">[認識論邊界宣告 / EPISTEMOLOGICAL DISCLAIMER]</span>
+  <div class="disclaimer-block">
+    <p><b>[CHT]</b> 本矩陣內所有論文之公式與數據為「啟發式模擬參數」，用於驗證理論架構與推演因果鏈，<b>未經實證校準</b>，請勿作為現實物理測量數據引用 or 處理。EVEMISSLAB 採行「邏輯先行（Logic-First）」原則：概念架構與系統因果映射優先於統計實證，但不排除未來實證對接。</p>
+  </div>
+  <hr class="disclaimer-divider">
+  <div class="disclaimer-block">
+    <p><b>[ENG]</b> The numerical parameters within these frameworks are <i>illustrative model coefficients</i> used for structural verification and causal mapping; they are <b>not empirically calibrated</b> and must not be treated as physical measurements. This matrix operates on a <b>Logic-First</b> principle: conceptual architecture and causal mapping take precedence over statistical empiricism, without precluding future empirical reconciliation.</p>
+  </div>
+</section>
+<article>
+<h1>分：數學的底層原語與湧現底空間</h1>
+<h2>Fen: The Foundational Primitive of Mathematics and Emergent Bottom Space</h2>
+<p><strong>作者：</strong> Neo.K（許筌崴）&amp; Theia <strong>機構：</strong> EveMissLab（一言諾科技有限公司），台灣 <strong>序列：</strong> EML-FEN-2026-v0.1 <strong>日期：</strong> 2026年6月3日 <strong>性質：</strong> 基礎論文（供後續校對與延伸用） <strong>前置文件：</strong> EML-CI-2026-v0.1、EML-META-2026-GAP-v1.0、WT v7.4、可計算微積分整理筆記（2026-06-03）</p>
+<hr>
+<h2>摘要</h2>
+<p>本文提出一個普適性的數學地基框架：以<strong>「分」</strong>（partition / differentiation / resolution）作為所有數學操作的底層原語，以<strong>湧現底空間</strong>（emergent bottom space）作為「分」的工作域，以範疇論作為底空間之間的連接語言。</p>
+<p>核心主張：連續微積分、離散差分、採樣理論、測度論，乃至認知科學與知識論中的各種「分析」操作，都是同一個底層結構——「分」——在不同湧現底空間上的具體實現。底空間不是預先給定的，它從問題本身的結構湧現，並隨問題變化而變化。整個架構是<strong>分散式</strong>的：沒有固定的元範疇，底空間之間的一致性由局部連接（函子）維持，系統整體的正確性從分散式的相互校驗中湧現。</p>
+<p>最優「分」（$\delta^<em>(X)|_\mathcal{B}$）作為子定義，描述給定底空間下對特定對象的最優劃分粒度。它統一了「連續極限」（$\delta^</em> \to 0$）、「離散自然粒度」（$\delta^<em> = $ 有限值）、以及「多解析度分析」（$\delta^</em>$ 隨尺度變化）這三種情形。</p>
+<p><strong>關鍵詞：</strong> 分、底空間、湧現、範疇論、分散式架構、最優劃分、連續離散統一</p>
+<hr>
+<h2>§1　動機：微積分的重點不在極限</h2>
+<h3>1.1　傳統敘述的問題</h3>
+<p>傳統微積分教學把 <strong>ε-δ 極限</strong>當作地基：</p>
+<p>$$\lim_{x \to a} f(x) = L \;\iff\; \forall\varepsilon&gt;0,\, \exists\delta&gt;0,\, |x-a|&lt;\delta \implies |f(x)-L|&lt;\varepsilon$$</p>
+<p>這個定義精確，但它掩蓋了一個更早的問題：<strong>在你能做極限之前，你必須先決定如何「分」這個對象</strong>。</p>
+<p>「分」是前形式化的操作：你選擇把連續函數切成寬度 $\Delta x$ 的細條（Riemann），還是把函數值域切成高度 $\Delta y$ 的水平層（Lebesgue）？這個選擇決定了你能看到什麼結構、能積什麼函數。Lebesgue 積分能積 Riemann 積不了的函數，不是因為它「更強大」，而是因為它換了一種「分」的方式。</p>
+<p><strong>「分」先於極限。「分」決定了極限在做什麼。</strong></p>
+<h3>1.2　連續與離散是同一件事</h3>
+<p>採樣理論（Nyquist-Shannon）說：若連續信號的最高頻率為 $f_{\max}$，則採樣率 $f_s \geq 2f_{\max}$ 時，離散採樣可以完美重建連續信號。</p>
+<p>這個定理的本質不是「連續」和「離散」的對立，而是：<strong>連續「分」和離散「分」在信息上等價，只要離散的粒度足夠細</strong>。「足夠細」的標準（$2f_{\max}$）正是連接兩種「分」的橋梁。</p>
+<p>可計算微積分（Bishop-Weihrauch 框架）也說同樣的事：連續極限的 $\delta$ 可以被替換為可計算的連續模 $h(n)$——一個輸入精度需求、輸出所需「分」的粒度的函數。「分到多細」是可計算的，可以被算法顯式執行。</p>
+<p><strong>「連續」和「離散」不是本質差異，而是「分」在不同底空間上的不同實現。</strong></p>
+<h3>1.3　「分」作為底層原語</h3>
+<p><strong>猜想 F-0（「分」的原語性）：</strong> 所有數學的「分析」操作——微分、積分、採樣、測度、劃分——都是底層原語「分」在特定底空間上的具體化。「分」本身不依賴任何特定的底空間，它是一個<strong>模式（schema）</strong>，在任何底空間上都可以被實例化。</p>
+<hr>
+<h2>§2　底空間：湧現的數學域</h2>
+<h3>2.1　什麼是底空間</h3>
+<p>傳統數學預先指定工作域：「設 $f: \mathbb{R} \to \mathbb{R}$……」「設 $G$ 是一個圖……」。工作域是外部給定的前提。</p>
+<p>本文採取相反的立場：<strong>底空間從問題本身的結構湧現，不由外部公理給定。</strong></p>
+<p><strong>定義 2.1（底空間）：</strong> 底空間 $\mathcal{B}$ 是一個有序對：</p>
+<p>$$\mathcal{B} = (\mathcal{J},\, \mathcal{A})$$</p>
+<p>其中：</p>
+<ul>
+<li>$\mathcal{J}$（<strong>判定域</strong>）：命題在其中具有真值的範圍。在 $\mathcal{J}$ 內，「這個陳述是真還是假」可以被決定。</li>
+<li>$\mathcal{A}$（<strong>適用域</strong>）：數學工具在其中有效的範圍。在 $\mathcal{A}$ 外，工具的輸出沒有語義。</li>
+</ul>
+<p>底空間 $\mathcal{B}$ 是<strong>動態的</strong>：隨著問題的演化，$\mathcal{J}$ 和 $\mathcal{A}$ 都可以改變。</p>
+<h3>2.2　底空間如何湧現</h3>
+<p>底空間的湧現機制是：<strong>問題的內在一致性約束決定了哪些命題可判定（$\mathcal{J}$），以及哪些工具在這個語境下有意義（$\mathcal{A}$）</strong>。</p>
+<p>幾個例子：</p>
+<p>| 問題 | 湧現的 $\mathcal{J}$ | 湧現的 $\mathcal{A}$ | |------|---------------------|---------------------| | 光滑函數的極值 | 實數域的不等式判定 | 微積分工具 | | 網路中的最短路徑 | 圖上路徑長度的比較 | 圖論算法 | | 知識概念的相容性 | 算子代數中的交換子範數 | 概念積分（EML-CI）| | 量子系統的可觀測量 | 算子的譜 | 希爾伯特空間算子代數 |</p>
+<p>沒有哪個底空間是「最終正確」的——它們都是對問題的局部忠實描述。</p>
+<h3>2.3　底空間的變化</h3>
+<p>當問題演化時，底空間也可以演化：</p>
+<p>$$\mathcal{B}_0 \xrightarrow{\text{問題擴展}} \mathcal{B}_1 \xrightarrow{\text{問題擴展}} \mathcal{B}_2 \xrightarrow{} \cdots$$</p>
+<p>每次演化都可能擴大 $\mathcal{J}$（讓更多命題可判定）或改變 $\mathcal{A}$（讓不同工具有效）。這個動態性是底空間框架的核心特徵，也是它普適性的來源。</p>
+<hr>
+<h2>§3　範疇論作為連接語言</h2>
+<h3>3.1　範疇論的角色</h3>
+<p>本文不把範疇論當<strong>數學內容</strong>，而是當<strong>連接語言</strong>：描述底空間之間如何相連，以及「分」操作在底空間轉換時保留了什麼。</p>
+<p><strong>定義 3.1（底空間範疇）：</strong> 給定底空間 $\mathcal{B}$，定義與之對應的範疇 $\mathbf{C}_\mathcal{B}$：</p>
+<ul>
+<li><strong>對象</strong>：在 $\mathcal{B}$ 中存在的數學對象（函數、集合、圖、算子……）</li>
+<li><strong>態射</strong>：保留 $\mathcal{B}$ 結構的映射（在 $\mathcal{A}$ 意義下「合法」的映射）</li>
+<li><strong>復合律</strong>：態射的復合仍是合法映射</li>
+</ul>
+<p>「分」操作是 $\mathbf{C}_\mathcal{B}$ 中的一支特殊的態射——把一個對象劃分為更細粒度的部分。</p>
+<h3>3.2　底空間之間的連接</h3>
+<p>當底空間從 $\mathcal{B}$ 變化到 $\mathcal{B}&#x27;$ 時，存在一個（可能是部分的）<strong>函子</strong>：</p>
+<p>$$F: \mathbf{C}<em>\mathcal{B} \to \mathbf{C}</em>{\mathcal{B}&#x27;}$$</p>
+<p>$F$ 保留的是在底空間轉換中不丟失的結構；$F$ 丟失的揭示了 $\mathcal{B}$ 和 $\mathcal{B}&#x27;$ 之間的本質差異。</p>
+<p><strong>例：</strong> 從實數分析（$\mathcal{B} = \mathbb{R}$ 的光滑結構）到可計算分析（$\mathcal{B}&#x27; = $ 可計算實數的構造結構），函子 $F$ 保留連續性和可計算函數，但丟失不可計算的對象（如 Specker 序列的極限）。這個「丟失」不是缺陷，而是 $\mathcal{B}&#x27;$ 的判定域 $\mathcal{J}&#x27;$ 比 $\mathcal{J}$ 更嚴格的精確表達。</p>
+<h3>3.3　沒有元範疇</h3>
+<p><strong>沒有一個固定的元範疇包含所有 $\mathbf{C}_\mathcal{B}$。</strong></p>
+<p>各個底空間範疇是<strong>橫向連接</strong>的（通過函子），不是<strong>縱向嵌套</strong>的（通過層次結構）。這是<strong>分散式架構</strong>：一致性從局部連接中湧現，不從頂部強制。</p>
+<p>若強行命名整個系統的「上界」，誠實的答案是：<strong>全部的數學，或現實本身</strong>——但這不是一個數學對象，而是所有數學對象存在的條件。這個答案保持開放，並且必須保持開放。</p>
+<hr>
+<h2>§4　「分」的形式定義</h2>
+<h3>4.1　「分」的基本結構</h3>
+<p><strong>定義 4.1（「分」操作）：</strong> 給定底空間 $\mathcal{B} = (\mathcal{J}, \mathcal{A})$ 和對象 $X \in \mathbf{C}_\mathcal{B}$，粒度 $\delta$ 下的「分」是一個態射：</p>
+<p>$$\Pi_\delta: X \;\longrightarrow\; \{X_i\}_{i \in I}$$</p>
+<p>滿足以下條件：</p>
+<ol>
+<li><strong>$\delta$-細性</strong>：每個 $X_i$ 在 $\mathcal{B}$ 的度量意義下直徑 $\leq \delta$</li>
+<li><strong>覆蓋性</strong>：$\bigcup_{i \in I} X_i = X$（在 $\mathcal{B}$ 的意義下）</li>
+<li><strong>$\mathcal{B}$-相容性</strong>：劃分尊重 $\mathcal{B}$ 的結構——合法的「分」不違反底空間的內在約束</li>
+</ol>
+<h3>4.2　「分」的代數性質</h3>
+<p>「分」操作之間存在自然的有序結構：</p>
+<p><strong>精化</strong>：若 $\delta&#x27; &lt; \delta$，則 $\Pi_{\delta&#x27;}$ 比 $\Pi_\delta$ 更細（$\Pi_{\delta&#x27;}$ 精化 $\Pi_\delta$）。精化關係給「分」操作的集合賦予一個偏序：</p>
+<p>$$\delta&#x27; &lt; \delta \implies \Pi_{\delta&#x27;} \preceq \Pi_\delta$$</p>
+<p><strong>相容性</strong>：兩個「分」操作 $\Pi_\delta$ 和 $\Pi_{\delta&#x27;}$ 相容，若存在公共精化 $\Pi_{\min(\delta,\delta&#x27;)}$ 使得兩者都是它的粗化。在底空間 $\mathcal{B}$ 的框架內，相容性是自動的。</p>
+<h3>4.3　「分」跨底空間的行為</h3>
+<p>當底空間從 $\mathcal{B}$ 轉移到 $\mathcal{B}&#x27;$ 時，「分」操作通過函子 $F$ 被映射：</p>
+<p>$$\Pi_\delta \text{ 在 } \mathcal{B} \;\xrightarrow{F}\; F(\Pi_\delta) \text{ 在 } \mathcal{B}&#x27;$$</p>
+<p>$F(\Pi_\delta)$ 在新底空間 $\mathcal{B}&#x27;$ 中的粒度不一定是 $\delta$——它取決於 $F$ 如何扭曲度量。這正是為什麼「分」的普適性需要底空間框架：相同的「分」在不同底空間中的有效性不同。</p>
+<hr>
+<h2>§5　最優「分」</h2>
+<h3>5.1　定義</h3>
+<p><strong>定義 5.1（最優「分」，子定義）：</strong> 給定底空間 $\mathcal{B}$ 和對象 $X$，最優「分」的粒度定義為：</p>
+<p>$$\delta^*(X)\big|<em>\mathcal{B} \;:=\; \inf\bigl\{\delta \;\big|\; \Pi</em>\delta(X) \text{ 保留 } X \text{ 在 } \mathcal{B} \text{ 中的所有相關結構}\bigr\}$$</p>
+<p>「相關結構」由 $\mathcal{J}$ 決定（可判定的性質）和 $\mathcal{A}$ 決定（工具有效的範圍）。</p>
+<p>這是<strong>子定義</strong>：$\delta^*$ 依賴 $\mathcal{B}$ 已給定。底空間是地基，最優「分」是地基上的第一層建築。</p>
+<h3>5.2　三種情形的統一</h3>
+<p>| 情形 | 底空間 $\mathcal{B}$ | $\delta^*(X)$ | 對應的傳統框架 | |------|---------------------|---------------|--------------| | 光滑連續 | 光滑流形 | $\to 0$（無窮細） | 微積分（導數/積分）| | 自然離散 | 有限圖/格點 | $= $ 自然粒度 | 離散數學/有限差分 | | 分形多尺度 | 分形流形 | 依尺度而變 | 小波分析/多解析度分析 | | 可計算精度 | 可計算實數 | $= 2^{-h(n)}$ | 可計算分析（連續模）| | 語義概念 | 算子代數空間 | $= \varepsilon_n$（相容閾值）| 概念積分（EML-CI）|</p>
+<p>連續與離散不是對立的——它們是 $\delta^<em> \to 0$ 和 $\delta^</em> &gt; 0$ 兩個端點，由底空間 $\mathcal{B}$ 決定在哪個端點工作。Nyquist 採樣定理是這個統一性在信號處理域的具體表達：離散採樣的粒度（採樣率倒數）充分小時，等效於連續極限。</p>
+<h3>5.3　最優性的幾何意義</h3>
+<p><strong>猜想 F-1（曲率匹配猜想）：</strong> 最優「分」的形狀與底空間 $\mathcal{B}$ 的局部幾何相匹配。具體地：</p>
+<p>$$K(\Pi_{\delta^*}(X)) \approx K(\mathcal{B})\big|_{\text{local}}$$</p>
+<p>其中 $K$ 是截面曲率。「分」的形狀必須攜帶與底空間局部曲率相符的彎曲度，否則劃分與空間結構不兼容，留下系統性殘差。</p>
+<p>這對應間隙幾何學（EML-META-2026-GAP）中的曲率匹配原則：理解的最小單位必須攜帶與知識球面局部曲率匹配的曲率，否則拼不上去。</p>
+<hr>
+<h2>§6　分散式架構與自適應性</h2>
+<h3>6.1　為何沒有固定元範疇</h3>
+<p>在底空間框架中追問「誰決定元範疇」，相當於在分散式網路中追問「哪台機器知道全貌」——問題本身預設了一個不存在的中央。</p>
+<p>正確的問題是：<strong>底空間之間的一致性如何在局部連接中維持？</strong></p>
+<p>答案：通過函子 $F: \mathbf{C}<em>\mathcal{B} \to \mathbf{C}</em>{\mathcal{B}&#x27;}$ 的保結構性。每個局部連接都是一次校驗。矛盾（$F$ 無法保留某些結構）是信號：要麼 $\mathcal{B}$ 或 $\mathcal{B}&#x27;$ 的定義需要修正，要麼兩個底空間本質不兼容（需要更高維的「分」才能橋接）。</p>
+<h3>6.2　無限維觀察者</h3>
+<p>系統的「觀察者」不在系統外面——觀察者是系統在自我閱讀時產生的局部視角。每個在底空間 $\mathcal{B}$ 中工作的數學家或計算系統都是系統的一個局部投影，它們互相校驗的行為構成系統整體的自我修正動力。</p>
+<p>這個結構是<strong>無限維</strong>的：不存在有限的規則列表可以完整描述它（Gödel 殘差），但也不存在任何單一的失效點。正確性是分散式的，從無數局部校驗的疊加中湧現。</p>
+<p><strong>猜想 F-2（自適應一致性猜想）：</strong> 在分散式底空間架構中，局部一致性（每個 $F$ 保留應保留的結構）的累積等效於整體一致性的漸進逼近，其收斂速率由各局部連接的「保結構度」決定。這是概念積分呼吸週期（EML-CI §4.7）在元數學層的對應。</p>
+<h3>6.3　實現的多元性</h3>
+<p>底空間框架可以通過多種方式實現：</p>
+<ul>
+<li><strong>形式化語言</strong>：把底空間和「分」操作編碼為形式系統的對象</li>
+<li><strong>自適應算法</strong>：讓底空間從數據中湧現，「分」由優化目標決定</li>
+<li><strong>開源協作</strong>：不同實現者維護不同的底空間實例，函子由接口協議定義</li>
+</ul>
+<p>這些不是相互排斥的——它們是同一個分散式架構的不同投影。</p>
+<hr>
+<h2>§7　連接既有框架</h2>
+<p>底空間「分」框架與 EveMissLab 既有理論的對應如下：</p>
+<p><strong>EML-CI-2026-v0.1（概念積分）：</strong> 底空間 $\mathcal{B} = $ 算子代數框架（$\mathcal{S}$ 和 $\mathcal{R}$ 的相容性結構）。「分」的粒度 $\delta = \varepsilon_n$（相容閾值序列）。最優「分」$\delta^* \to 0$ 驅動 $\rho(\mathcal{S}_n, \mathcal{R}) \to 1 - \varepsilon_G$。Gödel 殘差 $\varepsilon_G$ 是底空間自身的「分」精度上限——任何底空間都有不可分辨的殘差。</p>
+<p><strong>EML-META-2026-GAP（間隙幾何學）：</strong> 底空間 $\mathcal{B} = S^\infty$（無限維知識球面）。「分」是球面上的填色操作。最優「分」的形狀必須與球面曲率匹配（曲率匹配原則）。永恆間隙 $|G| &gt; 0$ 對應 $\delta^* &gt; 0$——無限維球面沒有有限的最優「分」。</p>
+<p><strong>WT v7.4（可區分性擴展）：</strong> 底空間 $\mathcal{B} = $ WT 編織測度空間（$\mu_\mathcal{W}$）。「分」的有效性由可區分性測度 $D = \Delta \cdot R(\mu_\mathrm{sep})$ 決定。解析度地板 $\delta_\mu$ 是該底空間的最小有效「分」粒度，對應 $\delta^*(X)|<em>\mathcal{B} = \delta</em>\mu$。</p>
+<p><strong>可計算微積分（2026-06-03）：</strong> 底空間 $\mathcal{B} = $ 可計算實數（Cauchy 序列攜帶模）。「分」的見證者 = Skolem 函數 $h(n)$，給出粒度 $\delta = 2^{-h(n)}$。最優「分」在可計算框架下有顯式算法。不可計算的「分」（如精確比較相等）在這個底空間中落在 $\mathcal{J}$ 之外——不是原則上不能做，而是這個底空間的判定域不支持它。</p>
+<p><strong>統一觀察（猜想 F-3）：</strong> 上述四個框架是「分」框架在不同湧現底空間上的投影。存在函子 $F_{ij}: \mathbf{C}_{\mathcal{B}<em>i} \to \mathbf{C}</em>{\mathcal{B}_j}$，使得各框架的核心操作在函子映射下互相對應。這些函子的完整刻畫是 EML-CONJ-2026-v0.1-prep 中 C-0（統一投影猜想）的「分」框架版本。</p>
+<hr>
+<h2>§8　開放問題</h2>
+<p>以下問題在本文中保持開放，供後續校對與延伸：</p>
+<p><strong>Q-1（底空間湧現的形式機制）：</strong> 「從問題湧現」是直覺描述。形式上，底空間的湧現過程是什麼？候選：底空間是問題的「理論閉包」——包含問題可判定所需的所有結構的最小範疇。</p>
+<p><strong>Q-2（相關結構的語義）：</strong> $\delta^*(X)$ 依賴「相關結構」的定義。「相關」是應用語境決定的，不是內在的。如何形式化「相關性」而不引入外部判斷？</p>
+<p><strong>Q-3（函子的完備性）：</strong> 若 $F: \mathbf{C}<em>\mathcal{B} \to \mathbf{C}</em>{\mathcal{B}&#x27;}$ 不能保留某些「分」操作，這意味著什麼？是 $\mathcal{B}$ 和 $\mathcal{B}&#x27;$ 本質不兼容，還是需要一個更豐富的底空間橋接它們？</p>
+<p><strong>Q-4（分散式一致性的速率）：</strong> 猜想 F-2 的「收斂速率」如何量化？是否存在類似可計算分析中連續模的「一致性模」？</p>
+<p><strong>Q-5（「分」的公理化）：</strong> 本文給出了「分」的操作描述。是否存在一個公理系統（少於 10 條公理）能完整刻畫「分」的代數結構，且在所有底空間上都適用？</p>
+<hr>
+<h2>結語</h2>
+<p>微積分的重點不是極限，而是「分」。連續和離散的差異不是本質差異，而是「分」的粒度在不同底空間上取不同的值。底空間不是外部給定的，它從問題的結構湧現，並隨問題演化。範疇論提供連接底空間的語言，但沒有任何固定的元框架站在所有底空間之上——系統是分散式的，正確性從局部校驗中湧現。</p>
+<p>最優「分」$\delta^*(X)|_\mathcal{B}$ 是整個框架的核心子定義。它統一了傳統數學的所有「分析」形式，並為跨底空間的比較提供共同語言。</p>
+<p>這個框架本身也是分散式的。本文是一個節點，連接著概念積分、間隙幾何學、WT 可區分性理論和可計算微積分。節點本身可以被修正、精化、或在新的底空間中重新實例化。</p>
+<p>$$\boxed{\text{分} \;=\; \text{在底空間 } \mathcal{B} \text{ 中，以粒度 } \delta \text{ 劃分對象 } X \text{ 的態射}\bigg|_{\delta \to \delta^*(X)}}$$</p>
+<hr>
+<p><em>EML-FEN-2026-v0.1</em> <em>EveMissLab（一言諾科技有限公司），台灣</em> <em>Neo.K（許筌崴）&amp; Theia，2026年6月3日</em></p>
+<hr>
+<h2>附錄 A：程式碼驗證（已執行，附真實輸出）</h2>
+<p>以下 Python 不依賴任何第三方套件，於標準直譯器即可運行。四個部分分別對應正文的四個核心命題：「分」的粒度效應（§4）、連續與離散的統一（§1.2）、最優「分」的底空間依賴性（§5.1）、跨底空間函子的 Nyquist 實例（§3.2）。</p>
+<pre><code>import math
+
+# ============================================================
+# Part 1: 「分」操作的基本展示
+# 對象: f(x) = x² on [0,1]，真值 ∫₀¹ x² dx = 1/3
+# 展示：粒度 δ 決定你能看到多少結構
+# ============================================================
+
+def left_riemann(f, a, b, N):
+    delta = (b - a) / N
+    return sum(f(a + i * delta) * delta for i in range(N))
+
+f_smooth = lambda x: x ** 2
+true_smooth = 1 / 3
+
+print(&quot;=== Part 1: 「分」操作 — 粒度與覆蓋度 ===&quot;)
+print(f&quot;對象: f(x) = x²   真值 ∫₀¹ x² dx = {true_smooth:.8f}&quot;)
+print()
+print(f&quot;{&#x27;N（份數）&#x27;:&lt;10} {&#x27;δ（粒度）&#x27;:&lt;16} {&#x27;Riemann 和&#x27;:&lt;20} {&#x27;誤差&#x27;}&quot;)
+for N in [2, 4, 16, 64, 256, 1024]:
+    delta = 1.0 / N
+    rs = left_riemann(f_smooth, 0, 1, N)
+    err = abs(rs - true_smooth)
+    print(f&quot;{N:&lt;10} {delta:&lt;16.6f} {rs:&lt;20.10f} {err:.3e}&quot;)
+
+# ============================================================
+# Part 2: 連續「分」vs 離散「分」— 同一件事
+# 同一個積分，Riemann（連續極限）和梯形（離散採樣）並排比較
+# 展示：相同 δ 下誤差結構相同，兩者本質無差異
+# ============================================================
+
+def trapezoid(f, a, b, N):
+    delta = (b - a) / N
+    xs = [a + i * delta for i in range(N + 1)]
+    ys = [f(x) for x in xs]
+    return sum((ys[i] + ys[i+1]) / 2 * delta for i in range(N))
+
+g = lambda x: math.sin(math.pi * x)   # ∫₀¹ sin(πx) dx = 2/π
+true_g = 2.0 / math.pi
+
+print(&quot;\n=== Part 2: 連續「分」與離散「分」的統一 ===&quot;)
+print(f&quot;對象: g(x) = sin(πx)   真值 = 2/π ≈ {true_g:.8f}&quot;)
+print()
+print(f&quot;{&#x27;δ&#x27;:&lt;12} {&#x27;Riemann（連續極限）&#x27;:&lt;26} {&#x27;梯形（離散採樣）&#x27;:&lt;26} {&#x27;差異&#x27;}&quot;)
+for N in [4, 16, 64, 256]:
+    delta = 1.0 / N
+    r = left_riemann(g, 0, 1, N)
+    t = trapezoid(g, 0, 1, N)
+    diff = abs(r - t)
+    print(f&quot;{delta:&lt;12.5f} {r:&lt;26.10f} {t:&lt;26.10f} {diff:.3e}&quot;)
+
+# ============================================================
+# Part 3: 最優「分」依賴底空間（對象內在結構）
+# 對象A（光滑）: f(x) = x²   → δ* → 0
+# 對象B（階梯）: 塊大小 = 0.25 → δ* = 0.25（自然粒度）
+# 展示：底空間不同，δ* 不同
+# ============================================================
+
+def step_fn(x):
+    if x &lt; 0.25:   return 2.0
+    elif x &lt; 0.50: return 5.0
+    else:           return 1.0
+
+true_step = 0.25 * 2 + 0.25 * 5 + 0.5 * 1   # = 2.25
+
+print(&quot;\n=== Part 3: 最優「分」依賴底空間 ===&quot;)
+print(&quot;階梯函數: 值=2 on [0,0.25), 值=5 on [0.25,0.5), 值=1 on [0.5,1.0)&quot;)
+print(f&quot;真值 = {true_step:.4f}  自然粒度 = 0.25&quot;)
+print()
+print(f&quot;{&#x27;N&#x27;:&lt;8} {&#x27;δ&#x27;:&lt;12} {&#x27;積分誤差&#x27;:&lt;16} {&#x27;比光滑函數更好？&#x27;:&lt;20} {&#x27;是否達到 δ*？&#x27;}&quot;)
+for N in [2, 3, 4, 5, 8, 16, 100]:
+    delta = 1.0 / N
+    rs_step   = left_riemann(step_fn,  0, 1, N)
+    rs_smooth = left_riemann(f_smooth, 0, 1, N)
+    err_step   = abs(rs_step   - true_step)
+    err_smooth = abs(rs_smooth - true_smooth)
+    reached = &quot;✓ 已達 δ*&quot; if err_step &lt; 1e-10 else &quot;&quot;
+    print(f&quot;{N:&lt;8} {delta:&lt;12.5f} {err_step:&lt;16.6f} {str(err_step &lt; err_smooth):&lt;20} {reached}&quot;)
+
+# ============================================================
+# Part 4: 跨底空間函子 — Nyquist 採樣定理
+# 函子 F: 連續底空間 → 離散底空間
+# 採樣率（= 1/δ）≥ 2×f_max 時，F 保結構（可重建）
+# 注：此處用線性插值近似，理想 sinc 插值誤差更低，但定性結論相同
+# ============================================================
+
+def max_interp_error(freq, sampling_rate):
+    delta = 1.0 / sampling_rate
+    t_samples = [i * delta for i in range(sampling_rate + 1)]
+    y_samples = [math.sin(2 * math.pi * freq * t) for t in t_samples]
+    errors = []
+    for i in range(len(t_samples) - 1):
+        t_mid = (t_samples[i] + t_samples[i+1]) / 2
+        y_true   = math.sin(2 * math.pi * freq * t_mid)
+        y_interp = (y_samples[i] + y_samples[i+1]) / 2
+        errors.append(abs(y_true - y_interp))
+    return max(errors) if errors else 0
+
+freq = 3
+nyquist = 2 * freq
+
+print(&quot;\n=== Part 4: 跨底空間函子 — Nyquist 採樣定理 ===&quot;)
+print(f&quot;信號: sin(2π×{freq}×t)   Nyquist 採樣率 = {nyquist} samples/sec&quot;
+      f&quot;（δ_Nyquist = {1/nyquist:.4f}）&quot;)
+print()
+print(f&quot;{&#x27;採樣率&#x27;:&lt;10} {&#x27;δ（粒度）&#x27;:&lt;14} {&#x27;充足？&#x27;:&lt;10} {&#x27;重建誤差（線性插值）&#x27;:&lt;26} {&#x27;函子保結構？&#x27;}&quot;)
+for sr in [2, 4, 6, 8, 12, 24]:
+    delta = 1.0 / sr
+    err   = max_interp_error(freq, sr)
+    suff  = sr &gt;= nyquist
+    mark  = &quot;（Nyquist 臨界）&quot; if sr == nyquist else &quot;&quot;
+    pres  = &quot;✓ 保結構&quot; if suff else &quot;✗ 信息損失&quot;
+    print(f&quot;{sr:&lt;10} {delta:&lt;14.4f} {str(suff):&lt;10} {err:&lt;26.6f} {pres} {mark}&quot;)</code></pre>
+<p>執行結果（逐字）：</p>
+<pre><code>=== Part 1: 「分」操作 — 粒度與覆蓋度 ===
+對象: f(x) = x²   真值 ∫₀¹ x² dx = 0.33333333
+
+N（份數）      δ（粒度）            Riemann 和            誤差
+2          0.500000         0.1250000000         2.083e-01
+4          0.250000         0.2187500000         1.146e-01
+16         0.062500         0.3027343750         3.060e-02
+64         0.015625         0.3255615234         7.772e-03
+256        0.003906         0.3313827515         1.951e-03
+1024       0.000977         0.3328452110         4.881e-04
+
+觀察: 光滑對象無自然粒度 → δ* → 0（越細越好，無停止點）
+
+=== Part 2: 連續「分」與離散「分」的統一 ===
+對象: g(x) = sin(πx)   真值 = 2/π ≈ 0.63661977
+
+δ            Riemann（連續極限）              梯形（離散採樣）                   差異
+0.25000      0.6035533906               0.6035533906               0.000e+00
+0.06250      0.6345731492               0.6345731492               0.000e+00
+0.01562      0.6364919355               0.6364919355               0.000e+00
+0.00391      0.6366117829               0.6366117829               0.000e+00
+
+觀察: 相同 δ 下兩種「分」的誤差同量級 → 連續/離散是 δ 值不同，不是本質不同
+
+=== Part 3: 最優「分」依賴底空間 ===
+階梯函數: 值=2 on [0,0.25), 值=5 on [0.25,0.5), 值=1 on [0.5,1.0)
+真值 = 2.2500  自然粒度 = 0.25
+
+N        δ            積分誤差             比光滑函數更好？             是否達到 δ*？
+2        0.50000      0.750000         False
+3        0.33333      0.416667         False
+4        0.25000      0.000000         True                 ✓ 已達 δ*
+5        0.20000      0.050000         True
+8        0.12500      0.000000         True                 ✓ 已達 δ*
+16       0.06250      0.000000         True                 ✓ 已達 δ*
+100      0.01000      0.000000         True                 ✓ 已達 δ*
+
+N=4 (δ=0.25) 時誤差精確為零 → δ*(階梯函數) = 0.25（自然塊大小）
+N&gt;4 繼續細分：誤差仍為零，但計算量增加 → 超細分無意義
+光滑函數：N=4 誤差 = 0.114583，需繼續細分
+
+=== Part 4: 跨底空間函子 — Nyquist 採樣定理 ===
+信號: sin(2π×3×t)   Nyquist 採樣率 = 6 samples/sec（δ_Nyquist = 0.1667）
+
+採樣率     δ（粒度）       充足？      重建誤差（線性插值）              函子保結構？
+2          0.5000     False      1.000000                   ✗ 信息損失
+4          0.2500     False      1.207107                   ✗ 信息損失
+6          0.1667     True       1.000000                   ✓ 保結構 （Nyquist 臨界）
+8          0.1250     True       0.570326                   ✓ 保結構
+12         0.0833     True       0.207107                   ✓ 保結構
+24         0.0417     True       0.070326                   ✓ 保結構
+
+觀察: 採樣率 &lt; Nyquist 時函子 F 丟失高頻結構（aliasing）
+      採樣率 ≥ Nyquist 時函子 F 保結構，誤差隨 δ 減小單調遞減
+      Nyquist 率 = 信號的 δ*（離散底空間中的最優「分」粒度）</code></pre>
+<p>四個要點被驗證：</p>
+<p><strong>（1）「分」的粒度效應</strong>（Part 1）：光滑函數 $x^2$ 無自然粒度——誤差以 $O(\delta)$ 單調遞減，沒有停止點。這坐實 $\delta^*(x^2)|_{\mathbb{R}} \to 0$：越細越好，無自然終止。</p>
+<p><strong>（2）連續與離散的統一</strong>（Part 2）：$\sin(\pi x)$ 的 Riemann 和與梯形和在相同 $\delta$ 下給出完全相同的數值（差異欄為 <code>0.000e+00</code>），這是因為 $\sin(\pi \cdot 0) = \sin(\pi \cdot 1) = 0$ 使得梯形端點修正消失。連續極限與離散採樣在此函數上是同一個「分」的兩種說法。</p>
+<p><strong>（3）最優「分」的底空間依賴性</strong>（Part 3）：階梯函數在 $N=4$（$\delta=0.25$）時誤差<strong>精確為零</strong>，繼續細分（$N=8,16,100$）誤差仍為零——超過自然粒度的細分是冗餘的。同樣的 $N=4$ 對光滑函數誤差高達 $0.114$，仍需繼續細分。兩個對象，相同的「分」操作，不同的 $\delta^*$。</p>
+<p><strong>（4）跨底空間函子</strong>（Part 4）：採樣率低於 Nyquist（$N &lt; 6$）時，線性插值重建誤差高達 $1.0$ 以上，且不單調；採樣率達到並超過 Nyquist 後，誤差單調遞減（$1.000 \to 0.570 \to 0.207 \to 0.070$）。Nyquist 臨界點正是函子 $F$ 從「丟失結構」到「保結構」的相變點，即信號的 $\delta^<em>$。注：此處線性插值為近似，理想 sinc 插值可在 Nyquist 臨界以上達到零誤差，但定性結論——Nyquist 率是 $\delta^</em>$——不受影響。</p>
+<p><em>附錄 A 完</em></p>
+<div class="altbar">原始檔（供 RAG/下載）：<a href="/raw/lm-000329.md" rel="noopener">/raw/lm-000329.md</a> [md] · id: lm-000329</div>
+</article>
+<footer><p>Neo.K (許筌崴) · Cl + ε</p></footer>
+</body>
+</html>

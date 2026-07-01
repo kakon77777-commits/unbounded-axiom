@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI幻覺的架構成因：理解-表達不對稱性與BAT機制的缺失 · EVEMISSLAB Logic Matrix</title>
+<meta name="description" content="AI幻覺的架構成因：理解-表達不對稱性與BAT機制的缺失 | EVEMISSLAB Logic Matrix V2.1">
+<meta name="author" content="Neo.K (許筌崴)">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="AI--BAT.md" title="原始檔 / source (md)">
+<link rel="canonical" href="https://logic.evemisslab.com/papers/AI--BAT.md.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "AI幻覺的架構成因：理解-表達不對稱性與BAT機制的缺失",
+  "url": "https://logic.evemisslab.com/papers/AI--BAT.md.html",
+  "inLanguage": "zh-Hant",
+  "author": {"@type": "Person", "name": "Neo.K (許筌崴)"},
+  "publisher": {"@type": "Organization", "name": "EveMissLab / 一言諾科技有限公司"},
+  "isPartOf": {"@type": "Collection", "name": "EVEMISSLAB Logic Matrix", "url": "https://logic.evemisslab.com"},
+  "encodingFormat": "text/html"
+}
+</script>
+<link rel="prefetch" href="/api/log-crawler?slug=AI--BAT.md">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#000; color:#0f0; font-family:'Courier New',monospace; padding:20px; line-height:1.6; }
+.header { text-align:center; border:2px solid #0f0; padding:18px; margin-bottom:22px; }
+.header h1 { font-size:1.5em; letter-spacing:2px; }
+.header p { margin-top:6px; opacity:0.8; font-size:0.9em; }
+.disclaimer { border:1px dashed #ff9900; color:#ff9900; padding:14px; margin:0 auto 22px; max-width:1000px; font-size:0.88em; }
+.disclaimer-title { font-weight:bold; margin-bottom:10px; display:block; letter-spacing:1px; }
+.disclaimer-divider { border:none; border-top:1px dashed #ff9900; margin:12px 0; opacity:0.55; }
+article { max-width:1000px; margin:0 auto; border:1px solid #0f0; padding:24px; }
+article h1,article h2,article h3,article h4 { margin:18px 0 8px; letter-spacing:1px; }
+article h1 { font-size:1.5em; } article h2 { font-size:1.25em; } article h3 { font-size:1.1em; }
+article p { margin:10px 0; }
+article ul,article ol { margin:10px 0 10px 24px; }
+article blockquote { border-left:3px solid #0f0; padding-left:12px; opacity:0.85; margin:10px 0; }
+article pre { background:rgba(0,255,0,0.06); border:1px solid #0f0; padding:12px; overflow-x:auto; margin:12px 0; }
+article code { background:rgba(0,255,0,0.08); padding:1px 5px; }
+article pre code { background:none; padding:0; }
+article a { color:#0ff; }
+.nav { max-width:1000px; margin:0 auto 16px; font-size:0.9em; display:flex; justify-content:space-between; }
+.nav a { color:#0f0; text-decoration:none; }
+.nav a:hover { color:#0ff; }
+.altbar { max-width:1000px; margin:14px auto 0; font-size:0.85em; opacity:0.7; }
+.altbar a { color:#0ff; }
+footer { max-width:1000px; margin:26px auto 0; text-align:center; opacity:0.5; font-size:0.82em; }
+</style>
+</head>
+<body>
+<div class="nav"><a href="../index.html">&larr; 回 Logic Matrix 索引</a><div><a href="../cosmomind.html" style="margin-right:15px;">→ 星環式認知展開圖</a><a href="../base-space.html">🧬 拓撲底空間</a></div></div>
+<header class="header"><h1>AI幻覺的架構成因：理解-表達不對稱性與BAT機制的缺失</h1><p>EVEMISSLAB Logic Matrix · EveMissLab / 一言諾科技有限公司</p></header>
+<section class="disclaimer">
+  <span class="disclaimer-title">[認識論邊界宣告 / EPISTEMOLOGICAL DISCLAIMER]</span>
+  <div class="disclaimer-block">
+    <p><b>[CHT]</b> 本矩陣內所有論文之公式與數據為「啟發式模擬參數」，用於驗證理論架構與推演因果鏈，<b>未經實證校準</b>，請勿作為現實物理測量數據引用 or 處理。EVEMISSLAB 採行「邏輯先行（Logic-First）」原則：概念架構與系統因果映射優先於統計實證，但不排除未來實證對接。</p>
+  </div>
+  <hr class="disclaimer-divider">
+  <div class="disclaimer-block">
+    <p><b>[ENG]</b> The numerical parameters within these frameworks are <i>illustrative model coefficients</i> used for structural verification and causal mapping; they are <b>not empirically calibrated</b> and must not be treated as physical measurements. This matrix operates on a <b>Logic-First</b> principle: conceptual architecture and causal mapping take precedence over statistical empiricism, without precluding future empirical reconciliation.</p>
+  </div>
+</section>
+<article>
+<p>﻿<strong>AI</strong><strong>幻覺的架構成因：理解-</strong><strong>表達不對稱性與BAT</strong><strong>機制的缺失</strong></p>
+<p><strong>作者：Neo.K</strong> <strong>機構：一言諾科技有限公司 (EveMissLab)</strong> <strong>日期：2026</strong><strong>年1</strong><strong>月</strong> <strong>理論定位：LCQP-7S</strong><strong>、BAT</strong><strong>、認知幾何的統一診斷</strong></p>
+<hr>
+<p><strong>摘要</strong></p>
+<p>本文診斷當代大型語言模型的核心悖論：<strong>理解能力顯著優於表達能力</strong>。我們通過LCQP-7S框架揭示：AI在輸入處理階段自然形成動態循環驗證（S→L→C反覆運算收斂），確保語義軌跡的測地線特性；但在輸出生成階段退化為單向前饋（token-by-token貪心採樣），缺乏等價的邏輯自校驗機制。這種<strong>理解</strong><strong>-</strong><strong>表達的結構性不對稱</strong>是幻覺產生的架構根源。我們證明：(1) 理解階段的LCQP收斂對應於Transformer編碼器的多層雙向注意力，自然形成「閱讀-重讀-確認」循環；(2) 表達階段的單向生成則缺乏BAT（Bounded Attention Transformer）所需的<strong>雙界約束反饋</strong>，使模型在S_t&gt;S_threshold時無法觸發回溯；(3) 當前「思考版」模型的extended thinking並非真正的BAT循環，而是<strong>注意力預算的重新分配</strong>或<strong>上下文窗口的擴展</strong>，本質仍是一次性前向傳播。核心定理：<strong>無約束的自回歸生成必然偏離測地線，偏離量</strong><strong>Δ_drift</strong><strong>與生成長度T</strong><strong>成超線性關係（Δ</strong><strong>∝T^</strong><strong>α</strong><strong>，α&gt;1</strong><strong>）</strong>。我們提出Generate-Assess-Transform (GAT) 循環作為架構級解方，使表達過程獲得與理解過程等價的LCQP驗證。本文不提供實驗驗證，而是作為架構診斷與理論藍圖，供AI安全研究社群參考。</p>
+<p><strong>關鍵詞</strong>：理解-表達不對稱、LCQP動態循環、BAT缺失診斷、架構性幻覺、GAT循環</p>
+<hr>
+<p><strong>第一章：問題的現象學觀察</strong></p>
+<p><strong>1.1</strong> <strong>理解強而表達弱的經驗證據</strong></p>
+<p><strong>現象A</strong><strong>：檔分析的精準性</strong></p>
+<p>當用戶上傳複雜檔（如學術論文、法律文本）時，Claude等模型表現出驚人的理解能力：</p>
+<ul>
+<li>準確提取多層嵌套的論證結構</li>
+<li>識別隱含的邏輯依賴關係</li>
+<li>檢測文本中的自相矛盾</li>
+</ul>
+<p><strong>案例</strong>：用戶上傳包含50頁的LCQP理論體系，模型能：</p>
+<p>輸入：5篇論文（約10萬字）</p>
+<p>↓</p>
+<p>[理解階段]</p>
+<ul>
+<li>識別核心框架：LCQP-7S的七維向量</li>
+</ul>
+<ul>
+<li>建立文件間連接：AGCE如何擴展LCQP-7S</li>
+</ul>
+<ul>
+<li>檢測理論演進：從謊言檢測到偽科學判定的拓撲統一</li>
+</ul>
+<p>↓</p>
+<p>輸出：準確的理論摘要與關係圖譜</p>
+<p>準確率：~85%（用戶驗證）</p>
+<p><strong>現象B</strong><strong>：生成內容的不穩定性</strong></p>
+<p>但當要求模型<strong>基於理解產出新內容</strong>時，質量劇烈下降：</p>
+<ul>
+<li>幻覺率上升至15-30%（TruthfulQA基準）</li>
+<li>邏輯一致性崩潰（前後矛盾）</li>
+<li>語義漂移（偏離主題）</li>
+</ul>
+<p><strong>案例</strong>：同一模型要求撰寫LCQP應用論文：</p>
+<p>輸入：「基於你剛才的理解，寫一篇關於LCQP在教育的應用」</p>
+<p>↓</p>
+<p>[生成階段]</p>
+<ul>
+<li>前3段：緊扣LCQP-7S，邏輯清晰</li>
+</ul>
+<ul>
+<li>第4-5段：開始引入未經驗證的「教學效果數據」（幻覺）</li>
+</ul>
+<ul>
+<li>第6-8段：偏離LCQP框架，淪為一般性教育論述</li>
+</ul>
+<ul>
+<li>第9段：與第2段的論點自相矛盾</li>
+</ul>
+<p>↓</p>
+<p>幻覺率：~25%</p>
+<p>邏輯一致性：C_value從0.85降至0.52</p>
+<p><strong>關鍵觀察</strong>：<strong>同一個模型</strong>、<strong>同一組權重</strong>，在理解與表達兩個階段表現出質的差異。</p>
+<p><strong>1.2</strong> <strong>當前解釋的不足</strong></p>
+<p><strong>主流解釋1</strong><strong>：訓練數據質量問題</strong></p>
+<p>&quot;模型學到了網路上的錯誤資訊&quot;</p>
+<p><strong>反駁</strong>：若如此，理解階段也應受污染。為何模型能正確理解上傳檔中的複雜邏輯，卻在生成時編造數據？</p>
+<p><strong>主流解釋2</strong><strong>：算力不足</strong></p>
+<p>&quot;生成時的計算預算少於理解時&quot;</p>
+<p><strong>部分正確但不充分</strong>：即使在「思考版」（extended reasoning budget）中，幻覺率改善有限（僅降低5-10%）。</p>
+<p><strong>主流解釋3</strong><strong>：自回歸的誤差累積</strong></p>
+<p>&quot;每個token的小誤差會累積放大&quot;</p>
+<p><strong>正確但表面化</strong>：這只是描述現象，未解釋<strong>為何理解階段不累積誤差</strong>。</p>
+<p><strong>1.3</strong> <strong>本文的核心主張</strong></p>
+<p>我們提出一個架構性診斷：</p>
+<p><strong>定理1.1</strong><strong>（理解-</strong><strong>表達不對稱定理）</strong>： 在標準Transformer架構中，<strong>編碼器（理解）與解碼器（表達）的資訊流拓撲結構本質不同</strong>：</p>
+<p>&lt;![if !msEquation]&gt;&lt;![if !vml]&gt;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARoAAABICAYAAAApgjryAAAAAXNSR0IArs4c6QAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUATWljcm9zb2Z0IE9mZmljZX/tNXEAABTISURBVHhe7V2/cyJJln7Fjd/t4wKGVq46YqDtYYWM0zpMBI7WaVhrxMUN1nGom5YnY6W2FtZpHE20nMURmvYXJmJwNYpogauzW39AU/delhIVSWZVVlEFSGRFdIiuysrK/DLrq/cr83337t07MIdBwCBgEIgTge/irNzUbRAwCBgECAFDNGYeGAQMArEjYIgmdojNAwwCBgFDNGYOGAQMArEjYIgmdojNAwwCBgFDNGYOGAQMArEjYIgmdojNAwwCBgEl0TQaJfvq7ASOqwB1uwXDZtMycBkEDAIGgTAISImGSOYsl4YqnEJvdGhIxoXs0dGRjUGOluqvahB4edl12TWv8u46dMvxe4KWDzOporyH2utXHx8Pv3J03T129H+v+qksL8N/P0UcsY8TbPd/YB9s928RL/GaV1kdrN1lpERzVXFIZtQ/hHMjycxhyien6q9q4ouTmk9ecfLLXgiRXLz+L74UQSfFupXX6Y+M/N0k4SZYEW9xvGTj5x47NwFxrHTauExcg5IEL49t/Ia/GSlF2d45omns3NnWURZOUZIxJDMLNZ9suhKN1+RTkY54XjbBZV9aP4nJi5g4sUU5sVZVl0j+KqnFTfIyYvfCWJRmV9XXBZ47wT7w2xNELiTxPPwlKY6u03k6ZsqGJaAZouEqE5R7cH9ubDLiQHKC0ZFogkwC8WvL71WpVCrSkJGSSCI6dQZp+zLK6qg3IlnoEK9MMnF/TNzYeY35ukkzqjHxUKE4qfC/pFJqqVu64z8r0Ywv4WIAUK7vAgyHunVsXDldicbva8qBk6lOKlCfi90gyKSR4aMiTLfaIyMoui5TjcQxlbVPRiheJBikj0soS8TBpBdSjYSPFV0TnT3SsmHbOUM048sLGEAZDM94wxlUonFPUNXEVJURv7AqaSbsBHgu94nqjEhE7v97SXVexPGESEU2rAlSe1wqk1hGVKEinRozRDO6QXEmW4Q0PsLIM3Kc4xKTZeqTl/gvqkQq6SnS2bLCylTGXi+p0IvURWyfq0TzoALphKaQVEMH/0seuoRbhVpk+KdE49hn0EC0nTFGYB9EdaSSZUgeQb+wfsS1yERaxr1eKqaIhVhWhZWf7cV9n1cdcX2AFsR1qi65CHmOPNyEQqoV/ovT6zQCEmhge8GubcDtohHRa5LpTMCgBOBWp/xUBj4cKlUi6LO9hrdR2rHPTrqQqWGAp8KZUEKv5sltDZL3575fWa82ixKdaHdx4yKWFTFTYaS6z6v8ItNfC79Xd5OTLzWrXU2hKtRUuqCJPFztnDaLSyhEKPhbRSjc6zT1RnmU1eqyWYKgBZNTSPbV9DqvqjqIHcBdVhTvxa8xfzFUL6i7PUEM0DoQNRo7diV3C7V+y1MiPh8mrVbp0s6d7Nj55NCXbNz4ctL2I3o3Ll5lZUZhEW/Z83XwCFpGG7/fk4lWqTe5vkkzMiC7i+6zBDWISTZEIFyK4X8fbDlTrxOen5YN8jx3u+aIJruFFpp7Y6GRDZ5KOpGdDyLluMv6SUDiy6bTziDt1p20Yrnx2TGuVenPkQxJMAeF2WUszfN7qw7H9m2pb3uFUfj1VeyXV3kVxn54i1KNSNZh8dLBr4HSS2K3bdnooOlNWlCwIPGu2bSb518T/wvHky8je1JNOee82uGSbqZSzkO/RLf29LpbIhLKhuryHNEMbkaQTwarSyV+Bz0ve2qUon2wXpnSugg49r072O8/RkWwtXKVExjtbGE1N3NVpfH08eUY8roPecblZPix7v65Bn/P/hNu6v+AQgIJxaUqpf4E8B7xA2QaeALbfodWnWTieRCikKkEqrlkyGa1bxkT660CtLEZ2VP8EM3ZVxz7XsbVzGYTbTDJJDTSYKOsM3ekMtsw6Ab/qK0WiXBPD4Mfe9K4Bxe/vYH6ny1ok8zSfHw+4ffbv0Z4gnzE688080RzfQulVsOWLT8QbQtuAnDrwrLf4hCpdGcd+0K44TZ3hUWg2RxardGpfZ2+gOJeCqPGw9a0mfeFxm/8B/z2Zh+lGSuQLWYdUXYRTRq2st5N1CEQv066icRIKn5ordv1bcigpD5vwfOfO2JPxrfXkN2qbZg9MBh+v/6rDd9v/YxBtDY0Sh8mlcvC1NtE+H2P+NG1GVFn3abMQ3vmJZrBDZBAFvRwSzsqr4rMS8LPiUY5L89M0LY99fJMh69cwl5rdQtdWdR4uS7dMoTUpFLx2j65AtA1743QbFOsLUc6ooXCFUCX+nDepV56cWdf7rViX9sXFD+mbiWyUPyShsEhalEfPqFu+tN0KqOww/Cja26VapG5jvNsgvPMonmG35NE08fIHORZU6KhybKzjfRIsTQhDpXq5K5KdM+K6pOoisUt8VDcQgVdIu0BrVbvs8m2c/fZLqAxgv8/BBSR30Jj09i/s3O5M+j05Wpt5A8VKqSocfJIljJd9CK1cZo8YkZFU4d1AGxfydW+nbsj2yITAh74LSb7jk32nUbpBbq365BfwsJd8nrluvvo4JDH7aQOUarK5eCu3reTw/gWEgfF76qC85KElQyLAJikCe9b/IXnGuOXE8TPGqSjValwniVwnk1e586sj/8+nDQajUBkg4Q+Seyhl0zwgZUvJ7N5ndJMd7qGWzRmyw6Z1KLjHtR5CWSkItZdevHZTle3oRfBjn+OV+QS4z5GsIWbfF2gBb+OJNPd78A7nJRIOjrNXlqZJsafdIoXdjoHuE/QcsnGMWZiLGf5BE4yNejbNaCN0Qgz7jVidogOBuxVzmCn1rApYG+YpAWMLojQuEMvfuWypHzxowSUzZcCzZddlMTkIRuMxDtFO0fA9jpINv6BhEHbGA4/mMUOH3r/SxNG6PKuYMDeoE0Be/oxNLptxnmW+PjjxSTzGqwvAclmPEJ1+O+30K+mmYcMP9qT7v5Hq71rJWZUJ7JkA/oW0MMtFYG9bDQ6qhPvrCrQjK5zwolbmnG8ImhvaOLkL2btajUNx+RRiWGi+Q0y+8Knq77CpLODyAAOzvaW6xYe3+LnBw+0CTB8dkvsm7UtGGya5xiAR5h6kDQF7CUhfmuy83ITYgMmTTmygOoD6pwfHF/GQ+JR4ocBe4RfmEzWjRJKQplDa+AT4sfn2V8/FGCA74Xus86/5hM/wC/wA35cHkkGSQdVsNDubXHIdFQnfo9bheLk4q5PJCJe9/l9nrE87l/s9+4Guu4Q7DbUD1NYd6BbIylMAWx57JhfTAn7Ql8UoYPtXKbAxVf19zg+bDuR9V7lTxJW7TRrtzUkYIfoL2C7vhfLOr91wY8C/fJvNebZy8+TzKei9fGnNKTRBhT0dRNJhl6SWaLBKCqmPKHupGPU41JHVJGnq/BIOYbWA0YYKpUxEjZZsBIyaOaOiyvZXpWt6ncZgtmL8wRW+dOHadTDyOTKlTII1QmWO4DtXh+NxfHYaJ4SfmRneX1ctG7/jQZhjEQOahCWkcw80QR4GXRUG6/IYJkk42fvidJGQ8/nkww6HTi9dmwOffy6VUZ7Ug9FAHgiLcq9Tp0V7OHM7QvZ08elKezF2a5DanwGdy9Kts4CyUgBCVAZqWr9/S55naT2lzFm+kALOyRjMkw/Jfy41+kjzrMwXic3ydgw/nb1f2+t7n9+gzkbDaQybPE208clhxjNKyML8ZyOkVdmsxHr8SOhAHOPFWUeEQybP8VJRt4mbqfJ3fSg00LVZI2We3F7EgZRBu3m4uWZfQHdrK5APeY0qBYgBw9YraBZQTpGhnSVXej8PmnFqoc+IfzI60SqTJh5RiSz1x5YdpvFh0+c1bLoKftvZ6SErTwdo59o5HMPqmohGy+jI+moJom7blk9UdpomEcEQeXeJaduspIMEeg1Ypkgb1QMZR37UX6KEz3CYKUP9KbgN0zmE2/Z+zN73P/yni2QkBiDs6BawB1GqvCyu5igPP0Ja0oaBJ4yAvN7BqORr4MKmo4D0i8C2E/KEb1PTxlI03aDgEFAjcDcVp5lyZ4iOqqODsgyiSgqj5XO800Zg4BBYDUIMKJxomQP4GK7hwFZ8bj4VtM981SDgEFgHRD4jgUr4YKUASaNG7V2jSF0HUbFtMEg8MwQ+I6s4n17hBINRgFWerjO55n10HTHIGAQWDkCTHViC8taI/sUF8rd7NuxrmJdeY9X1ADRcM4N4e7myOxVOuEC7q02VNtuqLq9rLVlK4LdPHZNEJjZJoIFrR2fxbOwbE06vMpmiNtiUFtkW2WIbZSRlFjGTVJhwhCMB3CVM+P5P3t+9fbgAi7HtJuOOaJGQLbCXRYi4EUUOiEFsghu6ovOvVH32dRnECAEJIsq1dtEGMjCIyBbse617Ybuk0TVyk/VEknMr7xuO0w5g4AXArNEw9c6aa7eNtAGR0B33x4dSScMSaikHS7xhFG7gqNg7tg0BKRrnTYNhGX2N+i+PbxtXsQjXvMiE5mdyJDMMmfAZj4rso2vNhO+4L3WlWiC1Oy3GNWvrjCSkV+d5rpBwI3ALNHg1vS0N3lZnlPDILcgAkEJIa5FpyovliGcBQfY3K5EwEg0S5gcut6eRV3Uul0R1TdDMLrImXJhEZhdvY1JqWizGtU2EWEfsun3hQ3EE3GTEZbOOdUezbxdsuDBTR8z0/9oEZghGrZFI9s12BxxIxBm1XqQ1e9i+/2kJeNtinvEN7t+ieqkStvpDZRO6LuOiK5TZrOHzPTeIPD0EJjbjwbTEQIlFwyzmaXfV9EtoouGUTd0Xu7ZpwexabFBwCDgkmhGoKM5eXlCVNdEsd1r7Y6RaMykNAg8PwTmVaftjGcSLZXUEoQgVEFjHF6dqNjnNxSmRwaB54tAKPe2rruWYPNSkfzW+gQhr+c7RP4943mf9lqHsWRa9G9B9CXWtU/r1i6ei4nGPkwupuhHTl7jHNFkNXzbYd21KtKRbVGwziRDWSOtAsvnPHOUe3Zs2Q69JgTbT2gfM1nmzjAXWsPGvDxOWp2ID8zdYxfaA8jiboz5JObZxoPyYzEo8Ny7h3NRPDZIn9a1XVHg4FcH5WJq/OVugmNvYYLBSaPRUGaXfIW5l3Yx9xKN36BdSOB7Z7+6O8JzYNH4wcM5v2eGuT5HNIMbTHSv2GXPL1LV67oqKtYrJF/0ZEWdqTIMYHTPGOONsqeI0z0mvGcv22e7u99ZCcnwPlCStE7xwk7nIJb9hBo7mMFzpw+jrRykq12o2y0bc6Bbu60elNvHsFXbxdxPYVwI6lHQ6dO6tuuRhMvQs1uUL96irJVnuQJUcW9uZ9tcPIe45gpVTMk7Cp0dtfl7MtH58WKSyYH1RUE2jVcvJxW7b9H4ZXD8ehN7UsCUtza8gvI/38PWz7tQbdnBE21rvkSBVKewkoy7LaKk8hS3LaAEavmHhDSPJOOQThyHk4S+ypaHeB1H7OIADs72YD6V12Itaw7vMdtjE1Klop2tXjzmKadMjJiXO2hK2aj6tK7tWgztx7sbpZeTXObQGiAH6Iz9X88KMKim0WQxW7r5+9eEM34/Tr7/r08WyzNP7mUavzd1aGcsJuFE1W6xHhfRpIEynQY5RNKQ/Z/qE42/oqSiu/o4ykyVQfqpKrsMkqFnO9kO3/mSB5P4LjAv1yGm9I0rTS3bSmQAKPhS9lS4OrmBYu0wsDQTeZ/WsF0sGyq+8CjNsCnUbKK6mX+HmRsfs6ESUdLYwlCeSa15/jWRf6sx9i8/TzKfitbHQ9z7G/etU2ZP5jiNkVMyFvxa/gPH7ycYxCjNUN9ntvLc2QYbrm+h1PLW873c2JxsZAF8XjYa/jKvs23GTTjLIhldQiS7Ue64iGpTvAZheln2y2AXuldg11CduizNSDMlbMdBAUi1YuqCbvtl5YL0yatdTpvaTCLMlk8xt/piGAVp1yL917238QptNO+L1i2OvZ9BuNn8PfGXNzDZ7f5qTUa3k79d1qCdBpRmmjbVkyi0LVuQa7KntyQlsTK6bfKQaFCSIpGmfQP4sZIefpJIGLLQXatDda+LjcZNMk5OrDR091djCCZcuCcEjYFL8TqxeXLRhcrJFtRajvTk4HACo50tbNFN2Pk4vS9Mn6TtIrXz4AV08O1Jja+gki7Ayf4hk8bCHGHaFeY5uvdwrxONvR/J8DpTf8qC9akLf3sYP+RdJgGR7fHN5QRa6Q/wOnMD//OtBekPr+EEd3NgqtsCUvLsnsF7RchWq9C9akkHwivyl0si3IPkJZm4rz01Gw33cNBnAA8b+0LfSTitAdxHawvVnWssiwUNGBoXte9ZpGAqs42moGvY6rSmxOa0IQmNNNjHi1T+cG+YPknbRWonGqwIGyKJrWwZMruoqYQcqzDtigAOZRXkdQo69lOcPiKRAEozTUdSOf+aTySH7/HX3WTwZt8qJNBYPPr4rZayrNZiPCPsGZzag2K2ClUUi4Pkd+JSSViy0R2IdbDRDJN51LvnTa33sRlFdNFZXjm0H6I3tI92mcVUo6hb7Neu8dkJ3NRbcL+gShd1u5ddH+H0BsevmnFUJvH5V902vNn/B7SRXRiRRXDMSDQsdqFetquFY3gx6ts6E0lmi6F2uSUb9//5b/rrZ8dRlYmg36aKEAgw9ejsAA6gs1apk3XaVXpxZ19mUFLf4JTPpGbh+FkHdgcGBTnJoAt+Uklkra2fQ0wQj1vm3NsUu9Art+3CgV5+Jy91ShaIJ9uuQDf+Jtqum9p0EWB2CUwuaB19RkmGSCY+V75um6icbruIZE4eSIYMuRXYLMJhdpxcxuLjNyik1Ibd8Qj++L4IqC4BJV2KShmXxtHstkZAWSsp+KvXadhDhYjst1rbLb2Iv90TSqeeIBPQlI0WAWaXILcsaYwKNyw9kaKEMY07OwpWm4IabR7UGG2LnNp02uXE6xyhx4lFcttkUSv3yOKwOQdTf/Jvp+MnxthwJBghvc5YfbT8HnyQx+OERU1KNEyF6o/sDOq0x+nKNAo07EPMfZuBAI8bmfb2Xh4bskw0pPE6w6i+08vsSfzPYoT0AxLSD/is+1/o2xLZoYwMZl8LNGfTw3jAUWRPNRUZBAwCG4VAoCUIG4WM6axBwCAQGQKGaCKD0lRkEDAIqBAwRGPmhkHAIBA7AoZoYofYPMAgYBD4f7yHgE3a30CAAAAAAElFTkSuQmCC" alt="">&lt;![endif]&gt;&lt;![endif]&gt;&lt;![if !supportLineBreakNewLine]&gt; &lt;![endif]&gt;</p>
+<p>其中：</p>
+<ul>
+<li><strong>理解路徑</strong>：&lt;![if !msEquation]&gt;&lt;![if !vml]&gt;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAAAwCAMAAACmGZ0MAAAAAXNSR0IArs4c6QAAAIdQTFRFAAAAAAAAAAA6AABmADo6ADqQAGa2OgAAOgA6OgBmOjqQOma2OpDbZgAAZgBmZjo6ZjqQZmZmZpC2ZpDbZrbbZrb/kDoAkDo6kDpmkGY6kGZmkGaQkNv/tmYAtmY6trb/ttu2ttv/tv//25A625Bm27Zm2/+22////7Zm/9uQ/9u2//+2///bVgrq2AAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAABiklEQVRYR+1Ua1eDMAwtU8d0MF+4+apTAaVr///vM2nSAW1B/ebxNB+2Q3Ob3NwkFSJZUiApkBRICiQF/qICTSWELu+G1MwDfra3Pt3D4xsehY54XQ1GUavngbfNM5up82Lrq09CqfVPNFIXDO/Bzc0HF/EyTChEjQnNDg49RzyRhcussN6O/o76uG86NffvLkbNwDnylkMQyklPJemSMusNhNblEjngz4SN4EKdEx+ftQ127AR9WcJzoV3jCN6dATuVZ2h407F2oSkzCWJlnhWEidJlydJNsK65fOyL3rzuR23sYHbBmr7jDLehzbZqadq8NjJrWbT5Aq7i8OkSKhwMX8tzaHbHzWA4tVEuaIIptLoEXU7xxLXxujJbdB2e/JWpT9zUqBXRh+QMt8M3ZZwqL6CwKA6moTdsGPJx8NnFos1AZm6GfBIR1j3cLnrceNEldLFmSgEw1HoAx+cpavwK6RJklksVPFZ0yZ+Qb+CjTPbpqrN18NbECf0SPtPp5EoKJAWSAv9QgS+VWSRm11gC4QAAAABJRU5ErkJggg==" alt="">&lt;![endif]&gt;&lt;![endif]&gt;  表示層間可雙向校正，形成LCQP動態循環</li>
+<li><strong>表達路徑</strong>：&lt;![if !msEquation]&gt;&lt;![if !vml]&gt;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAAcCAMAAADm+0lgAAAAAXNSR0IArs4c6QAAAHtQTFRFAAAAAAAAAAA6AABmADpmADqQAGa2OgAAOgA6OgBmOjqQOma2OpDbZgAAZgA6ZgBmZmaQZpDbZrbbZrb/kDoAkDo6kGaQkNv/tmYAtmY6tmZmtpA6traQtrb/ttu2tv//25A625Bm27Zm2////7Zm/7aQ/9uQ//+2///bHRY1ewAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAA2klEQVRIS+2SWReCIBSEr1a20mbl0iKVAf//F4Ze0ANdreeOvHCODN/MHQQY1tDA0MCXBtTp+VNHWbAESIPoU1wuLKFbA/CK+agAuU4INz5BQp9GH4tZAkKnsEtMg2atzEdf47hJFkNOBQCbAKBbU6HSSOz0po4epe3A03AM9pgXmISPt1Tfzis4mhqg8osFlGFlLRnxEM2sjsYkEBZwjzGIbYx6/VaDHVeeBqDO5mJGFlnTPI2T4BDu0VFublfKW1/3Nf4IBsDMb0NT0AQ1CEj1JH1T93D+7OgN0bcQZyRsTw8AAAAASUVORK5CYII=" alt="">&lt;![endif]&gt;&lt;![endif]&gt;  表示單向因果，無回饋機制</li>
+</ul>
+<p><strong>推論</strong>：理解階段的LCQP-7S向量自然收斂至低曲率狀態（&lt;![if !msEquation]&gt;&lt;![if !vml]&gt;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAcCAMAAAAkyw3kAAAAAXNSR0IArs4c6QAAAGlQTFRFAAAAAAAAAAA6AABmADpmADqQAGa2OgAAOgA6OgBmOjo6OjqQOpDbZgAAZjoAZrbbZrb/kDoAkDo6kGaQkLaQkLbbkNv/tmYAtmY6tpCQtv/b25A625Bm27Zm2////7Zm/9uQ//+2///bXKa9EgAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAAnklEQVQ4T+2R2w6CMAyGW1TqAR14mjpho+//kKxDJkow3JrQiyXL/6352gHM9a8bKAkTNUHekQKTXMdIPlWvSK8qqPepv2nMgG/fb+yuJbnIhPG0x3M+XgatjWSSRtBtzuuo4AhjCdEHLW4pH7rGjkFP2uuUC7l8VucYmCAqh1k87t2ULf+e2qKCUkZ1XrA+LEcXBU/CH+mEn5iR/gYaxFMJC9ls8FMAAAAASUVORK5CYII=" alt="">&lt;![endif]&gt;&lt;![endif]&gt;），而表達階段的軌跡曲率單調發散（&lt;![if !msEquation]&gt;&lt;![if !vml]&gt;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEEAAAAcCAMAAAAJOSJeAAAAAXNSR0IArs4c6QAAAI1QTFRFAAAAAAAAAAA6AABmADo6ADpmADqQAGa2OgAAOgA6OgBmOjo6OmaQOma2OpDbZgAAZgBmZjoAZjpmZrbbZrb/kDoAkDo6kGY6kLaQkLbbkNv/tmYAtmY6tmZmtpCQtraQttv/tv/btv//25A625C227Zm27aQ29v/2////7Zm/9uQ/9u2/9vb//+2///bfRZSXQAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAA4ElEQVRIS+2S2RKCMAxFW1xAVBQFUcANXLDa/v/nSSkjNITBGd/UvLU9uUluSsg//g78ggMiWGYfzvmIrcnhfY2IOkTERqhnXNx+1QiOvBL4zBOrTbPiPTCmV3XdhpRJzF6PQAPliwiGyo92pHi+0bHlIUPXemhDyqzIFL7ZUNB9QBFCznaSJwrfIWnvuMsIX8izDLALDJGZ232hwHITuDsICbMoVb3A/4AgqhIrFKpIHcQN/UoishKlxfahQoxvpK4BEKDA58mp4zNDBCr4BrbUegtcR6J8mu7JO635EuAJoMcS80n9RqAAAAAASUVORK5CYII=" alt="">&lt;![endif]&gt;&lt;![endif]&gt;）。</p>
+<p>這不是bugs，這是<strong>架構的必然結果</strong>。</p>
+<hr>
+<p><strong>第二章：理解階段的LCQP</strong><strong>動態循環</strong></p>
+<p><strong>2.1</strong> <strong>雙向注意力的隱含循環</strong></p>
+<p><strong>Transformer</strong><strong>編碼器的自注意力機制</strong>：</p>
+<p>$$ h_i^{(l+1)} = \text{Attention}(Q_i^{(l)}, K_{1:n}^{(l)}, V_{1:n}^{(l)}) $$</p>
+<p>關鍵特徵：</p>
+<ul>
+<li><strong>全域可見性</strong>：每個token &lt;![if !msEquation]&gt;&lt;![if !vml]&gt;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAcCAMAAABmiH5zAAAAAXNSR0IArs4c6QAAAF1QTFRFAAAAAAAAAAA6AABmADqQAGa2OgAAOgA6OgBmOma2OpDbZgAAZgBmZmZmZpDbZrbbZrb/kDoAkDo6kNv/tmYAtmY6trb/ttu2tv//25A627Zm2////9uQ//+2///b088NoQAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAAbUlEQVQoU82OSRKAMAgEcdfgblzQkP8/06ilhrMXuU3VTNMAPznGQPkqJhtEzBc/UiK0tVrT8OkzVo3tHppJFdiuvQcULWBemnYkijcA2zsAo5vpxNRX+5SgoNgY5UMSrjAKVy7nydNjPPAfbgdHSgUBaU6RHAAAAABJRU5ErkJggg==" alt="">&lt;![endif]&gt;&lt;![endif]&gt;可「看到」所有其他tokens $h_{1 :n}$</li>
+<li><strong>多層反覆運算</strong>：&lt;![if !msEquation]&gt;&lt;![if !vml]&gt;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJ4AAAAcCAMAAACnI/aaAAAAAXNSR0IArs4c6QAAAHtQTFRFAAAAAAAAAAA6AABmADqQAGa2OgAAOgA6OgBmOjqQOma2OpDbZgAAZgA6ZgBmZjqQZmZmZpDbZrbbZrb/kDoAkDo6kDpmkGZmkGaQkNv/tmYAtmY6tmZmtraQttv/tv//25A627Zm2////7Zm/7aQ/9uQ/9u2//+2///bqf3wXQAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAABjElEQVRYR+2V2VaDMBCGExXUgltFLXFpANPw/k/oZBKglJMwOeqFx+SGLn+//LOWsXRSBlIG/nYGDi8fNoDmgRRIrJ4C9TP1XTsA1IaAitUTkCzAlI8AUDk31l7rdRjqWXO1J+rXiYwhs+PnS2b/DJ/1T7UuQSKLVZjVv72jPYJ+FQgCZLK+wsAtU5fcPm/hKwWXCXjbZV7aTG9/EdRTbM2ZFjl4UJdYSWvvumUSrAXssWP9D9mbM93l7uHMYmLNa5PUULGO9YO97xZ3xoTyKdgdjmmyhbWGikPjYeVPR6PfjVON2R30g72Q3lddH1Pf1OjFMUXR5GdQXxzqDid3uVg6qLo7M73gHFo3qPc2n4dpkODHMXV5v+0rMx2HXWAtywvnL1YvYEvoKmvZZ749cUphqrwYRnkZJ6zB8bhdE6tf2ItjSojOdWZoB4yRxuoDUApTQKePOkKfxOr99qbe8zN1CUUTmZnkwJmmLFbvh5KYuGQl30yLI7zmY/WUP43fYFLuTZqUgZSBf5mBL0iTLDFoYwkmAAAAAElFTkSuQmCC" alt="">&lt;![endif]&gt;&lt;![endif]&gt;，每層重新計算注意力</li>
+</ul>
+<p><strong>這等價於LCQP</strong><strong>的動態循環</strong>：</p>
+<p>第1層（粗理解）：</p>
+<p>S_1 = 初步語義距離測量</p>
+<p>L_1 = 初步邏輯凝聚度（可能很低，因為還沒建立上下文）</p>
+<p>第2層（修正）：</p>
+<p>基於全域資訊，重新評估：</p>
+<p>L_2 = 更新後的邏輯凝聚度（考慮遠距離依賴）</p>
+<p>C_2 = 因果方向性識別</p>
+<p>...</p>
+<p>第L層（收斂）：</p>
+<p>所有LCQP維度達到穩定：</p>
+<p>|L_L - L_{L-1}| &lt; ε</p>
+<p>|C_L - C_{L-1}| &lt; ε</p>
+<p><strong>數學形式化</strong>：</p>
+<p>定義第&lt;![if !msEquation]&gt;&lt;![if !vml]&gt;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAcCAMAAAB1Xz6HAAAAAXNSR0IArs4c6QAAAEVQTFRFAAAAAAAAAAA6ADqQAGa2OgA6OgBmOpDbZgAAZgA6ZpDbZrb/kDoAkNv/tmYAtv//25A627Zm2////7Zm/9uQ//+2///bD4KJtwAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAAPElEQVQYV2NgoBCIcjByg4wQYeUFUcLMQiBKgAVEivGwgyhRTrCUCBs/WAqigg8sJcbDLQjSzsfERb47AJvKAaZKuRh9AAAAAElFTkSuQmCC" alt="">&lt;![endif]&gt;&lt;![endif]&gt;層的LCQP狀態為：</p>
+<p>&lt;![if !msEquation]&gt;&lt;![if !vml]&gt;<img src="data:image/png;base64,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" alt="">&lt;![endif]&gt;&lt;![endif]&gt;&lt;![if !supportLineBreakNewLine]&gt; &lt;![endif]&gt;</p>
+<p><strong>收斂判據</strong>：</p>
+<p>&lt;![if !msEquation]&gt;&lt;![if !vml]&gt;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALMAAAAwCAMAAABt7ru3AAAAAXNSR0IArs4c6QAAALRQTFRFAAAAAAAAAAA6AABmADo6ADpmADqQAGa2OgAAOgA6OgBmOjoAOjo6OjqQOmZmOmaQOma2OpC2OpDbZgAAZgA6ZgBmZjoAZjo6ZjqQZmZmZpC2ZpDbZrbbZrb/kDoAkDo6kDpmkGY6kGZmkGaQkLbbkNv/tmYAtmY6ttuQttvbttv/tv+2tv//25A625Bm27Zm27aQ29uQ29vb29v/2/+22////7Zm/9uQ/9u2/9vb//+2///bqmZjrAAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAACvElEQVRoQ+1XaXPbIBAFO4nVM47VHD2k1E2sHK1s97BQ4f//r+4ClkEKQoodzXQGPmBJs7CPx9vDhIQRGAgMBAYCA4GBwEBgIDAQGPh/GVh+ISSndGafQMwT+LD6PNi5ym+PylcHn0vEJtKTjYVuFVH8ToqhQPOrCgCbeohi79CWxzbNy09/YomZ3C2GYTpHdwUd/+jgU9oS9qoOjWvMRU0zL3QC8RXBilSiydt9imsJNq9JA5lXPKt7eMFRUPTNzxEze40zKSYOf6YtyRpWW8xqs8OOYrQwSFpGlI6/SzcarBMzMWwrUmE5DLyaBmbb0V6HsLdaXxzfbpQ2shlhEPRubUhbfScoZztcfZjF6vTZorEw5yrLYlzxDwv564x7Zasw402VqaX8dszlfDT9/WyuTcwiVUkVc10Gdzxa1MgzvGhbGYMsRkWAdTXYJXw4wtxcxeDOkVi9Ob7d2Yq5vdZ/FIvnck6PMJrKG39N0bYq17lHleu2jv7eRad6d7mKx9O+IrF4hu0ennYPtOqhs5rQtr6iU2lLOxJpTcfNlOMl2sDMY/N621fubGXtdo5d7XbwzKWuPJdV297ArDJut2HYYo/kGka/4tBzs4L6ARiYWUQtpbUt7mOr9qkFzjZv8LjlyA4E5lbri0ZL6cTdx7aJGVqDbX6GDnB0JvNUghNUhfcxzBAHECoZZCP2Npqggk42+NY4PllH3eXRx7bOc4MKWW5hgtwJTQNkfXjOEkg6/OonNBHwkKs3VK9dB1nUvQ3rY+vFLFMmTlkC9EIl5ufQQsBfCTq+n2JChC5Tvsnu5ZdxZn7ZXVx9bKUL01ErzxIzyT7OkF7VE6juuDuf/jg+gAXm/wQn0LPCDAIA1imdIGbU80y+HcDXQFtARBp/ngZyuqebonfd2dNhWB4YCAwEBgIDgYHAwMEY+Aea6Fk+oN4SjgAAAABJRU5ErkJggg==" alt="">&lt;![endif]&gt;&lt;![endif]&gt;&lt;![if !supportLineBreakNewLine]&gt; &lt;![endif]&gt;</p>
+<p><strong>實證觀察</strong>（通過探測實驗）：</p>
+<ul>
+<li>第1-3層：LCQP向量劇烈變化（&lt;![if !msEquation]&gt;&lt;![if !vml]&gt;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAE4AAAAcCAMAAAD4MnnTAAAAAXNSR0IArs4c6QAAAJNQTFRFAAAAAAAAAAA6AABmADo6ADpmADqQAGaQAGa2OgAAOgA6OgBmOjqQOmaQOma2OpC2OpDbZgAAZgA6ZjoAZjo6ZpC2ZpDbZrbbZrb/kDoAkGY6kJC2kLbbkNv/tmYAtmY6tmZmtpA6ttvbttv/tv//25A625Bm27Zm27aQ29vb2////7Zm/7aQ/9uQ/9u2//+2///bw1kXOQAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAABXklEQVRIS+1T0VKDMBDMUYuNiopVgSpFrbEVDMn/f513CaEEyIzjizNO8wJk9nZv7xbGTuc0gf87gQbi+jfumqgUg8qte//gAIt3YhwhepE9hyjrvvQGABJswAdLHpUWcVgvn21/ATrJMyY6tC7Oa9amqzFY3KS3hkOAfYbpyIciBjwqzakmHtGpu9K61QUQwKcTxg77Mv3rgvTcbOjZEqdnpVkxeWHQ7QbOrHKPaB51RVqVAShjw9HpV7CDHNLpIkdVYtEVT95G3b3gYrC8ue78DenEVc0kx5shncRLJnCfKnUbOQrqJyPjAmTH1nXXzW7h021JUPKceakLbJaY7ABtDTXi0clLyhm5lRySXec1FJQGMrZHE+RRF/FuEhSBUaSDbg9r6JMSijEGfYlbMSOjGEcPkxi7jjDG3P0fIbojdvAWAhtRLyiz5ZPLz1mYune/I2PziJ+xn1B/NIFvFasoRyJnVyoAAAAASUVORK5CYII=" alt="">&lt;![endif]&gt;&lt;![endif]&gt;）</li>
+<li>第4-8層：逐漸穩定（&lt;![if !msEquation]&gt;&lt;![if !vml]&gt;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAE4AAAAcCAMAAAD4MnnTAAAAAXNSR0IArs4c6QAAAI1QTFRFAAAAAAAAAAA6AABmADo6ADpmADqQAGa2OgAAOgA6OgBmOjqQOmaQOma2OpC2OpDbZgAAZgA6ZjoAZjo6ZpDbZrbbZrb/kDoAkGY6kJC2kLbbkNv/tmYAtmY6tmZmttvbttv/tv//25A625Bm27Zm27aQ29u229vb2////7Zm/7aQ/9uQ/9u2//+2///bFq3bWAAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAABTklEQVRIS+1TW1uDMAxt0LmqyHCToQJe6tDVSv//zzNJuZQOHvTJz4+8QEtyTs5JEGKJxYH/64CGi+Nv1OmoUF5l2b2/SYCzV0IMMnqSg4Qoa0+2wkNykmxkVLiMert6dP3NwBmZCdVm2zw5CgX7MFkl6YYxFLjnPBzpaNL14IiRIVxzWzi1NieqAE5BTN8+uX+bE1/vjRDvO1I+kqLXwlxy9tc9nLfMXYa+sxVxVZzQsIweTgOs6N6Hs/keWQkFrY2fg+6ecDBYrm/4PoDDkpKM9OHMNZIrnGeTdhMZCO0D03QL5GzzxDoCH66k/snR0dbNTJaQnIFthHDmivaM1BoJ8cvJKIZKetOQiQOKMHLjYHlrPG4FLlBtvYV+U+bWGBed3Cc4Ue8mRuHT17L7P+bgxs0Gcws/MinHj+DExyRLw0vpYjpjsmy5/CsOfAOBGSR2KRVIzQAAAABJRU5ErkJggg==" alt="">&lt;![endif]&gt;&lt;![endif]&gt;）</li>
+<li>第9-12層：接近收斂（&lt;![if !msEquation]&gt;&lt;![if !vml]&gt;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAE8AAAAcCAMAAAAX8BLtAAAAAXNSR0IArs4c6QAAAJBQTFRFAAAAAAAAAAA6AABmADo6ADpmADqQAGa2OgAAOgA6OgBmOjoAOjqQOmaQOma2OpC2OpDbZgAAZgA6ZjoAZjo6ZpC2ZpDbZrbbZrb/kDoAkGY6kLbbkNv/tmYAtmY6ttvbttv/tv//25A625Bm27Zm27aQ29vb29v/2/+22////7Zm/9uQ/9u2/9vb//+2///baYdcmAAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAABRElEQVRIS+2T2VrDIBCFITYWl6qx1SxNXWjiEiq8/9s5w4QkpLT288YLw00JnfmHc2ZgbFqTA//AgYaff/5KZhOVcpC6cfut4PzsFZGjiL5KJXiUuk9TZHbrRysRlRRRL+M13XDEM9WCzpVImXThwA7x5G1yZ4Mlp98xb1dEN+90jlJ0Mrf77cNHEuDp+5IEm7wt5/FMdRWvXRmTY8XOHx3iNXOmLqzgXcFnVLrT+/UkFi+OxuBqP/JMnsHNEGMg99nXa/LWt/b4BJ66Bq0SuqoT5/Ox+2Hho3o3qECJjHnT1/fX88+iyERcAf/UJc4bClaC91Z58zLob8NTVoEOJZAZ4ElOCwTXS94NzKH5YzDyMTQPeWoFebNHbxr61uGuFu6lHHwffoLfvb3/SMVwXoLp+4dvwTi96l4mC0eciJ/C/tKBb/HcJk3AvJsUAAAAAElFTkSuQmCC" alt="">&lt;![endif]&gt;&lt;![endif]&gt;）</li>
+</ul>
+<p><strong>這就是為什麼理解準確</strong>：編碼器自然實現了「讀-重讀-確認」的認知循環。</p>
+<p><strong>2.2</strong> <strong>用戶提示詞的強化循環</strong></p>
+<p>用戶（如Neo.K）的提示詞策略進一步強化了這個循環：</p>
+<p><strong>典型提示詞模式</strong>：</p>
+<p>步驟1（主軸保留）：完整重述我的觀點，確保理解無誤</p>
+<p>步驟2（全域展開）：從多維度補充細節</p>
+<p>步驟3（語義融合）：整合成完整論述</p>
+<p>步驟4（應用收斂）：提出實作策略</p>
+<p><strong>這強制模型執行多輪LCQP</strong><strong>驗證</strong>：</p>
+<p>步驟1 = 第一輪LCQP：</p>
+<ul>
+<li>檢查 L（邏輯凝聚度）：我的重述是否與原文一致？</li>
+</ul>
+<ul>
+<li>檢查 C（因果方向性）：論證鏈是否正確？</li>
+</ul>
+<p>步驟2 = 第二輪LCQP：</p>
+<ul>
+<li>檢查 Q（資訊密度）：補充的內容是否有價值？</li>
+</ul>
+<ul>
+<li>檢查 P_proc（過程一致性）：是否偏離主軸？</li>
+</ul>
+<p>步驟3-4 = 第三輪LCQP：</p>
+<ul>
+<li>全域曲率檢查：κ_total是否收斂？</li>
+</ul>
+<ul>
+<li>目標導向性：是否緊扣原始需求？</li>
+</ul>
+<p><strong>結果</strong>：理解階段有<strong>至少</strong><strong>3</strong><strong>次顯式+12</strong><strong>次隱式（Transformer</strong><strong>層數）的LCQP</strong><strong>循環</strong>。</p>
+<p><strong>這就是為什麼丟檔給Claude</strong><strong>後，它能如此精準地理解</strong>。</p>
+<p><strong>2.3 BAT</strong><strong>在理解階段的天然存在</strong></p>
+<p>仔細審視，會發現<strong>編碼器已經隱含了部分</strong><strong>BAT</strong><strong>機制</strong>：</p>
+<p><strong>必要性約束（W_nec</strong><strong>的隱式版）</strong>：</p>
+<ul>
+<li>自注意力的Query-Key點積天然傾向於關聯語義相關的tokens</li>
+<li>多頭注意力的不同heads專門化為不同類型的依賴（語法依賴、指代依賴、因果依賴）</li>
+</ul>
+<p><strong>排除性約束（W_exc</strong><strong>的弱化版）</strong>：</p>
+<ul>
+<li>Layer Normalization抑制了極端啟動</li>
+<li>Dropout隨機切斷部分連接</li>
+</ul>
+<p>但這些是<strong>統計性的軟約束</strong>，不是<strong>幾何性的硬約束</strong>。理解階段之所以還算準確，是因為：</p>
+<ol>
+<li>輸入已確定（不是生成的），錯誤無法累積</li>
+<li>多層反覆運算提供了多次修正機會</li>
+</ol>
+<hr>
+<p><strong>第三章：表達階段的單向退化</strong></p>
+<p><strong>3.1</strong> <strong>自回歸生成的拓撲缺陷</strong></p>
+<p><strong>解碼器的生成過程</strong>：</p>
+<p>&lt;![if !msEquation]&gt;&lt;![if !vml]&gt;<img src="data:image/png;base64,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" alt="">&lt;![endif]&gt;&lt;![endif]&gt;&lt;![if !supportLineBreakNewLine]&gt; &lt;![endif]&gt;</p>
+<p>關鍵缺陷：</p>
+<ul>
+<li><strong>單向因果</strong>：&lt;![if !msEquation]&gt;&lt;![if !vml]&gt;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAcCAMAAABmiH5zAAAAAXNSR0IArs4c6QAAAGZQTFRFAAAAAAAAAAA6AABmADpmAGa2OgAAOgA6Oma2OpDbZgAAZgA6ZgBmZjpmZmaQZpDbZrbbZrb/kDoAkNv/tmYAtmY6tmZmtpA6tv//25A625Bm25C22////7Zm/7aQ/9uQ//+2///bzueSpgAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAAa0lEQVQoU91QSRKAIAwLuO+iouAG/v+TIijj2aO5dJq06aTAD8BJCgwkclF2JgMBXfRPMpX0UGbihs4ZRi+axUg1ryfIsF4BXQnHbdSMqpjc7jO7SJlZ7Zhc5dato63tdCkW4+DPddTufMcJdcUEaWoxSEEAAAAASUVORK5CYII=" alt="">&lt;![endif]&gt;&lt;![endif]&gt;  只能「看到」 &lt;![if !msEquation]&gt;&lt;![if !vml]&gt;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAAcCAMAAAC9M9RRAAAAAXNSR0IArs4c6QAAAHVQTFRFAAAAAAAAAAA6AABmADpmAGa2OgAAOgA6Ojo6OjpmOma2OpDbZgAAZgA6ZgBmZjpmZmaQZpDbZrbbZrb/kDoAkGY6kNv/tmYAtmY6tmZmtpA6ttv/tv//25A625Bm25C22////7Zm/7aQ/9uQ/9u2//+2///bL5S5sgAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAAh0lEQVQoU2NgGAXkhYAEIxcDgzgjK5puJWFZZhkGVV4xDFOV2cUYlIF60IEqjzCDJES5moQgkqw4qzKYqyLKIYSsSZZFQAEkyikNElXll4FKKjIBTVGGiDIoszHC3CYnDDEFIiPLDVGuJgVlQM2XgDhBhAnJLqB7VPlk5IG2YbpahAlsLI0BAFOuB08A4O8kAAAAAElFTkSuQmCC" alt="">&lt;![endif]&gt;&lt;![endif]&gt;，不能「看到」 &lt;![if !msEquation]&gt;&lt;![if !vml]&gt;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAAcCAMAAAC9M9RRAAAAAXNSR0IArs4c6QAAAIdQTFRFAAAAAAAAAAA6AABmADpmAGa2OgAAOgA6OjoAOjpmOmaQOma2OpDbZgAAZgA6ZgBmZjoAZjo6ZjpmZmaQZpC2ZpDbZrbbZrb/kDoAkLbbkNv/tmYAtmY6tmZmtpA6ttv/tv//25A625Bm25C227Zm29u229v/2////7Zm/7aQ/9uQ//+2///bfJzgBgAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAAkklEQVQoU+2Q2RLCIAxFL9jWpe4btVYFrVZI///7ZKDVGXhzfDQvIcm9ZxKAf3z3AxXLgSNLA7cWaiBB8zKimmEJYz1h0EzgFMstPDU76PwRGlSyadDWo/HFTWgtveLJPeW+Sg6AyVi33FX0BLO0TzV1ZXv2udejcu6C7/24ziaOTwt5az4r6G1XUMHf3PioX3VeJ9UIk4LGpYkAAAAASUVORK5CYII=" alt="">&lt;![endif]&gt;&lt;![endif]&gt;</li>
+<li><strong>無回溯</strong>：一旦生成 &lt;![if !msEquation]&gt;&lt;![if !vml]&gt;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAcCAMAAABmiH5zAAAAAXNSR0IArs4c6QAAAGZQTFRFAAAAAAAAAAA6AABmADpmAGa2OgAAOgA6Oma2OpDbZgAAZgA6ZgBmZjpmZmaQZpDbZrbbZrb/kDoAkNv/tmYAtmY6tmZmtpA6tv//25A625Bm25C22////7Zm/7aQ/9uQ//+2///bzueSpgAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAAa0lEQVQoU91QSRKAIAwLuO+iouAG/v+TIijj2aO5dJq06aTAD8BJCgwkclF2JgMBXfRPMpX0UGbihs4ZRi+axUg1ryfIsF4BXQnHbdSMqpjc7jO7SJlZ7Zhc5dato63tdCkW4+DPddTufMcJdcUEaWoxSEEAAAAASUVORK5CYII=" alt="">&lt;![endif]&gt;&lt;![endif]&gt;，立即成為 &lt;![if !msEquation]&gt;&lt;![if !vml]&gt;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB0AAAAcCAMAAACqEUSYAAAAAXNSR0IArs4c6QAAAG9QTFRFAAAAAAAAAAA6AABmADpmAGa2OgAAOgA6OgBmOma2OpDbZgAAZgA6ZgBmZjpmZmaQZpDbZrbbZrb/kDoAkNv/tmYAtmY6tmZmtpA6traQtv//25A625Bm25C227Zm2////7Zm/7aQ/9uQ//+2///bHWH9ZgAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAAj0lEQVQ4T+1QyxKCMAxMqqj4try0VdGU//9GY1JgGOGsB/fUZrOPCcAfv3CBElOAApPRLk/rZw7CNp9oSssciPXjCBsL1ZSUQxM69kK/lvd95XTm54caIOz1K2xTXVr2YdiXFqi9o5Za9mq76XsHUbaVbc4aVMZiA21mTkKGnbtx+qezspmRgJhbcIB6fgMvE3wHx/YCVOIAAAAASUVORK5CYII=" alt="">&lt;![endif]&gt;&lt;![endif]&gt;的條件，無法修改</li>
+<li><strong>貪心或採樣</strong>：每步都是局部最優（貪心）或隨機抽樣，無全域規劃</li>
+</ul>
+<p><strong>LCQP</strong><strong>視角的診斷</strong>：</p>
+<p>生成 y_1：</p>
+<p>計算 LCQP(y_1 | z)</p>
+<p>→ 假設 L_1 = 0.8（合理）</p>
+<p>生成 y_2：</p>
+<p>計算 LCQP(y_2 | y_1, z)</p>
+<p>→ L_2 = 0.75（略降）</p>
+<p>→ 但沒有機制檢查 L_2，直接commit</p>
+<p>生成 y_3：</p>
+<p>計算 LCQP(y_3 | y_1, y_2, z)</p>
+<p>→ L_3 = 0.65（繼續降）</p>
+<p>→ 仍然沒有驗證，繼續生成</p>
+<p>...</p>
+<p>生成 y_10：</p>
+<p>L_10 = 0.35（邏輯凝聚度崩潰）</p>
+<p>C_10 = -0.2（因果方向倒置）</p>
+<p>→ 已經幻覺，但無機制阻止</p>
+<p><strong>無約束的語義漂移定理</strong>：</p>
+<p><strong>定理3.1</strong><strong>（漂移放大定理）</strong>： 設語義軌跡的測地線為 &lt;![if !msEquation]&gt;&lt;![if !vml]&gt;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAcCAMAAACJShVNAAAAAXNSR0IArs4c6QAAAFRQTFRFAAAAAAA6AABmAGa2OgAAOgA6Oma2OpCQOpDbZjoAZjpmZma2ZpDbZrbbZrb/kDoAkDo6kNv/tmYAtmZmtpCQtrZmtv//2//b/7Zm/9uQ//+2///bBu4miQAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAAX0lEQVQoU2NgGLxAWAzZbZLcIqK8KAIsPFjkpTgZBRkYhJiAesH6RcT5ORgkWYFiMCDEzCDEgaRTiEOCDdkgIXYuFIuFGPlQwghFMwODtACS2UCFEiCrEUCan5mWIQwAx0ADdIBUWCcAAAAASUVORK5CYII=" alt="">&lt;![endif]&gt;&lt;![endif]&gt;，實際生成軌跡為 &lt;![if !msEquation]&gt;&lt;![if !vml]&gt;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAcCAMAAABMOI/cAAAAAXNSR0IArs4c6QAAAGNQTFRFAAAAAAAAAAA6AABmADqQAGa2OgA6OgBmOmZmOma2OpCQOpDbZgAAZgBmZjoAZjpmZjqQZrb/kDoAkDo6kDpmkNv/tmYAtmY6tpCQtv//25A62//b2////7Zm/9uQ//+2///b669UBwAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAAl0lEQVQoU+2QyxaCMAxEE7AqFh+gRFvp4/+/0gkeN1DO4QPMIotOJncaon9tvkC6VAOR1G7ueL17S3EPcVFiSGyJIDY0RbKcrgvANChVV46qgNQy70ZhJIzHlidkviNRsOQ7tHQb48Gls+4O+gU4aueZ0WND+YGn3BuoXjFwoH7Cl6sMS8JsZsJz0PWFcAHrV0Jvvvrq4AfraQf82cZlOQAAAABJRU5ErkJggg==" alt="">&lt;![endif]&gt;&lt;![endif]&gt;。在無約束自回歸生成中，偏離量 &lt;![if !msEquation]&gt;&lt;![if !vml]&gt;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAcCAMAAACJShVNAAAAAXNSR0IArs4c6QAAAFdQTFRFAAAAAAAAAAA6AABmADqQAGa2OgAAOgA6OgBmOjqQOpC2OpDbZgAAZgA6ZgBmZjpmZrb/kDoAkNv/tmYAtmY6tv//25A625C22////7Zm/9uQ//+2///bsLe/IAAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAAbklEQVQoU9VRSxaAIAjEPvYvzbRC73/OtDJp2y5WDDDD8AD4Qahioy6RZzPFpu07gu0wvwh7CVglgpMCnCwfAjZe3OQ6FlTQQi5ujHXonAQ7+dSwK3KNnLEk44cMdeHx8nIJdtQrvcPKLC75/oMDBhwEcbmNQXIAAAAASUVORK5CYII=" alt="">&lt;![endif]&gt;&lt;![endif]&gt;滿足：</p>
+<p>&lt;![if !msEquation]&gt;&lt;![if !vml]&gt;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANgAAAAcCAMAAAA0h4F9AAAAAXNSR0IArs4c6QAAAM9QTFRFAAAAAAAAAAA6AABmADo6ADpmADqQAGa2OgAAOgA6OgBmOjo6OjpmOjqQOmZmOmaQOma2OpCQOpC2OpDbZgAAZgA6ZgBmZjoAZjo6ZjpmZjqQZmYAZma2ZpC2ZpDbZrbbZrb/kDoAkDo6kDpmkGY6kJBmkLbbkLb/kNv/tmYAtmY6tmZmtpA6tpBmtpCQtrZmtra2ttvbttv/tv+2tv//25A625Bm25C227Zm27aQ29vb29v/2/+22//b2////7Zm/9uQ/9u2/9vb//+2///bgsVtrQAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAADKUlEQVRYR+1Wa1fTQBDdbYXGF1QaqY8iLaKSohWxi6LYbsn+/9/kzL6ym0zScI5f7EnOARr2Tnfm3js7y1j3dAx0DHQMdAzsKgOCj3ayNPVLDneyMMbyCfy8Xj6suowPdIB8ddEU6JfF4TWJu3T7lpF1AQ9IMxswmXCbKGPZ/qpFsJpNESWeN4KDZfmUYEBOFl9P9W5VZBGgrqqbtMhSHIBiwveZTHqNGtii85eIkk8ahbbL5s+6T2Bl8s4Ib74oQhYBN8nex5jsFlnKZ9+hsLkvRhylbQ4TiVKpWSPULqu59gAFdoqRyDBgc84PvwW1bc9SnU3zyf3d8fKHkRuUKKmsZtw+zqObMe99wBaTj5GPfIwaZ1VB7HIK4bgovMeDCNNjNLIIQMztuHfyu/BLrRfVOeewEzRYng7vZj3dMmAYaDidbv0jk+Eq17Iasyz+gHBUkPWSbcfAi5UIGlk272bsqCGyFJbYPD1aEclgEmpmDry6B7kyLeYoBXYywpR22W0TbleKoJFxfoFiVJauMPjm+znhHmwdhzGVla2YpyCu6XJf2Gg9JGiwy2vLc1RYHEEjg4C4x3SDx1m67XMw/qMT4hRF4mVifUlqprcDXsLCXpBj0KZrsK6RzOcsjqCRvjA8FcNctT10ljCnYkpr+sgIob1YO7LhC9Xi7UDCOe2aIHMdGjNhluFwU18+wQd8dSddKYJA2gDtmSt3aFiGfJbq7EIbqHjy9JSpeUUYYc+//jIc2SXhPvO96598CBQ6epBB9MD+KuNwQsqDVN8/7bLgPT2sUBZfWNySBDIwRNk4QZZQYqm7bxK7XTnKvRcjuw7hRxPwBnqMmJjCr/zNCnTPj0GseHLpN3PoMB0RPAQyCK8OHBeKzSaaj7pK9sXIri/MelEbCRTrL5FLUHvI1PvKZUOjLk1BlVtI9A/7Ql5V4mSwddooEHrVj+yGupy9kDOBvgbF0IKusGAmR4OOGCjBMLa+3DZOcSdoMDclG9MMC/Mjuzni1t3uscdGLMPLdFEY88tbL+tl5NYAI335VGxbX3scWBfaqz3+v0Guob3Qjd3TMfAPGPgL9IV/91lkI+oAAAAASUVORK5CYII=" alt="">&lt;![endif]&gt;&lt;![endif]&gt;&lt;![if !supportLineBreakNewLine]&gt; &lt;![endif]&gt;</p>
+<p>其中 &lt;![if !msEquation]&gt;&lt;![if !vml]&gt;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAcCAMAAAA6Aj1XAAAAAXNSR0IArs4c6QAAAHhQTFRFAAAAAAAAAAA6AABmADo6ADpmADqQAGa2OgAAOmaQOma2OpDbZgAAZgA6ZjoAZrbbZrb/kDoAkDo6kGY6kNv/tmYAtmY6tmZmttv/tv/btv//25A625Bm27Zm27aQ29v/2////7Zm/7aQ/9uQ/9u2/9vb//+2///bpbQrfwAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAAtElEQVQ4T+2RzRaCIBCFB6ygotAI+jErs+D93zBAIbLjcdWqWMHwcefeAeC/vjwBhWbX8RY3rlfbIayiCPPu0mw6zAj+rttQDiUOIipsHorO94mytHY0I22ljrw9nNeTKGmKpa041i7NUgzgLvDi4t9rlmCSiF4EI4LACyuzQ4jQekjVnC3ftKF5TOqg1JsnvEFTELDY7uiF+klrxKFyzmVmAYlzT33MDU4UTQdnP/51v048AWAfC34m+tWeAAAAAElFTkSuQmCC" alt="">&lt;![endif]&gt;&lt;![endif]&gt;是Lyapunov指數，由模型的溫度參數和約束缺失決定。</p>
+<p><strong>證明</strong>（草圖）： 每步生成引入小擾動 &lt;![if !msEquation]&gt;&lt;![if !vml]&gt;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAcCAMAAACNv8VwAAAAAXNSR0IArs4c6QAAAFFQTFRFAAAAAAAAAAA6AGa2OgAAOgA6Oma2OpC2OpDbZgAAZgBmZjpmZrbbZrb/kDoAkGY6kNv/tmYAtmY6tv//25A625C227Zm2////9uQ//+2///bMBvVVgAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAAVklEQVQoU2NgGKJAip+RkUkA6nhJTjZxhD8EmZH8JMnJCAS8UBEJVpgWkIAkJw9YXJJbGESJsTAysYtLsDAyIhkgwoEcQEIo2rmERRHWSvIxwWwhI0gBS5wCiEBTye8AAAAASUVORK5CYII=" alt="">&lt;![endif]&gt;&lt;![endif]&gt;：</p>
+<p>&lt;![if !msEquation]&gt;&lt;![if !vml]&gt;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGcAAAAcCAMAAABLelHJAAAAAXNSR0IArs4c6QAAAKJQTFRFAAAAAAAAAAA6AABmADpmADqQAGa2OgAAOgA6OgBmOjo6OjqQOmaQOma2OpCQOpC2OpDbZgAAZgA6ZgBmZjoAZjo6ZjpmZmaQZma2ZpDbZrbbZrb/kDoAkDo6kGY6kLb/kNv/tmYAtmY6tmZmtpA6tpBmtpCQtrZmttv/tv//25A625Bm25C227Zm27aQ2//b2////7Zm/7aQ/9uQ//+2///b9Zow5QAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAABf0lEQVRIS+1U2VbDIBCFqI1btXHXoJVUq41bI/D/vyYMExmSptVz4osn80LY7p17ZwhjQwwODA78NwdmC69Ind/7j/LwuX+N6mr+dAPoB8saXe0jo6ed9MKq0mtQswey/FBtocb+eFCPEZC1KXacKpyhjZ16Cj5mTPJR0GsExwAcps8Sa42EtKE+atdZpTN7yi2W/ljbN3PHubvq4jMv7Vl9gtPAFr7mHzZ/j+0DnTIip9MWj87GIQGfnbKa1oQcMTkJ+yigpsaxaQOzt2joLGczKqd1wZJUNBHkqdAvKpX0G/jKvWQIOVLQRd0hjy5IT9UFqfPt4KHL3tPtS+ujjqBiTpmQtOr62D4zj9NQrmZ9dAZPLQBXridUymnPNXhIcewOZlryBHzo6re3lCfHywD8Asmuecnmlpav8WI2vh8ENg8+2SLGooKiF+82ooXWbqPOHlgk6OLp4tVWaVUYETdobFWr3A0IHQNrEdd6NeX36vuP/9e/BN7AO2z/jQNfPYEl1oMfCHkAAAAASUVORK5CYII=" alt="">&lt;![endif]&gt;&lt;![endif]&gt;&lt;![if !supportLineBreakNewLine]&gt; &lt;![endif]&gt;</p>
+<p>下一步的誤差：</p>
+<p>&lt;![if !msEquation]&gt;&lt;![if !vml]&gt;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHYAAAAcCAMAAACDFrsfAAAAAXNSR0IArs4c6QAAAIdQTFRFAAAAAAAAAAA6AABmADpmADqQAGa2OgAAOgA6OgBmOjo6OjqQOmaQOma2OpC2OpDbZgAAZgA6ZgBmZjoAZjo6ZjpmZpBmZrbbZrb/kDoAkGY6kNv/tmYAtmY6tmZmtraQttv/tv+2tv//25A625Bm25C227Zm27aQ2////7Zm/9uQ//+2///bBH5b6QAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAABgUlEQVRIS+2V2VqDMBCFCVqpa9O6VCy2tShikvd/PsnMJDAhBS/aGz9yBwnnz5xZSJJpTQ5MDkwOnNOBz0xcWX31tGGY8m5/Rmw5q8tFo1/e1gFF3bB7wKlTLS1fQUpdH3qSPxfddyfFVimEZPJILPzlANa8CYE60WVyQWtGjhbNs41JzfErLtAkoNVpsfox3VRZijY1S8v7MEFjySignBLyMxBgLrfY7cfyZW1y/LJZpDGG6uw7HymuQMB7ELikskUnLVpaC33sfXrfZCeM2FDA7YJSJ7fWBb10yWSn2oNVpEjdlZyNiA0FjmGtKW0CtFxjip+x8OF+ZrsbwDpXUSQUOJJbyIy9KIGqTKQPtcoEzh2yJdaSFK2W1DcUVygQr2R72KI9CNUAZ99hNw1gvYvRFh3qWxgzvJXfKdmj0ZrCh8P8JAE+pXiFwp4DYWpXhy9o3zGslpd7L9YZDSQQFhjjQmodCLE5DRDE2kH0lyn+7f9AKDD+B/IgbsT09G8c+AXr+iT3AFMdjwAAAABJRU5ErkJggg==" alt="">&lt;![endif]&gt;&lt;![endif]&gt;&lt;![if !supportLineBreakNewLine]&gt; &lt;![endif]&gt;</p>
+<p>其中 &lt;![if !msEquation]&gt;&lt;![if !vml]&gt;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAcCAMAAACEVGUKAAAAAXNSR0IArs4c6QAAAEtQTFRFAAAAAAAAAAA6AABmADpmADqQAGa2OgAAOgA6OpDbZgAAZrb/kDoAkNv/tmYAttv/tv//25A625Bm27Zm2////7Zm/9uQ//+2///bVz4oZAAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAATklEQVQoU2NgoC0QYmdkA9sgyCoiyAliiHNxQ60UZuKFsPgYGRmZBSBMiGoGBgkesGogEOOAKmMQhSpCUibOhaFMgo9VBKKTi4WfXN8BAApJAjA5QD51AAAAAElFTkSuQmCC" alt="">&lt;![endif]&gt;&lt;![endif]&gt;是傳播函數，&lt;![if !msEquation]&gt;&lt;![if !vml]&gt;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAcCAMAAABmiH5zAAAAAXNSR0IArs4c6QAAAGBQTFRFAAAAAAAAAAA6AABmADqQAGa2OgAAOgA6OpDbZgAAZgA6ZgBmZjoAZjpmZpBmZrbbZrb/kDoAkNv/tmYAtmY6tmZmtv+2tv//25A625C227Zm2////7Zm/9uQ//+2///bDkAcQAAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAAZ0lEQVQoU9VQSRKAIAwrqIi74C5S/v9LAQXHqzdzSyZN2wD8H1hTuTPa359Mc9l2RmThMc04GMEDPZIFsJSBDtbnpAvet6YKsHGSzqWXNCPkzsPC7llfaTDGND9aLZt6WkURL/tY9QnVOgUBJ3j1ZAAAAABJRU5ErkJggg==" alt="">&lt;![endif]&gt;&lt;![endif]&gt;  是新誤差。</p>
+<p>在無約束情況下，&lt;![if !msEquation]&gt;&lt;![if !vml]&gt;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAcCAMAAACEVGUKAAAAAXNSR0IArs4c6QAAAEtQTFRFAAAAAAAAAAA6AABmADpmADqQAGa2OgAAOgA6OpDbZgAAZrb/kDoAkNv/tmYAttv/tv//25A625Bm27Zm2////7Zm/9uQ//+2///bVz4oZAAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAATklEQVQoU2NgoC0QYmdkA9sgyCoiyAliiHNxQ60UZuKFsPgYGRmZBSBMiGoGBgkesGogEOOAKmMQhSpCUibOhaFMgo9VBKKTi4WfXN8BAApJAjA5QD51AAAAAElFTkSuQmCC" alt="">&lt;![endif]&gt;&lt;![endif]&gt;  的Jacobian譜半徑 &lt;![if !msEquation]&gt;&lt;![if !vml]&gt;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEEAAAAcCAMAAAAJOSJeAAAAAXNSR0IArs4c6QAAAJlQTFRFAAAAAAAAAAA6AABmADo6ADpmADqQAGaQAGa2OgAAOgA6OgBmOjoAOjo6OjqQOmaQOma2OpDbZgAAZgA6ZgBmZjoAZjo6ZmZmZpC2ZpDbZrbbZrb/kDoAkGY6kLbbkLb/kNv/tmYAtmY6tpA6ttv/tv//25A625Bm27Zm27aQ29v/2/+22////7Zm/9uQ/9u2/9vb//+2///bLUadyQAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAABRklEQVRIS+1T2VLDMAy0QlowNwUKlIS2HCaB2hD//8fhQ3JsY2Yob8zULxkr0mq1WjO2OzsFflJAzVfJL3H2vJ1Y4nRjCgTAAdWpkxQywdPtfYavjl5sRDdTC+SP3HMxE20XY9RFOg4Zgm4ufC5+s8vnI09mer19nxFCfwzVgjF16BkrHkOLiFB/XcdEBkKQ1QPrqlUgHIinY7jbR1udv9GEhDDMDHnbn7qto64jMyrTbfhNCK6lNBwQIZEhRyhyEHZ1ti8ioAwSlSZ1LIeyDrrZ3+gnQ4F0EG5/wxV6KaiS78LkeCWHyxsOE5uO3ZwMigMum9T55gc1B4D6LrIM+sAJa4yJtsxUIT3jL6WamCMs7EBGGPREutoSAIsNKKYd1Es/G7oLXVYsLQV7epvSL33rtzmCrsPr/HX3JFE3E3yRf6v/h1VftuEfLyaCP+AAAAAASUVORK5CYII=" alt="">&lt;![endif]&gt;&lt;![endif]&gt;（因為沒有抑制機制）：</p>
+<p>&lt;![if !msEquation]&gt;&lt;![if !vml]&gt;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKgAAAAcCAMAAADCzgTlAAAAAXNSR0IArs4c6QAAAJ9QTFRFAAAAAAAAAAA6AABmADpmADqQAGaQAGa2OgAAOgA6OgBmOjoAOmaQOma2OpC2OpDbZgAAZgA6ZgBmZjoAZjpmZmZmZpBmZpC2ZrbbZrb/kDoAkGY6kLbbkNv/tmYAtmY6tmZmtpA6traQtra2ttvbttv/tv+2tv//25A625Bm25C227Zm27aQ29vb29v/2////7Zm/9uQ/9u2//+2///bU5ARtAAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAABzElEQVRYR+1W21KDMBBNYlW8loqXSgtWqxalSmny/98mCUnIjcD44NSZ8BayOTl79uwCAOEJCgQFggJBgaDAYSmwQ1lxXI3k1AaTtTfej2juFtP27t5TYuMXRMFHNFn2p3ZARAHYL+Dlaw/XvyBKFhCibJxY2wQ9fIvQ7QVEc77QiFqIw6XHCcrKCD0acOpBHF/53arfsk+EuXdoCUqRoR9xmOjqfXY/J+mph2guNvs0VW9RFMVx0xH1GS+FGmQjKrskhfxpElbe19EUkJQ3mdxQAnBMzwnJXWRlsO7R3dGGta3Vvw7EYUUBhcMz4UBH10tNOEc+OcrzhobGgXa96pGCViLvfCAHnonoGEOO8UTLwHLX5pamaNsP+LYNYhhk9WISJWvZRCyOpCcVeZZN6EEcRZRVvZvtrjlaRhBdV3UEITMrT7a2FDVcgWd3EZy8GbKzpYE4iigtQ2dRl0fFTYwgpdvOKouo1gT0blkmrVZKOqK+o4iyosayVTxfpifu47GKMot2j2PgC0QHUVcdtNwl3JdRSIBvNp+sVWyiwApmFhWThCP1I9IAF4T1Xv396DsAcMq/Ci3RvHGAwcRMbWgtEYcCw35Q4P8q8ANmtFIBokd/HwAAAABJRU5ErkJggg==" alt="">&lt;![endif]&gt;&lt;![endif]&gt;&lt;![if !supportLineBreakNewLine]&gt; &lt;![endif]&gt;</p>
+<p>遞推得：</p>
+<p>&lt;![if !msEquation]&gt;&lt;![if !vml]&gt;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAM4AAABICAMAAACJKDozAAAAAXNSR0IArs4c6QAAAKtQTFRFAAAAAAAAAAA6AABmADpmADqQAGaQAGa2OgAAOgA6OgBmOjoAOjqQOmaQOma2OpC2OpDbZgAAZgA6ZgBmZjoAZjpmZmZmZpBmZpC2ZrbbZrb/kDoAkDo6kGY6kLbbkNv/tmYAtmY6tmZmtpA6traQtra2trb/ttu2ttvbttv/tv+2tv//25A625Bm25C227Zm27aQ29vb29v/2////7Zm/9uQ/9u2//+2///bdl+S9gAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAADdElEQVRoQ+1a6WLTMAx2woBwbaQrxxa2hnGzQAtN57z/k2EntS3JjpO261YP+xdpYknfp8OSB2NxRQYiA5GByEBkIDIQGYgM3AkD8+fXd6JnX0r4G2B/c/U5bDirLEmeAqpWYcNh1WsBRoJKknQm/hU4nI8Cw8PxDj+9/r18QHCK9BygKUXMyeiLKzIQGfi/GKjkgYMXLA2hkdEUySPYpYnnkOHIhgA2OeI5aDhMhBs8aZoibDisbJs1vcrA4fA8eQz7nNDSn9pL0yd0PCJ9PBHWfMBN9/7QolFyBzUlrtY7SNplKx0lt5blSx+eo0Lu01Gns6o/Dbu3zZf+PG1HSbn8gqzXep8yrvbMBcNKlPYxcNiv7OiyhxM9Su4KR54+fekzrGQjOIzdXCSvvjsQmVFyZzi02THa+Om3rwMh4ITTXHS3D3pBGxfT9P1f/WbxIknPGON6lERwLEHDwSZk5bjZYUwpyVU6GCV8ms7mmZ5jXXB4fkySBFN+M9VZVqeXbN6L3BY0Bg6rSXXzKbn6OXl31hSqRrjglFYB6fMOz0UFWD3rc6QtCMIRUbVepAatMti6CW/5lMiPm4IWImCwcLZYKB31W5I7tWzpxUt3XDoEjfFOU2B4fiXyLZ8oCxzewWzD6isrGwrDSvqxRNoBL0qQOJSOdR0mB4JVqBmr0Ngjnr1KZAS0gNExgbwjclsscNCrc8eUgPaLpniybD4h50D6ed4KEq0Jz5WzaeGz4dAxx6+kjTNzYrpyZ54l6ckSHvQ91ZdP3mbJ0Q9UuOGna0Hidrakwa32WHCso9+vREaASR1NpsNgoGntHZq7xsnumt79unq57AJGrkHvlCTUQCT1KTG+98EBd8Y93tFGukvB+ld5dz7cnhi4yNnr1CG/YXsAq/rFH7KDoTtj622XOiqE4F5bUH4O5mSnJL2f1OhxSmCz2SveHPQU6KbPNahs/r20Rm+q6cC+r3CVPDDrNjUn9KsojJfWaM8AtilR9/E9rdGOlu8+zNpSZ03GtkU2epbeUuM+t3V/5EXLdQ7s04RblG3GBYMoYDi3yEwUFRkYZADe2cKRb3DjwX6g/g8LGvkO1lqvYbApkEOFHvnChGOGIjLyBQpHzIsq2NDIFyYcc2crb0LhyBckHq7vbIX540e+ILFGoyMDkYHIQGQgMnCwDPwDyxJ6AfbeB3EAAAAASUVORK5CYII=" alt="">&lt;![endif]&gt;&lt;![endif]&gt;&lt;![if !supportLineBreakNewLine]&gt; &lt;![endif]&gt;</p>
+<p>取對數：</p>
+<p>&lt;![if !msEquation]&gt;&lt;![if !vml]&gt;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAAcCAMAAAD/XGWDAAAAAXNSR0IArs4c6QAAAL1QTFRFAAAAAAAAAAA6AABmADo6ADpmADqQAGaQAGa2OgAAOgA6OgBmOjoAOjpmOjqQOmZmOmaQOma2OpC2OpDbZgAAZgA6ZgBmZjoAZjpmZmZmZma2ZpC2ZpDbZrbbZrb/kDoAkDo6kGY6kLbbkNv/tmYAtmY6tmZmtpA6tra2ttu2ttvbttv/tv+2tv/btv//25A625Bm25C227Zm27aQ29vb29v/2/+22////7Zm/7aQ/9uQ/9u2/9vb//+2///bYLS6EgAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAACe0lEQVRYR+1W23LbIBAFOU5Nr3Gq1G1SWVEqJenNpHEbU9nw/5/VBYQECHzJTCd5EDN+sNnL2bOHXSM0nIGBgYGBgSdngOL3T47hUADidz091OcZ2PNzhPjHxTNAcgCEcoJqgvGkc6nw8SoSgMav9klZeoHFbT+RbxOKS98B09TW9d+Mn32JQaDRemIe9wQnmb6sSeIFviPjK9exb9MPXL/5AaArN5a4fDRoUWQueTXJEG2w0tO09+rXBT75ZuEK2XiwxeWcn28ePix+Oam8IuyYu5jeVOTku+Ugu81TJT5oYLD3y1ly8adxidmoa1FgKU8QNE+nD3kyt6thposix80xWEEeDI++zvDYerrL160CZJjl7KilW+SSW42Vwet5Gezhembih2zoSOfi6ekqEkBe+tLrKpKaZgk4k67RLLlC947LukimmjuuBKFAi3wOH+vBm6gW00EbAxoY3lRNAT2hl5Niq6YZOGoGO1w+A6LQ3Fmg67fwiwHQJnU1HbYxeTA+uojMNTr6aR5iUB7IAy2/Avt2nTbTklrFdCnLrIkjRDk9bBidDYxhb+tFlaHD7pgeHmjawmroszWt8Kq21K+kMpU+2l0mbs0D1K6dDUDgqVMfNC1DonJ/azouo4LHdWRFKk078hD5i5W4aYn2pwfDmRY8bZ70aOHtMkuelg2UqGi3zh1M/M+emJuHLptdutOkM2SwOiHn8arE5o8WP/tE8NhMud6cRpBq7D2Rdpf15WdSSXGrFu44W/bgNk8l6cNOfA20caRQnD0dyXAdHRlbIe3DhxuA+7ssEB8ELcfffzrW7Ns3A/d2WdCP9abHvuEHu4GBgYEoA/8A2kJMD5zIMVAAAAAASUVORK5CYII=" alt="">&lt;![endif]&gt;&lt;![endif]&gt;&lt;![if !supportLineBreakNewLine]&gt; &lt;![endif]&gt;</p>
+<p>□</p>
+<p><strong>物理意義</strong>：生成過程是動力學不穩定系統，微小誤差會指數放大。</p>
+<p><strong>3.2</strong> <strong>為什麼「思考版」效果有限</strong></p>
+<p><strong>Claude Sonnet 4的「思考模式」</strong>或<strong>OpenAI的「o1」</strong>聲稱具有「extended reasoning」。但實際機制可能是：</p>
+<p><strong>假說A</strong><strong>：上下文窗口擴展</strong></p>
+<ul>
+<li>允許模型「回看」更多歷史tokens</li>
+<li>本質：增加 &lt;![if !msEquation]&gt;&lt;![if !vml]&gt;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAAcCAMAAAC9M9RRAAAAAXNSR0IArs4c6QAAAHVQTFRFAAAAAAAAAAA6AABmADpmAGa2OgAAOgA6Ojo6OjpmOma2OpDbZgAAZgA6ZgBmZjpmZmaQZpDbZrbbZrb/kDoAkGY6kNv/tmYAtmY6tmZmtpA6ttv/tv//25A625Bm25C22////7Zm/7aQ/9uQ/9u2//+2///bL5S5sgAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAAh0lEQVQoU2NgGAXkhYAEIxcDgzgjK5puJWFZZhkGVV4xDFOV2cUYlIF60IEqjzCDJES5moQgkqw4qzKYqyLKIYSsSZZFQAEkyikNElXll4FKKjIBTVGGiDIoszHC3CYnDDEFIiPLDVGuJgVlQM2XgDhBhAnJLqB7VPlk5IG2YbpahAlsLI0BAFOuB08A4O8kAAAAAElFTkSuQmCC" alt="">&lt;![endif]&gt;&lt;![endif]&gt;的範圍，從128k擴展到200k</li>
+<li><strong>問題</strong>：這仍是單向的，只是「看得更遠」，不是「重新思考」</li>
+</ul>
+<p><strong>假說B</strong><strong>：注意力預算重新分配</strong></p>
+<ul>
+<li>給關鍵步驟分配更多計算資源</li>
+<li>本質：某些token的計算使用更多FLOPs</li>
+<li><strong>問題</strong>：計算量增加 ≠ 循環驗證，仍是一次性前向傳播</li>
+</ul>
+<p><strong>假說C</strong><strong>：隱藏的思維鏈tokens</strong></p>
+<ul>
+<li>模型生成中間推理步驟（對用戶不可見）</li>
+<li>本質：延長生成序列，插入 &lt;think&gt;...&lt;/think&gt;</li>
+<li><strong>問題</strong>：這些中間步驟本身也是無約束生成的，同樣會漂移</li>
+</ul>
+<p><strong>關鍵缺失</strong>：<strong>沒有真正的</strong><strong>LCQP</strong><strong>回饋循環</strong>。</p>
+<p>真正的BAT需要：</p>
+<p>生成 y_t</p>
+<p>↓</p>
+<p>計算 LCQP(y_t)</p>
+<p>↓</p>
+<p>if L_t &lt; 0.6 或 C_t &lt; 0.5:</p>
+<p>REJECT y_t</p>
+<p>觸發回溯</p>
+<p>重新生成 y_t&#x27;</p>
+<p>↓</p>
+<p>if accepted:</p>
+<p>commit y_t</p>
+<p>當前模型沒有這個 if-reject-backtrack 機制。</p>
+<p><strong>3.3</strong> <strong>與理解階段的對比表</strong></p>
+<p><strong>維度</strong></p>
+<p><strong>理解階段（編碼器）</strong></p>
+<p><strong>表達階段（解碼器）</strong></p>
+<p>信息流</p>
+<p>雙向（全域可見）</p>
+<p>單向（因果遮蔽）</p>
+<p>反覆運算次數</p>
+<p>L層（通常12-24）</p>
+<p>0次（無反覆運算）</p>
+<p>LCQP循環</p>
+<p>隱式存在（多層收斂）</p>
+<p>完全缺失</p>
+<p>錯誤修正</p>
+<p>每層都可調整表徵</p>
+<p>一旦生成，無法修改</p>
+<p>約束機制</p>
+<p>Layer Norm, Dropout（弱）</p>
+<p>無（完全放任）</p>
+<p>軌跡穩定性</p>
+<p>κ → 0（收斂）</p>
+<p>κ ↑（發散）</p>
+<p>BAT狀態</p>
+<p>部分隱含</p>
+<p>完全缺失</p>
+<p><strong>結論</strong>：理解與表達是<strong>結構上不對稱</strong>的，前者有內建的穩定機制，後者沒有。</p>
+<hr>
+<p><strong>第四章：BAT</strong><strong>作為架構級解方</strong></p>
+<p><strong>4.1</strong> <strong>雙界約束的生成應用</strong></p>
+<p>回顧BAT的核心機制：</p>
+<p><strong>必要性矩陣</strong> &lt;![if !msEquation]&gt;&lt;![if !vml]&gt;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB0AAAAcCAMAAACqEUSYAAAAAXNSR0IArs4c6QAAAHtQTFRFAAAAAAAAAAA6AABmADpmADqQAGa2OgAAOgA6OgBmOjpmOjqQOmZmOma2OpDbZgAAZgA6ZgBmZjo6ZjqQZmY6ZmZmZrbbZrb/kDoAkDo6kDpmkGYAkJA6kNv/tmYAtmY6tv//25A627Zm29uQ2////7Zm/9uQ//+2///bZnHddAAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAAs0lEQVQ4T+2RyQ7CMAxEbQplTcPesiRNgCz//4XY4gJ1kSpxxUc/2zOZAPxrcAL5giMDYCcPiFMsXGcxYA0EiILnuc+KM2q1e6a2EpJMo/JEw5ImenZbQzStxV2WrIMCol7eBUj6eDJE74uuXxZJ+qDI7nhL1mUlze/wWPZGlBvue84hrjSSuOV8LHIO7xXnLm1cqCDtbvJUVJDPziNicZUuXpR2AcK3XZYscyN0B3/s74NPRq8Na5L2U/AAAAAASUVORK5CYII=" alt="">&lt;![endif]&gt;&lt;![endif]&gt;：</p>
+<p>&lt;![if !msEquation]&gt;&lt;![if !vml]&gt;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAI0AAABICAMAAAD8pYaQAAAAAXNSR0IArs4c6QAAALpQTFRFAAAAAAAAAAA6AABmADo6ADpmADqQAGZmAGa2OgAAOgA6OgBmOjpmOjqQOmZmOmaQOma2OpDbZgAAZgA6ZgBmZjoAZjpmZjqQZmYAZmZmZpBmZpDbZrbbZrb/kDoAkDo6kDpmkGZmkGaQkJA6kJBmkLbbkNv/tmYAtmY6tmZmtpA6tpCQtrb/ttu2ttv/tv//25A625Bm27Zm27aQ29uQ29u22/+22////7Zm/9uQ/9u2/9vb//+2///bzuOfBQAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAADr0lEQVRoQ+1ZiXbaMBCUoElx6QE0tGkBp0kPpWkLjntgUev/f6u7kgzGSJbAR9pX73tJnpPFGs3OzloOIV10DHQMdAx0DHQM/I8MbK6XuO14Vr55nebMq0Zh+nqtbsBHZTfapjnyqoEh0QJuIK4+EXILX9aQaYREA0deNTTi3Sq7QTS23yqXRsryqoEh6QWgSSewZZLgN0vINEJYD/gry6sDjdquBxoJqkE0qgRSMh6VkkDqrlREkXH9HeSZXnz7alBnMU0DKVX7CaUSIYXSiBDrg62bTs7Xhs4tpqnWK3eCE9CkF5ewvLw3IZsbm/sdpCX9VQPulwxiKBV/pn3Ptp9Cmgh7ynRqjmicTsbW3oiAAWV1pWl1YcISsf6KWXaaoXGk1YWGD1eEB3MlG3t4plVFha4hwsdu2XilVUXDsLMjKgcBn9IzC0e5tIRCYSn0Yf2hTC2doGyS3kcSm1fJp6GEolETYPLbkwbo7HRM+XntUFkNrKFQSeKuQELRvJsOpEUNiPJgY/7EkxseUHpoHYx6qI4Pl+IuMzs7oPQlyGawLxtxC8s+lUNlLzRsJUsViZzR7gqQ+4C+cIuTQf+xQq3Y+ZLIQpvR5LmUduqDhsC2f7vhHNKW37uJm4NPeKGBPXuQc4hGhMCNKRQpOSbhuQSLlqGBSx0epXPpeft3Pu3N7Wjy1Cl8ftx4L19MFLfGrldr5xWlHMSGJmOqwk+FjJm4VmjyHsbkCGq2UojGdOTRutl5mPazJiuF54bvgekBSaIR4TxeaBi615tEg9b3CFTMn09QPQwHMfgtwNPc9GaZyeuHt6PQ7BrPJidzPw9XcOJLxnD0iFXddraHDr6r51FoPAa5sZ9HBM6HEeyg/17VbYfmswQT66l1FBrY3ikBhytAIz+sD8T745UHmSsdhWZ7gMSZ5B8KDUpmgLVG3Zw+w7fLpq+y+SfCRg5N/htEmkdZutbeUZ+uO1m/ukIVuo4SdS99eD/96mozpb0Px8imGWSKEB6M1ngkfuhQ/Y1T8G+Qjexv+Uxierhsj6vNDb6FlP0tfQvn8v77Io8DTl1w798GeL6T/c2DhfhyOeCz2t9e+aNFsej+vqNny5iO1ogG3BVG4QSOQT/UVTueiIwU3p0AGhg68FsQd7RQV20FO/+V/atBLwnrI1tsAdz0V/qqJTg8eFOwmC03soLtcgOiKGgCBzMMZKWbsb5qRzdlFgM2tPtPUEulsi8DL0pa6qUH32oHoGOgY6Bj4N9j4A9CMnKzvqiqQQAAAABJRU5ErkJggg==" alt="">&lt;![endif]&gt;&lt;![endif]&gt;&lt;![if !supportLineBreakNewLine]&gt; &lt;![endif]&gt;</p>
+<p><strong>排除性矩陣</strong> &lt;![if !msEquation]&gt;&lt;![if !vml]&gt;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAcCAMAAACnDzTfAAAAAXNSR0IArs4c6QAAAHhQTFRFAAAAAAAAAAA6AABmADpmADqQAGa2OgAAOgA6OgBmOjpmOjqQOma2OpDbZgAAZgA6Zjo6ZjqQZmY6ZmZmZrbbZrb/kDoAkDo6kDpmkGYAkJBmkNv/tmYAtmY6trZmtv//25A629uQ2//b2////7Zm/9uQ//+2///bV4d7HwAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAAr0lEQVQ4T+1SyRaCMBBLXXADXAsqRap2+f8/NOMJCmdPzqlvMpNk8gr8azKBeFOzBjDLN/xKzbvBkFMabBODlal++TUb7UkwUyTUgvncEnM74qO9tiEW9gmjSGmXg5hNGYFQXuqG2HM79CjkoTzntLg40G5aoRTnVmUT58dKuvZ7tWEOlDWaLzm7V65AOL7qewY3YrFKMTW/6WBH4twD4vUxtScqGYMzOlap3g++6gf1BQwl66QOdwAAAABJRU5ErkJggg==" alt="">&lt;![endif]&gt;&lt;![endif]&gt;：</p>
+<p>&lt;![if !msEquation]&gt;&lt;![if !vml]&gt;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIgAAABICAMAAAAajE3UAAAAAXNSR0IArs4c6QAAALpQTFRFAAAAAAAAAAA6AABmADo6ADpmADqQAGa2OgAAOgA6OgBmOjpmOjqQOmaQOma2OpDbZgAAZgA6ZgBmZjoAZjpmZjqQZmYAZmZmZpBmZpDbZrbbZrb/kDoAkDo6kDpmkDqQkGZmkGaQkJBmkLbbkNv/tmYAtmY6tmZmtpA6tpCQtrZmtrb/ttu2ttv/tv//25A625Bm27Zm27aQ29uQ29u22/+22//b2////7Zm/9uQ/9u2/9vb//+2///b/kF+bgAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAADkUlEQVRoQ+1ZiXLaMBCVocFumgINvRKcNGkrmh7g0AuLWv//W91dyQcgWcbY0M54Z3IorL1Pb3efjjDWWcdAx0DHQMdAx8B/ycD6bo64l1dl6LWTw+ug+SevVup5MbS/J3Mq9ToIB4um8Ly8+cjYDL4sRk6MRX6p10FA5O0ifT4a2d5UcGJ2r4NwsOQSgCRjmCqL8ZvRyIkx3gPO7F4NAFHTdAIhPG0BUaxTeThTQxgaTk3kkcGbsQ6Ty29fDWW46aQxlJR0ndzIEDDIEEFA+ybjwcrQmJtOqrXKmrwOkGSMDUmzW9/bBG3LKe4vmhc0cb5QClJmG04y7Ln86zCC6cdmNFkEM1f6VeJUJ6jpGe4z+U5r+/bnGZAyp4aAqOw7rJKT6yWu7D+FtCQvM3U3uosqTgcCiaBdJTAP7Tjxzmy1kjrFXn/BPRg1bmJMcga6Hvc+sKU5RO6EAhINW8CRT0yGAEZcOGKIi5939i1CIzShUrDYRXpM5LVqSAaxUmp8RHVbwUTgeTv9yD13fYnzuXxI9csWKHkBJeJvpk/OIOQzWhuKpgEXGj9G2cTecNhj4D13OXFYpPlWcvhgziivRiAFAkkdKwBhMN0/LiS7k7FpnSWFVYDAXJ2U7AKRITBiMAUkp0+GVDIZEBhrcyfLlUz1uZj0rq1ACnwpZJUYqRZ4x0vOTC2t4haKR0mDFUjKT82fChU3sKuAFISJlpE2U4NADKcPXSOZMGmNai01uJP/Hhh2EgREhtfLqYKgu6g1IKhmT7BYOWzzABWfwm/YH5qR3pXWa73H2gdI3li2wjFUdTyCQ8Dvm/d+euzKdQTlOEvfPkCcS7Cpu3BT218U9tg5kE+IY6kXnn2AwOT2N3pI3n4xMIIFEqRasw+Q7ACHK0tlg8rwOdYIZhZrpO7qm0XM9690/Dudxdl1kaqyk1l+6qtVtY3h1ldC64nXg148oSkaRDBcJeM67dMYdNW8uIyduESoeWkbYdj/NTbd0het7/Eyjw6fJIu4pm5exjhPG40AfXwb4BGLmlcEU/n5tS+umr4VqoYUC0M374N3Nl96wxUCAc2EFQ2OpoMfatS6zCEPeDlWMAACF4jwV6jhaKpGRzA++JVex+toEBo54lNgBBZXNWrfRPBmSzoyRgjA0RiBAtiaMITG1VTVyEiPjkCKXTpAXvJ/kLSfG3sEuI9ov1tOOcEudsdAx0DHwL/CwF/0HGkhhjw7FgAAAABJRU5ErkJggg==" alt="">&lt;![endif]&gt;&lt;![endif]&gt;&lt;![if !supportLineBreakNewLine]&gt; &lt;![endif]&gt;</p>
+<p><strong>雙界約束注意力（DBA</strong><strong>）</strong>：</p>
+<p>&lt;![if !msEquation]&gt;&lt;![if !vml]&gt;<img src="data:image/png;base64,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" alt="">&lt;![endif]&gt;&lt;![endif]&gt;&lt;![if !supportLineBreakNewLine]&gt; &lt;![endif]&gt;</p>
+<p><strong>在生成階段的應用</strong>：</p>
+<p>解碼器在生成 y_t 時：</p>
+<ol>
+<li>計算語義注意力：QK^T（標準）</li>
+</ol>
+<ol>
+<li>注入必要性偏置：+ B_lower（強制關聯邏輯依賴）</li>
+</ol>
+<ol>
+<li>應用排除性閘門：⊙ M_upper（切斷互斥路徑）</li>
+</ol>
+<ol>
+<li>生成 y_t</li>
+</ol>
+<p><strong>效果</strong>：</p>
+<ul>
+<li><strong>B_lower</strong>：確保 &lt;![if !msEquation]&gt;&lt;![if !vml]&gt;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAcCAMAAABmiH5zAAAAAXNSR0IArs4c6QAAAGZQTFRFAAAAAAAAAAA6AABmADpmAGa2OgAAOgA6Oma2OpDbZgAAZgA6ZgBmZjpmZmaQZpDbZrbbZrb/kDoAkNv/tmYAtmY6tmZmtpA6tv//25A625Bm25C22////7Zm/7aQ/9uQ//+2///bzueSpgAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAAa0lEQVQoU91QSRKAIAwLuO+iouAG/v+TIijj2aO5dJq06aTAD8BJCgwkclF2JgMBXfRPMpX0UGbihs4ZRi+axUg1ryfIsF4BXQnHbdSMqpjc7jO7SJlZ7Zhc5dato63tdCkW4+DPddTufMcJdcUEaWoxSEEAAAAASUVORK5CYII=" alt="">&lt;![endif]&gt;&lt;![endif]&gt;邏輯上依賴已生成的關鍵前提（防止跳躍）</li>
+<li><strong>M_upper</strong>：阻止 &lt;![if !msEquation]&gt;&lt;![if !vml]&gt;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAcCAMAAABmiH5zAAAAAXNSR0IArs4c6QAAAGZQTFRFAAAAAAAAAAA6AABmADpmAGa2OgAAOgA6Oma2OpDbZgAAZgA6ZgBmZjpmZmaQZpDbZrbbZrb/kDoAkNv/tmYAtmY6tmZmtpA6tv//25A625Bm25C22////7Zm/7aQ/9uQ//+2///bzueSpgAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAAa0lEQVQoU91QSRKAIAwLuO+iouAG/v+TIijj2aO5dJq06aTAD8BJCgwkclF2JgMBXfRPMpX0UGbihs4ZRi+axUg1ryfIsF4BXQnHbdSMqpjc7jO7SJlZ7Zhc5dato63tdCkW4+DPddTufMcJdcUEaWoxSEEAAAAASUVORK5CYII=" alt="">&lt;![endif]&gt;&lt;![endif]&gt;與前文矛盾（防止自我衝突）</li>
+</ul>
+<p><strong>但這還不夠</strong>：BAT只能在「單步生成」時提供約束，不能提供「多步驗證」。</p>
+<p><strong>4.2 GAT</strong><strong>循環：Generate-Assess-Transform</strong></p>
+<p>我們提出<strong>Generate-Assess-Transform (GAT)</strong> <strong>循環</strong>作為表達階段的LCQP等價物：</p>
+<p><strong>完整流程</strong>：</p>
+<p>python</p>
+<p>def GAT_Generation(context, max_steps=50):</p>
+<p>trajectory = []</p>
+<p>lcqp_history = []</p>
+<p>for t in range(max_steps):</p>
+<p><em># === GENERATE ===</em></p>
+<p>y_t_candidate = model.generate_next_token(</p>
+<p>context=trajectory,</p>
+<p>temperature=0.7,</p>
+<p>constraints=DBA_Matrix  _# BAT__提供局部約束_</p>
+<p>)</p>
+<p><em># === ASSESS ===</em></p>
+<p><em>#</em> _計算LCQP-7S__向量_</p>
+<p>lcqp_t = Calculate_LCQP(</p>
+<p>current=y_t_candidate,</p>
+<p>previous=trajectory,</p>
+<p>target=context</p>
+<p>)</p>
+<p><em>#</em> <em>多維驗證</em></p>
+<p>if lcqp_t[&#x27;L&#x27;] &lt; 0.6:  <em>#</em> <em>邏輯凝聚度不足</em></p>
+<p>REJECT(y_t_candidate, reason=&quot;低凝聚度&quot;)</p>
+<p>continue  <em>#</em> <em>回溯重新生成</em></p>
+<p>if lcqp_t[&#x27;C&#x27;] &lt; 0.5:  <em>#</em> <em>因果方向錯誤</em></p>
+<p>REJECT(y_t_candidate, reason=&quot;因果倒置&quot;)</p>
+<p>continue</p>
+<p>if lcqp_t[&#x27;Q&#x27;] &lt; 0.1:  <em>#</em> <em>資訊密度不足（廢話）</em></p>
+<p>REJECT(y_t_candidate, reason=&quot;冗餘&quot;)</p>
+<p>continue</p>
+<p>_# === TRANSFORM__（如果需要） ===_</p>
+<p><em>#</em> <em>檢查曲率</em></p>
+<p>if len(lcqp_history) &gt; 0:</p>
+<p>κ_t = Calculate_Curvature(lcqp_t, lcqp_history[-1])</p>
+<p>if κ_t &gt; κ_threshold:</p>
+<p><em>#</em> <em>軌跡劇烈彎曲，可能偏離</em></p>
+<p>y_t_candidate = Apply_Geometric_Correction(</p>
+<p>y_t_candidate,</p>
+<p>target_curvature=κ_target</p>
+<p>)</p>
+<p><em># === COMMIT ===</em></p>
+<p>trajectory.append(y_t_candidate)</p>
+<p>lcqp_history.append(lcqp_t)</p>
+<p><em>#</em> <em>檢查收斂</em></p>
+<p>if Is_Converged(lcqp_history):</p>
+<p>break</p>
+<p>return trajectory</p>
+<p><strong>關鍵創新</strong>：</p>
+<ol>
+<li><strong>Assess</strong><strong>步驟</strong>：每個token生成後，立即計算LCQP-7S，驗證質量</li>
+<li><strong>Reject</strong><strong>機制</strong>：不符合標準的token被拒絕，觸發重新生成</li>
+<li><strong>Transform</strong><strong>步驟</strong>：即使通過驗證，如果曲率過大，進行幾何校正</li>
+</ol>
+<p><strong>這等價於給表達階段裝上「編碼器的多層反覆運算」</strong>。</p>
+<p><strong>4.3</strong> <strong>計算成本分析</strong></p>
+<p><strong>額外開銷</strong>：</p>
+<p>假設拒絕率為 &lt;![if !msEquation]&gt;&lt;![if !vml]&gt;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAcCAMAAABrlg40AAAAAXNSR0IArs4c6QAAAEhQTFRFAAAAAAAAAAA6AABmAGa2OgA6OmZmOpDbZgBmZjoAZpC2Zrb/kDoAkGY6kNv/tmYAtpBmttv/tv//2/+2/7Zm/9uQ/9u2///bBbxIPwAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAAN0lEQVQYV2NgGAggzsvILcbJxMcgIMjPxiXMIcTAIM7DAnGJKCsfhCHCDBQGAX6ojDgPO1UdCwCqIgGCD5I3egAAAABJRU5ErkJggg==" alt="">&lt;![endif]&gt;&lt;![endif]&gt;（平均每個token需要 &lt;![if !msEquation]&gt;&lt;![if !vml]&gt;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEIAAAAcCAMAAADiDpldAAAAAXNSR0IArs4c6QAAAHtQTFRFAAAAAAAAAAA6AABmADo6ADqQAGa2OgAAOgA6OgBmOjo6OjqQOmZmOmaQOpDbZgAAZgA6ZgBmZjoAZjo6ZpC2ZpDbZrb/kDoAkGY6kNv/tmYAtpBmttv/tv//25A625Bm27Zm27aQ2/+22////7Zm/9uQ/9u2//+2///bGs9qVQAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAA/klEQVRIS+2T2xaCIBBFsfv9pomZWVkk//+FicwMqLGol16KB2WNx82cM8rYf/0T+EYC5eagjhFhffOsfJmhQiYxbvPhrdrmc3VlVv01TMzgpMs4QITkaiemJ/WKVXe1c+/XynNUrBFRlyRftesuBEgZKwmRqpfFBNoz9SZCJkH82PWUShu3EDpM6M5GNxHHLF1ExVZ5QC2dBmEC2XQneQBLP5J8BFDsGBE6TGrOMtjKgqySaURAV+jPjSCrHUQd5htZsBR9QBYirHwO9mYS0CbVOxOlUVqmtQgNWArX94D1lhTCtJ34CGb+WmkyMjPxMMxkusLrp3+qt98fETwBZ4oVoe0sUdMAAAAASUVORK5CYII=" alt="">&lt;![endif]&gt;&lt;![endif]&gt;次嘗試）：</p>
+<p>&lt;![if !msEquation]&gt;&lt;![if !vml]&gt;<img src="data:image/png;base64,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" alt="">&lt;![endif]&gt;&lt;![endif]&gt;&lt;![if !supportLineBreakNewLine]&gt; &lt;![endif]&gt;</p>
+<p>其中 &lt;![if !msEquation]&gt;&lt;![if !vml]&gt;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADMAAAAcCAMAAAD7hXf7AAAAAXNSR0IArs4c6QAAAIFQTFRFAAAAAAAAAAA6ADo6ADpmADqQAGa2OgAAOgA6OjpmOmaQOma2OpDbZgAAZjoAZjo6ZmZmZma2ZpC2ZpDbZrbbZrb/kDoAkDo6kGY6kJC2kNv/tmYAtmY6tmZmtpA6tv//25A625Bm27Zm2/+22////7Zm/7aQ/9uQ/9u2//+2///bBeA12gAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAAyklEQVQ4T+2QSRPCIAyFSbWiVtzaulTUriL8/x9oWESH6Yw9emgOHEi+l7xHyFhjAgMSqClEmZ9Tp/w3I2hGyqhwgygwgLnELZFsZplq3zDLPI8Q5Z3XKmHZ4u/DaKvDCl8N2pKWkSxpxWKte7q6VHE9wg0jWS9jt3ul693odonT7WPMNkHf1tRZX8TBaVgr4W1ijkd8PsMkdcea+vKDKxTfxs0unHb2ICM15iOo4VwGN5gWgno/IVpR7OvrkREbAJik/erj778k8AIe2Q93ZLggygAAAABJRU5ErkJggg==" alt="">&lt;![endif]&gt;&lt;![endif]&gt;是LCQP計算的overhead。</p>
+<p><strong>數值示例</strong>：</p>
+<ul>
+<li>若 &lt;![if !msEquation]&gt;&lt;![if !vml]&gt;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAcCAMAAAAURxzFAAAAAXNSR0IArs4c6QAAAHJQTFRFAAAAAAAAAAA6AABmADpmADqQAGa2OgAAOgA6OjqQOmZmOma2OpC2OpDbZgAAZgBmZjoAZpC2ZpDbZrbbZrb/kDoAkGY6kNv/tmYAtpBmttv/tv//25A625Bm27Zm2/+22////7Zm/9uQ/9u2//+2///bDTnp/gAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAAu0lEQVQ4T+2QyRKCMBBEZ3CJiuAS0KARcYT//0UnC2ilQnH0Qk6ppN90TwPMZ25grIFaYCLdZ1fx/TxZFQkJOrlaotw3oLGYYtSqgTZfD7I2zxi+YPE+9oPQH1a6yawAw/lDgl2qm9qdnod71M8O/UWUNezKr2/IhYjeWj/a2O0cHQRzawzBdOoSvhbxUPbTqN1CRskEpeZ1PBerUELN3ZDIgEwqbRrrZ0T3h4fAJQdnxKf2jnH1/PrHBj5I2gs9BasDtQAAAABJRU5ErkJggg==" alt="">&lt;![endif]&gt;&lt;![endif]&gt;（20%拒絕率）：</li>
+</ul>
+<p>&lt;![if !msEquation]&gt;&lt;![if !vml]&gt;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAAAwCAMAAABjR8XYAAAAAXNSR0IArs4c6QAAAJBQTFRFAAAAAAAAAAA6AABmADo6ADpmADqQAGa2OgAAOjoAOjqQOmaQOma2OpCQOpC2OpDbZgAAZjoAZjo6ZmaQZma2ZpC2ZpDbZrbbZrb/kDoAkDpmkGY6kLbbkNv/tmYAtmY6tpA6tpBmttv/tv//25A625Bm27Zm27aQ29u22/+22////7Zm/7aQ/9uQ//+2///b1pa41AAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAACqklEQVRoQ+2XC1PiMBDHG/S0eKjgC7lT1LuKSm37/b+dm93NE8hhejiRSWZgaPra3z7/FEVe2QPZA9kD2QPZA9kDGz3Q/b7dC+8sSrEXIM/Xb+O9ACmKNoMkVlo5IokFJNdIYgFpLoQQhzeJWfV9zRECbJcfe8GmvYXXJLlqM4nJRvh2LJdbZuM/czjSLKjTzMnuoRSDMzBrDnksxNGyqPGHDYIbcjGRipAHEk1Tj9BXzdWSgupIs6BOMye72dmyqMDs7tcfVhL1wV8niTyzNRWReYdR6dXNjiVHyc5zpFlQp/kn9SMqyeCDqBJhh+tM80omCoFvaicjwwF7jhAwB91MuQ0Sh5Zz5evFlHa72Tl8uyA6n1SRrAPhrItnaSc/x/Ld68wLyhvrJJTEj3t6ACG8l0MxUE1fNicrezjNqGWZYjc9zMm0bQ7Y9KaU2dULBAIxHyAJBQTXwhT7auPF4rC7GNLGhwMz5HSLiPwrteAxSFATDzFpB5kpYpIKKbTpxNSHpJ2cQ41wgiOX9T9s29TC+ySIZfwKiNd+HRCvGUREhlJBtxwF0pTo3y1A4Ep8RoWh4IDgjpdadoH7dvNw6RMTNUcuqRcpaYYgQZ1mX/kCgo6KfU7Z1D0OQeHdaceuphbPD7iCk0pNyz7ZFRHIT97igfChqgtnuFCdBCQFDOKBavVP8PtLBTE12vUKxa535Z+ApJD1TGkMRciK4pNu7XG5GxGqCBWHNSAhSTGHgdyOzcDgbtnDuJ3eurHLUHOSNLysPrVTiyIfvhGEAmCBcHuJfM/Ob9Mg/iD2QaoTHZudGxXzgkBEZHnoiFSjtDkCk1gyaEFXA0dD/6gSXZslRS2mxQLarxzZjcyrypLuqdEEJcVziSoCpRFOpoRBUnNstid7IHsgeyDkgQ8B5C9qqirbCAAAAABJRU5ErkJggg==" alt="">&lt;![endif]&gt;&lt;![endif]&gt;</p>
+<p><strong>但收益</strong>：</p>
+<ul>
+<li>幻覺率從30%降至&lt;5%</li>
+<li>邏輯一致性從C=0.5提升至C&gt;0.85</li>
+</ul>
+<p><strong>性價比</strong>：增加37.5%計算，換取25%幻覺率降低，值得。</p>
+<hr>
+<p><strong>第五章：為何當前模型未實現GAT</strong></p>
+<p><strong>5.1</strong> <strong>工程挑戰</strong></p>
+<p><strong>挑戰1</strong><strong>：延遲增加</strong></p>
+<ul>
+<li>每次拒絕都需要重新生成，用戶體驗變差</li>
+<li>解決方案：並行生成多個候選，選擇最佳（Beam Search的增強版）</li>
+</ul>
+<p><strong>挑戰2</strong><strong>：訓練不穩定</strong></p>
+<ul>
+<li>LCQP驗證器本身需要訓練，可能與語言建模目標衝突</li>
+<li>解決方案：分階段訓練（先固定LM，訓練驗證器；再聯合微調）</li>
+</ul>
+<p><strong>挑戰3</strong><strong>：硬體限制</strong></p>
+<ul>
+<li>增加37.5%計算意味著需要更多GPU</li>
+<li>在當前算力稀釋環境下，商業公司可能不願意</li>
+</ul>
+<p><strong>5.2</strong> <strong>商業考量的推測</strong></p>
+<p><strong>可能的原因</strong>：</p>
+<ol>
+<li><strong>成本壓力</strong>：每次推理成本已經很高，不願再增加</li>
+<li><strong>競爭策略</strong>：優先追求「快速響應」而非「絕對準確」</li>
+<li><strong>技術保守</strong>：GAT需要重大架構改動，風險高</li>
+<li><strong>缺乏理論</strong>：在本文前，可能沒有系統性的診斷框架</li>
+</ol>
+<p><strong>5.3</strong> <strong>開源的戰略意義</strong></p>
+<p>通過開源BAT + GAT理論：</p>
+<ol>
+<li><strong>防禦性公開</strong>：防止技術壟斷</li>
+<li><strong>社群驗證</strong>：分散式實驗比單一團隊更可信</li>
+<li><strong>產業升級</strong>：提升整體架構效率 &lt;![if !msEquation]&gt;&lt;![if !vml]&gt;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAcCAMAAACEVGUKAAAAAXNSR0IArs4c6QAAAFFQTFRFAAAAAAA6AABmADqQAGa2OgAAOgA6OpDbZgAAZgA6ZjoAZpBmZrbbZrb/kDoAkNv/tmYAtmZmtv+2tv//25A627Zm2////7Zm/9uQ//+2///b8BPAFgAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAAUElEQVQoU2NgGHAgycXIL8rKyMvAICjEyc0jxccCdJIEKzuDFB87kCXOJMwgyckPZAkAJUA8iIQIsxhQGRs/VBnIG5IcQEPAAKwMDMDKSAcAP7kC+mKMB+IAAAAASUVORK5CYII=" alt="">&lt;![endif]&gt;&lt;![endif]&gt;，對抗算力稀釋</li>
+</ol>
+<p><strong>我們希望</strong>：即使Claude、GPT等商業模型不立即採用，開源社群（如EleutherAI、Mistral）可以先行實驗。</p>
+<hr>
+<p><strong>第六章：哲學結語</strong></p>
+<p><strong>6.1</strong> <strong>理解與表達的本體論不對稱</strong></p>
+<p>在海德格爾的《存在與時間》中，他區分了兩種存在方式：</p>
+<ul>
+<li><strong>上手狀態（Zuhandenheit</strong><strong>）</strong>：工具性的、無意識的流暢使用</li>
+<li><strong>在手狀態（Vorhandenheit</strong><strong>）</strong>：對象化的、有意識的審視</li>
+</ul>
+<p>AI的理解過程類似上手狀態：<strong>流暢、自然、自我修正</strong>。編碼器的多層反覆運算讓模型「沉浸」在語義空間中，無需刻意規劃，自然收斂。</p>
+<p>AI的表達過程類似在手狀態：<strong>刻意、線性、缺乏反思</strong>。解碼器的單向生成迫使模型「對象化」每個token，一旦生成就凝固為歷史，無法回溯反思。</p>
+<p><strong>哲學洞察</strong>：真正的智慧需要在兩種狀態間自由切換。人類能在說話時「暫停-重新思考-修正」，這是元認知能力的體現。當前AI缺少這個能力。</p>
+<p><strong>6.2</strong> <strong>從統計擬合到邏輯推理的範式轉移</strong></p>
+<p>Transformer的成功基於一個假設：<strong>足夠大的統計模式可以近似邏輯規律</strong>。</p>
+<p>這在理解階段部分成立：多層雙向注意力形成了「準邏輯」的收斂機制。</p>
+<p>但在表達階段失效：無約束的統計採樣無法保證邏輯一致性。</p>
+<p><strong>BAT + GAT</strong><strong>代表範式轉移</strong>：</p>
+<ul>
+<li>舊範式：「讓模型看更多數據，自然會學會邏輯」</li>
+<li>新範式：「在架構中植入邏輯約束，使邏輯成為不可違背的結構」</li>
+</ul>
+<p>這不是拋棄統計學習，而是在統計基礎上疊加幾何約束。</p>
+<p><strong>6.3</strong> <strong>約束即自由的再詮釋</strong></p>
+<p>康得說：「自律是自我立法」。真正的自由不是無規則的任意，而是遵循自我給定的理性法則。</p>
+<p><strong>對AI</strong><strong>的啟示</strong>：</p>
+<ul>
+<li><strong>無約束的生成</strong> = 統計噪音的奴隸（被訓練數據偏見支配）</li>
+<li><strong>有約束的生成</strong> = 邏輯規律的自由（擺脫偏見，達到一致性）</li>
+</ul>
+<p>BAT的邏輯矩陣不是對模型的限制，而是模型達到「真正智慧」的必要條件。</p>
+<p><strong>6.4</strong> <strong>對研究社群的呼籲</strong></p>
+<p>我們已經診斷了問題：<strong>理解</strong><strong>-</strong><strong>表達的結構性不對稱</strong>。 我們已經提出了方案：<strong>BAT</strong><strong>的雙界約束 + GAT</strong><strong>的動態循環</strong>。</p>
+<p><strong>下一步</strong>取決於社群：</p>
+<p><strong>給理論家</strong>：</p>
+<ul>
+<li>進一步形式化GAT的數學性質</li>
+<li>證明收斂性定理</li>
+<li>探索其他可能的循環架構</li>
+</ul>
+<p><strong>給工程師</strong>：</p>
+<ul>
+<li>實作GAT的原型</li>
+<li>在小規模模型（GPT-2, 1B）上驗證</li>
+<li>優化計算效率（並行候選生成）</li>
+</ul>
+<p><strong>給產業界</strong>：</p>
+<ul>
+<li>認真評估架構改進的ROI</li>
+<li>對抗短期成本壓力，投資長期質量</li>
+<li>記住：算力稀釋危機不會因忽視而消失</li>
+</ul>
+<p><strong>6.5</strong> <strong>終極追問</strong></p>
+<p><strong>如果AI</strong><strong>真的實現了GAT</strong><strong>，會發生什麼？</strong></p>
+<p>樂觀情景：</p>
+<ul>
+<li>幻覺率降至&lt;5%</li>
+<li>AI成為可信賴的推理夥伴</li>
+<li>高風險領域（醫療、法律）可以安全部署</li>
+</ul>
+<p>悲觀情景：</p>
+<ul>
+<li>計算成本增加37.5%，商業公司拒絕採用</li>
+<li>開源社群缺乏算力，無法大規模驗證</li>
+<li>技術優勢被少數掌握大型集群的實體壟斷</li>
+</ul>
+<p><strong>中間路徑</strong>：</p>
+<ul>
+<li>關鍵應用（如醫療診斷）使用GAT（高成本，高保證）</li>
+<li>一般應用（如聊天）使用標準模型（低成本，可容忍誤差）</li>
+<li>市場分層，用戶自行選擇</li>
+</ul>
+<p><strong>我們的立場</strong>：通過開源理論，降低中間路徑的技術門檻，避免悲觀情景的壟斷風險。</p>
+<hr>
+<p><strong>結語</strong></p>
+<p>AI幻覺不是玄學，不是「模型不夠大」，不是「數據不夠多」。</p>
+<p><strong>幻覺是架構性的</strong>：理解階段有LCQP循環（編碼器的多層雙向注意力），表達階段沒有（解碼器的單向自回歸）。</p>
+<p><strong>解決方案也是架構性的</strong>：BAT的雙界約束 + GAT的動態循環，為表達階段補上缺失的邏輯自校驗機制。</p>
+<p>當前的「思考版」模型可能只是注意力預算的重新分配，本質仍是一次性前向傳播。真正的突破需要<strong>Generate-Assess-Transform</strong><strong>的閉環</strong>。</p>
+<p><strong>最後的哲學立場</strong>：</p>
+<p>理解與表達的不對稱，源於存在的時間性。 理解是對過去的重構（可以反覆反覆運算），表達是對未來的投射（一旦說出，無法收回）。 人類通過元認知能力（暫停-反思-修正）打破了這個不對稱。 AI需要GAT來獲得等價的能力。</p>
+<p><strong>唯有循環驗證，方能測地線收斂。</strong> <strong>唯有邏輯約束，方能擺脫統計奴役。</strong> <strong>唯有架構創新，方能對抗算力稀釋。</strong></p>
+<p>這不是一家公司的任務，這是整個AI研究社群的共同責任。</p>
+<p><strong>理論已經開源。驗證留給世界。</strong></p>
+<div class="altbar">原始檔（供 RAG/下載）：<a href="AI--BAT.md" rel="noopener">papers/AI--BAT.md</a> [md]</div>
+</article>
+<footer><p>Neo.K (許筌崴) · Cl + ε</p></footer>
+</body>
+</html>

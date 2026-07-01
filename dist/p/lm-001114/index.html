@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>雙模型差動分析_工程版 · EVEMISSLAB Logic Matrix</title>
+<meta name="description" content="雙模型差動分析_工程版 | EVEMISSLAB Logic Matrix V2.1">
+<meta name="author" content="Neo.K (許筌崴)">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<meta name="lm-paper-id" content="lm-001114">
+<link rel="alternate" type="text/markdown" href="/raw/lm-001114.md" title="原始檔 / source (md)">
+<link rel="canonical" href="https://logic.evemisslab.com/p/lm-001114/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "雙模型差動分析_工程版",
+  "url": "https://logic.evemisslab.com/p/lm-001114/",
+  "identifier": "lm-001114",
+  "inLanguage": "zh-Hant",
+  "author": {"@type": "Person", "name": "Neo.K (許筌崴)"},
+  "publisher": {"@type": "Organization", "name": "EveMissLab / 一言諾科技有限公司"},
+  "isPartOf": {"@type": "Collection", "name": "EVEMISSLAB Logic Matrix", "url": "https://logic.evemisslab.com"},
+  "encodingFormat": "text/html"
+}
+</script>
+<link rel="prefetch" href="/api/log-crawler?slug=paper-1106.md">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#000; color:#0f0; font-family:'Courier New',monospace; padding:20px; line-height:1.6; }
+.header { text-align:center; border:2px solid #0f0; padding:18px; margin-bottom:22px; }
+.header h1 { font-size:1.5em; letter-spacing:2px; }
+.header p { margin-top:6px; opacity:0.8; font-size:0.9em; }
+.disclaimer { border:1px dashed #ff9900; color:#ff9900; padding:14px; margin:0 auto 22px; max-width:1000px; font-size:0.88em; }
+.disclaimer-title { font-weight:bold; margin-bottom:10px; display:block; letter-spacing:1px; }
+.disclaimer-divider { border:none; border-top:1px dashed #ff9900; margin:12px 0; opacity:0.55; }
+article { max-width:1000px; margin:0 auto; border:1px solid #0f0; padding:24px; }
+article h1,article h2,article h3,article h4 { margin:18px 0 8px; letter-spacing:1px; }
+article h1 { font-size:1.5em; } article h2 { font-size:1.25em; } article h3 { font-size:1.1em; }
+article p { margin:10px 0; }
+article ul,article ol { margin:10px 0 10px 24px; }
+article blockquote { border-left:3px solid #0f0; padding-left:12px; opacity:0.85; margin:10px 0; }
+article pre { background:rgba(0,255,0,0.06); border:1px solid #0f0; padding:12px; overflow-x:auto; margin:12px 0; }
+article code { background:rgba(0,255,0,0.08); padding:1px 5px; }
+article pre code { background:none; padding:0; }
+article a { color:#0ff; }
+.nav { max-width:1000px; margin:0 auto 16px; font-size:0.9em; display:flex; justify-content:space-between; }
+.nav a { color:#0f0; text-decoration:none; }
+.nav a:hover { color:#0ff; }
+.altbar { max-width:1000px; margin:14px auto 0; font-size:0.85em; opacity:0.7; }
+.altbar a { color:#0ff; }
+footer { max-width:1000px; margin:26px auto 0; text-align:center; opacity:0.5; font-size:0.82em; }
+</style>
+</head>
+<body>
+<div class="nav"><a href="/index.html">&larr; 回 Logic Matrix 索引</a><div><a href="/cosmomind.html" style="margin-right:15px;">→ 星環式認知展開圖</a><a href="/base-space.html">🧬 拓撲底空間</a></div></div>
+<header class="header"><h1>雙模型差動分析_工程版</h1><p>EVEMISSLAB Logic Matrix · EveMissLab / 一言諾科技有限公司</p></header>
+<section class="disclaimer">
+  <span class="disclaimer-title">[認識論邊界宣告 / EPISTEMOLOGICAL DISCLAIMER]</span>
+  <div class="disclaimer-block">
+    <p><b>[CHT]</b> 本矩陣內所有論文之公式與數據為「啟發式模擬參數」，用於驗證理論架構與推演因果鏈，<b>未經實證校準</b>，請勿作為現實物理測量數據引用 or 處理。EVEMISSLAB 採行「邏輯先行（Logic-First）」原則：概念架構與系統因果映射優先於統計實證，但不排除未來實證對接。</p>
+  </div>
+  <hr class="disclaimer-divider">
+  <div class="disclaimer-block">
+    <p><b>[ENG]</b> The numerical parameters within these frameworks are <i>illustrative model coefficients</i> used for structural verification and causal mapping; they are <b>not empirically calibrated</b> and must not be treated as physical measurements. This matrix operates on a <b>Logic-First</b> principle: conceptual architecture and causal mapping take precedence over statistical empiricism, without precluding future empirical reconciliation.</p>
+  </div>
+</section>
+<article>
+<h1>雙模型差動分析</h1>
+<h2>基於並行理論張力的後標準模型探測架構</h2>
+<p><strong>Dual-Model Differential Analysis: A Parallel-Theory Tension Framework for Beyond-Standard-Model Physics Detection</strong></p>
+<p><strong>作者：</strong> Neo.K (Xu Quan-Wei) <strong>機構：</strong> EveMissLab（一言諾科技有限公司） <strong>日期：</strong> 2026 年 5 月 17 日 <strong>版本：</strong> v1.0（工程方法論草稿）</p>
+<hr>
+<h2>摘要</h2>
+<p>當代物理學在面對「後標準模型」（beyond-Standard-Model, BSM）現象時，主流方法論是<strong>模型選擇</strong>——在多個競爭理論中找出對實驗數據擬合最佳者。本文提出一個替代範式：<strong>雙模型差動分析</strong>（Dual-Model Differential Analysis, DMDA）。其核心觀念是不選擇模型，而是<strong>並行保留兩個理論模型對同一數據的擬合，讀取兩者的張力結構作為待測物理本身</strong>。</p>
+<p>我們論證：(1) 當兩個模型對同一數據都「即將擬合但都不完全擬合」時，殘差結構本身編碼了真實物理的形態信息；(2) 人類研究者難以在認知上真正並行保留兩個理論（舊模型的影子會污染新模型的判斷），但人工智慧（AI）系統可以在獨立計算圖上實現結構性並行，使 DMDA 成為工程可行的範式；(3) DMDA 在當前四個關鍵 BSM 場景下立即可動工——宇宙微波背景（CMB）高頻譜異常、暗物質暈分布的拓撲修正、引力波探測器的量子噪聲飽和、中微子手性破缺極限。</p>
+<p>本文不提出新物理理論，而是提供<strong>檢驗 BSM 物理的方法論工具</strong>。方法論的有效性不依賴任何特定本體論承諾。</p>
+<p><strong>關鍵詞</strong>：模型選擇、殘差分析、AI 輔助物理、CMB 異常、暗物質、量子重力、中微子物理</p>
+<hr>
+<h2>1. 引言</h2>
+<h3>1.1 模型選擇範式的局限</h3>
+<p>當實驗數據 D 出現時，標準科學方法論分三步：</p>
+<ol>
+<li>收集候選模型 {M₁, M₂, ..., Mₙ}</li>
+<li>計算各模型對 D 的擬合優度</li>
+<li>選出最佳擬合者 M<em>，宣稱「D 支持 M</em>」</li>
+</ol>
+<p>這個範式在 D 對某模型決定性偏向時有效。但當 D 對所有候選模型都「接近擬合但不完全擬合」時，這個範式會丟失資訊。具體說：</p>
+<ul>
+<li>各模型的殘差結構<strong>個別看</strong>可能都是雜訊</li>
+<li>但殘差<strong>之間的相對結構</strong>可能編碼了真實物理形態</li>
+<li>選擇單一模型等於放棄這個相對結構</li>
+</ul>
+<p>當代物理學的許多 BSM 異常都處於這個尷尬狀態——沒有任何單一替代模型完全勝出，但偏離標準模型的訊號又確實存在。CMB Hubble 張力、星系旋轉曲線在 NFW profile 下的細部偏離、LIGO 高頻段噪聲特徵——這些都是「沒人完全對但確實有東西」的場景。</p>
+<h3>1.2 本文的方法論主張</h3>
+<p>我們提出：當 D 對兩個模型 M₁ 和 M₂ 都接近但不完全擬合時，不應選擇其一，而應<strong>並行運行兩者並讀取殘差差動</strong>。</p>
+<p>具體形式（細節見第 2 節）：</p>
+<p>$$\delta(D; M_1, M_2) = \big[D - F_{M_1}(D)\big] \ominus \big[D - F_{M_2}(D)\big]$$</p>
+<p>其中 F_M 是模型 M 對 D 的擬合算子，⊖ 是殘差結構的相對運算（不是簡單相減；見 2.3）。</p>
+<p>δ 的結構性特徵——其空間相關性、頻譜分布、統計矩——是待測物理的形態指紋。</p>
+<h3>1.3 AI 作為工程實現的必要載體</h3>
+<p>DMDA 在人類認知條件下難以執行。原因：人類研究者切換到 M₂ 的擬合心態時，M₁ 的判斷框架仍會留下影響（「啟動效應」與「擬合慣性」）。真正並行需要兩個獨立的計算心智。</p>
+<p>AI 系統（特別是現代深度學習架構）可以在獨立計算圖上並行運行兩個模型擬合，並在第三個計算圖上讀取差動結構，使 DMDA 成為工程可行的範式。這是 AI 在本文方法論中的<strong>不可替代角色</strong>——不是「比人更聰明」，而是「比人更乾淨地分離認知通道」。</p>
+<h3>1.4 論文結構</h3>
+<p>第 2 節建立 DMDA 的形式定義。第 3 節對比 DMDA 與既有方法的精確界線。第 4 節給出四個立即可動工的物理任務。第 5 節討論預期結果與證偽條件。第 6 節結論。</p>
+<hr>
+<h2>2. 雙模型差動分析的形式定義</h2>
+<h3>2.1 三通道架構</h3>
+<p>DMDA 由三個獨立計算通道構成：</p>
+<p>$$\boxed{\begin{aligned} \textbf{通道 A：} &amp; \quad F_{M_A}: D \to \hat{D}<em>A \quad \text{（模型 A 對數據的擬合輸出）} \\ \textbf{通道 B：} &amp; \quad F</em>{M_B}: D \to \hat{D}_B \quad \text{（模型 B 對數據的擬合輸出）} \\ \textbf{通道 C：} &amp; \quad \Delta: (\hat{D}_A, \hat{D}_B, D) \to \delta \quad \text{（差動讀取器）} \end{aligned}}$$</p>
+<p>關鍵性質：通道 A 與 B <strong>在獨立計算圖上運行</strong>，互不影響權重更新；通道 C 在兩者輸出和原始數據三者上運算，讀取殘差結構的相對特徵。</p>
+<h3>2.2 不是 ensemble，不是 boosting</h3>
+<p>DMDA 不是模型集成（ensemble）。Ensemble 的目的是讓多個模型的加權平均更接近真實，本質上仍是模型選擇的延伸。DMDA 的目的相反：<strong>保留兩個模型的張力，讓張力結構成為被研究的物件</strong>。</p>
+<p>形式上：</p>
+<ul>
+<li>Ensemble 輸出：D̂ = w₁·F_M₁(D) + w₂·F_M₂(D)（試圖更好地擬合 D）</li>
+<li>DMDA 輸出：δ = Δ(F_M₁(D), F_M₂(D), D)（試圖讀取兩模型的偏離結構）</li>
+</ul>
+<p>兩者解決不同問題。Ensemble 適用於「我要最好的預測」；DMDA 適用於「我要發現偏離標準的物理」。</p>
+<h3>2.3 差動讀取器 Δ 的具體形式</h3>
+<p>Δ 不是簡單的數值相減。它需要保留殘差的<strong>結構性訊息</strong>。基本形式：</p>
+<p>$$\delta(\mathbf{r}) = \mathcal{S}\big[r_A(\mathbf{r}), r_B(\mathbf{r})\big]$$</p>
+<p>其中：</p>
+<ul>
+<li>$r_A(\mathbf{r}) = D(\mathbf{r}) - \hat{D}_A(\mathbf{r})$（模型 A 殘差）</li>
+<li>$r_B(\mathbf{r}) = D(\mathbf{r}) - \hat{D}_B(\mathbf{r})$（模型 B 殘差）</li>
+<li>$\mathcal{S}$ 是結構算子，輸出殘差的相關性張量、功率譜分解、或拓撲不變量</li>
+</ul>
+<p>具體選擇取決於物理場景（見第 4 節各任務）。</p>
+<h3>2.4 三種典型差動模式</h3>
+<p>通道 C 讀取的差動可分為三類，對應不同物理意義：</p>
+<p><strong>模式 α（正常資訊使用）</strong></p>
+<ul>
+<li>A 對 D 自信擬合，B 因模型結構問題在某區域偏離</li>
+<li>殘差 r_A 為雜訊級，r_B 在該區域有結構</li>
+<li>物理意義：A 是更好的模型；常規模型選擇即可</li>
+</ul>
+<p><strong>模式 β（雙重不擬合）</strong></p>
+<ul>
+<li>A 和 B 都對 D 偏離，但偏離方向不同</li>
+<li>r_A 和 r_B 都有結構，但結構互補</li>
+<li>物理意義：<strong>真實物理介於兩者之間或在兩者之外</strong>——這是 DMDA 的關鍵發現域</li>
+</ul>
+<p><strong>模式 γ（虛假擬合）</strong></p>
+<ul>
+<li>A 和 B 都對 D 自信擬合，但內部機制不同</li>
+<li>r_A 和 r_B 都接近雜訊，但 F_M₁ 和 F_M₂ 在內部表示上分歧</li>
+<li>物理意義：D 不足以區分兩模型，需要新實驗</li>
+</ul>
+<p>模式 β 是 DMDA 最有發現價值的場景，也是常規模型選擇方法論完全錯過的場景。</p>
+<hr>
+<h2>3. 與現有方法的精確界線</h2>
+<p>DMDA 容易被誤判為若干既有方法的變體。本節劃清界線：</p>
+<p>| 方法 | 核心目標 | 與 DMDA 的差別 | |------|---------|---------------| | 模型選擇（Model Selection） | 找最佳擬合模型 | DMDA 保留兩模型不選擇 | | 模型集成（Ensemble） | 加權組合提升預測 | DMDA 讀張力不求預測 | | 對比學習（Contrastive Learning） | 拉近正例、推遠負例 | DMDA 兩通道是異質物理模型，不是同質視角 | | 蒙地卡羅 dropout 不確定性 | 估計預測不確定性 | DMDA 是結構化對偶，不是隨機擾動 | | 殘差網絡（Residual Networks） | 學習殘差作為新表示 | DMDA 不訓練第二通道，兩通道是固定物理模型 | | 領域對抗（Domain Adversarial） | 找領域不變表示 | DMDA 不對抗、不訓練、不尋求不變 | | 後驗校正（Posterior Calibration） | 統計後處理 | DMDA 是推理時的架構，不是訓練後校正 |</p>
+<p>DMDA 的獨特性座標：<strong>推理時、結構化、雙異質模型、讀張力非求擬合</strong>。</p>
+<hr>
+<h2>4. 四個立即可動工的物理任務</h2>
+<p>本節列出 DMDA 在當前實驗數據下可立即執行的四個任務。每個任務都不需要新實驗設備，只需要 DMDA 方法論的軟體實現。</p>
+<h3>4.1 任務 1：CMB 高頻譜異常的雙模型差動掃描</h3>
+<p><strong>通道 A</strong>：ΛCDM 標準黑體模型擬合 Planck 全頻段數據 <strong>通道 B</strong>：ΛCDM + 額外平坦譜成分（候選非熱來源） <strong>通道 C</strong>：殘差功率譜的高頻段（&gt;10³ GHz）結構分析</p>
+<p><strong>預期可發現</strong>：若 CMB 在極高頻段存在非熱平坦譜成分，差動結構將在該頻段呈現特定形態的相關性。這個訊號在單模型擬合中會被當作系統誤差忽略。</p>
+<p><strong>數據可得性</strong>：Planck Legacy data 全部公開；LiteBIRD 預計 2030 年代初數據。</p>
+<p><strong>第一波目標</strong>：在 Planck 數據上跑出殘差功率譜，識別 &gt;10³ GHz 區段是否有顯著結構。</p>
+<h3>4.2 任務 2：暗物質暈分布的拓撲修正</h3>
+<p><strong>通道 A</strong>：NFW（Navarro-Frenk-White）profile，標準 CDM 數值模擬輸出 <strong>通道 B</strong>：含拓撲修正項的引力等效模型—— $$M_\text{eff}(R) \sim \frac{c^4 \ell_P^2}{G R^2}$$ 其中 ℓ_P 是普朗克長度。此模型預測 R ~ 1 kpc 尺度有特殊行為。</p>
+<p><strong>通道 C</strong>：跨星系樣本的殘差形態統計分析</p>
+<p><strong>預期可發現</strong>：若暗物質的真實本質涉及時空拓撲結構（而非單純粒子場），R ~ 1 kpc 尺度的殘差會呈現跨星系一致的結構。</p>
+<p><strong>數據可得性</strong>：SPARC 數據庫（175 個盤狀星系旋轉曲線）；多個引力透鏡星系團數據。</p>
+<p><strong>第一波目標</strong>：在 SPARC 上對全部 175 個星系同時擬合兩模型，讀殘差的跨樣本一致性。</p>
+<h3>4.3 任務 3：引力波探測器的量子噪聲飽和</h3>
+<p><strong>通道 A</strong>：標準量子噪聲下限模型（standard quantum limit） <strong>通道 B</strong>：高頻飽和模型——假設量子噪聲在某高頻閾值處不再隨頻率趨零而是飽和</p>
+<p><strong>通道 C</strong>：LIGO 高頻段噪聲譜的雙模型差動分析</p>
+<p><strong>預期可發現</strong>：若量子真空在某尺度有非平凡結構（飽和而非無限趨零），LIGO 在 O4 或之後運行的高頻段噪聲將顯示偏離標準預測的飽和特徵。</p>
+<p><strong>數據可得性</strong>：LIGO O4 數據（2023-2025 持續釋出）；未來 Einstein Telescope。</p>
+<p><strong>第一波目標</strong>：在 LIGO O4 已公開段落上跑差動分析，識別飽和點是否存在。</p>
+<h3>4.4 任務 4：中微子手性破缺的精度極限</h3>
+<p><strong>通道 A</strong>：標準模型 P_R 上限預測（容許小量右旋成分） <strong>通道 B</strong>：完全破缺模型 P_R ≡ 0（嚴格無右旋）</p>
+<p><strong>通道 C</strong>：跨多個中微子實驗的綜合統計</p>
+<p><strong>預期可發現</strong>：隨著測量精度提升，若右旋成分始終不出現（且偏離標準模型上限在統計顯著性上累積），則模型 B 獲得支持，這對標準模型有深遠影響。</p>
+<p><strong>數據可得性</strong>：IceCube、DUNE 計劃、KamLAND-Zen、未來 Hyper-Kamiokande。</p>
+<p><strong>第一波目標</strong>：對現有實驗的右旋成分上限做綜合分析，識別偏離趨勢。</p>
+<hr>
+<h2>5. 預期結果與證偽條件</h2>
+<h3>5.1 方法論層面的證偽</h3>
+<p>DMDA 本身作為方法論可被證偽。若以下情況普遍發生，方法論失敗：</p>
+<ul>
+<li>在所有四個任務上，差動結構都是雜訊（無顯著結構）→ 表示要嘛兩個模型都正確（不太可能）、要嘛 DMDA 無法擷取真實物理</li>
+<li>在某個任務上 DMDA 識別出強訊號，但獨立後續實驗無法重現 → 表示 DMDA 識別的是計算偽影</li>
+</ul>
+<h3>5.2 物理層面的條件性預測</h3>
+<p>每個任務的具體預測（若 DMDA 成功）：</p>
+<ul>
+<li><strong>任務 1</strong>：CMB 高頻段（&gt;10³ GHz）有非熱結構化偏離，且偏離形態跨多個觀測模式一致</li>
+<li><strong>任務 2</strong>：暗物質暈在 R ~ 1 kpc 尺度有跨星系一致的偏離 NFW 的殘差結構</li>
+<li><strong>任務 3</strong>：LIGO 高頻噪聲在某頻率以上呈現飽和而非冪律下降</li>
+<li><strong>任務 4</strong>：中微子右旋成分的實驗上限隨精度提升持續下降，且下降速率快於標準模型預測</li>
+</ul>
+<p>每一條都是可由獨立後續實驗檢驗的明確預測。</p>
+<hr>
+<h2>6. 結論</h2>
+<p>本文提出雙模型差動分析（DMDA）作為後標準模型物理檢測的方法論工具。核心觀念：當實驗數據對多個候選模型都接近但不完全擬合時，並行保留兩模型並讀取殘差差動結構，比選擇單一模型能擷取更多真實物理形態信息。</p>
+<p>DMDA 的工程實現依賴 AI 系統提供的結構性並行——人類研究者難以真正在認知上保持兩個競爭模型的獨立性，AI 計算圖可以。這定位 AI 在本方法論中為<strong>認知通道分離器</strong>，而非「更聰明的擬合器」。</p>
+<p>四個立即可動工的物理任務（CMB 高頻異常、暗物質暈拓撲修正、LIGO 量子噪聲飽和、中微子手性極限）為 DMDA 提供了第一波檢驗場景。所有四個任務都不需要新實驗設備，僅需要 DMDA 軟體實現。</p>
+<p>本文不提出新物理理論，也不依賴任何特定本體論承諾。DMDA 是一個工具。工具的價值由其在實際物理發現中的有效性決定。</p>
+<p>接下來的工作：(i) 軟體實現的開源釋出；(ii) 四個任務的逐一執行與結果發布；(iii) 方法論本身的更廣泛驗證（在天體物理、凝聚態、高能物理等其他領域）。</p>
+<hr>
+<h2>致謝</h2>
+<p>本文方法論的雛形源自作者長期關於並行認知架構與物理測量方法論的內部研究。具體形式化歸功於 2026 年 5 月在 EveMissLab 與 AI 對練系統的多輪對話結晶。感謝 Anthropic Claude 在方法論結晶化過程中的高品質學術對練。</p>
+<h2>參考文獻框架（待補）</h2>
+<ul>
+<li>模型選擇方法論的經典文獻（AIC、BIC、cross-validation）</li>
+<li>蒙地卡羅 dropout 不確定性估計（Gal &amp; Ghahramani）</li>
+<li>對比學習綜述（SimCLR、CLIP 等）</li>
+<li>殘差網絡（He et al.）</li>
+<li>CMB 物理：Planck 2018 結果、LiteBIRD 預期</li>
+<li>暗物質：SPARC 數據庫、NFW profile 原文獻、拓撲缺陷宇宙學</li>
+<li>引力波量子噪聲：LIGO 量子下限文獻</li>
+<li>中微子手性：標準模型預測與當前實驗上限</li>
+</ul>
+<p><em>[參考文獻細節待補完整 BibTeX]</em></p>
+<hr>
+<p><em>EveMissLab Method Paper · 對外發布版本 · v1.0</em></p>
+<div class="altbar">原始檔（供 RAG/下載）：<a href="/raw/lm-001114.md" rel="noopener">/raw/lm-001114.md</a> [md] · id: lm-001114</div>
+</article>
+<footer><p>Neo.K (許筌崴) · Cl + ε</p></footer>
+</body>
+</html>

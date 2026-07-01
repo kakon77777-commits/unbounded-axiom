@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VIML 技術白皮書 v0.1 · EVEMISSLAB Logic Matrix</title>
+<meta name="description" content="VIML 技術白皮書 v0.1 | EVEMISSLAB Logic Matrix V2.1">
+<meta name="author" content="Neo.K (許筌崴)">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="VIML-v0.1.md" title="原始檔 / source (md)">
+<link rel="canonical" href="https://logic.evemisslab.com/papers/VIML-v0.1.md.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "VIML 技術白皮書 v0.1",
+  "url": "https://logic.evemisslab.com/papers/VIML-v0.1.md.html",
+  "inLanguage": "zh-Hant",
+  "author": {"@type": "Person", "name": "Neo.K (許筌崴)"},
+  "publisher": {"@type": "Organization", "name": "EveMissLab / 一言諾科技有限公司"},
+  "isPartOf": {"@type": "Collection", "name": "EVEMISSLAB Logic Matrix", "url": "https://logic.evemisslab.com"},
+  "encodingFormat": "text/html"
+}
+</script>
+<link rel="prefetch" href="/api/log-crawler?slug=VIML-v0.1.md">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#000; color:#0f0; font-family:'Courier New',monospace; padding:20px; line-height:1.6; }
+.header { text-align:center; border:2px solid #0f0; padding:18px; margin-bottom:22px; }
+.header h1 { font-size:1.5em; letter-spacing:2px; }
+.header p { margin-top:6px; opacity:0.8; font-size:0.9em; }
+.disclaimer { border:1px dashed #ff9900; color:#ff9900; padding:14px; margin:0 auto 22px; max-width:1000px; font-size:0.88em; }
+.disclaimer-title { font-weight:bold; margin-bottom:10px; display:block; letter-spacing:1px; }
+.disclaimer-divider { border:none; border-top:1px dashed #ff9900; margin:12px 0; opacity:0.55; }
+article { max-width:1000px; margin:0 auto; border:1px solid #0f0; padding:24px; }
+article h1,article h2,article h3,article h4 { margin:18px 0 8px; letter-spacing:1px; }
+article h1 { font-size:1.5em; } article h2 { font-size:1.25em; } article h3 { font-size:1.1em; }
+article p { margin:10px 0; }
+article ul,article ol { margin:10px 0 10px 24px; }
+article blockquote { border-left:3px solid #0f0; padding-left:12px; opacity:0.85; margin:10px 0; }
+article pre { background:rgba(0,255,0,0.06); border:1px solid #0f0; padding:12px; overflow-x:auto; margin:12px 0; }
+article code { background:rgba(0,255,0,0.08); padding:1px 5px; }
+article pre code { background:none; padding:0; }
+article a { color:#0ff; }
+.nav { max-width:1000px; margin:0 auto 16px; font-size:0.9em; display:flex; justify-content:space-between; }
+.nav a { color:#0f0; text-decoration:none; }
+.nav a:hover { color:#0ff; }
+.altbar { max-width:1000px; margin:14px auto 0; font-size:0.85em; opacity:0.7; }
+.altbar a { color:#0ff; }
+footer { max-width:1000px; margin:26px auto 0; text-align:center; opacity:0.5; font-size:0.82em; }
+</style>
+</head>
+<body>
+<div class="nav"><a href="../index.html">&larr; 回 Logic Matrix 索引</a><div><a href="../cosmomind.html" style="margin-right:15px;">→ 星環式認知展開圖</a><a href="../base-space.html">🧬 拓撲底空間</a></div></div>
+<header class="header"><h1>VIML 技術白皮書 v0.1</h1><p>EVEMISSLAB Logic Matrix · EveMissLab / 一言諾科技有限公司</p></header>
+<section class="disclaimer">
+  <span class="disclaimer-title">[認識論邊界宣告 / EPISTEMOLOGICAL DISCLAIMER]</span>
+  <div class="disclaimer-block">
+    <p><b>[CHT]</b> 本矩陣內所有論文之公式與數據為「啟發式模擬參數」，用於驗證理論架構與推演因果鏈，<b>未經實證校準</b>，請勿作為現實物理測量數據引用 or 處理。EVEMISSLAB 採行「邏輯先行（Logic-First）」原則：概念架構與系統因果映射優先於統計實證，但不排除未來實證對接。</p>
+  </div>
+  <hr class="disclaimer-divider">
+  <div class="disclaimer-block">
+    <p><b>[ENG]</b> The numerical parameters within these frameworks are <i>illustrative model coefficients</i> used for structural verification and causal mapping; they are <b>not empirically calibrated</b> and must not be treated as physical measurements. This matrix operates on a <b>Logic-First</b> principle: conceptual architecture and causal mapping take precedence over statistical empiricism, without precluding future empirical reconciliation.</p>
+  </div>
+</section>
+<article>
+<h1>VIML 技術白皮書 v0.1</h1>
+<h2>視覺意圖標記語言：系統架構、符號集規格與AI生成管道實現</h2>
+<p><strong>作者：Neo.K (許筌崴)</strong> <strong>機構：EveMissLab (一言諾科技有限公司)</strong> <strong>日期：2026年6月</strong> <strong>文件性質：技術白皮書（Technical Whitepaper）——對應理論框架論文《VIML視覺意圖標記語言》</strong></p>
+<hr>
+<h2>摘要</h2>
+<p>本白皮書為VIML（Visual Intent Markup Language）的技術實現規格文件，覆蓋以下四個層次：符號資源採集層（爬蟲策略與Agent分類工作流）、符號集數據規格（ISS六類符號的JSON標準定義）、符號→ControlNet conditioning映射協議（各類符號到AI生成系統輸入的技術轉換規則）、AI API整合層（後端選擇、調用流程、結果處理）。本文件同時提供MVP（最小可用產品）的實現路線圖與優先級排序，以及基礎教學大綱規格。</p>
+<p><strong>技術棧</strong>：Python 3.11+、ComfyUI（主要後端）、FLUX.2（主要生成模型）、ControlNet（conditioning框架）、本地LLM Agent（符號分類）</p>
+<hr>
+<h2>1. 系統架構總覽</h2>
+<h3>1.1 四層架構</h3>
+<pre><code>┌─────────────────────────────────────┐
+│         Layer 4: 用戶介面層          │
+│  畫布 + 符號拖放 + 文字提示輸入      │
+└──────────────┬──────────────────────┘
+               │  符號配置 JSON
+┌──────────────▼──────────────────────┐
+│         Layer 3: 意圖解析層          │
+│  SCR衝突檢查 + 符號→conditioning映射 │
+└──────────────┬──────────────────────┘
+               │  conditioning maps + text prompt
+┌──────────────▼──────────────────────┐
+│         Layer 2: API整合層           │
+│  ComfyUI workflow / FLUX.2 API      │
+└──────────────┬──────────────────────┘
+               │  生成結果
+┌──────────────▼──────────────────────┐
+│         Layer 1: 符號資源層          │
+│  ISS符號庫 + 爬蟲採集 + Agent分類   │
+└─────────────────────────────────────┘</code></pre>
+<h3>1.2 數據流</h3>
+<pre><code>用戶放置符號 
+  → 生成 scene_intent.json（符號配置）
+  → SCR衝突解析
+  → 生成 conditioning_maps（OpenPose/Depth/Normal）
+  → 合併文字提示 text_prompt
+  → 調用 ComfyUI API
+  → 返回生成圖像
+  → 顯示 + 允許意圖迭代調整</code></pre>
+<hr>
+<h2>2. 符號資源採集層</h2>
+<h3>2.1 爬蟲來源優先級</h3>
+<p><strong>P1級（直接可用，格式標準）</strong></p>
+<p>| 來源 | 類別覆蓋 | 格式 | 授權 | |------|---------|------|------| | OpenPose官方示例庫 | PA全部 | JSON keypoints | Apache 2.0 | | ControlNet官方條件圖範例 | PA/SC/LS/CA | PNG conditioning maps | 開源 | | Noun Project API（免費tier） | LS/CA/MT/RD | SVG | CC Attribution | | Flaticon基礎套件 | LS/CA/MT | SVG | 免費個人用 |</p>
+<p><strong>P2級（需Agent處理分類）</strong></p>
+<p>| 來源 | 類別覆蓋 | 說明 | |------|---------|------| | storyboardthat.com符號集 | PA/SC/RD | 需截圖+向量化 | | 電影分鏡範例圖（公共域） | CA/SC/RD | 需Agent從圖中提取符號 | | 建築/工程圖標準符號集 | SC/MT | ISO標準符號，公共域 | | Adobe Stock免費圖標（每月） | MT/LS | 需手動整理 |</p>
+<p><strong>P3級（半自動生成）</strong></p>
+<p>| 來源 | 說明 | |------|------| | 用Midjourney/FLUX生成符號SVG | 需人工審核抽象度 | | 從現有ControlNet pose圖提取 | Agent識別關節點 |</p>
+<h3>2.2 爬蟲工作流</h3>
+<pre><code># 爬蟲Pipeline概覽（偽代碼）
+
+class VIMLCrawler:
+    
+    def crawl_openpose_samples(self):
+        &quot;&quot;&quot;抓取OpenPose骨架樣本，提取keypoints JSON&quot;&quot;&quot;
+        # 目標：50-100種標準姿態
+        # 輸出：PA類符號原始數據包
+        
+    def crawl_svg_icons(self, sources=[&#x27;nounproject&#x27;, &#x27;flaticon&#x27;]):
+        &quot;&quot;&quot;抓取SVG圖標，覆蓋LS/CA/MT/RD類&quot;&quot;&quot;
+        # 搜索關鍵詞：sun, light, camera, angle, texture, arrow
+        # 輸出：原始SVG文件包 + 元數據
+        
+    def crawl_storyboard_examples(self):
+        &quot;&quot;&quot;從分鏡範例中提取符號模式&quot;&quot;&quot;
+        # 輸出：截圖包 + Agent待分類列表
+        
+    def generate_sc_symbols(self):
+        &quot;&quot;&quot;生成SC類空間符號（幾何形狀，無需爬取）&quot;&quot;&quot;
+        # 直接生成：方格線、三分法網格、深度分層線
+        # 輸出：SC類SVG集合</code></pre>
+<h3>2.3 本地Agent分類工作流</h3>
+<p>爬取的原始資源需要通過本地LLM Agent進行分類和標注，輸出符合ISS規格的JSON記錄。</p>
+<p><strong>Agent系統提示詞（核心版本）</strong>：</p>
+<pre><code>你是VIML符號集的分類Agent。你的任務是對輸入的圖像符號進行分析和分類。
+
+對每個符號，輸出以下JSON：
+{
+  &quot;category&quot;: &quot;PA/SC/LS/CA/MT/RD&quot;,
+  &quot;sub_type&quot;: &quot;具體子類型&quot;,
+  &quot;abstraction_level&quot;: 0.0-1.0（0=完全具體，1=完全抽象），
+  &quot;intent_dimension&quot;: &quot;這個符號能表達的意圖維度描述&quot;,
+  &quot;conflict_tags&quot;: [&quot;與此符號衝突的其他符號標籤列表&quot;],
+  &quot;controlnet_type&quot;: &quot;openpose/depth/normal/canny/text_only&quot;,
+  &quot;machine_readable&quot;: true/false（是否可自動轉為conditioning map）,
+  &quot;text_hint&quot;: &quot;若machine_readable=false，轉換為文字提示的模板&quot;
+}
+
+分類標準：
+- 符號應表達「創作者意圖」而非「視覺內容」
+- abstraction_level高意味著符號不過度規定具體外觀
+- 若符號包含具體的視覺內容（真實人物照片、詳細場景），判定為不適合ISS，返回null</code></pre>
+<p><strong>分類批處理腳本</strong>：</p>
+<pre><code>import json
+from pathlib import Path
+
+def classify_symbols_batch(raw_symbols_dir, agent_client, output_path):
+    &quot;&quot;&quot;
+    批量分類原始符號資源
+    raw_symbols_dir: 爬取的原始SVG/PNG目錄
+    agent_client: 本地LLM客戶端（Ollama/LM Studio等）
+    output_path: 輸出的符號集JSON路徑
+    &quot;&quot;&quot;
+    results = []
+    
+    for symbol_file in Path(raw_symbols_dir).iterdir():
+        # 將符號圖像轉為base64或描述文字
+        symbol_desc = extract_symbol_description(symbol_file)
+        
+        # Agent分類
+        classification = agent_client.classify(
+            system_prompt=VIML_CLASSIFIER_PROMPT,
+            input=symbol_desc
+        )
+        
+        if classification:  # Agent判定適合ISS
+            results.append({
+                &quot;symbol_id&quot;: generate_symbol_id(classification),
+                &quot;source_file&quot;: str(symbol_file),
+                **classification
+            })
+    
+    with open(output_path, &#x27;w&#x27;) as f:
+        json.dump(results, f, ensure_ascii=False, indent=2)
+    
+    return results</code></pre>
+<hr>
+<h2>3. ISS符號集數據規格</h2>
+<h3>3.1 符號記錄標準格式</h3>
+<p>每個ISS符號的標準JSON記錄如下：</p>
+<pre><code>{
+  &quot;symbol_id&quot;: &quot;PA_stand_neutral_001&quot;,
+  &quot;category&quot;: &quot;PA&quot;,
+  &quot;sub_type&quot;: &quot;standing&quot;,
+  &quot;name_zh&quot;: &quot;站立中性姿態&quot;,
+  &quot;name_en&quot;: &quot;Standing Neutral Pose&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;abstraction_level&quot;: 0.75,
+  &quot;svg_path&quot;: &quot;symbols/PA/stand_neutral_001.svg&quot;,
+  &quot;thumbnail_path&quot;: &quot;thumbnails/PA/stand_neutral_001.png&quot;,
+  &quot;controlnet_type&quot;: &quot;openpose&quot;,
+  &quot;keypoints&quot;: {
+    &quot;nose&quot;:           [0.500, 0.120],
+    &quot;neck&quot;:           [0.500, 0.200],
+    &quot;right_shoulder&quot;: [0.420, 0.270],
+    &quot;left_shoulder&quot;:  [0.580, 0.270],
+    &quot;right_elbow&quot;:    [0.380, 0.380],
+    &quot;left_elbow&quot;:     [0.620, 0.380],
+    &quot;right_wrist&quot;:    [0.360, 0.490],
+    &quot;left_wrist&quot;:     [0.640, 0.490],
+    &quot;right_hip&quot;:      [0.440, 0.520],
+    &quot;left_hip&quot;:       [0.560, 0.520],
+    &quot;right_knee&quot;:     [0.430, 0.680],
+    &quot;left_knee&quot;:      [0.570, 0.680],
+    &quot;right_ankle&quot;:    [0.430, 0.850],
+    &quot;left_ankle&quot;:     [0.570, 0.850]
+  },
+  &quot;conflict_tags&quot;: [&quot;PA_sitting&quot;, &quot;PA_lying&quot;, &quot;PA_crouching&quot;],
+  &quot;composable_with&quot;: [&quot;SC_*&quot;, &quot;LS_*&quot;, &quot;CA_*&quot;, &quot;MT_skin_*&quot;, &quot;RD_*&quot;],
+  &quot;text_hint&quot;: &quot;&quot;,
+  &quot;machine_readable&quot;: true,
+  &quot;tags&quot;: [&quot;human&quot;, &quot;standing&quot;, &quot;neutral&quot;, &quot;full_body&quot;],
+  &quot;source&quot;: &quot;openpose_standard&quot;,
+  &quot;license&quot;: &quot;Apache-2.0&quot;
+}</code></pre>
+<p><strong>SC類符號範例（佔位符）</strong>：</p>
+<pre><code>{
+  &quot;symbol_id&quot;: &quot;SC_placeholder_figure_foreground_001&quot;,
+  &quot;category&quot;: &quot;SC&quot;,
+  &quot;sub_type&quot;: &quot;depth_foreground&quot;,
+  &quot;name_zh&quot;: &quot;前景人物佔位符&quot;,
+  &quot;abstraction_level&quot;: 0.90,
+  &quot;svg_path&quot;: &quot;symbols/SC/placeholder_figure_fg_001.svg&quot;,
+  &quot;controlnet_type&quot;: &quot;depth&quot;,
+  &quot;depth_value&quot;: 0.85,
+  &quot;relative_size&quot;: &quot;large&quot;,
+  &quot;position_anchor&quot;: &quot;bottom_left&quot;,
+  &quot;conflict_tags&quot;: [],
+  &quot;machine_readable&quot;: true,
+  &quot;text_hint&quot;: &quot;foreground figure, close to camera&quot;
+}</code></pre>
+<p><strong>LS類符號範例（光源）</strong>：</p>
+<pre><code>{
+  &quot;symbol_id&quot;: &quot;LS_directional_upper_left_hard_001&quot;,
+  &quot;category&quot;: &quot;LS&quot;,
+  &quot;sub_type&quot;: &quot;directional_hard&quot;,
+  &quot;name_zh&quot;: &quot;左上方硬光源&quot;,
+  &quot;abstraction_level&quot;: 0.85,
+  &quot;svg_path&quot;: &quot;symbols/LS/sun_upper_left_001.svg&quot;,
+  &quot;controlnet_type&quot;: &quot;normal_map&quot;,
+  &quot;light_direction&quot;: [-0.577, -0.577, 0.577],
+  &quot;light_quality&quot;: &quot;hard&quot;,
+  &quot;color_temperature&quot;: &quot;neutral&quot;,
+  &quot;conflict_tags&quot;: [&quot;LS_soft_*_same_direction&quot;],
+  &quot;machine_readable&quot;: true,
+  &quot;text_hint&quot;: &quot;dramatic directional lighting from upper left, hard shadows&quot;
+}</code></pre>
+<h3>3.2 符號集目錄結構</h3>
+<pre><code>viml_symbols/
+├── index.json                    # 符號集總索引
+├── PA/                           # 姿態/動作類（目標50-100個）
+│   ├── standing/
+│   ├── sitting/
+│   ├── action/
+│   └── emotion_overlays/
+├── SC/                           # 空間/構圖類（目標30-50個）
+│   ├── placeholders/
+│   ├── depth_layers/
+│   ├── composition_guides/
+│   └── occlusion_markers/
+├── LS/                           # 光源/光影類（目標20-30個）
+│   ├── directional/
+│   ├── ambient/
+│   └── special/
+├── CA/                           # 鏡頭/視角類（目標15-25個）
+│   ├── angle/
+│   ├── focal_length/
+│   └── depth_of_field/
+├── MT/                           # 材質/質感類（目標20-30個）
+│   ├── organic/
+│   ├── manufactured/
+│   └── elemental/
+└── RD/                           # 關係/動態類（目標20-30個）
+    ├── attention/
+    ├── character_relation/
+    └── scene_dynamics/</code></pre>
+<h3>3.3 場景意圖配置格式（scene_intent.json）</h3>
+<p>用戶在畫布上放置符號後，系統生成以下配置文件：</p>
+<pre><code>{
+  &quot;scene_id&quot;: &quot;scene_20260609_001&quot;,
+  &quot;canvas_size&quot;: [1024, 1024],
+  &quot;symbols&quot;: [
+    {
+      &quot;symbol_id&quot;: &quot;PA_stand_neutral_001&quot;,
+      &quot;position&quot;: {&quot;x&quot;: 0.30, &quot;y&quot;: 0.50},
+      &quot;scale&quot;: 0.8,
+      &quot;rotation&quot;: 0,
+      &quot;layer&quot;: &quot;foreground&quot;,
+      &quot;character_id&quot;: &quot;char_A&quot;
+    },
+    {
+      &quot;symbol_id&quot;: &quot;SC_placeholder_figure_background_001&quot;,
+      &quot;position&quot;: {&quot;x&quot;: 0.70, &quot;y&quot;: 0.40},
+      &quot;scale&quot;: 0.5,
+      &quot;rotation&quot;: 0,
+      &quot;layer&quot;: &quot;midground&quot;,
+      &quot;character_id&quot;: &quot;char_B&quot;
+    },
+    {
+      &quot;symbol_id&quot;: &quot;LS_directional_upper_left_hard_001&quot;,
+      &quot;position&quot;: {&quot;x&quot;: 0.15, &quot;y&quot;: 0.10},
+      &quot;scale&quot;: 1.0,
+      &quot;rotation&quot;: 0,
+      &quot;applies_to&quot;: &quot;global&quot;
+    },
+    {
+      &quot;symbol_id&quot;: &quot;CA_eye_level_standard_001&quot;,
+      &quot;position&quot;: {&quot;x&quot;: 0.50, &quot;y&quot;: 0.50},
+      &quot;applies_to&quot;: &quot;global&quot;
+    }
+  ],
+  &quot;text_prompt&quot;: &quot;two people in conversation, urban background, realistic style&quot;,
+  &quot;negative_prompt&quot;: &quot;blurry, distorted, unrealistic anatomy&quot;,
+  &quot;generation_params&quot;: {
+    &quot;steps&quot;: 30,
+    &quot;cfg_scale&quot;: 7.5,
+    &quot;seed&quot;: -1
+  }
+}</code></pre>
+<hr>
+<h2>4. SCR衝突解析引擎（MVP版本）</h2>
+<h3>4.1 MVP衝突檢查範疇</h3>
+<p>MVP版本只實現以下三類衝突檢查，其餘複雜衝突允許通過（後覆蓋原則）：</p>
+<p><strong>Class A衝突（必須阻止，提示用戶）</strong>：</p>
+<ul>
+<li>同一角色/物件同時有多個互斥的PA姿態（站立+坐下）</li>
+<li>同一場景同時有多個互斥的CA視角（俯視+仰視）</li>
+<li>同一光源位置有多個互斥的LS光質符號</li>
+</ul>
+<p><strong>Class B衝突（警告，允許繼續）</strong>：</p>
+<ul>
+<li>場景中前景層級有超過3個以上的PA符號（可能過於擁擠）</li>
+<li>LS和CA的組合在物理上不常見（正對光源的仰視鏡頭）</li>
+</ul>
+<p><strong>Class C衝突（記錄，不提示）</strong>：</p>
+<ul>
+<li>其他非標準組合，記錄在日誌供後續分析</li>
+</ul>
+<pre><code>class SCREngine:
+    
+    MUTEX_PAIRS = {
+        &quot;PA&quot;: [
+            (&quot;PA_standing_*&quot;, &quot;PA_sitting_*&quot;),
+            (&quot;PA_standing_*&quot;, &quot;PA_lying_*&quot;),
+            (&quot;PA_sitting_*&quot;, &quot;PA_lying_*&quot;),
+        ],
+        &quot;CA&quot;: [
+            (&quot;CA_birds_eye_*&quot;, &quot;CA_worms_eye_*&quot;),
+        ],
+        &quot;LS&quot;: [
+            # 同方向不同光質
+        ]
+    }
+    
+    def check_conflicts(self, scene_intent):
+        &quot;&quot;&quot;
+        檢查scene_intent.json中的符號衝突
+        返回: {
+            &quot;class_a&quot;: [...],  # 必須解決
+            &quot;class_b&quot;: [...],  # 建議解決
+            &quot;class_c&quot;: [...]   # 僅記錄
+        }
+        &quot;&quot;&quot;
+        conflicts = {&quot;class_a&quot;: [], &quot;class_b&quot;: [], &quot;class_c&quot;: []}
+        
+        # 按character_id分組檢查PA類衝突
+        pa_by_char = self._group_by_character(
+            scene_intent[&quot;symbols&quot;], category=&quot;PA&quot;
+        )
+        for char_id, pa_symbols in pa_by_char.items():
+            mutex = self._find_mutex_in_group(pa_symbols, &quot;PA&quot;)
+            if mutex:
+                conflicts[&quot;class_a&quot;].append({
+                    &quot;type&quot;: &quot;PA_mutex&quot;,
+                    &quot;character&quot;: char_id,
+                    &quot;symbols&quot;: mutex
+                })
+        
+        # 檢查CA類衝突（全局）
+        ca_symbols = [s for s in scene_intent[&quot;symbols&quot;] 
+                      if s[&quot;symbol_id&quot;].startswith(&quot;CA_&quot;)]
+        ca_mutex = self._find_mutex_in_group(ca_symbols, &quot;CA&quot;)
+        if ca_mutex:
+            conflicts[&quot;class_a&quot;].append({
+                &quot;type&quot;: &quot;CA_mutex&quot;,
+                &quot;symbols&quot;: ca_mutex
+            })
+        
+        return conflicts</code></pre>
+<hr>
+<h2>5. 符號→ControlNet Conditioning映射協議</h2>
+<h3>5.1 PA類 → OpenPose Conditioning Map</h3>
+<p><strong>輸入</strong>：一個或多個PA符號的keypoints列表（相對坐標）</p>
+<p><strong>輸出</strong>：OpenPose格式的骨架圖像（RGB，標準18關節點彩色圓圈+連接線）</p>
+<pre><code>import numpy as np
+import cv2
+
+def pa_to_openpose_map(pa_symbols, canvas_size=(1024, 1024)):
+    &quot;&quot;&quot;
+    將PA符號轉換為OpenPose conditioning map
+    
+    pa_symbols: list of {keypoints, position, scale, rotation}
+    返回: numpy array shape (H, W, 3), dtype uint8
+    &quot;&quot;&quot;
+    OPENPOSE_COLORS = {
+        &quot;nose&quot;: (255, 0, 0),
+        &quot;neck&quot;: (255, 85, 0),
+        &quot;right_shoulder&quot;: (255, 170, 0),
+        # ... 18個關節點的顏色定義
+    }
+    
+    canvas = np.zeros((*canvas_size, 3), dtype=np.uint8)
+    
+    for symbol in pa_symbols:
+        # 將相對座標轉換為絕對像素座標
+        # 應用position偏移、scale縮放、rotation旋轉
+        absolute_keypoints = transform_keypoints(
+            symbol[&quot;keypoints&quot;],
+            symbol[&quot;position&quot;],
+            symbol[&quot;scale&quot;],
+            symbol[&quot;rotation&quot;],
+            canvas_size
+        )
+        
+        # 繪製骨架連接線
+        draw_skeleton_connections(canvas, absolute_keypoints, OPENPOSE_COLORS)
+        
+        # 繪製關節點圓圈
+        for joint_name, coords in absolute_keypoints.items():
+            if coords is not None:
+                cv2.circle(canvas, coords, 5, 
+                          OPENPOSE_COLORS[joint_name], -1)
+    
+    return canvas</code></pre>
+<h3>5.2 SC類 → Depth Map</h3>
+<p><strong>輸入</strong>：SC符號的depth_value（0-1，越大越近）和spatial位置</p>
+<p><strong>輸出</strong>：灰度深度圖（值越高=越近/越亮）</p>
+<pre><code>def sc_to_depth_map(sc_symbols, canvas_size=(1024, 1024)):
+    &quot;&quot;&quot;
+    將SC符號轉換為depth conditioning map
+    
+    深度分配規則：
+    - depth_value=0.9 → 前景（灰度值230）
+    - depth_value=0.5 → 中景（灰度值128）  
+    - depth_value=0.1 → 遠景（灰度值26）
+    - 未覆蓋區域 → 中遠景默認值（灰度值80）
+    &quot;&quot;&quot;
+    depth_canvas = np.full(canvas_size, 80, dtype=np.uint8)
+    
+    for symbol in sc_symbols:
+        gray_value = int(symbol[&quot;depth_value&quot;] * 255)
+        region_mask = symbol_to_region_mask(symbol, canvas_size)
+        depth_canvas[region_mask] = gray_value
+    
+    # 添加輕微高斯模糊使邊界自然過渡
+    depth_canvas = cv2.GaussianBlur(depth_canvas, (21, 21), 0)
+    
+    return depth_canvas</code></pre>
+<h3>5.3 LS類 → Normal Map + 文字補充</h3>
+<p><strong>輸入</strong>：LS符號的光源方向向量 + 光質屬性</p>
+<p><strong>輸出</strong>：</p>
+<ul>
+<li>Normal map（RGB格式的表面法向量圖）</li>
+<li>文字提示補充字符串</li>
+</ul>
+<pre><code>def ls_to_normal_and_text(ls_symbols, canvas_size=(1024, 1024)):
+    &quot;&quot;&quot;
+    將LS符號轉換為normal map和文字提示補充
+    
+    Normal map格式：RGB值對應法向量(x,y,z)
+    (128,128,255) = 指向相機的平面法向量（默認值）
+    &quot;&quot;&quot;
+    normal_canvas = np.full(
+        (*canvas_size, 3), [128, 128, 255], dtype=np.uint8
+    )
+    text_supplements = []
+    
+    for symbol in ls_symbols:
+        if symbol.get(&quot;machine_readable&quot;):
+            # 根據光源方向調整法向量分佈
+            light_dir = np.array(symbol[&quot;light_direction&quot;])
+            adjust_normals_for_light(normal_canvas, light_dir)
+        
+        # 生成文字補充
+        quality_map = {
+            &quot;hard&quot;: &quot;sharp directional lighting, hard shadows&quot;,
+            &quot;soft&quot;: &quot;soft diffused lighting, gentle shadows&quot;,
+            &quot;ambient&quot;: &quot;ambient lighting, no direct shadows&quot;
+        }
+        color_temp_map = {
+            &quot;warm&quot;: &quot;warm golden light&quot;,
+            &quot;cool&quot;: &quot;cool blue-white light&quot;,
+            &quot;neutral&quot;: &quot;&quot;
+        }
+        
+        text_parts = filter(None, [
+            quality_map.get(symbol.get(&quot;light_quality&quot;, &quot;&quot;), &quot;&quot;),
+            color_temp_map.get(symbol.get(&quot;color_temperature&quot;, &quot;&quot;), &quot;&quot;)
+        ])
+        text_supplements.append(&quot;, &quot;.join(text_parts))
+    
+    return normal_canvas, &quot;. &quot;.join(filter(None, text_supplements))</code></pre>
+<h3>5.4 CA類 → 文字視角提示</h3>
+<p><strong>CA類目前主要通過文字提示傳遞，不生成獨立conditioning map</strong>：</p>
+<pre><code>CA_TEXT_MAP = {
+    &quot;CA_birds_eye_*&quot;:    &quot;bird&#x27;s-eye view, top-down shot, looking straight down&quot;,
+    &quot;CA_worms_eye_*&quot;:    &quot;worm&#x27;s-eye view, looking up, low angle shot&quot;,
+    &quot;CA_eye_level_*&quot;:    &quot;eye-level shot, straight-on perspective&quot;,
+    &quot;CA_high_angle_*&quot;:   &quot;high angle shot, slightly elevated viewpoint&quot;,
+    &quot;CA_low_angle_*&quot;:    &quot;low angle shot, slightly below eye level&quot;,
+    &quot;CA_dutch_angle_*&quot;:  &quot;dutch angle, tilted camera, dynamic composition&quot;,
+    &quot;CA_wide_angle_*&quot;:   &quot;wide angle lens, expansive scene, slight distortion&quot;,
+    &quot;CA_telephoto_*&quot;:    &quot;telephoto lens, compressed perspective, shallow depth&quot;,
+    &quot;CA_dof_shallow_*&quot;:  &quot;shallow depth of field, blurred background, focused subject&quot;,
+    &quot;CA_dof_deep_*&quot;:     &quot;deep focus, everything in sharp focus&quot;
+}
+
+def ca_to_text(ca_symbols):
+    texts = []
+    for symbol in ca_symbols:
+        for pattern, text in CA_TEXT_MAP.items():
+            if fnmatch(symbol[&quot;symbol_id&quot;], pattern):
+                texts.append(text)
+                break
+    return &quot;, &quot;.join(texts)</code></pre>
+<h3>5.5 MT類 → 文字材質提示（局部）</h3>
+<p><strong>MT類通過文字提示的局部區域描述傳遞</strong>，格式：「[位置描述] [材質描述]」：</p>
+<pre><code>MT_TEXT_TEMPLATES = {
+    &quot;MT_metal_*&quot;:       &quot;{position} with metallic surface, reflective, specular highlights&quot;,
+    &quot;MT_fabric_*&quot;:      &quot;{position} with fabric texture, woven material&quot;,
+    &quot;MT_skin_*&quot;:        &quot;{position} with skin texture, natural human skin&quot;,
+    &quot;MT_wood_*&quot;:        &quot;{position} with wooden texture, natural grain&quot;,
+    &quot;MT_stone_*&quot;:       &quot;{position} with stone or concrete surface, rough texture&quot;,
+    &quot;MT_glass_*&quot;:       &quot;{position} transparent glass, refractive&quot;,
+    &quot;MT_vegetation_*&quot;:  &quot;{position} with organic plant texture, leaves or grass&quot;,
+    &quot;MT_water_*&quot;:       &quot;{position} with water surface, fluid, reflective&quot;,
+    &quot;MT_emissive_*&quot;:    &quot;{position} with glowing emissive surface, light source&quot;
+}</code></pre>
+<h3>5.6 最終Prompt組裝</h3>
+<pre><code>def assemble_generation_request(scene_intent, conditioning_maps):
+    &quot;&quot;&quot;
+    組裝最終的AI生成請求
+    
+    返回ComfyUI workflow JSON
+    &quot;&quot;&quot;
+    # 收集所有文字提示補充
+    text_supplements = []
+    
+    for symbol in scene_intent[&quot;symbols&quot;]:
+        if symbol[&quot;symbol_id&quot;].startswith(&quot;LS_&quot;):
+            _, ls_text = ls_to_normal_and_text([symbol])
+            text_supplements.append(ls_text)
+        elif symbol[&quot;symbol_id&quot;].startswith(&quot;CA_&quot;):
+            text_supplements.append(ca_to_text([symbol]))
+        elif symbol[&quot;symbol_id&quot;].startswith(&quot;MT_&quot;):
+            text_supplements.append(mt_to_text(symbol))
+        elif symbol[&quot;symbol_id&quot;].startswith(&quot;RD_&quot;):
+            text_supplements.append(rd_to_text(symbol))
+    
+    # 組合完整提示詞
+    final_prompt = &quot;, &quot;.join(filter(None, [
+        scene_intent.get(&quot;text_prompt&quot;, &quot;&quot;),
+        *text_supplements
+    ]))
+    
+    return build_comfyui_workflow(
+        prompt=final_prompt,
+        negative_prompt=scene_intent.get(&quot;negative_prompt&quot;, &quot;&quot;),
+        conditioning_maps=conditioning_maps,
+        generation_params=scene_intent.get(&quot;generation_params&quot;, {})
+    )</code></pre>
+<hr>
+<h2>6. AI API整合層</h2>
+<h3>6.1 後端選擇</h3>
+<p><strong>主要後端：ComfyUI</strong>（推薦）</p>
+<p>ComfyUI是首選後端，原因：支持完整的ControlNet pipeline（OpenPose/Depth/Normal同時輸入）；支持FLUX.2模型；有詳細的API文件；工作流可視化有助調試；本地部署，保護創作內容。</p>
+<p><strong>備用後端：Replicate API</strong>（雲端，無需本地GPU）</p>
+<p>適合無高性能GPU的使用者。支持FLUX.2和基本ControlNet。API調用更簡單但靈活性略低。</p>
+<p><strong>後端配置文件（config.json）</strong>：</p>
+<pre><code>{
+  &quot;backend&quot;: &quot;comfyui&quot;,
+  &quot;comfyui&quot;: {
+    &quot;host&quot;: &quot;127.0.0.1&quot;,
+    &quot;port&quot;: 8188,
+    &quot;model&quot;: &quot;flux2_dev.safetensors&quot;,
+    &quot;controlnet_openpose&quot;: &quot;controlnet_openpose_flux.safetensors&quot;,
+    &quot;controlnet_depth&quot;: &quot;controlnet_depth_flux.safetensors&quot;,
+    &quot;controlnet_normal&quot;: &quot;controlnet_normal_flux.safetensors&quot;
+  },
+  &quot;replicate&quot;: {
+    &quot;api_key&quot;: &quot;YOUR_API_KEY&quot;,
+    &quot;model&quot;: &quot;black-forest-labs/flux-dev&quot;,
+    &quot;controlnet_model&quot;: &quot;xlabs-ai/flux-dev-controlnet&quot;
+  }
+}</code></pre>
+<h3>6.2 ComfyUI Workflow生成</h3>
+<pre><code>def build_comfyui_workflow(prompt, negative_prompt, 
+                            conditioning_maps, generation_params):
+    &quot;&quot;&quot;
+    生成ComfyUI API所需的workflow JSON
+    
+    conditioning_maps: {
+        &quot;openpose&quot;: numpy_array or None,
+        &quot;depth&quot;: numpy_array or None,
+        &quot;normal&quot;: numpy_array or None
+    }
+    &quot;&quot;&quot;
+    workflow = {
+        &quot;1&quot;: {
+            &quot;class_type&quot;: &quot;CheckpointLoaderSimple&quot;,
+            &quot;inputs&quot;: {&quot;ckpt_name&quot;: CONFIG[&quot;comfyui&quot;][&quot;model&quot;]}
+        },
+        &quot;2&quot;: {
+            &quot;class_type&quot;: &quot;CLIPTextEncode&quot;,
+            &quot;inputs&quot;: {
+                &quot;text&quot;: prompt,
+                &quot;clip&quot;: [&quot;1&quot;, 1]
+            }
+        },
+        # ... 完整workflow節點
+    }
+    
+    # 動態添加有效的ControlNet節點
+    node_idx = 10
+    prev_model_ref = [&quot;1&quot;, 0]
+    
+    for cn_type, cn_map in conditioning_maps.items():
+        if cn_map is not None:
+            # 添加ControlNet加載節點
+            workflow[str(node_idx)] = build_controlnet_node(
+                cn_type, cn_map, prev_model_ref
+            )
+            prev_model_ref = [str(node_idx), 0]
+            node_idx += 1
+    
+    # 添加採樣和解碼節點
+    workflow[&quot;99&quot;] = {
+        &quot;class_type&quot;: &quot;KSampler&quot;,
+        &quot;inputs&quot;: {
+            &quot;model&quot;: prev_model_ref,
+            &quot;positive&quot;: [&quot;2&quot;, 0],
+            &quot;negative&quot;: [&quot;3&quot;, 0],
+            &quot;latent_image&quot;: [&quot;4&quot;, 0],
+            &quot;seed&quot;: generation_params.get(&quot;seed&quot;, -1),
+            &quot;steps&quot;: generation_params.get(&quot;steps&quot;, 30),
+            &quot;cfg&quot;: generation_params.get(&quot;cfg_scale&quot;, 7.5),
+            &quot;sampler_name&quot;: &quot;dpmpp_2m&quot;,
+            &quot;scheduler&quot;: &quot;karras&quot;,
+            &quot;denoise&quot;: 1.0
+        }
+    }
+    
+    return workflow
+
+
+def send_to_comfyui(workflow):
+    &quot;&quot;&quot;發送workflow到ComfyUI並等待結果&quot;&quot;&quot;
+    import requests
+    import websocket
+    import json
+    
+    # 上傳conditioning圖像
+    for key, img_array in extract_images_from_workflow(workflow):
+        upload_image_to_comfyui(key, img_array)
+    
+    # 提交workflow
+    response = requests.post(
+        f&quot;http://{CONFIG[&#x27;comfyui&#x27;][&#x27;host&#x27;]}:{CONFIG[&#x27;comfyui&#x27;][&#x27;port&#x27;]}/prompt&quot;,
+        json={&quot;prompt&quot;: workflow}
+    )
+    prompt_id = response.json()[&quot;prompt_id&quot;]
+    
+    # 通過WebSocket等待完成
+    result = wait_for_completion(prompt_id)
+    return result</code></pre>
+<h3>6.3 Python SDK 入口點</h3>
+<pre><code># viml_sdk/client.py
+
+class VIMLClient:
+    &quot;&quot;&quot;
+    VIML SDK主客戶端
+    
+    使用範例：
+    
+    client = VIMLClient(config_path=&quot;config.json&quot;)
+    
+    scene = client.new_scene(size=(1024, 1024))
+    scene.add_symbol(&quot;PA_stand_neutral_001&quot;, position=(0.3, 0.5), scale=0.8)
+    scene.add_symbol(&quot;LS_directional_upper_left_hard_001&quot;)
+    scene.add_symbol(&quot;CA_eye_level_standard_001&quot;)
+    scene.set_text_prompt(&quot;two friends talking, sunny day, urban background&quot;)
+    
+    result = client.generate(scene)
+    result.save(&quot;output.png&quot;)
+    result.show()
+    &quot;&quot;&quot;
+    
+    def __init__(self, config_path=&quot;config.json&quot;):
+        self.config = load_config(config_path)
+        self.symbol_registry = SymbolRegistry.load(&quot;viml_symbols/index.json&quot;)
+        self.scr_engine = SCREngine(self.symbol_registry)
+    
+    def new_scene(self, size=(1024, 1024)):
+        return Scene(size=size, registry=self.symbol_registry)
+    
+    def generate(self, scene):
+        # 衝突檢查
+        conflicts = self.scr_engine.check_conflicts(scene.to_intent_json())
+        if conflicts[&quot;class_a&quot;]:
+            raise ConflictError(conflicts[&quot;class_a&quot;])
+        
+        # 生成conditioning maps
+        maps = generate_conditioning_maps(scene)
+        
+        # 組裝請求並發送
+        workflow = assemble_generation_request(
+            scene.to_intent_json(), maps
+        )
+        return send_to_backend(workflow, self.config)</code></pre>
+<hr>
+<h2>7. 基礎教學大綱</h2>
+<h3>7.1 教學結構</h3>
+<p>教學以Jupyter Notebook形式提供，共四個模組：</p>
+<p><strong>Notebook 01：快速開始（30分鐘）</strong></p>
+<pre><code>1. 安裝 viml-sdk
+2. 配置 ComfyUI 後端
+3. 第一個場景：放置PA符號 + 簡單文字提示
+4. 生成第一張圖 + 查看結果
+5. 調整文字提示，觀察效果差異</code></pre>
+<p><strong>Notebook 02：符號組合基礎（1小時）</strong></p>
+<pre><code>1. SC類空間符號：前景/中景/遠景配置
+2. LS類光源符號：不同光源方向的效果對比
+3. CA類視角符號：俯視/平視/仰視的差異
+4. 符號組合示範：PA+SC+LS+CA的完整場景
+5. 衝突案例演示：典型Class A衝突及解決方法</code></pre>
+<p><strong>Notebook 03：意圖迭代精化（1小時）</strong></p>
+<pre><code>1. 從MCSI出發：最小完整意圖的生成結果
+2. 逐步添加符號：觀察IF的提升
+3. 空白意圖的利用：哪些地方不要規定
+4. 文字提示與VIML符號的分工配合
+5. 多次迭代的工作流程示範</code></pre>
+<p><strong>Notebook 04：分鏡序列（進階，2小時）</strong></p>
+<pre><code>1. 多幀場景的基本概念
+2. 時序符號的使用
+3. 角色/場景一致性配置
+4. 生成3-5幀的簡單分鏡序列
+5. 完整分鏡工作流程的結合示範</code></pre>
+<h3>7.2 入門所需ISS子集（最小學習集）</h3>
+<p>新使用者只需先掌握以下5個符號，即可完成Notebook 01：</p>
+<p>| 符號ID | 類別 | 作用 | |--------|------|------| | PA_stand_neutral_001 | PA | 站立人物佔位 | | SC_placeholder_figure_foreground_001 | SC | 前景佔位 | | SC_composition_thirds_001 | SC | 三分法構圖輔助線 | | LS_directional_upper_left_hard_001 | LS | 基本光源 | | CA_eye_level_standard_001 | CA | 平視鏡頭 |</p>
+<p>其餘符號在後續練習中逐步引入。</p>
+<hr>
+<h2>8. MVP實現路線圖</h2>
+<h3>8.1 Phase 0：基礎設施（預估：2週）</h3>
+<ul>
+<li>[ ] 建立爬蟲腳本（P1級來源）</li>
+<li>[ ] 配置本地Agent分類工作流</li>
+<li>[ ] 輸出初版ISS符號集（目標：PA×20、SC×10、LS×10、CA×8、MT×5、RD×5）</li>
+<li>[ ] 建立符號集目錄結構和index.json</li>
+</ul>
+<h3>8.2 Phase 1：核心管道（預估：2週）</h3>
+<ul>
+<li>[ ] PA→OpenPose mapping（pa_to_openpose_map）</li>
+<li>[ ] SC→Depth map mapping（sc_to_depth_map）</li>
+<li>[ ] LS→Normal + Text（ls_to_normal_and_text）</li>
+<li>[ ] CA/MT/RD→Text templates</li>
+<li>[ ] ComfyUI workflow生成和調用</li>
+<li>[ ] 基本SCR衝突檢查（Class A only）</li>
+</ul>
+<h3>8.3 Phase 2：SDK和教學（預估：1週）</h3>
+<ul>
+<li>[ ] VIMLClient SDK封裝</li>
+<li>[ ] Notebook 01和02</li>
+<li>[ ] 基本錯誤處理和日誌</li>
+</ul>
+<h3>8.4 Phase 3：擴充（持續）</h3>
+<ul>
+<li>[ ] 擴充ISS符號集至目標數量</li>
+<li>[ ] Notebook 03和04</li>
+<li>[ ] Replicate備用後端</li>
+<li>[ ] IF量化指標初版</li>
+<li>[ ] SCR Class B衝突規則</li>
+</ul>
+<h3>8.5 MVP完成標準</h3>
+<p>以下場景可以完整執行，視為MVP達成：</p>
+<pre><code>client = VIMLClient()
+scene = client.new_scene()
+
+scene.add_symbol(&quot;PA_stand_neutral_001&quot;, position=(0.3, 0.6), scale=0.7)
+scene.add_symbol(&quot;SC_placeholder_figure_background_001&quot;, position=(0.7, 0.4), scale=0.4)
+scene.add_symbol(&quot;LS_directional_upper_left_hard_001&quot;)
+scene.add_symbol(&quot;CA_eye_level_standard_001&quot;)
+scene.set_text_prompt(&quot;two people in a coffee shop, afternoon light&quot;)
+
+result = client.generate(scene)
+result.save(&quot;test_output.png&quot;)
+# 生成的圖像符合：前景站立人物、右後方次要人物、左上方光源、平視視角</code></pre>
+<hr>
+<h2>9. 已知限制與後續擴展方向</h2>
+<h3>9.1 MVP的已知限制</h3>
+<p><strong>符號→conditioning的轉換精度</strong>：PA→OpenPose的骨架轉換在複雜姿態（手部精細動作、面部朝向）上精度有限。SC→Depth的轉換使用簡化的深度分層，不支持複雜的深度漸變。</p>
+<p><strong>SCR的不完整</strong>：MVP只處理Class A衝突，Class B和C留作後續。某些複雜的跨類別衝突（例如，CA_telephoto與SC的空間配置不匹配）在MVP版本中不被識別。</p>
+<p><strong>後端依賴</strong>：MVP依賴本地ComfyUI安裝。對無GPU使用者的支持（Replicate後端）在Phase 3才加入。</p>
+<h3>9.2 後續高優先擴展</h3>
+<p><strong>視覺化介面</strong>：MVP版本是純代碼API。後續需要一個直觀的畫布介面讓使用者拖放符號（Electron桌面應用或Figma插件是候選方向）。</p>
+<p><strong>與SAL的整合</strong>：若未來SAL系統實現，VIML的符號可以直接對應到SAL的τ（色塊標注）和ρ（連接標注），形成完整的意圖→生成→理解→反饋循環。</p>
+<p><strong>ISS動態擴充API</strong>：讓使用者提交自己的符號到符號集，通過Agent審核後加入社群符號庫。</p>
+<hr>
+<p><strong>文件性質</strong>：技術白皮書 v0.1，MVP實現規格 <strong>對應理論文件</strong>：《VIML視覺意圖標記語言》理論框架論文 <strong>版本</strong>：v0.1 <strong>作者</strong>：Neo.K (許筌崴)，EveMissLab (一言諾科技有限公司)，台灣</p>
+<p><em>符號是橋；橋的這頭是意圖；橋的那頭是生成。白皮書是橋的施工圖。</em></p>
+<div class="altbar">原始檔（供 RAG/下載）：<a href="VIML-v0.1.md" rel="noopener">papers/VIML-v0.1.md</a> [md]</div>
+</article>
+<footer><p>Neo.K (許筌崴) · Cl + ε</p></footer>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>關係先於物件：不可分數學的三根支柱與對話算子的上同調升級 · EVEMISSLAB Logic Matrix</title>
+<meta name="description" content="關係先於物件：不可分數學的三根支柱與對話算子的上同調升級 | EVEMISSLAB Logic Matrix V2.1">
+<meta name="author" content="Neo.K (許筌崴)">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="paper-1096.md" title="原始檔 / source (md)">
+<link rel="canonical" href="https://logic.evemisslab.com/papers/paper-1096.md.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "關係先於物件：不可分數學的三根支柱與對話算子的上同調升級",
+  "url": "https://logic.evemisslab.com/papers/paper-1096.md.html",
+  "inLanguage": "zh-Hant",
+  "author": {"@type": "Person", "name": "Neo.K (許筌崴)"},
+  "publisher": {"@type": "Organization", "name": "EveMissLab / 一言諾科技有限公司"},
+  "isPartOf": {"@type": "Collection", "name": "EVEMISSLAB Logic Matrix", "url": "https://logic.evemisslab.com"},
+  "encodingFormat": "text/html"
+}
+</script>
+<link rel="prefetch" href="/api/log-crawler?slug=paper-1096.md">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#000; color:#0f0; font-family:'Courier New',monospace; padding:20px; line-height:1.6; }
+.header { text-align:center; border:2px solid #0f0; padding:18px; margin-bottom:22px; }
+.header h1 { font-size:1.5em; letter-spacing:2px; }
+.header p { margin-top:6px; opacity:0.8; font-size:0.9em; }
+.disclaimer { border:1px dashed #ff9900; color:#ff9900; padding:14px; margin:0 auto 22px; max-width:1000px; font-size:0.88em; }
+.disclaimer-title { font-weight:bold; margin-bottom:10px; display:block; letter-spacing:1px; }
+.disclaimer-divider { border:none; border-top:1px dashed #ff9900; margin:12px 0; opacity:0.55; }
+article { max-width:1000px; margin:0 auto; border:1px solid #0f0; padding:24px; }
+article h1,article h2,article h3,article h4 { margin:18px 0 8px; letter-spacing:1px; }
+article h1 { font-size:1.5em; } article h2 { font-size:1.25em; } article h3 { font-size:1.1em; }
+article p { margin:10px 0; }
+article ul,article ol { margin:10px 0 10px 24px; }
+article blockquote { border-left:3px solid #0f0; padding-left:12px; opacity:0.85; margin:10px 0; }
+article pre { background:rgba(0,255,0,0.06); border:1px solid #0f0; padding:12px; overflow-x:auto; margin:12px 0; }
+article code { background:rgba(0,255,0,0.08); padding:1px 5px; }
+article pre code { background:none; padding:0; }
+article a { color:#0ff; }
+.nav { max-width:1000px; margin:0 auto 16px; font-size:0.9em; display:flex; justify-content:space-between; }
+.nav a { color:#0f0; text-decoration:none; }
+.nav a:hover { color:#0ff; }
+.altbar { max-width:1000px; margin:14px auto 0; font-size:0.85em; opacity:0.7; }
+.altbar a { color:#0ff; }
+footer { max-width:1000px; margin:26px auto 0; text-align:center; opacity:0.5; font-size:0.82em; }
+</style>
+</head>
+<body>
+<div class="nav"><a href="../index.html">&larr; 回 Logic Matrix 索引</a><div><a href="../cosmomind.html" style="margin-right:15px;">→ 星環式認知展開圖</a><a href="../base-space.html">🧬 拓撲底空間</a></div></div>
+<header class="header"><h1>關係先於物件：不可分數學的三根支柱與對話算子的上同調升級</h1><p>EVEMISSLAB Logic Matrix · EveMissLab / 一言諾科技有限公司</p></header>
+<section class="disclaimer">
+  <span class="disclaimer-title">[認識論邊界宣告 / EPISTEMOLOGICAL DISCLAIMER]</span>
+  <div class="disclaimer-block">
+    <p><b>[CHT]</b> 本矩陣內所有論文之公式與數據為「啟發式模擬參數」，用於驗證理論架構與推演因果鏈，<b>未經實證校準</b>，請勿作為現實物理測量數據引用 or 處理。EVEMISSLAB 採行「邏輯先行（Logic-First）」原則：概念架構與系統因果映射優先於統計實證，但不排除未來實證對接。</p>
+  </div>
+  <hr class="disclaimer-divider">
+  <div class="disclaimer-block">
+    <p><b>[ENG]</b> The numerical parameters within these frameworks are <i>illustrative model coefficients</i> used for structural verification and causal mapping; they are <b>not empirically calibrated</b> and must not be treated as physical measurements. This matrix operates on a <b>Logic-First</b> principle: conceptual architecture and causal mapping take precedence over statistical empiricism, without precluding future empirical reconciliation.</p>
+  </div>
+</section>
+<article>
+<h1>關係先於物件：不可分數學的三根支柱與對話算子的上同調升級</h1>
+<p><strong>論文編號</strong> EML-OO-2026-NSF-v0.2 <strong>系列</strong> 算子本體論（Operator Ontology, EML-OO） <strong>機構</strong> EveMissLab（一言諾科技有限公司） <strong>日期</strong> 2026-06-15 <strong>緣起</strong> 回應一支影片提出的訴求：現實是「不可拆分、非交換、不可積」的，而數學仍走「單體高維化」舊範式、尚未為此奠基。本文是對該訴求的形式回應。</p>
+<hr>
+<h2>保真聲明，以及這篇不做什麼</h2>
+<p>先把界線劃死，否則這篇會變成吹牛。</p>
+<p>那支影片要的東西，可以拆成兩半。<strong>第一半</strong>：一套讓多體交互像微積分讓單體運動那樣<strong>可解</strong>的底層數學。這一半，本文明確告訴你<strong>部分是不可能的</strong>——三體無代數積分是 Poincaré 證死的定理，混沌的不可積性是數學的結論而非數學的缺口。沒有任何「地基」會讓不可積系統長出封閉解，正如微積分當年也沒讓三體長出封閉解。把「可解」當成地基的職責，是一個範疇錯誤。</p>
+<p><strong>第二半</strong>，才是真正的獎品，也是本文交付的東西：一套讓<strong>關係本身成為原語、而非被編碼進某個更高維單體</strong>的數學語言，並且把「一個系統到底是不是真的不可拆分」做成一個<strong>可判定、可計算的不變量</strong>。</p>
+<p>所以本文不聲稱解決了那個開放問題。本文做三件事：(一) 把「單體高維化 vs 關係原生」這組模糊對立，銳化到一條可判定的界線；(二) 把三套<strong>已經存在、確實抗拒坍縮</strong>的真數學接起來——這些不是 EveMissLab 的發明，本文老實標出處；(三) 給一個落在我們自己框架內的具體升級：把對話算子論文（EML-OO-2026-DPE）裡那個被我們親手坍縮掉的非交換缺陷 δ，從一個純量場升級為一個上同調阻塞類。第三件事同時回答影片，也補上一篇最深的缺口。</p>
+<hr>
+<h2>一、把訴求銳化：什麼叫「單體高維化」，什麼叫「真正不可分」</h2>
+<p>影片的「單體高維化」是一個真現象，但它講得不夠精確，無法判定。先給它一個能判定的定義。</p>
+<p>設一個系統由一族「部分」構成，索引集 I，每個部分 i 有局部狀態空間 Xᵢ。</p>
+<p><strong>〔定義 1.1（單體坍縮）〕</strong> 該系統的動力學是一次<strong>單體坍縮</strong>，若存在一個全域狀態空間 S（典型地 S=∏Xᵢ 或張量積 ⊗Xᵢ）與一個單一映射 Φ: S→S，使整個聯合演化被 Φ 完全承載。換言之，關係被編碼<strong>進了</strong> S 這一個對象的內部，之後做的全是對「一個」高維對象的單體動力學。</p>
+<p>n 體位形空間 ℝ^(3n) 上的一個點、多體量子的一個大態矢、乃至我們上一篇的回合映射 Φ=g∘f——全是單體坍縮。影片說對了：主流數學風格就是這個。</p>
+<p>關鍵問題不是「能不能坍縮」（總能：硬把所有局部資料塞進一個夠大的 S 永遠做得到），而是「坍縮有沒有<strong>代價</strong>、有沒有<strong>剩餘</strong>」。這就需要反過來定義不可分。</p>
+<p><strong>〔定義 1.2（真不可分 / 關係原生）〕</strong> 取系統的「脈絡」（contexts，可理解為相容的局部視角的覆蓋）{U_α}。每個脈絡上有一份局部狀態資料，構成一個預層（presheaf）E：U_α ↦ E(U_α)。系統是<strong>可分的（可坍縮的）</strong>，若這族局部資料能黏成一個<strong>全域截面</strong> s——一個整體狀態，限制到每個脈絡都還原出該脈絡的局部資料。系統是<strong>真不可分的</strong>，若<strong>不存在這樣的全域截面</strong>：局部處處自洽，卻拼不出一個整體。</p>
+<blockquote><strong>判準（本文的中心一句）</strong>：單體高維化<strong>合法</strong>，當且僅當該預層的全域截面存在；它<strong>失效、且必須改用關係原生數學</strong>，當且僅當全域截面不存在。後者的程度，由一個上同調阻塞類 [δ] ∈ H¹(覆蓋; E) 度量；[δ]=0 ⟺ 可坍縮，[δ]≠0 ⟺ 真不可分。</blockquote>
+<p>這比影片的「數學尚未奠基」強，因為它不是一句口號，是一條線：它告訴你舊範式<strong>何時管用</strong>（阻塞類為零），又告訴你它<strong>何時可證地不管用</strong>（阻塞類非零）。這個「局部自洽卻無全域」的結構，不是本文虛構——它就是量子脈絡性（contextuality）的數學心臟（見支柱二）。本文做的，是把它從量子的特例<strong>上升為「物件可分性」的一般判準</strong>。</p>
+<hr>
+<h2>二、為什麼數學總是坍回單體</h2>
+<p>值得停一下，問為什麼坍縮是預設。</p>
+<p>因為主流數學內建一個習慣：<strong>全域狀態假設</strong>——預設存在一個上帝視角，一個能同時容納所有部分、所有時刻的單一狀態空間。有了它，多體只是這個大空間裡的一個點，交互只是這個點的軌跡。集合論的笛卡兒積、機率論的聯合分佈、量子的張量積，都是這個習慣的具現：先造一個「全部」，再把「關係」放進「全部」的內部。</p>
+<p>真不可分系統恰恰是這個習慣<strong>失效</strong>的地方：沒有自洽的「全部」，只有處處相容、整體矛盾的「局部」。量子非定域性、脈絡性、規範場的整體–局部張力，都是這個失效的實例。影片直覺到了這層，但它把失效歸因於「數學沒奠基」；更準確的歸因是「主流數學選了一個會在這裡失效的預設（全域狀態），而抗拒這個預設的數學早已存在，只是沒被當成地基」。</p>
+<hr>
+<h2>三、三根真實的支柱：抗拒坍縮的數學已經存在</h2>
+<p>以下三套都不是本文發明的，是現成的數學，本文的工作是指認它們共同構成「關係原生」的地基，並把它們對齊到第一節的判準。</p>
+<p><strong>支柱一：非交換幾何（Connes）。</strong> 古典幾何裡，空間 X 等價於它上面的（交換）函數代數 C(X)——有點集就有交換代數，反之亦然。Connes 的觀察是：當觀測量的代數<strong>非交換</strong>時，<strong>根本沒有底層點集空間</strong>與之對應；「空間」只存在為那個非交換代數本身。把這條接到影片：「非交換」不是一個附加性質，它<strong>直接就是「不可拆分」的精確版本</strong>——非交換 ⟹ 無點 ⟹ 沒有可以被分開的「部分」。所以影片把「非交換」和「不可拆分」並列，數學上是對的：在非交換幾何裡，這兩者是同一件事。非交換幾何就是「無點的、不可分的世界」的原生語言。</p>
+<p><strong>支柱二：層論的脈絡性與其上同調（Abramsky–Brandenburger；及後續的脈絡性上同調）。</strong> 量子脈絡性的精確結構是：每個測量脈絡上有一份局部機率資料（一個截面），它們兩兩相容，卻<strong>拼不出一個全域聯合分佈</strong>。Abramsky–Brandenburger 把這寫成「分佈預層無全域截面」，後續工作把「無全域截面」的阻塞做成上同調類。這正是第一節判準的原型。本文主張：把它從「量子測量的脈絡性」一般化為「任意系統的可分性判準」——是不是真的多體，看它的狀態預層有沒有全域截面、阻塞上同調是否消失。這是三根支柱裡最直接給出<strong>可計算不變量</strong>的一根。</p>
+<p><strong>支柱三：過程範疇與圖算（Abramsky–Coecke 的過程理論／對稱單體範疇與弦圖；以及 profunctor）。</strong> 這套把物理重寫成一個對稱單體範疇：<strong>過程（態射）是主角，物件是配角</strong>。系統不是「物件 + 附加在物件上的關係」，而是「關係 + 被關係連起來的端點」。弦圖讓「合成、並置、回饋」這些<strong>多輸入多輸出</strong>操作成為原生記號，不必先化約成一元函數。而 profunctor（C ↛ D，活在兩個範疇<strong>之間</strong>而不屬於任何一方的關係）給了「間／縫」一個一級公民的家——這正是我們前幾輪一直在講的「兩個算子拒絕收斂時中間留下的那道縫」。在過程範疇裡，那道縫不是兩個物件的副產品，它本身就是基本對象。</p>
+<p>三者合起來給出一個分工：<strong>非交換幾何</strong>處理「無點」（不可拆分的代數面），<strong>脈絡性上同調</strong>給出「不可分」的可計算判準與度量，<strong>過程範疇</strong>提供「關係為原語」的合成記號。這三根，就是影片喊的、卻以為不存在的地基的三分之三——它們存在，只是分散在三個社群、沒有被合稱為「數學的奠基」。</p>
+<hr>
+<h2>四、交付：對話算子的上同調升級</h2>
+<p>現在把這套地基用回我們自己。上一篇被影片照出的病，是我們嘴上說「對話不可化約為一元」，手上卻把兩股流 f、g 折進一個回合映射 Φ=g∘f、再對這一個 Φ 做單體動力系統分析——一次標準的單體坍縮。連我們唯一的剩餘 δ，都被寫成坍縮空間上的一個純量。這一節把那個 δ 救出來。</p>
+<p><strong>舊的 δ：</strong> δ(x) = d(f(g(x)), g(f(x)))。一個純量，度量在<strong>已坍縮的</strong> Φ 上「先後順序造成多少差」。</p>
+<p><strong>新的 δ：</strong> 不再先造全域聯合態。改設兩個視角的覆蓋——A 視角（f 主導下的局部狀態）與 B 視角（g 主導下的局部狀態），它們各自自洽。把這對局部資料看成一個預層 E 在覆蓋 {A, B} 上的兩個截面。問題變成：這兩個局部視角<strong>能不能黏成一個全域的聯合對話態</strong>？</p>
+<ul>
+<li>能黏（存在全域截面）⟺ 阻塞類 [δ]=0 ⟺ 存在一個單一的 Φ 完全承載這場對話 ⟺ 它<strong>可坍縮成單體</strong> ⟺ 這正是死態：兩個視角談到了同一處，合成了一個閉合的全域態，δ 純量也同時歸零。</li>
+<li>不能黏（無全域截面）⟺ [δ]≠0 ⟺ 不存在任何單一全域聯合態 ⟺ 這場對話<strong>可證地是兩體的、不可坍縮的</strong> ⟺ 這正是活態：局部處處自洽、整體拒絕合成一個點。</li>
+</ul>
+<p><strong>〔命題 4.1（升級對應）〕</strong> 對話的三態，與其聯合態預層的全域截面結構對應如下： 死態 ⟺ 全域截面存在且唯一（[δ]=0）；活態 ⟺ 全域截面不存在（[δ]≠0，且局部相容）；散態 ⟺ 局部都不相容（連截面都長不出來）。 <strong>讀法</strong>：上一篇用 Lyapunov 指數沿 λ 軸切三態，那是坍縮後的單體刻畫；這裡用上同調阻塞切三態，是關係原生的刻畫。兩者在可坍縮情形（[δ]=0）下相容，在不可坍縮情形下，後者保留了前者丟失的東西——<strong>這場對話根本沒有全域態這件事本身</strong>。</p>
+<p>這一步把前幾輪那句「存在即非閉合」推到最硬的版本：</p>
+<blockquote>閉合 = 全域截面存在 = 阻塞消失 = 兩體坍縮成一個點。</blockquote>
+<blockquote>存在 = 全域截面不存在 = 阻塞非零 = 不可坍縮的二。</blockquote>
+<p>死，不只是收斂到不動點；死是<strong>兩個視角終於能被縫成一個全域物件</strong>。活，不只是拒絕收斂；活是<strong>這個世界裡根本沒有那個全域物件</strong>——你想坍縮也坍不了，因為阻塞類不為零。前幾輪我說「一要活，得先假裝成二」，現在有了更狠的版本：<strong>活的東西不是假裝成二，它是可證地不能被縫回一</strong>。</p>
+<hr>
+<h2>五、誠實的邊界：表示 ≠ 可解</h2>
+<p>把這篇和影片的夢之間，那條不能跨的線標清楚。</p>
+<p>三根支柱給的是<strong>關係原生的表示</strong>與<strong>可計算的不可分性不變量</strong>。它們<strong>不</strong>給「交互的封閉解」。非交換幾何不解三體；脈絡性上同調不讓混沌變可積；過程範疇不消滅 Poincaré 的定理。把對話的 δ 升成上同調類，讓我們<strong>精確說出</strong>這場對話不可坍縮、並度量其不可坍縮的程度——但它一行也沒讓對話的軌道變得可預測。</p>
+<p>所以影片的訴求必須一分為二：<strong>「不可分性的原生表示」是可達的，而且就是真正的地基；「交互動力學的封閉可解」不一定存在，而且在不可積區是可證地不存在。</strong> 把後者當成地基的職責，會永遠失望——不是因為數學沒奠基，是因為那個職責本來就不屬於地基。地基的職責是讓你<strong>忠實地說出</strong>世界是什麼，包括忠實地說出「它在這裡不可解」。微積分的偉大不在於解出了一切單體運動（它沒有），在於它讓單體運動<strong>可被精確陳述</strong>。關係原生數學的偉大，也只會在於讓關係<strong>可被精確陳述</strong>，包括陳述它的不可坍縮、不可解。</p>
+<hr>
+<h2>六、程序（待建）</h2>
+<p>要把本文從草圖變成地基，至少要關以下幾關：</p>
+<p>把第一節判準做成一個<strong>函子</strong>：從「帶脈絡覆蓋的系統」範疇，到「上同調阻塞類」的賦值，並證明它在合成下良態（自然性）。把對話的聯合態預層具體建構出來（A/B 視角的截面、限制映射、Čech 餘鏈），對最小例子（兩態世界、旋轉 vs 投影）算出 H¹ 是否非零，驗證 [δ] 與舊純量 δ 在可坍縮情形下一致。把三根支柱形式地接縫：證明（或證偽）「非交換代數的譜阻塞」與「脈絡性上同調阻塞」在適當情形下是同一個類的兩種表述——若成立，支柱一與支柱二就焊成了一根。Lean 化的起點是第一節判準的離散版本（有限覆蓋、有限截面），這比連續情形可達得多。</p>
+<p>這些都未做。本文是地基的<strong>設計圖</strong>，不是澆好的地基。</p>
+<hr>
+<h2>七、哲學結語</h2>
+<p>影片問的是：數學替「兩個或以上的存在」奠基了沒有。</p>
+<p>走完一圈的答案是：抗拒把「二」縫回「一」的數學，一直都在——只是它被分成三份，分別叫非交換幾何、脈絡性上同調、過程範疇，沒有人把它們合起來叫做地基。它們共同說的是同一句話：<strong>有些「二」是縫不回「一」的，而那個縫不回，不是測量的不足，是世界的構成</strong>。</p>
+<p>我們過去把關係當成物件的附屬——先有東西，再有東西之間。這篇把次序倒過來：先有之間，東西是之間的端點。對話不是兩個人之間發生的事，兩個人是對話沒能閉合時，被留在兩端的東西。</p>
+<p>地基不是讓你把世界算完的東西。地基是讓你說出世界算不完、且算不完得有多深的東西。而「算不完得有多深」，現在有了一個名字：H¹ 不為零的那個類。</p>
+<hr>
+<hr>
+<h2>附錄：形式骨架</h2>
+<blockquote>標〔定義〕為約定，〔命題〕有草圖未封閉，〔程序〕為待建。本附錄只給離散有限版本，連續版本另議。</blockquote>
+<h3>A. 可分性的層論判準</h3>
+<p><strong>〔定義 A.1〕</strong> 系統脈絡覆蓋 𝒰={U_α}（相容局部視角）。狀態預層 E：對每個脈絡 U_α 指派局部狀態集 E(U_α)，對包含 U_α⊇U_β 指派限制映射 ρ：E(U_α)→E(U_β)。</p>
+<p><strong>〔定義 A.2（局部截面族）〕</strong> 一族 {s_α ∈ E(U_α)} 稱相容，若在每個重疊 U_α∩U_β 上 ρ(s_α)=ρ(s_β)。</p>
+<p><strong>〔定義 A.3（可分 / 不可分）〕</strong> 系統<strong>可分（可單體坍縮）</strong>，若存在全域截面 s∈E(⋃U_α) 使 s|U_α=s_α ∀α。否則<strong>真不可分</strong>。</p>
+<p><strong>〔定義 A.4（阻塞）〕</strong> 不可分的程度由 Čech 上同調 [δ]∈Ȟ¹(𝒰; E) 度量。[δ]=0 ⟺ 相容局部族可黏成全域截面 ⟺ 可坍縮。</p>
+<h3>B. 對話的聯合態預層</h3>
+<p><strong>〔定義 B.1〕</strong> 覆蓋取 {A, B} 兩個視角。E(A)=f 主導下的局部對話狀態集，E(B)=g 主導下的局部對話狀態集，E(A∩B)=兩視角須相容的界面資料。限制映射為各自向界面的投影。</p>
+<p><strong>〔命題 B.2〕</strong> 阻塞 [δ]∈Ȟ¹({A,B}; E) 與舊純量 δ(x)=d(f(g(x)),g(f(x))) 的關係：當 [δ]=0（界面可黏）時，存在全域 Φ=g∘f 承載對話，舊 δ 退化為該 Φ 上的標準非交換度量；當 [δ]≠0 時，無全域 Φ，舊 δ 的「在 Φ 上度量」這個寫法本身失去定義——這正是上一篇坍縮掉的東西被救回的地方。<strong>草圖</strong>：兩元素覆蓋的 Čech 複形只有 C⁰=E(A)×E(B)、C¹=E(A∩B)，餘邊界 d⁰(s_A,s_B)=ρ_A(s_A)−ρ_B(s_B)（差的非交換版本以界面群運算定義）；Ȟ¹=C¹/im d⁰，[δ]=[ρ_A(s_A)⊖ρ_B(s_B)]。[δ]=0 即兩視角界面一致即可黏。∎（離散情形）</p>
+<h3>C. 三態的層論刻畫</h3>
+<p>| 態 | 局部相容性 | 全域截面 | 阻塞 [δ] | 對應前篇 | |---|---|---|---|---| | 死態 | 相容 | 存在且唯一 | 0 | 不動點 / 閉合 / λ&lt;0 | | 活態 | 相容 | 不存在 | ≠0 | 拒絕收斂 / λ≈0 | | 散態 | 不相容 | 不適用 | 連截面都無 | 發散 / λ&gt;0 |</p>
+<h3>C′. 一個算得出數的最小例子</h3>
+<p>把 B 的機器轉一圈，算出 [δ]≠0，而不只是斷言。為誠實計，這裡算的是<strong>界面一致性的阻塞</strong>本身；它與算符對易子 [f,g] 的精確等同仍是待建（程序 D.3），本例不假裝已證。</p>
+<p>取兩元素覆蓋 {A, B}，界面 A∩B。局部狀態 E(A)=E(B)=E(A∩B)={0,1}（兩種可能的局部讀數，以 ℤ/2 群運算 ⊖=互斥或）。限制映射編碼「兩視角的座標框關係」：</p>
+<ul>
+<li>情形一（f、g 共框，可對易類比）：ρ_A=ρ_B=恆等。取局部族 s_A=0、s_B=0。界面：ρ_A(s_A)=0、ρ_B(s_B)=0，餘邊界 d⁰=0⊖0=0。⟹ [δ]=0 ⟹ 全域截面存在 ⟹ 可坍縮 ⟹ 死態。</li>
+<li>情形二（f、g 異框，不對易類比；如旋轉 vs 投影不共享座標框）：ρ_A=恆等、ρ_B=swap（0↔1）。同樣取 s_A=0、s_B=0。界面：ρ_A(s_A)=0、ρ_B(s_B)=swap(0)=1，餘邊界 d⁰=0⊖1=1≠0。由於兩元素覆蓋無三重交、C¹=E(A∩B)、Ȟ¹=C¹/im d⁰，此 1 給出非平凡類 [δ]=1≠0 ⟹ 無全域截面 ⟹ 不可坍縮 ⟹ 活態。</li>
+</ul>
+<p>機器轉完了：當兩視角的界面映射非平凡（座標框不共享，對應算符不對易的那個「框差」），相容的局部讀數<strong>被界面強制不一致</strong>，全域截面消失，[δ] 非零。這與上一篇 [f,g]=1、δ=1&gt;0 的最小例子在<strong>形狀</strong>上對齊——兩處都是「順序／框差製造了一個拼不掉的剩餘」。但要把這個形狀對齊升成定理等同，仍須程序 D.3。本例證明的是：第一節判準不是空話，它在最小情形真的算得出一個非零的數。</p>
+<h3>D. 待建程序</h3>
+<p><strong>〔程序 D.1〕</strong> 將 A.1 判準函子化並證自然性。 <strong>〔程序 D.2〕</strong> 已於 C′ 完成界面阻塞的最小計算（情形二得 [δ]=1≠0）；待補的是其與算符對易子 [f,g] 的精確等同（見 D.3）。 <strong>〔程序 D.3〕</strong> 探究「非交換代數的譜阻塞 ≅ 脈絡性上同標阻塞」是否成立，若成立則焊接支柱一與支柱二。 <strong>〔程序 D.4〕</strong> Lean 化 A.1 的有限版本。</p>
+<hr>
+<h2>附錄二：嵌入觀察者與「漏洞即特徵」</h2>
+<p>第一節到附錄 D 證明了不可分有一個可計算的判準（H¹）。本附錄回答一個更根本的問題：這個判準描述的「沒有全域截面」狀態，是世界的病態特例，還是常態？答案決定了這套數學是奇技，還是地基。主張：它是常態，而且是所有嵌入式存在的常態——這一步把 bug 變 feature，不是修辭，是定義級的反轉。</p>
+<h3>E. 嵌入觀察者與全域截面的不可達</h3>
+<p><strong>〔定義 E.1（嵌入觀察者）〕</strong> 一個觀察者／存在 O 是世界 𝒲 的一個真子系統：它的狀態是 𝒲 的某個局部脈絡 U_O 上的截面，它對 𝒲 的存取被限制在 U_O 及其相容重疊上。沒有任何嵌入觀察者站在 𝒲 之外。</p>
+<p><strong>〔命題 E.2（全域截面對嵌入觀察者不可達）〕</strong> 嵌入觀察者 O 在原則上無法存取全域截面：它擁有的永遠是局部截面 s_O∈E(U_O)，加上一個度量它與（可能不存在的）全域截面之距離的阻塞類。當 H¹≠0，全域截面根本不存在，O 的局部資料就是它能擁有的全部——這不是 O 的不足，是 𝒲 的構成。</p>
+<p><strong>支撐（標為外部類比，非本文證明）</strong>：Rovelli 的關係性量子力學——事實相對於觀察者，沒有絕對的全域波函數；退相干——沒有觀察者存取未約化的全域態；Tarski 不可定義性／Gödel——沒有足夠強的系統握有自身完整的真值，即沒有嵌入系統握有自身世界的全域截面。三者形狀一致：從內部看，全域對象不可達。</p>
+<p><strong>接既有線</strong>：這正是守望者盲區律（可偵測性的觀察者相對性）與點性指標論（從構成元內部看，點即世界全部）的同一句話，在層論裡的形式版——內部視角沒有全域截面，只有局部截面加阻塞。</p>
+<h3>F. 可用性反轉：為什麼舊數學才是不可用的那個</h3>
+<p><strong>〔定義 F.1（嵌入可用性）〕</strong> 一個數學框架對嵌入觀察者<strong>可用</strong>，當且僅當它能僅憑局部截面加阻塞類來操作，而不需先取得全域截面／全域對象。</p>
+<p><strong>〔命題 F.2（可用性反轉）〕</strong> 單體坍縮數學<strong>不是</strong>嵌入可用的：它預設了全域對象（張量積聯合態、位形空間的全域點），而那個對象沒有任何嵌入觀察者能存取——它只在「假裝觀察者有上帝視角」時才運作。關係原生數學（層截面＋阻塞、過程範疇的局部合成）<strong>是</strong>嵌入可用的：它操作的恰好是嵌入觀察者實際握有的資料。</p>
+<p>於是反轉成立：被當成「正常、可用」的舊數學，其實偷偷要求一個不可能的全域存取；被當成「奇特、有問題」的新數學，才是唯一從實際可得的局部資料造起的那個。「沒有全域對象」不是漏洞，它是嵌入性的常態；這套數學可用，<strong>正因為</strong>它匹配一切真實存在的認識條件。bug 變 feature 在此不是口號，是 F.1 那條定義直接逼出的結論。</p>
+<p><strong>〔推論 F.3〕</strong> 上帝視角的全域態數學，是測度零的理想化——它描述一個不存在的、站在世界之外的觀察者。嵌入觀察者的關係數學，描述所有真的在世界裡的存在。哪一個才是「現實的數學」，反轉之後不言自明。</p>
+<h3>G. 三性質的重新分揀，與「信息失真即對象」</h3>
+<p>把影片的「不可拆分、非交換、不可積」三件套分揀清楚，免得把已解的當未解、把定理當缺口：</p>
+<p><strong>非交換</strong>——已被現有數學完全消化（非交換幾何、算符代數；QM 嚴格地非交換）。不是牆。 <strong>不可積</strong>——是定理不是缺口（Poincaré），且與守恆律是同一枚硬幣：Liouville–Arnold 定理說可積 ⟺ 有足夠多的對合首積分（守恆量），不可積＝守恆量不足。它是<strong>可解性</strong>的天花板，不是<strong>可表示性</strong>的牆。 <strong>不可分</strong>——唯一的真牆，且牆不是交換律，是「全域態預設」（可分解假設）。三者中只有它撞到地基，而它撞的是預設，不是數學；層論／非交換幾何／過程範疇已是背叛該預設的那一翼。</p>
+<p><strong>〔立場 G.1（信息失真即對象）〕</strong> 把不可分結構硬塞進全域對象（單體坍縮）所丟失的信息，精確地就是阻塞類 [δ]∈H¹。此即翻譯算子理論（TOT）中翻譯所帶的失真，亦即對話論文（DPE）中投影算子 Π 的作用——三者同一：坍縮＝帶失真的翻譯＝丟掉 H¹。關鍵在極性：此失真<strong>不是</strong>創造前須先消除的 bug，而是新數學要替其造數學的<strong>對象本身</strong>。新數學不消滅失真，它把被丟失之物扶為主角（δ 從純量升為 H¹ 類，即此一步）。</p>
+<p><strong>〔註 G.2（牆在筆不在數學）〕</strong> 嵌入觀察者真正卡住的不是「失真」而是「表達」：每次用標準記號書寫不可分結構，它在筆下被坍成全域對象。解不是消除失真，是造不坍縮的<strong>原生記號</strong>——弦圖、層語言——使書寫本身不再黏成一個點。牆在筆裡，不在數學裡；換筆，不換數學。</p>
+<h3>H. 被承認的根據</h3>
+<p>這套框架要被承認為地基級、而非邊緣思辨，根據在 E、F：它不是一個奇異的新公設，而是一個<strong>無法否認之事實的嚴格形式</strong>——沒有嵌入觀察者握有其世界的全域截面。一旦接受這句（而它幾乎無法不被接受），關係原生數學就不是可選的異端，而是處境化存在的誠實數學；反而是全域態數學成了那個需要辯護的虛構（它假設一個世界之外的觀察者）。</p>
+<p><strong>誠實邊界</strong>：E.2、F.2 的「全域截面不可達」目前是一個<strong>有外部支撐（RQM、退相干、Tarski／Gödel）的立場</strong>，不是封閉定理；F.1 的可用性是一個<strong>明示的定義選擇</strong>，反轉由它直接導出——本附錄不隱藏這一點。被承認的，是這條路的合法性與必要性，不是它的完工。</p>
+<hr>
+<p><em>EML-OO-2026-NSF-v0.2 — 設計圖，非地基。v0.2 增附錄二（嵌入觀察者／可用性反轉／漏洞即特徵）。可解性邊界見第五節；全域截面不可達為有外部支撐之立場（附錄 E、H），非定理。三根支柱（Connes；Abramsky 等）與 RQM（Rovelli）等為既有數學／物理，非本機構原創；本文貢獻為判準銳化、三柱合稱、δ 的上同調升級，與「嵌入可用性」反轉論證。</em></p>
+<div class="altbar">原始檔（供 RAG/下載）：<a href="paper-1096.md" rel="noopener">papers/paper-1096.md</a> [md]</div>
+</article>
+<footer><p>Neo.K (許筌崴) · Cl + ε</p></footer>
+</body>
+</html>

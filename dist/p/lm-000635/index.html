@@ -1,0 +1,1375 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>時空迴圈－切片動力學：面向 AI Agent 的反身圖論式系統控制理論 · EVEMISSLAB Logic Matrix</title>
+<meta name="description" content="時空迴圈－切片動力學：面向 AI Agent 的反身圖論式系統控制理論 | EVEMISSLAB Logic Matrix V2.1">
+<meta name="author" content="Neo.K (許筌崴)">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<meta name="lm-paper-id" content="lm-000635">
+<link rel="alternate" type="text/markdown" href="/raw/lm-000635.md" title="原始檔 / source (md)">
+<link rel="canonical" href="https://logic.evemisslab.com/p/lm-000635/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "時空迴圈－切片動力學：面向 AI Agent 的反身圖論式系統控制理論",
+  "url": "https://logic.evemisslab.com/p/lm-000635/",
+  "identifier": "lm-000635",
+  "inLanguage": "zh-Hant",
+  "author": {"@type": "Person", "name": "Neo.K (許筌崴)"},
+  "publisher": {"@type": "Organization", "name": "EveMissLab / 一言諾科技有限公司"},
+  "isPartOf": {"@type": "Collection", "name": "EVEMISSLAB Logic Matrix", "url": "https://logic.evemisslab.com"},
+  "encodingFormat": "text/html"
+}
+</script>
+<link rel="prefetch" href="/api/log-crawler?slug=AI-Agent-2.md">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#000; color:#0f0; font-family:'Courier New',monospace; padding:20px; line-height:1.6; }
+.header { text-align:center; border:2px solid #0f0; padding:18px; margin-bottom:22px; }
+.header h1 { font-size:1.5em; letter-spacing:2px; }
+.header p { margin-top:6px; opacity:0.8; font-size:0.9em; }
+.disclaimer { border:1px dashed #ff9900; color:#ff9900; padding:14px; margin:0 auto 22px; max-width:1000px; font-size:0.88em; }
+.disclaimer-title { font-weight:bold; margin-bottom:10px; display:block; letter-spacing:1px; }
+.disclaimer-divider { border:none; border-top:1px dashed #ff9900; margin:12px 0; opacity:0.55; }
+article { max-width:1000px; margin:0 auto; border:1px solid #0f0; padding:24px; }
+article h1,article h2,article h3,article h4 { margin:18px 0 8px; letter-spacing:1px; }
+article h1 { font-size:1.5em; } article h2 { font-size:1.25em; } article h3 { font-size:1.1em; }
+article p { margin:10px 0; }
+article ul,article ol { margin:10px 0 10px 24px; }
+article blockquote { border-left:3px solid #0f0; padding-left:12px; opacity:0.85; margin:10px 0; }
+article pre { background:rgba(0,255,0,0.06); border:1px solid #0f0; padding:12px; overflow-x:auto; margin:12px 0; }
+article code { background:rgba(0,255,0,0.08); padding:1px 5px; }
+article pre code { background:none; padding:0; }
+article a { color:#0ff; }
+.nav { max-width:1000px; margin:0 auto 16px; font-size:0.9em; display:flex; justify-content:space-between; }
+.nav a { color:#0f0; text-decoration:none; }
+.nav a:hover { color:#0ff; }
+.altbar { max-width:1000px; margin:14px auto 0; font-size:0.85em; opacity:0.7; }
+.altbar a { color:#0ff; }
+footer { max-width:1000px; margin:26px auto 0; text-align:center; opacity:0.5; font-size:0.82em; }
+</style>
+</head>
+<body>
+<div class="nav"><a href="/index.html">&larr; 回 Logic Matrix 索引</a><div><a href="/cosmomind.html" style="margin-right:15px;">→ 星環式認知展開圖</a><a href="/base-space.html">🧬 拓撲底空間</a></div></div>
+<header class="header"><h1>時空迴圈－切片動力學：面向 AI Agent 的反身圖論式系統控制理論</h1><p>EVEMISSLAB Logic Matrix · EveMissLab / 一言諾科技有限公司</p></header>
+<section class="disclaimer">
+  <span class="disclaimer-title">[認識論邊界宣告 / EPISTEMOLOGICAL DISCLAIMER]</span>
+  <div class="disclaimer-block">
+    <p><b>[CHT]</b> 本矩陣內所有論文之公式與數據為「啟發式模擬參數」，用於驗證理論架構與推演因果鏈，<b>未經實證校準</b>，請勿作為現實物理測量數據引用 or 處理。EVEMISSLAB 採行「邏輯先行（Logic-First）」原則：概念架構與系統因果映射優先於統計實證，但不排除未來實證對接。</p>
+  </div>
+  <hr class="disclaimer-divider">
+  <div class="disclaimer-block">
+    <p><b>[ENG]</b> The numerical parameters within these frameworks are <i>illustrative model coefficients</i> used for structural verification and causal mapping; they are <b>not empirically calibrated</b> and must not be treated as physical measurements. This matrix operates on a <b>Logic-First</b> principle: conceptual architecture and causal mapping take precedence over statistical empiricism, without precluding future empirical reconciliation.</p>
+  </div>
+</section>
+<article>
+<h1>時空迴圈－切片動力學：面向 AI Agent 的反身圖論式系統控制理論</h1>
+<p><strong>Document ID:</strong> TSGD-2026-v0.1 <strong>Title:</strong> Temporal-Spatial Loop-Slice Dynamics <strong>Chinese Title:</strong> 時空迴圈－切片動力學 <strong>Subtitle:</strong> A Reflexive Graph-Dynamical Control Theory for AI Agents, Program Analysis, and Long-Horizon Tool Runtime <strong>Author:</strong> Neo.K / EveMissLab <strong>Status:</strong> Theoretical Whitepaper / MD Paper Draft <strong>Version:</strong> v0.1 <strong>Date:</strong> 2026 <strong>Relation to Previous Work:</strong> Extends Temporal Loop Taxonomy into a spatial-slicing and reflexive graph-dynamical theory. <strong>Target Domains:</strong> AI Agent runtime, program analysis, EML/AST/CTS verification, local-first plugin runtime, workflow orchestration, long-horizon computation.</p>
+<hr>
+<h2>摘要</h2>
+<p>時間迴圈分類學指出：現代程式與 AI Agent 的困難不只是「如何重複」，而是如何在條件尚未成熟時保存狀態、釋放資源、等待未來、被事件喚醒並恢復任務。這使得「時間」從低階等待技巧，升級為控制流的一部分。</p>
+<p>然而，只有時間維度仍不完整。實際的 AI Agent 在執行任務前，往往會先將問題空間切割成可處理的片段：檔案、模組、函式、AST 節點、測試案例、依賴子圖、UI 元件、語義區塊、權限範圍等。Agent 並不是直接在整個世界中行動，而是在被切割後的局部空間中推進、測試、修復、擴張或收斂。</p>
+<p>因此，本文提出「時空迴圈－切片動力學」（Temporal-Spatial Loop-Slice Dynamics, TSGD）：一種面向 AI Agent、程式分析、長任務自動化與工具運行層的反身圖論式系統控制理論。</p>
+<p>其核心命題是：</p>
+<pre><code>Agent 不是單純的 action loop。
+Agent 是在時空切片圖上持續行走、觀測、修正自身路徑的反身系統。</code></pre>
+<p>TSGD 將 Agent 任務形式化為：</p>
+<pre><code>Task = &lt;SpaceSlice, TemporalLoop, Goal, Policy, Feedback, GraphState&gt;</code></pre>
+<p>其中：</p>
+<ol>
+<li><strong>Temporal Loop</strong> 描述任務如何在時間中推進、等待、重試、恢復、降級。</li>
+<li><strong>Spatial Slice</strong> 描述任務在哪個空間範圍中行動、觀測、修改、驗證。</li>
+<li><strong>Graph State</strong> 描述檔案、函式、AST、測試、依賴、概念與 Agent 狀態之間的關係。</li>
+<li><strong>Reflexive Policy</strong> 描述當任務失敗或假設錯誤時，Agent 如何修正自己的切片方式、時間策略與行動路徑。</li>
+</ol>
+<p>本文認為，真正的 Agent runtime 不能只是一個迴圈，也不能只是一個工具調用器，而應是一個「反身時空圖動力系統」：它在圖上定位空間，在時間中推進任務，並在失敗時重構自身對問題的切割方式。</p>
+<hr>
+<h2>0. 導論：從時間迴圈到時空圖動力學</h2>
+<h3>0.1 時間迴圈學的不足</h3>
+<p>時間迴圈分類學的核心是：</p>
+<pre><code>persist state
+suspend
+wake
+reload
+validate
+resume
+timeout / degrade</code></pre>
+<p>它解決的是：</p>
+<ol>
+<li>何時等待。</li>
+<li>何時重試。</li>
+<li>何時恢復。</li>
+<li>何時超時。</li>
+<li>何時請人類決策。</li>
+<li>何時切換策略。</li>
+<li>如何避免 busy waiting。</li>
+<li>如何讓長任務跨時間片持續。</li>
+</ol>
+<p>這對 AI Agent、工作流系統與程式運行層非常重要。</p>
+<p>但在真實 Agent 任務中，另一個同樣關鍵的問題是：</p>
+<pre><code>在哪裡行動？
+在哪裡觀測？
+在哪裡修改？
+在哪裡測試？
+在哪裡擴大範圍？
+在哪裡停止？</code></pre>
+<p>這就是「空間切片」問題。</p>
+<hr>
+<h3>0.2 Agent 的實際工作方式：先切空間，再走迴圈</h3>
+<p>以程式碼修復任務為例，Agent 通常不會直接修改整個 repo，而是先做：</p>
+<pre><code>repo
+  → packages
+  → files
+  → functions
+  → AST nodes
+  → failing tests
+  → error traces
+  → minimal patch</code></pre>
+<p>以網站群維護為例：</p>
+<pre><code>site network
+  → single site
+  → page
+  → section
+  → component
+  → text block
+  → metadata</code></pre>
+<p>以理論白皮書撰寫為例：</p>
+<pre><code>theory corpus
+  → document
+  → section
+  → definition
+  → proposition
+  → example
+  → limitation
+  → revision</code></pre>
+<p>這些都是空間切片。</p>
+<p>因此，Agent 的真實結構不是：</p>
+<pre><code>loop over actions</code></pre>
+<p>而是：</p>
+<pre><code>select space slice
+→ act within slice
+→ observe result
+→ update graph
+→ decide whether to keep, shrink, expand, switch, or reflect
+→ continue temporal loop</code></pre>
+<p>這就是本文要建立的理論基礎。</p>
+<hr>
+<h3>0.3 本文核心命題</h3>
+<p>本文提出三個核心命題：</p>
+<h4>命題一：時間迴圈決定任務如何在時間中推進</h4>
+<pre><code>Temporal Loop = time-aware control trajectory</code></pre>
+<p>它回答：</p>
+<pre><code>何時行動？
+何時等待？
+何時重試？
+何時恢復？
+何時停止？</code></pre>
+<h4>命題二：空間切片決定任務在哪個範圍中生效</h4>
+<pre><code>Spatial Slice = bounded action-observation field</code></pre>
+<p>它回答：</p>
+<pre><code>在哪裡觀測？
+在哪裡修改？
+在哪裡驗證？
+哪裡是局部？
+哪裡是邊界？
+哪裡需要擴張？</code></pre>
+<h4>命題三：反身圖動力學決定 Agent 如何修正自己的切片與迴圈策略</h4>
+<pre><code>Reflexive Graph Dynamics = self-updating task topology</code></pre>
+<p>它回答：</p>
+<pre><code>如果原本切錯了怎麼辦？
+如果重試無效怎麼辦？
+如果錯誤不在當前檔案怎麼辦？
+如果問題其實是依賴、測試、文件、語義或權限層怎麼辦？</code></pre>
+<hr>
+<h2>1. 基本定義</h2>
+<h3>1.1 系統圖</h3>
+<p>令一個任務系統在時間 <code>t</code> 的圖狀態為：</p>
+<pre><code>G_t = (V_t, E_t, A_t, M_t)</code></pre>
+<p>其中：</p>
+<pre><code>V_t = 節點集合
+E_t = 邊集合
+A_t = 節點與邊的屬性集合
+M_t = metadata / memory / runtime state</code></pre>
+<p>在 Agent 工程中，節點可以是：</p>
+<pre><code>file
+module
+function
+class
+AST node
+test case
+error trace
+dependency
+document section
+UI component
+API endpoint
+plugin
+tool
+agent
+human decision
+runtime state</code></pre>
+<p>邊可以是：</p>
+<pre><code>imports
+calls
+depends_on
+fails_at
+tested_by
+generates
+modifies
+references
+blocks
+requires_approval
+derived_from
+contradicts
+repairs</code></pre>
+<p>因此，Agent 面對的不是純文字，而是一個可持續更新的任務圖。</p>
+<hr>
+<h3>1.2 空間切片</h3>
+<p>空間切片定義為圖上的一個可行動子域：</p>
+<pre><code>Σ_t ⊆ G_t</code></pre>
+<p>其中 <code>Σ_t</code> 是 Agent 在時間 <code>t</code> 選定的作用範圍。</p>
+<p>例如：</p>
+<pre><code>Σ_t = {parser.ts, parseSumExpression(), case-03-sum.eml, expected-output.py}</code></pre>
+<p>或者：</p>
+<pre><code>Σ_t = dependency neighborhood of failing test case</code></pre>
+<p>空間切片不是單純的檔案集合，而是一個帶有任務語義的局部圖：</p>
+<pre><code>SpaceSlice = &lt;Center, Boundary, Nodes, Edges, Purpose, Risk, ExpansionPolicy&gt;</code></pre>
+<hr>
+<h3>1.3 時間迴圈</h3>
+<p>時間迴圈定義為任務在時間中的控制策略：</p>
+<pre><code>Τ_t = &lt;LoopType, Condition, WakeRule, ResumePolicy, TimeoutPolicy&gt;</code></pre>
+<p>例如：</p>
+<pre><code>{
+  &quot;loopType&quot;: &quot;convergent&quot;,
+  &quot;condition&quot;: &quot;parser tests pass&quot;,
+  &quot;maxAttempts&quot;: 8,
+  &quot;resumePolicy&quot;: &quot;feed_diagnostics_back&quot;,
+  &quot;timeoutPolicy&quot;: &quot;human_decision&quot;
+}</code></pre>
+<hr>
+<h3>1.4 時空任務單位</h3>
+<p>一個完整 Agent 任務不是單純 prompt，而是：</p>
+<pre><code>Ω_t = &lt;G_t, Σ_t, Τ_t, Goal_t, Policy_t, Feedback_t&gt;</code></pre>
+<p>其中：</p>
+<pre><code>G_t = 系統圖
+Σ_t = 當前空間切片
+Τ_t = 當前時間迴圈
+Goal_t = 任務目標
+Policy_t = 權限、風險、擴張、終止策略
+Feedback_t = 觀測與回饋</code></pre>
+<p>任務的演化為：</p>
+<pre><code>Ω_t → Action_t → Observation_t → Ω_{t+1}</code></pre>
+<p>若任務順利，Agent 在同一切片內前向推進。</p>
+<p>若任務失敗，Agent 可能觸發反身更新：</p>
+<pre><code>Σ_t → Σ_{t+1}
+Τ_t → Τ_{t+1}
+Goal_t → Goal_{t+1}
+Policy_t → Policy_{t+1}</code></pre>
+<hr>
+<h2>2. 空間切片分類學</h2>
+<p>本文將空間切片分為十類。這些分類不是互斥的，而是可疊加、可轉換、可擴張的。</p>
+<hr>
+<h3>2.1 File Slice：檔案切片</h3>
+<h4>定義</h4>
+<p>以單一檔案或少數檔案為作用範圍。</p>
+<pre><code>Σ = {file}</code></pre>
+<h4>例子</h4>
+<pre><code>packages/parser/src/parser.ts
+README.md
+eml-grammar.md</code></pre>
+<h4>適用場景</h4>
+<ol>
+<li>小型 bug fix。</li>
+<li>文件修改。</li>
+<li>單檔 refactor。</li>
+<li>單檔語法錯誤修復。</li>
+<li>單一配置修正。</li>
+</ol>
+<h4>優點</h4>
+<ol>
+<li>範圍清楚。</li>
+<li>風險低。</li>
+<li>容易 diff。</li>
+<li>容易回滾。</li>
+</ol>
+<h4>缺點</h4>
+<p>若錯誤根源不在該檔案，會導致 Agent 在錯誤空間內重試。</p>
+<hr>
+<h3>2.2 Module Slice：模組切片</h3>
+<h4>定義</h4>
+<p>以 package、module、folder 或子系統為範圍。</p>
+<pre><code>Σ = module_subgraph(G)</code></pre>
+<h4>例子</h4>
+<pre><code>packages/parser
+packages/transpiler-python
+packages/cts-generator
+packages/cli</code></pre>
+<h4>適用場景</h4>
+<ol>
+<li>中型功能開發。</li>
+<li>模組內部一致性修正。</li>
+<li>API 變更。</li>
+<li>package-level 測試修復。</li>
+<li>模組重構。</li>
+</ol>
+<h4>優點</h4>
+<p>比 file slice 更完整，可以處理跨檔問題。</p>
+<h4>缺點</h4>
+<p>範圍較大，可能造成不必要修改。</p>
+<hr>
+<h3>2.3 Function Slice：函式切片</h3>
+<h4>定義</h4>
+<p>以函式、方法、類別成員或局部程式單元為範圍。</p>
+<pre><code>Σ = {function_node + local dependencies}</code></pre>
+<h4>例子</h4>
+<pre><code>parseExpression()
+emitPython()
+normalizeSource()
+generateCTS()</code></pre>
+<h4>適用場景</h4>
+<ol>
+<li>精準 bug fix。</li>
+<li>單一算法改良。</li>
+<li>單一函式測試失敗。</li>
+<li>局部性能優化。</li>
+</ol>
+<h4>優點</h4>
+<ol>
+<li>高精度。</li>
+<li>修改小。</li>
+<li>容易驗證。</li>
+</ol>
+<h4>缺點</h4>
+<p>可能忽略呼叫者、被呼叫者、資料流與副作用。</p>
+<hr>
+<h3>2.4 AST Slice：語法樹切片</h3>
+<h4>定義</h4>
+<p>以 AST node type 或 AST 子樹為切片。</p>
+<pre><code>Σ = AST_subtree(node_type)</code></pre>
+<h4>例子</h4>
+<pre><code>AssignmentStatement
+OverlayOperation
+SumExpression
+RangeExpression
+MatrixExpression
+ConditionalExpression</code></pre>
+<h4>適用場景</h4>
+<ol>
+<li>程式語言開發。</li>
+<li>transpiler 修復。</li>
+<li>parser 修復。</li>
+<li>EML / Python / TypeScript AST 轉換。</li>
+<li>round-trip validator。</li>
+</ol>
+<h4>優點</h4>
+<ol>
+<li>不被檔案邊界限制。</li>
+<li>對語法轉譯非常精準。</li>
+<li>適合 Agent 進行結構化修改。</li>
+<li>可與 CTS / symbol table / diagnostics 結合。</li>
+</ol>
+<h4>缺點</h4>
+<p>需要 parser 與 AST infrastructure。</p>
+<hr>
+<h3>2.5 Dependency Slice：依賴切片</h3>
+<h4>定義</h4>
+<p>以某個節點的依賴鄰域為切片。</p>
+<pre><code>Σ = neighborhood(v, k)</code></pre>
+<p>其中 <code>v</code> 是中心節點，<code>k</code> 是圖距離。</p>
+<h4>例子</h4>
+<pre><code>parseSumExpression()
+  → calls parseExpression()
+  → uses TokenType.Sigma
+  → tested_by case-03-sum</code></pre>
+<h4>適用場景</h4>
+<ol>
+<li>跨檔 bug。</li>
+<li>dependency mismatch。</li>
+<li>API 變更。</li>
+<li>呼叫鏈分析。</li>
+<li>測試失敗定位。</li>
+</ol>
+<h4>優點</h4>
+<p>能捕捉「錯不在當前檔案」的問題。</p>
+<h4>缺點</h4>
+<p>若依賴圖不準，會擴張過度。</p>
+<hr>
+<h3>2.6 Test Slice：測試切片</h3>
+<h4>定義</h4>
+<p>以失敗測試為中心，收集相關 fixture、expected output、source file、runtime trace 與目標程式碼。</p>
+<pre><code>Σ = failing_test_centered_subgraph</code></pre>
+<h4>例子</h4>
+<pre><code>case-03-sum.eml
+case-03-sum.expected.py
+parser.ts
+pythonEmitter.ts
+runtime stdout</code></pre>
+<h4>適用場景</h4>
+<ol>
+<li>TDD。</li>
+<li>Agent 修 bug。</li>
+<li>regression repair。</li>
+<li>golden test mismatch。</li>
+<li>CI fail analysis。</li>
+</ol>
+<h4>優點</h4>
+<ol>
+<li>目標明確。</li>
+<li>可驗證。</li>
+<li>適合 convergent loop。</li>
+</ol>
+<h4>缺點</h4>
+<p>若測試本身錯誤，Agent 可能修壞產品以迎合錯誤測試。</p>
+<hr>
+<h3>2.7 Runtime Slice：執行切片</h3>
+<h4>定義</h4>
+<p>以實際執行 trace、CLI pipeline、runtime path 為範圍。</p>
+<pre><code>Σ = execution_trace_subgraph</code></pre>
+<h4>例子</h4>
+<pre><code>eml run sum.eml
+  → normalize
+  → parse
+  → semantic analyze
+  → emit Python
+  → execute Python
+  → stdout</code></pre>
+<h4>適用場景</h4>
+<ol>
+<li>CLI bug。</li>
+<li>runtime error。</li>
+<li>toolchain integration。</li>
+<li>environment mismatch。</li>
+<li>end-to-end demo。</li>
+</ol>
+<h4>優點</h4>
+<p>最貼近真實使用路徑。</p>
+<h4>缺點</h4>
+<p>可能較慢，且需要完整環境。</p>
+<hr>
+<h3>2.8 Semantic Slice：語義切片</h3>
+<h4>定義</h4>
+<p>以概念、語義、規則、理論單元為中心，而非檔案或函式。</p>
+<pre><code>Σ = semantic_concept_subgraph</code></pre>
+<h4>例子</h4>
+<pre><code>時間迴圈
+空間切片
+x^+n 初始化 / 加法語義
+CTS symbolTable
+round-trip validator
+human-decision loop</code></pre>
+<h4>適用場景</h4>
+<ol>
+<li>白皮書。</li>
+<li>理論整理。</li>
+<li>API design。</li>
+<li>語法規範。</li>
+<li>文件與程式同步。</li>
+<li>Agent 生成規格。</li>
+</ol>
+<h4>優點</h4>
+<p>適合處理跨文件、跨程式碼、跨設計層的問題。</p>
+<h4>缺點</h4>
+<p>語義切片較抽象，需要良好命名與 metadata。</p>
+<hr>
+<h3>2.9 UI Slice：界面切片</h3>
+<h4>定義</h4>
+<p>以畫面、元件、互動流程或 UI region 為範圍。</p>
+<pre><code>Σ = UI_component_subgraph</code></pre>
+<h4>例子</h4>
+<pre><code>Cogni-Editor EML input panel
+Python output panel
+AST viewer
+diagnostics panel
+approval modal
+plugin permission page</code></pre>
+<h4>適用場景</h4>
+<ol>
+<li>前端開發。</li>
+<li>使用者流程修復。</li>
+<li>Agent UI automation。</li>
+<li>demo polish。</li>
+<li>approval workflow。</li>
+</ol>
+<h4>優點</h4>
+<p>貼近使用者體驗。</p>
+<h4>缺點</h4>
+<p>常需要視覺與狀態雙重驗證。</p>
+<hr>
+<h3>2.10 Governance Slice：治理 / 權限切片</h3>
+<h4>定義</h4>
+<p>以權限、風險、安全、審批、成本為範圍。</p>
+<pre><code>Σ = governance_policy_subgraph</code></pre>
+<h4>例子</h4>
+<pre><code>workspace permission
+shell allowlist
+plugin install
+API key access
+human approval
+cost limit
+git push policy</code></pre>
+<h4>適用場景</h4>
+<ol>
+<li>LAPR。</li>
+<li>Agent 插件系統。</li>
+<li>本地 daemon。</li>
+<li>高風險操作。</li>
+<li>安全審計。</li>
+<li>人類決策迴圈。</li>
+</ol>
+<h4>優點</h4>
+<p>能降低 Agent 高風險操作。</p>
+<h4>缺點</h4>
+<p>若過度嚴格，會降低自動化效率。</p>
+<hr>
+<h2>3. 時間迴圈與空間切片的耦合</h2>
+<h3>3.1 為什麼不能只看時間</h3>
+<p>單純時間迴圈會說：</p>
+<pre><code>重試直到測試通過。</code></pre>
+<p>但它沒有說：</p>
+<pre><code>在哪個範圍內重試？
+只改函式嗎？
+可以改測試嗎？
+可以改 parser 嗎？
+可以改 lexer 嗎？
+可以改語法規範嗎？
+可以改 public API 嗎？</code></pre>
+<p>因此，如果沒有空間切片，時間迴圈容易變成盲目重試。</p>
+<hr>
+<h3>3.2 為什麼不能只看空間</h3>
+<p>單純空間切片會說：</p>
+<pre><code>修改 parser.ts。</code></pre>
+<p>但它沒有說：</p>
+<pre><code>要修幾次？
+失敗後怎麼辦？
+何時擴大範圍？
+何時停止？
+何時請人類？
+何時認定不是 parser 的問題？</code></pre>
+<p>因此，如果沒有時間迴圈，空間切片會變成一次性定位，而不是持續系統。</p>
+<hr>
+<h3>3.3 時空耦合任務</h3>
+<p>一個完整任務應該同時包含：</p>
+<pre><code>Space：在哪裡做
+Time：怎麼推進
+Goal：做到什麼
+Policy：不能做什麼
+Feedback：怎麼知道對錯
+Reflexivity：錯了怎麼改自己的理解</code></pre>
+<p>可表示為：</p>
+<pre><code>{
+  &quot;taskId&quot;: &quot;fix_sum_parser&quot;,
+  &quot;space&quot;: {
+    &quot;sliceType&quot;: &quot;test_slice&quot;,
+    &quot;center&quot;: &quot;tests/fixtures/case-03-sum.eml&quot;,
+    &quot;scope&quot;: &quot;local&quot;,
+    &quot;expansionPolicy&quot;: [
+      &quot;function_slice&quot;,
+      &quot;file_slice&quot;,
+      &quot;dependency_slice&quot;,
+      &quot;module_slice&quot;
+    ]
+  },
+  &quot;time&quot;: {
+    &quot;loopType&quot;: &quot;convergent&quot;,
+    &quot;condition&quot;: &quot;case-03-sum passes&quot;,
+    &quot;maxAttempts&quot;: 5,
+    &quot;timeoutPolicy&quot;: &quot;human_decision&quot;
+  },
+  &quot;feedback&quot;: {
+    &quot;forward&quot;: &quot;run parser test&quot;,
+    &quot;reflexive&quot;: &quot;if repeated failure, expand slice&quot;
+  }
+}</code></pre>
+<hr>
+<h2>4. 前向動力學</h2>
+<p>前向動力學描述 Agent 在既定切片與迴圈內如何推進。</p>
+<pre><code>ForwardStep:
+    observe(Σ_t)
+    plan(Goal_t, Σ_t)
+    act(Σ_t)
+    validate(Feedback_t)
+    update(G_t)</code></pre>
+<p>例如：</p>
+<pre><code>觀測 parser 測試錯誤
+→ 推測 parseSumExpression 有問題
+→ 修改 parseSumExpression
+→ 跑 case-03-sum
+→ 測試通過
+→ 更新任務圖</code></pre>
+<p>前向動力學適合：</p>
+<ol>
+<li>問題定位正確。</li>
+<li>切片範圍足夠。</li>
+<li>測試可信。</li>
+<li>目標明確。</li>
+<li>Agent 有足夠工具。</li>
+</ol>
+<p>前向動力學的風險是：若初始切片錯誤，Agent 會在錯誤範圍內反覆修補。</p>
+<hr>
+<h2>5. 反身動力學</h2>
+<h3>5.1 反身性的定義</h3>
+<p>反身動力學描述 Agent 如何修正自己的任務模型。</p>
+<p>不是只問：</p>
+<pre><code>我下一步怎麼做？</code></pre>
+<p>而是問：</p>
+<pre><code>我是不是切錯空間？
+我是不是選錯 loop？
+我是不是誤解目標？
+我是不是缺少依賴？
+我是不是應該停止自動修？</code></pre>
+<p>反身性使 Agent 不只是改變外部世界，也改變自身對任務圖的理解。</p>
+<hr>
+<h3>5.2 反身觸發條件</h3>
+<p>常見觸發條件：</p>
+<ol>
+<li>同一錯誤重複出現。</li>
+<li>修復造成新錯誤。</li>
+<li>測試錯誤與修改區域無關。</li>
+<li>Agent 無法解釋失敗。</li>
+<li>工具輸出與預期不一致。</li>
+<li>依賴圖缺失。</li>
+<li>權限不足。</li>
+<li>成本超限。</li>
+<li>高風險操作即將發生。</li>
+<li>人類反饋指出方向錯誤。</li>
+</ol>
+<hr>
+<h3>5.3 反身操作</h3>
+<p>反身操作包括：</p>
+<pre><code>expand_space_slice
+shrink_space_slice
+switch_slice_type
+switch_loop_type
+ask_human
+create_diagnostic_report
+rebuild_dependency_graph
+switch_provider
+reduce_goal_scope
+pause_task</code></pre>
+<p>例如：</p>
+<pre><code>Attempt 1：function slice
+Attempt 2：function slice
+Attempt 3：仍失敗 → expand to file slice
+Attempt 4：仍失敗 → expand to dependency slice
+Attempt 5：發現 lexer normalization 問題 → switch center
+Attempt 6：修 lexer → tests pass</code></pre>
+<p>這不是普通 retry，而是反身空間重構。</p>
+<hr>
+<h3>5.4 反身圖更新</h3>
+<p>形式上：</p>
+<pre><code>R: &lt;G_t, Σ_t, Τ_t, Feedback_t&gt; → &lt;G_{t+1}, Σ_{t+1}, Τ_{t+1}&gt;</code></pre>
+<p>其中 <code>R</code> 是反身更新算子。</p>
+<p>它可以做：</p>
+<pre><code>G_t        → 更新任務圖
+Σ_t        → 改變空間切片
+Τ_t        → 改變時間迴圈
+Policy_t   → 改變風險策略
+Goal_t     → 收窄或改寫目標</code></pre>
+<p>這是 TSGD 與普通 workflow 的核心差異。</p>
+<hr>
+<h2>6. 圖論式系統動力學</h2>
+<h3>6.1 任務圖</h3>
+<p>Agent 任務可被視為一個持續更新的有向多重圖：</p>
+<pre><code>G_t = (V_t, E_t)</code></pre>
+<p>節點：</p>
+<pre><code>V = Files ∪ Functions ∪ ASTNodes ∪ Tests ∪ Errors ∪ Concepts ∪ Tools ∪ Agents ∪ Humans ∪ States</code></pre>
+<p>邊：</p>
+<pre><code>E = imports ∪ calls ∪ tests ∪ fails ∪ modifies ∪ depends ∪ blocks ∪ approves ∪ derives ∪ repairs</code></pre>
+<p>這個圖不是靜態文件索引，而是任務過程中的動態狀態。</p>
+<hr>
+<h3>6.2 圖的時間演化</h3>
+<p>每個 action 都可能改變圖：</p>
+<pre><code>G_t → G_{t+1}</code></pre>
+<p>例如：</p>
+<ol>
+<li>新增檔案。</li>
+<li>修改函式。</li>
+<li>測試從 fail 變 pass。</li>
+<li>新錯誤出現。</li>
+<li>依賴邊被發現。</li>
+<li>人類批准某個 patch。</li>
+<li>Agent 標記某假設失效。</li>
+<li>空間切片擴張。</li>
+</ol>
+<hr>
+<h3>6.3 前向邊與反身邊</h3>
+<p>本文區分兩種邊。</p>
+<h4>前向邊</h4>
+<p>描述外部任務推進：</p>
+<pre><code>modifies
+tests
+calls
+generates
+depends_on</code></pre>
+<h4>反身邊</h4>
+<p>描述 Agent 對自身模型的修正：</p>
+<pre><code>mislocalized
+expanded_to
+switched_from
+hypothesis_invalidated
+requires_human_decision
+strategy_changed</code></pre>
+<p>例如：</p>
+<pre><code>{
+  &quot;edge&quot;: &quot;expanded_to&quot;,
+  &quot;from&quot;: &quot;function_slice:parseSumExpression&quot;,
+  &quot;to&quot;: &quot;dependency_slice:lexer+parser&quot;,
+  &quot;reason&quot;: &quot;same test failed after 2 attempts&quot;
+}</code></pre>
+<p>這使系統能記錄：</p>
+<pre><code>不只是做了什麼，也記錄為什麼改變做法。</code></pre>
+<hr>
+<h3>6.4 反身圖動力學</h3>
+<p>當圖中包含 Agent 自己的任務狀態、切片策略與假設時，系統成為反身圖：</p>
+<pre><code>Agent ∈ V_t
+Strategy ∈ V_t
+Hypothesis ∈ V_t
+SlicePolicy ∈ V_t
+LoopPolicy ∈ V_t</code></pre>
+<p>也就是說，圖不只表示外部世界，也表示 Agent 對世界的理解。</p>
+<p>這可稱為：</p>
+<pre><code>Reflexive Graph Dynamics
+反身圖動力學</code></pre>
+<p>若再加入時間迴圈與空間切片，則得到：</p>
+<pre><code>Reflexive Temporal-Spatial Graph Dynamics
+反身時空圖動力學</code></pre>
+<hr>
+<h2>7. TSGD 的任務執行流程</h2>
+<h3>7.1 基本流程</h3>
+<pre><code>1. 建立任務圖 G_0
+2. 選擇初始空間切片 Σ_0
+3. 選擇時間迴圈 Τ_0
+4. 執行前向步驟
+5. 收集觀測與回饋
+6. 若成功，完成或進入下一 milestone
+7. 若失敗，判斷是否在同一切片重試
+8. 若重複失敗，觸發反身更新
+9. 更新圖、切片、迴圈或策略
+10. 持續直到完成、降級、暫停或轉交人類</code></pre>
+<hr>
+<h3>7.2 Pseudocode</h3>
+<pre><code>async def run_tsgd_task(task):
+    G = build_initial_graph(task)
+    space = select_initial_slice(G, task.goal)
+    loop = select_temporal_loop(task)
+
+    while True:
+        observation = await observe(G, space)
+        action = await plan_action(task.goal, space, observation)
+        result = await act(action, space)
+
+        G = update_graph(G, action, result)
+        feedback = await validate(task, G, space, result)
+
+        if feedback.success:
+            return complete_task(task, G, feedback)
+
+        if should_retry_same_slice(loop, feedback):
+            loop = update_loop_state(loop, feedback)
+            continue
+
+        reflexive_update = reflect(task, G, space, loop, feedback)
+
+        G = reflexive_update.graph
+        space = reflexive_update.space
+        loop = reflexive_update.loop
+
+        if reflexive_update.requires_human:
+            decision = await request_human_decision(task, G, space, feedback)
+            if decision.reject:
+                return cancel_task(task, decision)
+            if decision.revise:
+                task = apply_human_revision(task, decision)</code></pre>
+<hr>
+<h2>8. 與 AI Agent Runtime 的關係</h2>
+<h3>8.1 現代 Agent 的隱式 TSGD</h3>
+<p>即使沒有正式理論，現代 Agent 已經在做 TSGD 的部分行為：</p>
+<ol>
+<li>掃描 repo。</li>
+<li>選擇相關檔案。</li>
+<li>跑測試。</li>
+<li>根據錯誤回頭修改。</li>
+<li>若失敗，改看別的檔案。</li>
+<li>若高風險，請使用者確認。</li>
+<li>若上下文不足，要求更多資訊。</li>
+</ol>
+<p>但這些多半是隱式的、靠 prompt 與模型推理維持。</p>
+<p>TSGD 的目標是把這些行為顯式化、可記錄、可驗證、可控制。</p>
+<hr>
+<h3>8.2 Agent 任務應輸出 Space-Time Metadata</h3>
+<p>Agent 不應只輸出：</p>
+<pre><code>我修改了 parser.ts。</code></pre>
+<p>而應輸出：</p>
+<pre><code>{
+  &quot;spaceSlice&quot;: {
+    &quot;type&quot;: &quot;function_slice&quot;,
+    &quot;center&quot;: &quot;parseSumExpression&quot;,
+    &quot;boundary&quot;: [&quot;parser.ts&quot;, &quot;case-03-sum.eml&quot;]
+  },
+  &quot;temporalLoop&quot;: {
+    &quot;type&quot;: &quot;convergent&quot;,
+    &quot;attempt&quot;: 2,
+    &quot;condition&quot;: &quot;case-03-sum passes&quot;
+  },
+  &quot;reflexiveState&quot;: {
+    &quot;hypothesis&quot;: &quot;sum parser handles range incorrectly&quot;,
+    &quot;confidence&quot;: 0.72,
+    &quot;nextIfFail&quot;: &quot;expand to lexer normalization&quot;
+  }
+}</code></pre>
+<p>這讓 runtime 能理解 Agent 的行動範圍與下一步策略。</p>
+<hr>
+<h3>8.3 對 Claude Code / Codex / 本地 Agent 的價值</h3>
+<p>若 LAPR 或類似系統支援 TSGD，Claude Code / Codex / 本地 Agent 可以被放進更穩定的控制結構中：</p>
+<pre><code>AI Provider 負責生成與推理
+Plugin Runtime 負責工具能力
+Temporal Loop 負責長任務控制
+Spatial Slice 負責作用範圍
+Graph State 負責任務拓撲
+Reflexive Policy 負責失敗後重構</code></pre>
+<p>這樣 Agent 的錯誤不再只是「模型錯了」，而可以被分類為：</p>
+<ol>
+<li>切片錯誤。</li>
+<li>迴圈策略錯誤。</li>
+<li>依賴圖缺失。</li>
+<li>測試錯誤。</li>
+<li>權限不足。</li>
+<li>目標不清。</li>
+<li>反身更新不足。</li>
+</ol>
+<p>這使錯誤修復更有結構。</p>
+<hr>
+<h2>9. 與 EML / AST / CTS 的關係</h2>
+<h3>9.1 EML 提供結構化語義層</h3>
+<p>EML 的價值不只是高密度語法，而是提供：</p>
+<pre><code>source
+→ AST
+→ CTS
+→ symbol table
+→ cross reference
+→ round-trip validator</code></pre>
+<p>這些都是空間切片的基礎。</p>
+<p>例如：</p>
+<pre><code>AST Slice = EML AST node subset
+Semantic Slice = CTS concept subset
+Dependency Slice = CTS crossRefTable neighborhood
+Test Slice = fixture + expected output + related AST</code></pre>
+<p>因此，EML 可以成為 TSGD 的結構化 substrate。</p>
+<hr>
+<h3>9.2 CTS 作為圖資料</h3>
+<p>CTS 可以被視為任務圖的一種投影：</p>
+<pre><code>{
+  &quot;symbolTable&quot;: [],
+  &quot;commentTable&quot;: [],
+  &quot;crossRefTable&quot;: [],
+  &quot;temporalLoopTable&quot;: [],
+  &quot;spaceSliceTable&quot;: []
+}</code></pre>
+<p>若加入 TSGD，可以新增：</p>
+<pre><code>{
+  &quot;spaceSliceTable&quot;: [
+    {
+      &quot;id&quot;: &quot;slice_sum_expression&quot;,
+      &quot;type&quot;: &quot;ast_slice&quot;,
+      &quot;center&quot;: &quot;SumExpression&quot;,
+      &quot;nodes&quot;: [
+        &quot;AST:SumExpression&quot;,
+        &quot;Function:parseSumExpression&quot;,
+        &quot;Test:case-03-sum&quot;
+      ],
+      &quot;edges&quot;: [
+        [&quot;Test:case-03-sum&quot;, &quot;AST:SumExpression&quot;, &quot;tests&quot;],
+        [&quot;Function:parseSumExpression&quot;, &quot;AST:SumExpression&quot;, &quot;produces&quot;]
+      ],
+      &quot;risk&quot;: &quot;medium&quot;
+    }
+  ]
+}</code></pre>
+<p>這讓 PHOSPHOR 或其他可視化工具能顯示 Agent 正在哪個空間切片中工作。</p>
+<hr>
+<h3>9.3 Round-trip Validator 作為反身回饋</h3>
+<p>Round-trip validator 可作為 TSGD 的 feedback source。</p>
+<p>例如：</p>
+<pre><code>EML → Python → EML</code></pre>
+<p>若結果不一致，可能表示：</p>
+<ol>
+<li>語法轉譯有損。</li>
+<li>AST emit 錯誤。</li>
+<li>Python subset 不可逆。</li>
+<li>EML representation 不足。</li>
+<li>需要擴大切片到 semantic layer。</li>
+</ol>
+<p>這可觸發反身更新：</p>
+<pre><code>AST slice → semantic slice
+convergent loop → human decision loop</code></pre>
+<hr>
+<h2>10. 與 LAPR 的關係</h2>
+<p>LAPR 是本地優先 Agent 插件運行層。若加入 TSGD，Task Model 可升級為：</p>
+<pre><code>{
+  &quot;taskId&quot;: &quot;task_001&quot;,
+  &quot;title&quot;: &quot;Fix EML parser golden tests&quot;,
+  &quot;workspace&quot;: &quot;/path/to/EML&quot;,
+  &quot;provider&quot;: &quot;claude-code&quot;,
+  &quot;plugin&quot;: &quot;eml-dev-agent&quot;,
+  &quot;goal&quot;: &quot;Fix parser tests without changing documented grammar.&quot;,
+  &quot;space&quot;: {
+    &quot;sliceType&quot;: &quot;test_slice&quot;,
+    &quot;center&quot;: &quot;case-03-sum&quot;,
+    &quot;boundary&quot;: {
+      &quot;include&quot;: [
+        &quot;tests/fixtures/case-03-sum.eml&quot;,
+        &quot;packages/parser/src/parser.ts&quot;,
+        &quot;packages/transpiler-python/src/pythonEmitter.ts&quot;
+      ],
+      &quot;exclude&quot;: [
+        &quot;docs/&quot;,
+        &quot;examples/experimental/&quot;
+      ]
+    },
+    &quot;expansionPolicy&quot;: [
+      &quot;function_slice&quot;,
+      &quot;file_slice&quot;,
+      &quot;dependency_slice&quot;,
+      &quot;module_slice&quot;
+    ]
+  },
+  &quot;time&quot;: {
+    &quot;loopType&quot;: &quot;convergent&quot;,
+    &quot;condition&quot;: &quot;pnpm test parser passes&quot;,
+    &quot;maxAttempts&quot;: 8,
+    &quot;timeoutPolicy&quot;: &quot;human_decision&quot;
+  },
+  &quot;reflexivePolicy&quot;: {
+    &quot;onRepeatedFailure&quot;: &quot;expand_space_slice&quot;,
+    &quot;onUnexpectedDiff&quot;: &quot;request_human_review&quot;,
+    &quot;onPermissionRisk&quot;: &quot;human_decision_loop&quot;,
+    &quot;onAmbiguousSemantics&quot;: &quot;switch_to_semantic_slice&quot;
+  }
+}</code></pre>
+<p>這樣 LAPR 就不是普通 task runner，而是具備時空圖控制能力的 Agent runtime。</p>
+<hr>
+<h2>11. 空間擴張與收縮策略</h2>
+<h3>11.1 為什麼需要擴張</h3>
+<p>若 Agent 在過小切片內重試，會形成局部過擬合：</p>
+<pre><code>一直修同一個函式
+但錯誤其實在 lexer</code></pre>
+<p>因此需要擴張策略：</p>
+<pre><code>function → file → dependency → module → runtime → semantic</code></pre>
+<hr>
+<h3>11.2 為什麼需要收縮</h3>
+<p>若切片過大，Agent 會失去焦點：</p>
+<pre><code>看完整 repo
+改太多檔案
+製造新 bug</code></pre>
+<p>因此需要收縮策略：</p>
+<pre><code>module → dependency → file → function → AST node</code></pre>
+<hr>
+<h3>11.3 擴張規則</h3>
+<pre><code>若同一錯誤重複 N 次：
+    expand slice
+
+若新錯誤出現在依賴模組：
+    expand to dependency slice
+
+若輸出與規格衝突：
+    expand to semantic slice
+
+若 CLI end-to-end 失敗：
+    expand to runtime slice
+
+若操作涉及權限：
+    add governance slice</code></pre>
+<hr>
+<h3>11.4 收縮規則</h3>
+<pre><code>若 failing test 已定位到單一函式：
+    shrink to function slice
+
+若 diff 過大：
+    shrink boundary
+
+若 Agent 修改非相關檔案：
+    enforce slice boundary
+
+若測試通過但變更太廣：
+    request human review</code></pre>
+<hr>
+<h2>12. TSGD 的錯誤分類</h2>
+<p>TSGD 可以將 Agent 失敗分成幾類。</p>
+<h3>12.1 Spatial Mislocalization：空間定位錯誤</h3>
+<p>Agent 選錯切片。</p>
+<pre><code>以為是 parser 問題，其實是 lexer 問題。</code></pre>
+<p>處理：</p>
+<pre><code>expand or switch slice</code></pre>
+<hr>
+<h3>12.2 Temporal Strategy Error：時間策略錯誤</h3>
+<p>Agent 用錯 loop。</p>
+<pre><code>需要 human decision，卻一直自動 retry。</code></pre>
+<p>處理：</p>
+<pre><code>switch loop type</code></pre>
+<hr>
+<h3>12.3 Graph Incompleteness：圖不完整</h3>
+<p>依賴、測試、引用或上下文缺失。</p>
+<pre><code>不知道 parseExpression 被哪些測試依賴。</code></pre>
+<p>處理：</p>
+<pre><code>rebuild graph / inspect dependencies</code></pre>
+<hr>
+<h3>12.4 Feedback Misinterpretation：回饋誤讀</h3>
+<p>Agent 誤解錯誤訊息。</p>
+<pre><code>把 expected output 錯看成 actual output。</code></pre>
+<p>處理：</p>
+<pre><code>create diagnostic summary / compare structured outputs</code></pre>
+<hr>
+<h3>12.5 Over-expansion：過度擴張</h3>
+<p>Agent 看太大範圍，造成不必要修改。</p>
+<p>處理：</p>
+<pre><code>shrink slice / enforce diff limit</code></pre>
+<hr>
+<h3>12.6 Reflexive Failure：反身失敗</h3>
+<p>Agent 重複失敗但不改變策略。</p>
+<p>處理：</p>
+<pre><code>force reflection checkpoint</code></pre>
+<hr>
+<h2>13. TSGD Runtime Metadata</h2>
+<p>TSGD runtime 可使用以下 metadata：</p>
+<pre><code>{
+  &quot;taskId&quot;: &quot;task_001&quot;,
+  &quot;graphState&quot;: {
+    &quot;version&quot;: 3,
+    &quot;nodes&quot;: [],
+    &quot;edges&quot;: []
+  },
+  &quot;spaceSlice&quot;: {
+    &quot;id&quot;: &quot;slice_001&quot;,
+    &quot;type&quot;: &quot;test_slice&quot;,
+    &quot;center&quot;: &quot;case-03-sum&quot;,
+    &quot;scope&quot;: &quot;local&quot;,
+    &quot;nodes&quot;: [],
+    &quot;edges&quot;: [],
+    &quot;risk&quot;: &quot;medium&quot;,
+    &quot;expansionLevel&quot;: 1
+  },
+  &quot;temporalLoop&quot;: {
+    &quot;type&quot;: &quot;convergent&quot;,
+    &quot;attempt&quot;: 2,
+    &quot;maxAttempts&quot;: 8,
+    &quot;condition&quot;: &quot;test_passed&quot;,
+    &quot;timeoutPolicy&quot;: &quot;human_decision&quot;
+  },
+  &quot;reflexiveState&quot;: {
+    &quot;currentHypothesis&quot;: &quot;SumExpression parsing error&quot;,
+    &quot;failedHypotheses&quot;: [],
+    &quot;nextIfFail&quot;: &quot;expand_to_dependency_slice&quot;,
+    &quot;requiresHuman&quot;: false
+  }
+}</code></pre>
+<hr>
+<h2>14. TSGD 與人類協作</h2>
+<p>TSGD 並不排除人類，反而明確定義人類介入點。</p>
+<p>人類應在以下情況介入：</p>
+<ol>
+<li>空間切片多次擴張仍失敗。</li>
+<li>語義切片存在爭議。</li>
+<li>修改高風險。</li>
+<li>測試與規格衝突。</li>
+<li>Agent 不確定是否要改 public API。</li>
+<li>權限或安全操作。</li>
+<li>成本超限。</li>
+<li>產品方向選擇。</li>
+</ol>
+<p>此時系統進入：</p>
+<pre><code>Human-Decision Loop + Governance Slice</code></pre>
+<p>例如：</p>
+<pre><code>{
+  &quot;loopType&quot;: &quot;human_decision&quot;,
+  &quot;spaceSlice&quot;: {
+    &quot;type&quot;: &quot;governance_slice&quot;,
+    &quot;center&quot;: &quot;public API change&quot;
+  },
+  &quot;question&quot;: &quot;Agent proposes changing EML grammar. Approve?&quot;
+}</code></pre>
+<p>這使人類不再只是最後驗收者，而是系統圖中的決策節點。</p>
+<hr>
+<h2>15. 應用場景</h2>
+<h3>15.1 AI 程式修復</h3>
+<pre><code>Failing test
+→ test slice
+→ convergent loop
+→ patch
+→ test
+→ if fail, expand dependency slice
+→ if high-risk, human decision</code></pre>
+<hr>
+<h3>15.2 中小型專案轉譯</h3>
+<pre><code>Source repo
+→ module slices
+→ AST slices
+→ semantic slices
+→ target emit
+→ round-trip validation
+→ convergent repair</code></pre>
+<hr>
+<h3>15.3 EML 工具鏈開發</h3>
+<pre><code>EML grammar
+→ AST slice
+→ transpiler slice
+→ CTS slice
+→ runtime slice
+→ Cogni-Editor UI slice</code></pre>
+<hr>
+<h3>15.4 網站群維護</h3>
+<pre><code>site network
+→ site slice
+→ page slice
+→ component slice
+→ metadata slice
+→ SEO / AI crawler feedback loop</code></pre>
+<hr>
+<h3>15.5 本地 Agent 插件系統</h3>
+<pre><code>plugin manifest
+→ permission slice
+→ provider slice
+→ task loop
+→ event graph
+→ approval loop</code></pre>
+<hr>
+<h3>15.6 理論白皮書生成</h3>
+<pre><code>theory corpus
+→ concept slice
+→ definition slice
+→ proposition slice
+→ critique slice
+→ revision loop</code></pre>
+<hr>
+<h2>16. 與傳統理論的關係</h2>
+<p>TSGD 與以下概念有關，但不等同：</p>
+<ol>
+<li>Program slicing。</li>
+<li>Graph theory。</li>
+<li>Control flow analysis。</li>
+<li>Data flow analysis。</li>
+<li>Workflow orchestration。</li>
+<li>Cybernetics。</li>
+<li>Feedback control。</li>
+<li>Agent loop。</li>
+<li>State machine。</li>
+<li>Actor model。</li>
+<li>Task planning。</li>
+<li>Reflective systems。</li>
+</ol>
+<p>TSGD 的獨特性在於將以下三者合併：</p>
+<pre><code>Temporal loop
++ Spatial slice
++ Reflexive graph update</code></pre>
+<p>其重點不是單純分析程式，也不是單純控制流程，而是描述 AI Agent 如何在任務圖中持續定位、行動、驗證與自我修正。</p>
+<hr>
+<h2>17. 最小工程實作</h2>
+<h3>17.1 MVP 支援</h3>
+<p>第一版只需要支援：</p>
+<pre><code>Space Slice:
+    file_slice
+    test_slice
+    function_slice
+    dependency_slice
+
+Temporal Loop:
+    convergent
+    human_decision
+    timeout_degradation
+
+Reflexive Policy:
+    expand_space_slice
+    ask_human
+    create_report</code></pre>
+<hr>
+<h3>17.2 MVP Task Runner</h3>
+<pre><code>class TSGDRunner:
+    async def run(self, task):
+        graph = await self.build_graph(task.workspace)
+        space = await self.select_initial_slice(graph, task)
+        loop = task.loop
+
+        while True:
+            result = await self.agent.act(task, graph, space)
+            feedback = await self.validate(task, result)
+
+            graph = await self.update_graph(graph, result, feedback)
+
+            if feedback.success:
+                return await self.complete(task, graph)
+
+            if loop.can_retry_same_slice(feedback):
+                loop.record_failure(feedback)
+                continue
+
+            update = await self.reflect(task, graph, space, loop, feedback)
+            space = update.space
+            loop = update.loop
+
+            if update.requires_human:
+                decision = await self.ask_human(task, graph, space, feedback)
+                if decision.cancel:
+                    return await self.cancel(task)</code></pre>
+<hr>
+<h3>17.3 TypeScript Interface</h3>
+<pre><code>export interface SpaceSlice {
+  id: string;
+  type:
+    | &quot;file_slice&quot;
+    | &quot;module_slice&quot;
+    | &quot;function_slice&quot;
+    | &quot;ast_slice&quot;
+    | &quot;dependency_slice&quot;
+    | &quot;test_slice&quot;
+    | &quot;runtime_slice&quot;
+    | &quot;semantic_slice&quot;
+    | &quot;ui_slice&quot;
+    | &quot;governance_slice&quot;;
+
+  center: string;
+  nodes: string[];
+  edges?: [string, string, string][];
+  scope: &quot;local&quot; | &quot;module&quot; | &quot;global&quot;;
+  risk: &quot;low&quot; | &quot;medium&quot; | &quot;high&quot;;
+  expansionLevel: number;
+}
+
+export interface TemporalLoopState {
+  type:
+    | &quot;convergent&quot;
+    | &quot;human_decision&quot;
+    | &quot;timeout_degradation&quot;
+    | &quot;inter_agent_coordination&quot;
+    | &quot;long_horizon_task&quot;
+    | &quot;spiral_progress&quot;
+    | &quot;evolutionary_decision&quot;;
+
+  attempt: number;
+  maxAttempts?: number;
+  condition: string;
+  timeoutPolicy?: string;
+}
+
+export interface ReflexivePolicy {
+  onRepeatedFailure?: &quot;expand_space_slice&quot; | &quot;ask_human&quot; | &quot;create_report&quot;;
+  onUnexpectedDiff?: &quot;shrink_space_slice&quot; | &quot;human_review&quot;;
+  onAmbiguousSemantics?: &quot;switch_to_semantic_slice&quot;;
+  onPermissionRisk?: &quot;human_decision_loop&quot;;
+}
+
+export interface TSGDTask {
+  taskId: string;
+  goal: string;
+  workspace: string;
+  space: SpaceSlice;
+  time: TemporalLoopState;
+  reflexivePolicy: ReflexivePolicy;
+}</code></pre>
+<hr>
+<h2>18. 設計原則</h2>
+<h3>18.1 顯式化</h3>
+<p>Agent 的切片、迴圈、假設與反身策略都應顯式記錄。</p>
+<h3>18.2 局部優先</h3>
+<p>先在小切片內行動，再逐步擴張。</p>
+<h3>18.3 可觀測</h3>
+<p>每次切片變化、loop attempt、反身更新都應輸出事件。</p>
+<h3>18.4 可回滾</h3>
+<p>每次 action 應保留 diff / state snapshot。</p>
+<h3>18.5 可轉交</h3>
+<p>當 Agent 無法可靠決策，應進入 human-decision loop。</p>
+<h3>18.6 可組合</h3>
+<p>空間切片與時間迴圈應可自由組合。</p>
+<h3>18.7 反身節制</h3>
+<p>反身不是無限懷疑，而是在明確觸發條件下改變策略。</p>
+<hr>
+<h2>19. 限制與風險</h2>
+<h3>19.1 圖構建成本</h3>
+<p>完整任務圖可能成本高。MVP 應從局部圖開始。</p>
+<h3>19.2 切片錯誤</h3>
+<p>如果 initial slice 錯誤，Agent 會走錯方向。需依靠反身策略修正。</p>
+<h3>19.3 過度理論化</h3>
+<p>TSGD 若直接全量實作會太重。工程上應先做 metadata 與 runtime policy。</p>
+<h3>19.4 Agent 解釋不可靠</h3>
+<p>Agent 對自己切片理由的解釋可能不完全可靠。需結合測試與圖證據。</p>
+<h3>19.5 人類決策瓶頸</h3>
+<p>過多 human-decision loop 會降低自動化效率。需要風險分級。</p>
+<hr>
+<h2>20. 路線圖</h2>
+<h3>v0.1：理論與 metadata</h3>
+<ol>
+<li>定義 SpaceSlice。</li>
+<li>定義 TemporalLoopState。</li>
+<li>定義 ReflexivePolicy。</li>
+<li>定義 TSGDTask。</li>
+<li>在 LAPR task model 中加入 space/time/reflexive metadata。</li>
+</ol>
+<h3>v0.2：局部工程實作</h3>
+<ol>
+<li>file_slice。</li>
+<li>function_slice。</li>
+<li>test_slice。</li>
+<li>dependency_slice。</li>
+<li>convergent loop。</li>
+<li>human-decision loop。</li>
+<li>repeated failure → expand slice。</li>
+</ol>
+<h3>v0.3：EML / CTS 整合</h3>
+<ol>
+<li>AST slice。</li>
+<li>semantic slice。</li>
+<li>CTS spaceSliceTable。</li>
+<li>round-trip feedback。</li>
+<li>PHOSPHOR visualization。</li>
+</ol>
+<h3>v0.4：反身圖 runtime</h3>
+<ol>
+<li>graph state store。</li>
+<li>graph event log。</li>
+<li>failed hypothesis tracking。</li>
+<li>slice expansion history。</li>
+<li>loop switch history。</li>
+</ol>
+<h3>v0.5：多 Agent 系統</h3>
+<ol>
+<li>agent node。</li>
+<li>inter-agent coordination loop。</li>
+<li>task dependency graph。</li>
+<li>agent role slice。</li>
+<li>cross-agent handoff。</li>
+</ol>
+<hr>
+<h2>21. 結論</h2>
+<p>時間迴圈分類學說明了 Agent 如何在時間中等待、重試、恢復與演化。</p>
+<p>但真實 Agent 不只在時間中行走，也在空間中切片。</p>
+<p>Agent 需要知道：</p>
+<pre><code>在哪裡看？
+在哪裡改？
+在哪裡測？
+在哪裡等待？
+在哪裡重試？
+失敗時要不要擴大空間？
+要不要換切片？
+要不要換 loop？
+要不要請人類？</code></pre>
+<p>因此，本文提出「時空迴圈－切片動力學」：</p>
+<pre><code>Temporal Loop
++ Spatial Slice
++ Reflexive Graph Dynamics
+= Temporal-Spatial Loop-Slice Dynamics</code></pre>
+<p>其核心結論是：</p>
+<pre><code>Agent 不是單純的 action loop。
+Agent 是在時空切片圖上持續行走、觀測、修正自身路徑的反身系統。</code></pre>
+<p>這套理論可作為 AI Agent runtime、LAPR、本地插件系統、EML/AST/CTS 驗證、PHOSPHOR 可視化、程式轉譯、長任務自動化與多 Agent 協作的通用控制模型。</p>
+<p>若時間迴圈處理「尚未成熟的未來」，那麼空間切片處理「尚未定位的世界」。</p>
+<p>而 TSGD 處理的是：</p>
+<pre><code>一個 Agent 如何在尚未完全定位的世界中，
+跨時間推進任務，
+並在失敗時反身修正自己的定位方式。</code></pre>
+<p>這才是面向 AI Agent 時代的圖論式系統動力學。</p>
+<div class="altbar">原始檔（供 RAG/下載）：<a href="/raw/lm-000635.md" rel="noopener">/raw/lm-000635.md</a> [md] · id: lm-000635</div>
+</article>
+<footer><p>Neo.K (許筌崴) · Cl + ε</p></footer>
+</body>
+</html>

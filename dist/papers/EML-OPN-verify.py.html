@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EML-OPN-verify · EVEMISSLAB Logic Matrix</title>
+<meta name="description" content="EML-OPN-verify | EVEMISSLAB Logic Matrix V2.1">
+<meta name="author" content="Neo.K (許筌崴)">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/x-python" href="EML-OPN-verify.py" title="原始檔 / source (py)">
+<link rel="canonical" href="https://logic.evemisslab.com/papers/EML-OPN-verify.py.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "EML-OPN-verify",
+  "url": "https://logic.evemisslab.com/papers/EML-OPN-verify.py.html",
+  "inLanguage": "en",
+  "author": {"@type": "Person", "name": "Neo.K (許筌崴)"},
+  "publisher": {"@type": "Organization", "name": "EveMissLab / 一言諾科技有限公司"},
+  "isPartOf": {"@type": "Collection", "name": "EVEMISSLAB Logic Matrix", "url": "https://logic.evemisslab.com"},
+  "encodingFormat": "text/html"
+}
+</script>
+<link rel="prefetch" href="/api/log-crawler?slug=EML-OPN-verify.py">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#000; color:#0f0; font-family:'Courier New',monospace; padding:20px; line-height:1.6; }
+.header { text-align:center; border:2px solid #0f0; padding:18px; margin-bottom:22px; }
+.header h1 { font-size:1.5em; letter-spacing:2px; }
+.header p { margin-top:6px; opacity:0.8; font-size:0.9em; }
+.disclaimer { border:1px dashed #ff9900; color:#ff9900; padding:14px; margin:0 auto 22px; max-width:1000px; font-size:0.88em; }
+.disclaimer-title { font-weight:bold; margin-bottom:10px; display:block; letter-spacing:1px; }
+.disclaimer-divider { border:none; border-top:1px dashed #ff9900; margin:12px 0; opacity:0.55; }
+article { max-width:1000px; margin:0 auto; border:1px solid #0f0; padding:24px; }
+article h1,article h2,article h3,article h4 { margin:18px 0 8px; letter-spacing:1px; }
+article h1 { font-size:1.5em; } article h2 { font-size:1.25em; } article h3 { font-size:1.1em; }
+article p { margin:10px 0; }
+article ul,article ol { margin:10px 0 10px 24px; }
+article blockquote { border-left:3px solid #0f0; padding-left:12px; opacity:0.85; margin:10px 0; }
+article pre { background:rgba(0,255,0,0.06); border:1px solid #0f0; padding:12px; overflow-x:auto; margin:12px 0; }
+article code { background:rgba(0,255,0,0.08); padding:1px 5px; }
+article pre code { background:none; padding:0; }
+article a { color:#0ff; }
+.nav { max-width:1000px; margin:0 auto 16px; font-size:0.9em; display:flex; justify-content:space-between; }
+.nav a { color:#0f0; text-decoration:none; }
+.nav a:hover { color:#0ff; }
+.altbar { max-width:1000px; margin:14px auto 0; font-size:0.85em; opacity:0.7; }
+.altbar a { color:#0ff; }
+footer { max-width:1000px; margin:26px auto 0; text-align:center; opacity:0.5; font-size:0.82em; }
+</style>
+</head>
+<body>
+<div class="nav"><a href="../index.html">&larr; 回 Logic Matrix 索引</a><div><a href="../cosmomind.html" style="margin-right:15px;">→ 星環式認知展開圖</a><a href="../base-space.html">🧬 拓撲底空間</a></div></div>
+<header class="header"><h1>EML-OPN-verify</h1><p>EVEMISSLAB Logic Matrix · EveMissLab / 一言諾科技有限公司</p></header>
+<section class="disclaimer">
+  <span class="disclaimer-title">[認識論邊界宣告 / EPISTEMOLOGICAL DISCLAIMER]</span>
+  <div class="disclaimer-block">
+    <p><b>[CHT]</b> 本矩陣內所有論文之公式與數據為「啟發式模擬參數」，用於驗證理論架構與推演因果鏈，<b>未經實證校準</b>，請勿作為現實物理測量數據引用 or 處理。EVEMISSLAB 採行「邏輯先行（Logic-First）」原則：概念架構與系統因果映射優先於統計實證，但不排除未來實證對接。</p>
+  </div>
+  <hr class="disclaimer-divider">
+  <div class="disclaimer-block">
+    <p><b>[ENG]</b> The numerical parameters within these frameworks are <i>illustrative model coefficients</i> used for structural verification and causal mapping; they are <b>not empirically calibrated</b> and must not be treated as physical measurements. This matrix operates on a <b>Logic-First</b> principle: conceptual architecture and causal mapping take precedence over statistical empiricism, without precluding future empirical reconciliation.</p>
+  </div>
+</section>
+<article>
+<p style="opacity:0.6">[原始碼檢視 / source view]</p><pre><code>#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+&quot;&quot;&quot;
+EML-OPN-v0.3  運算優先性的符號中立性猜想
+完整展開系統實作與三層守恆驗證程式
+EveMissLab | Theia  ·  2026年6月
+
+對應論文附錄：
+  A — 完整展開系統的形式化定義
+  B 前置 — 解析歧義對照
+  B、C   — 值守恆（同一樹在兩系統下的計算）
+  D      — 代數路徑守恆（分配律）
+&quot;&quot;&quot;
+
+# ══════════════════════════════════════════════════════════════════
+#  § 0  表達式樹（對應附錄 A.1）
+# ══════════════════════════════════════════════════════════════════
+
+class Node:
+    &quot;&quot;&quot;
+    表達式樹節點。
+    - 葉節點：op=&#x27;val&#x27;, value=整數
+    - 內部節點：op=&#x27;+&#x27; 或 &#x27;*&#x27;, left/right=子節點
+    &quot;&quot;&quot;
+
+    def __init__(self, op, left=None, right=None, value=None):
+        self.op    = op
+        self.left  = left
+        self.right = right
+        self.value = value
+
+    def __repr__(self):
+        if self.op == &#x27;val&#x27;:
+            return str(self.value)
+        return f&quot;({self.left} {self.op} {self.right})&quot;
+
+    def __eq__(self, other):
+        if not isinstance(other, Node):
+            return False
+        if self.op != other.op:
+            return False
+        if self.op == &#x27;val&#x27;:
+            return self.value == other.value
+        return self.left == other.left and self.right == other.right
+
+
+def Val(n):     return Node(&#x27;val&#x27;, value=n)
+def Add(l, r):  return Node(&#x27;+&#x27;, l, r)
+def Mul(l, r):  return Node(&#x27;*&#x27;, l, r)
+
+
+# ══════════════════════════════════════════════════════════════════
+#  § 1  完整展開系統求值（對應附錄 A.2）
+# ══════════════════════════════════════════════════════════════════
+
+def fully_expanded_eval(tree, log=None, depth=0):
+    &quot;&quot;&quot;
+    完整展開系統的遞迴求值。
+
+    規則（對應附錄 A.2）：
+    1. 加法：直接執行
+    2. 乘法：以迴圈展開為重複加法
+       由交換律取 min(a,b) 次、加 max(a,b) 的緊湊形式
+    3. 每一步記入 log
+
+    返回整數計算結果。
+    &quot;&quot;&quot;
+    if log is None:
+        log = []
+    pad = &quot;  &quot; * depth
+
+    # 葉節點
+    if tree.op == &#x27;val&#x27;:
+        log.append(f&quot;{pad}葉  {tree.value}&quot;)
+        return tree.value
+
+    # 遞迴求左右子樹
+    lv = fully_expanded_eval(tree.left,  log, depth + 1)
+    rv = fully_expanded_eval(tree.right, log, depth + 1)
+
+    if tree.op == &#x27;+&#x27;:
+        result = lv + rv
+        log.append(f&quot;{pad}ADD({lv}, {rv}) = {result}&quot;)
+        return result
+
+    # 乘法：完全展開為重複加法（不使用 Python 的 * 運算符）
+    # 由交換律取較緊湊的展開方向
+    if lv &lt;= rv:
+        times, addend = lv, rv
+    else:
+        times, addend = rv, lv
+
+    expansion = &quot; + &quot;.join([str(addend)] * times)
+    log.append(f&quot;{pad}MUL({lv}, {rv})  →  {expansion}&quot;)
+
+    result = 0
+    for _ in range(times):
+        result += addend
+
+    log.append(f&quot;{pad}MUL({lv}, {rv}) = {result}&quot;)
+    return result
+
+
+# ══════════════════════════════════════════════════════════════════
+#  § 2  字串解析器（加法優先 S₊ 與乘法優先 S×）
+# ══════════════════════════════════════════════════════════════════
+
+def tokenize(s):
+    &quot;&quot;&quot;詞法分析：字串 → token 序列。接受 ASCII * 與 Unicode ×。&quot;&quot;&quot;
+    tokens, i = [], 0
+    while i &lt; len(s):
+        if s[i].isspace():
+            i += 1
+        elif s[i].isdigit():
+            j = i
+            while j &lt; len(s) and s[j].isdigit():
+                j += 1
+            tokens.append((&#x27;NUM&#x27;, int(s[i:j])))
+            i = j
+        elif s[i] in &#x27;+-()&#x27;:
+            tokens.append((&#x27;OP&#x27;, s[i]))
+            i += 1
+        elif s[i] in &#x27;*×&#x27;:
+            tokens.append((&#x27;OP&#x27;, &#x27;*&#x27;))
+            i += 1
+        else:
+            i += 1
+    return tokens
+
+
+class _BaseParser:
+    &quot;&quot;&quot;解析器基底。&quot;&quot;&quot;
+
+    def __init__(self, tokens):
+        self.tokens = tokens
+        self.pos    = 0
+
+    def peek(self):
+        return self.tokens[self.pos] if self.pos &lt; len(self.tokens) else None
+
+    def consume(self):
+        tok = self.tokens[self.pos]
+        self.pos += 1
+        return tok
+
+    def _primary(self):
+        tok = self.peek()
+        if tok and tok[0] == &#x27;NUM&#x27;:
+            self.consume()
+            return Val(tok[1])
+        if tok and tok[1] == &#x27;(&#x27;:
+            self.consume()
+            node = self._parse_expr()
+            self.consume()          # 消耗 &#x27;)&#x27;
+            return node
+        raise SyntaxError(f&quot;解析錯誤：位置 {self.pos}，token = {tok}&quot;)
+
+
+class MulFirstParser(_BaseParser):
+    &quot;&quot;&quot;
+    乘法優先系統 S×（標準 PEMDAS 約定）。
+
+    文法（越內層優先順序越高）：
+      expr     → add_expr
+      add_expr → mul_expr (&#x27;+&#x27; mul_expr)*   ← &#x27;+&#x27; 外層：低優先
+      mul_expr → primary  (&#x27;*&#x27; primary)*    ← &#x27;*&#x27; 內層：高優先
+    &quot;&quot;&quot;
+
+    def _parse_expr(self):  return self._add_expr()
+
+    def _add_expr(self):
+        left = self._mul_expr()
+        while self.peek() == (&#x27;OP&#x27;, &#x27;+&#x27;):
+            self.consume()
+            left = Add(left, self._mul_expr())
+        return left
+
+    def _mul_expr(self):
+        left = self._primary()
+        while self.peek() == (&#x27;OP&#x27;, &#x27;*&#x27;):
+            self.consume()
+            left = Mul(left, self._primary())
+        return left
+
+    def parse(self):
+        return self._parse_expr()
+
+
+class AddFirstParser(_BaseParser):
+    &quot;&quot;&quot;
+    加法優先系統 S₊（反轉約定）。
+
+    文法（越內層優先順序越高）：
+      expr     → mul_expr
+      mul_expr → add_expr (&#x27;*&#x27; add_expr)*   ← &#x27;*&#x27; 外層：低優先
+      add_expr → primary  (&#x27;+&#x27; primary)*    ← &#x27;+&#x27; 內層：高優先
+    &quot;&quot;&quot;
+
+    def _parse_expr(self):  return self._mul_expr()
+
+    def _mul_expr(self):
+        left = self._add_expr()
+        while self.peek() == (&#x27;OP&#x27;, &#x27;*&#x27;):
+            self.consume()
+            left = Mul(left, self._add_expr())
+        return left
+
+    def _add_expr(self):
+        left = self._primary()
+        while self.peek() == (&#x27;OP&#x27;, &#x27;+&#x27;):
+            self.consume()
+            left = Add(left, self._primary())
+        return left
+
+    def parse(self):
+        return self._parse_expr()
+
+
+def parse_mf(s): return MulFirstParser(tokenize(s)).parse()
+def parse_af(s): return AddFirstParser(tokenize(s)).parse()
+
+
+# ══════════════════════════════════════════════════════════════════
+#  § 3  驗證主程式
+# ══════════════════════════════════════════════════════════════════
+
+LINE  = &quot;═&quot; * 64
+LINE2 = &quot;─&quot; * 54
+
+def section(title):
+    print(f&quot;\n{LINE}\n  {title}\n{LINE}&quot;)
+
+
+def run_verification():
+
+    print(f&quot;\n{&#x27;=&#x27;*64}&quot;)
+    print(&quot;  EML-OPN-v0.3  運算優先性的符號中立性猜想&quot;)
+    print(&quot;  完整展開系統實作與三層守恆驗證&quot;)
+    print(&quot;  EveMissLab | Theia  ·  2026年6月&quot;)
+    print(f&quot;{&#x27;=&#x27;*64}&quot;)
+
+    results = {}
+
+    # ──────────────────────────────────────────────────────────────
+    #  前置驗證：交換律等價性（對應附錄 A.2 的定義一致性）
+    # ──────────────────────────────────────────────────────────────
+    section(&quot;前置驗證：乘法展開的交換律等價性（附錄 A.2）&quot;)
+
+    print(&quot;&quot;&quot;
+  附錄 A.2 定義：a × b := a + a + ... + a（b 次）
+  由乘法交換律：a × b = b + b + ... + b（a 次）
+  程式採用 min(a,b) 次、加 max(a,b) 的緊湊形式。
+  以下驗證兩個方向結果相同。
+    &quot;&quot;&quot;)
+
+    # 方向一：3 加 4 次（定義形式）
+    r1, s1 = 0, []
+    for _ in range(4):
+        r1 += 3
+        s1.append(&quot;3&quot;)
+    print(f&quot;  3 × 4  定義形式（3 加 4 次）：{&#x27; + &#x27;.join(s1)} = {r1}&quot;)
+
+    # 方向二：4 加 3 次（交換律形式）
+    r2, s2 = 0, []
+    for _ in range(3):
+        r2 += 4
+        s2.append(&quot;4&quot;)
+    print(f&quot;  3 × 4  交換律形式（4 加 3 次）：{&#x27; + &#x27;.join(s2)} = {r2}&quot;)
+
+    assert r1 == r2 == 12
+    print(f&quot;\n  ✓  兩個展開方向均得 {r1}，交換律等價性確認&quot;)
+    results[&#x27;pre&#x27;] = True
+
+    # ──────────────────────────────────────────────────────────────
+    #  第一層：約定守恆（附錄 B 前置）
+    #  相同字串，不同系統 → 不同的樹 → 不同的值
+    # ──────────────────────────────────────────────────────────────
+    section(&quot;第一層：約定守恆——解析歧義對照（附錄 B 前置）&quot;)
+
+    sigma = &quot;2+3*4&quot;
+    T_af  = parse_af(sigma)
+    T_mf  = parse_mf(sigma)
+
+    assert T_af != T_mf
+
+    print(f&#x27;\n  字串 σ = &quot;{sigma}&quot;\n&#x27;)
+
+    print(f&quot;  S₊（加法優先）  →  樹 = {T_af}&quot;)
+    log_af = []
+    v_af = fully_expanded_eval(T_af, log_af)
+    for s in log_af:
+        print(f&quot;      {s}&quot;)
+    print(f&quot;  S₊ 不動點 = {v_af}\n&quot;)
+
+    print(f&quot;  S×（乘法優先）  →  樹 = {T_mf}&quot;)
+    log_mf = []
+    v_mf = fully_expanded_eval(T_mf, log_mf)
+    for s in log_mf:
+        print(f&quot;      {s}&quot;)
+    print(f&quot;  S× 不動點 = {v_mf}&quot;)
+
+    assert v_af != v_mf
+    print(f&quot;\n  ✓  T_af ≠ T_mf（樹結構不同）&quot;)
+    print(f&quot;  ✓  {v_af} ≠ {v_mf}（不動點不同）&quot;)
+    print(f&quot;     → 約定決定字串被理解為哪個表達式樹&quot;)
+    results[&#x27;layer1&#x27;] = (v_af, v_mf)
+
+    # ──────────────────────────────────────────────────────────────
+    #  第二層：值守恆（附錄 B、C）
+    #  同一棵樹，兩系統正確標記 → 解析後得到同一棵樹 → 狀態序列完全一致
+    # ──────────────────────────────────────────────────────────────
+    section(&quot;第二層：值守恆——同一樹在兩系統下的計算（附錄 B、C）&quot;)
+
+    T         = Add(Val(2), Mul(Val(3), Val(4)))
+    T_from_af = parse_af(&quot;2+(3*4)&quot;)     # S₊ 的正確標記
+    T_from_mf = parse_mf(&quot;2+3*4&quot;)      # S× 的正確標記
+
+    print(f&quot;\n  數學意圖 T = ADD(2, MUL(3, 4)) = {T}&quot;)
+    print(f&quot;\n  S₊ 正確標記 \&quot;2+(3×4)\&quot;  →  解析結果: {T_from_af}&quot;)
+    print(f&quot;  S× 正確標記 \&quot;2+3×4\&quot;    →  解析結果: {T_from_mf}&quot;)
+
+    assert T_from_af == T_from_mf == T
+    print(f&quot;  ✓  兩個標記解析後均得到同一棵樹 T&quot;)
+
+    print(f&quot;\n  {LINE2}&quot;)
+    print(f&quot;  附錄 B：S₊ 的完整展開&quot;)
+    log_b = []
+    v_b = fully_expanded_eval(T, log_b)
+    for s in log_b:
+        print(f&quot;    {s}&quot;)
+    print(f&quot;  不動點: {v_b}&quot;)
+
+    print(f&quot;\n  {LINE2}&quot;)
+    print(f&quot;  附錄 C：S× 的完整展開&quot;)
+    log_c = []
+    v_c = fully_expanded_eval(T, log_c)
+    for s in log_c:
+        print(f&quot;    {s}&quot;)
+    print(f&quot;  不動點: {v_c}&quot;)
+
+    assert v_b == v_c == 14
+    assert log_b == log_c
+    print(f&quot;\n  ✓  val(T) = {v_b}（兩系統一致）&quot;)
+    print(f&quot;  ✓  log_b == log_c：狀態序列逐步完全一致&quot;)
+    print(f&quot;     → 路徑未分叉，B 與 C 是同一條計算路徑（最強守恆形式）&quot;)
+    results[&#x27;layer2&#x27;] = v_b
+
+    # ──────────────────────────────────────────────────────────────
+    #  第三層：代數路徑守恆（附錄 D）
+    #  兩棵結構不同的樹，由環公理保證，不動點相同
+    # ──────────────────────────────────────────────────────────────
+    section(&quot;第三層：代數路徑守恆——分配律匯流驗證（附錄 D）&quot;)
+
+    a, b, c = 3, 4, 5
+    T_L = Mul(Val(a), Add(Val(b), Val(c)))               # a(b+c)
+    T_R = Add(Mul(Val(a), Val(b)), Mul(Val(a), Val(c)))  # ab+ac
+
+    assert T_L != T_R       # 確認兩棵樹結構相異
+
+    print(f&quot;\n  a={a}, b={b}, c={c}&quot;)
+    print(f&quot;  T_L = {T_L}         （先加後乘：左側路徑）&quot;)
+    print(f&quot;  T_R = {T_R}  （先乘後加：右側路徑）&quot;)
+    print(f&quot;  ✓  T_L ≠ T_R（樹結構確認相異）&quot;)
+
+    print(f&quot;\n  {LINE2}&quot;)
+    print(f&quot;  左側路徑完整展開（先加後乘）:&quot;)
+    log_L = []
+    v_L = fully_expanded_eval(T_L, log_L)
+    for s in log_L:
+        print(f&quot;    {s}&quot;)
+    print(f&quot;  不動點: {v_L}&quot;)
+
+    print(f&quot;\n  {LINE2}&quot;)
+    print(f&quot;  右側路徑完整展開（先乘後加）:&quot;)
+    log_R = []
+    v_R = fully_expanded_eval(T_R, log_R)
+    for s in log_R:
+        print(f&quot;    {s}&quot;)
+    print(f&quot;  不動點: {v_R}&quot;)
+
+    assert v_L == v_R == 27
+    print(f&quot;\n  ✓  val(T_L) = val(T_R) = {v_L}（不動點相同）&quot;)
+    print(f&quot;     → a(b+c) = ab+ac  ←→  匯流性的符號記錄&quot;)
+    results[&#x27;layer3&#x27;] = v_L
+
+    # ──────────────────────────────────────────────────────────────
+    #  總結
+    # ──────────────────────────────────────────────────────────────
+    section(&quot;驗證總結&quot;)
+
+    print(f&quot;&quot;&quot;
+  前置  乘法展開交換律等價性              通過  ✓
+  ────────────────────────────────────────────────────
+  第一層  約定守恆（解析歧義對照）
+    σ = &quot;2+3×4&quot;
+    S₊ 解析 → {T_af} = {v_af}
+    S× 解析 → {T_mf} = {v_mf}
+    同一字串，不同系統，結果相異          通過  ✓
+  ────────────────────────────────────────────────────
+  第二層  值守恆（同一樹，兩系統）
+    T = {T}
+    S₊ 展開 → {v_b}，S× 展開 → {v_c}
+    狀態序列逐步完全一致                  通過  ✓
+  ────────────────────────────────────────────────────
+  第三層  代數路徑守恆（分配律）
+    T_L = {T_L}，val = {v_L}
+    T_R = {T_R}
+    val = {v_R}
+    樹結構相異，不動點相同                通過  ✓
+  ────────────────────────────────────────────────────
+
+  命題：運算優先順序是符號系統的投影補償協議；
+        數學實在是匯流的，不動點存在且唯一。
+    &quot;&quot;&quot;)
+
+    all_passed = (
+        results[&#x27;pre&#x27;] and
+        results[&#x27;layer1&#x27;] == (20, 14) and
+        results[&#x27;layer2&#x27;] == 14 and
+        results[&#x27;layer3&#x27;] == 27
+    )
+
+    print(f&quot;  {&#x27;所有 assertion 通過，命題在本範例空間內未被反駁。&#x27; if all_passed else &#x27;驗證失敗。&#x27;}&quot;)
+    return all_passed
+
+
+if __name__ == &quot;__main__&quot;:
+    passed = run_verification()
+    exit(0 if passed else 1)
+</code></pre>
+<div class="altbar">原始檔（供 RAG/下載）：<a href="EML-OPN-verify.py" rel="noopener">papers/EML-OPN-verify.py</a> [py]</div>
+</article>
+<footer><p>Neo.K (許筌崴) · Cl + ε</p></footer>
+</body>
+</html>

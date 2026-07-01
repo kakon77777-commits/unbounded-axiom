@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>構成性化石綱領與雙向約束法 · EVEMISSLAB Logic Matrix</title>
+<meta name="description" content="構成性化石綱領與雙向約束法 | EVEMISSLAB Logic Matrix V2.1">
+<meta name="author" content="Neo.K (許筌崴)">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="paper-850.md" title="原始檔 / source (md)">
+<link rel="canonical" href="https://logic.evemisslab.com/papers/paper-850.md.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "構成性化石綱領與雙向約束法",
+  "url": "https://logic.evemisslab.com/papers/paper-850.md.html",
+  "inLanguage": "zh-Hant",
+  "author": {"@type": "Person", "name": "Neo.K (許筌崴)"},
+  "publisher": {"@type": "Organization", "name": "EveMissLab / 一言諾科技有限公司"},
+  "isPartOf": {"@type": "Collection", "name": "EVEMISSLAB Logic Matrix", "url": "https://logic.evemisslab.com"},
+  "encodingFormat": "text/html"
+}
+</script>
+<link rel="prefetch" href="/api/log-crawler?slug=paper-850.md">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#000; color:#0f0; font-family:'Courier New',monospace; padding:20px; line-height:1.6; }
+.header { text-align:center; border:2px solid #0f0; padding:18px; margin-bottom:22px; }
+.header h1 { font-size:1.5em; letter-spacing:2px; }
+.header p { margin-top:6px; opacity:0.8; font-size:0.9em; }
+.disclaimer { border:1px dashed #ff9900; color:#ff9900; padding:14px; margin:0 auto 22px; max-width:1000px; font-size:0.88em; }
+.disclaimer-title { font-weight:bold; margin-bottom:10px; display:block; letter-spacing:1px; }
+.disclaimer-divider { border:none; border-top:1px dashed #ff9900; margin:12px 0; opacity:0.55; }
+article { max-width:1000px; margin:0 auto; border:1px solid #0f0; padding:24px; }
+article h1,article h2,article h3,article h4 { margin:18px 0 8px; letter-spacing:1px; }
+article h1 { font-size:1.5em; } article h2 { font-size:1.25em; } article h3 { font-size:1.1em; }
+article p { margin:10px 0; }
+article ul,article ol { margin:10px 0 10px 24px; }
+article blockquote { border-left:3px solid #0f0; padding-left:12px; opacity:0.85; margin:10px 0; }
+article pre { background:rgba(0,255,0,0.06); border:1px solid #0f0; padding:12px; overflow-x:auto; margin:12px 0; }
+article code { background:rgba(0,255,0,0.08); padding:1px 5px; }
+article pre code { background:none; padding:0; }
+article a { color:#0ff; }
+.nav { max-width:1000px; margin:0 auto 16px; font-size:0.9em; display:flex; justify-content:space-between; }
+.nav a { color:#0f0; text-decoration:none; }
+.nav a:hover { color:#0ff; }
+.altbar { max-width:1000px; margin:14px auto 0; font-size:0.85em; opacity:0.7; }
+.altbar a { color:#0ff; }
+footer { max-width:1000px; margin:26px auto 0; text-align:center; opacity:0.5; font-size:0.82em; }
+</style>
+</head>
+<body>
+<div class="nav"><a href="../index.html">&larr; 回 Logic Matrix 索引</a><div><a href="../cosmomind.html" style="margin-right:15px;">→ 星環式認知展開圖</a><a href="../base-space.html">🧬 拓撲底空間</a></div></div>
+<header class="header"><h1>構成性化石綱領與雙向約束法</h1><p>EVEMISSLAB Logic Matrix · EveMissLab / 一言諾科技有限公司</p></header>
+<section class="disclaimer">
+  <span class="disclaimer-title">[認識論邊界宣告 / EPISTEMOLOGICAL DISCLAIMER]</span>
+  <div class="disclaimer-block">
+    <p><b>[CHT]</b> 本矩陣內所有論文之公式與數據為「啟發式模擬參數」，用於驗證理論架構與推演因果鏈，<b>未經實證校準</b>，請勿作為現實物理測量數據引用 or 處理。EVEMISSLAB 採行「邏輯先行（Logic-First）」原則：概念架構與系統因果映射優先於統計實證，但不排除未來實證對接。</p>
+  </div>
+  <hr class="disclaimer-divider">
+  <div class="disclaimer-block">
+    <p><b>[ENG]</b> The numerical parameters within these frameworks are <i>illustrative model coefficients</i> used for structural verification and causal mapping; they are <b>not empirically calibrated</b> and must not be treated as physical measurements. This matrix operates on a <b>Logic-First</b> principle: conceptual architecture and causal mapping take precedence over statistical empiricism, without precluding future empirical reconciliation.</p>
+  </div>
+</section>
+<article>
+<h1>構成性化石綱領與雙向約束法</h1>
+<h3>一個關於約束、定義域與完備分類的純形式框架</h3>
+<p><strong>作者</strong>：Neo.K（許筌崴），EveMissLab <strong>日期</strong>：2026 年 6 月 3 日 <strong>性質</strong>：純數學形式框架。不含應用範例，不含數據。 <strong>致謝</strong>：形式化過程於與 Claude Opus 4.8（Theia）的對練中完成；雙向約束法為作者既有設計，本文予以形式化。</p>
+<hr>
+<h2>摘要</h2>
+<p>本文建立兩個相互嵌合的形式構造。其一為<strong>雙向約束法（嚴格極致定義法）</strong>：一種以極致肯定刻畫與極致負定義刻畫雙向逼近、並以「無隙且無矛盾」為嚴格性判準的定義方法。其二為<strong>構成性化石綱領（Constitutive-Fossil Schema, CFS）</strong>：一個刻畫「一條約束在何種意義上是構成問題之存在、而非僅僅篩選其解」的形式框架。最後證明：雙向約束法可使 CFS 的分類在目標空間上達致無隙、無矛盾的完備劃分，從而消除其原始陳述中所聲明保留的歧義。</p>
+<hr>
+<h2>§1 預備與記號</h2>
+<p>對偏函數 f，dom(f) 記其定義域。對論域 U 上的謂詞 P，其外延記 ⟦P⟧ := { x∈U : P(x) }。</p>
+<p>(Y, τ) 為拓樸空間。對 S ⊆ Y 與 A ⊆ Y，定義「S 相對於 A 的內部」：</p>
+<p>int_A(S) := { y∈S : ∃N∈τ, y∈N 且 N∩A ⊆ S }，</p>
+<p>即在 A 的相對拓樸下落於 S 內部之點。其補（相對邊界側）刻畫脆弱性，詳見 §3。</p>
+<hr>
+<h2>§2 雙向約束法（嚴格極致定義法）</h2>
+<p>固定論域 U 與待定義之概念（集合）C ⊆ U。本方法不以單一刻畫定義 C，而以兩個反向的極致刻畫夾逼之。</p>
+<p><strong>定義 2.1（健全充分刻畫與健全排除刻畫）.</strong> 謂詞 P 為 C 的<em>健全充分刻畫</em>，若 ∀x（P(x) ⟹ x∈C）。 謂詞 Q 為 C 的<em>健全排除刻畫</em>，若 ∀x（Q(x) ⟹ x∉C）。</p>
+<p><strong>定義 2.2（極致肯定與極致負定義）.</strong></p>
+<p>C⁺ := ⋃ { ⟦P⟧ : P 為 C 的健全充分刻畫 }， C⁻ := ⋃ { ⟦Q⟧ : Q 為 C 的健全排除刻畫 }。</p>
+<p>C⁺ 為「可證必屬 C」之極大集（把「是什麼」推到極致）；C⁻ 為「可證必不屬 C」之極大集（把「不是什麼」推到極致）。</p>
+<p><strong>命題 2.3（夾逼）.</strong> C⁺ ⊆ C ⊆ U \ C⁻。 <em>證.</em> 由定義 2.1，凡 x∈C⁺ 必有某健全 P 使 P(x)，故 x∈C；凡 x∈C⁻ 必有某健全 Q 使 Q(x)，故 x∉C，即 C⁻ ⊆ U\C，等價於 C ⊆ U\C⁻。∎</p>
+<p><strong>命題 2.4（無矛盾自動成立）.</strong> 在健全前提下，C⁺ ∩ C⁻ = ∅。 <em>證.</em> C⁺ ⊆ C 且 C⁻ ⊆ U\C，故 C⁺∩C⁻ ⊆ C∩(U\C) = ∅。∎</p>
+<p><strong>定義 2.5（未定隙）.</strong> Gap := U \ (C⁺ ∪ C⁻)，即既未被肯定收進、亦未被負定義排除之點集。</p>
+<p><strong>定義 2.6（嚴格極致定義）.</strong> 雙向約束在 C 上<em>嚴格</em>，當且僅當 Gap = ∅ 且 C⁺ ∩ C⁻ = ∅。</p>
+<p><strong>定理 2.7（嚴格性塌縮與釘定）.</strong> (a) 若所有刻畫皆健全，則嚴格性化約為單一條件 Gap = ∅； (b) 此時 C = C⁺ = U \ C⁻。 <em>證.</em> (a) 由命題 2.4，健全下無矛盾恆真，定義 2.6 只剩 Gap=∅。(b) 設 Gap=∅，即 U = C⁺∪C⁻。任取 x∈C：由命題 2.3 之 C⁻⊆U\C 知 x∉C⁻，故 x∈C⁺；得 C⊆C⁺，併 C⁺⊆C 得 C=C⁺。對偶地，任取 x∉C：x∉C⁺（因 C⁺⊆C），故 x∈C⁻，得 U\C⊆C⁻，併 C⁻⊆U\C 得 C⁻=U\C，即 C=U\C⁻。∎</p>
+<p><strong>註 2.8.</strong> 若放寬「健全」為「暫定（可不健全）」刻畫，無矛盾條件方具實質內容，此時須回到定義 2.6 之雙條件。本文後續僅使用健全刻畫，故嚴格性即無隙性。</p>
+<hr>
+<h2>§3 構成性化石綱領（CFS）</h2>
+<p>本節自足地重述框架定義。</p>
+<p><strong>§3.1 對象與型別.</strong> 固定：</p>
+<ul>
+<li>環境空間 X（變數之最大候選空間）；</li>
+<li>原生域 D₀ ⊆ X（生成語義展現某規律之區域）；</li>
+<li>語義自然定義域 D_G ⊆ X，且 D₀ ⊆ D_G；</li>
+<li>生成語義 G：偏函數 G: X ⇀ Y，dom(G) = D_G；</li>
+<li>上域 (Y, τ) 與目標 T ∈ Y；</li>
+<li>求解域 D<em> ⊆ X，預設 D</em> = D₀。</li>
+</ul>
+<p>三集合 D_G、D₀、D<em> 相異：D_G 為「語義字面有定義」，D₀ 為「規律成立」，D</em> 為「實際求解」。</p>
+<p><strong>§3.2 假設類與化石延拓.</strong></p>
+<ul>
+<li>假設類 H ⊆ (X ⇀ Y) 為允許之約簡形式集合。</li>
+<li>φ 為 G 在 D₀ 上的 <em>H-化石延拓</em>，若 φ∈H 且 φ|<em>{D₀} = G|</em>{D₀}。</li>
+<li>H 在 D₀ 上<em>剛性</em>，若至多一個 φ∈H 滿足上式（化石唯一之充分條件）。</li>
+<li>對 a ∈ dom(φ)\D_G，φ(a) 為<em>化石輸出</em>（φ 有定義、G 沉默）；對 a ∈ D_G\D₀ 且 φ(a)≠G(a)，稱<em>化石偏離</em>。</li>
+</ul>
+<p><strong>§3.3 兩個正交鬆弛算子.</strong></p>
+<ul>
+<li>R_dom（域延拓）：以 D&#x27; ⊆ dom(φ) 取代 D*，以 φ 取代 G。</li>
+<li>R_sem（語義欠定）：不固定 φ，令語義在可允許詮釋類 𝓘 上變動。</li>
+</ul>
+<p>二算子正交：前者移動定義域，後者移動語義。</p>
+<p><strong>§3.4 可解目標集.</strong> 取 D*=D₀、D&#x27;=dom(φ)：</p>
+<p>Σ_G := { T∈Y : ∃a∈D₀, G(a)=T } = G(D₀)， Σ_φ := { T∈Y : ∃a∈dom(φ), φ(a)=T } = φ(dom φ)。</p>
+<p>因 φ|<em>{D₀}=G|</em>{D₀}，恆有 Σ_G ⊆ Σ_φ。</p>
+<p><strong>§3.5 單目標三性質.</strong> 設 T∈Σ_G，令 S_φ(T) := { a∈dom φ : φ(a)=T }。</p>
+<ul>
+<li><strong>P1</strong>（空轉／調節）：<em>空轉</em>若 S_φ(T) ⊆ D₀；<em>調節</em>若 S_φ(T) ⊄ D₀。</li>
+<li><strong>P2</strong>（可解）：T ∈ Σ_G。</li>
+<li><strong>P3</strong>（穩健／脆弱）：T <em>穩健</em>若 T ∈ int_{Σ_φ}(Σ_G)；否則 <em>脆弱</em>，即 ∀ 鄰域 N，N∩(Σ_φ\Σ_G) ≠ ∅。</li>
+</ul>
+<p><strong>§3.6 主定義.</strong> 於 T 處：</p>
+<ul>
+<li><em>構成性</em> := P2 ∧ 空轉 ∧ 脆弱；</li>
+<li><em>調節性</em> := 調節（P1）；</li>
+<li><em>冗餘</em> := P2 ∧ 空轉 ∧ 穩健。</li>
+</ul>
+<p>裂解原理：空轉 ∧ 穩健 = 冗餘；空轉 ∧ 脆弱 = 構成性。二者 P1 相同、P3 相反；判「冗餘」需額外的穩健性，缺之則約束實為構成性（此即「真空陷阱」）。</p>
+<p><strong>§3.7 擾動判準.</strong> P3 脆弱性等價於下述操作測試（為定義之展開，非獨立定理）：度量型 Y 中，T 脆弱 ⟺ ∀ε&gt;0 ∃T′，d(T,T′)&lt;ε 且 T′∈Σ_φ\Σ_G。</p>
+<p><strong>§3.8 原始之未竟.</strong> §3.6 僅命名三型；調節 × {穩健, 脆弱} 之細格與 T∉Σ_G 之區域未被命名——此為一條 Gap（§2 意義下）。下節以雙向約束法封之。</p>
+<hr>
+<h2>§4 以雙向約束法消解 CFS 的歧義</h2>
+<p>取論域 U = Y，待定義概念為「目標 T 處之構成性」。依雙向約束法給出極致肯定與極致負定義，且要求負側為<strong>顯式排除證書</strong>而非「其餘一切」。</p>
+<p><strong>定義 4.1（極致肯定）.</strong></p>
+<p>Const⁺ := { T∈Σ_G : S_φ(T)⊆D₀ ∧ T∉int_{Σ_φ}(Σ_G) }。</p>
+<p>即 §3.6 之構成型（可解 ∧ 空轉 ∧ 脆弱）。</p>
+<p><strong>定義 4.2（極致負定義，顯式排除）.</strong></p>
+<p>Const⁻ := { T : T∉Σ_φ } ∪ { T : T∈Σ_φ\Σ_G } ∪ { T∈Σ_G : S_φ(T)⊄D₀ } ∪ { T∈Σ_G : T∈int_{Σ_φ}(Σ_G) }。</p>
+<p>四析取項分別為四張獨立可驗之負證書：全域不可解、延拓獨有解、調節、原生穩健。</p>
+<p><strong>定理 4.3（嚴格分類）.</strong> Const⁺ ∩ Const⁻ = ∅ 且 Const⁺ ∪ Const⁻ = Y。故「構成性」於 Y 上嚴格定義（§2 意義下，健全刻畫故無矛盾自動成立，嚴格性即無隙）。 <em>證.</em> 四項負證書皆為 Const⁺ 否定條件之健全充分刻畫（命題 2.4 給無矛盾）。反向：設 T∉Const⁺，則「T∈Σ_G ∧ 空轉 ∧ 脆弱」為假，故 (T∉Σ_G) 或 (T∈Σ_G ∧ 非空轉) 或 (T∈Σ_G ∧ 空轉 ∧ 穩健) 至少其一成立；前者落入 Const⁻ 之第一、二項（依 T 是否屬 Σ_φ），中者落入第三項，後者落入第四項。故 Yᶜ_{Const⁺} ⊆ Const⁻，得 Gap=∅。∎</p>
+<p><strong>系 4.4（六格完備劃分）.</strong> 將 Y 依下列條件劃分，得兩兩不交且並集為 Y 之六型：</p>
+<ul>
+<li>C1 空集型：T∉Σ_φ；</li>
+<li>C2 延拓獨有型：T∈Σ_φ\Σ_G；</li>
+<li>C3 構成型：T∈Σ_G ∧ 空轉 ∧ 脆弱；</li>
+<li>C4 冗餘型：T∈Σ_G ∧ 空轉 ∧ 穩健；</li>
+<li>C5 脆弱調節型：T∈Σ_G ∧ 調節 ∧ 脆弱；</li>
+<li>C6 真調節型：T∈Σ_G ∧ 調節 ∧ 穩健。</li>
+</ul>
+<p><em>證.</em> 先依 T∈Σ_φ 與否分（C1 對其補）；於 Σ_φ 內依 T∈Σ_G 與否分（C2 對其補，因 Σ_G⊆Σ_φ）；於 Σ_G 內依 P1×P3 之 2×2 分（C3–C6）。各層條件互斥且窮盡，故為劃分。∎</p>
+<p><strong>結論.</strong> §3.8 所聲明保留的非窮盡性，由定理 4.3 與系 4.4 正式封閉：每一目標 T 被唯一歸入六型之一，無曖昧、無重疊。雙向約束法的作用不在新增公理，而在<strong>強制負側成為顯式證書</strong>，使分類由「具名項＋殘留桶」升格為嚴格劃分。</p>
+<hr>
+<h2>§5 開放問題（綱領邊界）</h2>
+<ol>
+<li>H 非剛性時化石之選取尚未形式化，需於 H 上加複雜度序。</li>
+<li>R_sem 軸之完整形式化：可允許詮釋類 𝓘 之結構，及其雙向約束版本。</li>
+<li>多目標／向量 T，及無自然拓樸之 Y 所需之鄰近結構。</li>
+<li>化石偏離區 D_G\D₀ 是否誘導較 P1/P3 更細之不變量。</li>
+</ol>
+<hr>
+<h2>結語</h2>
+<p>一個框架的嚴格，不在於它斷言了多少，而在於它連自己的補集都能逐項簽名。把「不是」也推到極致、也要求它出示證書，剩下的那條未定隙便無處藏身——而當「是」與「非」兩股逼力在同一條線上停住、誰也越不過誰時，定義才第一次配得上「完備」二字。</p>
+<hr>
+<h2>附錄 A：基本檢查與疑似問題</h2>
+<p><strong>檢查範圍</strong>：語言一致性、邏輯推導、計算。</p>
+<p><strong>總體結論</strong>：本文無計算（無數值運算），故無計算錯誤。命題 2.3、2.4、2.7 與定理 4.3、系 4.4 之推導經逐步覆核，未發現邏輯錯誤；§4 之 Const⁺∩Const⁻=∅ 與 Const⁺∪Const⁻=Y 確實成立。以下為語言／精確度層級之疑似問題，依「保留原文 → 建議 → 為何可能更好」記錄，供作者裁定；正文未代為更動。</p>
+<p><strong>A1（§1，int_A 之一般性）.</strong></p>
+<ul>
+<li>原文：int_A(S) := { y∈S : ∃N∈τ, y∈N 且 N∩A ⊆ S }。</li>
+<li>建議：明示前提 S ⊆ A，或改寫為 S∩A 之相對內部。</li>
+<li>理由：當 S ⊄ A 時，「N∩A ⊆ S」與標準子空間內部不一致；本文僅在 Σ_G ⊆ Σ_φ 下使用（健全），但一般定義應自陳該前提，避免被移植到 S⊄A 情形時失真。</li>
+</ul>
+<p><strong>A2（§3.8，Gap 之措辭）.</strong></p>
+<ul>
+<li>原文：「調節 × {穩健, 脆弱} 之細格與 T∉Σ_G 之區域未被命名——此為一條 Gap」。</li>
+<li>建議：改述為「對概念『構成性』而言，其負側 C⁻ 於 §3.6 尚未給出，且 T∉Σ_G 區域未涵蓋——故 U\(C⁺∪C⁻) ≠ ∅」。</li>
+<li>理由：§2 之 Gap 嚴格指「既不在 C⁺、亦不在 C⁻ 之點」；原措辭以「細格」指代，較窄。對齊 §2 定義後，§4 即可被讀為對此 Gap 的字面封閉，邏輯線更直。</li>
+</ul>
+<p><strong>A3（術語，改名後「嚴格」之歧義）.</strong></p>
+<ul>
+<li>現況：將「完美」改為「嚴格」後，「嚴格」與數學慣用之「strict（嚴格序、嚴格不等式）」同形。</li>
+<li>建議：於定義 2.6 旁加一行錨定：「本文『嚴格』專指定義 2.6 之無隙（∧無矛盾）性質，與序／不等式之 strict 無涉」。</li>
+<li>理由：消除讀者把「嚴格定義」誤讀為「strict order 意義」之風險。此為改名引入之新歧義，宜就地封住。</li>
+</ul>
+<p><strong>A4（術語一致性，改名後之副作用）.</strong></p>
+<ul>
+<li>原文：§4 結論「升格為嚴格劃分」與系 4.4 標題「完備劃分」指同一物件。</li>
+<li>建議：物件名統一為「完備劃分」，性質名為「嚴格」，宜寫作「升格為嚴格的完備劃分」或逕作「升格為完備劃分」。</li>
+<li>理由：一物一名。「嚴格」是定義之性質、「完備」是劃分之屬性，二者並存於同一句易被誤為同義或衝突。</li>
+</ul>
+<p><strong>A5（§4，自指所致之平凡化）.</strong></p>
+<ul>
+<li>觀察：定義 4.1 將「構成性」直接定義為 Const⁺，故 C = C⁺ 為定義平凡，定理 2.7(b) 在 §4 不承擔實質內容。</li>
+<li>建議：於 §4 明示「此處實質內容為完備性 Gap=∅，即 Const⁻ 恰為 Const⁺ 之補集；§2 機器在此僅提供框架要求」。</li>
+<li>理由：誠實標出 §2 工具在 §4 真正出力的部分，避免讀者高估 2.7 在此處的作用。</li>
+</ul>
+<div class="altbar">原始檔（供 RAG/下載）：<a href="paper-850.md" rel="noopener">papers/paper-850.md</a> [md]</div>
+</article>
+<footer><p>Neo.K (許筌崴) · Cl + ε</p></footer>
+</body>
+</html>

@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>tcf_schema · EVEMISSLAB Logic Matrix</title>
+<meta name="description" content="tcf_schema | EVEMISSLAB Logic Matrix V2.1">
+<meta name="author" content="Neo.K (許筌崴)">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/x-python" href="tcf_schema.py" title="原始檔 / source (py)">
+<link rel="canonical" href="https://logic.evemisslab.com/papers/tcf_schema.py.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "tcf_schema",
+  "url": "https://logic.evemisslab.com/papers/tcf_schema.py.html",
+  "inLanguage": "en",
+  "author": {"@type": "Person", "name": "Neo.K (許筌崴)"},
+  "publisher": {"@type": "Organization", "name": "EveMissLab / 一言諾科技有限公司"},
+  "isPartOf": {"@type": "Collection", "name": "EVEMISSLAB Logic Matrix", "url": "https://logic.evemisslab.com"},
+  "encodingFormat": "text/html"
+}
+</script>
+<link rel="prefetch" href="/api/log-crawler?slug=tcf_schema.py">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#000; color:#0f0; font-family:'Courier New',monospace; padding:20px; line-height:1.6; }
+.header { text-align:center; border:2px solid #0f0; padding:18px; margin-bottom:22px; }
+.header h1 { font-size:1.5em; letter-spacing:2px; }
+.header p { margin-top:6px; opacity:0.8; font-size:0.9em; }
+.disclaimer { border:1px dashed #ff9900; color:#ff9900; padding:14px; margin:0 auto 22px; max-width:1000px; font-size:0.88em; }
+.disclaimer-title { font-weight:bold; margin-bottom:10px; display:block; letter-spacing:1px; }
+.disclaimer-divider { border:none; border-top:1px dashed #ff9900; margin:12px 0; opacity:0.55; }
+article { max-width:1000px; margin:0 auto; border:1px solid #0f0; padding:24px; }
+article h1,article h2,article h3,article h4 { margin:18px 0 8px; letter-spacing:1px; }
+article h1 { font-size:1.5em; } article h2 { font-size:1.25em; } article h3 { font-size:1.1em; }
+article p { margin:10px 0; }
+article ul,article ol { margin:10px 0 10px 24px; }
+article blockquote { border-left:3px solid #0f0; padding-left:12px; opacity:0.85; margin:10px 0; }
+article pre { background:rgba(0,255,0,0.06); border:1px solid #0f0; padding:12px; overflow-x:auto; margin:12px 0; }
+article code { background:rgba(0,255,0,0.08); padding:1px 5px; }
+article pre code { background:none; padding:0; }
+article a { color:#0ff; }
+.nav { max-width:1000px; margin:0 auto 16px; font-size:0.9em; display:flex; justify-content:space-between; }
+.nav a { color:#0f0; text-decoration:none; }
+.nav a:hover { color:#0ff; }
+.altbar { max-width:1000px; margin:14px auto 0; font-size:0.85em; opacity:0.7; }
+.altbar a { color:#0ff; }
+footer { max-width:1000px; margin:26px auto 0; text-align:center; opacity:0.5; font-size:0.82em; }
+</style>
+</head>
+<body>
+<div class="nav"><a href="../index.html">&larr; 回 Logic Matrix 索引</a><div><a href="../cosmomind.html" style="margin-right:15px;">→ 星環式認知展開圖</a><a href="../base-space.html">🧬 拓撲底空間</a></div></div>
+<header class="header"><h1>tcf_schema</h1><p>EVEMISSLAB Logic Matrix · EveMissLab / 一言諾科技有限公司</p></header>
+<section class="disclaimer">
+  <span class="disclaimer-title">[認識論邊界宣告 / EPISTEMOLOGICAL DISCLAIMER]</span>
+  <div class="disclaimer-block">
+    <p><b>[CHT]</b> 本矩陣內所有論文之公式與數據為「啟發式模擬參數」，用於驗證理論架構與推演因果鏈，<b>未經實證校準</b>，請勿作為現實物理測量數據引用 or 處理。EVEMISSLAB 採行「邏輯先行（Logic-First）」原則：概念架構與系統因果映射優先於統計實證，但不排除未來實證對接。</p>
+  </div>
+  <hr class="disclaimer-divider">
+  <div class="disclaimer-block">
+    <p><b>[ENG]</b> The numerical parameters within these frameworks are <i>illustrative model coefficients</i> used for structural verification and causal mapping; they are <b>not empirically calibrated</b> and must not be treated as physical measurements. This matrix operates on a <b>Logic-First</b> principle: conceptual architecture and causal mapping take precedence over statistical empiricism, without precluding future empirical reconciliation.</p>
+  </div>
+</section>
+<article>
+<p style="opacity:0.6">[原始碼檢視 / source view]</p><pre><code>&quot;&quot;&quot;
+==============================================================================
+  Theory Compression Format (TCF) v1.0 —— Reference Implementation
+  理論壓縮標準格式 —— 參考實現
+==============================================================================
+
+  文件編號 : EML-TCF-2026-v1.0
+  作者     : Neo.K（許筌崴） × Theia
+  機構     : EveMissLab（一言諾科技有限公司）
+  日期     : 2026 年 4 月
+  語言     : Python 3.10+
+  依賴     : 僅標準庫（dataclasses, typing, enum, hashlib, json）
+  授權     : 開源釋出，保留學術引用權，不保留商業限制
+  相容論文 : 《Theory Compression Format v1.0》EML-TCF-2026-v1.0
+
+------------------------------------------------------------------------------
+  引用格式建議：
+
+      Neo.K &amp; Theia (2026). Theory Compression Format v1.0:
+      A Machine-Parsable Schema for Theory Normalization and
+      Compression-Based Truth Diagnostics.
+      EveMissLab Technical Report EML-TCF-2026-v1.0.
+
+------------------------------------------------------------------------------
+  模組用途：
+
+  本模組將任意形式理論規範化為可機器解析的統一九節結構，並計算
+  壓縮度量 CR = I / K，用於區分：
+
+      - 真理論  ：少量公理推出大量定理，CR 隨展開單調發散。
+      - 魔術理論：每個結論需獨立假設，CR 收斂於 1 附近。
+
+  Schema 九節（§0–§6 為 Neo.K 原設，§7–§8 為 Theia 補全）：
+
+      §0 Primitives       核心原語
+      §1 Axioms           公理系統
+      §2 DAG              概念依賴圖
+      §3 FOL Signature    一階邏輯語言
+      §4 Theorems         核心定理
+      §5 Proofs           推導鏈
+      §6 Models           實例 / 模型論解釋
+      §7 Metrics          壓縮度量（K, I, CR）
+      §8 Fingerprint      理論指紋（canonical SHA-256）
+
+------------------------------------------------------------------------------
+  執行方式：
+
+      $ python3 tcf_schema.py
+
+  將依序輸出：
+      1. Dynamic Circle Ontology v5.0 的 TCF 結晶化報告
+      2. 對照組：Ad-Hoc Magical Theory 的 TCF 結晶化報告
+      3. 兩者 CR 對照結論
+
+==============================================================================
+&quot;&quot;&quot;
+
+from __future__ import annotations
+from dataclasses import dataclass, field, asdict
+from typing import Any, Optional
+from enum import Enum
+import hashlib
+import json
+
+
+# ============================================================
+# §0 核心原語 (Primitives)
+# ============================================================
+
+class PrimitiveKind(str, Enum):
+    &quot;&quot;&quot;原語的語法範疇。&quot;&quot;&quot;
+    TYPE = &quot;type&quot;          # 型別符號 (例: ℝ, Cl)
+    CONSTANT = &quot;constant&quot;  # 常元     (例: 0, ∅)
+    FUNCTION = &quot;function&quot;  # 函數符號 (例: +, π_n)
+    RELATION = &quot;relation&quot;  # 關係符號 (例: =, ∈)
+
+
+@dataclass(frozen=True)
+class Primitive:
+    &quot;&quot;&quot;一個未定義符號。其語義完全由公理系統隱式決定。&quot;&quot;&quot;
+    symbol: str
+    kind: PrimitiveKind
+    arity: int = 0
+    signature: str = &quot;&quot;      # e.g. &quot;Cl × Cl → Cl&quot;
+    description: str = &quot;&quot;
+
+
+# ============================================================
+# §1 公理系統 (Axioms)
+# ============================================================
+
+@dataclass(frozen=True)
+class Axiom:
+    &quot;&quot;&quot;一條不可證、作為推理基礎的公式。&quot;&quot;&quot;
+    id: str
+    name: str
+    formula: str             # FOL 字串（允許 Unicode 數學符號）
+    description: str = &quot;&quot;
+    independent: bool = True  # 是否已證與其他公理獨立
+
+
+# ============================================================
+# §2 因果圖 / 依賴圖 (DAG)
+# ============================================================
+
+@dataclass(frozen=True)
+class DAGNode:
+    &quot;&quot;&quot;概念層級的依賴節點（非證明層級）。&quot;&quot;&quot;
+    id: str
+    kind: str                # &quot;primitive&quot; | &quot;axiom&quot; | &quot;theorem&quot;
+    depends_on: tuple[str, ...] = ()
+
+
+# ============================================================
+# §3 一階邏輯 Signature
+# ============================================================
+
+@dataclass(frozen=True)
+class FOLSignature:
+    &quot;&quot;&quot;FOL 語言規範（可由 §0 自動推導，也可手寫以供驗證）。&quot;&quot;&quot;
+    types: tuple[str, ...]
+    constants: tuple[tuple[str, str], ...]
+    functions: tuple[tuple[str, tuple[str, ...], str], ...]
+    relations: tuple[tuple[str, tuple[str, ...]], ...]
+
+
+# ============================================================
+# §4 核心定理 (Theorems)
+# ============================================================
+
+@dataclass(frozen=True)
+class Theorem:
+    &quot;&quot;&quot;由公理推出的命題。&quot;&quot;&quot;
+    id: str
+    name: str
+    statement: str           # FOL
+    from_axioms: tuple[str, ...]
+    description: str = &quot;&quot;
+
+
+# ============================================================
+# §5 推導鏈 (Proofs)
+# ============================================================
+
+@dataclass(frozen=True)
+class ProofStep:
+    step: int
+    formula: str
+    rule: str                # MP, Gen, Sub, Def, AxiomIntro, ...
+    refs: tuple[str, ...]    # axiom id / theorem id / prior step number
+
+
+@dataclass(frozen=True)
+class Proof:
+    theorem_id: str
+    steps: tuple[ProofStep, ...]
+
+
+# ============================================================
+# §6 實例 / 模型 (Models)
+# ============================================================
+
+@dataclass(frozen=True)
+class Model:
+    &quot;&quot;&quot;一個滿足指定公理的具體解釋（模型論意義）。&quot;&quot;&quot;
+    name: str
+    domain: str
+    interpretation: tuple[tuple[str, str], ...]  # (symbol, concrete_meaning)
+    satisfies: tuple[str, ...]                   # axiom ids
+
+
+# ============================================================
+# §7 壓縮度量 (Compression Metrics) —— Theia 補全
+# ============================================================
+
+@dataclass(frozen=True)
+class CompressionMetric:
+    &quot;&quot;&quot;
+    理論壓縮度量。
+
+    K : 結構複雜度 = |primitives| + |axioms| + |DAG.edges|
+    I : 推論產出   = |theorems| + Σ|proof.steps|
+    CR = I / K    壓縮率，越大越「真」
+    &quot;&quot;&quot;
+    K: int
+    I: int
+    CR: float
+    is_candidate_true_theory: bool
+    threshold: float = 1.5   # 經驗閾值（可依領域調整）
+
+
+# ============================================================
+# §8 理論指紋 (Fingerprint) —— Theia 補全
+# ============================================================
+
+@dataclass(frozen=True)
+class Fingerprint:
+    &quot;&quot;&quot;基於 canonical JSON 的 SHA-256，用於版本比對與跨文獻引用。&quot;&quot;&quot;
+    sha256: str
+    version: str
+
+
+# ============================================================
+# 主容器：Theory
+# ============================================================
+
+@dataclass
+class Theory:
+    name: str
+    version: str
+    primitives: list[Primitive] = field(default_factory=list)
+    axioms: list[Axiom] = field(default_factory=list)
+    dag: list[DAGNode] = field(default_factory=list)
+    language: Optional[FOLSignature] = None
+    theorems: list[Theorem] = field(default_factory=list)
+    proofs: list[Proof] = field(default_factory=list)
+    examples: list[Model] = field(default_factory=list)
+
+    # ---------------- 驗證 ----------------
+
+    def validate(self) -&gt; list[str]:
+        &quot;&quot;&quot;回傳所有結構性驗證錯誤；空 list 表示通過。&quot;&quot;&quot;
+        errors: list[str] = []
+        errors.extend(self._check_unique_ids(self.primitives, &quot;primitive&quot;, attr=&quot;symbol&quot;))
+        errors.extend(self._check_unique_ids(self.axioms, &quot;axiom&quot;))
+        errors.extend(self._check_unique_ids(self.theorems, &quot;theorem&quot;))
+        errors.extend(self._check_dag_acyclic())
+
+        axiom_ids = {a.id for a in self.axioms}
+        for t in self.theorems:
+            for a_id in t.from_axioms:
+                if a_id not in axiom_ids:
+                    errors.append(
+                        f&quot;Theorem &#x27;{t.id}&#x27; references unknown axiom &#x27;{a_id}&#x27;&quot;
+                    )
+
+        theorem_ids = {t.id for t in self.theorems}
+        for p in self.proofs:
+            if p.theorem_id not in theorem_ids:
+                errors.append(
+                    f&quot;Proof references unknown theorem &#x27;{p.theorem_id}&#x27;&quot;
+                )
+
+        for m in self.examples:
+            for a_id in m.satisfies:
+                if a_id not in axiom_ids:
+                    errors.append(
+                        f&quot;Model &#x27;{m.name}&#x27; claims to satisfy unknown axiom &#x27;{a_id}&#x27;&quot;
+                    )
+        return errors
+
+    def _check_dag_acyclic(self) -&gt; list[str]:
+        &quot;&quot;&quot;Kahn&#x27;s algorithm 檢查無環性。&quot;&quot;&quot;
+        nodes: dict[str, set[str]] = {n.id: set(n.depends_on) for n in self.dag}
+        all_ids = set(nodes.keys())
+
+        # 檢查依賴是否都存在於節點集合中
+        bad_refs: list[str] = []
+        for nid, deps in nodes.items():
+            for d in deps:
+                if d not in all_ids:
+                    bad_refs.append(f&quot;DAG node &#x27;{nid}&#x27; depends on missing &#x27;{d}&#x27;&quot;)
+
+        in_deg = {nid: len(d) for nid, d in nodes.items()}
+        queue = [nid for nid, d in in_deg.items() if d == 0]
+        visited = 0
+        # 反向鄰接表
+        reverse: dict[str, list[str]] = {nid: [] for nid in nodes}
+        for nid, deps in nodes.items():
+            for d in deps:
+                if d in reverse:
+                    reverse[d].append(nid)
+
+        while queue:
+            n = queue.pop()
+            visited += 1
+            for child in reverse.get(n, []):
+                in_deg[child] -= 1
+                if in_deg[child] == 0:
+                    queue.append(child)
+
+        errs = list(bad_refs)
+        if visited &lt; len(nodes):
+            errs.append(&quot;DAG contains a cycle (violates acyclicity)&quot;)
+        return errs
+
+    @staticmethod
+    def _check_unique_ids(items, label: str, attr: str = &quot;id&quot;) -&gt; list[str]:
+        seen: set[str] = set()
+        errs: list[str] = []
+        for it in items:
+            key = getattr(it, attr)
+            if key in seen:
+                errs.append(f&quot;Duplicate {label} {attr}: &#x27;{key}&#x27;&quot;)
+            seen.add(key)
+        return errs
+
+    # ---------------- 度量 ----------------
+
+    def compute_metrics(self, threshold: float = 1.5) -&gt; CompressionMetric:
+        &quot;&quot;&quot;
+        度量設計決策：
+        K = |primitives| + |axioms|
+            理論的「壓縮後大小」——僅計入描述此理論所需的
+            原語與假設。DAG 是元資料（越詳細越好），不計入 K。
+        I = |theorems| + Σ|proof.steps|
+            理論的「推論產出」——可從 K 推出的形式化內容。
+        CR = I / K
+            壓縮率。真理論 CR 隨展開發散；魔術理論 CR ≲ 1。
+        threshold = 1.5
+            經驗閾值：每個結構元件平均至少推出 1.5 個定理或步驟。
+        &quot;&quot;&quot;
+        K = len(self.primitives) + len(self.axioms)
+        I = len(self.theorems) + sum(len(p.steps) for p in self.proofs)
+        CR = (I / K) if K &gt; 0 else 0.0
+        return CompressionMetric(
+            K=K,
+            I=I,
+            CR=CR,
+            is_candidate_true_theory=(CR &gt;= threshold),
+            threshold=threshold,
+        )
+
+    # ---------------- 指紋 ----------------
+
+    def fingerprint(self) -&gt; Fingerprint:
+        payload = self.to_canonical_json().encode(&quot;utf-8&quot;)
+        return Fingerprint(
+            sha256=hashlib.sha256(payload).hexdigest(),
+            version=self.version,
+        )
+
+    # ---------------- 序列化 ----------------
+
+    def to_canonical_json(self) -&gt; str:
+        &quot;&quot;&quot;canonical JSON：排序 keys、無空白——用於指紋計算與跨系統交換。&quot;&quot;&quot;
+        def norm(obj: Any) -&gt; Any:
+            if isinstance(obj, dict):
+                return {k: norm(v) for k, v in sorted(obj.items())}
+            if isinstance(obj, (list, tuple)):
+                return [norm(x) for x in obj]
+            if isinstance(obj, Enum):
+                return obj.value
+            return obj
+
+        d = asdict(self)
+        return json.dumps(
+            norm(d),
+            ensure_ascii=False,
+            sort_keys=True,
+            separators=(&quot;,&quot;, &quot;:&quot;),
+        )
+
+    def to_report(self) -&gt; str:
+        &quot;&quot;&quot;人類可讀的結晶化報告。&quot;&quot;&quot;
+        m = self.compute_metrics()
+        fp = self.fingerprint()
+        errs = self.validate()
+        lines = [
+            &quot;═══════════════════════════════════════════════&quot;,
+            f&quot;  Theory Compression Format Report&quot;,
+            f&quot;  {self.name}  v{self.version}&quot;,
+            &quot;═══════════════════════════════════════════════&quot;,
+            f&quot;  Fingerprint : {fp.sha256[:24]}…&quot;,
+            &quot;&quot;,
+            f&quot;  §0 Primitives : {len(self.primitives):&gt;3}&quot;,
+            f&quot;  §1 Axioms     : {len(self.axioms):&gt;3}&quot;,
+            f&quot;  §2 DAG nodes  : {len(self.dag):&gt;3}   &quot;
+            f&quot;(edges: {sum(len(n.depends_on) for n in self.dag)})&quot;,
+            f&quot;  §4 Theorems   : {len(self.theorems):&gt;3}&quot;,
+            f&quot;  §5 Proofs     : {len(self.proofs):&gt;3}   &quot;
+            f&quot;(total steps: {sum(len(p.steps) for p in self.proofs)})&quot;,
+            f&quot;  §6 Models     : {len(self.examples):&gt;3}&quot;,
+            &quot;&quot;,
+            &quot;  §7 Compression Metrics&quot;,
+            f&quot;     K (structural complexity) = {m.K}&quot;,
+            f&quot;     I (inferential output)    = {m.I}&quot;,
+            f&quot;     CR = I / K                = {m.CR:.3f}&quot;,
+            f&quot;     threshold                 = {m.threshold}&quot;,
+            f&quot;     candidate true theory?    = &quot;
+            f&quot;{&#x27;YES&#x27; if m.is_candidate_true_theory else &#x27;NO (magical zone)&#x27;}&quot;,
+            &quot;&quot;,
+            f&quot;  Validation : {&#x27;PASS ✓&#x27; if not errs else &#x27;FAIL ✗&#x27;}&quot;,
+        ]
+        for e in errs:
+            lines.append(f&quot;     × {e}&quot;)
+        lines.append(&quot;═══════════════════════════════════════════════&quot;)
+        return &quot;\n&quot;.join(lines)
+
+
+# ============================================================
+# Demo：DCO v5.0 的 TCF 實例化
+# ============================================================
+
+def build_dco_v5() -&gt; Theory:
+    &quot;&quot;&quot;Dynamic Circle Ontology v5.0（Closure 為唯一原語）。&quot;&quot;&quot;
+    primitives = [
+        Primitive(&quot;Cl&quot;, PrimitiveKind.TYPE, 0, &quot;Type&quot;,
+                  &quot;閉合性 Closure——概念空間唯一原語&quot;),
+        Primitive(&quot;π&quot;, PrimitiveKind.FUNCTION, 1, &quot;ℕ × Cl → Top&quot;,
+                  &quot;維度投影算子 πₙ(Cl) = Sⁿ⁻¹&quot;),
+        Primitive(&quot;∘&quot;, PrimitiveKind.FUNCTION, 2, &quot;Cl × Cl → Cl&quot;,
+                  &quot;閉合複合運算&quot;),
+        Primitive(&quot;In&quot;, PrimitiveKind.RELATION, 2, &quot;Cl × Cl&quot;,
+                  &quot;內在關係（inside-of）&quot;),
+    ]
+
+    axioms = [
+        Axiom(&quot;Cl-1&quot;, &quot;self-consistency&quot;,
+              &quot;∀x ∈ Cl. x ∘ x = x&quot;,
+              &quot;自洽性：閉合體自複合保持恆等。&quot;),
+        Axiom(&quot;Cl-2&quot;, &quot;duality&quot;,
+              &quot;∀x ∈ Cl. ∃!y. In(x, y) ∧ ¬In(y, x)&quot;,
+              &quot;對偶性：內與外共同定義。&quot;),
+        Axiom(&quot;Cl-3&quot;, &quot;conservation&quot;,
+              &quot;∀f: Cl → Cl. ∃ f⁻¹: Cl → Cl. f ∘ f⁻¹ = id&quot;,
+              &quot;守恆性：所有內生操作皆可逆。&quot;),
+        Axiom(&quot;Cl-4&quot;, &quot;generativity&quot;,
+              &quot;∀n ∈ ℕ. π_{n+1}(Cl) = Sⁿ&quot;,
+              &quot;生成性：自反射生成更高維拓撲。&quot;),
+    ]
+
+    dag = [
+        DAGNode(&quot;Cl&quot;, &quot;primitive&quot;),
+        DAGNode(&quot;π&quot;, &quot;primitive&quot;, (&quot;Cl&quot;,)),
+        DAGNode(&quot;∘&quot;, &quot;primitive&quot;, (&quot;Cl&quot;,)),
+        DAGNode(&quot;In&quot;, &quot;primitive&quot;, (&quot;Cl&quot;,)),
+        DAGNode(&quot;Cl-1&quot;, &quot;axiom&quot;, (&quot;Cl&quot;, &quot;∘&quot;)),
+        DAGNode(&quot;Cl-2&quot;, &quot;axiom&quot;, (&quot;Cl&quot;, &quot;In&quot;)),
+        DAGNode(&quot;Cl-3&quot;, &quot;axiom&quot;, (&quot;Cl&quot;, &quot;∘&quot;)),
+        DAGNode(&quot;Cl-4&quot;, &quot;axiom&quot;, (&quot;Cl&quot;, &quot;π&quot;)),
+        DAGNode(&quot;T-DimProj&quot;,     &quot;theorem&quot;, (&quot;Cl-4&quot;,)),
+        DAGNode(&quot;T-CircleAsPi2&quot;, &quot;theorem&quot;, (&quot;Cl-4&quot;, &quot;T-DimProj&quot;)),
+        DAGNode(&quot;T-SingWuji&quot;,    &quot;theorem&quot;, (&quot;Cl-3&quot;, &quot;Cl-4&quot;)),
+        DAGNode(&quot;T-DaoInvert&quot;,   &quot;theorem&quot;, (&quot;Cl-3&quot;, &quot;Cl-4&quot;)),
+        DAGNode(&quot;T-DimCollapse&quot;, &quot;theorem&quot;, (&quot;Cl-3&quot;, &quot;Cl-4&quot;)),
+        DAGNode(&quot;T-ChiralityCons&quot;,&quot;theorem&quot;, (&quot;Cl-3&quot;,)),
+        DAGNode(&quot;T-ConsLaws&quot;,    &quot;theorem&quot;, (&quot;Cl-3&quot;,)),
+        DAGNode(&quot;T-GodPoint&quot;,    &quot;theorem&quot;, (&quot;Cl-1&quot;, &quot;Cl-3&quot;)),
+        DAGNode(&quot;T-DaoGen&quot;,      &quot;theorem&quot;, (&quot;Cl-4&quot;,)),
+        DAGNode(&quot;T-SInfContract&quot;,&quot;theorem&quot;, (&quot;Cl-4&quot;, &quot;T-DimProj&quot;)),
+    ]
+
+    language = FOLSignature(
+        types=(&quot;Cl&quot;, &quot;ℕ&quot;, &quot;Top&quot;),
+        constants=((&quot;∅&quot;, &quot;Cl&quot;),),
+        functions=(
+            (&quot;π&quot;, (&quot;ℕ&quot;, &quot;Cl&quot;), &quot;Top&quot;),
+            (&quot;∘&quot;, (&quot;Cl&quot;, &quot;Cl&quot;), &quot;Cl&quot;),
+        ),
+        relations=(
+            (&quot;In&quot;, (&quot;Cl&quot;, &quot;Cl&quot;)),
+            (&quot;=&quot;, (&quot;Cl&quot;, &quot;Cl&quot;)),
+        ),
+    )
+
+    theorems = [
+        Theorem(&quot;T-DimProj&quot;, &quot;dimensional projection&quot;,
+                &quot;∀n ∈ ℕ. πₙ(Cl) = Sⁿ⁻¹&quot;,
+                (&quot;Cl-4&quot;,),
+                &quot;維度投影定理。&quot;),
+        Theorem(&quot;T-CircleAsPi2&quot;, &quot;circle-as-projection&quot;,
+                &quot;Circle ≡ π₂(Cl) = S¹&quot;,
+                (&quot;Cl-4&quot;,),
+                &quot;圓不是原語，僅是 Closure 的 2D 投影。&quot;),
+        Theorem(&quot;T-SingWuji&quot;, &quot;singularity-as-Wuji&quot;,
+                &quot;lim_{n→∞} Sⁿ ≃ point ≡ 無極&quot;,
+                (&quot;Cl-3&quot;, &quot;Cl-4&quot;),
+                &quot;S^∞ 可縮為一點 = 道生一之前的物理無極態。&quot;),
+        Theorem(&quot;T-DaoInvert&quot;, &quot;Dao-inversion&quot;,
+                &quot;反者道之動 ≡ (Cl-generation)⁻¹&quot;,
+                (&quot;Cl-3&quot;, &quot;Cl-4&quot;),
+                &quot;反者道之動 = 閉合生成的逆算子。&quot;),
+        Theorem(&quot;T-DimCollapse&quot;, &quot;dimensional collapse&quot;,
+                &quot;S² → S¹ → S⁰ under (gravity ⊕ rotation)&quot;,
+                (&quot;Cl-3&quot;, &quot;Cl-4&quot;),
+                &quot;重力（徑向閉合）+ 旋轉（切向閉合）驅動塌縮。&quot;),
+        Theorem(&quot;T-ChiralityCons&quot;, &quot;chirality conservation&quot;,
+                &quot;∀ collapse path P. χ(S_init) = χ(S_final)&quot;,
+                (&quot;Cl-3&quot;,),
+                &quot;手性在維度塌縮中守恆。&quot;),
+        Theorem(&quot;T-ConsLaws&quot;, &quot;conservation laws derivability&quot;,
+                &quot;∀ symmetry σ of Cl. ∃ conservation law C(σ)&quot;,
+                (&quot;Cl-3&quot;,),
+                &quot;所有守恆律（Noether 型）從 Cl-3 導出。&quot;),
+        Theorem(&quot;T-GodPoint&quot;, &quot;God-point definition&quot;,
+                &quot;G ≡ lim_{ε→0⁺}(Cl + ε)&quot;,
+                (&quot;Cl-1&quot;, &quot;Cl-3&quot;),
+                &quot;神點不是奇點而是極限——可無限趨近而不可達。&quot;),
+        Theorem(&quot;T-DaoGen&quot;, &quot;generative spiral&quot;,
+                &quot;道 → 一 → 二 → 三 → 萬物  ≡  Cl ⟲ Φⁿ(Cl)&quot;,
+                (&quot;Cl-4&quot;,),
+                &quot;《道德經》生成序 = Closure 的自反射迭代。&quot;),
+        Theorem(&quot;T-SInfContract&quot;, &quot;S-infinity contractibility&quot;,
+                &quot;S^∞ is contractible (π_k(S^∞) = 0, ∀k)&quot;,
+                (&quot;Cl-4&quot;,),
+                &quot;無限維球面可縮為點——拓撲上即 Dao ↔ 無極。&quot;),
+    ]
+
+    proofs = [
+        Proof(
+            theorem_id=&quot;T-DimProj&quot;,
+            steps=(
+                ProofStep(1, &quot;∀n ∈ ℕ. π_{n+1}(Cl) = Sⁿ&quot;,
+                          &quot;AxiomIntro&quot;, (&quot;Cl-4&quot;,)),
+                ProofStep(2, &quot;Let m = n + 1, n ∈ ℕ ⇒ m ∈ ℕ⁺&quot;,
+                          &quot;Substitution&quot;, (&quot;1&quot;,)),
+                ProofStep(3, &quot;π_m(Cl) = S^{m-1}&quot;,
+                          &quot;Rename&quot;, (&quot;2&quot;,)),
+                ProofStep(4, &quot;∀n ∈ ℕ. πₙ(Cl) = Sⁿ⁻¹  ∎&quot;,
+                          &quot;Generalization&quot;, (&quot;3&quot;,)),
+            ),
+        ),
+        Proof(
+            theorem_id=&quot;T-SingWuji&quot;,
+            steps=(
+                ProofStep(1, &quot;S^∞ = colim_{n} Sⁿ&quot;,
+                          &quot;Def&quot;, ()),
+                ProofStep(2, &quot;S^∞ is contractible (standard result)&quot;,
+                          &quot;Lemma&quot;, (&quot;1&quot;,)),
+                ProofStep(3, &quot;contractible ⇒ homotopy-equivalent to point&quot;,
+                          &quot;Def&quot;, (&quot;2&quot;,)),
+                ProofStep(4, &quot;lim Sⁿ ≃ point ≡ 無極  ∎&quot;,
+                          &quot;Identification&quot;, (&quot;3&quot;,)),
+            ),
+        ),
+    ]
+
+    examples = [
+        Model(
+            name=&quot;topological projection&quot;,
+            domain=&quot;Algebraic Topology&quot;,
+            interpretation=(
+                (&quot;Cl&quot;, &quot;abstract closure space&quot;),
+                (&quot;π₂(Cl)&quot;, &quot;S¹ (circle)&quot;),
+                (&quot;π₃(Cl)&quot;, &quot;S² (2-sphere)&quot;),
+            ),
+            satisfies=(&quot;Cl-1&quot;, &quot;Cl-4&quot;),
+        ),
+        Model(
+            name=&quot;Noether-style conservation&quot;,
+            domain=&quot;Theoretical Physics&quot;,
+            interpretation=(
+                (&quot;Cl-3&quot;, &quot;symmetry → conservation law&quot;),
+                (&quot;∘&quot;,    &quot;composition of closed dynamical systems&quot;),
+            ),
+            satisfies=(&quot;Cl-1&quot;, &quot;Cl-3&quot;),
+        ),
+        Model(
+            name=&quot;Daoist cosmology&quot;,
+            domain=&quot;Philosophy of Mind&quot;,
+            interpretation=(
+                (&quot;lim Sⁿ&quot;,  &quot;無極 (Wuji)&quot;),
+                (&quot;π₁(Cl)&quot;,  &quot;道 (Dao) as 0-sphere = {±1}&quot;),
+                (&quot;反者道之動&quot;, &quot;inverse of Cl-generation&quot;),
+            ),
+            satisfies=(&quot;Cl-3&quot;, &quot;Cl-4&quot;),
+        ),
+    ]
+
+    return Theory(
+        name=&quot;Dynamic Circle Ontology&quot;,
+        version=&quot;5.0&quot;,
+        primitives=primitives,
+        axioms=axioms,
+        dag=dag,
+        language=language,
+        theorems=theorems,
+        proofs=proofs,
+        examples=examples,
+    )
+
+
+# ============================================================
+# 對照組：一個「魔術理論」，展示 CR 的辨別力
+# ============================================================
+
+def build_magical_theory() -&gt; Theory:
+    &quot;&quot;&quot;
+    假理論：對每個「結論」都獨立添加一條公理。
+    預期 CR ≈ 1，觸發 magical-zone 警告。
+    &quot;&quot;&quot;
+    primitives = [
+        Primitive(&quot;X&quot;, PrimitiveKind.TYPE, 0, &quot;Type&quot;, &quot;神秘實體&quot;),
+    ]
+    axioms = [
+        Axiom(&quot;M-1&quot;, &quot;ad-hoc-1&quot;, &quot;P₁(X)&quot;, &quot;憑空假設命題 1&quot;),
+        Axiom(&quot;M-2&quot;, &quot;ad-hoc-2&quot;, &quot;P₂(X)&quot;, &quot;憑空假設命題 2&quot;),
+        Axiom(&quot;M-3&quot;, &quot;ad-hoc-3&quot;, &quot;P₃(X)&quot;, &quot;憑空假設命題 3&quot;),
+        Axiom(&quot;M-4&quot;, &quot;ad-hoc-4&quot;, &quot;P₄(X)&quot;, &quot;憑空假設命題 4&quot;),
+    ]
+    dag = [
+        DAGNode(&quot;X&quot;, &quot;primitive&quot;),
+        DAGNode(&quot;M-1&quot;, &quot;axiom&quot;, (&quot;X&quot;,)),
+        DAGNode(&quot;M-2&quot;, &quot;axiom&quot;, (&quot;X&quot;,)),
+        DAGNode(&quot;M-3&quot;, &quot;axiom&quot;, (&quot;X&quot;,)),
+        DAGNode(&quot;M-4&quot;, &quot;axiom&quot;, (&quot;X&quot;,)),
+    ]
+    theorems = [
+        Theorem(&quot;T1&quot;, &quot;restated-1&quot;, &quot;P₁(X)&quot;, (&quot;M-1&quot;,), &quot;重述公理 1&quot;),
+        Theorem(&quot;T2&quot;, &quot;restated-2&quot;, &quot;P₂(X)&quot;, (&quot;M-2&quot;,), &quot;重述公理 2&quot;),
+    ]
+    proofs = [
+        Proof(&quot;T1&quot;, (ProofStep(1, &quot;P₁(X)&quot;, &quot;AxiomIntro&quot;, (&quot;M-1&quot;,)),)),
+        Proof(&quot;T2&quot;, (ProofStep(1, &quot;P₂(X)&quot;, &quot;AxiomIntro&quot;, (&quot;M-2&quot;,)),)),
+    ]
+    return Theory(
+        name=&quot;Ad-Hoc Magical Theory&quot;,
+        version=&quot;0.1&quot;,
+        primitives=primitives,
+        axioms=axioms,
+        dag=dag,
+        theorems=theorems,
+        proofs=proofs,
+    )
+
+
+if __name__ == &quot;__main__&quot;:
+    print(&quot;\n&quot; + &quot;▶&quot; * 30 + &quot;  DCO v5.0  &quot; + &quot;▶&quot; * 30)
+    dco = build_dco_v5()
+    print(dco.to_report())
+
+    print(&quot;\n&quot; + &quot;▶&quot; * 28 + &quot;  Magical Theory  &quot; + &quot;▶&quot; * 28)
+    magic = build_magical_theory()
+    print(magic.to_report())
+
+    print(&quot;\n對照結論：&quot;)
+    print(f&quot;  DCO v5.0   CR = {dco.compute_metrics().CR:.3f}  → true-theory candidate&quot;)
+    print(f&quot;  Magical    CR = {magic.compute_metrics().CR:.3f}  → magical-zone&quot;)
+</code></pre>
+<div class="altbar">原始檔（供 RAG/下載）：<a href="tcf_schema.py" rel="noopener">papers/tcf_schema.py</a> [py]</div>
+</article>
+<footer><p>Neo.K (許筌崴) · Cl + ε</p></footer>
+</body>
+</html>

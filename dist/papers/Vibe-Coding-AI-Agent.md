@@ -1,0 +1,2090 @@
+# 語義偽代碼：面向 Vibe Coding、意圖語言與 AI Agent 協作開發的概念函數庫
+
+**版本**：v0.1\
+**作者**：Neo.K\
+**形式**：Markdown 論文 / 技術白皮書草稿\
+**定位**：概念先行、非可執行、AI 可理解、需重新組合的語義偽代碼理論與網站架構提案
+
+***
+
+## 摘要
+
+隨著大型語言模型、AI Agent、Vibe Coding 與自然語言協作開發逐漸成熟，人類與程式系統之間的介面正在發生根本變化。過去，使用者必須先理解程式語言、框架、語法與執行環境，才能將自己的意圖轉化為可運行系統；而在 AI 協作開發時代，使用者可以先以自然語言描述需求，再由 AI 生成程式碼、任務流程、資料結構、API、UI 操作或自動化方案。然而，自然語言過於鬆散，傳統程式碼又過於具體，兩者之間缺乏一個穩定、可組合、可理解、可轉譯的中介層。
+
+本文提出「語義偽代碼」（Semantic Pseudocode）作為一種面向 AI 協作時代的概念函數格式。語義偽代碼不是可直接執行的程式碼，也不是某種新程式語言。它是一種用於描述意圖、輸入、輸出、流程、限制、失敗模式、組合方式與轉譯目標的結構化語義積木。它的目的不是讓機器立即執行，而是讓人類與 AI 先共享同一個概念模型，再由 AI Agent 根據具體使用者需求、技術棧、資料結構、執行環境與安全限制，重新組合並實作成真正可運行的系統。
+
+本文主張，在 AI 逐漸具備程式生成、工具調用、檔案操作、瀏覽器控制與跨應用協作能力後，未來的核心問題將不只是「如何寫程式」，而是「如何穩定描述意圖」。語義偽代碼可被視為一種介於自然語言、程式碼、流程圖、API 文件、Prompt、設計規格與 Agent Workflow 之間的中介語言。它比自然語言更結構化，比程式碼更自由，比 Prompt 更穩定，比 API 文件更接近創意源頭，比流程圖更容易被 AI 重組。它適合成為 Vibe Coding、意圖語言、AI Agent OS、RAG 工作流、軟體規格生成、產品設計、研究寫作、知識管理與人機協作開發的基礎積木。
+
+本文同時提出一個「語義偽代碼網站 / 函數庫」的初步構想。該網站不收錄可直接執行的程式碼，而是收錄大量不可執行、僅供參考與理解的語義偽代碼範例。每個範例都必須明確標註 `@non_executable`、`@reference_only`、`@recomposition_required`，以避免 AI 或使用者誤以為其可直接運行。網站的核心精神不是複製程式碼，而是理解意圖、重組概念、生成實作。長期而言，這種語義函數庫有可能成為 AI 時代的「概念 npm」、「意圖函式庫」或「人類創意到機器實作的中介層」。
+
+***
+
+## 1. 問題背景：從寫程式到描述意圖
+
+傳統軟體開發建立在一個基本前提之上：人類必須使用某種精確語法來命令機器。無論是 C、Python、JavaScript、SQL、Shell、Rust、Go，還是其他語言，本質上都要求人類將意圖壓縮為可被編譯器、直譯器或執行環境接受的形式。這種模式非常強大，因為它帶來了可重現、可測試、可部署、可優化的工程能力。然而，它也形成了一道門檻：大量具有概念、產品直覺、流程理解、研究想法或創意構想的人，並不能直接把自己的意圖轉成可運行系統。
+
+AI 協作開發改變了這個前提。當大型語言模型可以根據自然語言生成程式碼，當 Agent 可以讀取檔案、呼叫工具、操作瀏覽器、修改專案、執行測試、整理文件，開發行為不再只是工程師與程式語言之間的關係，而變成人類、AI、工具、框架與執行環境之間的協同過程。
+
+這就是 Vibe Coding 與意圖語言出現的背景。
+
+所謂 Vibe Coding，並不是完全不需要工程，也不是隨便說幾句話就能得到穩定系統。更精確地說，它是一種「以意圖、感覺、方向、功能輪廓、使用者體驗與局部修正為主導」的 AI 協作開發方式。使用者不一定先寫完整規格，也不一定先畫完整架構，而是透過與 AI 的連續對話，逐步讓概念成形，讓系統生成，讓錯誤暴露，再進行局部修正。
+
+這種方式的優勢是速度快、門檻低、創意流動性高。它允許不熟悉底層程式語法的人參與開發，也允許產品設計者、研究者、創作者、管理者或跨領域人士將想法快速具象化。
+
+但它也有明顯問題。
+
+自然語言太自由，容易模糊。AI 會過度補完、錯誤假設、忽略限制、誤解範圍、生成看似合理但不符合實際需求的程式碼。使用者說「做一個推薦系統」，AI 可能不知道是內容推薦、商品推薦、文件排序、使用者匹配、搜尋 rerank，還是個人化首頁。使用者說「幫我整理資料」，AI 可能不知道需要保留原始欄位、去重、分類、標記不確定性，還是直接產生摘要。
+
+另一方面，直接要求使用者寫正式規格或程式碼又太重。對許多創意先行的開發場景而言，使用者一開始掌握的是模糊概念，不是完整工程規格。強行要求他們先寫 API schema、資料庫設計、狀態機或完整流程圖，反而會壓抑創意。
+
+因此，AI 協作開發真正需要的是一個中間層：
+
+```md
+自然語言意圖
+  ↓
+結構化語義描述
+  ↓
+AI 理解與重組
+  ↓
+具體程式碼 / 工作流 / API / UI 操作
+```
+
+語義偽代碼正是為了補上這一層而提出。
+
+***
+
+## 2. 傳統偽代碼的限制
+
+偽代碼並不是新概念。傳統上，偽代碼被用於演算法教學、面試、論文、白板設計與系統規劃。它通常不要求符合特定語言語法，而是用接近自然語言與程式控制結構的方式描述演算法。例如：
+
+```md
+FOR each item in list:
+  IF item matches condition:
+    add item to result
+RETURN result
+```
+
+這種形式對人類工程師很有用，因為它可以先避開語言細節，聚焦於邏輯流程。然而，傳統偽代碼仍然有幾個問題。
+
+第一，傳統偽代碼通常以「演算法流程」為核心，而不是以「意圖」為核心。它告訴讀者如何處理資料，卻不一定明確說明為什麼要這樣處理、限制是什麼、不能做什麼、適用情境是什麼。
+
+第二，傳統偽代碼常常假設讀者是人類工程師。它不一定為 AI Agent 設計，也不一定包含足夠的語義提示，讓 AI 能根據不同技術棧重新組合。
+
+第三，傳統偽代碼缺乏標準欄位。不同作者可能使用不同格式。有些寫得像 Python，有些像自然語言，有些像數學演算法，有些像流程筆記。這對人類來說還可以理解，但對 AI 協作流程而言，穩定性不足。
+
+第四，傳統偽代碼容易被誤會為「接近可執行」。尤其在 AI 生成程式碼時，如果一段偽代碼看起來很像 Python 或 JavaScript，AI 可能會直接照抄結構，而不是重新理解其意圖。這會讓偽代碼失去概念中介層的價值，變成不完整程式碼。
+
+第五，傳統偽代碼缺乏「重組」概念。它通常描述一個局部流程，但不明確說明這個流程可以和哪些模組組合，可以轉譯到哪些目標，可以在哪些場景下改寫。
+
+因此，本文所說的語義偽代碼，不是傳統偽代碼的簡單延伸，而是一種重新定義。
+
+傳統偽代碼偏向：
+
+```md
+如何做
+```
+
+語義偽代碼偏向：
+
+```md
+要做什麼
+為什麼做
+需要什麼
+產生什麼
+限制什麼
+如何失敗
+如何組合
+如何轉譯
+```
+
+這裡的核心差異在於：語義偽代碼不是模擬程式碼，而是封裝意圖。
+
+***
+
+## 3. 語義偽代碼的定義
+
+本文將語義偽代碼定義如下：
+
+> 語義偽代碼是一種非可執行、結構化、AI 可理解、需根據上下文重新組合的意圖描述格式，用於將人類概念封裝為可參考、可搜尋、可組合、可轉譯的語義函數模組。
+
+這個定義包含幾個關鍵詞。
+
+### 3.1 非可執行
+
+語義偽代碼不是程式語言，也不是腳本。它不能直接被電腦執行。即使它看起來有 `FUNCTION`、`INPUT`、`OUTPUT`、`PROCESS` 等結構，也只是為了幫助理解，而不是為了提供執行語法。
+
+因此，每個語義偽代碼模組都應該明確標註：
+
+```md
+@non_executable
+@reference_only
+@recomposition_required
+```
+
+這三個標籤非常重要。
+
+`@non_executable` 表示不可直接執行。\
+`@reference_only` 表示只供參考。\
+`@recomposition_required` 表示實際使用時必須重新組合。
+
+尤其是 `@recomposition_required`，它不是單純提醒「不要執行」，而是告訴 AI 正確行為：不要照抄，必須依照上下文重新理解與實作。
+
+### 3.2 結構化
+
+語義偽代碼雖然不是正式程式碼，但必須有穩定結構。它不能只是散文，也不能只是靈感筆記。它應該至少包含：
+
+```md
+NAME
+INTENT
+INPUT
+OUTPUT
+PROCESS
+CONSTRAINTS
+FAILURE_MODES
+COMPOSITION
+TRANSLATION_TARGETS
+USAGE_NOTE
+```
+
+這些欄位的目的不是增加形式感，而是降低 AI 誤解的可能性。
+
+自然語言最大的問題是邊界不清。使用者說「幫我做一個摘要」，可能包含不同意圖：壓縮長文、保留要點、改寫語氣、整理行動項、抽取資料、生成簡報大綱、轉成社群貼文。若沒有結構化欄位，AI 很容易自行猜測。
+
+語義偽代碼則要求把任務拆成明確欄位，使 AI 可以分別理解任務目標、輸入、輸出、限制與失敗條件。
+
+### 3.3 AI 可理解
+
+語義偽代碼的讀者不只是人類，也包括 AI。這意味著它必須避免過度依賴隱喻、暗示、行話或未定義縮寫。它可以保留創意，但要讓 AI 能清楚判斷：
+
+```md
+這是什麼任務？
+這個任務適合什麼情境？
+它需要哪些資訊？
+它不能做哪些事？
+失敗時應該怎麼處理？
+它可以轉成什麼實作？
+```
+
+AI 可理解不等於機器可執行。前者是語義層，後者是執行層。語義偽代碼的價值正在於它不急著進入執行層，而是先穩定語義層。
+
+### 3.4 需重新組合
+
+語義偽代碼不是最終答案，而是概念積木。任何實際使用都應根據上下文重新組合。相同的語義偽代碼模組可以被轉譯成 Python 函數、TypeScript 服務、SQL 查詢、RAG 排序策略、Agent 工作流、UI 自動化步驟、產品需求文件或研究論文大綱。
+
+例如：
+
+```md
+FUNCTION: rank_candidate_documents
+```
+
+這個語義函數可以被實作為：
+
+```md
+Python reranker
+TypeScript backend service
+Elasticsearch scoring policy
+Vector database retrieval pipeline
+Agent source selection rule
+Research assistant citation workflow
+```
+
+真正的實作取決於環境，而不是由語義偽代碼本身決定。
+
+***
+
+## 4. 核心命題：概念先行，語義成形，實作後置
+
+語義偽代碼的核心命題可以概括為：
+
+> 概念先行，語義成形，實作後置。
+
+這句話意味著，未來某些開發流程不必從語法開始，而可以從概念開始。使用者先描述想法，再將想法整理成語義偽代碼，AI 讀取該語義結構後，根據具體情境生成實作。
+
+這並不是否定程式語言，也不是否定工程。相反，語義偽代碼承認真正可運行的系統仍然需要工程化，需要測試、型別、錯誤處理、部署、安全審查、效能優化與維護。但它主張，在進入工程實作之前，應該先有一個更接近人類意圖的中介層。
+
+傳統流程通常是：
+
+```md
+想法 → 規格 → 程式碼 → 測試 → 部署
+```
+
+AI 協作流程可能變成：
+
+```md
+想法 → 語義偽代碼 → AI 重組 → 初版實作 → 人機迭代 → 測試部署
+```
+
+這裡的關鍵不是跳過工程，而是讓創意可以更早被結構化，讓 AI 可以更穩定地理解創意。
+
+在這個模型中，語義偽代碼像積木。每個積木不一定能獨立完成系統，但它有清楚的用途、接口、限制與組合方式。大量積木累積後，就能形成一個概念函數庫。
+
+這個函數庫不是傳統程式碼庫，而是語義函數庫。
+
+傳統函式庫提供可執行函數：
+
+```python
+sort(items)
+filter(items, condition)
+rank(documents, query)
+```
+
+語義函數庫提供的是意圖模組：
+
+```md
+CALL rank_candidate_documents
+CALL clarify_user_intent
+CALL detect_missing_context
+CALL prepare_ui_action
+CALL validate_output_against_constraints
+```
+
+AI 看到這些語義函數後，不是直接執行，而是理解「現在應該完成哪一類語義任務」，再依照實際環境轉換成具體步驟。
+
+這種方式特別適合 Vibe Coding，因為 Vibe Coding 的使用者常常不是從精確規格開始，而是從方向、感覺、產品輪廓與功能片段開始。語義偽代碼可以把這些不穩定的創意壓縮成較穩定的結構，使 AI 不至於完全憑空補完。
+
+***
+
+## 5. 為什麼不是 Prompt Library？
+
+語義偽代碼很容易被誤解為 Prompt Library。這兩者有相似之處，因為都與 AI 的輸入格式有關。但它們本質不同。
+
+Prompt Library 通常收錄的是「你可以這樣問 AI」：
+
+```md
+請你扮演資深工程師，幫我分析以下程式碼...
+請你用五個步驟幫我規劃...
+請你生成一份產品需求文件...
+```
+
+這種方式有用，但 Prompt 的問題是高度依賴語境、模型、語氣與任務描述。Prompt 往往是一次性指令，而不是穩定模組。不同模型、不同對話上下文、不同使用者目的，都會讓 Prompt 產生不同效果。
+
+語義偽代碼則不是問句，而是結構。
+
+它不只是告訴 AI「請你做什麼」，而是定義一個可重用的語義函數：
+
+```md
+FUNCTION: build_argument_structure
+
+INTENT:
+  在撰寫文章、論文或白皮書前，建立命題、概念定義、論證路徑、反例處理與結論邊界。
+
+INPUT:
+  topic
+  thesis
+  target_audience
+
+OUTPUT:
+  argument_structure
+
+PROCESS:
+  1. Clarify central thesis.
+  2. Define key concepts.
+  3. Build supporting arguments.
+  4. Identify objections.
+  5. Mark uncertainty.
+  6. Produce outline.
+
+CONSTRAINTS:
+  - Do not overclaim.
+  - Separate hypothesis from fact.
+  - Mark speculative parts.
+```
+
+這不是 Prompt，而是任務模型。
+
+Prompt Library 偏向：
+
+```md
+對 AI 說什麼
+```
+
+語義偽代碼偏向：
+
+```md
+這個任務的結構是什麼
+```
+
+Prompt Library 是語言技巧。\
+語義偽代碼是概念架構。
+
+Prompt Library 往往追求「讓 AI 產生某種回答」。\
+語義偽代碼追求「讓 AI 穩定理解某種任務」。
+
+這是兩者最大差異。
+
+***
+
+## 6. 為什麼不是正式程式語言？
+
+另一個可能的誤解是：如果語義偽代碼這麼結構化，為什麼不直接做成正式語言？為什麼不讓它可執行？
+
+原因在於，語義偽代碼的價值恰好來自「不急著可執行」。
+
+正式程式語言必須處理語法、解析、型別、作用域、錯誤、記憶體、執行模型、標準庫、工具鏈、生態系、版本相容性。這些都很重要，但一旦進入這些問題，語義偽代碼就會被迫變成另一種程式語言。它會失去作為概念中介層的自由度。
+
+語義偽代碼不想取代 Python、JavaScript、SQL、Shell 或任何程式語言。它要做的是在這些語言之前，先建立一層意圖結構。
+
+可以這樣理解：
+
+```md
+自然語言：太模糊
+正式程式碼：太具體
+語義偽代碼：位於兩者之間
+```
+
+語義偽代碼不負責直接運行，而負責讓 AI 理解：
+
+```md
+任務是什麼
+輸入是什麼
+輸出是什麼
+限制是什麼
+流程是什麼
+可組合對象是什麼
+可轉譯方向是什麼
+```
+
+真正要執行時，AI 或開發者再根據上下文選擇實作語言。
+
+同一個語義函數，可以轉成不同語言：
+
+```md
+FUNCTION: create_user_profile
+```
+
+可轉成 Python dataclass：
+
+```python
+@dataclass
+class UserProfile:
+    user_id: str
+    name: str
+    preferences: dict | None = None
+```
+
+也可轉成 TypeScript interface：
+
+```ts
+interface UserProfile {
+  userId: string
+  name: string
+  preferences?: Record<string, unknown>
+}
+```
+
+也可轉成 SQL schema：
+
+```sql
+CREATE TABLE user_profiles (...)
+```
+
+也可轉成 Agent Workflow：
+
+```md
+1. Ask user for missing fields.
+2. Validate confirmed data.
+3. Store profile.
+4. Avoid inferring sensitive traits.
+```
+
+如果語義偽代碼本身被設計成可執行語言，它就會被某種特定執行模型綁定。反而降低了它跨語言、跨工具、跨框架、跨 Agent 的價值。
+
+因此，本文主張：語義偽代碼應保持非可執行性。
+
+它不是弱點，而是設計原則。
+
+***
+
+## 7. 程式結構的抽象還原：IF、FOR 與語義積木
+
+在高層抽象上，大量程式流程都可以被理解為條件判斷、重複迭代、狀態變化、資料轉換與函數組合。許多複雜系統最終都可以拆解為：
+
+```md
+IF 條件成立，執行某行為
+FOR 每個對象，重複某流程
+UPDATE 某個狀態
+RETURN 某個結果
+CALL 某個模組
+HANDLE 某種失敗
+```
+
+這並不是說所有程式語言理論真的只剩 IF 與 FOR，也不是否定型別系統、並行模型、函數式抽象、邏輯程式設計、資料流、事件驅動、反應式系統、物件導向或編譯器理論的重要性。更精確地說，在使用者意圖層面，很多功能可以先被還原為幾種基本語義結構：
+
+```md
+判斷
+迭代
+轉換
+聚合
+排序
+篩選
+驗證
+儲存
+呼叫
+回退
+確認
+輸出
+```
+
+真正複雜的不是語法本身，而是語義邊界：
+
+```md
+什麼時候判斷？
+判斷依據是什麼？
+迭代對象是什麼？
+狀態如何改變？
+資料如何流動？
+錯誤如何處理？
+哪些行為不可逆？
+哪些資訊不可推測？
+哪些模組可以組合？
+哪些輸出需要驗證？
+```
+
+語義偽代碼關注的正是這些問題。
+
+例如，「篩選文件」看似簡單：
+
+```md
+FOR each document:
+  IF document matches query:
+    add to result
+```
+
+但在 AI 協作與 RAG 場景中，真正重要的是：
+
+```md
+什麼叫 matches？
+是關鍵字匹配、語義相似、時間新鮮、來源可信，還是使用者上下文相關？
+若文件過時怎麼辦？
+若來源衝突怎麼辦？
+若查詢意圖不明怎麼辦？
+是否要標記不確定性？
+是否要保留被排除文件的理由？
+```
+
+這些問題不是普通 FOR 迴圈能表達清楚的。它們需要語義層的欄位：
+
+```md
+INTENT
+CONSTRAINTS
+FAILURE_MODES
+SCORING_POLICY
+UNCERTAINTY_HANDLING
+TRANSLATION_TARGETS
+```
+
+因此，語義偽代碼不是在重複傳統控制結構，而是在控制結構之上建立可被 AI 理解的語義接口。
+
+***
+
+## 8. 語義函數：從程式函數到意圖函數
+
+語義偽代碼的核心單位是「語義函數」（Semantic Function）。
+
+傳統函數通常有明確輸入與輸出：
+
+```md
+f(input) → output
+```
+
+語義函數也有輸入與輸出，但它更重視意圖、限制與轉譯方式：
+
+```md
+SemanticFunction:
+  INTENT
+  INPUT
+  OUTPUT
+  PROCESS
+  CONSTRAINTS
+  FAILURE_MODES
+  COMPOSITION
+  TRANSLATION_TARGETS
+```
+
+例如：
+
+```md
+FUNCTION: clarify_user_intent
+```
+
+這不是一個可直接執行的函數，而是一個語義任務。它表示：當使用者需求含糊時，系統應該識別目標、拆解不確定點、避免過度假設，並產生可操作的澄清結果。
+
+它可以被不同系統實作為：
+
+```md
+聊天機器人的提問策略
+產品需求收斂模組
+Agent 任務規劃前置步驟
+表單生成器
+規格文件補全器
+```
+
+又例如：
+
+```md
+FUNCTION: prepare_ui_action
+```
+
+它表示 AI Agent 在操作 UI 前，應先確認目標、畫面狀態、可逆性、風險與回退條件。這可以被實作為瀏覽器自動化策略、桌面 Agent 操作規則、RPA 安全檢查或人機確認流程。
+
+語義函數的價值在於，它把「一類任務」從具體實作中抽出來，成為可重用的概念積木。
+
+這種積木不要求同一種實作，但要求同一種語義。
+
+***
+
+## 9. 基本格式提案：Semantic Pseudocode v0.1
+
+以下是一個最小格式提案：
+
+```md
+@semantic_pseudocode
+@non_executable
+@reference_only
+@recomposition_required
+@ai_readable
+
+FUNCTION:
+  模組名稱
+
+INTENT:
+  此模組想完成的任務或概念目標
+
+WHEN_TO_USE:
+  適合使用的情境
+
+WHEN_NOT_TO_USE:
+  不適合使用的情境
+
+INPUT:
+  需要的資訊、資料、上下文或前置條件
+
+OUTPUT:
+  預期產生的結果、文件、結構、決策或動作計畫
+
+PROCESS:
+  抽象流程，不綁定特定程式語言
+
+CONSTRAINTS:
+  限制、禁止事項、安全邊界、不可推測內容
+
+FAILURE_MODES:
+  可能失敗的情境與錯誤類型
+
+COMPOSITION:
+  可與哪些語義函數組合
+
+TRANSLATION_TARGETS:
+  可被轉譯成哪些具體實作形式
+
+USAGE_NOTE:
+  使用時必須根據實際環境重新組合，不可直接執行
+```
+
+這個格式刻意保留 Markdown 可讀性。它不要求複雜語法，也不要求編譯器。它的第一讀者是人類，第二讀者是 AI。人類能讀懂，AI 能解析，才是它的目標。
+
+### 9.1 標籤系統
+
+語義偽代碼應使用標籤來標明狀態：
+
+```md
+@semantic_pseudocode
+```
+
+表示這是語義偽代碼。
+
+```md
+@non_executable
+```
+
+表示不可直接執行。
+
+```md
+@reference_only
+```
+
+表示僅供理解與參考。
+
+```md
+@recomposition_required
+```
+
+表示實際使用時必須重新組合。
+
+```md
+@ai_readable
+```
+
+表示格式設計考慮 AI 理解。
+
+```md
+@human_review_recommended
+```
+
+表示高風險或重要場景需人類審查。
+
+```md
+@context_dependent
+```
+
+表示輸出高度依賴場景。
+
+這些標籤不是裝飾，而是行為提示。尤其對 AI 來說，標籤可以降低誤用風險。
+
+### 9.2 欄位設計原則
+
+欄位應盡量穩定，但不應過度僵化。某些簡單模組不必填滿所有欄位；某些高風險模組則應增加安全、審查、權限、回退與記錄欄位。
+
+例如，普通文章大綱生成模組可以較簡單；但 UI 操作、資料刪除、金融建議、醫療資訊、隱私處理、檔案修改等模組，必須有更明確的限制與失敗模式。
+
+因此，語義偽代碼可以採用核心欄位加擴展欄位的方式。
+
+核心欄位：
+
+```md
+FUNCTION
+INTENT
+INPUT
+OUTPUT
+PROCESS
+CONSTRAINTS
+USAGE_NOTE
+```
+
+擴展欄位：
+
+```md
+FAILURE_MODES
+SECURITY_RULES
+HUMAN_CONFIRMATION
+ROLLBACK_PLAN
+TRANSLATION_TARGETS
+COMPOSITION
+EXAMPLES
+TEST_CASES
+```
+
+這樣能兼顧簡潔與完整。
+
+***
+
+## 10. 範例一：文件語義排序
+
+```md
+@semantic_pseudocode
+@non_executable
+@reference_only
+@recomposition_required
+@ai_readable
+
+FUNCTION:
+  rank_candidate_documents
+
+INTENT:
+  根據使用者查詢，對候選文件進行排序，優先返回最符合查詢意圖、來源可信、時間適當且上下文相關的文件。
+
+WHEN_TO_USE:
+  - RAG 系統需要選擇引用來源時
+  - 搜尋系統需要重新排序候選結果時
+  - 研究助理需要從多份資料中挑選最相關文件時
+  - AI 需要回答問題前先判斷哪些資料更值得依賴時
+
+WHEN_NOT_TO_USE:
+  - 沒有候選文件時
+  - 查詢完全不需要資料檢索時
+  - 文件內容無法讀取或權限不足時
+  - 使用者要求的是創作而非資料查證時
+
+INPUT:
+  query:
+    description: 使用者查詢
+    type: natural_language_text
+
+  candidate_documents:
+    description: 待排序文件集合
+    type: document_list
+
+  ranking_policy:
+    description: 排序權重設定
+    fields:
+      semantic_relevance_weight
+      freshness_weight
+      source_trust_weight
+      user_context_weight
+
+OUTPUT:
+  ranked_documents:
+    description: 已排序文件列表
+    type: ordered_document_list
+
+  ranking_explanation:
+    description: 排序理由摘要
+    type: explanation_text
+
+PROCESS:
+  1. Interpret the user's query intent.
+  2. Identify whether the query requires freshness.
+  3. For each candidate document:
+      3.1 Evaluate semantic relevance.
+      3.2 Evaluate source trust.
+      3.3 Evaluate freshness.
+      3.4 Evaluate match with user context.
+      3.5 Mark uncertainty if metadata is incomplete.
+  4. Combine scores according to ranking_policy.
+  5. Preserve conflict markers if sources disagree.
+  6. Return ranked_documents and ranking_explanation.
+
+CONSTRAINTS:
+  - Do not rank a document higher only because it is newer.
+  - Do not ignore an authoritative older source if it remains valid.
+  - Do not merge conflicting sources without marking conflict.
+  - Do not invent metadata.
+  - If freshness is unknown, mark it as uncertain.
+
+FAILURE_MODES:
+  - no_relevant_documents
+  - insufficient_metadata
+  - conflicting_sources
+  - query_intent_unclear
+  - source_access_denied
+
+COMPOSITION:
+  Can be combined with:
+    - interpret_user_query
+    - retrieve_candidate_sources
+    - detect_source_conflicts
+    - generate_answer_with_citations
+    - mark_uncertainty
+
+TRANSLATION_TARGETS:
+  - Python ranking function
+  - TypeScript search backend
+  - Vector database reranking policy
+  - RAG retrieval workflow
+  - Agent source selection rule
+
+USAGE_NOTE:
+  This module is not executable. It must be adapted to the actual search engine, embedding model, source metadata, database structure, and citation policy.
+```
+
+這個範例展示了語義偽代碼與傳統偽代碼的不同。傳統偽代碼可能只寫排序流程，但語義偽代碼同時保留查詢意圖、時間新鮮度、來源可信度、衝突處理與不確定性標記。這些內容對 AI 回答品質非常關鍵。
+
+***
+
+## 11. 範例二：AI 協作開發任務拆解
+
+```md
+@semantic_pseudocode
+@non_executable
+@reference_only
+@recomposition_required
+@ai_readable
+
+FUNCTION:
+  decompose_development_task
+
+INTENT:
+  將使用者提出的軟體開發需求拆解為可理解、可檢查、可逐步實作的任務結構。
+
+WHEN_TO_USE:
+  - 使用者提出新功能需求時
+  - AI Agent 需要修改程式碼前
+  - 專案需求模糊但需要開始實作時
+  - Vibe Coding 過程需要從概念轉為工程步驟時
+
+WHEN_NOT_TO_USE:
+  - 使用者只是在閒聊
+  - 任務已經有完整工程規格
+  - 缺少任何專案上下文且無法取得
+  - 任務涉及不可允許的危險操作
+
+INPUT:
+  user_request:
+    description: 使用者自然語言需求
+    type: natural_language_text
+
+  project_context:
+    description: 專案框架、檔案結構、技術棧、限制條件
+    type: structured_context | unknown
+
+OUTPUT:
+  task_plan:
+    description: 開發任務分解結果
+    type: ordered_task_list
+
+  missing_context:
+    description: 尚需補充的資訊
+    type: question_list
+
+PROCESS:
+  1. Identify the user's primary goal.
+  2. Identify required features.
+  3. Identify implied constraints.
+  4. Identify unknown or missing information.
+  5. Split the task into:
+      5.1 understanding phase
+      5.2 design phase
+      5.3 implementation phase
+      5.4 validation phase
+      5.5 documentation phase
+  6. Mark dependencies between tasks.
+  7. Mark reversible and irreversible changes.
+  8. Return task_plan and missing_context.
+
+CONSTRAINTS:
+  - Do not assume the project framework without evidence.
+  - Do not overwrite existing logic before inspection.
+  - Do not treat vague requirements as precise specifications.
+  - Prefer small reversible changes over large unverified changes.
+  - Preserve user intent even when technical implementation changes.
+
+FAILURE_MODES:
+  - insufficient_project_context
+  - conflicting_requirements
+  - missing_user_goal
+  - unsafe_change_detected
+  - scope_too_large
+
+COMPOSITION:
+  Can be combined with:
+    - inspect_project_structure
+    - clarify_user_intent
+    - propose_minimal_implementation
+    - validate_output_against_constraints
+    - generate_test_plan
+
+TRANSLATION_TARGETS:
+  - Agent planning mode
+  - GitHub issue generator
+  - Software project management workflow
+  - Cursor / VS Code AI planning scaffold
+  - Product requirement document
+
+USAGE_NOTE:
+  This pseudocode is a reasoning scaffold. It must be adapted to the actual repository, framework, permissions, and development environment.
+```
+
+這個範例適合 Vibe Coding。它承認使用者可能只有概念，而不是完整規格；但它也要求 AI 不要亂猜，不要直接大改，不要忽略專案上下文。
+
+***
+
+## 12. 範例三：UI 操作前的安全準備
+
+```md
+@semantic_pseudocode
+@non_executable
+@reference_only
+@recomposition_required
+@human_review_recommended
+
+FUNCTION:
+  prepare_ui_action
+
+INTENT:
+  在 AI Agent 操作圖形介面、網頁或應用程式之前，先確認操作目標、目前狀態、風險等級、可逆性與回退方案。
+
+WHEN_TO_USE:
+  - AI Agent 要操作瀏覽器時
+  - AI Agent 要點擊按鈕、填表、提交資料時
+  - RPA 或桌面自動化需要決策前檢查時
+  - 操作可能影響使用者帳號、資料、付款、訊息或公開發布時
+
+WHEN_NOT_TO_USE:
+  - 只需要閱讀資訊，不需要操作
+  - 使用者未授權 AI 進行操作
+  - UI 狀態不可見或無法確認
+  - 操作涉及不可回復高風險行為且未取得明確確認
+
+INPUT:
+  user_goal:
+    description: 使用者希望完成的操作
+    type: natural_language_text
+
+  current_ui_state:
+    description: 目前畫面、可見按鈕、欄位、提示與錯誤訊息
+    type: ui_state_description
+
+  permissions:
+    description: AI 被允許執行的操作範圍
+    type: permission_set
+
+OUTPUT:
+  action_plan:
+    description: UI 操作計畫
+    type: ordered_ui_action_list
+
+  risk_flags:
+    description: 需要注意的風險
+    type: risk_list
+
+PROCESS:
+  1. Identify the user's intended outcome.
+  2. Read current UI state.
+  3. Identify available actions.
+  4. Separate reversible actions from irreversible actions.
+  5. For each planned action:
+      5.1 Predict expected UI response.
+      5.2 Identify possible failure state.
+      5.3 Define rollback or stop condition.
+  6. Ask for confirmation if an action is irreversible or sensitive.
+  7. Return action_plan and risk_flags.
+
+CONSTRAINTS:
+  - Do not perform irreversible actions without explicit permission.
+  - Do not submit forms if required fields are uncertain.
+  - Do not assume hidden UI state.
+  - Stop if UI response differs from expectation.
+  - Do not click deceptive, ambiguous, or destructive controls without review.
+
+FAILURE_MODES:
+  - ambiguous_button_label
+  - unexpected_page_state
+  - permission_required
+  - irreversible_action_detected
+  - user_confirmation_required
+  - ui_state_not_observable
+
+COMPOSITION:
+  Can be combined with:
+    - classify_action_risk
+    - request_human_confirmation
+    - execute_ui_step
+    - verify_ui_result
+    - rollback_last_action
+
+TRANSLATION_TARGETS:
+  - Browser automation policy
+  - Desktop agent operation protocol
+  - UI testing script
+  - RPA workflow
+  - Human-in-the-loop confirmation system
+
+USAGE_NOTE:
+  This is not a click script. It is a safety and reasoning structure for AI agents before interacting with user interfaces.
+```
+
+這個模組凸顯語義偽代碼在 AI Agent 時代的重要性。未來 AI 不只是回答問題，也可能操作介面。當 AI 可以操作介面後，真正重要的不是它會不會點，而是它知不知道什麼時候不能點。
+
+***
+
+## 13. 範例四：概念轉 MVP
+
+```md
+@semantic_pseudocode
+@non_executable
+@reference_only
+@recomposition_required
+
+FUNCTION:
+  convert_concept_to_mvp
+
+INTENT:
+  將一個抽象產品概念轉換為可測試的最小可行產品設計。
+
+WHEN_TO_USE:
+  - 創業者有產品概念但尚未確定第一版功能時
+  - AI 協助使用者收斂產品方向時
+  - 概念太大，需要切成可測試版本時
+  - 需要避免功能膨脹時
+
+WHEN_NOT_TO_USE:
+  - 產品已有完整規格與路線圖
+  - 使用者尚未知道目標使用者
+  - 概念完全沒有使用場景
+  - 使用者只需要創意發想，不需要收斂
+
+INPUT:
+  product_concept:
+    description: 產品概念描述
+    type: natural_language_text
+
+  target_users:
+    description: 目標使用者群
+    type: user_group_description
+
+  core_value:
+    description: 核心價值主張
+    type: value_statement
+
+OUTPUT:
+  mvp_spec:
+    description: 最小可行產品規格
+    type: structured_product_spec
+
+PROCESS:
+  1. Identify the core user pain point.
+  2. Identify the minimum feature that can address the pain point.
+  3. Remove features that are impressive but not necessary.
+  4. Define the first user flow.
+  5. Define success metrics.
+  6. Define what should not be built yet.
+  7. Return mvp_spec.
+
+CONSTRAINTS:
+  - Do not confuse long-term vision with first version.
+  - Do not include features that cannot be tested quickly.
+  - Do not optimize for scale before validating demand.
+  - Preserve the long-term concept separately from the MVP.
+  - Avoid building for imaginary users without evidence.
+
+FAILURE_MODES:
+  - concept_too_broad
+  - user_pain_unclear
+  - feature_creep_detected
+  - success_metric_missing
+  - mvp_not_testable
+
+COMPOSITION:
+  Can be combined with:
+    - identify_target_user
+    - define_user_flow
+    - generate_landing_page_copy
+    - create_feature_priority_matrix
+    - design_validation_experiment
+
+TRANSLATION_TARGETS:
+  - Product requirement document
+  - Startup MVP plan
+  - Prototype task list
+  - Landing page copy
+  - Investor pitch outline
+
+USAGE_NOTE:
+  This module does not decide the final product. It helps compress an abstract concept into a testable first version.
+```
+
+這種模組不一定直接寫程式，但對 AI 協作開發很重要。因為很多系統不是從程式碼開始，而是從產品概念開始。語義偽代碼可以把產品直覺轉成可進一步實作的結構。
+
+***
+
+## 14. 多模組組合：語義 Workflow
+
+單一語義函數是積木，多個語義函數組合後，就形成語義 Workflow。
+
+例如，回答一個研究型問題可以被表示為：
+
+```md
+@semantic_workflow
+@non_executable
+@reference_only
+@recomposition_required
+
+WORKFLOW:
+  answer_user_research_question
+
+INTENT:
+  回答使用者提出的研究型問題，並在必要時搜尋資料、排序來源、建立論證、標記不確定性。
+
+CALL_SEQUENCE:
+  1. CALL interpret_user_query
+  2. CALL retrieve_candidate_sources
+  3. CALL rank_candidate_documents
+  4. CALL detect_source_conflicts
+  5. CALL build_argument_structure
+  6. CALL generate_answer_with_uncertainty_labels
+
+GLOBAL_CONSTRAINTS:
+  - Separate known facts from interpretation.
+  - Cite sources when using external information.
+  - Preserve conflicting evidence when relevant.
+  - Do not overstate conclusions.
+  - Mark speculation clearly.
+
+EXPECTED_OUTPUT:
+  answer:
+    sections:
+      - direct_response
+      - supporting_evidence
+      - uncertainty
+      - possible_next_steps
+
+TRANSLATION_TARGETS:
+  - Research assistant pipeline
+  - RAG answer generation policy
+  - Academic writing assistant
+  - Knowledge base QA agent
+
+USAGE_NOTE:
+  This workflow references multiple semantic functions. None of them are executable by themselves. An AI or developer must map each function to actual tools, models, databases, prompts, or code.
+```
+
+這就是「語義函數庫」真正有價值的地方。單個模組只是範例；大量模組形成後，就可以互相引用。
+
+未來網站可以讓每個語義函數有自己的頁面，並標記它可與哪些函數組合。例如：
+
+```md
+clarify_user_intent
+  → decompose_task
+  → propose_minimal_implementation
+  → validate_output_against_constraints
+  → generate_test_plan
+```
+
+或：
+
+```md
+retrieve_candidate_sources
+  → rank_candidate_documents
+  → detect_source_conflicts
+  → generate_answer_with_citations
+```
+
+這種結構會讓網站不只是範例庫，而是可組合的概念網路。
+
+***
+
+## 15. 網站定位：不是程式碼庫，而是概念函數庫
+
+若將語義偽代碼做成網站，首頁必須清楚說明定位，以避免誤解。
+
+建議首頁核心聲明如下：
+
+```md
+本網站收錄的語義偽代碼不是程式語言，也不是可執行腳本。
+
+它是一種面向 AI 協作開發、Vibe Coding 與意圖語言的概念組件格式。
+
+每個模組都像一塊語義積木，用來描述任務意圖、輸入輸出、流程、限制、失敗模式與組合方式。
+
+使用者可以先從範例理解概念，再由 AI Agent 根據實際需求、技術棧與環境限制，重新組合並實作成真正可運行的系統。
+
+因此，本站的核心不是「複製程式碼」，而是「理解意圖、重組概念、生成實作」。
+```
+
+這段聲明可以避免兩種誤解：
+
+第一，避免工程師以為這是又一種不完整程式語言。\
+第二，避免 AI 以為這些偽代碼可以直接執行。
+
+網站應該反覆強調：
+
+```md
+Reference Only
+Non-executable
+Recomposition Required
+```
+
+這不是保守，而是核心設計。
+
+### 15.1 網站分類建議
+
+網站可以依任務類型分類：
+
+```md
+AI Assistant Behavior
+Agent Workflow
+Vibe Coding
+Software Planning
+RAG / Search
+Writing / Research
+Product Design
+UI Automation
+Data Processing
+Safety / Risk Control
+Knowledge Management
+Personalization
+Prompt-to-System Transformation
+```
+
+每個分類底下收錄語義函數。例如：
+
+```md
+Vibe Coding:
+  - decompose_development_task
+  - inspect_project_structure
+  - propose_minimal_implementation
+  - detect_code_change_risk
+  - generate_test_plan
+
+RAG / Search:
+  - interpret_user_query
+  - retrieve_candidate_sources
+  - rank_candidate_documents
+  - detect_source_conflicts
+  - synthesize_answer_with_citations
+
+UI Automation:
+  - prepare_ui_action
+  - classify_action_risk
+  - request_human_confirmation
+  - verify_ui_result
+  - rollback_last_action
+```
+
+這樣網站會形成一個可瀏覽、可搜尋、可引用的語義模組庫。
+
+### 15.2 每頁格式
+
+每個語義函數頁面可以固定包含：
+
+```md
+# Function Name
+
+## Status
+Reference Only / Non-executable / Recomposition Required
+
+## Intent
+此模組的核心意圖
+
+## When To Use
+適用場景
+
+## When Not To Use
+不適用場景
+
+## Inputs
+輸入資料與上下文
+
+## Outputs
+輸出結果
+
+## Process
+抽象流程
+
+## Constraints
+限制與禁止事項
+
+## Failure Modes
+可能失敗情境
+
+## Composition
+可與哪些模組組合
+
+## Translation Targets
+可轉成哪些實作
+
+## Example
+完整範例
+
+## Warning
+不可直接執行，必須依具體情境重新組合
+```
+
+這種格式簡單，但足夠穩定。
+
+***
+
+## 16. 對 AI Agent 的意義
+
+AI Agent 與一般聊天模型不同。聊天模型主要回應文字；Agent 則可能執行任務、呼叫工具、讀寫檔案、操作瀏覽器、修改程式、發送訊息、建立行程、處理資料。當 AI 進入 Agent 狀態後，意圖理解錯誤的成本會提高。
+
+在純聊天中，AI 誤解可能只是回答不好。\
+在 Agent 操作中，AI 誤解可能造成檔案被錯改、資料被覆蓋、表單被送出、錯誤訊息被忽略、使用者需求被過度實作。
+
+因此，Agent 需要更穩定的任務中介層。
+
+語義偽代碼可以作為 Agent 的「意圖確認層」。在執行之前，Agent 可以先把使用者需求轉成語義偽代碼，確認：
+
+```md
+任務是什麼？
+輸入是什麼？
+輸出是什麼？
+不可做什麼？
+需要哪些權限？
+哪些步驟可逆？
+哪些步驟需要確認？
+失敗時如何停止？
+```
+
+再進入實作或操作。
+
+這樣可以降低 Agent 的錯誤行為。
+
+例如，使用者說：
+
+```md
+幫我把這個網站整理成可用的資料庫。
+```
+
+Agent 不應該直接開始爬取、解析、建表、寫入。它應該先形成語義任務：
+
+```md
+FUNCTION:
+  transform_website_content_to_database
+
+INTENT:
+  將網站內容轉換為結構化資料庫，但需遵守授權、來源標記、資料清洗與欄位設計限制。
+
+CONSTRAINTS:
+  - Check whether crawling is allowed.
+  - Preserve source URLs.
+  - Do not infer missing data as facts.
+  - Mark extraction uncertainty.
+  - Avoid storing personal data without necessity.
+```
+
+這樣就能把「整理網站」這種模糊命令變成較安全的任務結構。
+
+***
+
+## 17. 對 Vibe Coding 的意義
+
+Vibe Coding 的強項是流動性。使用者可以邊想邊做，邊看結果邊修正。這與傳統瀑布式規格不同。
+
+但 Vibe Coding 最大的風險也是流動性。若每一步都只是自然語言，即使 AI 當下理解了，後續也容易失去一致性。需求會漂移，功能會膨脹，程式碼會堆疊，使用者也不一定知道目前系統到底依照什麼意圖在生成。
+
+語義偽代碼可以作為 Vibe Coding 的「中途定錨」。
+
+使用者一開始可以自由表達：
+
+```md
+我想做一個讓 AI 看懂文件、整理概念、再生成網站內容的工具。
+```
+
+AI 可以先轉成語義偽代碼：
+
+```md
+FUNCTION:
+  transform_document_to_publishable_web_content
+
+INTENT:
+  將原始文件轉換為適合網站發布的結構化內容，同時保留原始概念、章節關係、關鍵術語與可搜尋性。
+
+INPUT:
+  source_document
+  target_audience
+  site_style
+  content_policy
+
+OUTPUT:
+  web_content_package
+
+PROCESS:
+  1. Parse document structure.
+  2. Extract core concepts.
+  3. Preserve hierarchy.
+  4. Rewrite for target audience.
+  5. Generate metadata.
+  6. Produce publishable Markdown or CMS blocks.
+
+CONSTRAINTS:
+  - Do not distort the author's theory.
+  - Mark uncertain interpretations.
+  - Preserve technical terms.
+  - Do not over-simplify advanced sections.
+```
+
+這樣使用者與 AI 就有了一個中間結構。後續不論要轉成 Next.js 網站、Markdown 文件、CMS 內容、資料庫 schema，或知識圖譜，都有一個穩定基準。
+
+這就是「概念先行，語義成形，實作後置」在 Vibe Coding 中的實際用途。
+
+***
+
+## 18. 對意圖語言的意義
+
+意圖語言可以理解為一種讓使用者以意圖而非語法命令系統的表達方式。例如：
+
+```md
+幫我找到最重要的資料，整理成可以決策的形式。
+```
+
+這句話不是程式，但包含任務意圖。問題是，它太寬。不同 AI 可能做出不同解釋。
+
+語義偽代碼可以把意圖語言結構化，使其更穩定。
+
+自然意圖：
+
+```md
+幫我整理這些資料，找出最值得注意的變化。
+```
+
+語義偽代碼：
+
+```md
+FUNCTION:
+  detect_significant_changes_in_dataset
+
+INTENT:
+  從資料集合中找出值得注意的變化、異常、趨勢或轉折點。
+
+INPUT:
+  dataset
+  time_range
+  significance_policy
+
+OUTPUT:
+  change_report
+
+PROCESS:
+  1. Identify baseline.
+  2. Compare current values against baseline.
+  3. Detect outliers and trend shifts.
+  4. Rank changes by importance.
+  5. Explain possible interpretations.
+  6. Mark uncertainty.
+
+CONSTRAINTS:
+  - Do not treat correlation as causation.
+  - Do not hide missing data.
+  - Do not overstate weak signals.
+```
+
+這裡，自然意圖被轉換成 AI 更能理解的結構。這就是意圖語言的可操作化。
+
+語義偽代碼不是意圖語言的全部，但它可以成為意圖語言的一種落地格式。
+
+***
+
+## 19. 語義偽代碼與 Markdown 的關係
+
+Markdown 的優勢是簡單、可讀、可版本控制、可被 Git 管理、可轉成 HTML、PDF、文件網站，也容易被 AI 讀取。語義偽代碼若直接建立在 Markdown 上，可以降低採用門檻。
+
+這也符合網站與知識庫需求。每個語義函數都可以是一個 `.md` 檔案：
+
+```md
+/functions/rag/rank_candidate_documents.md
+/functions/agent/prepare_ui_action.md
+/functions/vibe-coding/decompose_development_task.md
+```
+
+每個檔案既是人類可讀文件，也是 AI 可讀知識單元。
+
+如果未來需要更高形式化程度，可以再加入 frontmatter：
+
+```yaml
+---
+name: rank_candidate_documents
+type: semantic_function
+status: reference_only
+executable: false
+recomposition_required: true
+category: rag
+version: 0.1
+---
+```
+
+然後正文仍然使用 Markdown。這樣可以兼顧人類閱讀與機器索引。
+
+Markdown 也方便與現有工具整合：
+
+```md
+GitHub
+GitBook
+Docusaurus
+Next.js
+Astro
+Obsidian
+Notion export
+Static site generator
+RAG knowledge base
+```
+
+因此，語義偽代碼網站不需要一開始就開發複雜平台。初期可以用 Markdown 文件庫建立，再逐步增加搜尋、標籤、引用、組合圖、版本管理與 AI 生成工具。
+
+***
+
+## 20. 防止誤用：語義偽代碼的安全邊界
+
+語義偽代碼若要作為 AI 可讀的任務結構，就必須考慮誤用問題。
+
+第一，AI 可能把語義偽代碼當成可執行指令。\
+第二，使用者可能以為範例可以直接複製到專案。\
+第三，某些模組可能涉及高風險領域，例如金融、醫療、法律、資安、隱私、資料刪除、付款、訊息發送。\
+第四，Agent 可能根據不完整語義執行不可逆動作。
+
+因此，網站與格式必須內建安全提醒。
+
+每個頁面應明確寫：
+
+```md
+WARNING:
+  This semantic pseudocode is non-executable.
+  It is provided for reference, understanding, and recomposition only.
+  Actual implementation must be adapted to the user's context, system constraints, legal requirements, and safety policies.
+```
+
+中文：
+
+```md
+警告：
+  本語義偽代碼不可直接執行。
+  它僅供理解、參考與重新組合。
+  實際使用時，必須依照使用者情境、系統限制、法律要求與安全政策重新設計與實作。
+```
+
+高風險模組應增加：
+
+```md
+@human_review_required
+@safety_sensitive
+@irreversible_action_possible
+```
+
+並加入欄位：
+
+```md
+HUMAN_CONFIRMATION:
+ROLLBACK_PLAN:
+AUDIT_LOG:
+PERMISSION_BOUNDARY:
+```
+
+例如資料刪除模組：
+
+```md
+CONSTRAINTS:
+  - Do not delete data without explicit user confirmation.
+  - Always create backup or recovery point when possible.
+  - Show what will be deleted before deletion.
+  - Provide rollback plan if supported.
+```
+
+語義偽代碼不是為了讓 AI 更激進地執行，而是為了讓 AI 更清楚地知道邊界。
+
+***
+
+## 21. 語義偽代碼網站的最小可行版本
+
+若要做一個最小可行網站，不需要一開始就很複雜。可以先做以下版本：
+
+### 21.1 第一階段：靜態文件庫
+
+內容：
+
+```md
+首頁
+核心理念
+格式規範 v0.1
+分類頁
+範例頁
+警告與使用原則
+```
+
+技術形式：
+
+```md
+Markdown + 靜態網站生成器
+```
+
+第一批分類：
+
+```md
+Vibe Coding
+Agent Workflow
+RAG / Search
+Writing / Research
+Product Design
+UI Automation
+AI Safety
+Data Processing
+```
+
+第一批範例數量可以是 30 到 100 個。重點不是數量極大，而是格式穩定、定位清楚。
+
+### 21.2 第二階段：搜尋與標籤
+
+加入：
+
+```md
+全文搜尋
+標籤
+難度
+用途
+轉譯目標
+可組合模組
+```
+
+使用者可以搜尋：
+
+```md
+document ranking
+UI action
+MVP planning
+user intent
+source conflict
+agent confirmation
+```
+
+### 21.3 第三階段：組合圖
+
+加入每個模組的關聯：
+
+```md
+這個模組常與哪些模組一起使用？
+前置模組是什麼？
+後續模組是什麼？
+可轉譯到哪些場景？
+```
+
+例如：
+
+```md
+clarify_user_intent
+  → decompose_task
+  → generate_execution_plan
+  → validate_output
+```
+
+### 21.4 第四階段：AI 重組助手
+
+網站可以提供一個 AI 工具：
+
+```md
+輸入你的需求
+選擇幾個語義偽代碼模組
+AI 幫你重新組合成：
+  - 程式規格
+  - Agent workflow
+  - Prompt chain
+  - TypeScript 實作
+  - Python 實作
+  - Markdown 文件
+```
+
+但這個功能必須明確標記：
+
+```md
+Generated implementation must be reviewed.
+```
+
+### 21.5 第五階段：社群投稿與版本控制
+
+允許使用者投稿新的語義函數，但必須遵守格式：
+
+```md
+不可執行
+需重新組合
+不得偽裝成正式程式碼
+高風險模組需標記安全限制
+```
+
+這樣網站就可以逐漸變成開放語義函數庫。
+
+***
+
+## 22. 語義偽代碼的評估標準
+
+語義偽代碼不是越長越好，也不是越像程式碼越好。它應有自己的評估標準。
+
+### 22.1 清晰度
+
+一個語義函數應該讓人與 AI 都能快速理解：
+
+```md
+它要做什麼？
+什麼時候用？
+需要什麼？
+產生什麼？
+```
+
+如果讀完仍然不知道用途，表示失敗。
+
+### 22.2 邊界性
+
+好的語義函數不只說明能做什麼，也說明不能做什麼。
+
+```md
+WHEN_NOT_TO_USE
+CONSTRAINTS
+FAILURE_MODES
+```
+
+這些欄位比表面流程更重要，因為 AI 常犯的錯就是過度延伸。
+
+### 22.3 可重組性
+
+語義函數應該能與其他函數組合。若一個模組太巨大、太封閉、太依賴特定實作，就不適合作為積木。
+
+### 22.4 可轉譯性
+
+好的語義偽代碼應該可以轉成多種實作，而不是只對某一語言有效。
+
+例如：
+
+```md
+Python function
+TypeScript service
+Agent workflow
+Markdown checklist
+SQL pipeline
+RAG policy
+```
+
+若一段偽代碼只能被某一語言理解，可能已經太接近程式碼。
+
+### 22.5 抗誤解性
+
+語義偽代碼應避免被誤讀為可執行程式碼。這也是為什麼標籤與 Usage Note 很重要。
+
+### 22.6 上下文敏感性
+
+好的語義偽代碼會提醒 AI：實作取決於上下文。它不應把範例當成唯一正解。
+
+***
+
+## 23. 潛在應用場景
+
+語義偽代碼可應用於多個方向。
+
+### 23.1 AI 協作開發
+
+使用者先用語義偽代碼描述功能，再讓 AI 生成程式碼。這可降低自然語言需求漂移。
+
+### 23.2 Agent OS
+
+Agent 可以使用語義函數來組合任務流程，例如搜尋、排序、確認、執行、驗證、回退。
+
+### 23.3 RAG 系統
+
+RAG 不只是向量搜尋，還需要查詢理解、來源排序、衝突檢測、不確定性標記。這些都可以語義函數化。
+
+### 23.4 產品設計
+
+產品概念、MVP、使用者流程、功能優先級、驗證實驗，都可以用語義偽代碼描述。
+
+### 23.5 學術與研究寫作
+
+命題建構、文獻整理、論證骨架、反例處理、引用策略，也可以語義函數化。
+
+### 23.6 UI 自動化
+
+Agent 操作介面前的安全檢查、權限確認、回退方案，非常適合語義偽代碼描述。
+
+### 23.7 知識管理
+
+文件拆解、概念抽取、知識圖譜生成、標籤分配、版本整理，都可用語義函數表示。
+
+### 23.8 教育
+
+學生可以先學如何描述意圖與流程，再學具體程式語言。這可能降低入門門檻。
+
+***
+
+## 24. 與傳統軟體工程的關係
+
+語義偽代碼不是要取代傳統軟體工程。相反，它應該成為傳統工程之前的概念層。
+
+軟體工程仍然需要：
+
+```md
+需求分析
+架構設計
+型別設計
+程式實作
+測試
+安全審查
+效能優化
+部署
+維護
+監控
+```
+
+語義偽代碼只處理其中更前面的部分：
+
+```md
+意圖整理
+概念壓縮
+任務結構化
+模組組合
+AI 轉譯前準備
+```
+
+若沒有後續工程，語義偽代碼只是概念。若沒有語義偽代碼，AI 協作開發又容易落入自然語言模糊與程式碼過度具體之間的斷裂。
+
+因此，它與工程不是競爭，而是互補。
+
+可以表示為：
+
+```md
+Semantic Pseudocode
+  → Specification
+  → Implementation
+  → Test
+  → Deployment
+```
+
+或在 AI 協作場景：
+
+```md
+User Intent
+  → Semantic Function Blocks
+  → Agent Recomposition
+  → Code Generation
+  → Human Review
+  → Execution
+```
+
+***
+
+## 25. 風險與限制
+
+語義偽代碼本身也有風險。
+
+### 25.1 形式化不足
+
+如果格式太鬆散，AI 仍然可能誤解。\
+解法是建立基本欄位與標籤規範。
+
+### 25.2 形式化過度
+
+如果格式太嚴格，它又會變成半套程式語言，降低創意流動性。\
+解法是保持 Markdown 優先、語義優先、非執行優先。
+
+### 25.3 範例品質不一
+
+大量範例若品質參差，會讓網站變成普通筆記庫。\
+解法是建立審稿標準，例如清晰度、邊界性、可重組性、可轉譯性。
+
+### 25.4 AI 過度照抄
+
+AI 可能忽略 `@recomposition_required`，直接照抄內容。\
+解法是每頁與每個模組都明確寫 Usage Note，並在範例中避免使用太像特定語言的語法。
+
+### 25.5 使用者過度信任
+
+使用者可能以為語義偽代碼代表正確實作。\
+解法是反覆強調它只是參考與理解，不是驗證過的程式碼。
+
+### 25.6 高風險領域
+
+醫療、法律、金融、資安、隱私等領域需要額外限制。\
+解法是標記高風險，要求人類審查與專業驗證。
+
+***
+
+## 26. 長期願景：AI 時代的語義 npm
+
+傳統 npm、PyPI、Crates、Maven 等生態系收錄的是可執行或可引用的程式包。它們服務於工程實作層。
+
+語義偽代碼網站則可能成為另一種生態：
+
+```md
+不是 code package
+而是 semantic package
+
+不是 import function
+而是 CALL semantic function
+
+不是直接執行
+而是理解後重組
+
+不是綁定語言
+而是跨語言轉譯
+```
+
+它可以被視為 AI 時代的「語義 npm」。
+
+使用者不是下載某段程式碼，而是引用某個意圖模組：
+
+```md
+CALL clarify_user_intent
+CALL rank_candidate_documents
+CALL prepare_ui_action
+CALL convert_concept_to_mvp
+CALL validate_output_against_constraints
+```
+
+AI Agent 讀取這些模組後，根據實際環境生成：
+
+```md
+程式碼
+工作流
+文件
+測試
+API
+資料結構
+UI 操作
+Prompt chain
+```
+
+長期而言，這可能形成一種新的開發方式：
+
+```md
+人類負責提出概念與選擇語義模組
+AI 負責理解、重組與生成實作
+工程系統負責測試、部署與監控
+人類再負責審查、修正與定義方向
+```
+
+這不是完全自動化，也不是完全手寫，而是人機共構。
+
+***
+
+## 27. 結論
+
+語義偽代碼的提出，是為了回應 AI 協作開發時代的一個核心問題：自然語言太模糊，程式碼太具體，而人類創意需要一個能被 AI 穩定理解、重組與轉譯的中介層。
+
+本文主張，語義偽代碼應被設計為非可執行、結構化、AI 可理解、需重新組合的意圖函數格式。它不是程式語言，不是 Prompt Library，不是傳統偽代碼的簡單延伸，而是一種面向 Vibe Coding、意圖語言與 AI Agent 協作開發的概念積木系統。
+
+它的核心精神是：
+
+```md
+概念先行
+語義成形
+實作後置
+```
+
+它的基本原則是：
+
+```md
+Reference Only
+Non-executable
+Recomposition Required
+Intent First
+Implementation Later
+Context Dependent
+```
+
+它的長期目標不是提供可複製貼上的程式碼，而是提供大量可參考、可理解、可組合、可轉譯的語義函數模組。這些模組可以幫助使用者把創意從自然語言雜訊中抽出，壓縮成 AI 可讀的任務結構，再由 AI Agent 根據實際場景生成真正可運行的系統。
+
+如果未來 Vibe Coding 與意圖語言成為普遍開發方式，那麼語義偽代碼可能會成為其中一個重要基礎設施。它讓不會程式的人更容易表達系統意圖，也讓會程式的人更容易整理架構，更讓 AI Agent 在執行之前先理解任務邊界。
+
+因此，語義偽代碼網站不只是範例庫。它可以成為 AI 時代的概念函數庫、語義積木庫、人機協作開發的中介層，甚至是未來意圖語言生態的一個早期原型。
+
+最終，語義偽代碼所追求的不是讓偽代碼成真，而是讓概念先被理解，讓意圖先被穩定，讓 AI 與人類能在真正實作之前，先共享同一個結構化世界模型。
+
+***
+
+## 附錄 A：最小模板
+
+```md
+@semantic_pseudocode
+@non_executable
+@reference_only
+@recomposition_required
+@ai_readable
+
+FUNCTION:
+  function_name
+
+INTENT:
+  Describe what this semantic function is intended to accomplish.
+
+WHEN_TO_USE:
+  - Suitable situation 1
+  - Suitable situation 2
+
+WHEN_NOT_TO_USE:
+  - Unsuitable situation 1
+  - Unsuitable situation 2
+
+INPUT:
+  input_name:
+    description:
+    type:
+
+OUTPUT:
+  output_name:
+    description:
+    type:
+
+PROCESS:
+  1. Step one.
+  2. Step two.
+  3. Step three.
+
+CONSTRAINTS:
+  - Constraint one.
+  - Constraint two.
+
+FAILURE_MODES:
+  - failure_mode_one
+  - failure_mode_two
+
+COMPOSITION:
+  Can be combined with:
+    - another_semantic_function
+
+TRANSLATION_TARGETS:
+  - Python function
+  - TypeScript service
+  - Agent workflow
+  - Markdown checklist
+  - API specification
+
+USAGE_NOTE:
+  This semantic pseudocode is non-executable. It is provided for reference, understanding, and recomposition only.
+```
+
+***
+
+## 附錄 B：網站首頁簡短版宣言
+
+```md
+Semantic Pseudocode Archive 收錄的不是可執行程式碼，而是面向 AI 協作開發、Vibe Coding 與意圖語言的語義函數範例。
+
+每個模組都用來描述任務意圖、輸入輸出、流程、限制、失敗模式與組合方式。
+
+本站內容僅供理解與參考，不可直接執行。實際使用時，必須由人類、AI 或 Agent 根據具體需求、技術棧、系統環境與安全限制重新組合。
+
+本站的核心不是複製程式碼，而是理解意圖、重組概念、生成實作。
+```
+
+***
+
+## 附錄 C：核心標籤
+
+```md
+@semantic_pseudocode
+```
+
+表示此文件屬於語義偽代碼。
+
+```md
+@non_executable
+```
+
+表示不可直接執行。
+
+```md
+@reference_only
+```
+
+表示只供參考與理解。
+
+```md
+@recomposition_required
+```
+
+表示使用時必須根據上下文重新組合。
+
+```md
+@ai_readable
+```
+
+表示格式設計考慮 AI 理解。
+
+```md
+@context_dependent
+```
+
+表示實作高度依賴具體情境。
+
+```md
+@human_review_recommended
+```
+
+表示建議人類審查。
+
+```md
+@safety_sensitive
+```
+
+表示涉及安全、隱私、權限或高風險操作。
+
+***
+
+## 附錄 D：一組語義函數庫雛形
+
+```md
+clarify_user_intent
+decompose_development_task
+inspect_project_context
+propose_minimal_implementation
+validate_output_against_constraints
+generate_test_plan
+rank_candidate_documents
+detect_source_conflicts
+prepare_ui_action
+classify_action_risk
+request_human_confirmation
+convert_concept_to_mvp
+build_argument_structure
+extract_core_concepts
+transform_document_to_web_content
+mark_uncertainty
+generate_answer_with_citations
+rollback_last_action
+```
+
+這些函數不是可執行函數，而是 AI 可理解的語義任務名稱。它們可以被網站收錄、分類、索引、互相引用，並在具體任務中由 AI Agent 重新組合成實際工作流或程式實作。

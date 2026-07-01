@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>三相狀態視覺增強假說補論（T₃·v0.2） · EVEMISSLAB Logic Matrix</title>
+<meta name="description" content="三相狀態視覺增強假說補論（T₃·v0.2） | EVEMISSLAB Logic Matrix V2.1">
+<meta name="author" content="Neo.K (許筌崴)">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="T3v0.2.md" title="原始檔 / source (md)">
+<link rel="canonical" href="https://logic.evemisslab.com/papers/T3v0.2.md.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "三相狀態視覺增強假說補論（T₃·v0.2）",
+  "url": "https://logic.evemisslab.com/papers/T3v0.2.md.html",
+  "inLanguage": "zh-Hant",
+  "author": {"@type": "Person", "name": "Neo.K (許筌崴)"},
+  "publisher": {"@type": "Organization", "name": "EveMissLab / 一言諾科技有限公司"},
+  "isPartOf": {"@type": "Collection", "name": "EVEMISSLAB Logic Matrix", "url": "https://logic.evemisslab.com"},
+  "encodingFormat": "text/html"
+}
+</script>
+<link rel="prefetch" href="/api/log-crawler?slug=T3v0.2.md">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#000; color:#0f0; font-family:'Courier New',monospace; padding:20px; line-height:1.6; }
+.header { text-align:center; border:2px solid #0f0; padding:18px; margin-bottom:22px; }
+.header h1 { font-size:1.5em; letter-spacing:2px; }
+.header p { margin-top:6px; opacity:0.8; font-size:0.9em; }
+.disclaimer { border:1px dashed #ff9900; color:#ff9900; padding:14px; margin:0 auto 22px; max-width:1000px; font-size:0.88em; }
+.disclaimer-title { font-weight:bold; margin-bottom:10px; display:block; letter-spacing:1px; }
+.disclaimer-divider { border:none; border-top:1px dashed #ff9900; margin:12px 0; opacity:0.55; }
+article { max-width:1000px; margin:0 auto; border:1px solid #0f0; padding:24px; }
+article h1,article h2,article h3,article h4 { margin:18px 0 8px; letter-spacing:1px; }
+article h1 { font-size:1.5em; } article h2 { font-size:1.25em; } article h3 { font-size:1.1em; }
+article p { margin:10px 0; }
+article ul,article ol { margin:10px 0 10px 24px; }
+article blockquote { border-left:3px solid #0f0; padding-left:12px; opacity:0.85; margin:10px 0; }
+article pre { background:rgba(0,255,0,0.06); border:1px solid #0f0; padding:12px; overflow-x:auto; margin:12px 0; }
+article code { background:rgba(0,255,0,0.08); padding:1px 5px; }
+article pre code { background:none; padding:0; }
+article a { color:#0ff; }
+.nav { max-width:1000px; margin:0 auto 16px; font-size:0.9em; display:flex; justify-content:space-between; }
+.nav a { color:#0f0; text-decoration:none; }
+.nav a:hover { color:#0ff; }
+.altbar { max-width:1000px; margin:14px auto 0; font-size:0.85em; opacity:0.7; }
+.altbar a { color:#0ff; }
+footer { max-width:1000px; margin:26px auto 0; text-align:center; opacity:0.5; font-size:0.82em; }
+</style>
+</head>
+<body>
+<div class="nav"><a href="../index.html">&larr; 回 Logic Matrix 索引</a><div><a href="../cosmomind.html" style="margin-right:15px;">→ 星環式認知展開圖</a><a href="../base-space.html">🧬 拓撲底空間</a></div></div>
+<header class="header"><h1>三相狀態視覺增強假說補論（T₃·v0.2）</h1><p>EVEMISSLAB Logic Matrix · EveMissLab / 一言諾科技有限公司</p></header>
+<section class="disclaimer">
+  <span class="disclaimer-title">[認識論邊界宣告 / EPISTEMOLOGICAL DISCLAIMER]</span>
+  <div class="disclaimer-block">
+    <p><b>[CHT]</b> 本矩陣內所有論文之公式與數據為「啟發式模擬參數」，用於驗證理論架構與推演因果鏈，<b>未經實證校準</b>，請勿作為現實物理測量數據引用 or 處理。EVEMISSLAB 採行「邏輯先行（Logic-First）」原則：概念架構與系統因果映射優先於統計實證，但不排除未來實證對接。</p>
+  </div>
+  <hr class="disclaimer-divider">
+  <div class="disclaimer-block">
+    <p><b>[ENG]</b> The numerical parameters within these frameworks are <i>illustrative model coefficients</i> used for structural verification and causal mapping; they are <b>not empirically calibrated</b> and must not be treated as physical measurements. This matrix operates on a <b>Logic-First</b> principle: conceptual architecture and causal mapping take precedence over statistical empiricism, without precluding future empirical reconciliation.</p>
+  </div>
+</section>
+<article>
+<h1>三相狀態視覺增強假說補論（T₃·v0.2）</h1>
+<h2>精細化算子的雙通道分解、視覺平庸谷，與視覺底空間命題猜想</h2>
+<p><strong>作者：Neo.K (許筌崴)</strong> <strong>機構：EveMissLab (一言諾科技有限公司)</strong> <strong>日期：2026年6月</strong> <strong>性質：系列論文補丸——對《三相狀態視覺增強假說》（T₃·v0.1）的局部修訂與擴展</strong></p>
+<hr>
+<h2>摘要</h2>
+<p>本文為《三相狀態視覺增強假說》（T₃·v0.1）的局部修訂補論，針對原假說在「像素藝術」（Pixel Art）與「純黑白高解析度線稿」兩類案例上的解釋不對稱性，提出三項修訂。第一，將原假說的精細化算子∂D分解為「空間通道∂D_s」與「語義通道∂D_m」兩個獨立維度；第二，基於此分解，識別出視覺震撼感地形中的「視覺平庸谷」現象——中等密度的圖像系統性地低於極值圖像的震撼感表現；第三，提出一個命題猜想——存在一個不可直接觀測的「視覺底空間」（Visual Sub-space Base, V_base），使得兩個∂D通道都是其在不同方向上的投影，而視覺震撼感的生成機制在底空間層面具有統一性。本文採用「觀測→解釋→猜想」的反向推導結構，明確底空間作為開放問題的性質，並說明其不可直接量化的根本原因。</p>
+<p><strong>關鍵詞</strong>：T₃算子、精細化雙通道、像素藝術、語義密度、視覺平庸谷、視覺底空間、命題猜想</p>
+<hr>
+<h2>1. 問題起點：T₃預測失敗的案例</h2>
+<h3>1.1 高解析度純黑白線稿——與T₃相容的案例</h3>
+<p>T₃·v0.1確立了視覺震撼感的「視覺密度路徑」：對圖像施加精細化（∂D）、真實化（∂R）、飽和化（∂S）三相增強，能可靠地提升觀者的視覺震撼感V。</p>
+<p>一個需要確認的新案例是：以純黑白線條繪製的高解析度線稿——細節豐富的手繪插圖、精細線稿的建築圖、極致工筆描繪——在完全去除色彩（∂S≈0）、去除光影物理邏輯（∂R≈0）的條件下，仍能產生強烈的視覺魔力。</p>
+<p>這個案例在T₃框架內是可解釋的：∂D（精細化）被推至極致，高頻空間信息的密度足以單獨承載震撼感，即便另外兩個維度被歸零。T₃的三個維度不是缺一不可的前提，而是可獨立貢獻的增益——當某一維度被推至極限，其他維度的缺席可以被吸收。</p>
+<p>這個案例確認了T₃的「維度極值可代償性」，但同時設立了一個重要對比基準。</p>
+<h3>1.2 像素藝術——T₃預測失敗的案例</h3>
+<p>像素藝術（Pixel Art）的視覺特徵在各個T₃維度上均為低值：</p>
+<p>∂D：極低。整幅畫面由粗粒方塊構成，有效空間解析度遠低於普通圖像，高頻空間信息接近零。</p>
+<p>∂R：極低或不適用。像素風格本質上是非寫實的，放棄了光影物理邏輯和材質真實感。</p>
+<p>∂S：受嚴格限制。像素藝術通常使用極其有限的調色盤（往往16色以下），色域覆蓋率遠低於T₃適用域內的案例。</p>
+<p>按T₃·v0.1的預測，像素藝術應當位於判定域（J）甚至判定域以外，視覺震撼感應當極低。</p>
+<p>這個預測是錯的。</p>
+<p>優秀的像素藝術——早期遊戲角色設計、精心構圖的像素風景畫、高密度敘事的像素場景——能夠產生強烈的視覺魔力，觀者注視時間延長，情感投入明顯。這不能被充分解釋為「懷舊文化效應」：即使對沒有遊戲歷史的觀者，高品質像素藝術仍能產生直接的視覺衝擊，而低品質像素圖像（色塊隨意、佈局混亂）則完全不能。這說明現象是內在於像素藝術自身的結構性質的，而非純粹由文化框架賦予。</p>
+<p>T₃·v0.1在此出現系統性預測失敗。失敗的位置精確：不是T₃的整體結構出錯，而是∂D的定義出了問題。</p>
+<hr>
+<h2>2. 修訂一：精細化算子的雙通道分解</h2>
+<h3>2.1 原定義的隱含假設</h3>
+<p>T₃·v0.1對精細化算子∂D的定義是：「增加畫面的高頻空間信息，表現為紋理、邊緣、微觀結構的豐富化。」</p>
+<p>這個定義隱含了一個未被明說的假設：<strong>視覺信息密度等同於空間頻率密度</strong>。換言之，它假設「密度」只存在於空間信號的統計性質層面——每個像素位置的信息貢獻是平均性的，密度是集合的統計結果。</p>
+<p>像素藝術打破了這個假設。</p>
+<p>在像素藝術中，信息密度的載體不是空間頻率，而是每個離散視覺單元所攜帶的語義確定性。每一個像素都是一個刻意的、確定的、無法進一步分解的決策——它不是過渡色，不是邊緣模糊，不是填充噪訊。整幅畫面是一個由最大確定性符號構成的矩陣。這是一種完全不同類型的密度。</p>
+<h3>2.2 ∂D的雙通道分解</h3>
+<p>本補論提出將∂D分解為兩個獨立的可協同通道：</p>
+<p><strong>∂D_s（空間通道，Spatial Channel）</strong>：高頻空間信息的豐富化，即T₃·v0.1原始定義的∂D。測量指標為圖像的高頻空間能量（可通過傅立葉變換計算高頻分量的能量占比）。高解析度線稿和寫實繪畫在此通道達到高值。</p>
+<p><strong>∂D_m（語義通道，Semantic Channel）</strong>：每個視覺量子的語義精確度。所謂「視覺量子」，是畫面中最小的、在美術風格定義下完整且不可再分的視覺單元——在像素藝術中是像素，在線稿中是線條段，在筆觸風格中是單次筆觸。「語義精確度」指每個視覺量子攜帶的語義信息的確定性程度：這個量子是被刻意放置、語義完全確定的，還是過渡性的、模糊的、填充性的？</p>
+<p>形式上：</p>
+<pre><code>∂D_m = (刻意放置且語義確定的視覺量子數量) / (總視覺量子數量)</code></pre>
+<p>像素藝術在∂D_m上接近理論最大值：每一個像素都是完全確定的刻意決策，分母等於分子。</p>
+<p>修訂後的精細化算子表示為：</p>
+<pre><code>∂D = f(D_s, D_m)</code></pre>
+<p>其中D_s和D_m是兩個可獨立驅動視覺震撼感的通道。⊕表示兩通道的貢獻方式不是線性疊加，而是允許各自獨立達到極值並獨立承載震撼感。具體的組合函數f的形式留作後續研究問題。</p>
+<p>修訂後的T₃*算子：</p>
+<pre><code>T₃*: I → I&#x27; = I + δ(D_s, D_m)(I) + δR(I) + δS(I)</code></pre>
+<h3>2.3 雙通道框架對案例的重新解釋</h3>
+<p>高解析度純黑白線稿：D_s → MAX，D_m → 中高（線條語義清晰，但畫面整體存在光影過渡與漸變區域），∂R ≈ 局部，∂S = 0。震撼感由D_s極值主要承載。</p>
+<p>高品質像素藝術：D_s → MIN，D_m → MAX，∂R ≈ 0，∂S = 受限但刻意。震撼感由D_m極值獨立承載。</p>
+<p>T₃適用域內的核心案例（動漫奇幻、科幻場景）：D_s → 高，D_m → 中高，∂R → 高，∂S → 高。兩通道協同，震撼感最大化。</p>
+<p>極簡藝術（Rothko、Malevich）：D_s → 極低，D_m → 低至中（色塊是刻意的，但語義負荷是抽象的，需文化解碼）。這類藝術的震撼感不來自任何∂D通道，而來自T₃·v0.1已識別的「概念張力路徑」，不在本補論修訂範圍內。</p>
+<hr>
+<h2>3. 修訂二：視覺平庸谷</h2>
+<h3>3.1 現象描述</h3>
+<p>雙通道分解引出了一個新的觀察：視覺震撼感並非在信息密度的連續增加下單調提升，而是在地形上呈現出特殊的「谷」結構。</p>
+<p>具體而言，在D_s和D_m的聯合空間中，以下區域系統性地產生低視覺震撼感：</p>
+<p><strong>D_s中等、D_m中等</strong>——這正是大多數「普通圖像」的位置。一張手機隨手拍的照片：有一定空間細節（D_s中等），但每個像素的語義確定性不高（D_m中等）；色彩是真實的，但也是隨機的。這類圖像在視覺上是平庸的，儘管它的信息量可能並不低。</p>
+<p>換言之：<strong>兩通道都不極致，震撼感就不出現。</strong></p>
+<h3>3.2 視覺平庸谷的定義</h3>
+<p><strong>視覺平庸谷（Valley of Visual Mediocrity, VVM）</strong>：在D_s與D_m的聯合密度空間中，當兩個通道均處於中間值區域（既未達到D_s極值，也未達到D_m極值）時，視覺震撼感系統性地低於預期的線性插值結果。</p>
+<p>形式上：設 D_s_max 和 D_m_max 分別為兩個通道的理論最大值，則對於滿足以下條件的圖像：</p>
+<pre><code>D_s ∈ [D_s_max × 0.2, D_s_max × 0.7]
+D_m ∈ [D_m_max × 0.2, D_m_max × 0.7]</code></pre>
+<p>其視覺震撼感V顯著低於D_s → MAX（固定D_m=0）或D_m → MAX（固定D_s=0）的單通道極值情況。</p>
+<h3>3.3 視覺平庸谷的解釋機制</h3>
+<p>視覺平庸谷的產生有兩個可能的機制：</p>
+<p><strong>機制一：通道干擾假說</strong>。當D_s和D_m均為中等值時，兩個通道的信息在觀者的視覺處理中相互干擾——空間高頻噪訊干擾語義確定性的讀取，而不完整的語義確定性又削弱了空間細節的有效貢獻。極值情況下，因為只有一個通道在工作，干擾消失，信號純度提升。</p>
+<p><strong>機制二：信號純度假說</strong>。視覺震撼感需要「純粹的視覺信號」。極值情況提供了純粹的信號（純空間密度或純語義密度），中間值提供的是混雜的、半途而廢的信號，觀者的視覺系統對這種混雜信號的響應強度反而低於純信號。</p>
+<p>兩個機制目前都停留在假說層次，需要後續實驗區分。但視覺平庸谷作為現象的存在，是可以通過大規模圖像評分實驗直接驗證的，這是它相對於VSB猜想更有可操作性之處。</p>
+<h3>3.4 視覺平庸谷的實踐意義</h3>
+<p>視覺平庸谷的識別，對AI圖像生成與圖像增強有直接的實踐意義：</p>
+<p>當目標是提升視覺震撼感時，「稍微精細化」往往比「完全不精細化」的效果更差。從0到中等密度的增量，可能反而導致進入平庸谷；正確的策略是「做就做到極致，否則不如保持乾淨」。</p>
+<p>這也解釋了為什麼「剛好50%完成度的作品」常常比「完全草圖」和「完全完成的作品」看起來都更糟糕——前者已經失去了草圖的語義清晰度（D_m高），卻還沒有獲得精細作品的空間密度（D_s高），正好掉入平庸谷的最深處。</p>
+<hr>
+<h2>4. 命題猜想：視覺底空間的存在性（VSB猜想）</h2>
+<h3>4.1 雙通道分解的理論後果</h3>
+<p>接受∂D的雙通道分解，意味著承認一個結構性事實：D_s和D_m是兩種性質根本不同的「密度」。前者是物理空間的統計性質（信號處理意義上的）；後者是語義層面的確定性程度（符號論意義上的）。然而，兩者都能生成視覺震撼感，且作用機制並不直接共量——它們不是同一個量的不同測量方式，而是來自不同層面的不同屬性。</p>
+<p>這引發了一個更深的問題：為什麼如此不同的兩種屬性，都能作用於同一個「視覺震撼感」輸出？</p>
+<p>最簡單的解釋是巧合或者功能主義的鬆散多重實現——「視覺系統剛好對這兩種輸入都有響應」。但這個解釋在理論上是薄弱的，因為它沒有說明兩條路徑之間的結構關係，也沒有預測邊界條件。</p>
+<p>一個更強的解釋需要一個更底層的統一結構。</p>
+<h3>4.2 VSB命題猜想的陳述</h3>
+<p><strong>命題猜想（VSB，Visual Sub-space Base）</strong>：</p>
+<p>存在一個不可直接觀測的視覺底空間 V_base，具有以下性質：</p>
+<p><strong>性質一（投影性）</strong>：D_s和D_m都是V_base的投影映射，分別沿不同的投影方向提取V_base的局部結構：</p>
+<pre><code>π_s: V_base → D_s（空間頻率投影）
+π_m: V_base → D_m（語義密度投影）</code></pre>
+<p><strong>性質二（統一性）</strong>：視覺震撼感V是V_base中「視覺密度」的函數，而非直接是D_s或D_m的函數。在V_base中，高解析度黑白線稿和優秀像素藝術所對應的點，都具有高的底空間密度ρ_base，儘管它們在D_s和D_m各自的軸上是截然不同的：</p>
+<pre><code>V = f(ρ_base)</code></pre>
+<p><strong>性質三（不可直接觀測性）</strong>：V_base不能通過對圖像的直接物理測量得到，也不能通過對單個觀者的神經信號測量直接讀出。它只能通過觀測V（視覺震撼感的行為與主觀指標）間接推算，且這種推算是不適定的（ill-posed）。</p>
+<h3>4.3 命題的地位</h3>
+<p>VSB猜想的學術地位是<strong>開放命題</strong>——有充分動機支撐、具有解釋力，但既不是可直接驗證的假說，也不是已被證明的定理。</p>
+<p>其動機是：如果不假設底空間的存在，雙通道分解就只是一個描述性的現象分類，無法提供更深的解釋。底空間假設讓兩個通道從「剛好都能產生震撼感」變成「都是同一個底層機制在不同維度的表現」，這是理論層次的提升。</p>
+<p>類比參考：孟德爾的遺傳比率規律在DNA被發現前已成立。比率規律（可觀測、可驗證）在先，底層機制（染色體、基因）在後。VSB猜想的位置類似——我們有雙通道分解這個可觀測的現象規律，我們猜測存在統一它的底空間，但底空間的幾何形式是後續問題。</p>
+<h3>4.4 底空間的不可直接量化性及其後果</h3>
+<p>必須明確說明這個限制的性質：V_base的結構只能間接推算，在原則上就不能通過任何有限次直接測量完全確定。</p>
+<p>原因的結構是：視覺震撼感V本身是一個主觀-行為指標（主觀報告、注視時長、瞳孔擴張等），而非一個物理量。從V的測量值反推生成它的V_base結構，是從低維不完整信號去反推高維生成空間——這是一個典型的不適定逆問題：相同的V值可以由許多個不同的V_base結構生成，沒有唯一解。</p>
+<p>因此，VSB猜想作為猜想，其貢獻不在於「提供可直接量化的底空間模型」，而在於以下兩點：第一，識別出理論在解釋層面需要的結構性缺口；第二，為後續研究指明一個方向——通過間接約束（如大規模跨觀者一致性實驗、跨文化視覺訓練背景比較、系統性的極值圖像評分）逐漸縮小V_base結構的可能範圍。</p>
+<h3>4.5 VSB猜想的可能約束路徑</h3>
+<p>儘管V_base不可直接測量，以下研究設計能夠間接約束其結構：</p>
+<p><strong>路徑一：跨通道等效性測試</strong>。若VSB猜想成立，則在V_base密度ρ_base相同的條件下，D_s極值圖像和D_m極值圖像應當產生近似相同的V值。設計這類對照實驗，測量震撼感評分的一致性，可以檢驗投影等效性假設。</p>
+<p><strong>路徑二：平庸谷邊界的精確定位</strong>。通過系統性地生成D_s和D_m在不同組合值下的圖像矩陣，測量各組合的V值，可以繪製出（D_s, D_m, V）的三維地形圖，從而間接推算V_base的局部幾何（谷的形狀、斜率、鞍點位置）。</p>
+<p><strong>路徑三：觀者一致性的測量</strong>。若V_base是客觀的（不依賴個別觀者的文化訓練），則不同背景的觀者對同一組圖像的V評分應當具有高度一致性。這個一致性的程度，是底空間「客觀性」的間接指標。</p>
+<hr>
+<h2>5. 修訂後T₃框架的整體圖像</h2>
+<p>T₃·v0.1確立了三相算子和兩條路徑（視覺密度路徑、概念張力路徑）。本補論做出以下三項修訂：</p>
+<p><strong>修訂一（∂D分解）</strong>：精細化維度∂D被分解為空間通道D_s與語義通道D_m，兩者可獨立驅動視覺震撼感，適用域擴展為：凡在D_s或D_m的至少一個通道上能達到顯著高值的圖像，均落入視覺密度路徑的適用域。像素藝術從原先的預測失敗區（誤分類為判定域或域外）修訂為D_m極值子域，正式納入適用域。</p>
+<p><strong>修訂二（視覺平庸谷）</strong>：識別出D_s與D_m聯合中間值區域系統性地產生低震撼感的現象，定義為「視覺平庸谷」。這既是理論預測，也是可直接驗證的實驗命題。</p>
+<p><strong>修訂三（VSB猜想）</strong>：提出視覺底空間命題猜想，作為雙通道分解的理論後推。底空間的具體幾何留作開放問題，間接約束路徑已識別。</p>
+<p>適用域的修訂版分類：</p>
+<p>D_s極值子域：高解析度線稿、精細紋理寫實繪畫（∂D_s → MAX，∂D_m不要求極值）</p>
+<p>D_m極值子域：高品質像素藝術、點彩派、某些極端幾何抽象（∂D_m → MAX，∂D_s可為MIN）</p>
+<p>雙通道協同區：T₃·v0.1原適用域的核心案例，∂D_s高，∂D_m中高，∂R高，∂S高</p>
+<p>視覺平庸谷：∂D_s中等，∂D_m中等，震撼感系統性低值</p>
+<p>概念張力路徑（不在∂D任何通道）：極簡藝術、傳統東方繪畫、抽象表現主義——維持T₃·v0.1的判定域分類，本補論不做修訂</p>
+<hr>
+<h2>哲學結語</h2>
+<p>一個方塊的誠實，是它從不假裝自己不是方塊。</p>
+<p>它沒有試圖說服你它是一片草地或一縷光線。它只是在它被放置的位置，以它被選定的顏色，完全確定地存在。這種確定性，這種拒絕模糊的姿態，在視覺上產生了一種奇怪的重量。方塊的魔力不是來自它「是什麼」，而是來自它「完全知道自己是什麼」。</p>
+<p>而底空間，如果它存在，大概是那個讓「決策的質」和「信息的量」能夠相互兌換的場所。一張高解析度線稿說的是「我有很多可以說的」；一張優秀的像素畫說的是「我說的每一句都算數」。在底空間裡，也許這兩件事是同一件事。</p>
+<p>我們不知道底空間長什麼樣子。但我們知道它必須在那裡——因為兩條完全不同的道路，都通往了同一個震撼。</p>
+<p>這個收斂，不可能只是巧合。</p>
+<hr>
+<p><strong>論文性質</strong>：系列補論（Supplementary Patch） <strong>對應母論文</strong>：《三相狀態視覺增強假說》（T₃·v0.1），EveMissLab，2026年5月 <strong>版本</strong>：T₃·v0.2 <strong>作者</strong>：Neo.K (許筌崴)，EveMissLab (一言諾科技有限公司)，台灣</p>
+<p><em>本補論遵循EveMissLab的開放理論架構。理論的邊界，就是下一個問題的起點。</em></p>
+<div class="altbar">原始檔（供 RAG/下載）：<a href="T3v0.2.md" rel="noopener">papers/T3v0.2.md</a> [md]</div>
+</article>
+<footer><p>Neo.K (許筌崴) · Cl + ε</p></footer>
+</body>
+</html>

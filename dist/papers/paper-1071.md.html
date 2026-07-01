@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>運算優先性的符號中立性猜想 · EVEMISSLAB Logic Matrix</title>
+<meta name="description" content="運算優先性的符號中立性猜想 | EVEMISSLAB Logic Matrix V2.1">
+<meta name="author" content="Neo.K (許筌崴)">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="paper-1071.md" title="原始檔 / source (md)">
+<link rel="canonical" href="https://logic.evemisslab.com/papers/paper-1071.md.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "運算優先性的符號中立性猜想",
+  "url": "https://logic.evemisslab.com/papers/paper-1071.md.html",
+  "inLanguage": "zh-Hant",
+  "author": {"@type": "Person", "name": "Neo.K (許筌崴)"},
+  "publisher": {"@type": "Organization", "name": "EveMissLab / 一言諾科技有限公司"},
+  "isPartOf": {"@type": "Collection", "name": "EVEMISSLAB Logic Matrix", "url": "https://logic.evemisslab.com"},
+  "encodingFormat": "text/html"
+}
+</script>
+<link rel="prefetch" href="/api/log-crawler?slug=paper-1071.md">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#000; color:#0f0; font-family:'Courier New',monospace; padding:20px; line-height:1.6; }
+.header { text-align:center; border:2px solid #0f0; padding:18px; margin-bottom:22px; }
+.header h1 { font-size:1.5em; letter-spacing:2px; }
+.header p { margin-top:6px; opacity:0.8; font-size:0.9em; }
+.disclaimer { border:1px dashed #ff9900; color:#ff9900; padding:14px; margin:0 auto 22px; max-width:1000px; font-size:0.88em; }
+.disclaimer-title { font-weight:bold; margin-bottom:10px; display:block; letter-spacing:1px; }
+.disclaimer-divider { border:none; border-top:1px dashed #ff9900; margin:12px 0; opacity:0.55; }
+article { max-width:1000px; margin:0 auto; border:1px solid #0f0; padding:24px; }
+article h1,article h2,article h3,article h4 { margin:18px 0 8px; letter-spacing:1px; }
+article h1 { font-size:1.5em; } article h2 { font-size:1.25em; } article h3 { font-size:1.1em; }
+article p { margin:10px 0; }
+article ul,article ol { margin:10px 0 10px 24px; }
+article blockquote { border-left:3px solid #0f0; padding-left:12px; opacity:0.85; margin:10px 0; }
+article pre { background:rgba(0,255,0,0.06); border:1px solid #0f0; padding:12px; overflow-x:auto; margin:12px 0; }
+article code { background:rgba(0,255,0,0.08); padding:1px 5px; }
+article pre code { background:none; padding:0; }
+article a { color:#0ff; }
+.nav { max-width:1000px; margin:0 auto 16px; font-size:0.9em; display:flex; justify-content:space-between; }
+.nav a { color:#0f0; text-decoration:none; }
+.nav a:hover { color:#0ff; }
+.altbar { max-width:1000px; margin:14px auto 0; font-size:0.85em; opacity:0.7; }
+.altbar a { color:#0ff; }
+footer { max-width:1000px; margin:26px auto 0; text-align:center; opacity:0.5; font-size:0.82em; }
+</style>
+</head>
+<body>
+<div class="nav"><a href="../index.html">&larr; 回 Logic Matrix 索引</a><div><a href="../cosmomind.html" style="margin-right:15px;">→ 星環式認知展開圖</a><a href="../base-space.html">🧬 拓撲底空間</a></div></div>
+<header class="header"><h1>運算優先性的符號中立性猜想</h1><p>EVEMISSLAB Logic Matrix · EveMissLab / 一言諾科技有限公司</p></header>
+<section class="disclaimer">
+  <span class="disclaimer-title">[認識論邊界宣告 / EPISTEMOLOGICAL DISCLAIMER]</span>
+  <div class="disclaimer-block">
+    <p><b>[CHT]</b> 本矩陣內所有論文之公式與數據為「啟發式模擬參數」，用於驗證理論架構與推演因果鏈，<b>未經實證校準</b>，請勿作為現實物理測量數據引用 or 處理。EVEMISSLAB 採行「邏輯先行（Logic-First）」原則：概念架構與系統因果映射優先於統計實證，但不排除未來實證對接。</p>
+  </div>
+  <hr class="disclaimer-divider">
+  <div class="disclaimer-block">
+    <p><b>[ENG]</b> The numerical parameters within these frameworks are <i>illustrative model coefficients</i> used for structural verification and causal mapping; they are <b>not empirically calibrated</b> and must not be treated as physical measurements. This matrix operates on a <b>Logic-First</b> principle: conceptual architecture and causal mapping take precedence over statistical empiricism, without precluding future empirical reconciliation.</p>
+  </div>
+</section>
+<article>
+<h1>運算優先性的符號中立性猜想</h1>
+<h2>從歷史約定到不動點不變性的初步探索</h2>
+<p><strong>作者：</strong> Neo.K（EveMissLab） <strong>協同結晶：</strong> Theia <strong>文件編號：</strong> EML-OPN-v0.3 <strong>日期：</strong> 2026年6月 <strong>狀態：</strong> 工作草稿 · 命題猜想階段 <strong>警告：</strong> 本命題已完成有限範例驗證，但在無限維代數結構空間上尚無完整形式化證明。 <strong>修訂紀錄：</strong> v0.2 — 修正附錄 A.2 定義與計算實例的形式不一致；新增附錄 B 前置解析對照，補全驗證邏輯。v0.3 — 新增附錄導讀，明確三層守恆結構的遞進關係，補全附錄 B、C 平凡組的理論地位。</p>
+<hr>
+<h2>摘要</h2>
+<p>本文提出一項關於基礎計算代數系統的命題猜想：運算優先順序（先乘除後加減）並非數學真理，而是符號系統在將多維表達式結構投影為一維線性字串時，為消除歧義所採用的約定協議。</p>
+<p>本文梳理此約定的歷史起源，建構「完整展開系統」的概念框架，並以三個基礎算例驗證：當計算過程被完整定義後，不論採用加法優先或乘法優先的解析規則，計算路徑均收斂至同一不動點。</p>
+<p>本文亦明確陳述命題的根本限制：現有驗證僅覆蓋有限算例，命題的完整聲稱範圍橫跨無限維的代數結構空間，在本文框架內無法窮盡證明。所有形式化定義與數學推導置於附錄，正文以形式化散文陳述。</p>
+<p><strong>關鍵詞：</strong> 運算優先順序、符號系統、表達式樹、不動點、匯流性、交換環</p>
+<hr>
+<h2>一、歷史背景：約定的誕生</h2>
+<p>在符號代數出現之前，數學不存在「運算優先順序」的問題。古代巴比倫、埃及與希臘的數學幾乎以文字或幾何形式書寫，每一個計算意圖由語境完整定義，歧義沒有發生的空間。</p>
+<p>問題的根源在於十六至十七世紀符號代數的興起。當 François Viète 與 René Descartes 開始以字母代表未知數，數學表達式第一次被壓縮為短小的線性字串。這個壓縮是有代價的：一條一維的符號字串，必須承載原本由文字或幾何關係清楚表達的多層結構，而一維字串沒有足夠的維度容納所有結構信息而不產生損失。</p>
+<p>Leibniz 與 Newton 意識到這個問題。他們的解法直接而徹底：大量使用括號，將每一個運算的分組明確寫出。這等同於在線性字串中直接重建完整的樹狀結構，使投影損失歸零，歧義不復存在。代價是書寫效率極低。</p>
+<p>十九世紀末至二十世紀初，隨著代數教育的普及，數學家與教育者開始系統性地將「先乘除後加減」寫入教科書，作為一項默認解析規則。這個規則允許書寫者省略大量括號，因為它規定了一套標準的歧義消解方法。現代縮寫 PEMDAS 或英式 BODMAS 是二十世紀的教育發明，而非數學定理。</p>
+<p>乘法優先約定在歷史上的勝出，有兩個相互支撐的原因：其一，乘法在生成上是加法的高階操作（乘法被定義為重複加法），這使得乘法表達式在語義上構成自足的原子單位，應當先行求值；其二，這個選擇與人類最高頻的代數書寫需求對齊，多項式、代數式、物理公式的「自然形態」恰恰是乘法緊密綁定的結構，採用乘法優先可最大化節省括號。</p>
+<p>因此，這一約定的本質從一開始就是：一種符號壓縮的補償協議，而非對數學結構的本體論陳述。</p>
+<hr>
+<h2>二、核心命題</h2>
+<p>所有形式化定義見附錄 A。</p>
+<p><strong>命題（非形式版本）：</strong></p>
+<p>一個數學表達式的計算結果，是其所對應的表達式樹在代數結構中的固有值。這個值不依賴任何符號優先順序約定。優先順序規則的作用，僅在於規定如何將一維符號字串解析為唯一一棵表達式樹。當表達式被完整展開，即所有隱含分組被顯式標記、所有高階運算被還原為基本操作時，不同優先順序系統所得到的計算路徑不同，但均收斂至同一不動點。</p>
+<p>此命題的結構可概括為三個層次。</p>
+<p>第一層：符號是投影。一維的線性符號字串是多維表達式樹在單一維度上的投影，投影過程存在信息損失。優先順序規則是補償這一損失的解碼協議，作用於字串與樹之間的轉換層，而非作用於樹本身的值域。</p>
+<p>第二層：結果是不動點。在完整定義的計算系統中，所有合法的計算路徑均收斂至同一個值。此不動點的存在，由底層代數結構的公理（交換律、結合律、分配律）所保證。這是一個關於代數結構匯流性的陳述，在交換環的語境下具有強力支撐。</p>
+<p>第三層：約定是效率選擇。不同優先順序系統在數學意義上等價，差異僅在書寫效率。乘法優先的歷史勝出，是人類書寫實踐的演化結果，而非邏輯必然。</p>
+<hr>
+<h2>三、形式化框架</h2>
+<p>本節以形式化散文陳述核心概念架構。所有符號定義與具體推導見附錄 A。</p>
+<p><strong>表達式樹作為基本對象。</strong> 一個算術表達式的真正本體是一棵有根有序二叉樹，其葉節點為運算元（數值或變量），內部節點為運算符。這棵樹是無歧義的：每一個運算符的作用範圍由樹結構直接給出，不需任何外部約定。線性符號字串是這棵樹的序列化（serialization），不同的優先順序系統對應不同的序列化與反序列化規則。約定的選擇影響字串的形貌，但不影響樹的結構，因此不影響其所代表的數學對象。</p>
+<p><strong>完整展開系統的定義。</strong> 一個計算過程被稱為「完整展開」，當且僅當三個條件同時滿足：其一，所有運算的分組均由顯式標記或狀態定義確定，不依賴任何隱含優先順序；其二，所有非基本運算均被還原為其生成定義，在整數算術的語境中，乘法還原為重複加法；其三，每一步計算均為明確的狀態轉移，初始狀態完整給定，終止狀態唯一。在滿足這三個條件的計算框架中，「優先順序」這個概念不再存在——它已被完整的狀態定義所吸收。</p>
+<p><strong>不動點的存在性。</strong> 在交換環上，完整展開系統的不動點存在性可被形式化論證。交換環的公理體系保證表達式求值具有路徑無關性，即計算理論中所稱的匯流性。任意兩條從同一表達式樹出發的合法歸約路徑，必然終止於同一個值。這一性質與 Church-Rosser 定理在 lambda 演算中所保證的正規形式唯一性，在結構上高度類比，詳見附錄 G（預留）。</p>
+<p><strong>命題的邊界條件。</strong> 上述框架在交換環（整數環、有理數域、多項式環等）中具有代數結構的明確支撐。當底層結構擴展至非交換代數（如矩陣代數、四元數代數）時，乘法的不可交換性打破了路徑無關性的一般保證，命題需要精確的限制條件才能成立。這部分留待附錄 F（預留）詳述。</p>
+<hr>
+<h2>四、基本驗證</h2>
+<p>本節概述三個算例的驗證結果。完整狀態序列見附錄 B、C、D；程式碼實作與可執行驗證見附錄 J。</p>
+<p><strong>驗證一：加法優先系統的完整展開。</strong> 取數學意圖為「二加三乘四之積」，即對應表達式樹根節點為加法、右子樹為三乘四的乘法節點。在加法優先系統中，若書寫者欲表達此意圖，必須在字串中顯式標記乘法的分組；在完整展開後，計算路徑從第一個狀態轉移起，與乘法優先系統的路徑完全一致。不動點為十四。</p>
+<p><strong>驗證二：乘法優先系統的完整展開。</strong> 取相同的數學意圖與表達式樹。在乘法優先系統中，標準字串無需額外括號即可正確表達意圖；完整展開後的狀態序列從中間步驟起與驗證一完全吻合。不動點同樣為十四。</p>
+<p>兩個驗證的比較揭示了命題的核心機制：兩個系統的差異僅發生在字串解析這一步（即將線性字串反序列化為表達式樹的過程），解析完成後，計算路徑立即匯流。優先順序約定的作用域，被精確地限定在符號層，而非數學層。</p>
+<p><strong>驗證三：分配律作為匯流性的形式記錄。</strong> 取分配律等式，以具體數值代入後，沿等式左側路徑（先展開括號內的加法，再執行乘法）與右側路徑（先展開各乘法項，再執行加法）分別完整計算。兩條路徑的計算策略完全相反，但不動點一致，均為二十七。</p>
+<p>此驗證的意義超出算術本身。分配律等式的兩側，正是壓縮求值路徑（先加後乘）與展開求值路徑（先乘後加）的符號記錄。等號的成立，即匯流性的直接陳述：選擇哪條路徑不影響終點。</p>
+<hr>
+<h2>五、命題的限界與未驗證空間</h2>
+<p>本節明確陳述本文的誠實邊界，這一節與其說是謙遜的姿態，不如說是命題完整性的必要組成。</p>
+<p>三個算例構成正面的有限證據，但無法構成對命題的完整形式化證明。原因在於，命題的聲稱範圍是無限維的：它主張對所有可能的有限算術表達式、在所有滿足特定代數條件的結構中均成立。有限個例子永遠無法窮盡這個空間。</p>
+<p>從認識論層面看，本文有限驗證的地位是：在給定的限制條件下，命題目前未被反駁，且與已知的代數結構理論相容。這不等同於命題被證明。</p>
+<p>完整的形式化證明需要以下要素，本文均未完成：其一，對所有有限算術表達式建立歸納論證，證明在完整展開後、交換環上的計算總是匯流的；其二，對命題成立的代數條件進行精確刻畫，明確區分它在哪些結構上成立、在哪些結構上需要附加條件或修正；其三，將本文的「完整展開系統」與計算理論的既有框架（項重寫系統、lambda 演算、範疇論等）建立形式聯繫，確認相容性或差異。</p>
+<p>此外，「完整展開系統」的概念本身，在本文中仍以直覺清晰但形式精度有限的方式呈現。在被納入嚴格的形式化論證之前，定義本身尚待進一步收緊。</p>
+<p>以上限制是真實的，不作迴避。</p>
+<hr>
+<h2>六、結語</h2>
+<p>運算優先順序，在教科書中呈現為規則，在使用者心中感覺為自明。但在本文的視角下，它是歷史選擇的沉積，是符號系統在壓縮時留下的介面痕跡。那個被計算的實在，從來不依賴我們如何書寫它；它靜靜等在展開之後，作為所有合法路徑的共同終點。</p>
+<p>投影有其邊界，展開有其代價。約定不是真理，但也不是任意——它是在給定書寫工具與使用頻率的條件下，結構誘導出的最優解。</p>
+<p>這是一個關於符號與實在之間距離的命題。目前，它只是一個猜想。</p>
+<hr>
+<hr>
+<h1>附錄</h1>
+<hr>
+<h2>附錄導讀：驗證的三層守恆結構</h2>
+<p>本文的附錄驗證由三個組件構成，它們不是平行的算例，而是三個層次遞進的守恆陳述，對應命題的不同深度。</p>
+<p><strong>第一層（附錄 B 前置）：約定守恆——前提層</strong></p>
+<p>同一字串在不同優先順序系統下解析為不同的表達式樹，得到不同的值。這一層不是守恆的示範，而是守恆的<strong>前提陳述</strong>：它說明約定決定字串被理解為哪個數學對象，沒有這個對應，後兩層的守恆討論便失去起點。</p>
+<p><strong>第二層（附錄 B、C）：值守恆——基本層</strong></p>
+<p>同一棵表達式樹，以兩個系統的正確標記分別展開，計算的狀態序列完全一致，不動點相同。此層所示範的，是一般認識中「書寫方式不同但結果相同」的守恆——只不過在這裡，路徑不僅收斂，而且<strong>是同一條路徑</strong>。這是值守恆最直接的形式記錄，是命題的核心陳述。B 和 C 的狀態序列完全重合，正是這種守恆的最強形式：不是路徑在終點匯合，而是路徑本身就沒有分叉。</p>
+<p><strong>第三層（附錄 D）：代數路徑守恆——代數層</strong></p>
+<p>此層中，兩條路徑所對應的表達式樹結構本身不同，但環公理保證它們指向同一個值。這是比第二層更廣義的守恆：連樹都不必相同，值仍然守恆。分配律等式的兩側是這種守恆的直接符號記錄——等號的成立即匯流性的形式陳述。</p>
+<p>三層的邏輯關係是遞進而非並列的：</p>
+<p>$$\text{第一層（前提）} \longrightarrow \text{第二層（值守恆）} \longrightarrow \text{第三層（代數守恆）}$$</p>
+<p>第一層說明約定決定意義；第二層說明意義確定後，值不依賴書寫方式；第三層說明代數等式本身是更廣義守恆的符號記錄。三層共同構成本文命題的完整驗證結構。</p>
+<p>附錄 A 為形式化定義，附錄 E 為環論基礎，兩者為上述三層提供形式支撐。附錄 F 至 I 為預留擴展空間。</p>
+<hr>
+<h2>附錄 A：完整展開系統的形式化定義</h2>
+<p><strong>A.1 表達式樹</strong></p>
+<p>設表達式樹 $T$ 為有根有序二叉樹，定義如下：</p>
+<ul>
+<li>葉節點集合 $\mathcal{L}(T) \subset R$，其中 $R$ 為一交換環（基礎情形取 $R = \mathbb{Z}$）</li>
+<li>內部節點集合 $\mathcal{I}(T) \subset \{+,\ \times\}$</li>
+<li>樹的值函數 $\text{val}: T \to R$，由葉節點標籤與內部節點運算遞迴定義</li>
+</ul>
+<p><strong>A.2 完整展開系統的狀態轉移</strong></p>
+<p>設初始狀態 $S_0 = \{x_1, x_2, \ldots, x_n\} \subset R$ 為一組具名數值。</p>
+<p>每一步狀態轉移 $S_k \to S_{k+1}$ 由一個明確的基本運算定義：</p>
+<p>$$S_{k+1} = \bigl(S_k \setminus \{a, b\}\bigr) \cup \{a + b\}$$</p>
+<p>其中 $a, b \in S_k$ 為顯式指定的操作元。</p>
+<p>乘法被完全展開為重複加法：</p>
+<p>$$a \times b \coloneqq \underbrace{a + a + \cdots + a}_{b \text{ 次}} \quad (b \in \mathbb{Z}^+)$$</p>
+<p>由乘法交換律 $a \times b = b \times a$，等價展開形式 $\underbrace{b + b + \cdots + b}_{a \text{ 次}}$ 結果相同。以下各附錄的計算採取兩種形式中較為緊湊的一種，不另行說明。</p>
+<p>計算在 $|S_k| = 1$ 時終止，終態的唯一元素即為結果。</p>
+<p><strong>A.3 不動點定義</strong></p>
+<p>對給定表達式樹 $T$，其不動點值定義為：</p>
+<p>$$\text{val}(T) \coloneqq \lim_{k \to k_{\text{final}}} S_k$$</p>
+<p>命題斷言：對所有滿足同一表達式樹 $T$ 的合法計算路徑，$\text{val}(T)$ 唯一。</p>
+<p><strong>A.4 兩個符號系統的對應關係</strong></p>
+<p>設 $\sigma$ 為一線性符號字串，$\mathcal{S}<em>+$ 為加法優先系統，$\mathcal{S}</em>\times$ 為乘法優先系統。</p>
+<p>設 $\text{parse}<em>+(\sigma) = T</em>+$ 為加法優先系統解析出的表達式樹，$\text{parse}<em>\times(\sigma) = T</em>\times$ 為乘法優先系統解析出的表達式樹。</p>
+<p>一般而言 $T_+ \neq T_\times$。命題不主張 $T_+ = T_\times$，而主張：當書寫者的數學意圖為同一棵樹 $T$，在兩個系統中分別以最少括號表達該意圖時，完整展開後均得到 $\text{val}(T)$。</p>
+<hr>
+<h2>附錄 B 前置：解析歧義對照</h2>
+<p>本節為附錄 B 和 C 的必要前提，建立驗證的基準對照：<strong>相同字串在不同優先順序系統下解析為不同的表達式樹，得到不同的結果</strong>。這是優先順序約定存在的根本理由。</p>
+<p>取字串 $\sigma = \texttt{&quot;2+3×4&quot;}$，分別以兩個系統解析：</p>
+<p>| 系統 | 解析規則 | 解析得到的樹 | 計算過程 | 結果 | |------|----------|-------------|----------|------| | $\mathcal{S}<em>+$（加法優先） | 加法先綁定 | $\texttt{MUL}(\texttt{ADD}(2,3),\ 4)$ | $(2+3)\times 4 = 5\times 4$ | $\mathbf{20}$ | | $\mathcal{S}</em>\times$（乘法優先） | 乘法先綁定 | $\texttt{ADD}(2,\ \texttt{MUL}(3,4))$ | $2+(3\times 4) = 2+12$ | $\mathbf{14}$ |</p>
+<p>同一字串 $\sigma$ 在兩個系統下對應兩個不同的數學對象。14 與 20 均正確，但回答的是不同的問題。約定的作用域由此被精確定位：它不改變任何數學計算的結果，它決定一個字串<strong>被理解為哪個表達式樹</strong>。</p>
+<p>附錄 B 和 C 所示範的情形在此之後：書寫者已確定數學意圖為 $T = \texttt{ADD}(2,\ \texttt{MUL}(3,4))$（即結果為 14 的那棵樹），在各自系統中採用正確標記，展示兩條計算路徑如何收斂至同一不動點。</p>
+<hr>
+<h2>附錄 B：例一完整狀態序列（加法優先系統）</h2>
+<p><strong>數學意圖：</strong> $T = \texttt{ADD}(2,\ \texttt{MUL}(3,\ 4))$</p>
+<p>在加法優先系統 $\mathcal{S}_+$ 中，為保全意圖，字串必須顯式寫為 $2 + (3 \times 4)$。</p>
+<p><strong>狀態序列：</strong></p>
+<p>$$S_0 = \{a = 2,\quad b = 3,\quad c = 4\}$$</p>
+<p>$$S_1: \quad M \coloneqq b \times c = 3 \times 4 = 4 + 4 + 4 = 12 \qquad \Rightarrow S_1 = \{a = 2,\quad M = 12\}$$</p>
+<p>$$S_2: \quad R \coloneqq a + M = 2 + 12 = 14 \qquad \Rightarrow S_2 = \{R = 14\}$$</p>
+<p><strong>不動點：</strong> $\text{val}(T) = 14$</p>
+<hr>
+<h2>附錄 C：例二完整狀態序列（乘法優先系統）</h2>
+<p><strong>數學意圖：</strong> 相同，$T = \texttt{ADD}(2,\ \texttt{MUL}(3,\ 4))$</p>
+<p>在乘法優先系統 $\mathcal{S}_\times$ 中，字串 $2 + 3 \times 4$ 直接解析為正確意圖，無需顯式括號。</p>
+<p><strong>狀態序列：</strong></p>
+<p>$$S_0 = \{a = 2,\quad b = 3,\quad c = 4\}$$</p>
+<p>$$S_1: \quad M \coloneqq b \times c = 3 \times 4 = 4 + 4 + 4 = 12 \qquad \Rightarrow S_1 = \{a = 2,\quad M = 12\}$$</p>
+<p>$$S_2: \quad R \coloneqq a + M = 2 + 12 = 14 \qquad \Rightarrow S_2 = \{R = 14\}$$</p>
+<p><strong>不動點：</strong> $\text{val}(T) = 14$</p>
+<p><strong>附注：</strong> $S_1$ 起，附錄 B 與附錄 C 的狀態序列完全一致。兩系統的分叉僅發生在字串解析層（$S_0$ 之前），解析完成後立即匯流。</p>
+<hr>
+<h2>附錄 D：例三完整展開——分配律驗證</h2>
+<p><strong>目的：</strong> 驗證分配律等式 $a(b+c) = ab + ac$ 作為兩條計算路徑的匯流陳述。</p>
+<p><strong>取值：</strong> $a = 3,\quad b = 4,\quad c = 5$</p>
+<p><strong>左側路徑（先加後乘）：</strong></p>
+<p>$$S_0 = \{a=3,\quad b=4,\quad c=5\}$$</p>
+<p>$$S_1: \quad \text{inner} \coloneqq b + c = 4 + 5 = 9$$</p>
+<p>$$S_2: \quad R \coloneqq a \times \text{inner} = 3 \times 9 = 9 + 9 + 9 = 27$$</p>
+<p><strong>右側路徑（先乘後加）：</strong></p>
+<p>$$S_0 = \{a=3,\quad b=4,\quad c=5\}$$</p>
+<p>$$S_1: \quad P_1 \coloneqq a \times b = 3 \times 4 = 4 + 4 + 4 = 12$$</p>
+<p>$$S_2: \quad P_2 \coloneqq a \times c = 3 \times 5 = 5 + 5 + 5 = 15$$</p>
+<p>$$S_3: \quad R \coloneqq P_1 + P_2 = 12 + 15 = 27$$</p>
+<p><strong>不動點：</strong> $\text{val}(T) = 27$（兩路徑一致）</p>
+<p><strong>結構觀察：</strong> 兩條路徑的差異恰好對應分配律等式的兩側。等式的成立即匯流性的直接記錄：</p>
+<p>$$a(b+c) = ab + ac \iff \text{val}(T_{\text{left}}) = \text{val}(T_{\text{right}})$$</p>
+<hr>
+<h2>附錄 E：環論基礎摘要（供引用）</h2>
+<p>一個<strong>交換環</strong> $(R,\ +,\ \times)$ 滿足以下公理（完整陳述從略）：</p>
+<ul>
+<li>$(R, +)$ 構成交換群（加法交換律、結合律、零元、逆元）</li>
+<li>$(R, \times)$ 構成交換么半群（乘法交換律、結合律、單位元）</li>
+<li>乘法對加法具有左右分配律：$a(b+c) = ab+ac$，$(a+b)c = ac+bc$</li>
+</ul>
+<p>在交換環上，任意有限算術表達式的求值可被視為從自由代數到環元素的同態映射。此映射的唯一性由自由代數的泛性質（universal property）所保證——這是本文命題在交換環語境中成立的代數根基。</p>
+<p>注：命題所依賴的核心環公理為分配律與交換律。在這兩個公理成立的範圍內，計算路徑的匯流性可被嚴格論證。</p>
+<hr>
+<h2>附錄 F：〔預留〕非交換代數結構的命題修正空間</h2>
+<p>本附錄預留供後續分析。</p>
+<p>當底層代數結構為非交換環（矩陣代數、四元數代數、群代數等）時，乘法不可交換，優先順序的選擇可能導致不同的計算結果。此時本文命題需要何種限制條件才能保持成立，以及是否存在更廣義的形式使命題在非交換結構上重新具有意義，留待後續工作。</p>
+<p>預計問題：是否存在一個「弱化的匯流性」概念，使得命題在非交換結構上的某個受限子空間中仍然成立？</p>
+<hr>
+<h2>附錄 G：〔預留〕與 Church-Rosser 定理的形式聯繫</h2>
+<p>本附錄預留供後續分析。</p>
+<p>本文的「匯流性」概念與 Church-Rosser 定理（在 lambda 演算中：所有歸約路徑收斂至同一正規形式）在結構上高度類比。建立兩者之間嚴格的形式聯繫，可能為本文命題提供更堅實的計算理論基礎，並揭示「不動點」概念在更廣泛計算框架中的地位。</p>
+<p>預計路徑：將完整展開系統形式化為一個項重寫系統（term rewriting system），再引用既有的匯流性判定定理。</p>
+<hr>
+<h2>附錄 H：〔預留〕廣義代數結構的延伸命題</h2>
+<p>本附錄預留供命題延伸時使用。</p>
+<p>延伸方向包括但不限於：半環（semiring）中的命題形式；格（lattice）代數中的優先順序類比問題；$p$-進數系統中的收斂行為；以及拓撲代數中極限不動點的一般性條件。</p>
+<hr>
+<h2>附錄 I：〔預留〕與計算系統完備性的關聯</h2>
+<p>本附錄預留供分析完整展開系統與計算完備性（computational completeness）之間的關聯。</p>
+<p>核心問題：一個「完整展開系統」是否對應某種圖靈完備的計算模型的子集？完整展開的可行性在計算複雜度上的代價是什麼？這個代價是否構成「優先順序約定」存在的另一個實踐理由？</p>
+<hr>
+<h2>附錄 J：程式碼驗證——完整展開系統實作</h2>
+<p>本附錄提供可執行的 Python 程式碼，實作附錄 A 所定義的完整展開系統，並程序性地驗證三層守恆結構。程式碼具備以下性質：所有乘法以迴圈展開為重複加法（不使用語言層的乘法運算符）；解析器由遞迴下降文法實作，加法優先與乘法優先為兩個獨立的文法類；所有驗證以 <code>assert</code> 陳述硬性約束，任何失敗即終止並報錯。</p>
+<p><strong>J.1 核心資料結構：表達式樹</strong></p>
+<pre><code>class Node:
+    def __init__(self, op, left=None, right=None, value=None):
+        self.op, self.left, self.right, self.value = op, left, right, value
+
+    def __repr__(self):
+        if self.op == &#x27;val&#x27;: return str(self.value)
+        return f&quot;({self.left} {self.op} {self.right})&quot;
+
+    def __eq__(self, other):
+        if not isinstance(other, Node) or self.op != other.op: return False
+        if self.op == &#x27;val&#x27;: return self.value == other.value
+        return self.left == other.left and self.right == other.right
+
+def Val(n):    return Node(&#x27;val&#x27;, value=n)
+def Add(l, r): return Node(&#x27;+&#x27;, l, r)
+def Mul(l, r): return Node(&#x27;*&#x27;, l, r)</code></pre>
+<p><strong>J.2 完整展開系統求值（附錄 A.2 的實作）</strong></p>
+<pre><code>def fully_expanded_eval(tree, log=None, depth=0):
+    if log is None: log = []
+    pad = &quot;  &quot; * depth
+    if tree.op == &#x27;val&#x27;:
+        log.append(f&quot;{pad}葉  {tree.value}&quot;)
+        return tree.value
+    lv = fully_expanded_eval(tree.left,  log, depth + 1)
+    rv = fully_expanded_eval(tree.right, log, depth + 1)
+    if tree.op == &#x27;+&#x27;:
+        result = lv + rv
+        log.append(f&quot;{pad}ADD({lv}, {rv}) = {result}&quot;)
+        return result
+    # 乘法：以迴圈展開為重複加法，由交換律取緊湊方向
+    times, addend = (lv, rv) if lv &lt;= rv else (rv, lv)
+    log.append(f&quot;{pad}MUL({lv}, {rv})  →  &quot; + &quot; + &quot;.join([str(addend)] * times))
+    result = 0
+    for _ in range(times): result += addend
+    log.append(f&quot;{pad}MUL({lv}, {rv}) = {result}&quot;)
+    return result</code></pre>
+<p><strong>J.3 解析器（文法決定優先順序）</strong></p>
+<pre><code>class MulFirstParser(_BaseParser):
+    &quot;&quot;&quot;乘法優先 S×：&#x27;*&#x27; 在內層文法（高優先）&quot;&quot;&quot;
+    def _parse_expr(self): return self._add_expr()
+    def _add_expr(self):                       # 外層：低優先
+        left = self._mul_expr()
+        while self.peek() == (&#x27;OP&#x27;, &#x27;+&#x27;):
+            self.consume(); left = Add(left, self._mul_expr())
+        return left
+    def _mul_expr(self):                       # 內層：高優先
+        left = self._primary()
+        while self.peek() == (&#x27;OP&#x27;, &#x27;*&#x27;):
+            self.consume(); left = Mul(left, self._primary())
+        return left
+
+class AddFirstParser(_BaseParser):
+    &quot;&quot;&quot;加法優先 S₊：&#x27;+&#x27; 在內層文法（高優先）&quot;&quot;&quot;
+    def _parse_expr(self): return self._mul_expr()
+    def _mul_expr(self):                       # 外層：低優先
+        left = self._add_expr()
+        while self.peek() == (&#x27;OP&#x27;, &#x27;*&#x27;):
+            self.consume(); left = Mul(left, self._add_expr())
+        return left
+    def _add_expr(self):                       # 內層：高優先
+        left = self._primary()
+        while self.peek() == (&#x27;OP&#x27;, &#x27;+&#x27;):
+            self.consume(); left = Add(left, self._primary())
+        return left</code></pre>
+<p><strong>J.4 驗證結果摘要</strong></p>
+<p>程式執行後的關鍵 <code>assert</code> 驗證點：</p>
+<p>| 驗證 | 陳述 | 預期 | |------|------|------| | 前置 | 乘法兩展開方向結果相同 | <code>r1 == r2 == 12</code> | | 第一層 | 同一字串，兩系統解析出不同的樹 | <code>T_af != T_mf</code> | | 第一層 | 兩樹的不動點相異 | <code>v_af != v_mf</code>（20 ≠ 14）| | 第二層 | 兩系統的正確標記解析為同一棵樹 | <code>T_from_af == T_from_mf == T</code> | | 第二層 | 兩系統的不動點相同 | <code>v_b == v_c == 14</code> | | 第二層 | 狀態序列逐步一致 | <code>log_b == log_c</code> | | 第三層 | 兩路徑對應不同的樹 | <code>T_L != T_R</code> | | 第三層 | 兩路徑的不動點相同 | <code>v_L == v_R == 27</code> |</p>
+<p>完整程式碼存放於 <code>EML-OPN-verify.py</code>，可直接執行：<code>python3 EML-OPN-verify.py</code></p>
+<hr>
+<h2>附錄 K：番外篇——命題的雙重延伸</h2>
+<p>本附錄探索兩個延伸方向：命題在純中文數字（算籌）系統中的成立性，以及命題從算術真值向幾何真值的擴展。程式碼見 <code>EML-OPN-fanwai.py</code>。</p>
+<hr>
+<h3>K.1 純中文數字系統（算籌）</h3>
+<p>在阿拉伯數字傳入中國之前，中國數學採用文字數字（一至九、十、百、千、萬）配合算籌計算。算籌是竹製計算棒，操作者在算板上依序排列與移動，每一步對應一個明確的狀態轉移。物理操作序列即是計算序列，不存在隱含優先順序——算籌是附錄 A.2 完整展開系統的前現代物理實作。</p>
+<p><strong>語言學觀察：</strong>「二加三乘四」這個字串在中文自然閱讀秩序（從左至右）下，傾向解析為「（二加三）乘四」，等同加法優先系統 $\mathcal{S}_+$ 的解析方式，結果為二十。古典算書（如《九章算術》）通常採顯式語序消除歧義，典型寫法為「以三乘四得十二，再加二」，這恰好是完整展開系統的自然語言表達形式。由此，古典中文算書傾向完整展開系統，而非依賴默認優先順序約定。</p>
+<p><strong>三層守恆在算籌系統的對應：</strong></p>
+<p>第一層（約定守恆）：「二加三乘四」的兩種讀法對應不同的表達式樹，分別得二十與十四，不同的語言意圖導致不同的不動點。</p>
+<p>第二層（值守恆）：確定計算意圖為讀法二後，算籌的狀態序列唯一確定，與阿拉伯數字系統的計算步驟逐條完全一致，不動點為十四。符號系統從中文換成阿拉伯數字，計算結構不受影響——這是命題「符號系統是投影」的直接物理示範。</p>
+<p>第三層（代數路徑守恆）：「三乘四」的兩種展開——以三累加四次（三＋三＋三＋三）與以四累加三次（四＋四＋四）——均得十二，由乘法交換律保證匯流。</p>
+<hr>
+<h3>K.2 幾何語言的表示論統一</h3>
+<p>本節將命題從算術真值（一個數值）延伸至幾何真值（一個定理的成立性），以勾股定理為核心算例，驗證三種幾何語言指向同一不動點。</p>
+<p><strong>三種語言：</strong></p>
+<p>一、<strong>弦圖（幾何語言 · 出入相補）。</strong> 取四個勾三股四的直角三角形，圍成以弦為邊的外正方形。四個三角形合計面積為二十四，中央小正方形（邊長一）面積為一，合計得外正方形面積二十五。以此推導：弦² = 勾² + 股² = 九 + 十六 = 二十五。此語言完全使用面積守恆，不依賴任何代數符號。整個計算可用純加法展開，符合附錄 A.2 的完整展開定義。</p>
+<p>二、<strong>幾何代數 $\mathrm{Cl}(2, 0)$（代數語言）。</strong> 設勾向量 $\mathbf{a} = 3\mathbf{e}_1$，股向量 $\mathbf{b} = 4\mathbf{e}_2$。由乘法規則 $\mathbf{e}_1^2 = \mathbf{e}_2^2 = 1$，$\mathbf{e}_1\mathbf{e}_2 = -\mathbf{e}_2\mathbf{e}_1$，計算得內積 $\mathbf{a} \cdot \mathbf{b} = 0$（垂直確認），以及弦向量 $\mathbf{c} = \mathbf{a} + \mathbf{b}$ 的幾何積純量部分：$\mathbf{c}\mathbf{c} = \mathbf{a}^2 + \mathbf{b}^2 = 9 + 16 = 25$。</p>
+<p>三、<strong>矩陣表示語言（表示論投影）。</strong> 在 $\mathrm{Cl}(2,0)$ 的標準 2×2 實矩陣同構下，向量 $a\mathbf{e}_1 + b\mathbf{e}_2$ 被映射為矩陣 $\begin{pmatrix} a &amp; b \\ b &amp; -a \end{pmatrix}$。範數平方計算為 $\mathrm{trace}(M^2)/2$，分別得 $\|M(\mathbf{a})\|^2 = 9$、$\|M(\mathbf{b})\|^2 = 16$、$\|M(\mathbf{c})\|^2 = 25$。</p>
+<p>三種語言的不動點均為二十五。</p>
+<p><strong>表示論的形式角色：</strong> $\mathrm{Cl}(2,0)$ 是從實平面上的標準度量空間生成的泛代數（universal algebra）。任何忠實表示（矩陣代數、旋量代數等）都是這個泛代數的具體實現。表示論保證：在 $\mathrm{Cl}(2,0)$ 中成立的等式，在所有忠實表示中均成立。弦圖語言則通過面積守恆與幾何代數的距離公理對應，兩者之間的聯繫可通過度量二次型的概念形式化。</p>
+<p><strong>命題延伸陳述（非形式）：</strong> 不僅算術真值（一個計算結果），幾何真值（一個定理的成立性）同樣是表示系統選擇下的不動點。不同的幾何語言是對同一數學對象的不同投影；表示論是形式化保證這些投影等價的機制。</p>
+<p>此延伸與第五節的誠實邊界聲明保持一致：本節提供的是有限算例下的正面證據，不構成對延伸命題的完整形式化證明。</p>
+<hr>
+<p><em>本文為 EveMissLab 工作草稿，命題處於猜想階段，尚待形式化完善與更廣泛的驗證。</em> <em>版本紀錄：v0.1 — 2026年6月，初稿。v0.2 — 修正附錄 A.2 定義一致性；補入附錄 B 前置解析歧義對照。v0.3 — 新增附錄導讀，建立三層守恆結構分類，補全附錄 B、C 的理論地位。v0.4 — 新增附錄 J 程式碼驗證，實作完整展開系統與三層守恆的可執行驗證。v0.5 — 新增附錄 K 番外篇：算籌系統三層守恆驗證、幾何語言表示論統一（弦圖 / Cl(2,0) / 矩陣三重表示）。</em></p>
+<div class="altbar">原始檔（供 RAG/下載）：<a href="paper-1071.md" rel="noopener">papers/paper-1071.md</a> [md]</div>
+</article>
+<footer><p>Neo.K (許筌崴) · Cl + ε</p></footer>
+</body>
+</html>

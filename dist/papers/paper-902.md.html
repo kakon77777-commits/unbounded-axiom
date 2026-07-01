@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>球形貪吃蛇問題_中心起點格點哈密頓路徑與離散守恆障礙 · EVEMISSLAB Logic Matrix</title>
+<meta name="description" content="球形貪吃蛇問題_中心起點格點哈密頓路徑與離散守恆障礙 | EVEMISSLAB Logic Matrix V2.1">
+<meta name="author" content="Neo.K (許筌崴)">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="paper-902.md" title="原始檔 / source (md)">
+<link rel="canonical" href="https://logic.evemisslab.com/papers/paper-902.md.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "球形貪吃蛇問題_中心起點格點哈密頓路徑與離散守恆障礙",
+  "url": "https://logic.evemisslab.com/papers/paper-902.md.html",
+  "inLanguage": "zh-Hant",
+  "author": {"@type": "Person", "name": "Neo.K (許筌崴)"},
+  "publisher": {"@type": "Organization", "name": "EveMissLab / 一言諾科技有限公司"},
+  "isPartOf": {"@type": "Collection", "name": "EVEMISSLAB Logic Matrix", "url": "https://logic.evemisslab.com"},
+  "encodingFormat": "text/html"
+}
+</script>
+<link rel="prefetch" href="/api/log-crawler?slug=paper-902.md">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#000; color:#0f0; font-family:'Courier New',monospace; padding:20px; line-height:1.6; }
+.header { text-align:center; border:2px solid #0f0; padding:18px; margin-bottom:22px; }
+.header h1 { font-size:1.5em; letter-spacing:2px; }
+.header p { margin-top:6px; opacity:0.8; font-size:0.9em; }
+.disclaimer { border:1px dashed #ff9900; color:#ff9900; padding:14px; margin:0 auto 22px; max-width:1000px; font-size:0.88em; }
+.disclaimer-title { font-weight:bold; margin-bottom:10px; display:block; letter-spacing:1px; }
+.disclaimer-divider { border:none; border-top:1px dashed #ff9900; margin:12px 0; opacity:0.55; }
+article { max-width:1000px; margin:0 auto; border:1px solid #0f0; padding:24px; }
+article h1,article h2,article h3,article h4 { margin:18px 0 8px; letter-spacing:1px; }
+article h1 { font-size:1.5em; } article h2 { font-size:1.25em; } article h3 { font-size:1.1em; }
+article p { margin:10px 0; }
+article ul,article ol { margin:10px 0 10px 24px; }
+article blockquote { border-left:3px solid #0f0; padding-left:12px; opacity:0.85; margin:10px 0; }
+article pre { background:rgba(0,255,0,0.06); border:1px solid #0f0; padding:12px; overflow-x:auto; margin:12px 0; }
+article code { background:rgba(0,255,0,0.08); padding:1px 5px; }
+article pre code { background:none; padding:0; }
+article a { color:#0ff; }
+.nav { max-width:1000px; margin:0 auto 16px; font-size:0.9em; display:flex; justify-content:space-between; }
+.nav a { color:#0f0; text-decoration:none; }
+.nav a:hover { color:#0ff; }
+.altbar { max-width:1000px; margin:14px auto 0; font-size:0.85em; opacity:0.7; }
+.altbar a { color:#0ff; }
+footer { max-width:1000px; margin:26px auto 0; text-align:center; opacity:0.5; font-size:0.82em; }
+</style>
+</head>
+<body>
+<div class="nav"><a href="../index.html">&larr; 回 Logic Matrix 索引</a><div><a href="../cosmomind.html" style="margin-right:15px;">→ 星環式認知展開圖</a><a href="../base-space.html">🧬 拓撲底空間</a></div></div>
+<header class="header"><h1>球形貪吃蛇問題_中心起點格點哈密頓路徑與離散守恆障礙</h1><p>EVEMISSLAB Logic Matrix · EveMissLab / 一言諾科技有限公司</p></header>
+<section class="disclaimer">
+  <span class="disclaimer-title">[認識論邊界宣告 / EPISTEMOLOGICAL DISCLAIMER]</span>
+  <div class="disclaimer-block">
+    <p><b>[CHT]</b> 本矩陣內所有論文之公式與數據為「啟發式模擬參數」，用於驗證理論架構與推演因果鏈，<b>未經實證校準</b>，請勿作為現實物理測量數據引用 or 處理。EVEMISSLAB 採行「邏輯先行（Logic-First）」原則：概念架構與系統因果映射優先於統計實證，但不排除未來實證對接。</p>
+  </div>
+  <hr class="disclaimer-divider">
+  <div class="disclaimer-block">
+    <p><b>[ENG]</b> The numerical parameters within these frameworks are <i>illustrative model coefficients</i> used for structural verification and causal mapping; they are <b>not empirically calibrated</b> and must not be treated as physical measurements. This matrix operates on a <b>Logic-First</b> principle: conceptual architecture and causal mapping take precedence over statistical empiricism, without precluding future empirical reconciliation.</p>
+  </div>
+</section>
+<article>
+<h1>球形貪吃蛇問題：中心起點的格點哈密頓路徑與離散守恆障礙</h1>
+<p><strong>作者</strong>：Neo.K &amp; Theia <strong>機構</strong>：一言諾科技有限公司（EveMissLab） <strong>日期</strong>：2026 年 6 月 <strong>論文類型</strong>：理論短論（命題框架，非完整證明）</p>
+<hr>
+<h2>摘要</h2>
+<p>給定三維實心球，於正中央放置一個基本格點，問：是否存在一條從中心出發、無縫、一次走完球內所有點且不重複的路徑——直觀地說，一條「球形貪吃蛇」。</p>
+<p>本文不直接尋找路徑，而是先把這個直觀問題切割成兩個互斥的精確讀法，並主張：<strong>在「每點恰好一次」的要求下，連續讀法被維度定理禁止，問題被迫進入離散讀法；而在離散讀法下，「能不能走」由格點空間的一個奇偶守恆量裁決，根本先於「怎麼走」。</strong></p>
+<p>我們以命題形式陳述這個框架，並對每一條給出「為何如此」的推理草圖。<strong>本文刻意不構成這些命題的完整證明</strong>：缺乏對格子族、相鄰關係族與適用域的全稱定義，缺乏充分性論證，亦缺乏建構過程。它是一份把混沌問題結晶為可審查命題的骨架，不是定稿。其價值在於指出問題的真正分岔點與真正障礙所在，而非宣稱已解。</p>
+<p><strong>關鍵詞</strong>：哈密頓路徑、空間填充曲線、二部圖、奇偶守恆、離散球、移動集相依性、維度不變性</p>
+<hr>
+<h2>第一章：問題定位</h2>
+<p>在《幾何比例極限法》與《萬能容器問題的公理化簡化》中，問題的方向是「用最小的形狀去容納任意曲線」，並把二維圓推廣為三維球作為最優容器（§11.2.1）。本文處理的是相鄰但反向的操作：不是用形狀裝下曲線，而是<strong>從中心長出一條曲線去填滿形狀</strong>。同一個本體（球與曲線的容納關係），反著走。</p>
+<p>反向之後，問題的性質也反轉了。容器問題問的是「需要多大」，是一個尺度量（普適常數 $k$）；本問題問的是「能不能從中心一筆走完」，是一個<strong>存在性與可達性</strong>問題。後者的答案，如下文所述，不落在尺寸上，而落在格點的離散結構上。</p>
+<hr>
+<h2>第二章：問題的精確化分岔</h2>
+<p>直觀敘述同時混用了兩組互斥的語彙：</p>
+<ul>
+<li>「基本格點 / 一次走完 / 貪吃蛇」——離散語彙：有限個格點，一步走到相鄰格，每點恰好一次。</li>
+<li>「無縫 / 路徑展開填滿球體」——連續語彙：一條 $[0,1] \to$ 實心球的滿射曲線。</li>
+</ul>
+<p>這不是修辭差異，而是一個能否成立的差異。</p>
+<p><strong>命題 1（連續讀法的不可能性）</strong> 不存在一條同時滿足「連續」、「每點恰好一次（單射）」、「滿射到實心三維球」的路徑。</p>
+<p><strong>為何如此（依據已證定理，非本文原創）</strong>：緊區間 $[0,1]$ 上的連續單射，是到其像的同胚（域不變性 / Netto 型結論）。$[0,1]$ 的同胚像是一條弧，弧不可能同胚於、也不可能滿射到帶內點的實心三維球——一維與三維的拓樸維度不相容。皮亞諾、希爾伯特一類填滿空間的曲線之所以存在，恰恰是因為它們放棄了單射：它們在一個測度零的點集上自我接觸、重複經過。因此「每點恰好一次」這一要求，單方面否決了連續讀法。</p>
+<p><strong>推論</strong>：若要求「貪吃蛇」（不吃自己、不重複），則問題必須在離散框架下提出，否則命題自相矛盾。本文其餘部分一律採離散讀法。</p>
+<hr>
+<h2>第三章：離散框架</h2>
+<p><strong>定義（暫行）</strong>：設 $\Lambda$ 為一個三維格子，$\mathrm{adj}$ 為其上一個相鄰關係，$B_R$ 為以原點為心、半徑 $R$ 的閉球。令圖 $G = G(\Lambda, \mathrm{adj}, R)$ 的頂點為 $\Lambda \cap B_R$，邊由 $\mathrm{adj}$ 決定。本文以「立方格 $\Lambda = \mathbb{Z}^3$、六連通（面相鄰）」為主對象，其餘格子與相鄰關係於第五章作為對照。</p>
+<p><strong>問題（精確版）</strong>：$G$ 中是否存在以原點（中心）為一端的哈密頓路徑？</p>
+<blockquote><strong>說明</strong>：此定義為「暫行」。完整理論需要給出 $\Lambda$ 與 $\mathrm{adj}$ 的全稱定義域（哪些格子、哪些相鄰關係納入討論），以及 $R$ 取值的離散化約定（閉球或開球、邊界格點的歸屬）。這些缺口見第六章。</blockquote>
+<hr>
+<h2>第四章：核心命題——奇偶守恆障礙</h2>
+<p><strong>命題 2（二部染色與中心色）</strong> 在 $\mathbb{Z}^3$ 六連通下，圖 $G$ 是二部圖；自然的二染色是 $(x+y+z)$ 的奇偶。中心 $(0,0,0)$ 屬偶色（黑）。</p>
+<p><strong>為何如此</strong>：六連通的每一步只改變一個座標 $\pm 1$，故 $(x+y+z)$ 的奇偶必翻轉，每條邊都連接一黑一白，二部性成立。中心座標和為 $0$，偶。</p>
+<p><strong>命題 3（中心起點的奇偶必要條件）</strong> 設 $G$ 中黑點 $B$ 個、白點 $W$ 個。則：</p>
+<ol>
+<li>$G$ 存在任何哈密頓路徑 $\Rightarrow |B - W| \le 1$。</li>
+<li>$G$ 存在以中心（黑）為一端的哈密頓路徑 $\Rightarrow B - W \in \{0, 1\}$。</li>
+</ol>
+<p><strong>為何如此</strong>：二部圖上的哈密頓路徑強制黑白交替。長度為偶（頂點數偶）的路徑兩端異色，需 $B = W$；長度為奇的路徑兩端同色，需該色多一個。起點若為黑，則僅 $B - W \in \{0,1\}$ 兩種情形可容納；若 $B - W = -1$，路徑雖可能存在但兩端必為白，中心當不了端點；若 $|B - W| \ge 2$，整圖無哈密頓路徑。</p>
+<blockquote>命題 3 為<strong>已證的必要條件</strong>（初等圖論），其推理在六連通 $\mathbb{Z}^3$ 上完整。它尚不是充分條件——見命題 7。</blockquote>
+<p><strong>命題 4（平衡量的數值行為：觀察）</strong> 平衡量 $B - W$ 對絕大多數半徑不落在 $\{0,1\}$ 內。在 $R^2 \le 120$ 範圍內精確列舉：</p>
+<ul>
+<li>滿足中心起點必要條件 $B - W \in \{0,1\}$ 者，僅 $R^2 = 0$（單點，平凡解）與 $R^2 = 48$（$B=683,\ W=682,\ R\approx 6.93$）。</li>
+<li>連放寬為「任意起點、僅問存不存在」($|B-W|\le 1$) 者，整個範圍僅 $R^2 \in \{3, 30, 31, 48\}$。</li>
+<li>其餘半徑，$B - W$ 大幅震盪（在此範圍內絕對值最高達 $65$），遠離 $\{0,1\}$。</li>
+</ul>
+<p><strong>為何如此（部分已證、部分猜想）</strong>：$R^2 \le 120$ 內的列舉是有限計算，為已證事實。但「對所有 $R$ 幾乎從不滿足」是<strong>外推猜想</strong>：$B - W = \sum_{x^2+y^2+z^2 \le R^2} (-1)^{x+y+z}$ 是一個帶符號的格點計數，其漸近與震盪行為需以 theta 函數 / 解析數論工具刻畫，本文未證。直觀上，因球心置於格點、缺乏翻轉奇偶的對稱性，此符號和不會系統性趨零，故 $\{0,1\}$ 命中是一條罕被觸及的窄縫。</p>
+<p><strong>命題 5（最小反例）</strong> $R = 1$ 時，中心起點球形貪吃蛇不存在。</p>
+<p><strong>為何如此</strong>：$\mathbb{Z}^3 \cap B_1$ 為中心加六個面鄰，共七點。六個外點兩兩距離 $\sqrt{2}$、互不相鄰，圖為星狀 $K_{1,6}$。$B - W = 1 - 6 = -5$，$|B-W| = 5 \ge 2$，無哈密頓路徑。直觀上：蛇進中心、吃任一外點後即被困，無法回返吃其餘五點。</p>
+<p><strong>綜合判決（六連通 $\mathbb{Z}^3$）</strong>：中心球形貪吃蛇對絕大多數半徑不是「難解」，而是<strong>可在 $O(N)$ 內證明不存在</strong>——只需數兩種顏色的點。障礙先於路徑。</p>
+<hr>
+<h2>第五章：障礙的非本質性——移動集相依性</h2>
+<p><strong>命題 6（障礙隨相鄰定義而蒸發）</strong> 命題 3 的奇偶障礙是「六連通」這一相鄰選擇的產物，而非球或格點的本質性質。改變移動集，障礙消失，存在性由罕見變為常態，且可建構。</p>
+<p><strong>為何如此</strong>：二部結構完全來自「一步只動一格、奇偶必翻」。一旦允許對角移動（18 或 26 連通），或改用面心立方（FCC）、體心立方（BCC）格，這些圖不再是二部圖，奇偶守恆被打破，$B - W$ 不再構成障礙。此時可給出建構草圖：把球切成同心格層，層內以牛耕式蛇形掃描（boustrophedon）逐格遍歷，層間以一步徑向跳接，自中心螺旋外展。此即「從中心展開」的直觀路徑——但它必須寄生於一個不守奇偶的相鄰關係才得以存活。</p>
+<blockquote>命題 6 的「可建構」部分目前僅為草圖，非定理。完整化需證明：在指定的非二部相鄰關係下，所有（或哪些）半徑的離散球確實容許中心起點哈密頓路徑，並給出顯式構造與其正確性論證。本文未提供。</blockquote>
+<p><strong>連續側的對應物（放棄單射的代價）</strong>：若願意放棄「恰好一次」、接受測度零的自接觸，則可構造一條真正「從中心展開填滿球」的連續滿射：球分解為巢狀球殼，每層球面 $S^2$ 鋪一條二維填充曲線（球面希爾伯特型曲線存在），層間沿半徑接續，自中心向外。它滿足「連續、無縫、填滿」，但不是蛇——它會碰自己。此構造的嚴格性（球面填充曲線的存在性與層間接續的連續性）本文僅引述，未自證。</p>
+<hr>
+<h2>第六章：結晶命題與其守恆論意涵</h2>
+<p><strong>命題 7（必要非充分）</strong> 奇偶平衡 $B - W \in \{0,1\}$ 是中心起點哈密頓路徑存在的必要條件，但非充分條件。</p>
+<p><strong>為何如此</strong>：即使 $R^2 = 48$ 使 $B - W = 1$ 過關，仍不保證該路徑造得出來。圖的連通性（邊界破碎處可能出現低度數或孤立格點）、局部結構（割點、瓶頸）都能各自否決哈密頓性。從「未被奇偶否決」推進到「確實存在」，需要構造或哈密頓性證明——這一步本文未跨。<strong>任何把必要當充分的慶祝都是越權。</strong></p>
+<p><strong>命題 8（結晶不變量）</strong> 「球形貪吃蛇」不是單一問題，而是被三元組 $(\Lambda,\ \mathrm{adj},\ R)$ 索引的一族問題。其中心起點可解性，化約為離散球的一個顏色平衡不變量是否落入容許集（在 $\mathbb{Z}^3$ 六連通下即 $B-W\in\{0,1\}$）。</p>
+<p><strong>為何如此（框架性主張，含類比，非已證同構）</strong>：問題的答案被一個離散守恆量裁決——蛇能否閉合地一次走完，取決於格點空間的一個奇偶守恆是否平衡。這與 Closure 框架中「所有守恆律源於封閉」的論點同形：一個系統內部的可遍歷性，由其結構自帶的守恆量決定，而非由外部尺寸決定。<strong>此處「同形」是啟發式類比，不是已建立的範疇同構</strong>；要把它升格為定理，需先給出兩個框架間的明確對應與保結構映射，本文未做。</p>
+<hr>
+<h2>第七章：自我審查——本文為何不構成證明</h2>
+<p>依 EveMissLab 在發表前列出缺口的慣例，明確標記本文未完成之處：</p>
+<ol>
+<li><strong>缺全稱定義域</strong>：第三章對 $\Lambda$ 與 $\mathrm{adj}$ 僅給暫行定義，主結果只在 $\mathbb{Z}^3$ 六連通上完整。命題 6、命題 8 訴諸的「格子族／相鄰關係族」尚無形式化的適用域。</li>
+<li><strong>缺充分性</strong>：命題 3、命題 7 確立的是必要條件。何時必要條件升為充分（即哈密頓性的正面判準），本文未證。</li>
+<li><strong>缺漸近論證</strong>：命題 4 的「幾乎從不滿足」是有限列舉的外推猜想，$B-W$ 的漸近行為未以解析數論證明。</li>
+<li><strong>缺建構過程</strong>：命題 6 的層狀蛇形構造、球面填充曲線構造，皆為草圖或引述，無正確性證明。</li>
+<li><strong>缺邊界約定</strong>：離散化（閉球／開球、邊界格點歸屬、$R$ 的容許取值）未統一，這直接影響 $B,W$ 的計數與所有命題的適用。</li>
+</ol>
+<p>故本文是把混沌問題結晶為<strong>可被攻擊的命題骨架</strong>，標出真正的分岔（連續／離散）與真正的障礙（奇偶守恆），並誠實標記每條命題的證據等級（已證／觀察／猜想／類比）。它不宣稱解決，亦不足以解決。</p>
+<hr>
+<h2>第八章：開放問題</h2>
+<ol>
+<li>求 $B-W = \sum_{|n|^2 \le R^2}(-1)^{x+y+z}$ 的漸近式與符號分佈；其落入 $\{0,1\}$ 的半徑是否有限或無限多？</li>
+<li>在 18/26 連通與 FCC/BCC 下，給出中心起點哈密頓路徑存在的充要條件與顯式構造。</li>
+<li>命題 7 之外，除奇偶與連通外，是否還有其他離散障礙（如更高階的染色不變量）？</li>
+<li>命題 8 的「Closure 同形」能否升格為形式化的保結構對應？</li>
+</ol>
+<hr>
+<h2>哲學結語</h2>
+<p>你問「怎麼走」，球先回你「能不能走」；而能不能，不寫在路徑裡，寫在你用哪隻手定義「相鄰」上。換了相鄰，就換了守恆律——障礙從來不在球，在量尺。</p>
+<p>而這份文本本身也服從同一條紀律：它能走多遠，不寫在它說了多少命題裡，寫在它對自己未證之處有多誠實。一個敢標出自己缺口的骨架，比一具假裝完整的證明，離真理更近。</p>
+<div class="altbar">原始檔（供 RAG/下載）：<a href="paper-902.md" rel="noopener">papers/paper-902.md</a> [md]</div>
+</article>
+<footer><p>Neo.K (許筌崴) · Cl + ε</p></footer>
+</body>
+</html>

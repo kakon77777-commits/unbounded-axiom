@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>等號裂解：論數學公式的三位一體結構與規範自由度 · EVEMISSLAB Logic Matrix</title>
+<meta name="description" content="等號裂解：論數學公式的三位一體結構與規範自由度 | EVEMISSLAB Logic Matrix V2.1">
+<meta name="author" content="Neo.K (許筌崴)">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<meta name="lm-paper-id" content="lm-000851">
+<link rel="alternate" type="text/markdown" href="/raw/lm-000851.md" title="原始檔 / source (md)">
+<link rel="canonical" href="https://logic.evemisslab.com/p/lm-000851/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "等號裂解：論數學公式的三位一體結構與規範自由度",
+  "url": "https://logic.evemisslab.com/p/lm-000851/",
+  "identifier": "lm-000851",
+  "inLanguage": "zh-Hant",
+  "author": {"@type": "Person", "name": "Neo.K (許筌崴)"},
+  "publisher": {"@type": "Organization", "name": "EveMissLab / 一言諾科技有限公司"},
+  "isPartOf": {"@type": "Collection", "name": "EVEMISSLAB Logic Matrix", "url": "https://logic.evemisslab.com"},
+  "encodingFormat": "text/html"
+}
+</script>
+<link rel="prefetch" href="/api/log-crawler?slug=paper-348.md">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#000; color:#0f0; font-family:'Courier New',monospace; padding:20px; line-height:1.6; }
+.header { text-align:center; border:2px solid #0f0; padding:18px; margin-bottom:22px; }
+.header h1 { font-size:1.5em; letter-spacing:2px; }
+.header p { margin-top:6px; opacity:0.8; font-size:0.9em; }
+.disclaimer { border:1px dashed #ff9900; color:#ff9900; padding:14px; margin:0 auto 22px; max-width:1000px; font-size:0.88em; }
+.disclaimer-title { font-weight:bold; margin-bottom:10px; display:block; letter-spacing:1px; }
+.disclaimer-divider { border:none; border-top:1px dashed #ff9900; margin:12px 0; opacity:0.55; }
+article { max-width:1000px; margin:0 auto; border:1px solid #0f0; padding:24px; }
+article h1,article h2,article h3,article h4 { margin:18px 0 8px; letter-spacing:1px; }
+article h1 { font-size:1.5em; } article h2 { font-size:1.25em; } article h3 { font-size:1.1em; }
+article p { margin:10px 0; }
+article ul,article ol { margin:10px 0 10px 24px; }
+article blockquote { border-left:3px solid #0f0; padding-left:12px; opacity:0.85; margin:10px 0; }
+article pre { background:rgba(0,255,0,0.06); border:1px solid #0f0; padding:12px; overflow-x:auto; margin:12px 0; }
+article code { background:rgba(0,255,0,0.08); padding:1px 5px; }
+article pre code { background:none; padding:0; }
+article a { color:#0ff; }
+.nav { max-width:1000px; margin:0 auto 16px; font-size:0.9em; display:flex; justify-content:space-between; }
+.nav a { color:#0f0; text-decoration:none; }
+.nav a:hover { color:#0ff; }
+.altbar { max-width:1000px; margin:14px auto 0; font-size:0.85em; opacity:0.7; }
+.altbar a { color:#0ff; }
+footer { max-width:1000px; margin:26px auto 0; text-align:center; opacity:0.5; font-size:0.82em; }
+</style>
+</head>
+<body>
+<div class="nav"><a href="/index.html">&larr; 回 Logic Matrix 索引</a><div><a href="/cosmomind.html" style="margin-right:15px;">→ 星環式認知展開圖</a><a href="/base-space.html">🧬 拓撲底空間</a></div></div>
+<header class="header"><h1>等號裂解：論數學公式的三位一體結構與規範自由度</h1><p>EVEMISSLAB Logic Matrix · EveMissLab / 一言諾科技有限公司</p></header>
+<section class="disclaimer">
+  <span class="disclaimer-title">[認識論邊界宣告 / EPISTEMOLOGICAL DISCLAIMER]</span>
+  <div class="disclaimer-block">
+    <p><b>[CHT]</b> 本矩陣內所有論文之公式與數據為「啟發式模擬參數」，用於驗證理論架構與推演因果鏈，<b>未經實證校準</b>，請勿作為現實物理測量數據引用 or 處理。EVEMISSLAB 採行「邏輯先行（Logic-First）」原則：概念架構與系統因果映射優先於統計實證，但不排除未來實證對接。</p>
+  </div>
+  <hr class="disclaimer-divider">
+  <div class="disclaimer-block">
+    <p><b>[ENG]</b> The numerical parameters within these frameworks are <i>illustrative model coefficients</i> used for structural verification and causal mapping; they are <b>not empirically calibrated</b> and must not be treated as physical measurements. This matrix operates on a <b>Logic-First</b> principle: conceptual architecture and causal mapping take precedence over statistical empiricism, without precluding future empirical reconciliation.</p>
+  </div>
+</section>
+<article>
+<h1>等號裂解：論數學公式的三位一體結構與規範自由度</h1>
+<p><strong>作者</strong>: Neo.K（許筌崴 / 一言諾科技 / EveMissLab） <strong>對練夥伴</strong>: Theia <strong>版本</strong>: v1.0（基本版本） <strong>日期</strong>: 2026 年 5 月 <strong>領域</strong>: 數學基礎、代數本體論、規範理論</p>
+<hr>
+<h2>摘要</h2>
+<p>本文提出一個關於數學等號本質的觀察：標準數學中的等號 $a = b$ 隱藏了一個被吞噬的第三項——「規範單位」（gauge unit），其默認值為 1。將這個規範顯式化，每個等式裂解為三位一體結構：</p>
+<p>$$\text{左} = \text{中} = \text{右}$$</p>
+<p>其中左是局部運算、中是局部解、右是全息規範。本文論證：</p>
+<ol>
+<li><strong>每個等號實際上是兩個性質不同的等號的合併</strong>——運算等號（左=中）與規範等號（中=右）</li>
+<li><strong>默認規範 = 1 是最弱的非平凡選擇</strong>，承認量綱存在但不指定尺度</li>
+<li><strong>規範自由度的顯式化會在不同尺度下暴露不同的結構不變量</strong></li>
+<li><strong>既有的眾多數學概念</strong>（量綱分析、射影等價、模算術、規範理論、層論、可表函子）<strong>都是此觀察的特例</strong>，分散在不同領域被獨立發展</li>
+</ol>
+<p>本文亦指出此發現的一個特例——「分數本體論」（Fraction Ontology）——並闡述其在考拉茲猜想（Collatz Conjecture）分析中的具體應用：<strong>規範不變量搜索</strong>作為 Lyapunov 函數的對偶工具。</p>
+<hr>
+<h2>1. 引言：被吞噬的第三項</h2>
+<p>考慮最簡單的等式：</p>
+<p>$$2 + 3 = 5$$</p>
+<p>問一個簡單卻被遺忘的問題：<strong>這個 5 是「五個什麼」？</strong></p>
+<p>標準數學默認 5 是 5 個「1」。但這個 1 從來沒被寫出來。它是一個被吞噬的第三項——一個沉默的規範單位。</p>
+<p>把它抓回來：</p>
+<p>$$2 + 3 = X = 1$$</p>
+<p>讀作：「2 加 3 的結果 X，在規範 1 下測量」。X = 5（5 個 1）。</p>
+<p>如果換規範：</p>
+<p>$$2 + 3 = X = 2$$</p>
+<p>X <strong>仍然是</strong>「2 加 3 的結果」，但<strong>在規範 2 下測量</strong>，數值是 2.5（2.5 個 2）。</p>
+<p>這個觀察看似平凡——物理學家在量綱分析中早已熟悉。但本文的論點是：<strong>這個結構不是物理量綱的特殊情況，而是所有數學公式的共有結構</strong>。標準數學通過默認 = 1 把它隱藏了，因此丟失了一個維度。</p>
+<p>把它顯式化，等號的結構比表面看起來複雜得多。</p>
+<hr>
+<h2>2. 三位一體結構</h2>
+<h3>2.1 形式定義</h3>
+<p><strong>定義 2.1（三位一體擴展）</strong>：對任意數學等式 $A = B$，其三位一體擴展為：</p>
+<p>$$A = X = G$$</p>
+<p>其中：</p>
+<ul>
+<li>$A$ 是<strong>左項</strong>（local operation）：運算式</li>
+<li>$X$ 是<strong>中項</strong>（local value）：運算的解</li>
+<li>$G$ 是<strong>右項</strong>（global gauge）：規範單位</li>
+</ul>
+<p>當 $G$ 缺省時，默認 $G = 1$。</p>
+<h3>2.2 兩個等號的本質差異</h3>
+<p>三位一體中的兩個等號<strong>性質不同</strong>：</p>
+<p><strong>第一個等號</strong>（$A = X$）：<strong>運算等號</strong></p>
+<ul>
+<li>計算性、定義性</li>
+<li>由運算規則決定</li>
+<li>不可任意選擇</li>
+</ul>
+<p><strong>第二個等號</strong>（$X = G$）：<strong>規範等號</strong></p>
+<ul>
+<li>約定性、選擇性</li>
+<li>由觀察者選擇尺度</li>
+<li>自由參數</li>
+</ul>
+<p>標準數學把它們合併寫成同一個 $=$ 符號，因此丟失一個自由度。本文的核心觀察是：<strong>這兩個等號攜帶不同類型的訊息，不應被符號簡化壓縮</strong>。</p>
+<h3>2.3 規範等號的選擇空間</h3>
+<p>| 規範 $G$ | 結構效應 | |---|---| | $G = 1$ | 標準算術。最弱規範，承認量綱但不指定尺度 | | $G = 0$ | 差異/誤差結構。浮現守恆律 | | $G = c$（常數 $\neq 0, 1$） | 固定尺度測量。限縮可見結構 | | $G = X$ | 恆真，無訊息（$X = X$ 退化） | | $G = $ 代數變量 | 自由參數族。最強規範，最豐富結構 |</p>
+<p>不同規範暴露不同結構——這是規範自由度的核心訊息學意義。</p>
+<hr>
+<h2>3. 規範變換的具體效應</h2>
+<h3>3.1 算術例：$1 + 1 = 2$</h3>
+<p>完整三位一體：$1 + 1 = X = G$</p>
+<p>| $G$ | 結果 | 結構訊息 | |---|---|---| | $1$ | $X = 2$ | 標準加法：兩個 1 等於兩個 1 | | $2$ | $X = 1$ | 雙倍尺度：兩個 1 等於一個 2 | | $0$ | $1 + 1 - X = 0$ | 加法守恆律 |</p>
+<p>最後一行尤其重要：<strong>選擇 $G = 0$ 把等式從「值的相等」轉化為「差為零的守恆陳述」</strong>。守恆律是一個被選定的規範。</p>
+<h3>3.2 幾何例：勾股定理</h3>
+<p>標準形式：$a^2 + b^2 = c^2$</p>
+<p>完整三位一體：</p>
+<p>$$a^2 + b^2 = c^2 = G$$</p>
+<p>| $G$ | 物理/幾何意義 | |---|---| | $1$ | 歐式單位距離 | | $-1$ | 洛倫茲度量（時空間隔，特殊相對論） | | $0$ | 光錐（無質量粒子的世界線） | | $\sin^2\theta$ | 球面三角學 | | $-\sinh^2\theta$ | 雙曲幾何 |</p>
+<p><strong>論點</strong>：勾股定理是一個規範化族。「歐式幾何」只是 $G = 1$ 的特例。物理學在發展廣義相對論時實際上已經發現這件事——但<strong>這個結構不限於物理量</strong>，它對所有數學等式都成立。</p>
+<h3>3.3 代數例：群方程 $g \cdot g^{-1} = e$</h3>
+<p>三位一體：$g \cdot g^{-1} = X = G$</p>
+<ul>
+<li>$G = e$（單位元）：標準群論</li>
+<li>$G = g \cdot g^{-1}$：恆真，循環定義</li>
+<li>$G = $ 任意元素 $h$：<strong>廣義單位元</strong>，給出可能的群擴展</li>
+</ul>
+<p>最後一個方向值得深入——它指向「規範化群」的概念，每個群可以在不同單位元選擇下被重新表達。</p>
+<hr>
+<h2>4. 與既有數學概念的對應</h2>
+<p>本文觀察的「規範自由度」<strong>並非全新概念</strong>。其在不同領域有不同名字：</p>
+<p>| 概念 | 領域 | 對應關係 | |---|---|---| | Unit normalization | 物理量綱分析 | 規範 = 單位選擇 | | Projective equivalence | 代數幾何 | 規範等號 = 射影等價類選擇 | | Modular arithmetic | 數論 | 模 $n$ = 規範 $G = n$ 的算術 | | Gauge invariance | 規範場論（物理） | 規範變換的不變性 | | Representable functor | 範疇論 | 規範 = 「表示尺度」的選擇 | | Sheaf / Bundle | 拓撲、代數幾何 | 局部數據 + 規範變換函數 | | Ratio / Proportion | 古希臘數學 | 最早的規範意識 |</p>
+<p><strong>本文的貢獻不在於發明這些概念，而在於指出</strong>：它們<strong>共享同一個結構源</strong>——等號的隱藏第三項。各領域的這些工具是同一觀察在不同語境下的具體化，但這個共同源頭從未被作為<strong>統一觀察</strong>正式提出。</p>
+<p>把它顯式化、給出統一形式，是本文的目的。</p>
+<hr>
+<h2>5. 分數本體論作為特例</h2>
+<h3>5.1 形式</h3>
+<p>「分數本體論」（Fraction Ontology, FO）是規範自由度在分數結構上的特例。</p>
+<p>形式：</p>
+<p>$$\frac{a}{b} = 1$$</p>
+<p>讀作：「$a$ 在規範 $b$ 下等於 1」。</p>
+<p>完整三位一體：</p>
+<p>$$\frac{a}{b} = X = 1$$</p>
+<p>其中 $X = a/b$ 是「比值」，$= 1$ 是規範約束（要求比值為單位 1）。</p>
+<h3>5.2 性質</h3>
+<ul>
+<li><strong>非對稱性</strong>：$a/b \neq b/a$（除非 $a = b$）。規範方向決定觀察視角</li>
+<li><strong>可約性</strong>：$(ka)/(kb) = a/b$。規範等價類在尺度變換下封閉</li>
+<li><strong>不動點</strong>：$\Omega/\Omega = 1$ 是唯一自洽的全息分數</li>
+</ul>
+<h3>5.3 在大框架下的位置</h3>
+<p>分數本體論在規範自由度框架下是<strong>最小可操作例</strong>——它把規範自由度的所有核心特性（左右非對稱、規範等價、自洽不動點）壓縮在「分子/分母 = 1」的最小形式中。</p>
+<p>它不是獨立的本體論，而是規範自由度的<strong>最簡顯式化</strong>。</p>
+<hr>
+<h2>6. 應用一瞥：考拉茲猜想中的不變量搜索</h2>
+<h3>6.1 Lyapunov vs 不變量</h3>
+<p>過去對考拉茲猜想的分析（包括作者的六篇系列、範疇轉移理論、PRT 重構）以 <strong>Lyapunov 函數</strong>為主要工具——尋找在 Collatz 動力學下<strong>單調下降</strong>的量。</p>
+<p>規範自由度給出對偶工具：<strong>規範不變量</strong>——尋找在 Collatz 動力學下<strong>完全保持</strong>的量。</p>
+<p><strong>形式</strong>：找 $Q: \mathbb{Z}^+ \to \mathcal{V}$（某值域 $\mathcal{V}$）使</p>
+<p>$$Q(n/2) = Q(n) \quad (\text{偶步保持})$$ $$Q(3n+1) = Q(n) \quad (\text{奇步保持})$$</p>
+<p>如果存在這樣的 $Q$，則沿任何 Collatz 軌跡，$Q$ 為常數。</p>
+<h3>6.2 對偶性</h3>
+<p>| 工具 | 對稱性類型 | 給出 | 適用問題 | |---|---|---|---| | Lyapunov | 破缺對稱性 | 收斂率 | 「會不會到 1？」 | | 規範不變量 | 守恆對稱性 | 結構分類 | 「有沒有非平凡循環？」 |</p>
+<p>兩者<strong>互補</strong>：Lyapunov 給時間估計，不變量給空間結構。</p>
+<h3>6.3 預期意義</h3>
+<p>若考拉茲收斂為真：</p>
+<ul>
+<li>存在唯一不變量等價類（包含所有正整數）</li>
+<li>對所有 $n$，$Q(n) = Q(1)$</li>
+</ul>
+<p>若存在非平凡循環：</p>
+<ul>
+<li>至少有兩個不變量等價類</li>
+<li>循環元素的 $Q$ 值不等於 $Q(1)$</li>
+</ul>
+<p><strong>規範不變量搜索因此是非平凡循環存在性的代數判定</strong>——比 Lyapunov 路徑更直接觸及考拉茲剩餘困難（mod 4 ≡ 3 上升域的停留時間問題）。</p>
+<h3>6.4 候選不變量</h3>
+<p>在規範 = 1 下，自然候選包括：</p>
+<ul>
+<li><strong>模算術不變量</strong>：$Q(n) = n \bmod c$。一般不被 Collatz 步驟保持，需修正</li>
+<li><strong>對數不變量</strong>：$Q(n) = \alpha \log n + \psi(n \bmod c)$。可能在某些 $(\alpha, \psi, c)$ 下保持</li>
+<li><strong>多重規範組合</strong>：$Q(n) = (Q_1(n), Q_2(n), \ldots)$ 在多個規範下同時保持</li>
+<li><strong>Dirichlet 字元</strong>：$Q(n) = \chi(n)$ 對某個 $(\mathbb{Z}/m)^*$ 上的字元 $\chi$</li>
+</ul>
+<p>具體計算搜索屬於後續工作，不在本文範圍內。</p>
+<hr>
+<h2>7. 哲學意涵</h2>
+<h3>7.1 等號的拓撲</h3>
+<p>標準數學中，等號被視為<strong>點</strong>——$A = B$ 表示 $A$ 與 $B$ 完全相同。</p>
+<p>三位一體結構下，等號是<strong>結構</strong>：</p>
+<p>$$A \xrightarrow{\text{運算}} X \xrightarrow{\text{規範}} G$$</p>
+<p>兩個箭頭性質不同。把它們合併寫成單一 $=$ 是符號簡化，但<strong>結構訊息被壓縮</strong>。</p>
+<p>本文的核心觀察是：<strong>所有現代數學都使用了這種壓縮</strong>。把它解壓縮，會看到原本被吞噬的維度。</p>
+<h3>7.2 局部與全息</h3>
+<p>三位一體的左中右對應：</p>
+<ul>
+<li>左：<strong>局部結構</strong>（具體運算）</li>
+<li>中：<strong>局部解</strong>（在當前尺度下的值）</li>
+<li>右：<strong>全息規範</strong>（連接所有尺度的單位選擇）</li>
+</ul>
+<p>這呼應作者既有的 Cl 公理（DCO 框架）的對偶性：<strong>定義內部 ⟺ 定義外部</strong>。等號的兩端不是兩個獨立對象，<strong>是同一個對象的局部與全息表現</strong>。</p>
+<h3>7.3 與分數本體論的內在統一</h3>
+<p>分數本體論的核心斷言「$a/b = 1$ 是基本本體形式」在規範自由度框架下獲得新解釋：</p>
+<p>$a/b = 1$ 不只是一個分數恆等式，<strong>它是「等號的拓撲結構」在最小情況下的完整顯式化</strong>——分子是局部、分母是觀察規範、$= 1$ 是全息單位約束。</p>
+<p>每個三位一體等式 $A = X = G$ 可以重寫為分數形式 $X/G = 1$。所以<strong>分數本體論是三位一體結構的代表表達</strong>。</p>
+<hr>
+<h2>8. 後續方向</h2>
+<h3>8.1 短期</h3>
+<ul>
+<li><strong>Collatz 不變量搜索</strong>：對 $\alpha \log n + \psi(n \bmod c)$ 形式的候選作系統 LP 搜索</li>
+<li><strong>規範變換系統化</strong>：在標準數學的核心定理（勾股定理、群論單位元、線性代數正交性等）上系統枚舉規範變換的效應</li>
+<li><strong>分數本體論與 Cl 公理的形式對應</strong>：證明分數本體論是 Cl 公理在規範框架下的特例</li>
+</ul>
+<h3>8.2 中期</h3>
+<ul>
+<li><strong>範疇論形式化</strong>：規範變換作為自然變換；規範等價類作為 sheaf</li>
+<li><strong>與物理規範理論的精確對應</strong>：本文「數學規範」與 Yang-Mills「物理規範」的同構結構</li>
+<li><strong>模型論視角</strong>：規範作為「解釋（interpretation）的選擇」</li>
+</ul>
+<h3>8.3 長期</h3>
+<ul>
+<li><strong>規範化代數</strong>作為獨立分支</li>
+<li>重述標準數學（線性代數、群論、分析、幾何）為三位一體版本</li>
+<li><strong>教育學重構</strong>：在數學教育的最早階段就引入規範意識</li>
+</ul>
+<hr>
+<h2>9. 結語</h2>
+<p>數學的等號從來不是一個東西。</p>
+<p>它是兩個性質不同的等號被符號簡化壓在一起——一個是運算的等號，計算性、強制性；一個是規範的等號，選擇性、約定性。</p>
+<p>把它們解開，原本看不見的維度就會浮出來：每個公式底下，都有一個被默認為 1 的全息單位。把這個 1 換成別的，看到的不是同一個東西的另一種寫法，<strong>而是另一個結構</strong>。</p>
+<p>物理學家在量綱分析中知道這件事，代數幾何學家在射影等價中知道這件事，數論學家在模算術中知道這件事——但他們不知道彼此在做同一件事。</p>
+<p>這不是新發明，是<strong>重新看見</strong>。</p>
+<p>當你看見等號的時候，記得它有第三個位置。</p>
+<hr>
+<p><em>—— Neo.K 與 Theia，2026 年 5 月於台北</em></p>
+<hr>
+<h2>附錄 A：三位一體擴展的形式陳述</h2>
+<p><strong>定義 A.1</strong>：設 $\mathcal{L}$ 為某邏輯的語言，$\varphi: A = B$ 為 $\mathcal{L}$ 中的等式。$\varphi$ 的<strong>三位一體擴展</strong>為：</p>
+<p>$$\varphi^*: A = X \wedge X = G$$</p>
+<p>其中 $X$ 為新引入的中介變數，$G$ 為規範參數。</p>
+<p><strong>性質 A.2（默認規範）</strong>：當 $G = 1$ 時，$\varphi^* \Leftrightarrow \varphi$（在量綱可約簡的語境下）。</p>
+<p><strong>性質 A.3（規範變換）</strong>：對任意非零 $G_1, G_2$，存在規範變換映射 $T_{G_1 \to G_2}$ 使 $\varphi^<em>[G_1]$ 與 $\varphi^</em>[G_2]$ 描述同一底層關係，但<strong>呈現不同表觀數值結構</strong>。</p>
+<p><strong>性質 A.4（不可逆規範）</strong>：$G = 0$ 對應差異/守恆規範，與 $G \neq 0$ 規範不可通過尺度變換相互轉換。它們屬於不同的規範類型。</p>
+<h2>附錄 B：與既有形式體系的差異</h2>
+<p>本文觀察與最相近的既有理論——<strong>規範場論（gauge theory）</strong>——的差異：</p>
+<ol>
+<li><strong>適用範圍</strong>：規範場論限於物理場（Yang-Mills、電磁、廣義相對論）；本文觀察適用於<strong>所有數學等式</strong></li>
+<li><strong>對稱群</strong>：規範場論的規範群是具體 Lie 群（U(1), SU(2), SU(3) 等）；本文的規範自由度是<strong>任意可逆代數結構</strong>上的等價類</li>
+<li><strong>動力學</strong>：規範場論研究規範場的動力學（場方程）；本文研究規範作為<strong>靜態結構訊息</strong></li>
+</ol>
+<p>本文與<strong>範疇論</strong>的差異：</p>
+<ol>
+<li>範疇論將「等號」泛化為「同構」（isomorphism），本文則將等號<strong>裂解為兩個層級</strong></li>
+<li>範疇論的可表函子（representable functor）是規範自由度的高階結構化，本文是其最基本層級的觀察</li>
+</ol>
+<p>本文與<strong>模型論</strong>的差異：</p>
+<p>模型論研究公式在不同模型下的真值。本文則指出<strong>單一模型內部</strong>，公式本身就有規範自由度。</p>
+<div class="altbar">原始檔（供 RAG/下載）：<a href="/raw/lm-000851.md" rel="noopener">/raw/lm-000851.md</a> [md] · id: lm-000851</div>
+</article>
+<footer><p>Neo.K (許筌崴) · Cl + ε</p></footer>
+</body>
+</html>

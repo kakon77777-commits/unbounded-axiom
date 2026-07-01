@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EML-COMP-THEORY-2026-APPENDIX-v0_1 · EVEMISSLAB Logic Matrix</title>
+<meta name="description" content="EML-COMP-THEORY-2026-APPENDIX-v0_1 | EVEMISSLAB Logic Matrix V2.1">
+<meta name="author" content="Neo.K (許筌崴)">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<meta name="lm-paper-id" content="lm-000058">
+<link rel="alternate" type="text/markdown" href="/raw/lm-000058.md" title="原始檔 / source (md)">
+<link rel="canonical" href="https://logic.evemisslab.com/p/lm-000058/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "EML-COMP-THEORY-2026-APPENDIX-v0_1",
+  "url": "https://logic.evemisslab.com/p/lm-000058/",
+  "identifier": "lm-000058",
+  "inLanguage": "en",
+  "author": {"@type": "Person", "name": "Neo.K (許筌崴)"},
+  "publisher": {"@type": "Organization", "name": "EveMissLab / 一言諾科技有限公司"},
+  "isPartOf": {"@type": "Collection", "name": "EVEMISSLAB Logic Matrix", "url": "https://logic.evemisslab.com"},
+  "encodingFormat": "text/html"
+}
+</script>
+<link rel="prefetch" href="/api/log-crawler?slug=EML-COMP-THEORY-2026-APPENDIX-v0_1.md">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#000; color:#0f0; font-family:'Courier New',monospace; padding:20px; line-height:1.6; }
+.header { text-align:center; border:2px solid #0f0; padding:18px; margin-bottom:22px; }
+.header h1 { font-size:1.5em; letter-spacing:2px; }
+.header p { margin-top:6px; opacity:0.8; font-size:0.9em; }
+.disclaimer { border:1px dashed #ff9900; color:#ff9900; padding:14px; margin:0 auto 22px; max-width:1000px; font-size:0.88em; }
+.disclaimer-title { font-weight:bold; margin-bottom:10px; display:block; letter-spacing:1px; }
+.disclaimer-divider { border:none; border-top:1px dashed #ff9900; margin:12px 0; opacity:0.55; }
+article { max-width:1000px; margin:0 auto; border:1px solid #0f0; padding:24px; }
+article h1,article h2,article h3,article h4 { margin:18px 0 8px; letter-spacing:1px; }
+article h1 { font-size:1.5em; } article h2 { font-size:1.25em; } article h3 { font-size:1.1em; }
+article p { margin:10px 0; }
+article ul,article ol { margin:10px 0 10px 24px; }
+article blockquote { border-left:3px solid #0f0; padding-left:12px; opacity:0.85; margin:10px 0; }
+article pre { background:rgba(0,255,0,0.06); border:1px solid #0f0; padding:12px; overflow-x:auto; margin:12px 0; }
+article code { background:rgba(0,255,0,0.08); padding:1px 5px; }
+article pre code { background:none; padding:0; }
+article a { color:#0ff; }
+.nav { max-width:1000px; margin:0 auto 16px; font-size:0.9em; display:flex; justify-content:space-between; }
+.nav a { color:#0f0; text-decoration:none; }
+.nav a:hover { color:#0ff; }
+.altbar { max-width:1000px; margin:14px auto 0; font-size:0.85em; opacity:0.7; }
+.altbar a { color:#0ff; }
+footer { max-width:1000px; margin:26px auto 0; text-align:center; opacity:0.5; font-size:0.82em; }
+</style>
+</head>
+<body>
+<div class="nav"><a href="/index.html">&larr; 回 Logic Matrix 索引</a><div><a href="/cosmomind.html" style="margin-right:15px;">→ 星環式認知展開圖</a><a href="/base-space.html">🧬 拓撲底空間</a></div></div>
+<header class="header"><h1>EML-COMP-THEORY-2026-APPENDIX-v0_1</h1><p>EVEMISSLAB Logic Matrix · EveMissLab / 一言諾科技有限公司</p></header>
+<section class="disclaimer">
+  <span class="disclaimer-title">[認識論邊界宣告 / EPISTEMOLOGICAL DISCLAIMER]</span>
+  <div class="disclaimer-block">
+    <p><b>[CHT]</b> 本矩陣內所有論文之公式與數據為「啟發式模擬參數」，用於驗證理論架構與推演因果鏈，<b>未經實證校準</b>，請勿作為現實物理測量數據引用 or 處理。EVEMISSLAB 採行「邏輯先行（Logic-First）」原則：概念架構與系統因果映射優先於統計實證，但不排除未來實證對接。</p>
+  </div>
+  <hr class="disclaimer-divider">
+  <div class="disclaimer-block">
+    <p><b>[ENG]</b> The numerical parameters within these frameworks are <i>illustrative model coefficients</i> used for structural verification and causal mapping; they are <b>not empirically calibrated</b> and must not be treated as physical measurements. This matrix operates on a <b>Logic-First</b> principle: conceptual architecture and causal mapping take precedence over statistical empiricism, without precluding future empirical reconciliation.</p>
+  </div>
+</section>
+<article>
+<h1>附錄：深度推導</h1>
+<h2>EML-COMP-THEORY-2026 形式補完</h2>
+<p><strong>關聯主文</strong>：EML-COMP-THEORY-2026-v0.1 <strong>狀態</strong>：形式推導草稿</p>
+<hr>
+<h3>附錄說明：命題狀態標記系統</h3>
+<p>本附錄的每個命題均標記其認識論地位：</p>
+<p><strong>【標準定理】</strong>：從已建立的數學或計算機科學直接推導，獨立於本框架的特有公理成立。</p>
+<p><strong>【框架命題】</strong>：在本框架接受的公理系統下成立。結論的有效性前提是相應公理被接受。</p>
+<p><strong>【結構提案】</strong>：形式上一致的結構性主張，具備可形式化的條件，但尚未完整建立為定理。</p>
+<p><strong>【觀察】</strong>：由定義直接得出的非深刻陳述，或形式對應的描述性記錄。</p>
+<hr>
+<h2>A1：深度軸的形式定義與代數結構</h2>
+<h3>A1.1 深度層化計算空間的定義</h3>
+<p><strong>定義 A1.1（深度層化計算空間，DSCM）</strong>【結構提案】</p>
+<p>深度層化計算空間（Depth-Stratified Computational Model，DSCM）是一個四元組：</p>
+<p>$$\mathcal{D} = (M_<em>, \Pi_</em>, \iota_*, \mathcal{C})$$</p>
+<p>其中：</p>
+<ul>
+<li>$\{M_d\}_{d \in \mathbb{N}}$ 是計算空間族，$M_d$ 是深度 $d$ 的配置空間（configuration space）。</li>
+<li>$\Pi_d : M_{d+1} \to M_d$ 是投影算子族，將深度 $d+1$ 的狀態投影至深度 $d$ 的可觀測表示。</li>
+<li>$\iota_d : M_d \to M_{d+1}$ 是包含算子族，表示深度 $d$ 的計算「下潛」至深度 $d+1$（函數呼叫語義）。</li>
+<li>$\mathcal{C}$ 是組合約束集，規定合法的深度間交互。</li>
+</ul>
+<p><strong>公理 A1-C（相鄰性約束）</strong>：$\mathcal{C}$ 要求所有直接交互只發生於相鄰深度層之間：</p>
+<p>$$\forall d_1, d_2 \in \mathbb{N}: \text{Direct\_Interaction}(d_1, d_2) \Rightarrow |d_1 - d_2| \leq 1$$</p>
+<p>跨層交互必須通過中介層依序傳遞。這是<strong>嵌套交互原則</strong>的公理化表達。</p>
+<p><strong>定義 A1.2（深度下潛與浮出）</strong></p>
+<p>給定程式 $P$ 在深度 $d$ 執行，呼叫深度 $d+1$ 的子程序 $Q$：</p>
+<ul>
+<li><strong>下潛（Descent）</strong>：$\iota_d(s_d) \mapsto s_{d+1}$，其中 $s_d \in M_d$ 為呼叫前的狀態，$s_{d+1} \in M_{d+1}$ 為子程序的初始狀態（包含呼叫參數與返回地址）。</li>
+<li><strong>浮出（Ascent）</strong>：$\Pi_d(s&#x27;_{d+1}) \mapsto s&#x27;<em>d$，其中 $s&#x27;</em>{d+1}$ 為子程序執行完畢後的狀態，$s&#x27;_d$ 為返回深度 $d$ 後的繼續狀態。</li>
+</ul>
+<p><strong>引理 A1.1（呼叫堆疊為深度軸快照）</strong>【觀察】</p>
+<p>任何現代程式語言實現的呼叫堆疊（call stack）在任意執行時刻的狀態，精確對應 DSCM 的深度軸即時快照：</p>
+<p>$$\text{CallStack}(t) = (s_0^{(t)}, s_1^{(t)}, \ldots, s_{n(t)}^{(t)})$$</p>
+<p>其中 $n(t)$ 是時刻 $t$ 的當前呼叫深度，$s_k^{(t)}$ 是深度 $k$ 的局部狀態（活躍記錄）。</p>
+<p>證明：直接由定義 A1.1 和 A1.2 展開，與任何 ISO/IEC 標準語言（C、C++、Python 等）的呼叫慣例規範（calling convention）的形式語義一一對應。∎</p>
+<h3>A1.2 深度軸的代數性質</h3>
+<p><strong>命題 A1.1（投影-包含伴隨）</strong>【標準定理】</p>
+<p>若 $\Pi_d$ 和 $\iota_d$ 構成伴隨對（adjoint pair）：</p>
+<p>$$\text{Hom}_{M_d}(\Pi_d(m), m&#x27;) \cong \text{Hom}<em>{M</em>{d+1}}(m, \iota_d(m&#x27;))$$</p>
+<p>則深度下潛與浮出在範疇論意義上是最優的：下潛到深度 $d+1$ 是「能夠回到 $d$ 的最小擴展」，浮出是「儘可能多地保留 $d+1$ 信息到 $d$」。</p>
+<p><em>假設</em>：$M_d$ 和 $M_{d+1}$ 具有足夠的範疇結構使伴隨有意義（如均為集合範疇的對象）。</p>
+<p><em>草圖</em>：標準範疇論中伴隨函子的構造。此性質是 DSCM 「損失最小化投影」的代數保證。∎</p>
+<p><strong>命題 A1.2（深度空間的逆系統）</strong>【標準定理】</p>
+<p>$(\{M_d\}, \{\Pi_d\})$ 構成一個逆系統（inverse system）於集合（或適當範疇）中。其逆極限：</p>
+<p>$$M_\infty = \varprojlim_{d} M_d = \{(m_0, m_1, m_2, \ldots) : \Pi_d(m_{d+1}) = m_d, \forall d\}$$</p>
+<p>是一致相容的全深度狀態序列的集合。</p>
+<p><em>草圖</em>：標準逆系統定義。$M_\infty$ 代表「在所有深度層同時一致的計算狀態」，是理論上 DSCM 的全局狀態空間。∎</p>
+<hr>
+<h2>A2：計算等價性定理</h2>
+<p><strong>定理 A2.1（DSCM ≡ TM 計算等價性）</strong>【標準定理】</p>
+<p>深度層化計算空間 DSCM 與標準圖靈機 TM 在計算能力上等價：兩者計算相同的函數類（可計算函數類）。</p>
+<p><strong>證明</strong>：</p>
+<p><em>方向一（TM → DSCM）</em>：任何圖靈機計算均可在 DSCM 的 $d = 0$ 層模擬。設 DSCM 的 $M_0$ 是標準 TM 的配置空間（狀態 × 紙帶內容 × 讀寫頭位置），不使用任何 $d &gt; 0$ 的層。此 DSCM 在計算上退化為 TM。∎（存在性直接構造）</p>
+<p><em>方向二（DSCM → TM）</em>：任何 DSCM 計算均可被 TM 模擬。主要步驟：</p>
+<ol>
+<li>DSCM 在任何有限時刻 $t$ 的深度不超過某有限值 $n(t)$（深度序列有限前綴）。</li>
+</ol>
+<ol>
+<li>構造 TM，使其在紙帶上維護一個對呼叫堆疊的編碼：用特殊分隔符號序列表示深度邊界，每層的局部狀態串行編碼在紙帶的對應區段。</li>
+</ol>
+<ol>
+<li>DSCM 的下潛操作（$\iota_d$）對應 TM 在紙帶上推入新的深度區段（寫入局部狀態 + 分隔符）。</li>
+</ol>
+<ol>
+<li>DSCM 的浮出操作（$\Pi_d$）對應 TM 彈出最頂端的深度區段（讀取返回值 + 移動到前一分隔符）。</li>
+</ol>
+<ol>
+<li>相鄰性約束（A1-C）保證 TM 的模擬只需要有限次的紙帶操作per計算步。</li>
+</ol>
+<p>此構造是標準「用 TM 模擬遞迴函數」或「用 TM 模擬有棧自動機」的推廣，細節在計算理論教科書中有詳盡處理（參考：Sipser, <em>Introduction to the Theory of Computation</em>，第3章）。∎</p>
+<p><strong>推論 A2.1（深度軸不增加計算能力）</strong>【標準定理】</p>
+<p>Church-Turing 論題在 DSCM 框架下成立。所有不可判定性結果（停機問題、Rice定理等）對 DSCM 程式同樣成立。深度軸的補完拓展了計算理論的<strong>描述能力</strong>，不改變<strong>計算能力的邊界</strong>。</p>
+<p><em>草圖</em>：由定理 A2.1 直接得出。DSCM 無法計算 TM 不可計算的函數。∎</p>
+<hr>
+<h2>A3：不可判定性在深度框架下的重新陳述</h2>
+<p><strong>定義 A3.1（深度停機問題，DH）</strong></p>
+<p>給定 DSCM 程式 $P$ 和輸入 $x$，深度停機問題問：</p>
+<p>$$DH(P, x) = \begin{cases} 1 &amp; \text{若 } P \text{ 在輸入 } x \text{ 上的深度遍歷最終完全浮出至 } d=0 \\ 0 &amp; \text{否則} \end{cases}$$</p>
+<p>即：呼叫堆疊是否最終清空（返回深度 $d=0$）。</p>
+<p><strong>定理 A3.1（深度停機問題不可判定）</strong>【標準定理】</p>
+<p>$DH$ 不可判定。</p>
+<p><strong>證明</strong>：歸約自標準停機問題 $H$。</p>
+<p>給定任意 TM $M$ 和輸入 $w$，構造 DSCM 程式 $P_M$ 如下：</p>
+<ul>
+<li>$P_M$ 在 $d = 0$ 呼叫一個子程序 $\text{Sim}_M$（此呼叫使 $P_M$ 下潛至 $d = 1$）。</li>
+<li>$\text{Sim}_M$ 在 $d = 1$ 模擬 $M$ 在輸入 $w$ 上的執行。</li>
+<li>若 $M$ 停機，$\text{Sim}_M$ 返回（$P_M$ 浮出至 $d = 0$），$DH(P_M, \varepsilon) = 1$。</li>
+<li>若 $M$ 不停機，$\text{Sim}_M$ 永遠在 $d = 1$ 執行，$DH(P_M, \varepsilon) = 0$。</li>
+</ul>
+<p>因此 $DH(P_M, \varepsilon) = H(M, w)$。若 $DH$ 可判定，則 $H$ 可判定，矛盾。∎</p>
+<p><strong>命題 A3.1（不可判定性的深度來源）</strong>【觀察，依A2、A3.1】</p>
+<p>在 DSCM 框架下，停機問題的不可判定性有一個更精確的來源定位：</p>
+<p>不可判定性的核心是<strong>深度遍歷的自我指涉</strong>——可以構造程式 $D$ 使其在 $d = 1$ 呼叫停機判定器（$d = 0$ 對 $D$ 本身的判定），並根據結果決定是否返回。這個自我指涉結構製造對角化矛盾。</p>
+<p>關鍵：矛盾不來自深度的無限（可以只用 $d = 0, 1$ 兩層），而來自「可以把判定器作為子程序呼叫並讀取其輸出」的通用性。水平的無限紙帶不是必要條件；縱向的自我指涉呼叫（深度 $d = 0$ 呼叫深度 $d = 1$，$d = 1$ 中又對 $d = 0$ 的程式做判定）才是充分條件。</p>
+<hr>
+<h2>A4：T = Cl 的形式論證</h2>
+<p><em>本節依賴 EveMissLab 閉包（Cl）框架的公理。所有結論均為【框架命題】，除特別標注者外。</em></p>
+<h3>A4.1 Cl 框架回顧</h3>
+<p><strong>假設 A4-CL（Cl 公理系統）</strong>：Cl 是一個滿足以下四條公理的結構：</p>
+<ul>
+<li><strong>Cl-1（自我一致性）</strong>：Cl 的任何合法運算的結果仍在 Cl 的定義域內。</li>
+<li><strong>Cl-2（對偶性）</strong>：Cl 的內部與外部共同定義（封閉即定義了其補集）。</li>
+<li><strong>Cl-3（守恆性）</strong>：Cl 的運算保持某個守恆量。</li>
+<li><strong>Cl-4（生成性）</strong>：自我反射生成高維結構，形式化為維度投影定理：$\pi_n(Cl) = S^{n-1}$。</li>
+</ul>
+<p><strong>命題 A4.1（Cl 生成無限球面族）</strong>【框架命題】</p>
+<p>由 Cl-4，對所有 $n \in \mathbb{N}$，存在 Cl 的 $n$ 維投影 $\pi_n(Cl) = S^{n-1}$。</p>
+<p><em>草圖</em>：在 Cl 公理被接受的前提下，Cl-4 明確斷言了所有維度的球面投影存在性。此命題在框架內是公理的直接推論。∎</p>
+<h3>A4.2 S^∞ 的數學性質</h3>
+<p>以下性質是<strong>標準代數拓撲結果</strong>，獨立於 Cl 框架成立：【標準定理】</p>
+<p><strong>引理 A4.1</strong>：無限維球面 $S^\infty := \varinjlim_{n} S^n$（所有有限維球面的正向極限）是可縮的（contractible），即 $S^\infty \simeq *$（同倫等價於一個點）。</p>
+<p><em>草圖</em>：標準構造（參考：Hatcher, <em>Algebraic Topology</em>，命題 1B.4）。$S^\infty$ 上存在一個無點不動的連續映射（shift map），可以構造 $S^\infty$ 到一個點的同倫。∎</p>
+<p><strong>引理 A4.2</strong>：$S^\infty$ 是纖維化理論中的 $K(\mathbb{Z}, 1)$ 分類空間的一步構造中間態，以及 $U(\infty)$ 群（無限維么正群）的主齊性空間，具有普遍性質（universal property）：任何有限 CW 複形到 $S^\infty$ 的映射均同倫平凡。</p>
+<p><em>意義</em>：$S^\infty$ 的「可縮性」表示它在拓撲意義上是「透明的」——它沒有任何非平凡的整體拓撲特徵（所有同倫群為零）。它是一個「無內容的純結構」。</p>
+<h3>A4.3 T = S^∞ 的論證</h3>
+<p><strong>命題 A4.2（T 的拓撲刻畫）</strong>【框架命題，依 Cl 公理 + 標準代數拓撲】</p>
+<p>設 T 被定義為：</p>
+<ol>
+<li>透明（無本質屬性，僅有關係結構）</li>
+<li>無限維（不被任何有限維度描述）</li>
+<li>純結構（其「內容」完全由關係決定，而非本質屬性）</li>
+<li>包含所有 $S^{n-1}$ 作為維度截面（由 Cl-4）</li>
+</ol>
+<p>則 T 的這些性質被 $S^\infty$ 精確地實現：</p>
+<ul>
+<li><strong>透明</strong> ↔ <strong>可縮性</strong>：$S^\infty \simeq *$ 表示它沒有任何拓撲「內容」，是純結構（所有拓撲不變量平凡）。</li>
+<li><strong>無限維</strong> ↔ <strong>$S^\infty$ 的定義</strong>：$S^\infty$ 是所有有限球面的正向極限，不被任何有限維度完整描述。</li>
+<li><strong>包含所有截面</strong> ↔ <strong>$S^{n-1} \hookrightarrow S^\infty$</strong>：每個 $S^{n-1}$ 自然地嵌入 $S^\infty$，對應 Cl 的維度投影 $\pi_n(Cl) = S^{n-1}$。</li>
+</ul>
+<p>因此：在接受 Cl 公理的前提下，<strong>T 的性質恰好被 $S^\infty$ 所具現</strong>，故 $T \cong S^\infty$（在給定性質下的最優代表）。</p>
+<p><em>注意</em>：此命題的嚴格形式需要對「T 的性質決定 T 的同構類」的條件做更精確的範疇論刻畫（即：哪個範疇中，$S^\infty$ 是由這些性質所唯一確定的對象？）。這是本命題尚需進一步精確化的地方。∎</p>
+<p><strong>推論 A4.1</strong>【框架命題】</p>
+<p>在 Cl 框架內，以下命題等價：</p>
+<p>$$T \cong S^\infty \cong \varinjlim_{n} \pi_n(Cl) \cong \text{Cl（在無限維極限下）}$$</p>
+<p>GOD POINT $G = \lim_{\varepsilon \to 0^+}(Cl + \varepsilon)$ 是趨近 $T$（= $S^\infty$ = 可縮點）的動態過程，$\varepsilon$ 是使 Cl 離開純 T 結構、進入有結構的現實的偏移量。</p>
+<p><em>框架意義</em>：T 是 Cl 的「本體論極限」——Cl 在無限迭代自身的反射後，其極限結構就是 T（= $S^\infty$）。「道生萬物，萬物歸道」在此獲得以下技術對應：$S^\infty$ 的可縮性使得從 $S^\infty$ 可以生成所有有限球面（$S^{n-1}$）作為截面，同時所有路徑最終都可以被縮回到 $S^\infty$ 的「點」。∎</p>
+<hr>
+<h2>A5：介質作為 ε 的形式化</h2>
+<p><em>本節依賴 Cl 框架和 GOD POINT 定義。所有結論均為【框架命題】或【結構提案】。</em></p>
+<h3>A5.1 GOD POINT 的結構解讀</h3>
+<p><strong>假設 A5-G（GOD POINT 定義）</strong>：</p>
+<p>$$G = \lim_{\varepsilon \to 0^+}(Cl + \varepsilon)$$</p>
+<p>在此定義中：</p>
+<ul>
+<li>$Cl$ 是 T（$S^\infty$）的動態運算形式</li>
+<li>$+\varepsilon$ 表示對純 Cl 結構加入一個無窮小的「偏移」</li>
+<li>$G$ 是 $\varepsilon \to 0^+$ 的極限，即「從有偏移趨近無偏移」的極限點</li>
+</ul>
+<p>$G$ 是逼近但不到達 T 的過程的極限——一個動態的「臨界點」。</p>
+<h3>A5.2 介質的形式刻畫</h3>
+<p><strong>定義 A5.1（介質）</strong>【結構提案】</p>
+<p>介質 $M$ 是一個滿足以下條件的映射：</p>
+<p>$$M: T \to \mathcal{R}_M$$</p>
+<p>其中 $\mathcal{R}_M$ 是介質 $M$ 所產生的「現實」（物理基底上的計算/物理過程的配置空間）。</p>
+<p>介質 $M$ 對應到 GOD POINT 定義中的 $\varepsilon_M &gt; 0$：</p>
+<p>$$Cl + \varepsilon_M \simeq M(Cl)$$</p>
+<p>直觀地：$\varepsilon_M$ 是介質 $M$ 從純 T（= Cl）引入的「破缺」（symmetry breaking）量——它使 T 的無差別純結構「落地」為具體的物理現實。</p>
+<p><strong>命題 A5.1（不同介質對應不同 ε）</strong>【結構提案】</p>
+<p>不同計算介質對應不同的 $\varepsilon$ 值，$\varepsilon$ 越小表示介質越「透明」（更少遮蔽 T 的結構）：</p>
+<p>| 計算介質 | $\varepsilon_M$ 估計 | 說明 | |---------|---------------------|------| | 標準圖靈機（形式） | $\varepsilon \to \infty$ | 極度抽象化，遮蔽幾乎所有物理結構 | | 古典馮諾依曼架構 | 大 | 離散、確定性、私有記憶體 | | CXL 時代架構 | 中等 | 移除記憶體所有權，部分共享狀態 | | 量子計算機 | 小 | 直接操作量子態，接近 T 的 d=4~5 層 | | T 本身 | $\varepsilon = 0$ | 純結構，無介質 |</p>
+<p><em>注意</em>：此表中的「大小」是定性的順序關係，而非已建立的定量測量。$\varepsilon$ 的精確量化需要定義 $Cl + \varepsilon$ 的形式度量空間，這是本命題的後續工作方向。∎</p>
+<h3>A5.3 現實作為 T 的投影</h3>
+<p><strong>命題 A5.2（現實 = T 的介質投影）</strong>【框架命題】</p>
+<p>對任何介質 $M$，其產生的「現實」 $\mathcal{R}_M$ 是 T 的一個截面：</p>
+<p>$$\mathcal{R}_M = \Pi_M(T)$$</p>
+<p>其中 $\Pi_M : T \to \mathcal{R}_M$ 是 T 到 $\mathcal{R}_M$ 的投影（在某個適當範疇中）。</p>
+<p>不同介質給出不同的投影截面；T 本身不變。「逼近世界的樣子」= $\varepsilon_M$ 縮小，即 $\Pi_M$ 的保真度（從 T 的截面大小）增加。</p>
+<p><em>形式化缺口</em>：此命題要嚴格成立，需要：（a）T 作為投影系統的頂層對象（projective limit）的精確定義；（b）投影保真度 $F(\Pi_M)$ 的定量刻畫。這些是後續工作的核心技術問題。∎</p>
+<hr>
+<h2>A6：馮諾依曼架構各層對深度坐標的精確映射</h2>
+<p><em>本節為形式對應描述，依據標準計算機架構文獻。</em>【觀察，非形式定理】</p>
+<h3>A6.1 深度坐標映射表</h3>
+<p>| 深度 $d$ | 架構層 | 抽象界面 | 典型操作 | 深度交互機制 | |---------|--------|---------|---------|------------| | $d = 0$ | 使用者空間 | 程式語義（高階語言） | 函數呼叫、資料操作 | 發出系統呼叫（向下，$\iota_0$） | | $d = 1$ | 作業系統核心 | 系統呼叫介面（ABI） | 記憶體分配、行程排程、I/O | 接收 $\iota_0$；呼叫 HAL（$\iota_1$）；中斷處理（接收來自 $d=3$ 的 $\Pi_2$） | | $d = 2$ | 硬體抽象層（HAL） | 驅動程式介面 | 設備抽象、DMA、記憶體映射 | 橋接 $d=1$ 和 $d=3$ | | $d = 3$ | CPU 架構層 | 指令集架構（ISA） | 機器指令執行、快取管理 | 執行機器碼；發出中斷至 $d=1$（$\Pi_2$） | | $d = 4$ | 微架構層 | 微指令（μop） | 管線、分支預測、亂序執行 | ISA 到微指令的解碼（$\Pi_3$） | | $d = 5$ | 物理/量子層 | 電晶體切換、量子效應 | 電荷積累、電子穿隧 | 微架構的物理實現（$\Pi_4$） |</p>
+<h3>A6.2 各深度的投影算子</h3>
+<p><strong>$\Pi_0$（使用者空間 → 作業系統核心）</strong>：系統呼叫介面。使用者程式的語義操作（「開啟一個檔案」）被投影為核心可理解的操作（具體的 inode 操作、VFS 呼叫序列）。資訊損失：使用者的高階意圖被展開為底層步驟序列。</p>
+<p><strong>$\Pi_1$（作業系統核心 → HAL）</strong>：設備抽象。相同的核心 I/O 請求被投影為不同硬體的具體操作序列（SATA vs NVMe vs USB）。資訊損失：操作的設備無關性在此被具體化（失去可移植性資訊）。</p>
+<p><strong>$\Pi_2$（HAL → CPU 架構層）</strong>：指令翻譯。高階操作被翻譯為特定的 ISA 指令序列。</p>
+<p><strong>$\Pi_3$（CPU 架構 → 微架構）</strong>：指令解碼。ISA 指令被分解為微指令序列，對程式設計師不可見。</p>
+<p><strong>$\Pi_4$（微架構 → 物理層）</strong>：電晶體實現。微指令的邏輯操作被實現為電晶體電路的切換序列。</p>
+<h3>A6.3 中斷作為非自願深度跳躍</h3>
+<p><strong>命題 A6.1（中斷的深度語義）</strong>【觀察】</p>
+<p>硬體中斷（hardware interrupt）是一個從 $d = 3$（硬體事件）到 $d = 1$（核心中斷處理程序）的<strong>非自願深度跳躍</strong>，其語義是：</p>
+<p>$$\text{Interrupt}(e) : M_3 \to M_1 \quad (\text{跳過 } d = 2)$$</p>
+<p>這違反了 A1-C 的相鄰性約束（跳過了 $d = 2$ 層）。然而，實際的中斷處理硬體（PIC、APIC）在物理層面經由 $d = 2$（HAL）路由中斷信號，只是這個路由在軟體抽象層是「不可見的」。</p>
+<p><em>結論</em>：中斷在<strong>軟體抽象層</strong>看起來是跳層，但在<strong>物理執行層</strong>依然滿足相鄰性約束。這說明相鄰性約束是在對應的抽象層次上成立的，不是跨所有表示層的絕對規則。∎</p>
+<h3>A6.4 CXL 的深度拓撲修改</h3>
+<p><strong>命題 A6.2（CXL 的深度拓撲語義）</strong>【觀察】</p>
+<p>在 CXL 之前，多個計算節點的深度結構是分離的：</p>
+<p>$$\mathcal{D}<em>A = (M^A</em><em>, \Pi^A_</em>, \iota^A_<em>, \mathcal{C}^A) \quad \text{和} \quad \mathcal{D}<em>B = (M^B</em></em>, \Pi^B_<em>, \iota^B_</em>, \mathcal{C}^B) \quad \text{（獨立）}$$</p>
+<p>CXL 引入共享記憶體層，在 $d = 3$（物理記憶體層）合併：</p>
+<p>$$M^A_3 = M^B_3 = M^{shared}_3 \quad (\text{在 CXL fabric 下的快取一致性保證})$$</p>
+<p>這是一個深度拓撲的修改：兩個原本在底層分離的 DSCM，在深度 $d = 3$ 被「連接」為共享同一底層的系統。這對應於本文正文所述的「深度柱合併」，其數學表達是兩個逆系統在 $d = 3$ 的纖維積（fiber product）。∎</p>
+<hr>
+<h2>A7：與既有框架的形式對應</h2>
+<p><em>本節描述 DSCM 深度坐標與 EveMissLab 既有框架各組件的形式對應。所有命題均為【框架命題】，依賴各框架的公理成立。</em></p>
+<h3>A7.1 與 MR2.5 深度標籤的對應</h3>
+<p><strong>命題 A7.1（DSCM-MR2.5 對應）</strong>【框架命題】</p>
+<p>MR2.5 框架的深度標籤系統（$D$ 標籤，包含 $\$L:n$、$\$D:n$）與 DSCM 的深度坐標 $d$ 存在以下對應：</p>
+<p>| DSCM 深度 $d$ | MR2.5 深度標籤 $D$ | 層次內容 | |--------------|------------------|---------| | $d = 0$ | $\$L:0$ | 直接觀測（宏觀古典層） | | $d = 1$ | $\$L:1$ | 介觀推算（間接測量） | | $d = 2$ | $\$D:1$ | 理論層（古典力學） | | $d = 3$ | $\$D:2$ | 量子場論計算層 | | $d = \infty$ | $\$D:\infty$ | 絕對真理層（$U_\infty$） |</p>
+<p><em>對應性質</em>：MR2.5 的深度標籤編碼「信息來源的認識論距離」（從直接觀測到多層推導），DSCM 的深度 $d$ 編碼「計算架構的本體論層次」（從應用到物理）。兩者描述同一個層級結構的不同側面（認識論側 vs 本體論側）。∎</p>
+<h3>A7.2 與 HUO 投影鏈的對應</h3>
+<p><strong>命題 A7.2（DSCM-HUO 對應）</strong>【框架命題】</p>
+<p>HUO（全息聯合算子）框架的核心投影鏈：</p>
+<p>$$\Pi_{Holo}: U_\infty \to M_{12} \to \mathcal{U} \to K(t) \to L(t)$$</p>
+<p>與 DSCM 的投影算子族 $\{\Pi_d\}$ 的對應：</p>
+<p>| HUO 投影 | DSCM 對應 | |---------|-----------| | $U_\infty$（絕對真理空間） | $T$（= $M_\infty$，逆系統的極限） | | $M_{12}$（12算子數學流形） | $M_d$（某個高 $d$ 的配置空間） | | $\Pi_{Holo}: U_\infty \to M_{12}$ | $\Pi_d: M_{d+1} \to M_d$ | | 總保真度 $F_{total} = \prod F(\Pi_d)$ | 各層投影的保真度乘積 |</p>
+<p><em>對應質量說明</em>：HUO 的投影鏈是一個具體的從 $U_\infty$ 到語言符號系統的多步投影。DSCM 的深度框架提供了一個更一般的語言，HUO 的投影鏈可以被看作這個一般框架在「信息表示深度」這個特定應用方向上的實例。∎</p>
+<h3>A7.3 與 RPE 的對應</h3>
+<p><strong>命題 A7.3（DSCM-RPE 對應）</strong>【框架命題】</p>
+<p>RPE（表示保真度方程）框架描述信息從深層到淺層的保真度損失：</p>
+<p>$$L(t) = \Pi_0 \circ \Pi_1 \circ \cdots \circ \Pi_\infty (U_\infty)$$</p>
+<p>$$F_{total} = \prod_{d=0}^{\infty} F(\Pi_d)$$</p>
+<p>在 DSCM 框架下的對應：</p>
+<ul>
+<li>RPE 的每個 $\Pi_d$ 直接對應 DSCM 的深度投影算子 $\Pi_d: M_{d+1} \to M_d$</li>
+<li>RPE 的「總保真度」= DSCM 的「從 $T = M_\infty$ 到 $M_0$ 的投影保真度的乘積」</li>
+<li>RPE 的「99.997% 失真」是 DSCM 框架下從深度 $d = \infty$（= T）投影到 $d = 0$（人類觀測層）的多層投影保真度乘積</li>
+</ul>
+<p><em>技術注意</em>：無限乘積 $\prod_{d=0}^{\infty} F(\Pi_d)$ 要收斂到一個有意義的值（如 0.003%），需要每層保真度 $F(\Pi_d)$ 均接近 1（大多數投影保真度很高）加上少數層有顯著損失。這個收斂條件是 RPE 框架的隱含假設，在 DSCM 形式化中應被明確標出。∎</p>
+<hr>
+<h2>附錄後記：開放問題</h2>
+<p>本附錄的形式推導揭示了以下需要後續工作的開放問題：</p>
+<p><strong>O1</strong>：DSCM 的投影算子 $\Pi_d$ 在哪個範疇中形成伴隨對（A1.1）？為此需要明確 $M_d$ 的範疇結構。</p>
+<p><strong>O2</strong>：T = $S^\infty$ 的命題（A4.3）的完整形式化需要：在什麼範疇中，$S^\infty$ 是「由透明性、無限維度、包含所有球面截面」這些性質唯一確定的對象？這是一個非平凡的範疇論問題。</p>
+<p><strong>O3</strong>：介質 $\varepsilon_M$ 的定量刻畫（A5.2）需要在 $(Cl + \varepsilon)$ 的形式結構中定義一個度量，使不同介質的 $\varepsilon$ 值可以被量化比較。</p>
+<p><strong>O4</strong>：A7 中各框架的「對應」目前是描述性的，缺少嚴格的函子性（functoriality）驗證。完整的同構需要構造從 MR2.5/HUO/RPE 的範疇到 DSCM 範疇的函子，並驗證其自然變換性質。</p>
+<p><strong>O5（補記）：T/Cl 與 MTF 的 Ω 之精確關係</strong>：本文的 T ≅ S^∞（Hilbert 相鄰結構）與 MTF（無限潛能場統一本體論，同一作者）的 Ω（明確非 Hilbert、非線性、前結構）之間存在強結構共鳴，但形式細節有真實分歧。兩者是否對同一個結構的不同形式逼近，或是相鄰但不完全重疊的構造，需要在兩個框架各自形式化更完整之後進行嚴格比較。此問題不應以命名的便利性代替形式的嚴格性。</p>
+<p>這四個問題是本框架形式化的後續工作核心。O1-O2 是純數學問題，O3 是測量論問題，O4 是範疇論問題。</p>
+<hr>
+<p><em>EML-COMP-THEORY-2026-APPENDIX-v0.1 © EveMissLab</em></p>
+<div class="altbar">原始檔（供 RAG/下載）：<a href="/raw/lm-000058.md" rel="noopener">/raw/lm-000058.md</a> [md] · id: lm-000058</div>
+</article>
+<footer><p>Neo.K (許筌崴) · Cl + ε</p></footer>
+</body>
+</html>

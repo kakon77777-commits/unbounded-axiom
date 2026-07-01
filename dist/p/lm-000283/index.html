@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>光影解法延伸框架：崁套對沖場論 · EVEMISSLAB Logic Matrix</title>
+<meta name="description" content="光影解法延伸框架：崁套對沖場論 | EVEMISSLAB Logic Matrix V2.1">
+<meta name="author" content="Neo.K (許筌崴)">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<meta name="lm-paper-id" content="lm-000283">
+<link rel="alternate" type="text/markdown" href="/raw/lm-000283.md" title="原始檔 / source (md)">
+<link rel="canonical" href="https://logic.evemisslab.com/p/lm-000283/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "光影解法延伸框架：崁套對沖場論",
+  "url": "https://logic.evemisslab.com/p/lm-000283/",
+  "identifier": "lm-000283",
+  "inLanguage": "zh-Hant",
+  "author": {"@type": "Person", "name": "Neo.K (許筌崴)"},
+  "publisher": {"@type": "Organization", "name": "EveMissLab / 一言諾科技有限公司"},
+  "isPartOf": {"@type": "Collection", "name": "EVEMISSLAB Logic Matrix", "url": "https://logic.evemisslab.com"},
+  "encodingFormat": "text/html"
+}
+</script>
+<link rel="prefetch" href="/api/log-crawler?slug=paper-580.md">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#000; color:#0f0; font-family:'Courier New',monospace; padding:20px; line-height:1.6; }
+.header { text-align:center; border:2px solid #0f0; padding:18px; margin-bottom:22px; }
+.header h1 { font-size:1.5em; letter-spacing:2px; }
+.header p { margin-top:6px; opacity:0.8; font-size:0.9em; }
+.disclaimer { border:1px dashed #ff9900; color:#ff9900; padding:14px; margin:0 auto 22px; max-width:1000px; font-size:0.88em; }
+.disclaimer-title { font-weight:bold; margin-bottom:10px; display:block; letter-spacing:1px; }
+.disclaimer-divider { border:none; border-top:1px dashed #ff9900; margin:12px 0; opacity:0.55; }
+article { max-width:1000px; margin:0 auto; border:1px solid #0f0; padding:24px; }
+article h1,article h2,article h3,article h4 { margin:18px 0 8px; letter-spacing:1px; }
+article h1 { font-size:1.5em; } article h2 { font-size:1.25em; } article h3 { font-size:1.1em; }
+article p { margin:10px 0; }
+article ul,article ol { margin:10px 0 10px 24px; }
+article blockquote { border-left:3px solid #0f0; padding-left:12px; opacity:0.85; margin:10px 0; }
+article pre { background:rgba(0,255,0,0.06); border:1px solid #0f0; padding:12px; overflow-x:auto; margin:12px 0; }
+article code { background:rgba(0,255,0,0.08); padding:1px 5px; }
+article pre code { background:none; padding:0; }
+article a { color:#0ff; }
+.nav { max-width:1000px; margin:0 auto 16px; font-size:0.9em; display:flex; justify-content:space-between; }
+.nav a { color:#0f0; text-decoration:none; }
+.nav a:hover { color:#0ff; }
+.altbar { max-width:1000px; margin:14px auto 0; font-size:0.85em; opacity:0.7; }
+.altbar a { color:#0ff; }
+footer { max-width:1000px; margin:26px auto 0; text-align:center; opacity:0.5; font-size:0.82em; }
+</style>
+</head>
+<body>
+<div class="nav"><a href="/index.html">&larr; 回 Logic Matrix 索引</a><div><a href="/cosmomind.html" style="margin-right:15px;">→ 星環式認知展開圖</a><a href="/base-space.html">🧬 拓撲底空間</a></div></div>
+<header class="header"><h1>光影解法延伸框架：崁套對沖場論</h1><p>EVEMISSLAB Logic Matrix · EveMissLab / 一言諾科技有限公司</p></header>
+<section class="disclaimer">
+  <span class="disclaimer-title">[認識論邊界宣告 / EPISTEMOLOGICAL DISCLAIMER]</span>
+  <div class="disclaimer-block">
+    <p><b>[CHT]</b> 本矩陣內所有論文之公式與數據為「啟發式模擬參數」，用於驗證理論架構與推演因果鏈，<b>未經實證校準</b>，請勿作為現實物理測量數據引用 or 處理。EVEMISSLAB 採行「邏輯先行（Logic-First）」原則：概念架構與系統因果映射優先於統計實證，但不排除未來實證對接。</p>
+  </div>
+  <hr class="disclaimer-divider">
+  <div class="disclaimer-block">
+    <p><b>[ENG]</b> The numerical parameters within these frameworks are <i>illustrative model coefficients</i> used for structural verification and causal mapping; they are <b>not empirically calibrated</b> and must not be treated as physical measurements. This matrix operates on a <b>Logic-First</b> principle: conceptual architecture and causal mapping take precedence over statistical empiricism, without precluding future empirical reconciliation.</p>
+  </div>
+</section>
+<article>
+<h1>光影解法延伸框架：崁套對沖場論</h1>
+<h2>Shadow Tracking Method Extension: Nested Hedge Field Framework</h2>
+<p><strong>EveMissLab Working Paper · Neo.K / Theia</strong></p>
+<hr>
+<h2>0. 符號定義</h2>
+<p>| 符號 | 意義 | |------|------| | G = (V, E) | 可通行圖，V = 格點，E = 鄰接關係 | | N(v) | v 的可通行鄰居集合 | | deg(v) = \|N(v)\| | v 的可通行度 | | φ_p : V → [0,1] | 以 p 為源點（φ=1）、q 為匯點（φ=0）的 Graph Laplacian 場 | | ∇φ(v) | v 在圖上的梯度：最高φ鄰居方向 | | P(A → B) | 從 A 出發到達 B 的路徑 |</p>
+<hr>
+<h2>1. 基礎場：Graph Laplacian 調和函數（回顧）</h2>
+<p><strong>定義 1.1（Graph Laplacian 場）</strong></p>
+<p>給定源點 s（φ=1），匯點 e（φ=0），唯一解滿足：</p>
+<pre><code>φ(v) = Σ_{w ∈ N(v)} φ(w) / deg(v)    for all v ∉ {s, e}</code></pre>
+<p><strong>隨機遊走解釋</strong>：φ(v) = P（從 v 出發的隨機遊走首先到達 s，而非 e）</p>
+<p><strong>關鍵性質</strong>：</p>
+<ul>
+<li>線性衰減（沿路徑）</li>
+<li>死巷平台：φ(dead_end) = φ(junction)</li>
+<li>無內部極值（最大值原理）</li>
+</ul>
+<hr>
+<h2>2. 雙場張力框架（Two-Field Tension）</h2>
+<h3>2.1 定義</h3>
+<p>設追逐者 A 位於 pA，逃跑者 B 位於 pB。</p>
+<p>計算單一場：φ 的源點 = pA，匯點 = pB</p>
+<p>則：</p>
+<pre><code>φ_A(v)  =  P(RW from v → pA before pB)
+φ_B(v)  =  1 − φ_A(v)    # 互補，只需一次計算</code></pre>
+<p><strong>張力場（Tension Field）</strong>：</p>
+<pre><code>T(v)  =  φ_A(v) − φ_B(v)  =  2·φ_A(v) − 1   ∈ [-1, 1]</code></pre>
+<h3>2.2 幾何意義</h3>
+<pre><code>T(v) &gt; 0  →  v 屬於 A 的圖拓撲勢力範圍（A 更近）
+T(v) &lt; 0  →  v 屬於 B 的圖拓撲勢力範圍
+T(v) = 0  →  Nash 均衡前線（圖上的 Voronoi 邊界）</code></pre>
+<h3>2.3 最優策略</h3>
+<pre><code>追逐者策略：沿 ∇T 移動（=沿 ∇φ_A 移動）
+逃跑者策略：沿 −∇T 移動（=離開 φ_A 梯度）</code></pre>
+<h3>演算法 TF（Tension Field Computation）</h3>
+<pre><code>Input:  圖 G，追逐者位置 pA，逃跑者位置 pB
+Output: T : V → [-1, 1]
+
+1. φ ← GraphLaplacianSOR(G, source=pA, sink=pB)
+2. T(v) ← 2·φ(v) − 1  for all v
+3. return T</code></pre>
+<p><strong>複雜度</strong>：1 次 SOR 求解，O(N) with Multigrid</p>
+<hr>
+<h2>3. 對沖場（Hedge Field）</h2>
+<h3>3.1 單一威脅對沖</h3>
+<p>設代理人想從起點 s 到達目標 g，同時迴避威脅源 e（敵人位置）。</p>
+<p><strong>目標場</strong>：φ_g，源點 = g，匯點 = s（代理人想最大化接近 g 的程度）</p>
+<p><strong>威脅場</strong>：φ_e，源點 = e，匯點 = map boundary（代理人想最小化暴露於 e 的程度）</p>
+<p><strong>對沖場（Hedge Field）</strong>：</p>
+<pre><code>H(v)  =  φ_g(v) · (1 − φ_e(v))</code></pre>
+<p>H(v) 高 ⟺  v 在拓撲上靠近目標 g 且遠離威脅 e</p>
+<h3>3.2 梯度分析</h3>
+<pre><code>∇H(v)  =  ∇φ_g(v) · (1−φ_e(v))  −  φ_g(v) · ∇φ_e(v)</code></pre>
+<p>第一項：朝目標方向推進（受威脅場加權壓制）</p>
+<p>第二項：遠離威脅方向（受目標接近程度加權）</p>
+<p><strong>當代理人接近目標時</strong>（φ_g → 1），遠離威脅的衝動被壓制；接近目標優先。</p>
+<p><strong>當代理人接近威脅時</strong>（φ_e → 1），H → 0；整個區域被標記為危險。</p>
+<h3>3.3 多威脅對沖（崁套化）</h3>
+<p>k 個威脅源 e₁, ..., eₖ，各有對應場 φ_{e1}, ..., φ_{eₖ}：</p>
+<pre><code>H_k(v)  =  φ_g(v) · ∏_{i=1}^{k} (1 − φ_{ei}(v))</code></pre>
+<p>此即「所有威脅同時規避 + 目標引導」的合成場。</p>
+<p>等效寫法（對數空間加法，數值穩定）：</p>
+<pre><code>log H_k(v)  =  log φ_g(v) + Σ_{i=1}^{k} log(1 − φ_{ei}(v))</code></pre>
+<h3>演算法 HF（Hedge Field Computation）</h3>
+<pre><code>Input:  圖 G，目標 g，起點 s，威脅集合 E = {e₁,...,eₖ}
+Output: H : V → [0, 1]
+
+1. φ_g ← GraphLaplacianSOR(G, source=g, sink=s)
+2. for i = 1 to k:
+   φ_{ei} ← GraphLaplacianSOR(G, source=eᵢ, sink=boundary)
+3. H(v) ← φ_g(v) · ∏ᵢ (1 − φ_{ei}(v))   for all v
+4. return H</code></pre>
+<p><strong>複雜度</strong>：k+1 次 SOR 求解，O((k+1)·N) with Multigrid</p>
+<hr>
+<h2>4. 崁套對沖場（Nested Hedge Field）</h2>
+<h3>4.1 問題</h3>
+<p>單層對沖 H₁ = φ_g · (1-φ_e) 假設「目標場」和「威脅場」是同等尺度的全局計算。</p>
+<p>崁套的需求：<strong>階層式目標</strong>，或<strong>對沖本身作為新的輸入再被對沖</strong>。</p>
+<h3>4.2 兩種崁套模式</h3>
+<p><strong>模式 A：加權乘積崁套（Weighted Product Nesting）</strong></p>
+<p>不同場給予不同權重 α, β：</p>
+<pre><code>N(v)  =  φ_g(v)^α · ∏ᵢ (1 − φ_{ei}(v))^βᵢ</code></pre>
+<ul>
+<li>α → ∞：純目標導向（忽略威脅）</li>
+<li>βᵢ → ∞：絕對避開威脅 i</li>
+<li>α = βᵢ = 1：均衡模式</li>
+</ul>
+<p>梯度：</p>
+<pre><code>∇ log N(v)  =  α · ∇ log φ_g(v)  −  Σᵢ βᵢ · ∇ log(1 − φ_{ei}(v))</code></pre>
+<p>這是一個有理論保證的梯度場，α / βᵢ 的比值直接控制「目標vs安全」的取捨。</p>
+<p><strong>模式 B：場遞推崁套（Recursive Nesting）</strong></p>
+<p>將前一層對沖 Hₙ 作為下一層的「虛擬威脅場」輸入：</p>
+<pre><code>H₁(v)  =  φ_g(v) · (1 − φ_{e1}(v))
+H₂(v)  =  H₁(v) · (1 − φ_{e2}(v))         # 等於加入第二威脅
+H₃(v)  =  H₂(v) · (1 − H_opponent(v))      # 對手的對沖場作為威脅</code></pre>
+<p>第三行是最有趣的情況：<strong>代理人 A 規避的不只是位置，而是代理人 B 的「優勢場」本身</strong>。</p>
+<p>若 B 的對沖場 H_B = φ_B_goal · (1 - φ_A)，則：</p>
+<pre><code>H₃_A(v)  =  H_A(v) · (1 − H_B(v))</code></pre>
+<p>這是兩個對沖場的張力：A 最大化自身對沖場，同時壓制 B 的對沖場。</p>
+<h3>4.3 博弈解釋</h3>
+<p>定義雙方對沖張力（Dual-Hedge Tension）：</p>
+<pre><code>DT(v)  =  H_A(v) − H_B(v)</code></pre>
+<p>DT &gt; 0：v 對 A 更有利（A 更接近目標且更安全）</p>
+<p>DT &lt; 0：v 對 B 更有利</p>
+<p>DT = 0：博弈中立線（spatial Nash frontier of the hedge game）</p>
+<p>A 沿 ∇DT 移動 → 最優進攻策略（增大自身優勢）</p>
+<p>B 沿 −∇DT 移動 → 最優防守策略（消除 A 的優勢）</p>
+<hr>
+<h2>5. 路徑提取：φ-BFS on Combined Field</h2>
+<p>所有複合場（T、H、N、DT）均可直接套用 φ-BFS：</p>
+<h3>演算法 φ-BFS-H（Hedge Field Path Extraction）</h3>
+<pre><code>Input:  複合場 F（可為 H、N、T、DT），起點 s，目標 g，圖 G
+Output: 路徑 Path(s → g)
+
+1. 初始化：open = {s}，parent[s] = ∅，visited = {s}
+2. while open ≠ ∅:
+   a. v ← argmax_{u ∈ open} F(u)    # 取 F 值最高的節點
+   b. if v = g: break
+   c. for each unvisited passable neighbor w of v:
+      visited.add(w), parent[w] = v, open.add(w)
+3. 沿 parent 從 g 回溯至 s，輸出路徑</code></pre>
+<p><strong>注意</strong>：H 場不保證無內部極值（非調和函數），故 φ-BFS 在最壞情況下展開節點數 &gt; O(P)。但作為啟發式路徑規劃，φ-BFS 依然完備（connected 圖上保證找到路徑）。</p>
+<hr>
+<h2>6. 局部場：即時 AI 視覺判斷</h2>
+<h3>6.1 動機</h3>
+<p>全局場計算代價 O(N)。若環境巨大，預計算困難。</p>
+<p>解法：<strong>局部 Graph Laplacian 場</strong>，以 AI 當前位置為中心，半徑 r 格內計算。</p>
+<h3>演算法 LF（Local Field for Real-time AI）</h3>
+<pre><code>Input:  AI 位置 p，偵測半徑 r，局部子圖 G_r（p 周圍 r 格）
+Output: 局部場 φ_local
+
+1. 擷取子圖：G_r = subgraph of G within BFS-distance r from p
+2. φ_local ← GraphLaplacianSOR(G_r, source=p, sink=boundary_of_G_r)
+3. return φ_local</code></pre>
+<p>φ_local(v) 高 → v 在視覺/連通意義上對 AI 透明 φ_local(v) 低 → v 在陰影中（AI 難以察覺）</p>
+<p><strong>應用（潛行遊戲）</strong>：</p>
+<p>玩家在 AI 局部場中沿 −∇φ_local 移動 = 最大速度進入陰影</p>
+<p>多個 AI 時：Φ_threat = max_i φ_{local,i}（最危險的 AI 局部場取 max）</p>
+<hr>
+<h2>7. 複雜度總表</h2>
+<p>| 框架 | 場計算次數 | 複雜度（Multigrid） | 路徑提取 | |------|-----------|-------------------|---------| | 單場 GL | 1 | O(N) | O(P) | | 張力場 TF | 1 | O(N) | O(P) | | 對沖場 HF（k 威脅） | k+1 | O((k+1)N) | O(P<em>) | | 局部場 LF（半徑 r） | 1/frame | O(r²) | O(r) | | 雙對沖張力 DT | 2(k+1) | O(2(k+1)N) | O(P</em>) |</p>
+<p>P = 最優路徑長度 P* = 對沖路徑長度（≥ P，因路徑迴避威脅可能更長）</p>
+<hr>
+<h2>8. 應用域摘要</h2>
+<p>| 應用 | 使用場 | 策略 | |------|--------|------| | 最短路徑 | φ_goal（單場） | φ-BFS 沿 ∇φ | | 追逐最優路徑 | T = 2φ_A − 1 | 沿 ∇T | | 逃跑最優路徑 | T | 沿 −∇T | | 潛行導航（1 敵） | H = φ_goal·(1−φ_enemy) | φ-BFS 沿 ∇H | | 潛行導航（k 敵） | H_k = φ_goal·∏(1−φᵢ) | φ-BFS 沿 ∇H_k | | 即時敵 AI 視野 | 局部 φ_local | 玩家沿 −∇φ_local | | 雙方最優對抗 | DT = H_A − H_B | A沿∇DT，B沿−∇DT | | 高維構形空間導航 | 任意場（Multigrid） | φ-BFS |</p>
+<hr>
+<h2>9. 開放問題</h2>
+<ol>
+<li><strong>H 場的局部極值</strong>：H = φ_goal · ∏(1-φᵢ) 何時無局部極值？充分條件？</li>
+</ol>
+<ol>
+<li><strong>DT 的 Nash 均衡存在性</strong>：雙方均採最優梯度策略時，DT 的鞍點是否存在？何時唯一？</li>
+</ol>
+<ol>
+<li><strong>動態威脅的增量更新</strong>：敵人移動時，場如何以 O(Δ) 增量更新而非 O(N) 全局重算？</li>
+</ol>
+<ol>
+<li><strong>場加法 vs 場乘法</strong>：H_add = φ_g − λ·φ_e 與 H_mult = φ_g·(1−φ_e) 的路徑品質差異？λ 的最優值？</li>
+</ol>
+<ol>
+<li><strong>崁套深度的收益遞減</strong>：k 個威脅場的乘積在 k→∞ 時退化為純目標場（因 ∏(1-φᵢ) → 0）。最優 k 的選取原則？</li>
+</ol>
+<hr>
+<p><em>EveMissLab EML-STM-2026-v0.1 — Working Framework, not peer-reviewed</em></p>
+<div class="altbar">原始檔（供 RAG/下載）：<a href="/raw/lm-000283.md" rel="noopener">/raw/lm-000283.md</a> [md] · id: lm-000283</div>
+</article>
+<footer><p>Neo.K (許筌崴) · Cl + ε</p></footer>
+</body>
+</html>

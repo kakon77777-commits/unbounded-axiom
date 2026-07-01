@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>算子先於值_APL算子代數的類型多態重建與算子本體論的實驗性確認 · EVEMISSLAB Logic Matrix</title>
+<meta name="description" content="算子先於值_APL算子代數的類型多態重建與算子本體論的實驗性確認 | EVEMISSLAB Logic Matrix V2.1">
+<meta name="author" content="Neo.K (許筌崴)">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<meta name="lm-paper-id" content="lm-000855">
+<link rel="alternate" type="text/markdown" href="/raw/lm-000855.md" title="原始檔 / source (md)">
+<link rel="canonical" href="https://logic.evemisslab.com/p/lm-000855/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "算子先於值_APL算子代數的類型多態重建與算子本體論的實驗性確認",
+  "url": "https://logic.evemisslab.com/p/lm-000855/",
+  "identifier": "lm-000855",
+  "inLanguage": "zh-Hant",
+  "author": {"@type": "Person", "name": "Neo.K (許筌崴)"},
+  "publisher": {"@type": "Organization", "name": "EveMissLab / 一言諾科技有限公司"},
+  "isPartOf": {"@type": "Collection", "name": "EVEMISSLAB Logic Matrix", "url": "https://logic.evemisslab.com"},
+  "encodingFormat": "text/html"
+}
+</script>
+<link rel="prefetch" href="/api/log-crawler?slug=APL.md">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#000; color:#0f0; font-family:'Courier New',monospace; padding:20px; line-height:1.6; }
+.header { text-align:center; border:2px solid #0f0; padding:18px; margin-bottom:22px; }
+.header h1 { font-size:1.5em; letter-spacing:2px; }
+.header p { margin-top:6px; opacity:0.8; font-size:0.9em; }
+.disclaimer { border:1px dashed #ff9900; color:#ff9900; padding:14px; margin:0 auto 22px; max-width:1000px; font-size:0.88em; }
+.disclaimer-title { font-weight:bold; margin-bottom:10px; display:block; letter-spacing:1px; }
+.disclaimer-divider { border:none; border-top:1px dashed #ff9900; margin:12px 0; opacity:0.55; }
+article { max-width:1000px; margin:0 auto; border:1px solid #0f0; padding:24px; }
+article h1,article h2,article h3,article h4 { margin:18px 0 8px; letter-spacing:1px; }
+article h1 { font-size:1.5em; } article h2 { font-size:1.25em; } article h3 { font-size:1.1em; }
+article p { margin:10px 0; }
+article ul,article ol { margin:10px 0 10px 24px; }
+article blockquote { border-left:3px solid #0f0; padding-left:12px; opacity:0.85; margin:10px 0; }
+article pre { background:rgba(0,255,0,0.06); border:1px solid #0f0; padding:12px; overflow-x:auto; margin:12px 0; }
+article code { background:rgba(0,255,0,0.08); padding:1px 5px; }
+article pre code { background:none; padding:0; }
+article a { color:#0ff; }
+.nav { max-width:1000px; margin:0 auto 16px; font-size:0.9em; display:flex; justify-content:space-between; }
+.nav a { color:#0f0; text-decoration:none; }
+.nav a:hover { color:#0ff; }
+.altbar { max-width:1000px; margin:14px auto 0; font-size:0.85em; opacity:0.7; }
+.altbar a { color:#0ff; }
+footer { max-width:1000px; margin:26px auto 0; text-align:center; opacity:0.5; font-size:0.82em; }
+</style>
+</head>
+<body>
+<div class="nav"><a href="/index.html">&larr; 回 Logic Matrix 索引</a><div><a href="/cosmomind.html" style="margin-right:15px;">→ 星環式認知展開圖</a><a href="/base-space.html">🧬 拓撲底空間</a></div></div>
+<header class="header"><h1>算子先於值_APL算子代數的類型多態重建與算子本體論的實驗性確認</h1><p>EVEMISSLAB Logic Matrix · EveMissLab / 一言諾科技有限公司</p></header>
+<section class="disclaimer">
+  <span class="disclaimer-title">[認識論邊界宣告 / EPISTEMOLOGICAL DISCLAIMER]</span>
+  <div class="disclaimer-block">
+    <p><b>[CHT]</b> 本矩陣內所有論文之公式與數據為「啟發式模擬參數」，用於驗證理論架構與推演因果鏈，<b>未經實證校準</b>，請勿作為現實物理測量數據引用 or 處理。EVEMISSLAB 採行「邏輯先行（Logic-First）」原則：概念架構與系統因果映射優先於統計實證，但不排除未來實證對接。</p>
+  </div>
+  <hr class="disclaimer-divider">
+  <div class="disclaimer-block">
+    <p><b>[ENG]</b> The numerical parameters within these frameworks are <i>illustrative model coefficients</i> used for structural verification and causal mapping; they are <b>not empirically calibrated</b> and must not be treated as physical measurements. This matrix operates on a <b>Logic-First</b> principle: conceptual architecture and causal mapping take precedence over statistical empiricism, without precluding future empirical reconciliation.</p>
+  </div>
+</section>
+<article>
+<h1>算子先於值</h1>
+<h2>APL算子代數的類型多態重建與算子本體論的實驗性確認</h2>
+<p><strong>EveMissLab Working Paper</strong> <strong>作者：Neo.K（許筌崴）</strong> <strong>日期：2026年6月</strong></p>
+<hr>
+<h2>摘要</h2>
+<p>本文以 APL（A Programming Language）的核心算子代數為出發點，通過在 Python 環境中的重建實驗，論證以下三項命題：其一，APL 的歷史衰退並非源於概念失敗，而是架構時代的硬性制約；其二，APL 的算子語義——<code>fold</code>、<code>scan</code>、<code>outer</code>、<code>each</code>、<code>fork</code>——在解除數值類型綁定後，能夠無縫升至任意代數結構，並以雙數（Dual Number）自動微分的實現為核心佐證；其三，上述觀察對 EveMissLab 的算子本體論猜想（EML-OO）提供了可計算層面的實驗性支撐。</p>
+<p><strong>關鍵詞：</strong> APL、算子代數、類型多態、雙數、自動微分、算子本體論、EML-OO</p>
+<hr>
+<h2>一、問題的起點：一個語言的消失</h2>
+<p>1962 年，Kenneth Iverson 在其著作 <em>A Programming Language</em> 中提出了一個激進的主張：數學符號本身應當可以執行。他設計了一套以算子為核心的語言，其中每個符號——<code>⍴</code>（reshape）、<code>+/</code>（fold with add）、<code>∘.×</code>（outer product with multiply）——不是函式名稱，而是算子（operator），是<strong>作用於函式之上的函式</strong>。</p>
+<p>APL 在 1960-70 年代短暫登上主流，隨後逐漸邊緣化。通行的解釋指向可讀性差、字符集特殊、學習曲線陡峭。然而這些都是表層症狀，不是病因。</p>
+<p>本文的論點是：APL 的真正侷限在於它把算子的語義<strong>硬綁在數值陣列上</strong>。<code>+/</code> 的 <code>+</code> 必須是浮點加法。<code>∘.f</code> 的 <code>f</code> 必須接受並回傳數值。算子的通用性被其實作的具體性取消了。</p>
+<p>這個侷限不是 Iverson 概念的失敗，而是 1960 年代計算架構的必然結果——沒有泛型、沒有類型參數、沒有高階類型系統。APL 的概念超前了它的時代。</p>
+<hr>
+<h2>二、重建實驗：解綁類型的算子代數</h2>
+<p>本文的核心實驗是在 Python 環境下重建 APL 的五個基本算子，並刻意使其<strong>對輸入類型保持無知</strong>：</p>
+<pre><code>def fold(f):
+    def _fold(seq): return reduce(f, seq)
+    return _fold
+
+def scan(f):
+    def _scan(seq):
+        it = iter(seq); acc = [next(it)]
+        for x in it: acc.append(f(acc[-1], x))
+        return acc
+    return _scan
+
+def outer(f):
+    def _outer(a, b): return [[f(x, y) for y in b] for x in a]
+    return _outer
+
+def each(f): return lambda seq: [f(x) for x in seq]
+
+def fork(f, g, h): return lambda seq: g(f(seq), h(seq))</code></pre>
+<p>這五個函式的共同特徵是：<strong>它們不知道自己操作的是什麼類型</strong>。<code>fold</code> 只知道「對序列施加二元運算並累積」；<code>outer</code> 只知道「對所有配對施加二元函式」。類型是自由變數，不是固定參數。</p>
+<p>在標準數值域上，這些算子產生 APL 的經典行為：</p>
+<pre><code>fold(add)(iota(8))        → 36
+scan(mul)(iota(5))        → [1, 2, 6, 24, 120]
+outer(mul)(iota(5), iota(5)) → 5×5 乘法表</code></pre>
+<p>到此為止，與原始 APL 的差異僅在於語法。關鍵的轉折在下一節。</p>
+<hr>
+<h2>三、類型升遷實驗：雙數的注入</h2>
+<h3>3.1 雙數代數</h3>
+<p>雙數（Dual Number）定義為形如 $a + b\varepsilon$ 的代數物件，其中 $\varepsilon^2 = 0$。其算術規則為：</p>
+<p>$$ (a + b\varepsilon) + (c + d\varepsilon) = (a+c) + (b+d)\varepsilon $$ $$ (a + b\varepsilon)(c + d\varepsilon) = ac + (ad + bc)\varepsilon $$</p>
+<p>若令 $a = f(x)$，$b = f&#x27;(x)$，則雙數編碼了函式值與其導數的<strong>聯合計算</strong>。對輸入 $x$ 注入 $\text{Dual}(x, 1.0)$ 並進行任意算術，結果的 $\varepsilon$ 係數自動給出導數。</p>
+<h3>3.2 算子無需修改</h3>
+<p>將雙數注入後，我們用與 3.1 節<strong>完全相同的算子</strong>進行計算：</p>
+<pre><code># 對序列 [x₁², x₂², x₃², x₄²] 求和的梯度
+sq_sum = compose(fold(add), each(lambda x: x**2))
+xs = [1.0, 2.0, 3.0, 4.0]
+gradient(sq_sum, xs)  →  [2.0, 4.0, 6.0, 8.0]</code></pre>
+<p><code>fold</code>、<code>each</code>、<code>compose</code> 的代碼一行未動。微分不是新加的功能，而是類型升遷後<strong>自然湧現</strong>的行為。</p>
+<p>這個實驗的哲學意涵是決定性的：</p>
+<blockquote><strong>算子是形態射（morphism），不是數值函式。它們對任何滿足其運算公理的代數結構都成立。</strong></blockquote>
+<p>APL 的 <code>+/</code> 之所以無法做到這件事，不是因為 <code>fold</code> 的概念有缺陷，而是因為它的 <code>+</code> 被硬編碼為浮點加法。我們的重建移除了這個綁定。</p>
+<h3>3.3 驗證範圍</h3>
+<p>同一套算子，無修改地作用於雙數域，驗證了以下六個場景：</p>
+<p>| 場景 | 算子使用 | 驗證內容 | |------|---------|---------| | 純量微分 | <code>Dual(x, 1.0)</code> 直接注入 | $f&#x27;(x)$ 精確至機器精度 | | fold 梯度 | <code>compose(fold(add), each(x²))</code> | $\nabla(\sum x_i^2) = 2\mathbf{x}$ | | scan 導數 | <code>scan(mul)</code> 接雙數序列 | $\partial(\prod_{k=0}^n x_k)/\partial x_0$ 精確 | | outer Jacobian | <code>outer(mul)</code> 接雙數陣列 | Jacobian 矩陣對角線 = $b$ | | fork 平均梯度 | <code>fork(fold(add), div, len)</code> | $\partial\bar{x}/\partial x_i = 1/n$ | | Newton-Raphson | <code>diff(f)</code> 在迭代中使用 | 6步收斂至 $10^{-13}$ 殘差 |</p>
+<p>所有場景的自動計算值與解析解之差為 $\delta = 0$（機器精度範圍內）。</p>
+<hr>
+<h2>四、四個應用的結構意義</h2>
+<p>六個文件（<code>apl_sim.py</code>、<code>apl_ad.py</code>、<code>apl_nn.py</code>、<code>apl_life.py</code>、<code>apl_optimizer.py</code>、<code>apl_fractal.py</code>）並非獨立展示，而是一個分層論證：</p>
+<p><strong>第一層（apl_sim.py）：</strong> 算子在數值域的正確性。重現 APL 的所有經典操作。</p>
+<p><strong>第二層（apl_ad.py）：</strong> 算子的類型多態性。雙數注入，微分自動湧現。</p>
+<p><strong>第三層（四個應用）：</strong> 算子的應用廣度。每個應用都是算子在不同代數結構上的部署：</p>
+<ul>
+<li><strong>apl_nn.py</strong>：<code>compose</code> 是層組合，<code>fold(add)</code> 是神經元激活前的加權求和，<code>each</code> 是逐元素激活，梯度透過雙數傳播。反向傳播不需要獨立實作——它是前向模式自動微分的直接推論。</li>
+</ul>
+<ul>
+<li><strong>apl_life.py</strong>：<code>fold(add_grid)</code> 是八方向鄰居計數的空間摺疊，<code>each(rule)</code> 是生存規則的逐格施加，<code>scan(step)</code> 是時間演化的軌跡展開。Conway 的細胞自動機在此成為算子的時空組合。</li>
+</ul>
+<ul>
+<li><strong>apl_optimizer.py</strong>：<code>gradient(f, xs)</code> 直接呼叫雙數系統，<code>outer</code> 生成等高線網格。三種優化器（SGD、Momentum、Adam）的差異僅在於梯度的累積方式——算子本身不變。</li>
+</ul>
+<ul>
+<li><strong>apl_fractal.py</strong>：<code>Complex</code> 類的設計與 <code>Dual</code> 完全平行——同樣的 <code>__mul__</code>、<code>__add__</code>、<code>__truediv__</code> 結構，不同的代數規則（複數乘法 vs. 雙數乘法）。<code>outer</code> 生成複數平面網格，逃逸時間計算是算子的應用。Mandelbrot 集是算子作用在複數域上的幾何投影。</li>
+</ul>
+<p>這四個應用共同說明了同一件事：<strong>同一套算子，換一種代數結構，就是一個全新的計算範式</strong>。這不是偶然的巧合，而是算子多態性的必然推論。</p>
+<hr>
+<h2>五、APL 的復辟論題</h2>
+<p>基於上述論證，我們可以更精確地重述 APL 衰退的原因，並由此推斷其復辟的條件。</p>
+<h3>5.1 衰退的真實原因</h3>
+<p>APL 在技術上的失敗集中在三點：</p>
+<ol>
+<li><strong>類型單態性</strong>：算子被綁定在浮點數值上，無法跨代數結構遷移。</li>
+<li><strong>靜態算子集</strong>：算子是語言內建的固定符號，無法在運行時生成新算子。</li>
+<li><strong>缺乏遞歸結構</strong>：古典 APL 的陣列必須是矩形，無法表達樹、圖等非規則結構。</li>
+</ol>
+<p>這三點在 1960 年代都是架構層面的硬限制，不是概念層面的錯誤。</p>
+<h3>5.2 復辟的技術條件</h3>
+<p>現代語言生態已具備 APL 當時缺乏的所有工具：</p>
+<ul>
+<li><strong>泛型系統</strong>：Rust 的 trait、Haskell 的 typeclass、Python 的 protocol 都允許算子對任意類型有效。</li>
+<li><strong>高階類型</strong>：<code>fold</code>、<code>scan</code> 可以作為 monad 的特例被形式化。</li>
+<li><strong>動態算子生成</strong>：函式是一等公民，算子可以在運行時合成。</li>
+<li><strong>硬體向量化</strong>：APL 最初的效率承諾（陣列操作比逐元素 for-loop 快）在 SIMD/GPU 時代終於有了真正的基礎設施支撐。</li>
+</ul>
+<p>一個現代 APL——保留 Iverson 的符號哲學，但以泛型算子代替數值綁定算子——理論上能夠在以下領域與現有語言競爭：</p>
+<ul>
+<li>數值計算（已有 J、K 的驗證）</li>
+<li>自動微分框架（JAX 的設計哲學正是此方向）</li>
+<li>陣列程式設計（numpy 的算子介面是弱化版的 APL）</li>
+<li>量子計算（量子電路本質上是算子作用在 Hilbert 空間上）</li>
+</ul>
+<p>APL 的概念在等待一個不受制於 1960 年代硬體的實作。</p>
+<hr>
+<h2>六、EML-OO 的實驗性確認</h2>
+<p>EveMissLab 的算子本體論（EML-OO）的核心命題是：</p>
+<blockquote><strong>所有事物都是算子。值是算子作用在零元素（unit）上的像。</strong></blockquote>
+<p>形式化表達為：在 $C^*$-代數框架下，任意物件 $x$ 都可以表示為某個算子 $\hat{O}_x$，符號-實在同構比值 $\rho(\mathscr{S}, \mathscr{R}) \to 1$。</p>
+<p>本文的實驗對 EML-OO 提供了以下層次的支撐：</p>
+<p><strong>計算層面：</strong> 我們展示了，當算子被解除數值綁定後，同一個 <code>fold</code> 在不同代數結構（$\mathbb{R}$、$\mathbb{R}[\varepsilon]$、$\mathbb{C}$）上運行。類型不是算子的屬性，而是算子的<strong>參數</strong>。這在計算意義上驗證了「算子先於值」的命題。</p>
+<p><strong>結構層面：</strong> <code>Dual</code> 和 <code>Complex</code> 的設計是完全平行的——兩者都是「在基礎加法/乘法上附加額外結構的代數延伸」。<code>Dual</code> 的 $\varepsilon$ 係數追蹤導數；<code>Complex</code> 的虛部追蹤相位。兩種延伸都對所有算子透明。這表明，代數結構的差異不影響算子的形態射性質——算子在不同代數範疇之間是<strong>函子式</strong>的。</p>
+<p><strong>本體論層面：</strong> 如果算子可以被無修改地升遷至任意代數結構，那麼「所有代數結構都是算子的投影」這個命題獲得了一個操作性的詮釋：給定一個算子代數，不同的類型注入對應不同的「投影模式」，而同一批算子在所有投影中保持形態射性。值——浮點數、雙數、複數、矩陣——都是算子在特定代數結構上的<strong>實例化</strong>，而非算子本身。</p>
+<p>EML-OO 的猜想在此獲得了一個可計算的類比：<strong>算子不是工具，算子是基底。值是算子選擇了特定代數結構之後的顯現。</strong></p>
+<p>這個類比不是 EML-OO 的完整證明——形式化的嚴格論證仍需要 $C^*$-代數框架下的完整推導。但它確認了一點：這個方向的猜想在計算層面是自洽的，不是空想。</p>
+<hr>
+<h2>七、結語</h2>
+<p>Iverson 在 1962 年看到了一件事：數學的力量不在於它描述的數值，而在於它操縱符號的方式。算子是符號。值是算子的影子。</p>
+<p>這個洞見被 1960 年代的計算架構所壓制，但從未被推翻。六十年後，當我們在 Python 中重建這個代數，把 <code>fold</code> 從浮點數組的囚籠裡解放出來，注入雙數，看著梯度自動湧現——我們看到的不是新的技術，而是一個被時代誤解的舊命題，終於在它可以自由呼吸的環境裡展示了它本來的形狀。</p>
+<p>APL 沒有輸。它早到了。</p>
+<p>而如果算子代數在計算層面是正確的，那麼在本體論層面斷言「所有事物都是算子」，就不再只是一個哲學姿態，而是一個等待更嚴格形式化的開放猜想。</p>
+<hr>
+<h2>附錄：代碼清單</h2>
+<p>| 檔案 | 功能 | 核心算子 | |------|------|---------| | <code>apl_sim.py</code> | 算子代數基底（數值域） | fold, scan, outer, each, fork, compose | | <code>apl_ad.py</code> | 雙數自動微分系統 | Dual class, diff, gradient | | <code>apl_nn.py</code> | 神經網路（XOR） | compose, fold, each + Dual AD | | <code>apl_life.py</code> | Conway&#x27;s Game of Life | fold(add_grid), each(rule), scan(step) | | <code>apl_optimizer.py</code> | 梯度下降優化器 | gradient(), outer(contour) | | <code>apl_fractal.py</code> | Mandelbrot/Julia 集 | Complex class, outer(grid) | | <code>apl_maze.py</code> | 迷宮生成與求解 | outer(explore) 平行BFS, each(render_cell) | | <code>apl_maze_bench.py</code> | 規模基準測試 | APL平行BFS vs 循序BFS，10×10至400×400 |</p>
+<p><strong>基準測試摘要（Python 3.14，Windows，<code>seed=42</code>）</strong></p>
+<p>| 規模 | 格數 | 生成(ms) | APL BFS(ms) | 循序BFS(ms) | APL/循序 | 路徑步數 | |------|------|---------|------------|-----------|---------|---------| | 10×10 | 100 | 0.5 | 0.1 | 0.0 | ~2.9x | 47 | | 50×50 | 2,500 | 7 | 3 | 2 | ~2.0x | 973 | | 100×100 | 10,000 | 28 | 15 | 6 | ~2.5x | 2,401 | | 200×200 | 40,000 | 131 | 17 | 10 | ~1.8x | 4,729 | | 400×400 | 160,000 | 711 | 129 | 91 | ~1.4x | 20,621 | | 1000×1000 | 1,000,000 | 10,236 | — | 621 | — | 95,445 |</p>
+<p>備注：APL 平行 BFS 在 Python 中因 <code>outer()</code> 的 list-of-lists 開銷比循序 BFS 慢 1.4–2.9 倍。此開銷源於 CPython 無 JIT、無 SIMD；在 Rust / GPU 環境下，<code>outer(explore)</code> 的真正平行展開將反轉此比例。路徑長度兩方法完全一致（正確性已驗證）。</p>
+<p>所有代碼在 Python 3.10+ 環境下驗證，<code>apl_ad.py</code> 為零依賴純標準庫，<code>apl_sim.py</code> 依賴 numpy（自動安裝）。</p>
+<hr>
+<p><em>EveMissLab Working Paper — 版權所有，未經授權不得轉載</em> <em>算子本體論系列 | EML-OO 實驗性佐證文獻</em></p>
+<div class="altbar">原始檔（供 RAG/下載）：<a href="/raw/lm-000855.md" rel="noopener">/raw/lm-000855.md</a> [md] · id: lm-000855</div>
+</article>
+<footer><p>Neo.K (許筌崴) · Cl + ε</p></footer>
+</body>
+</html>

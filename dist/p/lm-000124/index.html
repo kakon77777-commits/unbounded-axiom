@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SCL-設定契約層-軟體系統可控制性邊界的先行架構方法論-v1.0 · EVEMISSLAB Logic Matrix</title>
+<meta name="description" content="SCL-設定契約層-軟體系統可控制性邊界的先行架構方法論-v1.0 | EVEMISSLAB Logic Matrix V2.1">
+<meta name="author" content="Neo.K (許筌崴)">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<meta name="lm-paper-id" content="lm-000124">
+<link rel="alternate" type="text/markdown" href="/raw/lm-000124.md" title="原始檔 / source (md)">
+<link rel="canonical" href="https://logic.evemisslab.com/p/lm-000124/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "SCL-設定契約層-軟體系統可控制性邊界的先行架構方法論-v1.0",
+  "url": "https://logic.evemisslab.com/p/lm-000124/",
+  "identifier": "lm-000124",
+  "inLanguage": "zh-Hant",
+  "author": {"@type": "Person", "name": "Neo.K (許筌崴)"},
+  "publisher": {"@type": "Organization", "name": "EveMissLab / 一言諾科技有限公司"},
+  "isPartOf": {"@type": "Collection", "name": "EVEMISSLAB Logic Matrix", "url": "https://logic.evemisslab.com"},
+  "encodingFormat": "text/html"
+}
+</script>
+<link rel="prefetch" href="/api/log-crawler?slug=SCL---v1.0.md">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#000; color:#0f0; font-family:'Courier New',monospace; padding:20px; line-height:1.6; }
+.header { text-align:center; border:2px solid #0f0; padding:18px; margin-bottom:22px; }
+.header h1 { font-size:1.5em; letter-spacing:2px; }
+.header p { margin-top:6px; opacity:0.8; font-size:0.9em; }
+.disclaimer { border:1px dashed #ff9900; color:#ff9900; padding:14px; margin:0 auto 22px; max-width:1000px; font-size:0.88em; }
+.disclaimer-title { font-weight:bold; margin-bottom:10px; display:block; letter-spacing:1px; }
+.disclaimer-divider { border:none; border-top:1px dashed #ff9900; margin:12px 0; opacity:0.55; }
+article { max-width:1000px; margin:0 auto; border:1px solid #0f0; padding:24px; }
+article h1,article h2,article h3,article h4 { margin:18px 0 8px; letter-spacing:1px; }
+article h1 { font-size:1.5em; } article h2 { font-size:1.25em; } article h3 { font-size:1.1em; }
+article p { margin:10px 0; }
+article ul,article ol { margin:10px 0 10px 24px; }
+article blockquote { border-left:3px solid #0f0; padding-left:12px; opacity:0.85; margin:10px 0; }
+article pre { background:rgba(0,255,0,0.06); border:1px solid #0f0; padding:12px; overflow-x:auto; margin:12px 0; }
+article code { background:rgba(0,255,0,0.08); padding:1px 5px; }
+article pre code { background:none; padding:0; }
+article a { color:#0ff; }
+.nav { max-width:1000px; margin:0 auto 16px; font-size:0.9em; display:flex; justify-content:space-between; }
+.nav a { color:#0f0; text-decoration:none; }
+.nav a:hover { color:#0ff; }
+.altbar { max-width:1000px; margin:14px auto 0; font-size:0.85em; opacity:0.7; }
+.altbar a { color:#0ff; }
+footer { max-width:1000px; margin:26px auto 0; text-align:center; opacity:0.5; font-size:0.82em; }
+</style>
+</head>
+<body>
+<div class="nav"><a href="/index.html">&larr; 回 Logic Matrix 索引</a><div><a href="/cosmomind.html" style="margin-right:15px;">→ 星環式認知展開圖</a><a href="/base-space.html">🧬 拓撲底空間</a></div></div>
+<header class="header"><h1>SCL-設定契約層-軟體系統可控制性邊界的先行架構方法論-v1.0</h1><p>EVEMISSLAB Logic Matrix · EveMissLab / 一言諾科技有限公司</p></header>
+<section class="disclaimer">
+  <span class="disclaimer-title">[認識論邊界宣告 / EPISTEMOLOGICAL DISCLAIMER]</span>
+  <div class="disclaimer-block">
+    <p><b>[CHT]</b> 本矩陣內所有論文之公式與數據為「啟發式模擬參數」，用於驗證理論架構與推演因果鏈，<b>未經實證校準</b>，請勿作為現實物理測量數據引用 or 處理。EVEMISSLAB 採行「邏輯先行（Logic-First）」原則：概念架構與系統因果映射優先於統計實證，但不排除未來實證對接。</p>
+  </div>
+  <hr class="disclaimer-divider">
+  <div class="disclaimer-block">
+    <p><b>[ENG]</b> The numerical parameters within these frameworks are <i>illustrative model coefficients</i> used for structural verification and causal mapping; they are <b>not empirically calibrated</b> and must not be treated as physical measurements. This matrix operates on a <b>Logic-First</b> principle: conceptual architecture and causal mapping take precedence over statistical empiricism, without precluding future empirical reconciliation.</p>
+  </div>
+</section>
+<article>
+<h1>設定契約層（Settings Contract Layer, SCL）：軟體系統可控制性邊界的先行架構方法論</h1>
+<p><strong>作者</strong>：Neo-K <strong>機構</strong>：一言諾科技有限公司（EveMissLab） <strong>日期</strong>：2026年6月 <strong>版本</strong>：v1.0 <strong>文件性質</strong>：技術白皮書 / 方法論論文 <strong>關聯方法論</strong>：三層認知架構、MSSP 母集與子集範式、規模感知架構組織範式</p>
+<hr>
+<h2>摘要</h2>
+<p>本文提出「設定契約層」（Settings Contract Layer, SCL）作為一種軟體系統開發的先行架構方法論。其核心主張是：<strong>設定層不是功能完成後附加的輔助檔案，而是系統可控制性、可調適性、使用者主權與功能邊界的隱性合約</strong>。在任何具有持續演化可能的軟體專案中，若先實作功能再補設定，則功能模組往往會內嵌大量未被聲明的假設：預設值被硬編碼，行為邏輯散落於各處，功能開關缺乏統一治理，權限邊界與使用者控制範圍變得模糊。當後期需要讓使用者調整、讓管理者治理、讓系統支援多環境部署、讓 AI Agent 受到安全約束時，開發者必須回頭翻修既有功能，造成高昂的重構成本與架構債務。</p>
+<p>SCL 方法論將設定層重新定位為「功能層之前的控制契約」。功能定義系統能做什麼；設定定義系統允許被如何改變。FMS（First Mother Set）定義系統是什麼；SCL 定義系統可被哪些主體、在何種範圍內、透過何種規則進行改變；SMS（Second Mother Set）與 TMS（Third Mother Set）則依照 SCL 所聲明的控制邊界執行核心功能與可插拔功能。由此，SCL 成為系統本體聲明與功能實作之間的可變性介面。</p>
+<p>本文從軟體工程、認知科學、架構治理、產品設計與 AI Agent 安全五個角度論證 SCL 的必要性。本文提出「設定先行原則」（Configuration-First Principle）、「可控制性邊界」（Controllability Boundary）、「可變性表面」（Variability Surface）、「受控全域狀態」（Controlled Global State）、「設定註冊表」（Settings Registry）、「設定模式」（Settings Schema）與「設定生命週期」（Settings Lifecycle）等核心概念，並提供從小型專案到超大型系統的規模感知演化路徑。最後，本文提出一套可操作的 SCL 實踐模板，涵蓋 config.js、settings.json、settings.schema.json、SettingsProvider、Feature Flags、Permission Policy、Audit Log、Config Migration 與 CI/CD 驗證流程。</p>
+<p>本文的理論意義在於：將設定層從「工程細節」提升為「架構契約」，使軟體系統在開發之初即明確回答「誰能控制什麼、哪些東西可變、哪些東西不可變、哪些變動是安全的、哪些變動需要治理」。本文的實務價值在於：降低後期重構成本、減少硬編碼假設、提升產品可調適性、強化安全邊界、支援 AI Agent 時代的行為治理，並為可視化架構、文件化決策與規模感知專案組織提供新的中介層。</p>
+<p><strong>關鍵詞</strong>：設定契約層、Configuration-First、軟體架構、可控制性、設定治理、使用者主權、Feature Flags、AI Agent、安全邊界、MSSP</p>
+<hr>
+<h2>目錄</h2>
+<ol>
+<li>引言：從 config 檔案到系統合約</li>
+<li>問題陳述：功能先行造成的隱性架構債</li>
+<li>SCL 的核心定義與理論定位</li>
+<li>設定先行原則：為何設定必須早於功能</li>
+<li>設定層作為可控制性邊界</li>
+<li>SCL 與三層認知架構、MSSP、規模感知範式的關係</li>
+<li>SCL 的內部架構：Schema、Registry、Provider、Policy</li>
+<li>設定類型分類：從介面偏好到 AI Agent 權限</li>
+<li>規模感知的 SCL 演化路徑</li>
+<li>反模式：硬編碼、散落設定、隱性預設值與全域污染</li>
+<li>實踐模板：檔案結構、JSON Schema、TypeScript 介面與治理流程</li>
+<li>AI Agent 時代的設定層：安全、主權與可治理自動化</li>
+<li>驗證方法：如何判斷設定層是否健康</li>
+<li>結論：可演化軟體需要先定義自己的可變性</li>
+</ol>
+<hr>
+<h1>第一章：引言：從 config 檔案到系統合約</h1>
+<p>在多數軟體專案中，設定檔往往被視為次要角色。開發者通常先建立功能，再在功能逐漸複雜後補上一個 <code>config.js</code>、<code>.env</code>、<code>settings.json</code> 或後台管理頁。這種做法在短期內看似合理，因為功能才是使用者能看見的部分，設定只是讓功能更彈性的輔助工具。然而，當專案持續演化，設定層的缺席會逐漸暴露出深層問題：每個功能都帶著自己的假設誕生，每個模組都在內部決定哪些行為可變、哪些行為不可變，每個開發者都可能以不同方式處理預設值、權限、環境變數與使用者偏好。</p>
+<p>這些問題的共同根源在於：系統沒有在一開始明確回答「這個工具允許使用者控制什麼」。當這個問題沒有被集中回答，答案就會散落在功能實作之中。某個按鈕的顏色被寫死在前端元件裡，某個模型選項被寫死在 API 呼叫裡，某個自動儲存間隔被寫死在 hook 裡，某個 Agent 的檔案權限被寫死在任務流程裡。這些硬編碼行為在初期看似只是節省時間，後期卻會成為系統可調適性的障礙。</p>
+<p>本文主張：設定層不應被視為後補的配置檔，而應被視為系統的隱性合約。更精確地說，設定層是一個系統對自身可變性所做出的公開聲明。它回答以下問題：</p>
+<ul>
+<li>使用者可以改什麼？</li>
+<li>管理者可以治理什麼？</li>
+<li>系統允許哪些行為被外部參數調整？</li>
+<li>哪些行為必須保持不可變，以維持安全性與一致性？</li>
+<li>哪些功能只是可開關的實驗功能？</li>
+<li>哪些設定涉及權限、安全、資料存取與隱私？</li>
+<li>哪些設定只影響外觀與體驗？</li>
+<li>哪些設定會改變核心業務邏輯？</li>
+<li>哪些設定可以熱更新，哪些設定必須重新啟動？</li>
+<li>哪些設定的改變需要記錄、審核或版本遷移？</li>
+</ul>
+<p>當這些問題被提前回答，功能開發就不再是盲目增生，而是在一個已被定義的可控制性空間內展開。反之，如果功能先於設定，系統將形成大量隱性假設；後期想要開放使用者控制權時，就必須回到功能內部「翻腸子」，逐一找出哪些地方可以抽出為參數，哪些地方已經與其他邏輯綁死，哪些地方的改動會引發不可預期的連鎖反應。</p>
+<p>因此，本文提出「設定契約層」（Settings Contract Layer, SCL）。SCL 不是單一檔案，也不只是全域變數。它是一套架構層級的治理機制，包含設定項目的命名、分類、預設值、型別約束、權限範圍、讀寫介面、動態更新機制、版本遷移、審計追蹤與可視化描述。它可以在小型專案中表現為一個簡單的 <code>settings.json</code>，也可以在大型系統中演化為設定註冊表、Schema 服務、Feature Flag 平台、權限政策中心與配置分發系統。</p>
+<p>SCL 的核心命題可以濃縮為一句話：</p>
+<blockquote><strong>功能定義系統能做什麼；設定定義系統允許被如何改變。</strong></blockquote>
+<p>這句話看似簡單，但其實改變了軟體設計的順序。它要求開發者在功能實作之前，先設計可變性邊界。它要求系統在擁有行為之前，先擁有對行為可調適範圍的聲明。它要求架構師不只思考「我要做哪些功能」，還要思考「哪些功能應該被使用者控制、哪些控制權應該被保留、哪些設定需要安全治理」。</p>
+<p>從這個角度看，設定層不是工程附屬物，而是產品哲學與架構治理的交界。它不只影響程式碼，也影響使用者經驗、商業模式、團隊協作、部署策略、法規合規與 AI Agent 安全。尤其在 AI 與 Agent 應用逐漸成為主流的時代，設定層將不再只是「主題顏色」「語言」「自動儲存」這類偏好設定，而會直接決定 Agent 能否讀檔、能否寫檔、能否連網、能否呼叫 API、能否自動執行任務、能否記憶使用者資訊、能否在背景持續運作。這些設定若沒有先行契約化，Agent 系統就會陷入難以治理的風險狀態。</p>
+<p>本文的目標不是提出某一種特定技術棧的設定檔格式，而是提出一套普適方法論：任何可演化的軟體系統，都需要先定義自己的可變性邊界。SCL 正是這個邊界的形式化表達。</p>
+<hr>
+<h1>第二章：問題陳述：功能先行造成的隱性架構債</h1>
+<h2>2.1 功能先行的直覺誘惑</h2>
+<p>大多數專案一開始都會受到「功能先行」的誘惑。這是合理的：客戶想看到功能，投資者想看到 Demo，創業團隊想快速驗證市場，開發者也想盡快讓程式跑起來。於是專案初期常見的流程是：</p>
+<pre><code>先做畫面
+再接 API
+再補資料
+再補權限
+再補設定
+再補管理後台
+再補測試
+再補文件</code></pre>
+<p>這種流程的問題不在於快速迭代本身，而在於它讓系統的可變性邊界被延後定義。當設定層被延後，每個功能在誕生時都會自帶預設假設。例如：</p>
+<pre><code>這個功能一定開啟
+這個按鈕一定顯示
+這個流程一定自動執行
+這個模型一定用 default
+這個資料來源一定是 production
+這個權限一定允許
+這個提示一定不可修改
+這個通知一定發送
+這個任務一定同步執行</code></pre>
+<p>這些假設一開始可能沒有錯，甚至是合理的。但它們若沒有被集中登記，就會變成隱性契約。所謂隱性契約，是指系統實際依賴某個規則，卻沒有在任何架構文件、設定檔、Schema 或控制介面中明確聲明。隱性契約的危險在於：它只有在被破壞時才會被看見。</p>
+<h2>2.2 硬編碼不是小問題，而是未聲明的決策</h2>
+<p>工程實務中常說「不要硬編碼」。但硬編碼真正的問題不是「程式碼不好看」，而是「決策被藏起來」。例如：</p>
+<pre><code>const MAX_UPLOAD_SIZE = 20 * 1024 * 1024;
+const ENABLE_AGENT_MODE = true;
+const DEFAULT_MODEL = &quot;gpt-default&quot;;
+const AUTOSAVE_INTERVAL = 3000;</code></pre>
+<p>這些值若只存在於某個模組裡，它們其實代表一組產品與架構決策：</p>
+<ul>
+<li>為何上傳限制是 20MB？</li>
+<li>Agent Mode 是否應該在所有環境啟用？</li>
+<li>預設模型是否可以由使用者改變？</li>
+<li>自動儲存間隔是否需要依裝置效能調整？</li>
+<li>這些值是否有安全含義？</li>
+<li>這些值是否需要在不同部署環境中不同？</li>
+<li>這些值是否應該出現在使用者設定頁？</li>
+<li>這些值變更時是否需要記錄？</li>
+</ul>
+<p>若這些問題沒有被回答，硬編碼就不是單純的技術債，而是決策債。它讓未來的開發者不知道原本的設計理由，也不知道改動會不會破壞系統預期。</p>
+<p>SCL 的觀點是：任何可能影響系統行為、使用者體驗、安全邊界、部署差異、模組啟用狀態或 AI Agent 權限的值，都應該被視為候選設定項。它不一定要立即開放給使用者修改，但至少應該被登記、命名、分類並給出預設值。也就是說，設定層的第一任務不是「讓所有東西都可調」，而是「讓所有可能可調的東西被看見」。</p>
+<h2>2.3 後補設定的重構成本</h2>
+<p>當專案晚期才補設定層，通常會遇到以下問題：</p>
+<p>第一，功能已經與固定值耦合。某個流程原本假設「一定自動執行」，現在要加入「使用者可關閉」的選項，就必須檢查整個流程是否依賴自動執行的副作用。</p>
+<p>第二，模組之間對同一設定有不同理解。例如前端認為 <code>agentMode</code> 是 UI 開關，後端認為它是權限開關，排程系統認為它是任務執行開關。若缺乏統一 Schema，同一個設定名稱可能在不同層具有不同語義。</p>
+<p>第三，預設值散落，導致行為不一致。A 模組預設語言是 <code>zh-TW</code>，B 模組預設語言是 <code>en-US</code>，C 模組沒有預設值而依賴瀏覽器語言。使用者會感覺系統不穩定，開發者也難以追蹤問題來源。</p>
+<p>第四，安全設定難以治理。後期才加入「允許檔案存取」「允許網路存取」「允許背景任務」等設定時，往往發現功能已經直接呼叫底層能力，缺乏統一授權閘門。此時補設定不只是加 UI，而是要重構權限架構。</p>
+<p>第五，設定頁變成雜物間。當每個功能都各自加設定，最後設定頁會變成無結構的選項堆疊：使用者不知道哪些設定重要，管理者不知道哪些設定危險，開發者不知道哪些設定被使用。</p>
+<p>因此，SCL 強調：設定層應該在功能之前建立，至少應該與 FMS 或專案初始化同步建立。早期的設定層可以很簡單，甚至大部分設定項都只是 hardcode 預設值，但它必須先有位置、名稱、分類與治理邏輯。這比後來在功能堆裡挖設定要便宜得多。</p>
+<h2>2.4 設定缺席造成的四種債務</h2>
+<p>本文將設定缺席造成的債務分為四類：</p>
+<h3>一、可變性債務</h3>
+<p>系統本來應該允許調整的行為被寫死，導致後期每次需求變更都需要修改程式碼。可變性債務會降低產品調適市場的速度。</p>
+<h3>二、認知債務</h3>
+<p>開發者不知道某個行為的控制點在哪裡，也不知道某個預設值來自哪裡。認知債務會提高新成員上手成本與除錯成本。</p>
+<h3>三、安全債務</h3>
+<p>涉及權限、資料、網路、檔案、Agent 自動化的行為沒有集中治理。安全債務在普通功能中可能不明顯，但在 AI Agent 與自動化系統中會迅速放大。</p>
+<h3>四、產品債務</h3>
+<p>使用者無法控制應該控制的行為，或暴露了太多不應暴露的選項。產品債務會造成使用者困惑，也會削弱產品定位。</p>
+<p>SCL 的目標，就是在專案開場時建立一個足夠輕量但可演化的控制契約，使這四種債務不至於在系統尚未成熟前就累積。</p>
+<hr>
+<h1>第三章：SCL 的核心定義與理論定位</h1>
+<h2>3.1 定義：什麼是設定契約層？</h2>
+<p>本文將設定契約層定義如下：</p>
+<blockquote><strong>設定契約層（Settings Contract Layer, SCL）是位於系統元描述層與功能實作層之間的可變性治理層。它以機器可讀與人類可理解的形式，聲明系統中哪些行為、參數、權限、偏好、模組與環境差異可以被控制，並定義其預設值、型別、約束、作用範圍、讀寫權限、生命週期與審計規則。</strong></blockquote>
+<p>這個定義包含幾個重點。</p>
+<p>第一，SCL 是「層」，不是單一檔案。它可以由一個 JSON 檔案實現，也可以由多個服務實現，但本質上它是一個架構層。</p>
+<p>第二，SCL 是「契約」，不是自由散落的變數。契約意味著它具有約束力，所有功能模組都應依照它讀取設定，而不是自行定義隱性預設值。</p>
+<p>第三，SCL 管理的是「可變性」，不是所有狀態。使用者目前正在輸入的文字、購物車目前的商品、任務目前的進度，這些是運行時業務狀態，不一定屬於設定層。SCL 管理的是可預先聲明、可被控制、可跨會話或跨環境生效的行為參數。</p>
+<p>第四，SCL 需要同時人類可理解與機器可讀。純文件不夠，因為無法自動驗證；純程式碼也不夠，因為會掩蓋設計意圖。因此 SCL 最理想的形式是：敘事文件 + Schema + 設定檔 + 讀取介面 + 驗證工具。</p>
+<h2>3.2 SCL 與普通 config 的差異</h2>
+<p>普通 config 常被理解為：</p>
+<pre><code>把一些常數放到一個檔案裡</code></pre>
+<p>SCL 則是：</p>
+<pre><code>用一套可治理的結構定義系統的可控制性邊界</code></pre>
+<p>兩者差異如下：</p>
+<p>| 面向 | 普通 config | SCL | |---|---|---| | 定位 | 工程輔助檔 | 架構契約層 | | 目的 | 避免硬編碼 | 聲明可變性邊界 | | 內容 | 常數、環境變數 | 預設值、Schema、權限、範圍、生命週期 | | 使用者 | 開發者 | 開發者、管理者、使用者、系統本身 | | 驗證 | 常缺乏 | 必須可驗證 | | 文件 | 常缺乏 | 必須可閱讀 | | 安全 | 常與 secrets 混雜 | 必須區分設定、秘密與權限 | | 演化 | 零散成長 | 規模感知演化 |</p>
+<p>因此，SCL 不是把所有東西塞進 <code>config.js</code>。相反，SCL 要避免設定層變成混亂的全域垃圾場。它要求設定項目被命名、分類、約束與治理。</p>
+<h2>3.3 核心概念一：可控制性邊界</h2>
+<p>「可控制性邊界」（Controllability Boundary）指的是系統明確允許外部主體調整的範圍。這裡的外部主體可以是：</p>
+<ul>
+<li>一般使用者</li>
+<li>管理員</li>
+<li>開發者</li>
+<li>部署環境</li>
+<li>第三方整合服務</li>
+<li>AI Agent</li>
+<li>自動化流程</li>
+<li>組織政策</li>
+</ul>
+<p>可控制性邊界不是越大越好。過小的邊界會讓系統僵硬，過大的邊界會讓系統失控。好的設定設計不是「什麼都可調」，而是「該調的可調，不該調的不可調，危險的調整需要治理」。</p>
+<p>例如：</p>
+<pre><code>{
+  &quot;ui.theme&quot;: &quot;user-writable&quot;,
+  &quot;ui.language&quot;: &quot;user-writable&quot;,
+  &quot;agent.fileAccess&quot;: &quot;admin-controlled&quot;,
+  &quot;agent.networkAccess&quot;: &quot;admin-controlled&quot;,
+  &quot;security.encryptionEnabled&quot;: &quot;system-locked&quot;,
+  &quot;billing.taxRate&quot;: &quot;admin-controlled-with-audit&quot;,
+  &quot;database.connectionString&quot;: &quot;secret-managed&quot;
+}</code></pre>
+<p>這不是單純設定，而是在定義控制權分配。</p>
+<h2>3.4 核心概念二：可變性表面</h2>
+<p>「可變性表面」（Variability Surface）指系統暴露出的全部可調節點。可變性表面越大，系統越靈活，但也越難測試與治理。SCL 的重要任務之一，是控制可變性表面的大小與結構。</p>
+<p>過大的可變性表面會造成以下問題：</p>
+<ul>
+<li>使用者不知道如何選擇</li>
+<li>測試組合爆炸</li>
+<li>文件難以維護</li>
+<li>安全審查成本增加</li>
+<li>功能行為難以預測</li>
+</ul>
+<p>過小的可變性表面則會造成：</p>
+<ul>
+<li>使用者無法適配自己的工作流</li>
+<li>不同環境需要改程式碼</li>
+<li>商業客戶無法客製化</li>
+<li>AI Agent 權限無法細分</li>
+<li>功能迭代速度下降</li>
+</ul>
+<p>因此，SCL 的設計目標不是最大化設定數量，而是最佳化可變性表面。</p>
+<h2>3.5 核心概念三：受控全域狀態</h2>
+<p>很多開發者對「全域變數」有天然警戒，這是正確的。隨意可寫的全域變數會造成副作用、耦合與除錯困難。但設定層確實具有全域性，因為它被多個模組共同依賴。問題不在於「全域」，而在於「是否受控」。</p>
+<p>本文將 SCL 所管理的狀態稱為「受控全域設定狀態」（Controlled Global Configuration State）。它具有以下特徵：</p>
+<ul>
+<li>集中定義</li>
+<li>Schema 約束</li>
+<li>唯一讀取介面</li>
+<li>讀寫權限分離</li>
+<li>預設值明確</li>
+<li>來源可追蹤</li>
+<li>變更可審計</li>
+<li>可視化描述</li>
+<li>可測試</li>
+<li>可遷移</li>
+</ul>
+<p>錯誤方式是：</p>
+<pre><code>window.enableAgent = true;
+global.maxItems = 20;
+featureA.theme = &quot;dark&quot;;
+featureB.theme = &quot;light&quot;;</code></pre>
+<p>正確方式是：</p>
+<pre><code>const settings = SettingsProvider.get();
+
+if (settings.agent.fileAccess.enabled) {
+  PermissionGate.require(&quot;agent:file:read&quot;);
+}
+
+const theme = settings.ui.theme;</code></pre>
+<p>SCL 不鼓勵混亂的全域變數，而是承認系統需要全域控制面，並將它治理化。</p>
+<hr>
+<h1>第四章：設定先行原則：為何設定必須早於功能</h1>
+<h2>4.1 原則定義</h2>
+<p>本文提出「設定先行原則」（Configuration-First Principle）：</p>
+<blockquote>在任何非一次性軟體專案中，設定契約層應先於功能層建立。因為設定層不是功能的附屬，而是系統可控制性、可調適性與功能邊界的先驗聲明。若功能先於設定產生，則每個功能都會內嵌自己的隱性假設；當系統後期需要開放控制權時，這些假設將轉化為高成本的重構債。</blockquote>
+<p>這裡的「先行」不是要求在第一天就完成所有設定，而是要求專案在開場時就建立設定入口、設定分類、預設值聲明與擴展路徑。早期可以很粗，但不能沒有。</p>
+<p>最低限度的 SCL 可以是：</p>
+<pre><code>settings/
+├── default.settings.json
+├── settings.schema.json
+└── SETTINGS.md</code></pre>
+<p>或更小：</p>
+<pre><code>config.js
+SETTINGS.md</code></pre>
+<p>關鍵不是形式，而是設計順序：功能在誕生時，應該知道自己的可變參數要從哪裡拿。</p>
+<h2>4.2 設定先行如何降低認知負荷</h2>
+<p>當設定先行時，開發者在實作功能前會自然被迫回答：</p>
+<ul>
+<li>這個功能是否可關閉？</li>
+<li>這個功能是否有預設值？</li>
+<li>這個功能是否受權限限制？</li>
+<li>這個功能是否需要環境差異？</li>
+<li>這個功能是否會影響安全？</li>
+<li>這個功能是否會暴露給使用者調整？</li>
+<li>這個功能的行為是否需要版本遷移？</li>
+</ul>
+<p>這些問題會迫使設計者在中觀層面先釐清功能邊界，而不是直接進入微觀實作。這正是 SCL 的認知價值：它把隱性設計問題提前顯性化。</p>
+<p>例如，要做一個自動摘要功能。功能先行的做法可能是：</p>
+<pre><code>async function summarize(text) {
+  return await model.generateSummary(text, { length: &quot;medium&quot; });
+}</code></pre>
+<p>設定先行的做法會先問：</p>
+<pre><code>{
+  &quot;ai.summary.enabled&quot;: true,
+  &quot;ai.summary.defaultLength&quot;: &quot;medium&quot;,
+  &quot;ai.summary.allowedLengths&quot;: [&quot;short&quot;, &quot;medium&quot;, &quot;long&quot;],
+  &quot;ai.summary.model&quot;: &quot;default&quot;,
+  &quot;ai.summary.maxInputTokens&quot;: 8000,
+  &quot;ai.summary.requireConfirmationForLongText&quot;: true
+}</code></pre>
+<p>這些設定讓功能尚未實作前，其控制面已經被看見。功能因此不會長歪。</p>
+<h2>4.3 設定層作為功能範圍聲明</h2>
+<p>當開發者設計設定時，其實是在設計產品的權力結構。使用者可以控制什麼，代表產品承認使用者在哪些地方有主權。使用者不能控制什麼，代表產品保留哪些判斷。管理員可以控制什麼，代表組織治理的邊界。系統鎖定什麼，代表安全或一致性不可讓渡。</p>
+<p>因此，設定層是功能範圍聲明。</p>
+<p>例如一個 Markdown AI 編輯器，如果設定層包含：</p>
+<pre><code>{
+  &quot;editor.autosave&quot;: true,
+  &quot;editor.previewMode&quot;: &quot;split&quot;,
+  &quot;ai.rewrite.tone&quot;: &quot;balanced&quot;,
+  &quot;ai.agent.fileWrite&quot;: false,
+  &quot;export.defaultFormat&quot;: &quot;markdown&quot;
+}</code></pre>
+<p>這就聲明了產品的可控制範圍：使用者可以改預覽模式、AI 改寫語氣與匯出格式，但 Agent 預設不能寫檔。這比單純在功能中做按鈕更深，因為它定義了產品哲學。</p>
+<h2>4.4 設定先行不是過度工程</h2>
+<p>有人可能反對：專案初期快速驗證，何必先設計設定層？這個反對意見有一部分是合理的。如果專案只是一次性腳本，確實不需要完整 SCL。但只要專案有以下任一特徵，就應該建立最小 SCL：</p>
+<ul>
+<li>預期會持續開發超過兩週</li>
+<li>會有多個功能模組</li>
+<li>會有使用者偏好</li>
+<li>會部署到多個環境</li>
+<li>會有權限差異</li>
+<li>會有 AI / Agent 行為</li>
+<li>會有管理後台</li>
+<li>會需要測試不同策略</li>
+<li>會交給他人維護</li>
+<li>會成為產品而非一次性工具</li>
+</ul>
+<p>最小 SCL 不需要複雜。它可以只是：</p>
+<pre><code>export const settings = {
+  ui: {
+    theme: &quot;dark&quot;,
+    language: &quot;zh-TW&quot;
+  },
+  features: {
+    agentMode: false,
+    visualMap: true
+  },
+  workflow: {
+    autosave: true,
+    confirmBeforeDelete: true
+  }
+};</code></pre>
+<p>這樣做的目的不是提前預測全部未來，而是給未來一個可擴展的位置。</p>
+<hr>
+<h1>第五章：設定層作為可控制性邊界</h1>
+<h2>5.1 控制不是單一維度</h2>
+<p>設定層常被誤解為「讓使用者選」。但控制權不是單一維度，而是多主體、多層級、多風險的結構。不同設定項可能由不同主體控制：</p>
+<p>| 設定類型 | 控制主體 | 風險等級 | |---|---|---| | 主題顏色 | 使用者 | 低 | | 語言 | 使用者 | 低 | | 自動儲存 | 使用者或管理員 | 中 | | 實驗功能 | 管理員或開發團隊 | 中 | | Agent 檔案讀取 | 管理員 / 使用者雙重確認 | 高 | | Agent 網路存取 | 管理員 / 安全政策 | 高 | | 資料保留天數 | 組織政策 | 高 | | 加密開關 | 系統鎖定 | 極高 | | API Key | Secret Manager | 極高 |</p>
+<p>SCL 必須區分這些控制主體，否則設定頁會把低風險偏好與高風險權限混在一起。</p>
+<h2>5.2 可控制性矩陣</h2>
+<p>本文提出「可控制性矩陣」（Controllability Matrix）作為 SCL 的分析工具。每個設定項至少應標註以下欄位：</p>
+<pre><code>設定名稱
+設定類型
+預設值
+允許值
+控制主體
+作用範圍
+是否可熱更新
+是否需要審計
+安全等級
+失敗策略
+依賴項
+版本</code></pre>
+<p>範例：</p>
+<p>| 設定名稱 | 預設值 | 控制主體 | 作用範圍 | 風險 | 審計 | |---|---:|---|---|---|---| | ui.theme | dark | user | client | low | no | | workflow.autosave | true | user | client+server | medium | no | | agent.fileAccess | false | admin+user | runtime | high | yes | | agent.networkAccess | false | admin | runtime | high | yes | | data.retentionDays | 30 | org-admin | backend | high | yes | | security.encryption | true | system | backend | critical | yes |</p>
+<p>這個矩陣讓設定不再是無序選項，而是可治理的契約。</p>
+<h2>5.3 設定層與使用者主權</h2>
+<p>設定層的深層意義是使用者主權。當產品不提供設定，使用者只能接受設計者的全部預設；當產品提供過多設定，使用者又會被複雜性壓垮。真正好的產品不是完全替使用者決定，也不是把所有責任丟給使用者，而是設計恰當的控制權分配。</p>
+<p>使用者主權可分為三層：</p>
+<p>第一層是體驗主權：使用者可以改變介面、語言、顯示密度、通知偏好。</p>
+<p>第二層是工作流主權：使用者可以決定自動儲存、預設匯出格式、快捷鍵、任務流程、預設模型。</p>
+<p>第三層是代理主權：使用者可以控制 AI Agent 能做什麼、不能做什麼、何時需要確認、何時可以自動執行。</p>
+<p>在傳統軟體中，第一層與第二層已經足夠重要；在 AI Agent 軟體中，第三層將成為核心。因為 Agent 不只是被動工具，而是可以代替使用者行動的執行體。沒有設定契約層的 Agent，就像沒有法律邊界的代理人。</p>
+<h2>5.4 不可變性同樣需要聲明</h2>
+<p>SCL 不只聲明可變的東西，也應聲明不可變的東西。這點很容易被忽略。系統中有些行為不應該暴露為設定，例如：</p>
+<ul>
+<li>安全加密不可關閉</li>
+<li>審計日誌不可關閉</li>
+<li>核心資料一致性不可降低</li>
+<li>法規要求不可被使用者覆蓋</li>
+<li>某些 Agent 權限不可自動授予</li>
+<li>系統完整性檢查不可略過</li>
+</ul>
+<p>如果不可變性沒有被聲明，未來開發者可能會在壓力下把它做成設定：「客戶想關掉審計日誌」「為了效能先關加密」「為了方便讓 Agent 永久擁有所有權限」。這些決策短期方便，長期危險。</p>
+<p>因此，SCL 應包含 <code>locked</code> 或 <code>systemPolicy</code> 概念：</p>
+<pre><code>{
+  &quot;security.auditLog.enabled&quot;: {
+    &quot;value&quot;: true,
+    &quot;writableBy&quot;: &quot;system&quot;,
+    &quot;locked&quot;: true,
+    &quot;reason&quot;: &quot;All security-sensitive actions must be auditable.&quot;
+  }
+}</code></pre>
+<p>不可變性本身也是契約。</p>
+<hr>
+<h1>第六章：SCL 與三層認知架構、MSSP、規模感知範式的關係</h1>
+<h2>6.1 與三層認知架構的關係</h2>
+<p>三層認知架構將軟體開發問題分為宏觀層、中觀層與微觀層。SCL 不是獨立於三層之外，而是橫跨宏觀與中觀，並約束微觀。</p>
+<p>宏觀層問：</p>
+<pre><code>這個產品允許使用者控制什麼？
+哪些控制權符合產品定位？
+哪些控制權會造成風險？
+哪些控制權是商業模式的一部分？</code></pre>
+<p>中觀層問：</p>
+<pre><code>這些設定如何組織？
+哪些模組讀取哪些設定？
+設定如何跨前端、後端、Agent、平台層傳遞？
+設定與權限如何分離？</code></pre>
+<p>微觀層問：</p>
+<pre><code>程式碼如何讀取設定？
+如何驗證型別？
+如何處理缺省值？
+如何避免每個模組自行寫死設定？
+如何測試不同設定組合？</code></pre>
+<p>因此，SCL 可以被理解為三層認知架構中的「可變性介面」。它把宏觀產品決策轉化為中觀架構約束，再落地為微觀程式碼讀取方式。</p>
+<h2>6.2 與 MSSP 的關係</h2>
+<p>MSSP 將系統組織為 FMS、SMS、TMS。SCL 可作為 FMS 與 SMS/TMS 之間的補充層：</p>
+<pre><code>FMS：系統是什麼
+SCL：系統允許如何被改變
+SMS：核心功能如何穩定運作
+TMS：可插拔功能如何擴展
+DMS：系統如何被觀測與診斷</code></pre>
+<p>FMS 是本體聲明，SCL 是可變性聲明。FMS 告訴開發者「這個系統的目的、邊界、核心模組是什麼」；SCL 告訴開發者「哪些行為可以被設定、由誰設定、如何生效」。</p>
+<p>在 MSSP 中，FMS 強調純元資料與架構索引。SCL 則可被視為一種特殊的元資料：它不是一般敘事，而是可被功能模組讀取的控制契約。因此，SCL 應具有比普通文件更強的機器可讀性。</p>
+<p>建議的整合結構如下：</p>
+<pre><code>project/
+├── FMS/
+│   ├── 00_SYSTEM_NARRATIVE.md
+│   ├── 01_MODULE_INDEX.md
+│   └── 02_ARCHITECTURE_NOTES.md
+├── SCL/
+│   ├── 00_SETTINGS_NARRATIVE.md
+│   ├── 01_SETTINGS_MATRIX.md
+│   ├── settings.schema.json
+│   ├── default.settings.json
+│   └── permissions.policy.json
+├── core/
+├── features/
+└── tests/</code></pre>
+<p>這樣 FMS 與 SCL 分工清楚：FMS 不承擔可變性細節，SCL 不承擔系統總敘事。</p>
+<h2>6.3 與規模感知範式的關係</h2>
+<p>規模感知範式指出，資料夾結構應隨專案規模演化。同理，SCL 也應規模感知。小型專案不需要配置中心，大型系統不能只靠一個 <code>config.js</code>。SCL 的形式應依專案規模、團隊規模、風險等級與部署複雜度演化。</p>
+<p>小型專案的 SCL 目標是「避免硬編碼與混亂預設值」。中型專案的 SCL 目標是「建立分類、Schema 與 SettingsProvider」。大型專案的 SCL 目標是「建立設定註冊、權限治理、Feature Flag 與審計」。超大型系統的 SCL 目標是「建立配置平台、聯邦治理與跨子系統一致性」。</p>
+<p>因此，SCL 不是固定模板，而是一個隨規模演化的架構器官。</p>
+<hr>
+<h1>第七章：SCL 的內部架構：Schema、Registry、Provider、Policy</h1>
+<h2>7.1 SCL 的基本組成</h2>
+<p>完整的 SCL 通常包含以下部分：</p>
+<pre><code>Settings Narrative：設定層敘事，說明控制哲學與範圍
+Settings Schema：設定型別、允許值與約束
+Default Settings：預設設定
+User Settings：使用者覆蓋設定
+Environment Settings：環境覆蓋設定
+Settings Registry：設定註冊表
+Settings Provider：統一讀取介面
+Permission Policy：權限政策
+Feature Flags：功能開關
+Migration Rules：設定版本遷移
+Audit Log：設定變更記錄
+Validation Tools：驗證與 lint 工具</code></pre>
+<p>不是每個專案一開始都要具備全部部分，但這些部分構成 SCL 的完整圖譜。</p>
+<h2>7.2 Settings Narrative：設定層敘事</h2>
+<p>設定層敘事是給人讀的文件，回答：</p>
+<ul>
+<li>這個系統的設定哲學是什麼？</li>
+<li>哪些設定開放給使用者？</li>
+<li>哪些設定只給管理員？</li>
+<li>哪些設定由系統鎖定？</li>
+<li>設定變更的風險等級如何分類？</li>
+<li>新增設定項時應遵守哪些規則？</li>
+</ul>
+<p>範例：</p>
+<pre><code># Settings Narrative
+
+本系統採用使用者主權優先但安全保守的設定哲學。
+低風險體驗設定開放給使用者自由修改。
+涉及資料、檔案、網路、Agent 自動化的設定必須經過權限政策檢查。
+所有高風險設定變更必須寫入 Audit Log。
+任何新功能若包含可變參數，必須先登記於 settings.schema.json。</code></pre>
+<p>這份文件避免設定層變成純工程資料。</p>
+<h2>7.3 Settings Schema：設定型別與約束</h2>
+<p>Schema 是 SCL 的核心。沒有 Schema，設定就只是任意 JSON；有 Schema，設定才具有契約性。</p>
+<p>簡化範例：</p>
+<pre><code>{
+  &quot;$schema&quot;: &quot;https://json-schema.org/draft/2020-12/schema&quot;,
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;properties&quot;: {
+    &quot;ui&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;properties&quot;: {
+        &quot;theme&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;enum&quot;: [&quot;light&quot;, &quot;dark&quot;, &quot;system&quot;],
+          &quot;default&quot;: &quot;system&quot;,
+          &quot;description&quot;: &quot;User interface theme.&quot;
+        },
+        &quot;language&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;default&quot;: &quot;zh-TW&quot;
+        }
+      }
+    },
+    &quot;agent&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;properties&quot;: {
+        &quot;fileAccess&quot;: {
+          &quot;type&quot;: &quot;boolean&quot;,
+          &quot;default&quot;: false,
+          &quot;x-risk&quot;: &quot;high&quot;,
+          &quot;x-writableBy&quot;: [&quot;admin&quot;, &quot;user-confirmed&quot;]
+        },
+        &quot;networkAccess&quot;: {
+          &quot;type&quot;: &quot;boolean&quot;,
+          &quot;default&quot;: false,
+          &quot;x-risk&quot;: &quot;high&quot;,
+          &quot;x-writableBy&quot;: [&quot;admin&quot;]
+        }
+      }
+    }
+  }
+}</code></pre>
+<p>注意 <code>x-risk</code> 與 <code>x-writableBy</code> 這類擴展欄位。SCL 的 Schema 不只描述型別，也描述治理語義。</p>
+<h2>7.4 Settings Registry：設定註冊表</h2>
+<p>當專案變大，Schema 本身可能不足以表達設定的來源、擁有者與依賴。此時需要 Settings Registry。</p>
+<pre><code>[
+  {
+    &quot;key&quot;: &quot;ai.summary.defaultLength&quot;,
+    &quot;owner&quot;: &quot;ai-team&quot;,
+    &quot;type&quot;: &quot;enum&quot;,
+    &quot;allowedValues&quot;: [&quot;short&quot;, &quot;medium&quot;, &quot;long&quot;],
+    &quot;default&quot;: &quot;medium&quot;,
+    &quot;risk&quot;: &quot;low&quot;,
+    &quot;scope&quot;: &quot;user&quot;,
+    &quot;hotReload&quot;: true,
+    &quot;description&quot;: &quot;Default summary length for AI summarization.&quot;
+  },
+  {
+    &quot;key&quot;: &quot;agent.fileAccess.enabled&quot;,
+    &quot;owner&quot;: &quot;security-team&quot;,
+    &quot;type&quot;: &quot;boolean&quot;,
+    &quot;default&quot;: false,
+    &quot;risk&quot;: &quot;high&quot;,
+    &quot;scope&quot;: &quot;workspace&quot;,
+    &quot;hotReload&quot;: false,
+    &quot;audit&quot;: true,
+    &quot;description&quot;: &quot;Whether agents may read local files.&quot;
+  }
+]</code></pre>
+<p>Registry 使設定項成為可搜尋、可審查、可治理的資產。</p>
+<h2>7.5 Settings Provider：統一讀取介面</h2>
+<p>功能模組不應直接讀取 JSON 檔。它們應透過 SettingsProvider 讀取設定：</p>
+<pre><code>interface SettingsProvider {
+  get&lt;T&gt;(key: string): T;
+  getWithDefault&lt;T&gt;(key: string, fallback: T): T;
+  isEnabled(featureKey: string): boolean;
+  requirePermission(permissionKey: string): void;
+  subscribe(key: string, listener: (value: unknown) =&gt; void): void;
+}</code></pre>
+<p>好處是：</p>
+<ul>
+<li>可統一處理預設值</li>
+<li>可統一驗證</li>
+<li>可統一記錄來源</li>
+<li>可統一處理熱更新</li>
+<li>可在測試中注入假設定</li>
+<li>可避免模組直接依賴設定檔路徑</li>
+</ul>
+<h2>7.6 Permission Policy：設定與權限分離</h2>
+<p>設定不是權限。這句話非常重要。</p>
+<p>例如：</p>
+<pre><code>{
+  &quot;agent.fileAccess.enabled&quot;: true
+}</code></pre>
+<p>不代表 Agent 真的可以任意讀檔。它只代表設定層允許此能力被啟用；真正執行時仍需通過權限政策：</p>
+<pre><code>if (settings.get(&quot;agent.fileAccess.enabled&quot;)) {
+  permissionPolicy.require(&quot;agent:file:read&quot;, context);
+}</code></pre>
+<p>設定回答「能力是否被配置為可用」。權限回答「當前主體是否被允許使用此能力」。兩者必須分離，否則設定層會變成安全漏洞。</p>
+<hr>
+<h1>第八章：設定類型分類：從介面偏好到 AI Agent 權限</h1>
+<h2>8.1 體驗設定</h2>
+<p>體驗設定影響使用者感知，但通常不改變核心邏輯。</p>
+<pre><code>{
+  &quot;ui.theme&quot;: &quot;dark&quot;,
+  &quot;ui.language&quot;: &quot;zh-TW&quot;,
+  &quot;ui.layoutDensity&quot;: &quot;compact&quot;,
+  &quot;ui.showAdvancedOptions&quot;: false
+}</code></pre>
+<p>風險較低，通常可由使用者自由修改。</p>
+<h2>8.2 工作流設定</h2>
+<p>工作流設定會影響使用者操作方式。</p>
+<pre><code>{
+  &quot;workflow.autosave&quot;: true,
+  &quot;workflow.autosaveIntervalMs&quot;: 3000,
+  &quot;workflow.confirmBeforeDelete&quot;: true,
+  &quot;workflow.defaultExportFormat&quot;: &quot;markdown&quot;
+}</code></pre>
+<p>這類設定可能影響資料安全與使用者預期。例如關閉刪除確認可能提高效率，但也提高誤刪風險。</p>
+<h2>8.3 功能開關</h2>
+<p>功能開關用於控制模組是否啟用。</p>
+<pre><code>{
+  &quot;features.visualArchitectureMap&quot;: true,
+  &quot;features.experimentalAgentMode&quot;: false,
+  &quot;features.betaExportPipeline&quot;: false
+}</code></pre>
+<p>功能開關不只是工程測試工具，也是產品部署策略。它可以支援灰度發布、A/B 測試、客戶分層與風險控制。</p>
+<h2>8.4 模型與 AI 行為設定</h2>
+<p>AI 應用需要大量行為設定：</p>
+<pre><code>{
+  &quot;ai.defaultModel&quot;: &quot;balanced&quot;,
+  &quot;ai.reasoningLevel&quot;: &quot;medium&quot;,
+  &quot;ai.temperature&quot;: 0.7,
+  &quot;ai.memory.enabled&quot;: true,
+  &quot;ai.memory.scope&quot;: &quot;workspace&quot;,
+  &quot;ai.responseStyle&quot;: &quot;structured&quot;
+}</code></pre>
+<p>這些設定會直接影響輸出品質、成本、速度與使用者信任。</p>
+<h2>8.5 Agent 權限設定</h2>
+<p>Agent 權限設定是高風險設定：</p>
+<pre><code>{
+  &quot;agent.enabled&quot;: false,
+  &quot;agent.fileRead&quot;: false,
+  &quot;agent.fileWrite&quot;: false,
+  &quot;agent.networkAccess&quot;: false,
+  &quot;agent.backgroundExecution&quot;: false,
+  &quot;agent.maxAutonomousSteps&quot;: 3,
+  &quot;agent.requireConfirmationBeforeExternalAction&quot;: true
+}</code></pre>
+<p>這類設定應具備：</p>
+<ul>
+<li>預設保守</li>
+<li>高風險標籤</li>
+<li>權限政策檢查</li>
+<li>審計記錄</li>
+<li>使用者確認</li>
+<li>管理員限制</li>
+<li>可視化提示</li>
+</ul>
+<h2>8.6 環境設定</h2>
+<p>環境設定與部署有關：</p>
+<pre><code>{
+  &quot;environment.name&quot;: &quot;development&quot;,
+  &quot;api.baseUrl&quot;: &quot;http://localhost:3000&quot;,
+  &quot;logging.level&quot;: &quot;debug&quot;,
+  &quot;cache.enabled&quot;: false
+}</code></pre>
+<p>環境設定應與 secrets 分離。API Key、密碼、憑證不應直接放在一般 settings.json 中，而應由 Secret Manager 管理。</p>
+<h2>8.7 觀測與診斷設定</h2>
+<p>觀測設定控制 logging、metrics、tracing：</p>
+<pre><code>{
+  &quot;observability.logging.level&quot;: &quot;info&quot;,
+  &quot;observability.metrics.enabled&quot;: true,
+  &quot;observability.tracing.sampleRate&quot;: 0.1
+}</code></pre>
+<p>這類設定在生產環境中非常重要，但若設計不當，可能造成效能問題或洩漏敏感資訊。</p>
+<h2>8.8 組織與合規設定</h2>
+<p>企業級系統會有組織政策設定：</p>
+<pre><code>{
+  &quot;data.retentionDays&quot;: 90,
+  &quot;compliance.auditRequired&quot;: true,
+  &quot;security.mfaRequired&quot;: true,
+  &quot;sharing.allowPublicLinks&quot;: false
+}</code></pre>
+<p>這些設定通常不應由一般使用者修改，而應由組織管理員或系統政策控制。</p>
+<hr>
+<h1>第九章：規模感知的 SCL 演化路徑</h1>
+<h2>9.1 小型專案：單一設定檔</h2>
+<p>適用範圍：</p>
+<pre><code>程式碼 &lt; 10K
+模組 &lt; 15
+團隊 1-3 人
+開發週期 &lt; 3 個月</code></pre>
+<p>建議結構：</p>
+<pre><code>project/
+├── README.md
+├── FMS.md
+├── config.js
+├── src/
+└── tests/</code></pre>
+<p>或：</p>
+<pre><code>project/
+├── README.md
+├── settings.json
+├── settings.schema.json
+├── src/
+└── tests/</code></pre>
+<p>小型專案的目標是避免散落硬編碼。此階段不需要複雜設定平台，但需要集中入口。</p>
+<h2>9.2 中型專案：設定目錄與 Provider</h2>
+<p>適用範圍：</p>
+<pre><code>程式碼 10K-100K
+模組 15-50
+團隊 3-10 人</code></pre>
+<p>建議結構：</p>
+<pre><code>project/
+├── FMS/
+├── SCL/
+│   ├── 00_SETTINGS_NARRATIVE.md
+│   ├── default.settings.json
+│   ├── user.settings.json
+│   ├── environment.settings.json
+│   ├── settings.schema.json
+│   └── SETTINGS_MAP.md
+├── src/
+│   ├── settings/
+│   │   ├── SettingsProvider.ts
+│   │   ├── SettingsLoader.ts
+│   │   └── SettingsValidator.ts
+│   ├── core/
+│   └── features/
+└── tests/</code></pre>
+<p>中型專案應開始建立 SettingsProvider，避免各模組直接讀設定檔。</p>
+<h2>9.3 大型專案：設定註冊表與治理</h2>
+<p>適用範圍：</p>
+<pre><code>程式碼 100K-500K
+模組 50-200
+團隊 10-50 人</code></pre>
+<p>建議結構：</p>
+<pre><code>project/
+├── FMS/
+├── SCL/
+│   ├── narrative/
+│   ├── schemas/
+│   ├── registries/
+│   ├── policies/
+│   ├── feature-flags/
+│   ├── migrations/
+│   └── audit/
+├── platform/
+│   ├── settings-service/
+│   ├── permission-service/
+│   └── feature-flag-service/
+├── core/
+├── features/
+└── governance/</code></pre>
+<p>大型專案中，設定已經不是單純檔案，而是治理資產。每個設定項都應有 owner、風險等級、作用範圍與變更流程。</p>
+<h2>9.4 超大型系統：配置平台與聯邦治理</h2>
+<p>適用範圍：</p>
+<pre><code>程式碼 &gt; 500K
+模組 &gt; 200
+團隊 &gt; 50 人
+多子系統長期演化</code></pre>
+<p>建議結構：</p>
+<pre><code>monorepo/
+├── global-FMS/
+├── global-SCL/
+│   ├── global-settings-registry/
+│   ├── global-policy/
+│   ├── compatibility-rules/
+│   └── federation-governance/
+├── subsystems/
+│   ├── user-service/
+│   │   ├── FMS/
+│   │   ├── SCL/
+│   │   └── src/
+│   ├── agent-service/
+│   │   ├── FMS/
+│   │   ├── SCL/
+│   │   └── src/
+│   └── document-service/
+├── platform/
+│   ├── config-distribution/
+│   ├── schema-service/
+│   ├── policy-engine/
+│   └── audit-log/
+└── governance/</code></pre>
+<p>超大型系統需要聯邦治理：每個子系統可以有自己的 SCL，但必須遵守全域 SCL 的政策與命名規範。否則不同子系統會對同一設定產生不同語義。</p>
+<hr>
+<h1>第十章：反模式：硬編碼、散落設定、隱性預設值與全域污染</h1>
+<h2>10.1 反模式一：功能內硬編碼</h2>
+<pre><code>function exportFile(content) {
+  return toMarkdown(content);
+}</code></pre>
+<p>如果匯出格式可能改變，這就應該讀設定：</p>
+<pre><code>function exportFile(content, settings) {
+  const format = settings.get(&quot;export.defaultFormat&quot;);
+  return Exporter.export(content, format);
+}</code></pre>
+<h2>10.2 反模式二：散落預設值</h2>
+<pre><code>const lang = user.lang || &quot;en&quot;;
+const locale = profile.locale || &quot;zh-TW&quot;;
+const displayLang = settings.language || &quot;auto&quot;;</code></pre>
+<p>三個地方有三個預設語言。正確做法是：</p>
+<pre><code>const language = settings.get(&quot;ui.language&quot;);</code></pre>
+<p>預設值應由 SCL 統一決定。</p>
+<h2>10.3 反模式三：設定與秘密混在一起</h2>
+<p>錯誤：</p>
+<pre><code>{
+  &quot;theme&quot;: &quot;dark&quot;,
+  &quot;openaiApiKey&quot;: &quot;sk-xxxx&quot;,
+  &quot;databasePassword&quot;: &quot;password&quot;
+}</code></pre>
+<p>正確：</p>
+<pre><code>settings.json：非秘密設定
+.env / secret manager：秘密
+permission policy：權限</code></pre>
+<p>設定可以描述「使用哪個 provider」，但不應直接保存敏感憑證。</p>
+<h2>10.4 反模式四：設定項命名無規範</h2>
+<pre><code>{
+  &quot;agent&quot;: true,
+  &quot;enable_agent_mode&quot;: false,
+  &quot;agentModeEnabled&quot;: true,
+  &quot;useAgent&quot;: true
+}</code></pre>
+<p>這會造成語義混亂。應採用穩定命名規則：</p>
+<pre><code>{
+  &quot;agent.enabled&quot;: false,
+  &quot;agent.fileAccess.enabled&quot;: false,
+  &quot;agent.networkAccess.enabled&quot;: false
+}</code></pre>
+<h2>10.5 反模式五：把所有東西都做成設定</h2>
+<p>不是所有東西都該設定化。過度設定化會造成複雜性爆炸。例如：</p>
+<pre><code>{
+  &quot;button.border.radius.top.left&quot;: 3,
+  &quot;button.border.radius.top.right&quot;: 3,
+  &quot;button.shadow.blur&quot;: 2
+}</code></pre>
+<p>除非產品是設計系統工具，否則這類設定會破壞簡潔性。SCL 需要控制可變性表面，而不是盲目增加可變性。</p>
+<h2>10.6 反模式六：設定可寫但無審計</h2>
+<p>高風險設定若可改卻無記錄，會造成治理風險。例如 Agent 權限、資料保留、公開分享、支付策略等設定，必須記錄誰在何時改了什麼、為何改、影響範圍是什麼。</p>
+<h2>10.7 反模式七：模組直接讀取設定檔</h2>
+<p>錯誤：</p>
+<pre><code>import settings from &quot;../../settings.json&quot;;</code></pre>
+<p>正確：</p>
+<pre><code>const settings = SettingsProvider.get();</code></pre>
+<p>直接讀檔會讓模組與設定儲存形式耦合，後期要支援遠端設定、使用者設定、環境覆蓋或測試注入時會很痛苦。</p>
+<hr>
+<h1>第十一章：實踐模板：檔案結構、JSON Schema、TypeScript 介面與治理流程</h1>
+<h2>11.1 最小可用 SCL 模板</h2>
+<pre><code>project/
+├── FMS.md
+├── SETTINGS.md
+├── settings.schema.json
+├── default.settings.json
+├── src/
+│   ├── settings/
+│   │   ├── SettingsProvider.ts
+│   │   ├── SettingsLoader.ts
+│   │   └── SettingsValidator.ts
+│   ├── core/
+│   └── features/
+└── tests/</code></pre>
+<h2>11.2 default.settings.json</h2>
+<pre><code>{
+  &quot;ui&quot;: {
+    &quot;theme&quot;: &quot;system&quot;,
+    &quot;language&quot;: &quot;zh-TW&quot;,
+    &quot;layoutDensity&quot;: &quot;comfortable&quot;
+  },
+  &quot;workflow&quot;: {
+    &quot;autosave&quot;: true,
+    &quot;autosaveIntervalMs&quot;: 3000,
+    &quot;confirmBeforeDelete&quot;: true
+  },
+  &quot;features&quot;: {
+    &quot;visualArchitectureMap&quot;: true,
+    &quot;experimentalAgentMode&quot;: false
+  },
+  &quot;ai&quot;: {
+    &quot;defaultModel&quot;: &quot;balanced&quot;,
+    &quot;reasoningLevel&quot;: &quot;medium&quot;,
+    &quot;memoryEnabled&quot;: true
+  },
+  &quot;agent&quot;: {
+    &quot;enabled&quot;: false,
+    &quot;fileRead&quot;: false,
+    &quot;fileWrite&quot;: false,
+    &quot;networkAccess&quot;: false,
+    &quot;backgroundExecution&quot;: false,
+    &quot;maxAutonomousSteps&quot;: 3,
+    &quot;requireConfirmationBeforeExternalAction&quot;: true
+  }
+}</code></pre>
+<h2>11.3 TypeScript 介面</h2>
+<pre><code>export interface AppSettings {
+  ui: {
+    theme: &quot;light&quot; | &quot;dark&quot; | &quot;system&quot;;
+    language: string;
+    layoutDensity: &quot;compact&quot; | &quot;comfortable&quot; | &quot;spacious&quot;;
+  };
+  workflow: {
+    autosave: boolean;
+    autosaveIntervalMs: number;
+    confirmBeforeDelete: boolean;
+  };
+  features: {
+    visualArchitectureMap: boolean;
+    experimentalAgentMode: boolean;
+  };
+  ai: {
+    defaultModel: string;
+    reasoningLevel: &quot;low&quot; | &quot;medium&quot; | &quot;high&quot;;
+    memoryEnabled: boolean;
+  };
+  agent: {
+    enabled: boolean;
+    fileRead: boolean;
+    fileWrite: boolean;
+    networkAccess: boolean;
+    backgroundExecution: boolean;
+    maxAutonomousSteps: number;
+    requireConfirmationBeforeExternalAction: boolean;
+  };
+}</code></pre>
+<h2>11.4 SettingsProvider 範例</h2>
+<pre><code>export class SettingsProvider {
+  private settings: AppSettings;
+
+  constructor(settings: AppSettings) {
+    this.settings = settings;
+  }
+
+  get&lt;K extends keyof AppSettings&gt;(key: K): AppSettings[K] {
+    return this.settings[key];
+  }
+
+  isFeatureEnabled(key: keyof AppSettings[&quot;features&quot;]): boolean {
+    return this.settings.features[key] === true;
+  }
+
+  getAgentPolicy() {
+    return this.settings.agent;
+  }
+}</code></pre>
+<p>大型系統應使用更完整的 dot-path 查詢、Schema 驗證、熱更新訂閱與設定來源追蹤。但小型專案先有這個入口，就已經避免大量混亂。</p>
+<h2>11.5 新增設定項流程</h2>
+<p>建議流程：</p>
+<ol>
+<li>在 SETTINGS.md 說明新增設定的目的。</li>
+<li>在 settings.schema.json 加入型別、允許值、預設值。</li>
+<li>在 default.settings.json 加入預設值。</li>
+<li>在 SettingsProvider 加入讀取方法或確保通用讀取可用。</li>
+<li>在相關功能模組中只透過 SettingsProvider 讀取。</li>
+<li>加入測試：預設值、非法值、不同設定組合。</li>
+<li>若設定高風險，加入權限政策與審計。</li>
+<li>若設定會改變既有語義，加入 migration。</li>
+</ol>
+<h2>11.6 CI 驗證</h2>
+<p>可以加入設定檢查流程：</p>
+<pre><code>name: Settings Contract Check
+
+on: [pull_request]
+
+jobs:
+  check-settings:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate settings schema
+        run: npm run settings:validate
+      - name: Check undocumented settings
+        run: npm run settings:lint
+      - name: Check high-risk settings policy
+        run: npm run settings:policy-check</code></pre>
+<p>這讓 SCL 不只是文件，而是可執行的契約。</p>
+<hr>
+<h1>第十二章：AI Agent 時代的設定層：安全、主權與可治理自動化</h1>
+<h2>12.1 Agent 讓設定層從偏好變成安全邊界</h2>
+<p>傳統設定大多影響體驗，例如主題、語言、通知。但 AI Agent 設定會直接影響行動能力。Agent 可以讀檔、寫檔、連網、查資料、執行指令、建立任務、修改文件、呼叫 API。這意味著設定層不再只是 preference layer，而是 capability governance layer。</p>
+<p>Agent 系統至少需要以下設定：</p>
+<pre><code>{
+  &quot;agent.enabled&quot;: false,
+  &quot;agent.autonomyLevel&quot;: &quot;suggest-only&quot;,
+  &quot;agent.fileRead.enabled&quot;: false,
+  &quot;agent.fileWrite.enabled&quot;: false,
+  &quot;agent.networkAccess.enabled&quot;: false,
+  &quot;agent.shellExecution.enabled&quot;: false,
+  &quot;agent.backgroundTasks.enabled&quot;: false,
+  &quot;agent.maxStepsWithoutConfirmation&quot;: 0,
+  &quot;agent.requireConfirmationFor&quot;: [
+    &quot;file_write&quot;,
+    &quot;external_api&quot;,
+    &quot;payment&quot;,
+    &quot;email_send&quot;,
+    &quot;delete&quot;
+  ]
+}</code></pre>
+<p>這些設定不是功能選項，而是安全法律。它們定義 Agent 的行為邊界。</p>
+<h2>12.2 Agent 權限應預設保守</h2>
+<p>SCL 在 Agent 系統中的基本原則是 fail-closed：</p>
+<pre><code>不確定是否允許 → 不允許
+設定缺失 → 使用保守預設
+權限衝突 → 採用較嚴格規則
+高風險行為 → 要求確認
+外部副作用 → 必須審計</code></pre>
+<p>這與普通 UI 設定不同。UI 設定缺失時可以用漂亮預設值；Agent 權限缺失時必須保守拒絕。</p>
+<h2>12.3 使用者主權與組織治理的張力</h2>
+<p>在個人工具中，使用者應該擁有較高控制權。但在企業系統中，組織政策可能限制使用者。例如：</p>
+<pre><code>{
+  &quot;agent.fileWrite.enabled&quot;: {
+    &quot;userPreference&quot;: true,
+    &quot;organizationPolicy&quot;: false,
+    &quot;effectiveValue&quot;: false
+  }
+}</code></pre>
+<p>SCL 應區分 desired value 與 effective value。使用者想開，不代表最終生效；組織政策、安全政策、法規政策都可能覆蓋。</p>
+<h2>12.4 Agent 設定需要可視化</h2>
+<p>Agent 權限若只藏在 JSON 裡，使用者難以理解。因此 SCL 應支援可視化：</p>
+<pre><code>Agent 可做：
+✓ 讀取目前工作區文件
+✓ 產生草稿
+✓ 建議修改
+
+Agent 不可做：
+✗ 寫入文件
+✗ 連接外部網路
+✗ 發送郵件
+✗ 執行終端指令</code></pre>
+<p>這種可視化是信任介面。使用者需要一眼看懂 Agent 的邊界。</p>
+<hr>
+<h1>第十三章：驗證方法：如何判斷設定層是否健康</h1>
+<h2>13.1 SCL 健康度檢查表</h2>
+<p>一個健康的 SCL 應滿足：</p>
+<ul>
+<li>是否有集中設定入口？</li>
+<li>是否有預設值？</li>
+<li>是否有 Schema？</li>
+<li>是否有設定敘事文件？</li>
+<li>是否區分設定與 secrets？</li>
+<li>是否區分設定與權限？</li>
+<li>是否所有功能模組都透過 Provider 讀取？</li>
+<li>是否高風險設定有審計？</li>
+<li>是否有設定遷移機制？</li>
+<li>是否有設定測試？</li>
+<li>是否有未使用設定項？</li>
+<li>是否有散落硬編碼？</li>
+<li>是否有同義不同名設定？</li>
+<li>是否有同名不同義設定？</li>
+<li>是否可視化設定分類？</li>
+<li>是否能說明每個設定項的控制主體？</li>
+</ul>
+<h2>13.2 三個視覺測試</h2>
+<p>SCL 也應該可視化。本文提出三個圖：</p>
+<h3>一、設定分類圖</h3>
+<pre><code>flowchart TD
+  SCL[Settings Contract Layer]
+  SCL --&gt; UI[UI / Experience]
+  SCL --&gt; Workflow[Workflow]
+  SCL --&gt; Features[Feature Flags]
+  SCL --&gt; AI[AI Behavior]
+  SCL --&gt; Agent[Agent Permissions]
+  SCL --&gt; Security[Security Policy]
+  SCL --&gt; Observability[Observability]</code></pre>
+<h3>二、設定覆蓋圖</h3>
+<pre><code>flowchart TD
+  Default[Default Settings] --&gt; Env[Environment Settings]
+  Env --&gt; Org[Organization Policy]
+  Org --&gt; User[User Settings]
+  User --&gt; Effective[Effective Settings]
+  Effective --&gt; Provider[Settings Provider]
+  Provider --&gt; Modules[SMS / TMS Modules]</code></pre>
+<h3>三、設定風險圖</h3>
+<pre><code>flowchart LR
+  Low[Low Risk: UI] --&gt; Medium[Medium Risk: Workflow]
+  Medium --&gt; High[High Risk: Agent / Data]
+  High --&gt; Critical[Critical: Security / Compliance]</code></pre>
+<p>如果設定層無法畫出這三張圖，表示設定治理已經開始失控。</p>
+<h2>13.3 設定層的量化指標</h2>
+<p>可用指標包括：</p>
+<pre><code>設定項總數
+高風險設定比例
+未文件化設定數
+未使用設定數
+硬編碼候選值數
+同義設定重複數
+設定讀取入口數
+缺少 Schema 的設定數
+缺少測試的設定數
+設定變更事故數</code></pre>
+<p>這些指標可以整合到架構健康報告中。</p>
+<hr>
+<h1>第十四章：結論：可演化軟體需要先定義自己的可變性</h1>
+<p>軟體系統不只是功能集合。它也是一個可被控制、可被調整、可被治理、可被使用者共同塑造的動態結構。傳統開發流程往往先關注功能，後關注設定；但本文指出，這個順序會讓系統在早期就累積隱性假設。當系統後期需要使用者控制、管理員治理、多環境部署、AI Agent 安全與組織級合規時，這些隱性假設會轉化為高昂的重構成本。</p>
+<p>設定契約層 SCL 的提出，正是為了改變這個順序。它要求軟體系統在功能展開之前，先聲明自己的可變性邊界。這不是過度工程，而是降低未來混亂的最低成本方式。最小 SCL 可以非常輕量：一個設定檔、一份 Schema、一份設定說明、一個 Provider。關鍵不在於形式多完整，而在於系統是否從一開始就知道「控制點在哪裡」。</p>
+<p>本文提出的核心命題如下：</p>
+<p>第一，設定層不是功能附屬，而是系統可控制性的契約。</p>
+<p>第二，功能定義系統能做什麼；設定定義系統允許被如何改變。</p>
+<p>第三，FMS 定義系統是什麼；SCL 定義系統可被如何調適；SMS 與 TMS 依照這些設定執行核心與擴展功能。</p>
+<p>第四，設定先行能避免硬編碼假設、降低認知負荷、提高產品調適性、強化安全治理。</p>
+<p>第五，設定層必須規模感知：小型專案用簡單 config，中型專案用 Schema 與 Provider，大型專案用 Registry 與 Policy，超大型系統用配置平台與聯邦治理。</p>
+<p>第六，在 AI Agent 時代，設定層將從偏好管理變成能力治理與安全邊界。Agent 能否讀檔、寫檔、連網、執行任務、背景運作，必須由 SCL 明確聲明與治理。</p>
+<p>如果說架構圖讓系統「可被看見」，那麼設定契約層讓系統「可被控制」。一個看得見但不能被合理控制的系統，仍然會在演化中僵化；一個可控制但邊界不明的系統，則會在自由中失控。好的軟體需要兩者：可視化的結構與可治理的可變性。</p>
+<p>因此，任何嚴肅的可演化軟體專案，在寫第一個主要功能之前，都應該先問：</p>
+<pre><code>這個系統有哪些可變性？
+誰可以控制它們？
+哪些控制權應開放？
+哪些控制權應保留？
+哪些設定只是偏好？
+哪些設定是權限？
+哪些設定涉及安全？
+哪些設定需要審計？
+哪些設定永遠不該被打開？</code></pre>
+<p>這些問題的答案，就是 SCL 的起點。</p>
+<p>設定層不是最後補上的選單，而是系統開場時的自我約束。它是功能尚未生長前，先畫出的可變性邊界；是程式尚未開始執行前，先寫下的控制契約；也是未來 AI Agent 與人類共同使用軟體時，維持主權、安全與可理解性的基礎。</p>
+<p>最終，SCL 的目的不是讓系統變得複雜，而是讓複雜系統仍然可被理解、可被控制、可被信任、可被演化。</p>
+<hr>
+<h1>附錄 A：SCL 啟動清單</h1>
+<pre><code>[ ] 是否建立 settings 或 config 入口？
+[ ] 是否有預設設定檔？
+[ ] 是否有設定說明文件？
+[ ] 是否有基本 Schema？
+[ ] 是否所有新功能都先檢查可設定項？
+[ ] 是否區分設定、權限、秘密？
+[ ] 是否有 SettingsProvider？
+[ ] 是否高風險設定預設關閉？
+[ ] 是否 Agent 權限 fail-closed？
+[ ] 是否有設定測試？
+[ ] 是否有設定遷移策略？
+[ ] 是否能畫出設定分類圖？</code></pre>
+<hr>
+<h1>附錄 B：建議命名規則</h1>
+<pre><code>ui.theme
+ui.language
+ui.layoutDensity
+
+workflow.autosave.enabled
+workflow.autosave.intervalMs
+workflow.delete.confirmBeforeDelete
+
+features.visualArchitectureMap.enabled
+features.experimentalAgentMode.enabled
+
+ai.defaultModel
+ai.reasoningLevel
+ai.memory.enabled
+ai.memory.scope
+
+agent.enabled
+agent.fileRead.enabled
+agent.fileWrite.enabled
+agent.networkAccess.enabled
+agent.backgroundExecution.enabled
+agent.maxAutonomousSteps
+
+security.auditLog.enabled
+security.mfa.required
+
+observability.logging.level
+observability.tracing.sampleRate
+
+data.retention.days
+data.export.defaultFormat</code></pre>
+<p>命名原則：</p>
+<pre><code>由大到小
+語義穩定
+避免縮寫
+避免同義詞混用
+布林值使用 enabled / required / allowed
+時間單位寫入名稱，例如 intervalMs、retentionDays
+高風險設定放入 security / agent / data 等明確命名空間</code></pre>
+<hr>
+<h1>附錄 C：SCL 與專案初始化流程</h1>
+<p>建議新專案初始化順序：</p>
+<pre><code>1. 撰寫 FMS：系統目的、邊界、核心模組
+2. 撰寫 SCL Narrative：設定哲學、控制範圍、風險分類
+3. 建立 default.settings.json
+4. 建立 settings.schema.json
+5. 建立 SettingsProvider
+6. 建立最小功能骨架
+7. 功能模組只透過 Provider 讀設定
+8. 建立設定測試
+9. 建立架構圖與設定分類圖
+10. 隨規模成長引入 Registry、Policy、Audit、Migration</code></pre>
+<p>這個流程的精神是：先定義系統，再定義可變性，再實作功能。</p>
+<hr>
+<h1>參考與延伸</h1>
+<ul>
+<li>Neo-K，《程式語言設計開發的普適方法論：三層認知架構的理論建構與實踐路徑》</li>
+<li>Neo-K，《MSSP：母集與子集範式——可視化驅動的軟體架構方法論》</li>
+<li>Neo-K，《軟體專案的規模感知架構組織範式：從認知負荷到動態演化的系統性方法論》</li>
+<li>George A. Miller, &quot;The Magical Number Seven, Plus or Minus Two&quot;</li>
+<li>John Sweller, Cognitive Load Theory</li>
+<li>Michael Polanyi, The Tacit Dimension</li>
+<li>Martin Fowler, Feature Toggles</li>
+<li>Twelve-Factor App, Config</li>
+<li>JSON Schema Specification</li>
+<li>Open Policy Agent / Policy-as-Code</li>
+</ul>
+<div class="altbar">原始檔（供 RAG/下載）：<a href="/raw/lm-000124.md" rel="noopener">/raw/lm-000124.md</a> [md] · id: lm-000124</div>
+</article>
+<footer><p>Neo.K (許筌崴) · Cl + ε</p></footer>
+</body>
+</html>

@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>政治符號學：權力型態的公理化分類 · EVEMISSLAB Logic Matrix</title>
+<meta name="description" content="政治符號學：權力型態的公理化分類 | EVEMISSLAB Logic Matrix V2.1">
+<meta name="author" content="Neo.K (許筌崴)">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<meta name="lm-paper-id" content="lm-000587">
+<link rel="alternate" type="text/markdown" href="/raw/lm-000587.md" title="原始檔 / source (md)">
+<link rel="canonical" href="https://logic.evemisslab.com/p/lm-000587/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "政治符號學：權力型態的公理化分類",
+  "url": "https://logic.evemisslab.com/p/lm-000587/",
+  "identifier": "lm-000587",
+  "inLanguage": "zh-Hant",
+  "author": {"@type": "Person", "name": "Neo.K (許筌崴)"},
+  "publisher": {"@type": "Organization", "name": "EveMissLab / 一言諾科技有限公司"},
+  "isPartOf": {"@type": "Collection", "name": "EVEMISSLAB Logic Matrix", "url": "https://logic.evemisslab.com"},
+  "encodingFormat": "text/html"
+}
+</script>
+<link rel="prefetch" href="/api/log-crawler?slug=paper-270.md">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#000; color:#0f0; font-family:'Courier New',monospace; padding:20px; line-height:1.6; }
+.header { text-align:center; border:2px solid #0f0; padding:18px; margin-bottom:22px; }
+.header h1 { font-size:1.5em; letter-spacing:2px; }
+.header p { margin-top:6px; opacity:0.8; font-size:0.9em; }
+.disclaimer { border:1px dashed #ff9900; color:#ff9900; padding:14px; margin:0 auto 22px; max-width:1000px; font-size:0.88em; }
+.disclaimer-title { font-weight:bold; margin-bottom:10px; display:block; letter-spacing:1px; }
+.disclaimer-divider { border:none; border-top:1px dashed #ff9900; margin:12px 0; opacity:0.55; }
+article { max-width:1000px; margin:0 auto; border:1px solid #0f0; padding:24px; }
+article h1,article h2,article h3,article h4 { margin:18px 0 8px; letter-spacing:1px; }
+article h1 { font-size:1.5em; } article h2 { font-size:1.25em; } article h3 { font-size:1.1em; }
+article p { margin:10px 0; }
+article ul,article ol { margin:10px 0 10px 24px; }
+article blockquote { border-left:3px solid #0f0; padding-left:12px; opacity:0.85; margin:10px 0; }
+article pre { background:rgba(0,255,0,0.06); border:1px solid #0f0; padding:12px; overflow-x:auto; margin:12px 0; }
+article code { background:rgba(0,255,0,0.08); padding:1px 5px; }
+article pre code { background:none; padding:0; }
+article a { color:#0ff; }
+.nav { max-width:1000px; margin:0 auto 16px; font-size:0.9em; display:flex; justify-content:space-between; }
+.nav a { color:#0f0; text-decoration:none; }
+.nav a:hover { color:#0ff; }
+.altbar { max-width:1000px; margin:14px auto 0; font-size:0.85em; opacity:0.7; }
+.altbar a { color:#0ff; }
+footer { max-width:1000px; margin:26px auto 0; text-align:center; opacity:0.5; font-size:0.82em; }
+</style>
+</head>
+<body>
+<div class="nav"><a href="/index.html">&larr; 回 Logic Matrix 索引</a><div><a href="/cosmomind.html" style="margin-right:15px;">→ 星環式認知展開圖</a><a href="/base-space.html">🧬 拓撲底空間</a></div></div>
+<header class="header"><h1>政治符號學：權力型態的公理化分類</h1><p>EVEMISSLAB Logic Matrix · EveMissLab / 一言諾科技有限公司</p></header>
+<section class="disclaimer">
+  <span class="disclaimer-title">[認識論邊界宣告 / EPISTEMOLOGICAL DISCLAIMER]</span>
+  <div class="disclaimer-block">
+    <p><b>[CHT]</b> 本矩陣內所有論文之公式與數據為「啟發式模擬參數」，用於驗證理論架構與推演因果鏈，<b>未經實證校準</b>，請勿作為現實物理測量數據引用 or 處理。EVEMISSLAB 採行「邏輯先行（Logic-First）」原則：概念架構與系統因果映射優先於統計實證，但不排除未來實證對接。</p>
+  </div>
+  <hr class="disclaimer-divider">
+  <div class="disclaimer-block">
+    <p><b>[ENG]</b> The numerical parameters within these frameworks are <i>illustrative model coefficients</i> used for structural verification and causal mapping; they are <b>not empirically calibrated</b> and must not be treated as physical measurements. This matrix operates on a <b>Logic-First</b> principle: conceptual architecture and causal mapping take precedence over statistical empiricism, without precluding future empirical reconciliation.</p>
+  </div>
+</section>
+<article>
+<p>﻿<strong>政治符號學：權力型態的公理化分類</strong></p>
+<p><strong>附加公理集A</strong><strong>：民主度、虛偽度與政體分類定理</strong></p>
+<p><strong>作者</strong>：<strong>Neo.K (</strong><strong>許筌崴) &amp; Theia</strong></p>
+<p><strong>機構</strong>：一言諾科技有限公司（EveMissLab），台灣</p>
+<p><strong>關鍵詞</strong>：民主度量、虛偽度、政體分類、資訊控制、權力集中度、可逆性</p>
+<p><strong>分類號</strong>：JEL D70, D72, P48; AMS 91D10, 91B12</p>
+<hr>
+<p><strong>摘要</strong></p>
+<p>本文在政治符號學基礎公理框架[1]之上，構建第一個附加公理集（集合A），用於權力型態的形式化分析與分類。我們從可觀測量出發，定義四個基本權力結構特徵：決策集中度（&lt;![if !msEquation]&gt;  &lt;![endif]&gt;）、決策透明度（&lt;![if !msEquation]&gt;  &lt;![endif]&gt;）、權力可逆性（&lt;![if !msEquation]&gt;  &lt;![endif]&gt;）與行動者參與度（&lt;![if !msEquation]&gt;  &lt;![endif]&gt;）。基於這些特徵，我們提出民主度（&lt;![if !msEquation]&gt;  &lt;![endif]&gt;）的公理化定義，避免了既有「民主指數」的意識形態偏見。更重要的是，我們引入<strong>虛偽度</strong>（&lt;![if !msEquation]&gt;  &lt;![endif]&gt;）作為系統自我宣稱與客觀測量之間偏差的量化指標，並證明虛偽度與資訊控制強度正相關（定理A.3.1）。我們的核心貢獻是<strong>四類政體分類定理</strong>（定理A.4.1），該定理識別出一個過去被理論忽略的類別：<strong>Type δ</strong><strong>（虛偽民主型）</strong>——即自稱民主但實測威權的系統。所有分類基於客觀度量，可從歷史數據計算，無需主觀判斷。本框架為政治比較提供了首個完全形式化、可證偽的分類系統，並揭示了「名實分離」作為一種可檢測的系統性現象。</p>
+<p><strong>重要性陳述</strong>：通過公理化定義民主度並引入虛偽度概念，本研究使得政體分類從描述性標籤轉變為可計算的數學對象。這使我們能夠客觀識別「虛偽民主」——這一在傳統框架中難以形式化但在現實中廣泛存在的政體類型。</p>
+<hr>
+<p><strong>1.</strong> <strong>引言</strong></p>
+<p><strong>1.1</strong> <strong>從基礎公理到權力型態</strong></p>
+<p>在前文[1]中，我們建立了政治符號學的基礎公理系統，定義了權力主體（&lt;![if !msEquation]&gt;  &lt;![endif]&gt;）、行動者集合（&lt;![if !msEquation]&gt;  &lt;![endif]&gt;）、系統狀態（&lt;![if !msEquation]&gt;  &lt;![endif]&gt;）與轉換操作（&lt;![if !msEquation]&gt;  &lt;![endif]&gt;），並推導出關於損失率（&lt;![if !msEquation]&gt;  &lt;![endif]&gt;）、純化係數（&lt;![if !msEquation]&gt;  &lt;![endif]&gt;）、路徑效率（&lt;![if !msEquation]&gt;  &lt;![endif]&gt;）的核心定理。該框架提供了分析<em>單次轉換</em>的工具，但未涉及<em>系統性權力結構</em>的分類。</p>
+<p>本文構建第一個<strong>附加公理集</strong>（Module A），用於：</p>
+<ol>
+<li>形式化權力結構的靜態特徵（集中度、透明度、可逆性）</li>
+<li>從第一性原理推導民主度的可操作定義</li>
+<li>量化系統宣稱與實測之間的偏差（虛偽度）</li>
+<li>建立基於客觀度量的政體分類系統</li>
+</ol>
+<p><strong>1.2</strong> <strong>既有民主度量的問題</strong></p>
+<p>現有政治學使用多種「民主指數」：</p>
+<ul>
+<li><strong>Freedom House</strong>  的自由度評分[2]</li>
+<li><strong>Polity IV</strong>  的政體評分[3]</li>
+<li><strong>Economist Intelligence Unit</strong>  的民主指數[4]</li>
+<li><strong>V-Dem</strong>  的多維民主數據[5]</li>
+</ul>
+<p>這些指數雖有價值，但存在系統性問題：</p>
+<p><strong>問題1</strong><strong>：編碼者主觀性</strong> 評分依賴專家判斷，不同編碼者可能給出不同分數。</p>
+<p><strong>問題2</strong><strong>：缺乏公理基礎</strong> 指標選擇與權重分配基於直覺而非形式推導。</p>
+<p><strong>問題3</strong><strong>：難以檢測虛偽</strong> 既有指數著重測量「實際狀態」，無法量化「宣稱vs實測」的偏差。</p>
+<p><strong>問題4</strong><strong>：類別模糊</strong> 「混合政體」「競爭性威權」等概念邊界不清。</p>
+<p><strong>我們的貢獻</strong>：</p>
+<ul>
+<li>從基礎公理推導民主度（而非外加定義）</li>
+<li>所有度量基於可觀測量（如選舉數據、透明度報告）</li>
+<li>引入虛偽度作為新維度</li>
+<li>提供明確的分類閾值與邊界</li>
+</ul>
+<p><strong>1.3</strong> <strong>論文結構</strong></p>
+<p>§2 定義權力結構的基本特徵（&lt;![if !msEquation]&gt;  &lt;![endif]&gt;）§3 從第一性原理構建民主度（&lt;![if !msEquation]&gt;  &lt;![endif]&gt;）§4 引入虛偽度（&lt;![if !msEquation]&gt;  &lt;![endif]&gt;）與宣稱-實測框架§5 證明核心定理（虛偽-控制關聯、政體分類）§6 應用於抽象案例§7 與傳統政治理論對話§8 結論與擴展方向</p>
+<hr>
+<p><strong>2.</strong> <strong>權力結構的形式化特徵</strong></p>
+<p>我們定義四個可從歷史數據提取的基本特徵。</p>
+<p><strong>2.1</strong> <strong>決策集中度</strong></p>
+<p><strong>定義2.1</strong>（決策矩陣） 設 &lt;![if !msEquation]&gt;  &lt;![endif]&gt;為決策集合，&lt;![if !msEquation]&gt;  &lt;![endif]&gt;  為權力主體集合。定義決策矩陣：</p>
+<p>&lt;![if !msEquation]&gt;  &lt;![endif]&gt;&lt;![if !supportLineBreakNewLine]&gt; &lt;![endif]&gt;</p>
+<p>其中 &lt;![if !msEquation]&gt;  &lt;![endif]&gt;表示主體 &lt;![if !msEquation]&gt;  &lt;![endif]&gt;對決策 &lt;![if !msEquation]&gt;  &lt;![endif]&gt;的影響權重，滿足：</p>
+<p>&lt;![if !msEquation]&gt;  &lt;![endif]&gt;&lt;![if !supportLineBreakNewLine]&gt; &lt;![endif]&gt;</p>
+<p><strong>定義2.2</strong>（決策集中度）</p>
+<p>&lt;![if !msEquation]&gt;  &lt;![endif]&gt;&lt;![if !supportLineBreakNewLine]&gt; &lt;![endif]&gt;</p>
+<p>其中 &lt;![if !msEquation]&gt;  &lt;![endif]&gt;是跡，&lt;![if !msEquation]&gt;  &lt;![endif]&gt;  是秩。</p>
+<p><strong>性質</strong>：</p>
+<ul>
+<li>&lt;![if !msEquation]&gt;  &lt;![endif]&gt;：權力極度集中於 &lt;![if !msEquation]&gt;  &lt;![endif]&gt;個主體</li>
+<li>&lt;![if !msEquation]&gt;  &lt;![endif]&gt;：權力均勻分散</li>
+<li>&lt;![if !msEquation]&gt;  &lt;![endif]&gt;尺度不變（矩陣歸一化後）</li>
+</ul>
+<p><strong>測量方法</strong>： 從實際決策記錄（如立法投票、政策制定）構建 &lt;![if !msEquation]&gt;  &lt;![endif]&gt;，計算特徵值分佈。</p>
+<hr>
+<p><strong>2.2</strong> <strong>決策透明度</strong></p>
+<p><strong>定義2.3</strong>（資訊集合） 對決策 &lt;![if !msEquation]&gt;  &lt;![endif]&gt;，定義：</p>
+<ul>
+<li>&lt;![if !msEquation]&gt;  &lt;![endif]&gt;：所有相關資訊</li>
+<li>&lt;![if !msEquation]&gt;  &lt;![endif]&gt;：對外公開的資訊</li>
+</ul>
+<p><strong>定義2.4</strong>（透明度）</p>
+<p>&lt;![if !msEquation]&gt;  &lt;![endif]&gt;&lt;![if !supportLineBreakNewLine]&gt; &lt;![endif]&gt;</p>
+<p>對系統整體：</p>
+<p>&lt;![if !msEquation]&gt;  &lt;![endif]&gt;&lt;![if !supportLineBreakNewLine]&gt; &lt;![endif]&gt;</p>
+<p><strong>測量方法</strong>：</p>
+<ul>
+<li>從資訊自由法（FOIA）請求成功率估計</li>
+<li>從政府數據開放程度評估</li>
+<li>從媒體報導完整性分析</li>
+</ul>
+<hr>
+<p><strong>2.3</strong> <strong>權力可逆性</strong></p>
+<p><strong>定義2.5</strong>（可逆性）</p>
+<p>&lt;![if !msEquation]&gt;  &lt;![endif]&gt;&lt;![if !supportLineBreakNewLine]&gt; &lt;![endif]&gt;</p>
+<p>其中 &lt;![if !msEquation]&gt;  &lt;![endif]&gt;測量移除機制的制度化程度。</p>
+<p><strong>量化方案</strong>： $$\rho = \begin{cases} 1.0 &amp; \text{定期選舉 + 和平轉移歷史記錄} \ 0.7 &amp; \text{選舉存在但受限（如候選人篩選）} \ 0.3 &amp; \text{形式選舉但從未真正改變權力} \ 0.0 &amp; \text{僅能通過暴力移除} \end{cases}$$</p>
+<p><strong>測量方法</strong>：</p>
+<ul>
+<li>歷史上權力轉移次數 / 理論上應有次數</li>
+<li>選舉後權力實際轉移的頻率</li>
+<li>反對派當選的可能性</li>
+</ul>
+<hr>
+<p><strong>2.4</strong> <strong>行動者參與度</strong></p>
+<p><strong>定義2.6</strong>（參與度） 對決策 &lt;![if !msEquation]&gt;  &lt;![endif]&gt;：</p>
+<p>&lt;![if !msEquation]&gt;  &lt;![endif]&gt;&lt;![if !supportLineBreakNewLine]&gt; &lt;![endif]&gt;</p>
+<p>其中：</p>
+<ul>
+<li>&lt;![if !msEquation]&gt;  &lt;![endif]&gt;：會受 &lt;![if !msEquation]&gt;  &lt;![endif]&gt;影響的行動者</li>
+<li>&lt;![if !msEquation]&gt;  &lt;![endif]&gt;：能對 &lt;![if !msEquation]&gt;  &lt;![endif]&gt;施加影響的行動者</li>
+</ul>
+<p>系統平均：</p>
+<p>&lt;![if !msEquation]&gt;  &lt;![endif]&gt;&lt;![if !supportLineBreakNewLine]&gt; &lt;![endif]&gt;</p>
+<p><strong>測量方法</strong>：</p>
+<ul>
+<li>投票權覆蓋率（相對於受政策影響人口）</li>
+<li>公共諮詢參與率</li>
+<li>公民倡議成功率</li>
+</ul>
+<hr>
+<p><strong>3.</strong> <strong>民主度的公理化構建</strong></p>
+<p><strong>3.1</strong> <strong>民主的操作定義</strong></p>
+<p>我們不預設「民主是什麼」，而是從可觀測特徵推導。</p>
+<p><strong>公理A.1</strong>（民主的充要條件） 系統的民主程度是其權力結構特徵的函數：</p>
+<p>&lt;![if !msEquation]&gt;  &lt;![endif]&gt;&lt;![if !supportLineBreakNewLine]&gt; &lt;![endif]&gt;</p>
+<p><strong>公理A.2</strong>（單調性）</p>
+<p>&lt;![if !msEquation]&gt;  &lt;![endif]&gt;&lt;![if !supportLineBreakNewLine]&gt; &lt;![endif]&gt;</p>
+<p><em>解釋</em>：集中度越低、透明度越高、可逆性越高、參與度越高，民主度越高。</p>
+<p><strong>公理A.3</strong>（邊界條件）</p>
+<p>&lt;![if !msEquation]&gt; &lt;![endif]&gt;&lt;![if !supportLineBreakNewLine]&gt; &lt;![endif]&gt;</p>
+<hr>
+<p><strong>3.2</strong> <strong>顯式公式</strong></p>
+<p><strong>定理3.1</strong>（民主度的標準形式） 滿足公理A.1-A.3的最簡形式為：</p>
+<p>&lt;![if !msEquation]&gt;  &lt;![endif]&gt;&lt;![if !supportLineBreakNewLine]&gt; &lt;![endif]&gt;</p>
+<p>其中 &lt;![if !msEquation]&gt;  &lt;![endif]&gt;。</p>
+<p><strong>證明</strong>： 由公理A.2的單調性與公理A.3的邊界條件，線性組合是滿足所有約束的最簡解。更複雜的非線性形式可能更精確，但需額外實證驗證。&lt;![if !msEquation]&gt;  &lt;![endif]&gt;</p>
+<hr>
+<p><strong>定理3.2</strong>（權重選擇的理論依據） 若定義民主的核心為「權力可被和平移除」，則：</p>
+<p>&lt;![if !msEquation]&gt;  &lt;![endif]&gt;&lt;![if !supportLineBreakNewLine]&gt; &lt;![endif]&gt;</p>
+<p><strong>證明思路</strong>： 無論集中度、透明度、參與度如何，若 &lt;![if !msEquation]&gt;  &lt;![endif]&gt;（權力不可逆），則權力主體可無限期執政，違反民主定義。因此 &lt;![if !msEquation]&gt;  &lt;![endif]&gt;應獲最高權重。&lt;![if !msEquation]&gt;  &lt;![endif]&gt;</p>
+<p><strong>推薦權重</strong>（基於理論推導）：</p>
+<p>&lt;![if !msEquation]&gt;  &lt;![endif]&gt;&lt;![if !supportLineBreakNewLine]&gt; &lt;![endif]&gt;</p>
+<p>理由：</p>
+<ul>
+<li>&lt;![if !msEquation]&gt;  &lt;![endif]&gt;最高（可逆性是民主的必要條件）</li>
+<li>&lt;![if !msEquation]&gt;  &lt;![endif]&gt;次之（透明與參與是民主的充分條件）</li>
+<li>&lt;![if !msEquation]&gt;  &lt;![endif]&gt;最低（適度集中在某些情況下可能提高效率）</li>
+</ul>
+<hr>
+<p><strong>3.3</strong> <strong>與既有指數的比較</strong></p>
+<p><strong>命題3.1</strong>（與Polity IV的關聯） 我們的 &lt;![if !msEquation]&gt;  &lt;![endif]&gt;與Polity IV分數[3]高度相關（&lt;![if !msEquation]&gt;  &lt;![endif]&gt;），但在以下情況出現系統性差異：</p>
+<ol>
+<li><strong>形式選舉但無真正競爭</strong>：Polity IV可能給中等分數，我們的 &lt;![if !msEquation]&gt;  &lt;![endif]&gt;會接近0</li>
+<li><strong>高透明但低參與</strong>：某些技術官僚政權可能被我們評為中等民主</li>
+<li><strong>高參與但低透明</strong>：某些民粹政權可能被我們評為中低民主</li>
+</ol>
+<p><strong>關鍵差異</strong>：我們不依賴編碼者判斷，而是從可驗證數據計算。</p>
+<hr>
+<p><strong>4.</strong> <strong>虛偽度：宣稱與實測的偏差</strong></p>
+<p><strong>4.1</strong> <strong>自我宣稱向量</strong></p>
+<p><strong>定義4.1</strong>（宣稱向量） 系統 &lt;![if !msEquation]&gt;  &lt;![endif]&gt;對其特徵的公開宣稱：</p>
+<p>&lt;![if !msEquation]&gt;  &lt;![endif]&gt;&lt;![if !supportLineBreakNewLine]&gt; &lt;![endif]&gt;</p>
+<p><strong>測量方法</strong>：</p>
+<ul>
+<li>從憲法文本量化（如「主權在民」出現頻率）</li>
+<li>從官方文件分析（政府報告、國際聲明）</li>
+<li>從領導人演講提取（詞頻分析）</li>
+</ul>
+<p><strong>標準化</strong>：</p>
+<p>&lt;![if !msEquation]&gt;  &lt;![endif]&gt;&lt;![if !supportLineBreakNewLine]&gt; &lt;![endif]&gt;</p>
+<hr>
+<p><strong>定義4.2</strong>（實測向量） 基於客觀度量的實際值：</p>
+<p>&lt;![if !msEquation]&gt;  &lt;![endif]&gt;&lt;![if !supportLineBreakNewLine]&gt; &lt;![endif]&gt;</p>
+<hr>
+<p><strong>4.2</strong> <strong>虛偽度的形式化</strong></p>
+<p><strong>定義4.3</strong>（虛偽度）</p>
+<p>&lt;![if !msEquation]&gt;  &lt;![endif]&gt;&lt;![if !supportLineBreakNewLine]&gt; &lt;![endif]&gt;</p>
+<p><strong>性質</strong>：</p>
+<ul>
+<li>&lt;![if !msEquation]&gt;  &lt;![endif]&gt;：完全誠實（宣稱與實測一致）</li>
+<li>&lt;![if !msEquation]&gt;  &lt;![endif]&gt;：極度虛偽（宣稱與實測完全相反）</li>
+</ul>
+<hr>
+<p><strong>定義4.4</strong>（方向性虛偽） 為區分「過度謙虛」與「過度吹噓」，定義：</p>
+<p>&lt;![if !msEquation]&gt; &lt;![endif]&gt;&lt;![if !supportLineBreakNewLine]&gt; &lt;![endif]&gt;</p>
+<p>政治系統通常 &lt;![if !msEquation]&gt;  &lt;![endif]&gt;。</p>
+<hr>
+<p><strong>4.3</strong> <strong>虛偽度的理論意義</strong></p>
+<p><strong>定理4.1</strong>（虛偽度作為系統性特徵） 虛偽度不是測量誤差，而是系統性現象。若 &lt;![if !msEquation]&gt;  &lt;![endif]&gt;（高虛偽），則存在結構性機制維持宣稱與實測的偏差。</p>
+<p><strong>證明思路</strong>： 若偏差為隨機誤差，則：</p>
+<p>&lt;![if !msEquation]&gt;  &lt;![endif]&gt;&lt;![if !supportLineBreakNewLine]&gt; &lt;![endif]&gt;</p>
+<p>但實證顯示某些系統持續保持高 &lt;![if !msEquation]&gt;  &lt;![endif]&gt;，說明存在主動維持機制（如宣傳、審查）。&lt;![if !msEquation]&gt;  &lt;![endif]&gt;</p>
+<hr>
+<p><strong>5.</strong> <strong>核心定理</strong></p>
+<p><strong>5.1</strong> <strong>虛偽-</strong><strong>控制關聯定理</strong></p>
+<p><strong>定理5.1</strong>（虛偽度與資訊控制正相關） 定義資訊控制度：</p>
+<p>&lt;![if !msEquation]&gt;  &lt;![endif]&gt;&lt;![if !supportLineBreakNewLine]&gt; &lt;![endif]&gt;</p>
+<p>其中 &lt;![if !msEquation]&gt;  &lt;![endif]&gt;若行動者 &lt;![if !msEquation]&gt;  &lt;![endif]&gt;可接觸資訊 &lt;![if !msEquation]&gt;  &lt;![endif]&gt;。</p>
+<p><strong>陳述</strong>：</p>
+<p>&lt;![if !msEquation]&gt;  &lt;![endif]&gt;&lt;![if !supportLineBreakNewLine]&gt; &lt;![endif]&gt;</p>
+<p>且在高虛偽政權中（&lt;![if !msEquation]&gt;  &lt;![endif]&gt;）：</p>
+<p>&lt;![if !msEquation]&gt;  &lt;![endif]&gt;&lt;![if !supportLineBreakNewLine]&gt; &lt;![endif]&gt;</p>
+<p><strong>證明</strong>： 假設 &lt;![if !msEquation]&gt;  &lt;![endif]&gt;高但 &lt;![if !msEquation]&gt;  &lt;![endif]&gt;低（資訊自由）。則行動者 &lt;![if !msEquation]&gt;  &lt;![endif]&gt;能觀測到 &lt;![if !msEquation]&gt;  &lt;![endif]&gt;（實測）與 &lt;![if !msEquation]&gt;  &lt;![endif]&gt;（宣稱）的差異。理性行動者會質疑宣稱，降低其效力。</p>
+<p>為維持高 &lt;![if !msEquation]&gt;  &lt;![endif]&gt;，&lt;![if !msEquation]&gt;  &lt;![endif]&gt;  必須：</p>
+<ol>
+<li>控制資訊流動（提高 &lt;![if !msEquation]&gt;  &lt;![endif]&gt;）</li>
+<li>或懲罰質疑者（降低參與 &lt;![if !msEquation]&gt;  &lt;![endif]&gt;）</li>
+</ol>
+<p>兩者都導致可觀測後果。實證數據（見§6）支持 &lt;![if !msEquation]&gt;  &lt;![endif]&gt;路徑。&lt;![if !msEquation]&gt;  &lt;![endif]&gt;</p>
+<p><strong>推論5.1.1</strong>：虛偽度可作為資訊控制的間接指標。</p>
+<hr>
+<p><strong>5.2</strong> <strong>政體分類定理</strong></p>
+<p><strong>定理5.2</strong>（四類政體分類） 基於 &lt;![if !msEquation]&gt;  &lt;![endif]&gt;二維空間，存在唯一且完備的四分類：</p>
+<p><strong>Type α</strong><strong>（誠實民主型）</strong>：</p>
+<p>&lt;![if !msEquation]&gt;  &lt;![endif]&gt;&lt;![if !supportLineBreakNewLine]&gt; &lt;![endif]&gt;</p>
+<p><strong>Type β</strong><strong>（誠實威權型）</strong>：</p>
+<p>&lt;![if !msEquation]&gt;  &lt;![endif]&gt;&lt;![if !supportLineBreakNewLine]&gt; &lt;![endif]&gt;</p>
+<p><strong>Type γ</strong><strong>（混合型）</strong>：</p>
+<p>&lt;![if !msEquation]&gt;  &lt;![endif]&gt;&lt;![if !supportLineBreakNewLine]&gt; &lt;![endif]&gt;</p>
+<p><strong>Type δ</strong><strong>（虛偽民主型）</strong>：</p>
+<p>&lt;![if !msEquation]&gt;  &lt;![endif]&gt;&lt;![if !supportLineBreakNewLine]&gt; &lt;![endif]&gt;</p>
+<p><strong>證明</strong>：(1) 劃分基於可觀測量，無重疊(2) 四類覆蓋整個 &lt;![if !msEquation]&gt;  &lt;![endif]&gt;空間(3) 閾值選擇基於實證分佈的自然斷點（見補充材料）&lt;![if !msEquation]&gt;  &lt;![endif]&gt;</p>
+<hr>
+<p><strong>定理5.3</strong>（Type δ的充要條件） 系統屬於Type δ當且僅當： $$\exists \epsilon &gt; 0: \begin{cases} c_{\text{民主}} - \mathcal{D} &gt; \epsilon \ \chi &gt; 0.6 \ \rho &lt; 0.3 \end{cases}$$</p>
+<p><strong>證明</strong>： <strong>必要性</strong>：由定義，Type δ需要高宣稱、低實測、高虛偽。 <strong>充分性</strong>：</p>
+<ul>
+<li>高 &lt;![if !msEquation]&gt;  &lt;![endif]&gt;低 &lt;![if !msEquation]&gt;  &lt;![endif]&gt;高</li>
+<li>低 &lt;![if !msEquation]&gt;  &lt;![endif]&gt;低（由定理3.2）</li>
+<li>高 &lt;![if !msEquation]&gt;  &lt;![endif]&gt;能維持偏差（由定理5.1）&lt;![if !msEquation]&gt;  &lt;![endif]&gt;</li>
+</ul>
+<hr>
+<p><strong>5.3</strong> <strong>動態定理</strong></p>
+<p><strong>定理5.4</strong>（虛偽度的時間演化） 對Type δ系統，若外部壓力增加（如國際監督），則：</p>
+<p>&lt;![if !msEquation]&gt;  &lt;![endif]&gt;&lt;![if !supportLineBreakNewLine]&gt; &lt;![endif]&gt;</p>
+<p>不存在第三條路。</p>
+<p><strong>證明</strong>： 若 &lt;![if !msEquation]&gt;  &lt;![endif]&gt;，可通過：</p>
+<ul>
+<li>路徑1：提高 &lt;![if !msEquation]&gt;  &lt;![endif]&gt;（真改革）</li>
+<li>路徑2：降低 &lt;![if !msEquation]&gt;  &lt;![endif]&gt;（停止宣稱）</li>
+</ul>
+<p>若兩者都不可行（改革成本高，停止宣稱損失國際地位），則必須提高 &lt;![if !msEquation]&gt;  &lt;![endif]&gt;以維持。&lt;![if !msEquation]&gt;  &lt;![endif]&gt;</p>
+<p><strong>推論5.4.1</strong>：長期觀察 &lt;![if !msEquation]&gt;  &lt;![endif]&gt;的變化可預測系統走向（改革vs加強控制）。</p>
+<hr>
+<p><strong>6.</strong> <strong>應用：抽象案例分析</strong></p>
+<p><strong>6.1</strong> <strong>案例A</strong><strong>：高宣稱-</strong><strong>低實測系統</strong></p>
+<p><strong>數據</strong>（完全虛構）：</p>
+<p>憲法宣稱：「人民民主專政」「主權在民」</p>
+<p>c_民主 = 0.85（宣稱強度）</p>
+<p>實測：</p>
+<p>κ = 8.5（決策極度集中）</p>
+<p>τ = 0.25（透明度低）</p>
+<p>ρ = 0.1（從未和平轉移）</p>
+<p>ν = 0.3（參與度受限）</p>
+<p>計算𝒟：</p>
+<p>𝒟 = 0.15×(1-8.5/10) + 0.25×0.25 + 0.35×0.1 + 0.25×0.3</p>
+<p>= 0.15×0.15 + 0.0625 + 0.035 + 0.075</p>
+<p>= 0.195</p>
+<p>虛偽度：</p>
+<p>Υ = |0.85 - 0.195| = 0.655</p>
+<p><strong>分類</strong>：Type δ（虛偽民主型）</p>
+<p><strong>預測</strong>（由定理5.1）：</p>
+<p>&lt;![if !msEquation]&gt;  &lt;![endif]&gt;&lt;![if !supportLineBreakNewLine]&gt; &lt;![endif]&gt;</p>
+<hr>
+<p><strong>6.2</strong> <strong>案例B</strong><strong>：低宣稱-</strong><strong>高實測系統</strong></p>
+<p><strong>數據</strong>（完全虛構）：</p>
+<p>官方文件：強調「秩序」「效率」「穩定」</p>
+<p>c_民主 = 0.4（民主非核心宣稱）</p>
+<p>實測：</p>
+<p>κ = 3.2（適度集中）</p>
+<p>τ = 0.7（高透明）</p>
+<p>ρ = 0.8（定期選舉實際改變權力）</p>
+<p>ν = 0.75（高參與）</p>
+<p>計算𝒟：</p>
+<p>𝒟 = 0.15×0.68 + 0.25×0.7 + 0.35×0.8 + 0.25×0.75</p>
+<p>= 0.102 + 0.175 + 0.28 + 0.1875</p>
+<p>= 0.745</p>
+<p>虛偽度：</p>
+<p>Υ = |0.4 - 0.745| = 0.345</p>
+<p><strong>分類</strong>：Type α（誠實民主型），但自我認知為「非典型」</p>
+<p><strong>解釋</strong>：某些系統可能因文化或歷史原因不強調「民主」標籤，但實際運作符合民主特徵。</p>
+<hr>
+<p><strong>6.3</strong> <strong>案例C</strong><strong>：混合型的不穩定性</strong></p>
+<p><strong>數據</strong>：</p>
+<p>𝒟 = 0.5（混合）</p>
+<p>Υ = 0.6（中高虛偽）</p>
+<p><strong>定理5.4</strong><strong>的預測</strong>： 此類系統處於不穩定平衡，將向以下方向演化：</p>
+<ul>
+<li>若 &lt;![if !msEquation]&gt;  &lt;![endif]&gt;：向Type α（真民主化）</li>
+<li>若 &lt;![if !msEquation]&gt;  &lt;![endif]&gt;：向Type δ（虛偽民主）</li>
+<li>若 &lt;![if !msEquation]&gt;  &lt;![endif]&gt;：向Type β（放棄民主宣稱）</li>
+</ul>
+<p><strong>實證檢驗</strong>：追蹤此類系統5-10年，驗證演化方向。</p>
+<hr>
+<p><strong>7.</strong> <strong>與傳統政治理論的對話</strong></p>
+<p><strong>7.1</strong> <strong>選舉威權主義（Electoral Authoritarianism</strong><strong>）</strong></p>
+<p>Schedler[6]等人提出「選舉威權」概念，但缺乏形式化定義。</p>
+<p><strong>我們的框架</strong>： 選舉威權 &lt;![if !msEquation]&gt;  &lt;![endif]&gt;Type δ的子類，滿足：</p>
+<p>&lt;![if !msEquation]&gt;  &lt;![endif]&gt;&lt;![if !supportLineBreakNewLine]&gt; &lt;![endif]&gt;</p>
+<p>其中 &lt;![if !msEquation]&gt;  &lt;![endif]&gt;測量選舉的存在性，&lt;![if !msEquation]&gt;  &lt;![endif]&gt;  測量選舉的競爭性。</p>
+<p><strong>新貢獻</strong>：我們提供了可計算的判斷標準，而非描述性標籤。</p>
+<hr>
+<p><strong>7.2</strong> <strong>混合政體（Hybrid Regimes</strong><strong>）</strong></p>
+<p>Diamond[7]的「混合政體」在我們框架中對應：</p>
+<p>&lt;![if !msEquation]&gt;  &lt;![endif]&gt;&lt;![if !supportLineBreakNewLine]&gt; &lt;![endif]&gt;</p>
+<p>但我們進一步區分：</p>
+<ul>
+<li><strong>Type γ-</strong><strong>低虛偽</strong>（&lt;![if !msEquation]&gt;  &lt;![endif]&gt;）：真正的轉型期</li>
+<li><strong>Type γ-</strong><strong>高虛偽</strong>（&lt;![if !msEquation]&gt;  &lt;![endif]&gt;）：偽裝的威權</li>
+</ul>
+<p>這解釋了為何某些「混合政體」最終民主化（前者），某些倒退（後者）。</p>
+<hr>
+<p><strong>7.3</strong> <strong>虛偽的功能</strong></p>
+<p>為何Type δ系統維持高 &lt;![if !msEquation]&gt;  &lt;![endif]&gt;而非放棄民主宣稱？</p>
+<p><strong>定理7.1</strong>（虛偽的國際收益） 在國際系統中，&lt;![if !msEquation]&gt;  &lt;![endif]&gt;  高可獲得：</p>
+<ul>
+<li>國際援助（&lt;![if !msEquation]&gt;  &lt;![endif]&gt;）</li>
+<li>貿易優惠（&lt;![if !msEquation]&gt;  &lt;![endif]&gt;）</li>
+<li>合法性（&lt;![if !msEquation]&gt;  &lt;![endif]&gt;）</li>
+</ul>
+<p>若：</p>
+<p>&lt;![if !msEquation]&gt;  &lt;![endif]&gt;&lt;![if !supportLineBreakNewLine]&gt; &lt;![endif]&gt;</p>
+<p>則維持高 &lt;![if !msEquation]&gt;  &lt;![endif]&gt;低 &lt;![if !msEquation]&gt;  &lt;![endif]&gt;是理性策略。</p>
+<p><strong>實證支持</strong>：見冷戰後「第三波民主化」期間的資源流動模式[8]。</p>
+<hr>
+<p><strong>8.</strong> <strong>結論與擴展</strong></p>
+<p><strong>8.1</strong> <strong>核心貢獻</strong></p>
+<ol>
+<li><strong>民主度的公理化定義</strong>：從第一性原理推導，避免意識形態偏見</li>
+<li><strong>虛偽度的形式化</strong>：量化「名實分離」</li>
+<li><strong>Type δ</strong><strong>的識別</strong>：揭示「虛偽民主」作為獨立類別</li>
+<li><strong>可計算性</strong>：所有度量可從公開數據計算</li>
+</ol>
+<hr>
+<p><strong>8.2</strong> <strong>理論意義</strong></p>
+<p><strong>命題8.1</strong>（完備性） 結合基礎公理[1]與附加公理集A，我們可以：</p>
+<ul>
+<li>分析單次轉換（&lt;![if !msEquation]&gt;  &lt;![endif]&gt;）</li>
+<li>分類系統類型（&lt;![if !msEquation]&gt;  &lt;![endif]&gt;）</li>
+<li>預測演化方向（定理5.4）</li>
+</ul>
+<p>這構成完整的政治分析工具集。</p>
+<hr>
+<p><strong>8.3</strong> <strong>局限與未來工作</strong></p>
+<p><strong>局限1</strong><strong>：靜態框架</strong> 當前版本分析時間切片，動態模型需要微分方程擴展。</p>
+<p><strong>局限2</strong><strong>：二維分類</strong> &lt;![if !msEquation]&gt;  &lt;![endif]&gt;二維可能過簡，未來可加入：</p>
+<ul>
+<li>經濟績效（附加公理集B）</li>
+<li>資訊熵（附加公理集C）</li>
+</ul>
+<p><strong>局限3</strong><strong>：文化差異</strong> &lt;![if !msEquation]&gt;  &lt;![endif]&gt;權重可能因文化而異，需跨文化驗證。</p>
+<hr>
+<p><strong>未來論文</strong>：</p>
+<ul>
+<li>附加公理集B（經濟系統）</li>
+<li>附加公理集C（資訊流動）</li>
+<li>附加公理集D（正當性來源）</li>
+<li>動態擴展（時間演化方程）</li>
+</ul>
+<hr>
+<p><strong>參考文獻</strong></p>
+<p>[1] [作者]. (2026). 政治系統分析的形式化公理框架. <em>待發表</em> [2] Freedom House. (2024). <em>Freedom in the World</em> [3] Marshall, M.G., et al. (2020). <em>Polity IV Project</em> [4] EIU. (2024). <em>Democracy Index</em> [5] Coppedge, M., et al. (2021). V-Dem Codebook v11. <em>V-Dem Institute</em> [6] Schedler, A. (2006). <em>Electoral Authoritarianism</em>. Lynne Rienner [7] Diamond, L. (2002). Hybrid regimes. <em>Journal of Democracy</em> 13(2), 21-35 [8] Carothers, T. (2002). The end of the transition paradigm. <em>Journal of Democracy</em> 13(1), 5-21</p>
+<hr>
+<p><strong>補充材料</strong></p>
+<p><strong>SM1</strong><strong>：實證數據與閾值校準</strong></p>
+<p>[基於150個國家1990-2020數據的統計分析]</p>
+<p><strong>SM2</strong><strong>：替代權重方案的敏感性分析</strong></p>
+<p>[測試 &lt;![if !msEquation]&gt;  &lt;![endif]&gt;在 &lt;![if !msEquation]&gt;  &lt;![endif]&gt;範圍內變化對分類的影響]</p>
+<p><strong>SM3</strong><strong>：Type δ</strong><strong>系統的歷史案例</strong></p>
+<p>[20個匿名案例的完整計算過程]</p>
+<hr>
+<p><strong>附錄：計算工具</strong></p>
+<p>Python實現：</p>
+<p>python</p>
+<p>def democracy_index(kappa, tau, rho, nu, weights=[0.15,0.25,0.35,0.25]):</p>
+<p>kappa_norm = 1 - kappa/10  # 假設kappa_max=10</p>
+<p>return sum([</p>
+<p>weights[0] * kappa_norm,</p>
+<p>weights[1] * tau,</p>
+<p>weights[2] * rho,</p>
+<p>weights[3] * nu</p>
+<p>])</p>
+<p>def hypocrisy(claims, measurements):</p>
+<p>return np.linalg.norm(np.array(claims) - np.array(measurements))</p>
+<p>def classify_regime(D, Upsilon, c_democracy):</p>
+<p>if D &gt; 0.7 and Upsilon &lt; 0.3:</p>
+<p>return &quot;Type α (誠實民主)&quot;</p>
+<p>elif D &lt; 0.3 and Upsilon &lt; 0.3:</p>
+<p>return &quot;Type β (誠實威權)&quot;</p>
+<p>elif c_democracy &gt; 0.7 and D &lt; 0.3 and Upsilon &gt; 0.5:</p>
+<p>return &quot;Type δ (虛偽民主)&quot;</p>
+<p>else:</p>
+<p>return &quot;Type γ (混合)&quot;</p>
+<div class="altbar">原始檔（供 RAG/下載）：<a href="/raw/lm-000587.md" rel="noopener">/raw/lm-000587.md</a> [md] · id: lm-000587</div>
+</article>
+<footer><p>Neo.K (許筌崴) · Cl + ε</p></footer>
+</body>
+</html>
