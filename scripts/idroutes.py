@@ -148,19 +148,23 @@ def write_api(registry) -> None:
 
 
 def write_redirects(registry) -> None:
-    """Cloudflare _redirects + machine-readable redirects.json mapping legacy
-    /papers/ URLs to the stable-id canonical/raw routes."""
-    lines = ["# Legacy paper URLs -> stable-id canonical routes (Corpus Engine v0.2)"]
+    """Cloudflare _redirects (page-only, capped) + full machine-readable redirects.json.
+
+    Cloudflare Pages allows at most 2000 static _redirects rules, so /_redirects
+    carries only the per-paper PAGE redirect (/papers/<slug>.html -> /p/{id}/).
+    Legacy raw files still exist and serve directly; the complete page+raw map is
+    published for agents in /redirects.json and registry/redirects.json.
+    (If the corpus ever exceeds ~2000 papers, move this to a Pages Function.)"""
+    cf_lines = ["# Legacy paper pages -> canonical /p/{id}/ (Corpus Engine v0.2)"]
     data = []
     for it in registry["items"]:
         slug = it["legacy_slug"]
         page_from = f"/papers/{slug}.html"
         raw_from = f"/papers/{slug}"
-        lines.append(f"{page_from} {it['canonical_url']} 301")
-        lines.append(f"{raw_from} {it['raw_url']} 301")
+        cf_lines.append(f"{page_from} {it['canonical_url']} 301")
         data.append({"from": page_from, "to": it["canonical_url"], "status": 301})
         data.append({"from": raw_from, "to": it["raw_url"], "status": 301})
-    (DIST_DIR / "_redirects").write_text("\n".join(lines) + "\n", encoding="utf-8")
+    (DIST_DIR / "_redirects").write_text("\n".join(cf_lines) + "\n", encoding="utf-8")
     payload = json.dumps({"version": "0.2", "redirects": data}, ensure_ascii=False, indent=2) + "\n"
     (DIST_DIR / "redirects.json").write_text(payload, encoding="utf-8")
     REGISTRY_DIR.mkdir(exist_ok=True)
