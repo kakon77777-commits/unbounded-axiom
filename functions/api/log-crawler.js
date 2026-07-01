@@ -1,7 +1,9 @@
 export async function onRequest(context) {
   const { request, env } = context;
   const url = new URL(request.url);
-  const targetSlug = url.searchParams.get("slug");
+  // id-native: accept ?id=lm-XXXXXX (stable). Keep ?slug= as a transitional fallback so
+  // any not-yet-rebuilt page still logs, but the KV graph is now keyed by id only.
+  const targetId = url.searchParams.get("id") || url.searchParams.get("slug");
   
   const corsHeaders = {
     "Access-Control-Allow-Origin": "*",
@@ -22,7 +24,7 @@ export async function onRequest(context) {
   
   // Only crawlers drive the Triadic-Logic graph (whitepaper §16.2): gate on isBot
   // so ordinary human page views do not mutate weights/states.
-  if (hasKV && targetSlug && isBot) {
+  if (hasKV && targetId && isBot) {
     try {
       // 1. Increment global crawler hits
       const storedHits = await env.BASE_SPACE_KV.get("hits") || "0";
@@ -30,54 +32,54 @@ export async function onRequest(context) {
       hits++;
       await env.BASE_SPACE_KV.put("hits", String(hits));
       
-      // 2. Log hits for this specific paper slug to drive Triadic Logic transitions
-      const nodeHitsKey = `hits_${targetSlug}`;
+      // 2. Log hits for this node, keyed by stable id, to drive Triadic Logic transitions
+      const nodeHitsKey = `hits_${targetId}`;
       const storedNodeHits = await env.BASE_SPACE_KV.get(nodeHitsKey) || "0";
       let nodeHits = parseInt(storedNodeHits, 10) + 1;
       await env.BASE_SPACE_KV.put(nodeHitsKey, String(nodeHits));
-      
-      // 3. Extract source slug from Referer header if crawled from another paper
-      let sourceSlug = null;
+
+      // 3. Extract source id from Referer header if crawled from another paper.
+      //    Canonical pages now live at /p/<id>/ (index.html), so match that shape.
+      let sourceId = null;
       if (referer) {
         try {
           const refererUrl = new URL(referer);
-          if (refererUrl.pathname.includes("/papers/")) {
-            const match = refererUrl.pathname.match(/\/papers\/([^\/]+)\.html/);
-            if (match) {
-              sourceSlug = decodeURIComponent(match[1]);
-            }
+          // /p/lm-000161/  or  /p/lm-000161/index.html  -> lm-000161
+          const match = refererUrl.pathname.match(/\/p\/([^\/]+)\/?/);
+          if (match) {
+            sourceId = decodeURIComponent(match[1]);
           }
         } catch (e) {
           // Ignore URL parsing errors
         }
       }
-      
-      // 4. Update coupling weights & states matrix
-      const storedWeights = await env.BASE_SPACE_KV.get("weights");
-      const storedStates = await env.BASE_SPACE_KV.get("states");
-      
+
+      // 4. Update coupling weights & states matrix (id-keyed; KV v2 keys)
+      const storedWeights = await env.BASE_SPACE_KV.get("weights2");
+      const storedStates = await env.BASE_SPACE_KV.get("states2");
+
       if (storedWeights && storedStates) {
         const weights = JSON.parse(storedWeights);
         const states = JSON.parse(storedStates);
-        
-        // Causal feedback: strengthen the link between source and target
-        if (sourceSlug && weights[sourceSlug] && sourceSlug !== targetSlug) {
-          const currentWeight = weights[sourceSlug][targetSlug] || 0;
+
+        // Causal feedback: strengthen the link between source and target (id-keyed)
+        if (sourceId && weights[sourceId] && sourceId !== targetId) {
+          const currentWeight = weights[sourceId][targetId] || 0;
           // Reinforce connection weight by +0.08, capped at 1.0
-          weights[sourceSlug][targetSlug] = Math.min(1.0, currentWeight + 0.08);
+          weights[sourceId][targetId] = Math.min(1.0, currentWeight + 0.08);
         }
-        
-        // Self-Healing Triadic Logic state transitions
+
+        // Self-Healing Triadic Logic state transitions (id-keyed)
         if (nodeHits > 20) {
           // Resolved state: absolute truth core (⊤)
-          states[targetSlug] = "true";
+          states[targetId] = "true";
         } else if (nodeHits > 1) {
           // Actively evolving state: spiral state (Ω)
-          states[targetSlug] = "omega";
+          states[targetId] = "omega";
         }
-        
-        await env.BASE_SPACE_KV.put("weights", JSON.stringify(weights));
-        await env.BASE_SPACE_KV.put("states", JSON.stringify(states));
+
+        await env.BASE_SPACE_KV.put("weights2", JSON.stringify(weights));
+        await env.BASE_SPACE_KV.put("states2", JSON.stringify(states));
       }
     } catch (err) {
       // Fail-safe: do not crash crawler tracking, return tracking pixel anyway

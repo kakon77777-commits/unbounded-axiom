@@ -22,8 +22,8 @@ export async function onRequest(context) {
   
   if (hasKV) {
     try {
-      const storedWeights = await env.BASE_SPACE_KV.get("weights");
-      const storedStates = await env.BASE_SPACE_KV.get("states");
+      const storedWeights = await env.BASE_SPACE_KV.get("weights2");
+      const storedStates = await env.BASE_SPACE_KV.get("states2");
       const storedHits = await env.BASE_SPACE_KV.get("hits");
       
       if (storedWeights && storedStates) {
@@ -50,31 +50,32 @@ export async function onRequest(context) {
         hits = 1310; // default initial counter
         
         papers.forEach(n1 => {
-          weights[n1.slug] = {};
-          
+          // id-native seed: key the matrix by stable id (n1.id), not legacy slug.
+          weights[n1.id] = {};
+
           let hash = 0;
           for (let i = 0; i < n1.title.length; i++) {
             hash = n1.title.charCodeAt(i) + ((hash << 5) - hash);
           }
-          
+
           const stateVal = Math.abs(hash % 3);
-          states[n1.slug] = stateVal === 0 ? "omega" : (stateVal === 1 ? "true" : "false");
-          
+          states[n1.id] = stateVal === 0 ? "omega" : (stateVal === 1 ? "true" : "false");
+
           papers.forEach(n2 => {
-            if (n1.slug === n2.slug) {
-              weights[n1.slug][n2.slug] = 1.0;
+            if (n1.id === n2.id) {
+              weights[n1.id][n2.id] = 1.0;
             } else {
               const match = (n1.lang === n2.lang) ? 0.2 : 0.02;
               const seedVal = Math.abs((hash + n2.title.length) % 100) / 100;
-              weights[n1.slug][n2.slug] = seedVal < 0.15 ? seedVal * 4.0 * match : 0;
+              weights[n1.id][n2.id] = seedVal < 0.15 ? seedVal * 4.0 * match : 0;
             }
           });
         });
-        
-        // Save initial state to KV if available
+
+        // Save initial state to KV if available (v2 keys; id-native)
         if (hasKV) {
-          await env.BASE_SPACE_KV.put("weights", JSON.stringify(weights));
-          await env.BASE_SPACE_KV.put("states", JSON.stringify(states));
+          await env.BASE_SPACE_KV.put("weights2", JSON.stringify(weights));
+          await env.BASE_SPACE_KV.put("states2", JSON.stringify(states));
           await env.BASE_SPACE_KV.put("hits", String(hits));
         }
       }

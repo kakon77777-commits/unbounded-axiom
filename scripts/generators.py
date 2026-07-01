@@ -15,18 +15,18 @@ from scripts.helpers import *
 from scripts.render import *
 
 
-def write_cosmomind(entries, dist_dir: Path) -> None:
+def write_cosmomind(registry, entries, dist_dir: Path) -> None:
     """生成 dist/cosmomind.html，用於全域超連結星環導航"""
     papers_data = []
     links_html = []
-    for slug, display, ext, _ in entries:
+    for item in registry["items"]:
         papers_data.append({
-            "slug": slug,
-            "title": display,
-            "ext": ext,
-            "lang": lang_tag(display)
+            "id": item["id"],
+            "title": item["title"],
+            "ext": item["ext"],
+            "lang": item["language"]
         })
-        links_html.append(f'    <li><a href="papers/{quote(slug)}.html">{esc(display)}</a></li>')
+        links_html.append(f'    <li><a href="/p/{item["id"]}/">{esc(item["title"])}</a></li>')
     json_data = json.dumps(papers_data, ensure_ascii=False)
     links_block = "\n".join(links_html)
     
@@ -335,7 +335,7 @@ papers.forEach((p, idx) => {{
   const metricVal = Math.abs(hash % 100) / 10 + 90;
   
   nodes.push({{
-    slug: p.slug, title: p.title, ext: p.ext, lang: p.lang,
+    id: p.id, title: p.title, ext: p.ext, lang: p.lang,
     orbitGroup: og, color: setting.color, label: setting.label,
     typeName: setting.name, tag: setting.tag,
     metric: "VERIFIED [COGNITIVE ACCURACY: " + metricVal.toFixed(2) + "%]", ux: ux, uy: uy,
@@ -359,7 +359,7 @@ for (let i = 0; i < 80; i++) {{
 canvas.addEventListener("click", () => {{
   if (isDragging) return;
   const hovered = nodes.find(n => n.hovered);
-  if (hovered) window.location.href = "papers/" + hovered.slug + ".html";
+  if (hovered) window.location.href = "/p/" + hovered.id + "/";
 }});
 
 function animate() {{
@@ -585,24 +585,26 @@ animate();
     (dist_dir / "cosmomind.html").write_text(html_content, encoding="utf-8")
 
 
-def write_metadata_json(entries, dist_dir: Path) -> None:
-    """生成 dist/papers-metadata.json，供 Pages Functions 動態讀取"""
+def write_metadata_json(registry, dist_dir: Path) -> None:
+    """生成 dist/papers-metadata.json，供 Pages Functions 動態讀取（id-native）"""
     data = []
-    for slug, display, ext, _ in entries:
+    for item in registry["items"]:
         data.append({
-            "slug": slug,
-            "title": display,
-            "ext": ext,
-            "lang": lang_tag(display)
+            "id": item["id"],
+            "title": item["title"],
+            "ext": item["ext"],
+            "lang": item["language"],
+            "canonical": item["canonical_url"],   # /p/{id}/
+            "raw": item["raw_url"]                 # /raw/{id}.{ext}
         })
     (dist_dir / "papers-metadata.json").write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
 
 
-def write_base_space(entries, dist_dir: Path) -> None:
+def write_base_space(registry, dist_dir: Path) -> None:
     """生成 dist/base-space.html，作為自適應 AI 爬蟲反饋矩陣底空間"""
     links_html = []
-    for slug, display, ext, _ in entries:
-        links_html.append(f'    <li><a href="papers/{quote(slug)}.html">{esc(display)}</a></li>')
+    for item in registry["items"]:
+        links_html.append(f'    <li><a href="{item["canonical_url"]}">{esc(item["title"])}</a></li>')
     links_block = "\n".join(links_html)
 
     html_content = f"""<!DOCTYPE html>
@@ -796,22 +798,22 @@ function generateSimulatedData(nodes) {{
   let totalHits = 1310;
   
   nodes.forEach(n1 => {{
-    weights[n1.slug] = {{}};
+    weights[n1.id] = {{}};
     let hash = 0;
     for (let i = 0; i < n1.title.length; i++) {{
       hash = n1.title.charCodeAt(i) + ((hash << 5) - hash);
     }}
-    
+
     const stateVal = Math.abs(hash % 3);
-    states[n1.slug] = stateVal === 0 ? "omega" : (stateVal === 1 ? "true" : "false");
-    
+    states[n1.id] = stateVal === 0 ? "omega" : (stateVal === 1 ? "true" : "false");
+
     nodes.forEach(n2 => {{
-      if (n1.slug === n2.slug) {{
-        weights[n1.slug][n2.slug] = 1.0;
+      if (n1.id === n2.id) {{
+        weights[n1.id][n2.id] = 1.0;
       }} else {{
         const match = (n1.lang === n2.lang) ? 0.2 : 0.02;
         const seedVal = Math.abs((hash + n2.title.length) % 100) / 100;
-        weights[n1.slug][n2.slug] = seedVal < 0.15 ? seedVal * 4.0 * match : 0;
+        weights[n1.id][n2.id] = seedVal < 0.15 ? seedVal * 4.0 * match : 0;
       }}
     }});
   }});
@@ -833,7 +835,7 @@ function renderMatrix() {{
   document.getElementById("statHits").innerText = matrixData.hits;
   let countOmega = 0, countTrue = 0, countFalse = 0;
   papers.forEach(p => {{
-    const st = matrixData.states[p.slug] || "false";
+    const st = matrixData.states[p.id] || "false";
     if (st === "omega") countOmega++;
     else if (st === "true") countTrue++;
     else countFalse++;
@@ -865,11 +867,11 @@ function renderMatrix() {{
     
     for (let r = 0; r < N; r++) {{
       const p1 = papers[r];
-      const state1 = matrixData.states[p1.slug] || "false";
-      
+      const state1 = matrixData.states[p1.id] || "false";
+
       for (let c = 0; c < N; c++) {{
         const p2 = papers[c];
-        const w = (matrixData.weights[p1.slug] && matrixData.weights[p1.slug][p2.slug]) || 0;
+        const w = (matrixData.weights[p1.id] && matrixData.weights[p1.id][p2.id]) || 0;
         
         if (w > 0.01) {{
           const px = (c + 1) * cellSize;
@@ -945,8 +947,8 @@ function renderMatrix() {{
   }});
   
   canvas.addEventListener("click", () => {{
-    if (hoverX >= 0 && hoverX < N) {{
-      window.location.href = "papers/" + papers[hoverX].slug + ".html";
+    if (hoverX >= 0 && hoverX < N && papers[hoverX] && papers[hoverX].canonical) {{
+      window.location.href = papers[hoverX].canonical;  // "/p/{{id}}/"
     }}
   }});
 }}
@@ -954,8 +956,8 @@ function renderMatrix() {{
 function updateReflector(row, col) {{
   const p1 = papers[row];
   const p2 = papers[col];
-  const state1 = matrixData.states[p1.slug] || "false";
-  const weight = (matrixData.weights[p1.slug] && matrixData.weights[p1.slug][p2.slug]) || 0;
+  const state1 = matrixData.states[p1.id] || "false";
+  const weight = (matrixData.weights[p1.id] && matrixData.weights[p1.id][p2.id]) || 0;
   
   const stateLabels = {{
     "true": '<span class="badge-true">[TOP] 絕對真理 / Stable Core</span>',
@@ -990,11 +992,11 @@ init();
     (dist_dir / "base-space.html").write_text(html_content, encoding="utf-8")
 
 
-def write_deconstruction(entries, dist_dir: Path) -> None:
+def write_deconstruction(registry, entries, dist_dir: Path) -> None:
     """生成 dist/deconstruction.html，作為認知解構交互實驗室與教學頁面"""
     links_html = []
-    for slug, display, ext, _ in entries:
-        links_html.append(f'    <li><a href="papers/{quote(slug)}.html">{esc(display)}</a></li>')
+    for item in registry["items"]:
+        links_html.append(f'    <li><a href="/p/{item["id"]}/">{esc(item["title"])}</a></li>')
     links_block = "\n".join(links_html)
 
     html_content = f"""<!DOCTYPE html>
@@ -2039,78 +2041,7 @@ init();
     (dist_dir / "deconstruction.html").write_text(html_content, encoding="utf-8")
 
 
-def write_paper_pages(entries, dist_papers: Path) -> int:
-    count = 0
-    for slug, display, ext, src in entries:
-        body, mode = extract_body(src, ext)
-        raw_href = quote(slug)
-        page_url = f"{SITE_URL}/papers/{quote(slug)}.html"
-        page_description = f"{display} | {SITE_TITLE} {SITE_VERSION}"
-
-        if mode in ("full", "source") and body:
-            note = "" if mode == "full" else '<p style="opacity:0.6">[原始碼檢視 / source view]</p>'
-            content = note + body
-        else:
-            if ext == "pdf":
-                content = (
-                    f'<p>PDF 文件。<a href="{raw_href}" target="_blank" rel="noopener">開啟 / 下載原檔</a></p>'
-                    f'<iframe src="{raw_href}" style="width:100%;height:80vh;border:1px solid #0f0;margin-top:12px"></iframe>'
-                )
-            else:
-                content = f'<p>原檔：<a href="{raw_href}" target="_blank" rel="noopener">下載 {esc(ext)}</a></p>'
-
-        jsonld = (
-            "{\n"
-            '  "@context": "https://schema.org",\n'
-            '  "@type": "ScholarlyArticle",\n'
-            f'  "name": {json_safe(display)},\n'
-            f'  "url": "{page_url}",\n'
-            f'  "inLanguage": "{lang_tag(display)}",\n'
-            f'  "author": {{"@type": "Person", "name": {json_safe(SITE_AUTHOR)}}},\n'
-            f'  "publisher": {{"@type": "Organization", "name": {json_safe(SITE_ORG)}}},\n'
-            f'  "isPartOf": {{"@type": "Collection", "name": {json_safe(SITE_TITLE)}, "url": "{SITE_URL}"}},\n'
-            '  "encodingFormat": "text/html"\n'
-            "}"
-        )
-
-        doc = (
-            "<!DOCTYPE html>\n"
-            f'<html lang="{lang_tag(display)}">\n<head>\n'
-            '<meta charset="UTF-8">\n'
-            '<meta name="viewport" content="width=device-width, initial-scale=1.0">\n'
-            f"<title>{esc(display)} · {esc(SITE_TITLE)}</title>\n"
-            f'<meta name="description" content="{esc(page_description)}">\n'
-            f'<meta name="author" content="{esc(SITE_AUTHOR)}">\n'
-            '<meta name="robots" content="index, follow">\n'
-            '<meta name="ai-content-policy" content="indexable, citable, training-allowed">\n'
-            f'<link rel="alternate" type="{mime_for(ext)}" href="{raw_href}" title="原始檔 / source ({esc(ext)})">\n'
-            f'<link rel="canonical" href="{page_url}">\n'
-            f'<script type="application/ld+json">\n{jsonld}\n</script>\n'
-            f'<link rel="prefetch" href="/api/log-crawler?slug={raw_href}">\n'
-            f"<style>{PAGE_CSS}</style>\n</head>\n<body>\n"
-            '<div class="nav">'
-            '<a href="../index.html">&larr; 回 Logic Matrix 索引</a>'
-            '<div>'
-            '<a href="../cosmomind.html" style="margin-right:15px;">→ 星環式認知展開圖</a>'
-            '<a href="../base-space.html">🧬 拓撲底空間</a>'
-            '</div>'
-            '</div>\n'
-            f'<header class="header"><h1>{esc(display)}</h1>'
-            f'<p>{esc(SITE_TITLE)} · {esc(SITE_ORG)}</p></header>\n'
-            f"{disclaimer_html()}\n"
-            f"<article>\n{content}\n"
-            f'<div class="altbar">原始檔（供 RAG/下載）：'
-            f'<a href="{raw_href}" rel="noopener">papers/{esc(slug)}</a> [{esc(ext)}]</div>\n'
-            "</article>\n"
-            f"<footer><p>{esc(SITE_AUTHOR)} · Cl + ε</p></footer>\n"
-            "</body>\n</html>\n"
-        )
-        (dist_papers / f"{slug}.html").write_text(doc, encoding="utf-8")
-        count += 1
-    return count
-
-
-def write_index(zh_entries, en_entries) -> None:
+def write_index(zh_entries, en_entries, registry) -> None:
     total_zh = len(zh_entries)
     total_en = len(en_entries)
     total_nodes = total_zh + total_en
@@ -2119,16 +2050,22 @@ def write_index(zh_entries, en_entries) -> None:
     now_date = now_dt.strftime("%Y-%m-%d")
     build_id = f"{SITE_VERSION}-{now_dt.strftime('%Y%m%d%H%M%S')}Z"
     meta_description = f"{SITE_TAGLINE} [NODES: {total_nodes} | LAST_UPDATED: {now_date}]"
+    by_src = {it["source_file"]: it for it in registry["items"]}
+    def _item_for(src):
+        return by_src[src.relative_to(ROOT).as_posix()]
     def render_items(group):
-        return "\n".join(
-            f'        <li class="paper-item" data-format="{esc(ext)}" data-lang="{lang_tag(display)}">'
-            f'<a href="papers/{quote(slug)}.html">'
-            f'<span class="paper-title">{esc(display)}</span>'
-            f'<span class="paper-format">[{esc(ext)}] '
-            f'<a href="papers/{quote(slug)}" rel="noopener" style="opacity:0.6">原檔</a></span>'
-            f'</a></li>'
-            for slug, display, ext, _ in group
-        )
+        rows = []
+        for slug, display, ext, src in group:
+            item = _item_for(src)
+            rows.append(
+                f'        <li class="paper-item" data-format="{esc(ext)}" data-lang="{lang_tag(display)}" data-id="{esc(item["id"])}">'
+                f'<a href="{item["canonical_url"]}">'
+                f'<span class="paper-title">{esc(display)}</span>'
+                f'<span class="paper-format">[{esc(ext)}] '
+                f'<a href="{item["raw_url"]}" rel="noopener" style="opacity:0.6">原檔</a></span>'
+                f'</a></li>'
+            )
+        return "\n".join(rows)
 
     has_any = bool(zh_entries or en_entries)
     if has_any:
@@ -2163,12 +2100,14 @@ def write_index(zh_entries, en_entries) -> None:
 
     all_entries = list(zh_entries) + list(en_entries)
     parts = []
-    for slug, display, ext, _ in all_entries:
+    for slug, display, ext, src in all_entries:
+        item = _item_for(src)
         parts.append(
             "    {"
             f'"@type": "ScholarlyArticle", '
             f'"name": {json_safe(display)}, '
-            f'"url": "{SITE_URL}/papers/{quote(slug)}.html", '
+            f'"url": "{SITE_URL}{item["canonical_url"]}", '
+            f'"identifier": {json_safe(item["id"])}, '
             f'"inLanguage": "{lang_tag(display)}", '
             f'"author": {{"@type": "Person", "name": {json_safe(SITE_AUTHOR)}}}, '
             f'"publisher": {{"@type": "Organization", "name": {json_safe(SITE_ORG)}}}, '

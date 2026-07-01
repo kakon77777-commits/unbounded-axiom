@@ -8,13 +8,15 @@ Generates the canonical machine/human surface keyed by stable id:
     /raw/{id}.{ext}         raw source copy
     /api/papers/{id}.json   per-paper metadata
     /api/papers/index.json  registry index
-    /_redirects             Cloudflare legacy -> canonical 301 map (blueprint)
-    /redirects.json         machine-readable redirect map
+    /_redirects             header-only (0 rules; /papers/* handled by a Function)
+    /redirects.json         machine-readable redirect map (page + raw)
+    /papers-legacy-map.json { legacy_slug: {id, ext} } for the catch-all Function
 
-Legacy /papers/<slug>.md(.html) output is left untouched by this module, so
-existing URLs, functions, and base-space keep working. The /p/ pages carry a
-log-crawler prefetch keyed by the *legacy slug* so the Triadic-Logic graph node
-identity stays unified with the legacy pages.
+The legacy /papers/<slug>(.html) surface is retired: it is no longer generated as
+files and is served by the catch-all Pages Function functions/papers/[[path]].js,
+which 301s to /p/{id}/ or /raw/{id}.{ext}. The /p/ pages carry a log-crawler
+prefetch keyed by the *stable id* so the Triadic-Logic graph node identity is
+id-native end to end.
 """
 import json
 import shutil
@@ -32,11 +34,9 @@ def _paper_doc(item, body, mode) -> str:
     paths, an id-based self-canonical, and /raw/{id}.{ext} as the source."""
     display = item["title"]
     ext = item["ext"]
-    slug = item["legacy_slug"]
     lang = lang_tag(display)
     canonical = f"{SITE_URL}{item['canonical_url']}"        # https://.../p/{id}/
     raw_href = item["raw_url"]                              # /raw/{id}.{ext}
-    log_slug = quote(slug)                                  # graph node key (legacy)
     page_description = f"{display} | {SITE_TITLE} {SITE_VERSION}"
 
     if mode in ("full", "source") and body:
@@ -80,7 +80,7 @@ def _paper_doc(item, body, mode) -> str:
         f'<link rel="alternate" type="{mime_for(ext)}" href="{raw_href}" title="原始檔 / source ({esc(ext)})">\n'
         f'<link rel="canonical" href="{canonical}">\n'
         f'<script type="application/ld+json">\n{jsonld}\n</script>\n'
-        f'<link rel="prefetch" href="/api/log-crawler?slug={log_slug}">\n'
+        f'<link rel="prefetch" href="/api/log-crawler?id={item["id"]}">\n'
         f"<style>{PAGE_CSS}</style>\n</head>\n<body>\n"
         '<div class="nav">'
         '<a href="/index.html">&larr; 回 Logic Matrix 索引</a>'
@@ -148,27 +148,43 @@ def write_api(registry) -> None:
 
 
 def write_redirects(registry) -> None:
-    """Cloudflare _redirects (page-only, capped) + full machine-readable redirects.json.
+    """Full machine-readable redirects.json (page+raw). NO static _redirects rules.
 
-    Cloudflare Pages allows at most 2000 static _redirects rules, so /_redirects
-    carries only the per-paper PAGE redirect (/papers/<slug>.html -> /p/{id}/).
-    Legacy raw files still exist and serve directly; the complete page+raw map is
-    published for agents in /redirects.json and registry/redirects.json.
-    (If the corpus ever exceeds ~2000 papers, move this to a Pages Function.)"""
-    cf_lines = ["# Legacy paper pages -> canonical /p/{id}/ (Corpus Engine v0.2)"]
+    The legacy /papers/* surface is retired: every /papers/<slug>(.html) request is
+    handled dynamically by the catch-all Pages Function functions/papers/[[path]].js,
+    which 301s to /p/{id}/ (page) or /raw/{id}.{ext} (raw). We therefore emit ZERO
+    per-paper rules into dist/_redirects — a static rule and a Function on the same
+    /papers/* path both claim the route (Functions win, so static rules would be dead
+    weight yet still count against Cloudflare's 2000-rule cap and drift out of sync).
+    The complete page+raw map is still published for agents in /redirects.json and
+    registry/redirects.json."""
     data = []
     for it in registry["items"]:
         slug = it["legacy_slug"]
         page_from = f"/papers/{slug}.html"
         raw_from = f"/papers/{slug}"
-        cf_lines.append(f"{page_from} {it['canonical_url']} 301")
         data.append({"from": page_from, "to": it["canonical_url"], "status": 301})
         data.append({"from": raw_from, "to": it["raw_url"], "status": 301})
-    (DIST_DIR / "_redirects").write_text("\n".join(cf_lines) + "\n", encoding="utf-8")
+    # _redirects carries NO per-paper rules (the [[path]].js Function handles /papers/*).
+    (DIST_DIR / "_redirects").write_text(
+        "# /papers/* is handled dynamically by functions/papers/[[path]].js (0 static rules)\n",
+        encoding="utf-8")
     payload = json.dumps({"version": "0.2", "redirects": data}, ensure_ascii=False, indent=2) + "\n"
     (DIST_DIR / "redirects.json").write_text(payload, encoding="utf-8")
     REGISTRY_DIR.mkdir(exist_ok=True)
     (REGISTRY_DIR / "redirects.json").write_text(payload, encoding="utf-8")
+
+
+def write_legacy_map(registry) -> None:
+    """dist/papers-legacy-map.json — flat { legacy_slug: {id, ext} } for the
+    catch-all Function functions/papers/[[path]].js to resolve legacy /papers/<slug>
+    URLs to their id-native targets (/p/{id}/ page or /raw/{id}.{ext} raw)."""
+    legacy_map = {
+        it["legacy_slug"]: {"id": it["id"], "ext": it["ext"]}
+        for it in registry["items"]
+    }
+    (DIST_DIR / "papers-legacy-map.json").write_text(
+        json.dumps(legacy_map, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
 def write_sitemap_canonical(registry) -> None:
