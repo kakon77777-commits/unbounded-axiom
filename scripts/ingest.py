@@ -1,0 +1,131 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""§25 three-stage ingest — STAGE 1.
+
+Analyze ingest/01-before into ingest/02-agent-staging and copy non-blocked files
+to ingest/03-after (organized by inferred YYYY/YYYY-MM). NEVER writes to
+content/papers/ or the registry — only publish_ingested.py may promote to canon.
+
+Run: python scripts/ingest.py
+"""
+import hashlib
+import json
+import os
+import re
+import shutil
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from datetime import datetime, timezone
+from pathlib import Path
+
+from scripts.config import ROOT, SUPPORTED_EXTS
+from scripts.helpers import lang_tag
+from scripts.registry import load_registry
+
+INGEST = ROOT / "ingest"
+BEFORE, STAGING, AFTER, REPORTS = (INGEST / "01-before", INGEST / "02-agent-staging",
+                                   INGEST / "03-after", INGEST / "reports")
+FIRST_STAGE_EXTS = {".md", ".py", ".lean", ".ts", ".jsx"}
+
+
+def _hash(p):
+    h = hashlib.sha256()
+    h.update(p.read_bytes())
+    return "sha256:" + h.hexdigest()
+
+
+def _infer_date(name):
+    m = re.search(r"(20\d{2})[-_]?(0[1-9]|1[0-2])(?:[-_]?(\d{2}))?", name)
+    if m:
+        return f"{m.group(1)}-{m.group(2)}", ("explicit" if m.group(3) else "inferred")
+    return None, "unknown"
+
+
+def _sub(month):
+    return f"{month.split('-')[0]}/{month}" if month else "undated"
+
+
+def main():
+    for d in (BEFORE, STAGING, AFTER, REPORTS):
+        d.mkdir(parents=True, exist_ok=True)
+    reg = load_registry()
+    known_hashes = {it.get("hash") for it in reg.get("items", [])}
+    known_titles = {it.get("title") for it in reg.get("items", [])}
+    used_ids = {it["id"] for it in reg.get("items", [])}
+
+    def next_candidate():
+        n = 1
+        while f"lm-{n:06d}" in used_ids:
+            n += 1
+        cid = f"lm-{n:06d}"
+        used_ids.add(cid)
+        return cid
+
+    files = sorted(p for p in BEFORE.rglob("*")
+                   if p.is_file() and p.suffix.lower() in FIRST_STAGE_EXTS
+                   and p.suffix.lower() in SUPPORTED_EXTS)
+    ready, review = [], []
+    for f in files:
+        title, ext = f.stem, f.suffix.lower().lstrip(".")
+        h = _hash(f)
+        dup = (h in known_hashes) or (title in known_titles)
+        month, conf = _infer_date(f.name)
+        needs_review = dup or conf == "unknown"
+        cand = next_candidate()
+        unit = STAGING / cand
+        unit.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(f, unit / ("source." + ext))
+        meta = {"id_candidate": cand, "title": title, "ext": ext,
+                "language": lang_tag(title), "hash": h, "month": month,
+                "date_confidence": conf,
+                "date_basis": "filename-inferred (publication date; confirm before publish)",
+                "duplicate_candidate": dup, "needs_review": needs_review,
+                "proposed_path": f"content/papers/{_sub(month)}/{f.name}",
+                "source_name": f.name}
+        (unit / "metadata.json").write_text(json.dumps(meta, ensure_ascii=False, indent=2),
+                                            encoding="utf-8")
+        (unit / "proposed-frontmatter.yaml").write_text(
+            f"---\ntitle: {json.dumps(title, ensure_ascii=False)}\n"
+            f"language: {meta['language']}\nmonth: {month or 'unknown'}\n"
+            f"date_confidence: {conf}\nstatus: staged\n---\n", encoding="utf-8")
+        notes = []
+        if dup:
+            notes.append("Possible duplicate (hash or title already in registry) — do NOT publish without review.")
+        if conf == "unknown":
+            notes.append("Date not inferable from filename; would go to content/papers/undated/ unless corrected.")
+        (unit / "notes.md").write_text(
+            "# Staging notes\n\n" + ("\n".join(f"- {n}" for n in notes) or "- OK: no blockers."),
+            encoding="utf-8")
+        if needs_review:
+            review.append(meta)
+        else:
+            dest = AFTER / _sub(month)
+            dest.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(f, dest / f.name)
+            ready.append(meta)
+
+    now = datetime.now(timezone.utc)
+    ts = now.strftime("%Y-%m-%dT%H%M%SZ")
+    iso = now.strftime("%Y-%m-%dT%H:%M:%SZ")
+    (REPORTS / f"ingest-{ts}.json").write_text(json.dumps(
+        {"generated_at": iso, "input_files": len(files), "ready": len(ready),
+         "needs_review": len(review), "ready_items": ready,
+         "needs_review_items": review}, ensure_ascii=False, indent=2), encoding="utf-8")
+    md = ["# Ingest Report", f"Generated at: {iso}", "",
+          f"- Input files: {len(files)}", f"- Ready: {len(ready)}",
+          f"- Needs review: {len(review)}", ""]
+    for label, lst in (("Ready", ready), ("Needs review", review)):
+        if lst:
+            md.append(f"## {label}")
+            for m in lst:
+                md += [f"### {m['id_candidate']} — {m['title']}",
+                       f"- proposed_path: {m['proposed_path']}",
+                       f"- date_confidence: {m['date_confidence']} | duplicate: {m['duplicate_candidate']}", ""]
+    (REPORTS / f"ingest-{ts}.md").write_text("\n".join(md), encoding="utf-8")
+    print(f"[ingest] input={len(files)} ready={len(ready)} needs_review={len(review)} "
+          f"-> ingest/03-after + reports/ingest-{ts}.md (canonical corpus untouched)")
+
+
+if __name__ == "__main__":
+    main()

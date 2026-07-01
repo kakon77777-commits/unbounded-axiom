@@ -20,7 +20,9 @@ export async function onRequest(context) {
   const botKeywords = ["bot", "crawler", "spider", "scrape", "archiver", "curl", "wget", "python-requests", "google", "baidu", "yandex", "bing", "slurp", "duckduckgo"];
   const isBot = botKeywords.some(kw => ua.toLowerCase().includes(kw));
   
-  if (hasKV && targetSlug) {
+  // Only crawlers drive the Triadic-Logic graph (whitepaper §16.2): gate on isBot
+  // so ordinary human page views do not mutate weights/states.
+  if (hasKV && targetSlug && isBot) {
     try {
       // 1. Increment global crawler hits
       const storedHits = await env.BASE_SPACE_KV.get("hits") || "0";

@@ -4,3 +4,13 @@
 !.dev.vars.example
 .env*
 !.env.example
+
+# ingest workspace (staging only; canonical content lives in content/papers/)
+ingest/01-before/*
+!ingest/01-before/.gitkeep
+ingest/02-agent-staging/*
+!ingest/02-agent-staging/.gitkeep
+ingest/03-after/*
+!ingest/03-after/.gitkeep
+ingest/reports/*
+!ingest/reports/.gitkeep

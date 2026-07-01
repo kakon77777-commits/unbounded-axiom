@@ -1,0 +1,23 @@
+{
+  "_comment": "Relative-link tokens that are NOT real pages (math symbols, formula fragments, short markdown false-links). The broken-link validator treats these as resolved so crawlers are not sent to fake /papers/t style routes (whitepaper 13 / 26.5.7).",
+  "ignore_patterns": [
+    "^#",
+    "^javascript:",
+    "^mailto:",
+    "^tel:",
+    "^data:",
+    "^x_\\d+$",
+    "^[a-zA-Z]$",
+    "^λ$",
+    "^\\$.*\\$$"
+  ],
+  "ignore_exact": [
+    "t",
+    "s",
+    "x_0",
+    "x_1",
+    "problem",
+    "query",
+    "λ"
+  ]
+}
