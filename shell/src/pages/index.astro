@@ -1,0 +1,69 @@
+---
+import Base from '../layouts/Base.astro';
+import { getPapers, getCorpus, getTimeline } from '../lib/engine';
+
+const corpus = getCorpus();
+const timeline = getTimeline();
+const papers = getPapers();
+
+const months = [...new Set(papers.map((p) => p.month).filter(Boolean))].sort() as string[];
+const latestMonth = months[months.length - 1];
+const latest = papers.filter((p) => p.month === latestMonth).slice(0, 12);
+
+const zh = corpus.languages?.['zh-Hant'] ?? 0;
+const en = corpus.languages?.['en'] ?? 0;
+const monthCount = timeline.reduce((a, y) => a + y.months.length, 0);
+---
+<Base title="Logic Matrix — EveMissLab Theoretical Corpus">
+  <header class="hero">
+    <div class="wrap">
+      <div class="eyebrow">EveMissLab · Machine-readable corpus</div>
+      <h1>A theoretical corpus, read by minds and machines alike.</h1>
+      <p class="lede">
+        {corpus.count} papers spanning mathematics, logic, AI architecture, physics,
+        political economy and cognition — each with a permanent identity and a single
+        canonical route.
+      </p>
+      <div class="stats">
+        <div class="stat"><div class="n">{corpus.count}</div><div class="l">Papers</div></div>
+        <div class="stat"><div class="n">{zh}</div><div class="l">中文</div></div>
+        <div class="stat"><div class="n">{en}</div><div class="l">English</div></div>
+        <div class="stat"><div class="n">{monthCount}</div><div class="l">Months</div></div>
+      </div>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Browse by time</h2>
+      <div class="years">
+        {timeline.map((y) => (
+          <div class="year-row">
+            <div class="year-h"><span class="y">{y.year}</span><span class="eyebrow">{y.count} papers</span></div>
+            <div class="months">
+              {y.months.map((m) => (
+                <a class="month-pill" href={`/timeline/#${m.month}`}><span>{m.month}</span><span class="c">{m.count}</span></a>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Latest · {latestMonth}</h2>
+      <div class="papers">
+        {latest.map((p) => (
+          <a class="paper-row" href={`/p/${p.id}/`}>
+            <span class="pid">{p.id}</span>
+            <span class="pt">{p.title}</span>
+            <span class="pmeta">{p.language} · {p.month}</span>
+          </a>
+        ))}
+      </div>
+      <p style="margin-top:1.8rem"><a href="/timeline/">View the full chronological archive →</a></p>
+    </div>
+  </section>
+</Base>

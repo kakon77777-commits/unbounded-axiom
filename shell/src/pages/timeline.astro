@@ -1,0 +1,41 @@
+---
+import Base from '../layouts/Base.astro';
+import { getPapers, type Paper } from '../lib/engine';
+
+const papers = getPapers();
+const byMonth = new Map<string, Paper[]>();
+for (const p of papers) {
+  const m = p.month || 'undated';
+  if (!byMonth.has(m)) byMonth.set(m, []);
+  byMonth.get(m)!.push(p);
+}
+const months = [...byMonth.keys()].sort((a, b) =>
+  a === 'undated' ? 1 : b === 'undated' ? -1 : b.localeCompare(a),
+);
+---
+<Base title="Timeline — Logic Matrix">
+  <header class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Chronological archive</div>
+      <h1>Timeline</h1>
+      <p class="lede">Every paper by its publication month — {papers.length} in total.</p>
+    </div>
+  </header>
+
+  {months.map((m) => (
+    <section class="section" id={m}>
+      <div class="wrap">
+        <h2>{m} <span class="eyebrow" style="margin-left:.7rem">{byMonth.get(m)!.length}</span></h2>
+        <div class="papers">
+          {byMonth.get(m)!.map((p) => (
+            <a class="paper-row" href={`/p/${p.id}/`}>
+              <span class="pid">{p.id}</span>
+              <span class="pt">{p.title}</span>
+              <span class="pmeta">{p.language}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  ))}
+</Base>

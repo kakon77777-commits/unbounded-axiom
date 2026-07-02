@@ -1,0 +1,39 @@
+---
+import '../styles/global.css';
+interface Props { title: string; description?: string; }
+const { title, description = 'An AI-readable theoretical corpus by EveMissLab.' } = Astro.props;
+---
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="color-scheme" content="dark" />
+    <slot name="head" />
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="wrap nav-inner">
+        <a class="brand" href="/">Logic&nbsp;<b>Matrix</b></a>
+        <div class="nav-links">
+          <a href="/">Corpus</a>
+          <a href="/timeline/">Timeline</a>
+          <a href="/cosmomind.html">Visualize</a>
+          <a href="/ai/manifest.json">AI&nbsp;Layer</a>
+        </div>
+      </div>
+    </nav>
+    <slot />
+    <footer class="footer">
+      <div class="wrap">
+        EveMissLab · Logic Matrix — a machine-readable theoretical corpus.<br />
+        <a href="/cosmomind.html">🌌 CosmoMind</a>
+        · <a href="/base-space.html">🧬 Base Space</a>
+        · <a href="/deconstruction.html">🧠 Deconstruction Lab</a>
+        · <a href="/ai/rights-spectrum.json">AI Rights</a>
+      </div>
+    </footer>
+  </body>
+</html>

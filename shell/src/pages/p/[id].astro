@@ -1,0 +1,66 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getPapers, getRaw, extOf } from '../../lib/engine';
+import { marked } from 'marked';
+
+export function getStaticPaths() {
+  return getPapers().map((paper) => ({ params: { id: paper.id }, props: { paper } }));
+}
+
+const { paper } = Astro.props;
+const ext = extOf(paper);
+const raw = getRaw(paper.raw_url);
+const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const body =
+  ext === 'md' ? (marked.parse(raw, { async: false }) as string) : `<pre><code>${esc(raw)}</code></pre>`;
+
+const ORIGIN = 'https://logic.evemisslab.com';
+const canonical = `${ORIGIN}${paper.canonical_url}`;
+const MIME: Record<string, string> = {
+  md: 'text/markdown', py: 'text/x-python', lean: 'text/x-lean', ts: 'text/typescript',
+  jsx: 'text/jsx', tex: 'application/x-tex', ipynb: 'application/x-ipynb+json',
+  pdf: 'application/pdf',
+  docx: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+};
+const mime = MIME[ext] || 'application/octet-stream';
+const jsonld = {
+  '@context': 'https://schema.org',
+  '@type': 'ScholarlyArticle',
+  name: paper.title,
+  url: canonical,
+  identifier: paper.id,
+  inLanguage: paper.language,
+  author: { '@type': 'Person', name: 'Neo.K (許筌崴)' },
+  publisher: { '@type': 'Organization', name: 'EveMissLab / 一言諾科技有限公司' },
+  isPartOf: { '@type': 'Collection', name: 'EVEMISSLAB Logic Matrix', url: ORIGIN },
+  encodingFormat: 'text/html',
+};
+---
+<Base title={`${paper.title} · Logic Matrix`} description={`${paper.title} | EVEMISSLAB Logic Matrix`}>
+  <Fragment slot="head">
+    <link rel="canonical" href={canonical} />
+    <meta name="robots" content="index, follow" />
+    <meta name="ai-content-policy" content="indexable, citable, training-allowed" />
+    <meta name="lm-paper-id" content={paper.id} />
+    <meta name="author" content="Neo.K (許筌崴)" />
+    <link rel="alternate" type={mime} href={paper.raw_url} title={`原始檔 / source (${ext})`} />
+    <link rel="prefetch" href={`/api/log-crawler?id=${paper.id}`} />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonld)} />
+  </Fragment>
+
+  <div class="reader">
+    <div class="wrap">
+      <a class="back" href="/timeline/">← Archive</a>
+      <div class="reader-head measure">
+        <div class="eyebrow">{paper.id}{paper.month ? ` · ${paper.month}` : ''}</div>
+        <h1>{paper.title}</h1>
+        <div class="reader-meta">
+          <span>{paper.language} · {ext}</span>
+          <a href={paper.raw_url}>Raw source ↗</a>
+          <a href={paper.api_url}>Metadata ↗</a>
+        </div>
+      </div>
+      <article class="prose" set:html={body}></article>
+    </div>
+  </div>
+</Base>
