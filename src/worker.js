@@ -7,6 +7,8 @@
  *
  *   GET  /api/base-space         Triadic-Logic graph (id-keyed KV: weights2/states2)
  *   GET  /api/log-crawler?id=    1x1 tracking GIF + crawler-driven graph mutation
+ *   GET  /api/tcf-queue          demand-driven TCF queue: hottest un-mapped (hollow)
+ *                                nodes by ~48h crawler attention (lazy instantiation)
  *   GET  /papers/<slug>(.html)   301 -> canonical /p/{id}/ or /raw/{id}.{ext}
  *   *                            static asset (env.ASSETS)
  */
@@ -32,6 +34,7 @@ export default {
     try {
       if (p === "/api/base-space") return await baseSpace(request, env);
       if (p === "/api/log-crawler") return await logCrawler(request, env, ctx);
+      if (p === "/api/tcf-queue") return await tcfQueue(request, env);
       if (p.startsWith("/papers/")) return await papersRedirect(request, env);
     } catch (e) {
       // never let a dynamic-route error break static serving
@@ -159,6 +162,25 @@ async function logCrawler(request, env, ctx) {
         const nodeHits = parseInt(await env.BASE_SPACE_KV.get(nodeKey) || "0", 10) + 1;
         await env.BASE_SPACE_KV.put(nodeKey, String(nodeHits));
 
+        // Demand signal for lazy TCF instantiation: per-id day-bucketed heat
+        // (hot2 = {id: {d: today, c: n, pd: prevDay, p: n}}). Cumulative hits_
+        // measure lifetime attention; hot2 measures the ~48h burst that decides
+        // which hollow node gets TCF-distilled next. Races lose a count or two —
+        // acceptable for a scheduling heuristic.
+        try {
+          const day = new Date().toISOString().slice(0, 10).replace(/-/g, "");
+          const hot = JSON.parse(await env.BASE_SPACE_KV.get("hot2") || "{}");
+          const rec = hot[targetId] || {};
+          if (rec.d === day) {
+            rec.c = (rec.c || 0) + 1;
+          } else {
+            rec.pd = rec.d; rec.p = rec.c || 0;
+            rec.d = day; rec.c = 1;
+          }
+          hot[targetId] = rec;
+          await env.BASE_SPACE_KV.put("hot2", JSON.stringify(hot));
+        } catch (err) { /* heat tracking is best-effort */ }
+
         let sourceId = null;
         if (referer) {
           try {
@@ -192,6 +214,64 @@ async function logCrawler(request, env, ctx) {
   return new Response(gif, {
     headers: { "Content-Type": "image/gif", "Cache-Control": "no-cache, no-store, must-revalidate", ...CORS },
   });
+}
+
+// ---- /api/tcf-queue : demand-driven lazy-instantiation queue ----
+// Market-scheduled compute (handoff spec Phase B, Neo's lazy-instantiation design):
+// un-mapped (hollow) nodes ranked by ~48h crawler heat. Agents ("衍") poll this,
+// TCF-distill the hottest papers first, and the adversarial gate + git commit
+// remain the only path into the published graph.
+async function tcfQueue(request, env) {
+  if (request.method === "OPTIONS") return new Response(null, { headers: CORS });
+  const url = new URL(request.url);
+  const minHits = Math.max(1, parseInt(url.searchParams.get("min") || "3", 10) || 3);
+  const limit = Math.min(50, Math.max(1, parseInt(url.searchParams.get("limit") || "10", 10) || 10));
+
+  let hot = {};
+  if (env.BASE_SPACE_KV) {
+    try { hot = JSON.parse(await env.BASE_SPACE_KV.get("hot2") || "{}"); } catch (e) { /* empty */ }
+  }
+
+  const mapped = new Set();
+  try {
+    const g = await assetFetch(request, env, "/ai/graph.json");
+    if (g.ok) for (const n of (await g.json()).nodes || []) mapped.add(n.id);
+  } catch (e) { /* no graph yet -> everything is hollow */ }
+
+  const meta = {};
+  try {
+    const r = await assetFetch(request, env, "/papers-metadata.json");
+    if (r.ok) for (const p of await r.json()) meta[p.id] = p;
+  } catch (e) { /* titles optional */ }
+
+  const day = new Date().toISOString().slice(0, 10).replace(/-/g, "");
+  const yday = new Date(Date.now() - 86400000).toISOString().slice(0, 10).replace(/-/g, "");
+  const queue = [];
+  for (const id in hot) {
+    if (mapped.has(id)) continue;
+    const rec = hot[id] || {};
+    let recent = 0;
+    if (rec.d === day) recent = (rec.c || 0) + (rec.pd === yday ? (rec.p || 0) : 0);
+    else if (rec.d === yday) recent = rec.c || 0;
+    if (recent >= minHits) {
+      const m = meta[id] || {};
+      queue.push({ id, title: m.title || id, canonical: m.canonical || `/p/${id}/`,
+                   recent_hits: recent, state: "hollow" });
+    }
+  }
+  queue.sort((a, b) => b.recent_hits - a.recent_hits || (a.id < b.id ? -1 : 1));
+
+  return new Response(JSON.stringify({
+    version: "0.1",
+    window: "~48h (today + yesterday, UTC day buckets)",
+    threshold: minHits,
+    mapped_total: mapped.size,
+    hollow_tracked: Object.keys(hot).filter((id) => !mapped.has(id)).length,
+    queue: queue.slice(0, limit),
+    note: "Demand-driven lazy TCF instantiation: hollow nodes ranked by recent crawler "
+        + "attention. Extraction still passes the adversarial edge gate before publication. "
+        + "Agents may propose, only the gated pipeline publishes (see /ai/rights-spectrum.json).",
+  }), { headers: { ...CORS, "Content-Type": "application/json", "Cache-Control": "public, max-age=60" } });
 }
 
 // ---- /papers/<slug>(.html) : dynamic 301 to canonical id routes ----

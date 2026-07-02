@@ -219,6 +219,10 @@ def _patch_ai_pointers(total_mapped):
         manifest["corpus"]["dependency_graph_note"] = (
             f"Real TCF-extracted theory-dependency topology (Phase A prototype, "
             f"{total_mapped} papers mapped). Evidence-backed edges; Ω = draft state.")
+        manifest["corpus"]["demand_queue"] = "/api/tcf-queue"
+        manifest["corpus"]["demand_queue_note"] = (
+            "Lazy TCF instantiation: hollow nodes ranked by ~48h crawler attention; "
+            "hottest papers are distilled first (docs/TCF-demand-queue-runbook.md).")
         manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n",
                                  encoding="utf-8")
     sitemap_path = AI / "sitemap.json"

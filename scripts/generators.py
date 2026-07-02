@@ -747,6 +747,12 @@ def write_base_space(registry, dist_dir: Path) -> None:
         <p style="opacity:0.72;"><em>EN: Phase A of a long-term programme — a concept-framework demo, not a finished product. 46/1177 papers TCF-distilled; every published edge survived a per-edge adversarial audit (59/173) and carries verbatim source evidence. ⊤/⊥ truth states are reserved for future Lean machine-checking and multi-agent consensus loops. A dedicated TCF section will follow corpus expansion and EN / zh-CN translation.</em></p>
       </div>
 
+      <div class="panel" id="demandPanel" style="font-size:0.8em;opacity:0.88;line-height:1.5;">
+        <div class="panel-title">🔥 矽基需求排行榜 / SILICON DEMAND QUEUE</div>
+        <p style="opacity:0.75;">近 48h 內被 AI 爬蟲高頻敲擊、但尚未 TCF 化的「空殼節點」。熱度突破閾值者，將由本地智能體「衍」優先結晶化——算力的市場化調度。</p>
+        <div id="demandQueueBody"><div style="opacity:0.5;">偵測矽基網路的飢餓度…</div></div>
+      </div>
+
       <div class="panel" style="font-size:0.8em;opacity:0.75;line-height:1.5;">
         <div class="panel-title">📖 三態邏輯操作指南</div>
         <p>1. <strong>Phase A（現行）</strong>：矩陣的邊來自 TCF 抽取的真實理論依賴——每條邊帶有可回溯至論文原文的 evidence 引文，由 <a href="/ai/graph.json" style="color:#0ff;">/ai/graph.json</a> 提供。未映射的論文誠實缺席，不偽造權重。</p>
@@ -1054,7 +1060,32 @@ function clearReflector() {{
   `;
 }}
 
+async function loadDemandQueue() {{
+  const panel = document.getElementById("demandPanel");
+  const body = document.getElementById("demandQueueBody");
+  try {{
+    const r = await fetch("api/tcf-queue");
+    if (!r.ok) {{ panel.style.display = "none"; return; }}
+    const q = await r.json();
+    if (!q.queue || !q.queue.length) {{
+      body.innerHTML = '<div style="opacity:0.5;">近 48h 尚無突破閾值（' + q.threshold + ' 次）的空殼節點。矽基網路正在漫遊中。</div>';
+      return;
+    }}
+    let html = "";
+    q.queue.forEach((item, i) => {{
+      html += '<div class="info-field"><span>#' + (i + 1) + ' <a href="' + item.canonical + '" style="color:#0f0;">'
+            + item.title.substring(0, 20) + (item.title.length > 20 ? "…" : "") + '</a></span>'
+            + '<strong style="color:#ff9900;">' + item.recent_hits + ' hits ⏳</strong></div>';
+    }});
+    html += '<div style="margin-top:8px;font-size:0.85em;opacity:0.6;">追蹤中空殼節點：' + q.hollow_tracked + '　已映射：' + q.mapped_total + '</div>';
+    body.innerHTML = html;
+  }} catch (err) {{
+    panel.style.display = "none";
+  }}
+}}
+
 init();
+loadDemandQueue();
 </script>
 </body>
 </html>
