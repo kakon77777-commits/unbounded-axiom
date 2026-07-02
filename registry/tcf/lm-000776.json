@@ -1,0 +1,271 @@
+{
+  "tcf_extract_version": "0.1",
+  "id": "lm-000776",
+  "title": "理論壓縮標準格式（Theory Compression Format, TCF v1.0）",
+  "language": "zh-Hant",
+  "source_file": "content/papers/2026/2026-05/理論壓縮標準格式（Theory Compression Format, TCF v1.0.md",
+  "theory_name": "Theory Compression Format (TCF) v1.0",
+  "extracted_by": "claude-fable-5 (automated distillation, Phase A)",
+  "extraction_date": "2026-07-02",
+  "canonical_status": "draft",
+  "primitives": [
+    {
+      "symbol": "T",
+      "kind": "type",
+      "description": "理論：TCF 的操作對象，規範化為九節（§0–§8）結構化集合",
+      "evidence": "TCF 將一個理論 $T$ 表示為九個節次的結構化集合"
+    },
+    {
+      "symbol": "K",
+      "kind": "function",
+      "description": "結構複雜度：K = |§0| + |§1|，即原語數加公理數，理論壓縮後的描述長度",
+      "evidence": "$K$ 稱為**結構複雜度**——理論「壓縮後」的描述長度，僅計入原語與公理。"
+    },
+    {
+      "symbol": "I",
+      "kind": "function",
+      "description": "推論產出：I = |§4| + Σ|proof.steps|，即定理數加證明步驟總數",
+      "evidence": "$I$ 稱為**推論產出**——可從 $K$ 正式推出的形式化內容。"
+    },
+    {
+      "symbol": "CR",
+      "kind": "function",
+      "description": "壓縮率 CR = I / K，辨別真理論與魔術理論的量化指標",
+      "evidence": "$\\mathrm{CR}$ 稱為**壓縮率**。"
+    },
+    {
+      "symbol": "CR_crit",
+      "kind": "constant",
+      "description": "經驗閾值 1.5：低於此值理論落入魔術區",
+      "evidence": "經驗閾值 $\\mathrm{CR}_{\\text{crit}} = 1.5$：低於此值，理論進入「魔術區」"
+    },
+    {
+      "symbol": "FP",
+      "kind": "function",
+      "description": "理論指紋函數：對 canonical JSON 取 SHA-256，用於版本控制與跨論文引用",
+      "evidence": "對 §0–§6 的 canonical JSON 計算 SHA-256"
+    }
+  ],
+  "axioms": [
+    {
+      "id": "A1",
+      "name": "九節結構",
+      "formula": "T = (§0, §1, §2, §3, §4, §5, §6, §7, §8)",
+      "description": "任意形式理論規範化為九節結構化集合；§0–§6 為 Neo.K 原始 schema，§7–§8 為 Theia 補全",
+      "evidence": "$$T = (\\S_0, \\S_1, \\S_2, \\S_3, \\S_4, \\S_5, \\S_6, \\S_7, \\S_8)$$"
+    },
+    {
+      "id": "A2",
+      "name": "原語語義隱式性",
+      "formula": "semantics(§0) := implied-by(§1)",
+      "description": "§0 原語為無定義符號，其語義只能由 §1 公理隱式決定，不得預先解釋",
+      "evidence": "原語的語義**完全由 §1 公理隱式決定**，不得在此節預先解釋。"
+    },
+    {
+      "id": "A3",
+      "name": "公理無冗餘",
+      "formula": "∀ a, b ∈ §1. a ≢ b（邏輯等價即格式錯誤）",
+      "description": "公理之間不得顯含冗餘；兩條邏輯等價的公理視為格式錯誤",
+      "evidence": "公理之間**不得顯含冗餘**。若兩條公理陳述邏輯等價的內容，視為格式錯誤。"
+    },
+    {
+      "id": "A4",
+      "name": "DAG 無環依賴",
+      "formula": "§2 = DAG(nodes: §0 ∪ §1 ∪ §4, edge a→b := b depends-on a)",
+      "description": "§2 為概念層級的靜態有向無環依賴圖，與 §5 formula 層級的動態推導鏈嚴格分離",
+      "evidence": "一個有向無環圖，其節點為 §0 原語、§1 公理、§4 定理的 id。邊 `a → b` 表示 `b` 在概念上依賴於 `a`。"
+    },
+    {
+      "id": "A5",
+      "name": "from_axioms 實用性",
+      "formula": "theorem.from_axioms = 實際使用的公理 id 集",
+      "description": "每條定理必須列出證明中實際使用的公理，而非理論上可能相關的公理",
+      "evidence": "`from_axioms` 列出**實際使用的**公理 id（不是「理論上可能相關的」）。"
+    },
+    {
+      "id": "A6",
+      "name": "壓縮度量定義",
+      "formula": "K = |§0| + |§1|; I = |§4| + Σ_{p∈§5} |p.steps|; CR = I / K",
+      "description": "定義結構複雜度 K、推論產出 I 與壓縮率 CR；§2 DAG 為元資料，不計入 K",
+      "evidence": "定義**壓縮率** $\\mathrm{CR} = I / K$ 作為辨別「真理論」與「魔術理論」的經驗判準。"
+    },
+    {
+      "id": "A7",
+      "name": "魔術區閾值",
+      "formula": "CR < CR_crit = 1.5 ⇒ T ∈ 魔術區",
+      "description": "經驗判準：每個結構元件平均產出不到 1.5 個推論即暗示公理化失敗",
+      "evidence": "經驗閾值 $\\mathrm{CR}_{\\text{crit}} = 1.5$：低於此值，理論進入「魔術區」——每個結構元件平均產出不到 1.5 個推論，暗示公理化失敗。"
+    },
+    {
+      "id": "A8",
+      "name": "理論指紋",
+      "formula": "FP(T) = SHA-256(canonical(T))",
+      "description": "對 §0–§6 的 canonical JSON 取 SHA-256，供版本控制、跨論文引用與相似度比對",
+      "evidence": "$$\\mathrm{FP}(T) = \\mathrm{SHA}\\text{-}256(\\mathrm{canonical}(T))$$"
+    }
+  ],
+  "theorems": [
+    {
+      "id": "T1",
+      "name": "TCF 壓縮定理",
+      "statement": "「存在有限展開 T* 使 CR(T*) ≥ c，c > 1 任意大」等價於「T 的公理集合對其可推出定理集合構成非平凡壓縮」",
+      "from_axioms": ["A6"],
+      "description": "紙上給出雙向證明草圖；作者註明此為經驗判準而非嚴格形式定理",
+      "evidence": "**定理（TCF 壓縮定理）**。對一個理論 $T$，以下兩陳述**等價**："
+    },
+    {
+      "id": "T2",
+      "name": "理論深度下界推論",
+      "statement": "CR 的增長率是理論深度的下界指標",
+      "from_axioms": ["A6"],
+      "description": "深度意味著從固定假設可持續推出非平凡新結論",
+      "evidence": "$\\mathrm{CR}$ 的增長率是「理論深度」的下界指標——深度意味著從固定假設可持續推出非平凡新結論。"
+    },
+    {
+      "id": "T3",
+      "name": "CR 單調性",
+      "statement": "CR 隨理論展開單調非嚴格增長（I 只增不減，K 固定則 CR 不下降）",
+      "from_axioms": ["A6"],
+      "description": "度量性質：展開理論只會持平或提高壓縮率",
+      "evidence": "$\\mathrm{CR}$ 隨理論展開單調**非嚴格**增長（可能持平，但不會下降——因為 $I$ 只增不減）。"
+    },
+    {
+      "id": "T4",
+      "name": "真理論／魔術理論分離",
+      "statement": "真理論充分形式化後 CR 遠大於 1.5；魔術理論的 CR 收斂於 1 附近",
+      "from_axioms": ["A6", "A7"],
+      "description": "壓縮率作為真理論與魔術理論的漸近分離判準",
+      "evidence": "真理論的 $\\mathrm{CR}$ 在充分形式化後會**遠大於** 1.5；魔術理論的 $\\mathrm{CR}$ 收斂於 1 附近。"
+    },
+    {
+      "id": "T5",
+      "name": "辨別力實例（DCO vs 魔術理論）",
+      "statement": "DCO v5.0 的 TCF 實例化得 K=8, I=18, CR=2.25（真理論候選）；構造的魔術理論得 K=5, I=4, CR=0.80（魔術區）",
+      "from_axioms": ["A6", "A7"],
+      "description": "以 DCO v5.0 與蓄意構造的對照組實證度量的辨別力",
+      "evidence": "展示度量的辨別力（DCO: $\\mathrm{CR}=2.25$；魔術理論：$\\mathrm{CR}=0.80$）。"
+    }
+  ],
+  "dag": [
+    {"id": "T", "kind": "primitive", "depends_on": []},
+    {"id": "K", "kind": "primitive", "depends_on": ["T"]},
+    {"id": "I", "kind": "primitive", "depends_on": ["T"]},
+    {"id": "CR", "kind": "primitive", "depends_on": ["K", "I"]},
+    {"id": "CR_crit", "kind": "primitive", "depends_on": ["CR"]},
+    {"id": "FP", "kind": "primitive", "depends_on": ["T"]},
+    {"id": "A1", "kind": "axiom", "depends_on": ["T"]},
+    {"id": "A2", "kind": "axiom", "depends_on": ["A1"]},
+    {"id": "A3", "kind": "axiom", "depends_on": ["A1"]},
+    {"id": "A4", "kind": "axiom", "depends_on": ["A1"]},
+    {"id": "A5", "kind": "axiom", "depends_on": ["A1"]},
+    {"id": "A6", "kind": "axiom", "depends_on": ["A1", "K", "I", "CR"]},
+    {"id": "A7", "kind": "axiom", "depends_on": ["A6", "CR_crit"]},
+    {"id": "A8", "kind": "axiom", "depends_on": ["A1", "FP"]},
+    {"id": "T1", "kind": "theorem", "depends_on": ["A6"]},
+    {"id": "T2", "kind": "theorem", "depends_on": ["T1"]},
+    {"id": "T3", "kind": "theorem", "depends_on": ["A6"]},
+    {"id": "T4", "kind": "theorem", "depends_on": ["A6", "A7"]},
+    {"id": "T5", "kind": "theorem", "depends_on": ["A6", "A7"]}
+  ],
+  "concepts": [
+    {
+      "name": "Theory Compression Format（TCF）",
+      "canonical": "TCF",
+      "role": "defines",
+      "evidence": "本文提出 **Theory Compression Format（TCF）**，一個將任意形式理論規範化為統一九節結構的標準格式。"
+    },
+    {
+      "name": "壓縮率 CR",
+      "canonical": "TCF",
+      "role": "defines",
+      "evidence": "定義**壓縮率** $\\mathrm{CR} = I / K$ 作為辨別「真理論」與「魔術理論」的經驗判準。"
+    },
+    {
+      "name": "真理論",
+      "canonical": "TrueTheory",
+      "role": "defines",
+      "evidence": "真理論以少量原語與公理推出大量定理（$\\mathrm{CR}$ 隨形式化程度發散）"
+    },
+    {
+      "name": "魔術理論",
+      "canonical": "MagicalTheory",
+      "role": "defines",
+      "evidence": "魔術理論則為每個結論獨立添加假設（$\\mathrm{CR} \\lesssim 1$）。"
+    },
+    {
+      "name": "理論指紋",
+      "canonical": "TheoryFingerprint",
+      "role": "defines",
+      "evidence": "對 §0–§6 的 canonical JSON 計算 SHA-256"
+    },
+    {
+      "name": "Dynamic Circle Ontology（DCO v5.0）",
+      "canonical": "DCO",
+      "role": "uses",
+      "evidence": "我們以 Dynamic Circle Ontology（DCO v5.0）作為實例，對照一個蓄意構造的魔術理論，展示度量的辨別力"
+    },
+    {
+      "name": "閉合性 Closure（Cl）",
+      "canonical": "Closure",
+      "role": "uses",
+      "evidence": "Dynamic Circle Ontology v5.0（Neo.K 2026）以**閉合性 Closure** 為唯一概念原語。"
+    },
+    {
+      "name": "無極",
+      "canonical": "Wuji",
+      "role": "uses",
+      "evidence": "S^∞ 可縮為一點 = 道生一之前的物理無極態。"
+    },
+    {
+      "name": "道／反者道之動",
+      "canonical": "Dao",
+      "role": "uses",
+      "evidence": "《道德經》生成序 = Closure 的自反射迭代。"
+    },
+    {
+      "name": "神點",
+      "canonical": "GodPoint",
+      "role": "uses",
+      "evidence": "神點不是奇點而是極限——可無限趨近而不可達。"
+    },
+    {
+      "name": "Lean／Coq／Isabelle 形式驗證",
+      "canonical": "LeanFormalization",
+      "role": "uses",
+      "evidence": "實踐上，由形式證明檢查器（如 Lean、Coq、Isabelle）驗證 $T$ 的 §5，可提供此判準的硬下界。"
+    }
+  ],
+  "external_refs": [
+    {
+      "target": "lm-001089",
+      "type": "applies",
+      "evidence": "我們以 Dynamic Circle Ontology（DCO v5.0）作為實例，對照一個蓄意構造的魔術理論，展示度量的辨別力",
+      "confidence": 0.6
+    },
+    {
+      "target": "Closure",
+      "type": "applies",
+      "evidence": "Dynamic Circle Ontology v5.0（Neo.K 2026）以**閉合性 Closure** 為唯一概念原語。",
+      "confidence": 0.85
+    },
+    {
+      "target": "LeanFormalization",
+      "type": "applies",
+      "evidence": "未來應綁定到具體邏輯（一階、高階、直覺主義、相關邏輯等）並由 Lean/Coq 後端驗證。",
+      "confidence": 0.8
+    },
+    {
+      "target": "Dao",
+      "type": "applies",
+      "evidence": "《道德經》生成序 = Closure 的自反射迭代。",
+      "confidence": 0.7
+    },
+    {
+      "target": "NoetherTheorem",
+      "type": "applies",
+      "evidence": "所有守恆律（Noether 型）從 Cl-3 導出。",
+      "confidence": 0.7
+    }
+  ],
+  "notes": "TCF 是規範（spec）而非公理化理論：其九節格式的規範性要求被編碼為 A1–A8；壓縮定理（T1）作者自註為經驗判準。DCO v5.0 實例映射到 lm-001089（標題含 DCO 5.0），信心較低，lm-001090/lm-000049 亦為候選。附錄 Python 參考實現（tcf_schema.py）及其內嵌的 DCO Cl-1..Cl-4 公理與 10 條定理屬 DCO 理論本身，未列為本文件的公理/定理，僅作 concepts/external_refs 證據來源。"
+}

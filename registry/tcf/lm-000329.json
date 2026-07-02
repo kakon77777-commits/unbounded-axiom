@@ -1,0 +1,186 @@
+{
+  "tcf_extract_version": "0.1",
+  "id": "lm-000329",
+  "title": "分：數學的底層原語與湧現底空間",
+  "language": "zh-Hant",
+  "source_file": "content/papers/2026/2026-06/分：數學的底層原語與湧現底空間.md",
+  "theory_name": "Fen (分): Foundational Primitive of Mathematics and Emergent Bottom Space",
+  "extracted_by": "claude-fable-5 (automated distillation, Phase A)",
+  "extraction_date": "2026-07-02",
+  "canonical_status": "draft",
+  "primitives": [
+    {
+      "symbol": "分 (Fen / partition)",
+      "kind": "function",
+      "description": "The bottom-layer primitive: a schema instantiated on any bottom space to perform differentiation/partition/resolution.",
+      "evidence": "所有數學的「分析」操作——微分、積分、採樣、測度、劃分——都是底層原語「分」在特定底空間上的具體化"
+    },
+    {
+      "symbol": "𝓑 = (𝓙, 𝓐)",
+      "kind": "type",
+      "description": "Bottom space: an ordered pair of a decision domain J and an applicability domain A, emergent from the structure of a problem rather than externally given.",
+      "evidence": "底空間 $\\mathcal{B}$ 是一個有序對：$$\\mathcal{B} = (\\mathcal{J},\\, \\mathcal{A})$$"
+    },
+    {
+      "symbol": "𝓙 (判定域)",
+      "kind": "type",
+      "description": "Decision domain: the range within which a proposition has a truth value.",
+      "evidence": "$\\mathcal{J}$（**判定域**）：命題在其中具有真值的範圍。在 $\\mathcal{J}$ 內，「這個陳述是真還是假」可以被決定"
+    },
+    {
+      "symbol": "𝓐 (適用域)",
+      "kind": "type",
+      "description": "Applicability domain: the range within which mathematical tools are valid.",
+      "evidence": "$\\mathcal{A}$（**適用域**）：數學工具在其中有效的範圍。在 $\\mathcal{A}$ 外，工具的輸出沒有語義"
+    },
+    {
+      "symbol": "Π_δ",
+      "kind": "function",
+      "description": "A 'Fen' operation at granularity δ: a morphism sending object X to a family of parts {X_i} satisfying δ-fineness, covering, and B-compatibility.",
+      "evidence": "$$\\Pi_\\delta: X \\;\\longrightarrow\\; \\{X_i\\}_{i \\in I}$$"
+    },
+    {
+      "symbol": "δ*(X)|_𝓑",
+      "kind": "function",
+      "description": "Optimal 'Fen': the infimum granularity at which the partition retains all relevant structure of X within B; a sub-definition depending on B being already given.",
+      "evidence": "$$\\delta^*(X)\\big|_\\mathcal{B} \\;:=\\; \\inf\\bigl\\{\\delta \\;\\big|\\; \\Pi_\\delta(X) \\text{ 保留 } X \\text{ 在 } \\mathcal{B} \\text{ 中的所有相關結構}\\bigr\\}$$"
+    },
+    {
+      "symbol": "𝐂_𝓑",
+      "kind": "type",
+      "description": "The bottom-space category associated to B: objects existing in B, morphisms are structure-preserving maps legal under A.",
+      "evidence": "給定底空間 $\\mathcal{B}$，定義與之對應的範疇 $\\mathbf{C}_\\mathcal{B}$：**對象**：在 $\\mathcal{B}$ 中存在的數學對象（函數、集合、圖、算子……）"
+    },
+    {
+      "symbol": "F: 𝐂_𝓑 → 𝐂_𝓑'",
+      "kind": "function",
+      "description": "A (possibly partial) functor connecting bottom-space categories when the bottom space changes from B to B'.",
+      "evidence": "當底空間從 $\\mathcal{B}$ 變化到 $\\mathcal{B}'$ 時，存在一個（可能是部分的）**函子**：$$F: \\mathbf{C}_\\mathcal{B} \\to \\mathbf{C}_{\\mathcal{B}'}$$"
+    }
+  ],
+  "axioms": [],
+  "theorems": [],
+  "dag": [
+    { "id": "分", "kind": "primitive", "depends_on": [] },
+    { "id": "𝓑 = (𝓙, 𝓐)", "kind": "primitive", "depends_on": [] },
+    { "id": "𝓙 (判定域)", "kind": "primitive", "depends_on": ["𝓑 = (𝓙, 𝓐)"] },
+    { "id": "𝓐 (適用域)", "kind": "primitive", "depends_on": ["𝓑 = (𝓙, 𝓐)"] },
+    { "id": "Π_δ", "kind": "primitive", "depends_on": ["分", "𝓑 = (𝓙, 𝓐)"] },
+    { "id": "δ*(X)|_𝓑", "kind": "primitive", "depends_on": ["Π_δ", "𝓙 (判定域)", "𝓐 (適用域)"] },
+    { "id": "𝐂_𝓑", "kind": "primitive", "depends_on": ["𝓑 = (𝓙, 𝓐)"] },
+    { "id": "F: 𝐂_𝓑 → 𝐂_𝓑'", "kind": "primitive", "depends_on": ["𝐂_𝓑"] }
+  ],
+  "concepts": [
+    {
+      "name": "底空間 / 湧現底空間",
+      "canonical": "BaseSpace",
+      "role": "defines",
+      "evidence": "底空間不是預先給定的，它從問題本身的結構湧現，並隨問題變化而變化"
+    },
+    {
+      "name": "範疇論作為連接語言",
+      "canonical": "CategoryTheory",
+      "role": "uses",
+      "evidence": "本文不把範疇論當**數學內容**，而是當**連接語言**：描述底空間之間如何相連，以及「分」操作在底空間轉換時保留了什麼"
+    },
+    {
+      "name": "分散式架構",
+      "canonical": "DistributedArchitecture",
+      "role": "defines",
+      "evidence": "整個架構是**分散式**的：沒有固定的元範疇，底空間之間的一致性由局部連接（函子）維持，系統整體的正確性從分散式的相互校驗中湧現"
+    },
+    {
+      "name": "曲率匹配猜想",
+      "canonical": "CurvatureMatching",
+      "role": "uses",
+      "evidence": "**猜想 F-1（曲率匹配猜想）：** 最優「分」的形狀與底空間 $\\mathcal{B}$ 的局部幾何相匹配"
+    },
+    {
+      "name": "間隙幾何學 (EML-META-2026-GAP)",
+      "canonical": "GapGeometry",
+      "role": "uses",
+      "evidence": "這對應間隙幾何學（EML-META-2026-GAP）中的曲率匹配原則：理解的最小單位必須攜帶與知識球面局部曲率匹配的曲率，否則拼不上去"
+    },
+    {
+      "name": "概念積分 (EML-CI)",
+      "canonical": "ConceptIntegration",
+      "role": "extends",
+      "evidence": "底空間 $\\mathcal{B} = $ 算子代數框架（$\\mathcal{S}$ 和 $\\mathcal{R}$ 的相容性結構）。「分」的粒度 $\\delta = \\varepsilon_n$（相容閾值序列）。最優「分」$\\delta^* \\to 0$ 驅動 $\\rho(\\mathcal{S}_n, \\mathcal{R}) \\to 1 - \\varepsilon_G$"
+    },
+    {
+      "name": "Gödel 殘差",
+      "canonical": "GodelResidual",
+      "role": "uses",
+      "evidence": "Gödel 殘差 $\\varepsilon_G$ 是底空間自身的「分」精度上限——任何底空間都有不可分辨的殘差"
+    },
+    {
+      "name": "WT 編織測度空間 / 可區分性測度",
+      "canonical": "WT",
+      "role": "extends",
+      "evidence": "底空間 $\\mathcal{B} = $ WT 編織測度空間（$\\mu_\\mathcal{W}$）。「分」的有效性由可區分性測度 $D = \\Delta \\cdot R(\\mu_\\mathrm{sep})$ 決定"
+    },
+    {
+      "name": "可計算微積分 / Bishop-Weihrauch 框架",
+      "canonical": "ComputableCalculus",
+      "role": "uses",
+      "evidence": "可計算微積分（Bishop-Weihrauch 框架）也說同樣的事：連續極限的 $\\delta$ 可以被替換為可計算的連續模 $h(n)$"
+    },
+    {
+      "name": "Nyquist-Shannon 採樣定理",
+      "canonical": "NyquistShannonSampling",
+      "role": "uses",
+      "evidence": "採樣理論（Nyquist-Shannon）說：若連續信號的最高頻率為 $f_{\\max}$，則採樣率 $f_s \\geq 2f_{\\max}$ 時，離散採樣可以完美重建連續信號"
+    },
+    {
+      "name": "統一投影猜想 (C-0)",
+      "canonical": "UnifiedProjectionConjecture",
+      "role": "uses",
+      "evidence": "這些函子的完整刻畫是 EML-CONJ-2026-v0.1-prep 中 C-0（統一投影猜想）的「分」框架版本"
+    }
+  ],
+  "external_refs": [
+    {
+      "target": "ConceptIntegration",
+      "type": "applies",
+      "evidence": "**EML-CI-2026-v0.1（概念積分）：**  \n底空間 $\\mathcal{B} = $ 算子代數框架（$\\mathcal{S}$ 和 $\\mathcal{R}$ 的相容性結構）",
+      "confidence": 0.85
+    },
+    {
+      "target": "lm-000689",
+      "type": "applies",
+      "evidence": "這是概念積分呼吸週期（EML-CI §4.7）在元數學層的對應",
+      "confidence": 0.6
+    },
+    {
+      "target": "GapGeometry",
+      "type": "applies",
+      "evidence": "**EML-META-2026-GAP（間隙幾何學）：**  \n底空間 $\\mathcal{B} = S^\\infty$（無限維知識球面）",
+      "confidence": 0.85
+    },
+    {
+      "target": "WT",
+      "type": "applies",
+      "evidence": "**WT v7.4（可區分性擴展）：**  \n底空間 $\\mathcal{B} = $ WT 編織測度空間（$\\mu_\\mathcal{W}$）",
+      "confidence": 0.85
+    },
+    {
+      "target": "lm-000155",
+      "type": "depends_on",
+      "evidence": "前置文件：** EML-CI-2026-v0.1、EML-META-2026-GAP-v1.0、WT v7.4、可計算微積分整理筆記（2026-06-03）",
+      "confidence": 0.5
+    },
+    {
+      "target": "ComputableCalculus",
+      "type": "applies",
+      "evidence": "**可計算微積分（2026-06-03）：**  \n底空間 $\\mathcal{B} = $ 可計算實數（Cauchy 序列攜帶模）。「分」的見證者 = Skolem 函數 $h(n)$",
+      "confidence": 0.85
+    },
+    {
+      "target": "UnifiedProjectionConjecture",
+      "type": "depends_on",
+      "evidence": "存在函子 $F_{ij}: \\mathbf{C}_{\\mathcal{B}_i} \\to \\mathbf{C}_{\\mathcal{B}_j}$，使得各框架的核心操作在函子映射下互相對應",
+      "confidence": 0.55
+    }
+  ],
+  "notes": "Paper is foundational/speculative math-philosophy; no formal axiom-list is given (only 'conjectures' F-0..F-3 and open questions Q-1..Q-5, kept as concepts/notes rather than forced into axioms/theorems since they lack from_axioms structure). External refs to EML-CI, GAP, WT, computable-calculus mapped both to canonical concept names and, where a corpus lm-id plausibly matches, with lower confidence since exact sibling paper versions (v7.4, GAP-v1.0) are not verified 1:1 against the id list."
+}

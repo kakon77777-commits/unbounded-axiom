@@ -1,0 +1,208 @@
+{
+  "tcf_extract_version": "0.1",
+  "id": "lm-000325",
+  "title": "分散式底空間協議：AI 知識節點的協作「分」框架",
+  "language": "zh-Hant",
+  "source_file": "content/papers/2026/2026-06/分散式底空間協議：AI 知識節點的協作「分」框架.md",
+  "theory_name": "DFENP (Distributed Bottom Space Protocol)",
+  "extracted_by": "claude-fable-5 (automated distillation, Phase A)",
+  "extraction_date": "2026-07-02",
+  "canonical_status": "draft",
+  "primitives": [
+    {
+      "symbol": "B_i",
+      "kind": "type",
+      "description": "節點 i 的底空間，由判定域與工具集合構成",
+      "evidence": "每個 AI 節點能夠用有限的概念集合和工具集合描述自己的底空間 $\\mathcal{B}_i = (\\mathcal{J}_i, \\mathcal{A}_i)$。"
+    },
+    {
+      "symbol": "SPACE",
+      "kind": "function",
+      "description": "宣告底空間的協議訊息，公開節點的概念、判定域與工具集合",
+      "evidence": "SPACE(node_i, B_i)"
+    },
+    {
+      "symbol": "FUNCTOR (κ)",
+      "kind": "function",
+      "description": "建立節點間連接的協議訊息，以 Jaccard 相似度量化兩底空間的相容程度",
+      "evidence": "κ = (|shared_concepts| + |shared_tools|) / (|all_concepts| + |all_tools|)"
+    },
+    {
+      "symbol": "FEN",
+      "kind": "function",
+      "description": "節點提出對共同對象 X 的劃分，回傳可分面向子集、粒度與個別覆蓋度",
+      "evidence": "FEN(node_i, X, Ω(X)) → {\n  partition: [node_i 能分的面向子集]\n  delta:     粒度 = 1 / |partition|\n  coverage:  ρ_i = |partition| / |Ω(X)|\n}"
+    },
+    {
+      "symbol": "GAP",
+      "kind": "function",
+      "description": "廣播節點無法劃分之面向的協議訊息",
+      "evidence": "GAP(node_i, X, partition_i) → {\n  gaps: [Ω(X) 中 node_i 分不了的面向]\n}"
+    },
+    {
+      "symbol": "ρ_collective",
+      "kind": "constant",
+      "description": "系統整體對共同對象的集體覆蓋度",
+      "evidence": "系統整體的覆蓋度 $\\rho_\\text{collective}$ 單調遞增。"
+    },
+    {
+      "symbol": "ε_G",
+      "kind": "constant",
+      "description": "永久間隙：所有節點底空間聯集仍無法覆蓋的部分",
+      "evidence": "若所有節點的底空間聯集仍有空白，則永久間隙 $\\varepsilon_G > 0$，協議誠實標記而非假裝填滿。"
+    },
+    {
+      "symbol": "C(a)",
+      "kind": "function",
+      "description": "共識強度：面向 a 被多少比例的節點覆蓋",
+      "evidence": "$$\\mathcal{C}(a) = \\frac{|\\{i \\mid a \\in B_i\\}|}{|\\{B_i\\}|} \\in [0, 1]$$"
+    }
+  ],
+  "axioms": [
+    {
+      "id": "P-1",
+      "name": "底空間可描述",
+      "formula": "B_i = (J_i, A_i)",
+      "description": "每個 AI 節點能夠用有限的概念集合和工具集合描述自己的底空間",
+      "evidence": "**假設 P-1（底空間可描述）：** 每個 AI 節點能夠用有限的概念集合和工具集合描述自己的底空間 $\\mathcal{B}_i = (\\mathcal{J}_i, \\mathcal{A}_i)$。"
+    },
+    {
+      "id": "P-2",
+      "name": "對象可共識",
+      "formula": "∃X, Ω(X)",
+      "description": "存在共同對象 X，其面向集合可被所有節點理解",
+      "evidence": "**假設 P-2（對象可共識）：** 存在共同對象 $X$，其「面向集合」$\\Omega(X)$（$X$ 的所有相關屬性）可被所有節點理解（即便各節點只能分其中的子集）。"
+    },
+    {
+      "id": "P-3",
+      "name": "函子存在性",
+      "formula": "B_i ∩ B_j ≠ ∅ ⟹ ∃F_ij",
+      "description": "若兩個底空間有非空交集，則存在把一個底空間部分結構映射到另一個的局部函子",
+      "evidence": "**假設 P-3（函子存在性）：** 若兩個底空間有非空交集（$\\mathcal{B}_i \\cap \\mathcal{B}_j \\neq \\emptyset$），則存在局部函子 $F_{ij}$ 把一個底空間的部分結構映射到另一個。"
+    },
+    {
+      "id": "P-4",
+      "name": "誠實廣播",
+      "formula": "GAP_i = true_gaps_i",
+      "description": "節點誠實廣播自己的 GAP，不誇大也不隱藏",
+      "evidence": "**假設 P-4（誠實廣播）：** 節點誠實廣播自己的 GAP，不誇大也不隱藏。GAP 廣播是協議一致性的基礎。"
+    }
+  ],
+  "theorems": [
+    {
+      "id": "D-1",
+      "name": "集體覆蓋單調性",
+      "statement": "在 P-1 至 P-4 假設下，每個協議循環後集體覆蓋 ρ_collective 非嚴格遞增",
+      "from_axioms": ["P-1", "P-2", "P-3", "P-4"],
+      "description": "強猜想：每循環後透過 GAP 整合學到新概念，故覆蓋面積不降",
+      "evidence": "**命題 D-1（集體覆蓋單調性，強猜想）：** 在 P-1 至 P-4 假設下，每個協議循環後集體覆蓋 $\\rho_\\text{collective}$ 非嚴格遞增"
+    },
+    {
+      "id": "B-1",
+      "name": "密度單調性",
+      "statement": "每加入一個誠實廣播 SPACE 的節點，概念密度 D 嚴格不降；若新節點與現有節點有共享概念則嚴格增",
+      "from_axioms": ["P-4"],
+      "description": "強猜想：概念密度隨誠實節點加入單調不降",
+      "evidence": "**命題 B.1（密度單調性，強猜想）：** 每加入一個誠實廣播 SPACE 的節點，概念密度 $\\mathcal{D}$ 嚴格不降：\n\n$$\\mathcal{D}_{n+1} \\geq \\mathcal{D}_n$$"
+    }
+  ],
+  "dag": [
+    {"id": "B_i", "kind": "primitive", "depends_on": []},
+    {"id": "SPACE", "kind": "primitive", "depends_on": ["B_i"]},
+    {"id": "FUNCTOR (κ)", "kind": "primitive", "depends_on": ["B_i"]},
+    {"id": "FEN", "kind": "primitive", "depends_on": ["B_i"]},
+    {"id": "GAP", "kind": "primitive", "depends_on": ["FEN"]},
+    {"id": "ρ_collective", "kind": "primitive", "depends_on": ["FEN", "GAP"]},
+    {"id": "ε_G", "kind": "primitive", "depends_on": ["ρ_collective"]},
+    {"id": "C(a)", "kind": "primitive", "depends_on": ["B_i"]},
+    {"id": "P-1", "kind": "axiom", "depends_on": ["B_i"]},
+    {"id": "P-2", "kind": "axiom", "depends_on": []},
+    {"id": "P-3", "kind": "axiom", "depends_on": ["B_i"]},
+    {"id": "P-4", "kind": "axiom", "depends_on": ["GAP"]},
+    {"id": "D-1", "kind": "theorem", "depends_on": ["P-1", "P-2", "P-3", "P-4", "ρ_collective"]},
+    {"id": "B-1", "kind": "theorem", "depends_on": ["P-4", "C(a)"]}
+  ],
+  "concepts": [
+    {
+      "name": "底空間",
+      "canonical": "BaseSpace",
+      "role": "uses",
+      "evidence": "使其他節點知道 $\\mathcal{B}_i$ 的輪廓，確定哪些對象可能有共識，以及哪種函子可能存在。"
+    },
+    {
+      "name": "分（劃分）",
+      "canonical": "分",
+      "role": "uses",
+      "evidence": "使具備獨立知識圖譜的 AI 節點能夠協作「分」共同對象，而無需任何中央仲裁者。"
+    },
+    {
+      "name": "Gödel 殘差",
+      "canonical": "ConceptIntegration",
+      "role": "uses",
+      "evidence": "這對應 EML-CI-2026-v0.1 的 Gödel 殘差 $\\varepsilon_G$。永久間隙意味著：沒有任何當前節點能分這部分"
+    },
+    {
+      "name": "呼吸週期",
+      "canonical": "ConceptIntegration",
+      "role": "extends",
+      "evidence": "這是 EML-CI-2026-v0.1 呼吸週期（展開→蒸餾→再展開）在分散式節點協作層的對應：低 $\\kappa$ 節點負責廣度展開，高 $\\kappa$ 節點負責深度蒸餾（確認）"
+    },
+    {
+      "name": "分散式協議",
+      "canonical": "DistributedBaseSpaceProtocol",
+      "role": "defines",
+      "evidence": "分散式底空間協議（DFENP）要求每個節點：\n\n1. 把自己的底空間**顯式化**（SPACE 訊息）"
+    },
+    {
+      "name": "函子相容性 κ",
+      "canonical": "OperatorOntology",
+      "role": "uses",
+      "evidence": "函子 $\\kappa$ 量化兩個底空間的相容程度。"
+    },
+    {
+      "name": "拜占庭容錯",
+      "canonical": "AdversarialVerification",
+      "role": "uses",
+      "evidence": "拜占庭容錯（Byzantine fault tolerance）在底空間語義層的對應是什麼？"
+    },
+    {
+      "name": "見證者原則",
+      "canonical": "LeanFormalization",
+      "role": "uses",
+      "evidence": "這是可計算微積分中「每個 ∃ 必須附上見證者」原則在知識節點層的對應。"
+    },
+    {
+      "name": "概念密度",
+      "canonical": "ConceptIntegration",
+      "role": "extends",
+      "evidence": "**定義 B.2（概念密度）：** 節點集合對對象 $X$ 的概念密度為：\n\n$$\\mathcal{D} = \\frac{1}{|\\Omega(X)|} \\sum_{a \\in \\Omega(X)} \\mathcal{C}(a)$$"
+    }
+  ],
+  "external_refs": [
+    {
+      "target": "lm-000329",
+      "type": "extends",
+      "evidence": "**前置文件：** EML-FEN-2026-v0.1（分：數學的底層原語與湧現底空間）",
+      "confidence": 0.95
+    },
+    {
+      "target": "lm-000689",
+      "type": "depends_on",
+      "evidence": "這對應 EML-CI-2026-v0.1 的 Gödel 殘差 $\\varepsilon_G$。",
+      "confidence": 0.85
+    },
+    {
+      "target": "lm-000689",
+      "type": "applies",
+      "evidence": "**Q-5（與概念積分的形式連接）：** DFENP 協議循環是否對應 EML-CI-2026-v0.1 的呼吸週期（定理 4.2）？集體覆蓋 $\\rho_\\text{collective}$ 是否等同於概念積分的 $\\rho(\\mathcal{S}_n, \\mathcal{R})$？",
+      "confidence": 0.8
+    },
+    {
+      "target": "AdversarialVerification",
+      "type": "applies",
+      "evidence": "**Q-4（惡意節點）：** 若某節點廣播虛假的 SPACE 或 GAP（假設 P-4 被違反），協議如何自我修正？拜占庭容錯（Byzantine fault tolerance）在底空間語義層的對應是什麼？",
+      "confidence": 0.5
+    }
+  ],
+  "notes": "協議規格論文，附可執行 Python 示範。前置文件 EML-FEN-2026-v0.1 明確對應 lm-000329（分：數學的底層原語與湧現底空間）。命題 D-1 與 B-1 標註為'強猜想'（非嚴格證明）。開放問題 Q-5 明確連結至 EML-CI-2026-v0.1（概念積分, lm-000689）。"
+}

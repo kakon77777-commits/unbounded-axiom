@@ -1,0 +1,337 @@
+{
+  "tcf_extract_version": "0.1",
+  "id": "lm-000063",
+  "title": "EML-TC-LEAN-2026-v0.1-計畫書",
+  "language": "zh-Hant",
+  "source_file": "content/papers/2026/2026-06/EML-TC-LEAN-2026-v0.1-計畫書.md",
+  "theory_name": "拓樸微積分（Identity Calculus）Lean 4 形式化計畫",
+  "extracted_by": "claude-fable-5 (automated distillation, Phase A)",
+  "extraction_date": "2026-07-02",
+  "canonical_status": "draft",
+  "primitives": [
+    {
+      "symbol": "HashScheme",
+      "kind": "type",
+      "description": "雜湊方案結構：雜湊類型 Hash、雜湊函數 h : α → Hash、注入性 inj；狹義版的密碼學假設在此公理化。",
+      "evidence": "structure HashScheme (α : Type*) where"
+    },
+    {
+      "symbol": "View",
+      "kind": "type",
+      "description": "視圖：由本體雜湊與索引序列構成的二元組，索引類型 ι 任意。",
+      "evidence": "/-- 視圖 = (本體雜湊, 索引序列)。索引類型 ι 任意。 -/"
+    },
+    {
+      "symbol": "d",
+      "kind": "function",
+      "description": "拓樸微分：對本體 O 與索引方案 I 生成視圖族，零複製（每個視圖只攜帶 h O）。",
+      "evidence": "/-- 拓樸微分 d：對本體 O 與索引方案 I（以 List ι 表示有限可枚舉方案）"
+    },
+    {
+      "symbol": "dIter",
+      "kind": "function",
+      "description": "迭代微分：對視圖再施 d，索引串接。",
+      "evidence": "/-- 迭代微分：對視圖再施 d，索引串接。 -/"
+    },
+    {
+      "symbol": "integrate (∫)",
+      "kind": "function",
+      "description": "拓樸積分：遺忘索引、解引用，憑雜湊注入性反演回本體。",
+      "evidence": "/-- 拓樸積分 ∫：遺忘索引，解引用。"
+    },
+    {
+      "symbol": "Op",
+      "kind": "type",
+      "description": "操作的歸納類型，實作雙軌分類（定義 A.6）：dTrack / dIterTrack / integrateTrack 為 d 軌，vTrack 為真刪（減法拓撲側）。",
+      "evidence": "/-- 操作的歸納類型：雙軌分類（定義 A.6）。 -/"
+    },
+    {
+      "symbol": "SystemState",
+      "kind": "type",
+      "description": "系統狀態：以雜湊為鍵的物件庫 store ＋ 視圖集 views，攜帶 storeSound 不變量。",
+      "evidence": "/-- 系統狀態：物件庫（以雜湊為鍵的有限映射）＋ 視圖集。"
+    },
+    {
+      "symbol": "onticCard",
+      "kind": "function",
+      "description": "本體基數：系統狀態中相異本體雜湊的個數，守恆律的度量。",
+      "evidence": "def onticCard (st : SystemState S ι) : Nat :="
+    }
+  ],
+  "axioms": [
+    {
+      "id": "ax-inj",
+      "name": "雜湊注入性公理",
+      "formula": "inj : Function.Injective h",
+      "description": "雜湊以注入函數公理化，不形式化 SHA-256；同一性論證只需注入性。狹義版的密碼學假設在此明文化。",
+      "evidence": "雜湊以**注入函數公理化**，不形式化 SHA-256。同一性論證只需注入性。"
+    },
+    {
+      "id": "ax-store-sound",
+      "name": "物件庫名實相符不變量",
+      "formula": "storeSound : ∀ p ∈ store, S.h p.2 = p.1",
+      "description": "庫中每個 (雜湊, 本體) 對名實相符，作為 SystemState 的結構不變量攜帶。",
+      "evidence": "storeSound : ∀ p ∈ store, S.h p.2 = p.1   -- 庫中名實相符"
+    },
+    {
+      "id": "ax-homog-premise",
+      "name": "視圖同源前提（∫ 良定義性）",
+      "formula": "hv : ∃ O, S.h O = v.hash",
+      "description": "積分的良定義性需要「視圖同源於某本體」作為帶證明的前提參數傳入。",
+      "evidence": "`∫` 的良定義性需要「視圖同源」前提（論文定理 A.2）"
+    },
+    {
+      "id": "ax-duality",
+      "name": "對偶接口聲明（廣義版定義 A.7）",
+      "formula": "∃ v : ι → ι, V (O, i) = (O, v i)",
+      "description": "與減法拓撲對偶的聲明：收斂算子 V 作用等於索引演化，階段四僅以 sorry 佔位。",
+      "evidence": "寫出對偶聲明的 Lean 陳述（廣義版定義 A.7）：存在索引演化 `v : ι → ι` 使 `V (O, i) = (O, v i)`，全部以 `sorry` 佔位。"
+    }
+  ],
+  "theorems": [
+    {
+      "id": "thm-a1",
+      "name": "定理 A.1 基本恆等式（∫∘d = id）",
+      "statement": "對 d 生成的任何視圖，積分返回原本體：integrate S v = O。",
+      "from_axioms": ["ax-inj", "ax-homog-premise"],
+      "description": "拓樸微積分的核心恆等式，階段一必證。",
+      "evidence": "-- 定理 A.1（基本恆等式）：對 d 生成的任何視圖，積分返回原本體"
+    },
+    {
+      "id": "thm-a2",
+      "name": "定理 A.2 良定義性（同源）",
+      "statement": "∀ v ∈ d S O I, v.hash = S.h O：d 的輸出視圖族同源。",
+      "from_axioms": [],
+      "description": "d 生成的所有視圖攜帶同一本體雜湊。",
+      "evidence": "-- 定理 A.2（良定義性）：d 的輸出視圖族同源"
+    },
+    {
+      "id": "thm-a3",
+      "name": "定理 A.3 切法無關性",
+      "statement": "任意兩個索引方案 I、J 下 d 生成的視圖，積分結果相同。",
+      "from_axioms": ["ax-inj", "ax-homog-premise"],
+      "description": "積分結果與切割（索引方案）的選擇無關。",
+      "evidence": "-- 定理 A.3（切法無關性）：任意兩個索引方案，積分結果相同"
+    },
+    {
+      "id": "thm-iter",
+      "name": "迭代不變性（廣義版定理 A.3）",
+      "statement": "任意深度迭代微分後 w.hash = S.h O，積分仍返回原本體。",
+      "from_axioms": [],
+      "description": "迭代微分不改變視圖所指向的本體。",
+      "evidence": "-- 迭代不變性（廣義版定理 A.3）：任意深度的迭代微分後積分仍返回 O"
+    },
+    {
+      "id": "thm-lossy",
+      "name": "反向不對稱（遺忘有損）",
+      "statement": "存在索引不同但雜湊相同的兩個視圖，故 integrate 後索引資訊不可恢復。",
+      "from_axioms": [],
+      "description": "積分是遺忘：d 與 ∫ 的不對稱性注記。",
+      "evidence": "-- 反向不對稱（注記性質）：integrate 後索引資訊不可恢復"
+    },
+    {
+      "id": "thm-puto-idem",
+      "name": "putO 冪等性",
+      "statement": "若 (S.h O, O) 已在庫中，putO st O = st。",
+      "from_axioms": [],
+      "description": "冪等寫入：對已存在本體去重，守恆律的基礎引理。",
+      "evidence": "-- 嚴格版：putO 對已存在本體是冪等的"
+    },
+    {
+      "id": "thm-dtrack-preserve",
+      "name": "d 軌保庫定理",
+      "statement": "任何非 vTrack 操作後，庫中本體集合不減。",
+      "from_axioms": [],
+      "description": "d 軌操作不刪除既有本體，僅可能增加被顯式引入的本體。",
+      "evidence": "-- d 軌操作後，庫中本體集合不減（且僅可能增加被顯式引入的 O）"
+    },
+    {
+      "id": "thm-a5-conservation",
+      "name": "命題 A.5 本體基數守恆律",
+      "statement": "純 d 軌操作序列（不含 vTrack、只引用已有本體）下，onticCard 恆定。",
+      "from_axioms": [],
+      "description": "守恆律主定理，階段二驗收核心。",
+      "evidence": "-- 守恆律主定理：純 d 軌序列下，相異本體數恆定（初始引入後）"
+    },
+    {
+      "id": "thm-a4-colimit",
+      "name": "廣義版命題 A.4 餘極限平凡性",
+      "statement": "視圖族作為切片範疇 Over O 中的離散圖表，其餘極限存在且同構於 O。",
+      "from_axioms": [],
+      "description": "範疇論橋：以 Mathlib 的 colimit API 表述積分的範疇論版本。",
+      "evidence": "證明：此類圖表的餘極限存在且同構於 O（調用 `CategoryTheory.Limits.colimit` API；關鍵引理是常值圖表的餘極限）。"
+    },
+    {
+      "id": "thm-a5-sheaf",
+      "name": "命題 A.5 常值層對應",
+      "statement": "常值預層 U ↦ O 滿足黏合條件的平凡性（允許降級為：常值預層在連通空間上是層）。",
+      "from_axioms": [],
+      "description": "以 TopCat.Presheaf 表述本體的層論對應。",
+      "evidence": "常值層對應（A.5 命題）：用 `TopCat.Presheaf` 定義常值預層 `U ↦ O`，證明其滿足黏合條件的平凡性。"
+    },
+    {
+      "id": "thm-faithful",
+      "name": "忠實性定理（狹義版是廣義版的模型）",
+      "statement": "存在解釋函數把 (HashScheme, View, d, integrate) 映入範疇論結構，使定理 A.1–A.3 成為範疇論版本的特例。",
+      "from_axioms": [],
+      "description": "互驗協議第 1 條的機器化，階段三必須完成。",
+      "evidence": "忠實性定理（互驗協議第 1 條的機器化）：構造解釋函數，把階段一的 `(HashScheme, View, d, integrate)` 映入第 2 步的範疇論結構"
+    }
+  ],
+  "dag": [
+    { "id": "prim-hashscheme", "kind": "primitive", "depends_on": [] },
+    { "id": "prim-view", "kind": "primitive", "depends_on": ["prim-hashscheme"] },
+    { "id": "prim-d", "kind": "primitive", "depends_on": ["prim-hashscheme", "prim-view"] },
+    { "id": "prim-diter", "kind": "primitive", "depends_on": ["prim-view"] },
+    { "id": "prim-integrate", "kind": "primitive", "depends_on": ["prim-view", "prim-hashscheme", "ax-inj", "ax-homog-premise"] },
+    { "id": "prim-op", "kind": "primitive", "depends_on": ["prim-view", "prim-hashscheme"] },
+    { "id": "prim-systemstate", "kind": "primitive", "depends_on": ["prim-hashscheme", "prim-view"] },
+    { "id": "prim-onticcard", "kind": "primitive", "depends_on": ["prim-systemstate"] },
+    { "id": "ax-inj", "kind": "axiom", "depends_on": ["prim-hashscheme"] },
+    { "id": "ax-store-sound", "kind": "axiom", "depends_on": ["prim-systemstate", "prim-hashscheme"] },
+    { "id": "ax-homog-premise", "kind": "axiom", "depends_on": ["prim-view", "prim-hashscheme"] },
+    { "id": "ax-duality", "kind": "axiom", "depends_on": ["prim-view"] },
+    { "id": "thm-a1", "kind": "theorem", "depends_on": ["prim-d", "prim-integrate", "ax-inj", "ax-homog-premise"] },
+    { "id": "thm-a2", "kind": "theorem", "depends_on": ["prim-d", "prim-view"] },
+    { "id": "thm-a3", "kind": "theorem", "depends_on": ["prim-d", "prim-integrate", "ax-inj", "ax-homog-premise"] },
+    { "id": "thm-iter", "kind": "theorem", "depends_on": ["prim-d", "prim-diter"] },
+    { "id": "thm-lossy", "kind": "theorem", "depends_on": ["prim-view", "prim-hashscheme"] },
+    { "id": "thm-puto-idem", "kind": "theorem", "depends_on": ["prim-systemstate", "prim-hashscheme"] },
+    { "id": "thm-dtrack-preserve", "kind": "theorem", "depends_on": ["prim-op", "prim-systemstate"] },
+    { "id": "thm-a5-conservation", "kind": "theorem", "depends_on": ["prim-onticcard", "prim-op", "prim-systemstate", "thm-puto-idem", "thm-dtrack-preserve"] },
+    { "id": "thm-a4-colimit", "kind": "theorem", "depends_on": ["prim-view"] },
+    { "id": "thm-a5-sheaf", "kind": "theorem", "depends_on": [] },
+    { "id": "thm-faithful", "kind": "theorem", "depends_on": ["prim-hashscheme", "prim-view", "prim-d", "prim-integrate", "thm-a1", "thm-a2", "thm-a3", "thm-a4-colimit"] }
+  ],
+  "concepts": [
+    {
+      "name": "拓樸微積分（Identity Calculus）",
+      "canonical": "TopologicalCalculus",
+      "role": "uses",
+      "evidence": "# 拓樸微積分 Lean 4 形式化驗證計畫書"
+    },
+    {
+      "name": "Lean 4 形式化驗證",
+      "canonical": "LeanFormalization",
+      "role": "uses",
+      "evidence": "階段一、二**不依賴 Mathlib**，純 Lean 4 核心即可，先跑通最小閉環。"
+    },
+    {
+      "name": "拓樸微分 d",
+      "canonical": "TopologicalDifferential",
+      "role": "defines",
+      "evidence": "/-- 拓樸微分 d：對本體 O 與索引方案 I（以 List ι 表示有限可枚舉方案）"
+    },
+    {
+      "name": "拓樸積分 ∫",
+      "canonical": "TopologicalIntegral",
+      "role": "defines",
+      "evidence": "/-- 拓樸積分 ∫：遺忘索引，解引用。"
+    },
+    {
+      "name": "視圖",
+      "canonical": "View",
+      "role": "defines",
+      "evidence": "/-- 視圖 = (本體雜湊, 索引序列)。索引類型 ι 任意。 -/"
+    },
+    {
+      "name": "本體零複製",
+      "canonical": "ZeroCopy",
+      "role": "uses",
+      "evidence": "你在驗證的這套理論主張：切割是索引、積分是遺忘、本體零複製。"
+    },
+    {
+      "name": "本體基數不變性（守恆律）",
+      "canonical": "OnticConservation",
+      "role": "defines",
+      "evidence": "**目標**：命題 A.5（本體基數不變性）、雙軌分類（定義 A.6）、不可變性紀律的形式化。"
+    },
+    {
+      "name": "雙軌分類",
+      "canonical": "DualTrackClassification",
+      "role": "defines",
+      "evidence": "/-- 操作的歸納類型：雙軌分類（定義 A.6）。 -/"
+    },
+    {
+      "name": "切法無關性",
+      "canonical": "CutInvariance",
+      "role": "defines",
+      "evidence": "-- 定理 A.3（切法無關性）：任意兩個索引方案，積分結果相同"
+    },
+    {
+      "name": "減法拓撲學",
+      "canonical": "SubtractiveTopology",
+      "role": "uses",
+      "evidence": "依賴減法拓撲學（EML-TOPO-2026-SUB-v2.0）自身的形式化（單純複形、收斂算子 V、秩泛函），屬聯合工程。"
+    },
+    {
+      "name": "切片範疇與餘極限",
+      "canonical": "CategoryTheory",
+      "role": "uses",
+      "evidence": "**目標**：廣義版命題 A.4（切片範疇、餘極限平凡性）、A.5（常值層對應）、以及**狹義版是廣義版的模型**這一忠實性定理。"
+    },
+    {
+      "name": "常值層",
+      "canonical": "ConstantSheaf",
+      "role": "uses",
+      "evidence": "常值層對應（A.5 命題）：用 `TopCat.Presheaf` 定義常值預層 `U ↦ O`，證明其滿足黏合條件的平凡性。"
+    },
+    {
+      "name": "內容尋址",
+      "canonical": "ContentAddressing",
+      "role": "uses",
+      "evidence": "物件庫：內容尋址，攜帶正確性不變量 store(h(O)) = O。"
+    },
+    {
+      "name": "EML（文件族）",
+      "canonical": "EML",
+      "role": "uses",
+      "evidence": "**文件編號**：EML-TC-LEAN-2026-v0.1"
+    },
+    {
+      "name": "證明檢查過程的自我例示",
+      "canonical": "SelfInstantiation",
+      "role": "defines",
+      "evidence": "驗證通過之日，這個理論將擁有一個罕見性質：**它的證明檢查過程是它自己的一個實例**。"
+    }
+  ],
+  "external_refs": [
+    {
+      "target": "TopologicalCalculus",
+      "type": "verifies",
+      "evidence": "**目標理論**：EML-TC-ONT-2026-v0.1（廣義）＋ EML-TC-COMP-2026-v0.1（狹義）",
+      "confidence": 0.98
+    },
+    {
+      "target": "LeanFormalization",
+      "type": "applies",
+      "evidence": "## Lean 4 Formal Verification Plan for Topological Calculus (Identity Calculus)",
+      "confidence": 0.98
+    },
+    {
+      "target": "SubtractiveTopology",
+      "type": "depends_on",
+      "evidence": "依賴減法拓撲學（EML-TOPO-2026-SUB-v2.0）自身的形式化（單純複形、收斂算子 V、秩泛函），屬聯合工程。",
+      "confidence": 0.9
+    },
+    {
+      "target": "Mathlib",
+      "type": "depends_on",
+      "evidence": "階段三再加 `require mathlib from git \"https://github.com/leanprover-community/mathlib4\"`。",
+      "confidence": 0.95
+    },
+    {
+      "target": "CategoryTheory",
+      "type": "applies",
+      "evidence": "用 `CategoryTheory.Over` 表述視角族：對範疇 𝒞 中對象 O，視圖族是 `Over O` 中的離散圖表",
+      "confidence": 0.9
+    },
+    {
+      "target": "CryptographicHash",
+      "type": "depends_on",
+      "evidence": "雜湊以**注入函數公理化**，不形式化 SHA-256。同一性論證只需注入性。",
+      "confidence": 0.8
+    }
+  ],
+  "notes": "此文為驗證計畫書而非證明完成的論文：所有定理是待證目標（sorry 骨架），非已證結果，from_axioms 依骨架的邏輯依賴推定。目標理論 EML-TC-ONT/EML-TC-COMP 與減法拓撲 EML-TOPO-2026-SUB 不在語料 lm-id 清單中，故以新 canonical 名（TopologicalCalculus、SubtractiveTopology）記錄。primitives 受上限裁剪：略去 ObjectStore、putO、step；相關定理的 dag 依賴改掛 SystemState。對偶聲明（定義 A.7）以 axiom 佔位建模。"
+}

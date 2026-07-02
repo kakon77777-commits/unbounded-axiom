@@ -1,0 +1,390 @@
+{
+  "tcf_extract_version": "0.1",
+  "id": "lm-000456",
+  "title": "展平式維度重構理論：完整數學架構與概念解析",
+  "language": "zh-Hant",
+  "source_file": "content/papers/2026/2026-04/展平式維度重構理論：完整數學架構與概念解析.md",
+  "theory_name": "展平式維度重構理論（FDRS: Flattened Dimensional Reconstructive Theory）",
+  "extracted_by": "claude-fable-5 (automated distillation, Phase A)",
+  "extraction_date": "2026-07-02",
+  "canonical_status": "draft",
+  "primitives": [
+    {
+      "symbol": "M",
+      "kind": "type",
+      "description": "魔術方塊狀態的 6×9 矩陣（等價於 54 維狀態向量），FCSR 展平色位圖的狀態空間表示",
+      "evidence": "定義魔術方塊的狀態為一個54維向量，或等價地，一個6×9的矩陣 $M$"
+    },
+    {
+      "symbol": "T_i",
+      "kind": "function",
+      "description": "基本轉動（U、D、L、R、F、B 及逆操作）對應的 54 維線性變換",
+      "evidence": "每個基本轉動（U、D、L、R、F、B及其逆操作）對應一個線性變換 $T_i: \\mathbb{R}^{54} \\rightarrow \\mathbb{R}^{54}$。"
+    },
+    {
+      "symbol": "Dim_FDRS(S)",
+      "kind": "function",
+      "description": "FDRS 維度：以連結圖代數連通度、柯氏複雜度與平均度數重新定義的維度（結構複雜度×邏輯連結密度）",
+      "evidence": "我們將維度重新定義為**結構複雜度與邏輯連結密度的乘積**。"
+    },
+    {
+      "symbol": "Φ",
+      "kind": "function",
+      "description": "通用展平映射：將 n 維結構 H 經分割與局部投影映到 (n-1) 維展平表示（定義3.1）",
+      "evidence": "設高維結構 $H \\in \\mathbb{R}^n$，其展平映射 $\\Phi: H \\rightarrow \\mathcal{F}_{n-1}$ 定義為："
+    },
+    {
+      "symbol": "Ψ",
+      "kind": "function",
+      "description": "維度分割函數：將 n 維結構分割為在 (n-1) 維空間有良定義表示的片段族 {H_i}",
+      "evidence": "$$\\Psi: H \\rightarrow {H_1, H_2, \\ldots, H_k}$$"
+    },
+    {
+      "symbol": "f_{i,j}",
+      "kind": "function",
+      "description": "RDCM 的邏輯連結映射組：低維空間片段 P_i、P_j 之間的雙向映射，重構高維結構的『連接接口』",
+      "evidence": "$$\\Phi = {f_{i,j} : P_i \\leftrightarrow P_j}$$"
+    },
+    {
+      "symbol": "ρ_n(x)",
+      "kind": "function",
+      "description": "結構資訊密度：局部 Shannon 熵與 n 維 Hausdorff 測度之比的極限（定義5.1）",
+      "evidence": "對於 $n$ 維結構 $H$，在點 $x$ 處的結構資訊密度定義為："
+    },
+    {
+      "symbol": "U(d)",
+      "kind": "function",
+      "description": "維度效益函數：動態維度選擇策略中精度、成本、複雜度的加權折衷",
+      "evidence": "$U(d) = \\alpha \\cdot \\text{Accuracy}(d) - \\beta \\cdot \\text{Cost}(d) - \\gamma \\cdot \\text{Complexity}(d)$"
+    }
+  ],
+  "axioms": [
+    {
+      "id": "ax-core-insight",
+      "name": "核心洞察：複雜性是視角問題",
+      "formula": "",
+      "description": "理論的哲學前提：複雜性源於觀察方式而非事物本質，故可經視角（維度）轉換消解",
+      "evidence": "複雜性往往不是事物的本質特徵，而是我們觀察事物的方式造成的認知負擔"
+    },
+    {
+      "id": "ax-flatten-universality",
+      "name": "原理3.1：展平的普遍性原理",
+      "formula": "∀ 有限維結構 S, ∃ 低維展平表示保持其本質屬性",
+      "description": "任意有限維結構都可展平；結構的本質在於關係模式而非幾何嵌入",
+      "evidence": "任意有限維結構都存在保持其本質屬性的低維展平表示。"
+    },
+    {
+      "id": "ax-adjacency",
+      "name": "鄰接保持性",
+      "formula": "∀x,y∈H: x∼y ⇒ Φ(x)∼Φ(y)",
+      "description": "展平映射的關鍵約束一：局部鄰接關係在展平後保留",
+      "evidence": "**鄰接保持性**：$\\forall x, y \\in H$，若 $x \\sim y$，則 $\\Phi(x) \\sim \\Phi(y)$"
+    },
+    {
+      "id": "ax-connectivity",
+      "name": "連通性保持",
+      "formula": "H 連通 ⇔ Φ(H) 連通",
+      "description": "展平映射的關鍵約束二：全局連通性雙向保持",
+      "evidence": "**連通性保持**：$H$ 連通當且僅當 $\\Phi(H)$ 連通"
+    },
+    {
+      "id": "ax-topo-equiv",
+      "name": "拓撲等價性",
+      "formula": "∃ 同胚 h: H → Φ(H)",
+      "description": "展平映射的關鍵約束三：原結構與展平表示同胚",
+      "evidence": "**拓撲等價性**：存在同胚映射 $h: H \\rightarrow \\Phi(H)$"
+    },
+    {
+      "id": "ax-partition",
+      "name": "維度分割條件",
+      "formula": "∪H_i = H; H_i∩H_j = ∂H_i∩∂H_j; 每個 H_i 在 (n-1) 維有良定義表示",
+      "description": "分割函數 Ψ 須完全覆蓋、僅在邊界相交、片段低維可表示",
+      "evidence": "$H_i \\cap H_j = \\partial H_i \\cap \\partial H_j$（僅在邊界相交）"
+    },
+    {
+      "id": "ax-closure",
+      "name": "定義4.1：封閉映射組",
+      "formula": "∀i,j,k: f_{i,j}∘f_{j,k} = f_{i,k}, 且 f_{i,i} = id",
+      "description": "RDCM 映射組的封閉性條件（合成封閉且含恆等映射）",
+      "evidence": "$$\\forall i, j, k: f_{i,j} \\circ f_{j,k} = f_{i,k}$$"
+    },
+    {
+      "id": "ax-consistency",
+      "name": "三層一致性約束",
+      "formula": "局部一致性（邊界有定義）∧ 全局一致性（連通整體）∧ 動態一致性（d/dt Σ|f−f*|² ≤ 0）",
+      "description": "RDCM 映射組必須滿足的局部、全局、動態三個層次的一致性",
+      "evidence": "映射組必須滿足三個層次的一致性"
+    }
+  ],
+  "theorems": [
+    {
+      "id": "thm-2-1",
+      "name": "定理2.1：魔術方塊群的結構",
+      "statement": "所有基本轉動操作構成有限群 G = ⟨U,D,L,R,F,B⟩（封閉性、結合性、單位元、逆元）",
+      "from_axioms": [],
+      "description": "FCSR 模型的群論基礎：展平後的操作仍構成群，由物理性質直接驗證四公理",
+      "evidence": "所有基本轉動操作構成一個有限群 $G = \\langle U, D, L, R, F, B \\rangle$"
+    },
+    {
+      "id": "cor-2-1",
+      "name": "推論2.1：最優解的存在性",
+      "statement": "任意初始狀態存在回到解決狀態的最短轉動序列，長度不超過 20 步（God's Number）",
+      "from_axioms": [],
+      "description": "FCSR 解法理論上可逼近最優解；引用 God's Number 已知結果",
+      "evidence": "存在最短轉動序列使其回到解決狀態，且最短序列長度不超過20步（God's Number）"
+    },
+    {
+      "id": "thm-3-1",
+      "name": "定理3.1：展平映射的保結構性",
+      "statement": "滿足鄰接保持、連通性保持、拓撲等價三約束的展平映射 Φ 為結構保持映射：Φ(τ(H)) = T(Φ(H))",
+      "from_axioms": ["ax-adjacency", "ax-connectivity", "ax-topo-equiv"],
+      "description": "高維變換與展平空間變換可交換，展平不丟失本質結構",
+      "evidence": "若展平映射 $\\Phi$ 滿足上述約束條件，則 $\\Phi$ 為結構保持映射。"
+    },
+    {
+      "id": "cor-3-1",
+      "name": "推論3.1：操作等價性",
+      "statement": "展平空間中的操作序列與原高維空間中對應操作序列產生拓撲等價的結果",
+      "from_axioms": [],
+      "description": "理論上保證展平操作不丟失本質信息",
+      "evidence": "在展平空間中執行的操作序列，與在原高維空間中執行的對應操作序列，產生拓撲等價的結果。"
+    },
+    {
+      "id": "lem-4-1",
+      "name": "引理4.1：封閉映射組的群結構",
+      "statement": "封閉映射組在合成運算下構成群（結合律、恆等元 f_{i,i}、逆元 f_{j,i}）",
+      "from_axioms": ["ax-closure"],
+      "description": "RDCM 重構的代數基礎",
+      "evidence": "封閉映射組在合成運算下構成群結構。"
+    },
+    {
+      "id": "thm-4-1",
+      "name": "定理4.1：RDCM主定理（升維存在唯一性）",
+      "statement": "給定 (n-1) 維結構組 {P_i} 與滿足封閉性和一致性的映射組 Φ，存在唯一 n 維結構 H 使 Φ⁻¹(H) = {P_i}；證明經纖維叢構造、拓撲等價性、萬有性質",
+      "from_axioms": ["ax-closure", "ax-consistency"],
+      "description": "逆向升維：由低維片段與映射組唯一重構高維結構",
+      "evidence": "設 ${P_i}_{i=1}^k$ 為 $(n-1)$ 維結構組，$\\Phi$ 為滿足封閉性和一致性條件的映射組，則存在唯一的 $n$ 維結構 $H$ 使得："
+    },
+    {
+      "id": "cor-4-1",
+      "name": "推論4.1：構造算法的收斂性",
+      "statement": "基於 RDCM 的迭代構造算法必定收斂到唯一的高維結構",
+      "from_axioms": [],
+      "description": "主定理的算法化推論",
+      "evidence": "基於RDCM的迭代構造算法必定收斂到唯一的高維結構。"
+    },
+    {
+      "id": "thm-5-1",
+      "name": "定理5.1：展平資訊守恆定律",
+      "statement": "展平映射下資訊密度的總積分守恆：∫_H ρ_n dμ_n = ∫_Φ(H) ρ*_{n-1} dμ_{n-1}；由測度論變數變換與廣義 Jacobian 證明",
+      "from_axioms": [],
+      "description": "維度變換不損失資訊總量，只改變資訊密度分佈",
+      "evidence": "$\\int_H \\rho_n(x) , d\\mu_n(x) = \\int_{\\Phi(H)} \\rho_{n-1}^*(y) , d\\mu_{n-1}(y)$"
+    },
+    {
+      "id": "cor-5-1",
+      "name": "推論5.1：資訊密度重分佈",
+      "statement": "展平後每點的等效密度為原像各點密度乘 Jacobian 之和，即展平後單點聚集原空間多點的信息",
+      "from_axioms": [],
+      "description": "守恆定律的局部化表述",
+      "evidence": "$\\rho_{n-1}^*(y) = \\sum_{x \\in \\Phi^{-1}(y)} \\rho_n(x) \\cdot J_\\Phi(x)$"
+    },
+    {
+      "id": "thm-5-2",
+      "name": "定理5.2：資訊密度爆炸定理",
+      "statement": "維度 n 足夠大時，展平後的最大局部資訊密度呈階乘增長 O(n!)；由超立方體面計數與鄰接排列組合複雜度推導",
+      "from_axioms": [],
+      "description": "解釋完整展平高維結構導致資訊密度爆炸；被用於詮釋混沌、NP-hard 與意識",
+      "evidence": "$\\rho_{n-1}^*_{\\text{max}} \\sim O(n!)$"
+    }
+  ],
+  "dag": [
+    {"id": "prim-M", "kind": "primitive", "depends_on": []},
+    {"id": "prim-T", "kind": "primitive", "depends_on": ["prim-M"]},
+    {"id": "prim-dim-fdrs", "kind": "primitive", "depends_on": []},
+    {"id": "prim-phi", "kind": "primitive", "depends_on": []},
+    {"id": "prim-psi", "kind": "primitive", "depends_on": []},
+    {"id": "prim-f", "kind": "primitive", "depends_on": []},
+    {"id": "prim-rho", "kind": "primitive", "depends_on": []},
+    {"id": "prim-utility", "kind": "primitive", "depends_on": []},
+    {"id": "ax-core-insight", "kind": "axiom", "depends_on": []},
+    {"id": "ax-flatten-universality", "kind": "axiom", "depends_on": ["ax-core-insight"]},
+    {"id": "ax-adjacency", "kind": "axiom", "depends_on": ["prim-phi"]},
+    {"id": "ax-connectivity", "kind": "axiom", "depends_on": ["prim-phi"]},
+    {"id": "ax-topo-equiv", "kind": "axiom", "depends_on": ["prim-phi"]},
+    {"id": "ax-partition", "kind": "axiom", "depends_on": ["prim-psi"]},
+    {"id": "ax-closure", "kind": "axiom", "depends_on": ["prim-f"]},
+    {"id": "ax-consistency", "kind": "axiom", "depends_on": ["prim-f"]},
+    {"id": "thm-2-1", "kind": "theorem", "depends_on": ["prim-T"]},
+    {"id": "cor-2-1", "kind": "theorem", "depends_on": ["thm-2-1"]},
+    {"id": "thm-3-1", "kind": "theorem", "depends_on": ["ax-adjacency", "ax-connectivity", "ax-topo-equiv"]},
+    {"id": "cor-3-1", "kind": "theorem", "depends_on": ["thm-3-1"]},
+    {"id": "lem-4-1", "kind": "theorem", "depends_on": ["ax-closure"]},
+    {"id": "thm-4-1", "kind": "theorem", "depends_on": ["ax-closure", "ax-consistency", "lem-4-1"]},
+    {"id": "cor-4-1", "kind": "theorem", "depends_on": ["thm-4-1"]},
+    {"id": "thm-5-1", "kind": "theorem", "depends_on": ["prim-rho", "prim-phi"]},
+    {"id": "cor-5-1", "kind": "theorem", "depends_on": ["thm-5-1"]},
+    {"id": "thm-5-2", "kind": "theorem", "depends_on": ["thm-5-1", "prim-rho"]}
+  ],
+  "concepts": [
+    {
+      "name": "展平式維度重構理論",
+      "canonical": "FDRS",
+      "role": "defines",
+      "evidence": "展平式維度重構理論的核心洞察是：**複雜性往往不是事物的本質特徵，而是我們觀察事物的方式造成的認知負擔**。"
+    },
+    {
+      "name": "FCSR（展平色位圖模型）",
+      "canonical": "FDRS",
+      "role": "defines",
+      "evidence": "FCSR（Flat Color-State Resolution）模型將這個高維問題降解為二維的視覺操作。"
+    },
+    {
+      "name": "RDCM（逆向升維理論）",
+      "canonical": "RDCM",
+      "role": "defines",
+      "evidence": "這就是RDCM（Reverse Dimensional Constructive Model）的核心思想。"
+    },
+    {
+      "name": "結構資訊密度",
+      "canonical": "InformationDensity",
+      "role": "defines",
+      "evidence": "對於 $n$ 維結構 $H$，在點 $x$ 處的結構資訊密度定義為："
+    },
+    {
+      "name": "展平資訊守恆",
+      "canonical": "InformationConservation",
+      "role": "defines",
+      "evidence": "因此積分相等，證明了資訊總量守恆"
+    },
+    {
+      "name": "動態維度選擇",
+      "canonical": "DynamicDimensionSelection",
+      "role": "defines",
+      "evidence": "我們提出**動態維度選擇**的策略：不是固定地選擇高維或低維，而是根據問題的特性和資源約束動態調整維度。"
+    },
+    {
+      "name": "宇宙作為高維投影",
+      "canonical": "UniverseAsProjection",
+      "role": "defines",
+      "evidence": "我們觀察到的三維宇宙，可能只是一個更高維現實的「投影」或「展平」表示。"
+    },
+    {
+      "name": "底空間",
+      "canonical": "BaseSpace",
+      "role": "uses",
+      "evidence": "底空間 $B$ 由 ${P_i}$ 的商空間構成"
+    },
+    {
+      "name": "纖維叢",
+      "canonical": "WorldBundle",
+      "role": "uses",
+      "evidence": "由映射組 $\\Phi$ 的封閉性，構造纖維叢 $(E, B, \\pi, F)$："
+    },
+    {
+      "name": "群結構",
+      "canonical": "GroupTheory",
+      "role": "uses",
+      "evidence": "所有基本轉動操作構成一個有限群 $G = \\langle U, D, L, R, F, B \\rangle$"
+    },
+    {
+      "name": "柯氏複雜度",
+      "canonical": "KolmogorovComplexity",
+      "role": "uses",
+      "evidence": "$\\mathcal{K}(S)$ 為結構的柯氏複雜度（衡量信息內容）"
+    },
+    {
+      "name": "Shannon熵",
+      "canonical": "ShannonEntropy",
+      "role": "uses",
+      "evidence": "$\\mathcal{H}(\\cdot)$ 為Shannon熵函數，計算局部結構的資訊熵"
+    },
+    {
+      "name": "弦理論",
+      "canonical": "StringTheory",
+      "role": "uses",
+      "evidence": "現代物理學中的弦理論假設宇宙具有10個或11個維度，其中多出來的維度被「緊緻化」或「摺疊」起來，小到無法被我們直接觀測。"
+    },
+    {
+      "name": "NP-hard問題",
+      "canonical": "PvsNP",
+      "role": "uses",
+      "evidence": "NP-hard問題的困難性可能不是計算本身的限制，而是我們試圖在低維框架中理解本質上高維的問題。"
+    },
+    {
+      "name": "第一性原理",
+      "canonical": "FirstPrinciples",
+      "role": "uses",
+      "evidence": "AI首先學習識別和提取各個領域的「第一性原理」——那些能夠生成表面現象的基本規律。"
+    }
+  ],
+  "external_refs": [
+    {
+      "target": "lm-000457",
+      "type": "extends",
+      "evidence": "**第三章：FDRS****通用理論框架**",
+      "confidence": 0.6
+    },
+    {
+      "target": "GroupTheory",
+      "type": "depends_on",
+      "evidence": "所有基本轉動操作構成一個有限群 $G = \\langle U, D, L, R, F, B \\rangle$",
+      "confidence": 0.95
+    },
+    {
+      "target": "KolmogorovComplexity",
+      "type": "depends_on",
+      "evidence": "$\\mathcal{K}(S)$ 為結構的柯氏複雜度（衡量信息內容）",
+      "confidence": 0.9
+    },
+    {
+      "target": "ShannonEntropy",
+      "type": "depends_on",
+      "evidence": "$\\mathcal{H}(\\cdot)$ 為Shannon熵函數，計算局部結構的資訊熵",
+      "confidence": 0.9
+    },
+    {
+      "target": "WorldBundle",
+      "type": "depends_on",
+      "evidence": "由映射組 $\\Phi$ 的封閉性，構造纖維叢 $(E, B, \\pi, F)$：",
+      "confidence": 0.7
+    },
+    {
+      "target": "BaseSpace",
+      "type": "applies",
+      "evidence": "底空間 $B$ 由 ${P_i}$ 的商空間構成",
+      "confidence": 0.65
+    },
+    {
+      "target": "StringTheory",
+      "type": "applies",
+      "evidence": "現代物理學中的弦理論假設宇宙具有10個或11個維度，其中多出來的維度被「緊緻化」或「摺疊」起來，小到無法被我們直接觀測。",
+      "confidence": 0.85
+    },
+    {
+      "target": "PvsNP",
+      "type": "applies",
+      "evidence": "NP-hard問題的困難性可能不是計算本身的限制，而是我們試圖在低維框架中理解本質上高維的問題。",
+      "confidence": 0.6
+    },
+    {
+      "target": "QuantumMechanics",
+      "type": "applies",
+      "evidence": "量子力學中許多「怪異」的現象——如量子糾纏、波粒二象性、測不準原理——如果從展平理論的角度重新審視，可能有全新的解釋",
+      "confidence": 0.8
+    },
+    {
+      "target": "LandauerLimit",
+      "type": "applies",
+      "evidence": "在量子尺度上，信息處理受到Landauer限制和量子不確定性原理約束。",
+      "confidence": 0.8
+    },
+    {
+      "target": "GodsNumber",
+      "type": "applies",
+      "evidence": "存在最短轉動序列使其回到解決狀態，且最短序列長度不超過20步（God's Number）",
+      "confidence": 0.85
+    }
+  ],
+  "notes": "定義/原理/約束條件歸為 axioms，定理/引理/推論歸為 theorems。lm-000457 為同一 FCSR→FDRS 理論的姊妹版本，關係標 extends（置信度中等）。纖維叢/底空間為標準數學用法，依詞彙表映射至 WorldBundle/BaseSpace，非引用語料庫底空間理論。第6章應用展望與第7章極值分析（上下界不等式）未形式化收錄，僅保留 U(d) 與 DynamicDimensionSelection。原文日期 2025.8。"
+}

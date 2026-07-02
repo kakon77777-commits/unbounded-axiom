@@ -1,0 +1,310 @@
+{
+  "tcf_extract_version": "0.1",
+  "id": "lm-000058",
+  "title": "EML-COMP-THEORY-2026-APPENDIX-v0_1",
+  "language": "en",
+  "source_file": "content/papers/2026/2026-06/EML-COMP-THEORY-2026-APPENDIX-v0_1.md",
+  "theory_name": "DSCM (Depth-Stratified Computational Model) and T = Cl formal appendix",
+  "extracted_by": "claude-fable-5 (automated distillation, Phase A)",
+  "extraction_date": "2026-07-02",
+  "canonical_status": "draft",
+  "primitives": [
+    {
+      "symbol": "M_d",
+      "kind": "type",
+      "description": "Configuration space at depth d in the depth-stratified computational model",
+      "evidence": "$\\{M_d\\}_{d \\in \\mathbb{N}}$ 是計算空間族，$M_d$ 是深度 $d$ 的配置空間（configuration space）。"
+    },
+    {
+      "symbol": "Pi_d",
+      "kind": "function",
+      "description": "Projection operator family mapping depth d+1 states to depth d observable representation",
+      "evidence": "$\\Pi_d : M_{d+1} \\to M_d$ 是投影算子族，將深度 $d+1$ 的狀態投影至深度 $d$ 的可觀測表示。"
+    },
+    {
+      "symbol": "iota_d",
+      "kind": "function",
+      "description": "Inclusion operator family representing computational descent into depth d+1 (function call semantics)",
+      "evidence": "$\\iota_d : M_d \\to M_{d+1}$ 是包含算子族，表示深度 $d$ 的計算「下潛」至深度 $d+1$（函數呼叫語義）。"
+    },
+    {
+      "symbol": "C (constraint set)",
+      "kind": "constant",
+      "description": "Composition constraint set specifying legal inter-depth interactions",
+      "evidence": "$\\mathcal{C}$ 是組合約束集，規定合法的深度間交互。"
+    },
+    {
+      "symbol": "DH(P,x)",
+      "kind": "relation",
+      "description": "Depth halting problem: whether program P on input x eventually fully ascends to depth d=0",
+      "evidence": "深度停機問題問：$$DH(P, x) = \\begin{cases} 1 & \\text{若 } P \\text{ 在輸入 } x \\text{ 上的深度遍歷最終完全浮出至 } d=0 \\\\ 0 & \\text{否則} \\end{cases}$$"
+    },
+    {
+      "symbol": "T",
+      "kind": "constant",
+      "description": "The transparent, infinite-dimensional, pure-structure entity defined by four properties and argued to equal S^infinity",
+      "evidence": "設 T 被定義為：\n1. 透明（無本質屬性，僅有關係結構）\n2. 無限維（不被任何有限維度描述）"
+    },
+    {
+      "symbol": "G (GOD POINT)",
+      "kind": "constant",
+      "description": "The limit of Cl + epsilon as epsilon approaches 0+, a dynamic process approaching T",
+      "evidence": "GOD POINT $G = \\lim_{\\varepsilon \\to 0^+}(Cl + \\varepsilon)$ 是趨近 $T$（= $S^\\infty$ = 可縮點）的動態過程"
+    },
+    {
+      "symbol": "M (medium)",
+      "kind": "function",
+      "description": "A medium mapping T to the reality R_M it produces, associated with an epsilon_M offset",
+      "evidence": "介質 $M$ 是一個滿足以下條件的映射：$$M: T \\to \\mathcal{R}_M$$"
+    }
+  ],
+  "axioms": [
+    {
+      "id": "A1-C",
+      "name": "相鄰性約束 (Adjacency Constraint)",
+      "formula": "\\forall d_1, d_2 \\in \\mathbb{N}: \\text{Direct\\_Interaction}(d_1, d_2) \\Rightarrow |d_1 - d_2| \\leq 1",
+      "description": "All direct interactions occur only between adjacent depth layers; cross-layer interactions must pass through intermediary layers",
+      "evidence": "$$\\forall d_1, d_2 \\in \\mathbb{N}: \\text{Direct\\_Interaction}(d_1, d_2) \\Rightarrow |d_1 - d_2| \\leq 1$$"
+    },
+    {
+      "id": "A4-CL",
+      "name": "Cl 公理系統 (Cl axiom system)",
+      "formula": "Cl-1 自我一致性; Cl-2 對偶性; Cl-3 守恆性; Cl-4 生成性 (\\pi_n(Cl) = S^{n-1})",
+      "description": "The four axioms of the Closure (Cl) framework: self-consistency, duality, conservation, generativity",
+      "evidence": "**Cl-1（自我一致性）**：Cl 的任何合法運算的結果仍在 Cl 的定義域內。"
+    },
+    {
+      "id": "Cl-4",
+      "name": "生成性 (Generativity)",
+      "formula": "\\pi_n(Cl) = S^{n-1}",
+      "description": "Self-reflection generates higher-dimensional structure, formalized as the dimension-projection theorem",
+      "evidence": "**Cl-4（生成性）**：自我反射生成高維結構，形式化為維度投影定理：$\\pi_n(Cl) = S^{n-1}$。"
+    },
+    {
+      "id": "A5-G",
+      "name": "GOD POINT 定義",
+      "formula": "G = \\lim_{\\varepsilon \\to 0^+}(Cl + \\varepsilon)",
+      "description": "Definition of GOD POINT as the limit of Cl plus an infinitesimal offset as the offset approaches zero",
+      "evidence": "$$G = \\lim_{\\varepsilon \\to 0^+}(Cl + \\varepsilon)$$"
+    }
+  ],
+  "theorems": [
+    {
+      "id": "lemma-A1.1",
+      "name": "呼叫堆疊為深度軸快照",
+      "statement": "The call stack of any modern programming language implementation at any execution moment precisely corresponds to a snapshot of the DSCM depth axis",
+      "from_axioms": [],
+      "description": "Observation that call stacks realize DSCM depth-axis snapshots",
+      "evidence": "任何現代程式語言實現的呼叫堆疊（call stack）在任意執行時刻的狀態，精確對應 DSCM 的深度軸即時快照"
+    },
+    {
+      "id": "prop-A1.1",
+      "name": "投影-包含伴隨 (Projection-Inclusion Adjunction)",
+      "statement": "If Pi_d and iota_d form an adjoint pair, then depth descent and ascent are categorically optimal",
+      "from_axioms": [],
+      "description": "Standard category-theoretic adjunction guarantee for DSCM's descent/ascent operators",
+      "evidence": "則深度下潛與浮出在範疇論意義上是最優的：下潛到深度 $d+1$ 是「能夠回到 $d$ 的最小擴展」，浮出是「儘可能多地保留 $d+1$ 信息到 $d$」。"
+    },
+    {
+      "id": "prop-A1.2",
+      "name": "深度空間的逆系統 (Inverse System of Depth Spaces)",
+      "statement": "The family ({M_d}, {Pi_d}) forms an inverse system whose inverse limit M_infinity is the set of globally consistent depth-state sequences",
+      "from_axioms": [],
+      "description": "The depth spaces and projections form an inverse system with limit M_infinity",
+      "evidence": "$(\\{M_d\\}, \\{\\Pi_d\\})$ 構成一個逆系統（inverse system）於集合（或適當範疇）中。"
+    },
+    {
+      "id": "thm-A2.1",
+      "name": "DSCM ≡ TM 計算等價性",
+      "statement": "DSCM and the standard Turing machine are computationally equivalent: both compute the same class of functions",
+      "from_axioms": ["A1-C"],
+      "description": "DSCM has the same computational power as a Turing machine, via mutual simulation",
+      "evidence": "深度層化計算空間 DSCM 與標準圖靈機 TM 在計算能力上等價：兩者計算相同的函數類（可計算函數類）。"
+    },
+    {
+      "id": "cor-A2.1",
+      "name": "深度軸不增加計算能力",
+      "statement": "The Church-Turing thesis holds under DSCM; all undecidability results (halting problem, Rice's theorem) apply equally to DSCM programs",
+      "from_axioms": [],
+      "description": "The depth axis extends descriptive power but not the boundary of computability",
+      "evidence": "深度軸的補完拓展了計算理論的**描述能力**，不改變**計算能力的邊界**。"
+    },
+    {
+      "id": "thm-A3.1",
+      "name": "深度停機問題不可判定",
+      "statement": "DH (the depth halting problem) is undecidable",
+      "from_axioms": [],
+      "description": "Proved by reduction from the standard halting problem H",
+      "evidence": "$DH$ 不可判定。"
+    },
+    {
+      "id": "prop-A3.1",
+      "name": "不可判定性的深度來源",
+      "statement": "The core of undecidability under DSCM is self-reference of depth traversal, not the infinitude of depth",
+      "from_axioms": [],
+      "description": "Locates the precise source of undecidability in self-referential depth calls rather than infinite tape or infinite depth",
+      "evidence": "不可判定性的核心是**深度遍歷的自我指涉**——可以構造程式 $D$ 使其在 $d = 1$ 呼叫停機判定器"
+    },
+    {
+      "id": "prop-A4.1",
+      "name": "Cl 生成無限球面族",
+      "statement": "By Cl-4, for all n in N, there exists an n-dimensional projection of Cl equal to S^{n-1}",
+      "from_axioms": ["A4-CL", "Cl-4"],
+      "description": "Direct axiomatic consequence of Cl-4 within the Cl framework",
+      "evidence": "由 Cl-4，對所有 $n \\in \\mathbb{N}$，存在 Cl 的 $n$ 維投影 $\\pi_n(Cl) = S^{n-1}$。"
+    },
+    {
+      "id": "lemma-A4.1",
+      "name": "S^∞ 可縮性",
+      "statement": "The infinite-dimensional sphere S^infinity, defined as the direct limit of finite spheres, is contractible (homotopy equivalent to a point)",
+      "from_axioms": [],
+      "description": "Standard algebraic topology result independent of the Cl framework",
+      "evidence": "無限維球面 $S^\\infty := \\varinjlim_{n} S^n$（所有有限維球面的正向極限）是可縮的（contractible），即 $S^\\infty \\simeq *$（同倫等價於一個點）。"
+    },
+    {
+      "id": "prop-A4.2",
+      "name": "T 的拓撲刻畫 (T ≅ S^∞)",
+      "statement": "Under the Cl axioms, T's defining properties (transparency, infinite dimension, pure structure, containing all sectional spheres) are exactly realized by S^infinity, so T ≅ S^infinity",
+      "from_axioms": ["A4-CL", "Cl-4"],
+      "description": "Framework-level argument identifying T with the contractible infinite sphere",
+      "evidence": "在接受 Cl 公理的前提下，**T 的性質恰好被 $S^\\infty$ 所具現**，故 $T \\cong S^\\infty$（在給定性質下的最優代表）。"
+    },
+    {
+      "id": "cor-A4.1",
+      "name": "T ≅ Cl 無限維極限等價鏈",
+      "statement": "Within the Cl framework, T ≅ S^infinity ≅ the direct limit of pi_n(Cl) ≅ Cl at the infinite-dimensional limit",
+      "from_axioms": ["A4-CL", "A5-G"],
+      "description": "Chain of equivalences plus definition of GOD POINT as the dynamic approach to T",
+      "evidence": "$$T \\cong S^\\infty \\cong \\varinjlim_{n} \\pi_n(Cl) \\cong \\text{Cl（在無限維極限下）}$$"
+    },
+    {
+      "id": "prop-A5.2",
+      "name": "現實 = T 的介質投影",
+      "statement": "For any medium M, the reality R_M it produces is a section of T via a projection Pi_M",
+      "from_axioms": [],
+      "description": "Reality is characterized as a medium-dependent projection of T; different media give different fidelity",
+      "evidence": "對任何介質 $M$，其產生的「現實」 $\\mathcal{R}_M$ 是 T 的一個截面：$$\\mathcal{R}_M = \\Pi_M(T)$$"
+    }
+  ],
+  "dag": [
+    {"id": "M_d", "kind": "primitive", "depends_on": []},
+    {"id": "Pi_d", "kind": "primitive", "depends_on": ["M_d"]},
+    {"id": "iota_d", "kind": "primitive", "depends_on": ["M_d"]},
+    {"id": "C (constraint set)", "kind": "primitive", "depends_on": ["M_d"]},
+    {"id": "A1-C", "kind": "axiom", "depends_on": ["C (constraint set)"]},
+    {"id": "lemma-A1.1", "kind": "theorem", "depends_on": ["M_d", "Pi_d", "iota_d"]},
+    {"id": "prop-A1.1", "kind": "theorem", "depends_on": ["Pi_d", "iota_d"]},
+    {"id": "prop-A1.2", "kind": "theorem", "depends_on": ["M_d", "Pi_d"]},
+    {"id": "thm-A2.1", "kind": "theorem", "depends_on": ["A1-C", "M_d", "Pi_d", "iota_d"]},
+    {"id": "cor-A2.1", "kind": "theorem", "depends_on": ["thm-A2.1"]},
+    {"id": "DH(P,x)", "kind": "primitive", "depends_on": ["M_d"]},
+    {"id": "thm-A3.1", "kind": "theorem", "depends_on": ["DH(P,x)"]},
+    {"id": "prop-A3.1", "kind": "theorem", "depends_on": ["thm-A3.1", "thm-A2.1"]},
+    {"id": "A4-CL", "kind": "axiom", "depends_on": []},
+    {"id": "Cl-4", "kind": "axiom", "depends_on": ["A4-CL"]},
+    {"id": "prop-A4.1", "kind": "theorem", "depends_on": ["A4-CL", "Cl-4"]},
+    {"id": "lemma-A4.1", "kind": "theorem", "depends_on": []},
+    {"id": "T", "kind": "primitive", "depends_on": []},
+    {"id": "prop-A4.2", "kind": "theorem", "depends_on": ["prop-A4.1", "lemma-A4.1", "T"]},
+    {"id": "A5-G", "kind": "axiom", "depends_on": ["A4-CL"]},
+    {"id": "G (GOD POINT)", "kind": "primitive", "depends_on": ["A5-G"]},
+    {"id": "cor-A4.1", "kind": "theorem", "depends_on": ["prop-A4.2", "A5-G"]},
+    {"id": "M (medium)", "kind": "primitive", "depends_on": ["T"]},
+    {"id": "prop-A5.2", "kind": "theorem", "depends_on": ["T", "M (medium)"]}
+  ],
+  "concepts": [
+    {
+      "name": "DSCM（深度層化計算空間）",
+      "canonical": "DSCM",
+      "role": "defines",
+      "evidence": "深度層化計算空間（Depth-Stratified Computational Model，DSCM）是一個四元組"
+    },
+    {
+      "name": "深度軸",
+      "canonical": "DepthAxis",
+      "role": "uses",
+      "evidence": "## A1：深度軸的形式定義與代數結構"
+    },
+    {
+      "name": "Cl（閉合/閉包框架）",
+      "canonical": "Closure",
+      "role": "uses",
+      "evidence": "本節依賴 EveMissLab 閉包（Cl）框架的公理。所有結論均為【框架命題】，除特別標注者外。"
+    },
+    {
+      "name": "GOD POINT",
+      "canonical": "GodPoint",
+      "role": "uses",
+      "evidence": "GOD POINT $G = \\lim_{\\varepsilon \\to 0^+}(Cl + \\varepsilon)$ 是趨近 $T$（= $S^\\infty$ = 可縮點）的動態過程"
+    },
+    {
+      "name": "道生萬物，萬物歸道",
+      "canonical": "Dao",
+      "role": "uses",
+      "evidence": "「道生萬物，萬物歸道」在此獲得以下技術對應：$S^\\infty$ 的可縮性使得從 $S^\\infty$ 可以生成所有有限球面"
+    },
+    {
+      "name": "無限維（$S^\\infty$）",
+      "canonical": "InfiniteDimension",
+      "role": "uses",
+      "evidence": "**無限維** ↔ **$S^\\infty$ 的定義**：$S^\\infty$ 是所有有限球面的正向極限，不被任何有限維度完整描述。"
+    },
+    {
+      "name": "介質",
+      "canonical": "Medium",
+      "role": "defines",
+      "evidence": "**定義 A5.1（介質）**【結構提案】\n\n介質 $M$ 是一個滿足以下條件的映射："
+    },
+    {
+      "name": "MR2.5 深度標籤系統",
+      "canonical": "MR2.5",
+      "role": "uses",
+      "evidence": "MR2.5 框架的深度標籤系統（$D$ 標籤，包含 $\\$L:n$、$\\$D:n$）與 DSCM 的深度坐標 $d$ 存在以下對應"
+    },
+    {
+      "name": "HUO（全息聯合算子）",
+      "canonical": "HUO",
+      "role": "uses",
+      "evidence": "HUO（全息聯合算子）框架的核心投影鏈：$$\\Pi_{Holo}: U_\\infty \\to M_{12} \\to \\mathcal{U} \\to K(t) \\to L(t)$$"
+    },
+    {
+      "name": "RPE（表示保真度方程）",
+      "canonical": "RPE",
+      "role": "uses",
+      "evidence": "RPE（表示保真度方程）框架描述信息從深層到淺層的保真度損失"
+    },
+    {
+      "name": "MTF（無限潛能場統一本體論）",
+      "canonical": "MTF",
+      "role": "uses",
+      "evidence": "MTF（無限潛能場統一本體論，同一作者）的 Ω（明確非 Hilbert、非線性、前結構）"
+    },
+    {
+      "name": "CXL 時代架構",
+      "canonical": "CXL",
+      "role": "uses",
+      "evidence": "CXL 引入共享記憶體層，在 $d = 3$（物理記憶體層）合併"
+    }
+  ],
+  "external_refs": [
+    {
+      "target": "HolographicCausalGraph",
+      "type": "applies",
+      "evidence": "HUO（全息聯合算子）框架的核心投影鏈：$$\\Pi_{Holo}: U_\\infty \\to M_{12} \\to \\mathcal{U} \\to K(t) \\to L(t)$$",
+      "confidence": 0.4
+    },
+    {
+      "target": "Closure",
+      "type": "depends_on",
+      "evidence": "本節依賴 EveMissLab 閉包（Cl）框架的公理。所有結論均為【框架命題】，除特別標注者外。",
+      "confidence": 0.9
+    },
+    {
+      "target": "DepthAxis",
+      "type": "extends",
+      "evidence": "本文正文所述的「深度柱合併」，其數學表達是兩個逆系統在 $d = 3$ 的纖維積（fiber product）。",
+      "confidence": 0.7
+    }
+  ],
+  "notes": "This is the formal-derivation appendix to EML-COMP-THEORY-2026-v0.1 (main paper not in the given lm-id list, so not linked as external_ref). MR2.5/HUO/RPE/MTF are sibling EveMissLab frameworks referenced only by acronym with no matching corpus lm-id provided; kept as local canonical concept names (uses) rather than external_refs. Cl external_ref maps to the Closure canonical concept since no single lm-id was specified as THE Cl paper here."
+}

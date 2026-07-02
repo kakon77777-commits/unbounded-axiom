@@ -1,0 +1,334 @@
+{
+  "tcf_extract_version": "0.1",
+  "id": "lm-000076",
+  "title": "FDRS_en",
+  "language": "en",
+  "source_file": "content/papers/2026/2026-06/FDRS_en.lean",
+  "theory_name": "Flattened Dimensional Reconstructive Theory II (FDRS II) — Lean 4 formalization",
+  "extracted_by": "claude-fable-5 (automated distillation, Phase A)",
+  "extraction_date": "2026-07-02",
+  "canonical_status": "draft",
+  "primitives": [
+    {
+      "symbol": "FDRSComplex",
+      "kind": "type",
+      "description": "FDRS-admissible finite chain complex encoded by a dimension list (dim) and per-boundary-operator singular value lists (sing), with five admissibility constraints.",
+      "evidence": "structure FDRSComplex where"
+    },
+    {
+      "symbol": "sumSq",
+      "kind": "function",
+      "description": "Sum of squares of a rational list; represents the total singular value energy of a boundary operator.",
+      "evidence": "def sumSq : List Rat → Rat"
+    },
+    {
+      "symbol": "sumNat",
+      "kind": "function",
+      "description": "Sum of a list of naturals; used to compute the total chain group dimension of a complex.",
+      "evidence": "def sumNat : List Nat → Nat"
+    },
+    {
+      "symbol": "flatten",
+      "kind": "function",
+      "description": "Flattens a list of lists; aggregates all singular values across all boundary operators.",
+      "evidence": "def flatten {α : Type} : List (List α) → List α"
+    }
+  ],
+  "axioms": [
+    {
+      "id": "ax-admissibility",
+      "name": "FDRS admissibility conditions (Ch_FDRS)",
+      "formula": "dim_pos ∧ sing_len ∧ sing_shapes ∧ injective_cond ∧ sing_pos",
+      "description": "Five structural constraints (nonempty dims, one boundary operator per adjacent pair, shape match, injectivity via dim C_{i+1} ≤ dim C_i, strictly positive singular values) placing the complex in Ch_FDRS(ℝ).",
+      "evidence": "Five admissibility constraints ensure the complex lies in Ch_FDRS(ℝ)"
+    },
+    {
+      "id": "ax-delta1-dim",
+      "name": "Single-step dimension reduction Δ₁ (dimension evolution)",
+      "formula": "Δ₁(dim) folds top group C_n into coker ∂_n: new dim at n-1 = dim C_{n-1} - dim C_n",
+      "description": "Definition 3.5: eliminates the top-dimensional chain group and replaces the next level with the cokernel dimension.",
+      "evidence": "def delta1Dim (dim : List Nat) : List Nat :="
+    },
+    {
+      "id": "ax-delta1-sing",
+      "name": "Single-step dimension reduction Δ₁ (singular value evolution)",
+      "formula": "Δ₁(sing) discards the singular values of the top boundary operator ∂_n",
+      "description": "Companion evolution rule to Δ₁ on singular value data: drop the last singular value list.",
+      "evidence": "def delta1Sing (sing : List (List Rat)) : List (List Rat) :="
+    },
+    {
+      "id": "ax-deltak-dim",
+      "name": "k-step dimension reduction Δ_k (dimensions)",
+      "formula": "Δ_k(dim) = Δ₁^k(dim)",
+      "description": "Iterated application of delta1Dim k times.",
+      "evidence": "def deltaKDim (dim : List Nat) (k : Nat) : List Nat :="
+    },
+    {
+      "id": "ax-deltak-sing",
+      "name": "k-step dimension reduction Δ_k (singular values)",
+      "formula": "Δ_k(sing) = Δ₁^k(sing)",
+      "description": "Iterated application of delta1Sing k times.",
+      "evidence": "def deltaKSing (sing : List (List Rat)) (k : Nat) : List (List Rat) :="
+    },
+    {
+      "id": "ax-distortion1",
+      "name": "Single-step information distortion operator D(Δ₁) (linear mode)",
+      "formula": "D_lin(Δ₁(H)) = sumSq(top ∂_n singular values) / sumNat(dim H)",
+      "description": "Definition 3.1: fraction of total information energy lost in one reduction step, normalized by total chain group dimension.",
+      "evidence": "def distortion1 (H : FDRSComplex) : Rat :="
+    },
+    {
+      "id": "ax-sumtopk-sq",
+      "name": "Discarded energy over k steps (sumTopKSq)",
+      "formula": "sumTopKSq(sing, k) = sumSq(flatten(sing.drop(sing.length - k)))",
+      "description": "Total discarded singular value energy of the top k boundary operators.",
+      "evidence": "def sumTopKSq (sing : List (List Rat)) (k : Nat) : Rat :="
+    },
+    {
+      "id": "ax-distortionk",
+      "name": "Cumulative distortion D(Δ_k)",
+      "formula": "D(Δ_k)(H) = sumTopKSq(H.sing, k) / sumNat(H.dim)",
+      "description": "Cumulative information distortion of a k-step reduction: total discarded energy normalized by total dimension.",
+      "evidence": "def distortionK (H : FDRSComplex) (k : Nat) : Rat :="
+    },
+    {
+      "id": "ax-distortion-spec1",
+      "name": "Spectral-mode distortion operator D_spec(Δ₁)",
+      "formula": "D_spec(Δ₁(H)) = sumSq(top ∂_n singular values) / sumSq(flatten(H.sing))",
+      "description": "In spectral observation mode, distortion is normalized by total singular value energy instead of total dimension; the asymmetry with D_lin sources the R-Δ non-commutativity.",
+      "evidence": "def distortionSpec1 (H : FDRSComplex) : Rat :="
+    }
+  ],
+  "theorems": [
+    {
+      "id": "thm-energy-conservation",
+      "name": "Theorem 5.1: Energy Conservation",
+      "statement": "distortionK(H,k) + sumSq(flatten(Δ_k(H.sing)))/sumNat(H.dim) = sumSq(flatten(H.sing))/sumNat(H.dim): discarded energy exactly accounts for distortion, no residual error.",
+      "from_axioms": ["ax-distortionk", "ax-deltak-sing"],
+      "description": "Main theorem: cumulative distortion plus normalized retained energy equals total normalized energy of the original complex.",
+      "evidence": "theorem energy_conservation (H : FDRSComplex) (k : Nat) :"
+    },
+    {
+      "id": "thm-r-delta-noncomm",
+      "name": "Theorem 5.2: R-Δ Non-commutativity Theorem",
+      "statement": "D_spec(Δ₁(H)) - D_lin(Δ₁(H)) = σ_top² · (1/E_total - 1/D_total): the gap between mode-switch-then-reduce and reduce-then-mode-switch is fixed by spectral data.",
+      "from_axioms": ["ax-distortion-spec1", "ax-distortion1"],
+      "description": "Quantifies order-dependence between the representation transformation operator R and the dimension meta-operator Δ.",
+      "evidence": "theorem R_delta_non_commutativity (H : FDRSComplex) (h : H.sing.length > 0) :"
+    },
+    {
+      "id": "thm-energy-partition",
+      "name": "Core Energy Lemma: energy partition",
+      "statement": "sumSq(flatten(Δ_k(sing))) + sumTopKSq(sing,k) = sumSq(flatten(sing)): retained plus discarded singular value energy equals total energy.",
+      "from_axioms": ["ax-deltak-sing", "ax-sumtopk-sq"],
+      "description": "Un-normalized backbone of Theorem 5.1, proved via take/drop splitting of the singular value lists.",
+      "evidence": "theorem energy_partition (sing : List (List Rat)) (k : Nat) :"
+    },
+    {
+      "id": "thm-d-delta-spectral",
+      "name": "Corollary: D(Δ_k) definitional identity",
+      "statement": "distortionK H k = sumTopKSq H.sing k / sumNat H.dim holds by construction (rfl).",
+      "from_axioms": ["ax-distortionk", "ax-sumtopk-sq"],
+      "description": "Records that the original definitional identity of cumulative distortion remains valid.",
+      "evidence": "theorem D_delta_spectral_correspondence (H : FDRSComplex) (k : Nat) :"
+    },
+    {
+      "id": "thm-deltaksing-eq-take",
+      "name": "Bridge Lemma: Δ_k as List.take",
+      "statement": "deltaKSing sing k = sing.take (sing.length - k), bridging the reduction operator to standard list operations without Mathlib.",
+      "from_axioms": ["ax-deltak-sing"],
+      "description": "Key bridge using Init's List.drop_reverse; enables the energy partition proof.",
+      "evidence": "theorem deltaKSing_eq_take (sing : List (List Rat)) (k : Nat) :"
+    },
+    {
+      "id": "thm-deltaksing-spec",
+      "name": "Lemma: Δ_k drops the last k entries",
+      "statement": "deltaKSing sing k = (sing.reverse.drop k).reverse.",
+      "from_axioms": ["ax-deltak-sing", "ax-delta1-sing"],
+      "description": "Characterizes k-step singular value reduction as dropping the last k boundary operators.",
+      "evidence": "theorem deltaKSing_spec (sing : List (List Rat)) (k : Nat) :"
+    },
+    {
+      "id": "thm-delta1sing-spec",
+      "name": "Lemma: Δ₁ as reverse-tail-reverse",
+      "statement": "delta1Sing sing = (sing.reverse.tail).reverse.",
+      "from_axioms": ["ax-delta1-sing"],
+      "description": "Connects the pattern-match definition of Δ₁ to standard list tail operations.",
+      "evidence": "theorem delta1Sing_spec (sing : List (List Rat)) :"
+    },
+    {
+      "id": "thm-drop-succ",
+      "name": "List lemma: drop (n+1) = tail of drop n",
+      "statement": "l.drop (n + 1) = (l.drop n).tail, proved from Init without Mathlib.",
+      "from_axioms": [],
+      "description": "Auxiliary list lemma used in deltaKSing_spec.",
+      "evidence": "theorem drop_succ {α : Type} (n : Nat) (l : List α) : l.drop (n + 1) = (l.drop n).tail := by"
+    },
+    {
+      "id": "thm-flatten-append",
+      "name": "List lemma: flatten distributes over ++",
+      "statement": "flatten (l₁ ++ l₂) = flatten l₁ ++ flatten l₂.",
+      "from_axioms": [],
+      "description": "Distribution of flatten over concatenation, used in energy partition.",
+      "evidence": "theorem flatten_append {α : Type} (l₁ l₂ : List (List α)) :"
+    },
+    {
+      "id": "thm-sumsq-append",
+      "name": "List lemma: sumSq additive over ++",
+      "statement": "sumSq (l₁ ++ l₂) = sumSq l₁ + sumSq l₂.",
+      "from_axioms": [],
+      "description": "Additivity of singular value energy over concatenation.",
+      "evidence": "theorem sumSq_append (l₁ l₂ : List Rat) :"
+    },
+    {
+      "id": "thm-rat-add-div",
+      "name": "Rational lemma: (a+b)/c = a/c + b/c",
+      "statement": "Additive distribution of rational division over addition.",
+      "from_axioms": [],
+      "description": "Arithmetic helper for combining fractions in energy_conservation.",
+      "evidence": "theorem Rat.add_div (a b c : Rat) : (a + b) / c = a / c + b / c := by"
+    },
+    {
+      "id": "thm-rat-mul-sub",
+      "name": "Rational lemma: a*(b-c) = a*b - a*c",
+      "statement": "Left distributivity of rational multiplication over subtraction.",
+      "from_axioms": [],
+      "description": "Arithmetic helper closing the R-Δ non-commutativity proof.",
+      "evidence": "theorem Rat.mul_sub (a b c : Rat) : a * (b - c) = a * b - a * c := by"
+    }
+  ],
+  "dag": [
+    { "id": "prim-sumnat", "kind": "primitive", "depends_on": [] },
+    { "id": "prim-sumsq", "kind": "primitive", "depends_on": [] },
+    { "id": "prim-flatten", "kind": "primitive", "depends_on": [] },
+    { "id": "prim-fdrs-complex", "kind": "primitive", "depends_on": [] },
+    { "id": "ax-admissibility", "kind": "axiom", "depends_on": ["prim-fdrs-complex"] },
+    { "id": "ax-delta1-dim", "kind": "axiom", "depends_on": [] },
+    { "id": "ax-delta1-sing", "kind": "axiom", "depends_on": [] },
+    { "id": "ax-deltak-dim", "kind": "axiom", "depends_on": ["ax-delta1-dim"] },
+    { "id": "ax-deltak-sing", "kind": "axiom", "depends_on": ["ax-delta1-sing"] },
+    { "id": "ax-distortion1", "kind": "axiom", "depends_on": ["prim-fdrs-complex", "prim-sumsq", "prim-sumnat"] },
+    { "id": "ax-sumtopk-sq", "kind": "axiom", "depends_on": ["prim-sumsq", "prim-flatten"] },
+    { "id": "ax-distortionk", "kind": "axiom", "depends_on": ["prim-fdrs-complex", "ax-sumtopk-sq", "prim-sumnat"] },
+    { "id": "ax-distortion-spec1", "kind": "axiom", "depends_on": ["prim-fdrs-complex", "prim-sumsq", "prim-flatten"] },
+    { "id": "thm-rat-add-div", "kind": "theorem", "depends_on": [] },
+    { "id": "thm-rat-mul-sub", "kind": "theorem", "depends_on": [] },
+    { "id": "thm-flatten-append", "kind": "theorem", "depends_on": ["prim-flatten"] },
+    { "id": "thm-sumsq-append", "kind": "theorem", "depends_on": ["prim-sumsq"] },
+    { "id": "thm-drop-succ", "kind": "theorem", "depends_on": [] },
+    { "id": "thm-delta1sing-spec", "kind": "theorem", "depends_on": ["ax-delta1-sing"] },
+    { "id": "thm-deltaksing-spec", "kind": "theorem", "depends_on": ["ax-deltak-sing", "thm-delta1sing-spec", "thm-drop-succ"] },
+    { "id": "thm-deltaksing-eq-take", "kind": "theorem", "depends_on": ["thm-deltaksing-spec"] },
+    { "id": "thm-energy-partition", "kind": "theorem", "depends_on": ["thm-deltaksing-eq-take", "thm-flatten-append", "thm-sumsq-append", "ax-sumtopk-sq"] },
+    { "id": "thm-energy-conservation", "kind": "theorem", "depends_on": ["thm-energy-partition", "thm-rat-add-div", "ax-distortionk"] },
+    { "id": "thm-d-delta-spectral", "kind": "theorem", "depends_on": ["ax-distortionk", "ax-sumtopk-sq"] },
+    { "id": "thm-r-delta-noncomm", "kind": "theorem", "depends_on": ["ax-distortion-spec1", "ax-distortion1", "thm-rat-mul-sub"] }
+  ],
+  "concepts": [
+    {
+      "name": "Flattened Dimensional Reconstructive Theory II",
+      "canonical": "FDRS",
+      "role": "extends",
+      "evidence": "Lean 4 Formalization of Flattened Dimensional Reconstructive Theory II"
+    },
+    {
+      "name": "Connection Operators",
+      "canonical": "ConnectionOperator",
+      "role": "uses",
+      "evidence": "A Unified Framework of Connection Operators"
+    },
+    {
+      "name": "FDRS Admissible Chain Complex",
+      "canonical": "ChainComplex",
+      "role": "defines",
+      "evidence": "### Definition 2.4: FDRS Admissible Chain Complex (`FDRSComplex`)"
+    },
+    {
+      "name": "information distortion operator D",
+      "canonical": "InformationDistortionOperator",
+      "role": "defines",
+      "evidence": "### Definition 3.1: Single-step information distortion operator D(Δ₁)."
+    },
+    {
+      "name": "dimension reduction Δ",
+      "canonical": "DimensionReduction",
+      "role": "defines",
+      "evidence": "### Definition 3.5: Single-step dimension reduction Δ₁ — dimension evolution."
+    },
+    {
+      "name": "Energy Conservation",
+      "canonical": "EnergyConservation",
+      "role": "defines",
+      "evidence": "### Theorem 5.1 (Non-trivial version): Energy Conservation"
+    },
+    {
+      "name": "R-Δ Non-commutativity",
+      "canonical": "RDeltaNonCommutativity",
+      "role": "defines",
+      "evidence": "### Theorem 5.2: R-Δ Non-commutativity Theorem"
+    },
+    {
+      "name": "singular value energy",
+      "canonical": "SingularValueDecomposition",
+      "role": "uses",
+      "evidence": "Represents the total singular value energy of a boundary operator."
+    },
+    {
+      "name": "cokernel",
+      "canonical": "Cokernel",
+      "role": "uses",
+      "evidence": "cokernel of ∂_n at C_{n-1}: the new dimension at level n-1 becomes"
+    },
+    {
+      "name": "spectral observation mode",
+      "canonical": "SpectralMode",
+      "role": "defines",
+      "evidence": "In spectral observation mode (mode = spec), the distortion of a single-step"
+    },
+    {
+      "name": "Lean 4 machine verification",
+      "canonical": "LeanFormalization",
+      "role": "uses",
+      "evidence": "Lean 4 compiler exit code: 0"
+    }
+  ],
+  "external_refs": [
+    {
+      "target": "lm-000075",
+      "type": "depends_on",
+      "evidence": "Companion paper: EML-FDRS-2026-v2.1",
+      "confidence": 0.97
+    },
+    {
+      "target": "lm-000075",
+      "type": "verifies",
+      "evidence": "This is the substantive mathematical content of Theorem 5.1 in EML-FDRS-2026-v2.1:",
+      "confidence": 0.95
+    },
+    {
+      "target": "lm-000457",
+      "type": "extends",
+      "evidence": "Lean 4 Formalization of Flattened Dimensional Reconstructive Theory II",
+      "confidence": 0.6
+    },
+    {
+      "target": "LeanFormalization",
+      "type": "applies",
+      "evidence": "Dependencies: Init.Data.List only (Mathlib-free)",
+      "confidence": 0.9
+    },
+    {
+      "target": "SingularValueDecomposition",
+      "type": "applies",
+      "evidence": "the SVD energy ratio (which would be a tautology), but that this ratio is verified",
+      "confidence": 0.85
+    },
+    {
+      "target": "ChainComplex",
+      "type": "applies",
+      "evidence": "An algebraic representation of a finite-dimensional FDRS-admissible chain complex",
+      "confidence": 0.9
+    }
+  ],
+  "notes": "Source is English-annotated Lean 4 code (not prose): defs mapped to axioms, theorems/lemmas to theorems, structure FDRSComplex plus its five field constraints bundled as one admissibility axiom. Two refs to lm-000075: it is both the companion paper (depends_on) and the theory this file machine-verifies. lm-000457 link inferred from 'Theory II' naming; moderate confidence."
+}

@@ -1,0 +1,273 @@
+{
+  "tcf_extract_version": "0.1",
+  "id": "lm-000477",
+  "title": "底空間世界束展開論：從語義聯想到 ASI 級因果世界排列",
+  "language": "zh-Hant",
+  "source_file": "content/papers/2026/2026-06/底空間世界束展開論：從語義聯想到 ASI 級因果世界排列.md",
+  "theory_name": "底空間世界束展開論 (Base-Space World-Bundle Expansion Theory, BSWBE)",
+  "extracted_by": "claude-fable-5 (automated distillation, Phase A)",
+  "extraction_date": "2026-07-02",
+  "canonical_status": "draft",
+  "primitives": [
+    {
+      "symbol": "x",
+      "kind": "type",
+      "description": "被觀察的詞彙、事物、事件或概念",
+      "evidence": "x = 被觀察的詞彙、事物、事件或概念"
+    },
+    {
+      "symbol": "t",
+      "kind": "type",
+      "description": "觀察時刻",
+      "evidence": "t = 觀察時刻"
+    },
+    {
+      "symbol": "BaseSpace(x, t)",
+      "kind": "function",
+      "description": "概念展開時所依附的基本世界框架；被選中的底空間",
+      "evidence": "底空間是概念展開時所依附的基本世界框架。不同底空間會導致完全不同的展開。"
+    },
+    {
+      "symbol": "StaticSemanticGraph(x)",
+      "kind": "function",
+      "description": "概念在相對靜止的知識結構中展開出的詞彙、分類、定義、象徵、歷史與關係",
+      "evidence": "StaticSemanticGraph(x) =\n{definition, category, symbol, history, taxonomy, analogy, field-knowledge}"
+    },
+    {
+      "symbol": "DynamicCausalGraph(x, t)",
+      "kind": "function",
+      "description": "概念作為事件、狀態、條件或行動節點，在時間中展開出的因果路徑",
+      "evidence": "DynamicCausalGraph(x, t) =\n{cause, condition, action, transition, consequence, feedback, counterfactual}"
+    },
+    {
+      "symbol": "WorldBundle(x, t)",
+      "kind": "function",
+      "description": "從一個事物出發，同時展開出的局部世界、全域世界與多重可能未來的集合",
+      "evidence": "WorldBundle(x, t) =\n⟨LocalWorld(x, t), GlobalWorld(x, t), PossibleWorlds(x, t)⟩"
+    },
+    {
+      "symbol": "PossibleWorlds(x, t)",
+      "kind": "function",
+      "description": "由條件變化導出的未來分支集合",
+      "evidence": "PossibleWorlds = 由 x 及其條件變化導出的可能未來集合"
+    },
+    {
+      "symbol": "BSWBE(x, t)",
+      "kind": "function",
+      "description": "底空間世界束展開的完整流程：選擇底空間、展開靜態、展開動態、生成可能世界、排序、壓縮",
+      "evidence": "BSWBE(x, t) =\nCompress(\n  Rank(\n    PossibleWorlds(\n      ExpandDynamic(\n        ExpandStatic(\n          SelectBaseSpace(x, t)\n        )\n      )\n    )\n  )\n)"
+    }
+  ],
+  "axioms": [
+    {
+      "id": "A1",
+      "name": "概念世界入口命題",
+      "formula": "Concept(x, t) = ⟨BaseSpace(x, t), StaticSemanticGraph(x), DynamicCausalGraph(x, t), LocalWorld(x, t), GlobalWorld(x, t), PossibleWorlds(x, t), FutureBranchRanking(x, t), CompressionPolicy(x, t)⟩",
+      "description": "高階概念不是單純詞彙，也不是有限定義，而是在特定底空間中觸發世界束展開的入口",
+      "evidence": "高階概念不是單純詞彙，也不是有限定義，而是在特定底空間中觸發世界束展開的入口。"
+    },
+    {
+      "id": "A2",
+      "name": "底空間優先公理",
+      "formula": "SelectBaseSpace(x, t) precedes Expand(x, t)",
+      "description": "高階智能的第一步不是聯想，而是底空間定位；若底空間選錯，後面展開再多也可能錯",
+      "evidence": "高階智能的第一步不是聯想，而是底空間定位。"
+    },
+    {
+      "id": "A3",
+      "name": "世界束合成公理",
+      "formula": "WorldBundle(x, t) = ⟨LocalWorld(x, t), GlobalWorld(x, t), PossibleWorlds(x, t)⟩",
+      "description": "世界束不是單一世界，也不是單一未來線，而是局部世界、全域世界與多重可能未來的集合",
+      "evidence": "世界束是從一個事物出發，同時展開出的局部世界、全域世界與多重可能未來的集合。"
+    },
+    {
+      "id": "A4",
+      "name": "未來非單線公理",
+      "formula": "Future ≠ single line; Future = ranked world-bundle",
+      "description": "ASI 不是看到唯一未來，而是同時生成大量可能未來，並對其進行權重排序、因果壓縮與行動選擇",
+      "evidence": "Future ≠ single line\nFuture = ranked world-bundle"
+    },
+    {
+      "id": "A5",
+      "name": "行動壓縮公理",
+      "formula": "Action(x, t) = Policy(Compress(Rank(WorldBundle(x, t))))",
+      "description": "行動不是從單一概念直接產生，而是從世界束排序後的壓縮結構中產生",
+      "evidence": "行動不是從單一概念直接產生，而是從世界束排序後的壓縮結構中產生。"
+    }
+  ],
+  "theorems": [
+    {
+      "id": "T1",
+      "name": "概念混合體定理",
+      "statement": "高階概念是靜態語義與動態因果的混合體",
+      "from_axioms": ["A1"],
+      "description": "高階智能不能只處理靜態概念，也不能只處理動態因果，必須同時處理兩者",
+      "evidence": "高階概念是靜態語義與動態因果的混合體。"
+    },
+    {
+      "id": "T2",
+      "name": "底空間相對狀態定理",
+      "statement": "State(C) = State(C | BaseSpace₁) + State(C | BaseSpace₂) + State(C | BaseSpace₃) + ...；概念狀態必須相對於底空間來判定",
+      "from_axioms": ["A2", "A3"],
+      "description": "同一概念在不同底空間中可能同時處於不同 MDAS 狀態（如透明態、糾纏態、循環態、黑箱態、螺旋態、生成態）",
+      "evidence": "概念狀態必須相對於底空間來判定。"
+    },
+    {
+      "id": "T3",
+      "name": "Expand∞ 升級定理",
+      "statement": "Expand∞ = BaseSpace Selection + Static Semantic Expansion + Dynamic Causal Expansion + Local World Expansion + Global World Expansion + Possible Future Expansion",
+      "from_axioms": ["A1", "A3"],
+      "description": "對高階本體收斂論 Concept = ⟨Expand∞, Connect∞, Compress∞⟩ 中 Expand∞ 的修正與深化，指出其不應被理解為單純語義展開",
+      "evidence": "本文指出，真正的高階 Expand∞ 應該是：\n\n```text\nExpand∞ =\n  BaseSpace Selection\n+ Static Semantic Expansion\n+ Dynamic Causal Expansion\n+ Local World Expansion\n+ Global World Expansion\n+ Possible Future Expansion"
+    },
+    {
+      "id": "T4",
+      "name": "差合化世界束動力定理",
+      "statement": "WorldBundle(x, t) = DynamicClosure(Δ, ∪, ∇ | BaseSpace)",
+      "from_axioms": ["A3"],
+      "description": "在某個底空間中，差、合、化共同展開出局部世界、全域世界與可能未來",
+      "evidence": "WorldBundle(x, t) = DynamicClosure(Δ, ∪, ∇ | BaseSpace)"
+    },
+    {
+      "id": "T5",
+      "name": "時間迴圈治理定理",
+      "statement": "WorldBundle(t₀) → wait → update evidence → WorldBundle(t₁) → re-rank → act",
+      "from_axioms": ["A4"],
+      "description": "許多未來分支尚未成熟時，系統需 persist state、suspend judgment、wait for trigger 等時間迴圈操作管理尚未成熟的世界分支",
+      "evidence": "時間迴圈的角色是：\n\n> 管理尚未成熟的世界分支。"
+    },
+    {
+      "id": "T6",
+      "name": "TCF 壓縮層定理",
+      "statement": "WorldBundle Expansion → Compression → Theory Card / Concept Card / Causal Card → Re-expandable Seed",
+      "from_axioms": ["A4", "A5"],
+      "description": "TCF 不只是理論文檔格式，而是世界束展開後的壓縮層，把不可顯示的龐大世界束壓成可被未來 Agent 重展開的種子",
+      "evidence": "TCF 不只是理論文檔格式，而是世界束展開後的壓縮層。"
+    },
+    {
+      "id": "T7",
+      "name": "ASI 定義定理",
+      "statement": "ASI = 高維概念—因果—世界束排序器",
+      "from_axioms": ["A4", "A5"],
+      "description": "ASI 的能力不是存了更多知識，而是能在大量底空間之間快速切換並排序、壓縮為行動",
+      "evidence": "ASI = 高維概念—因果—世界束排序器"
+    }
+  ],
+  "dag": [
+    {"id": "x", "kind": "primitive", "depends_on": []},
+    {"id": "t", "kind": "primitive", "depends_on": []},
+    {"id": "BaseSpace(x, t)", "kind": "primitive", "depends_on": ["x", "t"]},
+    {"id": "StaticSemanticGraph(x)", "kind": "primitive", "depends_on": ["x"]},
+    {"id": "DynamicCausalGraph(x, t)", "kind": "primitive", "depends_on": ["x", "t"]},
+    {"id": "WorldBundle(x, t)", "kind": "primitive", "depends_on": ["x", "t"]},
+    {"id": "PossibleWorlds(x, t)", "kind": "primitive", "depends_on": ["x", "t"]},
+    {"id": "BSWBE(x, t)", "kind": "primitive", "depends_on": ["BaseSpace(x, t)", "StaticSemanticGraph(x)", "DynamicCausalGraph(x, t)", "PossibleWorlds(x, t)"]},
+    {"id": "A1", "kind": "axiom", "depends_on": ["BaseSpace(x, t)", "StaticSemanticGraph(x)", "DynamicCausalGraph(x, t)", "PossibleWorlds(x, t)"]},
+    {"id": "A2", "kind": "axiom", "depends_on": ["BaseSpace(x, t)"]},
+    {"id": "A3", "kind": "axiom", "depends_on": ["WorldBundle(x, t)", "PossibleWorlds(x, t)"]},
+    {"id": "A4", "kind": "axiom", "depends_on": ["A3"]},
+    {"id": "A5", "kind": "axiom", "depends_on": ["A4", "WorldBundle(x, t)"]},
+    {"id": "T1", "kind": "theorem", "depends_on": ["A1"]},
+    {"id": "T2", "kind": "theorem", "depends_on": ["A2", "A3"]},
+    {"id": "T3", "kind": "theorem", "depends_on": ["A1", "A3"]},
+    {"id": "T4", "kind": "theorem", "depends_on": ["A3"]},
+    {"id": "T5", "kind": "theorem", "depends_on": ["A4"]},
+    {"id": "T6", "kind": "theorem", "depends_on": ["A4", "A5"]},
+    {"id": "T7", "kind": "theorem", "depends_on": ["A4", "A5"]}
+  ],
+  "concepts": [
+    {
+      "name": "底空間",
+      "canonical": "BaseSpace",
+      "role": "defines",
+      "evidence": "底空間不是單純背景，也不是普通上下文。"
+    },
+    {
+      "name": "世界束",
+      "canonical": "WorldBundle",
+      "role": "defines",
+      "evidence": "世界束不是單一世界，也不是單一未來線。"
+    },
+    {
+      "name": "TCF",
+      "canonical": "TCF",
+      "role": "uses",
+      "evidence": "TCF 不只是理論文檔格式，而是世界束展開後的壓縮層。"
+    },
+    {
+      "name": "MDAS",
+      "canonical": "MDAS-TCH",
+      "role": "extends",
+      "evidence": "但在本文框架下，MDAS 需要升級為：\n\n> 世界束展開後的概念—因果—狀態管理系統。"
+    },
+    {
+      "name": "差合化三位一體",
+      "canonical": "DifferentiationUnionTransformationTrinity",
+      "role": "uses",
+      "evidence": "差合化三位一體可用來描述世界束展開的底層動力。"
+    },
+    {
+      "name": "時間迴圈學",
+      "canonical": "TemporalLoopTheory",
+      "role": "uses",
+      "evidence": "與時間迴圈學的關係"
+    },
+    {
+      "name": "高階本體收斂論",
+      "canonical": "HigherOrderOntologicalConvergence",
+      "role": "extends",
+      "evidence": "前一篇「高階本體收斂論」提出：\n\n```text\nConcept = ⟨Expand∞, Connect∞, Compress∞⟩"
+    },
+    {
+      "name": "主體性 AI",
+      "canonical": "AgenticAI",
+      "role": "uses",
+      "evidence": "若一個 AI 能跨時間管理世界束，而不是只處理 prompt-response，它可能更接近主體性 Agent。"
+    },
+    {
+      "name": "拉普拉斯妖",
+      "canonical": "LaplaceDemon",
+      "role": "uses",
+      "evidence": "這種能力類似拉普拉斯妖，因為它試圖從當下狀態推演未來。"
+    },
+    {
+      "name": "ASI",
+      "canonical": "ASI",
+      "role": "uses",
+      "evidence": "ASI = 高維概念—因果—世界束排序器"
+    },
+    {
+      "name": "靜態語義展開",
+      "canonical": "StaticSemanticExpansion",
+      "role": "defines",
+      "evidence": "靜態語義展開是指概念在相對靜止的知識結構中展開出的詞彙、分類、定義、象徵、歷史與關係。"
+    },
+    {
+      "name": "動態因果展開",
+      "canonical": "DynamicCausalExpansion",
+      "role": "defines",
+      "evidence": "動態因果展開是指概念作為事件、狀態、條件或行動節點，在時間中展開出的因果路徑。"
+    }
+  ],
+  "external_refs": [
+    {
+      "target": "lm-000776",
+      "type": "applies",
+      "evidence": "TCF 不只是理論文檔格式，而是世界束展開後的壓縮層。",
+      "confidence": 0.7
+    },
+    {
+      "target": "MDAS-TCH",
+      "type": "extends",
+      "evidence": "但在本文框架下，MDAS 需要升級為：\n\n> 世界束展開後的概念—因果—狀態管理系統。",
+      "confidence": 0.7
+    },
+    {
+      "target": "lm-000464",
+      "type": "depends_on",
+      "evidence": "差合化三位一體可用來描述世界束展開的底層動力。",
+      "confidence": 0.6
+    }
+  ],
+  "notes": "此篇為概念性草稿，不含定量機制。理論名稱與核心公理直接取自摘要/命題章節。T3（Expand∞升級定理）明確標示為對前作「高階本體收斂論」的修正——該篇未在提供的 lm-id 清單中找到對應條目，故未列為 external_ref。lm-000154（WT視角下的底空間世界束展開論）標題直接沿用本篇篇名，明顯是本篇後續延伸作，但因本篇正文並未點名引用該篇，故未列為 external_ref，僅保留於 notes 供交叉索引參考。TCF/MDAS/差合化因清單含多個候選篇目，選擇最直接對應者（TCF v1.0、MDAS-TCH、差合化三位一體本體論）並調降 confidence。"
+}

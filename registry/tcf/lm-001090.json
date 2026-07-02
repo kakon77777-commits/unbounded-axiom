@@ -1,0 +1,333 @@
+{
+  "tcf_extract_version": "0.1",
+  "id": "lm-001090",
+  "title": "閉合即展開:DCO 的 2D 幾何實驗與四模塊接縫定理",
+  "language": "zh-Hant",
+  "source_file": "content/papers/2026/2026-06/閉合即展開_DCO的2D幾何實驗與四模塊接縫定理.md",
+  "theory_name": "閉合-展開對偶(四模塊接縫定理)",
+  "extracted_by": "claude-fable-5 (automated distillation, Phase A)",
+  "extraction_date": "2026-07-02",
+  "canonical_status": "draft",
+  "primitives": [
+    {
+      "symbol": "Cₙ",
+      "kind": "type",
+      "description": "雙向遞迴圓序列 {Cₙ | n ∈ ℤ} 中的第 n 個圓;由元圓 C₀ 向內、向外遞迴生成",
+      "evidence": "雙向遞迴圓序列中的第 n 個圓,n ∈ ℤ"
+    },
+    {
+      "symbol": "Iₙ, Oₙ",
+      "kind": "constant",
+      "description": "由圓 Cₙ 將 2D 平面分割所得的內域與外域",
+      "evidence": "由 Cₙ 分割平面所得的內域與外域"
+    },
+    {
+      "symbol": "Cl",
+      "kind": "relation",
+      "description": "閉合性算子/謂詞;DCO 的核心原語,附帶公理 Cl-1 至 Cl-4",
+      "evidence": "每個 Cₙ 局部閉合,滿足 Cl-1(自洽性)"
+    },
+    {
+      "symbol": "⋈",
+      "kind": "relation",
+      "description": "「此間」關係算子:表示兩區域之間的居間關係;圓即 ⋈ 的物質化",
+      "evidence": "Cₙ ≡ ⋈(Iₙ, Oₙ),圓即內外此間的物質形態"
+    },
+    {
+      "symbol": "𝒢⁺, 𝒢⁻",
+      "kind": "constant",
+      "description": "雙向 GOD POINT:內極限(0 維點,對應奇點/無極)與外極限(無界平面,對應 Ω/真終極)",
+      "evidence": "lim(n→-∞) Cₙ = {p₀},對應奇點 / 無極"
+    },
+    {
+      "symbol": "ℰ, 𝒱",
+      "kind": "function",
+      "description": "三元本體論中的生成與消解算子;在同步維度上構成對稱對偶",
+      "evidence": "ℰ 與 𝒱 是同步維度上的對稱對偶"
+    },
+    {
+      "symbol": "𝒞",
+      "kind": "function",
+      "description": "凝聚算子;本論文將其重定位為同步維度與序列維度之間的維度切換算子",
+      "evidence": "𝒞(凝聚算子)是這兩個維度的切換算子"
+    },
+    {
+      "symbol": "τ",
+      "kind": "function",
+      "description": "時間:從同步維度到序列維度的投影方向 τ: Sync → Sequence",
+      "evidence": "從同步維度到序列維度的投影方向"
+    }
+  ],
+  "axioms": [
+    {
+      "id": "ax-cl1",
+      "name": "Cl-1 自洽性",
+      "formula": "Cl-1(Cₙ): 每個 Cₙ 局部閉合且自洽;Cₙ 將平面分割為 Iₙ ∪ Oₙ ∪ Cₙ = ℝ², Iₙ ∩ Oₙ = ∅",
+      "description": "閉合的自洽性公理:每個圓是局部自洽的閉合單元,並完成一次平面二分",
+      "evidence": "由 Cl-1(自洽性),每個 Cₙ 將平面分割為內域 Iₙ 與外域 Oₙ,且 Iₙ ∪ Oₙ ∪ Cₙ = ℝ²,Iₙ ∩ Oₙ = ∅"
+    },
+    {
+      "id": "ax-cl2",
+      "name": "Cl-2 對偶性",
+      "formula": "定義 Iₙ ⟺ 定義 Oₙ(同一閉合動作的兩面)",
+      "description": "閉合的對偶性公理:內域與外域由同一閉合動作同時定義",
+      "evidence": "由 Cl-2(對偶性),定義 Iₙ 即同時定義 Oₙ。內域與外域不是兩個獨立操作的結果,是同一閉合動作的兩面。"
+    },
+    {
+      "id": "ax-cl4",
+      "name": "Cl-4 生成性",
+      "formula": "Cl(Cₙ) ⟹ ∃ Cₙ₋₁ ⊂ Iₙ, ∃ Cₙ₊₁ ⊃ Oₙ",
+      "description": "閉合的生成性公理:每個閉合必然生成新的閉合層級(向內與向外)",
+      "evidence": "由 Cl-4(生成性),每個 Cₙ 的存在生成新的閉合層級——Iₙ 內可再生 Cₙ₋₁,Oₙ 外可再生 Cₙ₊₁"
+    },
+    {
+      "id": "ax-cop",
+      "name": "COP 謹慎開放原則(分支全保留)",
+      "formula": "對結構分支點 A/B/C:不選定任一分支,所有分支同時保持有效",
+      "description": "方法論公理:實驗 setup 的三個分支點(內外對稱性、同步 vs 序列、填充規則)全部保留,不過早閉合定義域",
+      "evidence": "不選定任一分支,讓所有分支同時保持有效"
+    },
+    {
+      "id": "ax-dynfill",
+      "name": "動態填充約束",
+      "formula": "每次繪製新圓 Cₙ 改變既有填充結構(系統為動態)",
+      "description": "實驗 setup 約束:整體結構是動態的,非靜態幾何圖",
+      "evidence": "每次新圓的繪製改變既有填充結構(整體是動態的,非靜態幾何圖)"
+    }
+  ],
+  "theorems": [
+    {
+      "id": "thm-2-1",
+      "name": "閉合-展開對偶(元定理)",
+      "statement": "在任何包含 Cl-1 的系統中,局部閉合 ⟹ 整體展開;dCl/d(層級) = Expansion,即閉合本身就是展開的微分算子",
+      "from_axioms": ["ax-cl1", "ax-cl2", "ax-cl4"],
+      "description": "任一 Cₙ 的局部閉合性質,經由 Cl-2 與 Cl-4 的雙重強制,必然展開為雙向無限序列並覆蓋全平面",
+      "evidence": "閉合本身就是展開的微分算子"
+    },
+    {
+      "id": "cor-2-3",
+      "name": "雙向 GOD POINT 推論",
+      "statement": "𝒢± = lim(ε→0⁺)(Cl ± ε):任何閉合系統必然具備兩個對偶的動態錨點 𝒢⁻(內極限)與 𝒢⁺(外極限),結構同構但拓撲表現破缺",
+      "from_axioms": [],
+      "description": "修正既有 DCO 框架中 GOD POINT 的單向定義,升級為雙向版本",
+      "evidence": "兩者**結構同構**(皆為 Cl + 無窮小擾動的極限形態),但**拓撲表現破缺**(0 維 vs 無限維)。"
+    },
+    {
+      "id": "thm-3-1",
+      "name": "圓的此間定義(此間物質化)",
+      "statement": "Cₙ ≡ ⋈(Iₙ, Oₙ):每個圓的本體論意義不是邊界,而是內域與外域之「此間」的物質化",
+      "from_axioms": ["ax-cl2"],
+      "description": "在測度層上 μ(Cₙ) = Cₙ ⋈ {Cₙ₋₁, Cₙ₊₁}",
+      "evidence": "在 DCO 框架下,每個 Cₙ 的本體論意義不是「邊界」,而是「兩個區域的此間的物質化」。"
+    },
+    {
+      "id": "thm-3-2",
+      "name": "Ref 內生定理",
+      "statement": "Cl-2(對偶性) ⟹ 參考系 Ref 內生於閉合動作之中;測度論的參考系問題在 DCO 框架下自動解決",
+      "from_axioms": ["ax-cl2"],
+      "description": "每個 Cₙ 的閉合動作同時產生 Iₙ 與 Oₙ,這兩個區域就是 Cₙ 自身的雙向 Ref",
+      "evidence": "Ref 不需要外部給定,Cl 的展開自動生成它自己的 Ref"
+    },
+    {
+      "id": "cor-3-3",
+      "name": "測度與閉合的同構",
+      "statement": "測度 ≅ 閉合的雙側觀察;測度論與 DCO 同構",
+      "from_axioms": [],
+      "description": "任何測度動作等於對某個閉合結構執行內外雙側觀察",
+      "evidence": "任何測度動作 = 對某個閉合結構執行內外雙側觀察。沒有閉合,就沒有可測;沒有可測,就沒有測度。"
+    },
+    {
+      "id": "thm-4-1",
+      "name": "分形必然性",
+      "statement": "Cl-2 ∧ Cl-4 ⟹ Fractal:在任何滿足對偶性與生成性的系統中,分形結構是拓撲必然,非經驗特殊",
+      "from_axioms": ["ax-cl2", "ax-cl4"],
+      "description": "每層閉合同時向內外生成同構的新層級,自相似性 + 無限層級 = 分形;將 FDCS 的分形假設升格為定理",
+      "evidence": "在任何滿足 Cl-2(對偶性) + Cl-4(生成性) 的系統中,**分形結構是拓撲必然,非經驗特殊**。"
+    },
+    {
+      "id": "thm-5-1",
+      "name": "時間湧現",
+      "statement": "時間不是預設維度;時間 τ 是同步維度向序列維度的投影方向,τ: Sync → Sequence",
+      "from_axioms": ["ax-cop"],
+      "description": "接受分支點 B 的全保留(同步+序列並存)則必有一個從同步到序列的投影方向,該方向即時間",
+      "evidence": "在 Cl 框架下,時間不是預設的維度,**時間是同步維度向序列維度的投影方向**。"
+    },
+    {
+      "id": "thm-5-3",
+      "name": "𝒞 作為維度切換算子",
+      "statement": "𝒞: Sync(ℰ, 𝒱) → Sequence(ℰ → 𝒱);𝒞 不是 ℰ 與 𝒱 的中間項,而是把同步對稱性轉化為序列連接性的切換算子",
+      "from_axioms": [],
+      "description": "修正 TUO 三元的對稱表象:𝒞 具有特殊的元結構地位",
+      "evidence": "**𝒞 不是 ℰ 與 𝒱 之間的「中間項」,𝒞 是維度切換算子**——它把同步維度的對稱性轉化為序列維度的連接性。"
+    },
+    {
+      "id": "thm-6-1",
+      "name": "四模塊接縫定理",
+      "statement": "在 2D 雙向遞迴圓實驗的最小 setup 下,DCO、此間測度論、FDCS、生成本體論的時間觀在「閉合-展開對偶」單一元定理下統一(測度層/拓撲層/動力層三個顯現層次)",
+      "from_axioms": [],
+      "description": "四個 EveMissLab 理論模塊被證明是同一元結構在不同層次的顯現,元定理本身是 Cl 公理的直接推論",
+      "evidence": "在 2D 雙向遞迴圓實驗的最小 setup 下,DCO、此間測度論、FDCS、生成本體論的時間觀,在「閉合-展開對偶」這個單一元定理下統一。"
+    }
+  ],
+  "dag": [
+    {"id": "prim-cn", "kind": "primitive", "depends_on": []},
+    {"id": "prim-in-on", "kind": "primitive", "depends_on": ["prim-cn"]},
+    {"id": "prim-cl", "kind": "primitive", "depends_on": []},
+    {"id": "prim-bowtie", "kind": "primitive", "depends_on": []},
+    {"id": "prim-god-points", "kind": "primitive", "depends_on": ["prim-cn"]},
+    {"id": "prim-e-v", "kind": "primitive", "depends_on": []},
+    {"id": "prim-c-op", "kind": "primitive", "depends_on": ["prim-e-v"]},
+    {"id": "prim-tau", "kind": "primitive", "depends_on": []},
+    {"id": "ax-cl1", "kind": "axiom", "depends_on": ["prim-cl", "prim-cn", "prim-in-on"]},
+    {"id": "ax-cl2", "kind": "axiom", "depends_on": ["prim-cl", "prim-in-on"]},
+    {"id": "ax-cl4", "kind": "axiom", "depends_on": ["prim-cl", "prim-cn"]},
+    {"id": "ax-cop", "kind": "axiom", "depends_on": []},
+    {"id": "ax-dynfill", "kind": "axiom", "depends_on": ["prim-cn"]},
+    {"id": "thm-2-1", "kind": "theorem", "depends_on": ["ax-cl1", "ax-cl2", "ax-cl4", "prim-cn"]},
+    {"id": "cor-2-3", "kind": "theorem", "depends_on": ["thm-2-1", "prim-god-points"]},
+    {"id": "thm-3-1", "kind": "theorem", "depends_on": ["ax-cl2", "prim-bowtie", "prim-in-on"]},
+    {"id": "thm-3-2", "kind": "theorem", "depends_on": ["ax-cl2", "thm-3-1"]},
+    {"id": "cor-3-3", "kind": "theorem", "depends_on": ["thm-3-1", "thm-3-2"]},
+    {"id": "thm-4-1", "kind": "theorem", "depends_on": ["ax-cl2", "ax-cl4"]},
+    {"id": "thm-5-1", "kind": "theorem", "depends_on": ["ax-cop", "prim-tau", "prim-c-op", "prim-e-v"]},
+    {"id": "thm-5-3", "kind": "theorem", "depends_on": ["thm-5-1", "prim-c-op"]},
+    {"id": "thm-6-1", "kind": "theorem", "depends_on": ["thm-2-1", "thm-3-1", "thm-4-1", "thm-5-1"]}
+  ],
+  "concepts": [
+    {
+      "name": "閉合性(Cl 公理組)",
+      "canonical": "Closure",
+      "role": "uses",
+      "evidence": "每個 Cₙ 局部閉合,滿足 Cl-1(自洽性)"
+    },
+    {
+      "name": "動態圓本體論 DCO",
+      "canonical": "DCO",
+      "role": "extends",
+      "evidence": "這修正了既有 DCO 框架中 GOD POINT 的單向定義 𝒢 = lim(ε→0⁺)(Cl+ε)。"
+    },
+    {
+      "name": "閉合-展開對偶",
+      "canonical": "ClosureExpansionDuality",
+      "role": "defines",
+      "evidence": "元定理:Cl_local ⟹ Expansion_global"
+    },
+    {
+      "name": "此間測度論",
+      "canonical": "CijianMeasureTheory",
+      "role": "extends",
+      "evidence": "〈此間測度論〉建立:測度的本質是對象與參考系的「此間」關係,μ(A) = A ⋈ Ref。"
+    },
+    {
+      "name": "此間物質化",
+      "canonical": "CijianMaterialization",
+      "role": "defines",
+      "evidence": "Cₙ ≡ ⋈(Iₙ, Oₙ),圓即內外此間的物質形態"
+    },
+    {
+      "name": "FDCS 分形動態因果系統",
+      "canonical": "FDCS",
+      "role": "extends",
+      "evidence": "這把 FDCS 從「並列理論」重定位為「DCO 的拓撲推論」。"
+    },
+    {
+      "name": "生成本體論(萬物皆生成)",
+      "canonical": "GenerativeOntology",
+      "role": "extends",
+      "evidence": "〈萬物皆生成〉提出「生成 > 動」的範疇位移,但未精確說明「動」如何從「生成」中湧現。"
+    },
+    {
+      "name": "謹慎開放原則 COP",
+      "canonical": "CautiousOpennessPrinciple",
+      "role": "uses",
+      "evidence": "這是〈萬物皆生成〉所建立的謹慎開放原則(COP)在實驗 setup 階段的應用。"
+    },
+    {
+      "name": "GOD POINT(動態錨點)",
+      "canonical": "GodPoint",
+      "role": "extends",
+      "evidence": "從單向 𝒢 升級為雙向 𝒢⁺/𝒢⁻"
+    },
+    {
+      "name": "無極",
+      "canonical": "Wuji",
+      "role": "uses",
+      "evidence": "內向 GOD POINT 𝒢⁻:對應內極限,物理對應於奇點 / 無極"
+    },
+    {
+      "name": "分形必然性",
+      "canonical": "FractalNecessity",
+      "role": "defines",
+      "evidence": "分形結構是拓撲必然,非經驗特殊"
+    },
+    {
+      "name": "時間湧現",
+      "canonical": "TimeEmergence",
+      "role": "defines",
+      "evidence": "時間是同步維度向序列維度的投影方向"
+    },
+    {
+      "name": "三元宇宙本體論 TUO(ℰ-𝒞-𝒱)",
+      "canonical": "TUO",
+      "role": "extends",
+      "evidence": "傳統 TUO 將 ℰ-𝒞-𝒱 視為三個並列的動詞。本實驗推出更精確的結構性定位"
+    },
+    {
+      "name": "四模塊接縫",
+      "canonical": "FourModuleConvergence",
+      "role": "defines",
+      "evidence": "DCO、此間測度論、FDCS、生成本體論的時間觀,在「閉合-展開對偶」這個單一元定理下統一。"
+    }
+  ],
+  "external_refs": [
+    {
+      "target": "lm-001089",
+      "type": "depends_on",
+      "evidence": "元定理是 Cl 公理組的直接幾何推論",
+      "confidence": 0.7
+    },
+    {
+      "target": "lm-000049",
+      "type": "depends_on",
+      "evidence": "由於主要結論依賴 Cl 公理組,只要 DCO 成立,本論文的元定理就成立",
+      "confidence": 0.5
+    },
+    {
+      "target": "lm-001088",
+      "type": "applies",
+      "evidence": "內域與外域不是兩個獨立操作的結果,是同一閉合動作的兩面。",
+      "confidence": 0.5
+    },
+    {
+      "target": "GenerativeOntology",
+      "type": "depends_on",
+      "evidence": "〈萬物皆生成〉提出 𝒢 = 𝒢(𝒢),即絕對錨點是「永遠在超越自己」的動態結構。",
+      "confidence": 0.95
+    },
+    {
+      "target": "CijianMeasureTheory",
+      "type": "extends",
+      "evidence": "〈此間測度論〉建立:測度的本質是對象與參考系的「此間」關係,μ(A) = A ⋈ Ref。",
+      "confidence": 0.95
+    },
+    {
+      "target": "FDCS",
+      "type": "extends",
+      "evidence": "EveMissLab 既有的 FDCS(分形動態因果系統)2.0 框架,過去將「分形」視為實驗觀察的特殊結構性假設。",
+      "confidence": 0.95
+    },
+    {
+      "target": "TUO",
+      "type": "extends",
+      "evidence": "這修正了原 TUO 中三元的對稱表象——三元在更深層並非完全對稱",
+      "confidence": 0.9
+    },
+    {
+      "target": "NeoKEpistemologyToolbox",
+      "type": "applies",
+      "evidence": "依〈Neo.K 認識論工具箱〉的三道測試",
+      "confidence": 0.9
+    }
+  ],
+  "notes": "Cl-1/Cl-2/Cl-4 為自 DCO 匯入之工作公理(Cl-3 未在本文出現);COP 與動態填充約束列為方法論/setup 公理。〈萬物皆生成〉〈此間測度論〉FDCS、TUO、〈Neo.K 認識論工具箱〉不在提供的 lm-id 清單中,故以新 CamelCase 概念名作 external_refs 目標。Cl 公理來源紙不確定,lm-001089/lm-000049 以中低信心並列。論文自標所有證明為「草案」(Q.E.D. 草案)。evidence 中的 ** 為原文 markdown 粗體標記,照錄。"
+}

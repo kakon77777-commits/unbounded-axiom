@@ -1,0 +1,302 @@
+{
+  "tcf_extract_version": "0.1",
+  "id": "lm-000526",
+  "title": "意圖即超圖：基於三元本體論的AI意圖式編程架構統一白皮書",
+  "language": "zh-Hant",
+  "source_file": "content/papers/2026/2026-05/意圖即超圖：基於三元本體論的AI意圖式編程架構統一白皮書.md",
+  "theory_name": "HPP (Hypergraph Programming Paradigm) / 超圖編程範式",
+  "extracted_by": "claude-fable-5 (automated distillation, Phase A)",
+  "extraction_date": "2026-07-02",
+  "canonical_status": "draft",
+  "primitives": [
+    {
+      "symbol": "H",
+      "kind": "type",
+      "description": "有向超圖：節點集 V 與超邊集 E，超邊為 head/tail 對",
+      "evidence": "H = (V, \\mathcal{E}), \\quad \\mathcal{E} \\subseteq \\{(T, h) : T \\subseteq V, h \\in V \\setminus T\\}"
+    },
+    {
+      "symbol": "ρ",
+      "kind": "function",
+      "description": "部分函數，將節點映射到子超圖，實現自指(遞歸)結構",
+      "evidence": "H = (V, \\mathcal{E}, \\rho), \\quad \\rho: V \\rightharpoonup \\mathcal{H}"
+    },
+    {
+      "symbol": "ℰ",
+      "kind": "function",
+      "description": "湧動算子：潛在到實現，對應節點展開為子超圖",
+      "evidence": "ℰ &: 0 \\to 1 \\quad \\text{(潛在 → 實現)}"
+    },
+    {
+      "symbol": "𝒞",
+      "kind": "function",
+      "description": "凝聚算子：維持結構/關係建立，對應超邊連接多個節點",
+      "evidence": "𝒞 &: 1 \\to 1 \\quad \\text{(維持結構/關係建立)}"
+    },
+    {
+      "symbol": "𝒱",
+      "kind": "function",
+      "description": "虛化算子：實現到潛在，對應子超圖抽象為單一節點",
+      "evidence": "𝒱 &: 1 \\to 0 \\quad \\text{(實現 → 潛在)}"
+    },
+    {
+      "symbol": "μ(v)",
+      "kind": "function",
+      "description": "節點的數學形式（內部投影）",
+      "evidence": "每個節點同時持有數學形式 $\\mu(v)$ (內部投影)與自然語言注釋 $\\alpha(v)$ (外部投影)"
+    },
+    {
+      "symbol": "α(v)",
+      "kind": "function",
+      "description": "節點的自然語言注釋（外部投影）",
+      "evidence": "每個節點同時持有數學形式 $\\mu(v)$ (內部投影)與自然語言注釋 $\\alpha(v)$ (外部投影)"
+    },
+    {
+      "symbol": "P",
+      "kind": "type",
+      "description": "原子三元基：不可再展開的湧動、凝聚、虛化基本單位之聯集",
+      "evidence": "P = P_ℰ \\cup P_𝒞 \\cup P_𝒱"
+    }
+  ],
+  "axioms": [
+    {
+      "id": "H-1",
+      "name": "超圖原生",
+      "formula": "H = (V, \\mathcal{E}, \\rho)",
+      "description": "HPP的基礎結構是有向超圖，超邊原生承載任意元關係",
+      "evidence": "**H-1(超圖原生):** HPP的基礎結構是有向超圖 $H = (V, \\mathcal{E}, \\rho)$ ,超邊原生承載任意元關係。"
+    },
+    {
+      "id": "H-2",
+      "name": "自指性",
+      "formula": "\\rho: V \\rightharpoonup \\mathcal{H}",
+      "description": "節點可選擇性展開為子超圖，遞歸結構在原子層P終止",
+      "evidence": "**H-2(自指性):** 節點可選擇性展開為子超圖, $\\rho: V \\rightharpoonup \\mathcal{H}$ ,遞歸結構在原子層 $P$ 終止。"
+    },
+    {
+      "id": "H-3",
+      "name": "原子三元基",
+      "formula": "P = P_ℰ \\cup P_𝒞 \\cup P_𝒱",
+      "description": "原子層由湧動、凝聚、虛化三類基本單位組成，所有複合節點是這三類的組合",
+      "evidence": "**H-3(原子三元基):** 原子層 $P = P_ℰ \\cup P_𝒞 \\cup P_𝒱$ ,所有複合節點是這三類的組合。"
+    },
+    {
+      "id": "H-4",
+      "name": "雙通道身份",
+      "formula": "\\mu(v) \\overset{Cl-2}{\\Longleftrightarrow} \\alpha(v)",
+      "description": "每個節點同時具有數學形式與自然語言注釋，兩者透過Cl-2對偶相連",
+      "evidence": "**H-4(雙通道身份):** 每個節點同時具有數學形式 $\\mu(v)$ 與自然語言注釋 $\\alpha(v)$ ,兩者透過Cl-2對偶相連。"
+    },
+    {
+      "id": "H-5",
+      "name": "執行語義分層",
+      "formula": "執行層DAG無環; 本體層循環(世代標記)",
+      "description": "執行層DAG無環，本體層通過世代標記允許循環",
+      "evidence": "**H-5(執行語義分層):** 執行層DAG無環,本體層通過世代標記允許循環。"
+    },
+    {
+      "id": "H-6",
+      "name": "ℰ算子",
+      "formula": "v \\mapsto \\rho(v)",
+      "description": "節點展開，對應 lazy unfold",
+      "evidence": "**H-6(ℰ算子):** 節點展開 $v \\mapsto \\rho(v)$ ,對應 lazy unfold。"
+    },
+    {
+      "id": "H-7",
+      "name": "𝒱算子",
+      "formula": "H_v \\mapsto v",
+      "description": "子超圖收斂，對應 abstraction",
+      "evidence": "**H-7(𝒱算子):** 子超圖收斂 $H_v \\mapsto v$ ,對應 abstraction。"
+    },
+    {
+      "id": "H-8",
+      "name": "𝒞算子",
+      "formula": "超邊連接",
+      "description": "超邊連接，對應 constraint propagation",
+      "evidence": "**H-8(𝒞算子):** 超邊連接,對應 constraint propagation。"
+    },
+    {
+      "id": "H-9",
+      "name": "ℰ-𝒱對偶",
+      "formula": "ℰ \\circ 𝒱 = \\text{Id}, \\quad 𝒱 \\circ ℰ = \\text{Id}",
+      "description": "湧動與虛化互為逆操作，在無損縮放假設下",
+      "evidence": "**H-9(ℰ-𝒱對偶):** $ℰ \\circ 𝒱 = \\text{Id}$ , $𝒱 \\circ ℰ = \\text{Id}$ (在無損縮放假設下)。"
+    },
+    {
+      "id": "H-10",
+      "name": "三算子循環",
+      "formula": "ℰ → 𝒞 → 𝒱 → ℰ",
+      "description": "三算子構成編輯週期的閉合循環",
+      "evidence": "**H-10(三算子循環):** ℰ → 𝒞 → 𝒱 → ℰ 構成編輯週期的閉合循環。"
+    }
+  ],
+  "theorems": [
+    {
+      "id": "H-11",
+      "name": "注釋-結構對偶",
+      "statement": "μ(v) 與 α(v) 透過 Cl-2 對偶相連，AI可從任一通道重建另一通道",
+      "from_axioms": ["H-4"],
+      "description": "雙通道身份公理的推論：注釋與結構互為對偶投影",
+      "evidence": "**H-11(注釋-結構對偶):** $\\mu(v) \\overset{Cl-2}{\\Longleftrightarrow} \\alpha(v)$ ,AI可從任一通道重建另一通道。"
+    },
+    {
+      "id": "H-12",
+      "name": "雙通道驗證",
+      "statement": "decode(μ(v)) = decode(α(v)) 為節點完整性的充要條件",
+      "from_axioms": ["H-4"],
+      "description": "架構級客觀性測試：兩獨立通道解碼結果必須一致，否則對偶破損或結構欠約束",
+      "evidence": "**H-12(雙通道驗證):** $\\text{decode}(\\mu(v)) = \\text{decode}(\\alpha(v))$ 為節點完整性的充要條件。"
+    },
+    {
+      "id": "H-13",
+      "name": "跨視圖對偶",
+      "statement": "在選項B下，超圖視圖與程式視圖互為對偶，編輯任一方同步另一方",
+      "from_axioms": ["H-4"],
+      "description": "架構選項B(雙向同步)下的對偶延伸",
+      "evidence": "**H-13(跨視圖對偶):** 在選項B下,超圖視圖與程式視圖互為對偶,編輯任一方同步另一方。"
+    },
+    {
+      "id": "thm-5.1",
+      "name": "超圖識別效率定理",
+      "statement": "對於一個n元語義約束，DAG編碼需要O(n^2)條二元邊，超圖編碼需要1條超邊",
+      "from_axioms": ["H-1"],
+      "description": "信息論優勢：超圖表達n元約束的效率相對DAG是指數級提升",
+      "evidence": "**定理5.1(超圖識別效率):** 對於一個n元語義約束,DAG編碼需要 $O(n^2)$ 條二元邊,超圖編碼需要 $1$ 條超邊。"
+    },
+    {
+      "id": "thm-triadic-irreducibility",
+      "name": "三元性不可消除定理",
+      "statement": "任何完備描述存在的形式系統，其基的最小元素數為3，且此三元素同構於{ℰ, 𝒞, 𝒱}",
+      "from_axioms": [],
+      "description": "繼承自TUO的拓撲必然性主張，作為HPP採用三元原子基(H-3)的理據",
+      "evidence": "**三元性不可消除定理:** 任何完備描述存在的形式系統,其基的最小元素數為3,且此三元素同構於 $\\{ℰ, 𝒞, 𝒱\\}$ 。"
+    }
+  ],
+  "dag": [
+    {"id": "H", "kind": "primitive", "depends_on": []},
+    {"id": "ρ", "kind": "primitive", "depends_on": ["H"]},
+    {"id": "ℰ", "kind": "primitive", "depends_on": []},
+    {"id": "𝒞", "kind": "primitive", "depends_on": []},
+    {"id": "𝒱", "kind": "primitive", "depends_on": []},
+    {"id": "μ(v)", "kind": "primitive", "depends_on": []},
+    {"id": "α(v)", "kind": "primitive", "depends_on": []},
+    {"id": "P", "kind": "primitive", "depends_on": ["ℰ", "𝒞", "𝒱"]},
+    {"id": "H-1", "kind": "axiom", "depends_on": ["H"]},
+    {"id": "H-2", "kind": "axiom", "depends_on": ["ρ", "P"]},
+    {"id": "H-3", "kind": "axiom", "depends_on": ["P"]},
+    {"id": "H-4", "kind": "axiom", "depends_on": ["μ(v)", "α(v)"]},
+    {"id": "H-5", "kind": "axiom", "depends_on": ["H-2"]},
+    {"id": "H-6", "kind": "axiom", "depends_on": ["ℰ", "ρ"]},
+    {"id": "H-7", "kind": "axiom", "depends_on": ["𝒱"]},
+    {"id": "H-8", "kind": "axiom", "depends_on": ["𝒞"]},
+    {"id": "H-9", "kind": "axiom", "depends_on": ["ℰ", "𝒱"]},
+    {"id": "H-10", "kind": "axiom", "depends_on": ["ℰ", "𝒞", "𝒱"]},
+    {"id": "H-11", "kind": "theorem", "depends_on": ["H-4"]},
+    {"id": "H-12", "kind": "theorem", "depends_on": ["H-4", "H-11"]},
+    {"id": "H-13", "kind": "theorem", "depends_on": ["H-4"]},
+    {"id": "thm-5.1", "kind": "theorem", "depends_on": ["H-1"]},
+    {"id": "thm-triadic-irreducibility", "kind": "theorem", "depends_on": []}
+  ],
+  "concepts": [
+    {
+      "name": "超圖編程範式 (Hypergraph Programming Paradigm, HPP)",
+      "canonical": "HPP",
+      "role": "defines",
+      "evidence": "本文提出**超圖編程範式**(Hypergraph Programming Paradigm, HPP)作為IPS(Intent Programming System)的下一階段架構升級"
+    },
+    {
+      "name": "三元宇宙本體論 (TUO)",
+      "canonical": "TUO",
+      "role": "uses",
+      "evidence": "整合三元宇宙本體論(TUO)的 ℰ-𝒞-𝒱 三元動詞作為計算原語"
+    },
+    {
+      "name": "意圖編程系統 (IPS)",
+      "canonical": "IntentProgramming",
+      "role": "extends",
+      "evidence": "前置論文《意圖即程式》提出的IPS架構基於有向無環圖(DAG):約束系統天然對應DAG結構(IPS定理2.1)"
+    },
+    {
+      "name": "純約束宣告範式 (PCD)",
+      "canonical": "PCD",
+      "role": "uses",
+      "evidence": "純約束宣告範式(Pure Constraint-Declarative Paradigm, PCD)的核心命題:任何命令式程式可壓縮為約束系統"
+    },
+    {
+      "name": "Cl-2對偶性",
+      "canonical": "Closure",
+      "role": "uses",
+      "evidence": "閉包理論的Cl-2公理: \\text{Interior}(Cl) \\Longleftrightarrow \\text{Boundary}(Cl)"
+    },
+    {
+      "name": "Cl-4升維生成",
+      "canonical": "Closure",
+      "role": "uses",
+      "evidence": "這對應到TUO的Cl-4升維生成性質——閉包通過自我反映生成更高維度的結構"
+    },
+    {
+      "name": "自指超圖 (Recursive Hypergraph)",
+      "canonical": "RecursiveHypergraph",
+      "role": "defines",
+      "evidence": "**定義3.2(自指超圖):** $H = (V, \\mathcal{E}, \\rho), \\quad \\rho: V \\rightharpoonup \\mathcal{H}$"
+    },
+    {
+      "name": "本體論語意版本控制 (OntoSemVer)",
+      "canonical": "OntoSemVer",
+      "role": "defines",
+      "evidence": "需要 **Semantic Versioning at the Ontological Level (OntoSemVer):**"
+    },
+    {
+      "name": "ETN (Extremal Tension Notation)",
+      "canonical": "ETN",
+      "role": "uses",
+      "evidence": "**ETN(Extremal Tension Notation):** 未來預留的數學注釋系統,可作為超圖內部的精確標記語言"
+    },
+    {
+      "name": "DCO/Cl",
+      "canonical": "DCO",
+      "role": "uses",
+      "evidence": "**DCO/Cl:** 節點作為閉包的數學基礎"
+    },
+    {
+      "name": "世代標記 (Generation Tag)",
+      "canonical": "GenerationTag",
+      "role": "defines",
+      "evidence": "透過「世代標記」(generation tag)區分同一節點的不同實例"
+    },
+    {
+      "name": "B-hypergraph",
+      "canonical": "BHypergraph",
+      "role": "uses",
+      "evidence": "B-hypergraph:每條超邊一head多tail,覆蓋約90%約束模式(推理估計,待實驗驗證),現有求解器(HyperLP, ASP, Datalog⁺)有原生支持"
+    }
+  ],
+  "external_refs": [
+    {
+      "target": "IntentProgramming",
+      "type": "extends",
+      "evidence": "本文提出**超圖編程範式**(Hypergraph Programming Paradigm, HPP)作為IPS(Intent Programming System)的下一階段架構升級",
+      "confidence": 0.95
+    },
+    {
+      "target": "Closure",
+      "type": "depends_on",
+      "evidence": "閉包理論的Cl-2公理: \\text{Interior}(Cl) \\Longleftrightarrow \\text{Boundary}(Cl)",
+      "confidence": 0.85
+    },
+    {
+      "target": "OperatorOntology",
+      "type": "applies",
+      "evidence": "將TUO的三個不可還原算子 ℰ(湧動)、𝒞(凝聚)、𝒱(虛化)直接映射為架構操作(unfold、connect、abstract)",
+      "confidence": 0.5
+    },
+    {
+      "target": "ETN",
+      "type": "extends",
+      "evidence": "**ETN(Extremal Tension Notation):** 未來預留的數學注釋系統,可作為超圖內部的精確標記語言",
+      "confidence": 0.6
+    }
+  ],
+  "notes": "TUO/IPS/PCD are the paper's own prerequisite theories (前置論文《意圖即程式》《三元宇宙本體論》) but do not correspond to any lm-id in the provided corpus list, so they are recorded as concepts/canonical names rather than lm-id external_refs. Cl-2/DCO mapped to canonical Closure/DCO as uses. H-1..H-13 are the paper's own appendix axiom numbering, reused verbatim as ids.",
+  "external_refs_note": "no direct lm-id matches found in given corpus list; TUO/IPS/PCD referenced only as external prerequisite theories by title, not by lm-id"
+}

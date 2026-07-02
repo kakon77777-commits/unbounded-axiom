@@ -1,0 +1,334 @@
+{
+  "tcf_extract_version": "0.1",
+  "id": "lm-000712",
+  "title": "深度即鏈：深度軸理論與 FDRS 連接算子框架的代數-幾何統一",
+  "language": "zh-Hant",
+  "source_file": "content/papers/2026/2026-06/深度即鏈_深度軸與FDRS統一框架_v1.0.md",
+  "theory_name": "深度即鏈（深度軸 × FDRS II 橋樑統一框架）",
+  "extracted_by": "claude-fable-5 (automated distillation, Phase A)",
+  "extraction_date": "2026-07-02",
+  "canonical_status": "draft",
+  "primitives": [
+    {
+      "symbol": "M_d / 𝓜",
+      "kind": "type",
+      "description": "分層流形族：深度軸宇宙的基本對象，每層 M_d 為帶度量 g^(d) 的三維黎曼流形",
+      "evidence": "深度軸理論的基本數學對象是分層流形族"
+    },
+    {
+      "symbol": "Π_d",
+      "kind": "function",
+      "description": "投影算子 Π_d: M_{d+1} → M_d，連接相鄰深度層",
+      "evidence": "層與層之間由投影算子 $\\Pi_d: M_{d+1} \\to M_d$ 連接。"
+    },
+    {
+      "symbol": "λ",
+      "kind": "constant",
+      "description": "深度收縮率：度量縮放律 g^(d) = e^{-2λd} g^(0) 中的各向同性收縮參數",
+      "evidence": "$g^{(d)} = e^{-2\\lambda d} g^{(0)}$"
+    },
+    {
+      "symbol": "O_d",
+      "kind": "type",
+      "description": "深度可觀測空間：M_d 上可測函數對度量等價關係的商空間，有限維近似下 O_d ≅ R^{N_d}",
+      "evidence": "$O_d = \\text{Func}(M_d, \\mathbb{R}) / \\sim_d$"
+    },
+    {
+      "symbol": "∂_d^D",
+      "kind": "function",
+      "description": "深度邊界算子：由投影算子 Π_{d-1} 誘導的拉回映射，O_d → O_{d-1}",
+      "evidence": "$\\partial_d^D(f) = f \\circ \\Pi_{d-1}, \\qquad f \\in O_d$"
+    },
+    {
+      "symbol": "D_*(U)",
+      "kind": "type",
+      "description": "深度軸鏈複形：可觀測空間序列 O_n → O_{n-1} → … → O_0 → 0，配備邊界算子 ∂_d^D",
+      "evidence": "**定義 2.2（深度軸鏈複形）。** 定義**深度軸複形**為序列"
+    },
+    {
+      "symbol": "𝒟",
+      "kind": "function",
+      "description": "信息失真算子（自 FDRS II 引入）：量化跨層/跨表示轉換的信息代價",
+      "evidence": "信息失真算子 $\\mathcal{D}$、表示轉換算子 $\\mathcal{R}$、維度元算子 $\\Delta$，以及完整的十公理系統。"
+    },
+    {
+      "symbol": "d*(A,B)",
+      "kind": "function",
+      "description": "糾纏深度：使兩系統在深度鏈複形截斷中同調連通（β₀ 下降）的最小深度",
+      "evidence": "$d^*(A, B) = \\min\\left\\{k \\in \\mathbb{N} : \\beta_0\\!\\left(D_{\\leq k}(U)\\right) < \\beta_0\\!\\left(D_0(U)\\right)\\right\\}$"
+    }
+  ],
+  "axioms": [
+    {
+      "id": "ax-isotropic-scaling",
+      "name": "各向同性度量縮放律",
+      "formula": "g^{(d)} = e^{-2\\lambda d} g^{(0)}",
+      "description": "深度軸的對稱性假設：每個深度層上所有空間方向以相同速率 e^{-λ} 收縮",
+      "evidence": "其中每個 $M_d$ 是帶度量 $g^{(d)}_{\\mu\\nu}$ 的三維黎曼流形，且 $g^{(d)} = e^{-2\\lambda d} g^{(0)}$。"
+    },
+    {
+      "id": "ax-fdrs-admissibility",
+      "name": "FDRS 容許條件",
+      "formula": "\\operatorname{rank}(\\partial_d^D) = \\dim O_d",
+      "description": "每個深度層的觀測信息都能被其投影到更淺層的映射完整索引（深度層確實添加新信息）",
+      "evidence": "稱深度軸複形 $D_*(U)$ 為 FDRS 容許的，若對所有 $d \\geq 0$："
+    },
+    {
+      "id": "ax-fdrs-a9-distortion",
+      "name": "FDRS II 公理 A9（失真可分解性，引入）",
+      "formula": "\\mathcal{D}(\\Delta_k) = 1 - \\prod_{d=0}^{k-1}(1 - \\mathcal{D}(\\partial_d^D))",
+      "description": "自 FDRS II 引入的失真複合公理；本文證明其與深度軸的保真度乘積公式等價",
+      "evidence": "與 FDRS II 的公理 A9（失真可分解性）等價："
+    },
+    {
+      "id": "ax-energy-distortion-duality",
+      "name": "猜想 4.1（能量-失真對偶）",
+      "formula": "E_{\\min}(\\partial_d^D) = k_B T \\cdot \\ln(1/(1 - \\mathcal{D}(\\partial_d^D))) \\cdot N_d",
+      "description": "猜想性假設：一步深度降解的最小能量以 Landauer 原理類比，由信息失真決定",
+      "evidence": "**猜想 4.1（能量-失真對偶）。** 執行一步深度降解 $\\Delta_1^D$ 所需的最小能量與 Landauer 原理類比："
+    }
+  ],
+  "theorems": [
+    {
+      "id": "thm-boundary-squared-zero",
+      "name": "命題 2.1（邊界條件的自動成立）",
+      "statement": "深度邊界算子滿足鏈複形條件 ∂_{d-1}^D ∘ ∂_d^D = 0，由投影的幂等性保證",
+      "from_axioms": [],
+      "description": "驗證深度軸複形確實構成鏈複形",
+      "evidence": "**命題 2.1（邊界條件的自動成立）。** $\\partial_{d-1}^D \\circ \\partial_d^D = 0$。"
+    },
+    {
+      "id": "thm-isotropic-admissibility",
+      "name": "命題 2.2（均勻各向同性收縮下的容許性）",
+      "statement": "若所有 Π_d 的奇異值均等於 e^{-λ} > 0，則深度軸複形 D_*(U) 是 FDRS 容許的",
+      "from_axioms": ["ax-isotropic-scaling", "ax-fdrs-admissibility"],
+      "description": "各向同性縮放蘊涵無零奇異值，故邊界算子單射、滿足容許秩條件",
+      "evidence": "**命題 2.2（均勻各向同性收縮下的容許性）。** 若所有 $\\Pi_d$ 的奇異值均等於 $e^{-\\lambda} > 0$（即深度軸的各向同性度量縮放），則 $D_*(U)$ 是 FDRS 容許的。"
+    },
+    {
+      "id": "thm-bridge",
+      "name": "定理 2.1（橋樑定理）",
+      "statement": "深度軸複形 D_*(U) 是 FDRS 容許鏈複形；Π_d 對應邊界算子 ∂_d，保真度乘積公式等價於公理 A9，度量縮放律對應均勻奇異值特例，k 步穿越失真為 1 - e^{-2λk}",
+      "from_axioms": ["ax-isotropic-scaling", "ax-fdrs-admissibility", "ax-fdrs-a9-distortion"],
+      "description": "本文核心：深度軸宇宙是 FDRS II 框架的幾何實現，而非類比",
+      "evidence": "**定理 2.1（橋樑定理）。** 深度軸複形 $D_*(U)$ 是 FDRS II 意義下的一個 FDRS 容許鏈複形。"
+    },
+    {
+      "id": "thm-depth-svd",
+      "name": "定理 3.1（深度-奇異值對應）",
+      "statement": "深度穿越的方向性信息代價由 ∂_d^D 的奇異值決定；各向異性程度由條件數 κ_d = σ_max/σ_min 衡量；k 步總失真由奇異值平方和給出",
+      "from_axioms": [],
+      "description": "各向同性假設推廣為 SVD 一般情形；深度穿越存在最優方向",
+      "evidence": "**定理 3.1（深度-奇異值對應）。** 設 $\\partial_d^D: O_d \\to O_{d-1}$ 是深度 $d$ 的投影邊界算子，其奇異值分解為"
+    },
+    {
+      "id": "thm-entanglement-depth",
+      "name": "定理 3.2（糾纏深度定理）",
+      "statement": "在 FDRS 容許複形上：d* 有限 iff 兩系統在某有限截斷中同調連通；d*=0 iff 表層已連通；最大糾纏態的 d* 由第一個非平凡同調類決定；可用持續同調算法計算",
+      "from_axioms": ["ax-fdrs-admissibility"],
+      "description": "糾纏深度成為可計算的拓樸不變量（第零 Betti 數 β₀）",
+      "evidence": "**定理 3.2（糾纏深度定理）。** 在 FDRS 容許的深度軸複形 $D_*(U)$ 上："
+    },
+    {
+      "id": "thm-optimal-path",
+      "name": "定理 3.3（最優瞬移的圖論等價）",
+      "statement": "最優瞬移路徑問題等價於算子網絡在邊權 w' = -ln(1-w) 下的約束最短路徑問題，可用改進 Dijkstra 算法在 O(|V|log|V|+|E|) 時間精確求解",
+      "from_axioms": ["ax-fdrs-a9-distortion"],
+      "description": "深度瞬移協議的最優化歸結為標準圖論計算",
+      "evidence": "**定理 3.3（最優瞬移的圖論等價）。** 最優瞬移路徑問題等價於算子網絡在邊權 $w' = -\\ln(1-w)$ 下的**約束最短路徑問題**"
+    },
+    {
+      "id": "thm-single-layer-special",
+      "name": "推論 3.1（深度軸瞬移協議的最優性）",
+      "statement": "深度軸原始的「潛入-水平移動-浮出」單層協議是定理 3.3 最優路徑的特例，但一般非全局最優；全局最優可能涉及多層深度跳躍",
+      "from_axioms": [],
+      "description": "修正深度軸理論第五章協議的最優性主張",
+      "evidence": "「潛入深層 $d$，水平移動，浮出」協議是定理 3.3 最優路徑的一個特例（對應單一深度層的路徑），但一般不是全局最優。"
+    },
+    {
+      "id": "thm-suboptimality-bound",
+      "name": "推論 C.1（非最優性的定量界）",
+      "statement": "單一深度層協議的代價為 w'_single = 2·(-ln(1-e^{-2λd}))；相對非最優性 η = (w'_single - w'_opt)/w'_opt ≥ 0 可通過算法計算",
+      "from_axioms": [],
+      "description": "量化深度軸原始協議與最優策略的差距",
+      "evidence": "**推論 C.1（非最優性的定量界）：** 深度軸理論第五章的單一深度層協議（固定在深度 $d$ 移動）的代價為 $w'_{\\text{single}} = 2 \\cdot (-\\ln(1-e^{-2\\lambda d}))$"
+    }
+  ],
+  "dag": [
+    {"id": "prm-layered-manifolds", "kind": "primitive", "depends_on": []},
+    {"id": "prm-projection-operator", "kind": "primitive", "depends_on": ["prm-layered-manifolds"]},
+    {"id": "prm-lambda", "kind": "primitive", "depends_on": []},
+    {"id": "prm-observable-space", "kind": "primitive", "depends_on": ["prm-layered-manifolds"]},
+    {"id": "prm-boundary-operator", "kind": "primitive", "depends_on": ["prm-projection-operator", "prm-observable-space"]},
+    {"id": "prm-depth-chain-complex", "kind": "primitive", "depends_on": ["prm-observable-space", "prm-boundary-operator"]},
+    {"id": "prm-distortion-operator", "kind": "primitive", "depends_on": []},
+    {"id": "prm-entanglement-depth", "kind": "primitive", "depends_on": ["prm-depth-chain-complex"]},
+    {"id": "ax-isotropic-scaling", "kind": "axiom", "depends_on": ["prm-layered-manifolds", "prm-lambda"]},
+    {"id": "ax-fdrs-admissibility", "kind": "axiom", "depends_on": ["prm-boundary-operator", "prm-observable-space"]},
+    {"id": "ax-fdrs-a9-distortion", "kind": "axiom", "depends_on": ["prm-distortion-operator", "prm-boundary-operator"]},
+    {"id": "ax-energy-distortion-duality", "kind": "axiom", "depends_on": ["prm-distortion-operator", "prm-boundary-operator"]},
+    {"id": "thm-boundary-squared-zero", "kind": "theorem", "depends_on": ["prm-boundary-operator", "prm-projection-operator"]},
+    {"id": "thm-isotropic-admissibility", "kind": "theorem", "depends_on": ["ax-isotropic-scaling", "ax-fdrs-admissibility"]},
+    {"id": "thm-bridge", "kind": "theorem", "depends_on": ["thm-isotropic-admissibility", "thm-boundary-squared-zero", "ax-fdrs-a9-distortion", "prm-depth-chain-complex"]},
+    {"id": "thm-depth-svd", "kind": "theorem", "depends_on": ["thm-bridge", "prm-boundary-operator"]},
+    {"id": "thm-entanglement-depth", "kind": "theorem", "depends_on": ["thm-bridge", "prm-entanglement-depth"]},
+    {"id": "thm-optimal-path", "kind": "theorem", "depends_on": ["thm-bridge", "prm-distortion-operator"]},
+    {"id": "thm-single-layer-special", "kind": "theorem", "depends_on": ["thm-optimal-path"]},
+    {"id": "thm-suboptimality-bound", "kind": "theorem", "depends_on": ["thm-optimal-path"]}
+  ],
+  "concepts": [
+    {
+      "name": "深度軸",
+      "canonical": "DepthAxis",
+      "role": "extends",
+      "evidence": "深度軸理論（Depth Axis Theory，DAT）與展平式維度重構理論第二版（FDRS II）分別從幾何-物理直覺和代數-算子語言兩個方向描述同一個底層結構"
+    },
+    {
+      "name": "展平式維度重構理論 II（FDRS II）",
+      "canonical": "FDRS",
+      "role": "extends",
+      "evidence": "展平式維度重構理論 II（FDRS II）——連接算子統一框架——走了另一條路。"
+    },
+    {
+      "name": "深度軸鏈複形",
+      "canonical": "DepthChainComplex",
+      "role": "defines",
+      "evidence": "**定義 2.2（深度軸鏈複形）。** 定義**深度軸複形**為序列"
+    },
+    {
+      "name": "糾纏深度",
+      "canonical": "EntanglementDepth",
+      "role": "defines",
+      "evidence": "定義 $A$ 和 $B$ 的**糾纏深度**為："
+    },
+    {
+      "name": "深度可觀測空間",
+      "canonical": "DepthObservableSpace",
+      "role": "defines",
+      "evidence": "**定義 2.1（深度可觀測空間）。** 對每個深度層 $M_d$，定義其**可觀測空間**"
+    },
+    {
+      "name": "深度軸算子網絡",
+      "canonical": "OperatorNetwork",
+      "role": "defines",
+      "evidence": "**定義 3.2（深度軸算子網絡）。** 將深度軸的路徑空間嵌入 FDRS II 的算子網絡 $\\mathcal{G}_{\\mathrm{FDRS}}$："
+    },
+    {
+      "name": "鏈複形",
+      "canonical": "ChainComplex",
+      "role": "uses",
+      "evidence": "它在抽象的鏈複形範疇內建立了三個連接算子"
+    },
+    {
+      "name": "信息失真算子",
+      "canonical": "InformationDistortionOperator",
+      "role": "uses",
+      "evidence": "信息失真算子 $\\mathcal{D}$、表示轉換算子 $\\mathcal{R}$、維度元算子 $\\Delta$"
+    },
+    {
+      "name": "奇異值分解（SVD）",
+      "canonical": "SingularValueDecomposition",
+      "role": "uses",
+      "evidence": "奇異值分解（SVD）是失真計算的通用語言"
+    },
+    {
+      "name": "Betti 數",
+      "canonical": "BettiNumber",
+      "role": "uses",
+      "evidence": "Betti 數測量拓樸連通性"
+    },
+    {
+      "name": "持續同調",
+      "canonical": "PersistentHomology",
+      "role": "uses",
+      "evidence": "$d^*(A, B)$ 可通過**持續同調（persistent homology）**算法計算"
+    },
+    {
+      "name": "量子糾纏",
+      "canonical": "QuantumEntanglement",
+      "role": "uses",
+      "evidence": "量子糾纏不是神秘的超距作用，而是兩個粒子在深層共享同一個量子態的投影效應。"
+    },
+    {
+      "name": "瞬移協議",
+      "canonical": "TeleportationProtocol",
+      "role": "extends",
+      "evidence": "「瞬移」不違反物理，而是通過潛入深層（度量收縮）繞過表層的距離障礙。"
+    },
+    {
+      "name": "Lean 4 形式化",
+      "canonical": "LeanFormalization",
+      "role": "uses",
+      "evidence": "橋樑定理（定理 2.1）的代數部分（鏈複形結構、FDRS 容許性、公理對應）可立即在 Lean 4 中形式化"
+    },
+    {
+      "name": "Landauer 原理",
+      "canonical": "LandauerPrinciple",
+      "role": "uses",
+      "evidence": "執行一步深度降解 $\\Delta_1^D$ 所需的最小能量與 Landauer 原理類比："
+    }
+  ],
+  "external_refs": [
+    {
+      "target": "lm-000075",
+      "type": "depends_on",
+      "evidence": "**交叉引用：EML-PHYS-2026-DEPTH-v1.0 × EML-FDRS-2026-v2.0**",
+      "confidence": 0.85
+    },
+    {
+      "target": "DepthAxis",
+      "type": "extends",
+      "evidence": "*本文為 EML-PHYS-MATH 系列第一號，建立於 EML-PHYS-2026-DEPTH-v1.0（深度軸理論）與 EML-FDRS-2026-v2.0（FDRS 連接算子統一框架）的交叉點。*",
+      "confidence": 0.95
+    },
+    {
+      "target": "lm-000457",
+      "type": "depends_on",
+      "evidence": "深度軸理論（Depth Axis Theory，DAT）與展平式維度重構理論第二版（FDRS II）",
+      "confidence": 0.5
+    },
+    {
+      "target": "LeanFormalization",
+      "type": "applies",
+      "evidence": "橋樑定理（定理 2.1）的代數部分（鏈複形結構、FDRS 容許性、公理對應）可立即在 Lean 4 中形式化，借用 FDRS II 已建立的形式化骨架。",
+      "confidence": 0.85
+    },
+    {
+      "target": "LandauerPrinciple",
+      "type": "applies",
+      "evidence": "執行一步深度降解 $\\Delta_1^D$ 所需的最小能量與 Landauer 原理類比：",
+      "confidence": 0.9
+    },
+    {
+      "target": "PersistentHomology",
+      "type": "applies",
+      "evidence": "給定深度複形的有限近似，$d^*(A, B)$ 可通過**持續同調（persistent homology）**算法計算",
+      "confidence": 0.9
+    },
+    {
+      "target": "SingularValueDecomposition",
+      "type": "applies",
+      "evidence": "奇異值分解（SVD）是失真計算的通用語言",
+      "confidence": 0.9
+    },
+    {
+      "target": "DijkstraAlgorithm",
+      "type": "applies",
+      "evidence": "在有限截斷 $d \\leq d_{\\max}$ 下，此問題可用改進的 Dijkstra 算法在 $O(|V| \\log |V| + |E|)$ 時間內精確求解。",
+      "confidence": 0.9
+    },
+    {
+      "target": "QuantumEntanglement",
+      "type": "applies",
+      "evidence": "量子糾纏不是神秘的超距作用，而是兩個粒子在深層共享同一個量子態的投影效應。",
+      "confidence": 0.85
+    },
+    {
+      "target": "GeneralRelativity",
+      "type": "applies",
+      "evidence": "廣義相對論的度量張量 $g_{\\mu\\nu}$ 和深度投影算子的奇異值矩陣 $\\Sigma_d$ 之間應有精確的對應關係。",
+      "confidence": 0.6
+    }
+  ],
+  "notes": "橋樑論文：主體為定理而非公理。FDRS II 公理 A9 與 FDRS 容許條件作為引入公理登錄；猜想 4.1 因未證明登錄為公理（假設）。定義 2.1/2.2/3.1 摺入 primitives。深度軸來源論文 EML-PHYS-2026-DEPTH-v1.0 不在語料清單，故用 canonical DepthAxis；FDRS II 引用 v2.0 而語料為 v2.1（lm-000075），信心 0.85；lm-000457 為 FDRS 血緣推定（低信心 0.5）。"
+}

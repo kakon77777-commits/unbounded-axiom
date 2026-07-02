@@ -406,6 +406,12 @@ def _rights_spectrum(now):
             "citation_required": True, "attribution_required": True, "link_required": True,
             "commercial_license_required": True,
             "compensation_required_for_commercial_training": True,
+            # Base-space evolution governance (handoff spec §7): agents may read and
+            # propose; only the human-gated publisher writes the canonical corpus.
+            "autonomous_proposal": 0.8,
+            "autonomous_canonical_write": 0.0,
+            "canonical_write_gate": "human_gate_required (scripts/publish_ingested.py is the "
+                                    "only writer; agent output goes to ingest/ or proposals/)",
         },
         "paths": [
             {"path": "/p/", "description": "Canonical paper pages.",

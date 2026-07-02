@@ -1,0 +1,344 @@
+{
+  "tcf_extract_version": "0.1",
+  "id": "lm-000457",
+  "title": "展平式維度重構理論：從FCSR到FDRS的完整數學架構",
+  "language": "zh-Hant",
+  "source_file": "content/papers/2026/2026-04/展平式維度重構理論：從FCSR到FDRS的完整數學架構.md",
+  "theory_name": "展平式維度重構理論（FDRS：FCSR + FDRS + RDCM）",
+  "extracted_by": "claude-fable-5 (automated distillation, Phase A)",
+  "extraction_date": "2026-07-02",
+  "canonical_status": "draft",
+  "primitives": [
+    {
+      "symbol": "Φ",
+      "kind": "function",
+      "description": "展平映射：把 n 維結構 H 分割後投影為 (n-1) 維展平表示，保留鄰接與邏輯連結",
+      "evidence": "設高維結構 $H \\in \\mathbb{R}^n$，其展平映射 $\\Phi: H \\rightarrow \\mathcal{F}_{n-1}$"
+    },
+    {
+      "symbol": "Dim_FDRS",
+      "kind": "function",
+      "description": "維度的資訊理論測度：由連結圖的代數連通度、平均度數與柯氏複雜度定義",
+      "evidence": "$\\text{Dim}_{\\text{FDRS}}(S) = \\log_2\\left(\\frac{|E|^{\\alpha(G_S)}}{|V|} \\cdot \\mathcal{K}(S)\\right)$"
+    },
+    {
+      "symbol": "M",
+      "kind": "constant",
+      "description": "色位矩陣：魔術方塊狀態的 6×9 展平矩陣表示（FCSR 的基本資料結構）",
+      "evidence": "魔術方塊的任意狀態可表示為色位矩陣 $M \\in \\mathbb{R}^{6 \\times 9}$，其中每個元素 $m_{ij}$ 對應特定位置的顏色編碼。"
+    },
+    {
+      "symbol": "T_i",
+      "kind": "function",
+      "description": "基本轉動／變換函式：展平空間上對應高維基本操作的線性變換",
+      "evidence": "每個基本轉動操作對應一個線性變換 $T_i: \\mathbb{R}^{54} \\rightarrow \\mathbb{R}^{54}$。"
+    },
+    {
+      "symbol": "Ψ",
+      "kind": "function",
+      "description": "維度分割函數：把 n 維結構分割成邊界相交、可在 (n-1) 維表示的片段",
+      "evidence": "$$\\Psi: H \\rightarrow {H_1, H_2, \\ldots, H_k}$$"
+    },
+    {
+      "symbol": "f_{i,j}",
+      "kind": "relation",
+      "description": "邏輯連結映射：低維片段之間的雙向映射，構成升維用的映射函式組",
+      "evidence": "$$\\Phi = {f_{i,j} : P_i \\leftrightarrow P_j}$$"
+    },
+    {
+      "symbol": "Converge",
+      "kind": "function",
+      "description": "升維收斂算子：由低維片段組與封閉映射組合成高維結構（RDCM 核心）",
+      "evidence": "$$H = \\text{Converge}({P_i}, \\Phi)$$"
+    },
+    {
+      "symbol": "ρ_n",
+      "kind": "function",
+      "description": "結構資訊密度：局部 Shannon 熵對 n 維 Hausdorff 測度的極限比值",
+      "evidence": "$\\rho_n(x) = \\lim_{\\epsilon \\rightarrow 0} \\frac{\\mathcal{H}(B_\\epsilon(x) \\cap H)}{\\mu_n(B_\\epsilon(x) \\cap H)}$"
+    }
+  ],
+  "axioms": [
+    {
+      "id": "ax-flattenability",
+      "name": "展平可行性命題",
+      "formula": "∀H ∈ R^n, ∃(Ψ, Φ): Φ(H) ⊂ R^{n-1} 保留鄰接與邏輯連結",
+      "description": "理論的根本哲學命題：任何維度的幾何結構在給定分割策略與映射邏輯下皆可展平",
+      "evidence": "任意維度的幾何結構皆可展平為更低維的可觀測結構，只要具備明確的分割策略與映射邏輯。"
+    },
+    {
+      "id": "ax-structural-mapping",
+      "name": "結構映射哲學",
+      "formula": "展平 = 重建邏輯與關聯，≠ 重現空間",
+      "description": "展平不是簡化或近似，而是結構映射：保存邏輯與關聯而非空間本身",
+      "evidence": "我們不是重現空間，而是重建邏輯與關聯。"
+    },
+    {
+      "id": "ax-dim-as-info",
+      "name": "維度即資訊複雜度",
+      "formula": "Dim(S) := 結構內在資訊複雜度測度（見 Dim_FDRS）",
+      "description": "把維度重新定義為資訊複雜度測度而非存在狀態；全文結論『維度不是存在狀態，而是互動性與邏輯鏈的乘積疊代結果』依此",
+      "evidence": "在本理論框架中，維度被重新定義為結構的內在資訊複雜度測度。"
+    }
+  ],
+  "theorems": [
+    {
+      "id": "thm-1-1-dim-equiv",
+      "name": "維度等價性定理（定理1.1）",
+      "statement": "邏輯連結密度與型態構成等價的兩個結構屬於同一維度，與物理表現形式無關",
+      "from_axioms": ["ax-dim-as-info"],
+      "description": "由資訊化維度定義直接推出的等價判準",
+      "evidence": "若兩個結構在邏輯連結密度與型態構成上等價，則它們在數學意義上屬於同一維度，無論其物理表現形式如何。"
+    },
+    {
+      "id": "thm-2-1-group",
+      "name": "轉換函式的群性質（定理2.1）",
+      "statement": "魔術方塊的基本轉動操作構成有限群 G = ⟨U,D,L,R,F,B⟩",
+      "from_axioms": [],
+      "description": "FCSR 的操作代數：單位元、逆元 T_i^{-1}=T_i^3、結合律",
+      "evidence": "所有基本轉動操作構成一個有限群 $G = \\langle U, D, L, R, F, B \\rangle$"
+    },
+    {
+      "id": "thm-2-2-optimal-path",
+      "name": "最優路徑存在性（定理2.2）",
+      "statement": "任意初始狀態存在到目標狀態的最短操作序列，長度 ≤ 20（God's Number）",
+      "from_axioms": [],
+      "description": "FCSR 狀態遷移的最短路徑界",
+      "evidence": "對任意初始狀態 $M_0$，存在最短操作序列使其達到 $M_{\\text{goal}}$，且最短路徑長度不超過20步（God's Number）。"
+    },
+    {
+      "id": "thm-3-1-structure-preserving",
+      "name": "展平映射的保結構性（定理3.1）",
+      "statement": "若 Φ 保持鄰接關係且保持連通性，則 Φ 為結構保持的展平映射",
+      "from_axioms": ["ax-flattenability"],
+      "description": "給出展平映射合法性的兩個充分條件",
+      "evidence": "鄰接關係保持：$\\forall x, y \\in H$，若 $x \\sim y$，則 $\\Phi(x) \\sim \\Phi(y)$"
+    },
+    {
+      "id": "thm-3-2-homomorphism",
+      "name": "變換函式的同態性（定理3.2）",
+      "statement": "展平映射與變換操作可交換：Φ(τ(H)) = T(Φ(H))",
+      "from_axioms": [],
+      "description": "高維變換與展平變換在 Φ 下同態，操作可在展平空間中等價執行",
+      "evidence": "$$\\Phi(\\tau(H)) = T(\\Phi(H))$$"
+    },
+    {
+      "id": "lem-4-1-closed-group",
+      "name": "封閉映射組的群結構（引理4.1）",
+      "statement": "滿足 f_{i,j}∘f_{j,k}=f_{i,k} 且含恆等映射的映射組在合成下構成群",
+      "from_axioms": [],
+      "description": "RDCM 升維的代數前提",
+      "evidence": "封閉映射組在合成運算下構成群結構。"
+    },
+    {
+      "id": "thm-4-1-ascension-existence",
+      "name": "升維存在性定理（定理4.1）",
+      "statement": "映射組滿足連通性、封閉性、一致性時，存在高維結構 H = Converge({P_i}, Φ)",
+      "from_axioms": [],
+      "description": "低維片段組可合成出高維結構的存在性條件",
+      "evidence": "則存在高維結構 $H \\in \\mathbb{R}^n$ 使得："
+    },
+    {
+      "id": "thm-4-2-rdcm-main",
+      "name": "RDCM 主定理（定理4.2）",
+      "statement": "封閉映射組下，展平為給定 (n-1) 維片段組的 n 維結構存在且唯一",
+      "from_axioms": [],
+      "description": "證明大綱經由纖維叢結構 (E,B,π,F)、底空間同胚與萬有性質",
+      "evidence": "$$\\exists! H \\in \\mathbb{R}^n : \\Phi(H) = {P_i}_{i=1}^k$$"
+    },
+    {
+      "id": "thm-5-1-info-conservation",
+      "name": "展平資訊守恆定律（定理5.1）",
+      "statement": "展平前後結構資訊密度的積分相等（總資訊量守恆）",
+      "from_axioms": [],
+      "description": "展平過程在資訊測度意義下守恆",
+      "evidence": "$$\\int_H \\rho_n(x) , d\\mu_n(x) = \\int_{\\Phi(H)} \\rho_{n-1}^*(y) , d\\mu_{n-1}(y)$$"
+    },
+    {
+      "id": "thm-5-2-density-explosion",
+      "name": "資訊密度爆炸定理（定理5.2）",
+      "statement": "維度 n 足夠大時，展平後局部資訊密度最大值呈階乘增長 O(n!)",
+      "from_axioms": [],
+      "description": "由超立方體展平的鄰接編碼與 Stirling 近似推得",
+      "evidence": "因此局部資訊密度呈階乘增長：$\\rho_{n-1}^*_{\\text{max}} \\sim O(n!)$"
+    },
+    {
+      "id": "thm-5-3-info-equivalence",
+      "name": "維度資訊等價定理（定理5.3）",
+      "statement": "存在密度調節函數 α 使高維總資訊量等於低維局部資訊量的加權積分",
+      "from_axioms": [],
+      "description": "以 Radon-Nikodym 定理證明 α 的存在，建立高低維資訊等價",
+      "evidence": "$$I(H_n) = \\int_{H_{n-1}} \\alpha(y) \\cdot I_{local}(y) , dy$$"
+    },
+    {
+      "id": "thm-6-1-completeness",
+      "name": "FDRS 完備性定理（定理6.1）",
+      "statement": "FDRS 在存在性、唯一性、可逆性、操作封閉性四條件下數學完備",
+      "from_axioms": ["ax-flattenability"],
+      "description": "統一 FCSR、FDRS、RDCM 三子理論後的完備性宣稱；並附遞歸結構 FDRS_n = FDRS_{n-1} ⊕ Δ_n",
+      "evidence": "展平式維度重構理論在以下條件下具有數學完備性："
+    }
+  ],
+  "dag": [
+    {"id": "prim-flatten-map", "kind": "primitive", "depends_on": []},
+    {"id": "prim-dim-fdrs", "kind": "primitive", "depends_on": []},
+    {"id": "prim-color-matrix", "kind": "primitive", "depends_on": []},
+    {"id": "prim-transform", "kind": "primitive", "depends_on": []},
+    {"id": "prim-partition", "kind": "primitive", "depends_on": []},
+    {"id": "prim-link-map", "kind": "primitive", "depends_on": []},
+    {"id": "prim-converge", "kind": "primitive", "depends_on": ["prim-link-map"]},
+    {"id": "prim-info-density", "kind": "primitive", "depends_on": []},
+    {"id": "ax-flattenability", "kind": "axiom", "depends_on": []},
+    {"id": "ax-structural-mapping", "kind": "axiom", "depends_on": []},
+    {"id": "ax-dim-as-info", "kind": "axiom", "depends_on": ["prim-dim-fdrs"]},
+    {"id": "thm-1-1-dim-equiv", "kind": "theorem", "depends_on": ["ax-dim-as-info", "prim-dim-fdrs"]},
+    {"id": "thm-2-1-group", "kind": "theorem", "depends_on": ["prim-transform", "prim-color-matrix"]},
+    {"id": "thm-2-2-optimal-path", "kind": "theorem", "depends_on": ["thm-2-1-group", "prim-color-matrix"]},
+    {"id": "thm-3-1-structure-preserving", "kind": "theorem", "depends_on": ["prim-flatten-map", "prim-partition", "ax-flattenability"]},
+    {"id": "thm-3-2-homomorphism", "kind": "theorem", "depends_on": ["prim-flatten-map", "prim-transform"]},
+    {"id": "lem-4-1-closed-group", "kind": "theorem", "depends_on": ["prim-link-map"]},
+    {"id": "thm-4-1-ascension-existence", "kind": "theorem", "depends_on": ["prim-link-map", "prim-converge"]},
+    {"id": "thm-4-2-rdcm-main", "kind": "theorem", "depends_on": ["lem-4-1-closed-group", "thm-4-1-ascension-existence", "prim-flatten-map"]},
+    {"id": "thm-5-1-info-conservation", "kind": "theorem", "depends_on": ["prim-info-density", "prim-flatten-map"]},
+    {"id": "thm-5-2-density-explosion", "kind": "theorem", "depends_on": ["thm-5-1-info-conservation", "prim-info-density"]},
+    {"id": "thm-5-3-info-equivalence", "kind": "theorem", "depends_on": ["thm-5-1-info-conservation"]},
+    {"id": "thm-6-1-completeness", "kind": "theorem", "depends_on": ["thm-3-1-structure-preserving", "thm-4-2-rdcm-main", "thm-5-1-info-conservation", "ax-flattenability"]}
+  ],
+  "concepts": [
+    {
+      "name": "展平式維度重構理論（FDRS）",
+      "canonical": "FDRS",
+      "role": "defines",
+      "evidence": "整合FCSR、FDRS與RDCM三個子理論，我們得到統一的展平式維度重構框架："
+    },
+    {
+      "name": "FCSR（展平色位圖模型）",
+      "canonical": "FDRS",
+      "role": "defines",
+      "evidence": "展平結構採用十字形或T型佈局，維持空間鄰接關係："
+    },
+    {
+      "name": "RDCM（逆向升維模型）",
+      "canonical": "FDRS",
+      "role": "defines",
+      "evidence": "定理4.2（RDCM主定理）：設 ${P_i}_{i=1}^k$ 為 $(n-1)$ 維結構組，$\\Phi$ 為滿足封閉性的映射組"
+    },
+    {
+      "name": "維度（資訊複雜度測度）",
+      "canonical": "DimensionAsInformation",
+      "role": "defines",
+      "evidence": "維度不是存在狀態，而是互動性與邏輯鏈的乘積疊代結果。"
+    },
+    {
+      "name": "結構資訊密度",
+      "canonical": "InformationDensity",
+      "role": "defines",
+      "evidence": "對於 $n$ 維結構 $H$，在點 $x$ 處的結構資訊密度定義為："
+    },
+    {
+      "name": "底空間",
+      "canonical": "BaseSpace",
+      "role": "uses",
+      "evidence": "證明底空間 $B$ 同胚於所需的 $n$ 維流形"
+    },
+    {
+      "name": "纖維叢",
+      "canonical": "WorldBundle",
+      "role": "uses",
+      "evidence": "由 $\\Phi$ 的封閉性，構造纖維叢結構 $(E, B, \\pi, F)$"
+    },
+    {
+      "name": "群（有限群、群結構）",
+      "canonical": "GroupTheory",
+      "role": "uses",
+      "evidence": "所有基本轉動操作構成一個有限群 $G = \\langle U, D, L, R, F, B \\rangle$"
+    },
+    {
+      "name": "魔術方塊",
+      "canonical": "RubiksCube",
+      "role": "uses",
+      "evidence": "魔術方塊作為有限階高維邏輯結構的空間裝置，其3D→2D的展平過程揭示了維度重構的基本原則。"
+    },
+    {
+      "name": "Shannon熵",
+      "canonical": "ShannonEntropy",
+      "role": "uses",
+      "evidence": "$\\mathcal{H}(\\cdot)$ 為Shannon熵函數，計算局部結構的資訊熵"
+    },
+    {
+      "name": "柯氏複雜度",
+      "canonical": "KolmogorovComplexity",
+      "role": "uses",
+      "evidence": "$\\mathcal{K}(S)$ 為結構的柯氏複雜度"
+    },
+    {
+      "name": "拓樸性質保持",
+      "canonical": "Topology",
+      "role": "uses",
+      "evidence": "每個 $\\pi_i(H_i)$ 保持局部拓樸性質"
+    }
+  ],
+  "external_refs": [
+    {
+      "target": "lm-000456",
+      "type": "extends",
+      "evidence": "整合FCSR、FDRS與RDCM三個子理論，我們得到統一的展平式維度重構框架：",
+      "confidence": 0.55
+    },
+    {
+      "target": "GroupTheory",
+      "type": "depends_on",
+      "evidence": "所有基本轉動操作構成一個有限群 $G = \\langle U, D, L, R, F, B \\rangle$",
+      "confidence": 0.9
+    },
+    {
+      "target": "ShannonEntropy",
+      "type": "depends_on",
+      "evidence": "$\\mathcal{H}(\\cdot)$ 為Shannon熵函數，計算局部結構的資訊熵",
+      "confidence": 0.9
+    },
+    {
+      "target": "KolmogorovComplexity",
+      "type": "depends_on",
+      "evidence": "$\\mathcal{K}(S)$ 為結構的柯氏複雜度",
+      "confidence": 0.9
+    },
+    {
+      "target": "HausdorffMeasure",
+      "type": "depends_on",
+      "evidence": "$\\mu_n(\\cdot)$ 為 $n$ 維Hausdorff測度",
+      "confidence": 0.85
+    },
+    {
+      "target": "RadonNikodymTheorem",
+      "type": "depends_on",
+      "evidence": "利用Radon-Nikodym定理，證明密度函數 $\\alpha$ 的存在性",
+      "confidence": 0.9
+    },
+    {
+      "target": "StirlingApproximation",
+      "type": "depends_on",
+      "evidence": "由Stirling近似，當 $n$ 足夠大時，編碼所需的配置數近似 $n!$",
+      "confidence": 0.85
+    },
+    {
+      "target": "GodsNumber",
+      "type": "applies",
+      "evidence": "且最短路徑長度不超過20步（God's Number）。",
+      "confidence": 0.85
+    },
+    {
+      "target": "WorldBundle",
+      "type": "applies",
+      "evidence": "由 $\\Phi$ 的封閉性，構造纖維叢結構 $(E, B, \\pi, F)$",
+      "confidence": 0.5
+    },
+    {
+      "target": "BaseSpace",
+      "type": "applies",
+      "evidence": "證明底空間 $B$ 同胚於所需的 $n$ 維流形",
+      "confidence": 0.5
+    }
+  ],
+  "notes": "自足的數學框架（FCSR→FDRS→RDCM），無明確引文；lm-000456 連結由共享理論名推斷（姊妹版本，方向不明，信心 0.55）。底空間／纖維叢僅在定理4.2證明中以標準微分幾何意義出現，映射到語彙 BaseSpace/WorldBundle 時降低信心至 0.5。證據引文已剝除來源中的粗體標記（**），LaTeX 原樣保留；引理4.1 記為 theorem 條目。"
+}

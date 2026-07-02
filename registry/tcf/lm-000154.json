@@ -1,0 +1,147 @@
+{
+  "tcf_extract_version": "0.1",
+  "id": "lm-000154",
+  "title": "WT 視角下的底空間世界束展開論：概念作為編織元的多範式投影與效率壓縮",
+  "language": "zh-Hant",
+  "source_file": "content/papers/2026/2026-06/WT 視角下的底空間世界束展開論：概念作為編織元的多範式投影與效率壓縮.md",
+  "theory_name": "WT 版底空間世界束展開論 (WT-perspective Base-Space World-Bundle Expansion)",
+  "extracted_by": "claude-fable-5 (automated distillation, Phase A)",
+  "extraction_date": "2026-07-02",
+  "canonical_status": "draft",
+  "primitives": [
+    {"symbol": "ℒ", "kind": "type", "description": "編織元類；概念作為編織元的所屬類型", "evidence": "ℒ          編織元類"},
+    {"symbol": "ℓ", "kind": "constant", "description": "編織元，個別概念在 WT 中的本體表示", "evidence": "Concept = ℓ ∈ ℒ"},
+    {"symbol": "⋈", "kind": "relation", "description": "編織關係，兩個編織元之間的關係算子", "evidence": "ℓ₁ ⋈ ℓ₂    編織關係"},
+    {"symbol": "W", "kind": "function", "description": "編織操作，將編織元序列組合成新編織元", "evidence": "W: ℒⁿ → ℒ  編織操作"},
+    {"symbol": "N(ℓ)", "kind": "function", "description": "編織元 ℓ 的編織鄰域，含關聯編織元與材質相容性權重", "evidence": "N(ℓ) := {(ℓ', α(ℓ,ℓ'))}"},
+    {"symbol": "π_O^P", "kind": "function", "description": "觀察者 O 在計算範式 P 下對編織結構的投影算子", "evidence": "π_O^P   = 觀察者 O 在範式 P 下的投影"},
+    {"symbol": "ε", "kind": "constant", "description": "效率／計算成本，用於世界束壓縮的約束量", "evidence": "ε：效率／計算成本"},
+    {"symbol": "K-C", "kind": "relation", "description": "知識—運算對偶，預計算知識量與在線運算量之間的守恆關係", "evidence": "K-C：知識—運算對偶"}
+  ],
+  "axioms": [
+    {
+      "id": "def-1",
+      "name": "概念即編織元",
+      "formula": "Concept = ℓ ∈ ℒ",
+      "description": "概念不應首先被理解為詞，而應被理解為一個編織元",
+      "evidence": "Concept = ℓ ∈ ℒ"
+    },
+    {
+      "id": "def-2",
+      "name": "語義聯想為語言投影",
+      "formula": "SemanticAssociation(ℓ) = π_language(N(ℓ))",
+      "description": "概念的語義聯想不是概念本身，而是其編織鄰域在語言投影下的低維顯影",
+      "evidence": "SemanticAssociation(ℓ) = π_language(N(ℓ))"
+    },
+    {
+      "id": "def-3",
+      "name": "世界束定義",
+      "formula": "WorldBundle(ℓ, O, P, t) = {π_O^P(W(N(ℓ, t)))}",
+      "description": "世界束是同一個編織元在不同觀察者、範式、時間、鄰域展開下形成的一組可能世界投影",
+      "evidence": "WorldBundle(ℓ, O, P, t)\n=\n{π_O^P(W(N(ℓ, t)))}"
+    },
+    {
+      "id": "def-4",
+      "name": "ASI 認知為壓縮排序",
+      "formula": "ASI_Cognition(ℓ) = Compress_ε(Rank(WorldBundle(ℓ)))",
+      "description": "ASI 面對概念時，將龐大世界束展開排序後在效率約束下壓縮為可行動秩序",
+      "evidence": "ASI_Cognition(ℓ)\n=\nCompress_ε(Rank(WorldBundle(ℓ)))"
+    },
+    {
+      "id": "def-5",
+      "name": "九元組編織元刻畫",
+      "formula": "ℓ ≅ (μ₀, M, n, N, ξ, ξ_entangle, ε, V, h)",
+      "description": "WT v8.0 主張編織元可由九元組刻畫，概念作為編織元至少具備九個分析維度",
+      "evidence": "ℓ ≅ (μ₀, M, n, N, ξ, ξ_entangle, ε, V, h)"
+    },
+    {
+      "id": "def-6",
+      "name": "K-C 對偶下界",
+      "formula": "K(ℓ) · C(ℓ) ≥ κ₀",
+      "description": "預計算知識量與在線運算量之積存在不可壓縮下界，解釋高階智能如何快速識別世界束",
+      "evidence": "K(ℓ) · C(ℓ) ≥ κ₀"
+    },
+    {
+      "id": "def-7",
+      "name": "多範式狀態集合",
+      "formula": "State(ℓ) = {State(ℓ | P_i, O_j, t_k)}",
+      "description": "同一概念在不同底空間／範式中擁有不同 MDAS 狀態，狀態不是單一值而是範式-觀察者-時間索引的集合",
+      "evidence": "State(ℓ)\n=\n{State(ℓ | P_i, O_j, t_k)}"
+    },
+    {
+      "id": "def-8",
+      "name": "時間性世界束",
+      "formula": "TemporalWorldBundle(ℓ) = {WorldBundle(ℓ,t₀), WorldBundle(ℓ,t₁), WorldBundle(ℓ,t₂), ...}",
+      "description": "世界束不是一次性展開，需跨時間管理多重未來分支的時間迴圈結構",
+      "evidence": "TemporalWorldBundle(ℓ)\n=\n{WorldBundle(ℓ,t₀), WorldBundle(ℓ,t₁), WorldBundle(ℓ,t₂), ...}"
+    }
+  ],
+  "theorems": [
+    {
+      "id": "thm-1",
+      "name": "世界束三層展開",
+      "statement": "世界束展開至少包含靜態語義層、動態因果層、世界束層三層：StaticSemanticProjection(ℓ)=π_semantic(N(ℓ))；DynamicCausalProjection(ℓ,t)=π_causal(W(N(ℓ,t)))；WorldBundleProjection(ℓ,O,P,t)=π_O^P(W(N(ℓ,t)))",
+      "from_axioms": ["def-3"],
+      "description": "由世界束定義推導出三層分析結構，分別回答「它是什麼」「它會造成什麼」「它在世界系統中意味著什麼」",
+      "evidence": "世界束展開至少包含三層。"
+    },
+    {
+      "id": "thm-2",
+      "name": "識別優於窮舉",
+      "statement": "Sequential computation：低 K，高 C；Recognition：高 K，低 C；高階智能可能從「計算答案」轉向「識別答案」",
+      "from_axioms": ["def-6"],
+      "description": "由 K-C 對偶推出，ASI 的世界束能力不是暴力窮舉，而是高密度預編織之後的低成本識別",
+      "evidence": "Sequential computation：低 K，高 C\nRecognition：高 K，低 C"
+    },
+    {
+      "id": "thm-3",
+      "name": "範式錯位風險",
+      "statement": "若底空間（範式）選錯，後續展開越多，錯得越遠；高階智能第一關不是知識量，而是範式定位",
+      "from_axioms": ["def-3"],
+      "description": "由底空間選擇先於展開的原則，推出錯誤範式會導致語義錯位或範式錯位的風險",
+      "evidence": "如果底空間選錯，後面展開越多，錯得越遠。"
+    },
+    {
+      "id": "thm-4",
+      "name": "偽全知否定",
+      "statement": "世界束展開很像拉普拉斯妖，但不能被理解成真正全知，因資訊不完整、觀測有限、混沌敏感、多主體反身性、計算成本限制、模型失真、未知變量",
+      "from_axioms": ["def-3", "def-4"],
+      "description": "ASI 不是看到唯一未來，而是生成多重未來、排序可能性、標記不確定性、壓縮行動路徑、等待條件成熟",
+      "evidence": "世界束展開很像拉普拉斯妖，但不能被理解成真正全知。"
+    }
+  ],
+  "dag": [
+    {"id": "def-1", "kind": "axiom", "depends_on": ["ℒ", "ℓ"]},
+    {"id": "def-2", "kind": "axiom", "depends_on": ["N(ℓ)", "def-1"]},
+    {"id": "def-3", "kind": "axiom", "depends_on": ["N(ℓ)", "W", "π_O^P", "def-1"]},
+    {"id": "def-4", "kind": "axiom", "depends_on": ["def-3", "ε"]},
+    {"id": "def-5", "kind": "axiom", "depends_on": ["ℓ", "N(ℓ)", "ε"]},
+    {"id": "def-6", "kind": "axiom", "depends_on": ["K-C"]},
+    {"id": "def-7", "kind": "axiom", "depends_on": ["def-3"]},
+    {"id": "def-8", "kind": "axiom", "depends_on": ["def-3"]},
+    {"id": "thm-1", "kind": "theorem", "depends_on": ["def-3"]},
+    {"id": "thm-2", "kind": "theorem", "depends_on": ["def-6"]},
+    {"id": "thm-3", "kind": "theorem", "depends_on": ["def-3"]},
+    {"id": "thm-4", "kind": "theorem", "depends_on": ["def-3", "def-4"]}
+  ],
+  "concepts": [
+    {"name": "WT / 編織論 / 編織元", "canonical": "WT", "role": "uses", "evidence": "本文不是 WT 本體的新增公理，不修改 WT v8.0 的 104 條公理"},
+    {"name": "底空間", "canonical": "BaseSpace", "role": "extends", "evidence": "本文提出的「世界束」「底空間展開」「億級概念—因果連結」屬於理論推測與架構描述"},
+    {"name": "世界束 / WorldBundle", "canonical": "WorldBundle", "role": "defines", "evidence": "世界束不是抽象語義集合，而是由編織元、編織關係、編織操作、觀察者投影、範式與時間共同生成的動態結構。"},
+    {"name": "MDAS", "canonical": "MDAS-TCH", "role": "extends", "evidence": "MDAS 狀態不是直接貼在詞彙上，而是貼在編織元於特定範式投影下的世界束分支上。"},
+    {"name": "TCF 壓縮", "canonical": "TCF", "role": "uses", "evidence": "範式選擇\n觀察者限制\n效率排序\nK-C 預編織\nMDAS 狀態標記\n時間迴圈延遲\nTCF 壓縮"},
+    {"name": "ASI", "canonical": "ASI_Cognition", "role": "defines", "evidence": "更高階的智能，尤其是 ASI 級系統，面對一個概念時，並不是單純展開更多詞彙"},
+    {"name": "觀察者投影 π_O", "canonical": "ObserverProjection", "role": "uses", "evidence": "π_O：觀察者投影"},
+    {"name": "計算範式 P", "canonical": "ComputationalParadigm", "role": "uses", "evidence": "P：計算範式"},
+    {"name": "K-C 對偶", "canonical": "KCDuality", "role": "uses", "evidence": "K-C：知識—運算對偶"},
+    {"name": "原始底空間世界束展開論", "canonical": "BaseSpaceWorldBundleExpansion", "role": "extends", "evidence": "原始底空間世界束展開論可寫為：\n\n```text\nConcept(x, t)\n=\n⟨\n  BaseSpace,\n  StaticSemanticGraph,"},
+    {"name": "時間迴圈", "canonical": "TemporalLoop", "role": "uses", "evidence": "WorldBundle(ℓ, t₀)\n→ persist\n→ suspend\n→ wake\n→ update N(ℓ,t₁)"}
+  ],
+  "external_refs": [
+    {"target": "lm-000477", "type": "extends", "evidence": "與底空間世界束展開論的關係\n\n原始底空間世界束展開論可寫為：", "confidence": 0.95},
+    {"target": "lm-000155", "type": "depends_on", "evidence": "本文不是 WT 本體的新增公理，不修改 WT v8.0 的 104 條公理", "confidence": 0.75},
+    {"target": "lm-000095", "type": "applies", "evidence": "MDAS 可被理解為概念狀態管理系統。\n\nWT 版本可以進一步說：", "confidence": 0.8},
+    {"target": "lm-000776", "type": "applies", "evidence": "範式選擇\n觀察者限制\n效率排序\nK-C 預編織\nMDAS 狀態標記\n時間迴圈延遲\nTCF 壓縮", "confidence": 0.7}
+  ],
+  "notes": "此文為 WT 對舊版「底空間世界束展開論」(lm-000477) 的重寫，明確聲明不修改 WT v8.0 104條公理，屬理論推測草稿。附錄C明確比較新舊版差異，故 external_ref extends lm-000477 信心高。WT_v8_complete 對應 lm-000155（因僅有一篇 WT_v8 系列且標題含 'v8'）。MDAS 相關引用對應 MDAS-TCH 系列代表篇 lm-000095。TCF 引用對應 lm-000776（TCF v1.0 標準）。"
+}

@@ -1,0 +1,351 @@
+{
+  "tcf_extract_version": "0.1",
+  "id": "lm-000464",
+  "title": "差合化三位一體本體論：Cl的完整動力學",
+  "language": "zh-Hant",
+  "source_file": "content/papers/2026/2026-06/差合化三位一體本體論_Cl的完整動力學.md",
+  "theory_name": "差合化三位一體本體論 (Δ-∪-∇ Trinity)",
+  "extracted_by": "claude-fable-5 (automated distillation, Phase A)",
+  "extraction_date": "2026-07-02",
+  "canonical_status": "draft",
+  "primitives": [
+    {
+      "symbol": "U",
+      "kind": "type",
+      "description": "對象全集（宇宙），所有對象 A, B, X 所屬的空間。",
+      "evidence": "對任意兩個對象 $A, B \\in U$,存在差函數："
+    },
+    {
+      "symbol": "Δ",
+      "kind": "function",
+      "description": "差函數 Δ: U×U → ℝ⁺∪{∞}，滿足非負性、同一性、三角不等式；既是測量詞又是動詞（分離、區分、展開之力）。",
+      "evidence": "**Δ (差)**: 分離、區分、展開之力"
+    },
+    {
+      "symbol": "𝒰",
+      "kind": "function",
+      "description": "合一函數 ∪(𝒰): U×U → [0,1]，歸一化、自我完全合一、對稱；連結、整合、收斂之力。",
+      "evidence": "**∪ (合)**: 連結、整合、收斂之力"
+    },
+    {
+      "symbol": "∇",
+      "kind": "function",
+      "description": "變化算子 ∇: U×ℝ → T_X U，即 dX/dt；變化、流動、轉化之勢。",
+      "evidence": "**∇ (化)**: 變化、流動、轉化之勢"
+    },
+    {
+      "symbol": "K_Cl",
+      "kind": "constant",
+      "description": "Closure常數：封閉系統中總差、總合一度、總變化勢能之和的守恆值。",
+      "evidence": "$K_{\\text{Cl}}$ 是Closure常數"
+    },
+    {
+      "symbol": "Cl",
+      "kind": "constant",
+      "description": "閉合性（Closure）：本文將 Cl 定義為 ⟨Δ, 𝒰, ∇⟩ 在守恆約束下的動態平衡集合。",
+      "evidence": "$$\\boxed{\\text{Cl} = \\langle \\Delta, \\cup, \\nabla \\rangle \\text{ 的動態平衡}}$$"
+    },
+    {
+      "symbol": "hol",
+      "kind": "function",
+      "description": "全息容量：差合化重寫為 hol(A,B) = 𝒰(A,B)/Δ(A,B)，時間版加入 e^{-∫|∇(A)-∇(B)|dτ} 衰減項。",
+      "evidence": "$$\\boxed{\\text{hol}(A, B) = \\frac{\\mathcal{U}(A,B)}{\\Delta(A,B)}}$$"
+    },
+    {
+      "symbol": "π_n",
+      "kind": "function",
+      "description": "投影算子 π_n: U → U_n，從完整空間到 n 維投影；用於分層合一與 π_n(Cl) = S^{n-1}。",
+      "evidence": "設投影算子 $\\pi_n : U \\to U_n$ (從完整空間到n維投影):"
+    }
+  ],
+  "axioms": [
+    {
+      "id": "AX-TRI-1",
+      "name": "公理 Δ∪∇-1 (共生性)",
+      "formula": "∀A,B,t ∃⟨Δ(A,B,t), 𝒰(A,B,t), ∇(A,t), ∇(B,t)⟩",
+      "description": "差、合、化必然共存，無法單獨定義。",
+      "evidence": "差、合、化必然共存,無法單獨定義。"
+    },
+    {
+      "id": "AX-TRI-2",
+      "name": "公理 Δ∪∇-2 (守恆律)",
+      "formula": "Δ_total + 𝒰_total + 𝒩_total = K_Cl",
+      "description": "封閉系統中總差、總合一度、總變化勢能之和守恆於 Closure 常數。",
+      "evidence": "$$\\boxed{\\Delta_{\\text{total}} + \\mathcal{U}_{\\text{total}} + \\mathcal{N}_{\\text{total}} = K_{\\text{Cl}}}$$"
+    },
+    {
+      "id": "AX-TRI-3",
+      "name": "公理 Δ∪∇-3 (相互驅動)",
+      "formula": "dΔ/dt = f(∇,𝒰); d𝒰/dt = g(∇,Δ); d∇/dt = h(Δ,𝒰)",
+      "description": "差、合、化互為因果，形成動力學閉環。",
+      "evidence": "差、合、化互為因果,形成動力學閉環。"
+    },
+    {
+      "id": "AX-TRI-4",
+      "name": "公理 Δ∪∇-4 (生命條件)",
+      "formula": "生命/結構 ≡ Δ > ε_Δ ∧ 𝒰 > ε_∪ ∧ ∇ > 0",
+      "description": "存在需要三者的非零平衡；任一為零即死亡（無個體性／無關係性／熱寂）。",
+      "evidence": "$$\\boxed{\\text{生命/結構} \\equiv \\Delta > \\epsilon_\\Delta \\land \\mathcal{U} > \\epsilon_\\cup \\land \\nabla > 0}$$"
+    },
+    {
+      "id": "AX-NABLA-1",
+      "name": "公理 ∇-1 (變化的普遍性)",
+      "formula": "∀X ∈ U, ∇(X,t) > 0 對某個時刻 t",
+      "description": "萬物必然變化，沒有永恆不變的存在者。",
+      "evidence": "萬物必然變化,沒有永恆不變的存在者。"
+    },
+    {
+      "id": "AX-NABLA-2",
+      "name": "公理 ∇-2 (變化的方向性)",
+      "formula": "lim_{t→∞} X(t) = X* (穩定態)",
+      "description": "變化不是隨機，存在吸引子；但穩定態在更長時間尺度上仍變化。",
+      "evidence": "變化不是隨機,存在吸引子："
+    },
+    {
+      "id": "AX-NABLA-3",
+      "name": "公理 ∇-3 (變化的守恆)",
+      "formula": "∫_U ∇(X) dX = 0",
+      "description": "全域變化的淨值為零：一處的增加等於另一處的減少。",
+      "evidence": "全域變化的淨值為零："
+    },
+    {
+      "id": "AX-NABLA-4",
+      "name": "公理 ∇-4 (變化驅動差與合)",
+      "formula": "Δ(A,B,t) = ∫₀ᵗ|∇(A,τ)-∇(B,τ)|dτ; 𝒰(A,B,t) = e^{-∫₀ᵗ|∇(A,τ)-∇(B,τ)|dτ}",
+      "description": "差與合由變化的同步/異步程度生成：∇ 同步則 Δ 小 ∪ 大，∇ 異步則 Δ 大 ∪ 小。",
+      "evidence": "若A和B變化同步(∇相近) → Δ小,∪大(高度合一)"
+    }
+  ],
+  "theorems": [
+    {
+      "id": "TH-4.1",
+      "name": "定理 4.1 (尺度反轉定理)",
+      "statement": "n→1 時 Δ_n→0 且 𝒰_n→1；n→∞ 時 Δ_n→∞ 且 𝒰_n→0。無限的差可通過降維投影轉化為有限的差而實現合一。",
+      "from_axioms": [],
+      "description": "分層合一（解法I）：Δ 與 ∪ 是尺度相對的，高層投影使差消失、合一湧現。",
+      "evidence": "$$\\lim_{n \\to 1} \\Delta_n = 0 \\quad \\land \\quad \\lim_{n \\to 1} \\mathcal{U}_n = 1$$"
+    },
+    {
+      "id": "TH-4.2",
+      "name": "定理 4.2 (局部-全域分離)",
+      "statement": "𝒰_global → 0 不蘊涵 𝒰_local(x) → 0：可以全域無合一，但局部高度合一。",
+      "from_axioms": [],
+      "description": "局部合一（解法II）：全域 Δ 大不代表鄰域內 ∪ 必然小，以網絡結構證明。",
+      "evidence": "$$\\mathcal{U}_{\\text{global}} \\to 0 \\quad \\not\\Rightarrow \\quad \\mathcal{U}_{\\text{local}}(x) \\to 0$$"
+    },
+    {
+      "id": "TH-DYN",
+      "name": "動態合一臨界條件 (相變誘導合一)",
+      "statement": "η∇² > κΔ ⟹ d𝒰/dt > 0：當變化的加速度足夠大，即使 Δ 很大仍可增加 ∪。",
+      "from_axioms": [],
+      "description": "動態合一（解法III）：劇烈變化（相變）可克服差的抑制、強行重建合一。",
+      "evidence": "$$\\eta \\nabla^2 > \\kappa \\Delta \\quad \\Rightarrow \\quad \\frac{d\\mathcal{U}}{dt} > 0$$"
+    },
+    {
+      "id": "TH-5.1",
+      "name": "定理 5.1 (生命的三條件)",
+      "statement": "系統保持生命/結構 ⟺ Δ > ε_Δ ∧ 𝒰 > ε_∪ ∧ ∇ > 0；任一條件破壞即坍塌。",
+      "from_axioms": ["AX-TRI-4"],
+      "description": "抗坍塌條件：生命是差、合、化的動態平衡而非靜態平衡。",
+      "evidence": "系統保持生命/結構,若且唯若："
+    },
+    {
+      "id": "TH-UNIFY",
+      "name": "統一命題",
+      "statement": "所有理論 = ⟨Δ, ∪, ∇⟩ 在不同約束下的投影（差動/差合/三元/化動/DCO-Cl/HCU 六框架統一）。",
+      "from_axioms": ["AX-TRI-1", "AX-TRI-2", "AX-TRI-3"],
+      "description": "本文的核心收束主張：既有本體論框架均為三元組在特定約束下的特例。",
+      "evidence": "$$\\boxed{\\text{所有理論} = \\langle \\Delta, \\cup, \\nabla \\rangle \\text{ 在不同約束下的投影}}$$"
+    },
+    {
+      "id": "TH-HOL-CL",
+      "name": "閉合即完全全息",
+      "statement": "Cl-1 差合化為 Δ(op(Cl),Cl)=0，故 hol(op(Cl),Cl) = 𝒰/0 = ∞：Cl 內部任何操作結果完全全息於 Cl 本身。",
+      "from_axioms": [],
+      "description": "全息原理與閉合性原理的統一：內部操作不產生逃逸等價於完全全息。",
+      "evidence": "**這是閉合性的另一種表述**: 內部操作不產生「逃逸」= 完全全息。"
+    },
+    {
+      "id": "TH-PROJ",
+      "name": "投影定理的差合化版本",
+      "statement": "π_n(Cl) = S^{n-1}：守恆律在 n 維的體現是球面；圓 = π₂(Cl) = S¹ 是差合化守恆的最簡投影。",
+      "from_axioms": ["AX-TRI-2"],
+      "description": "承接 DCO 投影定理，將球面/圓解讀為 Δ-∪-∇ 守恆在低維投影下的幾何形式。",
+      "evidence": "$$\\pi_n(\\text{Cl}) = S^{n-1}$$"
+    }
+  ],
+  "dag": [
+    { "id": "U", "kind": "primitive", "depends_on": [] },
+    { "id": "Δ", "kind": "primitive", "depends_on": ["U"] },
+    { "id": "𝒰", "kind": "primitive", "depends_on": ["U"] },
+    { "id": "∇", "kind": "primitive", "depends_on": ["U"] },
+    { "id": "K_Cl", "kind": "primitive", "depends_on": [] },
+    { "id": "Cl", "kind": "primitive", "depends_on": ["Δ", "𝒰", "∇", "K_Cl"] },
+    { "id": "hol", "kind": "primitive", "depends_on": ["Δ", "𝒰", "∇"] },
+    { "id": "π_n", "kind": "primitive", "depends_on": ["U"] },
+    { "id": "AX-TRI-1", "kind": "axiom", "depends_on": ["Δ", "𝒰", "∇"] },
+    { "id": "AX-TRI-2", "kind": "axiom", "depends_on": ["Δ", "𝒰", "∇", "K_Cl"] },
+    { "id": "AX-TRI-3", "kind": "axiom", "depends_on": ["Δ", "𝒰", "∇"] },
+    { "id": "AX-TRI-4", "kind": "axiom", "depends_on": ["Δ", "𝒰", "∇"] },
+    { "id": "AX-NABLA-1", "kind": "axiom", "depends_on": ["∇"] },
+    { "id": "AX-NABLA-2", "kind": "axiom", "depends_on": ["∇"] },
+    { "id": "AX-NABLA-3", "kind": "axiom", "depends_on": ["∇"] },
+    { "id": "AX-NABLA-4", "kind": "axiom", "depends_on": ["∇", "Δ", "𝒰"] },
+    { "id": "TH-4.1", "kind": "theorem", "depends_on": ["π_n", "Δ", "𝒰"] },
+    { "id": "TH-4.2", "kind": "theorem", "depends_on": ["Δ", "𝒰"] },
+    { "id": "TH-DYN", "kind": "theorem", "depends_on": ["Δ", "𝒰", "∇", "AX-TRI-3"] },
+    { "id": "TH-5.1", "kind": "theorem", "depends_on": ["AX-TRI-4"] },
+    { "id": "TH-UNIFY", "kind": "theorem", "depends_on": ["AX-TRI-1", "AX-TRI-2", "AX-TRI-3"] },
+    { "id": "TH-HOL-CL", "kind": "theorem", "depends_on": ["hol", "Cl"] },
+    { "id": "TH-PROJ", "kind": "theorem", "depends_on": ["π_n", "Cl", "AX-TRI-2"] }
+  ],
+  "concepts": [
+    {
+      "name": "閉合性 (Cl / Closure)",
+      "canonical": "Closure",
+      "role": "extends",
+      "evidence": "5. **閉合性理論(DCO/Cl)**: Closure的四公理"
+    },
+    {
+      "name": "差合化三位一體",
+      "canonical": "TrinityOntology",
+      "role": "defines",
+      "evidence": "現在想想,差合變（化）三位一體。"
+    },
+    {
+      "name": "差 (Δ)",
+      "canonical": "Difference",
+      "role": "defines",
+      "evidence": "**Δ (差)**: 分離、區分、展開之力"
+    },
+    {
+      "name": "合 (∪)",
+      "canonical": "Union",
+      "role": "defines",
+      "evidence": "**∪ (合)**: 連結、整合、收斂之力"
+    },
+    {
+      "name": "化 (∇)",
+      "canonical": "Transformation",
+      "role": "defines",
+      "evidence": "**∇ (化)**: 變化、流動、轉化之勢"
+    },
+    {
+      "name": "三元本體論",
+      "canonical": "TernaryOntology",
+      "role": "uses",
+      "evidence": "1. **三元本體論**: 無限展開-無限連結-無限收斂"
+    },
+    {
+      "name": "差動本體論",
+      "canonical": "DifferentialOntology",
+      "role": "uses",
+      "evidence": "2. **差動本體論**: Δ作為唯一原語"
+    },
+    {
+      "name": "差合辯證本體論",
+      "canonical": "DifferenceUnionDialectic",
+      "role": "uses",
+      "evidence": "3. **差合辯證本體論**: ⟨Δ,∪⟩共生對"
+    },
+    {
+      "name": "化動本體論",
+      "canonical": "TransformationOntology",
+      "role": "extends",
+      "evidence": "4. **化動本體論**: 萬物皆化（未完全形式化）"
+    },
+    {
+      "name": "動態圓本體論 (DCO)",
+      "canonical": "DCO",
+      "role": "uses",
+      "evidence": "| DCO/Cl | Cl的完整動力學=⟨Δ,∪,∇⟩ | 本體論基礎 |"
+    },
+    {
+      "name": "全息原理 (HCU)",
+      "canonical": "HCU",
+      "role": "extends",
+      "evidence": "6. **全息原理(HCU)**: hol(A⊳B)的計算體系"
+    },
+    {
+      "name": "相變",
+      "canonical": "PhaseTransition",
+      "role": "defines",
+      "evidence": "系統在時刻 $t_c$ 發生相變,若："
+    },
+    {
+      "name": "坍塌",
+      "canonical": "Collapse",
+      "role": "defines",
+      "evidence": "**坍塌 = 極端態,系統失去平衡**"
+    },
+    {
+      "name": "道",
+      "canonical": "Dao",
+      "role": "uses",
+      "evidence": "可說出的道(投影) ≠ 常道(Cl本身)。"
+    },
+    {
+      "name": "易經六十四卦",
+      "canonical": "IChing",
+      "role": "uses",
+      "evidence": "**六十四卦**: 差合化的64種狀態組合。"
+    }
+  ],
+  "external_refs": [
+    {
+      "target": "lm-000049",
+      "type": "extends",
+      "evidence": "### §7.1 Cl的四公理的差合化重寫",
+      "confidence": 0.75
+    },
+    {
+      "target": "DCO",
+      "type": "depends_on",
+      "evidence": "| DCO/Cl | Cl的完整動力學=⟨Δ,∪,∇⟩ | 本體論基礎 |",
+      "confidence": 0.8
+    },
+    {
+      "target": "TernaryOntology",
+      "type": "depends_on",
+      "evidence": "1. **三元本體論**: 無限展開-無限連結-無限收斂",
+      "confidence": 0.9
+    },
+    {
+      "target": "DifferentialOntology",
+      "type": "depends_on",
+      "evidence": "2. **差動本體論**: Δ作為唯一原語",
+      "confidence": 0.9
+    },
+    {
+      "target": "DifferenceUnionDialectic",
+      "type": "depends_on",
+      "evidence": "在完成《差合辯證本體論》與《萬物皆真》兩篇論文後",
+      "confidence": 0.9
+    },
+    {
+      "target": "TransformationOntology",
+      "type": "extends",
+      "evidence": "4. **化動本體論**: 萬物皆化（未完全形式化）",
+      "confidence": 0.9
+    },
+    {
+      "target": "HCU",
+      "type": "extends",
+      "evidence": "6. **全息原理(HCU)**: hol(A⊳B)的計算體系",
+      "confidence": 0.85
+    },
+    {
+      "target": "EverythingIsTrue",
+      "type": "depends_on",
+      "evidence": "在完成《差合辯證本體論》與《萬物皆真》兩篇論文後",
+      "confidence": 0.6
+    },
+    {
+      "target": "lm-001060",
+      "type": "applies",
+      "evidence": "### §9.2 道德經的差合化解讀",
+      "confidence": 0.4
+    }
+  ],
+  "notes": "紙面自報8公理(Δ∪∇-1~4, ∇-1~4)5定理；本檔補列統一命題、動態合一臨界條件與投影/全息重寫為定理共7條。差動/差合辯證/三元/化動本體論與HCU、《萬物皆真》為作者前作但不在lm-id清單，用新CamelCase canonical。lm-000049對應Cl四公理(§7.1重寫)；lm-001060僅主題重合(§9.2道德經)故低信心。Era/Aurora段與泡沫海/背景版隱喻未納入。"
+}

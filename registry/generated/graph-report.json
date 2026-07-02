@@ -1,0 +1,1321 @@
+{
+ "generated_at": "2026-07-02T12:55:28Z",
+ "mapped": 46,
+ "edges": 59,
+ "candidates": 173,
+ "rejected_edges": [
+  {
+   "edge": "lm-000017->lm-000329",
+   "type": "concept_dependency",
+   "reason": "Homonym collision: the \"from\" paper's use_quote explicitly attributes its 底空間/管理員 (BaseSpace/Administrator) framework to a distinct paper titled 《底空間與管理員：認知能力差異的統一模型》 (an AI-cognition routing model), not to lm-000329. lm-000329 defines 底空間 as an unrelated category-theoretic construct (ordered pair (J,A) of judgeable propositions and applicable tools, used to unify calculus/differencing/sampling/N…"
+  },
+  {
+   "edge": "lm-000017->lm-000477",
+   "type": "concept_dependency",
+   "reason": "The from-paper's evidence quote explicitly names its source framework as 《底空間與管理員》(a different paper, \"底空間與管理員：認知能力差異的統一模型\", defining Ω_base as a unified cognitive-substrate + Manager-routing model), not lm-000477. lm-000477 (\"底空間世界束展開論\") defines 底空間/BaseSpace as a world-selection frame for concept expansion (e.g. 植物學底空間 vs 科技公司底空間 for \"蘋果\") — a distinct construct. This is a homonym collision on …"
+  },
+  {
+   "edge": "lm-000036->lm-000063",
+   "type": "applies",
+   "reason": "The quoted passage's footnote [^lean] cites the Lean official website (lean-lang.org) as a generic proof-assistant tool, not lm-000063 (the EML-TC-LEAN-2026 plan for formally verifying Topological Calculus in Lean 4). Neither paper mentions the other at all — AMEP never references \"EML-TC\" or the Identity/Topological Calculus formalization plan, and the plan document never mentions AMEP or RigorL…"
+  },
+  {
+   "edge": "lm-000036->lm-000150",
+   "type": "concept_dependency+extends",
+   "reason": "The AMEP paper (2026-06-22) never mentions \"VerifyLoop\" at all — the attached evidence quotes (\"RigorLoop 被重新定位為 AMEP 下的第一個 method pack\", \"RigorLoop 是 AMEP 的第一個自然案例...\") are actually about RigorLoop, a different same-author protocol that is discussed inline within the AMEP document itself, not VerifyLoop. VerifyLoop (lm-000150, dated 2026-07) is a separate, later paper about bidirectional trace v…"
+  },
+  {
+   "edge": "lm-000049->lm-000464",
+   "type": "extends",
+   "reason": "The quoted sentence (\"它說明Cl不是靜態結構,而是自我擴展的動態本體\") appears in lm-000049's own §1.5 (公理 Cl-4 生成性), describing content lm-000049 itself defines — it is not a reference to lm-000464 at all; a full-text search of lm-000049 for \"差合化\", \"三位一體\", \"Trinity\", or \"Δ-∪-∇\" (lm-000464's core constructs) finds zero occurrences. If anything the dependency direction is reversed: lm-000464 is a later synthesis paper t…"
+  },
+  {
+   "edge": "lm-000049->lm-001060",
+   "type": "applies",
+   "reason": "The evidence quote is lm-000049's OWN self-contained §1.8 passage where it originates the Cl-1..Cl-4 ↔ 道德經 mapping — it does not cite or reference lm-001060 at all. lm-001060 is a separate, later (v3.0), independent deep-dive that explicitly treats \"Cl 框架\" as a pre-existing external framework it borrows and applies to 道德經 (\"用 Cl 框架的語彙描述我在道德經中看到的方向性洞察\"). So the actual dependency direction is rever…"
+  },
+  {
+   "edge": "lm-000049->lm-001089",
+   "type": "extends",
+   "reason": "Direction is reversed and unsupported: lm-000049 (2026-05) is the paper that originally defines Cl-1~Cl-4 (自洽性/對偶性/守恆性/生成性) plus the 維度投影定理 in a string-theory/physics context, with no reference anywhere to DCO, RKD, or lm-001089. lm-001089 (2026-06, written a month later) reuses the identical Cl-1~Cl-4 labels/definitions inside a larger \"DCO 十公理\" (Cl-0, Cl-1~9) table mapping them onto RKD's math …"
+  },
+  {
+   "edge": "lm-000058->lm-000293",
+   "type": "applies",
+   "reason": "The evidence quote (HUO's Π_Holo: U_∞ → M_12 → U → K(t) → L(t) projection chain) appears in section A7.2 of lm-000058, but lm-000293 (HDTC-GCS, a theory self-verification meta-framework with concepts like 全息邏輯樹/三態判斷機/因果傳播網) never mentions HUO, 全息聯合算子, or the Π_Holo chain at all — a corpus-wide grep shows HUO is defined in other 2026-04/05/06 papers instead. The only overlap is the shared adjectiv…"
+  },
+  {
+   "edge": "lm-000060->lm-000063",
+   "type": "critiques",
+   "reason": "The quoted text is lm-000060's own §5 self-limitation/TODO passage (listing what a complete formal proof of its operator-precedence convergence claim would still require — induction over arithmetic expressions, precise algebraic conditions, links to term-rewriting/lambda calculus/category theory); it never mentions Lean, EML-TC-LEAN, or lm-000063 by name or concept. lm-000063 is a Lean 4 formaliz…"
+  },
+  {
+   "edge": "lm-000060->lm-001149",
+   "type": "concept_dependency+extends",
+   "reason": "The only occurrence of \"EML\" in lm-000060 is its own document ID (\"EML-OPN-v0.3\") and a script filename reference — it never mentions semantic overlay, MSSP, logic crystallization, or any concept actually defined in lm-001149. lm-000060's content (operator precedence symbol-neutrality, expression trees, fixed points, commutative rings) is a self-contained math/CS foundations argument with zero su…"
+  },
+  {
+   "edge": "lm-000063->lm-001149",
+   "type": "concept_dependency",
+   "reason": "The evidence is a bare acronym match: lm-000063 is a Lean formalization plan for \"EML-TC\" (topological/identity calculus — hash-based content addressing, views, d/integrate, categorical colimits), explicitly targeting separate theory docs \"EML-TC-ONT-2026-v0.1\" and \"EML-TC-COMP-2026-v0.1\", neither of which is lm-001149. lm-001149 defines a completely different \"EML\" (semantic-overlay programming …"
+  },
+  {
+   "edge": "lm-000069->lm-000152",
+   "type": "concept_dependency+depends_on",
+   "reason": "The from-paper cites \"織理論（Weaving Theory）v7.3，W105–W114\" for its ψ群 concept, but W105–W114 is explicitly reserved (per WT_v8_complete.md) for a separate, independent, not-yet-integrated paper — not part of lm-000152, which only covers the base ~103-axiom WT materialized into WeavingGraph/WGNN. lm-000152 never mentions ψ群, W105–W114, or Cognitive Morphism Group; the \"shared_concept\" evidence is ju…"
+  },
+  {
+   "edge": "lm-000069->lm-000155",
+   "type": "concept_dependency+depends_on",
+   "reason": "lm-000069 cites \"織理論 v7.3, W105–W114\" as the source of the ψ group (Cognitive Morphism Group), but WT_v8_complete.md (lm-000155) explicitly states its axiom set is only W1–W104 and that the Ψ group/W105–W114 is \"獨立發行構件...不整合進本文檔\" (an independently published component NOT integrated into this document), with integration left as an undecided author decision (OP-8) — it even lists \"不含構件：Ψ 組\" in its …"
+  },
+  {
+   "edge": "lm-000069->lm-000293",
+   "type": "applies+concept_dependency",
+   "reason": "The cited row sits in the from-paper's \"四、待定候選 (Pending Candidates)\" table — an explicit placeholder/TODO list — and names \"全息理論PHT v0.1\" (a 3D→holographic_projection operator theory) as needing a framework that \"尚未\" exists; the to-paper (lm-000293, HDTC-GCS) never mentions \"全息理論PHT\" or \"PHT\" anywhere and its actual concept \"全息邏輯樹\" is an unrelated DAG-based proof-verification data structure, not …"
+  },
+  {
+   "edge": "lm-000069->lm-000880",
+   "type": "applies+concept_dependency",
+   "reason": "The quoted text is from a recurring \"跨域出現\" (cross-domain occurrence) rhetorical aside attached to the C₀ operator, listing UDAE alongside the Riemann conjecture and quantum measurement merely as analogous patterns elsewhere — it is not a definitional or formal dependency. The C₀ operator's stated 所屬理論 (owning theory) is \"EveMissLab算子理論、並行計算理論\", not UDAE, and lm-000069 does not use, define, or bui…"
+  },
+  {
+   "edge": "lm-000071->lm-000152",
+   "type": "applies+concept_dependency",
+   "reason": "The \"from\" paper mentions \"WT\" exactly once, in a one-line positioning table (§8) that maps a dozen unrelated prior theories to its four-layer architecture (\"WT | L2 算子合成的編織軌跡\") — it never mentions WeavingGraph, WGNN, or graph-theoretic materialization, the actual novel content of lm-000152. The \"WT\" term used is the general Weaving Theory (defined in the separate prerequisite paper \"編織論 WT v7.3\"…"
+  },
+  {
+   "edge": "lm-000071->lm-000924",
+   "type": "concept_dependency",
+   "reason": "Homonym collision: the evidence quote's \"算子\" in lm-000071 refers to EML's own notation-symbol glyphs (三角族/三重不等族, grounded in ISSQL/ISSQL-DTM/TUO per its stated 理論基礎), not to lm-000924's \"算子本體論\" (Operator Ontology) metaphysical thesis that \"all things are operators.\" lm-000071 never mentions 算子本體論, 萬物皆算子, or EML-OO-2026-v0.1 anywhere in the document; the shared term \"concept:OperatorOntology\" is s…"
+  },
+  {
+   "edge": "lm-000075->lm-000069",
+   "type": "concept_dependency",
+   "reason": "The FDRS_II quote uses \"算子本體論\" (operator ontology) as a generic forward-looking reference to mathematical-physics operator-algebra methods (quantum field theory, derived categories, BV formalism, mirror symmetry) in a speculative §7.3 upgrade-path discussion — it does not cite or use lm-000069 (EveMissLab's own symbol index for its operators Cl, ⋈, Ê, Ŵ_R, CEO, C₀, ψ群, BC, k_eff, etc.). None of l…"
+  },
+  {
+   "edge": "lm-000075->lm-000154",
+   "type": "concept_dependency",
+   "reason": "The FDRS_II paper's quote merely mentions generic \"fiber bundle structure\" (纖維叢) in a differential-topology/chain-complex context (RDCM's dimension-raising theorem), never referencing \"WorldBundle,\" \"編織元,\" \"WT,\" or any concept from the WT paper anywhere in its text. The cited def_quote from the WT paper introduces the unrelated WorldBundle(ℓ,O,P,t) construct from Weaving Theory. This is a homonym…"
+  },
+  {
+   "edge": "lm-000075->lm-000477",
+   "type": "concept_dependency",
+   "reason": "The from-paper's quote mentions \"纖維叢結構\" (fiber bundle structure, a standard algebraic-topology concept used to gesture at RDCM's unproven dimension-raising theorem), not \"世界束\" (WorldBundle, the to-paper's neologism for a possible-worlds/causal expansion structure). The FDRS paper never mentions 世界束, WorldBundle, or 底空間 anywhere in its text — this is a false match, likely triggered by the shared c…"
+  },
+  {
+   "edge": "lm-000075->lm-000712",
+   "type": "depends_on",
+   "reason": "The quote in lm-000075 (line 409) is a placeholder/future-work note listing the \"depth axis bridge theorem\" as content NOT YET formalized — it doesn't rely on any result from lm-000712. In fact the actual dependency runs the opposite way: lm-000712 explicitly builds on and borrows lm-000075's FDRS chain-complex formalization skeleton (\"借用 FDRS II 已建立的形式化骨架\") to prove its bridge theorem, making th…"
+  },
+  {
+   "edge": "lm-000075->lm-000924",
+   "type": "concept_dependency",
+   "reason": "The phrase \"算子本體論\" in the FDRS_II quote is glossed in the same sentence as \"量子場論的算子代數方法\" (quantum field theory's operator-algebra methods, i.e. standard math-physics operator algebra theory like C*-algebras/Kadison-Singer) — a homonym of lm-000924's original metaphysical thesis \"萬物皆算子\" (everything-is-an-operator ontology). They share two Chinese characters but denote different concepts. Additiona…"
+  },
+  {
+   "edge": "lm-000076->lm-000456",
+   "type": "concept_dependency",
+   "reason": "The Lean file's own header states its companion is \"EML-FDRS-2026-v2.1 — Flattened Dimensional Reconstructive Theory II: A Unified Framework of Connection Operators,\" a distinct 2026 paper formalizing chain complexes/boundary-operator singular values — none of which appears in the cited to-paper, a 2025-08 introductory essay (no \"II\", no connection-operator or chain-complex content) that only sha…"
+  },
+  {
+   "edge": "lm-000076->lm-000457",
+   "type": "concept_dependency+extends",
+   "reason": "FDRS_en.lean explicitly states its own companion paper is \"EML-FDRS-2026-v2.1 — A Unified Framework of Connection Operators\" (found on disk as FDRS_II_連接算子統一框架_v2.1.md), not lm-000457's FCSR-to-FDRS paper — a distinct document with a different series number and different mathematical content (chain complexes/boundary operators/singular-value distortion Δ,D vs. lm-000457's flattening maps Φ/splitt…"
+  },
+  {
+   "edge": "lm-000095->lm-000049",
+   "type": "concept_dependency+depends_on+uses",
+   "reason": "The from-paper (2026-04-23) predates the to-paper (2026-05), so it cannot actually depend on it — a temporal/direction impossibility. Moreover, both quoted mentions of \"Closure\" in the from-paper are throwaway one-line examples in illustrative tables (as an instance of '全息態' and of Layer-∞ '終極本體論'), explicitly attributed to \"DCO 5.0\" as its origin, not to lm-000049's Cl-1..Cl-4 axiom system; the …"
+  },
+  {
+   "edge": "lm-000095->lm-000112",
+   "type": "applies+concept_dependency",
+   "reason": "The evidence quote in lm-000095 explicitly refers to \"動態速率理論（如P vs. NP的動態速率理論）\" and §6 maps its formalism (Σ, Γ, B, T_search, T_exec, 混沌態→臨界態→秩序態) directly onto \"動態速率理論 2.9\" — a distinct, separately-titled paper in the corpus (\"論文草案：動態速率理論 2.9：認知與計算的解耦——P vs. NP問題的終極動力學解構\", dated 2025-12), not lm-000112 (\"P vs NP問題的智能物理學重構：計算即演化\", dated 2026-03/06). lm-000112 never uses the term 動態速率理論 and frames…"
+  },
+  {
+   "edge": "lm-000095->lm-000273",
+   "type": "extends",
+   "reason": "The evidence quote is lm-000095's own generic \"前置理論\" (prerequisite theories) list — a list of framework names (MDAS, DCO 5.0, O~Ω Theory, 動態速率理論2.9, HISL, WWT, NQCT, LQTT) that appears verbatim in lm-000095 itself, not a citation of lm-000273. Neither paper mentions the other's title/subject anywhere (\"元圖靈完備性\"/\"通用機\" never appears in lm-000095; \"MDAS三態因果超圖論\"/\"認知-計算解耦\" never appears in lm-000273) —…"
+  },
+  {
+   "edge": "lm-000095->lm-000293",
+   "type": "concept_dependency+extends",
+   "reason": "The external_ref quote is lm-000095's own \"前置理論\" list (MDAS、DCO 5.0、O~Ω Theory...) and does not name lm-000293 (HDTC-GCS) at all; a full grep of lm-000293 for \"MDAS\" returns zero hits, and lm-000293's abstract lists unrelated application targets (ADL, 三態邏輯, 範式對偶論). The shared_concept pairing is a homonym collision: lm-000095's \"全息重建升級定理\" (HRUT) is a graph-label-vector reconstruction theorem about…"
+  },
+  {
+   "edge": "lm-000096->lm-000095",
+   "type": "extends",
+   "reason": "Direction is reversed: lm-000096 is the v1.0 paper (EML-MDAS-2026-TCH-v1.0, dated 2026-02-24), and lm-000095 is explicitly its later \"v1.0 的革命性重構\" (EML-MDAS-2026-TCH-v2.0, dated 2026-04-23, repeatedly says \"v1.0 是...\" and lists \"v1.0 的三大不足\"). So v2.0 (lm-000095) depends on/extends v1.0 (lm-000096), not the other way around. The cited evidence quote itself (\"前置理論：MDAS、HISL、WWT、NQCT、LQTT\") is just …"
+  },
+  {
+   "edge": "lm-000096->lm-000152",
+   "type": "concept_dependency+depends_on",
+   "reason": "lm-000096 (dated 2026-02-24) references \"WWT\" only as the abstract Weaving Theory axiom framework in its four-theory unification diagram (HISL⊕WWT⊕NQCT⊕LQTT), mapping WT's weaving-strand concept into MDAS-TCH's own hypergraph primitives — it never mentions WeavingGraph, WGNN, or graph-theoretic materialization. lm-000152 (dated 2026-05-15, filed under 2026-06) is a later paper that introduces Wea…"
+  },
+  {
+   "edge": "lm-000096->lm-000155",
+   "type": "concept_dependency+depends_on",
+   "reason": "The evidence table \"WWT → MDAS-TCH\" in lm-000096 refers to World-Weaving Theory (世界編織論：從PIAC到關係力量的統一邏輯學, doc# EML-LOGIC-2026-WWT-v1.0, 12 axioms, PIAC={E,R,F,I}) which is a separate paper — lm-000096 line 156 explicitly says \"詳細定義見世界編織論\" pointing there, not to lm-000155. lm-000155 (WT_v8_complete, \"編織論\" without \"世界/World\", 104 axioms W1-W104, PIAC defined via ξ_entangle≥ξ_c/W37) is a different, l…"
+  },
+  {
+   "edge": "lm-000096->lm-000776",
+   "type": "applies",
+   "reason": "The \"from\" paper (MDAS-TCH) never mentions TCF or the Theory Compression Format paper anywhere in its text; the cited quote is just MDAS-TCH's own mission statement about converting theories into \"computable quantum topological hypergraphs,\" unrelated to TCF's nine-section machine-parsable schema and compression-ratio (CR=I/K) metric defined in lm-000776. The only shared vocabulary is the generic…"
+  },
+  {
+   "edge": "lm-000112->lm-000776",
+   "type": "applies",
+   "reason": "The evidence quote \"**摘要**\" is merely the generic \"Abstract\" section header present in virtually every paper, not a reference to TCF; the from-paper never mentions TCF, its nine-section schema, or its compression-ratio metric (CR = I/K) anywhere, and its own uses of \"壓縮\" (compression) refer to unrelated complexity-theory notions (incompressible path depth, compressed search space). No genuine dep…"
+  },
+  {
+   "edge": "lm-000119->lm-000112",
+   "type": "concept_dependency",
+   "reason": "The claimed shared concept \"PvsNP\" is a homonym-level overlap only: lm-000119 defines and relies on its own original Φ(x,t) sigmoid/solvability-function apparatus throughout, while lm-000112 never mentions Φ(x,t) at all and instead formalizes P vs NP via an unrelated quantum-state/spectral-gap/entropy framework. The def_quote cited for lm-000112 is just its title, not an actual definition that lm…"
+  },
+  {
+   "edge": "lm-000150->lm-000036",
+   "type": "applies+concept_dependency",
+   "reason": "The evidence quote is VerifyLoop's own header type-tag (\"類型：Agent 方法論 / 開源協議白皮書 / Reliability Layer / Trace-based Verification\"), not a citation to or discussion of AMEP; searching the full VerifyLoop body (including its §12 \"與既有研究的關係\" related-work section citing AgentHallu, MARCH, NabaOS, etc.) turns up zero mentions of AMEP, method packs, RigorLoop, or any AMEP-specific construct. The \"shared_c…"
+  },
+  {
+   "edge": "lm-000150->lm-000450",
+   "type": "applies+concept_dependency",
+   "reason": "The external_ref quote in lm-000150 (line 764) explicitly attributes the Solver/Proposer/Checker, claim-decomposition, self-confirmation-bias-reduction idea to an external framework called \"MARCH\" — not to lm-000450. lm-000450 never mentions \"MARCH,\" \"Solver,\" or \"Checker\" (grep confirms zero hits); its own architecture is Proposer P vs Adversary A with oracle O, a differently-named construct. Th…"
+  },
+  {
+   "edge": "lm-000152->lm-000154",
+   "type": "extends",
+   "reason": "The quoted sentence (\"把圖論物質化放到 WT 整體推進路線中\") is from lm-000152 §1.3, which situates the paper's own graph-theoretic materialization within a generic Layer 0–6 WT roadmap (直觀→圖論→代數→動力學→物理→本體論→WEP) — it names no other paper and does not mention base-space, world-bundle, or \"concept as weaving element.\" lm-000154 (checked in full, ~11KB) is a purely semantic/ontological extension about concepts-as-we…"
+  },
+  {
+   "edge": "lm-000154->lm-000152",
+   "type": "concept_dependency",
+   "reason": "lm-000154 never mentions WeavingGraph, WG, or WGNN anywhere in its ~1047 lines; it explicitly grounds itself in WT v8.0 core axioms/notation (ℓ, ⋈, W, N(ℓ)) and an older 底空間世界束展開論 draft, not in lm-000152's graph-theoretic materialization construct. The evidence quotes are just two independent sentences that both happen to contain the token \\\"WT\\\" (one disclaiming new axioms to WT core, the other …"
+  },
+  {
+   "edge": "lm-000154->lm-000329",
+   "type": "concept_dependency",
+   "reason": "Homonym collision: lm-000329 defines 底空間 formally as a categorical pair (𝒥 judgment-domain, 𝒜 applicability-domain) underlying the \"分\" (partition) primitive, with functor-based connections between base-space categories; lm-000154 redefines 底空間 as \"the WT computational/semantic paradigm P selected for interpreting a concept\" (§4: \"底空間不是背景板，而是概念展開前所選擇的編織範式\"), an unrelated construct built entirely f…"
+  },
+  {
+   "edge": "lm-000154->lm-000478",
+   "type": "concept_dependency",
+   "reason": "The two papers use the same Chinese term \"底空間\" (base space) as a homonym for unrelated constructs: lm-000478 (BSH) defines it as a unified cognitive-memory substrate Ω_base paired with a dynamic \"管理員\" (manager/router) that replaces the three-layer storage/retrieval/expression pipeline model; lm-000154 (WT) defines \"底空間\" instead as a paradigm/frame-selection space (SelectBaseSpace(x,t) ≈ Select P(…"
+  },
+  {
+   "edge": "lm-000154->lm-000776",
+   "type": "applies+concept_dependency",
+   "reason": "The from-paper (a WT-formalism extension paper using ℓ/⋈/W/N(ℓ)/π_O/ε/K-C notation) mentions \"TCF\" exactly once, as a bare unelaborated bullet (\"TCF 壓縮\") in a list of seven one-line risk-mitigation labels (範式選擇/觀察者限制/效率排序/K-C 預編織/MDAS 狀態標記/時間迴圈延遲/TCF 壓縮); there is no citation, no reference section, no use of TCF's actual nine-section schema or compression ratio CR=I/K, and no elaboration anywhere…"
+  },
+  {
+   "edge": "lm-000155->lm-000329",
+   "type": "concept_dependency",
+   "reason": "In WT_v8 (lm-000155), \"底空間\" appears exactly once, as an informal label for axis A₁ ∈ {C,D} (continuous/discrete) inside a computational-paradigm Cartesian product (W47) — a narrow, incidental use unrelated to the target paper's formal apparatus. In lm-000329, \"底空間\" is the paper's core construct: a dynamically emergent pair 𝓑 = (𝒥, 𝒜) of decidability/applicability domains connected via functors. T…"
+  },
+  {
+   "edge": "lm-000155->lm-000477",
+   "type": "concept_dependency",
+   "reason": "In WT_v8_complete.md the term \"底空間\" appears exactly once (line 818), merely labeling axis A₁ ∈ {C,D} (\"continuous/discrete\") inside a computational-paradigm tuple ℙ=A₁×A₂×A₃ — a narrow technical axis name, not a concept it draws on. In the BSWBE paper \"底空間\" is the central cognitive/semantic construct (the framework, e.g. botanical vs. financial vs. corporate, that determines how a concept expands…"
+  },
+  {
+   "edge": "lm-000155->lm-000478",
+   "type": "concept_dependency",
+   "reason": "The only occurrence of \"底空間\" in WT_v8 is the label for axis A₁ (continuous/discrete) in W47's computational-paradigm taxonomy ∃ℙ = A₁×A₂×A₃ — a generic \"underlying space\" axis, not the cognitive-architecture \"Base Space Hypothesis\" (Ω_base + Manager M) that lm-000478 defines. WT_v8 never mentions the Manager, EC Cycle, F_cycle, or any other BSH-specific concept, and lm-000478's title/content is e…"
+  },
+  {
+   "edge": "lm-000273->lm-000095",
+   "type": "concept_dependency+depends_on",
+   "reason": "lm-000273 (dated 2026-02-24) uses only base/v1.0-era MDAS-TCH terminology (⊤⊥Ω three-state, 螺旋算符 spiral operator, 本體/態/辯證標籤, 不可分束) throughout its formal Chapter 1 definitions, and never mentions any v2.0-specific construct (四層十五態, 18維標籤向量, 認知-計算解耦, v2.0 itself — all zero hits). lm-000095 is the v2.0 revision dated 2026-04-23, two months AFTER lm-000273 was written, so lm-000273 could not have dep…"
+  },
+  {
+   "edge": "lm-000273->lm-000112",
+   "type": "applies",
+   "reason": "The evidence is a coincidental keyword collision on generic CS terms (停機問題/類型檢查/不可判定). In lm-000273 these appear only as one column of a three-era historical analogy table (Turing/Curry-Howard/Church-MDAS) unrelated to P vs NP; in lm-000112 \"停機問題\" appears only as a passing Gödel-Turing analogy for its own physics argument. Neither paper references the other, cites the other's title, or relies on …"
+  },
+  {
+   "edge": "lm-000273->lm-000119",
+   "type": "applies",
+   "reason": "The quoted evidence is a table row in lm-000273 (Table 0.4) contrasting three historical undecidability problems across computing eras (1936 halting problem, 1958 type checking, 2026 theory emergence) — it has nothing to do with P vs NP; lm-000273's own undecidability theorem is proven by reduction to Turing's Halting Problem (1936), not P vs NP. lm-000273 never mentions P vs NP, NP-completeness,…"
+  },
+  {
+   "edge": "lm-000273->lm-000215",
+   "type": "concept_dependency",
+   "reason": "Homonym/symbol collision: lm-000273's evidence quote is generic pseudocode checking vertex tag conflicts `{⊤, ⊥} ⊆ v.tags` in its own MDAS tri-state causal hypergraph (tags like N/V/N⊗V/Ω used differently), unrelated to lm-000215's specific \"三態邏輯\" (Triadic Logic) framework, which defines a distinct judgment domain {⊤ⓜ,⊥ⓜ,Ω} tied to dimensional hierarchy (絕對維/超限維/無限維), spiral ascension points, and…"
+  },
+  {
+   "edge": "lm-000273->lm-000293",
+   "type": "extends",
+   "reason": "The evidence quote (\"元定理：M不能預測自身生成的理論\" / \"通過實際運行可「觀察」湧現\") is from lm-000273's own Gödel-incompleteness analogy about MDAS-TCH's emergence operator, with no mention of lm-000293 anywhere in the text; lm-000273's explicit 前置理論 list (MDAS, MDAS-TCH, HISL, WWT, NQCT, LQTT) excludes lm-000293, and lm-000293 itself never references MDAS-TCH or 元圖靈. This is an unsupported/fabricated dependency, not a ge…"
+  },
+  {
+   "edge": "lm-000291->lm-000152",
+   "type": "concept_dependency+depends_on",
+   "reason": "The \"from\" paper's §8/Appendix C only uses generic WT core notation (ℓ, N(ℓ), W(N(ℓ)), π_O^P) — i.e. Weaving Theory itself — and never mentions WeavingGraph, WGNN, nodes/edges, or any graph-theoretic materialization content that is lm-000152's actual contribution. The evidence's def_quote (\"WeavingGraph (WG) 作為 WT ... 具體實現\") documents lm-000152 defining WG, but the \"from\" paper shows no reliance …"
+  },
+  {
+   "edge": "lm-000291->lm-000329",
+   "type": "concept_dependency+depends_on",
+   "reason": "Classic homonym collision: lm-000291 uses \"底空間\" for an ASI-judgment resonance-field construct (底空間全域振子/局部共振子, explicitly tied by its own \"與「底空間世界束展開論」的關係\" section to a different paper — 底空間世界束展開論.md, not lm-000329), while lm-000329 defines \"底空間\" as the emergent working-domain of its \"分\" (partition) mathematical primitive. lm-000291 never mentions lm-000329's title, series code (EML-FEN), or the \"…"
+  },
+  {
+   "edge": "lm-000291->lm-000478",
+   "type": "concept_dependency+depends_on",
+   "reason": "Homonym collision plus unsupported external_ref: lm-000291's \"底空間\" is the Base-Space World-Bundle Expansion Theory construct (事物→底空間→世界束→因果未來...), explicitly attributed in its own Appendix C to a different paper (\"底空間世界束展開論\"/\"WT版世界束展開論\"), not to lm-000478's Base Space Hypothesis (統一底空間+動態管理員 M, a memory/cognition architecture). The external_ref quote (\"本文所討論的，就是這個缺口\") is a generic self-referentia…"
+  },
+  {
+   "edge": "lm-000293->lm-000063",
+   "type": "depends_on",
+   "reason": "The quote \"工具：Coq、Lean、Isabelle\" is a generic mention of proof-assistant tools (and later a \"future improvement direction\" proposing generic Lean/Coq integration) in lm-000293; it never references lm-000063's actual subject (the EML-TC-LEAN Lean 4 formalization plan for Topological Calculus), which is dated 2026-06-11, a month after lm-000293 (2026-05) was written — so lm-000293 could not have de…"
+  },
+  {
+   "edge": "lm-000293->lm-000450",
+   "type": "extends",
+   "reason": "lm-000293 (dated 2026年2月/正文標2026-05) predates lm-000450 (dated 2026-06-14) by months, so it cannot genuinely extend or cite it — a temporal impossibility. The evidence quote is just a generic future-work mention of integrating Lean/Coq for formal verification; lm-000293 never mentions lm-000450's actual defined concepts (Adversary/Proposer debate-verifier architecture, refuter, 對抗驗證), so the \"Adv…"
+  },
+  {
+   "edge": "lm-000293->lm-000870",
+   "type": "concept_dependency+verifies",
+   "reason": "The shared_concept evidence (強制判斷算子/定義1.1) is genuine, but the external_ref \"verifies\" evidence is fabricated: lm-000293's §1.1.2 and §7.1 case study cites a circular dependency between \"定理4.1（絕對力的動態完備性）\" and \"定義4.2（絕對力）A: Event→{⊤,⊥,CRASH}\" in lm-000870's Chapter 4, but the real Chapter 4 of lm-000870 has \"公理4.1\" (an axiom, not a theorem) with that title, and its actual 定義4.1/4.2 concern 名詞性/動詞性…"
+  },
+  {
+   "edge": "lm-000301->lm-000293",
+   "type": "concept_dependency+extends",
+   "reason": "Homonym/misattribution: lm-000301's external_ref \"EML-HLCG-2026-v0.1\" and the \"v0.1\" it says it extends actually refer to a distinct, dedicated paper (全息邏輯因果圖_EveMissLab知識體系的元結構與認識方法論_v0_1.md, which formally defines HLCG as a 7-tuple unifying MDAS/TCF/ADL/TL), not to lm-000293 (全息動態三態因果全局檢查系統, HDTC-GCS). The shared_concept def_quote \"全息邏輯樹\" is Definition 2.2 in lm-000293's self-verification check…"
+  },
+  {
+   "edge": "lm-000325->lm-000069",
+   "type": "concept_dependency",
+   "reason": "The def_quote is just the title heading of lm-000069, not an actual definition — a grep of the entire ontology-index paper shows it never mentions 函子 (functor), 底空間 (bottom space), or κ; it's an index of unrelated named operators (Ê, Ŵ_R, CEO, C₀, π_n, Σ) from other EveMissLab theory papers. The \"OperatorOntology\" concept the edge claims is shared does not actually appear in the 'to' paper in any…"
+  },
+  {
+   "edge": "lm-000325->lm-000450",
+   "type": "applies+concept_dependency",
+   "reason": "The external_ref quote is from lm-000325's §6 開放問題 (Open Questions) — Q-4 merely poses Byzantine fault tolerance as an unanswered question about the DFENP protocol, with no reference to lm-000450 or its debate/verifier framework. The shared_concept tag conflates two different constructs: lm-000450's \"debate + verifier self-play\" (adversarial generation/refutation of knowledge claims) is not the s…"
+  },
+  {
+   "edge": "lm-000325->lm-000477",
+   "type": "concept_dependency",
+   "reason": "Homonym collision: lm-000325 (DFENP) explicitly names its prerequisite as a different paper (EML-FEN-2026-v0.1) and defines 底空間 as a node's formal descriptor B_i=(J_i,A_i) (concepts + decidable predicates + tools) for a distributed partition/consensus protocol; lm-000477 (BSWBE) defines 底空間 as the world-frame a concept is anchored in before semantic/causal/world-bundle expansion (e.g. 蘋果 in botan…"
+  },
+  {
+   "edge": "lm-000325->lm-000478",
+   "type": "concept_dependency",
+   "reason": "Homonym collision: lm-000325's 底空間 is each AI node's local knowledge structure B_i=(J_i,A_i) in a distributed multi-agent protocol, explicitly built on a different prerequisite paper (EML-FEN-2026-v0.1); lm-000478's 底空間 is a unified cognitive substrate paired with a dynamic \"管理員/Administrator\" router in a single-mind cognitive model (Transformer attention, TDI succession). lm-000325 never mention…"
+  },
+  {
+   "edge": "lm-000325->lm-000924",
+   "type": "concept_dependency",
+   "reason": "The evidence's own concept label \"OperatorOntology\" is not what's in the use_quote — the from-paper's quote is about 函子 κ (a Jaccard-similarity compatibility metric between AI nodes' 底空間/bottom-spaces), a construct explicitly derived from a different prerequisite paper (EML-FEN-2026-v0.1, cited as 前置文件). The to-paper's def_quote merely introduces its own unrelated thesis (萬物皆算子/everything-is-an-o…"
+  },
+  {
+   "edge": "lm-000329->lm-000152",
+   "type": "applies+concept_dependency",
+   "reason": "The \"from\" paper's §7 explicitly attributes its 底空間/可區分性 mapping to \"WT v7.4（可區分性擴展）\" — a weaving-measure-space (μ_𝒲) / distinguishability-measure (D) construct that appears nowhere in lm-000152, which is instead the WT v7.3-based graph-theoretic materialization paper (WeavingGraph/WGNN, nodes/edges/PIAC). The term 底空間 does not occur anywhere in lm-000152, and the def_quote used as evidence (\"以We…"
+  },
+  {
+   "edge": "lm-000450->lm-000150",
+   "type": "extends",
+   "reason": "The quoted \"KMAP 附錄的「逆蒸餾」\" refers to the appendix of a different paper (通用關鍵字地圖方法論_實時補充與RAG路線_v0.1.md, which contains both \"KMAP\" and \"逆蒸餾\"), not to lm-000150/VerifyLoop — which never mentions KMAP, 逆蒸餾, or 對抗驗證知識整理架構 anywhere in its text. VerifyLoop uses entirely different vocabulary (Generate→Trace→Forward/Backward Check→Gap Diagnose). This is a misattributed reference, not a real dependency."
+  },
+  {
+   "edge": "lm-000456->lm-000112",
+   "type": "applies+concept_dependency",
+   "reason": "The \"from\" paper (展平式維度重構理論) is dated 2025.8 and merely speculates in one aside sentence that NP-hardness \"may\" stem from low-dimensional framing of high-dimensional problems — a passing analogy, not a reliance on any construct from lm-000112. lm-000112 (P vs NP問題的智能物理學重構) is dated 2026-03-30, months later, and builds an entirely different, unrelated framework (quantum-state isomorphism, Landauer…"
+  },
+  {
+   "edge": "lm-000456->lm-000119",
+   "type": "applies+concept_dependency",
+   "reason": "The \"from\" paper's only touchpoint is a single speculative one-liner in a \"physical implications\" list (NP-hardness might stem from viewing high-dimensional problems in low-dimensional frames) that never engages with any construct actually defined in lm-000119 (its dynamic-rate tensor: S(x,t), Mintrinsic, I(x)/ρ(x), 𝒞(x)/R(x), CPR). The two evidence items are the same sentence duplicated under di…"
+  },
+  {
+   "edge": "lm-000456->lm-000154",
+   "type": "concept_dependency+depends_on",
+   "reason": "lm-000456 (dated 2025.8) never mentions WorldBundle/世界束/編織元/WT anywhere; its \"纖維叢\" at line 381 is a generic topological construction inside an independent RDCM dimension-lifting proof (底空間 B = quotient space of (n-1)-dim structures, F = kernel space of mappings), unrelated to lm-000154's WT-framework WorldBundle(ℓ,O,P,t) concept-as-編織元 construct. The evidence conflates the two papers via superfic…"
+  },
+  {
+   "edge": "lm-000456->lm-000329",
+   "type": "applies+concept_dependency",
+   "reason": "Classic homonym collision: the from-paper's \"底空間 B\" (§4.4, fiber bundle construction (E,B,π,F), B = quotient space of {P_i}) is standard differential-topology \"base space\" terminology, while the to-paper's \"底空間\" (Def 2.1) is a bespoke construct B=(J,A) — a decidability/applicability domain pair central to its own \"分\" (partition) primitive framework, explicitly defined as emergent rather than pre-…"
+  },
+  {
+   "edge": "lm-000456->lm-000457",
+   "type": "extends",
+   "reason": "The evidence quote \"第三章：FDRS通用理論框架\" is not a reference from lm-000456 to lm-000457 — it is a chapter heading that occurs independently inside BOTH documents (lm-000456 line 184, lm-000457 line 95), each containing near-duplicate definitions/theorems (Def 3.1 flattening map, Thm 3.1 structure-preservation, etc.). These are two parallel drafts/versions of the same author's theory, not a citing/cite…"
+  },
+  {
+   "edge": "lm-000456->lm-000477",
+   "type": "applies+concept_dependency+depends_on",
+   "reason": "lm-000456 (dated 2025.8) predates lm-000477 (dated 2026-06-21) by ~10 months, so it cannot depend on/apply it; and the shared term \"底空間\" is a homonym collision — in lm-000456 it is the base space B of a topological fiber bundle (E,B,π,F) in the RDCM theorem proof, while in lm-000477 \"底空間/BaseSpace\" is an informal cognitive-semantic construct (the world-frame a concept is interpreted within, e.g. …"
+  },
+  {
+   "edge": "lm-000456->lm-000478",
+   "type": "applies+concept_dependency",
+   "reason": "Homonym collision: in lm-000456 \"底空間 B\" is the base space of a fiber bundle (E,B,π,F) used in the RDCM dimension-lifting proof (a topology term, \"quotient space of {P_i}\"), whereas lm-000478 defines \"底空間 Ω_base\" as a cognitive-science substrate paired with a \"管理員\" (manager) operator (Base Space Hypothesis) — entirely different constructs sharing only the Chinese term. lm-000456 never mentions 管理員…"
+  },
+  {
+   "edge": "lm-000457->lm-000154",
+   "type": "applies+concept_dependency",
+   "reason": "lm-000457 uses \"纖維叢結構 (E,B,π,F)\" and \"底空間\" in the classical differential-topology sense (B a topological manifold) inside a proof sketch for its RDCM dimensional-reconstruction theorem, with zero mention of WT, 編織元, WorldBundle, or lm-000154 anywhere in the paper. lm-000154 defines \"世界束\"/WorldBundle as `π_O^P(W(N(ℓ,t)))`, an entirely different WT (Weaving Theory) cognitive/semantic construct wher…"
+  },
+  {
+   "edge": "lm-000457->lm-000329",
+   "type": "applies+concept_dependency",
+   "reason": "Homonym collision: lm-000457 uses 底空間 in the standard fiber-bundle-topology sense (base space B of (E,B,π,F), shown homeomorphic to an n-manifold in a proof sketch), while lm-000329 defines 底空間 as an unrelated construct B=(J,A), an emergent decidability/tool-applicability domain pair for its \"分\" partition primitive. No other apparatus of lm-000329 (分 operator, functors between base-space categori…"
+  },
+  {
+   "edge": "lm-000457->lm-000477",
+   "type": "applies+concept_dependency",
+   "reason": "Homonym collision: lm-000457 uses \"底空間 B\" purely as the standard differential-topology term (base space of a fiber bundle (E,B,π,F), homeomorphic to an n-manifold, in its RDCM theorem proof sketch), with no reference to lm-000477 or its constructs. lm-000477 defines 底空間 as an entirely different, non-mathematical cognitive/semantic-selection framework (e.g. \"apple\" in botany-base-space vs. tech-co…"
+  },
+  {
+   "edge": "lm-000457->lm-000478",
+   "type": "applies+concept_dependency",
+   "reason": "Homonym collision: lm-000457 uses \"底空間 B\" strictly as the base space of a fiber bundle (E,B,π,F) in a differential-topology proof sketch for dimensional reconstruction, with zero mention of cognition, 管理員, BSH, or anything from lm-000478. lm-000478's \"底空間\" is an unrelated cognitive-science construct (unified substrate of memory/attention). Also lm-000457 (2026-04) predates lm-000478 (2026-06), so…"
+  },
+  {
+   "edge": "lm-000464->lm-001060",
+   "type": "applies",
+   "reason": "§9.2 in lm-000464 is a self-contained Dao De Jing reinterpretation using its own Δ/∪/∇ (差合化) apparatus and never mentions, cites, or quotes lm-001060 (道德經的超譯...v3.0) or its specific Closure/GOD POINT/strong-misreading apparatus; the only overlap is the reused symbols \"Cl\" and \"πₙ\" across the author's broader corpus, which is a homonym/shared-vocabulary collision rather than genuine reliance on th…"
+  },
+  {
+   "edge": "lm-000478->lm-000152",
+   "type": "applies+concept_dependency",
+   "reason": "\"Weaving Theory\" / \"WT\" appears exactly once in lm-000478, in the keyword list only — the 503-line body never mentions WeavingGraph, WGNN, or any graph-theoretic construct from lm-000152, nor does it use Transformer attention in connection with weaving/graph concepts (lm-000152 itself never mentions Transformer or attention). The paper's real, substantive theoretical dependency is on TDI (全態失真同構,…"
+  },
+  {
+   "edge": "lm-000478->lm-000154",
+   "type": "applies+concept_dependency",
+   "reason": "Homonym collision: lm-000478 defines 底空間 (Ω_base) as a unified cognitive-substrate/memory geometry inherited from TDI's 全態空間, while lm-000154 defines 底空間 as the paradigm/frame selected before unfolding a concept into a WorldBundle — different constructs sharing only the Chinese term. lm-000478 never mentions 世界束/編織元/WorldBundle at all (zero occurrences), and its cited external_ref (\"隸屬系列：《無限畫布》延伸…"
+  },
+  {
+   "edge": "lm-000478->lm-000155",
+   "type": "applies+concept_dependency",
+   "reason": "\"Weaving Theory\" appears exactly once in lm-000478, buried in the keyword list (line 21) alongside unrelated terms — it is never mentioned again in the 503-line body, and none of WT's actual constructs (九元組, W1–W104 axioms, ε/V/h, H1/H2/H3 hypothesis tiers) are used, cited, or built upon anywhere in the BSH argument. The paper's real theoretical lineage is explicitly stated to be TDI (全態失真同構) and…"
+  },
+  {
+   "edge": "lm-000478->lm-000477",
+   "type": "applies+concept_dependency",
+   "reason": "The evidence is stitched from unrelated fragments: the external_ref quote is lm-000478's lineage tag naming TDI/《無限畫布》as its predecessor (not lm-000477), and the shared_concept \"WorldBundle\" (世界束) defined in lm-000477 §6 is never mentioned anywhere in lm-000478's ~503 lines. Additionally, \"底空間\" is a homonym collision — lm-000478 uses it for a unified cognitive-substrate construct (Ω_base, CXL mem…"
+  },
+  {
+   "edge": "lm-000526->lm-000049",
+   "type": "concept_dependency+depends_on+extends",
+   "reason": "The from-paper's own Appendix B citation-mapping table and front-matter \"前置論文\" list explicitly attribute the Cl-2 concept to \"《意圖即程式》§IV / DCO理論\" and Cl-4 to \"TUO\" (三元宇宙本體論) — neither of which is lm-000049. The Cl-1..Cl-4 axiom wording is reused across many of this author's papers ecosystem-wide, and lm-000049 (Closure公理與物理約束的本體論統一) is a physics/string-theory-focused elaboration that the from-pap…"
+  },
+  {
+   "edge": "lm-000526->lm-000069",
+   "type": "applies",
+   "reason": "lm-000526 attributes the ℰ-𝒞-𝒱 (湧動/凝聚/虛化) triadic operators explicitly to a separate work called 《三元宇宙本體論》(TUO), not to lm-000069. lm-000069 is a general cross-paper operator-symbol notation index that never defines TUO or the ℰ-𝒞-𝒱 triad; its only use of the glyph ℰ is for an unrelated \"individual physical exposure space\" construct (Ê: 𝒜 → ℰ) in a power-dynamics context — a homonym collision on …"
+  },
+  {
+   "edge": "lm-000526->lm-000924",
+   "type": "applies",
+   "reason": "The evidence quote in lm-000526 explicitly attributes the ℰ(湧動)/𝒞(凝聚)/𝒱(虛化) operators to \"《三元宇宙本體論》(TUO, Triadic Universal Ontology)\" — a distinct, differently-named theory cited ~15 times throughout the paper — not to lm-000924 (\"萬物皆算子：算子本體論的完整論證\" / Operator Ontology). Reading lm-000924 in full confirms it never mentions ℰ, 𝒞, 𝒱, 湧動, 凝聚, 虛化, or TUO/三元宇宙本體論 anywhere; its content is about \"operato…"
+  },
+  {
+   "edge": "lm-000567->lm-000069",
+   "type": "concept_dependency",
+   "reason": "The evidence is a homonym collision on \"本體\" (ontology). The from-paper's quote (line 159) is about MR 2.5's kernel-vs-glyph split — a notation/rendering duality it explicitly attributes to \"MR 2.5 跨進制方法論\" (line 153-155), not to lm-000069. lm-000069's \"本體論\" (in its title \"算子符號本體論索引\") instead means existence-claim vs computability-construction of operators (its §一/二: \"存在性宣稱\" vs \"可計算性構造\") and is an …"
+  },
+  {
+   "edge": "lm-000567->lm-000526",
+   "type": "uses",
+   "reason": "The evidence quote (\"L2 算子層 | TUO 動詞行為\") only shows lm-000567 referencing TUO (三元宇宙本體論), but lm-000526 itself explicitly lists 《三元宇宙本體論》as a separate prerequisite paper it cites (\"§2.2 TUO ← 《三元宇宙本體論》全文：直接引用\") rather than defining TUO itself. So both papers are independent citers of a third, different paper on TUO; lm-000567 never mentions lm-000526's actual contribution (HPP/超圖編程/意圖即超圖) anywhere…"
+  },
+  {
+   "edge": "lm-000567->lm-000924",
+   "type": "applies+concept_dependency",
+   "reason": "Homonym/generic-term collision: the quote in lm-000567 (§3.4) explicitly derives \"算子的本體（光譜內核）與表像（紙面字形）也可如此分離\" from MR 2.5 跨進制方法論's ontology/representation split, not from lm-000924's specific OperatorOntology construct (dynamic fixed point Ô≡Ô(Ô), source-level status, three ontological conditions). The exact phrase \"算子本體論\" never appears in lm-000567 at all — only generic, unrelated uses of \"本體論\" …"
+  },
+  {
+   "edge": "lm-000630->lm-000112",
+   "type": "applies+concept_dependency+depends_on",
+   "reason": "The external_ref quotes about \"動態速率理論2.9\" and its \"認知搜索-計算執行-驗證\" three-stage model refer to a separate paper by the same author (\"論文草案：動態速率理論2.9...\", present as its own file in the 2026-04 corpus directory) — not to lm-000112, whose actual three-stage model (DRC: Divergence-Resonance-Compression) is a different framework about creativity/dimension generation. lm-000112 never appears by title or b…"
+  },
+  {
+   "edge": "lm-000689->lm-000036",
+   "type": "applies+concept_dependency",
+   "reason": "The string \"AMEP\" never appears in lm-000689; the quoted passage (§S.4(四), line 801) is a self-contained sketch of using concept-integral's own S_n/R/gap apparatus as an AI agent's metacognitive framework, with no citation to or use of AMEP's actual constructs (method pack, action/audit rules, RigorLoop). The \"shared_concept\" evidence is a false match: both quotes are the same sentence from lm-00…"
+  },
+  {
+   "edge": "lm-000689->lm-000069",
+   "type": "concept_dependency+extends",
+   "reason": "The from-paper's evidence quotes cite \"EML-OO-2026-v0.2\" and its 算子本體論/同構比 ρ(𝒮,ℛ) content, but that sequence number belongs to a different paper entirely — 所見即世界：符號宇宙與現實宇宙的生成擴張同構.md (EML-OO-2026-v0.2). The audited \"to\" paper lm-000069 (EveMissLab 算子符號本體論索引.md) is sequenced as EML-OP-REF-2026-v0.1, a separate operator-glossary index, and contains zero occurrences of 概念積分, 同構比, 符號宇宙, or 現實宇宙. This …"
+  },
+  {
+   "edge": "lm-000689->lm-000112",
+   "type": "applies",
+   "reason": "The quote is from an open-questions appendix (§8.2, 問題二) speculating that estimating the Gödel residual ε_G \"connects to\" the general field of computational complexity's \"undecidable problem density\" — it is a vague gesture at a topic area, not a reference to lm-000112 specifically. lm-000112 is a quantum-physical/thermodynamic reconstruction of P vs NP (Hamiltonian evolution, entropy, Landauer's…"
+  },
+  {
+   "edge": "lm-000689->lm-000119",
+   "type": "applies",
+   "reason": "The quote sits in lm-000689's \"§8.2 開放問題\" (Open Questions) as an unresolved speculative aside (\"這連接到計算複雜度中「不可判定問題密度」的量化問題\"), not a citation to or use of lm-000119's specific framework (its five-dimensional solve-rate tensor / causal-graph formalism for P vs NP). No construct from lm-000119 is named, defined, or relied upon — this is a placeholder-style open question, not an \"applies\" dependency."
+  },
+  {
+   "edge": "lm-000689->lm-000924",
+   "type": "concept_dependency+extends",
+   "reason": "The external_ref quote in lm-000689 explicitly cites \"EML-OO-2026-v0.2\" and describes the 符號宇宙S/現實宇宙R/同構比ρ apparatus — but that is the paper 所見即世界：符號宇宙與現實宇宙的生成擴張同構 (literally labeled EML-OO-2026-v0.2, containing exactly this ρ/S/R machinery and listing 概念積分 as a keyword), not lm-000924 (萬物皆算子, labeled EML-OO-2026-v0.1), which is a separate metaphysical tautology paper that never mentions 概念積分, S,…"
+  },
+  {
+   "edge": "lm-000689->lm-001149",
+   "type": "concept_dependency+depends_on",
+   "reason": "The \"from\" paper's own precursor-document line explicitly names \"EML-OO-2026-v0.2（所見即世界）\" and \"EML-LANG-2026-v0.1（符號即過程）\" — both of which exist as separate, distinct papers in the corpus (所見即世界：符號宇宙與現實宇宙的生成擴張同構.md and 符號即過程：從代理到身份的語言操作論.md). Neither is lm-001149 (\"高效新語言（EML）1.5：語意附加驅動的程式設計範式革新\"), an unrelated older EML document about semantic-overlay programming syntax that is never mentioned by …"
+  },
+  {
+   "edge": "lm-000712->lm-000456",
+   "type": "concept_dependency",
+   "reason": "lm-000712 explicitly cross-references and builds its bridge theorem entirely on \"FDRS II\" (series EML-FDRS-2026-v2.0/v2.1) — the connection-operator framework (𝒟, ℛ, Δ operators, ten-axiom system, Axiom A9, Theorem 5.1) that is defined in the separate paper FDRS_II_連接算子統一框架_v2.1.md, not in lm-000456. lm-000456 is the original 2025.8 FDRS paper, which only defines a basic Dim_FDRS complexity formu…"
+  },
+  {
+   "edge": "lm-000712->lm-000457",
+   "type": "concept_dependency+depends_on",
+   "reason": "lm-000712 depends on \"FDRS II\" (信息失真算子 D、表示轉換算子 R、維度元算子 Δ、十公理系統、定理5.1、公理A9/A6) — but that entire apparatus is defined in the separate paper FDRS_II_連接算子統一框架_v1.0/v2.1.md, not in lm-000457 (展平式維度重構理論：從FCSR到FDRS, 2026-04), which only reaches a primitive \"FDRS = FCSR⊕RDCM\" unification in its Ch.6 with none of the cited operators/axioms/theorems. This is a homonym/version collision: \"FDRS\" is shared …"
+  },
+  {
+   "edge": "lm-000776->lm-001089",
+   "type": "applies",
+   "reason": "The TCF paper's worked example is a self-contained toy formalization of \"DCO v5.0\" (4 primitives, axioms Cl-1..Cl-4 stated as x∘x=x, duality via In(x,y), f∘f⁻¹=id, π_{n+1}(Cl)=S^n; topology/Taoism models) built entirely in its own Python appendix (build_dco_v5()), and never mentions RKD, TSO, or CRIP. lm-001089 is a different, later synthesis paper defining a ten-axiom Cl-0..Cl-9 system (self-con…"
+  },
+  {
+   "edge": "lm-000870->lm-000069",
+   "type": "concept_dependency",
+   "reason": "The evidence pairs a chapter heading (\"第四章：絕對力的動詞性本體\") with the target document's title, sharing only the generic word \"本體\" (ontology) — a keyword collision, not a shared concept. lm-000069's operator index defines 15 unrelated symbols (Cl, ⋈, π_n, Ê, Σ, DMED, Ŵ_R, CEO, C₀, ψ群, BC, k_eff, ⧖, ⊛, ε⃗) from other theory domains and never mentions ADL, \"強制判斷算子\", or \"絕對力\"; lm-000870 never cites lm-0000…"
+  },
+  {
+   "edge": "lm-000870->lm-000215",
+   "type": "concept_dependency",
+   "reason": "Direction is reversed: lm-000215 (三態邏輯學) explicitly opens by taking lm-000870's ADL judgment domain {⊤,⊥,CRASH} as its established starting point and extends it into a third state Ω, and frames itself as \"超越絕對動態邏輯（ADL）的元框架\" — i.e. lm-000215 depends on/builds on lm-000870, not the other way around. lm-000870 (dated Feb 2026, the base theory) shows no reference to Triadic Logic or Ω-states at all; …"
+  },
+  {
+   "edge": "lm-000870->lm-000924",
+   "type": "concept_dependency",
+   "reason": "lm-000870's \"第四章：絕對力的動詞性本體\" defines its own narrow formal operators (強制判斷算子/推理變換算子) inside the ADL system and never mentions or relies on lm-000924's \"算子本體論\" (Operator Ontology, the broad萬物皆算子 metaphysical framework); lm-000924 in turn never lists ADL/lm-000870 among its dependent theories (only Ud/WT/SOS/ISSQL). The shared term \"算子\" is a homonym/keyword collision, not a genuine shared concept."
+  },
+  {
+   "edge": "lm-000880->lm-000069",
+   "type": "concept_dependency",
+   "reason": "The def_quote is merely lm-000069's title line, not a definition of any concept \"OperatorOntology\" — and lm-000069 (the operator symbol index, dated 2026-06) never mentions Pearl, causal inference, LDC, or SPMV at all. The use_quote \"Pearl框架 = LDC的子集\" is from lm-000880's own §8.3 comparing UDAE 4.0 to Judea Pearl's causal-inference framework, unrelated to lm-000069's operator-symbol catalog. No g…"
+  },
+  {
+   "edge": "lm-000880->lm-000924",
+   "type": "concept_dependency",
+   "reason": "The evidence quote \"Pearl框架 = LDC的子集\" from lm-000880 is about Pearl's causal-inference framework being a subset of the paper's own \"LDC\" (邏輯形變核) construct — it has no connection to OperatorOntology/萬物皆算子, which never appears anywhere in lm-000880 (only unrelated generic uses of \"算子\" like 觀察算子/測量算子). Additionally lm-000880 is dated 2026-05 and lm-000924 is dated 2026-06, so the earlier paper canno…"
+  },
+  {
+   "edge": "lm-000924->lm-000049",
+   "type": "applies+concept_dependency+depends_on",
+   "reason": "The from-paper's §3.3 only uses \"Cl（閉包）\" as a one-line generic label for the standard mathematical notion that operator-space is closed under composition; it never cites lm-000049 by name, never uses its specific Cl-1/Cl-2/Cl-3/Cl-4 axioms, dimensional projection theorem, or physical-constraint machinery (ETN, closed strings, imperfect circles), and its own listed prerequisite documents are two o…"
+  },
+  {
+   "edge": "lm-000924->lm-000069",
+   "type": "extends",
+   "reason": "The from-paper's explicit \"前置文件\" (prerequisite documents) line names \"無界算子數學論 Ud v2.0\" and \"符號算子系統 SOS v0.1\" — two different papers — not lm-000069 (the \"EveMissLab 算子符號本體論索引\"), and the index paper's title/id is never cited anywhere in the from-paper's body. The \"算子本身是動態不動點\" quote is explicitly framed as extending Ud (\"本文在Ud的基礎上更進一步\"), not the index; the from-paper develops its own \"動態不動點\" defini…"
+  },
+  {
+   "edge": "lm-000924->lm-000071",
+   "type": "extends",
+   "reason": "The evidence quote (\"符號算子系統（SOS）：每個符號是算子...封裝在閉包中\") in lm-000924 refers to a separate paper, \"符號算子系統 SOS v0.1（2026年5月）\", which lm-000924's own front matter lists as a distinct 前置文件 alongside Ud v2.0 — it is not lm-000071. lm-000071 (\"EveMissLab 算子體系規範 v0.2（光譜整合補充稿）\") is about a completely different topic (ISSQL four-layer glyph/spectrum/operator/voxel architecture, DTM triad bridging) and contain…"
+  },
+  {
+   "edge": "lm-000924->lm-000152",
+   "type": "concept_dependency",
+   "reason": "lm-000924's evidence quote refers to \"編織論(WT v7.3)\" — the 103-axiom Weaving Theory framework itself — but lm-000152 is NOT that paper; it explicitly lists \"編織論 WT v7.3\" as its own 前置文件 (prerequisite), and instead defines WeavingGraph (WG), a downstream graph-theoretic materialization of WT for computational infrastructure. lm-000152 never mentions 算子本體論 (Operator Ontology) at all, and lm-000924 n…"
+  },
+  {
+   "edge": "lm-001060->lm-001089",
+   "type": "depends_on",
+   "reason": "lm-001060 is dated 2026-05-13 and uses a \"Cl framework\" (Cl-0...Cl-9 axioms, GOD POINT, πₙ projection) that it never names as DCO 5.0 or cites specifically; lm-001089 is dated 2026-06 and is a later synthesis paper unifying DCO 5.0/RKD/TSO/CRIP that didn't exist yet when lm-001060 was written (no standalone DCO 5.0 axiom paper predating May 2026 exists in the corpus either). The evidence quote is…"
+  },
+  {
+   "edge": "lm-001088->lm-000154",
+   "type": "concept_dependency",
+   "reason": "Homonym collision: the from-paper's quote uses \"纖維叢\" (standard algebraic-topology fiber bundle, re Klein bottle as S¹-bundle) to argue for topological \"圓性\", which has no relation to the to-paper's bespoke \"世界束/WorldBundle(ℓ,O,P,t)\" construct built from 編織元/編織關係/編織操作/observer projections. The evidence mislabels the concept as \"WorldBundle\" but the from-paper never mentions 世界束 or WorldBundle at al…"
+  },
+  {
+   "edge": "lm-001088->lm-000477",
+   "type": "concept_dependency",
+   "reason": "Homonym collision: the from-paper's \"S¹-bundle / 圓上的圓\" is a topological fiber-bundle metaphor within its own Dynamic Closure Ontology (DCO) framework about the Klein bottle, unrelated to the to-paper's \"WorldBundle(x,t) = ⟨LocalWorld, GlobalWorld, PossibleWorlds⟩\" construct for ASI causal-world expansion; neither paper references the other or shares any framework, and the only overlap is the Chin…"
+  },
+  {
+   "edge": "lm-001089->lm-000049",
+   "type": "concept_dependency+extends",
+   "reason": "The from-paper explicitly attributes its Cl-0~Cl-9 ten-axiom system to a different paper it names directly — \"DCO 5.0論文（〈動態圓本體論5.0：閉合性作為過程的十公理系統〉，2026年4月）\" — never mentioning lm-000049's title, its \"姊妹篇\" pairing with 動態拓撲流變理論, or its specific Cl-1(自洽性)/Cl-2(對偶性)/Cl-3(守恆性)/Cl-4(生成性) four-axiom definitions (searched for these terms in the from-paper: zero hits). Both papers reuse the umbrella label…"
+  },
+  {
+   "edge": "lm-001089->lm-000069",
+   "type": "concept_dependency",
+   "reason": "The evidence quote is a single unchecked bullet inside 附錄E「待補充——與EveMissLab其他框架的整合」, explicitly marked 狀態：空白保留 (status: reserved blank) — it's a placeholder listing a possible future comparison (\"is OO's 'everything is an operator' formally equivalent to DCO's 'Cl is an operation'?\"), not an actual claim or usage. Outside this appendix, the from-paper's only uses of 算子 are generic math terms (Lin…"
+  },
+  {
+   "edge": "lm-001089->lm-000152",
+   "type": "concept_dependency",
+   "reason": "The use_quote is a single unchecked bullet in DCO's Appendix E, an explicitly blank/placeholder section (\"狀態：空白保留\", \"待補充\") listing speculative future-integration questions across five different EveMissLab frameworks — it poses an open question (\"WT的編織操作是否對應...\") rather than actually using or depending on any concept. Moreover the DCO paper never mentions WeavingGraph/WGNN (the actual subject of l…"
+  },
+  {
+   "edge": "lm-001089->lm-000155",
+   "type": "concept_dependency+depends_on",
+   "reason": "The sole mention of WT in lm-001089 is a single bullet in Appendix E, explicitly titled \"待補充——與EveMissLab其他框架的整合\" with \"狀態：空白保留\" (status: reserved blank), listing WT as an open, unresolved question (\"WT的態射結構與DCO公理群的關係...是否對應\") alongside four other unrelated frameworks (EML-OO, EML-CI, TOT, PHT). No actual construct from WT_v8_complete is used, cited, or built upon anywhere in the paper's substant…"
+  },
+  {
+   "edge": "lm-001089->lm-000689",
+   "type": "concept_dependency+depends_on",
+   "reason": "The only mention of 概念積分/EML-CI in lm-001089 is a checklist item (`- [ ]`) inside \"附錄E：待補充——與EveMissLab其他框架的整合\" (Appendix E: To Be Supplemented), explicitly marked \"狀態：空白保留\" (status: blank/reserved) and logged in the revision table as \"初稿，空白\" (initial draft, blank). It is a speculative open question (\"CI的積分操作是否對應關係矩陣的跡操作\") for possible future integration, not an actual usage or reliance on the Co…"
+  },
+  {
+   "edge": "lm-001089->lm-000924",
+   "type": "concept_dependency+depends_on",
+   "reason": "The only mention is in Appendix E (\"附錄E：待補充——與EveMissLab其他框架的整合\", \"狀態：空白保留\"), a checklist item \"- [ ] 算子本體論（EML-OO）...是否對應...\" explicitly marked as a placeholder for future integration work, not an actual dependency used anywhere in DCO 5.0's argument. This matches the explicit placeholder/TODO exclusion rule."
+  },
+  {
+   "edge": "lm-001149->lm-000215",
+   "type": "concept_dependency",
+   "reason": "The EML paper's quote is a standalone physics analogy (wave-particle duality → code is both \"symbol\" and \"logic\" depending on observer) about layered compilation architecture; it never mentions Triadic Logic, the {⊤,⊥,Ω} judgment domain, ADL, dimension hierarchy, or any construct from lm-000215 anywhere in the document (verified via full-text search). The \"shared_concept\" evidence conflates an in…"
+  }
+ ],
+ "pending_audit": [],
+ "unresolved_refs": [
+  {
+   "from": "lm-000017",
+   "target": "AICL",
+   "type": "extends",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000017",
+   "target": "SanitizationCritique",
+   "type": "extends",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000017",
+   "target": "RecallVsReconstruction",
+   "type": "applies",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000036",
+   "target": "ReAct",
+   "type": "extends",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000036",
+   "target": "Reflexion",
+   "type": "extends",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000036",
+   "target": "SelfRefine",
+   "type": "extends",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000036",
+   "target": "ConstitutionalAI",
+   "type": "critiques",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000036",
+   "target": "Toolformer",
+   "type": "extends",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000036",
+   "target": "LeanFormalization",
+   "type": "applies",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000049",
+   "target": "DynamicTopologicalRheology",
+   "type": "extends",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000049",
+   "target": "Dao",
+   "type": "applies",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000049",
+   "target": "GodPoint",
+   "type": "extends",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000049",
+   "target": "HolographicSpectralOntology",
+   "type": "extends",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000049",
+   "target": "StringTheory",
+   "type": "applies",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000049",
+   "target": "QuantumMechanics",
+   "type": "applies",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000049",
+   "target": "GeneralRelativity",
+   "type": "applies",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000049",
+   "target": "HolographicPrinciple",
+   "type": "depends_on",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000058",
+   "target": "DepthAxis",
+   "type": "extends",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000060",
+   "target": "ChurchRosser",
+   "type": "applies",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000060",
+   "target": "TermRewritingSystem",
+   "type": "applies",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000063",
+   "target": "TopologicalCalculus",
+   "type": "verifies",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000063",
+   "target": "LeanFormalization",
+   "type": "applies",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000063",
+   "target": "SubtractiveTopology",
+   "type": "depends_on",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000063",
+   "target": "Mathlib",
+   "type": "depends_on",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000063",
+   "target": "CategoryTheory",
+   "type": "applies",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000063",
+   "target": "CryptographicHash",
+   "type": "depends_on",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000069",
+   "target": "DCO",
+   "type": "depends_on",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000071",
+   "target": "HolographicSpectralOntology",
+   "type": "applies",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000071",
+   "target": "ISSQL-DTM",
+   "type": "depends_on",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000071",
+   "target": "ISSQL",
+   "type": "depends_on",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000075",
+   "target": "SVD",
+   "type": "depends_on",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000075",
+   "target": "SpectralGraphTheory",
+   "type": "depends_on",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000075",
+   "target": "CategoryTheory",
+   "type": "depends_on",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000075",
+   "target": "LeanFormalization",
+   "type": "verifies",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000076",
+   "target": "LeanFormalization",
+   "type": "applies",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000076",
+   "target": "SingularValueDecomposition",
+   "type": "applies",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000096",
+   "target": "MDAS",
+   "type": "depends_on",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000096",
+   "target": "HISL",
+   "type": "depends_on",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000096",
+   "target": "NQCT",
+   "type": "depends_on",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000096",
+   "target": "LQTT",
+   "type": "depends_on",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000152",
+   "target": "GraphNeuralNetwork",
+   "type": "extends",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000152",
+   "target": "PyTorchGeometric",
+   "type": "applies",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000152",
+   "target": "PersistentHomology",
+   "type": "applies",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000152",
+   "target": "JonesPolynomial",
+   "type": "applies",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000152",
+   "target": "LandauerPrinciple",
+   "type": "applies",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000215",
+   "target": "ParadigmDualityTheory",
+   "type": "extends",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000215",
+   "target": "Minimalism",
+   "type": "depends_on",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000273",
+   "target": "LeanFormalization",
+   "type": "applies",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000293",
+   "target": "AICL",
+   "type": "applies",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000301",
+   "target": "ISSQL",
+   "type": "depends_on",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000301",
+   "target": "PhaseLM",
+   "type": "depends_on",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000301",
+   "target": "MathematicalRelativity",
+   "type": "depends_on",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000301",
+   "target": "HolographicPrinciple",
+   "type": "applies",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000301",
+   "target": "AdSCFTDuality",
+   "type": "critiques",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000301",
+   "target": "MIM-DPM-Spectrum",
+   "type": "applies",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000329",
+   "target": "GapGeometry",
+   "type": "applies",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000329",
+   "target": "ComputableCalculus",
+   "type": "applies",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000329",
+   "target": "UnifiedProjectionConjecture",
+   "type": "depends_on",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000450",
+   "target": "LeanFormalization",
+   "type": "depends_on",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000456",
+   "target": "GroupTheory",
+   "type": "depends_on",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000456",
+   "target": "KolmogorovComplexity",
+   "type": "depends_on",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000456",
+   "target": "ShannonEntropy",
+   "type": "depends_on",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000456",
+   "target": "StringTheory",
+   "type": "applies",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000456",
+   "target": "QuantumMechanics",
+   "type": "applies",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000456",
+   "target": "LandauerLimit",
+   "type": "applies",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000456",
+   "target": "GodsNumber",
+   "type": "applies",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000457",
+   "target": "GroupTheory",
+   "type": "depends_on",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000457",
+   "target": "ShannonEntropy",
+   "type": "depends_on",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000457",
+   "target": "KolmogorovComplexity",
+   "type": "depends_on",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000457",
+   "target": "HausdorffMeasure",
+   "type": "depends_on",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000457",
+   "target": "RadonNikodymTheorem",
+   "type": "depends_on",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000457",
+   "target": "StirlingApproximation",
+   "type": "depends_on",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000457",
+   "target": "GodsNumber",
+   "type": "applies",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000464",
+   "target": "DCO",
+   "type": "depends_on",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000464",
+   "target": "TernaryOntology",
+   "type": "depends_on",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000464",
+   "target": "DifferentialOntology",
+   "type": "depends_on",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000464",
+   "target": "DifferenceUnionDialectic",
+   "type": "depends_on",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000464",
+   "target": "TransformationOntology",
+   "type": "extends",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000464",
+   "target": "HCU",
+   "type": "extends",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000464",
+   "target": "EverythingIsTrue",
+   "type": "depends_on",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000478",
+   "target": "TDI",
+   "type": "extends",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000478",
+   "target": "TDI",
+   "type": "depends_on",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000478",
+   "target": "PhaseLM",
+   "type": "critiques",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000478",
+   "target": "PhaseLM",
+   "type": "extends",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000526",
+   "target": "IntentProgramming",
+   "type": "extends",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000630",
+   "target": "GodPoint",
+   "type": "critiques",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000689",
+   "target": "SevenLayerCompleteness",
+   "type": "applies",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000712",
+   "target": "DepthAxis",
+   "type": "extends",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000712",
+   "target": "LeanFormalization",
+   "type": "applies",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000712",
+   "target": "LandauerPrinciple",
+   "type": "applies",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000712",
+   "target": "PersistentHomology",
+   "type": "applies",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000712",
+   "target": "SingularValueDecomposition",
+   "type": "applies",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000712",
+   "target": "DijkstraAlgorithm",
+   "type": "applies",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000712",
+   "target": "QuantumEntanglement",
+   "type": "applies",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000712",
+   "target": "GeneralRelativity",
+   "type": "applies",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000776",
+   "target": "LeanFormalization",
+   "type": "applies",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000776",
+   "target": "Dao",
+   "type": "applies",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000776",
+   "target": "NoetherTheorem",
+   "type": "applies",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-000924",
+   "target": "InfinityCategory",
+   "type": "critiques",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-001060",
+   "target": "GodPoint",
+   "type": "depends_on",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-001060",
+   "target": "Daodejing",
+   "type": "applies",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-001060",
+   "target": "StrongMisreading",
+   "type": "applies",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-001060",
+   "target": "DeathOfTheAuthor",
+   "type": "applies",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-001060",
+   "target": "LeanFormalization",
+   "type": "applies",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-001060",
+   "target": "LeastActionPrinciple",
+   "type": "applies",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-001088",
+   "target": "DimensionProjectionTheorem",
+   "type": "depends_on",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-001088",
+   "target": "ProcessPhilosophy",
+   "type": "extends",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-001088",
+   "target": "AlgebraicTopology",
+   "type": "depends_on",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-001088",
+   "target": "DifferentialGeometry",
+   "type": "applies",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-001089",
+   "target": "DCO",
+   "type": "depends_on",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-001089",
+   "target": "RKD",
+   "type": "depends_on",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-001089",
+   "target": "TSO",
+   "type": "depends_on",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-001089",
+   "target": "CRIP",
+   "type": "depends_on",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-001089",
+   "target": "TranslationOperatorTheory",
+   "type": "depends_on",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-001089",
+   "target": "PanoramicHolographicTheory",
+   "type": "depends_on",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-001090",
+   "target": "GenerativeOntology",
+   "type": "depends_on",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-001090",
+   "target": "CijianMeasureTheory",
+   "type": "extends",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-001090",
+   "target": "FDCS",
+   "type": "extends",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-001090",
+   "target": "TUO",
+   "type": "extends",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-001090",
+   "target": "NeoKEpistemologyToolbox",
+   "type": "applies",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-001148",
+   "target": "AICL",
+   "type": "applies",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-001149",
+   "target": "MSSP",
+   "type": "depends_on",
+   "reason": "concept with no (or too many) definers in mapped set"
+  },
+  {
+   "from": "lm-001149",
+   "target": "MSSP",
+   "type": "applies",
+   "reason": "concept with no (or too many) definers in mapped set"
+  }
+ ],
+ "dropped_generic_concepts": [],
+ "tcf_parse_errors": []
+}

@@ -1,0 +1,322 @@
+{
+  "tcf_extract_version": "0.1",
+  "id": "lm-000036",
+  "title": "AMEP：智能體方法執行協議_從方法論到 Agent 行動守則的可執行框架",
+  "language": "zh-Hant",
+  "source_file": "content/papers/2026/2026-06/AMEP：智能體方法執行協議_從方法論到 Agent 行動守則的可執行框架.md",
+  "theory_name": "AMEP（Agentic Method Execution Protocol，智能體方法執行協議）",
+  "extracted_by": "claude-fable-5 (automated distillation, Phase A)",
+  "extraction_date": "2026-07-02",
+  "canonical_status": "draft",
+  "primitives": [
+    {
+      "symbol": "MethodPack",
+      "kind": "type",
+      "description": "被封裝的方法論單元；每個 method pack 至少包含意圖契約、輸入契約、領域詞彙、行動規則、約束規則、審計規則、輸出格式、記憶規則、工具權限、失敗協議、迭代迴圈、邊界政策共十二層。",
+      "evidence": "在 AMEP 中，一套方法論不再只是抽象理論，而會被封裝成 method pack。每個 method pack 至少包含以下元素"
+    },
+    {
+      "symbol": "AgentSubject",
+      "kind": "type",
+      "description": "Agent 是行動承載者，正向生成、草擬、拆解、形式化、調用工具；方法包不是主體本身，而是作用於 Agent 行動的規範層。",
+      "evidence": "Agent 是行動主體，method pack 是行動模式。"
+    },
+    {
+      "symbol": "AuditRules",
+      "kind": "function",
+      "description": "審計規則：把方法包從「教 Agent 怎麼做」升級為「檢查 Agent 是否做得夠」的機制，產出可被人類、Agent、CI、dashboard、任務隊列處理的 finding。",
+      "evidence": "審計規則是 AMEP 的核心。它使方法包不只是「教 Agent 怎麼做」，還能「檢查 Agent 是否做得夠」。"
+    },
+    {
+      "symbol": "CouplingUpdate",
+      "kind": "function",
+      "description": "耦合更新：Agent 根據 Backward Loop 的反向壓力（審計 finding）修正下一輪行動。",
+      "evidence": "Coupling Update：Agent 根據反向壓力修正下一輪行動"
+    },
+    {
+      "symbol": "ClaimStateVocabulary",
+      "kind": "type",
+      "description": "宣稱狀態詞彙：verified、acceptable_with_assumptions、needs_witness、equivalence_risk、needs_citation、formalization_candidate、formalization_blocker，用於降級宣稱、避免過度宣稱。",
+      "evidence": "verified\nacceptable_with_assumptions\nneeds_witness\nequivalence_risk\nneeds_citation\nformalization_candidate\nformalization_blocker"
+    },
+    {
+      "symbol": "FMS/SMS/TMS",
+      "kind": "type",
+      "description": "AMEP 的三層系統架構：FMS 憲法層（意圖、邊界、測試契約）、SMS 可執行最小穩定內核、TMS 可選擴展層（adapter），TMS 不得繞過 SMS 的審計模型。",
+      "evidence": "AMEP 可分為三層。**FMS（Foundation Meta-System）** 是方法包的憲法層"
+    },
+    {
+      "symbol": "method.yaml",
+      "kind": "constant",
+      "description": "Method pack 標準格式草案中的核心 manifest 檔，聲明 name、version、category、subject_role、mode_role、input_types、outputs、allowed/forbidden claims。",
+      "evidence": "`method.yaml` 可包含："
+    }
+  ],
+  "axioms": [
+    {
+      "id": "ax-methodology-as-constitution",
+      "name": "方法論可工程化為行動憲法",
+      "formula": "Human Methodology -> Method Decomposition -> Agent Action Covenant -> Auditable Execution Loop -> Traceable Artifacts -> Method Memory / Revision",
+      "description": "AMEP 的核心命題：方法論可以被工程化為 Agent 的行動憲法，一套高於單次操作、用來限制、組織與審計行動的規則系統。",
+      "evidence": "方法論可以被工程化為 Agent 的行動憲法。"
+    },
+    {
+      "id": "ax-subject-mode-separation",
+      "name": "Agent 主體與方法模式分離公理",
+      "formula": "Agent = subject; MethodPack = mode",
+      "description": "Agent 是行動主體，method pack 是行動模式；若把 method pack 當成 Agent 本身會錯估能力邊界，若把 Agent 當成無約束生成器則方法論淪為裝飾。",
+      "evidence": "如果把 method pack 當成 Agent 本身，就會錯估能力邊界；如果把 Agent 當成無約束生成器，又會讓方法論變成裝飾。"
+    },
+    {
+      "id": "ax-bidirectional-loop",
+      "name": "雙向迴圈動力學公理",
+      "formula": "Forward Loop (生成) <-> Backward Loop (審計) -> Coupling Update",
+      "description": "Agent 的正向生成能力與方法包的反向審計能力不是同一件事；兩者耦合後系統才接近可靠工作。",
+      "evidence": "雙向迴圈承認 Agent 的正向生成能力與反向審計能力不是同一件事。生成器擅長提出候選；審計器擅長降低錯誤宣稱。兩者耦合後，系統才接近可靠工作。"
+    },
+    {
+      "id": "ax-twelve-layers",
+      "name": "十二層 Method Pack 結構公理",
+      "formula": "MethodPack ⊇ {IntentContract, InputContract, DomainVocabulary, ActionRules, ConstraintRules, AuditRules, OutputSchema, MemoryRules, ToolPermission, FailureProtocol, IterationLoop, BoundaryPolicy}",
+      "description": "任何成熟方法論皆可拆解為這十二層元素，共同構成 Agent 的方法執行守則。",
+      "evidence": "這十二層共同構成 Agent 的方法執行守則。它不是單純自動化，也不是傳統 prompt engineering，而是將「如何思考與行動」變成可被 Agent 執行的協議層。"
+    },
+    {
+      "id": "ax-claim-downgrade",
+      "name": "宣稱降級約束公理",
+      "formula": "¬(plausible ⇒ verified) ∧ ¬(citation_needed ⇒ source_checked) ∧ ¬(Lean_skeleton ⇒ Lean_proof)",
+      "description": "約束規則必須要求 Agent 降級宣稱，禁止將未驗證狀態偽裝為已驗證狀態。",
+      "evidence": "約束規則必須要求 Agent 降級宣稱：不能把 plausible 說成 verified，不能把 citation needed 說成 source checked，不能把 Lean skeleton 說成 Lean proof，不能把 method compliance 說成真理保證。"
+    },
+    {
+      "id": "ax-tms-not-bypass-sms",
+      "name": "TMS 不得繞過 SMS 審計模型公理",
+      "formula": "∀ tool ∈ TMS, tool ⊆ SMS.audit_model",
+      "description": "可選擴展層（工具/模組子集）可以強大，但不得繞過穩定最小系統的審計模型。",
+      "evidence": "TMS 可以強大，但不得繞過 SMS 的審計模型。"
+    }
+  ],
+  "theorems": [
+    {
+      "id": "thm-prompt-insufficient",
+      "name": "提示詞不足以承載方法論",
+      "statement": "提示詞彈性高但約束力弱、工作流步驟明確但難以承載判斷與降級、工具能擴張能力但不能回答何時用何時完成，故 Agent 需要介於 prompt、workflow 與 tool layer 之間的中間層（即 AMEP）。",
+      "from_axioms": ["ax-methodology-as-constitution"],
+      "description": "為何需要 AMEP 的論證前提。",
+      "evidence": "提示詞彈性高，但約束力弱；工作流步驟明確，但難以承載複雜方法論中的判斷與降級；工具能擴張能力，但工具本身不能回答「何時用、為何用、用到何種程度才可宣稱完成」。"
+    },
+    {
+      "id": "thm-rigorloop-as-first-pack",
+      "name": "RigorLoop 作為第一個 AMEP method pack",
+      "statement": "RigorLoop 不是完整數學 Agent，而是給數學與研究型 Agent 使用的雙向嚴格化審計模式，可重新定位為 AMEP 下的第一個 method pack。",
+      "from_axioms": ["ax-subject-mode-separation", "ax-bidirectional-loop"],
+      "description": "在此框架下，RigorLoop 被重新定位為 AMEP 下的第一個 method pack。",
+      "evidence": "在此框架下，RigorLoop 被重新定位為 AMEP 下的第一個 method pack。"
+    },
+    {
+      "id": "thm-kernel-first",
+      "name": "可執行方法論需要最小內核",
+      "statement": "可執行方法論工程化應採 kernel-first：先確立方法包的公共核心（最小 Python kernel、CLI、資料模型、測試、文件），再增加 adapter。",
+      "from_axioms": ["ax-tms-not-bypass-sms"],
+      "description": "RigorLoop 的工程啟示第一條。",
+      "evidence": "可執行方法論需要最小內核。一開始不必做完整平台。RigorLoop 採用 kernel-first：先做最小 Python kernel、CLI、資料模型、測試與文件。"
+    },
+    {
+      "id": "thm-local-memory-reliable",
+      "name": "本地記憶比聊天記憶更可靠",
+      "statement": "方法包應以本地 workspace（如 .rigorloop/）保存中間狀態，而非依賴聊天上下文，因聊天上下文會遺失、污染、混合私人材料，也不適合版本控制。",
+      "from_axioms": [],
+      "description": "RigorLoop 的工程啟示第二條。",
+      "evidence": "本地記憶比聊天記憶更可靠。RigorLoop 不把數學記憶依賴於聊天上下文，而是建立 `.rigorloop/`"
+    },
+    {
+      "id": "thm-skeleton-not-proof",
+      "name": "Lean skeleton 不等於 Lean proof",
+      "statement": "RigorLoop 生成 Lean skeleton 與 sorry map 具有價值（暴露定義缺口、命題不精確等），但不構成已完成形式化的宣稱。",
+      "from_axioms": ["ax-claim-downgrade"],
+      "description": "RigorLoop 的工程啟示第四條，claim state 降級的具體案例。",
+      "evidence": "Lean skeleton 不是 Lean proof。RigorLoop 生成 Lean skeleton 與 sorry map，但不宣稱已完成形式化。"
+    },
+    {
+      "id": "thm-method-universe",
+      "name": "從單一方法到方法宇宙",
+      "statement": "當多套方法論皆被封裝為 method pack，同一 Agent 可依任務載入不同規則組合（Research Agent + RigorLoop + CitationGrounding + Noema/Cogni-Flow 等），使功能具備方法論邊界而非單純堆疊。",
+      "from_axioms": ["ax-twelve-layers", "ax-subject-mode-separation"],
+      "description": "AMEP 的長期潛力：方法論可安裝、可版本化、可測試、可審計的 protocol package。",
+      "evidence": "AMEP 的真正潛力不在於單一 RigorLoop，而在於方法包宇宙。當許多方法論都能被封裝為 method pack，Agent 就可以依任務載入不同規則"
+    },
+    {
+      "id": "thm-amep-vs-cai",
+      "name": "AMEP 與 Constitutional AI 的區分",
+      "statement": "AMEP 的「行動憲法」概念與 Constitutional AI 相似，但 AMEP 不主要處理價值對齊，而是處理方法執行：Agent 應如何依特定方法論行動、審計、降級與保存狀態。",
+      "from_axioms": ["ax-methodology-as-constitution"],
+      "description": "與現有 Agent 研究關係一節中對 Constitutional AI 的比較論證。",
+      "evidence": "AMEP 的「行動憲法」概念與此有相似處，但 AMEP 不主要處理價值對齊，而是處理方法執行"
+    }
+  ],
+  "dag": [
+    { "id": "prim-methodpack", "kind": "primitive", "depends_on": [] },
+    { "id": "prim-agentsubject", "kind": "primitive", "depends_on": [] },
+    { "id": "prim-auditrules", "kind": "primitive", "depends_on": ["prim-methodpack"] },
+    { "id": "prim-couplingupdate", "kind": "primitive", "depends_on": ["prim-agentsubject", "prim-auditrules"] },
+    { "id": "prim-claimstatevocab", "kind": "primitive", "depends_on": ["prim-auditrules"] },
+    { "id": "prim-fms-sms-tms", "kind": "primitive", "depends_on": ["prim-methodpack"] },
+    { "id": "prim-methodyaml", "kind": "primitive", "depends_on": ["prim-methodpack"] },
+    { "id": "ax-methodology-as-constitution", "kind": "axiom", "depends_on": ["prim-methodpack"] },
+    { "id": "ax-subject-mode-separation", "kind": "axiom", "depends_on": ["prim-agentsubject", "prim-methodpack"] },
+    { "id": "ax-bidirectional-loop", "kind": "axiom", "depends_on": ["prim-agentsubject", "prim-auditrules", "prim-couplingupdate"] },
+    { "id": "ax-twelve-layers", "kind": "axiom", "depends_on": ["prim-methodpack"] },
+    { "id": "ax-claim-downgrade", "kind": "axiom", "depends_on": ["prim-claimstatevocab", "prim-auditrules"] },
+    { "id": "ax-tms-not-bypass-sms", "kind": "axiom", "depends_on": ["prim-fms-sms-tms"] },
+    { "id": "thm-prompt-insufficient", "kind": "theorem", "depends_on": ["ax-methodology-as-constitution"] },
+    { "id": "thm-rigorloop-as-first-pack", "kind": "theorem", "depends_on": ["ax-subject-mode-separation", "ax-bidirectional-loop"] },
+    { "id": "thm-kernel-first", "kind": "theorem", "depends_on": ["ax-tms-not-bypass-sms"] },
+    { "id": "thm-local-memory-reliable", "kind": "theorem", "depends_on": ["prim-methodpack"] },
+    { "id": "thm-skeleton-not-proof", "kind": "theorem", "depends_on": ["ax-claim-downgrade"] },
+    { "id": "thm-method-universe", "kind": "theorem", "depends_on": ["ax-twelve-layers", "ax-subject-mode-separation"] },
+    { "id": "thm-amep-vs-cai", "kind": "theorem", "depends_on": ["ax-methodology-as-constitution"] }
+  ],
+  "concepts": [
+    {
+      "name": "AMEP（Agentic Method Execution Protocol，智能體方法執行協議）",
+      "canonical": "AMEP",
+      "role": "defines",
+      "evidence": "本文提出 **AMEP（Agentic Method Execution Protocol，智能體方法執行協議）**：一套將人類方法論轉化為 Agent 可執行行動守則的框架。"
+    },
+    {
+      "name": "RigorLoop（雙向嚴格化審計協議）",
+      "canonical": "VerifyLoop",
+      "role": "uses",
+      "evidence": "RigorLoop 是 AMEP 的第一個自然案例，因為數學與研究任務最容易暴露 Agent 的問題"
+    },
+    {
+      "name": "Lean、Rocq/Coq、Isabelle 等 proof assistants",
+      "canonical": "LeanFormalization",
+      "role": "uses",
+      "evidence": "在形式化系統方面，Lean、Rocq/Coq、Isabelle 等 proof assistants 已提供嚴格機器檢查能力。AMEP 不與它們競爭"
+    },
+    {
+      "name": "ReAct（reasoning traces 與 actions interleave）",
+      "canonical": "ReAct",
+      "role": "uses",
+      "evidence": "ReAct 將 reasoning traces 與 actions interleave，使模型能在推理與環境互動之間切換。AMEP 接受這個方向"
+    },
+    {
+      "name": "Reflexion（verbal feedback 與 episodic memory buffer）",
+      "canonical": "Reflexion",
+      "role": "uses",
+      "evidence": "Reflexion 使用 verbal feedback 與 episodic memory buffer 改善後續決策。AMEP 同樣重視反思記憶"
+    },
+    {
+      "name": "Self-Refine（模型自我回饋與迭代改進）",
+      "canonical": "SelfRefine",
+      "role": "uses",
+      "evidence": "Self-Refine 透過模型自我回饋與迭代改進輸出。AMEP 可以吸收這種自我修正"
+    },
+    {
+      "name": "Constitutional AI",
+      "canonical": "ConstitutionalAI",
+      "role": "uses",
+      "evidence": "Constitutional AI 顯示規則與原則可以用於 AI 回饋與行為塑形。AMEP 的「行動憲法」概念與此有相似處"
+    },
+    {
+      "name": "Toolformer（模型學會何時調用外部工具）",
+      "canonical": "Toolformer",
+      "role": "uses",
+      "evidence": "Toolformer 代表另一個方向：模型學會何時調用外部工具。AMEP 不取代工具學習"
+    },
+    {
+      "name": "WCA：加權因果分析",
+      "canonical": "WCA",
+      "role": "uses",
+      "evidence": "WCA 可作為加權因果分析方法包"
+    },
+    {
+      "name": "語義偽代碼",
+      "canonical": "SemanticPseudocode",
+      "role": "uses",
+      "evidence": "語義偽代碼可作為意圖轉譯與工程拆解方法包"
+    },
+    {
+      "name": "Noema / Cogni-Flow",
+      "canonical": "Noema",
+      "role": "uses",
+      "evidence": "Noema / Cogni-Flow 可作為 AI-readable 學術文檔方法包"
+    },
+    {
+      "name": "十二層 Method Pack 結構",
+      "canonical": "MethodPack",
+      "role": "defines",
+      "evidence": "1. Intent Contract       意圖契約\n2. Input Contract        輸入契約"
+    },
+    {
+      "name": "FMS / SMS / TMS 三層架構",
+      "canonical": "MethodPack",
+      "role": "defines",
+      "evidence": "AMEP 可分為三層。**FMS（Foundation Meta-System）**"
+    },
+    {
+      "name": "雙向迴圈（Forward Loop / Backward Loop / Coupling Update）",
+      "canonical": "VerifyLoop",
+      "role": "extends",
+      "evidence": "AMEP 的基本運行模式是雙向迴圈"
+    },
+    {
+      "name": "宣稱狀態詞彙（verified / needs_witness / needs_citation 等）",
+      "canonical": "ClaimStateVocabulary",
+      "role": "defines",
+      "evidence": "這些狀態詞彙比自然語言回答更適合研究協作，因為它能被機器解析，也能被人類審查。"
+    }
+  ],
+  "external_refs": [
+    {
+      "target": "lm-000150",
+      "type": "extends",
+      "evidence": "在此框架下，RigorLoop 被重新定位為 AMEP 下的第一個 method pack。",
+      "confidence": 0.85
+    },
+    {
+      "target": "lm-000063",
+      "type": "applies",
+      "evidence": "在形式化系統方面，Lean、Rocq/Coq、Isabelle 等 proof assistants 已提供嚴格機器檢查能力。AMEP 不與它們競爭；RigorLoop 的定位是 formalization prep 與 proof-audit bridge",
+      "confidence": 0.55
+    },
+    {
+      "target": "ReAct",
+      "type": "extends",
+      "evidence": "ReAct 將 reasoning traces 與 actions interleave，使模型能在推理與環境互動之間切換。AMEP 接受這個方向，但進一步要求行動受到方法包約束",
+      "confidence": 0.9
+    },
+    {
+      "target": "Reflexion",
+      "type": "extends",
+      "evidence": "Reflexion 使用 verbal feedback 與 episodic memory buffer 改善後續決策。AMEP 同樣重視反思記憶，但將反思結果結構化為 method memory、gap register、task queue、citation ledger 等可審計工件。",
+      "confidence": 0.9
+    },
+    {
+      "target": "SelfRefine",
+      "type": "extends",
+      "evidence": "Self-Refine 透過模型自我回饋與迭代改進輸出。AMEP 可以吸收這種自我修正，但會加入明確的 failure protocol 與 claim state vocabulary",
+      "confidence": 0.9
+    },
+    {
+      "target": "ConstitutionalAI",
+      "type": "critiques",
+      "evidence": "AMEP 的「行動憲法」概念與此有相似處，但 AMEP 不主要處理價值對齊，而是處理方法執行",
+      "confidence": 0.85
+    },
+    {
+      "target": "Toolformer",
+      "type": "extends",
+      "evidence": "Toolformer 代表另一個方向：模型學會何時調用外部工具。AMEP 不取代工具學習，而是補上「工具權限與方法語境」",
+      "confidence": 0.85
+    },
+    {
+      "target": "LeanFormalization",
+      "type": "applies",
+      "evidence": "哪裡適合轉入 Lean、Rocq/Coq、Isabelle 等形式化系統。",
+      "confidence": 0.7
+    }
+  ],
+  "notes": "方法論/協議白皮書，非數學形式系統：primitives/axioms/theorems 由論文的結構性主張（十二層、FMS/SMS/TMS、雙向迴圈、宣稱降級）正規化而來，非傳統符號公理。RigorLoop 對應語料庫 lm-000150（VerifyLoop：面向 Agent 的雙向持續驗證與糾錯協議），以 extends 記錄本文對其的重新定位論述。ReAct/Reflexion/Self-Refine/Constitutional AI/Toolformer 為文末比較之外部研究，非本語料庫論文，故用 canonical 概念名而非 lm-id。"
+}

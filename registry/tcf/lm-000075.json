@@ -1,0 +1,379 @@
+{
+  "tcf_extract_version": "0.1",
+  "id": "lm-000075",
+  "title": "展平式維度重構理論 II：連接算子統一框架（FDRS_II_連接算子統一框架_v2.1）",
+  "language": "zh-Hant",
+  "source_file": "content/papers/2026/2026-06/FDRS_II_連接算子統一框架_v2.1.md",
+  "theory_name": "FDRS 連接算子統一框架（FDRS II Connection Operator Algebra）",
+  "extracted_by": "claude-fable-5 (automated distillation, Phase A)",
+  "extraction_date": "2026-07-02",
+  "canonical_status": "draft",
+  "primitives": [
+    {
+      "symbol": "C_*(H)",
+      "kind": "type",
+      "description": "R 上的有限維鏈複形，作為所有高維結構 H 的統一數學容器；三條路線讀取其不同側面",
+      "evidence": "以 $\\mathbb{R}$ 上的有限維鏈複形作為所有結構 $H$ 的統一數學容器。這個選擇是三條路線統一性的基礎。"
+    },
+    {
+      "symbol": "Ch_FDRS(R)",
+      "kind": "type",
+      "description": "FDRS 容許範疇：所有邊界算子皆列滿秩（單射）的鏈複形構成的全子範疇，是三算子代數的工作環境",
+      "evidence": "以所有 FDRS 容許鏈複形為對象、以鏈映射為態射的全子範疇，記為 $\\mathbf{Ch}_{\\mathrm{FDRS}}(\\mathbb{R})$。"
+    },
+    {
+      "symbol": "M = {top, lin, spec}",
+      "kind": "constant",
+      "description": "三種觀察模式的標籤集：拓樸模式（同調/Betti 數）、線性模式（邊界算子 SVD）、譜模式（Laplacian 特徵值）",
+      "evidence": "令 $\\mathbb{M} = \\{\\text{top},\\, \\text{lin},\\, \\text{spec}\\}$ 為模式標籤集"
+    },
+    {
+      "symbol": "φ_{m→m'}",
+      "kind": "function",
+      "description": "模式翻譯函數：在不同觀察模式的不變量集合之間建立字典（秩↔Betti 數、奇異值↔Laplacian 特徵值等）",
+      "evidence": "在 $C_*(H)$ 的不變量之間建立字典，其中 $\\mathcal{I}_m(H)$ 為模式 $m$ 下 $H$ 的不變量集合。"
+    },
+    {
+      "symbol": "D",
+      "kind": "function",
+      "description": "信息失真算子：對每次結構轉換給出 [0,1] 的統一代價，以奇異值能量（Hilbert-Schmidt 範數）為信息代理",
+      "evidence": "$$\\mathcal{D}: \\operatorname{Mor}(C_*(H),\\, C_*(F)) \\to [0, 1]$$"
+    },
+    {
+      "symbol": "R",
+      "kind": "function",
+      "description": "表示轉換算子（容器同一性算子）：保持底層鏈複形不變、只切換觀察模式標籤的算子",
+      "evidence": "$\\mathcal{R}$ 保持底層鏈複形 $C_*(H)$ 完全不動，只更換模式標籤，所有不變量通過 $\\varphi_{m \\to m'}$ 相容轉換。"
+    },
+    {
+      "symbol": "Δ",
+      "kind": "function",
+      "description": "維度元算子：以餘核複形構造執行單步維度降解（折疊而非截斷），k 步降解為其迭代",
+      "evidence": "一般 $k$ 步降解定義為 $\\Delta_k = \\Delta_1^{\\,k}$（迭代應用），定義域為包含頂維度 $\\geq n$ 的鏈複形子範疇"
+    },
+    {
+      "symbol": "G_FDRS = (V, E, w)",
+      "kind": "constant",
+      "description": "FDRS 算子網絡：以（結構,模式,降解步數）三元組為節點、算子作用為有向邊、D 值為邊權的加權有向圖",
+      "evidence": "以所有可能的（結構，模式，降解步數）三元組為節點、以算子作用為有向邊、以 $\\mathcal{D}$ 值為邊權的加權有向圖。"
+    }
+  ],
+  "axioms": [
+    {
+      "id": "ax-A1",
+      "name": "A1 零失真",
+      "formula": "D(id_H) = 0",
+      "description": "恆等映射的信息失真為零：D=0 對應完全信息保留",
+      "evidence": "$\\mathcal{D}(\\mathrm{id}_H) = 0$，對所有 $C_*(H) \\in \\mathbf{Ch}_{\\mathrm{FDRS}}(\\mathbb{R})$。"
+    },
+    {
+      "id": "ax-A2",
+      "name": "A2 極大失真",
+      "formula": "D(0_{H→F}) = 1",
+      "description": "零鏈映射的失真為 1：D=1 對應完全信息丟失",
+      "evidence": "$\\mathcal{D}(0_{H \\to F}) = 1$，其中 $0_{H \\to F}$ 為零鏈映射（所有 $f_k = 0$）。"
+    },
+    {
+      "id": "ax-A3",
+      "name": "A3 複合失真不等式",
+      "formula": "D(g∘f) ≤ 1 − (1−D(g))(1−D(f))；等價地 P(g∘f) ≥ P(g)·P(f)",
+      "description": "信息保持率 P = 1−D 在鏈映射合成下滿足次乘性",
+      "evidence": "$$\\mathcal{D}(g \\circ f) \\leq 1 - (1 - \\mathcal{D}(g))(1 - \\mathcal{D}(f))$$"
+    },
+    {
+      "id": "ax-A4",
+      "name": "A4 結構不變性",
+      "formula": "π(R(C_*(H), H, m, m')) = C_*(H)",
+      "description": "模式切換算子 R 保持底層鏈複形嚴格不變（遺忘模式標籤後回到同一容器）",
+      "evidence": "$$\\pi(\\mathcal{R}(C_*(H), H, m, m')) = C_*(H)$$"
+    },
+    {
+      "id": "ax-A5",
+      "name": "A5 模式相容性",
+      "formula": "I_m(H) = φ_{m→m'}(I_{m'}(H))",
+      "description": "任何在兩模式下皆有定義的不變量，其讀數通過模式翻譯函數精確對應",
+      "evidence": "$$I_m(H) = \\varphi_{m \\to m'}(I_{m'}(H))$$"
+    },
+    {
+      "id": "ax-A6",
+      "name": "A6 無損表示轉換",
+      "formula": "D(R(C_*(H), H, m, m')) = 0",
+      "description": "模式切換零失真；文中注記此公理在 Ch_FDRS(R) 內可由 A4 導出",
+      "evidence": "$$\\mathcal{D}(\\mathcal{R}(C_*(H), H, m, m')) = 0$$"
+    },
+    {
+      "id": "ax-A7",
+      "name": "A7 餘核定義",
+      "formula": "Δ_1(C_*(H)) = Coker(∂_n: C_n → C_{n-1})",
+      "description": "單步維度降解定義為頂維邊界算子的餘核複形構造（折疊而非截斷）",
+      "evidence": "$\\Delta_1(C_*(H)) = \\operatorname{Coker}(\\partial_n: C_n \\to C_{n-1})$，即定義 3.5 的餘核複形構造，其中 $n = \\operatorname{top}(H)$。"
+    },
+    {
+      "id": "ax-A8",
+      "name": "A8 可加性",
+      "formula": "Δ_{j+k} = Δ_j ∘ Δ_k",
+      "description": "維度降解步數在函子合成下可加",
+      "evidence": "在適當的子範疇限制下，$\\Delta_{j+k} = \\Delta_j \\circ \\Delta_k$（作為函子的合成）。"
+    },
+    {
+      "id": "ax-A9",
+      "name": "A9 失真可分解性",
+      "formula": "D(Δ_k(H)) = 1 − ∏_{j=0}^{k-1}(1 − d_j)",
+      "description": "在容許範疇內 k 步降解失真精確分解為逐步失真之乘積公式（A3 取等號）；文中注記可由容許條件導出",
+      "evidence": "$$\\mathcal{D}(\\Delta_k(H)) = 1 - \\prod_{j=0}^{k-1}(1 - d_j)$$"
+    },
+    {
+      "id": "ax-A10",
+      "name": "A10 R-Δ 有界非交換性",
+      "formula": "R_{m→m'}∘Δ_k ≠ Δ_k∘R_{m→m'}；|D(R∘Δ_k) − D(Δ_k∘R)| ≤ ε(k, m, m')",
+      "description": "模式切換與維度降解一般不可交換，但失真差有可從奇異值數據計算的上界",
+      "evidence": "一般地，$\\mathcal{R}_{m \\to m'} \\circ \\Delta_k \\neq \\Delta_k \\circ \\mathcal{R}_{m \\to m'}$（作為從 $\\mathfrak{Rep}$ 到 $\\mathfrak{Rep}$ 的映射）。"
+    }
+  ],
+  "theorems": [
+    {
+      "id": "thm-5-1",
+      "name": "定理 5.1 D-Δ 譜對應定理（能量守恆）",
+      "statement": "D(Δ_k(H)) = Σ_{j=0}^{k-1} Σ_i σ_i(∂_{n-j})² / Σ_l dim C_l(H)：k 步降解失真等於被捨棄邊界算子奇異值能量佔全鏈複形維度之比",
+      "from_axioms": ["ax-A8", "ax-A9"],
+      "description": "使 SVD 成為整個 FDRS 框架的通用計算語言，展平代價可在執行前精確預算；貪心策略（優先折疊奇異值能量最小的邊界層）為最優",
+      "evidence": "$k$ 步維度降解的信息失真，精確等於被捨棄的邊界算子奇異值平方和在全鏈複形能量中的佔比。"
+    },
+    {
+      "id": "thm-5-2",
+      "name": "定理 5.2 R-Δ 非交換量的精確表達",
+      "statement": "D(R_{m→m'}∘Δ_1) − D(Δ_1∘R_{m→m'}) = D_m(∂_n) − D_{m'}(∂_n^{(m')})：非交換量等於同一邊界算子在兩模式下失真讀數之差",
+      "from_axioms": ["ax-A6", "ax-A10"],
+      "description": "非交換性可計算且有界；不同模式對同一邊界算子有不同度量單位，是算子網絡路徑多樣性的根源",
+      "evidence": "$$\\mathcal{D}(\\mathcal{R}_{m \\to m'} \\circ \\Delta_1) - \\mathcal{D}(\\Delta_1 \\circ \\mathcal{R}_{m \\to m'}) = \\mathcal{D}_m(\\partial_n) - \\mathcal{D}_{m'}(\\partial_n^{(m')})$$"
+    },
+    {
+      "id": "cor-5-1",
+      "name": "推論 5.1 交換的等價條件",
+      "statement": "R 與 Δ_1 可交換 ⇔ 模式翻譯函數 φ_{m→m'} 在 ∂_n 的奇異值空間上是等距的",
+      "from_axioms": [],
+      "description": "由定理 5.2 直接得出的交換性判準",
+      "evidence": "$\\mathcal{R}_{m \\to m'}$ 和 $\\Delta_1$ 可交換，當且僅當模式翻譯函數 $\\varphi_{m \\to m'}$ 在 $\\partial_n$ 的奇異值空間上是等距的。"
+    },
+    {
+      "id": "thm-5-3",
+      "name": "定理 5.3 FDRS 容許條件的等價刻畫",
+      "statement": "C_*(H) 是 FDRS 容許的 ⇔ 定理 5.1 公式對所有 k 精確成立（A9 等號嚴格成立、無隱性失真）",
+      "from_axioms": ["ax-A9"],
+      "description": "容許條件不是技術性限制，而是失真計算無殘差的等價刻畫；一般鏈複形上公式 5.1 僅為下界",
+      "evidence": "鏈複形 $C_*(H)$ 是 FDRS 容許的，當且僅當定理 5.1 的公式對所有 $k$ 均精確成立（無附加誤差項，即 A9 的等號嚴格成立）。"
+    },
+    {
+      "id": "prop-6-1",
+      "name": "命題 6.1 最優路徑的可計算性",
+      "statement": "經對數變換 w' = −ln(1−w) 後，最優展平路徑問題等價於算子網絡上的最短路徑問題，可用 Dijkstra 等標準算法求解",
+      "from_axioms": ["ax-A3", "ax-A6"],
+      "description": "把「如何以最小代價展平高維結構」轉化為計算複雜度已知（O(|E|+|V|log|V|)）的圖優化問題",
+      "evidence": "最優展平路徑問題等價於算子網絡在 $w'$ 邊權下的最短路徑問題。"
+    },
+    {
+      "id": "prop-D-1",
+      "name": "命題 D.1 邊界映射的良定義性",
+      "statement": "誘導映射 ∂̄_{n-1}: C_{n-1}/im(∂_n) → C_{n-2} 是良定義的線性映射",
+      "from_axioms": [],
+      "description": "由鏈複形條件 ∂_{n-1}∘∂_n = 0 保證餘核構造上的誘導邊界映射良定義",
+      "evidence": "則誘導映射 $\\bar{\\partial}_{n-1}: C_{n-1}/\\operatorname{im}(\\partial_n) \\to C_{n-2}$ 是良定義的線性映射。"
+    },
+    {
+      "id": "prop-D-2",
+      "name": "命題 D.2 Δ_1 仍為鏈複形",
+      "statement": "Δ_1(C_*(H)) 滿足鏈複形條件（邊界的邊界為零）",
+      "from_axioms": [],
+      "description": "餘核複形構造封閉於鏈複形範疇內",
+      "evidence": "$\\Delta_1(C_*(H))$ 滿足鏈複形條件 $\\bar{\\partial}_{n-1} \\circ \\bar{\\partial}_n = 0$"
+    },
+    {
+      "id": "prop-D-3",
+      "name": "命題 D.3 同調的變化",
+      "statement": "在容許條件下 Δ_1 保持所有 k ≤ n−2 的同調群不變，消去 H_n，只以可計算方式改變 H_{n-1}",
+      "from_axioms": [],
+      "description": "Δ_1 消去的是可縮子複形，其同調效應可計算且可預測",
+      "evidence": "對 $k \\leq n-2$：$H_k(\\Delta_1(H)) \\cong H_k(H)$（同調群不變）"
+    },
+    {
+      "id": "thm-lean-energy",
+      "name": "Lean 形式化定理 energy_partition / energy_conservation",
+      "statement": "sumSq(flatten(Δ_k(H))) + sumTopKSq(H,k) = sumSq(flatten(H))：保留能量加捨棄能量等於總能量（定理 5.1 的機器驗證形式）",
+      "from_axioms": [],
+      "description": "FDRS.lean（EML-FDRS-2026-LEAN-v1.0）中零 sorry、零外部依賴的 Lean 4 機器驗證，覆蓋定理 5.1 與 5.2 的代數骨架",
+      "evidence": "即保留的奇異值能量加上捨棄的奇異值能量等於原始複形的總能量"
+    }
+  ],
+  "dag": [
+    {"id": "prim-chain-complex", "kind": "primitive", "depends_on": []},
+    {"id": "prim-admissible-category", "kind": "primitive", "depends_on": ["prim-chain-complex"]},
+    {"id": "prim-modes", "kind": "primitive", "depends_on": ["prim-chain-complex"]},
+    {"id": "prim-phi", "kind": "primitive", "depends_on": ["prim-modes", "prim-chain-complex"]},
+    {"id": "prim-D", "kind": "primitive", "depends_on": ["prim-admissible-category"]},
+    {"id": "prim-R", "kind": "primitive", "depends_on": ["prim-modes", "prim-phi"]},
+    {"id": "prim-Delta", "kind": "primitive", "depends_on": ["prim-admissible-category"]},
+    {"id": "prim-network", "kind": "primitive", "depends_on": ["prim-D", "prim-R", "prim-Delta"]},
+    {"id": "ax-A1", "kind": "axiom", "depends_on": ["prim-D"]},
+    {"id": "ax-A2", "kind": "axiom", "depends_on": ["prim-D"]},
+    {"id": "ax-A3", "kind": "axiom", "depends_on": ["prim-D"]},
+    {"id": "ax-A4", "kind": "axiom", "depends_on": ["prim-R"]},
+    {"id": "ax-A5", "kind": "axiom", "depends_on": ["prim-R", "prim-phi"]},
+    {"id": "ax-A6", "kind": "axiom", "depends_on": ["prim-R", "prim-D", "ax-A4"]},
+    {"id": "ax-A7", "kind": "axiom", "depends_on": ["prim-Delta"]},
+    {"id": "ax-A8", "kind": "axiom", "depends_on": ["prim-Delta"]},
+    {"id": "ax-A9", "kind": "axiom", "depends_on": ["prim-Delta", "prim-D", "ax-A3", "prim-admissible-category"]},
+    {"id": "ax-A10", "kind": "axiom", "depends_on": ["prim-R", "prim-Delta", "prim-D"]},
+    {"id": "thm-5-1", "kind": "theorem", "depends_on": ["ax-A8", "ax-A9", "prim-D", "prim-Delta"]},
+    {"id": "thm-5-2", "kind": "theorem", "depends_on": ["ax-A10", "ax-A6", "thm-5-1"]},
+    {"id": "cor-5-1", "kind": "theorem", "depends_on": ["thm-5-2", "prim-phi"]},
+    {"id": "thm-5-3", "kind": "theorem", "depends_on": ["thm-5-1", "ax-A9", "prim-admissible-category"]},
+    {"id": "prop-6-1", "kind": "theorem", "depends_on": ["prim-network", "ax-A3", "thm-5-1"]},
+    {"id": "prop-D-1", "kind": "theorem", "depends_on": ["prim-chain-complex"]},
+    {"id": "prop-D-2", "kind": "theorem", "depends_on": ["prop-D-1", "prim-Delta"]},
+    {"id": "prop-D-3", "kind": "theorem", "depends_on": ["prop-D-1", "prim-admissible-category", "prim-Delta"]},
+    {"id": "thm-lean-energy", "kind": "theorem", "depends_on": ["thm-5-1"]}
+  ],
+  "concepts": [
+    {
+      "name": "展平式維度重構理論（FDRS）",
+      "canonical": "FDRS",
+      "role": "extends",
+      "evidence": "展平式維度重構理論（FDRS）在其初始表述中確立了三條並行的維度轉換機制——拓樸映射路線、線性化路線與譜圖論路線。"
+    },
+    {
+      "name": "連接算子",
+      "canonical": "ConnectionOperator",
+      "role": "defines",
+      "evidence": "本文引入三個**連接算子**：信息失真算子 $\\mathcal{D}$、表示轉換算子 $\\mathcal{R}$、以及維度元算子 $\\Delta$。"
+    },
+    {
+      "name": "信息失真算子 D",
+      "canonical": "InformationDistortionOperator",
+      "role": "defines",
+      "evidence": "信息失真算子的設計目標是：給定任意一次結構轉換（不論是展平、模式切換或維度降解），提供一個數字化的「代價」，使不同轉換路徑的代價可以統一比較。"
+    },
+    {
+      "name": "表示轉換算子 R（容器同一性算子）",
+      "canonical": "ContainerIdentityOperator",
+      "role": "defines",
+      "evidence": "如果說 $\\mathcal{D}$ 是「代價計算機」，那麼 $\\mathcal{R}$ 是「身份見證機」——它宣稱兩種不同模式下的表示描述的是同一個底層結構。"
+    },
+    {
+      "name": "維度元算子 Δ",
+      "canonical": "DimensionMetaOperator",
+      "role": "defines",
+      "evidence": "$\\Delta$ 是三個算子中在操作上最具實體感的一個：它執行實際的維度降解。"
+    },
+    {
+      "name": "FDRS 容許範疇",
+      "canonical": "FDRSAdmissibleCategory",
+      "role": "defines",
+      "evidence": "FDRS 容許條件的實質是：在逐步維度降解的過程中，每一步的邊界算子都是單射，不存在「自由度突然坍縮」的奇異行為。"
+    },
+    {
+      "name": "FDRS 算子網絡",
+      "canonical": "FDRSOperatorNetwork",
+      "role": "defines",
+      "evidence": "三個連接算子的代數系統自然誘導出一個有向加權圖，稱為 FDRS 算子網絡，它為 FDRS 的「最優展平策略問題」提供了圖論的嚴格定義。"
+    },
+    {
+      "name": "最優展平路徑",
+      "canonical": "OptimalFlatteningPath",
+      "role": "defines",
+      "evidence": "對給定的起點和終點，最優展平路徑是使 $\\mathcal{D}_{\\mathrm{total}}$ 最小（等價地，使 $P_{\\mathrm{total}}$ 最大）的有向路徑。"
+    },
+    {
+      "name": "鏈複形",
+      "canonical": "ChainComplex",
+      "role": "uses",
+      "evidence": "本文的核心數學選擇是：以 $\\mathbb{R}$ 上的有限維鏈複形作為所有結構 $H$ 的統一數學容器。"
+    },
+    {
+      "name": "奇異值分解（SVD）",
+      "canonical": "SVD",
+      "role": "uses",
+      "evidence": "SVD 不再是線性化路線的專屬工具，而是整個 FDRS 框架的基礎計算操作。"
+    },
+    {
+      "name": "圖 Laplacian / 代數連通度",
+      "canonical": "GraphLaplacian",
+      "role": "uses",
+      "evidence": "圖 Laplacian $L = \\partial_1 \\partial_1^T$ 直接從一階邊界算子構造而來，代數連通度 $\\alpha(G_S)$（初始 FDRS 維度公式中的核心量）是 $L$ 的第二小特徵值"
+    },
+    {
+      "name": "Lean 4 機器形式化驗證",
+      "canonical": "LeanFormalization",
+      "role": "uses",
+      "evidence": "已在 Lean 4 中完成**無外部依賴的機器形式化驗證**（附件 FDRS.lean，EML-FDRS-2026-LEAN-v1.0）"
+    },
+    {
+      "name": "算子本體論",
+      "canonical": "OperatorOntology",
+      "role": "uses",
+      "evidence": "使 FDRS 與數學物理中的算子本體論（量子場論的算子代數方法）和代數幾何中的導出範疇（BV 形式化、鏡對稱）產生實質聯繫。"
+    },
+    {
+      "name": "纖維叢（RDCM 升維）",
+      "canonical": "WorldBundle",
+      "role": "uses",
+      "evidence": "原始 RDCM 的「升維存在唯一性定理」（定理 4.2）的證明草稿援引了纖維叢結構但未完整展開。"
+    },
+    {
+      "name": "深度軸",
+      "canonical": "DepthAxis",
+      "role": "uses",
+      "evidence": "鏈複形的黎曼幾何實現（深度軸橋樑定理，需 `Mathlib.Geometry.Manifold`）"
+    }
+  ],
+  "external_refs": [
+    {
+      "target": "lm-000456",
+      "type": "extends",
+      "evidence": "本文為 EML-FDRS 系列第二號論文，建立於 EML-FDRS-2025-v1.0（展平式維度重構理論：完整數學架構）的框架之上。",
+      "confidence": 0.75
+    },
+    {
+      "target": "lm-000457",
+      "type": "applies",
+      "evidence": "這為 FDRS 連接算子框架在 FCSR 模型的具體應用提供了完整的計算路徑。",
+      "confidence": 0.65
+    },
+    {
+      "target": "lm-000712",
+      "type": "depends_on",
+      "evidence": "鏈複形的黎曼幾何實現（深度軸橋樑定理，需 `Mathlib.Geometry.Manifold`）",
+      "confidence": 0.6
+    },
+    {
+      "target": "SVD",
+      "type": "depends_on",
+      "evidence": "三條路線的失真計算均歸結為對邊界算子序列 $\\{\\partial_{n-j}\\}$ 做 SVD，計算奇異值平方和。",
+      "confidence": 0.95
+    },
+    {
+      "target": "ChainComplex",
+      "type": "depends_on",
+      "evidence": "所有此類鏈複形以鏈映射為態射構成範疇 $\\mathbf{Ch}(\\mathbb{R})$。",
+      "confidence": 0.95
+    },
+    {
+      "target": "SpectralGraphTheory",
+      "type": "depends_on",
+      "evidence": "第三個來自譜圖論的基本定理（零特徵值重數等於連通分量數）。",
+      "confidence": 0.9
+    },
+    {
+      "target": "CategoryTheory",
+      "type": "depends_on",
+      "evidence": "以所有 FDRS 容許鏈複形為對象、以鏈映射為態射的全子範疇，記為 $\\mathbf{Ch}_{\\mathrm{FDRS}}(\\mathbb{R})$。",
+      "confidence": 0.85
+    },
+    {
+      "target": "LeanFormalization",
+      "type": "verifies",
+      "evidence": "以 Lean 4 編譯器通過、零 sorry、零警告為標準，達到代數骨架的完整機器可驗證狀態。",
+      "confidence": 0.95
+    }
+  ],
+  "notes": "A6 與 A9 在文中注記為範疇內可導出（A6 由 A4、A9 由容許條件），仍照原文列為公理。原始 FDRS 引文「EML-FDRS-2025-v1.0（完整數學架構）」在 lm-000456/457 間有歧義，兩者皆列並降低 confidence。附錄 A 定理 5.1 證明含作者自我修正段（「等等，這裡有個問題」），最終採「純奇異值能量比」版本。Lean energy_partition/energy_conservation 收錄為機器驗證定理。定理 5.2 的 verifies 指本文以 Lean 驗證自身定理。"
+}

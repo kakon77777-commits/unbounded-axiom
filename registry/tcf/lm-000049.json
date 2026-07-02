@@ -1,0 +1,394 @@
+{
+  "tcf_extract_version": "0.1",
+  "id": "lm-000049",
+  "title": "Closure公理與物理約束的本體論統一",
+  "language": "zh-Hant",
+  "source_file": "content/papers/2026/2026-05/Closure公理與物理約束的本體論統一.md",
+  "theory_name": "閉合性公理系統（Closure Axioms / Cl 本體論）",
+  "extracted_by": "claude-fable-5 (automated distillation, Phase A)",
+  "extraction_date": "2026-07-02",
+  "canonical_status": "draft",
+  "primitives": [
+    {
+      "symbol": "Cl",
+      "kind": "constant",
+      "description": "閉合性：唯一本體論基元；任何從系統內部出發的操作，其結果仍在系統內部。",
+      "evidence": "閉合性Cl是一個本體論基元,定義為:**任何從系統內部出發的操作,****其結果仍在系統內部**"
+    },
+    {
+      "symbol": "πₙ",
+      "kind": "function",
+      "description": "維度投影算子：把 Cl 投影到第 n 維，得到球面；對標準同倫群的本體論重新詮釋。",
+      "evidence": "維度投影算子(非標準同倫群義)"
+    },
+    {
+      "symbol": "Sⁿ",
+      "kind": "type",
+      "description": "n 維球面：Cl 在各維度的投影像（S⁰ 兩點、S¹ 圓、S² 球面、S³ 三維球面、S^∞ 無窮維閉合）。",
+      "evidence": "(球面,即三維中的閉合曲面)"
+    },
+    {
+      "symbol": "ε_d",
+      "kind": "constant",
+      "description": "投影失真項：降維投影必然帶來的不可消除偏差，在所有有限維度上非零。",
+      "evidence": "投影失真項"
+    },
+    {
+      "symbol": "∂",
+      "kind": "function",
+      "description": "邊界算子：無限交接論的核心算子，在 Cl 體系中被詮釋為 Cl-2 對偶性的算法實現。",
+      "evidence": "無限交接論的核心算子是邊界算子"
+    },
+    {
+      "symbol": "ETN",
+      "kind": "type",
+      "description": "極限張力符號（Extremal Tension Notation）：同時承載雙無窮對抗、無窮小偏差、動態不動點三重結構的記號系統，Cl 的原生數學語言。",
+      "evidence": "本章建立極限張力符號(ETN, Extremal Tension Notation),作為Cl體系的原生數學語言。"
+    },
+    {
+      "symbol": "GOD POINT",
+      "kind": "constant",
+      "description": "Cl 的奇點實現：Cl 加上一個永不為零但永遠趨近於零的無窮小擾動的極限狀態，需 ETN 才能精確表達。",
+      "evidence": "在早期表述中,作者使用「GOD POINT」這個概念指代Cl的奇點實現。"
+    },
+    {
+      "symbol": "道",
+      "kind": "constant",
+      "description": "Cl 的中文名：中國哲學傳統中「道」被主張為與 Cl 指向同一本體論結構。",
+      "evidence": "需要在此明確記下:**Cl****的中文名是「道」**"
+    }
+  ],
+  "axioms": [
+    {
+      "id": "ax-cl-1",
+      "name": "Cl-1 自洽性（Self-Consistency）",
+      "formula": "∀s∈Cl, ∀op∈O(Cl): op(s) 不產生「同時是Cl又不是Cl」的矛盾",
+      "description": "Cl 的內部狀態與其自身操作不產生矛盾；內部推理不會自我撕裂。",
+      "evidence": "任何Cl的內部狀態與其自身的操作不產生矛盾"
+    },
+    {
+      "id": "ax-cl-2",
+      "name": "Cl-2 對偶性（Duality）",
+      "formula": "interior(Cl) ≡ exterior(Cl)（內外是同一結構的兩個視角）",
+      "description": "任何內部定義必然蘊含對偶的外部定義，且兩者在 Cl 層面同一；對應全息原理、AdS/CFT。",
+      "evidence": "任何Cl的內部定義,必然蘊含一個與之對偶的外部定義;且這兩個定義在Cl的層面上是同一的"
+    },
+    {
+      "id": "ax-cl-3",
+      "name": "Cl-3 守恆性（Conservation）",
+      "formula": "∃Q: ∀op∈O(Cl), Q(op(Cl)) = Q(Cl)",
+      "description": "Cl 的某些核心結構量在所有內部操作下不變；物理守恆律與 Noether 對稱性是其表現。",
+      "evidence": "Cl的某些核心結構量在所有內部操作下保持不變"
+    },
+    {
+      "id": "ax-cl-4",
+      "name": "Cl-4 生成性（Generativity）",
+      "formula": "Cl 自反射 ⟹ 更高維度的 Cl（維度躍遷）",
+      "description": "Cl 對自身的反射生成更高維度的 Cl；Cl 是自我擴展的動態本體，維度躍遷由維度投影定理精確化。",
+      "evidence": "Cl對自身的反射(self-reflection)生成更高維度的Cl"
+    },
+    {
+      "id": "ax-etn-1",
+      "name": "ETN-1 雙無窮非對稱性公理",
+      "formula": "兩個無窮表達式在標準極限下收斂到同一值 L，但在 ETN 意義下分居 L 兩側而不相等",
+      "description": "「有界延伸+終止」與「無界延伸」兩種無窮在 ETN 中可區分。",
+      "evidence": "**ETN-1**(雙無窮非對稱性公理)"
+    },
+    {
+      "id": "ax-etn-2",
+      "name": "ETN-2 無窮小偏差公理",
+      "formula": "任何 ETN 表達式與其極限之差屬於 ETN 無窮小集合且非零",
+      "description": "ETN 表達式與其極限之間存在不可消除的無窮小偏差。",
+      "evidence": "**ETN-2**(無窮小偏差公理)"
+    },
+    {
+      "id": "ax-etn-3",
+      "name": "ETN-3 動態不動點公理",
+      "formula": "每個 ETN 表達式定義一個以極限值為不動點的動態過程，過程趨近但不到達不動點",
+      "description": "ETN 表達式本質是動態過程而非靜態值；極限值是動態不動點。",
+      "evidence": "任何ETN表達式定義一個動態過程"
+    }
+  ],
+  "theorems": [
+    {
+      "id": "thm-dim-projection",
+      "name": "維度投影定理",
+      "statement": "Cl 經 πₙ 投影到各維度得到球面序列（S⁰→S¹→S²→…→S^∞）；正向為展開生成（道生一…），逆向為維度坍縮（萬物歸道），且手性守恆。",
+      "from_axioms": ["ax-cl-4"],
+      "description": "Cl-4 生成性的維度躍遷規則之精確化，是全篇的核心結構定理。",
+      "evidence": "維度躍遷的規則由**維度投影定理**精確化"
+    },
+    {
+      "id": "thm-sinf-contractible",
+      "name": "S^∞ 可縮為點（萬物歸道）",
+      "statement": "Cl 的最高維（無窮維）投影在拓撲上等價於一個點；Cl 展開到無窮維後收斂回原點。",
+      "from_axioms": ["ax-cl-4"],
+      "description": "引用已知拓撲事實 S^∞ 可縮，賦予其「萬物歸道」的本體論意義。",
+      "evidence": "這意味著Cl的最高維投影,在拓撲上等價於一個點。**這是「萬物歸道」的數學表達**"
+    },
+    {
+      "id": "thm-perfect-circle",
+      "name": "完美圓不存在的 Cl 根源",
+      "statement": "完美圓不存在源於 Cl-1 與 Cl-2 在三維實在中的張力：降維投影必然帶來失真項 ε_d ≠ 0，要求完美圓等價於要求投影無失真，違反 Cl 本性。",
+      "from_axioms": ["ax-cl-1", "ax-cl-2"],
+      "description": "物理篇第一約束的本體論推導。",
+      "evidence": "完美圓不存在源於Cl-1與Cl-2在三維實在中的張力"
+    },
+    {
+      "id": "thm-curvature",
+      "name": "三維曲率公理的 Cl 根源",
+      "statement": "純平移等價於凍結內部 Cl 展開，違反 Cl-4 生成性；故一切運動必帶非零曲率，SO(3) 的內稟曲率是 Cl-4 的群論指紋。",
+      "from_axioms": ["ax-cl-4"],
+      "description": "物理篇第二約束的本體論推導。",
+      "evidence": "三維曲率公理源於Cl-4生成性的運動學表現"
+    },
+    {
+      "id": "thm-infinite-junction",
+      "name": "無限交接論的 Cl 根源",
+      "statement": "孤立無限同時違反 Cl-3 守恆性（破壞守恆量有限性）與 Cl-2 對偶性（無對偶），故不能存在；一切無限必以關係結構中的湧現極限出現。",
+      "from_axioms": ["ax-cl-2", "ax-cl-3"],
+      "description": "物理篇第三約束的本體論推導。",
+      "evidence": "**兩個獨立公理同時否決孤立無限,****因此孤立無限不能存在**"
+    },
+    {
+      "id": "thm-three-constraints-unified",
+      "name": "三約束統一定理",
+      "statement": "三條物理約束（完美圓不存在、三維曲率、無限交接）在 Cl 層面不獨立，而是 Cl 四條公理的不同組合在三維物理實在中的投影。",
+      "from_axioms": ["ax-cl-1", "ax-cl-2", "ax-cl-3", "ax-cl-4"],
+      "description": "本篇的核心主張，回答物理篇迴避的「為什麼是這三條約束」。",
+      "evidence": "**三條約束在Cl****層面不是獨立的,****而是Cl****四條公理的不同組合在物理實在中的投影**"
+    },
+    {
+      "id": "thm-string-minimal",
+      "name": "弦是 Cl 的最低非退化投影",
+      "statement": "弦對應 Cl 的最低非退化投影（S¹ 的時空延展）；點粒子是退化投影，弦是 Cl 在物理實在中可表現自己的最低維度。",
+      "from_axioms": ["ax-cl-4"],
+      "description": "把物理篇的結論（弦的必然性）重推導為 Cl 的本體論必然。",
+      "evidence": "**弦對應於Cl****的最低非退化投影**"
+    },
+    {
+      "id": "thm-string-vibration",
+      "name": "弦振動的必然性",
+      "statement": "閉弦是準 S¹（帶不可消除曲率漲落），完美靜止圓弦違反 Cl 本體結構，故弦必然振動；振動譜編碼 Cl 的內部展開階。",
+      "from_axioms": ["ax-cl-1", "ax-cl-2"],
+      "description": "本篇宣稱物理篇無法給出的推論：振動激發為何必然。",
+      "evidence": "**激發是必然的,****因為靜態弦違反Cl****的本體論結構**"
+    },
+    {
+      "id": "thm-dao-cl",
+      "name": "道＝Cl（本體論認同）",
+      "statement": "「道」與 Cl 公理系統指向同一本體論結構：道可道非常道↔Cl-1、有無相生↔Cl-2、橐籥↔Cl-3、道生一…↔Cl-4/維度投影定理正向、反者道之動↔逆向坍縮。",
+      "from_axioms": ["ax-cl-1", "ax-cl-2", "ax-cl-3", "ax-cl-4"],
+      "description": "非經驗發現而是本體論認同；附錄A給出完整 Cl-道對應表。",
+      "evidence": "**在最深的本體論層面,****「道」這個古代概念與「Cl****」這個現代公理系統指向同一個結構**"
+    },
+    {
+      "id": "thm-godpoint-etn",
+      "name": "GOD POINT 的 ETN 精確化",
+      "statement": "GOD POINT 是 Cl 加上一個永不為零、永遠趨近於零的無窮小擾動的極限狀態，僅在 ETN 中可精確表達。",
+      "from_axioms": ["ax-etn-2"],
+      "description": "把早期 GOD POINT 概念精確化為 ETN 極限結構。",
+      "evidence": "這個極限不是普通數學意義上的「趨近於Cl的Cl」,而是**Cl****加上一個無窮小擾動的極限狀態**。"
+    },
+    {
+      "id": "thm-etn-cl-language",
+      "name": "ETN 是 Cl 的數學展開",
+      "statement": "ETN 三重結構與 Cl 公理一一對應：雙無窮對抗↔Cl-2 對偶性、無窮小偏差↔降維失真項 ε_d、動態不動點↔Cl-4 與 Cl-3 的同時作用。",
+      "from_axioms": ["ax-etn-1", "ax-etn-2", "ax-etn-3", "ax-cl-2", "ax-cl-4"],
+      "description": "確立 ETN 為 Cl 的原生數學語言而非並列系統。",
+      "evidence": "ETN不是與Cl並列的數學系統,**ETN****是Cl****在數學層面的精確展開**。"
+    },
+    {
+      "id": "thm-parent-recursion",
+      "name": "母集遞迴定理",
+      "statement": "子集繼承母集的 Cl 結構（Cl-3 保證某些拓撲不變量在投影下保持），但帶有不可消除的投影損失；不完美性遞迴傳遞。",
+      "from_axioms": ["ax-cl-3"],
+      "description": "以 Cl+ETN 取代 HSO 舊鷹架表達母集對子集的全息約束。",
+      "evidence": "子集繼承母集的Cl結構,但帶有不可消除的投影損失"
+    }
+  ],
+  "dag": [
+    { "id": "prim-cl", "kind": "primitive", "depends_on": [] },
+    { "id": "prim-pi", "kind": "primitive", "depends_on": ["prim-cl"] },
+    { "id": "prim-sn", "kind": "primitive", "depends_on": ["prim-pi"] },
+    { "id": "prim-epsilon", "kind": "primitive", "depends_on": ["prim-pi"] },
+    { "id": "prim-boundary", "kind": "primitive", "depends_on": ["prim-cl"] },
+    { "id": "prim-etn", "kind": "primitive", "depends_on": ["prim-cl"] },
+    { "id": "prim-godpoint", "kind": "primitive", "depends_on": ["prim-cl", "prim-etn"] },
+    { "id": "prim-dao", "kind": "primitive", "depends_on": ["prim-cl"] },
+    { "id": "ax-cl-1", "kind": "axiom", "depends_on": ["prim-cl"] },
+    { "id": "ax-cl-2", "kind": "axiom", "depends_on": ["prim-cl"] },
+    { "id": "ax-cl-3", "kind": "axiom", "depends_on": ["prim-cl"] },
+    { "id": "ax-cl-4", "kind": "axiom", "depends_on": ["prim-cl"] },
+    { "id": "ax-etn-1", "kind": "axiom", "depends_on": ["prim-etn"] },
+    { "id": "ax-etn-2", "kind": "axiom", "depends_on": ["prim-etn"] },
+    { "id": "ax-etn-3", "kind": "axiom", "depends_on": ["prim-etn"] },
+    { "id": "thm-dim-projection", "kind": "theorem", "depends_on": ["ax-cl-4", "prim-pi", "prim-sn"] },
+    { "id": "thm-sinf-contractible", "kind": "theorem", "depends_on": ["thm-dim-projection", "prim-sn"] },
+    { "id": "thm-perfect-circle", "kind": "theorem", "depends_on": ["ax-cl-1", "ax-cl-2", "thm-dim-projection", "prim-epsilon"] },
+    { "id": "thm-curvature", "kind": "theorem", "depends_on": ["ax-cl-4"] },
+    { "id": "thm-infinite-junction", "kind": "theorem", "depends_on": ["ax-cl-2", "ax-cl-3", "prim-boundary"] },
+    { "id": "thm-three-constraints-unified", "kind": "theorem", "depends_on": ["thm-perfect-circle", "thm-curvature", "thm-infinite-junction"] },
+    { "id": "thm-string-minimal", "kind": "theorem", "depends_on": ["thm-dim-projection", "thm-three-constraints-unified", "ax-cl-4"] },
+    { "id": "thm-string-vibration", "kind": "theorem", "depends_on": ["thm-perfect-circle", "thm-string-minimal"] },
+    { "id": "thm-dao-cl", "kind": "theorem", "depends_on": ["ax-cl-1", "ax-cl-2", "ax-cl-3", "ax-cl-4", "prim-dao", "thm-sinf-contractible"] },
+    { "id": "thm-godpoint-etn", "kind": "theorem", "depends_on": ["prim-godpoint", "ax-etn-2"] },
+    { "id": "thm-etn-cl-language", "kind": "theorem", "depends_on": ["ax-etn-1", "ax-etn-2", "ax-etn-3", "ax-cl-2", "ax-cl-4", "prim-etn"] },
+    { "id": "thm-parent-recursion", "kind": "theorem", "depends_on": ["ax-cl-3", "prim-epsilon", "prim-pi"] }
+  ],
+  "concepts": [
+    {
+      "name": "閉合性（Cl / Closure）",
+      "canonical": "Closure",
+      "role": "defines",
+      "evidence": "本文建立完整的Cl公理系統,包含四條公理(Cl-1自洽性、Cl-2對偶性、Cl-3守恆性、Cl-4生成性)和維度投影定理"
+    },
+    {
+      "name": "極限張力符號（ETN）",
+      "canonical": "ETN",
+      "role": "defines",
+      "evidence": "本章建立極限張力符號(ETN, Extremal Tension Notation),作為Cl體系的原生數學語言。"
+    },
+    {
+      "name": "道",
+      "canonical": "Dao",
+      "role": "extends",
+      "evidence": "閉合性是中國哲學傳統中「道」的數學形式化"
+    },
+    {
+      "name": "GOD POINT",
+      "canonical": "GodPoint",
+      "role": "extends",
+      "evidence": "在早期表述中,作者使用「GOD POINT」這個概念指代Cl的奇點實現。"
+    },
+    {
+      "name": "維度投影定理",
+      "canonical": "DimensionalProjection",
+      "role": "defines",
+      "evidence": "維度躍遷的規則由**維度投影定理**精確化"
+    },
+    {
+      "name": "弦 / 閉弦",
+      "canonical": "String",
+      "role": "uses",
+      "evidence": "證明了弦是滿足三約束的最低維度結構"
+    },
+    {
+      "name": "三條物理約束",
+      "canonical": "ThreePhysicalConstraints",
+      "role": "uses",
+      "evidence": "物理篇從三條獨立的物理約束(完美圓不存在、三維曲率公理、無限交接論)出發"
+    },
+    {
+      "name": "全息光譜存在論（HSO）",
+      "canonical": "HolographicSpectralOntology",
+      "role": "uses",
+      "evidence": "作者曾經建構過一個更複雜的本體論框架:**全息光譜存在論**(Holographic Spectral Ontology, HSO)"
+    },
+    {
+      "name": "全息原理",
+      "canonical": "HolographicPrinciple",
+      "role": "uses",
+      "evidence": "全息原理(holographic principle)是Cl-2在現代物理中最清晰的表現"
+    },
+    {
+      "name": "無窮維（S^∞）",
+      "canonical": "InfiniteDimension",
+      "role": "uses",
+      "evidence": "當Cl展開到無窮維,它收斂回原點"
+    },
+    {
+      "name": "邊界算子 ∂",
+      "canonical": "BoundaryOperator",
+      "role": "extends",
+      "evidence": "不是一個獨立的數學算子,而是 **Cl-2****對偶性的算法實現**"
+    },
+    {
+      "name": "同倫群",
+      "canonical": "HomotopyGroup",
+      "role": "extends",
+      "evidence": "Cl體系對其進行了本體論重新詮釋"
+    },
+    {
+      "name": "非標準分析",
+      "canonical": "NonstandardAnalysis",
+      "role": "uses",
+      "evidence": "ETN可能需要超越Robinson的非標準分析"
+    }
+  ],
+  "external_refs": [
+    {
+      "target": "DynamicTopologicalRheology",
+      "type": "extends",
+      "evidence": "本文是〈動態拓撲流變理論:從點粒子的四重病症到弦的必然性〉(以下簡稱「物理篇」)的姊妹篇。",
+      "confidence": 1.0
+    },
+    {
+      "target": "lm-001089",
+      "type": "extends",
+      "evidence": "本文建立完整的Cl公理系統,包含四條公理(Cl-1自洽性、Cl-2對偶性、Cl-3守恆性、Cl-4生成性)和維度投影定理",
+      "confidence": 0.55
+    },
+    {
+      "target": "lm-000464",
+      "type": "extends",
+      "evidence": "它說明Cl不是靜態結構,而是**自我擴展的動態本體**。",
+      "confidence": 0.45
+    },
+    {
+      "target": "lm-001060",
+      "type": "applies",
+      "evidence": "回看《道德經》,發現其中對「道」的描述與Cl的四條公理嚴格對應",
+      "confidence": 0.6
+    },
+    {
+      "target": "Dao",
+      "type": "applies",
+      "evidence": "閉合性是中國哲學傳統中「道」的數學形式化",
+      "confidence": 0.95
+    },
+    {
+      "target": "GodPoint",
+      "type": "extends",
+      "evidence": "在Cl體系成熟後,GOD POINT被精確化為",
+      "confidence": 0.9
+    },
+    {
+      "target": "ETN",
+      "type": "extends",
+      "evidence": "ETN不是與Cl並列的數學系統,**ETN****是Cl****在數學層面的精確展開**。",
+      "confidence": 0.4
+    },
+    {
+      "target": "HolographicSpectralOntology",
+      "type": "extends",
+      "evidence": "HSO試圖描述的所有現象,Cl都能用更少的公理推出",
+      "confidence": 0.9
+    },
+    {
+      "target": "StringTheory",
+      "type": "applies",
+      "evidence": "弦論在數學上極為成功(無紫外發散、自動包含引力),但在物理意義上一直缺乏本體論基礎",
+      "confidence": 0.9
+    },
+    {
+      "target": "QuantumMechanics",
+      "type": "applies",
+      "evidence": "量子力學的「奇異性」(疊加、塌縮、糾纏)在Cl層面是自然的——它們都是Cl結構的不同表現。",
+      "confidence": 0.85
+    },
+    {
+      "target": "GeneralRelativity",
+      "type": "applies",
+      "evidence": "奇點問題在標準GR中是「理論失效」的標誌,但在Cl + ETN框架下,奇點是**理論的正確預言**",
+      "confidence": 0.85
+    },
+    {
+      "target": "HolographicPrinciple",
+      "type": "depends_on",
+      "evidence": "全息原理(holographic principle)是Cl-2在現代物理中最清晰的表現——黑洞的內部信息完全編碼在其視界(2D表面)",
+      "confidence": 0.8
+    }
+  ],
+  "notes": "來源檔內所有公式為 base64 內嵌圖片，無法逐字引用；formula 欄為依周邊文字重建的文字化形式，evidence 僅取純文字段。本地 ETN 展開為 Extremal Tension Notation（極限張力符號），與詞彙表 ETN（Endless Tension Network/張力場）名稱同縮寫但展開不同，映射信心降至 0.4。姊妹篇〈動態拓撲流變理論〉不在語料清單，以新 canonical 名 DynamicTopologicalRheology 標記。HSO 為被本理論取代的早期鷹架。"
+}

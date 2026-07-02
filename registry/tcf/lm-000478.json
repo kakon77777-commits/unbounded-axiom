@@ -1,0 +1,265 @@
+{
+  "tcf_extract_version": "0.1",
+  "id": "lm-000478",
+  "title": "底空間與管理員：認知能力差異的統一模型",
+  "language": "zh-Hant",
+  "source_file": "content/papers/2026/2026-06/底空間與管理員：認知能力差異的統一模型.md",
+  "theory_name": "底空間假說（Base Space Hypothesis, BSH）與管理員模型",
+  "extracted_by": "claude-fable-5 (automated distillation, Phase A)",
+  "extraction_date": "2026-07-02",
+  "canonical_status": "draft",
+  "primitives": [
+    {
+      "symbol": "Ω_base",
+      "kind": "type",
+      "description": "認知系統的統一底空間：一切認知信息的統一基底，連續、分佈式、靜態（惰性）",
+      "evidence": "而是由一個**統一底空間 Ω_base** 加上一個動態**管理員 M** 構成。"
+    },
+    {
+      "symbol": "M",
+      "kind": "function",
+      "description": "管理員：定義在底空間上的動態算子族，決定何時以何種存取模式進入底空間",
+      "evidence": "$$M: (\\Omega_{base}, \\text{context}, \\text{goal}) \\rightarrow (\\lambda, \\text{focus}, \\text{bandwidth})$$"
+    },
+    {
+      "symbol": "E",
+      "kind": "function",
+      "description": "展開算子：管理員將底空間的壓縮表示展開為可操作形式",
+      "evidence": "$$E: \\Omega_{base} \\times \\text{context} \\rightarrow \\Omega_{active}$$"
+    },
+    {
+      "symbol": "C",
+      "kind": "function",
+      "description": "收斂算子：管理員將可操作信息壓縮回緊湊表示並登記至底空間",
+      "evidence": "$$C: \\Omega_{active} \\rightarrow \\Omega_{base}$$"
+    },
+    {
+      "symbol": "F_cycle",
+      "kind": "function",
+      "description": "循環保真度：度量每一次 C∘E 循環後可操作信息量保留的比例",
+      "evidence": "$$F_{cycle} = \\frac{I(\\Omega_{active,n+1})}{I(\\Omega_{active,n})}$$"
+    },
+    {
+      "symbol": "δ",
+      "kind": "constant",
+      "description": "循環退化率，定義為 1 - F_cycle",
+      "evidence": "$$\\delta = 1 - F_{cycle}$$"
+    },
+    {
+      "symbol": "Q_M",
+      "kind": "function",
+      "description": "管理員品質：Q₁覆蓋精確度、Q₂壓縮保真度、Q₃切換靈活度、Q₄循環持久性的複合指標",
+      "evidence": "$$Q_M = f(Q_1, Q_2, Q_3, Q_4)$$"
+    },
+    {
+      "symbol": "r",
+      "kind": "function",
+      "description": "管理員覆蓋比：管理員每次存取所激活的底空間比例 dim(Ω_active)/dim(Ω_base)",
+      "evidence": "**管理員覆蓋比 r = dim(Ω_active) / dim(Ω_base)**"
+    }
+  ],
+  "axioms": [
+    {
+      "id": "ax-omega1-completeness",
+      "name": "Ω-1 完備性",
+      "formula": "∀info ∈ CognitiveInfo, info ∈ Ω_base（無「存入長期記憶」操作，僅「在底空間中被編碼」）",
+      "description": "系統的一切認知信息，無論主觀上被感知為記得的、能說出的還是直覺的，在底空間中均有表示",
+      "evidence": "**Ω-1（完備性）：** 系統的一切認知信息——無論其主觀上被感知為「記得的」「能說出的」還是「直覺的」——在底空間中均有表示。"
+    },
+    {
+      "id": "ax-omega2-continuity",
+      "name": "Ω-2 連續性",
+      "formula": "Ω_base 為連續幾何對象；distance(x,y) ∝ 1/semantic_similarity(x,y)",
+      "description": "底空間是連續的幾何對象而非離散記憶槽，信息表示是分佈式而非局部化的",
+      "evidence": "**Ω-2（連續性）：** 底空間是連續的幾何對象，不是離散的記憶槽。信息在其中的表示是分佈式的，不是局部化的。"
+    },
+    {
+      "id": "ax-omega3-inertness",
+      "name": "Ω-3 惰性",
+      "formula": "Ω_base 不自發展開或壓縮；所有動態行為由 M 發起",
+      "description": "底空間本身是靜態的，是管理員操作的基底而非操作的主體",
+      "evidence": "**Ω-3（惰性）：** 底空間本身是靜態的——它不主動展開任何信息，也不主動壓縮任何信息。所有的動態行為由管理員發起。"
+    },
+    {
+      "id": "ax-omega4-highdim",
+      "name": "Ω-4 高維度",
+      "formula": "dim(Ω_base) ≫ dim(可存取子空間)，繼承 TDI 全態空間 𝔼_full",
+      "description": "底空間維度遠大於任何單次認知操作所能存取的維度，為 TDI 全態空間的認知層繼承",
+      "evidence": "**Ω-4（高維度）：** dim(Ω_base) 遠大於任何單次認知操作所能存取的維度。這是 TDI 框架中全態空間 𝔼_full 的直接繼承"
+    }
+  ],
+  "theorems": [
+    {
+      "id": "prop-2-1-capacity-diff",
+      "name": "命題2.1 認知能力差異定理",
+      "statement": "在底空間結構相近的個體之間，認知能力的差異主要由管理員品質 Q_M 的差異決定，而非底空間大小的差異",
+      "from_axioms": ["ax-omega1-completeness", "ax-omega3-inertness"],
+      "description": "由神經基底均質性、訓練效果先於結構變化、狀態依賴表現差異三條論證路徑支持",
+      "evidence": "**命題 2.1（認知能力差異定理）：** 在底空間結構相近的個體之間，認知能力的差異主要由管理員品質 Q_M 的差異決定，而非底空間大小的差異。"
+    },
+    {
+      "id": "prop-3-1-cycle-decisiveness",
+      "name": "命題3.1 長序列推理的管理員決定性",
+      "statement": "對於需要 n 次 EC 循環的認知任務，任務完成質量正比於 (F_cycle)^n；當 n 足夠大時，F_cycle 的微小差異導致指數級的任務質量差異",
+      "from_axioms": [],
+      "description": "以數值示例（F_cycle=0.95 vs 0.99，n=20）展示 4 個百分點差距被放大為兩倍以上的信息保留率差距",
+      "evidence": "**命題 3.1（長序列推理的管理員決定性）：** 對於需要 n 次 EC 循環的認知任務，任務完成質量正比於 (F_cycle)^n。"
+    },
+    {
+      "id": "prop-5-1-coverage-quality",
+      "name": "命題5.1 管理員覆蓋比與路由質量的關係",
+      "statement": "在底空間總量相對有限的情況下，r ≈ 1 的管理員能以更精確的整體視角做出路由決策，優於只能看到局部（如 4%）的大模型管理員",
+      "from_axioms": [],
+      "description": "為前序論文《少即是全》的核心直覺提供修正後的理論地基，取代原文錯誤的 O(n²) 論證",
+      "evidence": "**命題 5.1（管理員覆蓋比與路由質量的關係）：** 在底空間總量相對有限的情況下，r ≈ 1 的管理員能夠以更精確的整體視角做出路由決策"
+    }
+  ],
+  "dag": [
+    {"id": "sym-omega-base", "kind": "primitive", "depends_on": []},
+    {"id": "sym-M", "kind": "primitive", "depends_on": ["sym-omega-base"]},
+    {"id": "sym-E", "kind": "primitive", "depends_on": ["sym-omega-base", "sym-M"]},
+    {"id": "sym-C", "kind": "primitive", "depends_on": ["sym-omega-base", "sym-M"]},
+    {"id": "sym-Fcycle", "kind": "primitive", "depends_on": ["sym-E", "sym-C"]},
+    {"id": "sym-delta", "kind": "primitive", "depends_on": ["sym-Fcycle"]},
+    {"id": "sym-QM", "kind": "primitive", "depends_on": ["sym-M"]},
+    {"id": "sym-r", "kind": "primitive", "depends_on": ["sym-omega-base", "sym-M"]},
+    {"id": "ax-omega1-completeness", "kind": "axiom", "depends_on": ["sym-omega-base"]},
+    {"id": "ax-omega2-continuity", "kind": "axiom", "depends_on": ["sym-omega-base"]},
+    {"id": "ax-omega3-inertness", "kind": "axiom", "depends_on": ["sym-omega-base", "sym-M"]},
+    {"id": "ax-omega4-highdim", "kind": "axiom", "depends_on": ["sym-omega-base"]},
+    {"id": "prop-2-1-capacity-diff", "kind": "theorem", "depends_on": ["ax-omega1-completeness", "ax-omega3-inertness", "sym-QM"]},
+    {"id": "prop-3-1-cycle-decisiveness", "kind": "theorem", "depends_on": ["sym-Fcycle", "sym-delta"]},
+    {"id": "prop-5-1-coverage-quality", "kind": "theorem", "depends_on": ["sym-r", "sym-QM"]}
+  ],
+  "concepts": [
+    {
+      "name": "底空間假說（Base Space Hypothesis, BSH）",
+      "canonical": "BaseSpace",
+      "role": "defines",
+      "evidence": "本文提出**底空間假說（Base Space Hypothesis, BSH）**：認知系統不是三層管道，而是一個統一底空間加上一個動態管理員的結構。"
+    },
+    {
+      "name": "管理員模型",
+      "canonical": "ManagerModel",
+      "role": "defines",
+      "evidence": "管理員 M 是一個定義在底空間 Ω_base 上的動態算子族"
+    },
+    {
+      "name": "展開-收斂循環（EC Cycle）",
+      "canonical": "ExpandCompressCycle",
+      "role": "defines",
+      "evidence": "我們形式化**展開-收斂循環（Expand-Compress Cycle, EC Cycle）**作為認知能力的基本操作單位"
+    },
+    {
+      "name": "全態失真同構（TDI）",
+      "canonical": "TDI",
+      "role": "extends",
+      "evidence": "本文亦與《全態失真同構》（TDI）框架建立明確的繼承關係，將 TDI 的單次投影結構擴展為動態循環結構。"
+    },
+    {
+      "name": "全態空間 𝔼_full",
+      "canonical": "TDI",
+      "role": "uses",
+      "evidence": "前序工作《全態失真同構》（TDI）建立了以下核心框架：全態空間 𝔼_full 通過投影算子 π 映射至低維可存取空間 𝔼_waking"
+    },
+    {
+      "name": "反芻迴路",
+      "canonical": "TDI",
+      "role": "extends",
+      "evidence": "TDI 推論三提出的**反芻迴路**，在 BSH 中獲得了更自然的定位"
+    },
+    {
+      "name": "少即是全（Phase-LM）",
+      "canonical": "PhaseLM",
+      "role": "extends",
+      "evidence": "並由此為前序工作《少即是全》（Phase-LM）中的核心直覺提供正確的理論地基——取代原文中站不住腳的 O(n²) 計算論證。"
+    },
+    {
+      "name": "Transformer 注意力機制",
+      "canonical": "TransformerAttention",
+      "role": "uses",
+      "evidence": "在 Transformer 架構中，**自注意力機制（Self-Attention）** 是 BSH 框架中管理員 M 的矽基實現"
+    },
+    {
+      "name": "Weaving Theory",
+      "canonical": "WT",
+      "role": "uses",
+      "evidence": "**關鍵詞：** 底空間假說、管理員模型、展開-收斂循環、循環保真度、認知能力差異、Transformer注意力機制、Weaving Theory、TDI後繼"
+    },
+    {
+      "name": "纖維叢",
+      "canonical": "WorldBundle",
+      "role": "uses",
+      "evidence": "**隸屬系列：《無限畫布》延伸論文 / TDI後繼框架**"
+    },
+    {
+      "name": "全局工作空間理論",
+      "canonical": "GlobalWorkspaceTheory",
+      "role": "uses",
+      "evidence": "全局工作空間理論（Baars, 1988; Dehaene, 2011）走得更遠：意識即為一個全局廣播空間"
+    },
+    {
+      "name": "工作記憶作為長期記憶的激活子集（Cowan）",
+      "canonical": "CowanEmbeddedProcess",
+      "role": "uses",
+      "evidence": "Nelson Cowan（1988, 2001）提出了一個更接近本文立場的替代框架：工作記憶不是一個獨立的儲存器，而是長期記憶中**當前被激活的部分**。"
+    },
+    {
+      "name": "CXL（Compute Express Link）",
+      "canonical": "CXLMemoryPooling",
+      "role": "uses",
+      "evidence": "計算機體系結構中的 CXL（Compute Express Link）技術提供了一個精確的工程類比。"
+    },
+    {
+      "name": "多層管道模型",
+      "canonical": "MultiStoreMemoryModel",
+      "role": "critiques",
+      "evidence": "這個謎題源自一個錯誤的理論框架——「多層管道模型」，即儲存、提取、表達三個彼此分離的系統通過管道相互傳遞信息的假設。"
+    },
+    {
+      "name": "MoE 架構（混合專家）",
+      "canonical": "MixtureOfExperts",
+      "role": "uses",
+      "evidence": "對於大型 MoE 模型（如 DeepSeek-V2，160 個專家，每次激活 6 個）"
+    }
+  ],
+  "external_refs": [
+    {
+      "target": "TDI",
+      "type": "extends",
+      "evidence": "本文亦與《全態失真同構》（TDI）框架建立明確的繼承關係，將 TDI 的單次投影結構擴展為動態循環結構。",
+      "confidence": 0.95
+    },
+    {
+      "target": "TDI",
+      "type": "depends_on",
+      "evidence": "這是 TDI 框架中全態空間 𝔼_full 的直接繼承——底空間即為認知層面的全態空間。",
+      "confidence": 0.9
+    },
+    {
+      "target": "PhaseLM",
+      "type": "critiques",
+      "evidence": "原文以 O(n²) 的計算複雜度論證全激活的可行性，但此論證已被確認為錯誤——正確的 forward pass 複雜度是 O(N)，不是 O(N²)。",
+      "confidence": 0.9
+    },
+    {
+      "target": "PhaseLM",
+      "type": "extends",
+      "evidence": "這是《少即是全》的核心直覺在 BSH 框架下的正確表述：**小模型的優勢不是計算量的節省，而是管理員的全局視角**。",
+      "confidence": 0.85
+    },
+    {
+      "target": "WT",
+      "type": "applies",
+      "evidence": "Transformer注意力機制、Weaving Theory、TDI後繼",
+      "confidence": 0.35
+    },
+    {
+      "target": "WorldBundle",
+      "type": "applies",
+      "evidence": "**隸屬系列：《無限畫布》延伸論文 / TDI後繼框架**",
+      "confidence": 0.3
+    }
+  ],
+  "notes": "TDI（全態失真同構）與 Phase-LM（少即是全）為本文明確前序論文，但未出現在給定 lm-id 對照表中，故映射為canonical概念名而非lm-id。Weaving Theory 僅出現於關鍵詞列表，證據薄弱，信心降至0.35。命題2.1/3.1/5.1原文稱『命題』而非『定理』，予以保留為theorems陣列的統一分類。"
+}

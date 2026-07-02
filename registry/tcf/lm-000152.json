@@ -1,0 +1,258 @@
+{
+  "tcf_extract_version": "0.1",
+  "id": "lm-000152",
+  "title": "WT 的圖論物質化:從 WeavingGraph 到 Weaving Graph Neural Networks",
+  "language": "zh-Hant",
+  "source_file": "content/papers/2026/2026-06/WT 的圖論物質化從 WeavingGraph 到 Weaving Graph Neural Networks.md",
+  "theory_name": "WeavingGraph / Weaving Graph Neural Networks (WT 的圖論物質化)",
+  "extracted_by": "claude-fable-5 (automated distillation, Phase A)",
+  "extraction_date": "2026-07-02",
+  "canonical_status": "draft",
+  "primitives": [
+    {
+      "symbol": "V",
+      "kind": "type",
+      "description": "節點集：每個節點 v 承載 WT 八元組屬性 (μ₀, M, n, N, ξ, ξ_ent, ε, V)",
+      "evidence": "$V$:**節點集**,每個 $v \\in V$ 承載 WT 八元組屬性 $(\\mu_0, M, n, N, \\xi, \\xi_{ent}, \\varepsilon, V)$"
+    },
+    {
+      "symbol": "E",
+      "kind": "type",
+      "description": "時間標記邊集：E ⊆ V × V × T，每個邊 e = (v1, v2, t) 是無序對加時間戳",
+      "evidence": "$E \\subseteq V \\times V \\times T$:**時間標記邊集**,每個邊 $e = (v_1, v_2, t)$ 是無序對 + 時間戳"
+    },
+    {
+      "symbol": "T",
+      "kind": "type",
+      "description": "內生時間軸：T ⊆ ℝ⁺，離散化為 {0, Δt_W, 2Δt_W, ...}",
+      "evidence": "$T \\subseteq \\mathbb{R}^+$:**內生時間軸**,離散化為 $\\{0, \\Delta t_W, 2\\Delta t_W, ...\\}$"
+    },
+    {
+      "symbol": "𝒲",
+      "kind": "function",
+      "description": "編織操作函數：𝒲: V × V × 𝒫 → V，從兩節點與範式產生新節點",
+      "evidence": "$\\mathcal{W}: V \\times V \\times \\mathcal{P} \\to V$:**編織操作函數**,從兩節點與範式產生新節點"
+    },
+    {
+      "symbol": "𝒳",
+      "kind": "function",
+      "description": "糾纏度函數：𝒳: E → ℝ⁺，每個邊有累積糾纏度",
+      "evidence": "$\\mathcal{X}: E \\to \\mathbb{R}^+$:**糾纏度函數**,每個邊有累積糾纏度"
+    },
+    {
+      "symbol": "weave(v1,v2)",
+      "kind": "function",
+      "description": "編織事件的原子操作：推進時間、範式推斷、創造新節點、累積糾纏度、支付成本、觸發 PIAC 與真實性檢查",
+      "evidence": "weave: V × V × P → Event\n\n執行流程(原子操作):"
+    },
+    {
+      "symbol": "V(v)",
+      "kind": "function",
+      "description": "真實性測度：V(v) = |V_real|² / (|V_real|² + |V_imag|²)，對應 𝒜 組 W98",
+      "evidence": "V(v) = |V_real|² / (|V_real|² + |V_imag|²)"
+    },
+    {
+      "symbol": "WG",
+      "kind": "type",
+      "description": "WeavingGraph 七元組：WG = (V, E, T, 𝒜, 𝒲, 𝒳, 𝒫)",
+      "evidence": "$$WG = (V, E, T, \\mathcal{A}, \\mathcal{W}, \\mathcal{X}, \\mathcal{P})$$"
+    }
+  ],
+  "axioms": [
+    {
+      "id": "ax-symmetry-forced",
+      "name": "強制對稱性",
+      "formula": "add_edge(a,b) = add_edge(b,a)",
+      "description": "WG 中邊強制無向，對應 W4 編織對稱性，不允許有向圖",
+      "evidence": "WG:邊強制無向(對應 W4 編織對稱性),不允許有向圖\n\n實作上:\nadd_edge(a, b) 與 add_edge(b, a) 是同一個事件,不創造兩個事件"
+    },
+    {
+      "id": "ax-dual-output-atomicity",
+      "name": "雙產出原子性",
+      "formula": "weave(a,b) = {edge, node, time, entanglement, PIAC}",
+      "description": "weave(a,b) 同時建立邊、創造新節點、推進時間、累積糾纏度、觸發 PIAC 檢查，六件事是不可拆分的原子操作",
+      "evidence": "WG:weave(a, b) 同時建立邊 + 創造新節點 + 推進時間 + 累積糾纏度 + 觸發 PIAC 檢查\n   六件事是原子操作,不可拆分"
+    },
+    {
+      "id": "ax-piac-threshold",
+      "name": "PIAC 相變條件",
+      "formula": "\\xi_{ent}(v_1,v_2) \\geq \\xi_c",
+      "description": "邊的糾纏度累積超過臨界值 ξ_c 時觸發 PIAC(相變)事件，對應 WT W37",
+      "evidence": "return ξ_ent(v₁, v₂) ≥ ξ_c\n\n對應 W37 PIAC 相變條件。"
+    },
+    {
+      "id": "ax-weave-cost-positive",
+      "name": "編織成本恆正",
+      "formula": "\\varepsilon_{weave} \\geq \\varepsilon_{min} > 0",
+      "description": "每次編織事件的成本 cost 必為正值，對應 W82 編織成本，具 Landauer 下界",
+      "evidence": "\\text{cost}: \\varepsilon_{weave} \\geq \\varepsilon_{min} > 0"
+    }
+  ],
+  "theorems": [
+    {
+      "id": "thm-wg-superset",
+      "name": "WG 為傳統圖論超集擴展",
+      "statement": "WG 是傳統圖論的超集擴展，所有傳統圖論操作在 WG 上仍然有效；WG 忽略時間退化為多重圖，忽略糾纏度退化為屬性圖，忽略八元組退化為簡單圖",
+      "from_axioms": [],
+      "description": "確保 WG 與既有圖論工具生態(NetworkX、PyG、Neo4j)完全相容",
+      "evidence": "WG 是傳統圖論的**超集擴展**——所有傳統圖論操作在 WG 上仍然有效"
+    },
+    {
+      "id": "thm-80-percent-retention",
+      "name": "80% 保留率",
+      "statement": "從 WT 到 WG 的翻譯有約 80% 的核心特性保留率，失去的 20% 主要是本體論優先性(語法層面)、全範式同時並行、連續積分近似為離散事件、跨範式自適應精細動力學，且這些損失是漸進可改善的",
+      "from_axioms": [],
+      "description": "評估圖論物質化翻譯的保真度與可接受性",
+      "evidence": "從 WT 到 WG 的翻譯有 80% 保留率,失去的 20% 主要是"
+    },
+    {
+      "id": "thm-wgnn-limitation-fix",
+      "name": "WGNN 解決傳統 GNN 四項結構限制",
+      "statement": "傳統 GNN 的四項結構性限制(邊靜態、無真實性概念、無相變偵測、無內生計算成本)可分別由 WGNN 的 Δt_W 時間層、V 真實性層、PIAC 偵測器、ε 預算層對應處理",
+      "from_axioms": [],
+      "description": "WGNN = Traditional_GNN + Δt_W_layer + V_layer + PIAC_detector + ε_budget",
+      "evidence": "WGNN 用 WT 的本體論直接擴展 GNN,把上述四個限制全部處理"
+    }
+  ],
+  "dag": [
+    {"id": "prm-node-set", "kind": "primitive", "depends_on": []},
+    {"id": "prm-edge-set", "kind": "primitive", "depends_on": ["prm-node-set"]},
+    {"id": "prm-time-axis", "kind": "primitive", "depends_on": []},
+    {"id": "prm-weave-func", "kind": "primitive", "depends_on": ["prm-node-set"]},
+    {"id": "prm-entanglement-func", "kind": "primitive", "depends_on": ["prm-edge-set"]},
+    {"id": "prm-weave-atomic", "kind": "primitive", "depends_on": ["prm-weave-func", "prm-edge-set", "prm-time-axis", "prm-entanglement-func"]},
+    {"id": "prm-authenticity-measure", "kind": "primitive", "depends_on": ["prm-node-set"]},
+    {"id": "prm-wg-tuple", "kind": "primitive", "depends_on": ["prm-node-set", "prm-edge-set", "prm-time-axis", "prm-weave-func", "prm-entanglement-func"]},
+    {"id": "ax-symmetry-forced", "kind": "axiom", "depends_on": ["prm-edge-set"]},
+    {"id": "ax-dual-output-atomicity", "kind": "axiom", "depends_on": ["prm-weave-atomic"]},
+    {"id": "ax-piac-threshold", "kind": "axiom", "depends_on": ["prm-entanglement-func"]},
+    {"id": "ax-weave-cost-positive", "kind": "axiom", "depends_on": ["prm-weave-atomic"]},
+    {"id": "thm-wg-superset", "kind": "theorem", "depends_on": ["prm-wg-tuple"]},
+    {"id": "thm-80-percent-retention", "kind": "theorem", "depends_on": ["prm-wg-tuple", "ax-symmetry-forced", "ax-dual-output-atomicity"]},
+    {"id": "thm-wgnn-limitation-fix", "kind": "theorem", "depends_on": ["prm-authenticity-measure", "ax-piac-threshold", "prm-weave-atomic"]}
+  ],
+  "concepts": [
+    {
+      "name": "編織論 WT v7.3",
+      "canonical": "WT",
+      "role": "uses",
+      "evidence": "編織論(Weaving Theory, WT)作為一個 103 條公理的本體論框架,在當前計算基礎設施上面臨「本體論-工具落差」問題"
+    },
+    {
+      "name": "WeavingGraph (WG)",
+      "canonical": "WT",
+      "role": "defines",
+      "evidence": "以**WeavingGraph (WG)**作為 WT 在當代計算基礎設施上的具體實現。"
+    },
+    {
+      "name": "Weaving Graph Neural Networks (WGNN)",
+      "canonical": "WT",
+      "role": "extends",
+      "evidence": "第三,**設計 Weaving Graph Neural Networks (WGNN)**——把 WG 與當代圖神經網絡結合,使 WT 進入主流機器學習生態。"
+    },
+    {
+      "name": "本體論-工具落差",
+      "canonical": "OntologyToolGap",
+      "role": "defines",
+      "evidence": "這構成**本體論-工具落差**(ontology-tool gap)——理論已經就緒,但工具尚未到位。"
+    },
+    {
+      "name": "PIAC 相變",
+      "canonical": "WT",
+      "role": "uses",
+      "evidence": "| PIAC 相變 ξ ≥ ξ_c | W37 | 邊權重超過閾值 | 結構性質變 |"
+    },
+    {
+      "name": "真實性測度 V",
+      "canonical": "WT",
+      "role": "uses",
+      "evidence": "| 真實性 V | W98 (𝒜 組) | 節點複數屬性 | 實部/虛部分離 |"
+    },
+    {
+      "name": "編織元 ℓ",
+      "canonical": "WT",
+      "role": "uses",
+      "evidence": "| 編織元 ℓ ∈ ℒ_ℂ | W1-W3, 𝒜 組 | 節點 v ∈ V | 八元組屬性 |"
+    },
+    {
+      "name": "範式空間 𝒫（16 種計算模式）",
+      "canonical": "WT",
+      "role": "uses",
+      "evidence": "| 範式 P ∈ ℙ | W47-W54 | 圖類型選擇 | 16 種計算模式 |"
+    },
+    {
+      "name": "持久同調 persistent homology",
+      "canonical": "PersistentHomology",
+      "role": "applies",
+      "evidence": "L4: 返回洞網絡(用 persistent homology)"
+    },
+    {
+      "name": "Graph Neural Networks (GNN)",
+      "canonical": "GraphNeuralNetwork",
+      "role": "extends",
+      "evidence": "當代圖神經網絡(GNN)是處理圖結構資料的最強工具。但傳統 GNN 有幾個結構性限制"
+    },
+    {
+      "name": "PyTorch Geometric (PyG) / MessagePassing",
+      "canonical": "PyTorchGeometric",
+      "role": "uses",
+      "evidence": "WGNN 設計上與 PyTorch Geometric (PyG) 完全相容——`WGNNLayer` 繼承 `MessagePassing`"
+    },
+    {
+      "name": "Jones 多項式",
+      "canonical": "JonesPolynomial",
+      "role": "uses",
+      "evidence": "若可閉合,返回結 K + Jones polynomial 近似"
+    },
+    {
+      "name": "Landauer 下界",
+      "canonical": "LandauerPrinciple",
+      "role": "uses",
+      "evidence": "EPS_MIN = 0.001      # Landauer 下界(W81 ε_min)"
+    }
+  ],
+  "external_refs": [
+    {
+      "target": "lm-000155",
+      "type": "depends_on",
+      "evidence": "**前置文件**:\n- 編織論 WT v7.3 含 𝒜 組(2026 年 5 月 15 日)",
+      "confidence": 0.6
+    },
+    {
+      "target": "lm-000154",
+      "type": "extends",
+      "evidence": "把圖論物質化放到 WT 整體推進路線中",
+      "confidence": 0.4
+    },
+    {
+      "target": "GraphNeuralNetwork",
+      "type": "extends",
+      "evidence": "把 WT 接到 GNN,WT 立即進入主流 AI 研究的視野。"
+    },
+    {
+      "target": "PyTorchGeometric",
+      "type": "applies",
+      "evidence": "WGNN 設計上與 PyTorch Geometric (PyG) 完全相容——`WGNNLayer` 繼承 `MessagePassing`,可以直接用在任何 PyG pipeline 中。",
+      "confidence": 0.9
+    },
+    {
+      "target": "PersistentHomology",
+      "type": "applies",
+      "evidence": "L4: 返回洞網絡(用 persistent homology)",
+      "confidence": 0.7
+    },
+    {
+      "target": "JonesPolynomial",
+      "type": "applies",
+      "evidence": "L2: 返回累積結構(若可閉合,返回結 K + Jones polynomial 近似)",
+      "confidence": 0.6
+    },
+    {
+      "target": "LandauerPrinciple",
+      "type": "applies",
+      "evidence": "EPS_MIN = 0.001      # Landauer 下界(W81 ε_min)",
+      "confidence": 0.7
+    }
+  ],
+  "notes": "本文為 WT(編織論)的圖論物質化實作論文，非全新公理理論；多數「axioms」取自本文對 WEP/WG 實作規則(§2.2 翻譯原則)的形式化陳述，非 WT 原始 103 條公理本身。WT 原文獻(v7.3 含 𝒜 組)不在語料 lm-id 清單中，故用 lm-000155(WT_v8_complete)與 lm-000154(底空間世界束展開論)作弱信心 external_refs 近似連結。"
+}

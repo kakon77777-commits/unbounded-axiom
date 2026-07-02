@@ -1,0 +1,302 @@
+{
+  "tcf_extract_version": "0.1",
+  "id": "lm-000689",
+  "title": "概念積分：知識宇宙的生成擴張代數",
+  "language": "zh-Hant",
+  "source_file": "content/papers/2026/2026-06/概念積分：知識宇宙的生成擴張代數.md",
+  "theory_name": "概念積分（Concept Integral）",
+  "extracted_by": "claude-fable-5 (automated distillation, Phase A)",
+  "extraction_date": "2026-07-02",
+  "canonical_status": "draft",
+  "primitives": [
+    {
+      "symbol": "S (符號宇宙)",
+      "kind": "type",
+      "description": "初始知識所在的么一 C*-代數，配備有限生成集",
+      "evidence": "符號宇宙 $\\mathcal{S}$ 是一個么一 C\\*-代數，配備有限生成集 $G_0 = \\{g_1, g_2, \\ldots, g_N\\}$"
+    },
+    {
+      "symbol": "R (現實宇宙)",
+      "kind": "type",
+      "description": "存在本身的完整算子結構，代表目標現實代數",
+      "evidence": "現實宇宙 $\\mathcal{R}$ 是一個（可能無限維的）么一 C\\*-代數，代表「存在本身的完整算子結構」"
+    },
+    {
+      "symbol": "κ_R(a,b)",
+      "kind": "function",
+      "description": "相容性算子，量化 a,b 在 R 中的相容度",
+      "evidence": "$\\kappa_\\mathcal{R}(a, b) = \\exp\\!\\bigl(-\\|[a, b]\\|_\\mathcal{R}\\bigr) \\in (0, 1]$"
+    },
+    {
+      "symbol": "ρ(S,R)",
+      "kind": "function",
+      "description": "符號宇宙與現實宇宙的同構比（覆蓋度測量）",
+      "evidence": "$\\rho(\\mathcal{S}, \\mathcal{R}) = \\sup_{\\psi \\in \\mathrm{UCP}(\\mathcal{S}, \\mathcal{R})} \\tau_\\mathcal{R}\\!\\bigl(\\mathrm{supp}(\\psi)\\bigr)$"
+    },
+    {
+      "symbol": "I(S0,R) / S∞",
+      "kind": "function",
+      "description": "概念積分：相容擴張序列在 C*-代數範疇中的歸納極限",
+      "evidence": "記 $\\mathcal{S}_\\infty := \\mathcal{I}(\\mathcal{S}_0, \\mathcal{R})$。歸納極限的存在性與唯一性（在同構意義下）由 C\\*-代數範疇中有向系統的一般定理保證。"
+    },
+    {
+      "symbol": "τ* (內生測度)",
+      "kind": "function",
+      "description": "Bratteli 圖的典範迹態，由 (S0,R) 唯一確定",
+      "evidence": "概念積分 $\\mathcal{I}(\\mathcal{S}_0, \\mathcal{R})$ 的**內生測度**是典範迹態 $\\tau_*$"
+    },
+    {
+      "symbol": "ε_G (Gödel 殘差)",
+      "kind": "constant",
+      "description": "由 Gödel 不完備性定理保證的結構性殘差，恆大於零",
+      "evidence": "其中 $\\varepsilon_G>0$ 是由 Gödel 不完備性定理保證的結構性殘差"
+    },
+    {
+      "symbol": "T (呼吸週期算子)",
+      "kind": "function",
+      "description": "展開接蒸餾的操作循環動力系統",
+      "evidence": "**定義 4.10（呼吸週期算子）：** 定義**呼吸週期** $T: \\mathcal{X} \\to \\mathcal{X}$："
+    }
+  ],
+  "axioms": [
+    {
+      "id": "def-2.1",
+      "name": "符號宇宙定義",
+      "formula": "S 為么一 C*-代數，張量閉合性 + 表示忠實性",
+      "description": "符號宇宙的三個構成條件：存在性、張量閉合性、表示忠實性",
+      "evidence": "**存在性：** 每個生成元 $g_i \\in G_0$ 代表一個原始符號概念的算子表示"
+    },
+    {
+      "id": "def-2.2",
+      "name": "現實宇宙定義",
+      "formula": "R 完備、包含 S0、不可窮盡",
+      "description": "現實宇宙的三個構成條件：完備性、包含性、不可窮盡性",
+      "evidence": "**包含性：** $\\mathcal{S}_0 \\subseteq \\mathcal{R}$（初始知識已是現實的子代數）"
+    },
+    {
+      "id": "def-3.1",
+      "name": "相容擴張序列",
+      "formula": "S_{n+1} = C*(S_n ∪ {a⊗b | ‖[a,b]‖_R < ε_n})",
+      "description": "遞增 C*-代數序列的構造規則，相容性閾值嚴格遞減至零",
+      "evidence": "$\\mathcal{S}_{n+1} = C^*\\!\\!\\left(\\mathcal{S}_n \\cup \\left\\{ a \\otimes b \\;\\middle|\\; a, b \\in \\mathcal{S}_n,\\; \\|[a,b]\\|_\\mathcal{R} < \\varepsilon_n \\right\\}\\right)$"
+    },
+    {
+      "id": "def-3.2",
+      "name": "概念積分作為歸納極限",
+      "formula": "I(S0,R) := lim→ (S_n, φ_n)",
+      "description": "概念積分定義為相容擴張序列在 C*-代數範疇中的歸納極限",
+      "evidence": "**概念積分**定義為此有向系統在 C\\*-代數範疇 $\\mathbf{C^*Alg}$ 中的歸納極限："
+    },
+    {
+      "id": "def-4.5",
+      "name": "間隙集",
+      "formula": "Gap_ε(S_n,R) = {x∈R | inf_y‖x-y‖_R > ε}",
+      "description": "量化知識邊界的間隙集合",
+      "evidence": "$\\mathrm{Gap}_\\varepsilon(\\mathcal{S}_n, \\mathcal{R}) = \\left\\{x \\in \\mathcal{R} \\;\\middle|\\; \\inf_{y \\in \\phi_n(\\mathcal{S}_n)} \\|x - y\\|_\\mathcal{R} > \\varepsilon \\right\\}$"
+    },
+    {
+      "id": "def-6.1",
+      "name": "組合創造",
+      "formula": "x ∈ T(S0)∩R 且 x∉S_n 對某有限n",
+      "description": "組合創造：原始概念的有限張量組合，在R中有實際對應但尚未被顯式激活",
+      "evidence": "一個概念 $x$ 是**組合創造**（combinatorial creation），若："
+    },
+    {
+      "id": "def-6.2",
+      "name": "本體創造",
+      "formula": "x ∈ R 且 x ∉ T(S0)",
+      "description": "本體創造：不是 S0 任何有限張量組合的概念，需要新原語生成元",
+      "evidence": "一個概念 $x$ 是**本體創造**（ontological creation），若："
+    }
+  ],
+  "theorems": [
+    {
+      "id": "prop-2.1",
+      "name": "ρ 的基本性質",
+      "statement": "ρ∈[0,1]；ρ=1 iff S≅R；單調性；真子代數則 ρ<1",
+      "from_axioms": ["def-2.1", "def-2.2"],
+      "description": "同構比的四條基本性質及證明",
+      "evidence": "$\\rho(\\mathcal{S}, \\mathcal{R}) \\in [0, 1]$"
+    },
+    {
+      "id": "thm-3.1",
+      "name": "概念積分是 AF C*-代數",
+      "statement": "S∞ 是近似有限維 C*-代數",
+      "from_axioms": ["def-3.1", "def-3.2"],
+      "description": "概念積分的極限代數具有 AF 結構，可用 Bratteli 圖與 K-理論分類",
+      "evidence": "$\\mathcal{S}_\\infty$ 是一個近似有限維 C\\*-代數（AF C\\*-algebra）。"
+    },
+    {
+      "id": "thm-3.2",
+      "name": "典範迹態的存在唯一性",
+      "statement": "若 Bratteli 圖極小，則存在唯一規範化迹態 τ*",
+      "from_axioms": [],
+      "description": "內生測度 τ* 的存在唯一性，由 Perron-Frobenius 特徵向量構造",
+      "evidence": "**定理 3.2（典範迹態的存在唯一性）：** 設 $\\mathcal{S}_\\infty$ 的 Bratteli 圖 $\\mathcal{B}$ 是**極小的**（即不存在 $\\mathcal{B}$ 的真子圖對應非零理想），則存在唯一的規範化迹態："
+    },
+    {
+      "id": "thm-3.3",
+      "name": "概念積分的結構定理",
+      "statement": "單調性、上界 1-ε_G、測度唯一性、Elliott分類、Bratteli不變量",
+      "from_axioms": ["def-3.1", "def-3.2"],
+      "description": "概念積分滿足的五條結構性質",
+      "evidence": "**單調性：** $\\rho_0 \\leq \\rho_1 \\leq \\rho_2 \\leq \\cdots \\leq \\rho_\\infty = 1 - \\varepsilon_G$"
+    },
+    {
+      "id": "thm-4.1",
+      "name": "直和作為零交叉作用極限",
+      "statement": "在相容度趨零時 S⊗S' 退化為 S⊕S'（附錄R指出此定理數學過強）",
+      "from_axioms": [],
+      "description": "作者自審附錄R.4指出此定理在C*-代數標準意義下不成立，應改為覆蓋度近似可加性的較弱命題",
+      "evidence": "$\\mathcal{S} \\otimes_{\\min} \\mathcal{S}' \\xrightarrow{\\kappa \\to 0} \\mathcal{S} \\oplus \\mathcal{S}'$"
+    },
+    {
+      "id": "thm-4.2",
+      "name": "呼吸週期的收斂",
+      "statement": "呼吸週期算子 T 收斂到唯一不動點 (S∞, 1-ε_G)",
+      "from_axioms": ["def-3.1"],
+      "description": "呼吸週期的收斂性；作者自審附錄R.6指出原證明依賴未驗證的壓縮映射條件，改用單調有界序列收斂性",
+      "evidence": "$(\\mathcal{S}_\\infty, 1 - \\varepsilon_G) = \\lim_{n \\to \\infty} T^n(\\mathcal{S}_0, \\rho_0)$"
+    },
+    {
+      "id": "thm-5.1",
+      "name": "科技樹是有損投影",
+      "statement": "科技樹 D(P(S0)) 嚴格小於潛在知識空間 P(S0)",
+      "from_axioms": [],
+      "description": "科技樹作為概念積分潛在知識空間的DAG投影，因有用性/橫向/深度三種損失而嚴格更小",
+      "evidence": "科技樹 $\\mathcal{D}(\\mathcal{P}(\\mathcal{S}_0))$ 嚴格小於 $\\mathcal{P}(\\mathcal{S}_0)$。損失來自三個方向"
+    },
+    {
+      "id": "thm-6.1",
+      "name": "組合創造的完備性",
+      "statement": "T(S0)∩R ⊆ S∞",
+      "from_axioms": ["def-3.1", "def-6.1"],
+      "description": "概念積分覆蓋所有組合創造",
+      "evidence": "**定理 6.1（組合創造的完備性）：** 概念積分 $\\mathcal{S}_\\infty$ 包含所有組合創造："
+    },
+    {
+      "id": "thm-6.2",
+      "name": "本體創造的相變對應",
+      "statement": "本體創造 ⟺ K0(S0') ≇ K0(S0)（K-理論類型改變）",
+      "from_axioms": ["def-6.2"],
+      "description": "本體創造等價於七層完備性標準中的理論相變，以K-理論不連續跳躍刻畫",
+      "evidence": "**定理 6.2（本體創造的相變對應）：** 本體創造等價於七層完備性標準中的**理論相變**。具體而言，引入新生成元 $g^* \\notin T(\\mathcal{S}_0)$ 當且僅當："
+    },
+    {
+      "id": "thm-6.3",
+      "name": "Gödel 殘差定理",
+      "statement": "若 S∞ 足夠豐富以表達PA，則 ε_G = τ_R(R∖φ∞(S∞)) > 0",
+      "from_axioms": ["def-3.2"],
+      "description": "Gödel殘差恆為正的定理，來源於Gödel第一不完備定理的代數化論證（作者自承此證明輪廓為直覺論證待嚴格化，附錄R.7c）",
+      "evidence": "$\\varepsilon_G = \\tau_\\mathcal{R}\\!\\bigl(\\mathcal{R} \\setminus \\phi_\\infty(\\mathcal{S}_\\infty)\\bigr) > 0$"
+    }
+  ],
+  "dag": [
+    {"id": "def-2.1", "kind": "axiom", "depends_on": []},
+    {"id": "def-2.2", "kind": "axiom", "depends_on": []},
+    {"id": "def-3.1", "kind": "axiom", "depends_on": ["def-2.1", "def-2.2"]},
+    {"id": "def-3.2", "kind": "axiom", "depends_on": ["def-3.1"]},
+    {"id": "def-4.5", "kind": "axiom", "depends_on": ["def-3.1"]},
+    {"id": "def-6.1", "kind": "axiom", "depends_on": ["def-3.2"]},
+    {"id": "def-6.2", "kind": "axiom", "depends_on": ["def-3.2"]},
+    {"id": "prop-2.1", "kind": "theorem", "depends_on": ["def-2.1", "def-2.2"]},
+    {"id": "thm-3.1", "kind": "theorem", "depends_on": ["def-3.1", "def-3.2"]},
+    {"id": "thm-3.2", "kind": "theorem", "depends_on": ["thm-3.1"]},
+    {"id": "thm-3.3", "kind": "theorem", "depends_on": ["thm-3.1", "thm-3.2"]},
+    {"id": "thm-4.1", "kind": "theorem", "depends_on": ["def-3.1"]},
+    {"id": "thm-4.2", "kind": "theorem", "depends_on": ["def-3.1", "thm-3.3"]},
+    {"id": "thm-5.1", "kind": "theorem", "depends_on": ["def-3.2"]},
+    {"id": "thm-6.1", "kind": "theorem", "depends_on": ["def-3.1", "def-6.1"]},
+    {"id": "thm-6.2", "kind": "theorem", "depends_on": ["def-6.2"]},
+    {"id": "thm-6.3", "kind": "theorem", "depends_on": ["def-3.2", "thm-3.1"]}
+  ],
+  "concepts": [
+    {
+      "name": "算子本體論",
+      "canonical": "OperatorOntology",
+      "role": "uses",
+      "evidence": "概念積分最初在 EML-OO-2026-v0.2 中作為算子本體論的核心算子出現"
+    },
+    {
+      "name": "符號即過程",
+      "canonical": "EML",
+      "role": "uses",
+      "evidence": "**前置文件：EML-OO-2026-v0.2（所見即世界）、EML-LANG-2026-v0.1（符號即過程）**"
+    },
+    {
+      "name": "七層完備性標準",
+      "canonical": "SevenLayerCompleteness",
+      "role": "uses",
+      "evidence": "後者受七層完備性標準的相變測不準原理約束"
+    },
+    {
+      "name": "Comp 槽相容性生成的測度 dμ_Comp",
+      "canonical": "OperatorOntology",
+      "role": "extends",
+      "evidence": "原論文 EML-OO-2026-v0.2 中的「Comp 槽相容性生成的測度 $d\\mu_\\mathrm{Comp}$」在此獲得精確的數學身份："
+    },
+    {
+      "name": "不可知邊界集合 B",
+      "canonical": "SevenLayerCompleteness",
+      "role": "uses",
+      "evidence": "七層完備性標準（EML-MATH-2026）中的「不可知邊界集合 $\\mathcal{B}$」在概念積分框架中有精確對應"
+    },
+    {
+      "name": "系統限界／語言的限界",
+      "canonical": "SevenLayerCompleteness",
+      "role": "uses",
+      "evidence": "Wittgenstein 所說的「語言的限界」在此被修正為「系統在時刻 $n$ 的限界」"
+    },
+    {
+      "name": "概念積分",
+      "canonical": "ConceptIntegration",
+      "role": "defines",
+      "evidence": "本文對「概念積分」（Concept Integral）進行完整的現代形式化，建立其作為知識宇宙生成擴張代數的操作體系"
+    },
+    {
+      "name": "知識相空間探測機",
+      "canonical": "ConceptIntegration",
+      "role": "defines",
+      "evidence": "概念積分的完整功能定位：一台以 AI 為原生執行載體的**知識相空間探測機**"
+    },
+    {
+      "name": "AI Agent 的元認知框架",
+      "canonical": "AMEP",
+      "role": "extends",
+      "evidence": "AI Agent 在執行任務時，可以把自己的知識狀態作為 $\\mathcal{S}_n$，把任務要求作為目標 $\\mathcal{R}$ 的一個局部，計算自己的「覆蓋缺口」"
+    }
+  ],
+  "external_refs": [
+    {
+      "target": "OperatorOntology",
+      "type": "extends",
+      "evidence": "概念積分最初在 EML-OO-2026-v0.2 中作為算子本體論的核心算子出現，其目的是驅動符號宇宙 $\\mathcal{S}$ 與現實宇宙 $\\mathcal{R}$ 的同構比",
+      "confidence": 0.9
+    },
+    {
+      "target": "EML",
+      "type": "depends_on",
+      "evidence": "**前置文件：EML-OO-2026-v0.2（所見即世界）、EML-LANG-2026-v0.1（符號即過程）**",
+      "confidence": 0.85
+    },
+    {
+      "target": "SevenLayerCompleteness",
+      "type": "applies",
+      "evidence": "七層完備性標準（EML-MATH-2026）中的「不可知邊界集合 $\\mathcal{B}$」在概念積分框架中有精確對應",
+      "confidence": 0.85
+    },
+    {
+      "target": "AMEP",
+      "type": "applies",
+      "evidence": "AI Agent 在執行任務時，可以把自己的知識狀態作為 $\\mathcal{S}_n$，把任務要求作為目標 $\\mathcal{R}$ 的一個局部，計算自己的「覆蓋缺口」，主動決定需要搜索哪些額外資訊才能完成任務",
+      "confidence": 0.5
+    },
+    {
+      "target": "PvsNP",
+      "type": "applies",
+      "evidence": "這連接到計算複雜度中「不可判定問題密度」的量化問題",
+      "confidence": 0.3
+    }
+  ],
+  "notes": "SevenLayerCompleteness (七層完備性標準/EML-MATH-2026) not in canonical vocabulary list nor corpus lm-id list; kept as new canonical concept, no external_ref lm-id assigned. Appendix R/S are self-critique by author (Theia) acknowledging thm-4.1 is mathematically too strong and thm-4.2/6.3 have incomplete proofs; captured in theorem descriptions per paper's own claims."
+}

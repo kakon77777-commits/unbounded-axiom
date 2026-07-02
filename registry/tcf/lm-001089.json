@@ -1,0 +1,394 @@
+{
+  "tcf_extract_version": "0.1",
+  "id": "lm-001089",
+  "title": "閉合作為關係動力學的公理基礎_DCO 5.0、RKD、TSO與CRIP的統一框架",
+  "language": "zh-Hant",
+  "source_file": "content/papers/2026/2026-06/閉合作為關係動力學的公理基礎_DCO 5.0、RKD、TSO與CRIP的統一框架.md",
+  "theory_name": "DCO-RKD-TSO-CRIP 四框架統一（閉合-關係同構框架）",
+  "extracted_by": "claude-fable-5 (automated distillation, Phase A)",
+  "extraction_date": "2026-07-02",
+  "canonical_status": "draft",
+  "primitives": [
+    {
+      "symbol": "Cl",
+      "kind": "type",
+      "description": "閉合性：DCO 的基本本體論實體，被定義為進行中的過程而非靜態對象",
+      "evidence": "DCO用過程定義（Cl := {Cl(t) : t ∈ T}）表達"
+    },
+    {
+      "symbol": "R",
+      "kind": "relation",
+      "description": "RKD 的關係矩陣：存在 = 關係網絡，其持續更新即運動",
+      "evidence": "存在等於 $dR/dt \\neq 0$；靜止（$dR/dt = 0$）等於死亡。"
+    },
+    {
+      "symbol": "Ô",
+      "kind": "function",
+      "description": "自觀察算子：Cl 對自身的觀察操作，必須在系統內部完成",
+      "evidence": "**封閉性**（Cl-5的要求）：$\\hat{O}(R) \\subseteq R$，觀察仍在R內部完成。"
+    },
+    {
+      "symbol": "L[R]",
+      "kind": "function",
+      "description": "Lindblad 項：RKD 主方程中時間不可逆的耗散部分，承載 Cl-9",
+      "evidence": "第二項（Lindblad項）是不可逆的，對應Cl-9。"
+    },
+    {
+      "symbol": "L1/L2/L3",
+      "kind": "type",
+      "description": "TSO 三層時空間觀：無時空間觀、因果交互時空間觀、選擇時空間觀",
+      "evidence": "時空存在三個本體論層次的分類：無時空間觀、因果交互時空間觀、選擇時空間觀"
+    },
+    {
+      "symbol": "Type-τ/κ/γ",
+      "kind": "type",
+      "description": "CRIP 三類型探針：時間探針（DTC）、曲率探針（Jacobi場）、拓撲探針（Berry相位）",
+      "evidence": "提出Type-τ、Type-κ、Type-γ三類型探針作為時空關係的自指涉測量工具"
+    },
+    {
+      "symbol": "G1/G2/G3",
+      "kind": "type",
+      "description": "DCO 十公理的三個激活分組：靜態結構群、動力學群、自指涉群",
+      "evidence": "DCO十公理按激活模式可以分為三群"
+    },
+    {
+      "symbol": "R_AB",
+      "kind": "constant",
+      "description": "自觀察分裂後的非零交叉項（糾纏關聯），保證分裂後仍為同一系統",
+      "evidence": "其中 $R_{AB}$ 是非零的交叉項（糾纏關聯）"
+    }
+  ],
+  "axioms": [
+    {
+      "id": "Cl-0",
+      "name": "過程性公理",
+      "formula": "Cl := {Cl(t) : t ∈ T} ⟺ dR/dt ≠ 0",
+      "description": "Cl 是進行中的操作而非靜態對象；存在即更新",
+      "evidence": "Cl不是靜態對象，而是進行中的操作。Cl的身份由其完整展開過程定義，而非由其瞬時狀態定義。"
+    },
+    {
+      "id": "Cl-1",
+      "name": "自一致性",
+      "formula": "O(Cl) ⊆ Cl ∧ ¬(O ⇒ ⊥) ↔ R† = R",
+      "description": "自一致性，對應關係矩陣的 Hermitian 性（物理量為實數）",
+      "evidence": "**Cl-1** | 自一致性：O(Cl) ⊆ Cl ∧ ¬(O ⇒ ⊥) | $R^\\dagger = R$（Hermitian） | 物理量為實數"
+    },
+    {
+      "id": "Cl-3",
+      "name": "訊息守恆",
+      "formula": "I(O(Cl)) = I(Cl) ↔ Tr(dρ/dt)_unitary = 0",
+      "description": "訊息守恆，對應么正演化的跡守恆",
+      "evidence": "**Cl-3** | 訊息守恆：I(O(Cl)) = I(Cl) | $\\text{Tr}(d\\rho/dt)_{\\text{unitary}} = 0$ | 么正演化不消滅訊息"
+    },
+    {
+      "id": "Cl-4",
+      "name": "升維生成",
+      "formula": "ρ: Cl ↦ Cl^(n+1)",
+      "description": "升維生成，對應開放系統的維度擴展",
+      "evidence": "**Cl-4** | 升維生成：ρ: Cl ↦ Cl^(n+1) | $R^{N \\times N} \\hookrightarrow R^{(N+M) \\times (N+M)}$ | 開放系統擴展維度"
+    },
+    {
+      "id": "Cl-5",
+      "name": "自觀察",
+      "formula": "Ô: Cl → Cl, Ô(Cl) ⊆ Cl",
+      "description": "自觀察公理，對應量子測量 / 偏跡操作",
+      "evidence": "**Cl-5** | 自觀察：Ô: Cl → Cl, Ô(Cl) ⊆ Cl | $\\rho_{\\text{sys}} = \\text{Tr}_{\\text{env}}(\\rho_{\\text{total}})$ | 量子測量 / 偏跡操作"
+    },
+    {
+      "id": "Cl-6",
+      "name": "降維塌縮",
+      "formula": "σ: Cl^(n) ↦ Cl^(n-1)",
+      "description": "降維塌縮，對應偏跡 / 粗粒化 / 退相干",
+      "evidence": "**Cl-6** | 降維塌縮：σ: Cl^(n) ↦ Cl^(n-1) | 偏跡：$(N+M) \\times (N+M) \\to N \\times N$ | 粗粒化 / 退相干"
+    },
+    {
+      "id": "Cl-7a",
+      "name": "邊界不動",
+      "formula": "O(∂Cl) = ∂Cl",
+      "description": "邊界不動點，對應因果視界的拓撲穩定性",
+      "evidence": "**Cl-7a** | 邊界不動：O(∂Cl) = ∂Cl | 邊緣本徵模守恆 / 因果視界固定性 | 視界的拓撲穩定性"
+    },
+    {
+      "id": "Cl-7b",
+      "name": "中心不動",
+      "formula": "Cl(C) = C",
+      "description": "中心不動點，對應量子基態 / GOD POINT",
+      "evidence": "**Cl-7b** | 中心不動：Cl(C) = C | 基態 $\\rho_0 = |\\psi_0\\rangle\\langle\\psi_0|$ | GOD POINT / 量子基態"
+    },
+    {
+      "id": "Cl-8",
+      "name": "對稱破缺",
+      "formula": "Cl_sym → Cl_asym",
+      "description": "對稱破缺，對應 Lindblad 驅動的自發對稱破缺 / 希格斯機制",
+      "evidence": "**Cl-8** | 對稱破缺：Cl\\_sym → Cl\\_asym | Lindblad驅動的SSB | 希格斯機制 / 相變"
+    },
+    {
+      "id": "Cl-9",
+      "name": "時間箭頭",
+      "formula": "S(Cl(t₂)) ≥ S(Cl(t₁))",
+      "description": "時間箭頭 / 熵增，對應 Lindblad 項與熱力學第二定律",
+      "evidence": "**Cl-9** | 時間箭頭：S(Cl(t₂)) ≥ S(Cl(t₁)) | $\\mathcal{L}[R]$：$dS/dt \\geq 0$ | 熱力學第二定律"
+    }
+  ],
+  "theorems": [
+    {
+      "id": "P1",
+      "name": "同構命題（Cl = R）",
+      "statement": "DCO 的閉合性 Cl 與 RKD 的關係矩陣 R 是同一本體論實體的兩種語言描述",
+      "from_axioms": ["Cl-0"],
+      "description": "整合框架的基礎等價：本體論陳述與動力學陳述外延相同",
+      "evidence": "DCO的Cl與RKD的關係矩陣R是同一個本體論實體的兩種語言描述。Cl = R。"
+    },
+    {
+      "id": "P2",
+      "name": "公理-動力學命題",
+      "statement": "RKD 的所有數學假設（Hermitian、跡守恆、Lindblad）都是 DCO 十公理的數學重述；DCO 是 RKD 的隱含公理系統",
+      "from_axioms": ["Cl-0", "Cl-1", "Cl-3", "Cl-9"],
+      "description": "以閉合-關係同構表逐一對應十公理與 RKD 數學結構",
+      "evidence": "RKD的所有數學假設都是DCO十公理在數學語言中的重新表述。DCO是RKD的隱含公理系統，這在邏輯上先於RKD，即使在時間上後於它。"
+    },
+    {
+      "id": "SOSD",
+      "name": "自觀察分裂定理（定理2.1）",
+      "statement": "在 RKD 框架中，自指涉的觀察操作必然使 R 分裂為對偶子矩陣 (R_A, R_B) 加非零糾纏交叉項 R_AB",
+      "from_axioms": ["Cl-1", "Cl-5"],
+      "description": "單一不分裂的 R 之自觀察退化為恆等映射或違反 Cl-1；以猜想形式給出證明思路",
+      "evidence": "在RKD框架中，若要求關係矩陣R的演化包含自指涉的觀察操作（即系統觀察自身），則R必須分裂為兩個不可約的子矩陣（$R_A, R_B$），且滿足："
+    },
+    {
+      "id": "P3",
+      "name": "架構命題",
+      "statement": "TSO 三層時空間觀對應 DCO 公理的三種激活模式，而非三個獨立結構",
+      "from_axioms": [],
+      "description": "TSO 在 DCO-RKD 框架上添加空間類型學維度",
+      "evidence": "TSO的三層時空間觀對應DCO公理的三種激活模式，而非三個獨立結構。"
+    },
+    {
+      "id": "TSO-DCO",
+      "name": "TSO-DCO對應定理（定理3.1）",
+      "statement": "L1 ≅ {G1主導}、L2 ≅ {G2主導}、L3 ≅ {G3主導}：三層時空間觀是十公理按激活狀態分組的自然結果",
+      "from_axioms": ["Cl-0", "Cl-1", "Cl-3", "Cl-4", "Cl-5", "Cl-6", "Cl-7a", "Cl-7b", "Cl-8", "Cl-9"],
+      "description": "L1 = Cl-7b 極限吸引子態；L2 = Cl-0 至 Cl-7a 完全動力學展開態；L3 = Cl-5 與 Cl-8 共同主導的自指涉破缺態",
+      "evidence": "TSO的三層結構不是獨立的選擇，而是DCO十公理按激活狀態分組的自然結果。"
+    },
+    {
+      "id": "L-TRANS",
+      "name": "層間過渡單向性",
+      "statement": "層間過渡 L1→L2→L3 由 Cl-4 與 Cl-5+Cl-8 驅動；逆向過渡受 Cl-9 時間箭頭抑制",
+      "from_axioms": ["Cl-4", "Cl-5", "Cl-8", "Cl-9"],
+      "description": "解釋宇宙學時間演化從低複雜度向高複雜度的單向流動",
+      "evidence": "逆向過渡（$\\mathcal{L}_3 \\to \\mathcal{L}_2 \\to \\mathcal{L}_1$）在Cl-9的時間箭頭下受到抑制"
+    },
+    {
+      "id": "P4",
+      "name": "測量命題",
+      "statement": "CRIP 三類探針分別對應 DCO 三個公理群的可操作讀取，是框架的測量論完成",
+      "from_axioms": [],
+      "description": "Type-τ ↔ G2 時間維度、Type-κ ↔ G2 空間維度、Type-γ ↔ G1 全域拓撲",
+      "evidence": "CRIP三元組是DCO-RKD框架在測量論層面的完成——三類探針分別對應DCO三個公理群（結構層、動力學層、不可逆層）的可操作讀取。"
+    },
+    {
+      "id": "CROSS-LAYER",
+      "name": "跨層偵測必要條件",
+      "statement": "Type-γ 探針可偵測 L1↔L2 介面，當且僅當介面上的 Cl-7a 在 L2 因果結構中有可圍繞的拓撲非平凡部分；偵測 L3 則要求探針自身經 SOSD 分裂",
+      "from_axioms": ["Cl-5", "Cl-7a"],
+      "description": "偵測選擇層的行為本身就是進入選擇層的行為（認識論閉環）",
+      "evidence": "Type-γ探針能夠偵測 $\\mathcal{L}_1 \\leftrightarrow \\mathcal{L}_2$ 介面的結構，**當且僅當** 介面 $\\partial\\phi$ 上的Cl-7a（邊界不動點）在 $\\mathcal{L}_2$ 的因果結構中有一個可以「圍繞」的拓撲非平凡部分。"
+    },
+    {
+      "id": "CRIP-CLOSURE",
+      "name": "CRIP→DCO 閉合（推導環封閉）",
+      "statement": "CRIP 探針的自指涉穩定性條件（C1）即要求探針自身滿足 Cl-1 與 Cl-7b，使 DCO→RKD→TSO→CRIP→DCO 推導鏈閉合成環",
+      "from_axioms": ["Cl-1", "Cl-7b"],
+      "description": "測量工具本身必須是 DCO 意義下的 Cl",
+      "evidence": "CRIP探針的「自指涉穩定性」條件（C1條件）實際上就是要求探針自身滿足DCO的Cl-1（自一致性）和Cl-7b（中心不動點，作為測量零點）。"
+    },
+    {
+      "id": "CONJ-5.1",
+      "name": "四框架完備性猜想",
+      "statement": "DCO-RKD-TSO-CRIP 構成在本體論、動力學、架構和測量論上完備且自閉合的系統；嚴格證明需範疇論等價",
+      "from_axioms": [],
+      "description": "存在性 / 演化 / 層次定位 / 測量四類問題分別可在四框架層次被回答，且測量條件由公理決定",
+      "evidence": "DCO-RKD-TSO-CRIP四框架構成一個**在本體論、動力學、架構和測量論上完備的閉合系統**"
+    }
+  ],
+  "dag": [
+    {"id": "Cl", "kind": "primitive", "depends_on": []},
+    {"id": "R", "kind": "primitive", "depends_on": []},
+    {"id": "Ô", "kind": "primitive", "depends_on": ["Cl"]},
+    {"id": "L[R]", "kind": "primitive", "depends_on": ["R"]},
+    {"id": "L1/L2/L3", "kind": "primitive", "depends_on": []},
+    {"id": "Type-τ/κ/γ", "kind": "primitive", "depends_on": []},
+    {"id": "R_AB", "kind": "primitive", "depends_on": ["R"]},
+    {"id": "Cl-0", "kind": "axiom", "depends_on": ["Cl"]},
+    {"id": "Cl-1", "kind": "axiom", "depends_on": ["Cl"]},
+    {"id": "Cl-3", "kind": "axiom", "depends_on": ["Cl"]},
+    {"id": "Cl-4", "kind": "axiom", "depends_on": ["Cl"]},
+    {"id": "Cl-5", "kind": "axiom", "depends_on": ["Cl", "Ô"]},
+    {"id": "Cl-6", "kind": "axiom", "depends_on": ["Cl"]},
+    {"id": "Cl-7a", "kind": "axiom", "depends_on": ["Cl"]},
+    {"id": "Cl-7b", "kind": "axiom", "depends_on": ["Cl"]},
+    {"id": "Cl-8", "kind": "axiom", "depends_on": ["Cl"]},
+    {"id": "Cl-9", "kind": "axiom", "depends_on": ["Cl"]},
+    {"id": "G1/G2/G3", "kind": "primitive", "depends_on": ["Cl-0", "Cl-1", "Cl-3", "Cl-4", "Cl-5", "Cl-6", "Cl-7a", "Cl-7b", "Cl-8", "Cl-9"]},
+    {"id": "P1", "kind": "theorem", "depends_on": ["Cl", "R", "Cl-0"]},
+    {"id": "P2", "kind": "theorem", "depends_on": ["P1", "Cl-1", "Cl-3", "Cl-9", "L[R]"]},
+    {"id": "SOSD", "kind": "theorem", "depends_on": ["P1", "Cl-1", "Cl-5", "R", "R_AB"]},
+    {"id": "P3", "kind": "theorem", "depends_on": ["P2", "G1/G2/G3", "L1/L2/L3"]},
+    {"id": "TSO-DCO", "kind": "theorem", "depends_on": ["P3", "G1/G2/G3", "L1/L2/L3", "Cl-4", "Cl-5", "Cl-7b", "Cl-8", "Cl-9"]},
+    {"id": "L-TRANS", "kind": "theorem", "depends_on": ["TSO-DCO", "Cl-4", "Cl-5", "Cl-8", "Cl-9"]},
+    {"id": "P4", "kind": "theorem", "depends_on": ["TSO-DCO", "Type-τ/κ/γ"]},
+    {"id": "CROSS-LAYER", "kind": "theorem", "depends_on": ["P4", "SOSD", "Cl-5", "Cl-7a"]},
+    {"id": "CRIP-CLOSURE", "kind": "theorem", "depends_on": ["P4", "Cl-1", "Cl-7b"]},
+    {"id": "CONJ-5.1", "kind": "theorem", "depends_on": ["P1", "P2", "P3", "P4", "CRIP-CLOSURE"]}
+  ],
+  "concepts": [
+    {
+      "name": "閉合性（Cl）",
+      "canonical": "Closure",
+      "role": "extends",
+      "evidence": "從閉合性（Cl）的純粹本體論性質出發，構造了一個十公理系統（Cl-0至Cl-9）"
+    },
+    {
+      "name": "動態圓本體論 5.0（DCO 5.0）",
+      "canonical": "DCO",
+      "role": "extends",
+      "evidence": "DCO 5.0是RKD的**公理基礎**——RKD論文中所有數學條件（Hermitian性、跡守恆、Lindblad項等）都是DCO十公理在數學語言中的同義表述"
+    },
+    {
+      "name": "關係-運動-耗散本體論（RKD）",
+      "canonical": "RKD",
+      "role": "extends",
+      "evidence": "確立了「存在 = 關係網絡，運動 = $dR/dt$，耗散 = 存在條件」的三元公式，並以此統一牛頓力學、相對論、量子力學與熱力學"
+    },
+    {
+      "name": "三層時空間觀（TSO）",
+      "canonical": "TSO",
+      "role": "extends",
+      "evidence": "TSO論文（〈三層時空間觀〉，EML-TSO-2026）提出時空存在三個本體論層次的分類：無時空間觀、因果交互時空間觀、選擇時空間觀。"
+    },
+    {
+      "name": "典則關係不變探針（CRIP）",
+      "canonical": "CRIP",
+      "role": "extends",
+      "evidence": "CRIP論文（〈典則關係不變探針〉，2026年6月）最後完成，提出Type-τ、Type-κ、Type-γ三類型探針作為時空關係的自指涉測量工具"
+    },
+    {
+      "name": "閉合-關係同構（Cl ≅ R）",
+      "canonical": "ClosureRelationIsomorphism",
+      "role": "defines",
+      "evidence": "閉合-關係同構表（Cl ≅ R），完整列出DCO十公理與RKD數學結構的逐一對應"
+    },
+    {
+      "name": "自觀察分裂定理（SOSD）",
+      "canonical": "SelfObservationSplitting",
+      "role": "defines",
+      "evidence": "自觀察分裂定理，揭示Cl-5在RKD框架中必然要求關係矩陣分裂為對偶子結構"
+    },
+    {
+      "name": "四框架完備性猜想",
+      "canonical": "FourFrameworkCompleteness",
+      "role": "defines",
+      "evidence": "四框架完備性猜想，主張四個框架形成一個在邏輯和測量論上自閉合的推導環"
+    },
+    {
+      "name": "GOD POINT（中心不動點）",
+      "canonical": "GodPoint",
+      "role": "uses",
+      "evidence": "基態 $\\rho_0 = |\\psi_0\\rangle\\langle\\psi_0|$ | GOD POINT / 量子基態"
+    },
+    {
+      "name": "Weaving Theory（WT）",
+      "canonical": "WT",
+      "role": "uses",
+      "evidence": "**Weaving Theory（WT）**：WT的態射（morphism）結構與DCO公理群的關係；WT的編織操作是否對應Cl-4/Cl-6的升降維過程"
+    },
+    {
+      "name": "算子本體論（EML-OO）",
+      "canonical": "OperatorOntology",
+      "role": "uses",
+      "evidence": "**算子本體論（EML-OO）**：OO中「一切是算子」與DCO的「Cl是操作」的形式等價"
+    },
+    {
+      "name": "概念積分（EML-CI）",
+      "canonical": "ConceptIntegration",
+      "role": "uses",
+      "evidence": "**概念積分（EML-CI）**：CI的積分操作是否對應關係矩陣的跡操作（Tr(R)）"
+    },
+    {
+      "name": "Era/Aurora架構",
+      "canonical": "EraAuroraArchitecture",
+      "role": "uses",
+      "evidence": "這也是DCO論文中Era/Aurora架構的形式論證：不是工程上的設計選擇，而是Cl-5在任何自指涉系統中的邏輯必然。"
+    }
+  ],
+  "external_refs": [
+    {
+      "target": "DCO",
+      "type": "depends_on",
+      "evidence": "DCO 5.0論文（〈動態圓本體論5.0：閉合性作為過程的十公理系統〉，2026年4月）在RKD之後完成",
+      "confidence": 0.95
+    },
+    {
+      "target": "RKD",
+      "type": "depends_on",
+      "evidence": "RKD論文（〈關係-運動-耗散本體論〉，2026年3月）最先完成",
+      "confidence": 0.95
+    },
+    {
+      "target": "TSO",
+      "type": "depends_on",
+      "evidence": "TSO論文（〈三層時空間觀〉，EML-TSO-2026）提出時空存在三個本體論層次的分類",
+      "confidence": 0.9
+    },
+    {
+      "target": "CRIP",
+      "type": "depends_on",
+      "evidence": "CRIP論文（〈典則關係不變探針〉，2026年6月）最後完成",
+      "confidence": 0.9
+    },
+    {
+      "target": "lm-000049",
+      "type": "extends",
+      "evidence": "（一）閉合-關係同構表（Cl ≅ R），完整列出DCO十公理與RKD數學結構的逐一對應",
+      "confidence": 0.55
+    },
+    {
+      "target": "lm-001088",
+      "type": "extends",
+      "evidence": "Cl不是靜態對象，而是進行中的操作。Cl的身份由其完整展開過程定義，而非由其瞬時狀態定義。",
+      "confidence": 0.6
+    },
+    {
+      "target": "lm-000155",
+      "type": "depends_on",
+      "evidence": "**Weaving Theory（WT）**：WT的態射（morphism）結構與DCO公理群的關係；WT的編織操作是否對應Cl-4/Cl-6的升降維過程",
+      "confidence": 0.4
+    },
+    {
+      "target": "lm-000924",
+      "type": "depends_on",
+      "evidence": "**算子本體論（EML-OO）**：OO中「一切是算子」與DCO的「Cl是操作」的形式等價；算子的合成是否對應Cl的自反射（Cl-4）",
+      "confidence": 0.45
+    },
+    {
+      "target": "lm-000689",
+      "type": "depends_on",
+      "evidence": "**概念積分（EML-CI）**：CI的積分操作是否對應關係矩陣的跡操作（Tr(R)）",
+      "confidence": 0.45
+    },
+    {
+      "target": "TranslationOperatorTheory",
+      "type": "depends_on",
+      "evidence": "**翻譯算子理論（TOT）**：語義失真的TOT框架與Cl-2（對偶性：翻譯中的內外邊界問題）的關係",
+      "confidence": 0.4
+    },
+    {
+      "target": "PanoramicHolographicTheory",
+      "type": "depends_on",
+      "evidence": "**全景全息理論（PHT）**：PHT的全景重建是否對應SOSD分裂後的 $R_{AB}$ 交叉項恢復",
+      "confidence": 0.4
+    }
+  ],
+  "notes": "四個來源框架論文（DCO 5.0十公理版、RKD、TSO、CRIP）不在提供的corpus lm-id清單中，故以canonical名稱作為external_refs目標；lm-000049/lm-001088為閉合公理主題近親，標低confidence。十公理超出上限，捨去Cl-2（對偶性，僅Type-γ與TOT附錄提及）。附錄E的WT/OO/CI/TOT/PHT為預留整合，記為低confidence depends_on。P1–P4命題與猜想5.1均入theorems（論文自稱命題形式、未經嚴格證明）。"
+}

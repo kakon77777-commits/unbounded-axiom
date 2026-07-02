@@ -1,0 +1,229 @@
+{
+  "tcf_extract_version": "0.1",
+  "id": "lm-000630",
+  "title": "時序-認知統一框架：P vs NP與數論基礎的深層同構",
+  "language": "zh-Hant",
+  "source_file": "content/papers/2026/2026-04/時序-認知統一框架：P vs NP與數論基礎的深層同構.md",
+  "theory_name": "時序-認知統一框架（Temporal-Cognitive Framework）",
+  "extracted_by": "claude-fable-5 (automated distillation, Phase A)",
+  "extraction_date": "2026-07-02",
+  "canonical_status": "draft",
+  "primitives": [
+    {
+      "symbol": "Σ",
+      "kind": "constant",
+      "description": "知識存量：認知系統在特定問題域中積累的負熵總量，用於壓縮搜索空間",
+      "evidence": "定義為認知系統在特定問題域中積累的\"負熵\"總量。其作用是壓縮搜索空間："
+    },
+    {
+      "symbol": "Γ",
+      "kind": "constant",
+      "description": "維度生成率：創造與原問題空間正交的新維度的速率",
+      "evidence": "定義為創造與原問題空間正交的新維度的速率。其作用是降維打擊："
+    },
+    {
+      "symbol": "T_search / T_verify",
+      "kind": "function",
+      "description": "回溯性過程的時間成本（搜索時間 / 驗證時間）",
+      "evidence": "$$T_{search}^{(N)} \\approx O(2^n) \\xrightarrow{\\Gamma > 0} T_{search}^{(N+k)} \\approx O(1)$$"
+    },
+    {
+      "symbol": "T_total",
+      "kind": "function",
+      "description": "通用時序方程：回溯成本與前向成本之和",
+      "evidence": "$$T_{total} = \\underbrace{f(\\text{回溯深度}, \\frac{1}{\\text{知識}}, \\frac{1}{\\text{結構}})}_{\\text{回溯成本}} + \\underbrace{g(\\text{規模}, \\frac{1}{\\text{算力}})}_{\\text{前向成本}}$$"
+    },
+    {
+      "symbol": "Φ(t)",
+      "kind": "function",
+      "description": "P/NP相變方程：混沌/臨界/秩序三態的判定函數",
+      "evidence": "$$\\Phi(t) = 1 - \\exp\\left(-\\frac{\\Sigma(t)}{\\mathcal{B}}\\right)$$"
+    },
+    {
+      "symbol": "6k±1封閉性",
+      "kind": "relation",
+      "description": "奇質數的模6分類及其乘法封閉性，用於符號代數方式繞過枚舉驗證",
+      "evidence": "定義為奇質數的模6分類及其乘法封閉性。其作用是繞過枚舉："
+    }
+  ],
+  "axioms": [
+    {
+      "id": "ax-retro-forward-asymmetry",
+      "name": "回溯-前向不對稱性原理",
+      "formula": "回溯性過程的成本相對于前向性過程的成本會隨系統規模無限發散，除非引入知識凝結／結構壓縮／邊界承認",
+      "description": "時序-認知統一框架的核心原理，聲稱在任何具時間方向性的系統中皆成立",
+      "evidence": "回溯性過程的成本相對于前向性過程的成本\n\n> 會隨系統規模無限發散，\n\n> 除非引入以下機制之一："
+    },
+    {
+      "id": "ax-key-inequality",
+      "name": "關鍵不等式",
+      "formula": "lim_{規模→∞} f/g = ∞ 當知識或結構不足",
+      "description": "回溯成本（指數型f）與前向成本（多項式型g）之比在知識或結構不足時發散",
+      "evidence": "$$\\lim_{\\text{規模} \\to \\infty} \\frac{f}{g} = \\infty \\quad \\text{當知識或結構不足}$$"
+    }
+  ],
+  "theorems": [
+    {
+      "id": "thm-three-stage-mapping",
+      "name": "三階段解耦的完美映射",
+      "statement": "P/NP的認知搜索-計算執行-驗證三階段，與時序本體論的性質檢驗-數字生成-結構驗證三階段，在深層結構上完全同構",
+      "from_axioms": [],
+      "description": "本文的核心對應主張：兩個獨立理論的三階段模型可逐一映射",
+      "evidence": "兩個理論在表面上毫無關聯——一個關於演算法複雜性，一個關於數學基礎——但我們證明：它們在深層結構上完全同構。"
+    },
+    {
+      "id": "thm-knowledge-condensation-equivalence",
+      "name": "知識凝結同構",
+      "statement": "P/NP的知識存量Σ與時序本體論的質數表在功能上等價，皆將回溯搜索/驗證壓縮為查表操作",
+      "from_axioms": ["ax-retro-forward-asymmetry"],
+      "description": "第二次對應：過去的算力等於當下的知識",
+      "evidence": "所有\"****快速推理\"****的背後，都是\"****慢速訓練\"****的凝結。"
+    },
+    {
+      "id": "thm-structure-compression-equivalence",
+      "name": "結構壓縮同構",
+      "statement": "P/NP的維度生成率Γ與時序本體論的6k±1封閉性在功能上等價，皆透過升維／符號結構將問題複雜度坍縮為O(1)",
+      "from_axioms": ["ax-retro-forward-asymmetry"],
+      "description": "第三次對應：結構消除過程；所有困難都是視角（維度）的產物",
+      "evidence": "在足夠高的維度，NP問題與P問題沒有區別。"
+    },
+    {
+      "id": "thm-phase-transition-unification",
+      "name": "相變統一機制",
+      "statement": "P/NP的混沌態-臨界態-秩序態三態模型，與時序本體論的無限生成態-有限邊界態-結構坍縮態三態模型，共享同一相變觸發機制（知識/邊界增長→維度升級→結構固化）",
+      "from_axioms": [],
+      "description": "第四次對應：相變的觸發機制",
+      "evidence": "相變**：從混沌到秩序的統一路徑"
+    },
+    {
+      "id": "thm-landauer-generalization",
+      "name": "Landauer原理的推廣",
+      "statement": "恢復1 bit已丟失的資訊（回溯）所需能量隨時間指數增長",
+      "from_axioms": ["ax-retro-forward-asymmetry"],
+      "description": "將Landauer(1961)擦除資訊耗散能量的結果推廣至回溯操作的能量成本",
+      "evidence": "我們推廣：**恢復****1 bit****已丟失的資訊（回溯），需要的能量隨時間指數增長**。"
+    }
+  ],
+  "dag": [
+    {"id": "Σ", "kind": "primitive", "depends_on": []},
+    {"id": "Γ", "kind": "primitive", "depends_on": []},
+    {"id": "6k±1封閉性", "kind": "primitive", "depends_on": []},
+    {"id": "T_search / T_verify", "kind": "primitive", "depends_on": ["Σ", "Γ"]},
+    {"id": "T_total", "kind": "primitive", "depends_on": ["T_search / T_verify"]},
+    {"id": "Φ(t)", "kind": "primitive", "depends_on": ["Σ"]},
+    {"id": "ax-retro-forward-asymmetry", "kind": "axiom", "depends_on": ["T_total"]},
+    {"id": "ax-key-inequality", "kind": "axiom", "depends_on": ["ax-retro-forward-asymmetry"]},
+    {"id": "thm-three-stage-mapping", "kind": "theorem", "depends_on": []},
+    {"id": "thm-knowledge-condensation-equivalence", "kind": "theorem", "depends_on": ["ax-retro-forward-asymmetry", "Σ"]},
+    {"id": "thm-structure-compression-equivalence", "kind": "theorem", "depends_on": ["ax-retro-forward-asymmetry", "Γ", "6k±1封閉性"]},
+    {"id": "thm-phase-transition-unification", "kind": "theorem", "depends_on": ["Φ(t)", "thm-three-stage-mapping"]},
+    {"id": "thm-landauer-generalization", "kind": "theorem", "depends_on": ["ax-retro-forward-asymmetry"]}
+  ],
+  "concepts": [
+    {
+      "name": "P vs NP",
+      "canonical": "PvsNP",
+      "role": "uses",
+      "evidence": "第一項研究（動態速率理論2.9）試圖解構P vs NP問題，提出\"認知搜索-計算執行-驗證\"的三階段解耦模型"
+    },
+    {
+      "name": "時序本體論",
+      "canonical": "TemporalOntology",
+      "role": "uses",
+      "evidence": "第二項研究（時序本體論系列）試圖理解質數的本質，提出\"生成先于定義\"的時序框架"
+    },
+    {
+      "name": "時序-認知框架",
+      "canonical": "TemporalCognitiveFramework",
+      "role": "defines",
+      "evidence": "我們提出統一的\"時序-認知框架\"（Temporal-Cognitive Framework），其核心是**回溯****-****前向不對稱性原理**"
+    },
+    {
+      "name": "回溯-前向不對稱性原理",
+      "canonical": "RetrospectiveForwardAsymmetry",
+      "role": "defines",
+      "evidence": "**回溯-前向不對稱性原理（Retrospective-Forward Asymmetry Principle）**："
+    },
+    {
+      "name": "知識凝結",
+      "canonical": "KnowledgeCondensation",
+      "role": "defines",
+      "evidence": "**知識凝結**（將過去的算力結晶為當下的查詢表）"
+    },
+    {
+      "name": "結構壓縮",
+      "canonical": "StructureCompression",
+      "role": "defines",
+      "evidence": "**結構壓縮**（通過維度升級消除過程複雜度）"
+    },
+    {
+      "name": "邊界承認",
+      "canonical": "BoundaryAcknowledgment",
+      "role": "defines",
+      "evidence": "**邊界承認**（限制在有限範圍內）"
+    },
+    {
+      "name": "相變",
+      "canonical": "PhaseField",
+      "role": "uses",
+      "evidence": "都觀察到**從混沌到秩序的相變**"
+    },
+    {
+      "name": "Grokking",
+      "canonical": "Grokking",
+      "role": "uses",
+      "evidence": "表現：Grokking點（頓悟）"
+    },
+    {
+      "name": "熱力學第二定律",
+      "canonical": "SecondLawOfThermodynamics",
+      "role": "uses",
+      "evidence": "在封閉系統中，熵總是增加。\"逆熵\"（Negentropy）操作——即從混亂中提取資訊——需要額外能量。"
+    },
+    {
+      "name": "Landauer原理",
+      "canonical": "LandauerPrinciple",
+      "role": "extends",
+      "evidence": "Landauer（1961）證明：擦除1 bit資訊至少耗散"
+    },
+    {
+      "name": "時間箭頭",
+      "canonical": "ArrowOfTime",
+      "role": "uses",
+      "evidence": "兩個理論都涉及時間箭頭（Arrow of Time）"
+    },
+    {
+      "name": "拓撲降維",
+      "canonical": "TopologicalDimensionReduction",
+      "role": "uses",
+      "evidence": "複雜的低維流形，在高維空間中可能投影為簡單形狀。"
+    }
+  ],
+  "external_refs": [
+    {
+      "target": "lm-000112",
+      "type": "depends_on",
+      "evidence": "第一項研究（動態速率理論2.9）試圖解構P vs NP問題，提出\"認知搜索-計算執行-驗證\"的三階段解耦模型",
+      "confidence": 0.75
+    },
+    {
+      "target": "lm-000119",
+      "type": "depends_on",
+      "evidence": "2024年12月，作者完成《動態速率理論2.9：認知與計算的解耦——P vs. NP問題的終極動力學解構》",
+      "confidence": 0.6
+    },
+    {
+      "target": "PvsNP",
+      "type": "applies",
+      "evidence": "P vs NP問題問的不是\"P等於NP嗎\"，而是：**在時間的河流中，我們能否逆流而上？**",
+      "confidence": 0.9
+    },
+    {
+      "target": "GodPoint",
+      "type": "critiques",
+      "evidence": "答案是：可以，但需要付出代價——要麼用過去的算力換取當下的知識，要麼用維度的躍遷消除過程的曲折。",
+      "confidence": 0.2
+    }
+  ],
+  "notes": "來源文件含大量嵌入式base64圖片(OLE公式)雜訊，已略過純圖片內容，公式改以文中LaTeX區塊或周邊文字為evidence。外部參照P/NP 2.9論文（動態速率理論2.9）在語料庫中對應lm-000112/lm-000119，信心度中等因無法逐字比對兩篇論文內容。GodPoint僅為vocabulary掃描到的低相關性弱連結，信心度低。"
+}

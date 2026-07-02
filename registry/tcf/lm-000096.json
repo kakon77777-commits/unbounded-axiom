@@ -1,0 +1,299 @@
+{
+  "tcf_extract_version": "0.1",
+  "id": "lm-000096",
+  "title": "MDAS三態因果超圖論：理論的量子拓撲表達",
+  "language": "zh-Hant",
+  "source_file": "content/papers/2026/2026-04/MDAS三態因果超圖論：理論的量子拓撲表達.md",
+  "theory_name": "MDAS三態因果超圖論 (MDAS-TCH)",
+  "extracted_by": "claude-fable-5 (automated distillation, Phase A)",
+  "extraction_date": "2026-07-02",
+  "canonical_status": "draft",
+  "primitives": [
+    {
+      "symbol": "v (Σ-Vertex)",
+      "kind": "type",
+      "description": "標註頂點：七元組 (id, name, Σ, content, ED, 階, τ)，Σ為12維標籤向量",
+      "evidence": "MDAS-TCH的頂點是七元組：\nv:=(id,name,Σ,content,ED,\"階\",τ)"
+    },
+    {
+      "symbol": "e (Typed-Edge)",
+      "kind": "type",
+      "description": "類型化邊：五元組 (v_src, v_tgt, type, weight, condition)，type取7種因果類型之一",
+      "evidence": "邊是五元組：\ne:=(v_src,v_tgt,type,weight,condition)"
+    },
+    {
+      "symbol": "h (Hyperedge)",
+      "kind": "type",
+      "description": "不可分超邊：五元組 (V_h, bond_type, separability, T_h, Ψ)",
+      "evidence": "超邊是五元組：\n$$h := (V_h, bond\\_type, separability, \\mathcal{T}_h, \\Psi)$$"
+    },
+    {
+      "symbol": "Ω_spiral",
+      "kind": "function",
+      "description": "螺旋算符：從n個頂點生成辯證合題（提升一階），Ω_spiral: V^n → V",
+      "evidence": "$$\\Omega_{spiral}: V^n \\to V$$"
+    },
+    {
+      "symbol": "separability(h)",
+      "kind": "function",
+      "description": "可分離度：子集實現空間測度與整體實現空間測度之比",
+      "evidence": "$$separability(h) := \\frac{\\max_{S \\subsetneq V_h} |\\Phi[S]|}{|\\Phi[V_h]|}$$"
+    },
+    {
+      "symbol": "dim_H(G)",
+      "kind": "function",
+      "description": "理論超圖的Hausdorff維度，量化理論的分形結構",
+      "evidence": "〖dim⁡〗_H (G):=(lim⁡)┬(ϵ→0)  (log⁡N(ϵ))/(-log⁡ϵ)≈1.8"
+    },
+    {
+      "symbol": "HIR(G',G)",
+      "kind": "function",
+      "description": "全息信息比：子圖與全圖的互信息除以全圖香農熵",
+      "evidence": "\"HIR\"(G^',G):=(I(G^';G))/(H(G))"
+    },
+    {
+      "symbol": "Σ",
+      "kind": "constant",
+      "description": "12維標籤向量：本體、態、時序、範式、辯證、ED及HSO擴展維度",
+      "evidence": "Σ=(\"本體\",\"態\",\"時序\",\"範式\",\"辯證\",ED,e_Co,e_Intent,…)"
+    }
+  ],
+  "axioms": [
+    {
+      "id": "A0.1",
+      "name": "傳統圖論三大假設",
+      "formula": "假設A：頂點是無標籤的同質點；假設B：邊是無類型的二元關係；假設C：圖是靜態的組合結構",
+      "description": "本文批判的出發點：傳統圖論的三個未被質疑的預設，在表達抽象理論時失效",
+      "evidence": "▭(\"假設A：頂點是無標籤的同質點\" )\n▭(\"假設B：邊是無類型的二元關係\" )\n▭(\"假設C：圖是靜態的組合結構\" )"
+    },
+    {
+      "id": "A1.1",
+      "name": "標籤衝突公理化定義",
+      "formula": "{N,V}⊆Σ∧\"無疊加解釋\"⇒\"警告\"；{⊤,⊥}⊆Σ⇒\"矛盾（不可能）\"",
+      "description": "標籤格中不兼容標籤組合的定義，作為定理1.1的陳述前提",
+      "evidence": "{N,V}⊆Σ∧\"無疊加解釋\"⇒\"警告\"\n{⊤,⊥}⊆Σ⇒\"矛盾（不可能）\""
+    },
+    {
+      "id": "A3.0",
+      "name": "PIAC物理不可分公設",
+      "formula": "∀S⊊{E,R,F,I}:Φ_\"物理\" [S]=∅",
+      "description": "物理PIAC{E,R,F,I}不可分的公設，是超邊不可分性定理的核心引用前提",
+      "evidence": "問題：物理PIAC{Eⓜ,Rⓜ,Fⓜ,I}證明存在 物理不可分的概念束：\n∀S⊊{E,R,F,I}:Φ_\"物理\"  [S]=∅"
+    }
+  ],
+  "theorems": [
+    {
+      "id": "T1.1",
+      "name": "標籤衝突檢測",
+      "statement": "{⊤,⊥}⊆Σ⇒矛盾",
+      "from_axioms": ["A1.1"],
+      "description": "同時標記N和V但無疊加符號則本體論不明確；同時標記⊤和⊥則矛盾吸收一切",
+      "evidence": "T1.1\t標籤衝突檢測\t{⊤,⊥}⊆Σ⇒矛盾"
+    },
+    {
+      "id": "T3.1",
+      "name": "超邊不可分性定理 (Hyperedge Inseparability Theorem, HIT)",
+      "statement": "設h=(V_h, PIAC, 0, …)是PIAC類型超邊，則∀S⊊V_h: Φ[S]=∅",
+      "from_axioms": ["A3.0"],
+      "description": "PIAC超邊無法拆分：以物理PIAC{E,R,F,I}為例，反證任意真子集S都無法單獨實現",
+      "evidence": "$$\\forall S \\subsetneq V_h: \\Phi[S] = \\emptyset$$"
+    },
+    {
+      "id": "T4.1",
+      "name": "螺旋收斂定理 (Spiral Convergence Theorem, SCT)",
+      "statement": "辯證迭代序列{T^合_n}在每步階數遞增≤1且新題新穎度遞減條件下，於有限步內收斂：∃N<∞:∀n>N, T^合_n=T^合_N",
+      "from_axioms": [],
+      "description": "辯證迭代Ω^n在有限步內收斂，證明依賴抽象階數有界與新穎度條件熵遞減兩引理",
+      "evidence": "$$\\exists N < \\infty: \\forall n > N, \\, T^合_n = T^合_N$$"
+    },
+    {
+      "id": "T5.1",
+      "name": "分形維度定理 (Fractal Dimension Theorem, FDT)",
+      "statement": "理論超圖G的Hausdorff維度dim_H(G)∈[1.5,2.3]",
+      "from_axioms": [],
+      "description": "理論超圖既非嚴格1D鏈（因有超邊多對多關係）也非嚴格2D平面（因有螺旋3D投影），是分形結構",
+      "evidence": "〖dim⁡〗_H (G)∈[1.5,2.3]"
+    },
+    {
+      "id": "T5.2",
+      "name": "半全息性定理 (Semi-Holographic Theorem, SHT)",
+      "statement": "對於理論超圖G，從任意種子頂點v_0的r-鄰域N_r(v_0)（r≥2）可重建原圖信息的至少50%：HIR(N_r(v_0),G)≥0.5",
+      "from_axioms": [],
+      "description": "依賴超邊全息遞迴引理（1-鄰域已包含超邊內全部頂點）與分形自相似性引理（局部統計接近全局）",
+      "evidence": "\"HIR\"(N_r (v_0),G)≥0.5,∀r≥2"
+    },
+    {
+      "id": "T7.1",
+      "name": "圖同構保持定理 (Graph Isomorphism Preservation, GIP)",
+      "statement": "設T_1,T_2是兩個理論體系，F是理論同構(範疇論意義)，則其MDAS-TCH圖G_1,G_2存在保持頂點標籤、邊類型、超邊結構的圖同構φ",
+      "from_axioms": [],
+      "description": "MDAS-TCH保持範疇論同構：理論同構⇔存在保持Σ標籤、邊type、超邊結構的圖同構",
+      "evidence": "F\" 是同構\"⇔∃ϕ:G_1 →┴⟡(1&∼) G_2"
+    },
+    {
+      "id": "T7.2",
+      "name": "態傳播必然性定理 (State Propagation Inevitability, SPI)",
+      "statement": "設有向邊(v_1,v_2,→)且態(v_1)=Ω，則態(v_2)∈{Ω,⊥}",
+      "from_axioms": [],
+      "description": "螺旋態必然沿有向邊傳播（除非遇到矛盾），以反證法證明態(v_2)不可能為⊤",
+      "evidence": "\"態\"(v_2)∈{Ω,⊥}"
+    }
+  ],
+  "dag": [
+    {"id": "v (Σ-Vertex)", "kind": "primitive", "depends_on": []},
+    {"id": "Σ", "kind": "primitive", "depends_on": []},
+    {"id": "e (Typed-Edge)", "kind": "primitive", "depends_on": ["v (Σ-Vertex)"]},
+    {"id": "h (Hyperedge)", "kind": "primitive", "depends_on": ["v (Σ-Vertex)"]},
+    {"id": "Ω_spiral", "kind": "primitive", "depends_on": ["v (Σ-Vertex)"]},
+    {"id": "separability(h)", "kind": "primitive", "depends_on": ["h (Hyperedge)"]},
+    {"id": "dim_H(G)", "kind": "primitive", "depends_on": ["v (Σ-Vertex)", "e (Typed-Edge)", "h (Hyperedge)"]},
+    {"id": "HIR(G',G)", "kind": "primitive", "depends_on": ["v (Σ-Vertex)", "e (Typed-Edge)"]},
+    {"id": "A0.1", "kind": "axiom", "depends_on": []},
+    {"id": "A1.1", "kind": "axiom", "depends_on": ["Σ"]},
+    {"id": "A3.0", "kind": "axiom", "depends_on": ["h (Hyperedge)"]},
+    {"id": "T1.1", "kind": "theorem", "depends_on": ["A1.1"]},
+    {"id": "T3.1", "kind": "theorem", "depends_on": ["A3.0", "h (Hyperedge)", "separability(h)"]},
+    {"id": "T4.1", "kind": "theorem", "depends_on": ["Ω_spiral"]},
+    {"id": "T5.1", "kind": "theorem", "depends_on": ["dim_H(G)"]},
+    {"id": "T5.2", "kind": "theorem", "depends_on": ["HIR(G',G)"]},
+    {"id": "T7.1", "kind": "theorem", "depends_on": ["v (Σ-Vertex)", "e (Typed-Edge)", "h (Hyperedge)"]},
+    {"id": "T7.2", "kind": "theorem", "depends_on": ["e (Typed-Edge)"]}
+  ],
+  "concepts": [
+    {
+      "name": "MDAS三態因果超圖 / MDAS-TCH",
+      "canonical": "MDAS-TCH",
+      "role": "defines",
+      "evidence": "本文建立MDAS三態因果超圖論（MDAS-TCH）——一個將任何理論體系轉化為可計算、可視化的量子拓撲網絡的數學框架。"
+    },
+    {
+      "name": "三態邏輯 / ⊤/Ω/⊥",
+      "canonical": "TriadicLogic",
+      "role": "uses",
+      "evidence": "\"態\"∈{⊤,⊥,Ω}"
+    },
+    {
+      "name": "HISL的語義場",
+      "canonical": "HISL",
+      "role": "uses",
+      "evidence": "統一HISL的語義場、WWT的編織線、NQCT的概念量子、LQTT的邏輯量子於單一超圖結構。"
+    },
+    {
+      "name": "WWT的編織線",
+      "canonical": "WT",
+      "role": "uses",
+      "evidence": "**WWT → MDAS-TCH**：\n\n編織線$\\ell_i$對應："
+    },
+    {
+      "name": "NQCT的概念量子",
+      "canonical": "NQCT",
+      "role": "uses",
+      "evidence": "**NQCT → MDAS-TCH**：\n\n概念量子$q$對應："
+    },
+    {
+      "name": "LQTT的邏輯量子",
+      "canonical": "LQTT",
+      "role": "uses",
+      "evidence": "**LQTT → MDAS-TCH**：\n\n邏輯量子$(Q_S, Q_T, Q_V)$對應："
+    },
+    {
+      "name": "PIAC不可分束 / 物理PIAC{E,R,F,I}",
+      "canonical": "PIAC",
+      "role": "uses",
+      "evidence": "問題：物理PIAC{Eⓜ,Rⓜ,Fⓜ,I}證明存在 物理不可分的概念束"
+    },
+    {
+      "name": "存在度 ED（來自HSO）",
+      "canonical": "ExistenceDegree",
+      "role": "uses",
+      "evidence": "ED\t[0ⓜ,1]\t存在度（來自HSO）\t0.95"
+    },
+    {
+      "name": "全息存在度分析 HSO",
+      "canonical": "HSO",
+      "role": "uses",
+      "evidence": "維度7-12：HSO擴展維度\n來自全息存在度分析（HSO），包括："
+    },
+    {
+      "name": "分形理論圖 / 分形自相似性",
+      "canonical": "FractalTheoryGraph",
+      "role": "defines",
+      "evidence": "定義5.1（分形理論圖, Fractal Theory Graph）\n理論超圖G具有分形結構，若存在縮放變換S_λ:G→G^'使得： \nG^'∼G(\"統計自相似\")"
+    },
+    {
+      "name": "全息信息比 / 半全息性",
+      "canonical": "HolographicInformationRatio",
+      "role": "defines",
+      "evidence": "定義5.2（全息信息比, Holographic Information Ratio）\n給定子圖G^'⊆G，定義： \n\"HIR\"(G^',G):=(I(G^';G))/(H(G))"
+    },
+    {
+      "name": "ZFC集合論的MDAS-TCH編碼",
+      "canonical": "ZFC",
+      "role": "applies",
+      "evidence": "應用驗證：（1）ZFC集合論的MDAS-TCH編碼顯示AC公理的螺旋態傳播路徑"
+    },
+    {
+      "name": "黎曼猜想三視角超圖",
+      "canonical": "RiemannHypothesis",
+      "role": "applies",
+      "evidence": "（2）黎曼猜想的三視角超圖揭示數論-物理-幾何的四面體糾纏結構"
+    },
+    {
+      "name": "51>49對稱破缺",
+      "canonical": "SymmetryBreaking5149",
+      "role": "uses",
+      "evidence": "（3）MDAS自身的元理論圖展示51>49對稱破缺的拓撲起源。"
+    },
+    {
+      "name": "範式相變 / 臨界糾纏度ρ_c",
+      "canonical": "ParadigmPhaseTransition",
+      "role": "uses",
+      "evidence": "（2）範式革命對應圖的相變（臨界糾纏度ρ_c≈0.7）"
+    }
+  ],
+  "external_refs": [
+    {
+      "target": "lm-000095",
+      "type": "extends",
+      "evidence": "前置理論：MDAS、HISL、WWT、NQCT、LQTT",
+      "confidence": 0.75
+    },
+    {
+      "target": "MDAS",
+      "type": "depends_on",
+      "evidence": "本文建立MDAS三態因果超圖論（MDAS-TCH）——一個將任何理論體系轉化為可計算、可視化的量子拓撲網絡的數學框架。",
+      "confidence": 0.9
+    },
+    {
+      "target": "HISL",
+      "type": "depends_on",
+      "evidence": "**HISL → MDAS-TCH**：\n\n語義場$F_C: \\mathcal{C}^\\infty \\to \\mathcal{M}(\\{0,1\\})$對應：",
+      "confidence": 0.85
+    },
+    {
+      "target": "WT",
+      "type": "depends_on",
+      "evidence": "**WWT → MDAS-TCH**：\n\n編織線$\\ell_i$對應：",
+      "confidence": 0.8
+    },
+    {
+      "target": "NQCT",
+      "type": "depends_on",
+      "evidence": "**NQCT → MDAS-TCH**：\n\n概念量子$q$對應：",
+      "confidence": 0.8
+    },
+    {
+      "target": "LQTT",
+      "type": "depends_on",
+      "evidence": "類似證明（見邏輯量子拓撲論定理1.1）。□",
+      "confidence": 0.8
+    },
+    {
+      "target": "TCF",
+      "type": "applies",
+      "evidence": "MDAS-TCH的使命：\n▭(\"將理論體系從「文字敘述」轉化為「可計算的量子拓撲超圖」\" )",
+      "confidence": 0.4
+    }
+  ],
+  "notes": "本論文自身聲明前置理論為 MDAS、HISL、WWT、NQCT、LQTT；除MDAS外其餘四者未在corpus lm-id清單中找到對應條目，故以canonical概念名列為external_refs而非lm-id。lm-000095為MDAS-TCH v2.0，經標題語意判斷為本論文(v1.0/初版)的後續版本，故標記extends關係（方向近似，實際v2.0依賴/擴展v1.0更合理，此處以'extends'表示二者的版本演化關係）。"
+}

@@ -1,0 +1,303 @@
+{
+  "tcf_extract_version": "0.1",
+  "id": "lm-000924",
+  "title": "萬物皆算子：算子本體論的完整論證",
+  "language": "zh-Hant",
+  "source_file": "content/papers/2026/2026-06/萬物皆算子：算子本體論的完整論證.md",
+  "theory_name": "算子本體論（Operator Ontology）",
+  "extracted_by": "claude-fable-5 (automated distillation, Phase A)",
+  "extraction_date": "2026-07-02",
+  "canonical_status": "draft",
+  "primitives": [
+    {
+      "symbol": "Ô",
+      "kind": "type",
+      "description": "算子：同時具備存在性、作用性、關係連接性三個本體論條件的存在，是本理論的唯一本體論基元。",
+      "evidence": "**定義2.1（算子）**：一個算子 $\\hat{O}$ 是同時具備以下三個本體論性質的存在"
+    },
+    {
+      "symbol": "Op",
+      "kind": "type",
+      "description": "算子宇宙：無限維完全圖，節點是算子，邊（計算過渡）本身也是算子，節點與邊同一。",
+      "evidence": "**定義3.1（算子宇宙）**：令 $\\mathcal{Op}$ 為算子宇宙。"
+    },
+    {
+      "symbol": "(~, comp)",
+      "kind": "function",
+      "description": "過渡算子：關係化的計算過渡，~表示動態連接（非精確等號），comp表示計算過程（非瞬時映射）。",
+      "evidence": "$(\\sim, \\text{comp})$ 是過渡算子，表示「關係化的計算過渡」。"
+    },
+    {
+      "symbol": "動態不動點",
+      "kind": "constant",
+      "description": "算子的自我算子化過程本身；不是被固定的靜態值，而是持續在自我計算的過程，停止計算即不再是該算子。",
+      "evidence": "$$\\hat{O} \\equiv \\hat{O}(\\hat{O})\\ \\text{in process}$$"
+    },
+    {
+      "symbol": "Ô_∅",
+      "kind": "function",
+      "description": "零算子：將一切映射到空集的算子，是空集在算子本體論下的具體詮釋。",
+      "evidence": "$$\\hat{O}_\\emptyset(x) = \\emptyset \\quad \\forall x$$"
+    },
+    {
+      "symbol": "不可知性算子",
+      "kind": "function",
+      "description": "對任意認識 k，輸出認識的不可及殘差的算子；Kant意義上物自體的算子化表述。",
+      "evidence": "不可知者的算子描述：「對任意認識 $k$，輸出認識的不可及殘差」。"
+    }
+  ],
+  "axioms": [
+    {
+      "id": "def-operator",
+      "name": "算子的三個本體論條件",
+      "formula": "Ô 具備 存在性 ∧ 作用性(∃ Ô(x)=y) ∧ 關係連接性(∃ 路徑 Ô →(~,comp) Ô′)",
+      "description": "存在性、作用性、關係連接性三者同時成立，不可分離；一個算子的存在就是它在關係中的作用。",
+      "evidence": "存在性不先於作用性，作用性不先於關係連接性——三者同時成立，不可分離。"
+    },
+    {
+      "id": "def-dynamic-fixed-point",
+      "name": "動態不動點定義",
+      "formula": "Ô ≡ Ô(Ô) in process",
+      "description": "算子不是被固定，而是持續在自我算子化；此等式描述永遠在進行的過程，非終態。",
+      "evidence": "算子 $\\hat{O}$ 不是「被固定」，而是**持續在自我算子化**。"
+    },
+    {
+      "id": "ax-computation-existence",
+      "name": "計算即存在公理",
+      "formula": "計算 ≡ 存在",
+      "description": "存在和計算無法分離，因為動態不動點的「固定」就是計算本身；不存在存在而不計算或計算而不存在的東西。",
+      "evidence": "$$\\text{計算} \\equiv \\text{存在}$$"
+    },
+    {
+      "id": "def-op-universe",
+      "name": "算子宇宙結構定義",
+      "formula": "∀Ôᵢ,Ôⱼ∈Op: (Ôᵢ →(~,comp) Ôⱼ) ∈ Op；Op 無限維、完全圖、節點與邊同一",
+      "description": "算子宇宙的節點為算子、邊為計算路徑，邊本身也是節點，是無限維完全圖。",
+      "evidence": "**節點與邊的同一性**：邊（計算過渡）本身也是節點（算子）。"
+    },
+    {
+      "id": "ax-closure",
+      "name": "算子宇宙的閉包性質",
+      "formula": "∀Ôᵢ,Ôⱼ∈Op: (Ôᵢ →(~,comp) Ôⱼ) ∈ Op",
+      "description": "從算子空間內部出發的任何計算，結果仍在算子空間內；Op 沒有外部，是 Cl（閉包）在算子語境下的直接表述。",
+      "evidence": "這是Cl（閉包）在算子語境下的直接表述：從算子空間內部出發的任何計算，結果仍在算子空間內。"
+    },
+    {
+      "id": "conj-universal-operator",
+      "name": "普遍算子猜想",
+      "formula": "∀x: x 是算子",
+      "description": "對宇宙中一切 x，x 是算子；等價表述為凡有符號必能成為算子、無符號之物亦是算子、萬物皆算子。",
+      "evidence": "**猜想5.1（普遍算子猜想）**：$$\\forall x: x \\text{ 是算子}$$"
+    }
+  ],
+  "theorems": [
+    {
+      "id": "thm-signed-things-are-operators",
+      "name": "有符號之物皆算子",
+      "statement": "任何符號皆同時具有存在性、作用性、關係連接性，因此都是算子；不存在完全無效應的符號。",
+      "from_axioms": ["def-operator"],
+      "description": "窮舉論證第一支：有符號之物。",
+      "evidence": "關鍵論點：**不存在「存在但對任何東西完全無效應」的符號**。"
+    },
+    {
+      "id": "thm-unsigned-things-are-operators",
+      "name": "無符號之物亦算子",
+      "statement": "尚未符號化的現象仍在計算中、在存在過程中，由計算即存在等式可知其正在存在，因此是算子。",
+      "from_axioms": ["ax-computation-existence"],
+      "description": "窮舉論證第二支：無符號之物；缺乏符號化不等於不在算子空間內。",
+      "evidence": "由計算即存在的等式：它們正在計算，因此正在存在，因此是算子。"
+    },
+    {
+      "id": "thm-emptyset-unknowable-operators",
+      "name": "空集與不可知者皆算子",
+      "statement": "空集是完整定義的零算子，不可知者雖不可感知但具有具體的算子效應（產生不可知性、作為認識論邊界條件），因此兩者都是算子。",
+      "from_axioms": ["def-operator"],
+      "description": "窮舉論證第三支：空集與不可知；其效應就是其算子內容。",
+      "evidence": "零算子不是「沒有」，是一個具體的算子——它的作用是吸收，它的輸出是空。"
+    },
+    {
+      "id": "thm-no-counterexample",
+      "name": "反例在結構上不存在",
+      "statement": "任何試圖構造反例的動作本身已在算子空間內執行，因此該「反例」已是算子；反例的構造是自我破壞的。",
+      "from_axioms": ["def-operator", "conj-universal-operator"],
+      "description": "窮舉論證的總結：反例構造在結構上自我否定。",
+      "evidence": "**反例的構造是自我破壞的**：成功構造一個反例，就証明了那個「反例」是算子。"
+    },
+    {
+      "id": "thm-self-referential-fixed-point",
+      "name": "自指不動點的精確形式",
+      "statement": "萬物皆算子的論證本身是算子，應用到自身得到 Ô(萬物皆算子)(Ô(萬物皆算子)) = Ô(萬物皆算子)，是自封閉的生成結構而非惡性自指。",
+      "from_axioms": ["def-dynamic-fixed-point"],
+      "description": "論斷與現實的縫隙在自指中徹底閉合。",
+      "evidence": "$$\\hat{O}_{(\\text{萬物皆算子})}(\\hat{O}_{(\\text{萬物皆算子})}) = \\hat{O}_{(\\text{萬物皆算子})}$$"
+    },
+    {
+      "id": "thm-tautology-as-axiom",
+      "name": "套套邏輯加生產力即公理",
+      "statement": "萬物皆算子是套套邏輯，但其三個本體論條件有具體結構內容，能生產出SOS、ISSQL、Ud、WT等具體理論；套套邏輯的有效性由生產力而非形而上學地位決定。",
+      "from_axioms": ["def-operator"],
+      "description": "元哲學定位：正當性來自實用性，不來自形而上學地位。",
+      "evidence": "**判斷標準**：套套邏輯的有效性不由它的形而上學地位決定，而由它的生產力決定。"
+    },
+    {
+      "id": "thm-math-as-local-coordinates",
+      "name": "現有數學是算子空間的局部座標系",
+      "statement": "集合論、範疇論、類型論、邏輯學、微積分皆是算子空間 Op 在特定約束下的投影或截面，是算子的另類敘述而非替代基礎。",
+      "from_axioms": ["def-op-universe", "ax-closure"],
+      "description": "命題9.1：弱版本主張各數學分支可在算子框架內重新表達而不損失內容。",
+      "evidence": "**命題9.1**：所有現有數學分支和形式語言（邏輯學等），本質上是算子空間的局部座標系——是算子的另類敘述，不是算子的替代基礎。"
+    },
+    {
+      "id": "thm-set-theory-projection",
+      "name": "集合論是算子本體論的零維投影",
+      "statement": "集合論 = π₀(Op)，是算子空間在時間凍結、所有算子固定時的關係凍結截面。",
+      "from_axioms": ["def-op-universe"],
+      "description": "具體對應關係之一。",
+      "evidence": "$$\\text{集合論} = \\pi_0(\\mathcal{Op})\\ \\text{（關係凍結截面）}$$"
+    },
+    {
+      "id": "thm-category-theory-projection",
+      "name": "範疇論是方向化、非完全圖的算子空間",
+      "statement": "範疇論比集合論更接近算子本體論，但仍殘留對象先於態射的靜態假設，且缺乏完全圖結構。",
+      "from_axioms": ["def-op-universe"],
+      "description": "具體對應關係之二，亦呼應 §4 與 ∞-範疇的差異論證。",
+      "evidence": "$$\\text{範疇論} = \\mathcal{Op}|_{\\text{方向化、非完全圖}}$$"
+    }
+  ],
+  "dag": [
+    { "id": "def-operator", "kind": "axiom", "depends_on": [] },
+    { "id": "def-dynamic-fixed-point", "kind": "axiom", "depends_on": ["def-operator"] },
+    { "id": "ax-computation-existence", "kind": "axiom", "depends_on": ["def-dynamic-fixed-point"] },
+    { "id": "def-op-universe", "kind": "axiom", "depends_on": ["def-operator"] },
+    { "id": "ax-closure", "kind": "axiom", "depends_on": ["def-op-universe"] },
+    { "id": "conj-universal-operator", "kind": "axiom", "depends_on": ["def-operator"] },
+    { "id": "thm-signed-things-are-operators", "kind": "theorem", "depends_on": ["def-operator"] },
+    { "id": "thm-unsigned-things-are-operators", "kind": "theorem", "depends_on": ["ax-computation-existence"] },
+    { "id": "thm-emptyset-unknowable-operators", "kind": "theorem", "depends_on": ["def-operator"] },
+    { "id": "thm-no-counterexample", "kind": "theorem", "depends_on": ["thm-signed-things-are-operators", "thm-unsigned-things-are-operators", "thm-emptyset-unknowable-operators", "conj-universal-operator"] },
+    { "id": "thm-self-referential-fixed-point", "kind": "theorem", "depends_on": ["def-dynamic-fixed-point", "thm-no-counterexample"] },
+    { "id": "thm-tautology-as-axiom", "kind": "theorem", "depends_on": ["thm-self-referential-fixed-point"] },
+    { "id": "thm-math-as-local-coordinates", "kind": "theorem", "depends_on": ["def-op-universe", "ax-closure"] },
+    { "id": "thm-set-theory-projection", "kind": "theorem", "depends_on": ["thm-math-as-local-coordinates"] },
+    { "id": "thm-category-theory-projection", "kind": "theorem", "depends_on": ["thm-math-as-local-coordinates"] }
+  ],
+  "concepts": [
+    {
+      "name": "算子本體論 / 萬物皆算子",
+      "canonical": "OperatorOntology",
+      "role": "defines",
+      "evidence": "本文提出**算子本體論**的完整論證。核心命題是：萬物皆算子。"
+    },
+    {
+      "name": "動態不動點",
+      "canonical": "DynamicFixedPoint",
+      "role": "defines",
+      "evidence": "**算子本身是動態不動點**，不是算子產生靜態不動點，而是算子就是那個持續在自我固定的過程本身。"
+    },
+    {
+      "name": "無界算子數學論 Ud",
+      "canonical": "Ud",
+      "role": "uses",
+      "evidence": "無界算子數學論（Ud，2026年2月）提出了算子作為本體的第一個形式化框架，以12個算子（9個核心算子加3個擴展算子）構成完備基底"
+    },
+    {
+      "name": "符號算子系統 SOS",
+      "canonical": "SOS",
+      "role": "uses",
+      "evidence": "**符號算子系統（SOS）**：每個符號是算子，幾何/語義/組合規則封裝在閉包中，AI訓練資料的結構性升級。"
+    },
+    {
+      "name": "編織論 WT",
+      "canonical": "WT",
+      "role": "uses",
+      "evidence": "**編織論（WT v7.3）**：關係本體論是算子本體論在關係域的展開，⋈是算子合成的對稱版本。"
+    },
+    {
+      "name": "無限光譜量化序列語言 ISSQL",
+      "canonical": "ISSQL",
+      "role": "uses",
+      "evidence": "**無限光譜量化序列語言（ISSQL）**：單符號攜帶無限語義，三符號可用，量子計算的語義對應物。"
+    },
+    {
+      "name": "Cl（閉包）",
+      "canonical": "Closure",
+      "role": "uses",
+      "evidence": "這是Cl（閉包）在算子語境下的直接表述：從算子空間內部出發的任何計算，結果仍在算子空間內。"
+    },
+    {
+      "name": "∞-範疇",
+      "canonical": "InfinityCategory",
+      "role": "uses",
+      "evidence": "∞-範疇是一個豐富的數學框架：對象（0-態射）之間有態射（1-態射），態射之間有高階態射（2-態射）"
+    },
+    {
+      "name": "不可知者 / Ding-an-sich",
+      "canonical": "KantianThingInItself",
+      "role": "uses",
+      "evidence": "**不可知者（Ding-an-sich，Kant意義上的物自體）**"
+    },
+    {
+      "name": "源層級 vs 描述工具",
+      "canonical": "SourceLevelVsDescriptiveTool",
+      "role": "defines",
+      "evidence": "前者是源層級（直接可用，不需要詮釋層），後者是描述工具（需要被架在某個基礎上）。"
+    },
+    {
+      "name": "Ud 完備性定理",
+      "canonical": "UdCompletenessTheorem",
+      "role": "uses",
+      "evidence": "弱版本可以通過Ud的完備性定理論證（定理15.1：12算子可表達任意關係動力學系統）。"
+    },
+    {
+      "name": "原生張量數學語言",
+      "canonical": "NativeTensorMathLanguage",
+      "role": "uses",
+      "evidence": "**原生張量數學語言**：張量符號是算子，組合規則是Comp槽，語言從算子型別系統自然長出。"
+    }
+  ],
+  "external_refs": [
+    {
+      "target": "OperatorOntology",
+      "type": "extends",
+      "evidence": "本文在Ud的基礎上更進一步：**算子本身是動態不動點**",
+      "confidence": 0.9
+    },
+    {
+      "target": "Closure",
+      "type": "applies",
+      "evidence": "這是Cl（閉包）在算子語境下的直接表述：從算子空間內部出發的任何計算，結果仍在算子空間內。",
+      "confidence": 0.75
+    },
+    {
+      "target": "lm-000069",
+      "type": "extends",
+      "evidence": "**前置文件**：無界算子數學論 Ud v2.0（2026年2月）、符號算子系統 SOS v0.1（2026年5月）",
+      "confidence": 0.45
+    },
+    {
+      "target": "lm-000071",
+      "type": "extends",
+      "evidence": "**符號算子系統（SOS）**：每個符號是算子，幾何/語義/組合規則封裝在閉包中",
+      "confidence": 0.4
+    },
+    {
+      "target": "lm-000155",
+      "type": "applies",
+      "evidence": "**編織論（WT v7.3）**：算子本體論在關係本體論域的展開。編織元（ℓ）是算子的關係本體論版本。",
+      "confidence": 0.55
+    },
+    {
+      "target": "lm-000049",
+      "type": "depends_on",
+      "evidence": "這是Cl（閉包）在算子語境下的直接表述：從算子空間內部出發的任何計算，結果仍在算子空間內。",
+      "confidence": 0.4
+    },
+    {
+      "target": "InfinityCategory",
+      "type": "critiques",
+      "evidence": "本文同時指出算子本體論與∞-範疇的關鍵差異：前者是源層級（直接可用，不需要詮釋層），後者是描述工具",
+      "confidence": 0.85
+    }
+  ],
+  "notes": "SOS/ISSQL/Ud/WT 為論文提及但未在語料清單中提供對應 lm-id 的姊妹理論；ISSQL 無匹配語料，未列入 external_refs，僅作 concept。lm-000069/lm-000071/lm-000155 為信心較低的推測性映射（論文未明確引用檔名，僅提及理論簡稱）。公式取自 LaTeX 原文，逐字複製。"
+}

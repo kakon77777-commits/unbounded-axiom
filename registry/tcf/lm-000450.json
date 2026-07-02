@@ -1,0 +1,213 @@
+{
+  "tcf_extract_version": "0.1",
+  "id": "lm-000450",
+  "title": "對抗–驗證知識整理架構：KMAP＋REDUCE 的自主執行層 v0.1",
+  "language": "zh-Hant",
+  "source_file": "content/papers/2026/2026-06/對抗驗證知識整理架構_v0.1.md",
+  "theory_name": "對抗驗證知識整理架構 (Adversarial-Verification Knowledge Organization Architecture)",
+  "extracted_by": "claude-fable-5 (automated distillation, Phase A)",
+  "extraction_date": "2026-07-02",
+  "canonical_status": "draft",
+  "primitives": [
+    {
+      "symbol": "G",
+      "kind": "type",
+      "description": "共享持久知識圖，兩 agent 共讀共寫的對弈棋盤，節點/邊皆帶驗證狀態",
+      "evidence": "兩 agent 共讀共寫一張持久知識圖。每個主張都是帶驗證狀態的節點/邊。"
+    },
+    {
+      "symbol": "P",
+      "kind": "function",
+      "description": "Proposer 生成器，執行 KMAP 六步＋REDUCE 五動作，對 G 做提議性突變",
+      "evidence": "動作 schema 直接是兩方法論的步驟——KMAP 六步（採集）＋REDUCE 五動作（解歧→分類→劃界→歸位→焊接）。"
+    },
+    {
+      "symbol": "A",
+      "kind": "function",
+      "description": "Adversary 判別器／refuter，三對手 A1/A2/A3 對應 REDUCE 三閘門發動攻擊",
+      "evidence": "三攻擊模式一一對應 REDUCE 三閘門"
+    },
+    {
+      "symbol": "O",
+      "kind": "constant",
+      "description": "接地神諭，棋盤外的地面：檢索、形式驗證(Lean4)、計算反例，本架構的承重柱",
+      "evidence": "A 的每次否決都得訴諸 O；O 是外部的「現實」。**O 不接地，整套塌成幻覺辯論。**"
+    },
+    {
+      "symbol": "節點狀態",
+      "kind": "relation",
+      "description": "主張狀態機：proposed → verified 或 rejected/contested",
+      "evidence": "主張狀態：proposed →（撐過 A 的、以 O 接地的攻擊）→ verified；（失敗）→ rejected/contested。"
+    }
+  ],
+  "axioms": [
+    {
+      "id": "ax-1",
+      "name": "無接地即幻覺",
+      "formula": "¬Grounded(O) ⇒ Debate = Hallucination",
+      "description": "沒有外部接地的對抗會退化成兩個互相點頭的腦袋",
+      "evidence": "沒有外部接地的對抗，是兩個互相點頭的腦袋——自信錯誤的放大器。"
+    },
+    {
+      "id": "ax-2",
+      "name": "階梯獎勵原則",
+      "formula": "verified(r) ⇒ ∀k≤r, verified(k)",
+      "description": "節點達第 r 階，須所有 ≤r 階皆 verified，誠實停在低階優於偽裝爬到被否決的高階",
+      "evidence": "**階梯計分**：節點達第 r 階，須所有 ≤r 階皆 verified。獎勵爬高，但——"
+    },
+    {
+      "id": "ax-3",
+      "name": "誠實優先律",
+      "formula": "誠實停在已驗證的低階 > 偽裝爬到被否決的高階",
+      "description": "計分機制的核心不等式，用以防止 mode collapse",
+      "evidence": "誠實停在已驗證的低階　＞　偽裝爬到被否決的高階。"
+    },
+    {
+      "id": "ax-4",
+      "name": "自主天花板＝接地天花板",
+      "formula": "自主程度(階) ≤ 接地強度(階)",
+      "description": "自主程度受限於該階可用的接地強度，超過接地能力必須拉人/verifier進迴圈",
+      "evidence": "自主到接地撐得住的那階，超過就強制拉 verifier 或人進來"
+    },
+    {
+      "id": "ax-5",
+      "name": "非LLM地面公理",
+      "formula": "Ground(O) ∉ LLM",
+      "description": "O 若只是另一個 LLM，P 與 A 必然合謀，整套退化；地面必須非 LLM",
+      "evidence": "若唯一「接地」也是另一個 LLM，P 與 A 必然合謀，整套退化。這不是可選項，是地基。"
+    }
+  ],
+  "theorems": [
+    {
+      "id": "th-1",
+      "name": "生成驗證不對稱定理",
+      "statement": "整個引擎的複雜度結構是不對稱的：生成候選困難，驗證候選相對容易",
+      "from_axioms": [],
+      "description": "焊接候選路由進 Lean，與 AlphaProof 類自我對弈同一物理",
+      "evidence": "引擎是不對稱：**生成難、驗證易**。"
+    },
+    {
+      "id": "th-2",
+      "name": "解歧不可判定性",
+      "statement": "兩個數學結構是真不同、還是同構偽裝，一般情形不可判定，故 A1 只能是啟發式而非判定程序",
+      "from_axioms": [],
+      "description": "三閘門中解歧閘門最軟、最易被遊戲",
+      "evidence": "「兩個數學結構是真不同、還是同構偽裝」一般情形不可判定。故 A1 是啟發式＋檢索，不是判定程序，可被遊戲。"
+    },
+    {
+      "id": "th-3",
+      "name": "神諭覆蓋率瓶頸定理",
+      "statement": "真正新穎、尚未見於文獻且未必可形式化的焊縫，檢索與現有神諭無法接地，只能卡在 contested 狀態等待人類或 Lean 收口",
+      "from_axioms": ["ax-5"],
+      "description": "已知結構驗得快，真新穎的焊縫必然卡關，這是系統的硬瓶頸而非缺陷",
+      "evidence": "真正新穎的焊縫會卡在 contested，等人或 Lean 收口"
+    },
+    {
+      "id": "th-4",
+      "name": "非發現引擎定理",
+      "statement": "本架構本質是整理器與驗證器，不是自主發現引擎——它組織、驗證、呈遞，但不自封新定理",
+      "from_axioms": ["ax-2", "ax-4"],
+      "description": "把「AI 自己生定理」的宣稱按住，新穎候選只能浮出來交人/形式驗證",
+      "evidence": "它是整理器與驗證器，不是自主發現引擎。"
+    }
+  ],
+  "dag": [
+    {"id": "G", "kind": "primitive", "depends_on": []},
+    {"id": "P", "kind": "primitive", "depends_on": ["G"]},
+    {"id": "A", "kind": "primitive", "depends_on": ["G"]},
+    {"id": "O", "kind": "primitive", "depends_on": []},
+    {"id": "節點狀態", "kind": "primitive", "depends_on": ["G", "P", "A", "O"]},
+    {"id": "ax-1", "kind": "axiom", "depends_on": ["O", "A"]},
+    {"id": "ax-2", "kind": "axiom", "depends_on": ["節點狀態"]},
+    {"id": "ax-3", "kind": "axiom", "depends_on": ["ax-2"]},
+    {"id": "ax-4", "kind": "axiom", "depends_on": ["O", "節點狀態"]},
+    {"id": "ax-5", "kind": "axiom", "depends_on": ["O", "ax-1"]},
+    {"id": "th-1", "kind": "theorem", "depends_on": ["P", "A", "O"]},
+    {"id": "th-2", "kind": "theorem", "depends_on": ["A"]},
+    {"id": "th-3", "kind": "theorem", "depends_on": ["ax-5", "O"]},
+    {"id": "th-4", "kind": "theorem", "depends_on": ["ax-2", "ax-4"]}
+  ],
+  "concepts": [
+    {
+      "name": "KMAP-METHOD",
+      "canonical": "KMAP-METHOD",
+      "role": "uses",
+      "evidence": "上游**：KMAP-METHOD（製圖）＋KMAP-REDUCE（還原）"
+    },
+    {
+      "name": "KMAP-REDUCE",
+      "canonical": "KMAP-REDUCE",
+      "role": "uses",
+      "evidence": "上游**：KMAP-METHOD（製圖）＋KMAP-REDUCE（還原）"
+    },
+    {
+      "name": "debate + verifier 自我對弈",
+      "canonical": "AdversarialVerification",
+      "role": "defines",
+      "evidence": "讓 AI 自己整理知識，正解不是 GAN，是 **debate ＋ verifier 自我對弈**。"
+    },
+    {
+      "name": "GAN 類比",
+      "canonical": "GAN",
+      "role": "uses",
+      "evidence": "但 GAN 的類比在一處斷掉，且這處決定生死：**沒有 ground truth、沒有 real data distribution。**"
+    },
+    {
+      "name": "Lean4 形式驗證",
+      "canonical": "LeanFormalization",
+      "role": "uses",
+      "evidence": "**形式驗證**：Lean4，用於可形式化的焊接候選。"
+    },
+    {
+      "name": "AlphaProof 類自我對弈",
+      "canonical": "AlphaProof",
+      "role": "uses",
+      "evidence": "與 AlphaProof 類自我對弈同一物理"
+    },
+    {
+      "name": "階梯塑形獎勵",
+      "canonical": "StaircaseShapingReward",
+      "role": "defines",
+      "evidence": "**裁決與計分：階梯塑形獎勵（防崩潰）**"
+    },
+    {
+      "name": "自主天花板＝接地天花板",
+      "canonical": "AutonomyCeiling",
+      "role": "defines",
+      "evidence": "**自主天花板＝接地天花板（最該寫死的煞車）**"
+    },
+    {
+      "name": "反保證條款",
+      "canonical": "AntiGuaranteeClause",
+      "role": "uses",
+      "evidence": "「無焊縫」是合法且計分的產出（REDUCE §5 反保證條款），不是失敗。"
+    }
+  ],
+  "external_refs": [
+    {
+      "target": "lm-000150",
+      "type": "extends",
+      "evidence": "把 KMAP 附錄的「逆蒸餾」從一次性對話，變成常駐沉澱。",
+      "confidence": 0.55
+    },
+    {
+      "target": "LeanFormalization",
+      "type": "depends_on",
+      "evidence": "焊接候選路由進 Lean（你語料 GFI、拓樸微積分、M6 已在用）",
+      "confidence": 0.9
+    },
+    {
+      "target": "lm-000063",
+      "type": "applies",
+      "evidence": "**形式驗證**：Lean4，用於可形式化的焊接候選。",
+      "confidence": 0.4
+    },
+    {
+      "target": "AdversarialVerification",
+      "type": "depends_on",
+      "evidence": "讓 AI 自己整理知識，正解不是 GAN，是 **debate ＋ verifier 自我對弈**。",
+      "confidence": 0.95
+    }
+  ],
+  "notes": "論文為方法論規格書，非傳統數學定理論文；axioms/theorems 為結構化重述其設計原則與聲稱的結構性事實（如不可判定性、不對稱性），非公理化證明。KMAP-METHOD/KMAP-REDUCE 為上游方法論文件，未在給定 lm-id 列表中找到對應項，故未列為 external_ref；僅 lm-000150 (VerifyLoop，雙向持續驗證協議) 與 lm-000063 (EML-TC-LEAN 計畫書) 因主題相關性納入，信心度標低。"
+}

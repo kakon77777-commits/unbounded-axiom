@@ -1,0 +1,216 @@
+{
+  "tcf_extract_version": "0.1",
+  "id": "lm-000150",
+  "title": "VerifyLoop：面向 Agent 的雙向持續驗證與糾錯協議",
+  "language": "zh-Hant",
+  "source_file": "content/papers/2026/2026-07/VerifyLoop：面向 Agent 的雙向持續驗證與糾錯協議.md",
+  "theory_name": "VerifyLoop",
+  "extracted_by": "claude-fable-5 (automated distillation, Phase A)",
+  "extraction_date": "2026-07-02",
+  "canonical_status": "draft",
+  "primitives": [
+    {
+      "symbol": "ForwardChain",
+      "kind": "type",
+      "description": "Agent 從任務到答案的生成軌跡，由 S0-S6 節點組成",
+      "evidence": "正向鏈描述 Agent 如何從任務走向輸出。"
+    },
+    {
+      "symbol": "BackwardChain",
+      "kind": "type",
+      "description": "從最後答案反推必要前提、證據與工具紀錄的驗證軌跡",
+      "evidence": "反向鏈從最後答案出發，追問：如果這個答案成立，它需要哪些前提？"
+    },
+    {
+      "symbol": "Trace",
+      "kind": "type",
+      "description": "任務、計畫、資料、工具、推理與版本的可審計工作紀錄",
+      "evidence": "它要求的是可審計工作紀錄，包括任務分解、引用、工具回傳、claim/evidence 對應、gap 報告與版本差異。"
+    },
+    {
+      "symbol": "Claim",
+      "kind": "type",
+      "description": "最終答案中被拆解出來、可獨立驗證的聲稱",
+      "evidence": "最終答案必須拆成可驗證 claim。"
+    },
+    {
+      "symbol": "Evidence",
+      "kind": "type",
+      "description": "支持或反駁 claim 的資料",
+      "evidence": "Evidence           | 支持或反駁 claim 的資料"
+    },
+    {
+      "symbol": "ToolReceipt",
+      "kind": "type",
+      "description": "工具執行紀錄或簽名收據，用以交叉檢查工具聲稱",
+      "evidence": "Agent 可對工具執行產生不可由 LLM 偽造的簽名收據，再把 LLM 的聲稱與工具收據交叉檢查"
+    },
+    {
+      "symbol": "Gap",
+      "kind": "type",
+      "description": "正向鏈與反向鏈不一致或缺失之處，分為 technical / systemic / undecidable 三型",
+      "evidence": "Gap                | 正向鏈與反向鏈不一致或缺失之處"
+    },
+    {
+      "symbol": "VerificationDepth",
+      "kind": "constant",
+      "description": "驗證深度分級 D0 至 D5，決定驗證成本與嚴格度",
+      "evidence": "D0：直接回答，不做額外驗證。"
+    }
+  ],
+  "axioms": [
+    {
+      "id": "A1",
+      "name": "核心循環",
+      "formula": "Generate → Trace → Forward Check → Backward Check → Gap Diagnose → Correct → Version",
+      "description": "VerifyLoop 的基本運作循環，定義正向生成到反向驗證再到修正與版本化的閉環",
+      "evidence": "Generate → Trace → Forward Check → Backward Check → Gap Diagnose → Correct → Version"
+    },
+    {
+      "id": "A2",
+      "name": "反查存活原則",
+      "formula": "Answer is not final until it survives its own reverse check.",
+      "description": "答案唯有通過自身的反向檢查才能被視為最終答案",
+      "evidence": "Answer is not final until it survives its own reverse check."
+    },
+    {
+      "id": "A3",
+      "name": "工具收據強制原則",
+      "formula": "No tool claim without tool receipt.",
+      "description": "沒有工具收據，Agent 就不能聲稱工具已經支持該結論",
+      "evidence": "No tool claim without tool receipt."
+    },
+    {
+      "id": "A4",
+      "name": "不可判定誠實原則",
+      "formula": "不可判定 ≠ 失敗；假裝確定 = 失敗",
+      "description": "在資料、工具與規則不足以回答時，Agent 應明確輸出不可判定，而非假裝確定",
+      "evidence": "不可判定不是失敗。把不可判定說成確定，才是失敗。"
+    },
+    {
+      "id": "A5",
+      "name": "輸出升級原則",
+      "formula": "答案 → 答案 + 可審計軌跡",
+      "description": "Agent 的輸出必須從單純答案升級為答案加上可審計軌跡",
+      "evidence": "Agent 的輸出必須從「答案」升級為「答案 + 可審計軌跡」。"
+    }
+  ],
+  "theorems": [
+    {
+      "id": "T1",
+      "name": "Gap 三分類定理",
+      "statement": "任何正向鏈與反向鏈的不一致必可歸類為 Technical Gap、Systemic Gap 或 Undecidable Gap 三者之一，且各自對應不同修正動作",
+      "from_axioms": ["A1", "A2"],
+      "description": "技術性斷鏈可透過補資料修正；系統性斷鏈需請求人類或新工具；不可判定斷鏈須明確輸出不確定",
+      "evidence": "Technical Gap → 補資料、補步驟、重跑工具。\nSystemic Gap → 請求人類、要求新工具、降低結論。\nUndecidable Gap → 明確輸出不確定。"
+    },
+    {
+      "id": "T2",
+      "name": "驗證深度—成本權衡定理",
+      "statement": "驗證可靠性與驗證成本之間存在動態平衡，最佳驗證深度由任務風險、證據需求與成本限制共同決定",
+      "from_axioms": [],
+      "description": "高驗證深度帶來更多 token、工具調用、延遲與人類審查成本，因此不應對所有任務追求最大驗證深度",
+      "evidence": "因此 VerifyLoop 不追求所有任務都最大驗證，而是追求：\n任務風險 × 證據需求 × 成本限制\n之間的動態平衡。"
+    },
+    {
+      "id": "T3",
+      "name": "工具收據交叉檢查定理",
+      "statement": "將 LLM 的工具聲稱與工具執行收據交叉比對，可即時偵測虛構工具調用、錯報數量或把推論寫成事實等問題",
+      "from_axioms": ["A3"],
+      "description": "工具收據作為不可由 LLM 偽造的簽名證據，是偵測 tool-use hallucination 的關鍵機制",
+      "evidence": "再把 LLM 的聲稱與工具收據交叉檢查，以即時偵測虛構工具調用、錯報數量或把推論寫成事實等問題。"
+    },
+    {
+      "id": "T4",
+      "name": "Gap 分類器判定邏輯",
+      "statement": "給定 claim、evidence、tool_receipts 與 task_context，可用有限規則序列判定 gap 類型（technical / systemic / undecidable / supported）",
+      "from_axioms": ["A1"],
+      "description": "附錄 C 提供最小 Gap 分類器邏輯的可執行虛擬碼版本",
+      "evidence": "def classify_gap(claim, evidence, tool_receipts, task_context):\n    if claim.requires_tool and not tool_receipts.exists_for(claim):\n        return \"technical\", \"Missing tool receipt\""
+    }
+  ],
+  "dag": [
+    {"id": "ForwardChain", "kind": "primitive", "depends_on": []},
+    {"id": "BackwardChain", "kind": "primitive", "depends_on": ["ForwardChain"]},
+    {"id": "Trace", "kind": "primitive", "depends_on": ["ForwardChain"]},
+    {"id": "Claim", "kind": "primitive", "depends_on": ["BackwardChain"]},
+    {"id": "Evidence", "kind": "primitive", "depends_on": ["Claim"]},
+    {"id": "ToolReceipt", "kind": "primitive", "depends_on": ["Claim"]},
+    {"id": "Gap", "kind": "primitive", "depends_on": ["ForwardChain", "BackwardChain"]},
+    {"id": "VerificationDepth", "kind": "constant", "depends_on": []},
+    {"id": "A1", "kind": "axiom", "depends_on": ["ForwardChain", "BackwardChain", "Trace"]},
+    {"id": "A2", "kind": "axiom", "depends_on": ["BackwardChain"]},
+    {"id": "A3", "kind": "axiom", "depends_on": ["ToolReceipt", "Claim"]},
+    {"id": "A4", "kind": "axiom", "depends_on": ["Gap"]},
+    {"id": "A5", "kind": "axiom", "depends_on": ["Trace"]},
+    {"id": "T1", "kind": "theorem", "depends_on": ["A1", "A2", "Gap"]},
+    {"id": "T2", "kind": "theorem", "depends_on": ["VerificationDepth"]},
+    {"id": "T3", "kind": "theorem", "depends_on": ["A3", "ToolReceipt"]},
+    {"id": "T4", "kind": "theorem", "depends_on": ["A1", "Gap", "Claim", "Evidence", "ToolReceipt"]}
+  ],
+  "concepts": [
+    {
+      "name": "VerifyLoop",
+      "canonical": "VerifyLoop",
+      "role": "defines",
+      "evidence": "本文提出 **VerifyLoop**：一套面向 Agent 工作流的雙向持續驗證與糾錯協議。"
+    },
+    {
+      "name": "Trace-based Verification",
+      "canonical": "VerifyLoop",
+      "role": "defines",
+      "evidence": "Trace-based Agent 不只看最後答案，而是要求 Agent 留下工作軌跡"
+    },
+    {
+      "name": "Gap Diagnosis",
+      "canonical": "VerifyLoop",
+      "role": "defines",
+      "evidence": "當正向鏈與反向鏈不一致時，VerifyLoop 不應只說「錯了」，而應輸出 gap 類型。"
+    },
+    {
+      "name": "對抗驗證 / 資訊隔離檢查",
+      "canonical": "AdversarialVerification",
+      "role": "uses",
+      "evidence": "Checker 在不看原始答案的情況下對 retrieved evidence 驗證，以降低 self-confirmation bias。"
+    },
+    {
+      "name": "Agent 方法論",
+      "canonical": "AMEP",
+      "role": "uses",
+      "evidence": "類型：Agent 方法論 / 開源協議白皮書 / Reliability Layer / Trace-based Verification"
+    },
+    {
+      "name": "萬物雙向持續驗證糾錯系統",
+      "canonical": "VerifyLoop",
+      "role": "extends",
+      "evidence": "本文由內部理論「萬物雙向持續驗證糾錯系統」降維改寫而來。"
+    },
+    {
+      "name": "Verification Depth",
+      "canonical": "VerifyLoop",
+      "role": "defines",
+      "evidence": "VerifyLoop 使用「驗證深度」表示不同任務需要不同程度的檢查。"
+    },
+    {
+      "name": "版本化 / Version Trace",
+      "canonical": "VerifyLoop",
+      "role": "defines",
+      "evidence": "知識庫與 Agent 輸出應支援版本化更新。"
+    }
+  ],
+  "external_refs": [
+    {
+      "target": "AdversarialVerification",
+      "type": "applies",
+      "evidence": "Solver 先生成答案，Proposer 將回答拆成可驗證原子命題，Checker 在不看原始答案的情況下對 retrieved evidence 驗證，以降低 self-confirmation bias。VerifyLoop 可吸收這個精神",
+      "confidence": 0.55
+    },
+    {
+      "target": "AMEP",
+      "type": "applies",
+      "evidence": "類型：Agent 方法論 / 開源協議白皮書 / Reliability Layer / Trace-based Verification",
+      "confidence": 0.3
+    }
+  ],
+  "notes": "自足協議白皮書，主要引用外部學術工作（AgentHallu, MARCH, NabaOS）非本語料庫論文，故未列入 external_refs（僅 MARCH 之對抗式/資訊隔離檢查精神以低信心度映射至 AdversarialVerification）。無直接文字提及語料庫其他理論（Closure/DCO/WT等）。"
+}

@@ -1,0 +1,242 @@
+{
+  "tcf_extract_version": "0.1",
+  "id": "lm-000060",
+  "title": "EML-OPN-v0.3 運算優先性驗證模組",
+  "language": "zh-Hant",
+  "source_file": "content/papers/2026/2026-06/EML-OPN-v0.3 運算優先性驗證模組.md",
+  "theory_name": "運算優先順序的符號中立性猜想（Symbol-Neutrality of Operator Precedence）",
+  "extracted_by": "claude-fable-5 (automated distillation, Phase A)",
+  "extraction_date": "2026-07-02",
+  "canonical_status": "draft",
+  "primitives": [
+    {
+      "symbol": "T",
+      "kind": "type",
+      "description": "表達式樹：有根有序二叉樹，葉節點為交換環 R 中的值，內部節點為 {+, ×} 運算符。",
+      "evidence": "設表達式樹 $T$ 為有根有序二叉樹，定義如下："
+    },
+    {
+      "symbol": "val",
+      "kind": "function",
+      "description": "樹的值函數，由葉節點標籤與內部節點運算遞迴定義，將表達式樹映射到交換環元素。",
+      "evidence": "樹的值函數 $\\text{val}: T \\to R$，由葉節點標籤與內部節點運算遞迴定義"
+    },
+    {
+      "symbol": "S_k",
+      "kind": "type",
+      "description": "完整展開系統的第 k 步狀態，一組具名數值的集合；狀態轉移 S_k → S_{k+1} 由明確的基本運算定義。",
+      "evidence": "$$S_{k+1} = \\bigl(S_k \\setminus \\{a, b\\}\\bigr) \\cup \\{a + b\\}$$"
+    },
+    {
+      "symbol": "parse_+ / parse_×",
+      "kind": "function",
+      "description": "加法優先系統與乘法優先系統各自的解析函數，將線性符號字串 σ 映射為表達式樹。",
+      "evidence": "設 $\\text{parse}_+(\\sigma) = T_+$ 為加法優先系統解析出的表達式樹，$\\text{parse}_\\times(\\sigma) = T_\\times$ 為乘法優先系統解析出的表達式樹。"
+    },
+    {
+      "symbol": "×（重複加法展開）",
+      "kind": "function",
+      "description": "乘法被完全展開為重複加法的生成定義：a×b := a+a+...+a（b 次）。",
+      "evidence": "$$a \\times b \\coloneqq \\underbrace{a + a + \\cdots + a}_{b \\text{ 次}} \\quad (b \\in \\mathbb{Z}^+)$$"
+    },
+    {
+      "symbol": "R",
+      "kind": "type",
+      "description": "基礎代數結構：一個交換環（基礎情形取 R = ℤ），葉節點集合 L(T) ⊂ R。",
+      "evidence": "葉節點集合 $\\mathcal{L}(T) \\subset R$，其中 $R$ 為一交換環（基礎情形取 $R = \\mathbb{Z}$）"
+    }
+  ],
+  "axioms": [
+    {
+      "id": "ax-tree-def",
+      "name": "表達式樹形式化定義",
+      "formula": "L(T) ⊂ R, I(T) ⊂ {+, ×}, val: T → R",
+      "description": "表達式樹的葉節點集合、內部節點集合與值函數的定義，作為命題的基礎結構承載體。",
+      "evidence": "設表達式樹 $T$ 為有根有序二叉樹，定義如下：\n\n- 葉節點集合 $\\mathcal{L}(T) \\subset R$"
+    },
+    {
+      "id": "ax-state-transition",
+      "name": "完整展開系統的狀態轉移規則",
+      "formula": "S_{k+1} = (S_k \\ {a,b}) ∪ {a+b}",
+      "description": "每一步狀態轉移由一個明確的基本運算（加法）定義，a, b 為顯式指定的操作元；計算在 |S_k|=1 時終止。",
+      "evidence": "每一步狀態轉移 $S_k \\to S_{k+1}$ 由一個明確的基本運算定義：\n\n$$S_{k+1} = \\bigl(S_k \\setminus \\{a, b\\}\\bigr) \\cup \\{a + b\\}$$"
+    },
+    {
+      "id": "ax-fixed-point-def",
+      "name": "不動點定義",
+      "formula": "val(T) := lim_{k→k_final} S_k",
+      "description": "對給定表達式樹 T，其不動點值定義為狀態序列收斂至終態的極限；命題斷言此值對所有合法計算路徑唯一。",
+      "evidence": "$$\\text{val}(T) \\coloneqq \\lim_{k \\to k_{\\text{final}}} S_k$$"
+    },
+    {
+      "id": "ax-commutative-ring",
+      "name": "交換環公理（附錄 E）",
+      "formula": "(R,+) 交換群；(R,×) 交換么半群；a(b+c)=ab+ac，(a+b)c=ac+bc",
+      "description": "命題所依賴的核心代數公理：加法交換群、乘法交換么半群、左右分配律；分配律與交換律是匯流性論證的代數根基。",
+      "evidence": "注：命題所依賴的核心環公理為分配律與交換律。在這兩個公理成立的範圍內，計算路徑的匯流性可被嚴格論證。"
+    }
+  ],
+  "theorems": [
+    {
+      "id": "thm-proposition-core",
+      "name": "核心命題（運算優先性的符號中立性）",
+      "statement": "一個數學表達式的計算結果，是其所對應的表達式樹在代數結構中的固有值，不依賴任何符號優先順序約定；當表達式被完整展開，不同優先順序系統所得到的計算路徑不同，但均收斂至同一不動點。",
+      "from_axioms": ["ax-tree-def", "ax-state-transition", "ax-fixed-point-def"],
+      "description": "全文的中心猜想，尚未完整形式化證明，僅有限算例驗證。",
+      "evidence": "一個數學表達式的計算結果，是其所對應的表達式樹在代數結構中的固有值。這個值不依賴任何符號優先順序約定。"
+    },
+    {
+      "id": "thm-verify1-add-first",
+      "name": "驗證一：加法優先系統的完整展開",
+      "statement": "取表達式樹 T = ADD(2, MUL(3,4))，在加法優先系統中完整展開後，不動點為十四。",
+      "from_axioms": ["ax-state-transition", "ax-fixed-point-def"],
+      "description": "第一個算例驗證，展示加法優先系統下顯式標記乘法分組後的計算路徑。",
+      "evidence": "不動點為十四。"
+    },
+    {
+      "id": "thm-verify2-mul-first",
+      "name": "驗證二：乘法優先系統的完整展開",
+      "statement": "取相同表達式樹 T，在乘法優先系統中完整展開後，狀態序列從中間步驟起與驗證一完全吻合，不動點同樣為十四。",
+      "from_axioms": ["ax-state-transition", "ax-fixed-point-def"],
+      "description": "第二個算例驗證，展示乘法優先系統路徑與加法優先系統路徑自 S_1 起完全一致。",
+      "evidence": "不動點同樣為十四。"
+    },
+    {
+      "id": "thm-verify3-distributive",
+      "name": "驗證三：分配律作為匯流性的形式記錄",
+      "statement": "沿分配律等式左側路徑（先加後乘）與右側路徑（先乘後加）分別完整計算，兩條路徑的計算策略完全相反，但不動點一致，均為二十七。",
+      "from_axioms": ["ax-commutative-ring", "ax-state-transition"],
+      "description": "第三個算例驗證，取 a=3,b=4,c=5，展示分配律等式兩側對應兩條路徑的匯流。",
+      "evidence": "兩條路徑的計算策略完全相反，但不動點一致，均為二十七。"
+    },
+    {
+      "id": "thm-boundary-noncommutative",
+      "name": "命題的邊界條件（非交換代數）",
+      "statement": "當底層結構擴展至非交換代數（如矩陣代數、四元數代數）時，乘法的不可交換性打破了路徑無關性的一般保證，命題需要精確的限制條件才能成立。",
+      "from_axioms": ["ax-commutative-ring"],
+      "description": "命題適用範圍的明確限界聲明，非交換情形留待附錄 F（預留）。",
+      "evidence": "當底層結構擴展至非交換代數（如矩陣代數、四元數代數）時，乘法的不可交換性打破了路徑無關性的一般保證，命題需要精確的限制條件才能成立。"
+    },
+    {
+      "id": "thm-scope-limit",
+      "name": "命題的認識論限界",
+      "statement": "三個算例構成正面的有限證據，但無法構成對命題的完整形式化證明；命題的聲稱範圍是無限維的，有限個例子永遠無法窮盡這個空間。",
+      "from_axioms": [],
+      "description": "作者明確承認的驗證不完備性，區分「未被反駁」與「已被證明」。",
+      "evidence": "三個算例構成正面的有限證據，但無法構成對命題的完整形式化證明。"
+    }
+  ],
+  "dag": [
+    { "id": "prim-tree", "kind": "primitive", "depends_on": [] },
+    { "id": "prim-R", "kind": "primitive", "depends_on": [] },
+    { "id": "prim-val", "kind": "primitive", "depends_on": ["prim-tree", "prim-R"] },
+    { "id": "prim-state", "kind": "primitive", "depends_on": ["prim-R"] },
+    { "id": "prim-parse", "kind": "primitive", "depends_on": ["prim-tree"] },
+    { "id": "prim-mul-expand", "kind": "primitive", "depends_on": ["prim-state"] },
+    { "id": "ax-tree-def", "kind": "axiom", "depends_on": ["prim-tree", "prim-R", "prim-val"] },
+    { "id": "ax-state-transition", "kind": "axiom", "depends_on": ["prim-state", "prim-mul-expand"] },
+    { "id": "ax-fixed-point-def", "kind": "axiom", "depends_on": ["prim-state", "prim-val"] },
+    { "id": "ax-commutative-ring", "kind": "axiom", "depends_on": ["prim-R"] },
+    { "id": "thm-proposition-core", "kind": "theorem", "depends_on": ["ax-tree-def", "ax-state-transition", "ax-fixed-point-def"] },
+    { "id": "thm-verify1-add-first", "kind": "theorem", "depends_on": ["ax-state-transition", "ax-fixed-point-def", "prim-parse"] },
+    { "id": "thm-verify2-mul-first", "kind": "theorem", "depends_on": ["ax-state-transition", "ax-fixed-point-def", "prim-parse", "thm-verify1-add-first"] },
+    { "id": "thm-verify3-distributive", "kind": "theorem", "depends_on": ["ax-commutative-ring", "ax-state-transition"] },
+    { "id": "thm-boundary-noncommutative", "kind": "theorem", "depends_on": ["ax-commutative-ring"] },
+    { "id": "thm-scope-limit", "kind": "theorem", "depends_on": ["thm-proposition-core", "thm-verify1-add-first", "thm-verify2-mul-first", "thm-verify3-distributive"] }
+  ],
+  "concepts": [
+    {
+      "name": "匯流性",
+      "canonical": "Confluence",
+      "role": "uses",
+      "evidence": "即計算理論中所稱的匯流性。任意兩條從同一表達式樹出發的合法歸約路徑，必然終止於同一個值。"
+    },
+    {
+      "name": "交換環",
+      "canonical": "CommutativeRing",
+      "role": "uses",
+      "evidence": "上述框架在交換環（整數環、有理數域、多項式環等）中具有代數結構的明確支撐。"
+    },
+    {
+      "name": "完整展開系統",
+      "canonical": "FullyExpandedSystem",
+      "role": "defines",
+      "evidence": "**完整展開系統的定義。** 一個計算過程被稱為「完整展開」，當且僅當三個條件同時滿足"
+    },
+    {
+      "name": "不動點",
+      "canonical": "FixedPoint",
+      "role": "defines",
+      "evidence": "**不動點的存在性。** 在交換環上，完整展開系統的不動點存在性可被形式化論證。"
+    },
+    {
+      "name": "Church-Rosser 定理",
+      "canonical": "ChurchRosser",
+      "role": "uses",
+      "evidence": "這一性質與 Church-Rosser 定理在 lambda 演算中所保證的正規形式唯一性，在結構上高度類比"
+    },
+    {
+      "name": "項重寫系統",
+      "canonical": "TermRewritingSystem",
+      "role": "uses",
+      "evidence": "將完整展開系統形式化為一個項重寫系統（term rewriting system），再引用既有的匯流性判定定理。"
+    },
+    {
+      "name": "運算優先順序約定",
+      "canonical": "OperatorPrecedenceConvention",
+      "role": "defines",
+      "evidence": "運算優先順序（先乘除後加減）並非數學真理，而是符號系統在將多維表達式結構投影為一維線性字串時，為消除歧義所採用的約定協議。"
+    },
+    {
+      "name": "表達式樹的序列化",
+      "canonical": "TreeSerialization",
+      "role": "defines",
+      "evidence": "線性符號字串是這棵樹的序列化（serialization），不同的優先順序系統對應不同的序列化與反序列化規則。"
+    },
+    {
+      "name": "計算完備性",
+      "canonical": "ComputationalCompleteness",
+      "role": "uses",
+      "evidence": "一個「完整展開系統」是否對應某種圖靈完備的計算模型的子集？完整展開的可行性在計算複雜度上的代價是什麼？"
+    },
+    {
+      "name": "EML（文件族）",
+      "canonical": "EML",
+      "role": "uses",
+      "evidence": "**文件編號：** EML-OPN-v0.3"
+    },
+    {
+      "name": "Lean 形式化證明",
+      "canonical": "LeanFormalization",
+      "role": "uses",
+      "evidence": "完整的形式化證明需要以下要素，本文均未完成：其一，對所有有限算術表達式建立歸納論證"
+    }
+  ],
+  "external_refs": [
+    {
+      "target": "EML",
+      "type": "extends",
+      "evidence": "**文件編號：** EML-OPN-v0.3",
+      "confidence": 0.6
+    },
+    {
+      "target": "ChurchRosser",
+      "type": "applies",
+      "evidence": "這一性質與 Church-Rosser 定理在 lambda 演算中所保證的正規形式唯一性，在結構上高度類比，詳見附錄 G（預留）。",
+      "confidence": 0.7
+    },
+    {
+      "target": "TermRewritingSystem",
+      "type": "applies",
+      "evidence": "預計路徑：將完整展開系統形式化為一個項重寫系統（term rewriting system），再引用既有的匯流性判定定理。",
+      "confidence": 0.6
+    },
+    {
+      "target": "lm-000063",
+      "type": "critiques",
+      "evidence": "完整的形式化證明需要以下要素，本文均未完成：其一，對所有有限算術表達式建立歸納論證，證明在完整展開後、交換環上的計算總是匯流的",
+      "confidence": 0.3
+    }
+  ],
+  "notes": "此文為猜想階段的工作草稿（v0.4 修訂內容，文件編號沿用 EML-OPN-v0.3），命題尚無完整形式化證明。附錄 F-I 為預留擴展空間（非交換代數、Church-Rosser 聯繫、廣義代數結構、計算完備性），未含實質內容，故未單獨列為 axiom/theorem。external_ref 至 lm-000063（Lean 形式化計畫）為低信心度類比連結，因兩文皆涉及 Lean/項重寫式的形式化證明訴求，但本文未直接引用該文件。"
+}

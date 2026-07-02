@@ -45,10 +45,49 @@ function assetFetch(request, env, path) {
 }
 
 // ---- /api/base-space : id-keyed Triadic-Logic adjacency + state matrix ----
+// Order of truth (handoff spec §4): real TCF dependency graph (/ai/graph.json,
+// built from registry/tcf/ extractions) > KV crawler-attention layer > simulated seed.
 async function baseSpace(request, env) {
   if (request.method === "OPTIONS") return new Response(null, { headers: CORS });
   const hasKV = !!env.BASE_SPACE_KV;
   let weights = null, states = null, hits = 0;
+
+  // L1 real topology: if the build produced /ai/graph.json, serve the real graph.
+  try {
+    const g = await assetFetch(request, env, "/ai/graph.json");
+    if (g.ok) {
+      const graph = await g.json();
+      if (graph && Array.isArray(graph.nodes) && Array.isArray(graph.edges)) {
+        const w = {}, s = {}, edgeMeta = {};
+        for (const n of graph.nodes) {
+          w[n.id] = { [n.id]: 1.0 };
+          s[n.id] = n.state || "omega";
+        }
+        for (const e of graph.edges) {
+          if (!w[e.from]) w[e.from] = { [e.from]: 1.0 };
+          w[e.from][e.to] = e.weight;
+          edgeMeta[e.from + "|" + e.to] = {
+            type: e.type,
+            evidence: (e.evidence && e.evidence[0]) || null,
+          };
+        }
+        if (hasKV) {
+          try { hits = parseInt(await env.BASE_SPACE_KV.get("hits") || "0", 10); } catch (err) { /* attention layer optional */ }
+        }
+        return new Response(JSON.stringify({
+          weights: w, states: s, hits,
+          edge_meta: edgeMeta,
+          meta: {
+            source: "tcf-graph",
+            version: graph.version,
+            mapped: graph.nodes.length,
+            total: (graph.coverage && graph.coverage.papers_total) || null,
+            note: "Real TCF-extracted dependency topology (Phase A). Unmapped papers are absent, not zero.",
+          },
+        }), { headers: { ...CORS, "Content-Type": "application/json" } });
+      }
+    }
+  } catch (e) { /* fall through to KV / simulated seed */ }
 
   if (hasKV) {
     try {

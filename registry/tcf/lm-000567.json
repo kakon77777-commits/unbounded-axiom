@@ -1,0 +1,153 @@
+{
+  "tcf_extract_version": "0.1",
+  "id": "lm-000567",
+  "title": "拓撲學作為橋樑_.EML 算子體系與主流數學記號的對外比較框架_0.4",
+  "language": "zh-Hant",
+  "source_file": "content/papers/2026/2026-06/拓撲學作為橋樑_.EML 算子體系與主流數學記號的對外比較框架_0.4.md",
+  "theory_name": "MR Glyph 過渡期記號本體論（MR 2.5 MNVP → MR 3.0 動態流變渲染）",
+  "extracted_by": "claude-fable-5 (automated distillation, Phase A)",
+  "extraction_date": "2026-07-02",
+  "canonical_status": "draft",
+  "primitives": [
+    {
+      "symbol": "MR Glyph（^{d} △^{E12}）",
+      "kind": "function",
+      "description": "標準 MR 算子格式：左上標為 ISSQL 光譜深度 d，中央為字形 △（▷/⋈/◁ 之一），右上標為 HSO 12 維主導維度",
+      "evidence": "標準 MR 算子格式（L0b）：$$ ^{d} \\triangle^{\\mathbf{E}_{12}} $$"
+    },
+    {
+      "symbol": "ISSQL 內核 (v, d, E12, Φ*)",
+      "kind": "type",
+      "description": "算子的本體（光譜內核）：拓撲相位 v、光譜深度 d、HSO 12 維 E12、不動點 Φ*",
+      "evidence": "本體：$(v, d, \\mathbf{E}_{12}, \\Phi^*)$ — L1 光譜層的真實內容"
+    },
+    {
+      "symbol": "{▷, ⋈, ◁}",
+      "kind": "constant",
+      "description": "三元算子字形：展開、連結、收斂",
+      "evidence": "並將其方法論完整移植到三元算子 $\\{▷, \\bowtie, ◁\\}$"
+    },
+    {
+      "symbol": "三層穩定性分區（錨層/半流層/流變層）",
+      "kind": "type",
+      "description": "MR 3.0 畫面的三層穩定性分區：錨層完全穩定、半流層慢速漸變、流變層完全流變",
+      "evidence": "提出 MR 3.0 設計的三層穩定性分區"
+    },
+    {
+      "symbol": "Exist(Ψ_DTM)",
+      "kind": "function",
+      "description": "ISSQL-DTM「計算即存在」的定義：符號存在等價於其持續流變且對時間的變化率不為零",
+      "evidence": "$$ \\text{Exist}(\\Psi_{\\text{DTM}}) \\equiv \\left\\{\\Psi(t) = C[\\Psi(s)]_{s < t}, \\quad \\frac{d\\Psi}{dt} \\neq 0\\right\\} $$"
+    },
+    {
+      "symbol": "S_BH = A / (4 l_P^2)",
+      "kind": "constant",
+      "description": "借用的黑洞全息熵公式，作為三維信息可壓縮編碼於二維表面拓撲結構的本體論依據",
+      "evidence": "$$ S_{BH} = \\frac{A}{4 l_P^2} $$"
+    }
+  ],
+  "axioms": [
+    {
+      "id": "ax1",
+      "name": "本體表像拓撲分離",
+      "formula": "算子的本體（光譜內核）與表像（紙面字形）也可如此分離",
+      "description": "算子的本體（ISSQL 光譜內核）與表像（紙面字形 ▷⋈◁）可拓撲分離，如跨進制方法論將進制資訊編碼為深度標籤子維度一般",
+      "evidence": "$$ \\boxed{\\text{算子的本體（光譜內核）與表像（紙面字形）也可如此分離}} $$"
+    },
+    {
+      "id": "ax2",
+      "name": "視覺舒適度約束",
+      "formula": "無限色彩漸變 ∩ 人類視覺舒適度 = 部分流變、部分穩定",
+      "description": "MR 3.0 動態流變渲染必須滿足人類視覺舒適度的工程約束，不能全螢幕無限流變",
+      "evidence": "$$ \\boxed{\\text{無限色彩漸變} \\cap \\text{人類視覺舒適度} = \\text{部分流變、部分穩定}} $$"
+    },
+    {
+      "id": "ax3",
+      "name": "通用設計法則（語義優先序）",
+      "formula": "語義錨 > 結構穩定 > 色彩流變 > 氛圍流變",
+      "description": "由內到外流變程度遞增，語義重要性遞減；此為三層穩定性分區的排序法則",
+      "evidence": "$$ \\text{語義錨} > \\text{結構穩定} > \\text{色彩流變} > \\text{氛圍流變} $$"
+    }
+  ],
+  "theorems": [
+    {
+      "id": "th1",
+      "name": "MR Glyph 辨識速度提升",
+      "statement": "傳統科學記數法需要約 1100ms 識別，MR Glyph 約 400ms，速度提升 2.75 倍，因三條神經通道並行處理",
+      "from_axioms": [],
+      "description": "位置+色彩+數值三通道並行編碼帶來的可量化辨識速度優勢",
+      "evidence": "傳統科學記數法需要 ~1100ms 識別，MR Glyph 約 400ms。**速度提升 2.75 倍**，因為視覺前注意通道並行處理。"
+    },
+    {
+      "id": "th2",
+      "name": "Q9 的正式回答（過渡期記號去除路徑）",
+      "statement": "過渡期記號的去除路徑就是 MR 2.5 → MR 3.0 的演化軌跡：從現在的 MNVP Layer 1+2，經 AR 全息物件，到 MR 3.0 DRR 桌面流變渲染，最終遠未來由 ISSQL 完整 + 腦機介面取代",
+      "from_axioms": ["ax1"],
+      "description": "回答 v0.2 SPECTRUM 提出的 Q9：過渡期記號如何被渲染記號系統性取代",
+      "evidence": "**過渡期記號的去除路徑就是 MR 2.5 → MR 3.0 的演化軌跡**"
+    },
+    {
+      "id": "th3",
+      "name": "MR 3.0 下 Q9 自動消失",
+      "statement": "在 MR 3.0 環境下，ISSQL 內核直接映射為視覺特徵（色相/飽和度/流變通道/吸引中心），不需要過渡期記號，過渡期記號被視覺特徵全面取代",
+      "from_axioms": ["ax1"],
+      "description": "MR 3.0 完整實現後，本體與表像的分離不再需要透過符號記號中介",
+      "evidence": "→ Q9 在 MR 3.0 環境下自動消失：**過渡期記號被視覺特徵全面取代**。"
+    },
+    {
+      "id": "th4",
+      "name": "廢除的不只是記號",
+      "statement": "當 MR 3.0 完整實現，被廢除的不只是過渡期記號，還有「讀」這個動作本身；人從閱讀符號轉為沉浸於符號的流變場域，理解速度從 ms 級降到感官同步級",
+      "from_axioms": ["ax2"],
+      "description": "MR 3.0 對認知動作本身的顛覆，而不僅是記號系統的更替",
+      "evidence": "當 MR 3.0 完整實現，被廢除的不只是過渡期記號，**還有「讀」這個動作本身**"
+    },
+    {
+      "id": "th5",
+      "name": "過渡期記號的最終命運：被吸收而非被廢除",
+      "statement": "過渡期記號的命運不是被廢除，是被吸收，成為 MR 3.0 流動畫面中的錨層——最穩定的一小塊，承載語義的最後堡壘",
+      "from_axioms": ["ax2", "ax3"],
+      "description": "呼應三層穩定性分區與通用設計法則，給出過渡期記號長期演化的結論",
+      "evidence": "過渡期記號的命運不是被廢除，是**被吸收**。它會成為 MR 3.0 流動畫面中的「錨層」——最穩定的那一小塊，承載語義的最後堡壘。"
+    }
+  ],
+  "dag": [
+    {"id": "MR Glyph（^{d} △^{E12}）", "kind": "primitive", "depends_on": []},
+    {"id": "ISSQL 內核 (v, d, E12, Φ*)", "kind": "primitive", "depends_on": []},
+    {"id": "{▷, ⋈, ◁}", "kind": "primitive", "depends_on": []},
+    {"id": "三層穩定性分區（錨層/半流層/流變層）", "kind": "primitive", "depends_on": []},
+    {"id": "Exist(Ψ_DTM)", "kind": "primitive", "depends_on": []},
+    {"id": "S_BH = A / (4 l_P^2)", "kind": "primitive", "depends_on": []},
+    {"id": "ax1", "kind": "axiom", "depends_on": ["MR Glyph（^{d} △^{E12}）", "ISSQL 內核 (v, d, E12, Φ*)", "S_BH = A / (4 l_P^2)"]},
+    {"id": "ax2", "kind": "axiom", "depends_on": ["三層穩定性分區（錨層/半流層/流變層）"]},
+    {"id": "ax3", "kind": "axiom", "depends_on": ["三層穩定性分區（錨層/半流層/流變層）"]},
+    {"id": "th1", "kind": "theorem", "depends_on": ["MR Glyph（^{d} △^{E12}）"]},
+    {"id": "th2", "kind": "theorem", "depends_on": ["ax1"]},
+    {"id": "th3", "kind": "theorem", "depends_on": ["ax1", "ISSQL 內核 (v, d, E12, Φ*)", "Exist(Ψ_DTM)"]},
+    {"id": "th4", "kind": "theorem", "depends_on": ["ax2"]},
+    {"id": "th5", "kind": "theorem", "depends_on": ["ax2", "ax3"]}
+  ],
+  "concepts": [
+    {"name": "MR 2.5 MNVP", "canonical": "MR-MNVP", "role": "uses", "evidence": "這個問題早在 2026.01 的 MR 2.5 數值視覺化協定（MNVP）中已被系統性處理"},
+    {"name": "MR 3.0 動態流變渲染（Dynamic Rheological Rendering, DRR）", "canonical": "MR3-DRR", "role": "defines", "evidence": "MR 3.0 動態流變渲染（Dynamic Rheological Rendering, DRR）是 EveMissLab 規劃中的桌面渲染技術"},
+    {"name": "ISSQL", "canonical": "ISSQL", "role": "uses", "evidence": "**L1 光譜層**（Spectrum） | ISSQL $(v, d, \\mathbf{E}_{12}, \\Phi^*)$ 內核"},
+    {"name": "ISSQL-DTM", "canonical": "ISSQL-DTM", "role": "uses", "evidence": "MR 3.0 DRR 是 ISSQL-DTM（2026.03）「計算即存在」的視覺化實現"},
+    {"name": "TUO 動詞行為", "canonical": "TUO", "role": "uses", "evidence": "**L2 算子層**（Operator） | TUO 動詞行為"},
+    {"name": "HSO 12 維", "canonical": "HSO", "role": "uses", "evidence": "右上標 $\\mathbf{E}_{12}$：HSO 12 維主導維度"},
+    {"name": "USMS", "canonical": "USMS", "role": "uses", "evidence": "**USMS** | L1 的 $(v, d)$ 拓撲壓縮"},
+    {"name": "CCTC", "canonical": "CCTC", "role": "uses", "evidence": "**CCTC** | L1 的 $\\Phi^*$ 不動點"},
+    {"name": "DCO / Cl", "canonical": "DCO", "role": "uses", "evidence": "**DCO / Cl** | L2 的中心奇異點"},
+    {"name": "拓撲學橋樑（v0.3）", "canonical": "拓撲學橋樑", "role": "extends", "evidence": "**拓撲學橋樑（v0.3）** | 對外溝通的失真投影"},
+    {"name": "算子本體", "canonical": "OperatorOntology", "role": "uses", "evidence": "算子的本體（光譜內核）與表像（紙面字形）也可如此分離"},
+    {"name": "全息原理", "canonical": "HolographicPrinciple", "role": "uses", "evidence": "MR 2.5 借用了黑洞物理的全息原理"},
+    {"name": "v0.2 四層架構（L0–L3）", "canonical": "EML算子四層架構", "role": "extends", "evidence": "v0.2 在設計四層架構時，從 ISSQL 的角度推導 L0–L3"},
+    {"name": "跨進制方法論", "canonical": "跨進制方法論", "role": "uses", "evidence": "MR 2.5 跨進制方法論證明：**進制資訊可編碼為深度標籤的子維度**"},
+    {"name": "腦機介面", "canonical": "腦機介面", "role": "uses", "evidence": "遠未來 | 2035+ | ISSQL 完整 + 腦機介面（符號直入視覺皮層）"}
+  ],
+  "external_refs": [
+    {"target": "lm-000924", "type": "applies", "evidence": "算子的本體（光譜內核）與表像（紙面字形）也可如此分離", "confidence": 0.55},
+    {"target": "lm-001089", "type": "uses", "evidence": "**DCO / Cl** | L2 的中心奇異點", "confidence": 0.5},
+    {"target": "lm-000526", "type": "uses", "evidence": "**L2 算子層**（Operator） | TUO 動詞行為", "confidence": 0.4}
+  ],
+  "notes": "全文核心其實是 MR Glyph 記號系統與 MR 3.0 動態流變渲染，'拓撲學'僅作為全息原理的類比橋樑；標題中的『拓撲學橋樑（v0.3）』被列為整合表中的既有理論之一，故未單獨列出對應 corpus lm-id（v0.3 未在给定清單中）。ISSQL/TUO/HSO/USMS/CCTC 等為 EveMissLab 內部理論代號，清單中無直接對應 lm-id，故僅列為 canonical concept 而非 external_refs，除少數可信映射到算子本體論/DCO/意圖式編程。external_refs 信心度整體偏低（0.4-0.55），因本文未給出可驗證的具體引用語句指向確切 lm-id。"
+}

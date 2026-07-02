@@ -1,0 +1,211 @@
+{
+  "tcf_extract_version": "0.1",
+  "id": "lm-000870",
+  "title": "絕對動態邏輯理論：從靜態悖論到強制判斷",
+  "language": "zh-Hant",
+  "source_file": "content/papers/2026/2026-05/絕對動態邏輯理論：從靜態悖論到強制判斷.md",
+  "theory_name": "絕對動態邏輯 (Absolute Dynamic Logic, ADL)",
+  "extracted_by": "claude-fable-5 (automated distillation, Phase A)",
+  "extraction_date": "2026-07-02",
+  "canonical_status": "draft",
+  "primitives": [
+    {
+      "symbol": "J",
+      "kind": "function",
+      "description": "強制判斷算子，將任意命題強制映射到三種終態之一（絕對真/絕對假/CRASH）",
+      "evidence": "通過引入**強制判斷算子** ，我們證明：(1) 任何命題在動態強制判斷下必收斂到 {絕對真, 絕對假, 系統崩潰} 三種狀態之一"
+    },
+    {
+      "symbol": "CRASH",
+      "kind": "constant",
+      "description": "系統無法判斷而崩潰的狀態，是矛盾命題在動態判斷下的終態",
+      "evidence": "CRASH：系統無法判斷而崩潰"
+    },
+    {
+      "symbol": "名詞性存在 / 動詞性存在",
+      "kind": "type",
+      "description": "存在的兩種本體論模式：名詞性（靜態、有固定屬性集）與動詞性（動態、以行動定義自身）",
+      "evidence": "**定義4.1****（名詞性存在）** ... **定義4.2****（動詞性存在）**"
+    },
+    {
+      "symbol": "絕對力",
+      "kind": "constant",
+      "description": "被重新定義為動詞性本體的「全能」概念，其唯一限制是邏輯矛盾本身而非能力不足",
+      "evidence": "**推論4.1**： 絕對力的\"限制\"只在於邏輯矛盾本身，而非能力不足。"
+    },
+    {
+      "symbol": "ETC = (E, T, C)",
+      "kind": "type",
+      "description": "事件-時間-交互三元組結構：事件集、時間流形、因果關係，構成不可約化的宇宙結構",
+      "evidence": "定義三元組 ... 其中：-   ：事件集 -   ：時間流形 -   ：因果關係"
+    },
+    {
+      "symbol": "體驗延遲 Δt",
+      "kind": "constant",
+      "description": "任何意識體驗都具有的非零時間延遲，是有限非零總體驗量的必要條件",
+      "evidence": "任何意識體驗 都有非零時間延遲"
+    }
+  ],
+  "axioms": [
+    {
+      "id": "A1",
+      "name": "動態二元律",
+      "formula": "對任意命題，在動態判斷下收斂到 {絕對真, 絕對假, CRASH} 三種互斥且窮盡的狀態",
+      "description": "動態邏輯中 undefined 不是合法狀態，必須強制解析為三種終態之一",
+      "evidence": "**公理1****（動態二元律）** 對任意命題 ，在動態判斷下：... 且這三種狀態互斥且窮盡。"
+    },
+    {
+      "id": "A4.1",
+      "name": "絕對力的動態完備性",
+      "formula": "對任意非矛盾事件可執行；對任意矛盾事件執行導致 CRASH",
+      "description": "絕對力作為動詞性本體，對非矛盾事件具完備執行能力，矛盾事件則導致系統崩潰而非「不全能」",
+      "evidence": "**公理4.1****（絕對力的動態完備性）** 對任意非矛盾的事件 ：... 對任意矛盾的事件 ："
+    },
+    {
+      "id": "A5.1",
+      "name": "體驗延遲定律",
+      "formula": "任何意識體驗都有非零時間延遲 Δt > 0",
+      "description": "由神經科學基礎（感知輸入、神經整合、意識湧現的傳遞延遲）證明意識體驗必然有時間延遲",
+      "evidence": "**公理5.1****（體驗延遲定律）** 任何意識體驗 都有非零時間延遲：... **證明**（神經科學基礎）：神經信號傳遞速度有限（約100 m/s）"
+    },
+    {
+      "id": "A6.1",
+      "name": "ETC不變律",
+      "formula": "對任何宇宙，其 ETC=(E,T,C) 結構不可約化",
+      "description": "事件、時間、交互三元組結構在任何宇宙中皆不可約化，無法去掉任一分量",
+      "evidence": "**公理6.1****（ETC****不變律）** 對任何宇宙 ：... 且此結構不可約化（無法去掉任何一個分量）。"
+    }
+  ],
+  "theorems": [
+    {
+      "id": "thm2.1",
+      "name": "三終態定理",
+      "statement": "任何判斷序列必收斂到絕對真、絕對假、CRASH三種狀態之一",
+      "from_axioms": ["A1"],
+      "description": "定義判斷序列與終止條件，證明其必然收斂到三種終態之一",
+      "evidence": "**定理2.1****（三終態定理）** 任何判斷序列必收斂到以下三種狀態之一："
+    },
+    {
+      "id": "thm5.1",
+      "name": "降維體驗定理",
+      "statement": "若意識系統要獲得有限非零的總體驗量，必須降維到有延遲的狀態",
+      "from_axioms": ["A5.1"],
+      "description": "由體驗延遲定律推導：零延遲導致體驗瞬間即逝無法累積，故意識必然降維到有延遲狀態",
+      "evidence": "**定理5.1****（降維體驗定理）** 若意識系統要獲得有限非零的總體驗量 ，必須滿足：... 即：**必須降維到有延遲的狀態**。"
+    },
+    {
+      "id": "thm6.1",
+      "name": "ETC絕對回歸",
+      "statement": "任何試圖改變ETC結構的操作最終會回歸原結構",
+      "from_axioms": ["A6.1"],
+      "description": "假設存在無時間宇宙，但因果關係定義需要序關係（before/after），隱含時間，故時間自動湧現",
+      "evidence": "**定理6.1****（ETC****絕對回歸）** 任何試圖改變ETC結構的操作最終會回歸原結構："
+    },
+    {
+      "id": "thm7.1",
+      "name": "強制比較定理",
+      "statement": "對任意兩個實體，存在強制比較函數，可透過度量函數計算並比較",
+      "from_axioms": ["A1"],
+      "description": "即使兩實體被聲稱「不可言說」，仍可對其執行強制比較，比較結果本身即是一種判斷",
+      "evidence": "**定理7.1****（強制比較定理）** 對任意兩個實體 ，存在強制比較函數："
+    },
+    {
+      "id": "thm7.2",
+      "name": "世界絕對性",
+      "statement": "宇宙在強制判斷框架下是絕對的，undefined 不在值域中",
+      "from_axioms": ["A1"],
+      "description": "根據公理1推導出所謂的模糊性、不確定性在動態判斷下只是暫態，必然解析為確定終態",
+      "evidence": "**定理7.2****（世界絕對性）** 宇宙在強制判斷框架下是絕對的：... undefined 不在值域中。□"
+    },
+    {
+      "id": "thm7.3",
+      "name": "二元律唯一性",
+      "statement": "絕對二元律（三終態集合）是唯一穩定的終態集合",
+      "from_axioms": ["A1"],
+      "description": "反證法：假設存在其他穩定終態系統，但根據強制判斷必須進一步解析，矛盾",
+      "evidence": "**定理7.3****（二元律唯一性）** 絕對二元律 是唯一穩定的終態集合。 **證明**（反證法）："
+    }
+  ],
+  "dag": [
+    { "id": "J", "kind": "primitive", "depends_on": [] },
+    { "id": "CRASH", "kind": "primitive", "depends_on": [] },
+    { "id": "名詞性存在 / 動詞性存在", "kind": "primitive", "depends_on": [] },
+    { "id": "絕對力", "kind": "primitive", "depends_on": ["名詞性存在 / 動詞性存在"] },
+    { "id": "ETC = (E, T, C)", "kind": "primitive", "depends_on": [] },
+    { "id": "體驗延遲 Δt", "kind": "primitive", "depends_on": [] },
+    { "id": "A1", "kind": "axiom", "depends_on": ["J", "CRASH"] },
+    { "id": "A4.1", "kind": "axiom", "depends_on": ["絕對力", "CRASH"] },
+    { "id": "A5.1", "kind": "axiom", "depends_on": ["體驗延遲 Δt"] },
+    { "id": "A6.1", "kind": "axiom", "depends_on": ["ETC = (E, T, C)"] },
+    { "id": "thm2.1", "kind": "theorem", "depends_on": ["A1"] },
+    { "id": "thm5.1", "kind": "theorem", "depends_on": ["A5.1"] },
+    { "id": "thm6.1", "kind": "theorem", "depends_on": ["A6.1"] },
+    { "id": "thm7.1", "kind": "theorem", "depends_on": ["A1", "thm2.1"] },
+    { "id": "thm7.2", "kind": "theorem", "depends_on": ["A1", "thm2.1"] },
+    { "id": "thm7.3", "kind": "theorem", "depends_on": ["A1", "thm7.2"] }
+  ],
+  "concepts": [
+    {
+      "name": "強制判斷算子 J",
+      "canonical": "ADL",
+      "role": "defines",
+      "evidence": "**定義1.1****（強制判斷算子）** 定義算子"
+    },
+    {
+      "name": "動態二元律",
+      "canonical": "ADL",
+      "role": "defines",
+      "evidence": "**關鍵差異**：-   靜態邏輯：undefined 是合法狀態 -   動態邏輯：undefined 必須強制解析為三種終態之一"
+    },
+    {
+      "name": "系統崩潰 CRASH",
+      "canonical": "ADL",
+      "role": "defines",
+      "evidence": "**結論**：說謊者悖論不是\"神秘的未定義\"，而是**系統無法終止的崩潰狀態**。"
+    },
+    {
+      "name": "動詞性本體",
+      "canonical": "OperatorOntology",
+      "role": "uses",
+      "evidence": "**第四章：絕對力的動詞性本體**"
+    },
+    {
+      "name": "說謊者悖論",
+      "canonical": "StaticParadox",
+      "role": "uses",
+      "evidence": "**3.1** **說謊者悖論**"
+    },
+    {
+      "name": "羅素悖論",
+      "canonical": "StaticParadox",
+      "role": "uses",
+      "evidence": "**3.2** **羅素悖論**"
+    },
+    {
+      "name": "哥德爾不完備性",
+      "canonical": "StaticParadox",
+      "role": "uses",
+      "evidence": "**3.3** **哥德爾不完備性**"
+    },
+    {
+      "name": "ETC結構（事件-時間-交互）",
+      "canonical": "ETCStructure",
+      "role": "defines",
+      "evidence": "**第六章：事件-****時間-****交互的不變性** ... **定義6.1****（ETC****結構）**"
+    },
+    {
+      "name": "降維體驗",
+      "canonical": "DimensionalReductionExperience",
+      "role": "defines",
+      "evidence": "**第五章：意識延遲與降維體驗**"
+    },
+    {
+      "name": "三終態（絕對真/絕對假/CRASH）",
+      "canonical": "TriadicLogic",
+      "role": "extends",
+      "evidence": "任何判斷序列必收斂到以下三種狀態之一：**(1)** **絕對真**：... **(2)** **絕對假**："
+    }
+  ],
+  "external_refs": [],
+  "notes": "全文含大量 MS Equation 內嵌 base64 圖片（公式渲染為圖像，無替代文字），公式本身無法以文字方式逐字引用，故 evidence 僅取圖片前後的可讀中文敘述。論文為獨立公理體系（ADL, A1-A5），未見對其他 corpus 論文的顯式引用；三終態框架與 corpus 中 TriadicLogic（三態邏輯 ⊤Ω⊥）概念相關但用語不同，標記為 extends 而非 external_ref。"
+}

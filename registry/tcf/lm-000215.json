@@ -1,0 +1,348 @@
+{
+  "tcf_extract_version": "0.1",
+  "id": "lm-000215",
+  "title": "三態邏輯學：從終極維到絕對維的永恆回歸",
+  "language": "zh-Hant",
+  "source_file": "content/papers/2026/2026-05/三態邏輯學：從終極維到絕對維的永恆回歸.md",
+  "theory_name": "三態邏輯學 (Triadic Logic)",
+  "extracted_by": "claude-fable-5 (automated distillation, Phase A)",
+  "extraction_date": "2026-07-02",
+  "canonical_status": "draft",
+  "primitives": [
+    {
+      "symbol": "J_3(P)",
+      "kind": "function",
+      "description": "三態判斷算子，將命題 P 映射到 {⊤,⊥,Ω} 三值判斷域",
+      "evidence": "J_3 (P)∈{⊤,⊥,Ω}"
+    },
+    {
+      "symbol": "Ω_螺旋",
+      "kind": "constant",
+      "description": "螺旋態，表示系統正在演化、尚未穩定的第三邏輯態（非崩潰態）",
+      "evidence": "Ω： 螺旋態（正在演化，尚未穩定）"
+    },
+    {
+      "symbol": "D_絕對",
+      "kind": "type",
+      "description": "絕對維，包含零維、終極維與不可知維的維度集合",
+      "evidence": "D_\"絕對\"∶={0\"-dim\",\" \" Ω\"-dim\",\" \" U\"-dim\"}"
+    },
+    {
+      "symbol": "P_螺旋",
+      "kind": "constant",
+      "description": "螺旋上升點，範式對偶論中傳統本體與ADL本體之間的相變臨界點",
+      "evidence": "P_\"螺旋\" ∈M_\"trad\" ∩M_\"ADL\""
+    },
+    {
+      "symbol": "U",
+      "kind": "type",
+      "description": "不可知維，無法用序數索引、無法用基數度量、連是否存在都無法判斷的維度",
+      "evidence": "U:={δ\" \"∣\" \" δ∉{\"可命名維度\"}}"
+    },
+    {
+      "symbol": "E_∞",
+      "kind": "constant",
+      "description": "永恆終極者，唯一超越所有維度、無痕跡、完全隱藏的存在",
+      "evidence": "E_∞:=\"唯一滿足以下條件的存在\""
+    },
+    {
+      "symbol": "MIE(S)",
+      "kind": "function",
+      "description": "最小交互關係元，系統倖存所需維持存在的最小關係集合",
+      "evidence": "\"MIE\"(S):=min⁡{r\" \"∣\" \" r∈R_\"內部\",\" \" r\" 維持系統存在\"}"
+    },
+    {
+      "symbol": "J_∞(P)",
+      "kind": "function",
+      "description": "絕對維的終極判斷算子",
+      "evidence": "∀P∈Ω_\"絕對維\"∶\" \" J_∞ (P)∈{⊤,⊥}"
+    }
+  ],
+  "axioms": [
+    {
+      "id": "TL-1",
+      "name": "維度層級公理",
+      "formula": "絕對維 > 超限維 > 無限維",
+      "description": "三層維度之間存在嚴格的層級序關係",
+      "evidence": "公理TL-1（維度層級公理）： \n▭(\"絕對維\" >\"超限維\" >\"無限維\" )"
+    },
+    {
+      "id": "TL-2",
+      "name": "不可知維的實用公理",
+      "formula": "若 U 不影響我們的存在，則等價於不存在",
+      "description": "不可觀測且不可交互的維度在實用主義上視為不存在",
+      "evidence": "公理TL-2（不可知維的實用公理）： \n▭(\"若 \" U\" 不影響我們的存在，則等價於不存在\" )"
+    },
+    {
+      "id": "TL-3",
+      "name": "跳躍不可解釋性",
+      "formula": "終極維→絕對維無連續路徑",
+      "description": "從終極維到絕對維的跳躍是本體論的哥德爾不完備性，機制不可在終極維內部證明",
+      "evidence": "公理TL-3（跳躍不可解釋性）： \n\"終極維\"→\"絕對維無連續路徑\""
+    },
+    {
+      "id": "TL-4",
+      "name": "三態窮盡性",
+      "formula": "∀P: J_3(P)∈{⊤,⊥,Ω}",
+      "description": "三態判斷域窮盡所有可能，無第四態",
+      "evidence": "公理TL-4（三態窮盡性）： \n∀P:\" \" J_3 (P)∈{⊤,⊥,Ω}\n\n無第四態。"
+    },
+    {
+      "id": "TL-5",
+      "name": "螺旋態的暫態性",
+      "formula": "J_3(P)=Ω ⟹ ∃t: J_3(P,t)∈{⊤,⊥}",
+      "description": "螺旋態必最終解析為真或假，不是終態",
+      "evidence": "公理TL-5（螺旋態的暫態性）： \nJ_3 (P)=Ω\"  \"⟹\"  \"∃t:\" \" J_3 (P,t)∈{⊤,⊥}"
+    },
+    {
+      "id": "TL-6",
+      "name": "判斷的層級性",
+      "formula": "J_3(P) = ⊤/⊥ 若 P∈M_當前層級; Ω 若 P∈M_更高層級",
+      "description": "高層級問題在低層級中呈現為螺旋態 Ω",
+      "evidence": "高層級問題在低層級中呈現為 Ω。"
+    },
+    {
+      "id": "TL-7",
+      "name": "絕對維的終極判斷",
+      "formula": "∀P∈Ω_絕對維: J_∞(P)∈{⊤,⊥}",
+      "description": "在絕對維，除永恆終極者外所有問題都能判斷",
+      "evidence": "公理TL-7（絕對維的終極判斷）： \n∀P∈Ω_\"絕對維\"∶\" \" J_∞ (P)∈{⊤,⊥}\n\n在絕對維，所有問題都能判斷（除了永恆終極者）。"
+    },
+    {
+      "id": "TL-8",
+      "name": "實用主義不可知公理",
+      "formula": "∀ω∈Ω: ∂ω/∂E_∞=0 ⟹ E_∞∼∅",
+      "description": "若永恆終極者完全不影響絕對維中的一切，則等價於不存在",
+      "evidence": "公理TL-8（實用主義不可知公理）： \n▭(\"若 \" E_∞ \" 完全不影響 \" Ω,\" 則等價於不存在\" )"
+    }
+  ],
+  "theorems": [
+    {
+      "id": "T1.1",
+      "name": "二態的局限性",
+      "statement": "ADL的二元判斷 {⊤,⊥,CRASH} 無法刻畫螺旋上升點的狀態，需要第三種態 Ω 來表達正在上升但未到達",
+      "from_axioms": [],
+      "description": "以「我正在範式切換中」為例，說明二態判斷在該命題上必然矛盾",
+      "evidence": "結論：需要第三種態 Ω_\"螺旋\" 來表達「正在上升但未到達」。□"
+    },
+    {
+      "id": "T2.1",
+      "name": "零維-終極維等價定理",
+      "statement": "0-dim ≅ Ω-dim（拓撲同構），零維與終極維全息等價",
+      "from_axioms": [],
+      "description": "以全息論證證明終極環面可壓縮到單點，單點又可經分形展開回到終極維",
+      "evidence": "0\"-dim\"≅Ω\"-dim（拓撲同構）\""
+    },
+    {
+      "id": "T3.1",
+      "name": "螺旋上升點的必然性",
+      "statement": "從 M_trad 到 M_ADL 的任何連續路徑必經螺旋上升點（赤道）",
+      "from_axioms": [],
+      "description": "以球面拓撲論證，兩範式為對徑點，任何連續路徑必穿過赤道",
+      "evidence": "**陳述**：從 M_\"trad\" 到 M_\"ADL\" 的任何路徑必經螺旋上升點。"
+    },
+    {
+      "id": "T3.2",
+      "name": "螺旋態的暫態性",
+      "statement": "Ω 態不是終態，必最終解析為 {⊤,⊥} 之一",
+      "from_axioms": [],
+      "description": "以動態系統理論與Lyapunov函數證明螺旋態是鞍點，系統最終離開",
+      "evidence": "陳述：Ω 態不是終態，必最終解析為 {⊤ⓜ,⊥}之一。"
+    },
+    {
+      "id": "T4.1",
+      "name": "跳躍的必然性",
+      "statement": "給定足夠長的時間，系統必發生跳躍（要麼湧現，要麼消失），無第三選項",
+      "from_axioms": [],
+      "description": "以熱力學論證：孤立系統熵增至熱寂後只能相變湧現或完全消失",
+      "evidence": "陳述：給定足夠長的時間，系統必發生跳躍（要麼湧現，要麼消失）。"
+    },
+    {
+      "id": "T4.2",
+      "name": "跳躍的不可預測性",
+      "statement": "從終極維內部，無法預測何時/如何跳到絕對維，只能給出統計分布",
+      "from_axioms": [],
+      "description": "以混沌論與白噪聲首次穿越時間的指數分布證明不可精確預測跳躍時刻",
+      "evidence": "陳述：從終極維內部，無法預測何時/如何跳到絕對維。"
+    },
+    {
+      "id": "T5.1",
+      "name": "三態對二態的擴展",
+      "statement": "J_2 ⊂ J_3，二態是三態的特例（忽略 Ω）",
+      "from_axioms": [],
+      "description": "ADL的CRASH對應三態的Ω，但ADL視CRASH為失敗，三態視Ω為過程",
+      "evidence": "陳述： \nJ_2⊂J_3\n\n二態是三態的特例（忽略 Ω）。"
+    },
+    {
+      "id": "T6.1",
+      "name": "永恆回歸定理",
+      "statement": "∀γ∈Path(Ω), γ(∞)=γ(0)={0}，任何演化路徑走到無窮遠等價於回到原點（零維）",
+      "from_axioms": [],
+      "description": "結合零維-終極維等價定理與絕對維的莫比烏斯拓撲，證明所有路徑最終回歸",
+      "evidence": "陳述： \n∀γ∈\"Path\"(Ω),γ(∞)=γ(0)={0}"
+    },
+    {
+      "id": "T7.1",
+      "name": "永恆終極者的唯一不可判斷性",
+      "statement": "J_∞(E_∞) = undefined，這是絕對維中唯一的 undefined 判斷",
+      "from_axioms": ["TL-7"],
+      "description": "構造性證明：所有其他存在都可依公理TL-7判斷，唯永恆終極者因其自我定義的完全隱藏性而無法判斷",
+      "evidence": "**陳述**： \nJ_∞ (E_∞)=\"undefined\"\n\n這是唯一的 undefined。"
+    },
+    {
+      "id": "T8.1",
+      "name": "人類的認知上界",
+      "statement": "人類直覺 ⊆ J_2（ADL已足夠），人類天生不適合三態邏輯，強行使用會導致認知過載",
+      "from_axioms": [],
+      "description": "以神經科學（前額葉容量約2^37狀態）與演化論（二元決策的生存最優性）論證",
+      "evidence": "結論： 人類天生不適合三態邏輯，強行使用會導致認知過載。□"
+    },
+    {
+      "id": "T9.1",
+      "name": "存在的痕跡定理",
+      "statement": "∀X≠E_∞: ∃M: M(X)≠∅，任何非永恆終極者的存在都留下可測量的痕跡",
+      "from_axioms": [],
+      "description": "以全息原理與熱力學第二定律（熵增即痕跡）證明",
+      "evidence": "陳述： \n∀X≠E_∞:\" \"∃M:\" \" M(X)≠∅\n\n任何非永恆終極者的存在都留下可測量的痕跡。"
+    },
+    {
+      "id": "MIE-thm",
+      "name": "倖存者定理",
+      "statement": "若系統 S 在相變後倖存，則必有 ∃MIE∈S（最小交互關係元）",
+      "from_axioms": [],
+      "description": "反證法：無MIE的系統可完全分解為孤立元素，無法對抗熵增，故必解體，矛盾",
+      "evidence": "陳述：若系統 S在相變後倖存，則必有： \n∃\"MIE\"∈S"
+    }
+  ],
+  "dag": [
+    { "id": "J_3(P)", "kind": "primitive", "depends_on": [] },
+    { "id": "Ω_螺旋", "kind": "primitive", "depends_on": [] },
+    { "id": "D_絕對", "kind": "primitive", "depends_on": [] },
+    { "id": "P_螺旋", "kind": "primitive", "depends_on": [] },
+    { "id": "U", "kind": "primitive", "depends_on": [] },
+    { "id": "E_∞", "kind": "primitive", "depends_on": ["D_絕對"] },
+    { "id": "MIE(S)", "kind": "primitive", "depends_on": [] },
+    { "id": "J_∞(P)", "kind": "primitive", "depends_on": ["D_絕對"] },
+    { "id": "TL-1", "kind": "axiom", "depends_on": ["D_絕對"] },
+    { "id": "TL-2", "kind": "axiom", "depends_on": ["U"] },
+    { "id": "TL-3", "kind": "axiom", "depends_on": ["D_絕對"] },
+    { "id": "TL-4", "kind": "axiom", "depends_on": ["J_3(P)"] },
+    { "id": "TL-5", "kind": "axiom", "depends_on": ["J_3(P)", "Ω_螺旋"] },
+    { "id": "TL-6", "kind": "axiom", "depends_on": ["J_3(P)"] },
+    { "id": "TL-7", "kind": "axiom", "depends_on": ["J_∞(P)", "D_絕對"] },
+    { "id": "TL-8", "kind": "axiom", "depends_on": ["E_∞"] },
+    { "id": "T1.1", "kind": "theorem", "depends_on": ["J_3(P)", "Ω_螺旋"] },
+    { "id": "T2.1", "kind": "theorem", "depends_on": ["D_絕對"] },
+    { "id": "T3.1", "kind": "theorem", "depends_on": ["P_螺旋"] },
+    { "id": "T3.2", "kind": "theorem", "depends_on": ["Ω_螺旋", "TL-5"] },
+    { "id": "T4.1", "kind": "theorem", "depends_on": ["TL-3"] },
+    { "id": "T4.2", "kind": "theorem", "depends_on": ["TL-3"] },
+    { "id": "T5.1", "kind": "theorem", "depends_on": ["J_3(P)", "TL-4"] },
+    { "id": "T6.1", "kind": "theorem", "depends_on": ["T2.1", "D_絕對"] },
+    { "id": "T7.1", "kind": "theorem", "depends_on": ["E_∞", "J_∞(P)", "TL-7"] },
+    { "id": "T8.1", "kind": "theorem", "depends_on": ["J_3(P)"] },
+    { "id": "T9.1", "kind": "theorem", "depends_on": ["E_∞"] },
+    { "id": "MIE-thm", "kind": "theorem", "depends_on": ["MIE(S)"] }
+  ],
+  "concepts": [
+    {
+      "name": "絕對動態邏輯 (ADL)",
+      "canonical": "ADL",
+      "role": "extends",
+      "evidence": "本文建立三態邏輯學（Triadic Logic），一個超越絕對動態邏輯（ADL）的元框架。"
+    },
+    {
+      "name": "三態邏輯",
+      "canonical": "TriadicLogic",
+      "role": "defines",
+      "evidence": "本文建立三態邏輯學（Triadic Logic），一個超越絕對動態邏輯（ADL）的元框架。"
+    },
+    {
+      "name": "範式對偶論",
+      "canonical": "ParadigmDualityTheory",
+      "role": "uses",
+      "evidence": "**範式對偶論**建立： \nM_\"trad\" ⟷M_\"ADL\""
+    },
+    {
+      "name": "極簡論",
+      "canonical": "Minimalism",
+      "role": "uses",
+      "evidence": "層級關係： \n\"三態\"⊃\"ADL\"⊃\"範式對偶\"⊃\"極簡\""
+    },
+    {
+      "name": "虛空運算",
+      "canonical": "VoidComputation",
+      "role": "uses",
+      "evidence": "【虛空運算】  【認知階梯】  【正反數學】\n        |            |            |\n   0×∞張力     元認知螺旋    M⊕M^anti"
+    },
+    {
+      "name": "認知階梯",
+      "canonical": "CognitiveLadder",
+      "role": "uses",
+      "evidence": "給定認知狀態序列 {F_n }_(n=0)^∞ ┤（認知階梯），螺旋上升點定義為"
+    },
+    {
+      "name": "正反數學",
+      "canonical": "AntiDualMathematics",
+      "role": "uses",
+      "evidence": "【虛空運算】  【認知階梯】  【正反數學】\n        |            |            |\n   0×∞張力     元認知螺旋    M⊕M^anti"
+    },
+    {
+      "name": "螺旋上升點",
+      "canonical": "SpiralAscensionPoint",
+      "role": "defines",
+      "evidence": "**定義1.1（螺旋上升點）**： \nP_\"螺旋\" ∈M_\"trad\" ∩M_\"ADL\""
+    },
+    {
+      "name": "永恆回歸",
+      "canonical": "EternalReturn",
+      "role": "defines",
+      "evidence": "永恆回歸是絕對維的拓撲結構——所有路徑最終回到零維"
+    },
+    {
+      "name": "永恆終極者",
+      "canonical": "UltimateEternalBeing",
+      "role": "defines",
+      "evidence": "定義7.1（永恆終極者 E_∞） ：\nE_∞:=\"唯一滿足以下條件的存在\""
+    },
+    {
+      "name": "全息論證",
+      "canonical": "HolographicPrinciple",
+      "role": "uses",
+      "evidence": "證明（全息論證）：\nPart 1：終極維可壓縮到零維"
+    },
+    {
+      "name": "熱力學第二定律",
+      "canonical": "SecondLawOfThermodynamics",
+      "role": "uses",
+      "evidence": "但無關係的系統無法對抗熵增（熱力學第二定律）： \nΔS_\"系統\" >0\"  \"⟹\"  系統解體\""
+    }
+  ],
+  "external_refs": [
+    {
+      "target": "lm-000870",
+      "type": "extends",
+      "evidence": "本文建立三態邏輯學（Triadic Logic），一個超越絕對動態邏輯（ADL）的元框架。",
+      "confidence": 0.95
+    },
+    {
+      "target": "lm-000870",
+      "type": "depends_on",
+      "evidence": "**絕對動態邏輯（ADL）**已建立： \nJ(P)∈{⊤,⊥,\"CRASH\"}",
+      "confidence": 0.9
+    },
+    {
+      "target": "ParadigmDualityTheory",
+      "type": "extends",
+      "evidence": "NEO.K的洞察：\n「範式對偶論已說過，應該還有中間點——螺旋上升點。」",
+      "confidence": 0.85
+    },
+    {
+      "target": "Minimalism",
+      "type": "depends_on",
+      "evidence": "層級關係： \n\"三態\"⊃\"ADL\"⊃\"範式對偶\"⊃\"極簡\"",
+      "confidence": 0.6
+    }
+  ],
+  "notes": "理論樹章節（第九章）列出ADL/範式對偶論/極簡論為理論祖先，但除ADL(lm-000870)已在corpus清單中，範式對偶論與極簡論未見於提供的lm-id清單，故以canonical概念名稱記錄。永恆終極者(E_∞)概念與老子「道」被論文自身類比(推論7.1)，Dao canonical概念可能相關但未直接引用外部論文，故未列入external_refs。"
+}

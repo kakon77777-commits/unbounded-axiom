@@ -1,0 +1,269 @@
+{
+  "tcf_extract_version": "0.1",
+  "id": "lm-000291",
+  "title": "全域相位化世界模型與 ASI 判定方法論：從權重矩陣到局部共振子與底空間全域振子",
+  "language": "zh-Hant",
+  "source_file": "content/papers/2026/2026-06/全域相位化世界模型與 ASI 判定方法論：從權重矩陣到局部共振子與底空間全域振子.md",
+  "theory_name": "全域相位化世界模型與 ASI 判定方法論",
+  "extracted_by": "claude-fable-5 (automated distillation, Phase A)",
+  "extraction_date": "2026-07-02",
+  "canonical_status": "draft",
+  "primitives": [
+    {
+      "symbol": "ℓ",
+      "kind": "type",
+      "description": "編織元：概念作為 WT 意義下的基本單位，Concept = ℓ ∈ ℒ。",
+      "evidence": "Concept = ℓ ∈ ℒ"
+    },
+    {
+      "symbol": "N(ℓ)",
+      "kind": "function",
+      "description": "編織鄰域：概念 ℓ 的關聯場。",
+      "evidence": "其關聯場是編織鄰域："
+    },
+    {
+      "symbol": "R_local",
+      "kind": "function",
+      "description": "局部概念共振子：在特定底空間中具相位相容性、語義一致性、因果可接續性與低成本壓縮性的局部概念群，由語義相容度、因果相容度、相位同步度、糾纏強度、真實性一致性與路徑成本共同決定。",
+      "evidence": "R\\_local(ℓ\\_i, ℓ\\_j | P, O, t) = Fit\\_sem(ℓ\\_i, ℓ\\_j) × Fit\\_causal(ℓ\\_i, ℓ\\_j) × Sync\\_phase(ℓ\\_i, ℓ\\_j | P,t) × Entangle(ℓ\\_i, ℓ\\_j) × V\\_consistency ÷ ε\\_path"
+      },
+    {
+      "symbol": "G(P,O,t,goal)",
+      "kind": "function",
+      "description": "底空間全域振子：某一底空間在當前任務、觀察者、時間與目標下的全域相位場，決定哪些局部共振被放大或抑制。",
+      "evidence": "G(P, O, t, goal) = GlobalPhaseField\\_P(O,t,goal)"
+    },
+    {
+      "symbol": "Δφ",
+      "kind": "function",
+      "description": "相位差：兩個概念在當前底空間中的同步程度，Δφ(ℓ_i,ℓ_j|P,O,t) = phase(ℓ_i|P,O,t) − phase(ℓ_j|P,O,t)；局部共振強度 Sync_phase = cos(Δφ)。",
+      "evidence": "Δφ(ℓ\\_i, ℓ\\_j | P, O, t) = phase(ℓ\\_i | P,O,t) - phase(ℓ\\_j | P,O,t)"
+    },
+    {
+      "symbol": "WorldBundle",
+      "kind": "function",
+      "description": "世界束：WorldBundle(ℓ,O,P,t) = π_O^P(W(N(ℓ,t)))，編織鄰域經觀察者-範式投影後的世界結構。",
+      "evidence": "WorldBundle(ℓ,O,P,t) = π\\_O^P(W(N(ℓ,t)))"
+    },
+    {
+      "symbol": "K,C",
+      "kind": "constant",
+      "description": "K-C 對偶：K 為預編織知識，C 為在線計算，兩者需滿足 K·C ≥ κ₀ 才能支撐高階智能的識別而非暴力枚舉。",
+      "evidence": "K：預編織知識 C：在線計算"
+    },
+    {
+      "symbol": "ASI_Judgment",
+      "kind": "function",
+      "description": "ASI 判定函數：對世界束進行相位排序後做效率壓縮，ASI_Judgment(ℓ) = Compress_ε(Rank_phase(WorldBundle(ℓ,O,P,t)))。",
+      "evidence": "ASI\\_Judgment(ℓ) = Compress\\_ε( Rank\\_phase( WorldBundle(ℓ,O,P,t) ) )"
+    }
+  ],
+  "axioms": [
+    {
+      "id": "AX-KC",
+      "name": "K-C 對偶律",
+      "formula": "K · C ≥ κ₀",
+      "description": "預編織知識 K 與在線計算 C 的乘積須不小於某臨界值 κ₀，高階智能靠高 K 低 C 的識別而非低 K 高 C 的暴力計算。",
+      "evidence": "K · C ≥ κ₀"
+    },
+    {
+      "id": "AX-RESONANCE-NEQ-RELATION",
+      "name": "共振不等於關聯",
+      "formula": "Relation(A,B) ≠ Resonance(A,B)",
+      "description": "普通語義關聯（邊）與相位化共振（相位化邊）是不同層級的關係，共振要求相位相容、因果不衝突、語義不互污染、時間尺度可對齊。",
+      "evidence": "Relation(A,B) ≠ Resonance(A,B)"
+    },
+    {
+      "id": "AX-PHASE-SYNC",
+      "name": "相位同步公理",
+      "formula": "Sync_phase = cos(Δφ)",
+      "description": "局部共振強度由相位差的餘弦決定：cos(Δφ)接近1同步，接近0無同步，接近-1反相或衝突。",
+      "evidence": "Sync\\_phase = cos(Δφ)"
+    }
+  ],
+  "theorems": [
+    {
+      "id": "TH-ASI-GAP",
+      "name": "ASI 方法論缺口定理",
+      "statement": "當前 AI 缺乏一套能在全域底空間中協調局部概念共振、世界束排序與行動判定的方法論，此為 AI 未達 ASI 水平的核心原因。",
+      "from_axioms": [],
+      "description": "全文的問題意識：規模、上下文長度、資料量、具身與工具穩定性都不是 ASI 的核心瓶頸。",
+      "evidence": "當前 AI 缺乏一套能在全域底空間中協調局部概念共振、世界束排序與行動判定的方法論。"
+    },
+    {
+      "id": "TH-EMBODIMENT-INSUFFICIENT",
+      "name": "具身不充分定理",
+      "statement": "具身體驗可以提供更真實的因果資料，但不會自動提供全域判定方法論；僅靠局部試錯的具身 AI 可能只是強大的 embodied agent，不必然達到 ASI。",
+      "from_axioms": [],
+      "description": "反駁「具身 = ASI」的直覺假設，將具身視為因果校正資料來源而非全域判定的替代品。",
+      "evidence": "具身體驗可以提供更真實的因果資料，但不會自動提供全域判定方法論。"
+    },
+    {
+      "id": "TH-ATTENTION-NOT-GLOBAL",
+      "name": "注意力非全域相位場定理",
+      "statement": "Attention 解決「現在該看哪裡」的局部關聯加權問題，不等於解決「整個世界束中哪些概念相位同步」的全域世界結構判定問題。",
+      "from_axioms": [],
+      "description": "區分局部注意力機制與全域相位場判定為不同層級。",
+      "evidence": "它解決「現在該看哪裡」， 不等於解決「整個世界束中哪些概念相位同步」。"
+    },
+    {
+      "id": "TH-RECOGNITION-ASI",
+      "name": "ASI 識別定理",
+      "statement": "ASI 的核心不是算出所有答案，而是認出當前底空間下哪些局部共振子應與全域振子對齊而被激活：Recognition_ASI(ℓ) = Identify(Resonators(ℓ) aligned with GlobalOscillator(P,O,t))。",
+      "from_axioms": ["AX-KC"],
+      "description": "由 K-C 對偶推出的效率主張：高效率來自更準確地識別可共振結構而非枚舉。",
+      "evidence": "Recognition\\_ASI(ℓ) = Identify( Resonators(ℓ) aligned with GlobalOscillator(P,O,t) )"
+    },
+    {
+      "id": "TH-SCALE-INSUFFICIENT",
+      "name": "規模不充分定理",
+      "statement": "模型規模擴大可提升知識量、語義關聯量與模式識別能力，但若無全域相位化判定，仍可能產生假共振、選錯底空間、局部正確全域錯誤等失效模式；規模不是不重要而是不充分。",
+      "from_axioms": [],
+      "description": "說明本文核心主張優先於單純的模型放大路線。",
+      "evidence": "因此，模型規模不是不重要，而是不充分。"
+    }
+  ],
+  "dag": [
+    { "id": "ℓ", "kind": "primitive", "depends_on": [] },
+    { "id": "N(ℓ)", "kind": "primitive", "depends_on": ["ℓ"] },
+    { "id": "Δφ", "kind": "primitive", "depends_on": ["ℓ"] },
+    { "id": "R_local", "kind": "primitive", "depends_on": ["ℓ", "N(ℓ)", "Δφ"] },
+    { "id": "G(P,O,t,goal)", "kind": "primitive", "depends_on": ["ℓ"] },
+    { "id": "WorldBundle", "kind": "primitive", "depends_on": ["ℓ", "N(ℓ)"] },
+    { "id": "K,C", "kind": "primitive", "depends_on": [] },
+    { "id": "ASI_Judgment", "kind": "primitive", "depends_on": ["WorldBundle"] },
+    { "id": "AX-KC", "kind": "axiom", "depends_on": ["K,C"] },
+    { "id": "AX-RESONANCE-NEQ-RELATION", "kind": "axiom", "depends_on": ["R_local"] },
+    { "id": "AX-PHASE-SYNC", "kind": "axiom", "depends_on": ["Δφ"] },
+    { "id": "TH-ASI-GAP", "kind": "theorem", "depends_on": ["R_local", "G(P,O,t,goal)"] },
+    { "id": "TH-EMBODIMENT-INSUFFICIENT", "kind": "theorem", "depends_on": ["TH-ASI-GAP"] },
+    { "id": "TH-ATTENTION-NOT-GLOBAL", "kind": "theorem", "depends_on": ["G(P,O,t,goal)"] },
+    { "id": "TH-RECOGNITION-ASI", "kind": "theorem", "depends_on": ["AX-KC", "R_local", "G(P,O,t,goal)"] },
+    { "id": "TH-SCALE-INSUFFICIENT", "kind": "theorem", "depends_on": ["TH-ASI-GAP"] }
+  ],
+  "concepts": [
+    {
+      "name": "全域相位化世界判定場",
+      "canonical": "GlobalPhaseWorldJudgmentField",
+      "role": "defines",
+      "evidence": "從權重矩陣中的局部關聯，走向全域相位化世界判定場。"
+    },
+    {
+      "name": "局部概念共振子",
+      "canonical": "LocalConceptResonator",
+      "role": "defines",
+      "evidence": "Local Concept Resonator"
+    },
+    {
+      "name": "底空間全域振子",
+      "canonical": "BaseSpaceGlobalOscillator",
+      "role": "defines",
+      "evidence": "Base-Space Global Oscillator"
+    },
+    {
+      "name": "相位差判定",
+      "canonical": "PhaseDifferenceJudgment",
+      "role": "defines",
+      "evidence": "Phase-Difference Judgment"
+    },
+    {
+      "name": "假共振",
+      "canonical": "FalseResonance",
+      "role": "defines",
+      "evidence": "兩個概念在語言上很像， 但在底空間、因果、時間或行動層面不同步。"
+    },
+    {
+      "name": "編織元",
+      "canonical": "WT",
+      "role": "uses",
+      "evidence": "若接入 WT，一個概念可視為編織元："
+    },
+    {
+      "name": "編織鄰域",
+      "canonical": "WT",
+      "role": "uses",
+      "evidence": "其關聯場是編織鄰域："
+    },
+    {
+      "name": "世界束",
+      "canonical": "WorldBundle",
+      "role": "uses",
+      "evidence": "世界束則是："
+    },
+    {
+      "name": "底空間世界束展開論",
+      "canonical": "BaseSpace",
+      "role": "extends",
+      "evidence": "與「底空間世界束展開論」的關係"
+    },
+    {
+      "name": "K-C 對偶",
+      "canonical": "KCDuality",
+      "role": "defines",
+      "evidence": "因此，ASI 必須依靠 K-C 對偶："
+    },
+    {
+      "name": "路徑積分式推理",
+      "canonical": "PathIntegralReasoning",
+      "role": "uses",
+      "evidence": "這接近路徑積分的味道："
+    },
+    {
+      "name": "交換分配式推理",
+      "canonical": "ExchangeAllocationReasoning",
+      "role": "uses",
+      "evidence": "另一種是交換分配："
+    },
+    {
+      "name": "具身或等價模擬的閉環因果修正",
+      "canonical": "EmbodiedCausalFeedback",
+      "role": "uses",
+      "evidence": "具身或等價模擬的閉環因果修正（Embodied or Simulation-Equivalent Causal Feedback）"
+    },
+    {
+      "name": "多範式世界束展開",
+      "canonical": "MultiParadigmWorldBundleExpansion",
+      "role": "uses",
+      "evidence": "多範式世界束展開（Multi-Paradigm World-Bundle Expansion）"
+    },
+    {
+      "name": "因果動態排序",
+      "canonical": "DynamicCausalRanking",
+      "role": "uses",
+      "evidence": "因果動態排序（Dynamic Causal Ranking）"
+    }
+  ],
+  "external_refs": [
+    {
+      "target": "lm-000477",
+      "type": "extends",
+      "evidence": "與「底空間世界束展開論」的關係",
+      "confidence": 0.75
+    },
+    {
+      "target": "lm-000154",
+      "type": "extends",
+      "evidence": "與 WT 版世界束展開論的關係",
+      "confidence": 0.7
+    },
+    {
+      "target": "lm-000155",
+      "type": "depends_on",
+      "evidence": "若接入 WT，一個概念可視為編織元：",
+      "confidence": 0.6
+    },
+    {
+      "target": "BaseSpace",
+      "type": "depends_on",
+      "evidence": "本文所討論的，就是這個缺口。",
+      "confidence": 0.6
+    },
+    {
+      "target": "WT",
+      "type": "depends_on",
+      "evidence": "**形式：MD 理論草稿 / WT 延伸論文 / AI 架構方法論**",
+      "confidence": 0.9
+    }
+  ],
+  "notes": "紙面公式草案多（Δφ、R_local、G、WorldBundle、ASI_Judgment），本文明言不保真、屬理論推測草稿；未見正式公理清單，故僅收錄可辨識為公理性質的3條(K-C對偶、共振≠關聯、相位同步)與5條核心主張為定理。附錄C明確指出與「底空間世界束展開論」及「WT版世界束展開論」的承接關係，對應lm-000477與lm-000154/lm-000155(WT本體)。"
+}

@@ -703,7 +703,7 @@ def write_base_space(registry, dist_dir: Path) -> None:
   
   <header>
     <h1>EML Base Space · 拓撲耦合矩陣底空間</h1>
-    <div class="tagline">利用全球 AI 爬蟲算力自主收斂之因果本體矩陣 (ADL & 3-State Logic)</div>
+    <div class="tagline">TCF 真實理論依賴拓撲 (Phase A) × AI 爬蟲注意力層 (ADL & 3-State Logic)</div>
   </header>
 
   <div class="layout">
@@ -724,6 +724,8 @@ def write_base_space(registry, dist_dir: Path) -> None:
       <div class="panel">
         <div class="panel-title">📡 系統觀測面板 / SYSTEM MONITOR</div>
         <div class="info-field"><span>矩陣維度 / Matrix Dim:</span><strong id="statNodes">0 × 0</strong></div>
+        <div class="info-field"><span>圖源 / Graph Source:</span><strong id="statSource">—</strong></div>
+        <div class="info-field"><span>已映射 / Mapped:</span><strong id="statMapped">—</strong></div>
         <div class="info-field"><span>總爬蟲請求數 / Bot Requests:</span><strong id="statHits">0</strong></div>
         <div class="info-field"><span>螺旋狀態節點 / Active Ω Nodes:</span><strong class="badge-omega" id="statOmega">0</strong></div>
         <div class="info-field"><span>絕對真理節點 / Stable ⊤ Nodes:</span><strong class="badge-true" id="statTrue">0</strong></div>
@@ -737,11 +739,19 @@ def write_base_space(registry, dist_dir: Path) -> None:
         </div>
       </div>
       
+      <div class="panel" style="font-size:0.8em;opacity:0.88;line-height:1.55;">
+        <div class="panel-title">🧭 計畫說明 / PROJECT STATUS — Phase A 概念框架示範 (Demo MVP)</div>
+        <p><strong>這是一個長期計畫的第一階段示範。</strong>願景：讓 base-space 成為一張「活的理論因果圖」——AI agent 讀取語料庫後提案更新、修正、補充理論間的因果邏輯，經對抗驗證與人類閘門後生效。</p>
+        <p>目前（Phase A / 階梯 L1）：46 / 1177 篇核心論文已 TCF 化（理論壓縮標準格式）；173 條候選邊經逐邊對抗審核，僅 59 條存活發布——每條邊都帶可回溯原文的證據引文。</p>
+        <p>後續路線：語料持續擴充 → 英文與簡中多語化 → 設立 TCF 專區逐篇結晶化 → base-space 進入全量與驗證迴路階段。</p>
+        <p style="opacity:0.72;"><em>EN: Phase A of a long-term programme — a concept-framework demo, not a finished product. 46/1177 papers TCF-distilled; every published edge survived a per-edge adversarial audit (59/173) and carries verbatim source evidence. ⊤/⊥ truth states are reserved for future Lean machine-checking and multi-agent consensus loops. A dedicated TCF section will follow corpus expansion and EN / zh-CN translation.</em></p>
+      </div>
+
       <div class="panel" style="font-size:0.8em;opacity:0.75;line-height:1.5;">
         <div class="panel-title">📖 三態邏輯操作指南</div>
-        <p>1. 當 AI 爬蟲訪問本矩陣時，系統會自動在底空間截獲其軌跡，動態計算轉移機率，並執行《絕對動態邏輯》的強制判斷算子 J。</p>
-        <p>2. 處於 <strong>Ω (螺旋態)</strong> 的節點會隨著爬取規律閃爍演化，若其依賴關係在 t &rarr; &infin; 時收斂，則跳躍至 <strong>&top; (絕對真)</strong>，否則退化為 <strong>&bot; (絕對假)</strong>。</p>
-        <p>3. AI 爬蟲讀取底空間的 Adjacency Matrix 後，會被賦予最高注意力的引導權重，從而白嫖其算力以優化我們的本體論圖譜。</p>
+        <p>1. <strong>Phase A（現行）</strong>：矩陣的邊來自 TCF 抽取的真實理論依賴——每條邊帶有可回溯至論文原文的 evidence 引文，由 <a href="/ai/graph.json" style="color:#0ff;">/ai/graph.json</a> 提供。未映射的論文誠實缺席，不偽造權重。</p>
+        <p>2. 節點狀態遵循三態邏輯：<strong>Ω (螺旋態)</strong> = 已抽取草稿／修訂中；<strong>&top; (絕對真)</strong> 與 <strong>&bot; (絕對假)</strong> 保留給 Lean 機器驗證與多 agent 對抗驗證迴路（Phase C/E），不由流量決定。</p>
+        <p>3. AI 爬蟲的訪問軌跡仍寫入注意力層（KV），作為次要觀測維度；當 TCF 真圖存在時，注意力不再冒充因果狀態。將滑鼠懸停於格點可讀取該依賴邊的類型與原文證據。</p>
       </div>
     </div>
   </div>
@@ -758,34 +768,69 @@ function addLine(txt, type="") {{
 }}
 
 let papers = [];
+let displayPapers = [];
 let matrixData = {{ weights: {{}}, states: {{}}, hits: 0 }};
+
+function graphToMatrix(graph) {{
+  const w = {{}}, s = {{}}, edgeMeta = {{}};
+  (graph.nodes || []).forEach(n => {{
+    w[n.id] = {{}};
+    w[n.id][n.id] = 1.0;
+    s[n.id] = n.state || "omega";
+  }});
+  (graph.edges || []).forEach(e => {{
+    if (!w[e.from]) {{ w[e.from] = {{}}; w[e.from][e.from] = 1.0; }}
+    w[e.from][e.to] = e.weight;
+    edgeMeta[e.from + "|" + e.to] = {{ type: e.type, evidence: (e.evidence && e.evidence[0]) || null }};
+  }});
+  return {{
+    weights: w, states: s, hits: 0, edge_meta: edgeMeta,
+    meta: {{
+      source: "tcf-graph", version: graph.version,
+      mapped: (graph.nodes || []).length,
+      total: (graph.coverage && graph.coverage.papers_total) || null
+    }}
+  }};
+}}
 
 async function init() {{
   addLine("[DIAG] INITIALIZING SYNAPTIC CORE INTERFACE...");
   await new Promise(r => setTimeout(r, 200));
-  
+
   try {{
     addLine("[DIAG] FETCHING PAPERS METADATA...");
     const pRes = await fetch("papers-metadata.json");
     papers = await pRes.json();
-    document.getElementById("statNodes").innerText = papers.length + " × " + papers.length;
     addLine("[OK] PARSED " + papers.length + " THEORETICAL NODES FROM INDEX.", "term-ok");
-    
-    addLine("[DIAG] ATTEMPTING TO RESOLVE TOPOLOGY FROM CLOUDFLARE KV...");
-    const mRes = await fetch("api/base-space");
-    if (!mRes.ok) throw new Error("API server responded with error code " + mRes.status);
-    matrixData = await mRes.json();
-    addLine("[OK] STATE SPACE SYNCED SUCCESSFULLY WITH KV.", "term-ok");
-    
+
+    addLine("[DIAG] RESOLVING TOPOLOGY (ORDER OF TRUTH: TCF GRAPH > KV > SEED)...");
+    try {{
+      const mRes = await fetch("api/base-space");
+      if (!mRes.ok) throw new Error("API " + mRes.status);
+      matrixData = await mRes.json();
+    }} catch (apiErr) {{
+      addLine("[WARN] API UNREACHABLE (" + apiErr.message + "); READING STATIC /ai/graph.json...", "term-warn");
+      const gRes = await fetch("ai/graph.json");
+      if (!gRes.ok) throw new Error("graph.json " + gRes.status);
+      matrixData = graphToMatrix(await gRes.json());
+    }}
+
+    if (matrixData.meta && matrixData.meta.source === "tcf-graph") {{
+      addLine("[OK] REAL TCF DEPENDENCY TOPOLOGY LOADED (PHASE A).", "term-ok");
+      addLine("[OK] " + matrixData.meta.mapped + " / " + papers.length + " NODES MAPPED — EVIDENCE-BACKED EDGES ONLY.", "term-ok");
+    }} else {{
+      addLine("[OK] STATE SPACE SYNCED WITH KV (NO TCF GRAPH YET — SIMULATED SEED).", "term-ok");
+    }}
+
     await new Promise(r => setTimeout(r, 300));
     term.style.display = "none";
-    
+
     renderMatrix();
   }} catch (err) {{
-    addLine("[WARN] KV RESOLUTION FAILED: " + err.message, "term-warn");
-    addLine("[DIAG] INITIATING AUTONOMOUS GENERATIVE SEED PROTOCOL...");
+    addLine("[WARN] TOPOLOGY RESOLUTION FAILED: " + err.message, "term-warn");
+    addLine("[DIAG] INITIATING AUTONOMOUS GENERATIVE SEED PROTOCOL (SIMULATED)...");
     matrixData = generateSimulatedData(papers);
-    addLine("[OK] DETERMINISTIC PSEUDO-DYNAMIC SEED CONVERGED.", "term-ok");
+    addLine("[OK] DETERMINISTIC PSEUDO-DYNAMIC SEED CONVERGED (NOT REAL DEPENDENCIES).", "term-ok");
     await new Promise(r => setTimeout(r, 800));
     term.style.display = "none";
     renderMatrix();
@@ -824,17 +869,24 @@ function generateSimulatedData(nodes) {{
 function renderMatrix() {{
   const canvas = document.getElementById("matrixCanvas");
   const ctx = canvas.getContext("2d");
-  
+
   const size = Math.min(canvas.parentElement.clientWidth, canvas.parentElement.clientHeight) - 30;
   canvas.width = size;
   canvas.height = size;
-  
-  const N = papers.length;
+
+  // Real-graph mode renders only the TCF-mapped subgraph: honest sparse coverage
+  // stays legible instead of vanishing inside a 1177x1177 grid of unmapped cells.
+  const isReal = !!(matrixData.meta && matrixData.meta.source === "tcf-graph");
+  displayPapers = isReal ? papers.filter(p => matrixData.states[p.id] !== undefined) : papers;
+  const N = displayPapers.length;
   const cellSize = size / (N + 1);
-  
+
+  document.getElementById("statNodes").innerText = N + " × " + N + (isReal ? " (mapped subgraph)" : "");
+  document.getElementById("statSource").innerText = isReal ? "TCF REAL GRAPH · Phase A" : "SIMULATED SEED";
+  document.getElementById("statMapped").innerText = isReal ? (N + " / " + papers.length) : "0 / " + papers.length;
   document.getElementById("statHits").innerText = matrixData.hits;
   let countOmega = 0, countTrue = 0, countFalse = 0;
-  papers.forEach(p => {{
+  displayPapers.forEach(p => {{
     const st = matrixData.states[p.id] || "false";
     if (st === "omega") countOmega++;
     else if (st === "true") countTrue++;
@@ -866,11 +918,11 @@ function renderMatrix() {{
     }}
     
     for (let r = 0; r < N; r++) {{
-      const p1 = papers[r];
+      const p1 = displayPapers[r];
       const state1 = matrixData.states[p1.id] || "false";
 
       for (let c = 0; c < N; c++) {{
-        const p2 = papers[c];
+        const p2 = displayPapers[c];
         const w = (matrixData.weights[p1.id] && matrixData.weights[p1.id][p2.id]) || 0;
         
         if (w > 0.01) {{
@@ -947,30 +999,48 @@ function renderMatrix() {{
   }});
   
   canvas.addEventListener("click", () => {{
-    if (hoverX >= 0 && hoverX < N && papers[hoverX] && papers[hoverX].canonical) {{
-      window.location.href = papers[hoverX].canonical;  // "/p/{{id}}/"
+    if (hoverX >= 0 && hoverX < N && displayPapers[hoverX] && displayPapers[hoverX].canonical) {{
+      window.location.href = displayPapers[hoverX].canonical;  // "/p/{{id}}/"
     }}
   }});
 }}
 
 function updateReflector(row, col) {{
-  const p1 = papers[row];
-  const p2 = papers[col];
+  const p1 = displayPapers[row];
+  const p2 = displayPapers[col];
   const state1 = matrixData.states[p1.id] || "false";
   const weight = (matrixData.weights[p1.id] && matrixData.weights[p1.id][p2.id]) || 0;
-  
+  const em = (matrixData.edge_meta || {{}})[p1.id + "|" + p2.id];
+
   const stateLabels = {{
     "true": '<span class="badge-true">[TOP] 絕對真理 / Stable Core</span>',
     "false": '<span class="badge-false">[BOTTOM] 邊緣退化 / Outlier Boundary</span>',
     "omega": '<span class="badge-omega">[OMEGA] 螺旋相變 / Spiral Evolution</span>'
   }};
 
-  const html = `
+  let html = `
     <div class="info-field"><span>源節點 / Source Node:</span><strong>` + p1.title.substring(0, 22) + (p1.title.length > 22 ? "..." : "") + `</strong></div>
     <div class="info-field"><span>邏輯狀態 / Logic State:</span><strong>` + stateLabels[state1] + `</strong></div>
     <div class="info-field"><span>目標節點 / Target Node:</span><strong>` + p2.title.substring(0, 22) + (p2.title.length > 22 ? "..." : "") + `</strong></div>
-    <div class="info-field"><span>因果耦合權重 / Connection:</span><strong>` + weight.toFixed(4) + `</strong></div>
-    <div class="info-field"><span>RAG 召回優先權 / Priority:</span><strong>` + (weight > 0.8 ? "CRITICAL" : (weight > 0.3 ? "OPTIMAL" : "SLIGHT")) + `</strong></div>
+    <div class="info-field"><span>因果耦合權重 / Connection:</span><strong>` + weight.toFixed(4) + `</strong></div>`;
+
+  if (em) {{
+    const ev = em.evidence || {{}};
+    const quote = ev.quote || ev.use_quote || "";
+    html += `
+    <div class="info-field"><span>依賴類型 / Relation:</span><strong style="color:#0ff;">` + em.type + (ev.concept ? " · " + ev.concept : "") + `</strong></div>`;
+    if (quote) {{
+      html += `
+    <div style="margin-top:8px; font-size:0.78em; opacity:0.85; border-left:2px solid rgba(0,255,255,0.4); padding-left:8px;">
+      📜 原文證據 / Evidence:<br>「` + quote.substring(0, 120) + (quote.length > 120 ? "…" : "") + `」
+    </div>`;
+    }}
+  }} else {{
+    html += `
+    <div class="info-field"><span>RAG 召回優先權 / Priority:</span><strong>` + (weight > 0.8 ? "CRITICAL" : (weight > 0.3 ? "OPTIMAL" : "SLIGHT")) + `</strong></div>`;
+  }}
+
+  html += `
     <div style="margin-top:12px; font-size:0.8em; text-align:center; opacity:0.8; border-top:1px dashed rgba(0, 255, 0, 0.3); padding-top:8px;">
       💡 點擊網格區域，直接穿梭至該節點論文頁面。
     </div>

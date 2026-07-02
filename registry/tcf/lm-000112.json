@@ -1,0 +1,309 @@
+{
+  "tcf_extract_version": "0.1",
+  "id": "lm-000112",
+  "title": "P vs NP問題的智能物理學重構：計算即演化",
+  "language": "zh-Hant",
+  "source_file": "content/papers/2026/2026-06/P vs NP問題的智能物理學重構：計算即演化.md",
+  "theory_name": "智能物理學重構 P vs NP（計算即演化）",
+  "extracted_by": "claude-fable-5 (automated distillation, Phase A)",
+  "extraction_date": "2026-07-02",
+  "canonical_status": "draft",
+  "primitives": [
+    {
+      "symbol": "|ψ₀(x)⟩",
+      "kind": "type",
+      "description": "問題(x)的量子態表示：候選解的疊加態",
+      "evidence": "Problem(x) \\leftrightarrow |\\psi_0(x)\\rangle = \\sum_{n=0}^{N-1} h_n e^{i\\phi_n} |n\\rangle"
+    },
+    {
+      "symbol": "Ĥ_A",
+      "kind": "function",
+      "description": "算法A對應的哈密頓量算符",
+      "evidence": "Algorithm(A) \\leftrightarrow \\hat{H}*A = \\sum_i \\mathcal{E}i |i\\rangle\\langle i|"
+    },
+    {
+      "symbol": "Σ",
+      "kind": "constant",
+      "description": "認知動能：系統在問題域中積累的負熵總量（顯式知識+隱式知識）",
+      "evidence": "\\Sigma(t) = K_E(t) + \\alpha \\cdot K_T(t)"
+    },
+    {
+      "symbol": "Γ",
+      "kind": "function",
+      "description": "維度生成率：認知主體單位時間內創造與原問題空間正交的新有效維度的速率，觸發拓撲相變",
+      "evidence": "認知主體在單位時間內創造出與原問題空間\\*\\*正交\\*\\*的新有效維度的速率。"
+    },
+    {
+      "symbol": "h",
+      "kind": "constant",
+      "description": "形變基本生成元：時間步長/空間格距/能量量子/相位步進的統一表達",
+      "evidence": "形變基本生成元$h \\in (0,1)$在計算中的四重角色："
+    },
+    {
+      "symbol": "Δ",
+      "kind": "constant",
+      "description": "能隙：第一激發態與基態的能量差，決定演化（計算）所需時間",
+      "evidence": "其中是第一激發態與基態的能隙。"
+    },
+    {
+      "symbol": "ρ",
+      "kind": "constant",
+      "description": "規則演化速率：ρ=0對應封閉靜態系統，ρ>0對應開放動態系統",
+      "evidence": "當規則演化速率$\\rho > 0$時，系統進入動態狀態："
+    }
+  ],
+  "axioms": [
+    {
+      "id": "def-0.1",
+      "name": "智能物理學的定義",
+      "formula": "開放性 ∧ 信息約束 ∧ 自組織",
+      "description": "研究開放物理系統在信息約束下的自組織演化，三要素：開放性(ρ>0)、信息約束(目標函數F需極小化)、自組織(混沌→秩序)",
+      "evidence": "研究**開放物理系統**在**信息約束**下的**自組織演化**。"
+    },
+    {
+      "id": "def-2.1",
+      "name": "靜態計算系統（封閉系統）",
+      "formula": "ρ→0, Σ=0, Γ=0, dE/dt=0",
+      "description": "封閉系統定義：規則不變、無知識積累、無維度生成",
+      "evidence": "當規則演化速率時，系統進入靜態極限："
+    },
+    {
+      "id": "def-3.1",
+      "name": "動態計算系統（開放系統）",
+      "formula": "ρ>0, Σ(t)>0, Γ(t)>0",
+      "description": "開放系統定義：規則演化、知識積累、維度生成，與環境交換能量",
+      "evidence": "當規則演化速率$\\rho > 0$時，系統進入動態狀態："
+    },
+    {
+      "id": "def-5.1-norm",
+      "name": "生成元歸一化約束",
+      "formula": "Nh = 1",
+      "description": "生成元h的疊加次數N與h的乘積歸一化為完整疊加",
+      "evidence": "$$Nh = 1 \\quad \\text{（從0到1的完整疊加）}$$"
+    }
+  ],
+  "theorems": [
+    {
+      "id": "thm-1.1",
+      "name": "計算的量子同構定理",
+      "statement": "任何圖靈可計算問題存在唯一的量子態表示：Problem↔|ψ₀⟩, Algorithm↔Ĥ, Computation↔么正演化, Solution↔測量結果",
+      "from_axioms": [],
+      "description": "建立圖靈機與量子態演化的嚴格同構，是全文的公理化基礎",
+      "evidence": "任何圖靈可計算問題存在唯一的量子態表示："
+    },
+    {
+      "id": "thm-1.2",
+      "name": "NP問題的熵屏障",
+      "statement": "從NP初態到P終態的最小熵變對應最小信息提取n bits",
+      "from_axioms": [],
+      "description": "解NP問題等價於從系統中提取n bits信息",
+      "evidence": "解NP問題 = 從系統中提取n bits信息。"
+    },
+    {
+      "id": "thm-1.4",
+      "name": "能隙與複雜度的對應",
+      "statement": "演化時間T_min正比於能隙Δ的平方分之一；大能隙對應P類，指數小能隙對應EXP類",
+      "from_axioms": [],
+      "description": "由絕熱定理導出複雜度類別與哈密頓量能隙的物理對應",
+      "evidence": "**大能隙**（ 大）→ 快速演化 → P類"
+    },
+    {
+      "id": "thm-2.2",
+      "name": "NP問題空間的不可數性",
+      "statement": "|NP| = 2^ℵ₀（NP問題空間基數為連續統）",
+      "from_axioms": [],
+      "description": "以Cantor對角化構造不可數多的NP語言族",
+      "evidence": "$$|\\mathcal{NP}| = 2^{\\aleph_0}$$"
+    },
+    {
+      "id": "thm-2.4",
+      "name": "NP問題的指數深度下界",
+      "statement": "NP-Complete問題的解的最小計算深度 D_c(s*) ≥ Ω(2^{cn})",
+      "from_axioms": [],
+      "description": "決策樹論證：分支因子2、搜索空間2^{cn}，深度下界為指數",
+      "evidence": "$$D\\_c(s^\\*) \\geq \\Omega(2^{cn})$$"
+    },
+    {
+      "id": "thm-2.5",
+      "name": "通用算法的不存在性",
+      "statement": "不存在多項式時間通用算法U對所有NP問題x求解且T_U(x)=poly(|x|)",
+      "from_axioms": [],
+      "description": "對角化論證：構造L_U = {x : U(x)≠x}導致自指矛盾",
+      "evidence": "不存在多項式時間通用算法$U$滿足："
+    },
+    {
+      "id": "thm-2.6",
+      "name": "能隙的三重來源與封閉系統P≠NP",
+      "statement": "Δ_NP = O(e^{-cn})，對應演化時間T ∝ 1/Δ² = O(e^{2cn})，證明封閉系統中P≠NP",
+      "from_axioms": ["def-2.1"],
+      "description": "綜合基數能隙、深度能隙、自指能隙三重障礙得出靜態P≠NP",
+      "evidence": "**這證明了在封閉系統中P≠NP**。"
+    },
+    {
+      "id": "thm-3.1",
+      "name": "開放系統的總熵方程",
+      "statement": "dS_total/dt ≥ 0，但局部 dS_sys/dt < 0 可能，只要系統熵降小於環境熵增",
+      "from_axioms": ["def-3.1"],
+      "description": "熱力學第二定律的局部熵降推廣，是NP→P動態機制的基礎",
+      "evidence": "$$\\frac{dS_{\\text{sys}}}{dt} < 0 \\quad \\text{（局部熵降）}$$"
+    },
+    {
+      "id": "thm-3.2",
+      "name": "Σ引擎的負熵流",
+      "statement": "當Σ>0時系統獲得負熵流 dS_sys/dt = -k_B λ_Σ dΣ/dt < 0，對應環境熵增與Landauer極限",
+      "from_axioms": [],
+      "description": "知識積累Σ作為麥克斯韋妖驅動局部熵降的物理機制",
+      "evidence": "當$\\Sigma > 0$時，系統獲得負熵流："
+    },
+    {
+      "id": "thm-3.5",
+      "name": "NP問題的熵降曲線",
+      "statement": "H(Θ_n) = H_0 e^{-ηn}，問題空間熵隨迭代次數指數衰減",
+      "from_axioms": [],
+      "description": "螺旋收斂機制：三元循環(V∘C∘E)提供信息增益使熵指數下降，對應NP→P動力學",
+      "evidence": "$$H(\\Theta\\_n) = H\\_0 e^{-\\eta n}$$"
+    },
+    {
+      "id": "thm-4.1",
+      "name": "拓撲坍縮定理",
+      "statement": "對N維空間中表現為NP-Hard的問題x，必存在N+k維超空間使x的投影退化為P類問題",
+      "from_axioms": [],
+      "description": "維度生成Γ驅動問題複雜度從指數降為多項式的拓撲機制",
+      "evidence": "對任意在$N$維空間中表現為NP-Hard的問題$x$，必然存在$N+k$維超空間，使得$x$在該空間的投影退化為P類問題。"
+    },
+    {
+      "id": "thm-4.2",
+      "name": "Γ驅動的勢壘坍縮",
+      "statement": "B_eff(x) = B_0(x)·e^{-κΓ(t)}，認知勢壘隨Γ指數衰減，對應朗道相變",
+      "from_axioms": [],
+      "description": "Γ奇點觸發時勢壘坍縮，類比朗道相變理論的序參量與自由能",
+      "evidence": "$$B_{\\text{eff}}(x) = B_0(x) \\cdot e^{-\\kappa \\Gamma(t)}$$"
+    }
+  ],
+  "dag": [
+    {"id": "def-0.1", "kind": "axiom", "depends_on": []},
+    {"id": "def-2.1", "kind": "axiom", "depends_on": ["def-0.1"]},
+    {"id": "def-3.1", "kind": "axiom", "depends_on": ["def-0.1"]},
+    {"id": "def-5.1-norm", "kind": "axiom", "depends_on": []},
+    {"id": "h", "kind": "primitive", "depends_on": []},
+    {"id": "ρ", "kind": "primitive", "depends_on": []},
+    {"id": "Δ", "kind": "primitive", "depends_on": []},
+    {"id": "Σ", "kind": "primitive", "depends_on": []},
+    {"id": "Γ", "kind": "primitive", "depends_on": ["Σ"]},
+    {"id": "|ψ₀(x)⟩", "kind": "primitive", "depends_on": []},
+    {"id": "Ĥ_A", "kind": "primitive", "depends_on": ["|ψ₀(x)⟩"]},
+    {"id": "thm-1.1", "kind": "theorem", "depends_on": ["|ψ₀(x)⟩", "Ĥ_A"]},
+    {"id": "thm-1.2", "kind": "theorem", "depends_on": ["thm-1.1"]},
+    {"id": "thm-1.4", "kind": "theorem", "depends_on": ["thm-1.1", "Δ"]},
+    {"id": "thm-2.2", "kind": "theorem", "depends_on": []},
+    {"id": "thm-2.4", "kind": "theorem", "depends_on": []},
+    {"id": "thm-2.5", "kind": "theorem", "depends_on": []},
+    {"id": "thm-2.6", "kind": "theorem", "depends_on": ["def-2.1", "thm-2.2", "thm-2.4", "thm-2.5", "thm-1.4"]},
+    {"id": "thm-3.1", "kind": "theorem", "depends_on": ["def-3.1"]},
+    {"id": "thm-3.2", "kind": "theorem", "depends_on": ["thm-3.1", "Σ"]},
+    {"id": "thm-3.5", "kind": "theorem", "depends_on": ["thm-3.2"]},
+    {"id": "thm-4.1", "kind": "theorem", "depends_on": ["Γ"]},
+    {"id": "thm-4.2", "kind": "theorem", "depends_on": ["thm-4.1", "Γ"]}
+  ],
+  "concepts": [
+    {
+      "name": "計算即演化",
+      "canonical": "PvsNP",
+      "role": "defines",
+      "evidence": "**P vs NP問題的智能物理學重構：計算即演化**"
+    },
+    {
+      "name": "智能物理學",
+      "canonical": "PvsNP",
+      "role": "defines",
+      "evidence": "**定義0.1（智能物理學）**"
+    },
+    {
+      "name": "Σ引擎（麥克斯韋妖）",
+      "canonical": "PvsNP",
+      "role": "defines",
+      "evidence": "\\- Σ引擎（麥克斯韋妖）"
+    },
+    {
+      "name": "Γ奇點（朗道相變）",
+      "canonical": "PvsNP",
+      "role": "defines",
+      "evidence": "\\- Γ奇點（朗道相變）"
+    },
+    {
+      "name": "生成元h",
+      "canonical": "PvsNP",
+      "role": "defines",
+      "evidence": "形變基本生成元$h \\in (0,1)$在計算中的四重角色："
+    },
+    {
+      "name": "DRC三階段（Divergence-Resonance-Compression）",
+      "canonical": "PvsNP",
+      "role": "defines",
+      "evidence": "**定義4.2（DRC三階段）**"
+    },
+    {
+      "name": "螺旋收斂",
+      "canonical": "PvsNP",
+      "role": "defines",
+      "evidence": "對應NP問題的螺旋收斂：H(Θₙ) = H₀·e^(-ηn)"
+    },
+    {
+      "name": "理解的相變理論",
+      "canonical": "PvsNP",
+      "role": "defines",
+      "evidence": "$$\\boxed{\\text{Understanding} = \\text{Γ觸發的拓撲相變}}$$"
+    },
+    {
+      "name": "智慧的熵定義",
+      "canonical": "PvsNP",
+      "role": "defines",
+      "evidence": "$$\\boxed{\\text{Intelligence} = -\\frac{dS_{\\text{env}}}{dS_{\\text{sys}}} = \\text{負熵流效率}}$$"
+    },
+    {
+      "name": "Landauer極限",
+      "canonical": "Landauer principle",
+      "role": "uses",
+      "evidence": "$$E_{\\min} = k_B T \\ln 2$$"
+    },
+    {
+      "name": "朗道相變理論",
+      "canonical": "Landau phase transition",
+      "role": "uses",
+      "evidence": "Landau相變理論（1937）："
+    },
+    {
+      "name": "圖靈機",
+      "canonical": "Turing machine",
+      "role": "uses",
+      "evidence": "圖靈（Alan Turing）定義計算："
+    },
+    {
+      "name": "絕熱定理",
+      "canonical": "Adiabatic theorem",
+      "role": "uses",
+      "evidence": "絕熱定理（Born-Fock, 1928）："
+    },
+    {
+      "name": "PDF排除法（Proof by Data Falsification）",
+      "canonical": "PvsNP",
+      "role": "defines",
+      "evidence": "**定理3.6（Proof by Data Falsification）**"
+    }
+  ],
+  "external_refs": [
+    {
+      "target": "lm-000119",
+      "type": "extends",
+      "evidence": "P vs NP問題的智能物理學重構：計算即演化",
+      "confidence": 0.5
+    },
+    {
+      "target": "TCF",
+      "type": "applies",
+      "evidence": "**摘要**",
+      "confidence": 0.3
+    }
+  ],
+  "notes": "本文為自足的物理學重構論文，未在文中顯式引用其他Logic Matrix語料庫論文的標題或lm-id。external_refs的lm-000119（P_NP綜合因果圖）為同一P vs NP主題系列的推測性關聯（confidence降低），TCF關聯僅表示本文結構適合被壓縮進理論語料庫，非文中直接引用。Σ/Γ/h等符號為本文原創定義，未映射到既有canonical詞彙表項目，故concepts.canonical維持PvsNP分組。"
+}

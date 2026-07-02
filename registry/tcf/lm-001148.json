@@ -1,0 +1,123 @@
+{
+  "tcf_extract_version": "0.1",
+  "id": "lm-001148",
+  "title": "高效新語言概念下 Py⁺ 與 C+++ 技術開發手冊",
+  "language": "zh-Hant",
+  "source_file": "content/papers/2026/2026-05/高效新語言概念下 Py⁺ 與 C+++ 技術開發手冊.md",
+  "theory_name": "Py⁺ / C+++ 技術開發手冊（EML 語言增益層工程實現）",
+  "extracted_by": "claude-fable-5 (automated distillation, Phase A)",
+  "extraction_date": "2026-07-02",
+  "canonical_status": "draft",
+  "primitives": [
+    {
+      "symbol": "語法增益層",
+      "kind": "type",
+      "description": "高效新語言的核心設計單位：在既有成熟語言之上疊加的語法/語意增強層",
+      "evidence": "高效新語言並非全新語言，而是一種基於現有成熟語言的增益層設計。"
+    },
+    {
+      "symbol": "語法轉譯器",
+      "kind": "function",
+      "description": "將 Py⁺／C+++ 源碼解析並轉譯為標準 Python／C++ 語法的核心組件",
+      "evidence": "實現語法轉譯器，負責將 Py⁺  源碼解析並轉譯為標準 Python 語法。"
+    },
+    {
+      "symbol": "CLI 工具",
+      "kind": "function",
+      "description": "提供 Py⁺ 腳本的執行接口，如 pyplus run myfile.py+",
+      "evidence": "提供 Py⁺  腳本的執行接口，例如 pyplus run myfile.py+。"
+    },
+    {
+      "symbol": "語法壓縮",
+      "kind": "relation",
+      "description": "將常用表達式（如 lambda）簡寫為符號標記以提升密度",
+      "evidence": "語法壓縮：例如將 lambda 表達式簡寫為 -> 符號，將條件表達式簡化為簡單標記式等。"
+    },
+    {
+      "symbol": "語意附加",
+      "kind": "relation",
+      "description": "引入代碼元標註語法，用於靜態分析、自動文件生成、測試覆蓋提示等",
+      "evidence": "語意附加：引入代碼元標註語法，用於靜態分析、自動文件生成、測試覆蓋提示等。"
+    }
+  ],
+  "axioms": [],
+  "theorems": [],
+  "dag": [
+    {"id": "語法增益層", "kind": "primitive", "depends_on": []},
+    {"id": "語法壓縮", "kind": "primitive", "depends_on": ["語法增益層"]},
+    {"id": "語意附加", "kind": "primitive", "depends_on": ["語法增益層"]},
+    {"id": "語法轉譯器", "kind": "primitive", "depends_on": ["語法增益層", "語法壓縮", "語意附加"]},
+    {"id": "CLI 工具", "kind": "primitive", "depends_on": ["語法轉譯器"]}
+  ],
+  "concepts": [
+    {
+      "name": "高效新語言",
+      "canonical": "EML",
+      "role": "uses",
+      "evidence": "高效新語言並非全新語言，而是一種基於現有成熟語言的增益層設計。"
+    },
+    {
+      "name": "Py⁺",
+      "canonical": "PyPlus",
+      "role": "defines",
+      "evidence": "Py⁺  與 C+++ 作為高效新語言理念的具體實現，分別針對 Python 與 C++ 提供增益層支持。"
+    },
+    {
+      "name": "C+++",
+      "canonical": "CxxxPlus",
+      "role": "defines",
+      "evidence": "C+++ 則專注於中大型遊戲、系統軟體等高效能領域的代碼增益。"
+    },
+    {
+      "name": "語法壓縮",
+      "canonical": "EML",
+      "role": "uses",
+      "evidence": "其宗旨是利用語法壓縮、語意附加、編譯優化等技術手段，大幅提升程式碼密度、可讀性、維護性及開發效率"
+    },
+    {
+      "name": "語意附加",
+      "canonical": "EML",
+      "role": "uses",
+      "evidence": "語意附加：引入代碼元標註語法，用於靜態分析、自動文件生成、測試覆蓋提示等。"
+    },
+    {
+      "name": "AI 輔助生成",
+      "canonical": "AICL",
+      "role": "uses",
+      "evidence": "結合 AI 工具生成 Py⁺ / C+++ 模板與最佳化建議"
+    }
+  ],
+  "external_refs": [
+    {
+      "target": "EML",
+      "type": "applies",
+      "evidence": "Py⁺  與 C+++ 作為高效新語言理念的具體實現，分別針對 Python 與 C++ 提供增益層支持。",
+      "confidence": 0.95
+    },
+    {
+      "target": "lm-001149",
+      "type": "extends",
+      "evidence": "高效新語言並非全新語言，而是一種基於現有成熟語言的增益層設計。",
+      "confidence": 0.55
+    },
+    {
+      "target": "PyPlus",
+      "type": "depends_on",
+      "evidence": "Py⁺  目標是優化高層腳本開發與數據處理腳本的開發效率",
+      "confidence": 0.9
+    },
+    {
+      "target": "CxxxPlus",
+      "type": "depends_on",
+      "evidence": "C+++ 則專注於中大型遊戲、系統軟體等高效能領域的代碼增益。",
+      "confidence": 0.9
+    },
+    {
+      "target": "AICL",
+      "type": "applies",
+      "evidence": "結合 AI 工具生成 Py⁺ / C+++ 模板與最佳化建議",
+      "confidence": 0.4
+    }
+  ],
+  "notes": "工程開發手冊而非形式理論論文：無正式公理/定理陳述，故 axioms/theorems 留空。primitives 改採技術組件（轉譯器、CLI、IDE 插件）；dag 反映概念間的工程依賴（增益層→壓縮/附加→轉譯器→CLI）。與 lm-001149（EML 1.5）為同系列姊妹篇，extends 為推斷關係，confidence 中等。"
+}

@@ -1,0 +1,290 @@
+{
+  "tcf_extract_version": "0.1",
+  "id": "lm-000293",
+  "title": "全息動態三態因果全局檢查系統：理論自驗證的元框架",
+  "language": "zh-Hant",
+  "source_file": "content/papers/2026/2026-05/全息動態三態因果全局檢查系統：理論自驗證的元框架.md",
+  "theory_name": "HDTC-GCS (全息動態三態因果全局檢查系統)",
+  "extracted_by": "claude-fable-5 (automated distillation, Phase A)",
+  "extraction_date": "2026-07-02",
+  "canonical_status": "draft",
+  "primitives": [
+    {
+      "symbol": "N",
+      "kind": "type",
+      "description": "理論節點：七元組 (id, type, content, proof, deps, meta, state)",
+      "evidence": "一個**理論節點** $N$ 是七元組："
+    },
+    {
+      "symbol": "T_HSC",
+      "kind": "type",
+      "description": "全息邏輯樹：有向無環圖 (N, E, R)，節點為公理定理等，邊為依賴關係，R為根節點集（公理）",
+      "evidence": "**全息邏輯樹** $\\mathcal{T}_{\\text{HSC}}$ 是有向無環圖（DAG）："
+    },
+    {
+      "symbol": "state",
+      "kind": "type",
+      "description": "三態判斷結果，取值於 {嚴格成立⊤, 存在矛盾⊥, 需範式重構Ω, 未判定?}",
+      "evidence": "$state \\in \\{\\top, \\bot, \\Omega, ?\\}$：三態判斷結果"
+    },
+    {
+      "symbol": "S (proof state)",
+      "kind": "type",
+      "description": "證明狀態：四元組（命題、推理規則、引用定理/公理、假設條件）",
+      "evidence": "一個**證明狀態** <![if !msEquation]>  <![endif]>是四元組："
+    },
+    {
+      "symbol": "R_J",
+      "kind": "function",
+      "description": "判斷規則集，每個規則是將節點映射到三態判斷的函數",
+      "evidence": "每個規則 <![if !msEquation]>  <![endif]>是函數："
+    },
+    {
+      "symbol": "污染函數",
+      "kind": "function",
+      "description": "定義下游節點狀態如何被上游依賴節點的錯誤狀態污染",
+      "evidence": "定義 **污染函數**："
+    },
+    {
+      "symbol": "J3_evaluate",
+      "kind": "function",
+      "description": "三態判斷主算法：依序套用規則集，得出節點的⊤/⊥/Ω判定",
+      "evidence": "\"\"\"三態判斷主函數\"\"\""
+    }
+  ],
+  "axioms": [
+    {
+      "id": "def2.1",
+      "name": "理論節點定義",
+      "formula": "N = (id, type, content, proof, deps, meta, state)",
+      "description": "理論節點作為理論結構的基本單位，包含類型、內容、證明鏈、依賴集、元數據與三態狀態",
+      "evidence": "$$\n\n\\boxed{\n\nN = (id, type, content, proof, deps, meta, state)\n\n}\n\n$$"
+    },
+    {
+      "id": "def2.2",
+      "name": "全息邏輯樹定義",
+      "formula": "T_HSC = (N, E, R)，須為DAG",
+      "description": "理論的全域結構被建模為有向無環圖，具備無環性、連通性、全息性三性質",
+      "evidence": "1. **無環性**：$\\mathcal{T}$ 必須是DAG（否則存在循環論證）"
+    },
+    {
+      "id": "def3.1",
+      "name": "三態判斷定義",
+      "formula": "Valid(P) ∈ {⊤, ⊥, Ω}",
+      "description": "判斷結果不只是二元真假，而是三態：嚴格成立、存在矛盾、需範式重構",
+      "evidence": "-   <![if !msEquation]>  <![endif]>： **嚴格成立** — 在當前範式下邏輯無漏洞"
+    },
+    {
+      "id": "def4.1",
+      "name": "污染傳播規則",
+      "formula": "上游⊥污染下游為⊥；上游Ω污染下游為Ω（除非下游自身⊥）",
+      "description": "若節點依賴一個狀態為⊥或Ω的節點，其自身狀態會被相應污染",
+      "evidence": "若 <![if !msEquation]>  <![endif]>（<![if !msEquation]>  <![endif]>  依賴 <![if !msEquation]>  <![endif]>），則："
+    }
+  ],
+  "theorems": [
+    {
+      "id": "thm2.1",
+      "name": "依賴圖的可構造性",
+      "statement": "對於形式規範寫成的理論，存在算法在多項式時間內構造完整依賴圖",
+      "from_axioms": ["def2.1", "def2.2"],
+      "description": "依賴圖構造算法的時間複雜度證明",
+      "evidence": "**陳述**：對於形式規範寫成的理論（滿足標準格式），存在算法在 <![if !msEquation]>  <![endif]>時間內構造完整依賴圖。"
+    },
+    {
+      "id": "thm2.2",
+      "name": "公理獨立性檢測",
+      "statement": "給定邏輯樹，可在多項式時間內檢測公理是否獨立",
+      "from_axioms": ["def2.2"],
+      "description": "透過移除公理並檢查是否仍可推導其內容，判斷該公理是否冗餘",
+      "evidence": "**定理2.2****（公理獨立性檢測）**"
+    },
+    {
+      "id": "thm2.3",
+      "name": "最小依賴集",
+      "statement": "對於任意定理，存在最小公理集使定理可從中推導，且任何真子集無法推導出該定理",
+      "from_axioms": ["def2.2"],
+      "description": "貪心剔除算法構造最小公理依賴集",
+      "evidence": "對於任意定理 <![if !msEquation]>  <![endif]>，存在 **最小公理集** <![if !msEquation]>  <![endif]>使得："
+    },
+    {
+      "id": "thm3.1",
+      "name": "判斷的偏序",
+      "statement": "三態判斷存在優先級，⊥ 優先於 Ω 優先於 ⊤",
+      "from_axioms": ["def3.1"],
+      "description": "錯誤嚴重性排序：邏輯矛盾 > 概念不足 > 完全正確，優先修復致命錯誤",
+      "evidence": "**證明**： 錯誤的嚴重性：邏輯矛盾 > 概念不足 > 完全正確"
+    },
+    {
+      "id": "thm4.1",
+      "name": "錯誤必傳播",
+      "statement": "若上游節點狀態為⊥且下游依賴該節點，則下游狀態必為⊥",
+      "from_axioms": ["def4.1"],
+      "description": "污染表保證下游節點不可能在依賴⊥節點時仍保持⊤",
+      "evidence": "若 <![if !msEquation]>  <![endif]>且 <![if !msEquation]>  <![endif]>，則 <![if !msEquation]>  <![endif]>。"
+    },
+    {
+      "id": "thm4.2",
+      "name": "傳播的終止性",
+      "statement": "對於有限DAG，錯誤傳播算法在O(n+e)時間內終止",
+      "from_axioms": ["def2.2", "def4.1"],
+      "description": "基於拓撲排序與每節點僅訪問一次的性質證明終止性",
+      "evidence": "對於有限DAG <![if !msEquation]>  <![endif]>，錯誤傳播算法在 <![if !msEquation]>  <![endif]>時間內終止。"
+    },
+    {
+      "id": "thm6.1",
+      "name": "時間複雜度",
+      "statement": "HDTC-GCS的總時間複雜度為O(n²)（或O(n·L)，視L大小）",
+      "from_axioms": [],
+      "description": "五階段流程（建圖、判斷、傳播、根因、修復）加總得出的整體複雜度",
+      "evidence": "HDTC-GCS的總時間複雜度為 <![if !msEquation]>  <![endif]>"
+    },
+    {
+      "id": "thm6.2",
+      "name": "空間複雜度",
+      "statement": "HDTC-GCS的空間複雜度為多項式量級",
+      "from_axioms": [],
+      "description": "存儲邏輯樹、證明鏈與臨時變量所需的空間加總",
+      "evidence": "空間複雜度為 <![if !msEquation]>  <![endif]>"
+    },
+    {
+      "id": "thm6.3",
+      "name": "可檢測錯誤的範圍",
+      "statement": "HDTC-GCS可檢測循環依賴(100%)、前提缺失(100%)、明顯跳步(≥80%)、概念不一致(≥60%)，但無法檢測公理正確性、深層語義錯誤、創造性不足",
+      "from_axioms": [],
+      "description": "系統檢測能力的完備性與局限邊界",
+      "evidence": "HDTC-GCS **可以檢測**："
+    },
+    {
+      "id": "thm6.4",
+      "name": "哥德爾陰影",
+      "statement": "HDTC-GCS無法證明自己的完備性",
+      "from_axioms": [],
+      "description": "以哥德爾第二不完備性定理為依據，論證系統若能自證完備性將導致自身不一致的矛盾",
+      "evidence": "**陳述**：HDTC-GCS無法證明自己的完備性。"
+    }
+  ],
+  "dag": [
+    {"id": "def2.1", "kind": "axiom", "depends_on": []},
+    {"id": "def2.2", "kind": "axiom", "depends_on": ["def2.1"]},
+    {"id": "def3.1", "kind": "axiom", "depends_on": ["def2.1"]},
+    {"id": "def4.1", "kind": "axiom", "depends_on": ["def3.1", "def2.2"]},
+    {"id": "thm2.1", "kind": "theorem", "depends_on": ["def2.1", "def2.2"]},
+    {"id": "thm2.2", "kind": "theorem", "depends_on": ["def2.2"]},
+    {"id": "thm2.3", "kind": "theorem", "depends_on": ["def2.2"]},
+    {"id": "thm3.1", "kind": "theorem", "depends_on": ["def3.1"]},
+    {"id": "thm4.1", "kind": "theorem", "depends_on": ["def4.1"]},
+    {"id": "thm4.2", "kind": "theorem", "depends_on": ["def2.2", "def4.1"]},
+    {"id": "thm6.1", "kind": "theorem", "depends_on": ["thm2.1", "thm4.2"]},
+    {"id": "thm6.2", "kind": "theorem", "depends_on": ["def2.1", "def2.2"]},
+    {"id": "thm6.3", "kind": "theorem", "depends_on": ["def3.1"]},
+    {"id": "thm6.4", "kind": "theorem", "depends_on": ["thm6.3"]}
+  ],
+  "concepts": [
+    {
+      "name": "全息邏輯樹",
+      "canonical": "HolographicCausalGraph",
+      "role": "defines",
+      "evidence": "**全息邏輯樹**——將理論的所有公理、定義、引理、定理及其證明過程建模為可回溯的狀態鏈"
+    },
+    {
+      "name": "三態判斷機",
+      "canonical": "TriadicLogic",
+      "role": "uses",
+      "evidence": "**三態判斷機**——判斷結果不只是{真、假}，而是{嚴格成立⊤、存在矛盾⊥、需範式重構Ω}"
+    },
+    {
+      "name": "絕對動態邏輯",
+      "canonical": "ADL",
+      "role": "uses",
+      "evidence": "《絕對動態邏輯》第四章："
+    },
+    {
+      "name": "強制判斷算子",
+      "canonical": "ADL",
+      "role": "uses",
+      "evidence": "├─→ [D2.1: 強制判斷算子]"
+    },
+    {
+      "name": "三態邏輯",
+      "canonical": "TriadicLogic",
+      "role": "uses",
+      "evidence": "《三態邏輯》第2章："
+    },
+    {
+      "name": "範式對偶論",
+      "canonical": "ParadigmDualityTheory",
+      "role": "uses",
+      "evidence": "《範式對偶論》第4章："
+    },
+    {
+      "name": "螺旋上升",
+      "canonical": "SpiralAscent",
+      "role": "defines",
+      "evidence": "**策略2****：螺旋上升（Spiral Ascent****）**"
+    },
+    {
+      "name": "剃刀",
+      "canonical": "Razor",
+      "role": "defines",
+      "evidence": "**策略3****：剃刀（Razor****）**"
+    },
+    {
+      "name": "Lean",
+      "canonical": "LeanFormalization",
+      "role": "uses",
+      "evidence": "**工具**：Coq、Lean、Isabelle"
+    },
+    {
+      "name": "哥德爾陰影",
+      "canonical": "GodelShadow",
+      "role": "defines",
+      "evidence": "**警告**：本系統可用於檢查自身，但不保證檢查結果無漏洞（哥德爾陰影）"
+    },
+    {
+      "name": "24/77定律",
+      "canonical": "TwentyFourSeventySevenLaw",
+      "role": "uses",
+      "evidence": "Neo.K的「24/77定律」：邏輯正確，但洞察力需人類判斷"
+    },
+    {
+      "name": "GPT-4",
+      "canonical": "AICL",
+      "role": "uses",
+      "evidence": "**實驗**（請GPT-4檢查三態邏輯）："
+    }
+  ],
+  "external_refs": [
+    {
+      "target": "lm-000870",
+      "type": "verifies",
+      "evidence": "《絕對動態邏輯》第四章：\n\n定理4.1（絕對力的動態完備性）",
+      "confidence": 0.9
+    },
+    {
+      "target": "lm-000215",
+      "type": "verifies",
+      "evidence": "《三態邏輯》第2章：\n\n「絕對維 = {0-dim, Ω-dim, U-dim}」（使用名詞性表述）",
+      "confidence": 0.85
+    },
+    {
+      "target": "lm-000063",
+      "type": "depends_on",
+      "evidence": "**工具**：Coq、Lean、Isabelle",
+      "confidence": 0.5
+    },
+    {
+      "target": "AdversarialVerification",
+      "type": "extends",
+      "evidence": "**改進2****：形式化證明助手集成**\n\n**方案**： 將HDTC與Lean/Coq集成",
+      "confidence": 0.4
+    },
+    {
+      "target": "AICL",
+      "type": "applies",
+      "evidence": "**實驗**（請GPT-4檢查三態邏輯）：",
+      "confidence": 0.4
+    }
+  ],
+  "notes": "來源使用大量Word公式圖片佔位符（[!msEquation]），導致部分公式/符號在Markdown中缺失明文，故此類定義的evidence改採周邊可驗證的中文說明句。理論=DCO/WT等未在本文出現，故未強行連結；ADL、三態邏輯、範式對偶論為本文檢查對象但未給出可資對應的確切lm-id於範式對偶論（未列於清單），故未納入external_refs。"
+}

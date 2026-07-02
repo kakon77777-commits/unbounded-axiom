@@ -1,0 +1,157 @@
+{
+  "tcf_extract_version": "0.1",
+  "id": "lm-001149",
+  "title": "高效新語言（EML）1.5：語意附加驅動的程式設計範式革新",
+  "language": "zh-Hant",
+  "source_file": "content/papers/2026/2026-05/高效新語言（EML）1.5：語意附加驅動的程式設計範式革新.md",
+  "theory_name": "高效新語言 EML 1.5（語意附加機制與邏輯結晶化）",
+  "extracted_by": "claude-fable-5 (automated distillation, Phase A)",
+  "extraction_date": "2026-07-02",
+  "canonical_status": "draft",
+  "primitives": [
+    {
+      "symbol": "語意附加 (Semantic Overlay)",
+      "kind": "function",
+      "description": "允許在文字或符號的右上角附加邏輯標誌，使單個字符同時表達基礎意義與附加操作",
+      "evidence": "高效新語言的核心創新是**語意附加（****Semantic Overlay****）**：允許在文字或符號的**右上角**附加邏輯標誌，使單個字符同時表達基礎意義與附加操作。"
+    },
+    {
+      "symbol": "⁺ⁿ / ⁻ⁿ / *ⁿ / ÷ⁿ / ² / √",
+      "kind": "function",
+      "description": "數值操作符：右上角符號表示賦值、減少、乘、除、平方、開方",
+      "evidence": "⁺ⁿ 賦值為n x⁺¹⁰⁰ x = 100"
+    },
+    {
+      "symbol": "Σ / Π",
+      "kind": "function",
+      "description": "求和與求積符號，直接表達累加/累乘邏輯",
+      "evidence": "Σ 求和 Σ(i², i∈[1:n]) sum(i2 for i in range(1,n+1))"
+    },
+    {
+      "symbol": "⇒ / ⇐",
+      "kind": "relation",
+      "description": "指派結果 / 反向指派的箭頭算子",
+      "evidence": "⇒ 指派結果 f(x) ⇒ y y = f(x)"
+    },
+    {
+      "symbol": "冷邏輯 (Cold Logic) / 熱狀態 (Hot State)",
+      "kind": "type",
+      "description": "程式碼二分類：冷邏輯為純函數、固定算法、靜態配置；熱狀態為動態變數、I/O操作、用戶互動",
+      "evidence": "現代程式碼可分為兩類： 1. 冷邏輯（Cold Logic）： - 純函數（Pure Function）：無副作用，輸入確定則輸出確定"
+    },
+    {
+      "symbol": "Nova Tensor Node / 邏輯節點",
+      "kind": "type",
+      "description": "邏輯結晶化將靜態函數編譯為的單一邏輯節點，實現代碼坍縮與O(1)調用",
+      "evidence": "邏輯結晶化是EML 1.5的「黑科技」：利用AI將靜態函數編譯為單一邏輯節點（Nova Tensor Node），實現「代碼坍縮」。"
+    },
+    {
+      "symbol": "⟨...⟩⁺ᶜʳʸˢᵗᵃˡ",
+      "kind": "function",
+      "description": "冷邏輯標記語法，標示函數為可結晶化的純函數",
+      "evidence": "冷邏輯標記： ⟨Physics⟩⁺ᶜʳʸˢᵗᵃˡ(mass, velocity, time) {"
+    }
+  ],
+  "axioms": [
+    {
+      "id": "A1",
+      "name": "可選性原則",
+      "formula": "語意附加是選擇，不是強制",
+      "description": "EML從未要求開發者必須使用右上角符號，而是提供優化選項，允許漸進式採用",
+      "evidence": "**語意附加是選擇，不是強制。**"
+    },
+    {
+      "id": "A2",
+      "name": "通用性原則",
+      "formula": "EML是可應用於任何語言的概念，非特定語法實現",
+      "description": "EML的核心是語意附加機制，而非封閉技術棧，可移植到Python、C++等任意語言",
+      "evidence": "**EML****不是新語言，是可應用於任何語言的概念。**"
+    },
+    {
+      "id": "A3",
+      "name": "機器優先，人類適應原則",
+      "formula": "優先考慮機器效率，但提供工具幫助人類適應",
+      "description": "編譯器/AI處理符號（機器友好），開發者看到視覺化輔助（人類友好），兩者通過工具鏈銜接",
+      "evidence": "**優先考慮機器效率，但提供工具幫助人類適應。**"
+    },
+    {
+      "id": "A4",
+      "name": "純函數結晶化前提",
+      "formula": "純函數 ∧ 邏輯穩定 ∧ 計算密集 ∧ 無動態依賴 → 可結晶化",
+      "description": "邏輯結晶化僅在純函數、邏輯數月至數年不變、計算密集、無外部動態依賴時有效",
+      "evidence": "邏輯結晶化不是萬能鑰匙，僅在以下條件下有效： 1. ✅  純函數：無副作用、無全局狀態訪問 2. ✅  邏輯穩定：幾乎不改動（數月到數年）"
+    }
+  ],
+  "theorems": [
+    {
+      "id": "T1",
+      "name": "資訊密度提升定理",
+      "statement": "語意附加使單字符承載多層語意，理論上可使程式碼行數平均減少38.3%、字符數平均減少59.9%",
+      "from_axioms": [],
+      "description": "基於三個典型程式設計場景（數學計算、矩陣操作、條件邏輯）的對比測試得出的平均理論值",
+      "evidence": "**平均理論值**： -   **程式碼行數減少**：38.3% -   **字符數減少**：59.9%"
+    },
+    {
+      "id": "T2",
+      "name": "冷熱分離編譯加速定理",
+      "statement": "透過冷熱數據分離架構，大型專案編譯時間可減少70-90%（假設90%代碼為冷邏輯）",
+      "from_axioms": [],
+      "description": "跳過未變動的冷邏輯，僅重新編譯變動的熱狀態部分，達成增量編譯效益",
+      "evidence": "編譯時間減少：70-90%（大型專案，假設90%代碼為冷邏輯）"
+    },
+    {
+      "id": "T3",
+      "name": "邏輯結晶化局部加速定理",
+      "statement": "結晶化後單一冷邏輯函數執行速度提升10-100倍，但整體專案性能提升僅5-15%",
+      "from_axioms": ["A4"],
+      "description": "由於實際專案中冷邏輯函數占比低，結晶化的整體收益有限，屬「錦上添花」而非「雪中送炭」",
+      "evidence": "結晶化後，這5個函數的執行速度提升10-100倍（取決於原始複雜度），但整體專案性能提升可能僅5-15%。"
+    }
+  ],
+  "dag": [
+    {"id": "語意附加 (Semantic Overlay)", "kind": "primitive", "depends_on": []},
+    {"id": "⁺ⁿ / ⁻ⁿ / *ⁿ / ÷ⁿ / ² / √", "kind": "primitive", "depends_on": []},
+    {"id": "Σ / Π", "kind": "primitive", "depends_on": []},
+    {"id": "⇒ / ⇐", "kind": "primitive", "depends_on": []},
+    {"id": "冷邏輯 (Cold Logic) / 熱狀態 (Hot State)", "kind": "primitive", "depends_on": []},
+    {"id": "Nova Tensor Node / 邏輯節點", "kind": "primitive", "depends_on": ["冷邏輯 (Cold Logic) / 熱狀態 (Hot State)"]},
+    {"id": "⟨...⟩⁺ᶜʳʸˢᵗᵃˡ", "kind": "primitive", "depends_on": ["冷邏輯 (Cold Logic) / 熱狀態 (Hot State)"]},
+    {"id": "A1", "kind": "axiom", "depends_on": []},
+    {"id": "A2", "kind": "axiom", "depends_on": []},
+    {"id": "A3", "kind": "axiom", "depends_on": []},
+    {"id": "A4", "kind": "axiom", "depends_on": ["冷邏輯 (Cold Logic) / 熱狀態 (Hot State)"]},
+    {"id": "T1", "kind": "theorem", "depends_on": ["語意附加 (Semantic Overlay)"]},
+    {"id": "T2", "kind": "theorem", "depends_on": ["冷邏輯 (Cold Logic) / 熱狀態 (Hot State)"]},
+    {"id": "T3", "kind": "theorem", "depends_on": ["A4", "Nova Tensor Node / 邏輯節點"]}
+  ],
+  "concepts": [
+    {"name": "高效新語言 (EML)", "canonical": "EML", "role": "defines", "evidence": "高效新語言（Efficient New Language, EML）是一種基於**語意附加機制**的程式設計範式創新。"},
+    {"name": "語意附加 (Semantic Overlay)", "canonical": "EML", "role": "defines", "evidence": "高效新語言的核心創新是**語意附加（Semantic Overlay****）**：允許在文字或符號的**右上角**附加邏輯標誌"},
+    {"name": "邏輯結晶化 (Logic Crystallization)", "canonical": "EML", "role": "defines", "evidence": "**3.2 邏輯結晶化（Logic Crystallization）**"},
+    {"name": "MSSP（母集與子集範式）", "canonical": "MSSP", "role": "uses", "evidence": "高效新語言與MSSP（母集與子集範式）是**天然盟友**，但各自獨立。"},
+    {"name": "FMS/SMS/TMS", "canonical": "MSSP", "role": "uses", "evidence": "FMS（第一主母集）：純元資料，定義系統目的與結構 SMS（第二主母集）：核心功能，穩定且不可移除 TMS（第三主母集）：功能子集，可插拔且獨立"},
+    {"name": "Py⁺", "canonical": "PyPlus", "role": "defines", "evidence": "**Python****開發者**可以將EML概念應用於Python（稱為Py⁺）"},
+    {"name": "C⁺⁺⁺", "canonical": "CxxxPlus", "role": "defines", "evidence": "**C++****開發者**可以將EML概念應用於C++（稱為C⁺⁺⁺）"},
+    {"name": "冷熱數據分離架構", "canonical": "EML", "role": "defines", "evidence": "EML 1.5版引入的核心創新是冷熱數據分離，這是配合MSSP架構的深度優化。"},
+    {"name": "Nova邏輯輸入法 (Nova Logic IME)", "canonical": "EML", "role": "defines", "evidence": "**Nova****邏輯輸入法**：軟體定義的虛擬「符號鍵盤」，無需購買實體設備"},
+    {"name": "Cogni-Editor投影編輯器", "canonical": "EML", "role": "defines", "evidence": "**Cogni-Editor****投影編輯器**：雙態視圖，可在「符號代碼」與「傳統代碼」間一鍵切換"},
+    {"name": "MSSP-AISMBI", "canonical": "MSSP", "role": "extends", "evidence": "MSSP-AISMBI（AI Static Memory Boundary Inference，AI靜態記憶體邊界推斷系統）是基於MSSP架構的**動態記憶體管理外掛**。"},
+    {"name": "波粒二象性類比", "canonical": "TriadicLogic", "role": "uses", "evidence": "正如量子力學中的**波粒二象性**——光既是波也是粒子，取決於觀測方式——EML代碼既是「符號」也是「邏輯」，取決於誰在「觀測」（人類？編譯器？AI？）。"}
+  ],
+  "external_refs": [
+    {
+      "target": "MSSP",
+      "type": "depends_on",
+      "evidence": "高效新語言與MSSP（母集與子集範式）是**天然盟友**，但各自獨立。",
+      "confidence": 0.9
+    },
+    {
+      "target": "MSSP",
+      "type": "applies",
+      "evidence": "EML的**語意附加**與MSSP的**層次分離**結合時，產生協同效應",
+      "confidence": 0.85
+    }
+  ],
+  "notes": "EML 1.5 is a practitioner/design paper (not a formal proof paper): axioms are the paper's stated design principles (optionality, universality, machine-first) plus the crystallization precondition; theorems are the paper's stated theoretical/estimated performance results, explicitly marked as unverified projections. MSSP is referenced heavily but has no lm-id in the supplied corpus list, so external_refs use canonical concept name 'MSSP' instead. No textual cross-reference to lm-001148 (Py⁺/C+++ 技術開發手冊) exists in the source; the previously inferred 'extends' link (based only on title correspondence, not evidence) has been removed per verification.",
+  "provenance": "TCF extraction only; no source paper content was modified."
+}

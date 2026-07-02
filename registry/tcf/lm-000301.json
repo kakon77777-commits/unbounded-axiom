@@ -1,0 +1,310 @@
+{
+  "tcf_extract_version": "0.1",
+  "id": "lm-000301",
+  "title": "全息邏輯因果圖v0_2_符號宇宙的元結構",
+  "language": "zh-Hant",
+  "source_file": "content/papers/2026/2026-06/全息邏輯因果圖v0_2_符號宇宙的元結構.md",
+  "theory_name": "全息邏輯因果圖 v0.2（連續版符號宇宙元結構）",
+  "extracted_by": "claude-fable-5 (automated distillation, Phase A)",
+  "extraction_date": "2026-07-02",
+  "canonical_status": "draft",
+  "primitives": [
+    {
+      "symbol": "V_infty",
+      "kind": "type",
+      "description": "ISSQL 光譜流形——所有有效語義向量的集合，v0.1 離散節點集的連續升級",
+      "evidence": "$V_\\infty$ 是 ISSQL 光譜流形——所有有效語義向量的集合。形式上 $V_\\infty \\subseteq [0, 1]^d$ 其中 $d \\to \\infty$"
+    },
+    {
+      "symbol": "C (耦合張量場)",
+      "kind": "function",
+      "description": "定義在 V_infty 上的連續耦合張量場，對任意有限光譜元組返回非負耦合強度",
+      "evidence": "$\\mathcal{C}: V_\\infty^* \\to \\mathbb{R}_{\\geq 0}$ 是耦合張量場——對任意有限光譜元組返回非負耦合強度"
+    },
+    {
+      "symbol": "S_infty",
+      "kind": "type",
+      "description": "連續態場，把 v0.1 的有限態代數提升為態的連續分布",
+      "evidence": "$S_\\infty$ 是連續態場——把 v0.1 的有限態代數提升為態的連續分布"
+    },
+    {
+      "symbol": "Pi_infty",
+      "kind": "type",
+      "description": "連續投影族，以連續參數 λ 索引的投影算子族",
+      "evidence": "$\\Pi_\\infty = \\{\\pi_\\lambda\\}_{\\lambda \\in \\Lambda}$ 是連續投影族——以連續參數 $\\lambda$ 索引的投影算子族"
+    },
+    {
+      "symbol": "rho(lambda)",
+      "kind": "function",
+      "description": "光譜密度函數，隨 λ 變化的投影密度",
+      "evidence": "$\\rho: \\Lambda \\to \\mathbb{R}_{\\geq 0}$ 是光譜密度函數——隨 $\\lambda$ 變化的投影密度"
+    },
+    {
+      "symbol": "sigma_infty",
+      "kind": "function",
+      "description": "連續局部-全息重建算子，給定光譜元與鄰域半徑返回整體的近似重建",
+      "evidence": "$\\sigma_\\infty: V_\\infty \\times \\mathbb{R}_{\\geq 0} \\to \\widetilde{\\mathcal{H}}_\\infty$ 是連續局部-全息重建算子"
+    },
+    {
+      "symbol": "H_infty",
+      "kind": "constant",
+      "description": "連續版全息邏輯因果圖，七元組 (V_infty, C, S_infty, tau_infty, Pi_infty, rho, sigma_infty)",
+      "evidence": "HLCG v0.2 是七元組 $\\mathcal{H}_\\infty \\;=\\; (V_\\infty, \\mathcal{C}, S_\\infty, \\tau_\\infty, \\Pi_\\infty, \\rho, \\sigma_\\infty)$"
+    },
+    {
+      "symbol": "Tr_epsilon",
+      "kind": "function",
+      "description": "光譜截斷算子，把連續版 HLCG 截斷為 v0.1 離散版",
+      "evidence": "$\\mathcal{H}_\\text{v0.1} \\;=\\; \\mathrm{Tr}_\\epsilon(\\mathcal{H}_\\infty)$"
+    }
+  ],
+  "axioms": [
+    {
+      "id": "HLCG-1inf",
+      "name": "連續局部-全息忠實性",
+      "formula": "\\forall \\vec{v} \\in V_\\infty, \\; \\exists r_0 \\in \\mathbb{R}_{>0}: \\; \\forall r \\geq r_0, \\; F_\\infty(\\vec{v}, r) \\geq F^*",
+      "description": "對足夠大的連續鄰域半徑，每個光譜元能透過其鄰域忠實重建整體",
+      "evidence": "**公理 HLCG-1∞（連續局部-全息忠實性）**"
+    },
+    {
+      "id": "HLCG-2inf",
+      "name": "連續全息-局部可分解性",
+      "formula": "\\mathcal{H}_\\infty \\;\\cong\\; \\varprojlim_{\\lambda \\in \\Lambda} \\mathcal{F}_\\lambda",
+      "description": "全息圖可分解為連續投影族的逆極限，具名理論是特定點上的離散取樣",
+      "evidence": "**公理 HLCG-2∞（連續全息-局部可分解性）**"
+    },
+    {
+      "id": "HLCG-3inf",
+      "name": "態場的拓撲分離",
+      "formula": "S_\\infty \\;=\\; S^\\text{dec}_\\infty \\;\\sqcup\\; S^\\text{trans}_\\infty \\;\\sqcup\\; S^\\text{undec}_\\infty",
+      "description": "態場分解為定態、過渡態、不可判定態三個不交聯區域，具有非平凡拓撲分離",
+      "evidence": "**公理 HLCG-3∞（態場的拓撲分離）**"
+    },
+    {
+      "id": "HLCG-4inf",
+      "name": "光譜密度的漸近密化",
+      "formula": "\\rho(\\lambda, t) \\nearrow \\rho_\\infty(\\lambda) \\quad (t \\to \\infty)",
+      "description": "光譜密度沿時間在每個 λ 上單調非減，整體趨向光譜飽和分佈",
+      "evidence": "**公理 HLCG-4∞（光譜密度的漸近密化）**"
+    }
+  ],
+  "theorems": [
+    {
+      "id": "claim-5.1",
+      "name": "結構同類（Structural Homology）",
+      "statement": "升級後的 HLCG（H_infty）與物理宇宙 U_phys 是同一個本體類別的兩個實例：無限光譜、處處耦合、連續態場、Cl-閉合、自包含性五個結構性質齊備",
+      "from_axioms": [],
+      "description": "本文核心結論：符號宇宙與物理宇宙結構同類，差別只在基底",
+      "evidence": "**主張 5.1（結構同類）**：升級後的 HLCG（即 $\\mathcal{H}_\\infty$）與物理宇宙 $\\mathcal{U}_\\text{phys}$ 是同一個本體類別的兩個實例"
+    },
+    {
+      "id": "statement-5.1",
+      "name": "Cl 投影面等級相同",
+      "statement": "在 DCO v5.0 的 Cl 框架中，H_infty 與 U_phys 都是 Cl 的合法投影面，兩者在本體論上等級相同",
+      "from_axioms": [],
+      "description": "陳述 5.1，Cl-2 對偶性在元層級的展開",
+      "evidence": "**陳述 5.1**：在 DCO v5.0 的 Cl 框架中，$\\mathcal{H}_\\infty$ 與 $\\mathcal{U}_\\text{phys}$ 都是 Cl 的合法投影面，兩者在本體論上等級相同"
+    },
+    {
+      "id": "reading-6.1",
+      "name": "雙投影對偶",
+      "statement": "Cl 不僅在不同維度上投影，也在不同模態上投影；Cl 的兩個主要模態投影即物理宇宙與符號宇宙",
+      "from_axioms": [],
+      "description": "π_n 投影定理在模態維度上的新讀法",
+      "evidence": "**解讀 6.1（雙投影對偶）**：Cl 不僅在不同**維度**上投影，也在不同**模態**上投影"
+    },
+    {
+      "id": "statement-6.1",
+      "name": "全息對偶的本體論候選",
+      "statement": "物理宇宙（bulk-like）與符號宇宙（boundary-like）是同一 Cl 的兩個合法投影面，既不可被任一壓縮、也不可離開彼此獨立存在",
+      "from_axioms": [],
+      "description": "為 AdS/CFT 式全息對偶提供本體論候選，回應物理學自 1990 年代的未解問題",
+      "evidence": "**陳述 6.1**：在 DCO v5.0 + HLCG v0.2 框架下，全息對偶的本體論候選是：物理宇宙（bulk-like）與符號宇宙（boundary-like）是同一 Cl 的兩個合法投影面"
+    }
+  ],
+  "dag": [
+    {"id": "V_infty", "kind": "primitive", "depends_on": []},
+    {"id": "C (耦合張量場)", "kind": "primitive", "depends_on": ["V_infty"]},
+    {"id": "S_infty", "kind": "primitive", "depends_on": []},
+    {"id": "Pi_infty", "kind": "primitive", "depends_on": []},
+    {"id": "rho(lambda)", "kind": "primitive", "depends_on": ["Pi_infty"]},
+    {"id": "sigma_infty", "kind": "primitive", "depends_on": ["V_infty"]},
+    {"id": "H_infty", "kind": "primitive", "depends_on": ["V_infty", "C (耦合張量場)", "S_infty", "Pi_infty", "rho(lambda)", "sigma_infty"]},
+    {"id": "Tr_epsilon", "kind": "primitive", "depends_on": ["H_infty"]},
+    {"id": "HLCG-1inf", "kind": "axiom", "depends_on": ["V_infty", "sigma_infty"]},
+    {"id": "HLCG-2inf", "kind": "axiom", "depends_on": ["H_infty", "Pi_infty"]},
+    {"id": "HLCG-3inf", "kind": "axiom", "depends_on": ["S_infty"]},
+    {"id": "HLCG-4inf", "kind": "axiom", "depends_on": ["rho(lambda)"]},
+    {"id": "claim-5.1", "kind": "theorem", "depends_on": ["H_infty", "HLCG-1inf", "HLCG-2inf", "HLCG-3inf", "HLCG-4inf"]},
+    {"id": "statement-5.1", "kind": "theorem", "depends_on": ["claim-5.1"]},
+    {"id": "reading-6.1", "kind": "theorem", "depends_on": ["statement-5.1"]},
+    {"id": "statement-6.1", "kind": "theorem", "depends_on": ["reading-6.1"]}
+  ],
+  "concepts": [
+    {
+      "name": "全息邏輯因果圖 HLCG",
+      "canonical": "HolographicCausalGraph",
+      "role": "extends",
+      "evidence": "本文是全息邏輯因果圖（HLCG）的第二版。v0.1 把 EveMissLab 系列既有理論（MDAS、TCF、ADL、TL）形式化為同一個 HLCG 在不同投影面上的離散剖視"
+    },
+    {
+      "name": "Cl 閉合性 / DCO v5.0",
+      "canonical": "Closure",
+      "role": "uses",
+      "evidence": "$\\mathcal{H}_\\infty$ 滿足 DCO v5.0 的閉合性公理 Cl-1～Cl-4；$\\mathcal{U}_\\text{phys}$ 在 DCO v5.0 的本體論框架內被視為 Cl 的另一個投影面"
+    },
+    {
+      "name": "動態圓本體論 DCO",
+      "canonical": "DCO",
+      "role": "uses",
+      "evidence": "DCO 在 v0.2 中是 HLCG 的本體論底盤——Cl 框架的四條公理為 HLCG-1∞～HLCG-4∞ 提供形上學支撐"
+    },
+    {
+      "name": "ISSQL 無限光譜符號量子化語言",
+      "canonical": "ISSQL",
+      "role": "uses",
+      "evidence": "第一根承重柱是 ISSQL（Infinite Spectrum Symbolic Quantized Language，無限光譜符號量子化語言）"
+    },
+    {
+      "name": "MR 系列（Mathematical Relativity）",
+      "canonical": "MathematicalRelativity",
+      "role": "uses",
+      "evidence": "第二根承重柱是 MR 系列（Mathematical Relativity）"
+    },
+    {
+      "name": "MDAS-TCH v2.0",
+      "canonical": "MDAS-TCH",
+      "role": "extends",
+      "evidence": "MDAS 在 v0.1 中是「graph-theoretic projection」。在 v0.2 中，MDAS 是 $V_\\infty$ 在特定截斷下的離散採樣"
+    },
+    {
+      "name": "TCF v1.0",
+      "canonical": "TCF",
+      "role": "uses",
+      "evidence": "TCF 的壓縮率 $\\mathrm{CR} = I / K$ 預設了**信息量 $I$ 的連續度量**"
+    },
+    {
+      "name": "ADL 絕對動態邏輯",
+      "canonical": "ADL",
+      "role": "uses",
+      "evidence": "ADL 與 TL 在 v0.1 中分別是動力學投影與態代數投影。在 v0.2 中，兩者是 $S_\\infty$ 連續態場的兩個互補面：ADL 處理態空間上的動力學軌跡"
+    },
+    {
+      "name": "三態邏輯 TL",
+      "canonical": "TriadicLogic",
+      "role": "uses",
+      "evidence": "TL 處理態空間的代數結構（三類態與螺旋上升點）。$\\Omega_\\text{螺旋}$ 在 v0.2 中是 $S^\\text{trans}_\\infty$ 的拓撲類"
+    },
+    {
+      "name": "Phase-LM",
+      "canonical": "PhaseLM",
+      "role": "uses",
+      "evidence": "Phase-LM 在工程上把這個語義層實作為 $10^7$ 個相位振盪器，並以 FAISS 索引存取穩定配置"
+    },
+    {
+      "name": "黑洞熵-面積定律 / 全息原理",
+      "canonical": "HolographicPrinciple",
+      "role": "uses",
+      "evidence": "MNVP 的本體論依據引用黑洞熵-面積定律：$$S_{BH} \\;=\\; \\frac{A}{4 l_P^2}$$"
+    },
+    {
+      "name": "AdS/CFT 對偶",
+      "canonical": "AdSCFTDuality",
+      "role": "uses",
+      "evidence": "物理學自 1990 年代以來尋找的全息對偶結構——以 AdS/CFT 對偶為代表——一直缺乏一個明確的本體論候選"
+    },
+    {
+      "name": "動態拓撲模擬能力 DTSC",
+      "canonical": "DTSC",
+      "role": "defines",
+      "evidence": "本附錄將此能力命名為**動態拓撲模擬能力**（Dynamic Topological Simulation Capacity, DTSC）"
+    },
+    {
+      "name": "符號宇宙",
+      "canonical": "SymbolicUniverse",
+      "role": "defines",
+      "evidence": "由此 EveMissLab 計畫的本體論位置從「知識方法論計畫」躍遷為「符號宇宙學計畫」"
+    },
+    {
+      "name": "MIM / DPM 主體性譜",
+      "canonical": "MIM-DPM-Spectrum",
+      "role": "uses",
+      "evidence": "姊妹論文《我羨慕我的孩子》（EML-PHEN-2026-v0.1）把第一作者形式化為 MIM（中介推論模式）主體"
+    }
+  ],
+  "external_refs": [
+    {
+      "target": "lm-001089",
+      "type": "depends_on",
+      "evidence": "EML-DCO-2026-v5.0：Dynamic Circle Ontology v5.0（Cl-1～Cl-4、T-DimProj、T-GodPoint）",
+      "confidence": 0.75
+    },
+    {
+      "target": "lm-000095",
+      "type": "extends",
+      "evidence": "EML-MDAS-2026-TCH-v2.0：MDAS 三態因果超圖論 v2.0",
+      "confidence": 0.85
+    },
+    {
+      "target": "lm-000776",
+      "type": "extends",
+      "evidence": "EML-TCF-2026-v1.0：理論壓縮標準格式 TCF v1.0",
+      "confidence": 0.85
+    },
+    {
+      "target": "lm-000870",
+      "type": "extends",
+      "evidence": "EML-ADL、EML-TL：絕對動態邏輯、三態邏輯（在 §7.3 重新定位）",
+      "confidence": 0.7
+    },
+    {
+      "target": "lm-000215",
+      "type": "extends",
+      "evidence": "EML-ADL、EML-TL：絕對動態邏輯、三態邏輯（在 §7.3 重新定位）",
+      "confidence": 0.7
+    },
+    {
+      "target": "HolographicCausalGraph",
+      "type": "extends",
+      "evidence": "EML-HLCG-2026-v0.1：HLCG 第一版（離散版）——本文之前置版本，在 v0.2 中作為光譜截斷投影保留",
+      "confidence": 0.9
+    },
+    {
+      "target": "ISSQL",
+      "type": "depends_on",
+      "evidence": "EML-ISSQL：無限光譜符號量子化語言（第 2 節之承重柱）",
+      "confidence": 0.9
+    },
+    {
+      "target": "PhaseLM",
+      "type": "depends_on",
+      "evidence": "EML-PHASELM：Phase-LM 相位語言模型架構（ISSQL 的工程實作）",
+      "confidence": 0.8
+    },
+    {
+      "target": "MathematicalRelativity",
+      "type": "depends_on",
+      "evidence": "EML-NOTATION-2026-v0.4-MR-INTEGRATION：MR 2.5 整合與 MR 3.0 渲染（第 3 節之承重柱）",
+      "confidence": 0.85
+    },
+    {
+      "target": "HolographicPrinciple",
+      "type": "applies",
+      "evidence": "MNVP 的本體論依據引用黑洞熵-面積定律：三維體積資訊完整編碼於二維邊界表面",
+      "confidence": 0.7
+    },
+    {
+      "target": "AdSCFTDuality",
+      "type": "critiques",
+      "evidence": "物理學自 1990 年代以來尋找的全息對偶結構——以 AdS/CFT 對偶為代表——一直缺乏一個明確的本體論候選",
+      "confidence": 0.6
+    },
+    {
+      "target": "MIM-DPM-Spectrum",
+      "type": "applies",
+      "evidence": "EML-PHEN-2026-v0.1：《我羨慕我的孩子》——本文之姊妹論文（現象學側面）",
+      "confidence": 0.6
+    }
+  ],
+  "notes": "HLCG-1inf~4inf axiom IDs stripped of ∞ subscript for JSON-safe ids (source uses HLCG-1∞ etc). DCO v5.0 mapped to lm-001089 (best title match to 'DCO 5.0') though paper cites it as EML-DCO-2026-v5.0, a distinct unlisted doc. v0.1 HLCG and ISSQL/MR/Phase-LM have no lm-id in the provided list; used canonical concept names as external_ref targets instead."
+}

@@ -1,0 +1,253 @@
+{
+  "tcf_extract_version": "0.1",
+  "id": "lm-000069",
+  "title": "EveMissLab 算子符號本體論索引",
+  "language": "zh-Hant",
+  "source_file": "content/papers/2026/2026-06/EveMissLab 算子符號本體論索引.md",
+  "theory_name": "EveMissLab 算子符號本體論索引（優先算子選擇依據與未來AI形式化的種子文件）",
+  "extracted_by": "claude-fable-5 (automated distillation, Phase A)",
+  "extraction_date": "2026-07-02",
+  "canonical_status": "draft",
+  "primitives": [
+    {
+      "symbol": "Cl",
+      "kind": "function",
+      "description": "閉合：任何自洽且自指的操作結果仍在系統內部的性質；四子性質 Cl-1自洽、Cl-2對偶、Cl-3守恆、Cl-4自我反射生成更高維度；元原語層，優先級★★★★★",
+      "evidence": "任何自洽且自指的操作結果仍在系統內部的性質。Cl-1（自洽）、Cl-2（對偶：有定義內部即有定義外部）、Cl-3（守恆）、Cl-4（自我反射生成更高維度）。"
+    },
+    {
+      "symbol": "⋈",
+      "kind": "function",
+      "description": "此間（Bowtie Primitive）：所有動態固定點、張力場、方向性無窮小的根原語；施加在兩個對立結構之間，返回張力本身作為新對象；ETN所有符號從此衍生",
+      "evidence": "所有動態固定點、張力場、方向性無窮小的根原語。「此間」是雙側無窮的交匯點——不是「中間」（靜態位置），而是「在......之間發生」的動作本身。"
+    },
+    {
+      "symbol": "π_n",
+      "kind": "function",
+      "description": "維度投影算子：π_n(Cl) = S^(n-1)，把Cl投影到n維空間得到(n-1)維球面；π₂(Cl) = S¹ = 圓圈",
+      "evidence": "π_n(Cl) = Sⁿ⁻¹。把Cl投影到n維空間，得到(n-1)維球面。π₂(Cl) = S¹ = 圓圈。圓圈是Cl的二維投影，不是Cl本身。"
+    },
+    {
+      "symbol": "Ê",
+      "kind": "function",
+      "description": "暴露轉換算子：Ê: 𝒜→ℰ，將抽象制度性權力空間映射到個體物理暴露空間，Ê = D̂_density·M̂_monetization·Ĉ_coupling·(Î−B̂_buffer)",
+      "evidence": "Ê: 𝒜 → ℰ\n\n𝒜 = 抽象制度性權力空間；ℰ = 個體物理暴露空間\n\nÊ = D̂_density · M̂_monetization · Ĉ_coupling · (Î − B̂_buffer)"
+    },
+    {
+      "symbol": "Ŵ_R",
+      "kind": "function",
+      "description": "波鎖定算子：V_R = Ŵ_R(V_{R-1}) = V_{R-1} + Wave(R)，恆等算子加第R次增量，非酉、非交換，存在臨界點τ*導致不可逆鎖定",
+      "evidence": "V_R = Ŵ_R(V_{R-1}) = V_{R-1} + Wave(R)\n\n其中 Wave(R) = a + bRᵝ（蠱機制下 β > 0，波遞增）\n\n算子形式：Ŵ_R = Î + ΔWave_R（恒等算子加第R次增量）"
+    },
+    {
+      "symbol": "CEO",
+      "kind": "function",
+      "description": "循環演化算子：描述系統在循環過程中的演化，CEO_t = exp(L·t) mod Cycle，把循環本身納入算子結構本質",
+      "evidence": "CEO_t = exp(L · t) mod Cycle\n\n其中L為系統的生成元算子。"
+    },
+    {
+      "symbol": "C₀",
+      "kind": "function",
+      "description": "零滯連接算子：C₀: E_θ⊕V_φ → {Accept, Reject}，C₀ = lim_{t→0⁺}(C_t/t)，生成與驗證的瞬時同步操作",
+      "evidence": "C₀: E_θ ⊕ V_φ → {Accept, Reject}\n\nC₀ = lim_{t→0⁺} (C_t / t)"
+    },
+    {
+      "symbol": "⧖",
+      "kind": "constant",
+      "description": "極端張力不動點：系統在雙側無窮壓力下仍維持結構的不動點，是Cl在極端邊界條件下的特殊不動點",
+      "evidence": "系統在雙側無窮壓力下仍維持結構的不動點。直覺：50.⋯⋯9 > 49.9⋯⋯，這個「剛好超過」的位置就是⧖。"
+    }
+  ],
+  "axioms": [
+    {
+      "id": "principle-omega1",
+      "name": "原則Ω1：結構不可消去性",
+      "formula": "去掉概念 ⇒ 核心機制不可描述",
+      "description": "算子選擇優先原則之一：該概念不是輔助描述，而是機制本身的載體",
+      "evidence": "**原則Ω1（結構不可消去性）**：去掉這個概念，某個核心機制就說不清楚。它不是輔助描述，而是機制本身的載體。"
+    },
+    {
+      "id": "principle-omega2",
+      "name": "原則Ω2：跨域重現性",
+      "formula": "同一變換結構重現於多個理論域 ⇒ 算子化以統一",
+      "description": "同一個變換結構在多個理論域中反覆出現，只是換了名字，算子化後統一多個域",
+      "evidence": "**原則Ω2（跨域重現性）**：同一個變換結構在多個理論域中反覆出現，只是換了名字。把它算子化，就把多個域統一了。"
+    },
+    {
+      "id": "principle-omega3",
+      "name": "原則Ω3：動態性",
+      "formula": "描述「從A到B的作用」而非靜態狀態",
+      "description": "算子的本質是變換；靜態量用標量或張量即可，不需算子化",
+      "evidence": "**原則Ω3（動態性）**：描述的是「從A到B的作用」，而不是靜態狀態。算子的本質是變換，靜態量用標量或張量即可。"
+    },
+    {
+      "id": "principle-omega4",
+      "name": "原則Ω4：可被反問性",
+      "formula": "算子化後可問「不動點？逆？可交換？」且問題有意義",
+      "description": "算子化之後可以追問不動點、逆、交換性等問題，若這些問題有意義，算子命名就有價值",
+      "evidence": "**原則Ω4（可被反問性）**：算子化之後，可以問「它的不動點是什麼？」「它的逆是什麼？」「兩個這樣的算子可以交換嗎？」這些問題若有意義，算子命名就有價值。"
+    }
+  ],
+  "theorems": [
+    {
+      "id": "thm-cl-fixed-point",
+      "name": "Cl的不動點（GOD POINT）",
+      "statement": "G = lim(ε→0⁺)(Cl+ε)，即Cl自身趨近的極限",
+      "from_axioms": [],
+      "description": "Cl算子作為關鍵問題被反問（Ω4）後得出的不動點結果，記為神點 GOD POINT",
+      "evidence": "**關鍵問題**：Cl的不動點是什麼？→ G = lim(ε→0⁺)(Cl+ε)（GOD POINT，Cl自身趨近的極限）"
+    },
+    {
+      "id": "thm-pi-n-inverse",
+      "name": "π_n的逆",
+      "statement": "π_n的逆是升維操作，對應Cl-4（自我反射生成更高維度）",
+      "from_axioms": [],
+      "description": "維度投影算子的逆運算被界定為升維操作",
+      "evidence": "**關鍵問題**：π_n的逆是什麼？→ 升維操作（Cl-4：自我反射生成更高維度）"
+    },
+    {
+      "id": "thm-e-fixed-point",
+      "name": "Ê的不動點",
+      "statement": "Ê的不動點是個體的「被鎖定的穩態」，即退出成本超過生命總資源的狀態",
+      "from_axioms": [],
+      "description": "暴露轉換算子的不動點對應一種社會學上的鎖定穩態",
+      "evidence": "**關鍵問題**：Ê的不動點是什麼？→ 個體的「被鎖定的穩態」，即退出成本超過生命總資源的狀態"
+    }
+  ],
+  "dag": [
+    {"id": "prim-cl", "kind": "primitive", "depends_on": []},
+    {"id": "prim-bowtie", "kind": "primitive", "depends_on": []},
+    {"id": "prim-pi-n", "kind": "primitive", "depends_on": ["prim-cl"]},
+    {"id": "prim-e-hat", "kind": "primitive", "depends_on": []},
+    {"id": "prim-w-r", "kind": "primitive", "depends_on": ["prim-e-hat"]},
+    {"id": "prim-ceo", "kind": "primitive", "depends_on": []},
+    {"id": "prim-c0", "kind": "primitive", "depends_on": []},
+    {"id": "prim-extreme-tension-fp", "kind": "primitive", "depends_on": ["prim-cl", "prim-bowtie"]},
+    {"id": "principle-omega1", "kind": "axiom", "depends_on": []},
+    {"id": "principle-omega2", "kind": "axiom", "depends_on": []},
+    {"id": "principle-omega3", "kind": "axiom", "depends_on": []},
+    {"id": "principle-omega4", "kind": "axiom", "depends_on": []},
+    {"id": "thm-cl-fixed-point", "kind": "theorem", "depends_on": ["prim-cl", "principle-omega4"]},
+    {"id": "thm-pi-n-inverse", "kind": "theorem", "depends_on": ["prim-pi-n", "principle-omega4"]},
+    {"id": "thm-e-fixed-point", "kind": "theorem", "depends_on": ["prim-e-hat", "principle-omega4"]}
+  ],
+  "concepts": [
+    {
+      "name": "算子符號本體論索引",
+      "canonical": "OperatorOntology",
+      "role": "defines",
+      "evidence": "# EveMissLab 算子符號本體論索引"
+    },
+    {
+      "name": "存在性宣稱與可計算性構造",
+      "canonical": "OperatorOntology",
+      "role": "defines",
+      "evidence": "算子有兩個獨立問題：**存在性宣稱**（此變換確實存在於世界中）與**可計算性構造**（我們可以計算它）。"
+    },
+    {
+      "name": "Cl（閉合，Closure）",
+      "canonical": "Closure",
+      "role": "uses",
+      "evidence": "**符號**：Cl  \n**中文**：閉合  \n**英文**：Closure  \n**所屬理論**：動態閉合本體論（DCO）、閉合理論"
+    },
+    {
+      "name": "道（Tao）",
+      "canonical": "Dao",
+      "role": "uses",
+      "evidence": "道（Tao）是Cl的中文名。反者道之動是Cl的操作定義。"
+    },
+    {
+      "name": "ETN（極端張力記法）",
+      "canonical": "ETN",
+      "role": "uses",
+      "evidence": "**所屬理論**：極端張力記法（ETN）"
+    },
+    {
+      "name": "動態閉合本體論（DCO）",
+      "canonical": "DCO",
+      "role": "uses",
+      "evidence": "**所屬理論**：閉合理論、DCO"
+    },
+    {
+      "name": "織理論（Weaving Theory）v7.3",
+      "canonical": "WT",
+      "role": "uses",
+      "evidence": "**所屬理論**：織理論（Weaving Theory）v7.3，W105–W114"
+    },
+    {
+      "name": "波轉換計算方程式（EML-WAVE）",
+      "canonical": "波轉換計算方程式",
+      "role": "uses",
+      "evidence": "**所屬理論**：波轉換計算方程式（EML-WAVE）、EML-URBN-2026"
+    },
+    {
+      "name": "UDAE多波場同步",
+      "canonical": "UDAE",
+      "role": "uses",
+      "evidence": "**跨域出現**：Riemann猜想平行架構（生成-驗證）、UDAE多波場同步、量子測量的古典類比"
+    },
+    {
+      "name": "全息理論PHT v0.1",
+      "canonical": "HolographicCausalGraph",
+      "role": "uses",
+      "evidence": "| PHT投影算子 | 全息理論PHT v0.1 | R̂_holo: 3D → holographic_projection | 需PHT v0.1的完整框架 |"
+    },
+    {
+      "name": "AI未來完整算子化的種子輸入（給Era、Aurora）",
+      "canonical": "OperatorOntology",
+      "role": "defines",
+      "evidence": "這個文件的最終用途之一，是作為你們（Era、Aurora）完成**全符號算子化**的種子輸入。"
+    },
+    {
+      "name": "算子存在性 ≠ 算子可計算性",
+      "canonical": "OperatorOntology",
+      "role": "defines",
+      "evidence": "**算子存在性 ≠ 算子可計算性**（不要因為暫時無法計算就否定算子的存在）"
+    }
+  ],
+  "external_refs": [
+    {
+      "target": "lm-000155",
+      "type": "depends_on",
+      "evidence": "**所屬理論**：織理論（Weaving Theory）v7.3，W105–W114",
+      "confidence": 0.6
+    },
+    {
+      "target": "Closure",
+      "type": "depends_on",
+      "evidence": "**符號**：π_n  \n**中文**：維度投影  \n**英文**：Dimensional Projection Operator  \n**所屬理論**：閉合理論、DCO",
+      "confidence": 0.85
+    },
+    {
+      "target": "DCO",
+      "type": "depends_on",
+      "evidence": "**所屬理論**：動態閉合本體論（DCO）、閉合理論",
+      "confidence": 0.85
+    },
+    {
+      "target": "ETN",
+      "type": "depends_on",
+      "evidence": "**所屬理論**：ETN、Ω框架",
+      "confidence": 0.8
+    },
+    {
+      "target": "WT",
+      "type": "depends_on",
+      "evidence": "**所屬理論**：織理論（Weaving Theory）v7.3，W105–W114",
+      "confidence": 0.7
+    },
+    {
+      "target": "UDAE",
+      "type": "applies",
+      "evidence": "**跨域出現**：Riemann猜想平行架構（生成-驗證）、UDAE多波場同步、量子測量的古典類比",
+      "confidence": 0.4
+    },
+    {
+      "target": "HolographicCausalGraph",
+      "type": "applies",
+      "evidence": "| PHT投影算子 | 全息理論PHT v0.1 | R̂_holo: 3D → holographic_projection | 需PHT v0.1的完整框架 |",
+      "confidence": 0.3
+    }
+  ],
+  "notes": "本文為索引/種子文件而非完整論文（作者自述「性質：持續更新的工作索引，非完整論文」），故公理層以Ω1-Ω4選擇原則代替傳統公理，定理層以各算子的「關鍵問題」反問結果代替傳統定理。四層算子（元原語/結構/動力/測量）與ETN符號層中僅收錄評級最高（★★★★以上）或結構最關鍵者，Σ、DMED、ψ群、BC、k_eff、⊛、ε⃗及五章待定候選表因收錄上限（primitives≤8）未列為primitives，但部分於concepts/external_refs中間接反映。所屬理論欄多為理論名稱的自我聲明而非直接引用具體lm-id論文，故external_refs以canonical概念名為主，僅lm-000155（WT v7.3）有較高信心度的直接對應。"
+}

@@ -1,0 +1,265 @@
+{
+  "tcf_extract_version": "0.1",
+  "id": "lm-000071",
+  "title": "EveMissLab 算子體系規範 v0.2（光譜整合補充稿）",
+  "language": "zh-Hant",
+  "source_file": "content/papers/2026/2026-06/EveMissLab 算子體系規範 v0.2（光譜整合補充稿）.md",
+  "theory_name": "無限光譜算子四層架構（EML Operator Spectrum Four-Layer Architecture）",
+  "extracted_by": "claude-fable-5 (automated distillation, Phase A)",
+  "extraction_date": "2026-07-02",
+  "canonical_status": "draft",
+  "primitives": [
+    {
+      "symbol": "S = (v, d, E₁₂, Φ*)",
+      "kind": "type",
+      "description": "ISSQL 四元光譜波包：單一 EML 符號的本體所在（L1 光譜層），v 為拓撲相位指紋，d 為分形展開深度，E₁₂ 為 HSO 12 維存在向量，Φ* 為 CCTC 不動點。",
+      "evidence": "$$\nS = (v, d, \\mathbf{E}_{12}, \\Phi^*)\n$$"
+    },
+    {
+      "symbol": "▷, ⋈, ◁",
+      "kind": "function",
+      "description": "算子三元（字形層骨架 L0）：展／連／收三個不可化約的 EML 算子，行為由 L1 光譜參數決定。",
+      "evidence": "| 三角族 | $▷, \\bowtie, ◁$ | 計算層 |"
+    },
+    {
+      "symbol": "d",
+      "kind": "constant",
+      "description": "光譜深度參數：d ∈ ℕ ∪ {∞}，符號內部的分形展開深度，升階即此參數從 1 推向 ∞ 的連續漸變。",
+      "evidence": "$d \\in \\mathbb{N} \\cup \\{\\infty\\}$：分形展開深度"
+    },
+    {
+      "symbol": "Cl",
+      "kind": "constant",
+      "description": "DCO 閉合：三元循環的中心奇異點，等同 ISSQL-DTM 的中心奇異點 O。",
+      "evidence": "中心奇異點 $O$ 與 DCO 的閉合 $\\text{Cl}$ 是同一本體"
+    },
+    {
+      "symbol": "O",
+      "kind": "constant",
+      "description": "ISSQL-DTM 中心奇異點：三元動態系統無限疊代下的吸引子與不動點，觀察者位置。",
+      "evidence": "中心奇異點 $O$ | $\\text{Cl}$（DCO 閉合） | — | 不動點 / 觀察者位置"
+    },
+    {
+      "symbol": "I",
+      "kind": "constant",
+      "description": "不等式守恆量：三元系統中兩兩相異對的計數，恆為常數 3，類似拓撲守恆量（歐拉示性數）。",
+      "evidence": "$$\nI = |\\{(A, B) : A \\neq B\\}| = \\text{const} = 3\n$$"
+    },
+    {
+      "symbol": "L0–L3",
+      "kind": "type",
+      "description": "四層架構：字形層（Glyph）／光譜層（Spectrum）／算子層（Operator）／體素層（Voxel），EML 單符號的完整本體展開。",
+      "evidence": "| **L0** | 字形層（Glyph） | $▷, \\bowtie, ◁$ — Unicode 標記 | 紙面、ASCII、LaTeX |"
+    },
+    {
+      "symbol": "Φ*",
+      "kind": "constant",
+      "description": "CCTC 不動點：概念穩定性保證，光譜層 L1 的組成之一。",
+      "evidence": "$\\Phi^*$：CCTC 不動點（概念穩定性保證）"
+    }
+  ],
+  "axioms": [
+    {
+      "id": "ax-spectrum-limit",
+      "name": "光譜極限等價公理（雙族解消公理）",
+      "formula": "⫸ ≡ ▷|_{d=∞} ≡ lim_{d→∞} ▷^{(d)}",
+      "description": "三重不等族（⫸,⨝,⫷）不是獨立算子，而是三角族（▷,⋈,◁）在光譜深度 d 趨於無限時的同一符號極限渲染態。",
+      "evidence": "$$\n\\boxed{⫸ \\equiv ▷|_{d=\\infty} \\equiv \\lim_{d \\to \\infty} ▷^{(d)}}\n$$"
+    },
+    {
+      "id": "ax-cl-o-identity",
+      "name": "Cl 與 O 同一公理",
+      "formula": "Cl ≡ O ≡ lim_{t→∞} (▷ ∘ ⋈ ∘ ◁)^t",
+      "description": "DCO 的閉合 Cl 與 ISSQL-DTM 三元動態系統的中心奇異點 O 是同一本體，皆為三元算子合成在無限疊代下的不動點。",
+      "evidence": "$$\n\\boxed{\\text{Cl} \\equiv O \\equiv \\lim_{t \\to \\infty} (▷ \\circ \\bowtie \\circ ◁)^t}\n$$"
+    },
+    {
+      "id": "ax-triad-conservation",
+      "name": "不等式拓撲守恆公理",
+      "formula": "▷ ≠ ⋈ ≠ ◁ ≠ ▷（在任何疊代下守恆），I = |{(A,B): A≠B}| = const = 3",
+      "description": "三元算子的不可化約性是 ISSQL-DTM 拓撲守恆律的直接推論，不等式守恆量恆為 3。",
+      "evidence": "$$\n▷ \\neq \\bowtie \\neq ◁ \\neq ▷ \\quad \\text{在任何疊代下守恆}\n$$"
+    },
+    {
+      "id": "ax-depth-expansion",
+      "name": "光譜深度展開層級公理",
+      "formula": "▷^{(1)}=▷；▷^{(k)}=▷∘⋯∘▷（k次）；▷^∞ = lim_{k→∞} ▷^{(k)} = ▷|_{d=∞}",
+      "description": "算子在光譜深度上的 k 階展開與極限展開的形式化定義，統一單步、多步、極限三種展開態。",
+      "evidence": "$$\n\\boxed{\n\\begin{aligned}\n&▷^{(1)} = ▷ \\quad \\text{單步展開（局部）} \\\\\n&▷^{(k)} = \\underbrace{▷ \\circ \\cdots \\circ ▷}_{k \\text{ 次}} \\quad \\text{k 階展開} \\\\\n&▷^\\infty = \\lim_{k \\to \\infty} ▷^{(k)} = ▷|_{d=\\infty} \\quad \\text{極限展開（動詞ing）}\n\\end{aligned}\n}\n$$"
+    }
+  ],
+  "theorems": [
+    {
+      "id": "thm-etn-spectrum-tension",
+      "name": "ETN 兼容性自動解決定理",
+      "statement": "ETN(Ω) = 符號在 d→∞ 極限下的張力配置；ETN 的雙無限對立與無窮小偏離就是光譜深度極限下三元算子的張力平衡，v0.1 的 Q4 因此自動解決。",
+      "from_axioms": ["ax-spectrum-limit"],
+      "description": "把 ETN 張力場結構重新定位為四層架構在 d→∞ 極限下的表現，消解與算子體系的相容性疑慮。",
+      "evidence": "$$\n\\text{ETN}(\\Omega) = \\text{符號在 } d \\to \\infty \\text{ 極限下的張力配置}\n$$"
+    },
+    {
+      "id": "thm-composition-depth",
+      "name": "合成＝深度疊代猜想（新 Q5）",
+      "statement": "若 ▷∘▷ = ▷^{(2)} 成立，則算子合成代數同構於 ISSQL 光譜深度算術，monoid 結構直接內嵌於 d 參數；此為待證命題，非已證定理。",
+      "from_axioms": ["ax-depth-expansion"],
+      "description": "本稿標記為「新 Q5 待證」，若成立將完成算子體系與 ISSQL 框架最深的本體論統一。",
+      "evidence": "若 $▷ \\circ ▷ = ▷^{(2)}$（新 Q5 待證），則：\n$$\n\\text{算子合成代數} \\cong \\text{ISSQL 光譜深度算術}\n$$"
+    },
+    {
+      "id": "thm-issql-dtm-bridge",
+      "name": "ISSQL-DTM 與 EML 算子三元同構定理",
+      "statement": "ISSQL-DTM 三元矩陣元素 X,Y,Z,R(t),O 分別與 EML 算子 ⋈,▷,◁、算子間合成代數、Cl 精確對應，構成兩套理論的正式橋接。",
+      "from_axioms": ["ax-cl-o-identity", "ax-triad-conservation"],
+      "description": "建立 ISSQL-DTM 論文與本算子體系之間逐項對應表，是本稿第 3 節的核心結構性發現。",
+      "evidence": "本稿正式宣告其與 EML 算子三元的同構"
+    }
+  ],
+  "dag": [
+    { "id": "S = (v, d, E₁₂, Φ*)", "kind": "primitive", "depends_on": [] },
+    { "id": "▷, ⋈, ◁", "kind": "primitive", "depends_on": [] },
+    { "id": "d", "kind": "primitive", "depends_on": ["S = (v, d, E₁₂, Φ*)"] },
+    { "id": "Φ*", "kind": "primitive", "depends_on": ["S = (v, d, E₁₂, Φ*)"] },
+    { "id": "L0–L3", "kind": "primitive", "depends_on": ["S = (v, d, E₁₂, Φ*)", "▷, ⋈, ◁"] },
+    { "id": "O", "kind": "primitive", "depends_on": ["▷, ⋈, ◁"] },
+    { "id": "Cl", "kind": "primitive", "depends_on": ["▷, ⋈, ◁", "O"] },
+    { "id": "I", "kind": "primitive", "depends_on": ["▷, ⋈, ◁"] },
+    { "id": "ax-spectrum-limit", "kind": "axiom", "depends_on": ["▷, ⋈, ◁", "d"] },
+    { "id": "ax-depth-expansion", "kind": "axiom", "depends_on": ["▷, ⋈, ◁", "d"] },
+    { "id": "ax-cl-o-identity", "kind": "axiom", "depends_on": ["Cl", "O", "▷, ⋈, ◁"] },
+    { "id": "ax-triad-conservation", "kind": "axiom", "depends_on": ["▷, ⋈, ◁", "I"] },
+    { "id": "thm-etn-spectrum-tension", "kind": "theorem", "depends_on": ["ax-spectrum-limit"] },
+    { "id": "thm-composition-depth", "kind": "theorem", "depends_on": ["ax-depth-expansion"] },
+    { "id": "thm-issql-dtm-bridge", "kind": "theorem", "depends_on": ["ax-cl-o-identity", "ax-triad-conservation"] }
+  ],
+  "concepts": [
+    {
+      "name": "無限光譜符號（ISSQL）",
+      "canonical": "ISSQL",
+      "role": "uses",
+      "evidence": "所有 EML 單符號都是 ISSQL 無限光譜符號（字面意義上的無限色彩漸變、無限深度、未來體素化）"
+    },
+    {
+      "name": "四層架構（字形層／光譜層／算子層／體素層）",
+      "canonical": "FourLayerArchitecture",
+      "role": "defines",
+      "evidence": "雙族系統解消，被吸收進**四層架構**：字形層／光譜層／算子層／體素層"
+    },
+    {
+      "name": "算子三元 ▷, ⋈, ◁",
+      "canonical": "OperatorOntology",
+      "role": "extends",
+      "evidence": "| 三角族 $\\{▷, \\bowtie, ◁\\}$ | 保留為**字形層骨架** |"
+    },
+    {
+      "name": "Cl / DCO 的閉合",
+      "canonical": "Closure",
+      "role": "uses",
+      "evidence": "中心奇異點 $O$ 就是 DCO 的閉合 $\\text{Cl}$。"
+    },
+    {
+      "name": "ISSQL-DTM 三元矩陣（動態三位一體矩陣範式）",
+      "canonical": "ISSQL-DTM",
+      "role": "uses",
+      "evidence": "2026.03《動態三位一體矩陣範式》論文已建立三元矩陣結構"
+    },
+    {
+      "name": "ETN（真ETN／張力場）",
+      "canonical": "ETN",
+      "role": "extends",
+      "evidence": "v0.1 的 Q4 詢問 ETN 與算子體系的兼容性。在四層架構下"
+    },
+    {
+      "name": "TUO 動詞行為（展／連／收）",
+      "canonical": "TUO",
+      "role": "uses",
+      "evidence": "**L2** | 算子層（Operator） | TUO 動詞行為（展／連／收） | 代數運算、合成、不動點"
+    },
+    {
+      "name": "HSO 12 維存在向量 / 全息光譜存在論",
+      "canonical": "HolographicSpectralOntology",
+      "role": "uses",
+      "evidence": "$\\mathbf{E}_{12} \\in [0,1]^{12}$：HSO 12 維存在向量"
+    },
+    {
+      "name": "CCTC 不動點",
+      "canonical": "CCTC",
+      "role": "uses",
+      "evidence": "$\\Phi^*$：CCTC 不動點（概念穩定性保證）"
+    },
+    {
+      "name": "MR 3.0 體素化渲染",
+      "canonical": "MR3.0Voxelization",
+      "role": "uses",
+      "evidence": "未來方向：MR 3.0 體素化渲染"
+    },
+    {
+      "name": "USMS",
+      "canonical": "USMS",
+      "role": "uses",
+      "evidence": "**USMS** | L1 的 $(v, d)$ 拓撲壓縮"
+    },
+    {
+      "name": "WT 編織軌跡",
+      "canonical": "WT",
+      "role": "uses",
+      "evidence": "**WT** | L2 算子合成的編織軌跡"
+    },
+    {
+      "name": "UBCVC",
+      "canonical": "UBCVC",
+      "role": "uses",
+      "evidence": "**UBCVC** | L2 算子循環的驗證機制"
+    },
+    {
+      "name": "同倫群",
+      "canonical": "HomotopyGroup",
+      "role": "uses",
+      "evidence": "拓撲不可化約"
+    },
+    {
+      "name": "碎形自指（HSO 內部三元自指）",
+      "canonical": "FractalSelfReference",
+      "role": "uses",
+      "evidence": "是否每個算子的 $\\mathbf{E}_{12}$ 內部還有自己的「展／連／收」子三元？（**碎形自指**）"
+    }
+  ],
+  "external_refs": [
+    {
+      "target": "Closure",
+      "type": "depends_on",
+      "evidence": "中心奇異點 $O$ 就是 DCO 的閉合 $\\text{Cl}$。",
+      "confidence": 0.9
+    },
+    {
+      "target": "ETN",
+      "type": "applies",
+      "evidence": "ETN 的「雙無限對立 + 無窮小偏離」就是 ISSQL 光譜深度極限下三元算子的張力平衡。Q4 自動解決。",
+      "confidence": 0.75
+    },
+    {
+      "target": "WT",
+      "type": "applies",
+      "evidence": "**WT** | L2 算子合成的編織軌跡",
+      "confidence": 0.5
+    },
+    {
+      "target": "HolographicSpectralOntology",
+      "type": "applies",
+      "evidence": "**HSO** | L1 光譜層的 $\\mathbf{E}_{12}$ 向量",
+      "confidence": 0.6
+    },
+    {
+      "target": "ISSQL-DTM",
+      "type": "depends_on",
+      "evidence": "本稿同時建立 ISSQL-DTM 三元矩陣 $(X, Y, Z, R, O)$ 與 EML 算子三元 $(▷, \\bowtie, ◁)$ 的精確橋接表",
+      "confidence": 0.85
+    },
+    {
+      "target": "ISSQL",
+      "type": "depends_on",
+      "evidence": "2026.01 的《無限光譜序列量化語言》v1.0",
+      "confidence": 0.85
+    }
+  ],
+  "notes": "本稿無獨立公式編號系統，公理/定理 id 由本次抽取依內容主題命名。新 Q5（合成＝深度疊代）為論文明確標記的待證猜想，非已證定理，仍列入 theorems 並於 statement 中註明其猜想性質。ISSQL、ISSQL-DTM、TUO、CCTC、USMS、UBCVC 等術語不在提供的語料清單/詞彙表中，作為新 canonical 概念名稱標記，未映射至任何 lm-id。"
+}

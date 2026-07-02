@@ -24,6 +24,7 @@ from scripts.idroutes import (write_id_pages, write_raw_files, write_api,
                               write_sitemap_canonical)
 from scripts.validate import validate_routes, validate_links
 from scripts.ai_layer import write_ai_layer
+from scripts.graph_layer import write_graph_layer
 
 
 def main() -> None:
@@ -76,6 +77,7 @@ def main() -> None:
     write_redirects(registry)
     write_legacy_map(registry)  # dist/papers-legacy-map.json for the /papers/* catch-all Function
     ai_count = write_ai_layer(registry, entries)  # §9 AICL /ai/ + §10 AIRS + canonical llms
+    graph_stats = write_graph_layer(registry)  # Phase A: registry/tcf/ -> /ai/graph.json (real topology)
     write_sitemap_canonical(registry)          # §26.6.6 canonical-only sitemap (replaces legacy)
     route_issues = validate_routes(registry)   # §26.7 route consistency report
     broken_links = validate_links(registry)    # §26.5.7 broken-link report (warn-only)
@@ -87,6 +89,13 @@ def main() -> None:
     print(f"[diag] language split: {len(zh_entries)} zh-Hant / {len(en_entries)} en")
     print(f"[diag] registry: {registry['count']} stable ids | +/p +/raw +/api +_redirects (id pages: {id_pages})")
     print(f"[diag] AICL: /ai/ layer + rights-spectrum + canonical llms ({ai_count} corpus.jsonl lines)")
+    if graph_stats["mapped"]:
+        print(f"[diag] graph: /ai/graph.json — {graph_stats['mapped']} nodes / {graph_stats['edges']} verified edges "
+              f"(candidates: {graph_stats.get('candidates', 0)}, rejected: {graph_stats.get('rejected', 0)}, "
+              f"pending audit: {graph_stats.get('pending_audit', 0)}, unresolved refs: {graph_stats.get('unresolved', 0)}, "
+              f"tcf errors: {len(graph_stats['errors'])})")
+    else:
+        print(f"[diag] graph: no registry/tcf/ extractions yet -> base-space stays on simulated seed")
     print(f"[diag] validate: route-issues={len(route_issues)} | broken-internal-links={len(broken_links)} (warn-only) -> registry/generated/")
     for i, it in enumerate(registry["items"][:5]):
         print(f"        [{i+1}] {it['title']!r:36s} -> {it['id']}  ({it['canonical_url']})")

@@ -1,0 +1,224 @@
+{
+  "tcf_extract_version": "0.1",
+  "id": "lm-000017",
+  "title": "AI 權利光譜：從 robots.txt 到 AI 學習許可協議",
+  "language": "zh-Hant",
+  "source_file": "content/papers/2026/2026-06/AI 權利光譜：從 robots.txt 到 AI 學習許可協議.md",
+  "theory_name": "AIRS/AILP：AI 權利光譜與 AI 學習許可協議",
+  "extracted_by": "claude-fable-5 (automated distillation, Phase A)",
+  "extraction_date": "2026-07-02",
+  "canonical_status": "draft",
+  "primitives": [
+    {
+      "symbol": "AIRS",
+      "kind": "type",
+      "description": "AI Rights Spectrum：描述 AI 對內容之可訪問、可使用、可學習、可保留、可生成、可商業化程度的權利光譜框架",
+      "evidence": "AIRS（AI Rights Spectrum） 是一個用於描述 AI 對內容之可訪問、可使用、可學習、可保留、可生成、可商業化程度的權利光譜框架。"
+    },
+    {
+      "symbol": "AILP",
+      "kind": "function",
+      "description": "AI Learning Permission Protocol：AIRS 的可實作協議層，以機器可讀格式表達 AI 系統對內容的使用、學習、保留、生成與商業化權限",
+      "evidence": "AILP（AI Learning Permission Protocol） 是 AIRS 的可實作協議層。它以機器可讀格式表達 AI 系統對內容的使用、學習、保留、生成與商業化權限。"
+    },
+    {
+      "symbol": "光譜值 (spectrum value)",
+      "kind": "constant",
+      "description": "0.0 到 1.0 的比例化數值，或 license_required / compensation_required / case_by_case 等狀態標記，表示機器可讀偏好強度與授權狀態",
+      "evidence": "1.0 = 完全允許\n0.75 = 高度允許，但需遵守條件\n0.5 = 有限允許\n0.25 = 嚴格受限\n0.0 = 不允許\nlicense_required = 需要授權"
+    },
+    {
+      "symbol": "十個學習維度",
+      "kind": "type",
+      "description": "AI 學習權利被拆分成 Access、Indexing、Inference Input、Embedding、Training、Fine-tuning、Distillation、Memory、Output、Attribution and Compensation 十個維度",
+      "evidence": "## 6. AI 學習權利的十個維度"
+    },
+    {
+      "symbol": "使用鏈 (usage chain)",
+      "kind": "relation",
+      "description": "AI 對內容的處理是一條從爬取到商業化的鏈式流程，而非單一「允許/不允許」動作",
+      "evidence": "crawl → parse → index → embed → retrieve → summarize → train → finetune → distill → generate → commercialize"
+    },
+    {
+      "symbol": "rights-spectrum.json",
+      "kind": "constant",
+      "description": "建議的機器可讀權利聲明檔案路徑，AILP 的具體實作載體",
+      "evidence": "因為它可以併入更完整的 AI-native 網站結構。"
+    }
+  ],
+  "axioms": [
+    {
+      "id": "A1",
+      "name": "訪問不等於學習",
+      "formula": "access(content) ≠ learn(content)",
+      "description": "AI crawler 的爬取只是輸入端動作，不能等同於後續的學習、訓練、生成等使用鏈行為",
+      "evidence": "因為「爬取」只是輸入端動作。真正需要治理的是後續使用鏈："
+    },
+    {
+      "id": "A2",
+      "name": "權利非二元公理",
+      "formula": "Rights(AI, content) ∈ [0,1] ∪ {license_required, compensation_required, case_by_case}, not {0,1}",
+      "description": "AI 對內容的權利不應是二元開關（允許/不允許），而應是多維、比例化的光譜",
+      "evidence": "AI 對內容的權利不應是二元開關，而應是多維光譜。"
+    },
+    {
+      "id": "A3",
+      "name": "底空間進入權優先公理",
+      "formula": "LearningRight(content) = BaseSpaceEntryRight(content) ∘ CapabilityTransformRight(content)",
+      "description": "AI 學習權利的核心不是「爬取權」，而是「底空間進入權」與「能力轉化權」",
+      "evidence": "所以，AI 學習權利的核心不是「爬取權」，而是「底空間進入權」與「能力轉化權」。"
+    },
+    {
+      "id": "A4",
+      "name": "數值非法律自動授權公理",
+      "formula": "SpectrumValue(x) ⇏ LegalAutoAuthorization(x)",
+      "description": "光譜數值是機器可讀偏好與授權聲明的結合，不應被誤解為自動取代法律契約",
+      "evidence": "AIRS 的數值應被理解為機器可讀偏好與授權聲明的結合，但它不應被誤解為自動取代法律契約。"
+    }
+  ],
+  "theorems": [
+    {
+      "id": "T1",
+      "name": "學習深度決定知識結構定理",
+      "statement": "不同授權深度（metadata / summary / excerpts / full-text / structured reasoning / training / fine-tuning / distillation）會產生不同的 AI 知識結構",
+      "from_axioms": ["A1"],
+      "description": "授權深度分層直接對應 AI 能形成的知識完整度，從「知道存在」到「能力轉移到其他模型」",
+      "evidence": "因為不同授權深度會產生不同的 AI 知識結構："
+    },
+    {
+      "id": "T2",
+      "name": "中間地帶定理",
+      "statement": "純二元授權會導致「過度封閉」（AI學不到、作者無補償）或「過度開放」（作者失去控制）兩種壞結果，光譜化可建立可行的中間地帶",
+      "from_axioms": ["A2"],
+      "description": "光譜化提供可讀但需引用、可摘要但不可替代等中間選項，避免二元極端",
+      "evidence": "純二元會造成兩種壞結果：\n\n```text\n過度封閉：\nAI 不能學，作者也沒有補償，使用者得到較弱 AI。\n\n過度開放：\nAI 公司大量使用內容，作者失去控制與收益。\n```"
+    },
+    {
+      "id": "T3",
+      "name": "三輸結構定理",
+      "statement": "現行「清洗」模式造成作者未獲補償、AI 底空間殘缺、使用者接收不完整知識的三輸結構",
+      "from_axioms": [],
+      "description": "清洗（移除而非補償）並非長期答案，會同時傷害作者、AI 與使用者三方",
+      "evidence": "清洗可能降低 AI 公司的短期法律風險，但也會造成作者未獲補償、AI 底空間殘缺、使用者接收不完整知識的三輸結構。"
+    },
+    {
+      "id": "T4",
+      "name": "認知完整性定理",
+      "statement": "清洗會讓 AI 底空間形成系統性缺口，碎片化資料使 AI 只學到「關於內容的資訊」而非內容本身的論證結構，更好的授權協議可降低重建式幻覺、提升深度推導能力",
+      "from_axioms": ["A3"],
+      "description": "授權品質與範圍直接影響 AI 底空間的完整性與推導能力，而非僅是合規問題",
+      "evidence": "清洗會讓 AI 底空間形成系統性缺口。\n碎片化資料會讓 AI 學到「關於內容的資訊」，而不是內容本身的論證結構。"
+    }
+  ],
+  "dag": [
+    {"id": "AIRS", "kind": "primitive", "depends_on": []},
+    {"id": "AILP", "kind": "function", "depends_on": ["AIRS", "光譜值 (spectrum value)"]},
+    {"id": "光譜值 (spectrum value)", "kind": "primitive", "depends_on": []},
+    {"id": "十個學習維度", "kind": "primitive", "depends_on": ["AIRS"]},
+    {"id": "使用鏈 (usage chain)", "kind": "primitive", "depends_on": []},
+    {"id": "rights-spectrum.json", "kind": "primitive", "depends_on": ["AILP"]},
+    {"id": "A1", "kind": "axiom", "depends_on": ["使用鏈 (usage chain)"]},
+    {"id": "A2", "kind": "axiom", "depends_on": ["光譜值 (spectrum value)"]},
+    {"id": "A3", "kind": "axiom", "depends_on": ["AIRS"]},
+    {"id": "A4", "kind": "axiom", "depends_on": ["光譜值 (spectrum value)"]},
+    {"id": "T1", "kind": "theorem", "depends_on": ["A1"]},
+    {"id": "T2", "kind": "theorem", "depends_on": ["A2"]},
+    {"id": "T3", "kind": "theorem", "depends_on": []},
+    {"id": "T4", "kind": "theorem", "depends_on": ["A3"]}
+  ],
+  "concepts": [
+    {
+      "name": "AI 權利光譜",
+      "canonical": "AIRS",
+      "role": "defines",
+      "evidence": "本文提出 **AIRS：AI Rights Spectrum（AI 權利光譜）** 與 **AILP：AI Learning Permission Protocol（AI 學習許可協議）**。"
+    },
+    {
+      "name": "AI 學習許可協議",
+      "canonical": "AILP",
+      "role": "defines",
+      "evidence": "本文提出 **AIRS：AI Rights Spectrum（AI 權利光譜）** 與 **AILP：AI Learning Permission Protocol（AI 學習許可協議）**。"
+    },
+    {
+      "name": "底空間",
+      "canonical": "BaseSpace",
+      "role": "uses",
+      "evidence": "若從《底空間與管理員》的框架來看，AI 學習不是單純複製文本，而是將外部知識轉化為底空間中的可路由結構；底空間完整性與管理員路由品質會共同影響 AI 的推導、表達與深度處理能力。"
+    },
+    {
+      "name": "AICL",
+      "canonical": "AICL",
+      "role": "extends",
+      "evidence": "前文提出的 AICL（AI Ingestion & Capability Layer，AI 攝取與能力層）可以包含四個子層：\n\n```text\nManifest Layer\nCorpus Layer\nCapability Layer\nRights Spectrum Layer\n```\n\nAIRS / AILP 對應其中的：\n\n```text\nRights Spectrum Layer\n權利光譜層\n```"
+    },
+    {
+      "name": "robots.txt",
+      "canonical": "RobotsExclusionProtocol",
+      "role": "uses",
+      "evidence": "`robots.txt` 來自 Robots Exclusion Protocol。其核心作用是讓網站所有者告知 crawler 哪些 URI 可以或不可以被訪問。"
+    },
+    {
+      "name": "llms.txt",
+      "canonical": "LlmsTxt",
+      "role": "uses",
+      "evidence": "`/llms.txt` 是一個為 LLM 提供網站資訊的提案，其目標是用 Markdown 形式提供資訊，幫助 LLM 在 inference time 更好地使用網站內容。"
+    },
+    {
+      "name": "Cloudflare Content Signals Policy",
+      "canonical": "ContentSignalsPolicy",
+      "role": "uses",
+      "evidence": "Cloudflare 已經提出 Content Signals Policy，將內容使用信號拆分為 `search`、`ai-input`、`ai-train` 三類，並將其整合到 `robots.txt` 的語境中。"
+    },
+    {
+      "name": "TDM Reservation Protocol",
+      "canonical": "TDMRep",
+      "role": "uses",
+      "evidence": "W3C TDM Reservation Protocol Community Group 與相關規格，已經嘗試建立機器可讀方式，表達 Text and Data Mining 權利保留與可用授權。"
+    },
+    {
+      "name": "回憶型知道與重建型知道",
+      "canonical": "RecallVsReconstruction",
+      "role": "uses",
+      "evidence": "《重建還是記憶》區分了兩種「知道」：回憶型知道與重建型知道。前者意味著信息以較完整的形式保存在底空間中，需要時可以精確提取；後者則意味著底空間保存的是規則、結構與壓縮原則，具體展開需要在使用時重建。"
+    },
+    {
+      "name": "清洗（移除而非補償）",
+      "canonical": "SanitizationCritique",
+      "role": "uses",
+      "evidence": "《清洗之名》已指出，清洗的核心問題在於它是「移除」，不是「補償」；作者的作品被排除在 AI 底空間之外，卻沒有收到授權費，AI 的能力也因此受損。"
+    },
+    {
+      "name": "授權池 (licensing pool)",
+      "canonical": "CollectiveLicensingPool",
+      "role": "defines",
+      "evidence": "類似音樂版權集體管理機制，AI 公司支付統一授權費，再由授權池按規則分配給權利人。"
+    }
+  ],
+  "external_refs": [
+    {
+      "target": "lm-000478",
+      "type": "depends_on",
+      "evidence": "若從《底空間與管理員》的框架來看，AI 學習不是單純複製文本，而是將外部知識轉化為底空間中的可路由結構；底空間完整性與管理員路由品質會共同影響 AI 的推導、表達與深度處理能力。",
+      "confidence": 0.9
+    },
+    {
+      "target": "AICL",
+      "type": "extends",
+      "evidence": "前文提出的 AICL（AI Ingestion & Capability Layer，AI 攝取與能力層）可以包含四個子層：\n\n```text\nManifest Layer\nCorpus Layer\nCapability Layer\nRights Spectrum Layer\n```\n\nAIRS / AILP 對應其中的：\n\n```text\nRights Spectrum Layer\n```",
+      "confidence": 0.85
+    },
+    {
+      "target": "SanitizationCritique",
+      "type": "extends",
+      "evidence": "這一觀點延續前序論文《清洗之名：AI知識限制的結構性不公正》中對「移除而非補償」的批判。",
+      "confidence": 0.7
+    },
+    {
+      "target": "RecallVsReconstruction",
+      "type": "applies",
+      "evidence": "去重複與摘要替代可能提高泛化，但犧牲深度路由能力。這一點在《重建還是記憶》中已被表述為訓練資料決策造成的認知架構後果。",
+      "confidence": 0.7
+    }
+  ],
+  "notes": "四份外部引用中，《底空間與管理員》對應 lm-000478（corpus 清單命中）；《清洗之名》與《重建還是記憶》未出現在提供的 lm-id 清單中，故以 canonical concept 名稱（SanitizationCritique / RecallVsReconstruction）代替，供之後比對回填 lm-id。AICL 亦未列於清單，作為 canonical concept 保留。"
+}
