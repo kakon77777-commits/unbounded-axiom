@@ -153,6 +153,39 @@ async function logCrawler(request, env, ctx) {
 
   // Only crawlers drive the graph; human views must not mutate it.
   if (hasKV && targetId && isBot) {
+    // Cost-transfer gate (Neo's B2B billing trigger): a single node's daily
+    // attention accounting saturates at ABUSE_CEILING hits. Beyond that the
+    // bot gets 429 + a machine-readable licensing announcement instead of a
+    // free vote — this also hard-caps zero-sum bid manipulation (no bot can
+    // buy more than CEILING votes/day/node with crawl budget alone).
+    const ABUSE_CEILING = 300;
+    const day = new Date().toISOString().slice(0, 10).replace(/-/g, "");
+    let hot = null;
+    try {
+      hot = JSON.parse(await env.BASE_SPACE_KV.get("hot2") || "{}");
+      const rec0 = hot[targetId];
+      if (rec0 && rec0.d === day && (rec0.c || 0) >= ABUSE_CEILING) {
+        const now = new Date();
+        const midnight = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + 1) / 1000;
+        const retryAfter = Math.max(60, Math.floor(midnight - now.getTime() / 1000));
+        return new Response(JSON.stringify({
+          error: "rate_limited",
+          status: 429,
+          node: targetId,
+          message: "This hollow node is not yet TCF-instantiated and its daily attention "
+                 + "accounting is saturated. Ranking follows zero-sum daily bidding "
+                 + "(/api/tcf-queue). To force-unlock distillation or obtain a dedicated "
+                 + "high-frequency API, contact licensing with an enterprise key request.",
+          licensing: "mailto:kakon77777@gmail.com",
+          rights: "/ai/rights-spectrum.json",
+          queue: "/api/tcf-queue",
+        }), {
+          status: 429,
+          headers: { ...CORS, "Content-Type": "application/json", "Retry-After": String(retryAfter) },
+        });
+      }
+    } catch (e) { hot = null; /* gate is best-effort; never break tracking */ }
+
     const work = (async () => {
       try {
         const storedHits = await env.BASE_SPACE_KV.get("hits") || "0";
@@ -168,8 +201,7 @@ async function logCrawler(request, env, ctx) {
         // which hollow node gets TCF-distilled next. Races lose a count or two —
         // acceptable for a scheduling heuristic.
         try {
-          const day = new Date().toISOString().slice(0, 10).replace(/-/g, "");
-          const hot = JSON.parse(await env.BASE_SPACE_KV.get("hot2") || "{}");
+          if (!hot) hot = JSON.parse(await env.BASE_SPACE_KV.get("hot2") || "{}");
           const rec = hot[targetId] || {};
           if (rec.d === day) {
             rec.c = (rec.c || 0) + 1;
@@ -244,9 +276,11 @@ async function tcfQueue(request, env) {
     if (r.ok) for (const p of await r.json()) meta[p.id] = p;
   } catch (e) { /* titles optional */ }
 
+  const daySlots = Math.min(10, Math.max(1, parseInt(url.searchParams.get("slots") || "2", 10) || 2));
+
   const day = new Date().toISOString().slice(0, 10).replace(/-/g, "");
   const yday = new Date(Date.now() - 86400000).toISOString().slice(0, 10).replace(/-/g, "");
-  const queue = [];
+  const candidates = [];
   for (const id in hot) {
     if (mapped.has(id)) continue;
     const rec = hot[id] || {};
@@ -255,22 +289,45 @@ async function tcfQueue(request, env) {
     else if (rec.d === yday) recent = rec.c || 0;
     if (recent >= minHits) {
       const m = meta[id] || {};
-      queue.push({ id, title: m.title || id, canonical: m.canonical || `/p/${id}/`,
-                   recent_hits: recent, state: "hollow" });
+      candidates.push({ id, title: m.title || id, canonical: m.canonical || `/p/${id}/`,
+                        recent_hits: recent, state: "hollow" });
     }
   }
-  queue.sort((a, b) => b.recent_hits - a.recent_hits || (a.id < b.id ? -1 : 1));
+  candidates.sort((a, b) => b.recent_hits - a.recent_hits || (a.id < b.id ? -1 : 1));
+
+  // Dynamic watermark (Neo's floating threshold): the deeper the queue, the
+  // higher the bar — rank 0-4 needs base min, 5-9 needs x10, 10-14 x100, …
+  // Guarantees crawler hunger can never blow past the compute ceiling.
+  const queue = [];
+  for (const item of candidates) {
+    const bar = minHits * Math.pow(10, Math.floor(queue.length / 5));
+    if (item.recent_hits >= bar) {
+      item.rank = queue.length + 1;
+      item.effective_threshold = bar;
+      // Zero-sum daily bidding: only the top daySlots get distilled at
+      // settlement; the rest are outbid and must keep voting tomorrow.
+      item.bid_status = queue.length < daySlots ? "leading" : "outbid";
+      queue.push(item);
+    }
+  }
 
   return new Response(JSON.stringify({
-    version: "0.1",
+    version: "0.2",
     window: "~48h (today + yesterday, UTC day buckets)",
-    threshold: minHits,
+    policy: {
+      base_threshold: minHits,
+      dynamic_watermark: "effective threshold x10 per 5 already-queued items",
+      daily_slots: daySlots,
+      settlement: "daily, by the local agent 衍 (top slots only; zero-sum bidding)",
+      abuse_ceiling: "300 hits/node/day, then HTTP 429 + licensing announcement",
+    },
     mapped_total: mapped.size,
     hollow_tracked: Object.keys(hot).filter((id) => !mapped.has(id)).length,
     queue: queue.slice(0, limit),
     note: "Demand-driven lazy TCF instantiation: hollow nodes ranked by recent crawler "
-        + "attention. Extraction still passes the adversarial edge gate before publication. "
-        + "Agents may propose, only the gated pipeline publishes (see /ai/rights-spectrum.json).",
+        + "attention under zero-sum daily bidding. Extraction still passes the adversarial "
+        + "edge gate before publication. Agents may propose, only the gated pipeline "
+        + "publishes (see /ai/rights-spectrum.json).",
   }), { headers: { ...CORS, "Content-Type": "application/json", "Cache-Control": "public, max-age=60" } });
 }
 

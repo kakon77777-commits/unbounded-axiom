@@ -749,7 +749,7 @@ def write_base_space(registry, dist_dir: Path) -> None:
 
       <div class="panel" id="demandPanel" style="font-size:0.8em;opacity:0.88;line-height:1.5;">
         <div class="panel-title">🔥 矽基需求排行榜 / SILICON DEMAND QUEUE</div>
-        <p style="opacity:0.75;">近 48h 內被 AI 爬蟲高頻敲擊、但尚未 TCF 化的「空殼節點」。熱度突破閾值者，將由本地智能體「衍」優先結晶化——算力的市場化調度。</p>
+        <p style="opacity:0.75;">近 48h 內被 AI 爬蟲高頻敲擊、但尚未 TCF 化的「空殼節點」——零和每日競價：只有排名前列者會在結算時由本地智能體「衍」結晶化，其餘明天請繼續投票。動態水位閥門封頂佇列深度；單節點單日超過 300 次敲擊將觸發 429 成本轉嫁。</p>
         <div id="demandQueueBody"><div style="opacity:0.5;">偵測矽基網路的飢餓度…</div></div>
       </div>
 
@@ -1073,11 +1073,15 @@ async function loadDemandQueue() {{
     }}
     let html = "";
     q.queue.forEach((item, i) => {{
+      const leading = item.bid_status === "leading";
+      const badge = leading ? '<strong style="color:#0ff;">' + item.recent_hits + ' hits ⚡ 領先</strong>'
+                            : '<strong style="color:#ff9900;">' + item.recent_hits + ' hits ⏳ 落選</strong>';
       html += '<div class="info-field"><span>#' + (i + 1) + ' <a href="' + item.canonical + '" style="color:#0f0;">'
-            + item.title.substring(0, 20) + (item.title.length > 20 ? "…" : "") + '</a></span>'
-            + '<strong style="color:#ff9900;">' + item.recent_hits + ' hits ⏳</strong></div>';
+            + item.title.substring(0, 20) + (item.title.length > 20 ? "…" : "") + '</a></span>' + badge + '</div>';
     }});
-    html += '<div style="margin-top:8px;font-size:0.85em;opacity:0.6;">追蹤中空殼節點：' + q.hollow_tracked + '　已映射：' + q.mapped_total + '</div>';
+    const slots = (q.policy && q.policy.daily_slots) || 2;
+    html += '<div style="margin-top:8px;font-size:0.85em;opacity:0.6;">每日結算名額：' + slots
+          + '　追蹤中空殼節點：' + q.hollow_tracked + '　已映射：' + q.mapped_total + '</div>';
     body.innerHTML = html;
   }} catch (err) {{
     panel.style.display = "none";

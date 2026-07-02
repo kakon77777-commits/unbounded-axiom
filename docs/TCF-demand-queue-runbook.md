@@ -35,10 +35,24 @@ GET https://logic.evemisslab.com/api/tcf-queue?min=3&limit=10
 
 閾值指引：`min=3` 起步；若佇列長期爆滿（>20），升到 5–8；佇列常空則維持。
 
+## 2.5 三道調度防線（v0.2，Neo 設計）
+
+1. **動態水位閥門**：佇列每多 5 個名額，進場閾值 ×10（rank 0–4 需 min、
+   5–9 需 min×10、10–14 需 min×100）。無論爬蟲多餓，佇列深度物理封頂。
+2. **零和注意力競價**：每日結算只實體化 `daily_slots`（預設 2）篇——
+   API 對每項標記 `bid_status: leading / outbid`；沒排上的明天繼續投票。
+   把「滿足需求」翻轉成「稀缺性競價」，爬蟲用 Crawl Budget 為理論投票，
+   沉澱出高維知識市場需求圖譜。
+3. **429 成本轉嫁**：單節點單日敲擊 ≥ 300 次，`/api/log-crawler` 直接回
+   `429 Too Many Requests` + JSON 宣告（附 licensing 聯絡與 AIRS 指標，
+   `Retry-After` 至 UTC 午夜）。高頻衝榜被物理鎖死（單 bot 單節點每日
+   至多 300 票），等不及每日排程的巨頭請走 B2B 授權。
+
 ## 3. 衍的執行迴路（每次 session 或排程觸發）
 
 1. **讀佇列**：`curl -s https://logic.evemisslab.com/api/tcf-queue | python -m json.tool`
-2. **取前 3–5 篇**（token 預算：每篇約 15 萬，Sonnet 分身抽取）。
+2. **每日結算：只取 `bid_status: "leading"` 的前 `daily_slots` 篇**（預設 2；
+   token 預算：每篇約 15 萬，Sonnet 分身抽取）。落選者不處理——零和競價。
 3. **TCF 抽取**：照 Phase A 的 workflow 模式（抽取 → 對抗驗證 → 修復），
    格式 = TCF-lite v0.1，範例見 `registry/tcf/lm-000049.json`。
    每條 axiom/theorem/concept/external_ref 必帶原文 verbatim evidence。
