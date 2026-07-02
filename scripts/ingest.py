@@ -39,7 +39,9 @@ def _infer_date(name):
     m = re.search(r"(20\d{2})[-_]?(0[1-9]|1[0-2])(?:[-_]?(\d{2}))?", name)
     if m:
         return f"{m.group(1)}-{m.group(2)}", ("explicit" if m.group(3) else "inferred")
-    return None, "unknown"
+    # No date in filename: a freshly ingested paper's publication date is NOW
+    # (upload = the objective public date, per project policy) — not "undated".
+    return datetime.now(timezone.utc).strftime("%Y-%m"), "publication-now"
 
 
 def _sub(month):

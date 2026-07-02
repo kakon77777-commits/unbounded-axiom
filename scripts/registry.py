@@ -13,6 +13,7 @@ in-text writing date. Untracked files (no git history) get date_confidence
 """
 import hashlib
 import json
+import re
 import subprocess
 
 from scripts.config import *
@@ -90,11 +91,18 @@ def build_registry(entries) -> dict:
         used_ids.add(nid)
         by_base[base] = {"id": nid}
 
+    def _month_from_path(relp):
+        m = re.search(r"papers/(\d{4})/(\d{4}-\d{2})/", relp)
+        return m.group(2) if m else None
+
     items = []
     for base, rel, slug, display, ext, src in cur:
         eid = by_base[base]["id"]
-        d = dates.get(base)
-        if d:
+        d = dates.get(base)                    # git first-add 'YYYY-MM-DD' or None
+        mp = _month_from_path(rel)             # folder-path month 'YYYY-MM' (authoritative §5)
+        if mp:
+            year, month, conf = int(mp[:4]), mp, "explicit"
+        elif d:
             year, month, conf = int(d[:4]), d[:7], "explicit"
         else:
             year, month, conf = None, None, "unknown"
