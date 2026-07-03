@@ -36,12 +36,37 @@ export default {
       if (p === "/api/log-crawler") return await logCrawler(request, env, ctx);
       if (p === "/api/tcf-queue") return await tcfQueue(request, env);
       if (p.startsWith("/papers/")) return await papersRedirect(request, env);
+      if (p.startsWith("/raw/")) return await rawAsset(request, env);
     } catch (e) {
       // never let a dynamic-route error break static serving
     }
     return env.ASSETS.fetch(request);
   },
 };
+
+// ---- /raw/{id}.{ext} : serve the source, but tag text with charset=utf-8 ----
+// Static Assets returns .md as "text/markdown" WITHOUT a charset (and .py/.lean
+// with NO content-type at all), so browsers guess the encoding and mojibake CJK
+// (fine for AI/curl on raw bytes, broken for humans clicking "Raw source"). Force
+// the right text type + charset by extension; leave body/status untouched, and
+// never HTML-wrap (keeps the AI raw-source / rel=alternate=text/markdown contract).
+const RAW_TEXT_CT = {
+  md: "text/markdown", py: "text/x-python", lean: "text/plain",
+  ts: "text/typescript", jsx: "text/jsx", tex: "text/x-tex", txt: "text/plain",
+};
+async function rawAsset(request, env) {
+  const res = await env.ASSETS.fetch(request);
+  if (res.status !== 200) return res;
+  const m = new URL(request.url).pathname.match(/\.([a-z0-9]+)$/i);
+  const ext = m ? m[1].toLowerCase() : "";
+  const ct = res.headers.get("content-type") || "";
+  let next = RAW_TEXT_CT[ext] ? `${RAW_TEXT_CT[ext]}; charset=utf-8`
+    : (/^text\//i.test(ct) && !/charset/i.test(ct)) ? `${ct}; charset=utf-8` : null;
+  if (!next) return res;
+  const headers = new Headers(res.headers);
+  headers.set("content-type", next);
+  return new Response(res.body, { status: res.status, statusText: res.statusText, headers });
+}
 
 function assetFetch(request, env, path) {
   return env.ASSETS.fetch(new Request(new URL(path, request.url).toString()));
