@@ -26,6 +26,10 @@ KNOWN_DYNAMIC = ("api/log-crawler", "api/base-space")
 
 # hrefs; skip pure in-page anchors (href="#...").
 _HREF = re.compile(r'href="([^"#][^"]*)"')
+# <script>/<style> bodies are code, not markup — strip them before href scan so
+# runtime JS string-built hrefs (e.g. '...' + item.canonical + '...') aren't
+# mis-flagged as broken relative links.
+_SCRIPT_STYLE = re.compile(r"<(script|style)\b[^>]*>.*?</\1>", re.DOTALL | re.IGNORECASE)
 
 
 def _load_ignored():
@@ -112,6 +116,7 @@ def validate_links(registry) -> list:
                 html = open(os.path.join(dp, fn), encoding="utf-8").read()
             except Exception:
                 continue
+            html = _SCRIPT_STYLE.sub("", html)  # ignore hrefs inside JS/CSS
             for m in _HREF.finditer(html):
                 href = m.group(1)
                 if not _resolves(href, page_rel, existing, ign_pat, ign_exact):
