@@ -1,7 +1,8 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { getPapers, getRaw, extOf } from '../../lib/engine';
-import { marked } from 'marked';
+import { marked } from '../../lib/md';
+import 'katex/dist/katex.min.css';
 
 export function getStaticPaths() {
   return getPapers().map((paper) => ({ params: { id: paper.id }, props: { paper } }));
