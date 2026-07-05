@@ -1,0 +1,417 @@
+{
+ "version": "0.1",
+ "project": "Spectral-Matrix",
+ "generated_at": "2026-07-05T05:10:03Z",
+ "model": {
+  "half_life_days": 7.0,
+  "window_days": 28,
+  "weight": "log1p(sum(hits_d * 0.5^(age_d/H))) / log1p(max)",
+  "states": {
+   "base": "< 0.15",
+   "active": "0.15 – 0.7",
+   "resonance": ">= 0.7"
+  }
+ },
+ "state_counts": {
+  "base": 42,
+  "active": 0,
+  "resonance": 0
+ },
+ "nodes": {
+  "lm-001164": {
+   "weight": 0.861,
+   "state": "base",
+   "raw_heat": 0.73,
+   "recent_48h": 0
+  },
+  "lm-001166": {
+   "weight": 0.861,
+   "state": "base",
+   "raw_heat": 0.73,
+   "recent_48h": 0
+  },
+  "lm-001177": {
+   "weight": 0.861,
+   "state": "base",
+   "raw_heat": 0.73,
+   "recent_48h": 0
+  },
+  "lm-001170": {
+   "weight": 0.861,
+   "state": "base",
+   "raw_heat": 0.73,
+   "recent_48h": 0
+  },
+  "lm-001173": {
+   "weight": 0.861,
+   "state": "base",
+   "raw_heat": 0.73,
+   "recent_48h": 0
+  },
+  "lm-001176": {
+   "weight": 0.861,
+   "state": "base",
+   "raw_heat": 0.73,
+   "recent_48h": 0
+  },
+  "lm-001165": {
+   "weight": 0.861,
+   "state": "base",
+   "raw_heat": 0.73,
+   "recent_48h": 0
+  },
+  "lm-001174": {
+   "weight": 0.861,
+   "state": "base",
+   "raw_heat": 0.73,
+   "recent_48h": 0
+  },
+  "lm-001167": {
+   "weight": 0.861,
+   "state": "base",
+   "raw_heat": 0.73,
+   "recent_48h": 0
+  },
+  "lm-001175": {
+   "weight": 0.861,
+   "state": "base",
+   "raw_heat": 0.73,
+   "recent_48h": 0
+  },
+  "lm-001163": {
+   "weight": 0.861,
+   "state": "base",
+   "raw_heat": 0.73,
+   "recent_48h": 0
+  },
+  "lm-001168": {
+   "weight": 0.861,
+   "state": "base",
+   "raw_heat": 0.73,
+   "recent_48h": 0
+  },
+  "lm-001171": {
+   "weight": 0.861,
+   "state": "base",
+   "raw_heat": 0.73,
+   "recent_48h": 0
+  },
+  "lm-001172": {
+   "weight": 0.861,
+   "state": "base",
+   "raw_heat": 0.73,
+   "recent_48h": 0
+  },
+  "lm-001162": {
+   "weight": 0.861,
+   "state": "base",
+   "raw_heat": 0.73,
+   "recent_48h": 0
+  },
+  "lm-001169": {
+   "weight": 0.861,
+   "state": "base",
+   "raw_heat": 0.73,
+   "recent_48h": 0
+  },
+  "lm-001189": {
+   "weight": 0.9286,
+   "state": "base",
+   "raw_heat": 0.8,
+   "recent_48h": 0
+  },
+  "lm-001192": {
+   "weight": 0.9286,
+   "state": "base",
+   "raw_heat": 0.8,
+   "recent_48h": 0
+  },
+  "lm-001183": {
+   "weight": 0.9286,
+   "state": "base",
+   "raw_heat": 0.8,
+   "recent_48h": 0
+  },
+  "lm-001179": {
+   "weight": 0.9286,
+   "state": "base",
+   "raw_heat": 0.8,
+   "recent_48h": 0
+  },
+  "lm-001186": {
+   "weight": 0.9286,
+   "state": "base",
+   "raw_heat": 0.8,
+   "recent_48h": 0
+  },
+  "lm-001182": {
+   "weight": 0.9286,
+   "state": "base",
+   "raw_heat": 0.8,
+   "recent_48h": 0
+  },
+  "lm-001184": {
+   "weight": 0.9286,
+   "state": "base",
+   "raw_heat": 0.8,
+   "recent_48h": 0
+  },
+  "lm-001178": {
+   "weight": 0.9286,
+   "state": "base",
+   "raw_heat": 0.8,
+   "recent_48h": 0
+  },
+  "lm-001190": {
+   "weight": 0.9286,
+   "state": "base",
+   "raw_heat": 0.8,
+   "recent_48h": 0
+  },
+  "lm-001193": {
+   "weight": 0.9286,
+   "state": "base",
+   "raw_heat": 0.8,
+   "recent_48h": 0
+  },
+  "lm-001188": {
+   "weight": 0.9286,
+   "state": "base",
+   "raw_heat": 0.8,
+   "recent_48h": 0
+  },
+  "lm-001181": {
+   "weight": 0.9286,
+   "state": "base",
+   "raw_heat": 0.8,
+   "recent_48h": 0
+  },
+  "lm-001200": {
+   "weight": 1.0,
+   "state": "base",
+   "raw_heat": 0.89,
+   "recent_48h": 1
+  },
+  "lm-001209": {
+   "weight": 1.0,
+   "state": "base",
+   "raw_heat": 0.89,
+   "recent_48h": 1
+  },
+  "lm-001202": {
+   "weight": 1.0,
+   "state": "base",
+   "raw_heat": 0.89,
+   "recent_48h": 1
+  },
+  "lm-001196": {
+   "weight": 1.0,
+   "state": "base",
+   "raw_heat": 0.89,
+   "recent_48h": 1
+  },
+  "lm-001199": {
+   "weight": 1.0,
+   "state": "base",
+   "raw_heat": 0.89,
+   "recent_48h": 1
+  },
+  "lm-001201": {
+   "weight": 1.0,
+   "state": "base",
+   "raw_heat": 0.89,
+   "recent_48h": 1
+  },
+  "lm-001197": {
+   "weight": 1.0,
+   "state": "base",
+   "raw_heat": 0.89,
+   "recent_48h": 1
+  },
+  "lm-001207": {
+   "weight": 1.0,
+   "state": "base",
+   "raw_heat": 0.89,
+   "recent_48h": 1
+  },
+  "lm-001203": {
+   "weight": 1.0,
+   "state": "base",
+   "raw_heat": 0.89,
+   "recent_48h": 1
+  },
+  "lm-001216": {
+   "weight": 1.0,
+   "state": "base",
+   "raw_heat": 0.89,
+   "recent_48h": 1
+  },
+  "lm-001194": {
+   "weight": 1.0,
+   "state": "base",
+   "raw_heat": 0.89,
+   "recent_48h": 1
+  },
+  "lm-001217": {
+   "weight": 1.0,
+   "state": "base",
+   "raw_heat": 0.89,
+   "recent_48h": 1
+  },
+  "lm-001195": {
+   "weight": 1.0,
+   "state": "base",
+   "raw_heat": 0.89,
+   "recent_48h": 1
+  },
+  "lm-001211": {
+   "weight": 1.0,
+   "state": "base",
+   "raw_heat": 0.89,
+   "recent_48h": 1
+  }
+ },
+ "top": [
+  {
+   "id": "lm-001200",
+   "weight": 1.0,
+   "state": "base",
+   "raw_heat": 0.89,
+   "recent_48h": 1
+  },
+  {
+   "id": "lm-001209",
+   "weight": 1.0,
+   "state": "base",
+   "raw_heat": 0.89,
+   "recent_48h": 1
+  },
+  {
+   "id": "lm-001202",
+   "weight": 1.0,
+   "state": "base",
+   "raw_heat": 0.89,
+   "recent_48h": 1
+  },
+  {
+   "id": "lm-001196",
+   "weight": 1.0,
+   "state": "base",
+   "raw_heat": 0.89,
+   "recent_48h": 1
+  },
+  {
+   "id": "lm-001199",
+   "weight": 1.0,
+   "state": "base",
+   "raw_heat": 0.89,
+   "recent_48h": 1
+  },
+  {
+   "id": "lm-001201",
+   "weight": 1.0,
+   "state": "base",
+   "raw_heat": 0.89,
+   "recent_48h": 1
+  },
+  {
+   "id": "lm-001197",
+   "weight": 1.0,
+   "state": "base",
+   "raw_heat": 0.89,
+   "recent_48h": 1
+  },
+  {
+   "id": "lm-001207",
+   "weight": 1.0,
+   "state": "base",
+   "raw_heat": 0.89,
+   "recent_48h": 1
+  },
+  {
+   "id": "lm-001203",
+   "weight": 1.0,
+   "state": "base",
+   "raw_heat": 0.89,
+   "recent_48h": 1
+  },
+  {
+   "id": "lm-001216",
+   "weight": 1.0,
+   "state": "base",
+   "raw_heat": 0.89,
+   "recent_48h": 1
+  },
+  {
+   "id": "lm-001194",
+   "weight": 1.0,
+   "state": "base",
+   "raw_heat": 0.89,
+   "recent_48h": 1
+  },
+  {
+   "id": "lm-001217",
+   "weight": 1.0,
+   "state": "base",
+   "raw_heat": 0.89,
+   "recent_48h": 1
+  },
+  {
+   "id": "lm-001195",
+   "weight": 1.0,
+   "state": "base",
+   "raw_heat": 0.89,
+   "recent_48h": 1
+  },
+  {
+   "id": "lm-001211",
+   "weight": 1.0,
+   "state": "base",
+   "raw_heat": 0.89,
+   "recent_48h": 1
+  },
+  {
+   "id": "lm-001189",
+   "weight": 0.9286,
+   "state": "base",
+   "raw_heat": 0.8,
+   "recent_48h": 0
+  },
+  {
+   "id": "lm-001192",
+   "weight": 0.9286,
+   "state": "base",
+   "raw_heat": 0.8,
+   "recent_48h": 0
+  },
+  {
+   "id": "lm-001183",
+   "weight": 0.9286,
+   "state": "base",
+   "raw_heat": 0.8,
+   "recent_48h": 0
+  },
+  {
+   "id": "lm-001179",
+   "weight": 0.9286,
+   "state": "base",
+   "raw_heat": 0.8,
+   "recent_48h": 0
+  },
+  {
+   "id": "lm-001186",
+   "weight": 0.9286,
+   "state": "base",
+   "raw_heat": 0.8,
+   "recent_48h": 0
+  },
+  {
+   "id": "lm-001182",
+   "weight": 0.9286,
+   "state": "base",
+   "raw_heat": 0.8,
+   "recent_48h": 0
+  }
+ ],
+ "note": "Attention thermodynamics: crawler/RAG ingestion decays with a 7-day half-life so the matrix reflects the PRESENT cognitive phase, not accumulated history. Sources: first-party beacon (KV hot2) + Cloudflare bot analytics when a token is configured."
+}

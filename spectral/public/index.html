@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EML Spectral-Matrix · 光譜矩陣</title>
+<meta name="description" content="Project Spectral-Matrix：注意力熱力學 × 因果拓撲。將 AI 爬蟲攝取頻率與 RAG 引用量轉化為 EML Base Space 拓撲矩陣上的動態光譜熱度。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<style>
+  * { box-sizing: border-box; }
+  body, html {
+    margin: 0; padding: 0; width: 100%; min-height: 100%;
+    background: #000; font-family: 'Courier New', monospace;
+    color: #0f0; overflow-x: hidden;
+  }
+  .container { max-width: 1280px; margin: 0 auto; padding: 18px; }
+  header {
+    border: 2px solid #0f0; padding: 14px; margin-bottom: 14px;
+    text-align: center; background: rgba(0, 5, 0, 0.9);
+    box-shadow: 0 0 12px rgba(0, 255, 0, 0.2);
+  }
+  h1 { font-size: 1.5em; margin: 0; letter-spacing: 2px; }
+  .tagline { font-size: 0.82em; opacity: 0.8; margin-top: 5px; }
+  .nav-back { margin-bottom: 12px; display: flex; gap: 8px; flex-wrap: wrap; }
+  .nav-back a {
+    color: #0f0; text-decoration: none; border: 1px solid #0f0;
+    padding: 5px 10px; background: rgba(0,0,0,0.8); font-size: 0.85em;
+  }
+  .nav-back a:hover { background: #0f0; color: #000; }
+
+  .slices { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+  .slice-btn {
+    border: 1px solid #0f0; color: #0f0; background: rgba(0,8,0,0.9);
+    padding: 4px 10px; font-family: inherit; font-size: 0.8em; cursor: pointer;
+  }
+  .slice-btn.on { background: #0f0; color: #000; font-weight: bold; }
+  .slice-btn:hover { border-color: #0ff; color: #0ff; }
+  .slice-btn.on:hover { color: #000; }
+
+  .layout { display: flex; gap: 14px; }
+  .left-pane {
+    flex: 2; border: 1px solid #0f0; background: rgba(0, 5, 0, 0.5);
+    padding: 10px; position: relative; min-height: 560px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  #matrix { background: #010201; border: 1px solid rgba(0,255,0,0.3); cursor: grab; max-width: 100%; }
+  .right-pane { flex: 1; display: flex; flex-direction: column; gap: 12px; min-width: 300px; }
+  .panel {
+    border: 1px solid #0f0; padding: 12px; background: rgba(0, 8, 0, 0.95);
+    box-shadow: 0 0 8px rgba(0, 255, 0, 0.15); font-size: 0.82em; line-height: 1.5;
+  }
+  .panel-title {
+    font-weight: bold; border-bottom: 1px dashed #0f0;
+    padding-bottom: 5px; margin-bottom: 8px; color: #0ff;
+    text-shadow: 0 0 5px #0ff; font-size: 0.95em;
+  }
+  .info-field { display: flex; justify-content: space-between; margin: 4px 0; gap: 8px; }
+  .info-field span { opacity: 0.75; }
+  .info-field strong { color: #0f0; text-align: right; }
+  .st-base { color: #0a6a5a; } .st-active { color: #0ff; text-shadow: 0 0 4px #0ff; }
+  .st-resonance { color: #ff5544; text-shadow: 0 0 6px #ff5544; }
+  a { color: #0ff; }
+  .hint { opacity: 0.55; font-size: 0.9em; margin-top: 6px; }
+  @media (max-width: 940px) { .layout { flex-direction: column; } .left-pane { min-height: 70vw; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="nav-back">
+    <a href="https://logic.evemisslab.com/">&larr; Logic Matrix 主站</a>
+    <a href="https://logic.evemisslab.com/base-space.html">🧬 Base Space 底空間</a>
+    <a href="https://logic.evemisslab.com/ai/graph.json">📡 graph.json</a>
+    <a href="https://logic.evemisslab.com/ai/spectral-heat.json">🌡️ spectral-heat.json</a>
+  </div>
+
+  <header>
+    <h1>EML SPECTRAL-MATRIX · 光譜矩陣</h1>
+    <div class="tagline">注意力熱力學 × 因果拓撲 — 將無形的算力關注度轉化為能量拓撲圖 · 7 日半衰期 · 譜重排序理論星雲</div>
+  </header>
+
+  <div class="slices" id="sliceBar"></div>
+
+  <div class="layout">
+    <div class="left-pane"><canvas id="matrix"></canvas></div>
+    <div class="right-pane">
+      <div class="panel">
+        <div class="panel-title">📡 光譜觀測 / SPECTRAL MONITOR</div>
+        <div class="info-field"><span>切片 / Slice:</span><strong id="mSlice">全部</strong></div>
+        <div class="info-field"><span>節點×節點:</span><strong id="mDim">—</strong></div>
+        <div class="info-field"><span>驗證邊 / Edges:</span><strong id="mEdges">—</strong></div>
+        <div class="info-field"><span>基態 / Base:</span><strong class="st-base" id="mBase">—</strong></div>
+        <div class="info-field"><span>活躍態 / Active:</span><strong class="st-active" id="mActive">—</strong></div>
+        <div class="info-field"><span>共振態 / Resonance:</span><strong class="st-resonance" id="mRes">—</strong></div>
+        <div class="info-field"><span>熱度更新 / Heat @:</span><strong id="mHeatAt" style="font-size:0.85em;">—</strong></div>
+        <div class="hint">滾輪縮放 · 拖曳平移 · 雙擊重置 · 點擊節點開啟論文</div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title">🧬 節點聚焦 / NODE INSPECTOR</div>
+        <div id="inspector"><div style="opacity:0.5;text-align:center;padding:14px;">懸停矩陣讀取節點與因果邊細節。</div></div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title">🌡️ 熱度榜 / HEAT LEADERBOARD（48h）</div>
+        <div id="leaderboard"><div style="opacity:0.5;">讀取光譜數據…</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" style="margin-top:14px;">
+    <div class="panel-title">🧭 Project Spectral-Matrix — 這是什麼</div>
+    <p>矩陣的<strong>邊</strong>來自 TCF 抽取的真實理論依賴（每條經對抗審核、帶原文證據，見 <a href="https://logic.evemisslab.com/ai/graph.json">/ai/graph.json</a>）；節點順序由 <strong>Graph Laplacian 譜重排序</strong>自動吸附——因果焊接密集處在對角線湧現「理論星雲」。<strong>顏色</strong>來自注意力熱力學：AI 爬蟲攝取與 RAG 引用經 7 日半衰期衰變為光譜權重（<span class="st-base">基態</span> → <span class="st-active">活躍態</span> → <span class="st-resonance">共振態</span>），矩陣永遠反映「當下」的認知相變，不讓歷史節點永久霸佔高光。資料源：第一方 beacon（KV hot2）＋ Cloudflare bot analytics。本頁為 Phase A 概念框架示範，隸屬 <a href="https://logic.evemisslab.com/">EVEMISSLAB Logic Matrix</a> 長期計畫。</p>
+  </div>
+</div>
+
+<script>
+const LOGIC = "https://logic.evemisslab.com";
+const CLUSTER_LABELS = {
+  all: "全部", closure: "Closure·DCO", tcf_fdrs: "TCF·FDRS", triadic: "三態·MDAS",
+  basespace: "WT·底空間", eml: "EML 語言", operator: "算子體系",
+  governance: "治理·驗證", computation: "計算·PvsNP", unified: "統一場", other: "其他"
+};
+const CLUSTER_COLORS = {
+  closure: "#00ff88", tcf_fdrs: "#44aaff", triadic: "#00ffff", basespace: "#88ff00",
+  eml: "#ffaa00", operator: "#ff66ff", governance: "#ffffff", computation: "#ff8866",
+  unified: "#aaaaff", other: "#557755"
+};
+
+let graph = null, heat = { nodes: {} }, meta = {};
+let slice = "all";
+let nodes = [], edgeMap = {}, degree = {};
+let view = { scale: 1, ox: 0, oy: 0 };
+let hover = { r: -1, c: -1 };
+let dragging = false, dragStart = null;
+
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+
+async function boot() {
+  try {
+    const [gRes, hRes, mRes] = await Promise.all([
+      fetch(LOGIC + "/ai/graph.json"),
+      fetch(LOGIC + "/ai/spectral-heat.json"),
+      fetch(LOGIC + "/papers-metadata.json"),
+    ]);
+    graph = await gRes.json();
+    if (hRes.ok) heat = await hRes.json();
+    if (mRes.ok) (await mRes.json()).forEach(p => meta[p.id] = p);
+  } catch (e) {
+    document.getElementById("inspector").innerHTML =
+      '<div style="color:#ff9900;">資料載入失敗：' + e.message + '</div>';
+    return;
+  }
+  buildSliceBar();
+  applySlice("all");
+  renderLeaderboard();
+  document.getElementById("mHeatAt").innerText =
+    (heat.generated_at || "—").replace("T", " ").replace("Z", "");
+  requestAnimationFrame(draw);
+}
+
+function buildSliceBar() {
+  const bar = document.getElementById("sliceBar");
+  const keys = ["all"].concat(Object.keys(graph.clusters || {}));
+  keys.forEach(k => {
+    const b = document.createElement("button");
+    b.className = "slice-btn" + (k === slice ? " on" : "");
+    b.innerText = CLUSTER_LABELS[k] || k;
+    b.style.borderColor = k === "all" ? "#0f0" : (CLUSTER_COLORS[k] || "#0f0");
+    b.onclick = () => { applySlice(k); };
+    b.dataset.k = k;
+    bar.appendChild(b);
+  });
+}
+
+function applySlice(k) {
+  slice = k;
+  document.querySelectorAll(".slice-btn").forEach(b => b.classList.toggle("on", b.dataset.k === k));
+  const order = graph.spectral_order || graph.nodes.map(n => n.id);
+  const byId = {}; graph.nodes.forEach(n => byId[n.id] = n);
+  nodes = order.map(id => byId[id]).filter(Boolean)
+               .filter(n => k === "all" || n.cluster === k);
+  edgeMap = {}; degree = {};
+  const inSet = new Set(nodes.map(n => n.id));
+  graph.edges.forEach(e => {
+    if (inSet.has(e.from) && inSet.has(e.to)) {
+      edgeMap[e.from + "|" + e.to] = e;
+      degree[e.from] = (degree[e.from] || 0) + 1;
+      degree[e.to] = (degree[e.to] || 0) + 1;
+    }
+  });
+  view = { scale: 1, ox: 0, oy: 0 };
+  hover = { r: -1, c: -1 };
+  updateMonitor();
+  sizeCanvas();
+}
+
+function updateMonitor() {
+  const N = nodes.length;
+  document.getElementById("mSlice").innerText = CLUSTER_LABELS[slice] || slice;
+  document.getElementById("mDim").innerText = N + " × " + N;
+  document.getElementById("mEdges").innerText = Object.keys(edgeMap).length;
+  let b = 0, a = 0, r = 0;
+  nodes.forEach(n => {
+    const st = (heat.nodes[n.id] || {}).state || "base";
+    if (st === "resonance") r++; else if (st === "active") a++; else b++;
+  });
+  document.getElementById("mBase").innerText = b;
+  document.getElementById("mActive").innerText = a;
+  document.getElementById("mRes").innerText = r;
+}
+
+function sizeCanvas() {
+  const pane = canvas.parentElement;
+  const size = Math.min(pane.clientWidth, Math.max(520, pane.clientHeight)) - 24;
+  canvas.width = size; canvas.height = size;
+}
+
+function heatOf(id) { return heat.nodes[id] || { weight: 0, state: "base" }; }
+
+function cellColor(edge, rowNode, t) {
+  const h = heatOf(rowNode.id);
+  const w = Math.min(1, edge.weight);
+  if (h.state === "resonance") {
+    const pulse = 0.65 + 0.35 * Math.sin(t * 0.005);
+    return { fill: "rgba(255, " + Math.floor(70 + 120 * pulse) + ", 60, " + (0.35 + 0.6 * w) + ")",
+             glow: "rgba(255,80,60,0.9)", blur: 14 * pulse };
+  }
+  if (h.state === "active") {
+    const pulse = 0.7 + 0.3 * Math.sin(t * 0.004 + 1);
+    return { fill: "rgba(0, " + Math.floor(200 + 55 * pulse) + ", 255, " + (0.3 + 0.6 * w) + ")",
+             glow: "rgba(0,220,255,0.8)", blur: 9 * pulse };
+  }
+  return { fill: "rgba(0, 190, 140, " + (0.18 + 0.55 * w) + ")", glow: null, blur: 0 };
+}
+
+function diagColor(node, t) {
+  const h = heatOf(node.id);
+  const base = CLUSTER_COLORS[node.cluster] || "#0f0";
+  if (h.state === "resonance") {
+    const pulse = 0.6 + 0.4 * Math.sin(t * 0.006);
+    return { fill: "rgba(255,255,255," + (0.55 + 0.4 * pulse) + ")", glow: "rgba(255,90,70,1)", blur: 16 * pulse };
+  }
+  if (h.state === "active") {
+    return { fill: "rgba(0,255,255," + (0.5 + 0.4 * h.weight) + ")", glow: "rgba(0,255,255,0.9)", blur: 10 };
+  }
+  return { fill: hexA(base, 0.28 + 0.5 * h.weight), glow: null, blur: 0 };
+}
+
+function hexA(hex, a) {
+  const r = parseInt(hex.slice(1, 3), 16), g = parseInt(hex.slice(3, 5), 16), b = parseInt(hex.slice(5, 7), 16);
+  return "rgba(" + r + "," + g + "," + b + "," + a.toFixed(3) + ")";
+}
+
+function geom() {
+  const N = Math.max(1, nodes.length);
+  const size = canvas.width;
+  const cell = (size / (N + 1)) * view.scale;
+  return { N, size, cell, x0: view.ox + cell, y0: view.oy + cell };
+}
+
+let lastDraw = 0;
+function draw() {
+  const t = Date.now();
+  if (t - lastDraw < 33) { requestAnimationFrame(draw); return; }  // ~30fps is plenty
+  lastDraw = t;
+  const { N, size, cell, x0, y0 } = geom();
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
+  ctx.fillStyle = "#000"; ctx.fillRect(0, 0, size, size);
+
+  // cluster header ticks
+  for (let i = 0; i < N; i++) {
+    const n = nodes[i];
+    ctx.fillStyle = hexA(CLUSTER_COLORS[n.cluster] || "#0f0", 0.55);
+    ctx.fillRect(x0 + i * cell, view.oy, Math.max(1, cell - 1), Math.max(2, cell * 0.3));
+    ctx.fillRect(view.ox, y0 + i * cell, Math.max(2, cell * 0.3), Math.max(1, cell - 1));
+  }
+
+  // grid (only when cells are visible enough)
+  if (cell > 4) {
+    ctx.strokeStyle = "rgba(0,255,0,0.05)"; ctx.lineWidth = 0.5;
+    for (let i = 0; i <= N; i++) {
+      ctx.beginPath(); ctx.moveTo(x0 + i * cell, y0); ctx.lineTo(x0 + i * cell, y0 + N * cell); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(x0, y0 + i * cell); ctx.lineTo(x0 + N * cell, y0 + i * cell); ctx.stroke();
+    }
+  }
+
+  const useGlow = cell > 6; // LOD: skip shadows at macro zoom for perf
+  for (let r = 0; r < N; r++) {
+    const rn = nodes[r];
+    for (let c = 0; c < N; c++) {
+      const px = x0 + c * cell, py = y0 + r * cell;
+      if (px + cell < 0 || py + cell < 0 || px > size || py > size) continue;
+      if (r === c) {
+        const d = diagColor(rn, t);
+        const glowD = useGlow && d.glow;
+        if (glowD) { ctx.shadowColor = d.glow; ctx.shadowBlur = d.blur; }
+        ctx.fillStyle = d.fill;
+        ctx.fillRect(px + 0.5, py + 0.5, Math.max(1, cell - 1), Math.max(1, cell - 1));
+        if (glowD) ctx.shadowBlur = 0;
+        continue;
+      }
+      const e = edgeMap[rn.id + "|" + nodes[c].id];
+      if (!e) continue;
+      const col = cellColor(e, rn, t);
+      const glowE = useGlow && col.glow;
+      if (glowE) { ctx.shadowColor = col.glow; ctx.shadowBlur = col.blur; }
+      ctx.fillStyle = col.fill;
+      ctx.fillRect(px + 0.5, py + 0.5, Math.max(1, cell - 1), Math.max(1, cell - 1));
+      if (glowE) ctx.shadowBlur = 0;
+    }
+  }
+
+  // micro-zoom labels on the diagonal
+  if (cell >= 26) {
+    ctx.fillStyle = "rgba(0,255,0,0.85)";
+    ctx.font = Math.max(8, cell * 0.28) + "px 'Courier New'";
+    for (let i = 0; i < N; i++) {
+      const px = x0 + i * cell, py = y0 + i * cell;
+      if (px > size || py > size || px + cell < 0 || py + cell < 0) continue;
+      ctx.fillText(nodes[i].id.replace("lm-00", ""), px + 2, py + cell - 3);
+    }
+  }
+
+  if (hover.r >= 0 && hover.c >= 0) {
+    ctx.strokeStyle = "rgba(0,255,255,0.55)"; ctx.lineWidth = 1;
+    ctx.strokeRect(x0 + hover.c * cell, y0, cell, N * cell);
+    ctx.strokeRect(x0, y0 + hover.r * cell, N * cell, cell);
+    ctx.strokeStyle = "#fff"; ctx.lineWidth = 1.5;
+    ctx.strokeRect(x0 + hover.c * cell, y0 + hover.r * cell, cell, cell);
+  }
+  requestAnimationFrame(draw);
+}
+
+function cellAt(mx, my) {
+  const { N, cell, x0, y0 } = geom();
+  const c = Math.floor((mx - x0) / cell), r = Math.floor((my - y0) / cell);
+  return (r >= 0 && r < N && c >= 0 && c < N) ? { r, c } : { r: -1, c: -1 };
+}
+
+canvas.addEventListener("mousemove", (ev) => {
+  const rect = canvas.getBoundingClientRect();
+  const mx = ev.clientX - rect.left, my = ev.clientY - rect.top;
+  if (dragging && dragStart) {
+    view.ox += mx - dragStart.x; view.oy += my - dragStart.y;
+    dragStart = { x: mx, y: my };
+    return;
+  }
+  const h = cellAt(mx, my);
+  if (h.r !== hover.r || h.c !== hover.c) { hover = h; updateInspector(); }
+});
+canvas.addEventListener("mousedown", (ev) => {
+  dragging = true; canvas.style.cursor = "grabbing";
+  const rect = canvas.getBoundingClientRect();
+  dragStart = { x: ev.clientX - rect.left, y: ev.clientY - rect.top, t: Date.now() };
+});
+window.addEventListener("mouseup", (ev) => {
+  const wasQuick = dragStart && (Date.now() - dragStart.t) < 220;
+  dragging = false; canvas.style.cursor = "grab";
+  if (wasQuick && hover.r >= 0) {
+    const n = nodes[hover.r === hover.c ? hover.r : hover.c];
+    if (n) window.open(LOGIC + (n.canonical || "/p/" + n.id + "/"), "_blank");
+  }
+  dragStart = null;
+});
+canvas.addEventListener("mouseleave", () => { hover = { r: -1, c: -1 }; updateInspector(); });
+canvas.addEventListener("wheel", (ev) => {
+  ev.preventDefault();
+  const rect = canvas.getBoundingClientRect();
+  const mx = ev.clientX - rect.left, my = ev.clientY - rect.top;
+  const factor = ev.deltaY < 0 ? 1.18 : 1 / 1.18;
+  const ns = Math.min(9, Math.max(0.4, view.scale * factor));
+  const k = ns / view.scale;
+  view.ox = mx - k * (mx - view.ox);
+  view.oy = my - k * (my - view.oy);
+  view.scale = ns;
+}, { passive: false });
+canvas.addEventListener("dblclick", () => { view = { scale: 1, ox: 0, oy: 0 }; });
+window.addEventListener("resize", sizeCanvas);
+
+function updateInspector() {
+  const el = document.getElementById("inspector");
+  if (hover.r < 0) {
+    el.innerHTML = '<div style="opacity:0.5;text-align:center;padding:14px;">懸停矩陣讀取節點與因果邊細節。</div>';
+    return;
+  }
+  const rn = nodes[hover.r], cn = nodes[hover.c];
+  const h = heatOf(rn.id);
+  const stLabel = { base: '<span class="st-base">基態 BASE</span>',
+                    active: '<span class="st-active">活躍態 ACTIVE ✦</span>',
+                    resonance: '<span class="st-resonance">共振態 RESONANCE ☀</span>' }[h.state];
+  let html = '<div class="info-field"><span>節點:</span><strong>' + rn.title.substring(0, 20) + (rn.title.length > 20 ? "…" : "") + '</strong></div>'
+    + '<div class="info-field"><span>範疇:</span><strong style="color:' + (CLUSTER_COLORS[rn.cluster] || "#0f0") + ';">' + (CLUSTER_LABELS[rn.cluster] || rn.cluster) + '</strong></div>'
+    + '<div class="info-field"><span>光譜態:</span><strong>' + stLabel + '</strong></div>'
+    + '<div class="info-field"><span>光譜權重:</span><strong>' + (h.weight || 0).toFixed(3) + '</strong></div>'
+    + '<div class="info-field"><span>因果度數:</span><strong>' + (degree[rn.id] || 0) + '</strong></div>';
+  if (hover.r !== hover.c) {
+    const e = edgeMap[rn.id + "|" + cn.id];
+    if (e) {
+      const ev = (e.evidence && e.evidence[0]) || {};
+      const quote = ev.quote || ev.use_quote || "";
+      html += '<div style="border-top:1px dashed rgba(0,255,0,0.3);margin-top:6px;padding-top:6px;">'
+        + '<div class="info-field"><span>→ 目標:</span><strong>' + cn.title.substring(0, 18) + '…</strong></div>'
+        + '<div class="info-field"><span>依賴:</span><strong style="color:#0ff;">' + e.type + '</strong></div>'
+        + (quote ? '<div style="font-size:0.85em;opacity:0.8;border-left:2px solid rgba(0,255,255,0.4);padding-left:6px;margin-top:4px;">「' + quote.substring(0, 90) + '…」</div>' : '')
+        + '</div>';
+    }
+  }
+  el.innerHTML = html;
+}
+
+function renderLeaderboard() {
+  const el = document.getElementById("leaderboard");
+  const top = (heat.top || []).slice(0, 10);
+  if (!top.length) {
+    el.innerHTML = '<div style="opacity:0.5;">尚無熱度數據——衰變後全域歸零，等爬蟲注入算力。</div>';
+    return;
+  }
+  let html = "";
+  top.forEach((item, i) => {
+    const m = meta[item.id] || {};
+    const title = (m.title || item.id).substring(0, 18);
+    const cls = item.state === "resonance" ? "st-resonance" : item.state === "active" ? "st-active" : "st-base";
+    html += '<div class="info-field"><span>#' + (i + 1) + ' <a href="' + LOGIC + (m.canonical || "/p/" + item.id + "/") + '">'
+          + title + '</a></span><strong class="' + cls + '">' + (item.weight).toFixed(2) + '</strong></div>';
+  });
+  html += '<div class="hint">光譜權重（7日半衰期衰變後, 0–1）· 每日由衍重算</div>';
+  el.innerHTML = html;
+}
+
+boot();
+</script>
+</body>
+</html>

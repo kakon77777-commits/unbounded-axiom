@@ -699,8 +699,9 @@ def write_base_space(registry, dist_dir: Path) -> None:
   <div class="nav-back">
     <a href="index.html">&larr; 回 Logic Matrix 索引</a>
     <a href="cosmomind.html">🌌 進入星環導航圖</a>
+    <a href="https://spectral.evemisslab.com">🌈 光譜矩陣 Spectral-Matrix</a>
   </div>
-  
+
   <header>
     <h1>EML Base Space · 拓撲耦合矩陣底空間</h1>
     <div class="tagline">TCF 真實理論依賴拓撲 (Phase A) × AI 爬蟲注意力層 (ADL & 3-State Logic)</div>

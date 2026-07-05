@@ -1,0 +1,12 @@
+// Project Spectral-Matrix — assets-only Worker on its own subdomain.
+// Deploy: npx wrangler deploy --config wrangler-spectral.jsonc
+{
+  "name": "spectral-matrix",
+  "compatibility_date": "2026-06-01",
+  "assets": {
+    "directory": "./spectral/public"
+  },
+  "routes": [
+    { "pattern": "spectral.evemisslab.com", "custom_domain": true }
+  ]
+}

@@ -210,6 +210,71 @@ def _gate_edges(candidates, verdicts):
     return published, rejected, pending
 
 
+# Curated Phase A cluster map (semantic slicing for the spectral matrix).
+CLUSTERS = {
+    "closure":   ["lm-000049", "lm-001089", "lm-001090", "lm-000464", "lm-001060", "lm-001088"],
+    "tcf_fdrs":  ["lm-000776", "lm-000457", "lm-000456", "lm-000075", "lm-000076", "lm-000712", "lm-000063"],
+    "triadic":   ["lm-000870", "lm-000215", "lm-000095", "lm-000273", "lm-000293", "lm-000096"],
+    "basespace": ["lm-000155", "lm-000154", "lm-000152", "lm-000477", "lm-000329", "lm-000325", "lm-000478", "lm-000291"],
+    "eml":       ["lm-001149", "lm-001148", "lm-000058", "lm-000060", "lm-000526"],
+    "operator":  ["lm-000069", "lm-000071", "lm-000924", "lm-000567"],
+    "governance": ["lm-000301", "lm-000450", "lm-000150", "lm-000017", "lm-000036"],
+    "computation": ["lm-000119", "lm-000112", "lm-000630"],
+    "unified":   ["lm-000880", "lm-000689"],
+}
+CLUSTER_OF = {pid: c for c, ids in CLUSTERS.items() for pid in ids}
+
+
+def _spectral_order(node_ids, edges):
+    """Fiedler-vector ordering (graph Laplacian, pure-python power iteration).
+
+    Strongly coupled papers end up adjacent, so dense causal blocks emerge on
+    the matrix diagonal ("theory nebulae"). 46 nodes -> trivial compute.
+    """
+    n = len(node_ids)
+    if n < 3:
+        return list(node_ids)
+    idx = {pid: i for i, pid in enumerate(node_ids)}
+    W = [[0.0] * n for _ in range(n)]
+    for e in edges:
+        i, j = idx.get(e["from"]), idx.get(e["to"])
+        if i is None or j is None or i == j:
+            continue
+        w = max(W[i][j], float(e.get("weight", 0.5)))
+        W[i][j] = W[j][i] = w
+    deg = [sum(row) for row in W]
+    shift = 1.1 * max(deg) if max(deg) > 0 else 1.0
+    # B = shift*I - L ; largest eigenvector of B (after deflating the constant
+    # vector) approximates the Fiedler vector of L.
+    import math
+    v = [math.sin(i + 1.0) for i in range(n)]  # deterministic pseudo-random start
+    ones = 1.0 / math.sqrt(n)
+    for _ in range(400):
+        mean = sum(v) / n
+        v = [x - mean for x in v]                     # deflate constant component
+        nv = [0.0] * n
+        for i in range(n):
+            acc = (shift - deg[i]) * v[i]
+            row = W[i]
+            for j in range(n):
+                if row[j]:
+                    acc += row[j] * v[j]
+            nv[i] = acc
+        norm = math.sqrt(sum(x * x for x in nv)) or 1.0
+        v = [x / norm for x in nv]
+    return [pid for _, pid in sorted(zip(v, node_ids))]
+
+
+def _copy_spectral_heat():
+    """Ship the locally generated heat file (scripts/spectral_pull.py) with the build."""
+    src = GENERATED_DIR / "spectral-heat.json"
+    if src.exists():
+        (AI / "spectral-heat.json").write_text(src.read_text(encoding="utf-8"),
+                                               encoding="utf-8")
+        return True
+    return False
+
+
 def _patch_ai_pointers(total_mapped):
     """Add /ai/graph.json to the AICL manifest + sitemap (after write_ai_layer ran)."""
     manifest_path = AI / "manifest.json"
@@ -260,6 +325,7 @@ def write_graph_layer(registry):
             "id": pid,
             "title": reg.get("title") or tcf.get("title", pid),
             "theory_name": tcf.get("theory_name", ""),
+            "cluster": CLUSTER_OF.get(pid, "other"),
             "canonical": reg.get("canonical_url", f"/p/{pid}/"),
             # Triadic Logic: Ω = extracted draft, unresolved tension; ⊤/⊥ are reserved
             # for the Phase C/E verification loops (multi-agent consensus / Lean).
@@ -305,6 +371,8 @@ def write_graph_layer(registry):
         },
         "nodes": nodes,
         "edges": edge_list,
+        "spectral_order": _spectral_order([n["id"] for n in nodes], edge_list),
+        "clusters": {c: [pid for pid in ids if pid in tcfs] for c, ids in CLUSTERS.items()},
         "concept_index": concept_summary,
     }
     AI.mkdir(parents=True, exist_ok=True)
@@ -326,6 +394,7 @@ def write_graph_layer(registry):
         json.dumps(report, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
 
     _patch_ai_pointers(len(nodes))
+    _copy_spectral_heat()
 
     stats.update({"mapped": len(nodes), "edges": len(edge_list),
                   "candidates": len(candidates), "rejected": len(rejected),

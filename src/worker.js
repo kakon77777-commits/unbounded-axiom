@@ -36,6 +36,13 @@ export default {
       if (p === "/api/log-crawler") return await logCrawler(request, env, ctx);
       if (p === "/api/tcf-queue") return await tcfQueue(request, env);
       if (p.startsWith("/papers/")) return await papersRedirect(request, env);
+      // machine-layer JSON is cross-origin readable (spectral.evemisslab.com + agents)
+      if ((p.startsWith("/ai/") && p.endsWith(".json")) || p === "/papers-metadata.json") {
+        const res = await env.ASSETS.fetch(request);
+        const h = new Headers(res.headers);
+        h.set("Access-Control-Allow-Origin", "*");
+        return new Response(res.body, { status: res.status, statusText: res.statusText, headers: h });
+      }
       if (p.startsWith("/raw/")) return await rawAsset(request, env);
     } catch (e) {
       // never let a dynamic-route error break static serving
@@ -313,8 +320,9 @@ async function tcfQueue(request, env) {
     if (rec.d === day) recent = (rec.c || 0) + (rec.pd === yday ? (rec.p || 0) : 0);
     else if (rec.d === yday) recent = rec.c || 0;
     if (recent >= minHits) {
-      const m = meta[id] || {};
-      candidates.push({ id, title: m.title || id, canonical: m.canonical || `/p/${id}/`,
+      const m = meta[id];
+      if (!m) continue; // crawlers probe nonexistent ids — registry-known papers only
+      candidates.push({ id, title: m.title, canonical: m.canonical || `/p/${id}/`,
                         recent_hits: recent, state: "hollow" });
     }
   }
