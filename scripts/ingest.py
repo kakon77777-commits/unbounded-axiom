@@ -22,6 +22,7 @@ from pathlib import Path
 from scripts.config import ROOT, SUPPORTED_EXTS
 from scripts.helpers import lang_tag
 from scripts.registry import load_registry
+from scripts.normalize_math import normalize as normalize_math
 
 INGEST = ROOT / "ingest"
 BEFORE, STAGING, AFTER, REPORTS = (INGEST / "01-before", INGEST / "02-agent-staging",
@@ -104,7 +105,15 @@ def main():
         else:
             dest = AFTER / _sub(month)
             dest.mkdir(parents=True, exist_ok=True)
-            shutil.copy2(f, dest / f.name)
+            # Auto-repair Canvas copy-paste math corruption on .md (no-op on a clean
+            # \[…\] download — see scripts/normalize_math.py). What lands in 03-after
+            # is exactly what gets reviewed and published.
+            if ext == "md":
+                raw = f.read_text(encoding="utf-8", newline="")  # preserve EOL
+                fixed = normalize_math(raw)
+                (dest / f.name).write_text(fixed, encoding="utf-8", newline="")
+            else:
+                shutil.copy2(f, dest / f.name)
             ready.append(meta)
 
     now = datetime.now(timezone.utc)
