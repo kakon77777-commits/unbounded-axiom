@@ -6,5 +6,9 @@
   "main": "ctcl/worker.js",
   "compatibility_date": "2026-06-01",
   "workers_dev": true,
-  "observability": { "enabled": true }
+  "observability": { "enabled": true },
+  "routes": [
+    { "pattern": "commoninstant.org", "custom_domain": true },
+    { "pattern": "www.commoninstant.org", "custom_domain": true }
+  ]
 }
