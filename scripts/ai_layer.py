@@ -214,7 +214,8 @@ def _manifest(items, now):
         "reading_order": READING_ORDER,
         "corpus": {"count": len(items), "json": "/ai/corpus.json",
                    "jsonl": "/ai/corpus.jsonl", "timeline": "/ai/timeline.json",
-                   "papers_registry": "/api/papers/index.json"},
+                   "papers_registry": "/api/papers/index.json",
+                   "companions": "/ai/companions.json", "media": "/ai/media.json"},
         "routes": {"canonical_page": "/p/{id}/", "raw": "/raw/{id}.{ext}",
                    "metadata": "/api/papers/{id}.json"},
         "specs": [
@@ -240,6 +241,7 @@ def _ai_sitemap(now):
     resources = [
         "/ai/index.md", "/ai/manifest.json", "/ai/corpus.json", "/ai/corpus.jsonl",
         "/ai/sitemap.json", "/ai/version.json", "/ai/timeline.json",
+        "/ai/companions.json", "/ai/media.json",
         "/ai/rights-spectrum.json", "/ai/tools/catalog.json",
         "/ai/specs/aicl-v0.1.md", "/ai/specs/airs-ailp-v0.1.md",
         "/ai/governance/usage-policy.md", "/ai/governance/license.md",

@@ -81,6 +81,21 @@ def _authorship(eid: str, base: str, ai_set: set) -> str:
             else "collaborative")
 
 
+def _reserved_companion_ids() -> set:
+    """Retired ids (papers demoted to companion attachments) that must NEVER be
+    reassigned — else a future paper would silently steal a URL that 301s elsewhere.
+    Read inline from registry/companions.json (mirrors _ai_authored_set)."""
+    p = REGISTRY_DIR / "companions.json"
+    if p.exists():
+        try:
+            comp = json.loads(p.read_text(encoding="utf-8")).get("companions", {}) or {}
+            return {a["retired_id"] for atts in comp.values() for a in (atts or [])
+                    if a.get("retired_id")}
+        except Exception:
+            pass
+    return set()
+
+
 def build_registry(entries) -> dict:
     """entries: list of (slug, display, ext, src Path). Returns a registry dict with
     stable ids. Existing ids are preserved (keyed by source_file); new files are
@@ -90,6 +105,7 @@ def build_registry(entries) -> dict:
     # (papers/ -> content/papers/YYYY/YYYY-MM/): the path changes, the name does not.
     by_base = {Path(it["source_file"]).name: it for it in prev.get("items", [])}
     used_ids = {it["id"] for it in prev.get("items", [])}
+    used_ids |= _reserved_companion_ids()  # retired (demoted) ids stay reserved forever
 
     def next_id():
         n = 1

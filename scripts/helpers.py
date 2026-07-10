@@ -45,6 +45,7 @@ def mime_for(ext: str) -> str:
         "lean":  "text/x-lean",
         "ts":    "text/typescript",
         "jsx":   "text/jsx",
+        "txt":   "text/plain",
     }.get(ext, "application/octet-stream")
 
 

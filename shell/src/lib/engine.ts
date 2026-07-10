@@ -54,6 +54,17 @@ export function getMedia(): Record<string, Media> {
   catch { return {}; }
 }
 
+export interface Companion {
+  file: string; orig: string; label: string; kind: string;
+  ext: string; bytes: number; raw_url: string; mime: string; retired_id?: string;
+}
+// parent lm-id -> its companion attachments (accompanying code / proofs / data /
+// example sets served at /raw/{parent}/{file}). Empty object if none / file absent.
+export function getCompanions(): Record<string, Companion[]> {
+  try { return readJSON('ai/companions.json').companions || {}; }
+  catch { return {}; }
+}
+
 export function getTimeline(): Array<{
   year: number;
   count: number;

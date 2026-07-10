@@ -6,9 +6,21 @@ const corpus = getCorpus();
 const timeline = getTimeline();
 const papers = getPapers();
 
-const months = [...new Set(papers.map((p) => p.month).filter(Boolean))].sort() as string[];
-const latestMonth = months[months.length - 1];
-const latest = papers.filter((p) => p.month === latestMonth).slice(0, 12);
+// Rotating random sample. An AI agent (or human) seeding ideas from the homepage
+// should not keep landing on the same handful of papers — the old fixed "latest
+// month, first by id" slice biased every visitor toward the alphabetically-first
+// filenames. The pool is the whole corpus and the set re-rolls each build/deploy;
+// the complete list lives at /timeline/. (AI reads the static HTML, so this must be
+// server-side — a build-time shuffle, not client JS.)
+function sample(arr, n) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a.slice(0, n);
+}
+const featured = sample(papers, 12);
 
 const collab = corpus.authorship?.['collaborative'] ?? 0;
 const aiAuto = corpus.authorship?.['ai_autonomous'] ?? 0;
@@ -53,9 +65,10 @@ const monthCount = timeline.reduce((a, y) => a + y.months.length, 0);
 
   <section class="section">
     <div class="wrap">
-      <h2>Latest · {latestMonth}</h2>
+      <h2>探索切片 · A rotating sample</h2>
+      <p class="sample-note">每次重建隨機抽選，不代表全部；完整語料庫見時間軸。 A random draw from the whole corpus — it re-rolls on every deploy, so this is a doorway, not the collection.</p>
       <div class="papers">
-        {latest.map((p) => (
+        {featured.map((p) => (
           <a class="paper-row" href={`/p/${p.id}/`}>
             <span class="pid">{p.id}</span>
             <span class="pt">{p.title}</span>
@@ -63,7 +76,11 @@ const monthCount = timeline.reduce((a, y) => a + y.months.length, 0);
           </a>
         ))}
       </div>
-      <p style="margin-top:1.8rem"><a href="/timeline/">View the full chronological archive →</a></p>
+      <p style="margin-top:1.8rem"><a href="/timeline/">View the full chronological archive · 全部 {corpus.count} 篇 →</a></p>
     </div>
   </section>
 </Base>
+
+<style>
+  .sample-note { margin: -0.6rem 0 1.6rem; max-width: var(--measure); font-size: 0.82rem; line-height: 1.6; color: var(--paper-faint); }
+</style>

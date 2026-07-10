@@ -1,0 +1,35 @@
+{
+  "_note": "Companion attachments overlay — the C-model sub-coordinate layer, keyed by PARENT lm-id (mirrors media.json / ai-authored.json). Each attachment is a file that belongs to a paper (accompanying code, a Lean proof, witness data, a worked-example set) but is NOT a standalone paper: no own lm-id, absent from the timeline and the corpus count. Files live in content/attachments/{parent-id}/ and are served under the parent's coordinate at /raw/{parent-id}/{file}. Fields: file = ascii served/stored name; orig = original filename (used as the human download name); label = human display (may be CJK); kind = examples|code|proof|data|verify|demo|core|witness|...; retired_id (optional) = the lm-id this file HELD when it was mis-filed as a standalone paper — the build reserves it forever (registry never reassigns it) and 301s /p/{retired_id}/ + /raw/{retired_id}.{ext} to the parent; retired_slug (optional) = the legacy /papers/ slug it had, also redirected to the parent. Emitted to /ai/companions.json + the reader's attachment zone at build.",
+  "companions": {
+    "lm-000095": [
+      {
+        "file": "MDAS-TCH-v2.0-examples.md",
+        "orig": "MDAS-TCH v2.0 完整示例集.md",
+        "label": "完整示例集 — ZFC / AlphaGo / 元圖靈機的 MDAS-TCH v2.0 JSON 編碼",
+        "kind": "examples",
+        "retired_id": "lm-000094",
+        "retired_slug": "MDAS-TCH-v2.0.md"
+      }
+    ],
+    "lm-001381": [
+      {
+        "file": "compute_bw_big.py",
+        "orig": "compute_bw_big.py",
+        "label": "計算程式 · FFT 卷積把平衡量 B−W(M) 列舉到 4×10⁶（§3 增長律 M^{3/4}、§4 命中計數）",
+        "kind": "code"
+      },
+      {
+        "file": "ham48_posa.py",
+        "orig": "ham48_posa.py",
+        "label": "建構程式 · R²=48 中心起點六連通哈密頓路徑的 Pósa 旋轉求解器（§5.1；生成下方見證）",
+        "kind": "code"
+      },
+      {
+        "file": "ham48_path.txt",
+        "orig": "ham48_path.txt",
+        "label": "見證資料 · R²=48 中心起點哈密頓路徑，1365 點座標（任何人可線性時間重驗）",
+        "kind": "witness"
+      }
+    ]
+  }
+}

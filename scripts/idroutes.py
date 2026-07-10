@@ -147,7 +147,7 @@ def write_api(registry) -> None:
         json.dumps(index, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
-def write_redirects(registry) -> None:
+def write_redirects(registry, companions=None) -> None:
     """Full machine-readable redirects.json (page+raw). NO static _redirects rules.
 
     The legacy /papers/* surface is retired: every /papers/<slug>(.html) request is
@@ -165,6 +165,9 @@ def write_redirects(registry) -> None:
         raw_from = f"/papers/{slug}"
         data.append({"from": page_from, "to": it["canonical_url"], "status": 301})
         data.append({"from": raw_from, "to": it["raw_url"], "status": 301})
+    # Companion demotions: retired /p/{id}/ + /raw/{id}.{ext} -> parent (301).
+    if companions:
+        data.extend(companions.get("redirects", []))
     # _redirects carries NO per-paper rules (the [[path]].js Function handles /papers/*).
     (DIST_DIR / "_redirects").write_text(
         "# /papers/* is handled dynamically by functions/papers/[[path]].js (0 static rules)\n",
@@ -175,7 +178,7 @@ def write_redirects(registry) -> None:
     (REGISTRY_DIR / "redirects.json").write_text(payload, encoding="utf-8")
 
 
-def write_legacy_map(registry) -> None:
+def write_legacy_map(registry, companions=None) -> None:
     """dist/papers-legacy-map.json — flat { legacy_slug: {id, ext} } for the
     catch-all Function functions/papers/[[path]].js to resolve legacy /papers/<slug>
     URLs to their id-native targets (/p/{id}/ page or /raw/{id}.{ext} raw)."""
@@ -183,6 +186,9 @@ def write_legacy_map(registry) -> None:
         it["legacy_slug"]: {"id": it["id"], "ext": it["ext"]}
         for it in registry["items"]
     }
+    # A retired paper's legacy /papers/<slug> now points at its parent paper.
+    if companions:
+        legacy_map.update(companions.get("legacy", {}))
     (DIST_DIR / "papers-legacy-map.json").write_text(
         json.dumps(legacy_map, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 

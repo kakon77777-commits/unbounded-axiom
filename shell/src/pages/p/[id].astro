@@ -1,6 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { getPapers, getRaw, extOf, getMedia } from '../../lib/engine';
+import { getPapers, getRaw, extOf, getMedia, getCompanions } from '../../lib/engine';
 import { marked } from '../../lib/md';
 import 'katex/dist/katex.min.css';
 
@@ -10,6 +10,14 @@ export function getStaticPaths() {
 
 const { paper } = Astro.props;
 const media = getMedia()[paper.id];
+const companions = getCompanions()[paper.id] || [];
+const KIND_ICON: Record<string, string> = {
+  examples: '🧩', code: '💻', proof: '∴', data: '📊', witness: '📊',
+  verify: '✅', demo: '▶️', core: '🧠', dataset: '📊', notebook: '📓',
+};
+const fmtBytes = (b: number) =>
+  b >= 1048576 ? `${(b / 1048576).toFixed(1)} MB`
+  : b >= 1024 ? `${(b / 1024).toFixed(0)} KB` : `${b} B`;
 const ext = extOf(paper);
 const raw = getRaw(paper.raw_url);
 const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -36,6 +44,15 @@ const jsonld = {
   publisher: { '@type': 'Organization', name: 'EveMissLab / 一言諾科技有限公司' },
   isPartOf: { '@type': 'Collection', name: 'EVEMISSLAB Logic Matrix', url: ORIGIN },
   encodingFormat: 'text/html',
+  ...(companions.length ? {
+    hasPart: companions.map((c) => ({
+      '@type': /^(py|ts|jsx|lean)$/.test(c.ext) ? 'SoftwareSourceCode' : 'CreativeWork',
+      name: c.label,
+      url: `${ORIGIN}${c.raw_url}`,
+      encodingFormat: c.mime,
+      ...(/^(py|ts|jsx)$/.test(c.ext) ? { programmingLanguage: c.ext } : {}),
+    })),
+  } : {}),
 };
 ---
 <Base title={`${paper.title} · Logic Matrix`} description={`${paper.title} | EVEMISSLAB Logic Matrix`}>
@@ -80,6 +97,20 @@ const jsonld = {
           )}
         </div>
       )}
+      {companions.length > 0 && (
+        <div class="attachments measure" role="group" aria-label="本文附件 / Companion files for this paper">
+          <div class="eyebrow">📎 附件 · Companion files — 隨文交付的程式 / 證明 / 資料，可獨立下載重驗</div>
+          <ul class="attach-list">
+            {companions.map((c) => (
+              <li class="attach-item">
+                <span class="attach-kind" aria-hidden="true">{KIND_ICON[c.kind] || '📎'}</span>
+                <a class="attach-link" href={c.raw_url} download={c.orig}>{c.label}</a>
+                <span class="attach-meta">{c.ext} · {fmtBytes(c.bytes)}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
       <article class="prose" set:html={body}></article>
     </div>
   </div>
@@ -88,5 +119,12 @@ const jsonld = {
     .media-item { display: flex; flex-direction: column; gap: 0.5rem; padding: 1rem 1.1rem; border: 1px solid var(--line); border-radius: 0.6rem; background: var(--surface); }
     .media-item audio { width: 100%; }
     .media-item video { width: 100%; max-height: 60vh; border-radius: 0.4rem; background: #000; }
+    .attachments { margin: 1.6rem 0 0.5rem; padding: 1rem 1.1rem; border: 1px solid var(--line); border-radius: 0.6rem; background: var(--surface); }
+    .attach-list { list-style: none; margin: 0.75rem 0 0; padding: 0; display: flex; flex-direction: column; gap: 0.55rem; }
+    .attach-item { display: flex; align-items: baseline; gap: 0.6rem; }
+    .attach-kind { flex: none; }
+    .attach-link { font-weight: 600; text-decoration: none; border-bottom: 1px solid currentColor; }
+    .attach-link:hover { opacity: 0.72; }
+    .attach-meta { margin-left: auto; font-size: 0.8rem; opacity: 0.6; white-space: nowrap; font-variant-numeric: tabular-nums; }
   </style>
 </Base>

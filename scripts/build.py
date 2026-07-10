@@ -25,6 +25,7 @@ from scripts.idroutes import (write_id_pages, write_raw_files, write_api,
 from scripts.validate import validate_routes, validate_links
 from scripts.ai_layer import write_ai_layer
 from scripts.graph_layer import write_graph_layer
+from scripts.companions import write_companions
 
 
 def main() -> None:
@@ -73,9 +74,10 @@ def main() -> None:
     # --- Phase 2/4: stable-identity + AICL /ai/ layer + deterministic-ingestion validation ---
     id_pages = write_id_pages(registry, entries)
     write_raw_files(registry, entries)
+    companions = write_companions(registry)  # C layer: attachments -> /raw/{parent}/ + /ai/companions.json + retired-id 301 map
     write_api(registry)
-    write_redirects(registry)
-    write_legacy_map(registry)  # dist/papers-legacy-map.json for the /papers/* catch-all Function
+    write_redirects(registry, companions)
+    write_legacy_map(registry, companions)  # dist/papers-legacy-map.json for the /papers/* catch-all Function
     ai_count = write_ai_layer(registry, entries)  # §9 AICL /ai/ + §10 AIRS + canonical llms
     graph_stats = write_graph_layer(registry)  # Phase A: registry/tcf/ -> /ai/graph.json (real topology)
     write_sitemap_canonical(registry)          # §26.6.6 canonical-only sitemap (replaces legacy)
@@ -89,6 +91,9 @@ def main() -> None:
     print(f"[diag] language split: {len(zh_entries)} zh-Hant / {len(en_entries)} en")
     print(f"[diag] registry: {registry['count']} stable ids | +/p +/raw +/api +_redirects (id pages: {id_pages})")
     print(f"[diag] AICL: /ai/ layer + rights-spectrum + canonical llms ({ai_count} corpus.jsonl lines)")
+    print(f"[diag] companions: {companions['attachments']} attachment(s) under {companions['parents']} paper(s) "
+          f"-> /raw/{{parent}}/ + /ai/companions.json | retired ids: {companions['retired'] or '—'} "
+          f"| missing: {companions['missing'] or '—'}")
     if graph_stats["mapped"]:
         print(f"[diag] graph: /ai/graph.json — {graph_stats['mapped']} nodes / {graph_stats['edges']} verified edges "
               f"(candidates: {graph_stats.get('candidates', 0)}, rejected: {graph_stats.get('rejected', 0)}, "

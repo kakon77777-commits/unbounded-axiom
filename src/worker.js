@@ -26,12 +26,28 @@ const BOT_KEYWORDS = [
 
 // module-scope cache: slug -> {id, ext} (warm isolates skip the re-fetch)
 let LEGACY_MAP = null;
+// module-scope cache: retired path ("/p/{id}/" or "/raw/{id}.{ext}") -> parent target
+let COMPANION_REDIR = null;
 
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
     const p = url.pathname;
     try {
+      // Retired-id 301s: a paper demoted to a companion attachment. Its old /p/{id}/
+      // (no static asset -> Worker runs) and /raw/{id}.{ext} (run_worker_first) both
+      // 301 to the parent, so the canonical URL never dies. Cheap: one cached map fetch.
+      if (p.startsWith("/p/") || p.startsWith("/raw/")) {
+        const map = await loadCompanionRedir(request, env);
+        const key = p.startsWith("/p/") && !p.endsWith("/") ? p + "/" : p;
+        const target = map[key];
+        if (target) {
+          return new Response(null, {
+            status: 301,
+            headers: { "Location": target + url.search, "Cache-Control": "public, max-age=31536000, immutable" },
+          });
+        }
+      }
       if (p === "/api/base-space") return await baseSpace(request, env);
       if (p === "/api/log-crawler") return await logCrawler(request, env, ctx);
       if (p === "/api/tcf-queue") return await tcfQueue(request, env);
@@ -78,6 +94,19 @@ async function rawAsset(request, env) {
 
 function assetFetch(request, env, path) {
   return env.ASSETS.fetch(new Request(new URL(path, request.url).toString()));
+}
+
+// ---- companion redirect map: retired path -> parent target (built from
+// registry/companions.json). Cached per warm isolate like LEGACY_MAP. ----
+async function loadCompanionRedir(request, env) {
+  if (COMPANION_REDIR) return COMPANION_REDIR;
+  try {
+    const r = await assetFetch(request, env, "/companions-redirect-map.json");
+    COMPANION_REDIR = r.ok ? await r.json() : {};
+  } catch (e) {
+    COMPANION_REDIR = {};
+  }
+  return COMPANION_REDIR;
 }
 
 // ---- /media/{id}.{ext} : serve audio/video from R2 (env.MEDIA). Files are too large
