@@ -27,6 +27,7 @@ export interface Paper {
   id: string;
   title: string;
   language: string;
+  authorship: string;
   month: string | null;
   canonical_url: string;
   raw_url: string;
@@ -40,6 +41,7 @@ export function getPapers(): Paper[] {
 export function getCorpus(): {
   count: number;
   languages: Record<string, number>;
+  authorship: Record<string, number>;
   project: string;
   generated_at: string;
 } {

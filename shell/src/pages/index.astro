@@ -10,8 +10,8 @@ const months = [...new Set(papers.map((p) => p.month).filter(Boolean))].sort() a
 const latestMonth = months[months.length - 1];
 const latest = papers.filter((p) => p.month === latestMonth).slice(0, 12);
 
-const zh = corpus.languages?.['zh-Hant'] ?? 0;
-const en = corpus.languages?.['en'] ?? 0;
+const collab = corpus.authorship?.['collaborative'] ?? 0;
+const aiAuto = corpus.authorship?.['ai_autonomous'] ?? 0;
 const monthCount = timeline.reduce((a, y) => a + y.months.length, 0);
 ---
 <Base title="Logic Matrix — EveMissLab Theoretical Corpus">
@@ -26,8 +26,8 @@ const monthCount = timeline.reduce((a, y) => a + y.months.length, 0);
       </p>
       <div class="stats">
         <div class="stat"><div class="n">{corpus.count}</div><div class="l">Papers</div></div>
-        <div class="stat"><div class="n">{zh}</div><div class="l">中文</div></div>
-        <div class="stat"><div class="n">{en}</div><div class="l">English</div></div>
+        <div class="stat"><div class="n">{collab}</div><div class="l">人機協力</div></div>
+        <div class="stat"><div class="n">{aiAuto}</div><div class="l">AI 自主</div></div>
         <div class="stat"><div class="n">{monthCount}</div><div class="l">Months</div></div>
       </div>
     </div>

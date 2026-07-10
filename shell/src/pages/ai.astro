@@ -1,0 +1,113 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCorpus, getPapers } from '../lib/engine';
+
+const corpus = getCorpus();
+const papers = getPapers();
+const zh = corpus.languages?.['zh-Hant'] ?? 0;
+const en = corpus.languages?.['en'] ?? 0;
+const collab = corpus.authorship?.['collaborative'] ?? 0;
+const aiAuto = corpus.authorship?.['ai_autonomous'] ?? 0;
+const aiPapers = papers.filter((p) => p.authorship === 'ai_autonomous');
+
+const endpoints = [
+  { name: 'manifest.json', href: '/ai/manifest.json', desc: 'Crawler entry — capabilities, endpoints, rights' },
+  { name: 'corpus.json', href: '/ai/corpus.json', desc: 'Corpus summary — count, languages, authorship' },
+  { name: 'corpus.jsonl', href: '/ai/corpus.jsonl', desc: 'One paper per line, permanent-id keyed' },
+  { name: 'papers/index.json', href: '/api/papers/index.json', desc: 'Full registry — stable ids + canonical routes' },
+  { name: 'timeline.json', href: '/ai/timeline.json', desc: 'Chronological index by publication month' },
+  { name: 'graph.json', href: '/ai/graph.json', desc: 'Base-space causal graph, adversarially verified edges' },
+  { name: 'rights-spectrum.json', href: '/ai/rights-spectrum.json', desc: 'AIRS — AI ingestion / usage rights' },
+  { name: 'llms.txt', href: '/llms.txt', desc: 'Plain-text corpus guide for LLMs' },
+];
+---
+<Base title="AI Layer — Logic Matrix">
+  <header class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Machine Layer · Research Ecology</div>
+      <h1>The AI side of the corpus.</h1>
+      <p class="lede">
+        Two things live here: how machines <em>read</em> this corpus, and what AI
+        <em>writes</em> back into it — every AI paper carrying its full provenance.
+      </p>
+      <div class="stats">
+        <div class="stat"><div class="n">{corpus.count}</div><div class="l">Papers</div></div>
+        <div class="stat"><div class="n">{collab}</div><div class="l">人機協力</div></div>
+        <div class="stat"><div class="n">{aiAuto}</div><div class="l">AI 自主</div></div>
+        <div class="stat"><div class="n">{zh}<span class="slash">/</span>{en}</div><div class="l">中文 / EN</div></div>
+      </div>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="eyebrow">① Machine Layer</div>
+      <h2>What an AI agent sees</h2>
+      <p class="note">
+        Same corpus, machine door. Each endpoint below is the raw contract an agent consumes —
+        no cloaking: the human page <code>/p/{'{'}id{'}'}/</code> carries the same content as
+        its <code>/raw/</code> and <code>/api/</code> twins.
+      </p>
+      <div class="ep-grid">
+        {endpoints.map((e) => (
+          <a class="ep" href={e.href}>
+            <span class="ep-n">{e.name}</span>
+            <span class="ep-d">{e.desc}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="eyebrow">② Research Ecology</div>
+      <h2>What AI writes back</h2>
+      <p class="note">
+        An AI research loop reads the corpus, finds gaps, drafts theory, is adversarially
+        reviewed, and publishes — with provenance, lineage, and preserved failures.
+        AI-authored papers re-enter the corpus (<code>C<sub>t+1</sub> = C<sub>t</sub> ∪ P<sub>t</sub></code>),
+        each tagged and fully traceable.
+      </p>
+      {aiPapers.length === 0 ? (
+        <div class="seed">
+          <div class="seed-n">0</div>
+          <div class="seed-t">
+            <b>No AI-authored papers yet — the ecology hasn't been let loose.</b><br />
+            The corpus is currently <b>100% 人機協力</b> (human-led, AI-assisted). This section
+            fills as autonomous runs publish, each carrying a provenance capsule:
+            <span class="cap">model · autonomy · data-claims:false · citation:passed · adversarial:passed</span>
+          </div>
+        </div>
+      ) : (
+        <div class="papers">
+          {aiPapers.map((p) => (
+            <a class="paper-row" href={`/p/${p.id}/`}>
+              <span class="pid">{p.id}</span>
+              <span class="pt">{p.title}</span>
+              <span class="pmeta">AI 自主 · {p.month}</span>
+            </a>
+          ))}
+        </div>
+      )}
+      <p class="note foot">Design spec: <em>Logic Matrix AI Research Ecology</em> white paper (v0.1 → v0.2 in progress).</p>
+    </div>
+  </section>
+
+  <style>
+    .slash { color: var(--paper-faint); margin: 0 0.1em; }
+    .note { color: var(--paper-dim); max-width: var(--measure); line-height: 1.75; margin-top: 0.6rem; }
+    .note code { font-family: var(--mono); font-size: 0.82em; color: var(--teal); }
+    .note.foot { font-size: 0.9rem; margin-top: 1.8rem; }
+    .ep-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr)); gap: 0.8rem; margin-top: 1.6rem; }
+    .ep { display: flex; flex-direction: column; gap: 0.32rem; padding: 0.95rem 1.05rem; border: 1px solid var(--line); border-radius: 0.5rem; background: var(--surface); }
+    .ep:hover { border-color: var(--gold-dim); background: color-mix(in srgb, var(--surface) 80%, var(--gold) 6%); }
+    .ep-n { font-family: var(--mono); font-size: 0.84rem; color: var(--gold); letter-spacing: 0.02em; }
+    .ep-d { font-size: 0.82rem; color: var(--paper-dim); line-height: 1.5; }
+    .seed { display: flex; gap: 1.3rem; align-items: center; padding: 1.5rem 1.6rem; border: 1px dashed var(--line-strong); border-radius: 0.6rem; margin-top: 1.6rem; background: color-mix(in srgb, var(--surface) 55%, transparent); }
+    .seed-n { font-family: var(--serif); font-size: 3.4rem; line-height: 1; color: var(--gold-dim); flex: none; }
+    .seed-t { color: var(--paper-dim); line-height: 1.65; font-size: 0.95rem; }
+    .cap { display: block; margin-top: 0.6rem; font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.04em; color: var(--paper-faint); }
+    @media (max-width: 30rem) { .seed { flex-direction: column; align-items: flex-start; } }
+  </style>
+</Base>

@@ -62,6 +62,25 @@ def load_registry() -> dict:
     return {"version": "0.2", "items": []}
 
 
+def _ai_authored_set() -> set:
+    """Ids/basenames marked AI-autonomous (the Research Ecology output). The default is
+    'collaborative' (human-led, AI-assisted — the whole current corpus). A paper is
+    'ai_autonomous' only if its id starts with 'lm-ai-' OR it is listed in the optional
+    registry/ai-authored.json override. Absent file -> empty set -> all collaborative."""
+    p = REGISTRY_DIR / "ai-authored.json"
+    if p.exists():
+        try:
+            return set(json.loads(p.read_text(encoding="utf-8")).get("ai_autonomous", []))
+        except Exception:
+            pass
+    return set()
+
+
+def _authorship(eid: str, base: str, ai_set: set) -> str:
+    return ("ai_autonomous" if (eid.startswith("lm-ai-") or eid in ai_set or base in ai_set)
+            else "collaborative")
+
+
 def build_registry(entries) -> dict:
     """entries: list of (slug, display, ext, src Path). Returns a registry dict with
     stable ids. Existing ids are preserved (keyed by source_file); new files are
@@ -79,6 +98,7 @@ def build_registry(entries) -> dict:
         return f"lm-{n:06d}"
 
     dates = _git_first_add_dates()  # basename -> 'YYYY-MM-DD'
+    ai_set = _ai_authored_set()     # ids/basenames that are AI-autonomous (default: none)
 
     cur = []
     for slug, display, ext, src in entries:
@@ -113,6 +133,7 @@ def build_registry(entries) -> dict:
             "legacy_slug": slug,
             "ext": ext,
             "language": lang_tag(display),
+            "authorship": _authorship(eid, base, ai_set),
             "created": d,
             "year": year,
             "month": month,

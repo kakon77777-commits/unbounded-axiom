@@ -87,15 +87,17 @@ def _corpus(items, now):
         for it in items:
             f.write(json.dumps({
                 "type": "paper", "id": it["id"], "title": it["title"],
-                "language": it["language"], "month": it["month"],
-                "date_confidence": it["date_confidence"],
+                "language": it["language"], "authorship": it.get("authorship", "collaborative"),
+                "month": it["month"], "date_confidence": it["date_confidence"],
                 "canonical": it["canonical_url"], "raw": it["raw_url"],
                 "api": it["api_url"], "hash": it["hash"],
             }, ensure_ascii=False) + "\n")
     langs = Counter(it["language"] for it in items)
+    authorship = Counter(it.get("authorship", "collaborative") for it in items)
     _wj(AI / "corpus.json", {
         "version": "0.2", "generated_at": now, "project": SITE_TITLE,
         "count": len(items), "languages": dict(langs),
+        "authorship": dict(authorship),
         "bulk": "/ai/corpus.jsonl", "registry": "/api/papers/index.json",
         "timeline": "/ai/timeline.json",
         "note": "Each corpus.jsonl line is one paper keyed by a permanent id; "
