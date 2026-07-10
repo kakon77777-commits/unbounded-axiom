@@ -66,6 +66,7 @@ def write_ai_layer(registry, entries):
     (AI / "archive").mkdir(exist_ok=True)
 
     _corpus(items, now)
+    _media(now)
     _index_md()
     _manifest(items, now)
     _ai_sitemap(now)
@@ -103,6 +104,26 @@ def _corpus(items, now):
         "note": "Each corpus.jsonl line is one paper keyed by a permanent id; "
                 "canonical/raw/api are stable routes. Prefer these over guessing /papers/.",
     })
+
+
+def _media(now):
+    """Emit /ai/media.json from registry/media.json (id -> audio/video). Media files
+    live in Cloudflare R2, served via the /media/* worker route; this is the machine
+    declaration so an AI agent (and the human pages) can discover a paper's audio/video."""
+    src = ROOT / "registry" / "media.json"
+    media = {}
+    if src.exists():
+        try:
+            media = json.loads(src.read_text(encoding="utf-8")).get("media", {})
+        except Exception:
+            media = {}
+    _wj(AI / "media.json", {
+        "version": "0.2", "generated_at": now, "count": len(media),
+        "note": "id -> {audio, video}; files in Cloudflare R2 via the /media/* route. "
+                "audio = NotebookLM conversational overview (accessibility + engagement).",
+        "media": media,
+    })
+    return media
 
 
 def _timeline_files(items, now):

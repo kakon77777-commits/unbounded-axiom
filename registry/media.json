@@ -1,0 +1,10 @@
+{
+  "_note": "Audio/Video overlay, keyed by lm-id. Media files live in Cloudflare R2, served via the /media/* worker route. Emitted to /ai/media.json + merged into /api + /ai/manifest at build. Papers absent here simply have no media. audio = NotebookLM conversational overview (accessibility + engagement); video = explainer (promo).",
+  "media": {
+    "lm-001374": {
+      "audio": "/media/lm-001374.m4a",
+      "audio_kind": "overview",
+      "audio_title": "掀翻棋盤去造局"
+    }
+  }
+}

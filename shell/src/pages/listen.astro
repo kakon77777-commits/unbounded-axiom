@@ -1,0 +1,78 @@
+---
+import Base from '../layouts/Base.astro';
+import { getMedia, getPapers } from '../lib/engine';
+
+const media = getMedia();
+const papers = getPapers();
+const byId: Record<string, any> = Object.fromEntries(papers.map((p) => [p.id, p]));
+const withAudio = Object.entries(media).filter(([id, m]) => m.audio && byId[id]);
+const withVideo = Object.entries(media).filter(([id, m]) => m.video && byId[id]);
+const total = new Set([...withAudio, ...withVideo].map(([id]) => id)).size;
+---
+<Base title="影音 · Listen — Logic Matrix">
+  <header class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Audio · Video · Accessibility</div>
+      <h1>Listen to the corpus.</h1>
+      <p class="lede">
+        論文也能被「聽」與「看」。<b>音頻</b>是對談式概覽（deep-dive）—— 無障礙專區，講概念、不逐字念公式，
+        因此能優雅處理大量數學；<b>影片</b>是 explainer。每支都掛在論文的永久 id 上、由 <code>/media/*</code> 提供。
+      </p>
+      <div class="stats">
+        <div class="stat"><div class="n">{total}</div><div class="l">有影音</div></div>
+        <div class="stat"><div class="n">{withAudio.length}</div><div class="l">🎧 音頻</div></div>
+        <div class="stat"><div class="n">{withVideo.length}</div><div class="l">🎬 影片</div></div>
+      </div>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="eyebrow">🎧 音頻 · 無障礙</div>
+      <h2>Audio · accessible listening</h2>
+      <p class="note">
+        給看不到的人，也給想用聽的人。點進論文頁即有無障礙播放器（鍵盤可操作、ARIA 標記）。
+      </p>
+      {withAudio.length === 0 ? (
+        <p class="note seed">尚無音頻 —— 影音生態剛起步。等 NotebookLM 概覽上架、R2 就緒，這裡就會長出可聽的論文。</p>
+      ) : (
+        <div class="papers">
+          {withAudio.map(([id, m]) => (
+            <a class="paper-row" href={`/p/${id}/`}>
+              <span class="pid">{id}</span>
+              <span class="pt">{m.audio_title || byId[id].title}</span>
+              <span class="pmeta">🎧 對談概覽 · listen</span>
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="eyebrow">🎬 影片</div>
+      <h2>Video · explainers</h2>
+      <p class="note">先放這裡當櫥窗；英文預印本完成後再轉載到影音平台。</p>
+      {withVideo.length === 0 ? (
+        <p class="note seed">尚無影片。</p>
+      ) : (
+        <div class="papers">
+          {withVideo.map(([id, m]) => (
+            <a class="paper-row" href={`/p/${id}/`}>
+              <span class="pid">{id}</span>
+              <span class="pt">{byId[id].title}</span>
+              <span class="pmeta">🎬 video</span>
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+
+  <style>
+    .note { color: var(--paper-dim); max-width: var(--measure); line-height: 1.75; margin-top: 0.6rem; }
+    .note code { font-family: var(--mono); font-size: 0.82em; color: var(--teal); }
+    .note.seed { padding: 1.2rem 1.4rem; border: 1px dashed var(--line-strong); border-radius: 0.6rem; margin-top: 1.2rem; }
+  </style>
+</Base>

@@ -44,6 +44,7 @@ export default {
         return new Response(res.body, { status: res.status, statusText: res.statusText, headers: h });
       }
       if (p.startsWith("/raw/")) return await rawAsset(request, env);
+      if (p.startsWith("/media/")) return await mediaAsset(request, env);
     } catch (e) {
       // never let a dynamic-route error break static serving
     }
@@ -77,6 +78,41 @@ async function rawAsset(request, env) {
 
 function assetFetch(request, env, path) {
   return env.ASSETS.fetch(new Request(new URL(path, request.url).toString()));
+}
+
+// ---- /media/{id}.{ext} : serve audio/video from R2 (env.MEDIA). Files are too large
+// for Static Assets (>25 MiB), so they live in R2. Supports HTTP range (seeking).
+// Graceful when the R2 binding is absent (503) so the worker still deploys before R2
+// is enabled in the dashboard + bound in wrangler.jsonc.
+async function mediaAsset(request, env) {
+  if (!env.MEDIA) return new Response("Media store not configured (R2 pending).", { status: 503 });
+  const key = decodeURIComponent(new URL(request.url).pathname.replace(/^\/media\//, ""));
+  const rangeHeader = request.headers.get("range");
+  let range;
+  if (rangeHeader) {
+    const m = /^bytes=(\d*)-(\d*)$/.exec(rangeHeader);
+    if (m) {
+      const start = m[1] ? parseInt(m[1], 10) : undefined;
+      const end = m[2] ? parseInt(m[2], 10) : undefined;
+      if (start !== undefined && end !== undefined) range = { offset: start, length: end - start + 1 };
+      else if (start !== undefined) range = { offset: start };
+      else if (end !== undefined) range = { suffix: end };
+    }
+  }
+  const obj = await env.MEDIA.get(key, range ? { range } : undefined);
+  if (!obj) return new Response("Not found", { status: 404 });
+  const h = new Headers();
+  obj.writeHttpMetadata(h);
+  h.set("etag", obj.httpEtag);
+  h.set("accept-ranges", "bytes");
+  h.set("cache-control", "public, max-age=86400");
+  if (obj.range && "offset" in obj.range) {
+    const off = obj.range.offset || 0;
+    const len = obj.range.length ?? (obj.size - off);
+    h.set("content-range", `bytes ${off}-${off + len - 1}/${obj.size}`);
+    return new Response(obj.body, { status: 206, headers: h });
+  }
+  return new Response(obj.body, { headers: h });
 }
 
 // ---- /api/base-space : id-keyed Triadic-Logic adjacency + state matrix ----

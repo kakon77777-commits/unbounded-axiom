@@ -1,6 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { getPapers, getRaw, extOf } from '../../lib/engine';
+import { getPapers, getRaw, extOf, getMedia } from '../../lib/engine';
 import { marked } from '../../lib/md';
 import 'katex/dist/katex.min.css';
 
@@ -9,6 +9,7 @@ export function getStaticPaths() {
 }
 
 const { paper } = Astro.props;
+const media = getMedia()[paper.id];
 const ext = extOf(paper);
 const raw = getRaw(paper.raw_url);
 const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -61,7 +62,31 @@ const jsonld = {
           <a href={paper.api_url}>Metadata ↗</a>
         </div>
       </div>
+      {media && (media.audio || media.video) && (
+        <div class="media measure" role="group" aria-label="本文影音 / Audio and video for this paper">
+          {media.audio && (
+            <div class="media-item">
+              <div class="eyebrow">🎧 聆聽本文 · Listen{media.audio_kind === 'overview' ? ' · 對談概覽 audio overview' : ''}</div>
+              <audio controls preload="none" src={media.audio} aria-label={`Audio overview of ${paper.title}`}>
+                你的瀏覽器不支援音訊播放。<a href={media.audio}>下載音檔</a>
+              </audio>
+            </div>
+          )}
+          {media.video && (
+            <div class="media-item">
+              <div class="eyebrow">🎬 影片 · Video</div>
+              <video controls preload="none" src={media.video} aria-label={`Video for ${paper.title}`}></video>
+            </div>
+          )}
+        </div>
+      )}
       <article class="prose" set:html={body}></article>
     </div>
   </div>
+  <style>
+    .media { margin: 1.6rem 0 0.5rem; display: flex; flex-direction: column; gap: 1.1rem; }
+    .media-item { display: flex; flex-direction: column; gap: 0.5rem; padding: 1rem 1.1rem; border: 1px solid var(--line); border-radius: 0.6rem; background: var(--surface); }
+    .media-item audio { width: 100%; }
+    .media-item video { width: 100%; max-height: 60vh; border-radius: 0.4rem; background: #000; }
+  </style>
 </Base>

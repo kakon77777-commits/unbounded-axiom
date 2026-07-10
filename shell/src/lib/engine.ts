@@ -48,6 +48,12 @@ export function getCorpus(): {
   return readJSON('ai/corpus.json');
 }
 
+export interface Media { audio?: string; audio_kind?: string; audio_title?: string; video?: string; }
+export function getMedia(): Record<string, Media> {
+  try { return readJSON('ai/media.json').media || {}; }
+  catch { return {}; }
+}
+
 export function getTimeline(): Array<{
   year: number;
   count: number;
