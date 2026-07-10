@@ -1,0 +1,10 @@
+// CTCL — Common Temporal Coordinate Layer (MVP). Self-contained Worker (API + page).
+// Deploy: npx wrangler deploy --config wrangler-ctcl.jsonc
+// Custom domain (time.evemisslab.com / ctcl.evemisslab.com) added later via "routes".
+{
+  "name": "ctcl",
+  "main": "ctcl/worker.js",
+  "compatibility_date": "2026-06-01",
+  "workers_dev": true,
+  "observability": { "enabled": true }
+}
