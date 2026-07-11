@@ -124,6 +124,20 @@ function nowEnvelope() {
   const iso = new Date(ms).toISOString();
   return {
     instant: { id: instantId(), reference: { timescale: "utc", value: iso } },
+    ...instantViews(ns),
+    source: { class: "edge_wall_clock", protocol: "cloudflare-edge", provider: "cloudflare", sync_status: "synchronized" },
+    quality: {
+      precision: "millisecond_representation", estimated_uncertainty_ns: 5000000, synchronized: true,
+      note: "ns/us fields are zero-padded from a millisecond source. precision != accuracy (whitepaper §16).",
+    },
+    policy: { leap_second: "posix_compatible", leap_table: LEAP },
+  };
+}
+
+// ---- instant views (shared by /v1/now and the registry) -------------------
+function instantViews(ns) {
+  const iso = rfc3339(ns, "UTC");
+  return {
     encodings: {
       unix_s: fromNs(ns, "unix_s"), unix_ms: fromNs(ns, "unix_ms"),
       unix_us: fromNs(ns, "unix_us"), unix_ns: fromNs(ns, "unix_ns"), rfc3339: iso,
@@ -133,13 +147,87 @@ function nowEnvelope() {
       tai_approx: fromNs(ns + BigInt(LEAP.tai_minus_utc_s) * NS_PER.s, "unix_s"),
       gps_approx: fromNs(ns + BigInt(LEAP.gps_minus_utc_s) * NS_PER.s, "unix_s"),
     },
-    source: { class: "edge_wall_clock", protocol: "cloudflare-edge", provider: "cloudflare", sync_status: "synchronized" },
-    quality: {
-      precision: "millisecond_representation", estimated_uncertainty_ns: 5000000, synchronized: true,
-      note: "ns/us fields are zero-padded from a millisecond source. precision != accuracy (whitepaper §16).",
-    },
-    policy: { leap_second: "posix_compatible", leap_table: LEAP },
   };
+}
+
+// ---- Phase 2: KV-backed instant registry + persistent custom systems -------
+// Instants (§6/§27): agent A registers a reference instant I*, agent B retrieves it
+// by id and aligns on the SAME instant — the multi-agent temporal-alignment core.
+// Systems (§10/§11): persistent custom linear-rate clocks (game worlds, accel sims).
+// Graceful 503 when KV is unbound so /v1/now and the stateless endpoints still work.
+function kvMissing() { return fail("REGISTRY_UNAVAILABLE", "KV registry not configured on this deployment", {}, 503); }
+function uuidOf(id) { return String(id).replace(/^ctcl:instant:/, "").replace(/^instant:/, ""); }
+
+async function registerInstant(req, env) {
+  if (!env || !env.CTCL_KV) return kvMissing();
+  let body = {};
+  try { body = await req.json(); } catch { /* empty body -> register the current instant */ }
+  let ns;
+  try { ns = body.value != null ? toNs(body.value, body.encoding) : BigInt(Date.now()) * NS_PER.ms; }
+  catch (e) { return fail(e.code || "INVALID_TIME_VALUE", e.msg || String(e)); }
+  const id = instantId();
+  const rec = {
+    id, unix_ns: ns.toString(), reference_timescale: body.timescale || "utc",
+    registered_at: new Date().toISOString(), label: body.label || null, meta: body.meta || null,
+    from_wall_clock: body.value == null,
+  };
+  await env.CTCL_KV.put("instant:" + uuidOf(id), JSON.stringify(rec));
+  return ok({ ...rec, retrieve: `/v1/instant/${id}`, ...instantViews(ns) },
+    { note: "Registered. Any agent can GET /v1/instant/{id} to align on this exact instant (§27). Store the id in memory, not a bare number." });
+}
+
+async function getInstant(id, env) {
+  if (!env || !env.CTCL_KV) return kvMissing();
+  const raw = await env.CTCL_KV.get("instant:" + uuidOf(id));
+  if (!raw) return fail("UNKNOWN_INSTANT", `no registered instant: ${id}`, {}, 404);
+  const rec = JSON.parse(raw);
+  return ok({ ...rec, ...instantViews(BigInt(rec.unix_ns)) });
+}
+
+async function createSystem(req, env) {
+  if (!env || !env.CTCL_KV) return kvMissing();
+  let body;
+  try { body = await req.json(); } catch { return fail("INVALID_TIME_VALUE", "body must be JSON"); }
+  const sys = body.system || body;
+  if (!sys.id) return fail("INVALID_TIME_VALUE", "system.id required (e.g. user:game_world)");
+  const rate = Number(sys.rate?.value ?? sys.rate ?? 1);
+  if (!Number.isFinite(rate)) return fail("UNSUPPORTED_POLICY", "rate must be a finite number");
+  const rec = {
+    id: sys.id, parent: sys.parent || "ctcl:system:unix",
+    epoch: sys.epoch || { parent_value: "0", encoding: "unix_s" },
+    rate: { type: "constant", value: rate }, offset: Number(sys.offset ?? 0),
+    calendar: sys.calendar || null, created_at: new Date().toISOString(),
+  };
+  await env.CTCL_KV.put("system:" + sys.id, JSON.stringify(rec));
+  return ok({ ...rec, now: `/v1/systems/${encodeURIComponent(sys.id)}/now` });
+}
+
+async function getSystem(id, env) {
+  if (!env || !env.CTCL_KV) return kvMissing();
+  const raw = await env.CTCL_KV.get("system:" + id);
+  if (!raw) return fail("UNKNOWN_SYSTEM", `no such system: ${id}`, {}, 404);
+  return ok(JSON.parse(raw));
+}
+
+async function systemNow(id, env) {
+  if (!env || !env.CTCL_KV) return kvMissing();
+  const raw = await env.CTCL_KV.get("system:" + id);
+  if (!raw) return fail("UNKNOWN_SYSTEM", `no such system: ${id}`, {}, 404);
+  const sys = JSON.parse(raw);
+  let epochNs;
+  try { epochNs = toNs(sys.epoch?.parent_value ?? 0, sys.epoch?.encoding || "unix_s"); }
+  catch { epochNs = 0n; }
+  const nowNs = BigInt(Date.now()) * NS_PER.ms;
+  const localSec = sys.rate.value * (Number(nowNs) / 1e9 - Number(epochNs) / 1e9) + (sys.offset || 0);
+  let calendar = null;
+  const cal = sys.calendar;
+  if (cal && cal.day_seconds && cal.year_days) {
+    const days = Math.floor(localSec / cal.day_seconds);
+    calendar = { world_year: Math.floor(days / cal.year_days), world_day: (days % cal.year_days) + 1,
+      seconds_into_day: Math.floor(((localSec % cal.day_seconds) + cal.day_seconds) % cal.day_seconds) };
+  }
+  return ok({ system_id: sys.id, reference: { timescale: "utc", value: rfc3339(nowNs, "UTC") },
+    system_time: String(localSec), unit: "second", rate: sys.rate.value, calendar });
 }
 
 // ---- endpoints -------------------------------------------------------------
@@ -216,6 +304,14 @@ function toolDeclaration(origin) {
       { name: "transform", method: "POST", path: "/v1/transform", desc: "Map a reference (parent) time into a custom linear-rate system (game world / accelerated sim / child clock).",
         input: { value: "string (parent time)", value_encoding: "unix_s", system: { parent: "ctcl:system:unix", epoch: { parent_value: "unix_s" }, rate: { value: "number" }, offset: "number", calendar: { day_seconds: "int", year_days: "int" } } },
         output: "system time + optional world calendar" },
+      { name: "register-instant", method: "POST", path: "/v1/instants", desc: "Register a reference instant I* (the current instant, or a given value) → get a shareable id. THE multi-agent primitive: another agent GETs that id and aligns on the exact same instant.",
+        input: { value: "string? (default: now)", encoding: "unix_s|…?", timescale: "utc?", label: "string?", meta: "object?" }, output: "instant_id + retrieve URL + all encodings/timescales" },
+      { name: "get-instant", method: "GET", path: "/v1/instant/{id}", desc: "Retrieve a registered instant by id — aligns you on the same I* another agent registered.",
+        input: { id: "ctcl:instant:… or bare uuid" }, output: "instant record + all encodings/timescales" },
+      { name: "create-system", method: "POST", path: "/v1/systems", desc: "Persist a custom linear-rate time system (game world / accelerated sim / child clock) for reuse.",
+        input: { id: "user:game_world", parent: "ctcl:system:unix", epoch: { parent_value: "unix_s" }, rate: { value: "number" }, offset: "number?", calendar: { day_seconds: "int", year_days: "int" } }, output: "system record + /now URL" },
+      { name: "get-system", method: "GET", path: "/v1/systems/{id}", desc: "Retrieve a stored system definition.", input: { id: "string" }, output: "system record" },
+      { name: "system-now", method: "GET", path: "/v1/systems/{id}/now", desc: "Current time in a stored custom system (+ world calendar).", input: { id: "string" }, output: "system_time + reference instant + calendar" },
     ],
     memory_contract: "For long-term memory: store instant_id + timescale + encoding + source_quality (do not store only a bare number). Distinguish event / write / recall instants (§10.4, §23).",
     not_a: ["universal clock authority", "timing/NTP replacement", "guaranteed ns-accurate global sync"],
@@ -235,6 +331,11 @@ function openapi(origin) {
       "/v1/encodings": { get: { summary: "List encodings", responses: { 200: { description: "ok" } } } },
       "/v1/convert": { post: { summary: "Convert time value", responses: { 200: { description: "ok" }, 400: { description: "error" } } } },
       "/v1/transform": { post: { summary: "Map into a custom linear-rate system", responses: { 200: { description: "ok" } } } },
+      "/v1/instants": { post: { summary: "Register a reference instant (multi-agent I*)", responses: { 200: { description: "ok" }, 503: { description: "registry unavailable" } } } },
+      "/v1/instant/{id}": { get: { summary: "Retrieve a registered instant", responses: { 200: { description: "ok" }, 404: { description: "unknown instant" } } } },
+      "/v1/systems": { post: { summary: "Create a persistent custom system", responses: { 200: { description: "ok" } } } },
+      "/v1/systems/{id}": { get: { summary: "Get a system definition", responses: { 200: { description: "ok" }, 404: { description: "unknown system" } } } },
+      "/v1/systems/{id}/now": { get: { summary: "Current time in a custom system", responses: { 200: { description: "ok" } } } },
     },
   };
 }
@@ -242,7 +343,7 @@ function openapi(origin) {
 // ---- router ----------------------------------------------------------------
 
 export default {
-  async fetch(request) {
+  async fetch(request, env) {
     const url = new URL(request.url);
     const p = url.pathname.replace(/\/+$/, "") || "/";
     const origin = url.origin;
@@ -260,6 +361,14 @@ export default {
     ], note: "convert preserves caller-supplied precision via BigInt nanoseconds." });
     if (p === "/v1/convert" && request.method === "POST") return handleConvert(request);
     if (p === "/v1/transform" && request.method === "POST") return handleTransform(request);
+    if (p === "/v1/instants" && request.method === "POST") return registerInstant(request, env);
+    if (p.startsWith("/v1/instant/")) return getInstant(decodeURIComponent(p.slice(12)), env);
+    if (p === "/v1/systems" && request.method === "POST") return createSystem(request, env);
+    if (p.startsWith("/v1/systems/")) {
+      const rest = decodeURIComponent(p.slice(12));
+      if (rest.endsWith("/now")) return systemNow(rest.slice(0, -4), env);
+      return getSystem(rest, env);
+    }
     if (p === "/openapi.json") return jsonResp(openapi(origin));
     if (p === "/ai/ctcl.json" || p === "/.well-known/ctcl.json") return jsonResp(toolDeclaration(origin));
     if (p === "/" || p === "/index.html") return new Response(page(origin), { headers: { "Content-Type": "text/html; charset=utf-8", ...CORS } });
@@ -319,6 +428,10 @@ footer{margin:3rem 0 1rem;color:var(--faint);font-size:.82rem;border-top:1px sol
   <div class="ep"><div class="m">GET</div><div class="path">/v1/now</div><div class="d">驗證參考瞬間（含來源、不確定度、instant_id）</div></div>
   <div class="ep"><div class="m">POST</div><div class="path">/v1/convert</div><div class="d">跨編碼/時標/時區轉換（保精度）</div></div>
   <div class="ep"><div class="m">POST</div><div class="path">/v1/transform</div><div class="d">映射到自定義倍速世界時間</div></div>
+  <div class="ep"><div class="m">POST</div><div class="path">/v1/instants</div><div class="d">登記共同瞬間 I*，回可共享 id（多 agent 對齊）</div></div>
+  <div class="ep"><div class="m">GET</div><div class="path">/v1/instant/{id}</div><div class="d">取回別的 agent 登記的同一瞬間</div></div>
+  <div class="ep"><div class="m">POST</div><div class="path">/v1/systems</div><div class="d">建立持久自定義世界時鐘</div></div>
+  <div class="ep"><div class="m">GET</div><div class="path">/v1/systems/{id}/now</div><div class="d">該世界當前時間＋世界曆</div></div>
   <div class="ep"><div class="m">GET</div><div class="path">/v1/timescales</div><div class="d">支援的時標</div></div>
   <div class="ep"><div class="m">GET</div><div class="path">/v1/encodings</div><div class="d">支援的編碼</div></div>
   <div class="ep"><div class="m">GET</div><div class="path">/ai/ctcl.json</div><div class="d">agent 工具宣告（先讀這個）</div></div>
