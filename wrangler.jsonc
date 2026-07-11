@@ -12,6 +12,7 @@
     "run_worker_first": [
       "/raw/*",
       "/ai/*",
+      "/media/*",
       "/papers-metadata.json"
     ]
   },
@@ -20,5 +21,8 @@
   ],
   "kv_namespaces": [
     { "binding": "BASE_SPACE_KV", "id": "834dc04070974480bda0ac8e1af6d350" }
+  ],
+  "r2_buckets": [
+    { "binding": "MEDIA", "bucket_name": "unboundedaxiom" }
   ]
 }

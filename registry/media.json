@@ -1,4 +1,13 @@
 {
-  "_note": "Audio/Video overlay, keyed by lm-id. Media files live in Cloudflare R2, served via the /media/* worker route. Emitted to /ai/media.json + the /listen zone at build. Papers absent here simply have no media (no player shown). audio = NotebookLM conversational overview (accessibility + engagement); video = explainer (promo). Currently EMPTY — the layer is deployed dormant; add entries once real media + R2 are ready.",
+  "_note": "Audio/Video overlay. `media` is keyed by lm-id (per-paper players on /p/{id}/ + /listen). `featured` is PROJECT-LEVEL intro media (about the whole corpus, not one paper) shown as the hero on /listen. Files live in the Cloudflare R2 bucket `unboundedaxiom`, served via the /media/* worker route (env.MEDIA, HTTP-range). audio = conversational overview (accessibility + engagement, handles heavy math by talking concepts not reading formulas); video = explainer.",
+  "featured": {
+    "audio": "/media/zero-cloaking.m4a",
+    "audio_title": "Zero Cloaking in the Logic Matrix",
+    "audio_kind": "overview",
+    "video": "/media/the-logic-matrix.mp4",
+    "video_title": "The Logic Matrix",
+    "desc_zh": "關於整個語料庫本身：音頻是「零遮蔽」原則的對談式概覽 —— 給機器與人類的是同一份內容；影片是 Logic Matrix 的 explainer。",
+    "desc_en": "About the corpus itself: the audio is a conversational overview of the zero-cloaking principle (machines and humans get the same content); the video is a Logic Matrix explainer."
+  },
   "media": {}
 }

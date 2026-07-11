@@ -1,13 +1,18 @@
 ---
 import Base from '../layouts/Base.astro';
-import { getMedia, getPapers } from '../lib/engine';
+import { getMedia, getFeaturedMedia, getPapers } from '../lib/engine';
 
 const media = getMedia();
+const featured = getFeaturedMedia();
 const papers = getPapers();
 const byId: Record<string, any> = Object.fromEntries(papers.map((p) => [p.id, p]));
 const withAudio = Object.entries(media).filter(([id, m]) => m.audio && byId[id]);
 const withVideo = Object.entries(media).filter(([id, m]) => m.video && byId[id]);
-const total = new Set([...withAudio, ...withVideo].map(([id]) => id)).size;
+const fA = featured?.audio ? 1 : 0;
+const fV = featured?.video ? 1 : 0;
+const audioCount = withAudio.length + fA;
+const videoCount = withVideo.length + fV;
+const total = new Set([...withAudio, ...withVideo].map(([id]) => id)).size + (featured && (featured.audio || featured.video) ? 1 : 0);
 ---
 <Base title="影音 · Listen — Logic Matrix">
   <header class="hero">
@@ -20,11 +25,34 @@ const total = new Set([...withAudio, ...withVideo].map(([id]) => id)).size;
       </p>
       <div class="stats">
         <div class="stat"><div class="n">{total}</div><div class="l">有影音</div></div>
-        <div class="stat"><div class="n">{withAudio.length}</div><div class="l">🎧 音頻</div></div>
-        <div class="stat"><div class="n">{withVideo.length}</div><div class="l">🎬 影片</div></div>
+        <div class="stat"><div class="n">{audioCount}</div><div class="l">🎧 音頻</div></div>
+        <div class="stat"><div class="n">{videoCount}</div><div class="l">🎬 影片</div></div>
       </div>
     </div>
   </header>
+
+  {featured && (featured.audio || featured.video) && (
+    <section class="section">
+      <div class="wrap">
+        <div class="eyebrow">✦ 關於語料庫 · About the corpus</div>
+        <div class="featured">
+          {featured.audio && (
+            <div class="fcard">
+              <div class="ftitle">🎧 {featured.audio_title}</div>
+              <audio controls preload="none" src={featured.audio} aria-label={featured.audio_title}></audio>
+            </div>
+          )}
+          {featured.video && (
+            <div class="fcard">
+              <div class="ftitle">🎬 {featured.video_title}</div>
+              <video controls preload="metadata" src={featured.video} aria-label={featured.video_title}></video>
+            </div>
+          )}
+        </div>
+        <p class="note">{featured.desc_zh}<br /><span style="opacity:.65">{featured.desc_en}</span></p>
+      </div>
+    </section>
+  )}
 
   <section class="section">
     <div class="wrap">
@@ -71,6 +99,11 @@ const total = new Set([...withAudio, ...withVideo].map(([id]) => id)).size;
   </section>
 
   <style>
+    .featured { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; margin: 1.4rem 0 0.4rem; }
+    .fcard { border: 1px solid var(--line); border-radius: 0.7rem; background: var(--surface); padding: 1.1rem 1.2rem; display: flex; flex-direction: column; gap: 0.7rem; }
+    .ftitle { font-weight: 600; font-size: 0.98rem; }
+    .fcard audio { width: 100%; }
+    .fcard video { width: 100%; max-height: 60vh; border-radius: 0.4rem; background: #000; }
     .note { color: var(--paper-dim); max-width: var(--measure); line-height: 1.75; margin-top: 0.6rem; }
     .note code { font-family: var(--mono); font-size: 0.82em; color: var(--teal); }
     .note.seed { padding: 1.2rem 1.4rem; border: 1px dashed var(--line-strong); border-radius: 0.6rem; margin-top: 1.2rem; }

@@ -111,16 +111,20 @@ def _media(now):
     live in Cloudflare R2, served via the /media/* worker route; this is the machine
     declaration so an AI agent (and the human pages) can discover a paper's audio/video."""
     src = ROOT / "registry" / "media.json"
-    media = {}
+    media, featured = {}, None
     if src.exists():
         try:
-            media = json.loads(src.read_text(encoding="utf-8")).get("media", {})
+            doc = json.loads(src.read_text(encoding="utf-8"))
+            media = doc.get("media", {}) or {}
+            featured = doc.get("featured")
         except Exception:
-            media = {}
+            media, featured = {}, None
     _wj(AI / "media.json", {
         "version": "0.2", "generated_at": now, "count": len(media),
         "note": "id -> {audio, video}; files in Cloudflare R2 via the /media/* route. "
-                "audio = NotebookLM conversational overview (accessibility + engagement).",
+                "audio = conversational overview (accessibility + engagement). "
+                "`featured` = project-level intro media (about the corpus, not one paper).",
+        "featured": featured,
         "media": media,
     })
     return media

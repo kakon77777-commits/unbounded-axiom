@@ -54,6 +54,16 @@ export function getMedia(): Record<string, Media> {
   catch { return {}; }
 }
 
+export interface Featured {
+  audio?: string; audio_title?: string; audio_kind?: string;
+  video?: string; video_title?: string; desc_zh?: string; desc_en?: string;
+}
+// Project-level intro media (about the whole corpus, not one paper) — the /listen hero.
+export function getFeaturedMedia(): Featured | null {
+  try { return readJSON('ai/media.json').featured || null; }
+  catch { return null; }
+}
+
 export interface Companion {
   file: string; orig: string; label: string; kind: string;
   ext: string; bytes: number; raw_url: string; mime: string; retired_id?: string;
