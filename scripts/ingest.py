@@ -2,12 +2,21 @@
 # -*- coding: utf-8 -*-
 """§25 three-stage ingest — STAGE 1.
 
-Analyze ingest/01-before into ingest/02-agent-staging and copy non-blocked files
-to ingest/03-after (organized by inferred YYYY/YYYY-MM). NEVER writes to
-content/papers/ or the registry — only publish_ingested.py may promote to canon.
+Analyze ingest/01-before (or --source) into ingest/02-agent-staging and copy
+non-blocked files to ingest/03-after (organized by inferred YYYY/YYYY-MM). NEVER
+writes to content/papers/ or the registry — only publish_ingested.py may promote
+to canon.
 
-Run: python scripts/ingest.py
+Run: python scripts/ingest.py [--source "Human&Ai/01-before"]
+
+--source takes a path relative to ingest/ (or an absolute path) so alternate
+intake folders (e.g. authorship-split Human&Ai/ vs AI/) can be staged without
+moving files into the default ingest/01-before/. Run each source's full 3-stage
+flow (stage1 -> review -> publish) to completion before starting the next one —
+id_candidate assignment reads the registry fresh each run, so two un-published
+sources staged back-to-back would propose colliding candidate ids.
 """
+import argparse
 import hashlib
 import json
 import os
@@ -25,9 +34,15 @@ from scripts.registry import load_registry
 from scripts.normalize_math import normalize as normalize_math
 
 INGEST = ROOT / "ingest"
-BEFORE, STAGING, AFTER, REPORTS = (INGEST / "01-before", INGEST / "02-agent-staging",
-                                   INGEST / "03-after", INGEST / "reports")
+STAGING, AFTER, REPORTS = INGEST / "02-agent-staging", INGEST / "03-after", INGEST / "reports"
 FIRST_STAGE_EXTS = {".md", ".py", ".lean", ".ts", ".jsx"}
+
+
+def _resolve_source(source: str | None) -> Path:
+    if not source:
+        return INGEST / "01-before"
+    p = Path(source)
+    return p if p.is_absolute() else INGEST / p
 
 
 def _hash(p):
@@ -49,7 +64,8 @@ def _sub(month):
     return f"{month.split('-')[0]}/{month}" if month else "undated"
 
 
-def main():
+def main(source: str | None = None):
+    BEFORE = _resolve_source(source)
     for d in (BEFORE, STAGING, AFTER, REPORTS):
         d.mkdir(parents=True, exist_ok=True)
     reg = load_registry()
@@ -139,4 +155,7 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--source", default=None,
+                         help='Path relative to ingest/ (or absolute) to stage instead of 01-before/.')
+    main(parser.parse_args().source)
