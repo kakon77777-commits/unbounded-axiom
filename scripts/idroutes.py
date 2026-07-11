@@ -25,13 +25,20 @@ from datetime import datetime, timezone
 from scripts.config import *
 from scripts.helpers import *
 from scripts.render import *
+from scripts.geo_layer import geo_jsonld_blocks, jsonld_script_tags
 
 REGISTRY_DIR = ROOT / "registry"
 
 
-def _paper_doc(item, body, mode) -> str:
+def _paper_doc(item, body, mode, geo_signals=None) -> str:
     """Render /p/{id}/index.html. Mirrors the legacy paper page but with absolute
-    paths, an id-based self-canonical, and /raw/{id}.{ext} as the source."""
+    paths, an id-based self-canonical, and /raw/{id}.{ext} as the source.
+
+    geo_signals (optional): {"qa": [...], "definitions": [...]} detected in the raw
+    source (scripts/geo_layer.py) — emits extra FAQPage/DefinedTermSet JSON-LD when
+    present. Not used by the production build (the Astro shell overlay regenerates
+    /p/{id}/ independently, see shell/src/lib/geo.ts) but keeps a plain `python
+    build.py` run consistent for local preview."""
     display = item["title"]
     ext = item["ext"]
     lang = lang_tag(display)
@@ -65,6 +72,7 @@ def _paper_doc(item, body, mode) -> str:
         '  "encodingFormat": "text/html"\n'
         "}"
     )
+    extra_jsonld = jsonld_script_tags(geo_jsonld_blocks(geo_signals, canonical)) if geo_signals else ""
 
     return (
         "<!DOCTYPE html>\n"
@@ -80,6 +88,7 @@ def _paper_doc(item, body, mode) -> str:
         f'<link rel="alternate" type="{mime_for(ext)}" href="{raw_href}" title="原始檔 / source ({esc(ext)})">\n'
         f'<link rel="canonical" href="{canonical}">\n'
         f'<script type="application/ld+json">\n{jsonld}\n</script>\n'
+        f'{extra_jsonld}'
         f'<link rel="prefetch" href="/api/log-crawler?id={item["id"]}">\n'
         f"<style>{PAGE_CSS}</style>\n</head>\n<body>\n"
         '<div class="nav">'
@@ -106,15 +115,17 @@ def _src_map(entries):
             for slug, display, ext, src in entries}
 
 
-def write_id_pages(registry, entries) -> int:
+def write_id_pages(registry, entries, geo_per_id=None) -> int:
     smap = _src_map(entries)
+    geo_per_id = geo_per_id or {}
     n = 0
     for item in registry["items"]:
         slug, display, ext, src = smap[item["source_file"]]
         body, mode = extract_body(src, ext)
         d = DIST_DIR / "p" / item["id"]
         d.mkdir(parents=True, exist_ok=True)
-        (d / "index.html").write_text(_paper_doc(item, body, mode), encoding="utf-8")
+        (d / "index.html").write_text(
+            _paper_doc(item, body, mode, geo_per_id.get(item["id"])), encoding="utf-8")
         n += 1
     return n
 

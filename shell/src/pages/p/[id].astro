@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import { getPapers, getRaw, extOf, getMedia, getCompanions } from '../../lib/engine';
 import { marked } from '../../lib/md';
+import { extractGeoSignals, geoJsonLdBlocks } from '../../lib/geo';
 import 'katex/dist/katex.min.css';
 
 export function getStaticPaths() {
@@ -54,6 +55,7 @@ const jsonld = {
     })),
   } : {}),
 };
+const geoBlocks = ext === 'md' ? geoJsonLdBlocks(extractGeoSignals(raw), canonical) : [];
 ---
 <Base title={`${paper.title} · Logic Matrix`} description={`${paper.title} | EVEMISSLAB Logic Matrix`}>
   <Fragment slot="head">
@@ -65,6 +67,9 @@ const jsonld = {
     <link rel="alternate" type={mime} href={paper.raw_url} title={`原始檔 / source (${ext})`} />
     <link rel="prefetch" href={`/api/log-crawler?id=${paper.id}`} />
     <script type="application/ld+json" set:html={JSON.stringify(jsonld)} />
+    {geoBlocks.map((block) => (
+      <script type="application/ld+json" set:html={JSON.stringify(block)} />
+    ))}
   </Fragment>
 
   <div class="reader">
