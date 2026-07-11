@@ -446,7 +446,7 @@ function toolDeclaration(origin) {
     schema: "aicl-tool/0.1", service: "CTCL", version: "0.1",
     title: "Common Temporal Coordinate Layer",
     summary: "Verified reference instant + heterogeneous time transformation for agents. Read this, then call the endpoints. Same instant, different representations.",
-    base_url: origin, runtime_enabled: true,
+    base_url: origin, runtime_enabled: true, sdk: origin + "/sdk.js",
     core_rule: "Do not ask only 'what time is it'. Ask: which reference instant, under which timescale, from which source, transformed into which local system.",
     honesty: "Source is a millisecond-grade edge wall clock. ns/us fields are format-padding; check quality.precision + estimated_uncertainty_ns before trusting sub-ms.",
     tools: [
@@ -505,6 +505,74 @@ function openapi(origin) {
   };
 }
 
+// ---- §23/§24/§26/§52 client SDK (served at /sdk.js) ------------------------
+// The reference client (§44-47) made real, plus memory + life-history + task helpers.
+// ESM: import { CTCL } from '<origin>/sdk.js'
+function sdkSource(origin) {
+  return `// CTCL client SDK — ${origin}/sdk.js  (Neo.K / EveMissLab)
+// A verified reference instant + heterogeneous time transformation for agents.
+// ESM:  import { CTCL } from '${origin}/sdk.js';  const t = CTCL(); await t.now();
+export function CTCL(base = '${origin}') {
+  const B = String(base).replace(/\\/$/, '');
+  const j = async (p, opt) => (await fetch(B + p, opt)).json();
+  const D = (r) => { if (r && r.ok) return r.data; throw Object.assign(new Error((r && r.error && r.error.code) || 'ctcl_error'), { ctcl: r }); };
+  const post = (p, body) => j(p, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body || {}) });
+  return {
+    // core
+    now:        async () => D(await j('/v1/now')),
+    version:    async () => D(await j('/v1/version')),
+    timescales: async () => D(await j('/v1/timescales')),
+    encodings:  async () => D(await j('/v1/encodings')),
+    transforms: async () => D(await j('/v1/transforms')),
+    validate:   async (value, encoding, timescale) => D(await post('/v1/validate', { value, encoding, timescale })),
+    // convert: precision-preserving; pass output.timezone for local civil time.
+    convert:    async (input, output) => D(await post('/v1/convert', { input, output })),
+    transform:  async (value, system, value_encoding = 'unix_s') => D(await post('/v1/transform', { value, value_encoding, system })),
+    path:       async (from, to) => D(await j('/v1/path?from=' + encodeURIComponent(from) + '&to=' + encodeURIComponent(to))),
+
+    // shared reference instant — multi-agent alignment (§27). Store the id in memory,
+    // never a bare number; any agent (or your next session) getInstant(id) aligns exactly.
+    registerInstant: async (opts = {}) => D(await post('/v1/instants', opts)),
+    getInstant:      async (id) => D(await j('/v1/instant/' + encodeURIComponent(id))),
+
+    // persistent custom systems / world clocks (§11)
+    createSystem: async (def) => D(await post('/v1/systems', def)),
+    systemNow:    async (id) => D(await j('/v1/systems/' + encodeURIComponent(id) + '/now')),
+    listSystems:  async () => D(await j('/v1/systems')),
+
+    // ---- §23 long-term memory: stamp an entry with verified instants ----------
+    // Returns a record to STORE VERBATIM; separates event / write / recall time (§10.4).
+    stampMemory: async (content, eventInstantId) => {
+      const w = D(await post('/v1/instants', { label: 'memory:write' }));
+      let e = w;
+      if (eventInstantId) e = D(await j('/v1/instant/' + encodeURIComponent(eventInstantId)));
+      return { content, event_instant: e.id, event_unix_ns: e.unix_ns,
+               written_instant: w.id, written_unix_ns: w.unix_ns, recalled_instant: null };
+    },
+    recall: async (memory) => {
+      const r = D(await post('/v1/instants', { label: 'memory:recall' }));
+      return Object.assign({}, memory, { recalled_instant: r.id, recalled_unix_ns: r.unix_ns });
+    },
+
+    // ---- §24 life-history clock: a paused system whose ACTIVE time = experienced time --
+    // pauses = [{from: unix_s, to: unix_s|null}] are suspensions. lifeNow() then gives
+    // wall_elapsed_s / active_elapsed_s / paused_elapsed_s / currently_paused.
+    lifeHistory: async (agentId, originUnixS, pauses = []) =>
+      D(await post('/v1/systems', { id: 'agent:' + agentId + ':life',
+        epoch: { parent_value: String(originUnixS) }, rate: { type: 'paused', value: 1, pauses } })),
+    lifeNow: async (agentId) => D(await j('/v1/systems/' + encodeURIComponent('agent:' + agentId + ':life') + '/now')),
+
+    // ---- §26 task clock: created / started / deadline / completed as shared instants --
+    taskClock: async (taskId) => {
+      const c = D(await post('/v1/instants', { label: 'task:' + taskId + ':created' }));
+      return { task_id: taskId, created: c.id, created_unix_ns: c.unix_ns, started: null, deadline: null, completed: null };
+    },
+  };
+}
+export default CTCL;
+`;
+}
+
 // ---- router ----------------------------------------------------------------
 
 export default {
@@ -541,7 +609,8 @@ export default {
     if (p === "/v1/transforms") return transformsCatalog(null);
     if (p.startsWith("/v1/transforms/")) return transformsCatalog(decodeURIComponent(p.slice(15)));
     if (p === "/openapi.json") return jsonResp(openapi(origin));
-    if (p === "/ai/ctcl.json" || p === "/.well-known/ctcl.json") return jsonResp(toolDeclaration(origin));
+    if (p === "/ai/ctcl.json" || p === "/.well-known/ctcl.json") return jsonResp(toolDeclaration(origin), 200, "public, max-age=600");
+    if (p === "/sdk.js" || p === "/client.js") return new Response(sdkSource(origin), { headers: { "Content-Type": "text/javascript; charset=utf-8", ...CORS, "Cache-Control": "public, max-age=3600" } });
     if (p === "/" || p === "/index.html") return new Response(page(origin, (request.cf && request.cf.country) || ""), { headers: { "Content-Type": "text/html; charset=utf-8", ...CORS } });
 
     return fail("NOT_FOUND", `no route: ${p}`, { try: ["/v1/now", "/ai/ctcl.json", "/"] }, 404);
@@ -779,7 +848,7 @@ curl -s ${origin}/v1/instant/ctcl:instant:…</pre>
 
  <footer>
   <span data-zh="CTCL v0.1 · 參考＋轉換層，不是授時機構。">CTCL v0.1 · a reference + transformation layer, not a timing authority.</span><br>
-  <a href="/openapi.json">OpenAPI</a> · <a href="/ai/ctcl.json">tool declaration</a> · Neo.K / 一言諾科技有限公司 · EveMissLab
+  <a href="/sdk.js">JS SDK</a> · <a href="/openapi.json">OpenAPI</a> · <a href="/ai/ctcl.json">tool declaration</a> · <a href="/v1/version">version</a> · Neo.K / 一言諾科技有限公司 · EveMissLab
  </footer>
 </div>
 
