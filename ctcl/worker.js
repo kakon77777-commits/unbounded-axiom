@@ -371,7 +371,7 @@ export default {
     }
     if (p === "/openapi.json") return jsonResp(openapi(origin));
     if (p === "/ai/ctcl.json" || p === "/.well-known/ctcl.json") return jsonResp(toolDeclaration(origin));
-    if (p === "/" || p === "/index.html") return new Response(page(origin), { headers: { "Content-Type": "text/html; charset=utf-8", ...CORS } });
+    if (p === "/" || p === "/index.html") return new Response(page(origin, (request.cf && request.cf.country) || ""), { headers: { "Content-Type": "text/html; charset=utf-8", ...CORS } });
 
     return fail("NOT_FOUND", `no route: ${p}`, { try: ["/v1/now", "/ai/ctcl.json", "/"] }, 404);
   },
@@ -379,118 +379,309 @@ export default {
 
 // ---- human page ------------------------------------------------------------
 
-function page(origin) {
-  return `<!doctype html><html lang="zh-Hant"><head>
+function page(origin, country) {
+  const zhRegion = ["TW", "HK", "MO", "CN", "SG"].includes(country) ? "1" : "0";
+  return `<!doctype html><html lang="en" data-region-zh="${zhRegion}"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CTCL · Common Temporal Coordinate Layer</title>
-<meta name="description" content="共同時間座標層 — 給 agent 的驗證參考瞬間與異質時間轉換層。Same instant, different representations.">
+<title>CTCL · The Common Instant — a shared reference for agents</title>
+<meta name="description" content="CTCL (Common Temporal Coordinate Layer): a verified reference instant + heterogeneous time transformation for agents. Same instant, different representations. commoninstant.org">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,380;9..144,560;9..144,680&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<script>(function(){try{var d=document.documentElement;var t=localStorage.getItem('ctcl.theme');if(!t)t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';d.setAttribute('data-theme',t);var l=localStorage.getItem('ctcl.lang')||(d.getAttribute('data-region-zh')==='1'?'zh':'en');d.setAttribute('data-lang',l);}catch(e){}})();</script>
 <style>
-:root{--bg:#0b0d10;--ink:#e8e6df;--dim:#9aa0a6;--faint:#6b7178;--gold:#c9a227;--line:#20242a;--surf:#12151a;--mono:'SF Mono',ui-monospace,'Cascadia Code',Menlo,Consolas,monospace}
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--bg);color:var(--ink);font:15px/1.65 ui-sans-serif,system-ui,'Segoe UI',sans-serif;-webkit-font-smoothing:antialiased}
-.wrap{max-width:880px;margin:0 auto;padding:clamp(1.4rem,4vw,3rem)}
-.eyebrow{font:600 .7rem/1 var(--mono);letter-spacing:.24em;text-transform:uppercase;color:var(--faint)}
-h1{font-size:clamp(1.7rem,5vw,2.6rem);font-weight:650;letter-spacing:-.01em;margin:.5rem 0 .3rem}
-.lede{color:var(--dim);max-width:60ch;margin:.4rem 0 0}
-.clock{margin:2rem 0;padding:1.3rem 1.4rem;border:1px solid var(--line);border-radius:.7rem;background:var(--surf)}
-.clock .row{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-family:var(--mono);font-size:.9rem;padding:.28rem 0}
-.clock .k{color:var(--faint)}.clock .v{color:var(--gold);word-break:break-all;text-align:right}
-h2{font-size:1.15rem;margin:2.4rem 0 .8rem;font-weight:620}
-p{color:var(--dim);margin:.7rem 0}
-code,pre{font-family:var(--mono);font-size:.85em}
-code{background:#1a1e24;padding:.1em .4em;border-radius:4px;color:var(--ink)}
-pre{background:#0f1216;border:1px solid var(--line);border-radius:.6rem;padding:1rem 1.1rem;overflow-x:auto;margin:.8rem 0;color:var(--ink);line-height:1.55}
-.grid{display:grid;gap:.7rem;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));margin:.8rem 0}
-.ep{border:1px solid var(--line);border-radius:.5rem;padding:.7rem .8rem;background:var(--surf)}
-.ep .m{font:600 .68rem/1 var(--mono);letter-spacing:.1em;color:var(--gold)}
-.ep .path{font-family:var(--mono);font-size:.82rem;margin:.25rem 0}
-.ep .d{font-size:.8rem;color:var(--faint)}
-button{font:inherit;background:var(--gold);color:#141414;border:0;border-radius:.4rem;padding:.5rem 1rem;font-weight:600;cursor:pointer}
-.muted{color:var(--faint);font-size:.85rem}
-a{color:var(--gold)}
-footer{margin:3rem 0 1rem;color:var(--faint);font-size:.82rem;border-top:1px solid var(--line);padding-top:1.2rem}
-</style></head><body><div class="wrap">
-<div class="eyebrow">EveMissLab · Agent Time Infrastructure</div>
-<h1>共同時間座標層 · CTCL</h1>
-<p class="lede">給 agent 的<b>驗證參考瞬間</b>與異質時間轉換層。不是「現在幾點」，而是「我們共同指向哪一個參考瞬間，它在你的世界裡如何表示」。<br><span class="muted">Same instant, different representations. A reference layer, not a clock authority.</span></p>
+:root{--bg:#14100a;--bg2:#1a150d;--surf:#1e190f;--surf2:#26200f;--ink:#ece3d0;--dim:#b6ab90;--faint:#7d7259;--gold:#cda24f;--gold2:#e7c884;--line:#2c2515;--line2:#3a3220;--sel:#3a2f16;--serif:'Fraunces',Georgia,serif;--mono:'JetBrains Mono',ui-monospace,'SF Mono',Consolas,monospace;--sans:ui-sans-serif,system-ui,'Segoe UI',Roboto,sans-serif}
+[data-theme=light]{--bg:#f4eddc;--bg2:#efe6d0;--surf:#fbf6ea;--surf2:#f4ecd9;--ink:#241d11;--dim:#5e5540;--faint:#897b60;--gold:#8c6c1c;--gold2:#a9862a;--line:#e3d7bd;--line2:#d4c5a3;--sel:#efe0bd}
+[data-theme=spacetime]{--bg:#070510;--bg2:#0d0918;--surf:rgba(26,19,34,.5);--surf2:rgba(34,25,44,.55);--ink:#efe6d4;--dim:#c4b9a3;--faint:#8b8071;--gold:#e6b955;--gold2:#ffdb92;--line:rgba(126,100,60,.34);--line2:rgba(160,128,74,.46);--sel:#2a2016}
+*{margin:0;padding:0;box-sizing:border-box}::selection{background:var(--sel)}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:16px/1.66 var(--sans);-webkit-font-smoothing:antialiased;position:relative;overflow-x:hidden;transition:background .5s,color .4s}
+body::before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(115% 75% at 82% -8%,color-mix(in oklab,var(--gold) 11%,transparent),transparent 58%),var(--bg2);opacity:.75;transition:opacity .5s}
+[data-theme=spacetime] body::before{opacity:0}
+.wrap{max-width:940px;margin:0 auto;padding:clamp(1.3rem,4vw,3rem) clamp(1.2rem,4vw,3rem) 4rem}
+a{color:var(--gold);text-underline-offset:3px}
+h1,h2,h3{font-family:var(--serif);font-weight:560;letter-spacing:-.01em;line-height:1.12}
+.eyebrow{font:500 .7rem/1 var(--mono);letter-spacing:.26em;text-transform:uppercase;color:var(--faint)}
+.mono{font-family:var(--mono)}
+/* top bar */
+.top{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding-top:.4rem}
+.brand{font:600 .82rem/1 var(--mono);letter-spacing:.06em;color:var(--dim);display:flex;align-items:center;gap:.55rem}
+.brand .dot{width:.5rem;height:.5rem;border-radius:50%;background:var(--gold);box-shadow:0 0 12px var(--gold)}
+.icon-btn{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:.5rem;border:1px solid var(--line);background:var(--surf);color:var(--dim);cursor:pointer;transition:color .2s,border-color .2s,background .2s}
+.icon-btn:hover{color:var(--gold);border-color:var(--line2)}
+.icon-btn svg{width:20px;height:20px}
+/* hero */
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(1.5rem,4vw,3rem);align-items:center;margin:clamp(2rem,6vw,3.6rem) 0 1rem}
+h1{font-size:clamp(2.1rem,6vw,3.4rem);font-weight:680;margin:.7rem 0 .5rem}
+h1 em{font-style:italic;color:var(--gold)}
+.lede{color:var(--dim);font-size:1.06rem;max-width:44ch;margin:.6rem 0 1.4rem}
+.cta{display:flex;gap:.6rem;flex-wrap:wrap}
+.btn{font:600 .9rem/1 var(--sans);border-radius:.5rem;padding:.7rem 1.1rem;cursor:pointer;border:1px solid var(--line2);transition:transform .12s,background .2s,color .2s,border-color .2s;text-decoration:none;display:inline-flex;align-items:center;gap:.45rem}
+.btn.pri{background:var(--gold);color:#1a1408;border-color:var(--gold)}
+.btn.pri:hover{background:var(--gold2)}
+.btn.sec{background:transparent;color:var(--ink)}
+.btn.sec:hover{border-color:var(--gold);color:var(--gold)}
+.btn:active{transform:translateY(1px)}
+/* instant panel */
+.instant{border:1px solid var(--line);border-radius:.9rem;background:var(--surf);padding:1.2rem 1.3rem;position:relative;overflow:hidden}
+.clockface{display:block;margin:.1rem auto .9rem;width:132px;height:132px}
+.i-row{display:flex;justify-content:space-between;gap:.8rem;font-family:var(--mono);font-size:.78rem;padding:.24rem 0;border-top:1px solid var(--line)}
+.i-row:first-of-type{border-top:0}
+.i-row .k{color:var(--faint);white-space:nowrap}
+.i-row .v{color:var(--gold);text-align:right;word-break:break-all}
+.i-big{font-family:var(--mono);font-size:1.02rem;color:var(--ink);text-align:center;margin:.2rem 0 .7rem;font-weight:500}
+.drift{text-align:center;font:500 .74rem/1.4 var(--mono);color:var(--faint);margin-top:.7rem}
+.drift b{color:var(--gold)}
+/* sections */
+section{margin-top:clamp(2.6rem,7vw,4.2rem)}
+.label{font:500 .7rem/1 var(--mono);letter-spacing:.22em;text-transform:uppercase;color:var(--faint);margin-bottom:1rem;display:flex;align-items:center;gap:.7rem}
+.label::after{content:"";flex:1;height:1px;background:var(--line)}
+h2{font-size:clamp(1.4rem,3.4vw,1.9rem)}
+.concept{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.1rem;margin-top:1.3rem}
+.concept .c{border-left:2px solid var(--gold);padding:.1rem 0 .1rem 1rem}
+.concept .c h3{font-size:1.05rem;margin-bottom:.35rem}
+.concept .c p{color:var(--dim);font-size:.92rem;margin:0}
+/* endpoints */
+.eps{margin-top:1.2rem;border:1px solid var(--line);border-radius:.7rem;overflow:hidden;background:var(--surf)}
+.ep{display:grid;grid-template-columns:56px minmax(0,1.1fr) 1.4fr;gap:.9rem;align-items:baseline;padding:.72rem 1rem;border-top:1px solid var(--line);transition:background .18s}
+.ep:first-child{border-top:0}.ep:hover{background:var(--surf2)}
+.ep .m{font:700 .66rem/1.4 var(--mono);letter-spacing:.06em;color:var(--gold)}
+.ep .path{font-family:var(--mono);font-size:.84rem;color:var(--ink);word-break:break-all}
+.ep .d{font-size:.84rem;color:var(--dim)}
+/* code + playground */
+pre{font-family:var(--mono);font-size:.82rem;line-height:1.6;background:var(--surf);border:1px solid var(--line);border-radius:.6rem;padding:1rem 1.1rem;overflow-x:auto;margin:.9rem 0;color:var(--ink)}
+code{font-family:var(--mono);font-size:.9em;background:var(--surf2);padding:.1em .4em;border-radius:4px}
+p{color:var(--dim);margin:.8rem 0;max-width:64ch}
+.pg{display:flex;gap:.55rem;flex-wrap:wrap;align-items:center;margin:.8rem 0}
+.pg input{font-family:var(--mono);font-size:.85rem;background:var(--bg);border:1px solid var(--line2);color:var(--ink);border-radius:.45rem;padding:.55rem .7rem}
+#pv{width:200px}#ptz{width:150px}
+footer{margin-top:4rem;padding-top:1.4rem;border-top:1px solid var(--line);color:var(--faint);font-size:.82rem;line-height:1.9}
+footer a{color:var(--dim)}
+/* settings panel */
+.scrim{position:fixed;inset:0;background:rgba(0,0,0,.5);opacity:0;pointer-events:none;transition:opacity .25s;z-index:40}
+.scrim.open{opacity:1;pointer-events:auto}
+.panel{position:fixed;top:0;right:0;height:100%;width:min(340px,88vw);background:var(--bg);border-left:1px solid var(--line2);transform:translateX(100%);transition:transform .3s cubic-bezier(.4,0,.2,1);z-index:50;padding:1.4rem;overflow-y:auto}
+.panel.open{transform:none}
+.panel h3{font-family:var(--serif);font-size:1.3rem;margin-bottom:.2rem}
+.panel .sub{color:var(--faint);font-size:.8rem;margin-bottom:1.6rem}
+.set{margin-bottom:1.7rem}
+.set>.t{font:600 .72rem/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-bottom:.7rem}
+.seg{display:flex;border:1px solid var(--line2);border-radius:.5rem;overflow:hidden}
+.seg button{flex:1;font:500 .86rem/1 var(--sans);background:transparent;color:var(--dim);border:0;padding:.6rem .4rem;cursor:pointer;transition:background .18s,color .18s;display:flex;align-items:center;justify-content:center;gap:.4rem}
+.seg button+button{border-left:1px solid var(--line2)}
+.seg button[aria-pressed=true]{background:var(--gold);color:#1a1408}
+.seg button svg{width:15px;height:15px}
+.exp{border:1px dashed var(--line2);border-radius:.6rem;padding:.9rem 1rem}
+.exp .row{display:flex;justify-content:space-between;align-items:center;gap:.8rem}
+.exp .name{font-weight:600;font-size:.94rem;display:flex;align-items:center;gap:.5rem}
+.exp .tag{font:600 .58rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--gold);border:1px solid var(--line2);border-radius:99px;padding:.2rem .45rem}
+.exp p{font-size:.8rem;color:var(--faint);margin:.6rem 0 0}
+.sw{position:relative;width:46px;height:26px;border-radius:99px;background:var(--line2);border:0;cursor:pointer;transition:background .2s;flex:none}
+.sw::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:var(--ink);transition:transform .2s}
+.sw[aria-pressed=true]{background:var(--gold)}
+.sw[aria-pressed=true]::after{transform:translateX(20px);background:#1a1408}
+/* i18n: hide the non-active language copy that lives in [data-zh] via JS swap; nothing needed here */
+/* spacetime background */
+#st{position:fixed;inset:0;z-index:-1;opacity:0;pointer-events:none;transition:opacity .8s}
+[data-theme=spacetime] #st{opacity:1}
+[data-theme=spacetime] .instant{backdrop-filter:blur(3px)}
+.gear{transform-origin:center;animation:spin 60s linear infinite}
+.gear.r{animation-duration:38s;animation-direction:reverse}
+.gear.s{animation-duration:22s}
+@keyframes spin{to{transform:rotate(360deg)}}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:3px}
+@media (max-width:720px){.hero{grid-template-columns:1fr}.ep{grid-template-columns:48px 1fr;row-gap:.2rem}.ep .d{grid-column:1/-1;color:var(--faint)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style></head><body>
 
-<div class="clock" id="clock">
-  <div class="row"><span class="k">CTCL /v1/now (edge, verified)</span><span class="v" id="c-utc">…</span></div>
-  <div class="row"><span class="k">unix_ns (ms-padded)</span><span class="v" id="c-ns">…</span></div>
-  <div class="row"><span class="k">instant_id</span><span class="v" id="c-id">…</span></div>
-  <div class="row"><span class="k">你的瀏覽器本機時間</span><span class="v" id="c-local">…</span></div>
-  <div class="row"><span class="k">兩者差 (drift)</span><span class="v" id="c-drift">…</span></div>
-</div>
-<p class="muted">↑ 三個時鐘：CTCL 邊緣參考、你的本機、與其漂移。這正是「異質時間系統需要共同參考層」的最小演示。精度誠實標為毫秒級（§16）。</p>
+<svg id="st" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+ <defs>
+  <radialGradient id="hole" cx="50%" cy="42%" r="55%">
+   <stop offset="0%" stop-color="#000"/><stop offset="34%" stop-color="#000"/>
+   <stop offset="46%" stop-color="#4a2e0a"/><stop offset="55%" stop-color="#e6b955"/>
+   <stop offset="63%" stop-color="#7a4a12"/><stop offset="100%" stop-color="transparent"/>
+  </radialGradient>
+  <filter id="warp"><feTurbulence type="fractalNoise" baseFrequency="0.006 0.012" numOctaves="2" seed="7" result="n"/>
+   <feDisplacementMap in="SourceGraphic" in2="n" scale="60" xChannelSelector="R" yChannelSelector="G"/></filter>
+  <g id="g1"><circle r="86" fill="none" stroke="rgba(230,185,85,.5)" stroke-width="7"/>
+   <circle r="30" fill="none" stroke="rgba(230,185,85,.4)" stroke-width="5"/>
+   <g stroke="rgba(230,185,85,.55)" stroke-width="13" stroke-linecap="round">
+   <line y1="82" y2="104"/><line y1="-82" y2="-104"/><line x1="82" x2="104"/><line x1="-82" x2="-104"/>
+   <line x1="58" y1="58" x2="74" y2="74"/><line x1="-58" y1="58" x2="-74" y2="74"/>
+   <line x1="58" y1="-58" x2="74" y2="-74"/><line x1="-58" y1="-58" x2="-74" y2="-74"/></g></g>
+ </defs>
+ <g filter="url(#warp)" opacity="0.5" stroke="rgba(150,120,80,.16)" stroke-width="1.4">
+  <path d="M0 200H1000M0 400H1000M0 600H1000M0 800H1000M200 0V1000M400 0V1000M600 0V1000M800 0V1000"/>
+ </g>
+ <circle cx="500" cy="420" r="540" fill="url(#hole)" opacity="0.9"/>
+ <use href="#g1" class="gear" x="0" y="0" transform="translate(120 830) scale(.85)"/>
+ <use href="#g1" class="gear r" transform="translate(910 200) scale(.6)"/>
+ <use href="#g1" class="gear s" transform="translate(880 880) scale(.42)"/>
+</svg>
 
-<h2>端點 Endpoints</h2>
-<div class="grid">
-  <div class="ep"><div class="m">GET</div><div class="path">/v1/now</div><div class="d">驗證參考瞬間（含來源、不確定度、instant_id）</div></div>
-  <div class="ep"><div class="m">POST</div><div class="path">/v1/convert</div><div class="d">跨編碼/時標/時區轉換（保精度）</div></div>
-  <div class="ep"><div class="m">POST</div><div class="path">/v1/transform</div><div class="d">映射到自定義倍速世界時間</div></div>
-  <div class="ep"><div class="m">POST</div><div class="path">/v1/instants</div><div class="d">登記共同瞬間 I*，回可共享 id（多 agent 對齊）</div></div>
-  <div class="ep"><div class="m">GET</div><div class="path">/v1/instant/{id}</div><div class="d">取回別的 agent 登記的同一瞬間</div></div>
-  <div class="ep"><div class="m">POST</div><div class="path">/v1/systems</div><div class="d">建立持久自定義世界時鐘</div></div>
-  <div class="ep"><div class="m">GET</div><div class="path">/v1/systems/{id}/now</div><div class="d">該世界當前時間＋世界曆</div></div>
-  <div class="ep"><div class="m">GET</div><div class="path">/v1/timescales</div><div class="d">支援的時標</div></div>
-  <div class="ep"><div class="m">GET</div><div class="path">/v1/encodings</div><div class="d">支援的編碼</div></div>
-  <div class="ep"><div class="m">GET</div><div class="path">/ai/ctcl.json</div><div class="d">agent 工具宣告（先讀這個）</div></div>
-</div>
+<div class="wrap">
+ <div class="top">
+  <div class="brand"><span class="dot"></span>CTCL · commoninstant.org</div>
+  <button class="icon-btn" id="gear" aria-label="Settings" aria-haspopup="dialog">
+   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v3M12 18.5v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2.5 12h3M18.5 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
+  </button>
+ </div>
 
-<h2>本地 agent 怎麼調用</h2>
-<p>Agent 先讀 <code>/ai/ctcl.json</code> 發現能力，再呼叫端點。取得驗證瞬間：</p>
-<pre>curl -s ${origin}/v1/now</pre>
-<p>把一個 Unix 奈秒值轉成台北時間（保精度）：</p>
-<pre>curl -s ${origin}/v1/convert -H 'content-type: application/json' -d '{
+ <div class="hero">
+  <div>
+   <div class="eyebrow" data-zh="EveMissLab · Agent 時間基礎設施">EveMissLab · Agent time infrastructure</div>
+   <h1 data-zh="一個<em>共同瞬間</em>，各自的時間世界。">One <em>shared instant</em>, every local time.</h1>
+   <p class="lede" data-zh="CTCL 給異質的 agent、模擬器與持續存在的 AI 一個驗證過的共同參考瞬間 —— 不用共用時鐘、曆法或 epoch。同一瞬間，不同表示。">CTCL gives heterogeneous agents, simulators and persistent AI a verified common reference instant — without sharing a clock, calendar, or epoch. Same instant, different representations.</p>
+   <div class="cta">
+    <a class="btn pri" href="/v1/now" target="_blank" rel="noopener" data-zh="取得驗證瞬間 →">Get a verified instant →</a>
+    <a class="btn sec" href="/ai/ctcl.json" data-zh="Agent 工具宣告">Agent tool declaration</a>
+   </div>
+  </div>
+  <div class="instant" role="group" aria-label="Live reference instant">
+   <svg class="clockface" viewBox="0 0 100 100" aria-hidden="true">
+    <circle cx="50" cy="50" r="47" fill="none" stroke="var(--line2)" stroke-width="1.5"/>
+    <g id="ticks" stroke="var(--faint)" stroke-width="1.4"></g>
+    <line id="hh" x1="50" y1="50" x2="50" y2="28" stroke="var(--ink)" stroke-width="2.6" stroke-linecap="round"/>
+    <line id="mh" x1="50" y1="50" x2="50" y2="18" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/>
+    <line id="sh" x1="50" y1="55" x2="50" y2="12" stroke="var(--gold)" stroke-width="1.1" stroke-linecap="round"/>
+    <circle cx="50" cy="50" r="2.2" fill="var(--gold)"/>
+   </svg>
+   <div class="i-big" id="c-utc">…</div>
+   <div class="i-row"><span class="k">unix_ns</span><span class="v mono" id="c-ns">…</span></div>
+   <div class="i-row"><span class="k">instant_id</span><span class="v mono" id="c-id">…</span></div>
+   <div class="i-row"><span class="k" data-zh="來源 · 精度">source · precision</span><span class="v" data-zh="邊緣時鐘 · 毫秒級">edge clock · ms</span></div>
+   <div class="drift" id="c-drift" data-zh="對齊你的瀏覽器時鐘…">aligning with your browser clock…</div>
+  </div>
+ </div>
+
+ <section>
+  <div class="label" data-zh="它是什麼">What it is</div>
+  <div class="concept">
+   <div class="c"><h3 data-zh="共同參考瞬間 I*">A common instant I*</h3><p data-zh="一個可被多方共同指向的驗證瞬間，帶來源與不確定度 —— 不是形而上的絕對時間，是協議上的共同參考。">A verified instant many parties can point at, with source and uncertainty — not a metaphysical absolute time, a protocol-level shared reference.</p></div>
+   <div class="c"><h3 data-zh="顯式轉換">Explicit transforms</h3><p data-zh="Unix、UTC、時區、自定義倍速世界時間之間可保精度轉換。不同時鐘、顯式轉換、無隱藏語義。">Precision-preserving conversion across Unix, UTC, timezones and custom world clocks. Different clocks, explicit transforms, no hidden semantics.</p></div>
+   <div class="c"><h3 data-zh="誠實的精度">Honest precision</h3><p data-zh="這個邊緣時鐘是毫秒級，我們就標毫秒級。ns 欄位是格式相容用的補零，precision ≠ accuracy。">The edge clock is millisecond-grade, so we say so. The ns fields are format-padding; precision is not accuracy.</p></div>
+  </div>
+ </section>
+
+ <section>
+  <div class="label">Endpoints</div>
+  <div class="eps">
+   <div class="ep"><span class="m">GET</span><span class="path">/v1/now</span><span class="d" data-zh="驗證參考瞬間（來源、不確定度、instant_id）">verified reference instant (source, uncertainty, instant_id)</span></div>
+   <div class="ep"><span class="m">POST</span><span class="path">/v1/convert</span><span class="d" data-zh="跨編碼／時標／時區轉換（保精度）">convert across encodings / timescales / timezones (precision-preserving)</span></div>
+   <div class="ep"><span class="m">POST</span><span class="path">/v1/transform</span><span class="d" data-zh="映射到自定義倍速世界時間">map into a custom linear-rate world clock</span></div>
+   <div class="ep"><span class="m">POST</span><span class="path">/v1/instants</span><span class="d" data-zh="登記共同瞬間 I*，回可共享 id（多 agent 對齊）">register I*, get a shareable id (multi-agent alignment)</span></div>
+   <div class="ep"><span class="m">GET</span><span class="path">/v1/instant/{id}</span><span class="d" data-zh="取回別的 agent 登記的同一瞬間">retrieve the exact instant another agent registered</span></div>
+   <div class="ep"><span class="m">POST</span><span class="path">/v1/systems</span><span class="d" data-zh="建立持久自定義世界時鐘">persist a custom world clock</span></div>
+   <div class="ep"><span class="m">GET</span><span class="path">/v1/systems/{id}/now</span><span class="d" data-zh="該世界當前時間＋世界曆">current time in that world + world calendar</span></div>
+   <div class="ep"><span class="m">GET</span><span class="path">/ai/ctcl.json</span><span class="d" data-zh="agent 工具宣告 —— 先讀這個">agent tool declaration — read this first</span></div>
+  </div>
+ </section>
+
+ <section>
+  <div class="label" data-zh="Agent 怎麼調用">Calling it</div>
+  <p data-zh="Agent 先讀 <code>/ai/ctcl.json</code> 發現能力，再呼叫端點。取得一個驗證瞬間：">An agent reads <code>/ai/ctcl.json</code> to discover the API, then calls the endpoints. Get a verified instant:</p>
+  <pre>curl -s ${origin}/v1/now</pre>
+  <p data-zh="登記一個共同瞬間，讓另一個 agent（或你下一個 session）對齊到分毫不差的同一點：">Register a shared instant so another agent (or your next session) can align on the exact same point:</p>
+  <pre>curl -s ${origin}/v1/instants -H 'content-type: application/json' -d '{"label":"handoff"}'
+# -> { "id": "ctcl:instant:…" }   then any agent:
+curl -s ${origin}/v1/instant/ctcl:instant:…</pre>
+  <p data-zh="把一個 Unix 奈秒值轉成台北時間（保精度）：">Convert a Unix nanosecond value into Taipei time (precision preserved):</p>
+  <pre>curl -s ${origin}/v1/convert -H 'content-type: application/json' -d '{
   "input":  {"value":"1783420000.123456789","encoding":"unix_s"},
   "output": {"encoding":"rfc3339","timezone":"Asia/Taipei"}
 }'</pre>
-<p>映射到一個 12 倍速、一年 400 天的遊戲世界：</p>
-<pre>curl -s ${origin}/v1/transform -H 'content-type: application/json' -d '{
-  "value":"1783420000","value_encoding":"unix_s",
-  "system":{"parent":"ctcl:system:unix","epoch":{"parent_value":"1780000000"},
-            "rate":{"value":12},"calendar":{"day_seconds":72000,"year_days":400}}
-}'</pre>
+ </section>
 
-<h2>試一下 Playground</h2>
-<p class="muted">轉換：把左邊的 Unix 秒轉成右邊時區的 RFC3339。</p>
-<div style="display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;margin:.6rem 0">
-  <input id="pv" value="1783420000.5" style="font-family:var(--mono);background:#0f1216;border:1px solid var(--line);color:var(--ink);border-radius:.4rem;padding:.5rem .6rem;width:190px">
-  <input id="ptz" value="Asia/Taipei" style="font-family:var(--mono);background:#0f1216;border:1px solid var(--line);color:var(--ink);border-radius:.4rem;padding:.5rem .6rem;width:150px">
-  <button onclick="tryConvert()">convert →</button>
-</div>
-<pre id="pout" style="min-height:2.5em">…</pre>
+ <section>
+  <div class="label">Playground</div>
+  <p data-zh="把一個 Unix 秒值轉成某時區的 RFC3339。">Convert a Unix-seconds value into an RFC3339 timestamp for a timezone.</p>
+  <div class="pg">
+   <label class="mono" style="color:var(--faint);font-size:.75rem">unix_s <input id="pv" value="1783420000.5" aria-label="Unix seconds value"></label>
+   <label class="mono" style="color:var(--faint);font-size:.75rem">tz <input id="ptz" value="Asia/Taipei" aria-label="IANA timezone"></label>
+   <button class="btn pri" id="pgo" data-zh="轉換 →">convert →</button>
+  </div>
+  <pre id="pout">…</pre>
+ </section>
 
-<footer>
-CTCL v0.1 · MVP · <a href="/openapi.json">OpenAPI</a> · <a href="/ai/ctcl.json">agent tool decl</a><br>
-Neo.K / 一言諾科技有限公司 · EveMissLab. Reference + transformation layer, not a timing authority.
-</footer>
+ <footer>
+  <span data-zh="CTCL v0.1 · 參考＋轉換層，不是授時機構。">CTCL v0.1 · a reference + transformation layer, not a timing authority.</span><br>
+  <a href="/openapi.json">OpenAPI</a> · <a href="/ai/ctcl.json">tool declaration</a> · Neo.K / 一言諾科技有限公司 · EveMissLab
+ </footer>
 </div>
+
+<div class="scrim" id="scrim"></div>
+<aside class="panel" id="panel" role="dialog" aria-modal="true" aria-label="Settings">
+ <h3 data-zh="設置">Settings</h3>
+ <div class="sub" data-zh="偏好會存在這個瀏覽器。">Preferences are stored in this browser.</div>
+ <div class="set">
+  <div class="t" data-zh="語言">Language</div>
+  <div class="seg" id="segLang">
+   <button data-v="en" aria-pressed="false">English</button>
+   <button data-v="zh" aria-pressed="false">中文</button>
+  </div>
+ </div>
+ <div class="set">
+  <div class="t" data-zh="外觀">Appearance</div>
+  <div class="seg" id="segTheme">
+   <button data-v="light" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg><span data-zh="明亮">Light</span></button>
+   <button data-v="dark" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 14.5A8 8 0 019.5 4 7 7 0 1020 14.5z"/></svg><span data-zh="暗色">Dark</span></button>
+  </div>
+ </div>
+ <div class="set">
+  <div class="t" data-zh="實驗功能">Experimental</div>
+  <div class="exp">
+   <div class="row">
+    <span class="name"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 3c-4 4-4 14 0 18M12 3c4 4 4 14 0 18M3 12h18"/></svg>Spacetime</span>
+    <button class="sw" id="stSw" role="switch" aria-pressed="false" aria-label="Toggle Spacetime theme"></button>
+   </div>
+   <p data-zh="把暖墨金世界交給重力 —— 黑洞、齒輪，指針由即時的 CTCL 時間驅動。實驗中。">Hands the warm-ink world to gravity — a black hole, clockwork, hands driven by the live CTCL time. Work in progress.</p>
+  </div>
+ </div>
+</aside>
+
 <script>
-const O=location.origin;
-async function tick(){
- try{
-  const t0=performance.now();
-  const r=await (await fetch(O+'/v1/now')).json();
-  const rtt=(performance.now()-t0);
-  const d=r.data;
-  document.getElementById('c-utc').textContent=d.instant.reference.value;
-  document.getElementById('c-ns').textContent=d.encodings.unix_ns;
-  document.getElementById('c-id').textContent=d.instant.id;
-  const localMs=Date.now(), srvMs=Number(d.encodings.unix_ms);
-  document.getElementById('c-local').textContent=new Date(localMs).toISOString();
-  const drift=localMs-srvMs;
-  document.getElementById('c-drift').textContent=(drift>=0?'+':'')+drift+' ms (± RTT '+rtt.toFixed(0)+'ms)';
- }catch(e){document.getElementById('c-utc').textContent='(offline)';}
-}
-async function tryConvert(){
- const body={input:{value:document.getElementById('pv').value,encoding:'unix_s'},
-  output:{encoding:'rfc3339',timezone:document.getElementById('ptz').value}};
- try{
-  const r=await (await fetch(O+'/v1/convert',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(body)})).json();
-  document.getElementById('pout').textContent=JSON.stringify(r.ok?r.data:r,null,2);
- }catch(e){document.getElementById('pout').textContent=String(e);}
-}
-tick(); setInterval(tick,2000);
+var O=location.origin,D=document.documentElement;
+function $(i){return document.getElementById(i)}
+// i18n: swap [data-zh] elements between English (original innerHTML) and Chinese
+var i18n=[].slice.call(document.querySelectorAll('[data-zh]'));
+i18n.forEach(function(el){el.setAttribute('data-en',el.innerHTML)});
+function applyLang(l){D.setAttribute('data-lang',l);document.documentElement.lang=(l==='zh'?'zh-Hant':'en');
+ i18n.forEach(function(el){el.innerHTML=(l==='zh'?el.getAttribute('data-zh'):el.getAttribute('data-en'))});
+ syncSeg('segLang',l)}
+function applyTheme(t){D.setAttribute('data-theme',t);
+ syncSeg('segTheme',t);$('stSw').setAttribute('aria-pressed',String(t==='spacetime'))}
+function syncSeg(id,v){var s=$(id);if(!s)return;[].forEach.call(s.children,function(b){b.setAttribute('aria-pressed',String(b.getAttribute('data-v')===v))})}
+// init from what the head script already resolved
+applyLang(D.getAttribute('data-lang')||'en');
+(function(){var t=D.getAttribute('data-theme')||'dark';syncSeg('segTheme',t==='spacetime'?'':t);$('stSw').setAttribute('aria-pressed',String(t==='spacetime'))})();
+// settings wiring
+$('segLang').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;var v=b.getAttribute('data-v');localStorage.setItem('ctcl.lang',v);applyLang(v)});
+$('segTheme').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;var v=b.getAttribute('data-v');localStorage.setItem('ctcl.theme',v);applyTheme(v)});
+$('stSw').addEventListener('click',function(){var on=D.getAttribute('data-theme')==='spacetime';var v=on?(localStorage.getItem('ctcl.prevTheme')||'dark'):'spacetime';if(!on)localStorage.setItem('ctcl.prevTheme',D.getAttribute('data-theme')||'dark');localStorage.setItem('ctcl.theme',v);applyTheme(v)});
+// settings open/close
+function openP(o){$('panel').classList.toggle('open',o);$('scrim').classList.toggle('open',o)}
+$('gear').addEventListener('click',function(){openP(true)});
+$('scrim').addEventListener('click',function(){openP(false)});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')openP(false)});
+// clock ticks
+(function(){var g=$('ticks'),s='';for(var i=0;i<12;i++){var a=i*30*Math.PI/180,x=50+Math.sin(a)*42,y=50-Math.cos(a)*42;s+='<circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="'+(i%3?'0.9':'1.6')+'"/>'}g.innerHTML=s})();
+// live instant
+function setHands(ms){var d=new Date(ms),h=d.getUTCHours()%12,m=d.getUTCMinutes(),sec=d.getUTCSeconds()+d.getUTCMilliseconds()/1000;
+ $('hh').setAttribute('transform','rotate('+((h+m/60)*30)+' 50 50)');
+ $('mh').setAttribute('transform','rotate('+((m+sec/60)*6)+' 50 50)');
+ $('sh').setAttribute('transform','rotate('+(sec*6)+' 50 50)')}
+var lastSrv=0,lastAt=0;
+async function tick(){try{
+ var t0=performance.now();var r=await(await fetch(O+'/v1/now')).json();var rtt=performance.now()-t0;var d=r.data;
+ $('c-utc').textContent=d.instant.reference.value;$('c-ns').textContent=d.encodings.unix_ns;$('c-id').textContent=d.instant.id;
+ lastSrv=Number(d.encodings.unix_ms);lastAt=performance.now();setHands(lastSrv);
+ var drift=Date.now()-lastSrv;
+ $('c-drift').innerHTML=(D.getAttribute('data-lang')==='zh'?'你的時鐘與 CTCL 差 ':'your clock vs CTCL: ')+'<b>'+(drift>=0?'+':'')+drift+' ms</b> · RTT '+rtt.toFixed(0)+'ms';
+}catch(e){$('c-utc').textContent='(offline)'}}
+function frame(){if(lastSrv){setHands(lastSrv+(performance.now()-lastAt))}requestAnimationFrame(frame)}
+tick();setInterval(tick,2000);requestAnimationFrame(frame);
+// playground
+async function tryConvert(){var body={input:{value:$('pv').value,encoding:'unix_s'},output:{encoding:'rfc3339',timezone:$('ptz').value}};
+ try{var r=await(await fetch(O+'/v1/convert',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(body)})).json();$('pout').textContent=JSON.stringify(r.ok?r.data:r,null,2)}catch(e){$('pout').textContent=String(e)}}
+$('pgo').addEventListener('click',tryConvert);
 </script></body></html>`;
 }
