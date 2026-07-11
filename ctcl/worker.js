@@ -409,6 +409,9 @@ h1,h2,h3{font-family:var(--serif);font-weight:560;letter-spacing:-.01em;line-hei
 .icon-btn{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:.5rem;border:1px solid var(--line);background:var(--surf);color:var(--dim);cursor:pointer;transition:color .2s,border-color .2s,background .2s}
 .icon-btn:hover{color:var(--gold);border-color:var(--line2)}
 .icon-btn svg{width:20px;height:20px}
+.tools{display:flex;gap:.5rem;align-items:center}
+.icon-btn.lang{width:auto;padding:0 .6rem;gap:.36rem;font:600 .72rem/1 var(--mono);letter-spacing:.04em}
+.icon-btn.lang svg{width:17px;height:17px}
 /* hero */
 .hero{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(1.5rem,4vw,3rem);align-items:center;margin:clamp(2rem,6vw,3.6rem) 0 1rem}
 h1{font-size:clamp(2.1rem,6vw,3.4rem);font-weight:680;margin:.7rem 0 .5rem}
@@ -521,9 +524,10 @@ footer a{color:var(--dim)}
 <div class="wrap">
  <div class="top">
   <div class="brand"><span class="dot"></span>CTCL · commoninstant.org</div>
-  <button class="icon-btn" id="gear" aria-label="Settings" aria-haspopup="dialog">
-   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v3M12 18.5v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2.5 12h3M18.5 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
-  </button>
+  <div class="tools">
+   <button class="icon-btn lang" id="langBtn" aria-label="Language / 語言" title="Language"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 2.6 15.4 0 18M12 3c-2.6 2.6-2.6 15.4 0 18"/></svg><span id="langLabel">EN</span></button>
+   <button class="icon-btn" id="gear" aria-label="Settings" aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v3M12 18.5v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2.5 12h3M18.5 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg></button>
+  </div>
  </div>
 
  <div class="hero">
@@ -613,13 +617,6 @@ curl -s ${origin}/v1/instant/ctcl:instant:…</pre>
  <h3 data-zh="設置">Settings</h3>
  <div class="sub" data-zh="偏好會存在這個瀏覽器。">Preferences are stored in this browser.</div>
  <div class="set">
-  <div class="t" data-zh="語言">Language</div>
-  <div class="seg" id="segLang">
-   <button data-v="en" aria-pressed="false">English</button>
-   <button data-v="zh" aria-pressed="false">中文</button>
-  </div>
- </div>
- <div class="set">
   <div class="t" data-zh="外觀">Appearance</div>
   <div class="seg" id="segTheme">
    <button data-v="light" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg><span data-zh="明亮">Light</span></button>
@@ -646,7 +643,7 @@ var i18n=[].slice.call(document.querySelectorAll('[data-zh]'));
 i18n.forEach(function(el){el.setAttribute('data-en',el.innerHTML)});
 function applyLang(l){D.setAttribute('data-lang',l);document.documentElement.lang=(l==='zh'?'zh-Hant':'en');
  i18n.forEach(function(el){el.innerHTML=(l==='zh'?el.getAttribute('data-zh'):el.getAttribute('data-en'))});
- syncSeg('segLang',l)}
+ var lb=$('langLabel');if(lb)lb.textContent=(l==='zh'?'中':'EN')}
 function applyTheme(t){D.setAttribute('data-theme',t);
  syncSeg('segTheme',t);$('stSw').setAttribute('aria-pressed',String(t==='spacetime'))}
 function syncSeg(id,v){var s=$(id);if(!s)return;[].forEach.call(s.children,function(b){b.setAttribute('aria-pressed',String(b.getAttribute('data-v')===v))})}
@@ -654,7 +651,7 @@ function syncSeg(id,v){var s=$(id);if(!s)return;[].forEach.call(s.children,funct
 applyLang(D.getAttribute('data-lang')||'en');
 (function(){var t=D.getAttribute('data-theme')||'dark';syncSeg('segTheme',t==='spacetime'?'':t);$('stSw').setAttribute('aria-pressed',String(t==='spacetime'))})();
 // settings wiring
-$('segLang').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;var v=b.getAttribute('data-v');localStorage.setItem('ctcl.lang',v);applyLang(v)});
+$('langBtn').addEventListener('click',function(){var v=D.getAttribute('data-lang')==='zh'?'en':'zh';localStorage.setItem('ctcl.lang',v);applyLang(v)});
 $('segTheme').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;var v=b.getAttribute('data-v');localStorage.setItem('ctcl.theme',v);applyTheme(v)});
 $('stSw').addEventListener('click',function(){var on=D.getAttribute('data-theme')==='spacetime';var v=on?(localStorage.getItem('ctcl.prevTheme')||'dark'):'spacetime';if(!on)localStorage.setItem('ctcl.prevTheme',D.getAttribute('data-theme')||'dark');localStorage.setItem('ctcl.theme',v);applyTheme(v)});
 // settings open/close
