@@ -33,12 +33,13 @@ const LEAP = { tai_minus_utc_s: 37, gps_minus_utc_s: 18, as_of: "2017-01-01",
 
 const NS_PER = { s: 1000000000n, ms: 1000000n, us: 1000n, ns: 1n };
 
-function jsonResp(obj, status = 200) {
-  return new Response(JSON.stringify(obj, null, 2) + "\n",
-    { status, headers: { "Content-Type": "application/json; charset=utf-8", ...CORS } });
+function jsonResp(obj, status = 200, cc) {
+  const headers = { "Content-Type": "application/json; charset=utf-8", ...CORS };
+  if (cc) headers["Cache-Control"] = cc;
+  return new Response(JSON.stringify(obj, null, 2) + "\n", { status, headers });
 }
-function ok(data, meta = {}) {
-  return jsonResp({ ok: true, data, meta: { api_version: API_VERSION, request_id: rid(), ...meta } });
+function ok(data, meta = {}, cc) {
+  return jsonResp({ ok: true, data, meta: { api_version: API_VERSION, request_id: rid(), ...meta } }, 200, cc);
 }
 function fail(code, message, details = {}, status = 400) {
   return jsonResp({ ok: false, error: { code, message, details }, meta: { api_version: API_VERSION, request_id: rid() } }, status);
@@ -269,6 +270,39 @@ async function systemNow(id, env) {
     system_time: String(local), unit: "second", rate_type: sys.rate && sys.rate.type || "constant", ...extra, calendar });
 }
 
+// ---- §17/§35/§36 version + tiers ; §18 local-time ambiguity ----------------
+
+function versionInfo() {
+  return ok({
+    service: "CTCL", api_version: API_VERSION, release: "0.1",
+    leap_table: LEAP, tzdb: "IANA via the runtime Intl database",
+    source_precision: "millisecond_representation (edge wall clock)",
+    precision_tiers: { coarse: ">= 1 s", standard: ">= 1 ms", high: ">= 1 µs (representation)", ultra: ">= 1 ns (representation)" },
+    trust_tiers: { T0: "unknown", T1: "local, unsynchronized", T2: "network-synchronized", T3: "authenticated source", T4: "calibrated authoritative chain" },
+    current_trust_tier: "T2",
+    rate_limit_policy: { enforced: false, note: "No per-key limit yet; Cloudflare edge/DDoS protection is active. Enterprise keys later." },
+    honesty: "precision is not accuracy; ns/us fields are format-padding on a millisecond source (§16).",
+  }, {}, "public, max-age=300");
+}
+
+// Resolve a NAIVE local datetime (no offset) in an IANA tz to candidate UTC instants.
+// 0 candidates = nonexistent (DST spring-forward gap); 1 = unique; 2 = ambiguous (fall-back).
+function localToUtc(localStr, tz) {
+  const m = String(localStr).match(/(\d{4})-(\d{2})-(\d{2})[T ](\d{2}):(\d{2})(?::(\d{2})(\.\d+)?)?/);
+  if (!m) return { candidates: [], wallMs: null };
+  const wallMs = Date.UTC(+m[1], +m[2] - 1, +m[3], +m[4], +m[5], +(m[6] || 0));
+  const cands = new Set();
+  // Sample the tz offset on BOTH sides of any same-day DST transition (±12h), form a
+  // candidate UTC per distinct offset, and keep only those that format back to the wall
+  // time. 0 = nonexistent (gap), 1 = unique, 2 = ambiguous (overlap).
+  const offs = new Set([tzOffsetMinutes(wallMs - 43200000, tz), tzOffsetMinutes(wallMs, tz), tzOffsetMinutes(wallMs + 43200000, tz)]);
+  for (const off of offs) {
+    const utc = wallMs - off * 60000;
+    if (tzOffsetMinutes(utc, tz) * 60000 === wallMs - utc) cands.add(utc);
+  }
+  return { candidates: [...cands].sort((a, b) => a - b), wallMs };
+}
+
 // ---- §40 completion: transform graph, validate, list, transform types -----
 
 const TRANSFORM_TYPES = {
@@ -347,8 +381,20 @@ async function handleConvert(req) {
   const input = body.input || {};
   const output = body.output || {};
   let ns;
-  try { ns = toNs(input.value, input.encoding); }
-  catch (e) { return fail(e.code || "INVALID_TIME_VALUE", e.msg || String(e), { input }); }
+  const naiveLocal = input.timezone && /rfc3339|iso8601/i.test(input.encoding || "") &&
+    !/[zZ]$|[+\-]\d\d:?\d\d$/.test(String(input.value || "").trim());
+  if (naiveLocal) {
+    // §18: interpret the input as a naive local wall-clock time in input.timezone
+    const res = localToUtc(input.value, input.timezone);
+    if (res.candidates.length === 0)
+      return fail("NONEXISTENT_LOCAL_TIME", `${input.value} does not exist in ${input.timezone} (DST spring-forward gap)`, { timezone: input.timezone });
+    if (res.candidates.length > 1)
+      return fail("AMBIGUOUS_LOCAL_TIME", `${input.value} is ambiguous in ${input.timezone} (DST fall-back overlap) — pass an explicit offset to disambiguate`, { candidates: res.candidates.map((c) => rfc3339(BigInt(c) * NS_PER.ms, "UTC")) });
+    ns = BigInt(res.candidates[0]) * NS_PER.ms;
+  } else {
+    try { ns = toNs(input.value, input.encoding); }
+    catch (e) { return fail(e.code || "INVALID_TIME_VALUE", e.msg || String(e), { input }); }
+  }
   let outValue;
   try { outValue = fromNs(ns, output.encoding || "rfc3339", output.timezone); }
   catch (e) { return fail(e.code || "UNKNOWN_ENCODING", e.msg || String(e), { output }); }
@@ -425,6 +471,7 @@ function toolDeclaration(origin) {
       { name: "transform-path", method: "GET", path: "/v1/path", desc: "Route between two systems/timescales in the transform graph (§13-14; star graph today).", input: { from: "system id or unix|utc|posix", to: "…" }, output: "path + hops + lossless" },
       { name: "validate", method: "POST", path: "/v1/validate", desc: "Validate a time value; returns warnings (POSIX-vs-UTC leap drift, out-of-range).", input: { value: "string", encoding: "unix_s|…", timescale: "utc|posix?" }, output: "valid + warnings + canonical_unix_ns" },
       { name: "transform-types", method: "GET", path: "/v1/transforms", desc: "Catalog of transform types (§12): identity, offset, linear_rate, piecewise, paused_clock (active-time), …", input: {}, output: "types + which are implemented" },
+      { name: "version", method: "GET", path: "/v1/version", desc: "Versions, leap table, precision tiers (§35), trust tiers (§36), rate-limit policy (§38).", input: {}, output: "versions + tiers" },
     ],
     memory_contract: "For long-term memory: store instant_id + timescale + encoding + source_quality (do not store only a bare number). Distinguish event / write / recall instants (§10.4, §23).",
     not_a: ["universal clock authority", "timing/NTP replacement", "guaranteed ns-accurate global sync"],
@@ -440,6 +487,7 @@ function openapi(origin) {
     servers: [{ url: origin }],
     paths: {
       "/v1/now": { get: { summary: "Verified reference instant", responses: { 200: { description: "instant envelope" } } } },
+      "/v1/version": { get: { summary: "Versions, precision & trust tiers (§17/§35/§36)", responses: { 200: { description: "ok" } } } },
       "/v1/timescales": { get: { summary: "List timescales", responses: { 200: { description: "ok" } } } },
       "/v1/encodings": { get: { summary: "List encodings", responses: { 200: { description: "ok" } } } },
       "/v1/convert": { post: { summary: "Convert time value", responses: { 200: { description: "ok" }, 400: { description: "error" } } } },
@@ -466,7 +514,8 @@ export default {
     const origin = url.origin;
     if (request.method === "OPTIONS") return new Response(null, { headers: CORS });
 
-    if (p === "/v1/now") return ok(nowEnvelope(), { server_observed_at: new Date().toISOString() });
+    if (p === "/v1/now") return ok(nowEnvelope(), { server_observed_at: new Date().toISOString() }, "no-store");
+    if (p === "/v1/version") return versionInfo();
     if (p === "/v1/timescales") return ok({ timescales: [
       { id: "utc", type: "reference", note: "Civil reference; includes leap seconds." },
       { id: "posix", type: "encoding", note: "Unix time; POSIX ignores leap seconds." },
