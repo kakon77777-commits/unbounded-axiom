@@ -190,12 +190,17 @@ async function createSystem(req, env) {
   try { body = await req.json(); } catch { return fail("INVALID_TIME_VALUE", "body must be JSON"); }
   const sys = body.system || body;
   if (!sys.id) return fail("INVALID_TIME_VALUE", "system.id required (e.g. user:game_world)");
-  const rate = Number(sys.rate?.value ?? sys.rate ?? 1);
-  if (!Number.isFinite(rate)) return fail("UNSUPPORTED_POLICY", "rate must be a finite number");
+  const rin = (sys.rate && typeof sys.rate === "object") ? sys.rate : { value: sys.rate };
+  const rtype = rin.type || "constant";
+  const rate = { type: rtype, value: Number(rin.value ?? 1) };
+  if (rtype === "constant" && !Number.isFinite(rate.value)) return fail("UNSUPPORTED_POLICY", "rate.value must be a finite number");
+  if (rtype === "piecewise") { if (!Array.isArray(rin.segments)) return fail("UNSUPPORTED_POLICY", "piecewise needs rate.segments: [{until: unix_s|null, rate: number}]"); rate.segments = rin.segments; }
+  else if (rtype === "paused") { if (!Array.isArray(rin.pauses)) return fail("UNSUPPORTED_POLICY", "paused needs rate.pauses: [{from: unix_s, to: unix_s|null}]"); rate.pauses = rin.pauses; }
+  else if (rtype !== "constant") return fail("UNSUPPORTED_POLICY", "rate.type must be constant | piecewise | paused");
   const rec = {
     id: sys.id, parent: sys.parent || "ctcl:system:unix",
     epoch: sys.epoch || { parent_value: "0", encoding: "unix_s" },
-    rate: { type: "constant", value: rate }, offset: Number(sys.offset ?? 0),
+    rate, offset: Number(sys.offset ?? 0),
     calendar: sys.calendar || null, created_at: new Date().toISOString(),
   };
   await env.CTCL_KV.put("system:" + sys.id, JSON.stringify(rec));
@@ -209,6 +214,40 @@ async function getSystem(id, env) {
   return ok(JSON.parse(raw));
 }
 
+// Integrate a system's rate over parent time → local seconds. Handles the §12 rate
+// types: constant (y=a·Δ), piecewise_linear (segments), paused_clock (§12.5/§25 active
+// time = wall elapsed minus paused elapsed).
+function localSeconds(sys, parentSec, epochSec) {
+  const rate = sys.rate || { type: "constant", value: 1 };
+  const off = Number(sys.offset || 0);
+  const elapsed = parentSec - epochSec;
+  if (rate.type === "paused") {
+    let paused = 0, nowPaused = false;
+    for (const pz of (rate.pauses || [])) {
+      const pf = Number(pz.from), pt = (pz.to == null) ? Infinity : Number(pz.to);
+      const lo = Math.max(pf, epochSec), hi = Math.min(pt, parentSec);
+      if (hi > lo) paused += hi - lo;
+      if (parentSec >= pf && parentSec < pt) nowPaused = true;
+    }
+    const v = Number(rate.value ?? 1);
+    return { local: (elapsed - paused) * v + off,
+      extra: { wall_elapsed_s: elapsed, paused_elapsed_s: paused, active_elapsed_s: elapsed - paused, currently_paused: nowPaused } };
+  }
+  if (rate.type === "piecewise") {
+    let local = 0, cursor = epochSec;
+    const segs = rate.segments || [];
+    for (const seg of segs) {
+      const until = (seg.until == null) ? parentSec : Number(seg.until);
+      const hi = Math.min(until, parentSec);
+      if (hi > cursor) { local += Number(seg.rate) * (hi - cursor); cursor = hi; }
+      if (cursor >= parentSec) break;
+    }
+    if (cursor < parentSec && segs.length) local += Number(segs[segs.length - 1].rate) * (parentSec - cursor);
+    return { local: local + off, extra: { wall_elapsed_s: elapsed, segments: segs.length } };
+  }
+  return { local: Number(rate.value ?? 1) * elapsed + off, extra: { wall_elapsed_s: elapsed } };
+}
+
 async function systemNow(id, env) {
   if (!env || !env.CTCL_KV) return kvMissing();
   const raw = await env.CTCL_KV.get("system:" + id);
@@ -218,16 +257,86 @@ async function systemNow(id, env) {
   try { epochNs = toNs(sys.epoch?.parent_value ?? 0, sys.epoch?.encoding || "unix_s"); }
   catch { epochNs = 0n; }
   const nowNs = BigInt(Date.now()) * NS_PER.ms;
-  const localSec = sys.rate.value * (Number(nowNs) / 1e9 - Number(epochNs) / 1e9) + (sys.offset || 0);
+  const { local, extra } = localSeconds(sys, Number(nowNs) / 1e9, Number(epochNs) / 1e9);
   let calendar = null;
   const cal = sys.calendar;
   if (cal && cal.day_seconds && cal.year_days) {
-    const days = Math.floor(localSec / cal.day_seconds);
+    const days = Math.floor(local / cal.day_seconds);
     calendar = { world_year: Math.floor(days / cal.year_days), world_day: (days % cal.year_days) + 1,
-      seconds_into_day: Math.floor(((localSec % cal.day_seconds) + cal.day_seconds) % cal.day_seconds) };
+      seconds_into_day: Math.floor(((local % cal.day_seconds) + cal.day_seconds) % cal.day_seconds) };
   }
   return ok({ system_id: sys.id, reference: { timescale: "utc", value: rfc3339(nowNs, "UTC") },
-    system_time: String(localSec), unit: "second", rate: sys.rate.value, calendar });
+    system_time: String(local), unit: "second", rate_type: sys.rate && sys.rate.type || "constant", ...extra, calendar });
+}
+
+// ---- §40 completion: transform graph, validate, list, transform types -----
+
+const TRANSFORM_TYPES = {
+  identity: { formula: "y = x", invertible: "exact", implemented: true },
+  offset: { formula: "y = x + b", params: ["offset"], invertible: "exact", implemented: true },
+  linear_rate: { formula: "y = a·(x − epoch) + b", params: ["rate", "epoch", "offset"], invertible: "exact (a≠0)", implemented: true, via: "/v1/transform, /v1/systems" },
+  piecewise_linear: { formula: "y = aᵢ·x + bᵢ on interval i", params: ["segments"], invertible: "partial", implemented: true, via: "/v1/systems (rate.type=piecewise)" },
+  paused_clock: { formula: "τ(t) = ∫ r(t) dt, r=0 while paused", params: ["pauses"], invertible: "none (pauses erase ordering)", implemented: true, note: "active-time (§25)", via: "/v1/systems (rate.type=paused)" },
+  table_lookup: { formula: "y = table(x)", invertible: "partial", implemented: false },
+  timezone: { formula: "local civil time via IANA tz", invertible: "partial (DST ambiguity)", implemented: true, via: "/v1/convert" },
+  calendar: { formula: "world date via day_seconds / year_days", invertible: "exact", implemented: true, via: "/v1/systems/{id}/now" },
+  custom_expression: { formula: "user-supplied expression", invertible: "unknown", implemented: false },
+};
+
+function transformsCatalog(id) {
+  if (id) {
+    const t = TRANSFORM_TYPES[id];
+    return t ? ok({ id, ...t }) : fail("UNKNOWN_TRANSFORM", `no transform type: ${id}`, { available: Object.keys(TRANSFORM_TYPES) }, 404);
+  }
+  return ok({ count: Object.keys(TRANSFORM_TYPES).length, implemented: Object.keys(TRANSFORM_TYPES).filter(k => TRANSFORM_TYPES[k].implemented), types: TRANSFORM_TYPES });
+}
+
+async function validateTime(req) {
+  let body;
+  try { body = await req.json(); } catch { return fail("INVALID_TIME_VALUE", "body must be JSON"); }
+  const enc = body.encoding || "unix_s";
+  const warnings = [];
+  let ns;
+  try { ns = toNs(body.value, enc); }
+  catch (e) { return ok({ valid: false, error: { code: e.code || "INVALID_TIME_VALUE", message: e.msg || String(e) } }); }
+  if ((body.timescale || "").toLowerCase() === "utc" && /^unix_/.test(enc))
+    warnings.push("unix_* encodings are POSIX (leap-seconds flattened); labelling them 'utc' can drift by whole leap seconds. Use timescale 'posix' for unix_* values.");
+  const yr = Math.floor(Number(ns / NS_PER.s) / 31557600 + 1970);
+  if (yr < 1678 || yr > 2262) warnings.push("value is far outside the common range (year " + yr + "); double-check the encoding/unit.");
+  return ok({ valid: true, canonical_unix_ns: ns.toString(), rfc3339: rfc3339(ns, "UTC"), warnings });
+}
+
+async function listSystems(env) {
+  if (!env || !env.CTCL_KV) return kvMissing();
+  const l = await env.CTCL_KV.list({ prefix: "system:" });
+  const systems = l.keys.map((k) => k.name.replace(/^system:/, ""));
+  return ok({ count: systems.length, systems, truncated: !l.list_complete,
+    note: "GET /v1/systems/{id} for a definition; /v1/systems/{id}/now for its current time." });
+}
+
+// §13-14 transform graph path. MVP graph is a STAR: every custom system routes through
+// ctcl:system:unix; unix/utc/posix are identity peers. Returns the route, not a value —
+// use /v1/transform or /v1/convert to actually map a value along it.
+async function transformPath(url, env) {
+  const from = url.searchParams.get("from"), to = url.searchParams.get("to");
+  if (!from || !to) return fail("INVALID_TIME_VALUE", "'from' and 'to' query params required", { example: "/v1/path?from=user:game_world&to=utc" });
+  const BUILTIN = { unix: 1, utc: 1, posix: 1, "ctcl:system:unix": "unix" };
+  async function resolve(x) {
+    const b = BUILTIN[x];
+    if (b) return { id: b === 1 ? x : b, kind: "builtin" };
+    if (!env || !env.CTCL_KV) return null;
+    const raw = await env.CTCL_KV.get("system:" + x);
+    return raw ? { id: x, kind: "system", def: JSON.parse(raw) } : null;
+  }
+  const a = await resolve(from), b = await resolve(to);
+  if (!a) return fail("UNKNOWN_SYSTEM", `unknown 'from': ${from}`, {}, 404);
+  if (!b) return fail("UNKNOWN_SYSTEM", `unknown 'to': ${to}`, {}, 404);
+  const chain = (n) => n.kind === "builtin" ? (n.id === "unix" ? ["unix"] : [n.id, "unix"]) : [n.id, "unix"];
+  const ca = chain(a), cb = chain(b);
+  let path = [...ca, ...cb.slice(0, -1).reverse()].filter((v, i, arr) => i === 0 || v !== arr[i - 1]);
+  if (a.id === b.id) path = [a.id];
+  return ok({ from, to, path, hops: path.length - 1, lossless: true, estimated_uncertainty_ns: 0,
+    note: "Star graph: custom systems route through ctcl:system:unix; unix/utc/posix are identity peers. This is the route — map a value with POST /v1/transform or /v1/convert. Path selection (uncertainty/trust) arrives with a real multi-hop graph." });
 }
 
 // ---- endpoints -------------------------------------------------------------
@@ -312,6 +421,10 @@ function toolDeclaration(origin) {
         input: { id: "user:game_world", parent: "ctcl:system:unix", epoch: { parent_value: "unix_s" }, rate: { value: "number" }, offset: "number?", calendar: { day_seconds: "int", year_days: "int" } }, output: "system record + /now URL" },
       { name: "get-system", method: "GET", path: "/v1/systems/{id}", desc: "Retrieve a stored system definition.", input: { id: "string" }, output: "system record" },
       { name: "system-now", method: "GET", path: "/v1/systems/{id}/now", desc: "Current time in a stored custom system (+ world calendar).", input: { id: "string" }, output: "system_time + reference instant + calendar" },
+      { name: "list-systems", method: "GET", path: "/v1/systems", desc: "List all stored custom systems.", input: {}, output: "system ids" },
+      { name: "transform-path", method: "GET", path: "/v1/path", desc: "Route between two systems/timescales in the transform graph (§13-14; star graph today).", input: { from: "system id or unix|utc|posix", to: "…" }, output: "path + hops + lossless" },
+      { name: "validate", method: "POST", path: "/v1/validate", desc: "Validate a time value; returns warnings (POSIX-vs-UTC leap drift, out-of-range).", input: { value: "string", encoding: "unix_s|…", timescale: "utc|posix?" }, output: "valid + warnings + canonical_unix_ns" },
+      { name: "transform-types", method: "GET", path: "/v1/transforms", desc: "Catalog of transform types (§12): identity, offset, linear_rate, piecewise, paused_clock (active-time), …", input: {}, output: "types + which are implemented" },
     ],
     memory_contract: "For long-term memory: store instant_id + timescale + encoding + source_quality (do not store only a bare number). Distinguish event / write / recall instants (§10.4, §23).",
     not_a: ["universal clock authority", "timing/NTP replacement", "guaranteed ns-accurate global sync"],
@@ -333,9 +446,13 @@ function openapi(origin) {
       "/v1/transform": { post: { summary: "Map into a custom linear-rate system", responses: { 200: { description: "ok" } } } },
       "/v1/instants": { post: { summary: "Register a reference instant (multi-agent I*)", responses: { 200: { description: "ok" }, 503: { description: "registry unavailable" } } } },
       "/v1/instant/{id}": { get: { summary: "Retrieve a registered instant", responses: { 200: { description: "ok" }, 404: { description: "unknown instant" } } } },
-      "/v1/systems": { post: { summary: "Create a persistent custom system", responses: { 200: { description: "ok" } } } },
+      "/v1/systems": { get: { summary: "List custom systems", responses: { 200: { description: "ok" } } }, post: { summary: "Create a persistent custom system", responses: { 200: { description: "ok" } } } },
       "/v1/systems/{id}": { get: { summary: "Get a system definition", responses: { 200: { description: "ok" }, 404: { description: "unknown system" } } } },
       "/v1/systems/{id}/now": { get: { summary: "Current time in a custom system", responses: { 200: { description: "ok" } } } },
+      "/v1/path": { get: { summary: "Transform-graph route between two systems/timescales (§13-14)", responses: { 200: { description: "ok" }, 404: { description: "unknown node" } } } },
+      "/v1/validate": { post: { summary: "Validate a time object (§41)", responses: { 200: { description: "ok" } } } },
+      "/v1/transforms": { get: { summary: "Transform-type catalog (§12)", responses: { 200: { description: "ok" } } } },
+      "/v1/transforms/{id}": { get: { summary: "A transform type's spec", responses: { 200: { description: "ok" }, 404: { description: "unknown" } } } },
     },
   };
 }
@@ -364,11 +481,16 @@ export default {
     if (p === "/v1/instants" && request.method === "POST") return registerInstant(request, env);
     if (p.startsWith("/v1/instant/")) return getInstant(decodeURIComponent(p.slice(12)), env);
     if (p === "/v1/systems" && request.method === "POST") return createSystem(request, env);
+    if (p === "/v1/systems" && request.method === "GET") return listSystems(env);
     if (p.startsWith("/v1/systems/")) {
       const rest = decodeURIComponent(p.slice(12));
       if (rest.endsWith("/now")) return systemNow(rest.slice(0, -4), env);
       return getSystem(rest, env);
     }
+    if (p === "/v1/path") return transformPath(url, env);
+    if (p === "/v1/validate" && request.method === "POST") return validateTime(request);
+    if (p === "/v1/transforms") return transformsCatalog(null);
+    if (p.startsWith("/v1/transforms/")) return transformsCatalog(decodeURIComponent(p.slice(15)));
     if (p === "/openapi.json") return jsonResp(openapi(origin));
     if (p === "/ai/ctcl.json" || p === "/.well-known/ctcl.json") return jsonResp(toolDeclaration(origin));
     if (p === "/" || p === "/index.html") return new Response(page(origin, (request.cf && request.cf.country) || ""), { headers: { "Content-Type": "text/html; charset=utf-8", ...CORS } });
