@@ -1,0 +1,4 @@
+type_block,comparison,base_cost,extended_cost,auc_change_when_added,brier_change_when_added,balanced_accuracy_change_when_added,task_local_status,reason
+R: relation/topology-probe block,MS vs MSR,12.0,20.0,-0.018907563025210017,0.014558567415798113,-0.0357142857142857,Deprecated for event prediction; Active for topology audit,"Adding R increases cost and worsens AUC, Brier, and balanced accuracy."
+G-extra: lambda/d and initial separation beyond M,M vs G,3.0,5.0,-0.04621848739495793,0.02254786690483712,-0.0714285714285714,Revised into minimal geometry M,The five-feature geometry block is worse than the three-feature minimal geometry support.
+S: early spectral/probe block,Dynamic M -> MS acquisition,3.0,12.0,0.0,-0.009126987102269155,0.0357142857142857,Active on demand; not always-on,Acquire S only for uncertain M cases; calibration and balanced accuracy improve.

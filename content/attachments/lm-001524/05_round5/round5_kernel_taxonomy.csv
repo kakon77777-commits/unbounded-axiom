@@ -1,0 +1,5 @@
+connector_type,formal_kernel,history_dependence,persistent_bias_zero_error,forgets_old_history
+instantaneous,K(t-s)=delta(t-s),none,False,True
+integral,K(t-s)=1,complete cumulative,True,False
+leaky,K(t-s)=exp(-(t-s)/tau),finite fading,False,True
+multiscale,K=sum_i a_i exp(-(t-s)/tau_i),multiple time scales,depends on integral component,partially

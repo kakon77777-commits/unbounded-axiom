@@ -1,0 +1,157 @@
+{
+  "promotion_audit": [
+    {
+      "claim_id": "C6",
+      "historical_failures": [
+        "F1",
+        "F2"
+      ],
+      "active_truth_taint": [
+        "F1",
+        "F2"
+      ],
+      "independent_route": false,
+      "promotion_allowed": false,
+      "missing_obligations": [
+        "independent_validation",
+        "reproducible",
+        "source_verified",
+        "zero_active_taint"
+      ]
+    },
+    {
+      "claim_id": "C8",
+      "historical_failures": [
+        "F1"
+      ],
+      "active_truth_taint": [],
+      "independent_route": true,
+      "promotion_allowed": true,
+      "missing_obligations": []
+    },
+    {
+      "claim_id": "C9",
+      "historical_failures": [
+        "F1",
+        "F2"
+      ],
+      "active_truth_taint": [],
+      "independent_route": true,
+      "promotion_allowed": true,
+      "missing_obligations": []
+    },
+    {
+      "claim_id": "C10",
+      "historical_failures": [
+        "F1",
+        "F2"
+      ],
+      "active_truth_taint": [],
+      "independent_route": true,
+      "promotion_allowed": true,
+      "missing_obligations": []
+    }
+  ],
+  "final_claim_status": {
+    "C3": "invalid",
+    "C5": "invalid",
+    "C6": "conjecture",
+    "C8": "verified_result",
+    "C9": "verified_result",
+    "C10": "verified_result"
+  },
+  "provenance": {
+    "C3": {
+      "historical_failures": [
+        "F1"
+      ],
+      "active_truth_taint": [
+        "F1"
+      ],
+      "hash_prefix": "2b5b3e3c6a103299"
+    },
+    "C5": {
+      "historical_failures": [
+        "F1",
+        "F2"
+      ],
+      "active_truth_taint": [
+        "F1",
+        "F2"
+      ],
+      "hash_prefix": "a980fce5a6c42f2a"
+    },
+    "C6": {
+      "historical_failures": [
+        "F1",
+        "F2"
+      ],
+      "active_truth_taint": [
+        "F1",
+        "F2"
+      ],
+      "hash_prefix": "88be48534ce5e94f"
+    },
+    "C8": {
+      "historical_failures": [
+        "F1"
+      ],
+      "active_truth_taint": [],
+      "hash_prefix": "1fae669b821d79d1"
+    },
+    "C9": {
+      "historical_failures": [
+        "F1",
+        "F2"
+      ],
+      "active_truth_taint": [],
+      "hash_prefix": "1cc001796f5b0fdd"
+    },
+    "C10": {
+      "historical_failures": [
+        "F1",
+        "F2"
+      ],
+      "active_truth_taint": [],
+      "hash_prefix": "88aa60c7e15b5d68"
+    }
+  },
+  "hash_chain_test": {
+    "before_tamper": true,
+    "after_tamper": false,
+    "after_restore": true
+  },
+  "demotion_test": [
+    {
+      "trigger": "counterexample",
+      "result": "invalid"
+    },
+    {
+      "trigger": "type_mismatch",
+      "result": "analogy"
+    },
+    {
+      "trigger": "proof_gap",
+      "result": "conjecture"
+    },
+    {
+      "trigger": "source_unverified",
+      "result": "conditional_result"
+    }
+  ],
+  "stopping_test": {
+    "plateau": [
+      "marginal_gain_below_threshold",
+      "obligations_not_decreasing"
+    ],
+    "cycle": [
+      "canonical_cycle_detected"
+    ],
+    "external": [
+      "external_evidence_required"
+    ],
+    "no_output": [
+      "no_new_admissible_output"
+    ]
+  }
+}
