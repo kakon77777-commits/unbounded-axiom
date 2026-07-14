@@ -15,7 +15,9 @@ const companions = getCompanions()[paper.id] || [];
 const KIND_ICON: Record<string, string> = {
   examples: '🧩', code: '💻', proof: '∴', data: '📊', witness: '📊',
   verify: '✅', demo: '▶️', core: '🧠', dataset: '📊', notebook: '📓',
+  image: '🖼️', figure: '🖼️',
 };
+const isImageKind = (kind: string) => kind === 'image' || kind === 'figure';
 const fmtBytes = (b: number) =>
   b >= 1048576 ? `${(b / 1048576).toFixed(1)} MB`
   : b >= 1024 ? `${(b / 1024).toFixed(0)} KB` : `${b} B`;
@@ -107,11 +109,20 @@ const geoBlocks = ext === 'md' ? geoJsonLdBlocks(extractGeoSignals(raw), canonic
           <div class="eyebrow">📎 附件 · Companion files — 隨文交付的程式 / 證明 / 資料，可獨立下載重驗</div>
           <ul class="attach-list">
             {companions.map((c) => (
-              <li class="attach-item">
-                <span class="attach-kind" aria-hidden="true">{KIND_ICON[c.kind] || '📎'}</span>
-                <a class="attach-link" href={c.raw_url} download={c.orig}>{c.label}</a>
-                <span class="attach-meta">{c.ext} · {fmtBytes(c.bytes)}</span>
-              </li>
+              isImageKind(c.kind) ? (
+                <li class="attach-item attach-item--image">
+                  <a href={c.raw_url} target="_blank" rel="noopener">
+                    <img class="attach-image" src={c.raw_url} alt={c.label} loading="lazy" />
+                  </a>
+                  <span class="attach-caption">{KIND_ICON[c.kind] || '🖼️'} {c.label} <span class="attach-meta">({c.ext} · {fmtBytes(c.bytes)})</span></span>
+                </li>
+              ) : (
+                <li class="attach-item">
+                  <span class="attach-kind" aria-hidden="true">{KIND_ICON[c.kind] || '📎'}</span>
+                  <a class="attach-link" href={c.raw_url} download={c.orig}>{c.label}</a>
+                  <span class="attach-meta">{c.ext} · {fmtBytes(c.bytes)}</span>
+                </li>
+              )
             ))}
           </ul>
         </div>
@@ -131,5 +142,9 @@ const geoBlocks = ext === 'md' ? geoJsonLdBlocks(extractGeoSignals(raw), canonic
     .attach-link { font-weight: 600; text-decoration: none; border-bottom: 1px solid currentColor; }
     .attach-link:hover { opacity: 0.72; }
     .attach-meta { margin-left: auto; font-size: 0.8rem; opacity: 0.6; white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .attach-item--image { flex-direction: column; align-items: flex-start; gap: 0.45rem; }
+    .attach-image { display: block; max-width: 100%; max-height: 32rem; border-radius: 0.4rem; border: 1px solid var(--line); }
+    .attach-item--image .attach-caption { font-size: 0.88rem; opacity: 0.85; }
+    .attach-item--image .attach-meta { margin-left: 0.3rem; opacity: 0.55; }
   </style>
 </Base>

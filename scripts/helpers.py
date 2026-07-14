@@ -46,6 +46,12 @@ def mime_for(ext: str) -> str:
         "ts":    "text/typescript",
         "jsx":   "text/jsx",
         "txt":   "text/plain",
+        "png":   "image/png",
+        "jpg":   "image/jpeg",
+        "jpeg":  "image/jpeg",
+        "gif":   "image/gif",
+        "svg":   "image/svg+xml",
+        "webp":  "image/webp",
     }.get(ext, "application/octet-stream")
 
 

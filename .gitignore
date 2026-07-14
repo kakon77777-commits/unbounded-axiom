@@ -31,6 +31,12 @@ ingest/reports/*
 !ingest/reports/.gitkeep
 # processed batches are moved here after publish (local record; canon is content/papers/)
 ingest/_archive/
+# held-back papers pending Neo's publish/skip decision
+ingest/_hold/
+# pre-id companion staging — Neo groups code/images by his own naming BEFORE the
+# parent paper has an lm-id; sorted into content/attachments/{id}/ once it does.
+ingest/attachments-pending/*
+!ingest/attachments-pending/README.md
 .spectral.env
 
 # media source files (large; live in the Cloudflare R2 bucket `unboundedaxiom`)
