@@ -52,6 +52,9 @@ def mime_for(ext: str) -> str:
         "gif":   "image/gif",
         "svg":   "image/svg+xml",
         "webp":  "image/webp",
+        "zip":   "application/zip",
+        "csv":   "text/csv",
+        "json":  "application/json",
     }.get(ext, "application/octet-stream")
 
 
