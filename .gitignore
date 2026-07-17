@@ -37,6 +37,10 @@ ingest/_hold/
 # parent paper has an lm-id; sorted into content/attachments/{id}/ once it does.
 ingest/attachments-pending/*
 !ingest/attachments-pending/README.md
+# per-authorship source-split subtrees (ingest.py --source Human&Ai|AI) — one-off
+# staging used for a single batch; not a permanent scaffold like the top-level dirs.
+ingest/AI/
+ingest/Human&Ai/
 .spectral.env
 
 # media source files (large; live in the Cloudflare R2 bucket `unboundedaxiom`)
