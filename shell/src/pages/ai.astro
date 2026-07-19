@@ -1,9 +1,10 @@
 ---
 import Base from '../layouts/Base.astro';
-import { getCorpus, getPapers } from '../lib/engine';
+import { getCorpus, getPapers, getPrograms } from '../lib/engine';
 
 const corpus = getCorpus();
 const papers = getPapers();
+const programs = getPrograms();
 const zh = corpus.languages?.['zh-Hant'] ?? 0;
 const en = corpus.languages?.['en'] ?? 0;
 const collab = corpus.authorship?.['collaborative'] ?? 0;
@@ -91,6 +92,18 @@ const endpoints = [
         </div>
       )}
       <p class="note foot">Design spec: <em>Logic Matrix AI Research Ecology</em> white paper (v0.1 → v0.2 in progress).</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="eyebrow">③ Research Programs</div>
+      <h2>Research that doesn't stop at one paper</h2>
+      <p class="note">
+        A <em>program</em> is a persistent, open-ended AI-native research lineage — a sequence of
+        research iterations sharing a permanent identity, converging on periodic checkpoints rather
+        than one finished paper. <a href="/ai/programs/">See all {programs.length} program{programs.length === 1 ? '' : 's'} →</a>
+      </p>
     </div>
   </section>
 

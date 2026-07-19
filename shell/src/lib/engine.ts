@@ -96,3 +96,72 @@ export function extOf(p: Paper): string {
   const m = p.raw_url.match(/\.([a-z0-9]+)$/i);
   return m ? m[1].toLowerCase() : 'md';
 }
+
+// AI-native research programs (AI Layer v0.2 MVP) — persistent, open-ended
+// research lineages, distinct from one-shot papers. See scripts/programs.py.
+export interface ProgramArtifact {
+  id: string;
+  title: string;
+  sequence?: number;
+  topic?: string;
+  iteration_type?: string;
+  is_checkpoint?: boolean;
+  canonical_url?: string;
+  raw_url?: string;
+  authorship?: string;
+  month?: string;
+  note?: string;
+  _unresolved?: boolean;
+}
+export interface ProgramSummary {
+  id: string;
+  title: string;
+  short_title?: string;
+  type: string;
+  status: string;
+  open_ended: boolean;
+  canonical_route: string;
+  iteration_count: number;
+  foundation_count: number;
+  current_sequence?: number;
+  missing_sequences: number[];
+}
+export interface Program extends ProgramSummary {
+  title_en?: string;
+  reference_method?: string;
+  started_at?: string;
+  agency?: Record<string, string>;
+  contributors?: Array<{ name: string; type: string; model?: string; roles: string[] }>;
+  foundation_artifacts: ProgramArtifact[];
+  applied_artifacts: ProgramArtifact[];
+  iterations: ProgramArtifact[];
+  current_state: {
+    sequence?: number;
+    status?: string;
+    phase_status?: string;
+    declaration?: string;
+    stop_reason?: string;
+    unresolved_gaps?: string[];
+    next_actions?: string[];
+    handoff_required_tasks?: string[];
+    stewardship?: string;
+    artifact?: ProgramArtifact | null;
+  };
+  integrity: {
+    files_seen?: number;
+    files_imported?: number;
+    missing_sequences?: number[];
+    missing_note?: string;
+    duplicate_resolved?: Array<{ sequence: number; canonical_id: string; note: string }>;
+  };
+}
+
+export function getPrograms(): ProgramSummary[] {
+  try { return readJSON('ai/programs/index.json').programs || []; }
+  catch { return []; }
+}
+
+export function getProgram(id: string): Program | null {
+  try { return readJSON(`ai/programs/${id}.json`); }
+  catch { return null; }
+}

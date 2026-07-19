@@ -1,0 +1,166 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { getPrograms, getProgram } from '../../../lib/engine';
+
+export function getStaticPaths() {
+  return getPrograms().map((p) => ({ params: { id: p.id.replace(/^rp-/, '') } }));
+}
+
+const { id } = Astro.params;
+const program = getProgram(`rp-${id}`);
+if (!program) throw new Error(`Program rp-${id} not found`);
+
+const ORIGIN = 'https://logic.evemisslab.com';
+const canonical = `${ORIGIN}${program.canonical_route}`;
+
+const roleLabel: Record<string, string> = {
+  problem_proposer: '問題提出者', research_driver: '研究推動者', iteration_trigger: '迭代觸發者',
+  continuation_decider: '延續決策者', curator: '策展人', primary_author: '主筆',
+  formalizer: '形式化', graph_expander: '圖擴張', synthesis_agent: '統合',
+  handoff_designer: '交接設計',
+};
+---
+<Base title={`${program.title} — Research Programs · Logic Matrix`} description={`${program.title}: an AI-native research lineage, ${program.iteration_count} iterations, status ${program.status}.`}>
+  <Fragment slot="head">
+    <link rel="canonical" href={canonical} />
+    <meta name="robots" content="index, follow" />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'ResearchProject',
+      name: program.title,
+      alternateName: program.title_en,
+      url: canonical,
+      status: program.status,
+    })} />
+  </Fragment>
+
+  <div class="reader">
+    <div class="wrap">
+      <a class="back" href="/ai/programs/">← Research Programs</a>
+      <div class="reader-head measure">
+        <div class="eyebrow">{program.id} · {program.type}</div>
+        <h1>{program.title}</h1>
+        {program.title_en && <p class="subtitle">{program.title_en}</p>}
+        <div class="reader-meta">
+          <span>status: {program.status}{program.open_ended ? ' · open-ended' : ''}</span>
+          <a href={`/ai/programs/${program.id}.json`}>Program JSON ↗</a>
+          <a href={`/ai/programs/${id}/timeline.json`}>Timeline ↗</a>
+          <a href={`/ai/programs/${id}/integrity-report.json`}>Integrity Report ↗</a>
+        </div>
+      </div>
+
+      {program.integrity && ((program.integrity.missing_sequences?.length ?? 0) > 0 || (program.integrity.duplicate_resolved?.length ?? 0) > 0) && (
+        <div class="integrity-flag measure">
+          <div class="eyebrow">⚠ Integrity note — not silently corrected</div>
+          {program.integrity.missing_sequences?.length ? (
+            <p><b>Missing sequence(s):</b> {program.integrity.missing_sequences.join(', ')}. {program.integrity.missing_note}</p>
+          ) : null}
+          {program.integrity.duplicate_resolved?.map((d) => (
+            <p><b>Sequence {d.sequence} duplicate resolved:</b> {d.note}</p>
+          ))}
+        </div>
+      )}
+
+      <div class="current-state measure">
+        <div class="eyebrow">Current State — #{program.current_state.sequence}{program.current_state.artifact?.is_checkpoint ? ' (checkpoint)' : ''}</div>
+        {program.current_state.declaration && <p class="declaration">"{program.current_state.declaration}"</p>}
+        {program.current_state.stop_reason && <p class="stop-reason"><b>Why paused:</b> {program.current_state.stop_reason}</p>}
+        {program.current_state.artifact && (
+          <a class="checkpoint-link" href={program.current_state.artifact.canonical_url}>
+            → {program.current_state.artifact.title}
+          </a>
+        )}
+
+        {program.current_state.unresolved_gaps && program.current_state.unresolved_gaps.length > 0 && (
+          <div class="issue-block">
+            <div class="issue-h">Open Issues</div>
+            <ul>{program.current_state.unresolved_gaps.map((g) => <li>{g}</li>)}</ul>
+          </div>
+        )}
+        {program.current_state.next_actions && program.current_state.next_actions.length > 0 && (
+          <div class="issue-block">
+            <div class="issue-h">Next Actions</div>
+            <ul>{program.current_state.next_actions.map((a) => <li>{a}</li>)}</ul>
+          </div>
+        )}
+        {program.current_state.stewardship && (
+          <p class="stewardship"><b>Stewardship:</b> {program.current_state.stewardship}</p>
+        )}
+      </div>
+
+      {program.contributors && program.contributors.length > 0 && (
+        <div class="contributors measure">
+          <div class="eyebrow">Contributors</div>
+          <div class="contrib-list">
+            {program.contributors.map((c) => (
+              <div class="contrib">
+                <span class="contrib-name">{c.name}{c.model ? ` (${c.model})` : ''}</span>
+                <span class="contrib-roles">{c.roles.map((r) => roleLabel[r] || r).join(' · ')}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {program.foundation_artifacts && program.foundation_artifacts.length > 0 && (
+        <div class="artifact-section measure">
+          <div class="eyebrow">Foundation Papers ({program.foundation_artifacts.length})</div>
+          <ul class="artifact-list">
+            {program.foundation_artifacts.map((a) => (
+              <li><a href={a.canonical_url}>{a.title}</a></li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      <div class="artifact-section measure">
+        <div class="eyebrow">Iterations ({program.iterations.length}{program.integrity?.missing_sequences?.length ? `, missing ${program.integrity.missing_sequences.join(',')}` : ''})</div>
+        <ul class="iteration-list">
+          {program.iterations.map((a) => (
+            <li class={a.is_checkpoint ? 'is-checkpoint' : ''}>
+              <span class="iter-seq">#{a.sequence}</span>
+              <a href={a.canonical_url}>{a.topic || a.title}</a>
+              {a.is_checkpoint && <span class="chip">checkpoint</span>}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {program.applied_artifacts && program.applied_artifacts.length > 0 && (
+        <div class="artifact-section measure">
+          <div class="eyebrow">Applied / Case-Study Papers ({program.applied_artifacts.length})</div>
+          <ul class="artifact-list">
+            {program.applied_artifacts.map((a) => (
+              <li><a href={a.canonical_url}>{a.title}</a>{a.note ? ` — ${a.note}` : ''}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+  </div>
+
+  <style>
+    .subtitle { font-family: var(--serif); font-size: 1.05rem; color: var(--paper-dim); margin-top: -0.6rem; }
+    .integrity-flag, .current-state, .contributors, .artifact-section { margin: 1.6rem 0; padding: 1.1rem 1.3rem; border: 1px solid var(--line); border-radius: 0.6rem; background: var(--surface); }
+    .integrity-flag { border-color: var(--gold-dim); background: color-mix(in srgb, var(--surface) 85%, var(--gold) 6%); }
+    .integrity-flag p, .current-state p { margin: 0.4rem 0; line-height: 1.6; font-size: 0.92rem; color: var(--paper-dim); }
+    .declaration { font-family: var(--serif); font-style: italic; font-size: 1.05rem; color: var(--paper); }
+    .checkpoint-link { display: inline-block; margin: 0.6rem 0; color: var(--gold); text-decoration: none; border-bottom: 1px solid currentColor; }
+    .issue-block { margin-top: 0.9rem; }
+    .issue-h { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--paper-faint); margin-bottom: 0.3rem; }
+    .issue-block ul { margin: 0; padding-left: 1.2rem; }
+    .issue-block li { font-size: 0.9rem; color: var(--paper-dim); line-height: 1.6; }
+    .stewardship { margin-top: 0.9rem; font-size: 0.88rem; }
+    .contrib-list { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.6rem; }
+    .contrib { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; font-size: 0.88rem; }
+    .contrib-name { color: var(--paper); font-weight: 600; }
+    .contrib-roles { color: var(--paper-faint); font-family: var(--mono); font-size: 0.78rem; }
+    .artifact-list, .iteration-list { list-style: none; margin: 0.7rem 0 0; padding: 0; display: flex; flex-direction: column; gap: 0.45rem; }
+    .artifact-list a, .iteration-list a { color: var(--paper-dim); text-decoration: none; }
+    .artifact-list a:hover, .iteration-list a:hover { color: var(--gold); }
+    .iteration-list li { display: flex; align-items: baseline; gap: 0.6rem; font-size: 0.88rem; }
+    .iteration-list li.is-checkpoint { color: var(--gold); }
+    .iter-seq { font-family: var(--mono); font-size: 0.76rem; color: var(--paper-faint); flex: none; width: 2.4rem; }
+    .chip { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.05em; padding: 0.1rem 0.4rem; border-radius: 999px; border: 1px solid var(--gold-dim); color: var(--gold); }
+  </style>
+</Base>

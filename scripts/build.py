@@ -27,6 +27,7 @@ from scripts.ai_layer import write_ai_layer
 from scripts.graph_layer import write_graph_layer
 from scripts.companions import write_companions
 from scripts.geo_layer import write_geo_layer
+from scripts.programs import write_programs
 
 
 def main() -> None:
@@ -81,6 +82,7 @@ def main() -> None:
     write_redirects(registry, companions)
     write_legacy_map(registry, companions)  # dist/papers-legacy-map.json for the /papers/* catch-all Function
     ai_count = write_ai_layer(registry, entries)  # §9 AICL /ai/ + §10 AIRS + canonical llms
+    program_stats = write_programs(registry)  # AI Layer v0.2 MVP: /ai/programs/ research-lineage layer
     graph_stats = write_graph_layer(registry)  # Phase A: registry/tcf/ -> /ai/graph.json (real topology)
     write_sitemap_canonical(registry)          # §26.6.6 canonical-only sitemap (replaces legacy)
     route_issues = validate_routes(registry)   # §26.7 route consistency report
@@ -93,6 +95,9 @@ def main() -> None:
     print(f"[diag] language split: {len(zh_entries)} zh-Hant / {len(en_entries)} en")
     print(f"[diag] registry: {registry['count']} stable ids | +/p +/raw +/api +_redirects (id pages: {id_pages})")
     print(f"[diag] AICL: /ai/ layer + rights-spectrum + canonical llms ({ai_count} corpus.jsonl lines)")
+    print(f"[diag] programs: {program_stats['programs']} research program(s), {program_stats['iterations']} iteration(s), "
+          f"{program_stats['missing']} declared-missing sequence(s) -> /ai/programs/"
+          + (f" | UNRESOLVED REFS: {program_stats['unresolved_refs']}" if program_stats['unresolved_refs'] else ""))
     print(f"[diag] companions: {companions['attachments']} attachment(s) under {companions['parents']} paper(s) "
           f"-> /raw/{{parent}}/ + /ai/companions.json | retired ids: {companions['retired'] or '—'} "
           f"| missing: {companions['missing'] or '—'}")

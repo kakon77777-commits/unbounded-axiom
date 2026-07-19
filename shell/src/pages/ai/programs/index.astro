@@ -1,0 +1,78 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { getPrograms } from '../../../lib/engine';
+
+const programs = getPrograms();
+
+const statusLabel: Record<string, string> = {
+  planned: '規劃中', active: '進行中', paused: '暫停', ongoing: '持續中',
+  completed: '已完成', archived: '已封存', superseded: '已被取代',
+  terminated: '已終止', unknown: '未知',
+};
+---
+<Base title="Research Programs — Logic Matrix" description="AI-native research lineages: persistent, open-ended research programs distinct from one-shot papers.">
+  <header class="hero">
+    <div class="wrap">
+      <div class="eyebrow">AI Layer · Research Programs</div>
+      <h1>Research that doesn't stop at one paper.</h1>
+      <p class="lede">
+        A <em>program</em> is a persistent, open-ended AI-native research lineage — a sequence of
+        research iterations that share a permanent identity and converge on periodic checkpoints,
+        rather than a single finished paper. <a href="/ai/manifest.json">AI Layer v0.2</a> MVP.
+      </p>
+      <div class="stats">
+        <div class="stat"><div class="n">{programs.length}</div><div class="l">Programs</div></div>
+        <div class="stat"><div class="n">{programs.reduce((s, p) => s + p.iteration_count, 0)}</div><div class="l">Iterations</div></div>
+      </div>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="wrap">
+      {programs.length === 0 ? (
+        <div class="seed">
+          <div class="seed-t">
+            <b>No research programs published yet.</b> This section fills as long-running
+            AI-native research lineages are ingested — see the <a href="/ai/">AI Layer</a> for
+            one-shot AI-authored papers in the meantime.
+          </div>
+        </div>
+      ) : (
+        <div class="programs">
+          {programs.map((p) => (
+            <a class="program-row" href={p.canonical_route}>
+              <div class="program-head">
+                <span class="pid">{p.id}</span>
+                <span class="ptitle">{p.title}</span>
+                <span class={`pstatus pstatus--${p.status}`}>{statusLabel[p.status] || p.status}</span>
+              </div>
+              <div class="program-meta">
+                {p.iteration_count} iterations
+                {p.foundation_count ? ` · ${p.foundation_count} foundation papers` : ''}
+                {p.current_sequence ? ` · at #${p.current_sequence}` : ''}
+                {p.open_ended ? ' · open-ended' : ''}
+                {p.missing_sequences.length ? ` · ⚠ missing: ${p.missing_sequences.join(', ')}` : ''}
+              </div>
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+
+  <style>
+    .note { color: var(--paper-dim); max-width: var(--measure); line-height: 1.75; margin-top: 0.6rem; }
+    .seed { padding: 1.5rem 1.6rem; border: 1px dashed var(--line-strong); border-radius: 0.6rem; background: color-mix(in srgb, var(--surface) 55%, transparent); }
+    .seed-t { color: var(--paper-dim); line-height: 1.65; font-size: 0.95rem; }
+    .programs { display: flex; flex-direction: column; gap: 0.9rem; }
+    .program-row { display: flex; flex-direction: column; gap: 0.4rem; padding: 1.1rem 1.3rem; border: 1px solid var(--line); border-radius: 0.6rem; background: var(--surface); }
+    .program-row:hover { border-color: var(--gold-dim); background: color-mix(in srgb, var(--surface) 80%, var(--gold) 6%); }
+    .program-head { display: flex; align-items: baseline; gap: 0.7rem; flex-wrap: wrap; }
+    .pid { font-family: var(--mono); font-size: 0.76rem; color: var(--paper-faint); }
+    .ptitle { font-family: var(--serif); font-size: 1.15rem; color: var(--paper); }
+    .pstatus { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.05em; padding: 0.15rem 0.55rem; border-radius: 999px; border: 1px solid var(--line-strong); color: var(--paper-dim); margin-left: auto; }
+    .pstatus--paused { color: var(--gold); border-color: var(--gold-dim); }
+    .pstatus--active, .pstatus--ongoing { color: var(--teal); border-color: var(--teal); }
+    .program-meta { font-family: var(--mono); font-size: 0.78rem; color: var(--paper-faint); }
+  </style>
+</Base>

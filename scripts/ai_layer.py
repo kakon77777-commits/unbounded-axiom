@@ -205,6 +205,8 @@ Author: {SITE_AUTHOR}
 
 
 def _manifest(items, now):
+    from scripts.programs import load_program_seeds
+    program_seeds = load_program_seeds()
     _wj(AI / "manifest.json", {
         "version": "0.2",
         "generated_at": now,
@@ -220,6 +222,28 @@ def _manifest(items, now):
                    "jsonl": "/ai/corpus.jsonl", "timeline": "/ai/timeline.json",
                    "papers_registry": "/api/papers/index.json",
                    "companions": "/ai/companions.json", "media": "/ai/media.json"},
+        "capabilities": {
+            "paper_corpus": True,
+            "research_programs": bool(program_seeds),
+            "research_lineage_graph": False,
+            "contribution_ledger": False,
+            "continuity_capsules": False,
+            "integrity_reports": bool(program_seeds),
+        },
+        "programs": {
+            "note": "AI-native research programs — persistent, open-ended research "
+                    "lineages (a series of graph-update iterations converging on periodic "
+                    "checkpoints), distinct from one-shot papers. AI Layer v0.2 MVP scope; "
+                    "see /ai/programs/index.json.",
+            "count": len(program_seeds),
+            "index": "/ai/programs/index.json",
+            "program": "/ai/programs/{id}.json",
+            "latest_state": "/ai/programs/{id_short}/latest-state.json",
+            "artifacts": "/ai/programs/{id_short}/artifacts.json",
+            "open_issues": "/ai/programs/{id_short}/open-issues.json",
+            "timeline": "/ai/programs/{id_short}/timeline.json",
+            "integrity_report": "/ai/programs/{id_short}/integrity-report.json",
+        },
         "routes": {"canonical_page": "/p/{id}/", "raw": "/raw/{id}.{ext}",
                    "metadata": "/api/papers/{id}.json"},
         "specs": [
