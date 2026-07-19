@@ -1,0 +1,47 @@
+=== 三条 pi 公式高精度验证 ===
+pi_formula_1
+  terms        = 124
+  abs(error)   = 1.66240685748776899259E-109
+pi_formula_2
+  terms        = 78
+  abs(error)   = 5.5400109011720238208E-110
+pi_formula_3
+  terms        = 53
+  abs(error)   = 2.97966735650471666235E-109
+CSV: /mnt/data/lchuh5478_math_future_conjecture/results/pi_verification.csv
+=== 矩阵版 vs 角色符号版 ===
+k=0: L=1.3333333333333333, U=1.5, width=0.16666666666666666, exact=True
+k=1: L=1.411764705882353, U=1.4166666666666667, width=0.0049019607843137254, exact=True
+k=2: L=1.4142114384748701, U=1.4142156862745099, width=4.2477996397865907e-06, exact=True
+k=3: L=1.4142135623715002, U=1.4142135623746899, width=3.1897236492119109e-12, exact=True
+k=4: L=1.4142135623730951, U=1.4142135623730951, width=1.7985856643300906e-24, exact=True
+k=5: L=1.4142135623730951, U=1.4142135623730951, width=5.7185676866679024e-49, exact=True
+CSV: /mnt/data/lchuh5478_math_future_conjecture/results/matrix_vs_role.csv
+=== 二、三、四阶角色迭代 ===
+n=2, p=2: width=3.1897236492119109e-12
+n=2, p=3: width=2.5870270675117793e-41
+n=2, p=4: width=5.7809543864307291e-98
+n=3, p=2: width=4.8917004904927646e-09
+n=3, p=3: width=9.0251213880619303e-31
+n=3, p=4: width=4.2789236214219699e-73
+n=10, p=2: width=0.00035591525643052395
+n=10, p=3: width=5.5386294414019375e-15
+n=10, p=4: width=4.9699600143034717e-36
+R4 = R2 ∘ R2: exact PASS
+CSV: /mnt/data/lchuh5478_math_future_conjecture/results/higher_order.csv
+rho(R_2(x)) = rho(x)^2: PASS
+rho(R_3(x)) = rho(x)^3: PASS
+rho(R_4(x)) = rho(x)^4: PASS
+p=2, L' U' = L U: PASS
+p=3, L' U' = L U: PASS
+p=4, L' U' = L U: PASS
+单变量与角色符号形式：PASS
+R4 = R2 composed with R2: PASS
+
+##### verify_pi_formulas.py #####
+
+##### compare_matrix_vs_role.py #####
+
+##### higher_order_extensions.py #####
+
+##### symbolic_verify.py #####
