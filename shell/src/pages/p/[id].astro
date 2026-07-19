@@ -82,10 +82,10 @@ const geoBlocks = ext === 'md' ? geoJsonLdBlocks(extractGeoSignals(raw), canonic
         <h1>{paper.title}</h1>
         <div class="reader-meta">
           <span>{paper.language} · {ext}</span>
-          <a href={paper.raw_url} download={`${paper.title}.${ext}`}>Download ⬇</a>
           <a href={paper.raw_url}>Raw source ↗</a>
           <a href={paper.api_url}>Metadata ↗</a>
         </div>
+        <a class="dl-btn" href={paper.raw_url} download={`${paper.title}.${ext}`}>下載 {ext.toUpperCase()} 檔 ⬇</a>
       </div>
       {media && (media.audio || media.video) && (
         <div class="media measure" role="group" aria-label="本文影音 / Audio and video for this paper">
@@ -132,6 +132,14 @@ const geoBlocks = ext === 'md' ? geoJsonLdBlocks(extractGeoSignals(raw), canonic
     </div>
   </div>
   <style>
+    .dl-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      margin-top: 1.1rem; padding: 0.6rem 1.1rem;
+      font-family: var(--mono); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.04em;
+      color: var(--ink); background: var(--gold); border-radius: 0.4rem;
+      text-decoration: none; transition: background 0.15s ease;
+    }
+    .dl-btn:hover { background: var(--gold-dim); color: var(--ink); }
     .media { margin: 1.6rem 0 0.5rem; display: flex; flex-direction: column; gap: 1.1rem; }
     .media-item { display: flex; flex-direction: column; gap: 0.5rem; padding: 1rem 1.1rem; border: 1px solid var(--line); border-radius: 0.6rem; background: var(--surface); }
     .media-item audio { width: 100%; }
