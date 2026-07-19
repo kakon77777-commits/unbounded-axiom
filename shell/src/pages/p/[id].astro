@@ -82,6 +82,7 @@ const geoBlocks = ext === 'md' ? geoJsonLdBlocks(extractGeoSignals(raw), canonic
         <h1>{paper.title}</h1>
         <div class="reader-meta">
           <span>{paper.language} · {ext}</span>
+          <a href={paper.raw_url} download={`${paper.title}.${ext}`}>Download ⬇</a>
           <a href={paper.raw_url}>Raw source ↗</a>
           <a href={paper.api_url}>Metadata ↗</a>
         </div>

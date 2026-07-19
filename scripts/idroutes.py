@@ -50,13 +50,18 @@ def _paper_doc(item, body, mode, geo_signals=None) -> str:
         note = "" if mode == "full" else '<p style="opacity:0.6">[原始碼檢視 / source view]</p>'
         content = note + body
     else:
+        dl_name = esc(f"{display}.{ext}")
         if ext == "pdf":
             content = (
-                f'<p>PDF 文件。<a href="{raw_href}" target="_blank" rel="noopener">開啟 / 下載原檔</a></p>'
+                f'<p>PDF 文件。<a href="{raw_href}" target="_blank" rel="noopener">開啟</a> · '
+                f'<a href="{raw_href}" download="{dl_name}">下載 ⬇</a></p>'
                 f'<iframe src="{raw_href}" style="width:100%;height:80vh;border:1px solid #0f0;margin-top:12px"></iframe>'
             )
         else:
-            content = f'<p>原檔：<a href="{raw_href}" target="_blank" rel="noopener">下載 {esc(ext)}</a></p>'
+            content = (
+                f'<p>原檔：<a href="{raw_href}" target="_blank" rel="noopener">開啟 {esc(ext)}</a> · '
+                f'<a href="{raw_href}" download="{dl_name}">下載 ⬇</a></p>'
+            )
 
     jsonld = (
         "{\n"
