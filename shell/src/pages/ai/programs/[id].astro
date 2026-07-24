@@ -65,7 +65,7 @@ const roleLabel: Record<string, string> = {
       <div class="current-state measure">
         <div class="eyebrow">Current State — #{program.current_state.sequence}{program.current_state.artifact?.is_checkpoint ? ' (checkpoint)' : ''}</div>
         {program.current_state.declaration && <p class="declaration">"{program.current_state.declaration}"</p>}
-        {program.current_state.stop_reason && <p class="stop-reason"><b>Why paused:</b> {program.current_state.stop_reason}</p>}
+        {program.current_state.stop_reason && <p class="stop-reason"><b>{program.status === 'completed' ? 'Closing note:' : 'Why paused:'}</b> {program.current_state.stop_reason}</p>}
         {program.current_state.artifact && (
           <a class="checkpoint-link" href={program.current_state.artifact.canonical_url}>
             → {program.current_state.artifact.title}
