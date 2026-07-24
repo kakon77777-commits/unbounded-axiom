@@ -1,0 +1,127 @@
+{
+  "schema": "RH-CLAIM-LEDGER-v0.1",
+  "claims": [
+    {
+      "claim_id": "B01-C01",
+      "nodes": [
+        "RH-W-01",
+        "RH-W-02"
+      ],
+      "statement": "在指定緊支撐平滑類中，$D(D+1)$ 的值域精確為雙消失矩核心 $\\mathcal C_{00}$。",
+      "status": "PROVED_IN_DOCUMENTED_DERIVATION",
+      "scope": "FUNCTION_SPACE_CORE",
+      "formalized": false,
+      "rh_claim": false
+    },
+    {
+      "claim_id": "B01-C02",
+      "nodes": [
+        "RH-W-02"
+      ],
+      "statement": "在雙消失矩相關核心上，Bombieri/Clay 算術正規化與 Weil 協方差正規化對齊。",
+      "status": "PROVED_IN_DOCUMENTED_DERIVATION",
+      "scope": "NORMALIZATION",
+      "formalized": false,
+      "rh_claim": false
+    },
+    {
+      "claim_id": "B01-C03",
+      "nodes": [
+        "RH-W-03"
+      ],
+      "statement": "若 RH 為假，完整 Weil 測試框架存在有限對數支撐的負證人。",
+      "status": "LITERATURE_GROUNDED_STRUCTURAL_RESULT",
+      "scope": "FULL_WEIL_CORE_NOT_C00_ONLY",
+      "formalized": false,
+      "rh_claim": false
+    },
+    {
+      "claim_id": "B01-C04",
+      "nodes": [
+        "RH-W-04"
+      ],
+      "statement": "在指定稠密有限字典與連續二次型假設下，真實有限負方向最終可由有限子空間及有理 witness 檢出。",
+      "status": "PROTOCOL_AND_CONDITIONAL_ARGUMENT",
+      "scope": "FINITE_CERTIFICATE_PROTOCOL",
+      "formalized": false,
+      "rh_claim": false
+    },
+    {
+      "claim_id": "B01-C05",
+      "nodes": [
+        "RH-W-05",
+        "RH-W-07",
+        "RH-W-08",
+        "RH-W-09"
+      ],
+      "statement": "多個指定有限 B-spline 子空間上的真實 Weil 區間矩陣被嚴格證明正定。",
+      "status": "EXACT_NUMERICAL_CERTIFICATES",
+      "scope": "ONLY_LISTED_FINITE_SUBSPACES",
+      "formalized": false,
+      "rh_claim": false
+    },
+    {
+      "claim_id": "B01-C06",
+      "nodes": [
+        "RH-W-10",
+        "RH-W-11"
+      ],
+      "statement": "B-spline correlation 的 prime-boundary 活化階數為 $m+n+1$，並與正則性及尾界階數形成對偶。",
+      "status": "EXACT_STRUCTURAL_IDENTITY",
+      "scope": "CENTERED_CARDINAL_B_SPLINE_DICTIONARY",
+      "formalized": false,
+      "rh_claim": false
+    },
+    {
+      "claim_id": "B01-C07",
+      "nodes": [
+        "RH-W-12",
+        "RH-W-13"
+      ],
+      "statement": "指定 10 維混合正則性字典存在嚴格近零正譜帶 $10^{-8}<\\lambda_{min}<5\\times10^{-8}$。",
+      "status": "EXACT_NUMERICAL_CERTIFICATE",
+      "scope": "FIXED_10D_DICTIONARY",
+      "formalized": false,
+      "rh_claim": false
+    },
+    {
+      "claim_id": "B01-C08",
+      "nodes": [
+        "RH-W-14",
+        "RH-W-15",
+        "RH-W-16"
+      ],
+      "statement": "上述近零正譜可在指定二維與三維有理參數區域內被一致證明。",
+      "status": "EXACT_PARAMETER_REGION_CERTIFICATES",
+      "scope": "SMALL_CERTIFIED_PARAMETER_BOXES",
+      "formalized": false,
+      "rh_claim": false
+    },
+    {
+      "claim_id": "B01-C09",
+      "nodes": [
+        "RH-W-17"
+      ],
+      "statement": "證書可跨越指定 spline polynomial-piece 事件面，形成無洞的閉區間腔室覆蓋。",
+      "status": "EXACT_CHAMBER_COVER_CERTIFICATE",
+      "scope": "LOCAL_EVENT_4D_EQUALS_LOG2",
+      "formalized": false,
+      "rh_claim": false
+    },
+    {
+      "claim_id": "B01-C10",
+      "nodes": [
+        "RH-W-18",
+        "RH-W-19",
+        "RH-W-20"
+      ],
+      "statement": "Batch 01 的可執行證書可由統一後端重放，並可拒絕已列出的錯誤類別；但同封包串通攻擊需要外部信任根。",
+      "status": "BACKEND_AND_ADVERSARIAL_AUDIT",
+      "scope": "PACKAGED_ARTIFACTS_ONLY",
+      "formalized": false,
+      "rh_claim": false
+    }
+  ],
+  "global_claim": "FINITE_RESEARCH_ENGINEERING_ONLY",
+  "rh_claim": false
+}

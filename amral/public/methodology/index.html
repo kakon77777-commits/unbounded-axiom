@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>方法論 · AMRAL</title>
+<meta name="description" content="AMRAL 方法論摘要:結果誘導的中介定理生成(RIITG)、逆向公理回填(RAB)、知識條件化類窮舉(KCPE)與自主數學研究代理循環(AMRAL)。附三篇原文全文連結。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../">AMRAL</a>
+  <a class="link active" href="./">方法論</a>
+  <a class="link" href="../riemann/">黎曼猜想</a>
+</div></nav>
+<div class="wrap narrow">
+  <header class="page">
+    <p class="eyebrow"><a href="../">← AMRAL</a></p>
+    <h1>方法論</h1>
+    <p class="subtitle">RIITG · RAB · KCPE · AMRAL</p>
+    <p class="lede">
+      三篇都是<strong>方法論草稿</strong>,不是已證定理——每一篇自己的誠信聲明都寫明:不宣稱已被證明有一般性增益,
+      只提出可證偽的架構與待驗證命題。案例研究(黎曼猜想的實測資料)在<a href="../riemann/">黎曼猜想頁</a>。
+    </p>
+  </header>
+
+  <section id="summary">
+    <h2 class="doc-h2">基本方法論摘要</h2>
+    <p class="doc-meta">下面是把三篇的命題統合起來寫的摘要,不是原文——原文一字未改,分別放在下面三個連結。</p>
+    <div class="doc">
+      <p><strong>起點</strong>——一次「發明新數論證明黎曼猜想」的胡鬧輸出,生成了五條似是而非的自創公理。三篇不把它當垃圾丟掉,也不當真公理收下,而是重新定位:每一條自創公理都不是永久前提,而是<strong>暫態橋樑命題</strong>——由目標結果反向誘導生成,之後必須降格為證明義務,再逐條尋找真正基礎回填。「先發明足夠世界,再證明世界成立」這個操作,才是三篇真正在研究的對象。</p>
+
+      <p><strong>RIITG(結果誘導的中介定理生成法)</strong>——給定目標命題 P,不直接找 P 的證明,而是反向生成一組候選中介命題 M:「什麼若成立,會讓 P 幾乎自動成立?」這是搜尋算子,不是推理規則,候選命題不必已存在於既有知識庫中。</p>
+
+      <p><strong>RAB(逆向公理回填法)</strong>——每個候選 M 立刻降格為證明義務,不允許停留在「暫時當真」。再向下尋找更基礎的支撐 T,使 T⟹M。全程受五條底線約束:充分性(候選集合合取起來要能推出 P)、非循環性(P 不能是自己的祖先)、可回填性(真的存在某個 T)、負擔下降(證 M 要比證 P 容易)、語義寬度可控。</p>
+
+      <p><strong>中尺度語義窗口</strong>——候補空間過寬則組合爆炸,過窄則正確路徑可能在搜索開始前就被刪除。三篇一致主張:有效的中介命題落在兩者之間的可控區間,而不是越具體越好。</p>
+
+      <p><strong>KCPE(知識條件化的證明空間類窮舉)</strong>——不是窮舉所有可能證明,而是根據當前知識、失敗歷史、語義窗口與計算預算,動態構造一個局部候補空間 Ω<sub>t</sub>。網路檢索在這裡不是「查答案」,是知識底空間的擴張算子:遇到明確缺口才觸發檢索,擴張後的知識重新餵回候補空間生成。</p>
+
+      <p><strong>AMRAL(自主數學研究代理循環)</strong>——把上述三者包進一個可反覆執行的九步迴圈:分析、生成、類窮舉、檢索、回填、計算、驗證、反證、更新。核心立場是把數學研究本身建模成研究狀態的動力系統(S<sub>t</sub> → S<sub>t+1</sub>),而不是一次性證明輸出;多代理角色分工(橋樑生成、反例搜索、依賴審計……)讓不同中介命題可以並行攻堅。</p>
+
+      <p><strong>沒有說的事</strong>——三篇都在附錄裡明講:以上效益全部待驗證,沒有一般性證明。未回填的橋樑不得寫成定理,有限計算不得冒充無限證明,網路檢索到的內容不自動視為真。黎曼猜想案例就是在這條路上真的跑了一輪,而且沒有證出來——過程資料在<a href="../riemann/">黎曼猜想頁</a>。</p>
+    </div>
+  </section>
+
+  <section id="papers">
+    <h2 class="doc-h2">原文三篇</h2>
+    <p class="section-note">依撰寫者自己的版本備註排序,原字未改。</p>
+    <div class="case-grid">
+      <a class="case-card" href="./genesis/">
+        <span class="k">① 序列第一篇 · v1.0</span>
+        <h3>從暫態公理到可回填橋樑</h3>
+        <p>黎曼猜想案例中的結果誘導中介命題重建——一個非證明性的逆向結構設計實驗。</p>
+      </a>
+      <a class="case-card" href="./riitg-rab/">
+        <span class="k">② 序列第二篇 · v1.0</span>
+        <h3>結果誘導的中介定理生成法與逆向公理回填法</h3>
+        <p>一般方法論稿——RIITG 與 RAB 的完整形式框架、驗證條件與可證偽性。</p>
+      </a>
+      <a class="case-card" href="./amral/">
+        <span class="k">③ v0.1</span>
+        <h3>自主數學研究代理循環</h3>
+        <p>AMRAL / KCPE——把方法論包成可反覆執行的 Agent 迴圈與多代理架構。</p>
+      </a>
+    </div>
+    <p class="notice">
+      前兩篇各自的版本備註都預告了「第三篇:在已知但非平凡命題上的盲測實驗論文」——那篇沒有被寫出來。
+      實際接續的是這篇 AMRAL/KCPE(同樣把 RIITG/RAB 往下推進,但推進的方向是「做成可反覆執行的 Agent 迴圈」,不是原訂的盲測驗證)。
+    </p>
+  </section>
+
+  <footer class="sitefoot">
+    <span>三篇皆標記為草稿方法論,非已證結果</span>
+    <a href="../riemann/">→ 看黎曼猜想案例的實測資料</a>
+  </footer>
+</div>
+</body>
+</html>

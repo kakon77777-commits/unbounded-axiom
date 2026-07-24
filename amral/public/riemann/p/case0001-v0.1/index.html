@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case 0001 · 黎曼猜想 Weil 工程接力 Batch 01 · AMRAL</title>
+<meta name="description" content="AI 自主數學研究案例 0001:黎曼猜想 Weil 工程接力 Batch 01。20 輪時間軸、主張台帳、失敗與修正紀錄、信任邊界、Batch 02 交棒——RH 未證明也未反證。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../assets/site.css">
+<style>
+  .hero-status { display: inline-block; margin: 14px 0 0; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.03em; padding: 5px 12px; border: 1px solid var(--closed); color: var(--closed); background: var(--closed-bg); }
+  .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 18px; }
+  .why-card { background: var(--paper-raised); padding: 16px; }
+  .why-card h3 { font-size: 0.85rem; margin: 0 0 8px; }
+  .why-card p { font-size: 0.82rem; color: var(--ink-dim); margin: 0; line-height: 1.6; }
+  .timeline { border-left: 2px solid var(--line); margin-left: 6px; }
+  .tl-item { position: relative; padding: 0 0 22px 22px; }
+  .tl-item::before { content: ""; position: absolute; left: -5px; top: 4px; width: 8px; height: 8px; background: var(--ink-dim); border-radius: 50%; }
+  .tl-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 4px; }
+  .tl-order { font-size: 0.72rem; color: var(--ink-dim); }
+  .tl-node { font-weight: 700; font-size: 0.9rem; }
+  .tl-title { font-size: 0.9rem; }
+  .tl-summary { font-size: 0.82rem; color: var(--ink-dim); line-height: 1.6; }
+  .pill.neutral { color: var(--ink-dim); border: 1px solid var(--line); background: var(--paper-raised); font-weight: 400; }
+  table.wide { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+  table.wide th { text-align: left; font-size: 0.72rem; color: var(--ink-dim); text-transform: uppercase; letter-spacing: 0.03em; padding: 0 10px 8px 0; border-bottom: 1px solid var(--line); }
+  table.wide td { padding: 9px 10px 9px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+  table.wide tr:last-child td { border-bottom: none; }
+  .trust-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-top: 14px; }
+  .trust-col h3 { font-size: 0.85rem; margin: 0 0 8px; }
+  .trust-col.guaranteed h3 { color: var(--closed); }
+  .trust-col.not-guaranteed h3 { color: var(--open); }
+  .trust-col ul { margin: 0; padding-left: 18px; font-size: 0.82rem; color: var(--ink-dim); line-height: 1.7; }
+  .track-card { border: 1px solid var(--line); padding: 12px 14px; margin-bottom: 10px; background: var(--paper-raised); }
+  .track-head { display: flex; justify-content: space-between; gap: 10px; font-size: 0.85rem; font-weight: 700; }
+  .track-priority { font-size: 0.68rem; color: var(--ink-dim); font-weight: 400; }
+  .track-nodes { font-size: 0.78rem; color: var(--ink-dim); margin-top: 6px; }
+</style>
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../">AMRAL</a>
+  <a class="link" href="../../../methodology/">方法論</a>
+  <a class="link active" href="../../">黎曼猜想</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← 黎曼猜想封存庫</a>
+    <span>/</span>
+    <a href="../../#platform">平台匯入包</a>
+    <span>/</span>
+    <span>Case 0001</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">CASE-0001-RH-WEIL-BATCH01</span>
+      <span class="tag">v0.1</span>
+      <span class="tag">2026-07-24</span>
+    </div>
+    <h1 id="hero-title"></h1>
+    <p class="h1-sub" id="hero-subtitle"></p>
+    <span class="hero-status" id="hero-status"></span>
+  </header>
+
+  <section id="what-why">
+    <div class="why-grid" id="why-grid"></div>
+  </section>
+
+  <section id="timeline">
+    <h2 class="doc-h2">20 輪時間軸 · Timeline</h2>
+    <p class="section-note">RH-W-01 到 RH-W-20,每輪的節點型態與狀態都是包自己記的原始詞彙,沒有被我簡化成單一「完成」標籤。</p>
+    <div class="timeline" id="timeline-out"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="claims">
+    <h2 class="doc-h2">主張台帳 · Claim Ledger</h2>
+    <p class="section-note">Batch 01 實際主張的 10 條命題,各自標明作用域跟是否已形式化——沒有一條的作用域是「黎曼猜想本身」。</p>
+    <div id="claims-out"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="failures">
+    <h2 class="doc-h2">失敗與修正博物館 · Failure &amp; Revision Log</h2>
+    <p class="section-note">9 筆——包括一次真的假負值(F04,約 −3.32×10⁻⁷,已修正)。失敗紀錄跟成功紀錄同樣正式保留。</p>
+    <div id="failures-out"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="trust">
+    <h2 class="doc-h2">信任邊界 · Trust Boundary</h2>
+    <p class="section-note">內部 hash 只能證明封包內部一致,不能取代外部信任根——這點包自己說得很直接。</p>
+    <div class="trust-grid" id="trust-out"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="handoff">
+    <h2 class="doc-h2">Batch 02 交棒 · Handoff</h2>
+    <p class="section-note" id="handoff-principle"></p>
+    <div id="handoff-out"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="files">
+    <h2 class="doc-h2">檔案 · Files</h2>
+    <p class="section-note">歷史 19 個 W 工程 zip 不在這包裡,各自在上面「W 工程包」區塊獨立下載。這包只是結構化索引 + 網站文案 + Batch 02 交棒規格。</p>
+    <div class="filelist" id="filelist-out"></div>
+    <a class="zip-dl" href="../../packages/RH_CASE_0001_AI自主數學研究平台匯入包_v0.1.zip" download>下載完整匯入包</a>
+  </section>
+
+  <footer class="sitefoot">
+    <span>RH_CLAIM = false(全部 20 輪、10 條主張、9 筆失敗紀錄一致)</span>
+    <a href="../../">← 回黎曼猜想封存庫</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../assets/render.js"></script>
+<script>
+const F = (name) => fetch("./files/" + name).then((r) => { if (!r.ok) throw new Error(name + ": HTTP " + r.status); return r.json(); });
+
+async function boot() {
+  try {
+    const [copy, timeline, claims, failures, trust, handoff] = await Promise.all([
+      F("website_copy_zh_tw.json"), F("timeline.json"), F("claim_ledger.json"),
+      F("failure_and_revision_log.json"), F("trust_boundary.json"), F("handoff_batch_02.json"),
+    ]);
+
+    document.getElementById("hero-title").textContent = copy.hero_title;
+    document.getElementById("hero-subtitle").textContent = copy.hero_subtitle;
+    document.getElementById("hero-status").textContent = copy.status_badge;
+
+    document.getElementById("why-grid").innerHTML = copy.sections.map((s) => `
+      <div class="why-card"><h3>${amralEsc(s.title)}</h3><p>${amralEsc(s.body)}</p></div>
+    `).join("");
+
+    document.getElementById("timeline-out").innerHTML = timeline.entries.map((e) => `
+      <div class="tl-item">
+        <div class="tl-head">
+          <span class="tl-order">#${e.order}</span>
+          <span class="tl-node">${amralEsc(e.node_id)}</span>
+          <span class="tl-title">${amralEsc(e.title)}</span>
+        </div>
+        <div><span class="pill neutral">${amralEsc(e.status)}</span> <span class="pill neutral">${amralEsc(e.node_type)}</span></div>
+        <p class="tl-summary">${amralEsc(e.summary)}</p>
+      </div>`).join("");
+
+    document.getElementById("claims-out").innerHTML = `
+      <table class="wide">
+        <thead><tr><th>ID</th><th>主張(作用域內)</th><th>狀態 / 作用域</th></tr></thead>
+        <tbody>${claims.claims.map((c) => `
+          <tr>
+            <td>${amralEsc(c.claim_id)}<br><span style="color:var(--ink-dim);font-size:0.72rem">${c.nodes.join(", ")}</span></td>
+            <td>${amralEsc(c.statement)}</td>
+            <td><span class="pill neutral">${amralEsc(c.status)}</span><br><span style="color:var(--ink-dim);font-size:0.72rem">${amralEsc(c.scope)} · ${c.formalized ? "已形式化" : "未形式化"}</span></td>
+          </tr>`).join("")}</tbody>
+      </table>`;
+
+    document.getElementById("failures-out").innerHTML = `
+      <table class="wide">
+        <thead><tr><th>事件</th><th>發現</th><th>結果</th></tr></thead>
+        <tbody>${failures.events.map((e) => `
+          <tr>
+            <td>${amralEsc(e.event_id)}<br><span style="color:var(--ink-dim);font-size:0.72rem">${amralEsc(e.node)} · ${amralEsc(e.category)}</span></td>
+            <td>${amralEsc(e.finding)}</td>
+            <td><span class="pill neutral">${amralEsc(e.disposition)}</span></td>
+          </tr>`).join("")}</tbody>
+      </table>`;
+
+    document.getElementById("trust-out").innerHTML = `
+      <div class="trust-col guaranteed"><h3>內部保證</h3><ul>${trust.internal_guarantees.map((t) => `<li>${amralEsc(t)}</li>`).join("")}</ul></div>
+      <div class="trust-col not-guaranteed"><h3>沒有保證</h3><ul>${trust.not_guaranteed.map((t) => `<li>${amralEsc(t)}</li>`).join("")}</ul></div>
+      <div class="trust-col"><h3>建議的外部信任根</h3><ul>${trust.recommended_external_roots.map((t) => `<li>${amralEsc(t)}</li>`).join("")}</ul></div>
+    `;
+
+    document.getElementById("handoff-principle").textContent = handoff.handoff_principle;
+    document.getElementById("handoff-out").innerHTML =
+      handoff.candidate_tracks.map((t) => `
+        <div class="track-card">
+          <div class="track-head"><span>${amralEsc(t.track_id)} · ${amralEsc(t.title)}</span><span class="track-priority">${amralEsc(t.priority)}</span></div>
+          <div class="track-nodes">${t.candidate_nodes.map(amralEsc).join(" · ")}</div>
+        </div>`).join("") +
+      (handoff.open_questions?.length
+        ? `<p class="section-note" style="margin-top:14px;"><strong>開放問題:</strong></p><ul style="font-size:0.82rem;color:var(--ink-dim);">${handoff.open_questions.map((q) => `<li>${amralEsc(q)}</li>`).join("")}</ul>`
+        : "");
+
+    document.getElementById("filelist-out").innerHTML = [
+      "case_manifest.json", "research_nodes.json", "dependency_graph.json", "timeline.json",
+      "certificate_index.json", "claim_ledger.json", "failure_and_revision_log.json",
+      "trust_boundary.json", "handoff_batch_02.json", "artifact_catalog.json", "references.json",
+    ].map((f) => `<li><a href="./files/${f}" download>${f}</a></li>`).join("");
+
+    amralRenderMath(document.body);
+  } catch (e) {
+    document.querySelector(".wrap").insertAdjacentHTML("beforeend", `<p class="error">載入失敗:${e.message}</p>`);
+  }
+}
+boot();
+</script>
+</body>
+</html>

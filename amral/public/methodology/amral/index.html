@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>自主數學研究代理循環 · 方法論 · AMRAL</title>
+<meta name="description" content="自主數學研究代理循環(AMRAL)——結果誘導中介定理生成、逆向公理回填與知識條件化類窮舉(KCPE)的初步架構。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../files/自主數學研究代理循環_結果誘導中介定理生成_逆向公理回填與知識條件化類窮舉_v0.1.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../">AMRAL</a>
+  <a class="link active" href="../">方法論</a>
+  <a class="link" href="../../riemann/">黎曼猜想</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../">← 方法論</a>
+    <span>/</span>
+    <span>AMRAL / KCPE</span>
+  </p>
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">v0.1</span>
+      <span class="tag">2026-07-09</span>
+      <span class="tag">草稿</span>
+    </div>
+    <h1>自主數學研究代理循環</h1>
+    <p class="h1-sub">結果誘導中介定理生成、逆向公理回填與知識條件化類窮舉的初步架構</p>
+  </header>
+
+  <div class="connections">
+    <div class="conn-card"><span class="k">上一篇</span><a href="../riitg-rab/">② RIITG / RAB 通用方法論</a></div>
+  </div>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../">← 方法論摘要</a>
+    <a href="../files/自主數學研究代理循環_結果誘導中介定理生成_逆向公理回填與知識條件化類窮舉_v0.1.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../assets/render.js"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../files/自主數學研究代理循環_結果誘導中介定理生成_逆向公理回填與知識條件化類窮舉_v0.1.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

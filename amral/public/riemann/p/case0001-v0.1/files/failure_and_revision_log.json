@@ -1,0 +1,78 @@
+{
+  "schema": "RH-FAILURE-REVISION-LOG-v0.1",
+  "events": [
+    {
+      "event_id": "F01",
+      "node": "RH-W-02",
+      "category": "INVALID_COMPLETION_SPACE",
+      "finding": "裸 $L^2$ 不保證點值、prime sample 與顯式公式泛函連續，不能作為無條件完成空間。",
+      "disposition": "REJECTED_ROUTE",
+      "rh_claim": false
+    },
+    {
+      "event_id": "F02",
+      "node": "RH-W-10",
+      "category": "FALSE_CAUSAL_ATTRIBUTION",
+      "finding": "prime-3 七階軟啟動量太小，不能解釋既有近零模態。",
+      "disposition": "NEGATIVE_RESULT_RETAINED",
+      "rh_claim": false
+    },
+    {
+      "event_id": "F03",
+      "node": "RH-W-13",
+      "category": "GAUGE_PARAMETER",
+      "finding": "整體通道縮放 $\\alpha$ 是 congruence gauge，不是真正廣義譜方向。",
+      "disposition": "REMOVED_FROM_TRUE_PARAMETER_SPACE",
+      "rh_claim": false
+    },
+    {
+      "event_id": "F04",
+      "node": "RH-W-13",
+      "category": "PARAMETER_IDENTITY_MISMATCH",
+      "finding": "M 使用量化參數而 G 使用未量化參數造成約 $-3.32\\times10^{-7}$ 假負值；一致重建後為正。",
+      "disposition": "RED_ALERT_FIXED",
+      "rh_claim": false
+    },
+    {
+      "event_id": "F05",
+      "node": "RH-W-14",
+      "category": "OMITTED_ARCHIMEDEAN_EXTERIOR_TAIL",
+      "finding": "一階導數界漏掉支撐外 $-2f(0)$ 尾。",
+      "disposition": "SUPERSEDED_AND_RECERTIFIED_BY_W15",
+      "rh_claim": false
+    },
+    {
+      "event_id": "F06",
+      "node": "RH-W-16",
+      "category": "PACKAGING_DEPENDENCY",
+      "finding": "W-15 公開包曾漏收共用模組，解壓後不能獨立重放。",
+      "disposition": "SELF_CONTAINED_PACKAGING_RESTORED",
+      "rh_claim": false
+    },
+    {
+      "event_id": "F07",
+      "node": "RH-W-18",
+      "category": "LEGACY_MISSING_ARTIFACT",
+      "finding": "W-06 缺少原始 2×2 interval JSON。",
+      "disposition": "LEGACY_INCOMPLETE_NOT_GREENWASHED",
+      "rh_claim": false
+    },
+    {
+      "event_id": "F08",
+      "node": "RH-W-19",
+      "category": "FLOAT_FALSE_NEGATIVE",
+      "finding": "14 階 Hilbert 矩陣 exact 正定，但 double eigensolver 回傳負最小特徵值。",
+      "disposition": "FLOAT_SIGN_NOT_ACCEPTED_AS_CERTIFICATE",
+      "rh_claim": false
+    },
+    {
+      "event_id": "F09",
+      "node": "RH-W-19",
+      "category": "SELF_AUTHENTICATION_LIMIT",
+      "finding": "若攻擊者同步控制證書、verifier、manifest 與 hash，內部一致性檢查可被串通。",
+      "disposition": "EXTERNAL_TRUST_ROOT_REQUIRED",
+      "rh_claim": false
+    }
+  ],
+  "rh_claim": false
+}

@@ -1,0 +1,30 @@
+{
+  "schema": "RH-BATCH01-TRUST-BOUNDARY-v0.1",
+  "internal_guarantees": [
+    "SHA-256 artifact allowlist and unindexed security-file rejection in backend v0.2",
+    "native verifier replay in isolated temporary directories",
+    "exact rational arithmetic or outward interval arithmetic after documented transcendental enclosures",
+    "claim firewall requires RH_CLAIM=false",
+    "status vocabulary preserves protocol-only, superseded, and legacy-incomplete states"
+  ],
+  "not_guaranteed": [
+    "external authorship or release authenticity",
+    "independent implementation agreement",
+    "formal proof-assistant verification of W-01..W-20",
+    "absence of bugs shared by generator and verifier",
+    "any proof or disproof of the Riemann Hypothesis"
+  ],
+  "recommended_external_roots": [
+    "signed release digest",
+    "public Git tag and immutable archive",
+    "reproducible build",
+    "independent Rust big-rational verifier",
+    "Lean/Coq small checker for certificate kernels",
+    "multi-site checksum mirrors"
+  ],
+  "known_status_exceptions": {
+    "RH-W-06": "LEGACY_INCOMPLETE",
+    "RH-W-14": "SUPERSEDED_RECERTIFIED"
+  },
+  "rh_claim": false
+}

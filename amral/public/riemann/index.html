@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>黎曼猜想 · AMRAL</title>
+<meta name="description" content="AMRAL 案例一:黎曼猜想。原始工程包,未經改動,逐輪留痕,含驗證與雜湊。證明沒有閉合,過程資料原樣封存。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../">AMRAL</a>
+  <a class="link" href="../methodology/">方法論</a>
+  <a class="link active" href="./">黎曼猜想</a>
+</div></nav>
+<div class="wrap">
+  <header class="page">
+    <p class="eyebrow"><a href="../">← AMRAL</a> · 案例一</p>
+    <h1>黎曼猜想</h1>
+    <p class="subtitle">Riemann Hypothesis · AMRAL 第一個案例研究</p>
+    <p class="lede">
+      這裡收的是原始工程包 — markdown 報告、Python 驗證腳本、JSON 證書、CSV 資料表,逐輪未經改動地封存。
+      證明<strong>沒有閉合</strong>,但過程資料本身留下了。每包都附完整檔案雜湊,可自行核對是否遭改動。
+      方法論(RIITG / RAB / KCPE / AMRAL)見<a href="../methodology/">方法論頁</a>。
+    </p>
+    <div class="stats" id="stats" aria-label="封存庫統計"></div>
+    <p class="notice">逐包詳細頁還在陸續補——目前只有 W-17 做好了(格子裡標了「→ 詳細頁」的那張)。其餘包先提供下載。</p>
+  </header>
+
+  <div id="content">
+    <p class="loading">載入清單中…</p>
+  </div>
+
+  <footer class="sitefoot">
+    <span>SHA-256 逐包核驗 · 原始位元組,不重新打包</span>
+    <span id="generated-note"></span>
+  </footer>
+</div>
+
+<script>
+const fmtSize = (b) => {
+  if (b < 1024) return b + " B";
+  if (b < 1024 * 1024) return (b / 1024).toFixed(1) + " KB";
+  return (b / (1024 * 1024)).toFixed(2) + " MB";
+};
+const fmtDate = (iso) => {
+  if (!iso) return "—";
+  const d = new Date(iso);
+  if (isNaN(d)) return iso;
+  return d.toLocaleString("zh-TW", {
+    year: "numeric", month: "2-digit", day: "2-digit",
+    hour: "2-digit", minute: "2-digit", hour12: false,
+  }).replace(/\//g, "-");
+};
+
+function cardHTML(pkg, seriesTagLabel) {
+  const stamp = pkg.stamp
+    ? `<span class="stamp ${pkg.stamp.kind}">${pkg.stamp.label}</span>`
+    : "";
+  const href = "./packages/" + encodeURIComponent(pkg.filename);
+  const shortHash = pkg.sha256.slice(0, 16) + "…";
+  const titleInner = pkg.has_detail_page
+    ? `<a class="title-link" href="./p/${pkg.id}/">${pkg.title} <span class="detail-hint">→ 詳細頁</span></a>`
+    : pkg.title;
+  return `
+    <article class="card" id="${pkg.id}">
+      <div class="card-top">
+        <span class="tag">${seriesTagLabel}</span>
+        <span class="version">v${pkg.version}</span>
+        ${stamp}
+      </div>
+      <div class="title">${titleInner}</div>
+      <div class="meta">
+        <span>${fmtDate(pkg.generated_at)} UTC</span>
+        <span>${fmtSize(pkg.size)} · ${pkg.file_count} 檔</span>
+      </div>
+      <button class="hash" type="button" data-hash="${pkg.sha256}" title="點擊複製完整 SHA-256：${pkg.sha256}">
+        sha256 ${shortHash}
+      </button>
+      <a class="dl" href="${href}" download="${pkg.filename}">下載 ${fmtSize(pkg.size)}</a>
+    </article>`;
+}
+
+const PAGE_SIZE = 20;
+
+function pagerHTML(sectionId, page, totalPages) {
+  if (totalPages <= 1) return "";
+  let nums = "";
+  for (let i = 0; i < totalPages; i++) {
+    nums += `<button class="page-btn ${i === page ? "active" : ""}" data-section="${sectionId}" data-page="${i}">${i + 1}</button>`;
+  }
+  return `<div class="pager">
+    <button class="page-btn" data-section="${sectionId}" data-page="${page - 1}" ${page === 0 ? "disabled" : ""}>‹ 上一頁</button>
+    ${nums}
+    <button class="page-btn" data-section="${sectionId}" data-page="${page + 1}" ${page === totalPages - 1 ? "disabled" : ""}>下一頁 ›</button>
+  </div>`;
+}
+
+function sectionHTML(id, title, note, packages, tagLabelFor, page) {
+  if (!packages.length) return "";
+  const totalPages = Math.ceil(packages.length / PAGE_SIZE);
+  const shown = packages.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE);
+  const cards = shown.map((p) => cardHTML(p, tagLabelFor(p))).join("");
+  return `
+    <section class="series" id="${id}">
+      <div class="series-head">
+        <h2>${title}</h2>
+        <span class="count">${packages.length} 包${totalPages > 1 ? ` · 第 ${page + 1}/${totalPages} 頁` : ""}</span>
+      </div>
+      <p class="series-note">${note}</p>
+      <div class="grid">${cards}</div>
+      ${pagerHTML(id, page, totalPages)}
+    </section>`;
+}
+
+const SECTIONS = [
+  ["origin", "研究起點 · Origin Line",
+    "主線敘事,依序記錄整個研究狀態的演進(S₀ → S₁ → … → Sₜ)。版本號連續,建議照順序讀。",
+    (m) => m.origin, () => "研究起點"],
+  ["engineering", "W 工程包 · Engineering Packages",
+    "個別子問題的計算與驗證產出 — 核函數、參數管、腔室切分等,支撐上面主線的每一步。",
+    (m) => m.engineering, (p) => "W-" + String(p.number).padStart(2, "0")],
+  ["platform", "平台匯入包 · Platform Import",
+    "Batch 01 統合完的結構化資料——研究節點、依賴圖、時間軸、證書索引、失敗與修正紀錄、信任邊界、Batch 02 交棒。",
+    (m) => m.platform, () => "平台匯入包"],
+  ["prototype", "側支原型 · Side Prototypes",
+    "不在 W-01~20 正式編號序列裡的獨立探索原型,各自帶自己的 README、測試與輸出資料。",
+    (m) => m.prototype, () => "側支原型"],
+];
+
+let manifest = null;
+const pageState = {};
+
+function renderSections() {
+  const content = document.getElementById("content");
+  content.innerHTML = SECTIONS
+    .map(([id, title, note, getPackages, tagLabelFor]) =>
+      sectionHTML(id, title, note, getPackages(manifest), tagLabelFor, pageState[id] || 0))
+    .join("");
+}
+
+// which section+page a given card id lives on, for hash deep-links
+function locate(id) {
+  for (const [sectionId, , , getPackages] of SECTIONS) {
+    const list = getPackages(manifest);
+    const idx = list.findIndex((p) => p.id === id);
+    if (idx !== -1) return { sectionId, page: Math.floor(idx / PAGE_SIZE) };
+  }
+  return null;
+}
+
+async function boot() {
+  const content = document.getElementById("content");
+  try {
+    const res = await fetch("./manifest.json");
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    manifest = await res.json();
+  } catch (e) {
+    content.innerHTML = `<p class="error">清單載入失敗：${e.message}</p>`;
+    return;
+  }
+  const m = manifest;
+
+  const first = [...m.origin, ...m.engineering]
+    .map((p) => p.generated_at).filter(Boolean).sort()[0];
+  const last = [...m.origin, ...m.engineering]
+    .map((p) => p.generated_at).filter(Boolean).sort().slice(-1)[0];
+
+  document.getElementById("stats").innerHTML = `
+    <div class="stat"><span class="n">${m.counts.total}</span><span class="l">封存包</span></div>
+    <div class="stat"><span class="n">${(m.total_size / (1024 * 1024)).toFixed(1)} MB</span><span class="l">總大小</span></div>
+    <div class="stat"><span class="n">${m.counts.origin}</span><span class="l">研究起點版本</span></div>
+    <div class="stat"><span class="n">${m.counts.engineering}</span><span class="l">W 工程包</span></div>
+  `;
+  document.getElementById("generated-note").textContent =
+    first && last ? `${fmtDate(first)} → ${fmtDate(last)} UTC` : "";
+
+  // hash deep-link (e.g. #w17-v0.1) needs its section on the right page BEFORE render
+  if (location.hash.length > 1) {
+    const hit = locate(decodeURIComponent(location.hash.slice(1)));
+    if (hit) pageState[hit.sectionId] = hit.page;
+  }
+
+  renderSections();
+
+  if (location.hash.length > 1) {
+    const target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    if (target) target.scrollIntoView({ block: "center" });
+  }
+
+  content.addEventListener("click", (ev) => {
+    const pageBtn = ev.target.closest(".page-btn");
+    if (pageBtn) {
+      if (pageBtn.disabled) return;
+      pageState[pageBtn.dataset.section] = Number(pageBtn.dataset.page);
+      renderSections();
+      document.getElementById(pageBtn.dataset.section)?.scrollIntoView({ block: "start" });
+      return;
+    }
+    const btn = ev.target.closest(".hash");
+    if (!btn) return;
+    navigator.clipboard?.writeText(btn.dataset.hash).then(() => {
+      btn.classList.add("copied");
+      const original = btn.textContent;
+      btn.textContent = "已複製完整雜湊 ✓";
+      setTimeout(() => { btn.classList.remove("copied"); btn.textContent = original; }, 1400);
+    });
+  });
+}
+
+boot();
+</script>
+</body>
+</html>

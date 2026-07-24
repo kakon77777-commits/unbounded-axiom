@@ -1,0 +1,13 @@
+// Project AMRAL — AI 自主研究封存庫. Assets-only Worker on its own subdomain,
+// same pattern as wrangler-spectral.jsonc.
+// Deploy: npx wrangler deploy --config wrangler-amral.jsonc
+{
+  "name": "amral",
+  "compatibility_date": "2026-07-24",
+  "assets": {
+    "directory": "./amral/public"
+  },
+  "routes": [
+    { "pattern": "amral.evemisslab.com", "custom_domain": true }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "schema": "RH-BATCH-HANDOFF-v0.1",
+  "from_batch": "RH-BATCH-01",
+  "to_batch": "RH-BATCH-02",
+  "recommended_range": "RH-W-21..RH-W-40",
+  "handoff_principle": "Batch 02 should not restart from a blank proof attempt; it should consume the typed graph, claim ledger, backend, failure museum, and trust boundary.",
+  "candidate_tracks": [
+    {
+      "track_id": "T1",
+      "title": "外部信任根與第二實作",
+      "priority": "HIGH",
+      "candidate_nodes": [
+        "signed release",
+        "Rust rational verifier",
+        "reproducible build",
+        "Lean certificate kernel"
+      ]
+    },
+    {
+      "track_id": "T2",
+      "title": "更大腔室圖與自動事件面編譯",
+      "priority": "HIGH",
+      "candidate_nodes": [
+        "multi-event subdivision",
+        "prime-power entry surfaces",
+        "spline-knot adjacency graph",
+        "adaptive cell refinement"
+      ]
+    },
+    {
+      "track_id": "T3",
+      "title": "低譜消去流形追蹤",
+      "priority": "MEDIUM",
+      "candidate_nodes": [
+        "gradient/Hessian certified coordinates",
+        "anisotropic tubes",
+        "continuation curve",
+        "termination-event classification"
+      ]
+    },
+    {
+      "track_id": "T4",
+      "title": "字典擴張與完備性壓力測試",
+      "priority": "MEDIUM",
+      "candidate_nodes": [
+        "more spline orders",
+        "nonuniform centers",
+        "dimension growth",
+        "negative-witness search without overclaim"
+      ]
+    },
+    {
+      "track_id": "T5",
+      "title": "理論核心形式化",
+      "priority": "MEDIUM",
+      "candidate_nodes": [
+        "formalize D(D+1) range theorem",
+        "normalization contract",
+        "rational LDL kernel",
+        "closed-cover certificate"
+      ]
+    }
+  ],
+  "open_questions": [
+    "雙消失矩核心是否具有完整 Weil 分離能力？",
+    "有限字典序列能否建立可量化的全域完備性與誤差傳遞？",
+    "近零譜帶是局部消去流形、普遍有限維現象，還是對字典設計高度敏感？",
+    "如何以獨立實作降低共同錯誤風險？"
+  ],
+  "rh_claim": false
+}
