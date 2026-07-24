@@ -67,6 +67,7 @@ export function getFeaturedMedia(): Featured | null {
 export interface Companion {
   file: string; orig: string; label: string; kind: string;
   ext: string; bytes: number; raw_url: string; mime: string; retired_id?: string;
+  sha256: string; file_count?: number;
 }
 // parent lm-id -> its companion attachments (accompanying code / proofs / data /
 // example sets served at /raw/{parent}/{file}). Empty object if none / file absent.

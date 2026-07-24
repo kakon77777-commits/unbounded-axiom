@@ -26,8 +26,10 @@ Outputs:
 Returns redirect + legacy-slug extras that idroutes folds into redirects.json and
 papers-legacy-map.json.
 """
+import hashlib
 import json
 import shutil
+import zipfile
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import quote
@@ -38,6 +40,23 @@ from scripts.helpers import *
 REGISTRY_DIR = ROOT / "registry"
 COMPANIONS_JSON = REGISTRY_DIR / "companions.json"
 ATTACH_DIR = ROOT / "content" / "attachments"
+
+
+def _sha256_of(path: Path) -> str:
+    h = hashlib.sha256()
+    with open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(1 << 20), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def _zip_file_count(path: Path):
+    """Number of non-directory entries inside a zip, without extracting. None if unreadable."""
+    try:
+        with zipfile.ZipFile(path) as zf:
+            return sum(1 for info in zf.infolist() if not info.is_dir())
+    except (zipfile.BadZipFile, OSError):
+        return None
 
 
 def load_companions() -> dict:
@@ -111,7 +130,12 @@ def write_companions(registry) -> dict:
                 "bytes": src.stat().st_size,
                 "raw_url": raw_url,
                 "mime": mime_for(ext),
+                "sha256": _sha256_of(src),
             }
+            if ext == "zip":
+                fc = _zip_file_count(src)
+                if fc is not None:
+                    entry["file_count"] = fc
             rid = a.get("retired_id")
             if rid:
                 entry["retired_id"] = rid
@@ -140,7 +164,10 @@ def write_companions(registry) -> dict:
                 "(/raw/{parent}/{file}) that belongs to the paper but is not itself a "
                 "standalone paper (no own id, absent from the timeline/count). retired_id "
                 "(if present) = the id this file held when mis-filed as a paper; it 301s to "
-                "the parent.",
+                "the parent. sha256 = hash of the exact bytes served at raw_url — verify "
+                "integrity before or after download, same guarantee as AMRAL's package "
+                "manifests (raw bytes, never repackaged). file_count (zip only) = number of "
+                "files inside the archive, so a crawler can judge it before downloading.",
         "companions": emitted,
     }, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
