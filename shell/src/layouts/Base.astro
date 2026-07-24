@@ -1,7 +1,9 @@
 ---
 import '../styles/global.css';
+import { getBuildId } from '../lib/engine';
 interface Props { title: string; description?: string; }
 const { title, description = 'An AI-readable theoretical corpus by EveMissLab.' } = Astro.props;
+const buildId = getBuildId();
 ---
 <!doctype html>
 <html lang="zh-Hant">
@@ -11,6 +13,7 @@ const { title, description = 'An AI-readable theoretical corpus by EveMissLab.' 
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="color-scheme" content="dark" />
+    <meta name="build-id" content={buildId ?? ''} />
     <slot name="head" />
   </head>
   <body>

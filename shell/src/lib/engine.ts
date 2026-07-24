@@ -48,6 +48,15 @@ export function getCorpus(): {
   return readJSON('ai/corpus.json');
 }
 
+// Same build_id the Python engine stamped into every /ai/*.json this run —
+// stamped into every Astro page's HTML too (see Base.astro) so
+// scripts/verify_deploy.py can confirm the deployed HTML and the deployed
+// JSON actually came from the same build, not just that their counts agree.
+export function getBuildId(): string | null {
+  try { return readJSON('ai/build-id.json').build_id ?? null; }
+  catch { return null; }
+}
+
 export interface Media { audio?: string; audio_kind?: string; audio_title?: string; video?: string; }
 export function getMedia(): Record<string, Media> {
   try { return readJSON('ai/media.json').media || {}; }

@@ -30,7 +30,42 @@ from scripts.geo_layer import write_geo_layer
 from scripts.programs import write_programs
 
 
+def _write_build_id_file(registry, build_id):
+    items = registry["items"]
+
+    def _numeric(item_id: str) -> int:
+        m = re.search(r"(\d+)$", item_id)
+        return int(m.group(1)) if m else -1
+
+    last_item = max(items, key=lambda it: _numeric(it["id"])) if items else None
+    ai_autonomous = sum(1 for it in items if it.get("authorship") == "ai_autonomous")
+
+    (DIST_DIR / "ai" / "build-id.json").write_text(json.dumps({
+        "build_id": build_id,
+        "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "note": "Single source of truth for this build's headline numbers — every "
+                "other /ai/*.json + Astro page in this same build stamps the same "
+                "build_id. scripts/verify_deploy.py compares production against "
+                "this file after every deploy; a mismatch means the deploy is not "
+                "actually consistent yet, regardless of what wrangler reported.",
+        "corpus_count": len(items),
+        "authorship": {
+            "collaborative": len(items) - ai_autonomous,
+            "ai_autonomous": ai_autonomous,
+        },
+        "last_id": last_item["id"] if last_item else None,
+    }, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+
 def main() -> None:
+    # One id per build run, threaded into every generator that writes a
+    # machine-facing JSON file (corpus/manifest/version/companions/programs).
+    # Every one of those files stamping the SAME build_id is what lets
+    # scripts/verify_deploy.py prove "these are all from the same build" —
+    # a build_id match is a much stronger guarantee than matching counts
+    # (two different builds could coincidentally have the same paper count).
+    build_id = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+
     if not PAPERS_DIR.exists():
         print(f"[warn] {PAPERS_DIR} not found; creating empty directory.")
         PAPERS_DIR.mkdir()
@@ -77,16 +112,21 @@ def main() -> None:
     geo_layer = write_geo_layer(registry, entries)  # GEO: Q&A H2 + definition-block signals (warn-only lint)
     id_pages = write_id_pages(registry, entries, geo_layer["per_id"])
     write_raw_files(registry, entries)
-    companions = write_companions(registry)  # C layer: attachments -> /raw/{parent}/ + /ai/companions.json + retired-id 301 map
+    companions = write_companions(registry, build_id)  # C layer: attachments -> /raw/{parent}/ + /ai/companions.json + retired-id 301 map
     write_api(registry)
     write_redirects(registry, companions)
     write_legacy_map(registry, companions)  # dist/papers-legacy-map.json for the /papers/* catch-all Function
-    ai_count = write_ai_layer(registry, entries)  # §9 AICL /ai/ + §10 AIRS + canonical llms
-    program_stats = write_programs(registry)  # AI Layer v0.2 MVP: /ai/programs/ research-lineage layer
+    ai_count = write_ai_layer(registry, entries, build_id)  # §9 AICL /ai/ + §10 AIRS + canonical llms
+    program_stats = write_programs(registry, build_id)  # AI Layer v0.2 MVP: /ai/programs/ research-lineage layer
     graph_stats = write_graph_layer(registry)  # Phase A: registry/tcf/ -> /ai/graph.json (real topology)
     write_sitemap_canonical(registry)          # §26.6.6 canonical-only sitemap (replaces legacy)
     route_issues = validate_routes(registry)   # §26.7 route consistency report
     broken_links = validate_links(registry)    # §26.5.7 broken-link report (warn-only)
+
+    # Canonical single-file source of truth for scripts/verify_deploy.py: every
+    # number here is computed ONCE, straight off registry["items"] — the same
+    # in-memory list every other generator above already wrote its own view of.
+    _write_build_id_file(registry, build_id)
 
     print(f"[diag] build.py version: AIO-v3.1 (id-native /p/{{id}}/)")
     print(f"[diag] markdown backend: {_MD_BACKEND}")

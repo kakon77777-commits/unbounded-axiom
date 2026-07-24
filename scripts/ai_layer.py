@@ -56,7 +56,7 @@ def _timeline(items):
     return years
 
 
-def write_ai_layer(registry, entries):
+def write_ai_layer(registry, entries, build_id=None):
     items = registry["items"]
     now = _now()
     AI.mkdir(parents=True, exist_ok=True)
@@ -65,12 +65,12 @@ def write_ai_layer(registry, entries):
     (AI / "tools").mkdir(exist_ok=True)
     (AI / "archive").mkdir(exist_ok=True)
 
-    _corpus(items, now)
+    _corpus(items, now, build_id)
     _media(now)
     _index_md()
-    _manifest(items, now)
+    _manifest(items, now, build_id)
     _ai_sitemap(now)
-    _version(items, now)
+    _version(items, now, build_id)
     _timeline_files(items, now)
     _specs()
     _tools(now)
@@ -83,7 +83,7 @@ def write_ai_layer(registry, entries):
 
 # ---- corpus (§26.7.7: canonical machine corpus) ----
 
-def _corpus(items, now):
+def _corpus(items, now, build_id=None):
     with (AI / "corpus.jsonl").open("w", encoding="utf-8") as f:
         for it in items:
             f.write(json.dumps({
@@ -96,7 +96,7 @@ def _corpus(items, now):
     langs = Counter(it["language"] for it in items)
     authorship = Counter(it.get("authorship", "collaborative") for it in items)
     _wj(AI / "corpus.json", {
-        "version": "0.2", "generated_at": now, "project": SITE_TITLE,
+        "version": "0.2", "generated_at": now, "build_id": build_id, "project": SITE_TITLE,
         "count": len(items), "languages": dict(langs),
         "authorship": dict(authorship),
         "bulk": "/ai/corpus.jsonl", "registry": "/api/papers/index.json",
@@ -204,12 +204,13 @@ Author: {SITE_AUTHOR}
 """, encoding="utf-8")
 
 
-def _manifest(items, now):
+def _manifest(items, now, build_id=None):
     from scripts.programs import load_program_seeds
     program_seeds = load_program_seeds()
     _wj(AI / "manifest.json", {
         "version": "0.2",
         "generated_at": now,
+        "build_id": build_id,
         "project": {"name": SITE_TITLE, "organization": SITE_ORG,
                     "author": SITE_AUTHOR,
                     "description": "AI-readable theoretical corpus and "
@@ -281,11 +282,11 @@ def _ai_sitemap(now):
                               "resources": resources})
 
 
-def _version(items, now):
+def _version(items, now, build_id=None):
     _wj(AI / "version.json", {
         "status": "active", "version": "0.2", "engine": "Logic Matrix Corpus Engine",
         "canonical": True, "audience": ["ai", "agent", "crawler"],
-        "last_updated": now, "corpus_count": len(items),
+        "last_updated": now, "build_id": build_id, "corpus_count": len(items),
         "history": [{"version": "0.2", "note": "AI-native Corpus Engine: stable ids, "
                      "canonical /p /raw /api, AICL /ai/, AIRS rights, redirects, validation."}],
     })

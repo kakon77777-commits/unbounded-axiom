@@ -74,7 +74,7 @@ def _resolve(art: dict, by_id: dict) -> dict:
     return resolved
 
 
-def write_programs(registry) -> dict:
+def write_programs(registry, build_id=None) -> dict:
     """Emit /ai/programs/ for every registry/programs/*.json seed. Returns
     {"programs": int, "iterations": int, "missing": int, "unresolved_refs": [..]}."""
     seeds = load_program_seeds()
@@ -171,7 +171,7 @@ def write_programs(registry) -> dict:
 
     (out_dir / "index.json").write_text(
         json.dumps({
-            "version": "0.2", "generated_at": _now(),
+            "version": "0.2", "generated_at": _now(), "build_id": build_id,
             "note": "AI-native research programs — persistent, open-ended research lineages, "
                     "distinct from one-shot papers. See /ai/manifest.json capabilities.research_programs.",
             "count": len(index_entries),

@@ -84,7 +84,7 @@ def _now():
     return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
-def write_companions(registry) -> dict:
+def write_companions(registry, build_id=None) -> dict:
     """Copy attachments into dist/raw/{parent}/, emit /ai/companions.json + the
     retired-id redirect map, and return extras for redirects.json / the legacy map:
 
@@ -158,7 +158,7 @@ def write_companions(registry) -> dict:
     ai = DIST_DIR / "ai"
     ai.mkdir(parents=True, exist_ok=True)
     (ai / "companions.json").write_text(json.dumps({
-        "version": "0.2", "generated_at": _now(),
+        "version": "0.2", "generated_at": _now(), "build_id": build_id,
         "parents": len(emitted), "attachments": n_att,
         "note": "parent lm-id -> [attachments]. Each attachment is a sub-coordinate file "
                 "(/raw/{parent}/{file}) that belongs to the paper but is not itself a "
