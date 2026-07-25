@@ -2,15 +2,23 @@
 # -*- coding: utf-8 -*-
 """AMRAL package manifest builder — Riemann Hypothesis case study.
 
-Scans amral/public/riemann/packages/*.zip (raw research packages, dropped in
-unmodified) and writes amral/public/riemann/manifest.json for the grid page.
-Never touches the zip bytes: sha256 is computed over the untouched file so it
-always matches whatever the package's own internal SHA256SUMS.txt (if any)
-already certifies. Re-run after adding new packages, then redeploy.
+Scans amral/public/riemann/<track>/packages/*.zip (raw research packages,
+dropped in unmodified) and writes .../manifest.json for that track's grid
+page. Never touches the zip bytes: sha256 is computed over the untouched
+file so it always matches whatever the package's own internal
+SHA256SUMS.txt (if any) already certifies. Re-run after adding new
+packages, then redeploy.
 
-One case study per public/<slug>/ subtree (currently just "riemann"); when a
-second case study arrives, parameterize CASE instead of hardcoding it.
+黎曼猜想 (riemann/) is a problem hub with independent tracks underneath it —
+currently "autonomous" (Case 0001 / Batch 01, AI-driven) and
+"semi-autonomous" (Neo-directed). Pass --track to target one; defaults to
+"autonomous" for backward-compatible muscle memory. A case study outside
+黎曼猜想 entirely would get its own public/<slug>/ subtree at this same
+level, not a third argument here.
+
+Usage: python build_manifest.py [--track autonomous|semi-autonomous]
 """
+import argparse
 import hashlib
 import json
 import re
@@ -22,7 +30,12 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from _ziputil import decoded_names
 
 ROOT = Path(__file__).resolve().parent
-CASE_DIR = ROOT / "public" / "riemann"
+
+_parser = argparse.ArgumentParser()
+_parser.add_argument("--track", default="autonomous", choices=["autonomous", "semi-autonomous"])
+TRACK = _parser.parse_args().track
+
+CASE_DIR = ROOT / "public" / "riemann" / TRACK
 PACKAGES = CASE_DIR / "packages"
 MANIFEST = CASE_DIR / "manifest.json"
 P_DIR = CASE_DIR / "p"

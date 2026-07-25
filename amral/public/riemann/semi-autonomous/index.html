@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>半自主研究 · 黎曼猜想 · AMRAL</title>
+<meta name="description" content="AMRAL 黎曼猜想案例,半自主研究軌道(Neo 主導)。原始工程包,未經改動,逐輪留痕,含驗證與雜湊。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../">AMRAL</a>
+  <a class="link" href="../../methodology/">方法論</a>
+  <a class="link active" href="../">黎曼猜想</a>
+</div></nav>
+<div class="wrap">
+  <header class="page">
+    <p class="eyebrow"><a href="../">← 黎曼猜想</a> · 半自主研究軌道</p>
+    <h1>半自主研究</h1>
+    <p class="subtitle">黎曼猜想 · Neo 主導</p>
+    <p class="lede">
+      這條軌道由 Neo 直接主導研究方向,不是 AI 自主排程的接力。過程跟結果都不如原本預期——沒有推進到 AI 自主軌道(Batch 01)
+      那樣的完整閉區間證書。原始過程資料原樣封存,回頭當成 AI 自主研究這條線的材料,不是被丟棄的失敗紀錄。
+      方法論見<a href="../../methodology/">方法論頁</a>。另一條軌道見<a href="../autonomous/">AI 自主研究</a>。
+    </p>
+    <div class="stats" id="stats" aria-label="封存庫統計"></div>
+    <p class="notice" id="empty-notice" style="display:none;">內容準備中——封包還沒上架。頁面骨架先搭好,格式跟 AI 自主研究軌道共用同一套。</p>
+  </header>
+
+  <div id="content">
+    <p class="loading">載入清單中…</p>
+  </div>
+
+  <footer class="sitefoot">
+    <span>SHA-256 逐包核驗 · 原始位元組,不重新打包</span>
+    <span id="generated-note"></span>
+  </footer>
+</div>
+
+<script>
+const fmtSize = (b) => {
+  if (b < 1024) return b + " B";
+  if (b < 1024 * 1024) return (b / 1024).toFixed(1) + " KB";
+  return (b / (1024 * 1024)).toFixed(2) + " MB";
+};
+const fmtDate = (iso) => {
+  if (!iso) return "—";
+  const d = new Date(iso);
+  if (isNaN(d)) return iso;
+  return d.toLocaleString("zh-TW", {
+    year: "numeric", month: "2-digit", day: "2-digit",
+    hour: "2-digit", minute: "2-digit", hour12: false,
+  }).replace(/\//g, "-");
+};
+
+function cardHTML(pkg, seriesTagLabel) {
+  const stamp = pkg.stamp
+    ? `<span class="stamp ${pkg.stamp.kind}">${pkg.stamp.label}</span>`
+    : "";
+  const href = "./packages/" + encodeURIComponent(pkg.filename);
+  const shortHash = pkg.sha256.slice(0, 16) + "…";
+  const titleInner = pkg.has_detail_page
+    ? `<a class="title-link" href="./p/${pkg.id}/">${pkg.title} <span class="detail-hint">→ 詳細頁</span></a>`
+    : pkg.title;
+  return `
+    <article class="card" id="${pkg.id}">
+      <div class="card-top">
+        <span class="tag">${seriesTagLabel}</span>
+        <span class="version">v${pkg.version}</span>
+        ${stamp}
+      </div>
+      <div class="title">${titleInner}</div>
+      <div class="meta">
+        <span>${fmtDate(pkg.generated_at)} UTC</span>
+        <span>${fmtSize(pkg.size)} · ${pkg.file_count} 檔</span>
+      </div>
+      <button class="hash" type="button" data-hash="${pkg.sha256}" title="點擊複製完整 SHA-256：${pkg.sha256}">
+        sha256 ${shortHash}
+      </button>
+      <a class="dl" href="${href}" download="${pkg.filename}">下載 ${fmtSize(pkg.size)}</a>
+    </article>`;
+}
+
+const PAGE_SIZE = 20;
+
+function pagerHTML(sectionId, page, totalPages) {
+  if (totalPages <= 1) return "";
+  let nums = "";
+  for (let i = 0; i < totalPages; i++) {
+    nums += `<button class="page-btn ${i === page ? "active" : ""}" data-section="${sectionId}" data-page="${i}">${i + 1}</button>`;
+  }
+  return `<div class="pager">
+    <button class="page-btn" data-section="${sectionId}" data-page="${page - 1}" ${page === 0 ? "disabled" : ""}>‹ 上一頁</button>
+    ${nums}
+    <button class="page-btn" data-section="${sectionId}" data-page="${page + 1}" ${page === totalPages - 1 ? "disabled" : ""}>下一頁 ›</button>
+  </div>`;
+}
+
+function sectionHTML(id, title, note, packages, tagLabelFor, page) {
+  if (!packages.length) return "";
+  const totalPages = Math.ceil(packages.length / PAGE_SIZE);
+  const shown = packages.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE);
+  const cards = shown.map((p) => cardHTML(p, tagLabelFor(p))).join("");
+  return `
+    <section class="series" id="${id}">
+      <div class="series-head">
+        <h2>${title}</h2>
+        <span class="count">${packages.length} 包${totalPages > 1 ? ` · 第 ${page + 1}/${totalPages} 頁` : ""}</span>
+      </div>
+      <p class="series-note">${note}</p>
+      <div class="grid">${cards}</div>
+      ${pagerHTML(id, page, totalPages)}
+    </section>`;
+}
+
+// Series labels are provisional — the exact shape of this track's packages
+// isn't known yet (Neo hasn't handed the content over). Reusing the same
+// four-bucket schema as the autonomous track's manifest so the same
+// build_manifest.py / extract_package_files.py / grid engine work unchanged;
+// rename/add sections here once real content shows what categories it needs.
+const SECTIONS = [
+  ["origin", "研究起點 · Origin Line",
+    "主線敘事,依序記錄整個研究狀態的演進。",
+    (m) => m.origin, () => "研究起點"],
+  ["engineering", "工程包 · Engineering Packages",
+    "個別子問題的計算與驗證產出。",
+    (m) => m.engineering, (p) => "W-" + String(p.number).padStart(2, "0")],
+  ["platform", "平台匯入包 · Platform Import",
+    "統合完的結構化資料。",
+    (m) => m.platform, () => "平台匯入包"],
+  ["prototype", "側支原型 · Side Prototypes",
+    "獨立探索原型。",
+    (m) => m.prototype, () => "側支原型"],
+];
+
+let manifest = null;
+const pageState = {};
+
+function renderSections() {
+  const content = document.getElementById("content");
+  content.innerHTML = SECTIONS
+    .map(([id, title, note, getPackages, tagLabelFor]) =>
+      sectionHTML(id, title, note, getPackages(manifest), tagLabelFor, pageState[id] || 0))
+    .join("");
+}
+
+function locate(id) {
+  for (const [sectionId, , , getPackages] of SECTIONS) {
+    const list = getPackages(manifest);
+    const idx = list.findIndex((p) => p.id === id);
+    if (idx !== -1) return { sectionId, page: Math.floor(idx / PAGE_SIZE) };
+  }
+  return null;
+}
+
+async function boot() {
+  const content = document.getElementById("content");
+  try {
+    const res = await fetch("./manifest.json");
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    manifest = await res.json();
+  } catch (e) {
+    content.innerHTML = `<p class="error">清單載入失敗:${e.message}</p>`;
+    return;
+  }
+  const m = manifest;
+
+  if (!m.counts.total) {
+    document.getElementById("empty-notice").style.display = "";
+    content.innerHTML = "";
+    document.getElementById("stats").innerHTML = `
+      <div class="stat"><span class="n">0</span><span class="l">封存包</span></div>
+    `;
+    return;
+  }
+
+  const first = [...m.origin, ...m.engineering]
+    .map((p) => p.generated_at).filter(Boolean).sort()[0];
+  const last = [...m.origin, ...m.engineering]
+    .map((p) => p.generated_at).filter(Boolean).sort().slice(-1)[0];
+
+  document.getElementById("stats").innerHTML = `
+    <div class="stat"><span class="n">${m.counts.total}</span><span class="l">封存包</span></div>
+    <div class="stat"><span class="n">${(m.total_size / (1024 * 1024)).toFixed(1)} MB</span><span class="l">總大小</span></div>
+    <div class="stat"><span class="n">${m.counts.origin}</span><span class="l">研究起點版本</span></div>
+    <div class="stat"><span class="n">${m.counts.engineering}</span><span class="l">工程包</span></div>
+  `;
+  document.getElementById("generated-note").textContent =
+    first && last ? `${fmtDate(first)} → ${fmtDate(last)} UTC` : "";
+
+  if (location.hash.length > 1) {
+    const hit = locate(decodeURIComponent(location.hash.slice(1)));
+    if (hit) pageState[hit.sectionId] = hit.page;
+  }
+
+  renderSections();
+
+  if (location.hash.length > 1) {
+    const target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    if (target) target.scrollIntoView({ block: "center" });
+  }
+
+  content.addEventListener("click", (ev) => {
+    const pageBtn = ev.target.closest(".page-btn");
+    if (pageBtn) {
+      if (pageBtn.disabled) return;
+      pageState[pageBtn.dataset.section] = Number(pageBtn.dataset.page);
+      renderSections();
+      document.getElementById(pageBtn.dataset.section)?.scrollIntoView({ block: "start" });
+      return;
+    }
+    const btn = ev.target.closest(".hash");
+    if (!btn) return;
+    navigator.clipboard?.writeText(btn.dataset.hash).then(() => {
+      btn.classList.add("copied");
+      const original = btn.textContent;
+      btn.textContent = "已複製完整雜湊 ✓";
+      setTimeout(() => { btn.classList.remove("copied"); btn.textContent = original; }, 1400);
+    });
+  });
+}
+
+boot();
+</script>
+</body>
+</html>

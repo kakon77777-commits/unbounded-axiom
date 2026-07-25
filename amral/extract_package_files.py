@@ -9,10 +9,11 @@ them. Large data blobs (certificates, point-cloud JSON) and __pycache__ stay
 zip-only; the detail page links to the full zip for those. Re-run after
 re-copying an updated package, then rebuild whichever detail page uses it.
 
-Usage: python extract_package_files.py <package-id>   (id from manifest.json,
-       e.g. w17-v0.1)  — or with no args, extracts every package in the
-       manifest (safe to re-run; idempotent).
+Usage: python extract_package_files.py [--track autonomous|semi-autonomous] [package-id ...]
+       (id from manifest.json, e.g. w17-v0.1) — omit ids to extract every
+       package for that track's manifest (safe to re-run; idempotent).
 """
+import argparse
 import json
 import sys
 import zipfile
@@ -22,7 +23,13 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from _ziputil import decoded_infolist
 
 ROOT = Path(__file__).resolve().parent
-CASE_DIR = ROOT / "public" / "riemann"
+
+_parser = argparse.ArgumentParser()
+_parser.add_argument("--track", default="autonomous", choices=["autonomous", "semi-autonomous"])
+_parser.add_argument("package_ids", nargs="*")
+_cli = _parser.parse_args()
+
+CASE_DIR = ROOT / "public" / "riemann" / _cli.track
 PACKAGES = CASE_DIR / "packages"
 MANIFEST = CASE_DIR / "manifest.json"
 P_DIR = CASE_DIR / "p"
@@ -70,9 +77,10 @@ def extract_one(pkg):
 
 def main():
     manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
-    by_id = {e["id"]: e for e in manifest["origin"] + manifest["engineering"] + manifest["other"]}
+    all_series = ("origin", "engineering", "platform", "prototype", "other")
+    by_id = {e["id"]: e for series in all_series for e in manifest.get(series, [])}
 
-    targets = sys.argv[1:] or list(by_id.keys())
+    targets = _cli.package_ids or list(by_id.keys())
     for pid in targets:
         pkg = by_id.get(pid)
         if not pkg:
