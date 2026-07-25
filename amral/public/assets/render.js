@@ -23,13 +23,20 @@ function amralParseCSV(text) {
   return rows;
 }
 
-// Markdown -> HTML via `marked`, with $...$ / $$...$$ math spans stashed
-// behind placeholders before inline parsing (so e.g. \lambda_{\min} never
-// gets misread as markdown emphasis on the underscore), then restored for
-// KaTeX auto-render to pick up afterwards.
+// Markdown -> HTML via `marked`, with math spans stashed behind placeholders
+// before inline parsing (so e.g. \lambda_{\min} never gets misread as
+// markdown emphasis on the underscore, and \(...\)/\[...\] survive markdown's
+// own backslash-escape handling, which otherwise eats the brackets' leading
+// backslash), then restored for KaTeX auto-render to pick up afterwards.
+// Covers both delimiter conventions seen across AMRAL source papers:
+// $.../$$...$$ (older packages) and \(...\)/\[...\] (newer ones).
+// Placeholders are wrapped in U+E000 (Private Use Area, never appears in
+// real text) rather than a bare digit, so a document's own plain numbers —
+// dates, versions, section counts — can never collide with a stash slot.
 function amralRenderDoc(md) {
   const stash = [];
-  const withPlaceholders = md.replace(/\$\$[\s\S]+?\$\$|\$[^$\n]+?\$/g, (m) => {
+  const MATH_RE = /\$\$[\s\S]+?\$\$|\$[^$\n]+?\$|\\\[[\s\S]+?\\\]|\\\([^\n]+?\\\)/g;
+  const withPlaceholders = md.replace(MATH_RE, (m) => {
     stash.push(m);
     return `${stash.length - 1}`;
   });
@@ -40,7 +47,12 @@ function amralRenderDoc(md) {
 
 function amralRenderMath(container) {
   renderMathInElement(container, {
-    delimiters: [{ left: "$$", right: "$$", display: true }, { left: "$", right: "$", display: false }],
+    delimiters: [
+      { left: "$$", right: "$$", display: true },
+      { left: "$", right: "$", display: false },
+      { left: "\\[", right: "\\]", display: true },
+      { left: "\\(", right: "\\)", display: false },
+    ],
     throwOnError: false,
   });
 }

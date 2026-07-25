@@ -29,6 +29,43 @@
     <p class="notice" id="empty-notice" style="display:none;">內容準備中——封包還沒上架。頁面骨架先搭好,格式跟 AI 自主研究軌道共用同一套。</p>
   </header>
 
+  <section id="papers">
+    <h2 class="doc-h2">研究論文 · Papers</h2>
+    <p class="section-note">六篇內部稿,原字未改。前導技術稿與方法論稿各自獨立;序列①—④依方法論稿規劃的順序推進,每篇文中都自己聲明「不構成黎曼猜想證明」。</p>
+    <div class="case-grid">
+      <a class="case-card" href="./papers/p0-decision-domain/">
+        <span class="k">前導技術稿 · v0.1</span>
+        <h3>歸心後的等變拓樸判定域</h3>
+        <p>RH 除子固定點與繞數障礙重構。</p>
+      </a>
+      <a class="case-card" href="./papers/p1-method/">
+        <span class="k">方法論稿 · v0.1</span>
+        <h3>從歸心到等變拓樸</h3>
+        <p>RH 合法判定研究的思考方法與方法群,規劃後續四篇序列。</p>
+      </a>
+      <a class="case-card" href="./papers/p2-configuration-topology/">
+        <span class="k">序列① · v0.1</span>
+        <h3>等變零點組態拓樸學</h3>
+        <p>RH 軌道型分層、有效除子半環與正障礙。</p>
+      </a>
+      <a class="case-card" href="./papers/p3-sheaf-local-global/">
+        <span class="k">序列② · v0.1</span>
+        <h3>層化零點障礙與局部—全域提升</h3>
+        <p>從有理矩形證書到全臨界帶判定。</p>
+      </a>
+      <a class="case-card" href="./papers/p4-arithmetic-separation/">
+        <span class="k">序列③ · v0.1</span>
+        <h3>等變算術分離</h3>
+        <p>從軌道空間局部化到 ζ 顯式公式的可容許測試函數。</p>
+      </a>
+      <a class="case-card" href="./papers/p5-explicit-formula/">
+        <span class="k">序列④ · v0.1</span>
+        <h3>顯式公式中的偏軸正障礙</h3>
+        <p>零點側區域負方向、質數側可計算錐與 ZFC 可審計矛盾架構。</p>
+      </a>
+    </div>
+  </section>
+
   <div id="content">
     <p class="loading">載入清單中…</p>
   </div>
@@ -130,9 +167,9 @@ const SECTIONS = [
   ["platform", "平台匯入包 · Platform Import",
     "統合完的結構化資料。",
     (m) => m.platform, () => "平台匯入包"],
-  ["prototype", "側支原型 · Side Prototypes",
-    "獨立探索原型。",
-    (m) => m.prototype, () => "側支原型"],
+  ["prototype", "工程紀錄 · Engineering Records",
+    "Neo 主導的逐輪工程嘗試,依生成時間排序——沒有 W-01..20 那樣的統一批次編號,原始檔名與版本原樣保留。",
+    (m) => m.prototype, () => "工程紀錄"],
 ];
 
 let manifest = null;

@@ -43,8 +43,11 @@ P_DIR = CASE_DIR / "p"
 ORIGIN_RE = re.compile(r"^RH_AI_研究起點_v([\d.]+)(?:_(.+?))?_完整包\.zip$")
 W_RE = re.compile(r"^RH_W_(\d+)_工程包_v([\d.]+)_完整包\.zip$")
 CASE_RE = re.compile(r"^RH_CASE_(\d+)_(.+?)_v([\d.]+)\.zip$")
-# standalone side-experiments outside the W-01..20 batch, e.g. "RH_Regional_Phase_Shaping_v0.1.zip"
-PROTOTYPE_RE = re.compile(r"^RH_([A-Za-z][A-Za-z0-9]*(?:_[A-Za-z0-9]+)*)_v([\d.]+)\.zip$")
+# standalone side-experiments outside the W-01..20 batch, e.g. "RH_Regional_Phase_Shaping_v0.1.zip".
+# Description is greedy (not restricted to plain identifiers) so it also catches
+# outliers like "RH_v0.1-v1.0_Final_Report_AI_Handoff_v1.0.zip", where the last
+# "_v<digits>.zip" is still the real version and everything before it is the title.
+PROTOTYPE_RE = re.compile(r"^RH_(.+)_v([\d.]+)\.zip$")
 # primary doc inside a package, e.g. "01_RH-W-17_腔室感知切分與事件薄層_v0.1.md"
 # or (older, simpler packages) "RH-W-01_測試函數空間固定_v0.1.md" with no "01_" prefix.
 W_TITLE_RE_PREFIXED = re.compile(r"^01_RH-W-\d+_(.+?)_v[\d.]+\.md$")
@@ -182,7 +185,10 @@ def main():
         key=lambda e: (e["number"], tuple(int(x) for x in e["version"].split("."))),
     )
     platform = sorted((e for e in entries if e["series"] == "platform"), key=lambda e: e["title"])
-    prototype = sorted((e for e in entries if e["series"] == "prototype"), key=lambda e: e["title"])
+    # Chronological, not alphabetical: unlike the numbered W-series, prototypes
+    # have no shared sequence id, so generation time is the only honest ordering
+    # (matters when a track's entire engineering content lands in this bucket).
+    prototype = sorted((e for e in entries if e["series"] == "prototype"), key=lambda e: e["generated_at"] or "")
     other = [e for e in entries if e["series"] == "other"]
     if other:
         print(f"NOTE: {len(other)} package(s) did not match a known naming pattern: "
