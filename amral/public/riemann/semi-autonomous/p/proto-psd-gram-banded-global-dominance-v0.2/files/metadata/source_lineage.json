@@ -1,0 +1,32 @@
+{
+  "schema": "EveMissLab.RH.SourceLineage.v0.2",
+  "direct_parent": {
+    "node_id": "RH-BMCC-20260724-v0.1",
+    "package": "RH_Banded_MultiTest_Cover_Certificates_v0.1",
+    "inherited_objects": [
+      "18-patch adaptive cover",
+      "72-candidate ray library",
+      "18 parent local certificates",
+      "C0-whitened constrained model",
+      "first-50 zero holdout ordinates"
+    ]
+  },
+  "direct_inputs_in_package": [
+    "data/parent_candidate_library.json",
+    "data/parent_certificates/*.certificate.json",
+    "data/parent_experiment_summary.json",
+    "data/first_50_ordinates.csv"
+  ],
+  "conceptual_ancestry": [
+    "RH_Arithmetic_Matrix_PSD_v0.1",
+    "RH_Regional_Phase_Shaping_v0.1",
+    "RH_Separation_Positivity_Intersection_v0.1",
+    "RH_Validated_Intersection_Certificate_v0.2",
+    "RH_Zero_Side_Leakage_Budget_v0.1",
+    "RH_Axis_Suppressed_Global_Window_Optimizer_v0.1"
+  ],
+  "data_isolation": {
+    "known_zero_ordinates_used_in_optimization": false,
+    "known_zero_ordinates_used_as_holdout_only": true
+  }
+}

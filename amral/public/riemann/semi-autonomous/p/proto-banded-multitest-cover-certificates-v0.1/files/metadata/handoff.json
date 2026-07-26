@@ -1,0 +1,27 @@
+{
+  "schema": "RH.BMCC.Handoff.v0.1",
+  "from_node": "RH-BMCC-20260724-v0.1",
+  "next_node": "RH_PSD_Gram_Banded_Global_Dominance_v0.2",
+  "decision": "Keep the adaptive 18-patch cover and replace the diagonal nonnegative cone with a full PSD Gram variable.",
+  "why": [
+    "Adaptive anisotropic refinement removes the coarse near-axis catastrophe.",
+    "All 18 local floating sign audits pass, so local sign engineering is no longer the first bottleneck.",
+    "The diagonal stage-one LP agrees with the best single ray to numerical precision.",
+    "All partial global budgets remain negative by factors of roughly 9 to 20."
+  ],
+  "required_formulation": [
+    "A is positive semidefinite.",
+    "Core blocks are linear trace constraints in A.",
+    "Arithmetic positivity is a linear trace constraint in A.",
+    "Axis band energy is a linear trace objective in A.",
+    "Guard and roughness budgets are explicit constraints.",
+    "The diagonal-cone solution is retained as a baseline."
+  ],
+  "stop_rules": [
+    "Do not start interval rounding unless the floating full budget has a substantial positive safety factor.",
+    "Do not claim global dominance without unknown off-axis and tail charges.",
+    "Do not use known zero ordinates as optimization equalities.",
+    "If full Gram remains negative across support and rank sweeps, report a structural frontier rather than tuning indefinitely."
+  ],
+  "success_rule": "A candidate passes only when arithmetic positivity and the complete global domination gap are both strictly positive under outward interval validation."
+}

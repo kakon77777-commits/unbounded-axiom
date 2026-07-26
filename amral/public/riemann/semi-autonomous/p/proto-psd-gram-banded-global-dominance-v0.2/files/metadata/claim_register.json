@@ -1,0 +1,92 @@
+{
+  "schema": "EveMissLab.RH.ClaimRegister.v0.2",
+  "evidence_levels": {
+    "E0": "Exact algebraic or source-code identity within the stated finite model.",
+    "E1": "Automatically recomputed structural or serialization check.",
+    "E2": "Floating numerical research evidence; not interval-certified.",
+    "E3": "Formal or interval-certified result. No E3 claim is made in this node."
+  },
+  "claims": [
+    {
+      "claim_id": "PSDGRAM-C01",
+      "level": "E0",
+      "claim": "The factorization A=L L^T is positive semidefinite in exact algebra.",
+      "scope": "Saved factorized model, before floating reconstruction.",
+      "evidence": ["psdgram/solver.py"]
+    },
+    {
+      "claim_id": "PSDGRAM-C02",
+      "level": "E1",
+      "claim": "The adaptive 18-patch family covers the full target rectangle on rational atomic cells and the dense audit grid.",
+      "scope": "[20,20.5] x [-0.2,-0.1]",
+      "evidence": ["tests/test_psdgram.py", "psdgram/cover.py"]
+    },
+    {
+      "claim_id": "PSDGRAM-C03",
+      "level": "E2",
+      "claim": "Full-Gram sampled axis-plus-tail majorants improve on the diagonal 72-ray baseline on every patch.",
+      "value": {
+        "minimum_reduction_fraction": 0.10886555997492817,
+        "mean_reduction_fraction": 0.21077570349563943,
+        "maximum_reduction_fraction": 0.2866441091137039
+      },
+      "evidence": ["outputs/experiment_summary.json", "outputs/comparison.csv"]
+    },
+    {
+      "claim_id": "PSDGRAM-C04",
+      "level": "E2",
+      "claim": "All 18 full-Gram candidates pass the refined floating core continuity audit.",
+      "value": {
+        "pass_count": 18,
+        "patch_count": 18,
+        "refined_upper_range": [-0.9922528760839052, -0.9606080348509114]
+      },
+      "evidence": ["outputs/gram_results.json", "outputs/diagnostics.json"]
+    },
+    {
+      "claim_id": "PSDGRAM-C05",
+      "level": "E2",
+      "claim": "Requested ranks 1,2,4,8 collapse to numerical rank one on all four representative patches.",
+      "scope": ["X1_Y0", "X1_Y1", "x2_Y2", "x2_Y3"],
+      "evidence": ["outputs/rank_study.json"]
+    },
+    {
+      "claim_id": "PSDGRAM-C06",
+      "level": "E2",
+      "claim": "The [18,23] real-axis band is the largest sampled charge on every full-Gram patch.",
+      "value": {
+        "dominant_patch_count": 18,
+        "mean_objective_share": 0.6173105686916354,
+        "charge_range": [38.438987094657584, 94.69886099782305]
+      },
+      "evidence": ["outputs/diagnostics.json"]
+    },
+    {
+      "claim_id": "PSDGRAM-C07",
+      "level": "E2",
+      "claim": "The full-Gram principal directions are not close reproductions of inherited rays.",
+      "value": {
+        "nearest_ray_angle_degrees_range": [29.216536614542147, 70.15266353700156],
+        "nearest_ray_angle_degrees_mean": 53.91877578201159
+      },
+      "metric": "Principal angle in the C0-whitened constrained coordinate space.",
+      "evidence": ["outputs/diagnostics.json"]
+    },
+    {
+      "claim_id": "PSDGRAM-C08",
+      "level": "E2",
+      "claim": "No sampled or continuity-corrected partial budget passes.",
+      "value": {
+        "sampled_majorant_range": [64.60384634208175, 142.73145780699434],
+        "corrected_majorant_range": [89.7713209107074, 354.163590133953]
+      },
+      "evidence": ["outputs/experiment_summary.json", "outputs/diagnostics.json"]
+    },
+    {
+      "claim_id": "PSDGRAM-C09",
+      "level": "E0",
+      "claim": "This node does not claim an RH proof, an RH disproof, a convex SDP optimum, or a global zero-side certificate.",
+      "evidence": ["TRUST_BOUNDARY.md", "outputs/experiment_summary.json"]
+    }
+  ]
+}

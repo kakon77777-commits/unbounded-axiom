@@ -1,0 +1,53 @@
+{
+  "schema": "EveMissLab.RH.Handoff.v0.2",
+  "from_node": "RH-PSDGRAM-20260724-v0.2",
+  "to_node": "RH-AxisTarget-Dual-20260724-v0.3",
+  "decision": "Stop expanding the same primal rank family and construct dual axis-target transfer lower bounds focused on [18,23].",
+  "reason": {
+    "mean_full_gram_improvement_fraction": 0.21077570349563943,
+    "best_sampled_budget_multiple": 64.60384634208175,
+    "best_corrected_budget_multiple": 89.7713209107074,
+    "rank_sweep_collapsed_to_one": true,
+    "dominant_band_on_all_patches": "[18,23]"
+  },
+  "next_problem": {
+    "primal_objective": "tail(A) + sum_j N_j sup_{x in I_j} <P(x),A>",
+    "core_constraint": "<C(z),A> <= -1",
+    "psd_constraint": "A >= 0 in the semidefinite order",
+    "dual_witness_template": "M_mu + sum_q eta_q C(z_q) >= 0 in the semidefinite order, with eta_q >= 0 and each axis measure nonnegative with total mass 1",
+    "interpretation": "A witness gives a certified lower bound sum_q eta_q for every feasible primal A."
+  },
+  "work_packages": [
+    {
+      "id": "D1",
+      "task": "Derive the finite-grid conic dual with correct signs, normalization, guard treatment, and arithmetic-floor multiplier."
+    },
+    {
+      "id": "D2",
+      "task": "Search for nonnegative axis measures concentrated first on [18,23], then allow all five bands and the tail matrix."
+    },
+    {
+      "id": "D3",
+      "task": "Run mesh refinement and perturbation tests; reject witnesses whose minimum eigenvalue margin collapses."
+    },
+    {
+      "id": "D4",
+      "task": "Rationalize or interval-enclose the strongest stable witness."
+    },
+    {
+      "id": "D5",
+      "task": "If the lower bound exceeds 1 on all 18 patches, retire the present R=3 function class; otherwise identify the missing primal directions from dual slack."
+    }
+  ],
+  "do_not_do_yet": [
+    "Do not spend another full node on higher Burer-Monteiro ranks without a dual diagnostic.",
+    "Do not fit to known zeta-zero ordinates.",
+    "Do not promote sampled count profiles or Hessian bounds to formal claims.",
+    "Do not attach an RH or global-certificate claim."
+  ],
+  "success_criteria": {
+    "E2": "Stable dual lower bounds under grid refinement for all 18 patches.",
+    "upgrade": "Rational or interval PSD witnesses with explicit positive eigenvalue margins.",
+    "kill_criterion": "Certified lower bound greater than 1 for every patch in the current function class."
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "schema": "EveMissLab.RH.Handoff.v0.3",
+  "from_node": "RH-AxisTarget-Dual-20260724-v0.3",
+  "to_node": "RH-SupportPrime-DualFrontier-20260724-v0.4",
+  "decision": "Retire the current R=3 patchwise finite-model class and map a support-radius versus prime-side-cost dual frontier before further primal optimization.",
+  "reason": {
+    "dual_lower_bound": 2.0,
+    "target_budget": 1.0,
+    "floating_patch_pass_count": 18,
+    "rational_surrogate_exact_patch_pass_count": 18,
+    "first_sampled_radius_with_any_patch_escape": 5.1,
+    "first_sampled_radius_with_stable_all_patch_center_escape": 8.5,
+    "prime_cutoff_proxy_ratio_at_8_5_vs_3": 59874.14171519782
+  },
+  "next_problem": {
+    "dual_frontier": "For each R, basis dictionary, and theorem-object set, find the strongest stable all-patch dual lower bound.",
+    "prime_cost": "Derive and benchmark the exact support-to-prime cutoff relation for the active Fourier convention.",
+    "gating_rule": "Do not run an expensive nonconvex primal search when a stable dual lower bound is at least 1.",
+    "certification_rule": "Keep rational finite-model positivity separate from interval transfer, count theorems, and tail theorems."
+  },
+  "work_packages": [
+    {
+      "id": "F1",
+      "task": "Sweep support radii 4.5 through 9 with multiple basis densities and width schedules; compute single-band, three-band, and five-band dual bounds."
+    },
+    {
+      "id": "F2",
+      "task": "Run primal searches only for configurations passing the dual gate, using multi-point patch constraints and independent mesh refinement."
+    },
+    {
+      "id": "F3",
+      "task": "Implement and benchmark a segmented prime-power accumulator with explicit cutoff and error budgets."
+    },
+    {
+      "id": "F4",
+      "task": "Replace the A1 count and tail prototypes by cited, directed-rounded theorem objects."
+    },
+    {
+      "id": "F5",
+      "task": "Rationalize or interval-enclose any stable frontier witness and preserve the no-known-zero fitting discipline."
+    }
+  ],
+  "do_not_do": [
+    "Do not increase Burer-Monteiro rank at R=3.",
+    "Do not infer primal feasibility from center-only dual escape.",
+    "Do not launch the largest prime cutoff before a dual gate passes.",
+    "Do not fit or select candidates using known zeta-zero ordinates.",
+    "Do not promote finite rational surrogate positivity to an RH claim."
+  ],
+  "success_criteria": {
+    "research": "Find at least one all-patch configuration with stable dual lower bounds below 1 and a quantified prime-side execution plan.",
+    "constructive": "Produce a full-patch primal candidate below the same finite budget.",
+    "upgrade": "Interval-transfer the transform, count, and tail objects needed by any surviving witness or candidate."
+  }
+}

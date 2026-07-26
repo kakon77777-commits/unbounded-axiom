@@ -1,0 +1,47 @@
+{
+  "schema": "RH.BMCC.SourceLineage.v0.1",
+  "parent_integration": "RH_Equivariant_Arithmetic_Obstruction_Integration_v1.0",
+  "reused_interfaces": [
+    {
+      "source": "RH_Axis_Suppressed_Global_Window_Optimizer_v0.1/prototype.py",
+      "items": [
+        "paired compact-bump basis",
+        "C0 whitening",
+        "arithmetic matrix normalization",
+        "off-axis block matrix convention"
+      ],
+      "adaptation": "Known-zero annihilation rows were removed; continuous band-energy suppression was added."
+    },
+    {
+      "source": "RH_Axis_Suppressed_Global_Window_Optimizer_v0.1/data/first_50_ordinates.csv",
+      "items": [
+        "first 50 listed critical-line ordinates"
+      ],
+      "adaptation": "Used only after fitting as a holdout diagnostic."
+    },
+    {
+      "source": "RH_Zero_Side_Leakage_Budget_v0.1",
+      "items": [
+        "derivative-total-variation t^-2 transform envelope",
+        "prototype tail-budget pattern"
+      ],
+      "adaptation": "Applied linearly to the nonnegative certificate weights."
+    },
+    {
+      "source": "RH_Equivariant_Arithmetic_Obstruction_Integration_v1.0/handoff/next_experiment_spec.md",
+      "items": [
+        "global domination acceptance criterion",
+        "axis, guard, unknown-band, and tail budget separation"
+      ],
+      "adaptation": "Implemented a local family and partial budget; unknown off-axis charges remain open."
+    }
+  ],
+  "new_in_this_node": [
+    "adaptive anisotropic rational cover",
+    "zero-ordinate-free continuous axis-energy fitting",
+    "72-candidate rank-one library",
+    "two-stage conic LP with guard Pareto slack",
+    "coarse-versus-adaptive ablation",
+    "PSD Gram next-node decision"
+  ]
+}

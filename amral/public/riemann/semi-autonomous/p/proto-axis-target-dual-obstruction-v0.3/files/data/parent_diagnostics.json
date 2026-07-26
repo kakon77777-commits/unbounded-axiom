@@ -1,0 +1,438 @@
+{
+  "schema": "RH.PSDGram.Diagnostics.v0.2",
+  "sampled_majorant": {
+    "minimum": 64.60384634208175,
+    "mean": 104.19803472212912,
+    "maximum": 142.73145780699434
+  },
+  "lipschitz_corrected_majorant": {
+    "minimum": 89.7713209107074,
+    "mean": 195.43663521842035,
+    "maximum": 354.163590133953
+  },
+  "target_budget": 1.0,
+  "best_sampled_budget_multiple": 64.60384634208175,
+  "best_lipschitz_corrected_budget_multiple": 89.7713209107074,
+  "band_statistics": [
+    {
+      "band_id": "A0",
+      "start": 14.0,
+      "stop": 18.0,
+      "sampled_charge": {
+        "minimum": 1.7325287650145282,
+        "mean": 4.000821497870272,
+        "maximum": 7.091799501782366
+      },
+      "sampled_objective_share": {
+        "minimum": 0.016001936474589494,
+        "mean": 0.03975341141938099,
+        "maximum": 0.0590881655576359
+      }
+    },
+    {
+      "band_id": "A1",
+      "start": 18.0,
+      "stop": 23.0,
+      "sampled_charge": {
+        "minimum": 38.438987094657584,
+        "mean": 64.60207847152056,
+        "maximum": 94.69886099782305
+      },
+      "sampled_objective_share": {
+        "minimum": 0.5789391154647289,
+        "mean": 0.6173105686916354,
+        "maximum": 0.6634757498650201
+      }
+    },
+    {
+      "band_id": "A2",
+      "start": 23.0,
+      "stop": 35.0,
+      "sampled_charge": {
+        "minimum": 11.895631092777531,
+        "mean": 19.57338177220241,
+        "maximum": 28.86841468668982
+      },
+      "sampled_objective_share": {
+        "minimum": 0.18109649953662468,
+        "mean": 0.18697231734181724,
+        "maximum": 0.20599654989713562
+      }
+    },
+    {
+      "band_id": "A3",
+      "start": 35.0,
+      "stop": 70.0,
+      "sampled_charge": {
+        "minimum": 0.14849334365574635,
+        "mean": 0.48741460751713256,
+        "maximum": 1.1744632941831403
+      },
+      "sampled_objective_share": {
+        "minimum": 0.0012438457023258467,
+        "mean": 0.004855755817619951,
+        "maximum": 0.009436976648936479
+      }
+    },
+    {
+      "band_id": "A4",
+      "start": 70.0,
+      "stop": 145.0,
+      "sampled_charge": {
+        "minimum": 0.014658411842427837,
+        "mean": 0.024042806000997154,
+        "maximum": 0.035295064043014926
+      },
+      "sampled_objective_share": {
+        "minimum": 0.000221797240564333,
+        "mean": 0.0002296923500431705,
+        "maximum": 0.0002518552369490438
+      }
+    }
+  ],
+  "dominant_band_counts": {
+    "A1": 18
+  },
+  "tail_objective_share": {
+    "minimum": 0.11877405064871156,
+    "mean": 0.1508782543795033,
+    "maximum": 0.1717035697884588
+  },
+  "paired_reductions": [
+    {
+      "patch_id": "X0_Y0",
+      "sampled_majorant_reduction_fraction": 0.1440963904539931,
+      "known_zero_holdout_reduction_fraction": 0.2417595612269886
+    },
+    {
+      "patch_id": "X1_Y0",
+      "sampled_majorant_reduction_fraction": 0.2081624205828571,
+      "known_zero_holdout_reduction_fraction": 0.1736464372167459
+    },
+    {
+      "patch_id": "X2_Y0",
+      "sampled_majorant_reduction_fraction": 0.2596710024800399,
+      "known_zero_holdout_reduction_fraction": 0.08390828603505643
+    },
+    {
+      "patch_id": "X0_Y1",
+      "sampled_majorant_reduction_fraction": 0.10886555997492817,
+      "known_zero_holdout_reduction_fraction": 0.15852460837887902
+    },
+    {
+      "patch_id": "X1_Y1",
+      "sampled_majorant_reduction_fraction": 0.1851346522278295,
+      "known_zero_holdout_reduction_fraction": 0.056453981462564716
+    },
+    {
+      "patch_id": "X2_Y1",
+      "sampled_majorant_reduction_fraction": 0.2482580092985262,
+      "known_zero_holdout_reduction_fraction": 0.009863976835772148
+    },
+    {
+      "patch_id": "x0_Y2",
+      "sampled_majorant_reduction_fraction": 0.16645153221410294,
+      "known_zero_holdout_reduction_fraction": 0.2817633959488031
+    },
+    {
+      "patch_id": "x1_Y2",
+      "sampled_majorant_reduction_fraction": 0.1514521490234483,
+      "known_zero_holdout_reduction_fraction": 0.22339406097543285
+    },
+    {
+      "patch_id": "x2_Y2",
+      "sampled_majorant_reduction_fraction": 0.20158696120367883,
+      "known_zero_holdout_reduction_fraction": 0.18543222239605203
+    },
+    {
+      "patch_id": "x3_Y2",
+      "sampled_majorant_reduction_fraction": 0.24286496216305217,
+      "known_zero_holdout_reduction_fraction": 0.17599269059375305
+    },
+    {
+      "patch_id": "x4_Y2",
+      "sampled_majorant_reduction_fraction": 0.2747772594281694,
+      "known_zero_holdout_reduction_fraction": 0.151414675585214
+    },
+    {
+      "patch_id": "x5_Y2",
+      "sampled_majorant_reduction_fraction": 0.2866441091137039,
+      "known_zero_holdout_reduction_fraction": 0.06528438284984554
+    },
+    {
+      "patch_id": "x0_Y3",
+      "sampled_majorant_reduction_fraction": 0.1658785157083663,
+      "known_zero_holdout_reduction_fraction": 0.28208260878020264
+    },
+    {
+      "patch_id": "x1_Y3",
+      "sampled_majorant_reduction_fraction": 0.150510391208503,
+      "known_zero_holdout_reduction_fraction": 0.22260445227833348
+    },
+    {
+      "patch_id": "x2_Y3",
+      "sampled_majorant_reduction_fraction": 0.20043676445046568,
+      "known_zero_holdout_reduction_fraction": 0.18512866171956852
+    },
+    {
+      "patch_id": "x3_Y3",
+      "sampled_majorant_reduction_fraction": 0.24142508397568163,
+      "known_zero_holdout_reduction_fraction": 0.17531223709216917
+    },
+    {
+      "patch_id": "x4_Y3",
+      "sampled_majorant_reduction_fraction": 0.27271966826011695,
+      "known_zero_holdout_reduction_fraction": 0.14977147421740458
+    },
+    {
+      "patch_id": "x5_Y3",
+      "sampled_majorant_reduction_fraction": 0.2850272311540467,
+      "known_zero_holdout_reduction_fraction": 0.06461006433099598
+    }
+  ],
+  "full_gram_direction_distance_from_parent_library": {
+    "metric": "Principal angle in the C0-whitened constrained coordinate space.",
+    "angle_degrees": {
+      "minimum": 29.216536614542147,
+      "mean": 53.91877578201159,
+      "maximum": 70.15266353700156
+    },
+    "rows": [
+      {
+        "patch_id": "X0_Y0",
+        "closest_parent_candidate_id": "x1_Y2_P03",
+        "absolute_c0_cosine": 0.8116793013969242,
+        "c0_angle_degrees": 35.73967031555648
+      },
+      {
+        "patch_id": "X1_Y0",
+        "closest_parent_candidate_id": "x3_Y2_P03",
+        "absolute_c0_cosine": 0.4782732071167693,
+        "c0_angle_degrees": 61.42731694082333
+      },
+      {
+        "patch_id": "X2_Y0",
+        "closest_parent_candidate_id": "x5_Y2_P03",
+        "absolute_c0_cosine": 0.35315092648339047,
+        "c0_angle_degrees": 69.31983857900676
+      },
+      {
+        "patch_id": "X0_Y1",
+        "closest_parent_candidate_id": "x1_Y2_P03",
+        "absolute_c0_cosine": 0.8727812356542688,
+        "c0_angle_degrees": 29.216536614542147
+      },
+      {
+        "patch_id": "X1_Y1",
+        "closest_parent_candidate_id": "x3_Y2_P03",
+        "absolute_c0_cosine": 0.6175780376051941,
+        "c0_angle_degrees": 51.86051514091802
+      },
+      {
+        "patch_id": "X2_Y1",
+        "closest_parent_candidate_id": "x5_Y2_P03",
+        "absolute_c0_cosine": 0.46971889971205805,
+        "c0_angle_degrees": 61.98394874415297
+      },
+      {
+        "patch_id": "x0_Y2",
+        "closest_parent_candidate_id": "x0_Y2_P03",
+        "absolute_c0_cosine": 0.8588268832422001,
+        "c0_angle_degrees": 30.81488051835601
+      },
+      {
+        "patch_id": "x1_Y2",
+        "closest_parent_candidate_id": "x1_Y2_P03",
+        "absolute_c0_cosine": 0.7800916632333524,
+        "c0_angle_degrees": 38.73103123271968
+      },
+      {
+        "patch_id": "x2_Y2",
+        "closest_parent_candidate_id": "x2_Y2_P03",
+        "absolute_c0_cosine": 0.5633923014492875,
+        "c0_angle_degrees": 55.709275825359775
+      },
+      {
+        "patch_id": "x3_Y2",
+        "closest_parent_candidate_id": "x3_Y2_P03",
+        "absolute_c0_cosine": 0.42222805929490365,
+        "c0_angle_degrees": 65.02466569361933
+      },
+      {
+        "patch_id": "x4_Y2",
+        "closest_parent_candidate_id": "x4_Y2_P03",
+        "absolute_c0_cosine": 0.3421652858875986,
+        "c0_angle_degrees": 69.9911499890025
+      },
+      {
+        "patch_id": "x5_Y2",
+        "closest_parent_candidate_id": "x5_Y2_P03",
+        "absolute_c0_cosine": 0.3395151387295322,
+        "c0_angle_degrees": 70.15266353700156
+      },
+      {
+        "patch_id": "x0_Y3",
+        "closest_parent_candidate_id": "x0_Y2_P03",
+        "absolute_c0_cosine": 0.8599298764672141,
+        "c0_angle_degrees": 30.69128966302103
+      },
+      {
+        "patch_id": "x1_Y3",
+        "closest_parent_candidate_id": "x1_Y2_P03",
+        "absolute_c0_cosine": 0.7777254935471763,
+        "c0_angle_degrees": 38.94720709873634
+      },
+      {
+        "patch_id": "x2_Y3",
+        "closest_parent_candidate_id": "x2_Y2_P03",
+        "absolute_c0_cosine": 0.5614532287082891,
+        "c0_angle_degrees": 55.84364211733639
+      },
+      {
+        "patch_id": "x3_Y3",
+        "closest_parent_candidate_id": "x3_Y2_P03",
+        "absolute_c0_cosine": 0.42181575472888677,
+        "c0_angle_degrees": 65.05072314586894
+      },
+      {
+        "patch_id": "x4_Y3",
+        "closest_parent_candidate_id": "x4_Y2_P03",
+        "absolute_c0_cosine": 0.3435370265025773,
+        "c0_angle_degrees": 69.9074840150157
+      },
+      {
+        "patch_id": "x5_Y3",
+        "closest_parent_candidate_id": "x5_Y2_P03",
+        "absolute_c0_cosine": 0.33995077579335825,
+        "c0_angle_degrees": 70.12612490517168
+      }
+    ]
+  },
+  "rank_study": [
+    {
+      "patch_id": "X1_Y0",
+      "sweeps": [
+        {
+          "requested_rank": 1,
+          "numerical_rank": 1,
+          "sampled_majorant": 64.60384634208175
+        },
+        {
+          "requested_rank": 2,
+          "numerical_rank": 1,
+          "sampled_majorant": 64.60384634204118
+        },
+        {
+          "requested_rank": 4,
+          "numerical_rank": 1,
+          "sampled_majorant": 64.60384634222427
+        },
+        {
+          "requested_rank": 8,
+          "numerical_rank": 1,
+          "sampled_majorant": 64.60384634240069
+        }
+      ],
+      "sampled_majorant_range": [
+        64.60384634204118,
+        64.60384634240069
+      ]
+    },
+    {
+      "patch_id": "X1_Y1",
+      "sweeps": [
+        {
+          "requested_rank": 1,
+          "numerical_rank": 1,
+          "sampled_majorant": 137.7908257036296
+        },
+        {
+          "requested_rank": 2,
+          "numerical_rank": 1,
+          "sampled_majorant": 137.79082570222033
+        },
+        {
+          "requested_rank": 4,
+          "numerical_rank": 1,
+          "sampled_majorant": 137.7908257027079
+        },
+        {
+          "requested_rank": 8,
+          "numerical_rank": 1,
+          "sampled_majorant": 137.79082570165372
+        }
+      ],
+      "sampled_majorant_range": [
+        137.79082570165372,
+        137.7908257036296
+      ]
+    },
+    {
+      "patch_id": "x2_Y2",
+      "sweeps": [
+        {
+          "requested_rank": 1,
+          "numerical_rank": 1,
+          "sampled_majorant": 84.45204091765834
+        },
+        {
+          "requested_rank": 2,
+          "numerical_rank": 1,
+          "sampled_majorant": 84.45204091820509
+        },
+        {
+          "requested_rank": 4,
+          "numerical_rank": 1,
+          "sampled_majorant": 84.45204091791
+        },
+        {
+          "requested_rank": 8,
+          "numerical_rank": 1,
+          "sampled_majorant": 84.45204091773581
+        }
+      ],
+      "sampled_majorant_range": [
+        84.45204091765834,
+        84.45204091820509
+      ]
+    },
+    {
+      "patch_id": "x2_Y3",
+      "sweeps": [
+        {
+          "requested_rank": 1,
+          "numerical_rank": 1,
+          "sampled_majorant": 121.86745773141203
+        },
+        {
+          "requested_rank": 2,
+          "numerical_rank": 1,
+          "sampled_majorant": 121.86745773132725
+        },
+        {
+          "requested_rank": 4,
+          "numerical_rank": 1,
+          "sampled_majorant": 121.86745773104778
+        },
+        {
+          "requested_rank": 8,
+          "numerical_rank": 1,
+          "sampled_majorant": 121.86745773123428
+        }
+      ],
+      "sampled_majorant_range": [
+        121.86745773104778,
+        121.86745773141203
+      ]
+    }
+  ],
+  "continuity": {
+    "refined_core_pass_count": 18,
+    "patch_count": 18,
+    "refined_core_upper_range": [
+      -0.9922528760839052,
+      -0.9606080348509114
+    ]
+  },
+  "decision": "Stop expanding the same primal rank family. Construct a dual axis-target transfer lower-bound certificate focused on the [18,23] band before any further global optimization."
+}

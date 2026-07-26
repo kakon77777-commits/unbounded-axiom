@@ -1,0 +1,43 @@
+{
+  "schema": "EveMissLab.RH.SourceLineage.v0.3",
+  "direct_parent": {
+    "node_id": "RH-PSDGRAM-20260724-v0.2",
+    "package": "RH_PSD_Gram_Banded_Global_Dominance_v0.2",
+    "inherited_objects": [
+      "18-patch adaptive cover",
+      "R=3 constrained transform model",
+      "five real-axis bands",
+      "prototype tail construction",
+      "18 saved primal Gram matrices",
+      "dual-node handoff"
+    ]
+  },
+  "direct_inputs_in_package": [
+    "data/parent_experiment_summary.json",
+    "data/parent_diagnostics.json",
+    "data/parent_handoff.json",
+    "data/parent_gram_results.json"
+  ],
+  "conceptual_ancestry": [
+    "RH_Arithmetic_Matrix_PSD_v0.1",
+    "RH_Regional_Phase_Shaping_v0.1",
+    "RH_Separation_Positivity_Intersection_v0.1",
+    "RH_Validated_Intersection_Certificate_v0.2",
+    "RH_Zero_Side_Leakage_Budget_v0.1",
+    "RH_Axis_Suppressed_Global_Window_Optimizer_v0.1",
+    "RH_Banded_MultiTest_Cover_Certificates_v0.1",
+    "RH_PSD_Gram_Banded_Global_Dominance_v0.2"
+  ],
+  "new_objects": [
+    "18 patch-center PSD dual witnesses",
+    "decimal-rational finite surrogate",
+    "exact Fraction LDL verifier",
+    "dual/primal pairing cross-check",
+    "support-radius and prime-cutoff-proxy diagnostic"
+  ],
+  "data_isolation": {
+    "known_zero_ordinates_available_to_this_node": false,
+    "known_zero_ordinates_used_in_construction": false,
+    "known_zero_ordinates_used_in_selection": false
+  }
+}

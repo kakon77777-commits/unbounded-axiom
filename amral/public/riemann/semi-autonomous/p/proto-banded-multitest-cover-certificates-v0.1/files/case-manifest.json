@@ -1,0 +1,35 @@
+{
+  "schema": "RH.BMCC.CaseManifest.v0.1",
+  "case_id": "CASE-0002-RH-BMCC-20260724",
+  "title": "RH Banded Multi-Test Cover Certificates v0.1",
+  "status": "completed_E2_research_node",
+  "date": "2026-07-24",
+  "research_mode": "semi-autonomous AI mathematical research",
+  "parent": "CASE-0001-RH-EAO-INTEGRATION-20260724",
+  "main_manuscript": "分帶多測試函數與自適應覆蓋證書族_v0.1_半AI自主研究稿.md",
+  "entrypoints": [
+    "run_experiment.py",
+    "run_ablation.py"
+  ],
+  "primary_outputs": [
+    "outputs/experiment_summary.json",
+    "outputs/ablation_summary.json",
+    "outputs/candidate_library.json",
+    "outputs/certificate_summary.csv",
+    "outputs/certificates"
+  ],
+  "metadata": [
+    "metadata/provenance.json",
+    "metadata/claim_ledger.json",
+    "metadata/gap_update.json",
+    "metadata/handoff.json",
+    "metadata/source_lineage.json"
+  ],
+  "validation": [
+    "validation/test_report.json",
+    "validation/validation_report.json",
+    "MANIFEST.sha256"
+  ],
+  "global_certificate_pass": false,
+  "rh_proof_claimed": false
+}

@@ -1,0 +1,112 @@
+{
+  "patch": {
+    "patch_id": "x0_Y3",
+    "x_min": 20.0,
+    "x_max": 20.1,
+    "y_min": -0.125,
+    "y_max": -0.1,
+    "guard_dx": 0.015,
+    "guard_dy": 0.006
+  },
+  "normalization": "aggregate dense-core maximum constrained to <= -1",
+  "candidate_count": 72,
+  "active_candidate_count": 2,
+  "active_candidates": [
+    {
+      "candidate_id": "X0_Y1_P01",
+      "weight": 0.05813493079700526
+    },
+    {
+      "candidate_id": "x0_Y2_P03",
+      "weight": 9.277909453420325
+    }
+  ],
+  "arithmetic_floor": 0.001,
+  "arithmetic_value": 23.172353515380532,
+  "stage_one_axis_energy_optimum": 43.18097711771941,
+  "axis_band_energy": 43.28015214065122,
+  "known_first_50_zero_mass_holdout": 11.59566616230884,
+  "first_zero_mass_holdout": 0.01001572463056164,
+  "tail_majorant_from_145_prototype": 7.3093807301034355,
+  "guard_positive_max": 0.0,
+  "partial_gap_excluding_other_off_axis_bands": -17.905046892412276,
+  "dense_core_max": -0.9999999999999923,
+  "dense_core_min": -2.165246295968257,
+  "dense_core_grid": {
+    "nx": 161,
+    "ny": 121
+  },
+  "guard_grid_count": 888,
+  "crude_l1_lipschitz_constant": 517.0766958482859,
+  "crude_continuous_upper_bound": -0.784551376729871,
+  "sampled_core_pass": true,
+  "crude_continuous_sign_pass": true,
+  "partial_budget_pass": false,
+  "other_off_axis_bands_certified": false,
+  "global_certificate_pass": false,
+  "single_candidate_baseline": {
+    "candidate_id": "x0_Y3_P03",
+    "scale": 9.314417568332626,
+    "axis_band_energy": 43.18097711771944,
+    "known_zero_mass": 11.586235455958585,
+    "first_zero_mass": 0.010001906282171262,
+    "arithmetic_value": 23.153536426769776,
+    "guard_positive_max": 0.0
+  },
+  "stage_one_axis_energy_improvement_vs_single_fraction": 8.227497189596097e-16,
+  "selected_axis_energy_overhead_vs_single_fraction": 0.002296729475606927,
+  "selected_guard_improvement_vs_single_fraction": null,
+  "guard_axis_energy_pareto": [
+    {
+      "axis_energy_slack": 0.0,
+      "solver_success": true,
+      "axis_band_energy": 43.18097711771941,
+      "guard_positive_max": 0.0,
+      "dense_core_max": -0.9999999999999991,
+      "active_candidate_count": 1
+    },
+    {
+      "axis_energy_slack": 0.01,
+      "solver_success": true,
+      "axis_band_energy": 43.28015214065122,
+      "guard_positive_max": 0.0,
+      "dense_core_max": -0.9999999999999923,
+      "active_candidate_count": 2
+    },
+    {
+      "axis_energy_slack": 0.025,
+      "solver_success": true,
+      "axis_band_energy": 43.28015214065122,
+      "guard_positive_max": 0.0,
+      "dense_core_max": -0.9999999999999923,
+      "active_candidate_count": 2
+    },
+    {
+      "axis_energy_slack": 0.05,
+      "solver_success": true,
+      "axis_band_energy": 43.28015214065122,
+      "guard_positive_max": 0.0,
+      "dense_core_max": -0.9999999999999923,
+      "active_candidate_count": 2
+    },
+    {
+      "axis_energy_slack": 0.1,
+      "solver_success": true,
+      "axis_band_energy": 43.28015214065122,
+      "guard_positive_max": 0.0,
+      "dense_core_max": -0.9999999999999923,
+      "active_candidate_count": 2
+    }
+  ],
+  "exchange_history": [
+    {
+      "round": 0,
+      "active_core_constraints": 63,
+      "stage_one_energy": 43.18097711771941,
+      "stage_two_energy": 43.28015214065122,
+      "dense_core_max": -0.9999999999999923
+    }
+  ],
+  "status": "E2 floating sampled certificate",
+  "warning": "The holdout zero values, derivative-variation tail, quadrature, LP, and Lipschitz audit are floating prototype computations. No interval enclosure or global off-axis budget is asserted."
+}

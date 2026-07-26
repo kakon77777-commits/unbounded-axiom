@@ -1,0 +1,85 @@
+{
+  "schema": "EveMissLab.RH.GapLedger.v0.3",
+  "gaps": [
+    {
+      "gap_id": "GAP-AXD-01",
+      "title": "Analytic transform transfer",
+      "status": "open",
+      "blocking": true,
+      "detail": "Exact LDL positivity applies to decimal-rational transform vectors and matrices, not interval-enclosed Fourier integrals.",
+      "next_action": "Interval-enclose the basis integrals and propagate entrywise errors to a PSD margin."
+    },
+    {
+      "gap_id": "GAP-AXD-02",
+      "title": "Theorem-backed zero-count coefficient",
+      "status": "open",
+      "blocking": true,
+      "detail": "The A1 coefficient is an inherited floating profile rounded downward, not a cited theorem object packaged with hypotheses.",
+      "next_action": "Replace it by an explicit zero-count theorem evaluated with directed rounding."
+    },
+    {
+      "gap_id": "GAP-AXD-03",
+      "title": "Theorem-backed tail matrix",
+      "status": "open",
+      "blocking": true,
+      "detail": "The tail multiplier and t^-4 density profile remain a floating prototype.",
+      "next_action": "Derive and interval-evaluate a tail inequality with explicit constants."
+    },
+    {
+      "gap_id": "GAP-AXD-04",
+      "title": "Function-class scope",
+      "status": "resolved_for_r3_only",
+      "blocking": true,
+      "detail": "The rejection covers the R=3, 24-bump, 22-dimensional finite class, not arbitrary compactly supported admissible test functions.",
+      "next_action": "Map dual lower bounds over support radius, basis density, and dictionary geometry."
+    },
+    {
+      "gap_id": "GAP-AXD-05",
+      "title": "Support versus prime-side feasibility",
+      "status": "next_node",
+      "blocking": true,
+      "detail": "Larger support weakens the sampled obstruction but raises the prime cutoff proxy exponentially.",
+      "next_action": "Build RH_Support_Prime_Dual_Frontier_v0.4 with dual-gated primal and prime-side cost models."
+    },
+    {
+      "gap_id": "GAP-AXD-06",
+      "title": "Axis-only near-null geometry",
+      "status": "open",
+      "blocking": false,
+      "detail": "At rho=0 the smallest eigenvalues range from about -1.1e-6 to numerical zero.",
+      "next_action": "Use high precision or interval inertia checks to decide whether pure A1 positivity is truly false."
+    },
+    {
+      "gap_id": "GAP-AXD-07",
+      "title": "Full-patch feasibility at larger support",
+      "status": "open",
+      "blocking": true,
+      "detail": "Center-only dual escape does not construct a candidate negative on the whole patch.",
+      "next_action": "After dual gating, run multi-point patch constraints and continuity audits."
+    },
+    {
+      "gap_id": "GAP-AXD-08",
+      "title": "Unknown off-axis regions",
+      "status": "open",
+      "blocking": true,
+      "detail": "The complete zero-side sign and leakage budget is not included.",
+      "next_action": "Partition and certify every remaining orbit-type region."
+    },
+    {
+      "gap_id": "GAP-AXD-09",
+      "title": "Zero presence and winding",
+      "status": "open",
+      "blocking": true,
+      "detail": "No argument-principle certificate establishes a zero in a target patch.",
+      "next_action": "Attach validated winding objects only after a viable global budget exists."
+    },
+    {
+      "gap_id": "GAP-AXD-10",
+      "title": "Local-to-global closure",
+      "status": "open",
+      "blocking": true,
+      "detail": "No complete formal implication from local patch objects to an RH contradiction is present.",
+      "next_action": "Close all quantifiers and theorem dependencies in a proof-assistant or independently checked claim graph."
+    }
+  ]
+}

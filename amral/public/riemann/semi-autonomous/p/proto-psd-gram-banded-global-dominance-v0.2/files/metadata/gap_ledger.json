@@ -1,0 +1,69 @@
+{
+  "schema": "EveMissLab.RH.GapLedger.v0.2",
+  "gaps": [
+    {
+      "gap_id": "GAP-PSD-01",
+      "title": "Convex SDP optimality",
+      "status": "open",
+      "blocking": true,
+      "detail": "No convex SDP solver was available; A=L L^T with SLSQP is nonconvex.",
+      "next_action": "Build dual lower-bound witnesses or replay with a validated convex SDP solver."
+    },
+    {
+      "gap_id": "GAP-PSD-02",
+      "title": "Axis-target transfer lower bound",
+      "status": "next_node",
+      "blocking": true,
+      "detail": "Primal candidates show [18,23] dominance but do not prove it is unavoidable.",
+      "next_action": "Construct PSD dual matrix inequalities with nonnegative core and axis-grid multipliers."
+    },
+    {
+      "gap_id": "GAP-PSD-03",
+      "title": "Interval arithmetic",
+      "status": "open",
+      "blocking": true,
+      "detail": "Transforms, Hessian envelopes, arithmetic forms, eigenvalues, and suprema are floating.",
+      "next_action": "Rationalize or interval-enclose any dual witness that survives mesh refinement."
+    },
+    {
+      "gap_id": "GAP-PSD-04",
+      "title": "Zero-count majorants",
+      "status": "open",
+      "blocking": true,
+      "detail": "The inherited count profile is not packaged as a formally verified theorem object.",
+      "next_action": "Replace each floating count profile by cited explicit bounds and interval evaluation."
+    },
+    {
+      "gap_id": "GAP-PSD-05",
+      "title": "Tail certificate",
+      "status": "open",
+      "blocking": true,
+      "detail": "The t^-4 tail is a floating prototype based on a density profile.",
+      "next_action": "Produce a theorem-backed tail inequality with explicit constants and interval integration."
+    },
+    {
+      "gap_id": "GAP-PSD-06",
+      "title": "Unknown off-axis zero budget",
+      "status": "open",
+      "blocking": true,
+      "detail": "The reported partial gap omits other off-axis regions.",
+      "next_action": "Partition and sign-charge all remaining off-axis orbit types."
+    },
+    {
+      "gap_id": "GAP-PSD-07",
+      "title": "Zero presence and winding",
+      "status": "open",
+      "blocking": true,
+      "detail": "No target patch carries an argument-principle or positive-winding certificate.",
+      "next_action": "Attach validated winding certificates only after a viable zero-side budget exists."
+    },
+    {
+      "gap_id": "GAP-PSD-08",
+      "title": "Local-to-global logical closure",
+      "status": "open",
+      "blocking": true,
+      "detail": "No formal implication from the local cover family to a full critical-strip contradiction is included.",
+      "next_action": "Integrate certified local objects into the global claim graph and verify all quantifiers."
+    }
+  ]
+}

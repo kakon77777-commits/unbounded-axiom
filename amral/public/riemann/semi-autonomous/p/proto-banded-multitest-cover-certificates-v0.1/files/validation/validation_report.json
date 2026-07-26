@@ -1,0 +1,53 @@
+{
+  "schema": "RH.BMCC.ValidationReport.v0.1",
+  "date": "2026-07-24",
+  "checks": [
+    {
+      "name": "main_experiment_replay",
+      "status": "passed",
+      "command": "python run_experiment.py"
+    },
+    {
+      "name": "coarse_adaptive_ablation_replay",
+      "status": "passed",
+      "command": "python run_ablation.py"
+    },
+    {
+      "name": "unit_tests",
+      "status": "passed",
+      "detail": "9 passed"
+    },
+    {
+      "name": "json_parse",
+      "status": "passed",
+      "detail": "All 26 JSON files present before this report was added parsed successfully."
+    },
+    {
+      "name": "certificate_cardinality",
+      "status": "passed",
+      "detail": "18 certificate JSON files and 18 certificate-summary rows."
+    },
+    {
+      "name": "claim_boundary",
+      "status": "passed",
+      "detail": "global_certificate_pass is false and partial_budget_pass_count is zero."
+    },
+    {
+      "name": "source_safety_scan",
+      "status": "passed",
+      "detail": "No subprocess, shell execution, network client, eval, or exec pattern found in Python sources."
+    }
+  ],
+  "numerical_summary": {
+    "patch_count": 18,
+    "candidate_count": 72,
+    "candidate_arithmetic_minimum": 2.151736875725246,
+    "partial_gap_range": [
+      -20.40180267408736,
+      -8.968576668996137
+    ],
+    "coarse_continuous_pass_fraction": 0.5,
+    "adaptive_continuous_pass_fraction": 1.0
+  },
+  "overall": "passed_with_E2_trust_boundary"
+}

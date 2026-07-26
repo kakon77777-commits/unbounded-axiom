@@ -1,0 +1,90 @@
+{
+  "schema": "RH.BMCC.ClaimLedger.v0.1",
+  "node_id": "RH-BMCC-20260724-v0.1",
+  "claims": [
+    {
+      "id": "BMCC01",
+      "claim": "A nonnegative conic sum of rank-one self-correlation tests preserves real-axis nonnegativity and makes the arithmetic scalar linear in the weights.",
+      "type": "algebraic",
+      "evidence_level": "E1",
+      "status": "supported"
+    },
+    {
+      "id": "BMCC02",
+      "claim": "The 18 adaptive rational rectangles cover [20,20.5] x [-0.2,-0.1] without a rational atomic-cell gap.",
+      "type": "exact_cover",
+      "evidence_level": "E1",
+      "status": "supported"
+    },
+    {
+      "id": "BMCC03",
+      "claim": "Known zeta-zero ordinates are not used by candidate generation or conic optimization.",
+      "type": "data_lineage",
+      "evidence_level": "E1",
+      "status": "supported_by_code_path"
+    },
+    {
+      "id": "BMCC04",
+      "claim": "All 72 retained rank-one candidates satisfy the imposed floating arithmetic floor.",
+      "type": "floating_numerics",
+      "evidence_level": "E2",
+      "status": "supported"
+    },
+    {
+      "id": "BMCC05",
+      "claim": "All 18 adaptive patches have negative dense-core maxima and negative crude floating Lipschitz upper bounds.",
+      "type": "floating_regional_sign",
+      "evidence_level": "E2",
+      "status": "supported"
+    },
+    {
+      "id": "BMCC06",
+      "claim": "Adaptive near-axis height refinement reduces the worst coarse-cover axis energy, first-50 holdout mass, tail proxy, and partial deficit by the reported factors.",
+      "type": "floating_ablation",
+      "evidence_level": "E2",
+      "status": "supported"
+    },
+    {
+      "id": "BMCC07",
+      "claim": "The diagonal multi-test cone improves the primary axis-energy optimum over the best single candidate.",
+      "type": "optimization_hypothesis",
+      "evidence_level": "E2",
+      "status": "not_observed"
+    },
+    {
+      "id": "BMCC08",
+      "claim": "The diagonal multi-test cone can improve guard shaping with a bounded axis-energy overhead.",
+      "type": "optimization_hypothesis",
+      "evidence_level": "E2",
+      "status": "supported_on_transition_patches"
+    },
+    {
+      "id": "BMCC09",
+      "claim": "Any patch has a positive partial global leakage budget after unit target normalization.",
+      "type": "global_budget",
+      "evidence_level": "E2",
+      "status": "refuted_for_this_family"
+    },
+    {
+      "id": "BMCC10",
+      "claim": "The regional sign, arithmetic positivity, or tail bounds are interval-certified.",
+      "type": "validated_numerics",
+      "evidence_level": null,
+      "status": "not_supported"
+    },
+    {
+      "id": "BMCC11",
+      "claim": "The target window contains a zeta zero.",
+      "type": "zero_presence",
+      "evidence_level": null,
+      "status": "not_supported"
+    },
+    {
+      "id": "BMCC12",
+      "claim": "RH is proved or disproved.",
+      "type": "global_theorem",
+      "evidence_level": null,
+      "status": "not_supported"
+    }
+  ]
+}

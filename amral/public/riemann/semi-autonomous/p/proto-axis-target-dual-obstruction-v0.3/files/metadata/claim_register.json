@@ -1,0 +1,109 @@
+{
+  "schema": "EveMissLab.RH.ClaimRegister.v0.3",
+  "evidence_levels": {
+    "E0": "Exact algebraic statement inside the explicitly serialized finite rational surrogate.",
+    "E1": "Automatically recomputed structural, serialization, or cross-file validation check.",
+    "E2": "Floating numerical research evidence; stable in named diagnostics but not interval-certified.",
+    "E3": "Formal analytic or interval-certified statement connecting the finite model to the intended theorem. No E3 claim is made."
+  },
+  "claims": [
+    {
+      "claim_id": "AXDUAL-C01",
+      "level": "E0",
+      "claim": "If W=rho*T+M1+alpha*C(z) is positive semidefinite, A is positive semidefinite, and <C(z),A> is at most -1, then the stated finite objective lower bound is at least alpha.",
+      "scope": "Finite conic model with nonnegative band suprema and 0<rho<=1.",
+      "evidence": [
+        "METHOD.md",
+        "RH軸帶目標對偶障礙_顯式下界與支撐質數成本前沿_v0.3_半AI自主研究稿.md"
+      ]
+    },
+    {
+      "claim_id": "AXDUAL-C02",
+      "level": "E0",
+      "claim": "The 12-decimal exported rational tail matrix and all 18 exported rational witness matrices have strictly positive exact LDL^T pivots.",
+      "value": {
+        "patch_pass_count": 18,
+        "patch_count": 18,
+        "pivot_count_per_patch": 22,
+        "minimum_pivot_float_display": 3.240761260825524e-05
+      },
+      "scope": "outputs/rational_model.json only.",
+      "evidence": [
+        "outputs/rational_model.json",
+        "outputs/rational_verification.json",
+        "verify_rational_witnesses.py"
+      ]
+    },
+    {
+      "claim_id": "AXDUAL-C03",
+      "level": "E2",
+      "claim": "All 18 floating patch-center witnesses with rho=1e-3 and alpha=2 are positive definite.",
+      "value": {
+        "pass_count": 18,
+        "minimum_eigenvalue_range": [
+          3.1042101910186086e-05,
+          3.104242267483654e-05
+        ]
+      },
+      "evidence": [
+        "outputs/experiment_summary.json",
+        "outputs/witness_summary.csv"
+      ]
+    },
+    {
+      "claim_id": "AXDUAL-C04",
+      "level": "E2",
+      "claim": "Within the original floating R=3 finite model, the patchwise unit-negativity function class cannot meet target budget below 1 because every patch has a dual lower bound of 2.",
+      "scope": "R=3, 24 bumps, two structural zeros, 22-dimensional coordinate space, inherited count and tail prototypes.",
+      "evidence": [
+        "outputs/experiment_summary.json",
+        "outputs/witnesses"
+      ]
+    },
+    {
+      "claim_id": "AXDUAL-C05",
+      "level": "E1",
+      "claim": "The 18 saved v0.2 primal Gram matrices satisfy the dual pairing identity and have dual subobjective at least 2.",
+      "value": {
+        "all_pairings_nonnegative": true,
+        "all_subobjectives_at_least_2": true,
+        "identity_residual_abs_max": 1.0658141036401503e-14
+      },
+      "evidence": [
+        "data/parent_gram_results.json",
+        "outputs/experiment_summary.json"
+      ]
+    },
+    {
+      "claim_id": "AXDUAL-C06",
+      "level": "E2",
+      "claim": "The primary witness survives all tested quadrature grids, axis grids, and 6-to-12-decimal rationalization checks.",
+      "evidence": [
+        "outputs/sensitivity.json"
+      ]
+    },
+    {
+      "claim_id": "AXDUAL-C07",
+      "level": "E2",
+      "claim": "Under the fixed approximately eight-bumps-per-unit diagnostic, the first sampled radius with any patch-center tail-bound escape is 5.1 and the first sampled suffix with all-center escape starts at 8.5.",
+      "scope": "Center-only tail obstruction diagnostic; not a primal feasibility or critical-radius theorem.",
+      "value": {
+        "first_any_escape_radius": 5.1,
+        "first_stable_all_center_escape_radius": 8.5,
+        "cutoff_proxy_ratio_at_8_5_vs_3": 59874.14171519782
+      },
+      "evidence": [
+        "outputs/sensitivity.json"
+      ]
+    },
+    {
+      "claim_id": "AXDUAL-C08",
+      "level": "E0",
+      "claim": "This node does not claim an RH proof, an RH disproof, a global zero-side certificate, or rejection of all admissible test functions.",
+      "evidence": [
+        "TRUST_BOUNDARY.md",
+        "outputs/experiment_summary.json"
+      ]
+    }
+  ]
+}

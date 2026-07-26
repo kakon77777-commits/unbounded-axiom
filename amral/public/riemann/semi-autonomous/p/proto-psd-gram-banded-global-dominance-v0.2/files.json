@@ -1,0 +1,366 @@
+{
+  "package_id": "proto-psd-gram-banded-global-dominance-v0.2",
+  "filename": "RH_PSD_Gram_Banded_Global_Dominance_v0.2.zip",
+  "files": [
+    {
+      "path": "CHANGELOG.md",
+      "size": 698
+    },
+    {
+      "path": "METHOD.md",
+      "size": 3429
+    },
+    {
+      "path": "NEXT_NODE_DUAL_SPEC.md",
+      "size": 2913
+    },
+    {
+      "path": "PSD_Gram分帶全域支配_RH交叉項增益與軸帶轉移障礙_v0.2_半AI自主研究稿.md",
+      "size": 17527
+    },
+    {
+      "path": "README.md",
+      "size": 2378
+    },
+    {
+      "path": "REPLAY.md",
+      "size": 1102
+    },
+    {
+      "path": "RESEARCH_LOG.md",
+      "size": 1446
+    },
+    {
+      "path": "RESULTS.md",
+      "size": 2775
+    },
+    {
+      "path": "TRUST_BOUNDARY.md",
+      "size": 1889
+    },
+    {
+      "path": "build_diagnostics.py",
+      "size": 8678
+    },
+    {
+      "path": "build_release.py",
+      "size": 1966
+    },
+    {
+      "path": "data/first_50_ordinates.csv",
+      "size": 1100
+    },
+    {
+      "path": "data/parent_certificates/X0_Y0.certificate.json",
+      "size": 3494
+    },
+    {
+      "path": "data/parent_certificates/X0_Y1.certificate.json",
+      "size": 3693
+    },
+    {
+      "path": "data/parent_certificates/X1_Y0.certificate.json",
+      "size": 3499
+    },
+    {
+      "path": "data/parent_certificates/X1_Y1.certificate.json",
+      "size": 3692
+    },
+    {
+      "path": "data/parent_certificates/X2_Y0.certificate.json",
+      "size": 3489
+    },
+    {
+      "path": "data/parent_certificates/X2_Y1.certificate.json",
+      "size": 3695
+    },
+    {
+      "path": "data/parent_certificates/x0_Y2.certificate.json",
+      "size": 3491
+    },
+    {
+      "path": "data/parent_certificates/x0_Y3.certificate.json",
+      "size": 3571
+    },
+    {
+      "path": "data/parent_certificates/x1_Y2.certificate.json",
+      "size": 3484
+    },
+    {
+      "path": "data/parent_certificates/x1_Y3.certificate.json",
+      "size": 3500
+    },
+    {
+      "path": "data/parent_certificates/x2_Y2.certificate.json",
+      "size": 3497
+    },
+    {
+      "path": "data/parent_certificates/x2_Y3.certificate.json",
+      "size": 3490
+    },
+    {
+      "path": "data/parent_certificates/x3_Y2.certificate.json",
+      "size": 3501
+    },
+    {
+      "path": "data/parent_certificates/x3_Y3.certificate.json",
+      "size": 3488
+    },
+    {
+      "path": "data/parent_certificates/x4_Y2.certificate.json",
+      "size": 3498
+    },
+    {
+      "path": "data/parent_certificates/x4_Y3.certificate.json",
+      "size": 3482
+    },
+    {
+      "path": "data/parent_certificates/x5_Y2.certificate.json",
+      "size": 3497
+    },
+    {
+      "path": "data/parent_certificates/x5_Y3.certificate.json",
+      "size": 3495
+    },
+    {
+      "path": "data/parent_experiment_summary.json",
+      "size": 20315
+    },
+    {
+      "path": "metadata/claim_register.json",
+      "size": 3644
+    },
+    {
+      "path": "metadata/gap_ledger.json",
+      "size": 2754
+    },
+    {
+      "path": "metadata/handoff.json",
+      "size": 2441
+    },
+    {
+      "path": "metadata/research_node.json",
+      "size": 900
+    },
+    {
+      "path": "metadata/source_lineage.json",
+      "size": 1041
+    },
+    {
+      "path": "metadata/validation_report.json",
+      "size": 2243
+    },
+    {
+      "path": "outputs/comparison.csv",
+      "size": 8339
+    },
+    {
+      "path": "outputs/cover_audit.json",
+      "size": 1390
+    },
+    {
+      "path": "outputs/diagnostics.json",
+      "size": 12646
+    },
+    {
+      "path": "outputs/experiment_summary.json",
+      "size": 11235
+    },
+    {
+      "path": "outputs/patches/X0_Y0.diagonal.json",
+      "size": 19642
+    },
+    {
+      "path": "outputs/patches/X0_Y0.gram.json",
+      "size": 20494
+    },
+    {
+      "path": "outputs/patches/X0_Y1.diagonal.json",
+      "size": 19703
+    },
+    {
+      "path": "outputs/patches/X0_Y1.gram.json",
+      "size": 20477
+    },
+    {
+      "path": "outputs/patches/X1_Y0.diagonal.json",
+      "size": 19203
+    },
+    {
+      "path": "outputs/patches/X1_Y0.gram.json",
+      "size": 20680
+    },
+    {
+      "path": "outputs/patches/X1_Y1.diagonal.json",
+      "size": 19182
+    },
+    {
+      "path": "outputs/patches/X1_Y1.gram.json",
+      "size": 20976
+    },
+    {
+      "path": "outputs/patches/X2_Y0.diagonal.json",
+      "size": 19099
+    },
+    {
+      "path": "outputs/patches/X2_Y0.gram.json",
+      "size": 20528
+    },
+    {
+      "path": "outputs/patches/X2_Y1.diagonal.json",
+      "size": 19162
+    },
+    {
+      "path": "outputs/patches/X2_Y1.gram.json",
+      "size": 20477
+    },
+    {
+      "path": "outputs/patches/x0_Y2.diagonal.json",
+      "size": 19530
+    },
+    {
+      "path": "outputs/patches/x0_Y2.gram.json",
+      "size": 21279
+    },
+    {
+      "path": "outputs/patches/x0_Y3.diagonal.json",
+      "size": 19539
+    },
+    {
+      "path": "outputs/patches/x0_Y3.gram.json",
+      "size": 21205
+    },
+    {
+      "path": "outputs/patches/x1_Y2.diagonal.json",
+      "size": 19414
+    },
+    {
+      "path": "outputs/patches/x1_Y2.gram.json",
+      "size": 20362
+    },
+    {
+      "path": "outputs/patches/x1_Y3.diagonal.json",
+      "size": 19448
+    },
+    {
+      "path": "outputs/patches/x1_Y3.gram.json",
+      "size": 20662
+    },
+    {
+      "path": "outputs/patches/x2_Y2.diagonal.json",
+      "size": 19199
+    },
+    {
+      "path": "outputs/patches/x2_Y2.gram.json",
+      "size": 20565
+    },
+    {
+      "path": "outputs/patches/x2_Y3.diagonal.json",
+      "size": 19158
+    },
+    {
+      "path": "outputs/patches/x2_Y3.gram.json",
+      "size": 20502
+    },
+    {
+      "path": "outputs/patches/x3_Y2.diagonal.json",
+      "size": 19100
+    },
+    {
+      "path": "outputs/patches/x3_Y2.gram.json",
+      "size": 20541
+    },
+    {
+      "path": "outputs/patches/x3_Y3.diagonal.json",
+      "size": 19014
+    },
+    {
+      "path": "outputs/patches/x3_Y3.gram.json",
+      "size": 20486
+    },
+    {
+      "path": "outputs/patches/x4_Y2.diagonal.json",
+      "size": 19070
+    },
+    {
+      "path": "outputs/patches/x4_Y2.gram.json",
+      "size": 20503
+    },
+    {
+      "path": "outputs/patches/x4_Y3.diagonal.json",
+      "size": 18945
+    },
+    {
+      "path": "outputs/patches/x4_Y3.gram.json",
+      "size": 20476
+    },
+    {
+      "path": "outputs/patches/x5_Y2.diagonal.json",
+      "size": 18957
+    },
+    {
+      "path": "outputs/patches/x5_Y2.gram.json",
+      "size": 20485
+    },
+    {
+      "path": "outputs/patches/x5_Y3.diagonal.json",
+      "size": 18901
+    },
+    {
+      "path": "outputs/patches/x5_Y3.gram.json",
+      "size": 20478
+    },
+    {
+      "path": "psdgram/__init__.py",
+      "size": 198
+    },
+    {
+      "path": "psdgram/axis.py",
+      "size": 1944
+    },
+    {
+      "path": "psdgram/cover.py",
+      "size": 6621
+    },
+    {
+      "path": "psdgram/dictionary.py",
+      "size": 11594
+    },
+    {
+      "path": "psdgram/experiment.py",
+      "size": 25940
+    },
+    {
+      "path": "psdgram/model.py",
+      "size": 9908
+    },
+    {
+      "path": "psdgram/solver.py",
+      "size": 27968
+    },
+    {
+      "path": "refresh_audits.py",
+      "size": 4527
+    },
+    {
+      "path": "requirements.txt",
+      "size": 23
+    },
+    {
+      "path": "run_experiment.py",
+      "size": 11586
+    },
+    {
+      "path": "tests/__init__.py",
+      "size": 75
+    },
+    {
+      "path": "tests/test_psdgram.py",
+      "size": 6353
+    },
+    {
+      "path": "validate_package.py",
+      "size": 4475
+    }
+  ]
+}
