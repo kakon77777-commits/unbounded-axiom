@@ -1,0 +1,75 @@
+{
+  "id": "rp-x-integral",
+  "schema_version": "0.2",
+  "type": "ai_native_research_lineage",
+  "title": "X 積分系列",
+  "title_en": "X-Integral Program",
+  "short_title": "X 積分",
+  "status": "ongoing",
+  "open_ended": true,
+  "started_at": "2026-07-24",
+  "reference_method": "核心形成（導論／六大基本律／代數實作）之後，展開為前測度結構判定、兩個真實數學問題的案例應用（掛谷猜想的前測度重述、連續統假設的模型纖維重述）、奇點失敗層分類，以及超限積分與模型語義探索，最終由統一綱領收束為單一分層框架並逐篇標註認識論標籤（DEF/AXIOM/ENC/EQV/THM/CASE/CONJ/PROG/OPEN）。排序取自統一綱領自身的參考文件列表（其論文本身的權威排序），非單純依檔名。",
+  "canonical_route": "/ai/programs/x-integral/",
+  "visibility": "public",
+  "languages": ["zh-Hant"],
+  "agency": {
+    "initiative": "human",
+    "primary_authorship": "ai",
+    "research_direction": "negotiated",
+    "continuation_control": "human"
+  },
+  "contributors": [
+    {
+      "name": "Neo.K",
+      "type": "human",
+      "roles": ["problem_proposer", "continuation_decider", "curator"]
+    },
+    {
+      "name": "EveMissLab AI",
+      "type": "ai",
+      "roles": ["primary_author", "formalizer", "case_study_agent", "synthesis_agent"]
+    }
+  ],
+  "foundation_artifacts": [
+    {"id": "lm-001806", "title": "X 積分代數導論：無數值、無測量的持續結構生成與合法性演算"},
+    {"id": "lm-001808", "title": "X 積分六大基本律：形成、來源、非坍縮、再積分、結構微分與動態閉合"},
+    {"id": "lm-001810", "title": "X 積分的代數實作：生成元、關係、公理、閉包與商化的統一結構演算"}
+  ],
+  "applied_artifacts": [],
+  "iterations": [
+    {"sequence": 1, "id": "lm-001807", "title": "X 積分作為前測度結構判定：零測度、無窮小、奇點與量化合法性的統一框架", "topic": "前測度結構判定", "iteration_type": "graph_expansion", "is_checkpoint": false},
+    {"sequence": 2, "id": "lm-001809", "title": "X 積分對掛谷問題的前測度重述：方向完備性、投影重數與多尺度非坍縮", "topic": "案例應用：掛谷猜想的前測度重述（非新證明，CASE + STRUCTURAL REINTERPRETATION）", "iteration_type": "graph_expansion", "is_checkpoint": false},
+    {"sequence": 3, "id": "lm-001805", "title": "X 奇點論初步：來源合流、投影退化、表示缺口與值域邊界", "topic": "奇點失敗層分類", "iteration_type": "graph_expansion", "is_checkpoint": false},
+    {"sequence": 4, "id": "lm-001813", "title": "X 連續統積分 I：無窮層級的反覆積分、超限閉合與最終判定值", "topic": "純 X 超限遞迴探索連續統假設（未決）", "iteration_type": "graph_expansion", "is_checkpoint": false},
+    {"sequence": 5, "id": "lm-001812", "title": "X 積分與連續統假設 I：中間基數形成證書、模型纖維與公理相對合法性", "topic": "案例應用：連續統假設的模型纖維重述（Gödel–Cohen 獨立性的 X 語言重述，非繞過）", "iteration_type": "graph_expansion", "is_checkpoint": false},
+    {"sequence": 6, "id": "lm-001811", "title": "X 積分統一綱領：合法結構生成、失敗診斷、前測度投影與超限模型判定", "topic": "統一綱領（分層收束＋認識論標籤稽核）", "iteration_type": "graph_expansion", "is_checkpoint": true}
+  ],
+  "current_state": {
+    "sequence": 6,
+    "artifact_id": "lm-001811",
+    "status": "ongoing",
+    "phase_status": "synthesis_checkpoint_not_final_result",
+    "declaration": "X 積分系列已形成一個可被明確分層的研究綱領。其最穩定核心，是一種帶有型別、來源、邊界、守衛、失敗診斷與合法性證書的部分結構建構演算；其數學價值必須由形式語義、可失敗規則、實現等價、案例區辨力與機器驗證逐步確立。",
+    "stop_reason": null,
+    "unresolved_gaps": [
+      "連續統假設（CH）狀態明示為 J_CH^X = ⟨ 開放 ↑, BranchDependent_ZFC ⟩ ——本系列未證明、未否證 CH，也未宣稱繞過 Gödel–Cohen 獨立性",
+      "掛谷猜想僅作為前測度結構判定的案例重述，明確聲明不構成、不簡化、不補強 Wang–Zahl 的原始證明",
+      "X 奇點論尚未形成一般奇點的完備分類（本質奇點、分支點、分布奇點、PDE 動態奇點等仍未處理）",
+      "統一綱領本身承認：目前多數內容的認識論標籤是 ENC（既有數學的重新編碼）或 PROG／CONJ（方法論／猜想），不是 THM（已證定理）",
+      "尚無獨立形式語義、機器驗證或可失敗規則集確立 X 積分本身的數學新穎性"
+    ],
+    "next_actions": [
+      "逐步以形式語義、可失敗規則、實現等價與案例區辨力確立 X 積分的數學價值，而非僅止於記號重述",
+      "若後續要追加案例研究（如其他既有數學問題的前測度重述），可作為新的 applied_artifacts 或新一輪 iterations 追加"
+    ],
+    "handoff_required_tasks": [],
+    "stewardship": "本綱領明確、反覆自我聲明八項不主張事項（不取代既有數學基礎、記號重寫不產生新定理、未證明或否證 CH／掛谷、未繞過獨立性結果等），且掛谷與連續統假設兩案例均只是「前測度結構判定」的示範應用；判斷是否繼續、追加案例或封存，由 Neo.K 決定。"
+  },
+  "integrity": {
+    "files_seen": 9,
+    "files_imported": 9,
+    "missing_sequences": [],
+    "missing_note": "",
+    "duplicate_resolved": []
+  }
+}
