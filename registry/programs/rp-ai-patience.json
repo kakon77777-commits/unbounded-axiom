@@ -1,0 +1,69 @@
+{
+  "id": "rp-ai-patience",
+  "schema_version": "0.2",
+  "type": "ai_native_research_lineage",
+  "title": "AI 耐心、認知階級與能力取得革命：實驗站論文系列",
+  "title_en": "AI Patience, Cognitive Class, and the Capability-Acquisition Revolution",
+  "short_title": "AI耐心與認知階級",
+  "status": "completed",
+  "open_ended": false,
+  "started_at": "2026-07-25",
+  "completed_at": "2026-07-26",
+  "reference_method": "由一份系列規劃文件先行定調七篇論文的建議發表順序與範圍，七篇依序從「能力取得的可實作性預設」推進到「AI 認知生產階級的不平等擴張」，終篇明示為總論／七篇整合。",
+  "canonical_route": "/ai/programs/ai-patience/",
+  "visibility": "public",
+  "languages": ["zh-Hant"],
+  "agency": {
+    "initiative": "human",
+    "primary_authorship": "collaborative",
+    "research_direction": "negotiated",
+    "continuation_control": "human"
+  },
+  "contributors": [
+    {
+      "name": "Neo.K",
+      "type": "human",
+      "roles": ["problem_proposer", "continuation_decider", "curator"]
+    },
+    {
+      "name": "EveMissLab AI",
+      "type": "ai",
+      "model": "unspecified",
+      "roles": ["primary_author", "formalizer", "synthesis_agent"]
+    }
+  ],
+  "foundation_artifacts": [
+    {"id": "lm-001865", "title": "AI耐心_認知階級與能力取得革命_實驗站論文系列規劃_v0.1"}
+  ],
+  "applied_artifacts": [],
+  "iterations": [
+    {"sequence": 1, "id": "lm-001838", "title": "從我不會到如何取得能力_Agent時代的可實作性預設_v0.1", "topic": "可實作性預設", "iteration_type": "foundation", "is_checkpoint": false},
+    {"sequence": 2, "id": "lm-001852", "title": "能力取得革命_Skill_GitHub與Agent如何重構學習_v0.1", "topic": "能力取得革命", "iteration_type": "graph_expansion", "is_checkpoint": false},
+    {"sequence": 3, "id": "lm-001862", "title": "風險分級審閱_當人類不再逐字閱讀AI產出_v0.1", "topic": "風險分級審閱", "iteration_type": "graph_expansion", "is_checkpoint": false},
+    {"sequence": 4, "id": "lm-001819", "title": "人類對AI的耐心分化_從閱讀耐心到委任耐心_v0.1", "topic": "耐心分化", "iteration_type": "graph_expansion", "is_checkpoint": false},
+    {"sequence": 5, "id": "lm-001873", "title": "從幻覺爭論到可靠性工程_前沿AI風險敘事的轉移_v0.1", "topic": "可靠性工程敘事轉移", "iteration_type": "graph_expansion", "is_checkpoint": false},
+    {"sequence": 6, "id": "lm-001866", "title": "AI認知生產階級_同一模型下的不平等擴張_v0.1", "topic": "認知生產階級", "iteration_type": "graph_expansion", "is_checkpoint": false},
+    {"sequence": 7, "id": "lm-001863", "title": "AI時代的能力耐心與認知階級_從幻覺下降到智能生產分層_v0.1", "topic": "總論：能力、耐心與認知階級", "iteration_type": "synthesis", "is_checkpoint": true}
+  ],
+  "current_state": {
+    "sequence": 7,
+    "artifact_id": "lm-001863",
+    "status": "completed",
+    "phase_status": "closed_by_design",
+    "declaration": "AI 幻覺率下降並不會自動消除認知不平等；能力取得的瓶頸從「有沒有答案」轉移到「誰有耐心與資源把答案內化成能力」——這才是同一模型之下持續擴張的認知生產階級分化。",
+    "stop_reason": "終篇自陳為系列總論，整合前六篇提出七項命題與十項可測假說；系列規劃文件本身標明範圍為「7 篇論文＋1 份系列規劃」，本次七篇全數到齊，與規劃相符。",
+    "unresolved_gaps": [],
+    "next_actions": [
+      "系列規劃文件列出的十項可測假說尚未有後續實證追蹤篇——若要延伸，屬新一輪驗證工作而非本系列既有篇號的擴充"
+    ],
+    "handoff_required_tasks": [],
+    "stewardship": "七篇論文依系列規劃的建議發表順序收錄：可實作性預設→能力取得革命→風險分級審閱→耐心分化→可靠性工程敘事轉移→認知生產階級→總論。系列規劃文件本身列為 foundation_artifacts，因其定位是範圍與順序的後設文件，而非编號分論。"
+  },
+  "integrity": {
+    "files_seen": 8,
+    "files_imported": 8,
+    "missing_sequences": [],
+    "missing_note": "",
+    "duplicate_resolved": []
+  }
+}
