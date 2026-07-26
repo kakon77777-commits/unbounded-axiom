@@ -148,6 +148,7 @@ def one_pass(base_url: str, truth: dict) -> list[tuple[str, bool, str]]:
             ("version.json", "/ai/version.json", "build_id"),
             ("companions.json", "/ai/companions.json", "build_id"),
             ("programs/index.json", "/ai/programs/index.json", "build_id"),
+            ("semantic-index.min.json", "/ai/semantic-index.min.json", "build_id"),
         ]:
             d = _fetch_json(base_url + path)
             got = d.get(field)

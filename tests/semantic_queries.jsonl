@@ -1,0 +1,33 @@
+{"query":"X 積分統一綱領","expected_tier_a":["lm-001811"],"expect_not_low_confidence":true,"category":"exact","note":"regression guard: a solid exact hit padded out to minimum_results via 8 real Tier D series siblings must NOT be reported low_confidence just because the ladder had to relax to reach the count"}
+{"query":"FARHP_04","expected_tier_a":["lm-001788"],"category":"exact"}
+{"query":"ISWP_01_從程式碼到意圖","expected_tier_a":["lm-001793"],"category":"exact"}
+{"query":"哥德巴赫難點定位","expected_tier_a":["lm-000372"],"category":"exact"}
+{"query":"PHOSPHOR 多尺度計算理解框架","expected_tier_a":["lm-001248"],"category":"exact"}
+{"query":"黎曼猜想很可能由AI深度參與解決","expected_tier_a":["lm-001430"],"category":"exact"}
+{"query":"圍棋天元劣勢與五子棋中央必勝","expected_tier_a":["lm-001560"],"category":"exact"}
+{"query":"作為坐標病理的連續統假設","expected_tier_a":["lm-000258"],"category":"exact"}
+{"query":"ISWP_05_結構先於文字","expected_tier_a":["lm-001797"],"category":"exact"}
+{"query":"02_動態語義顯影_本地端實作技術白皮書","expected_tier_a":["lm-001785"],"category":"exact"}
+{"query":"X積分","expected_any":["lm-001805","lm-001806","lm-001807","lm-001808","lm-001809","lm-001810","lm-001811","lm-001812","lm-001813"],"category":"alias"}
+{"query":"動態顯影","expected_any":["lm-001785"],"category":"alias"}
+{"query":"FARHP","expected_any":["lm-001786","lm-001787","lm-001788","lm-001789","lm-001790"],"category":"alias"}
+{"query":"ISWP","expected_any":["lm-001793","lm-001794","lm-001795","lm-001796","lm-001797"],"category":"alias"}
+{"query":"連續統假設","expected_any":["lm-000258","lm-001045","lm-001108","lm-001812"],"category":"alias"}
+{"query":"Kneser","expected_any":["lm-001367","lm-001410"],"category":"alias"}
+{"query":"一個讓AI在瀏覽器裡搜尋自己語料庫的功能要怎麼做","expect_low_confidence":true,"category":"natural_language","note":"true paraphrase with near-zero shared vocabulary — lexical-only Phase 1 correctly degrades to a disclosed low-confidence fallback rather than faking a direct hit; closing this gap is Phase 3 (vector search)"}
+{"query":"五子棋和圍棋哪個先手比較有利","expected_top10":["lm-001560"],"category":"natural_language"}
+{"query":"黎曼猜想的研究方法論要怎麼重新建構","expected_top10":["lm-001156"],"category":"natural_language"}
+{"query":"X積分系列裡面關於連續統假設的那一篇","expected_top10":["lm-001812"],"category":"natural_language"}
+{"query":"AI時代要不要給大家發基本收入的社會保障制度","expected_top10":["lm-000080"],"category":"natural_language"}
+{"query":"程式概念從程式碼到意圖的歷史轉換","expected_top10":["lm-001793"],"category":"natural_language"}
+{"query":"呭態語義顯影框本地端實作","expected_any":["lm-001785"],"category":"typo"}
+{"query":"X 積份統一綱領","expected_any":["lm-001811"],"category":"typo"}
+{"query":"黎嫚猜想方法論重構","expected_any":["lm-001156"],"category":"typo"}
+{"query":"哥德巴黑難點定位","expected_any":["lm-000372"],"category":"typo"}
+{"query":"披薩外送路線規劃SOP標準作業流程","expect_low_confidence":true,"category":"zero_data"}
+{"query":"貓咪美容沙龍加盟連鎖費用","expect_low_confidence":true,"category":"zero_data"}
+{"query":"台北捷運轉乘動線尖峰時段擁擠度","expect_low_confidence":true,"category":"zero_data"}
+{"query":"手搖飲料店打卡集點行銷方案","expect_low_confidence":true,"category":"zero_data"}
+{"query":"","expect_empty_query":true,"category":"edge_case"}
+{"query":"X","expected_any":["lm-001805","lm-001806","lm-001811"],"category":"cross_domain","note":"single latin letter must survive normalization per spec §6.2"}
+{"query":"GPT-5.6","expect_any_result":true,"category":"cross_domain","note":"model name with version number must not be mangled by normalization"}

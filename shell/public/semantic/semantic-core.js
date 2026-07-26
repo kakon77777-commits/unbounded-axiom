@@ -1,0 +1,298 @@
+// Dynamic Semantic Revealing — pure scoring/ranking core.
+// Spec: content/papers/2026/2026-07/02_動態語義顯影_本地端實作技術白皮書_v0.1.md (lm-001785)
+//
+// No DOM / Worker / fetch APIs in this file on purpose: it is imported both by
+// lexical-search-worker.js (the browser) and tests/test_semantic_search.mjs
+// (plain Node) so the exact same scoring logic that ships is the logic tested.
+//
+// Implements Phase 1 only: exact + lexical (token-overlap + trigram) retrieval,
+// plus a real (not guessed) relation channel over registry/programs/*.json
+// membership baked into each doc's `r` field at index-build time. The vector
+// ("semantic") channel is Phase 3 and intentionally absent — see §16.1/§26.
+
+export const DEFAULT_WEIGHTS = {
+  exact_title: 1.00,
+  exact_summary: 0.82,
+  alias_title: 0.88,
+  lexical: 0.60,
+  semantic: 0.55,
+  series_relation: 0.25,
+  direct_link_relation: 0.30,
+  anchor_bonus: 0.08,
+};
+
+export const DEFAULT_TIERS = { tier_A: 0.82, tier_B: 0.68, tier_C: 0.54, tier_D: 0.38 };
+
+export const DEFAULT_CONFIG = {
+  semantic_search_enabled: true,
+  search: { minimum_results: 5, max_results: 200, initial_threshold: 0.78, threshold_step: 0.08, absolute_floor: 0.28 },
+  channels: { exact: true, lexical: true, semantic: false, relations: true },
+  tiers: DEFAULT_TIERS,
+  weights: DEFAULT_WEIGHTS,
+  display: { default_mode: "reveal", tier_a_opacity: 1.0, tier_b_opacity: 0.92, tier_c_opacity: 0.62, tier_d_opacity: 0.38, hidden_opacity: 0.12 },
+  debounce_ms: 300,
+  max_query_length: 80,
+};
+
+const CJK_RE = /[㐀-鿿]/;
+
+// §6.1 query normalization: NFKC (also folds fullwidth->halfwidth), lowercase,
+// collapse whitespace, trim. §6.2 explicitly forbids stripping digits, version
+// numbers, math symbols, greek letters, hyphens, abbreviations — NFKC+lowercase
+// alone never touches any of those, so nothing further is needed here.
+export function normalizeQuery(raw) {
+  if (!raw) return "";
+  return String(raw).normalize("NFKC").toLowerCase().replace(/\s+/g, " ").trim();
+}
+
+function isCjk(ch) { return CJK_RE.test(ch); }
+
+// Latin/number runs become whole tokens; CJK (no word boundaries) becomes
+// overlapping character bigrams, per §16.1's "trigram / token overlap" plan.
+export function tokenize(s) {
+  const tokens = [];
+  let buf = "";
+  const flush = () => { if (buf) { tokens.push(buf); buf = ""; } };
+  for (const ch of s) {
+    if (isCjk(ch)) { flush(); }
+    else if (/[a-z0-9+.\-]/i.test(ch)) { buf += ch; }
+    else { flush(); }
+  }
+  flush();
+  const cjkOnly = Array.from(s).filter(isCjk);
+  for (let i = 0; i < cjkOnly.length - 1; i++) tokens.push(cjkOnly[i] + cjkOnly[i + 1]);
+  if (cjkOnly.length === 1) tokens.push(cjkOnly[0]);
+  return tokens.filter(Boolean);
+}
+
+export function trigrams(s) {
+  const chars = Array.from(s.replace(/\s+/g, ""));
+  if (chars.length < 3) return chars.length ? [chars.join("")] : [];
+  const grams = [];
+  for (let i = 0; i <= chars.length - 3; i++) grams.push(chars.slice(i, i + 3).join(""));
+  return grams;
+}
+
+function overlapRatio(queryTokens, docTokenSet) {
+  if (!queryTokens.length || !docTokenSet.size) return 0;
+  let hit = 0;
+  for (const t of queryTokens) if (docTokenSet.has(t)) hit++;
+  return hit / queryTokens.length;
+}
+
+// Precompute per-document derived fields once at index-load time so a search
+// on every keystroke doesn't re-tokenize 1800+ documents from scratch (§23.1
+// performance budget: front-end results inside 500ms).
+export function prepareDocument(doc) {
+  if (doc._prepared) return doc;
+  const titleNorm = normalizeQuery(doc.t || "");
+  const summaryNorm = normalizeQuery(doc.s || "");
+  const headingsNorm = (doc.h || []).map((h) => normalizeQuery(h));
+  const bagText = [doc.t, doc.s, ...(doc.h || [])].filter(Boolean).join(" ");
+  doc._titleNorm = titleNorm;
+  doc._summaryNorm = summaryNorm;
+  doc._headingsNorm = headingsNorm;
+  doc._tokenSet = new Set(tokenize(normalizeQuery(bagText)));
+  doc._trigramSet = new Set(trigrams(titleNorm + summaryNorm));
+  doc._keywordsNorm = (doc.k || []).map((k) => normalizeQuery(k));
+  doc._prepared = true;
+  return doc;
+}
+
+export function prepareIndex(documents) {
+  documents.forEach(prepareDocument);
+  return documents;
+}
+
+// Score ONE document against an already-normalized query. Relation/Tier-D
+// scoring needs corpus-wide context (which siblings also matched) and is
+// applied afterwards in scoreCorpus(), not here.
+export function scoreDocument(doc, queryNorm, queryTokens, queryTrigrams, weights) {
+  const w = weights || DEFAULT_WEIGHTS;
+  const reasons = [];
+  const channels = new Set();
+  let best = 0;
+
+  if (queryNorm) {
+    if (doc._titleNorm.includes(queryNorm)) {
+      channels.add("exact");
+      reasons.push({ tier: "A", label: "標題精確命中", field: "title", matched_text: queryNorm });
+      best = Math.max(best, w.exact_title);
+    }
+    for (let i = 0; i < doc._headingsNorm.length; i++) {
+      if (doc._headingsNorm[i].includes(queryNorm)) {
+        channels.add("exact");
+        reasons.push({ tier: "A", label: "章節標題命中", field: "heading", matched_text: doc.h[i] });
+        best = Math.max(best, w.exact_title * 0.95);
+        break;
+      }
+    }
+    if (doc._summaryNorm.includes(queryNorm)) {
+      channels.add("exact");
+      reasons.push({ tier: "B", label: "摘要精確命中", field: "summary", matched_text: queryNorm });
+      best = Math.max(best, w.exact_summary);
+    }
+    for (let i = 0; i < doc._keywordsNorm.length; i++) {
+      if (doc._keywordsNorm[i] === queryNorm) {
+        channels.add("exact");
+        reasons.push({ tier: "A", label: "關鍵詞精確命中", field: "keyword", matched_text: doc.k[i] });
+        best = Math.max(best, w.alias_title);
+        break;
+      }
+    }
+  }
+
+  if (queryTokens.length) {
+    const ov = overlapRatio(queryTokens, doc._tokenSet);
+    if (ov > 0) {
+      channels.add("lexical");
+      const s = w.lexical * ov;
+      reasons.push({ tier: ov >= 0.6 ? "B" : "C", label: "詞彙相似命中", field: "title/summary/headings", overlap: Number(ov.toFixed(2)) });
+      best = Math.max(best, s);
+    }
+  }
+
+  if (!channels.has("exact") && queryTrigrams.length) {
+    const tgOv = overlapRatio(queryTrigrams, doc._trigramSet);
+    if (tgOv > 0) {
+      channels.add("lexical");
+      const s = w.lexical * 0.7 * tgOv;
+      if (s > 0) reasons.push({ tier: "C", label: "字元近似命中", field: "title/summary", overlap: Number(tgOv.toFixed(2)) });
+      best = Math.max(best, s);
+    }
+  }
+
+  return { score: Math.min(1, best), channels: Array.from(channels), reasons };
+}
+
+export function assignTier(score, tiers) {
+  const t = tiers || DEFAULT_TIERS;
+  if (score >= t.tier_A) return "A";
+  if (score >= t.tier_B) return "B";
+  if (score >= t.tier_C) return "C";
+  if (score >= t.tier_D) return "D";
+  return null;
+}
+
+export function buildThresholdLadder(cfg) {
+  const s = cfg.search;
+  const ladder = [];
+  let t = s.initial_threshold;
+  while (t > s.absolute_floor + 1e-9) {
+    ladder.push(Number(t.toFixed(2)));
+    t -= s.threshold_step;
+  }
+  ladder.push(s.absolute_floor);
+  return ladder;
+}
+
+// §11.1 non-zero mechanism: relax the threshold step by step until at least
+// `minimum_results` survive, or fall back to a straight top-N. Always reports
+// whether/how much it relaxed so the UI can show §11.2's honest disclosure text
+// instead of silently passing off a low-confidence result as a direct hit.
+//
+// `low_confidence` is judged from the BEST result actually returned, not from
+// how far the ladder had to relax to pad the *count* up to minimum — those are
+// different facts. A query with one dead-on exact match plus 8 same-series
+// Tier D siblings had to relax all the way to fill 5 slots, but the top hit is
+// completely solid, so §11.2 message 1 ("加入詞彙與語義近似結果") applies, not
+// message 2 ("沒有找到高可信度直接結果") — message 2 is reserved for when
+// nothing returned reaches Tier B or better.
+export function ensureMinimumResults(scored, cfg) {
+  const ladder = buildThresholdLadder(cfg);
+  const minimum = cfg.search.minimum_results;
+  for (let i = 0; i < ladder.length; i++) {
+    const threshold = ladder[i];
+    const selected = scored.filter((r) => r.score >= threshold);
+    if (selected.length >= minimum) {
+      return { results: selected, threshold, relaxed: i > 0, low_confidence: !bestIsConfident(selected, cfg) };
+    }
+  }
+  // Ran the whole ladder down to absolute_floor and still short of `minimum`
+  // candidates — §11.1's own fallback: a straight top-N over ALL scored docs
+  // (not just whatever cleared absolute_floor), so the count promise holds
+  // even for a corpus with very few genuinely-related documents.
+  const fallback = scored.slice(0, minimum);
+  return { results: fallback, threshold: null, relaxed: true, low_confidence: !bestIsConfident(fallback, cfg) };
+}
+
+function bestIsConfident(results, cfg) {
+  return results.length > 0 && results[0].score >= cfg.tiers.tier_B;
+}
+
+// Full corpus search: exact+lexical scoring pass, then a relation pass that
+// gives real Tier D ("same series") credit ONLY to documents whose `r` list
+// (built from registry/programs/*.json — real curated membership, never
+// guessed) contains a sibling that already scored at Tier B or better on this
+// same query. A doc with no related_ids never gets a Tier D score out of thin air.
+export function scoreCorpus(documents, rawQuery, config) {
+  const cfg = config || DEFAULT_CONFIG;
+  const weights = cfg.weights || DEFAULT_WEIGHTS;
+  const queryNorm = normalizeQuery(rawQuery);
+  const original = rawQuery == null ? "" : String(rawQuery);
+
+  if (!queryNorm) {
+    return { query: { original, normalized: "" }, results: [], relaxed: false, low_confidence: false, empty_query: true, total_candidates: documents.length };
+  }
+  if (queryNorm.length > (cfg.max_query_length || 80)) {
+    return scoreCorpus(documents, original.slice(0, cfg.max_query_length || 80), cfg);
+  }
+
+  const queryTokens = tokenize(queryNorm);
+  const queryTrigrams = trigrams(queryNorm);
+
+  let scored = documents.map((d) => {
+    const r = scoreDocument(d, queryNorm, queryTokens, queryTrigrams, weights);
+    return { id: d.i, doc: d, score: r.score, channels: r.channels, reasons: r.reasons };
+  });
+
+  if (cfg.channels.relations) {
+    const strongIds = new Set(scored.filter((r) => r.score >= cfg.tiers.tier_B).map((r) => r.id));
+    for (const r of scored) {
+      if (r.score < cfg.tiers.tier_D && (r.doc.r || []).length) {
+        const relatedStrong = r.doc.r.filter((rid) => strongIds.has(rid) && rid !== r.id);
+        if (relatedStrong.length) {
+          // weights.series_relation (§9.1, e.g. 0.25) is a *raw channel* score
+          // meant to be re-weighted by the §9.2 fusion formula's G coefficient
+          // (0.10) before comparison against tier thresholds — this MVP skips
+          // that second fusion stage (see module header) and takes a plain
+          // max() across channels instead, so a bare 0.25 would fall below
+          // both tier_D (0.38) and, worse, the absolute_floor (0.28) and get
+          // silently dropped by ensureMinimumResults. Floor a relation-only
+          // score at tier_D itself: "confirmed same-series" is definitionally
+          // what Tier D means (§10), never invisible.
+          const s = Math.max(weights.series_relation, cfg.tiers.tier_D);
+          if (s > r.score) {
+            r.score = s;
+            r.channels = Array.from(new Set([...r.channels, "relation"]));
+            // Prepend, not append: this relation score just BEAT every reason
+            // scoreDocument found (that's the `s > r.score` guard above), so it
+            // is now the actual explanation for this doc's tier — the reason
+            // shown first in the UI (§15) must track whichever signal is
+            // actually winning, not just accumulation order.
+            r.reasons = [{ tier: "D", label: "與直接結果屬於同系列", field: "related_ids", relation: "same_series", related_to: relatedStrong[0] }, ...r.reasons];
+          }
+        }
+      }
+    }
+  }
+
+  scored.sort((a, b) => b.score - a.score);
+  if (documents.length === 0) {
+    return { query: { original, normalized: queryNorm, tokens: queryTokens }, results: [], relaxed: false, low_confidence: false, empty_index: true, total_candidates: 0 };
+  }
+
+  const { results, threshold, relaxed, low_confidence } = ensureMinimumResults(scored, cfg);
+  const tiered = results
+    .slice(0, cfg.search.max_results || 200)
+    .map((r) => ({ ...r, tier: assignTier(r.score, cfg.tiers) || "D" }));
+
+  return {
+    query: { original, normalized: queryNorm, tokens: queryTokens },
+    results: tiered,
+    threshold,
+    relaxed,
+    low_confidence,
+    total_candidates: scored.length,
+  };
+}

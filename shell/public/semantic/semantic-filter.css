@@ -1,0 +1,135 @@
+/* Dynamic Semantic Revealing — additive layer only (spec §28.2: never replaces
+   the timeline, never changes URLs). Tiers use opacity + a text/icon label
+   together, never color alone (§14.3: "不得只靠顏色區分"). */
+
+.semantic-box {
+  margin: 0 0 2.2rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 10px;
+  padding: 1.1rem 1.3rem;
+  background: rgba(233, 227, 214, 0.03);
+}
+
+.semantic-box .row {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.semantic-input-wrap {
+  position: relative;
+  flex: 1 1 18rem;
+  min-width: 12rem;
+}
+
+.semantic-input {
+  width: 100%;
+  font: inherit;
+  font-size: 1.02rem;
+  color: var(--paper);
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  border-radius: 7px;
+  padding: 0.65rem 2.4rem 0.65rem 2.6rem;
+}
+
+.semantic-input:focus {
+  outline: none;
+  border-color: var(--gold-dim);
+}
+
+.semantic-input-icon {
+  position: absolute;
+  left: 0.85rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1rem;
+  height: 1rem;
+  color: var(--paper-faint);
+  pointer-events: none;
+}
+
+.semantic-clear {
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--paper-faint);
+  font-size: 1.1rem;
+  line-height: 1;
+  padding: 0.3rem 0.5rem;
+  cursor: pointer;
+  display: none;
+}
+.semantic-input-wrap.has-query .semantic-clear { display: block; }
+.semantic-clear:hover { color: var(--paper); }
+
+.semantic-mode-btn, .semantic-reset-btn {
+  font: inherit;
+  font-size: 0.82rem;
+  color: var(--paper-dim);
+  background: transparent;
+  border: 1px solid var(--line-strong);
+  border-radius: 7px;
+  padding: 0.55rem 0.9rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.semantic-mode-btn[aria-pressed="true"] {
+  color: var(--ink);
+  background: var(--gold);
+  border-color: var(--gold);
+}
+.semantic-mode-btn:hover, .semantic-reset-btn:hover { border-color: var(--gold-dim); }
+
+.semantic-meta {
+  margin-top: 0.65rem;
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  color: var(--paper-faint);
+  letter-spacing: 0.02em;
+  min-height: 1.1em;
+}
+
+.semantic-banner {
+  margin-top: 0.65rem;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--teal);
+  display: none;
+}
+.semantic-banner.show { display: block; }
+.semantic-banner.low { color: var(--gold-dim); }
+
+.semantic-tier-stats {
+  display: inline-flex;
+  gap: 0.7rem;
+}
+.semantic-tier-stats b { color: var(--paper-dim); font-weight: 600; }
+
+/* --- per-row reveal state (§14.2 / §14.3) --- */
+.paper-row.semantic-tier-a { opacity: 1; }
+.paper-row.semantic-tier-b { opacity: 0.92; }
+.paper-row.semantic-tier-c { opacity: 0.62; }
+.paper-row.semantic-tier-d { opacity: 0.38; }
+.paper-row.semantic-hidden { opacity: 0.12; pointer-events: none; }
+.semantic-focus .paper-row.semantic-hidden { display: none; }
+
+.paper-row .semantic-reason {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  color: var(--gold-dim);
+  letter-spacing: 0.02em;
+  margin-left: 0.55rem;
+}
+
+/* section headers (month groups) hide in focus mode once every row inside is hidden */
+.semantic-focus .section.semantic-empty-section { display: none; }
+
+@media (max-width: 640px) {
+  .semantic-box .row { flex-direction: column; align-items: stretch; }
+  .semantic-mode-btn, .semantic-reset-btn { flex: 1; }
+}

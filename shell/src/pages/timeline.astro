@@ -14,6 +14,9 @@ const months = [...byMonth.keys()].sort((a, b) =>
 );
 ---
 <Base title="Timeline — Logic Matrix">
+  <Fragment slot="head">
+    <link rel="stylesheet" href="/semantic/semantic-filter.css" />
+  </Fragment>
   <header class="hero">
     <div class="wrap">
       <div class="eyebrow">Chronological archive</div>
@@ -22,13 +25,30 @@ const months = [...byMonth.keys()].sort((a, b) =>
     </div>
   </header>
 
+  <div class="wrap" data-semantic-root>
+    <div class="semantic-box">
+      <div class="row">
+        <div class="semantic-input-wrap">
+          <svg class="semantic-input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input class="semantic-input" type="text" placeholder="動態顯影搜尋 — 標題、章節、關鍵詞…" maxlength="80" autocomplete="off" spellcheck="false" aria-label="搜尋語料庫" />
+          <button class="semantic-clear" type="button" aria-label="清除">×</button>
+        </div>
+        <button class="semantic-mode-btn" type="button" data-mode="reveal" aria-pressed="true">顯影</button>
+        <button class="semantic-mode-btn" type="button" data-mode="focus" aria-pressed="false">只看結果</button>
+        <button class="semantic-reset-btn" type="button">重設</button>
+      </div>
+      <div class="semantic-meta" aria-live="polite"></div>
+      <div class="semantic-banner" aria-live="polite"></div>
+    </div>
+  </div>
+
   {months.map((m) => (
     <section class="section" id={m}>
       <div class="wrap">
         <h2>{m} <span class="eyebrow" style="margin-left:.7rem">{byMonth.get(m)!.length}</span></h2>
         <div class="papers">
           {byMonth.get(m)!.map((p) => (
-            <a class="paper-row" href={`/p/${p.id}/`}>
+            <a class="paper-row" href={`/p/${p.id}/`} data-doc-id={p.id}>
               <span class="pid">{p.id}</span>
               <span class="pt">{p.title}</span>
               <span class="pmeta">{p.language}</span>
@@ -38,4 +58,9 @@ const months = [...byMonth.keys()].sort((a, b) =>
       </div>
     </section>
   ))}
+  <script src="/semantic/semantic-filter.js" defer></script>
 </Base>
+
+<style>
+  [data-semantic-root] { padding-top: clamp(1.6rem, 4vw, 2.6rem); }
+</style>

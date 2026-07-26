@@ -1,0 +1,44 @@
+{
+  "schema_version": "0.1",
+  "note": "Dynamic Semantic Revealing — tunable search config (Appendix A of lm-001785). Hand-authored, not build-generated. semantic_search_enabled:false is the single-flag rollback switch (spec §28.1) — set it false and the timeline returns to its original, unfiltered state with no code changes.",
+  "semantic_search_enabled": true,
+  "search": {
+    "minimum_results": 5,
+    "max_results": 200,
+    "initial_threshold": 0.78,
+    "threshold_step": 0.08,
+    "absolute_floor": 0.28
+  },
+  "channels": {
+    "exact": true,
+    "lexical": true,
+    "semantic": false,
+    "relations": true
+  },
+  "tiers": {
+    "tier_A": 0.82,
+    "tier_B": 0.68,
+    "tier_C": 0.54,
+    "tier_D": 0.38
+  },
+  "weights": {
+    "exact_title": 1.00,
+    "exact_summary": 0.82,
+    "alias_title": 0.88,
+    "lexical": 0.60,
+    "semantic": 0.55,
+    "series_relation": 0.25,
+    "direct_link_relation": 0.30,
+    "anchor_bonus": 0.08
+  },
+  "display": {
+    "default_mode": "reveal",
+    "tier_a_opacity": 1.0,
+    "tier_b_opacity": 0.92,
+    "tier_c_opacity": 0.62,
+    "tier_d_opacity": 0.38,
+    "hidden_opacity": 0.12
+  },
+  "debounce_ms": 300,
+  "max_query_length": 80
+}
