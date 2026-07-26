@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>嚴格交集證書 · 半自主研究 · 黎曼猜想 · AMRAL</title>
+<meta name="description" content="RH 半自主研究工程包:嚴格交集證書 v0.2。把 v0.1 的浮點候選升級成 validated-numerics 證書——連續矩形負值上界跟算術正區間,同一個明確測試函數,可重播驗證。不構成黎曼猜想證明。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="./files/嚴格交集證書_v0.2_技術說明.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link active" href="../../../">黎曼猜想</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← 半自主研究</a>
+    <span>/</span>
+    <a href="../../#proto-validated-intersection-certificate-v0.2">工程紀錄</a>
+    <span>/</span>
+    <span>嚴格交集證書</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">工程紀錄</span>
+      <span class="tag">v0.2</span>
+      <span class="tag">2026-07-24</span>
+      <span class="status">CERTIFICATE_PASSED</span>
+    </div>
+    <h1>嚴格交集證書</h1>
+    <p class="h1-sub">Validated Separation–Positivity Intersection Certificate v0.2 — 把 v0.1 的浮點候選重建為明確分段線性函數,對區域負方向跟算術正性分別建立區間證書,480 個子矩形全數認證、0 個未決。</p>
+    <div class="claim-box">
+      RH_CLAIM = False
+      <span class="note">— 包內 <code>certificate_summary.txt</code> 自報 <code>certificate_passed=True</code>,<code>CERTIFICATE_SCHEMA.md</code> 定義的 <code>scope_warning</code> 欄位明講非 RH 狀態,原樣照登。這是可重播的 validated-numerics 證書,不是核驗過的形式化證明,不證明也不反駁黎曼猜想。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">本包技術說明開頭就自報接續哪一版、修正了什麼漏洞,原樣照引。</p>
+    <blockquote class="cite">「v0.1 已找到同一組浮點係數……但這仍有兩個漏洞:1. 網格負值不能推出矩形連續區域處處為負;2. 浮點正值不能直接視為嚴格算術下界。v0.2 不再沿用黑箱陣列,而將候選重建為明確的分段線性函數,再對兩個符號分別建立區間證書。」— 摘自本包技術說明 §1。</blockquote>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一包 · v0.1</span><a href="../proto-separation-positivity-intersection-v0.1/">分離—正性交集求解器</a></div>
+      <div class="conn-card"><span class="k">對應理論</span><a href="../../papers/p5-explicit-formula/">序列④ · 顯式公式中的偏軸正障礙 §7</a></div>
+    </div>
+  </section>
+
+  <section id="doc-main">
+    <h2 class="doc-h2">技術說明</h2>
+    <p class="doc-meta">主文件 — 明確測試函數、Fourier 轉換的封閉形式、連續矩形負證書的區間細分、有限位置項與 Archimedean 項的區間界、交集結論。</p>
+    <div class="doc" id="doc-tech"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="results">
+    <h2 class="doc-h2">結果數據</h2>
+    <p class="doc-meta">連續區域上界、算術區間、認證子矩形統計,來自包內 <code>RESULTS.md</code>。</p>
+    <div class="doc" id="doc-results"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="trust">
+    <h2 class="doc-h2">信任邊界</h2>
+    <p class="doc-meta">哪些元件被信任、跟 v0.1 相比降低了哪些信任依賴、離證明助理級別還差什麼,來自包內 <code>TRUST_BOUNDARY.md</code>。</p>
+    <div class="doc" id="doc-trust"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="figures">
+    <h2 class="doc-h2">圖表 · Figures</h2>
+    <p class="section-note">包內 <code>outputs/</code> 的三張圖,原樣照登,無後製。</p>
+    <div class="figure-grid">
+      <figure>
+        <img src="./files/outputs/validated_test_function.png" alt="Validated piecewise-linear test function — 明確定義的分段線性測試函數 psi(t) 圖形" loading="lazy">
+        <figcaption>明確測試函數 ψ(t):601 個節點的三角帽疊加,不是黑箱陣列。</figcaption>
+      </figure>
+      <figure>
+        <img src="./files/outputs/certified_region_cover.png" alt="Adaptive continuous-region certificate cover — 目標矩形的自適應區間細分覆蓋熱圖" loading="lazy">
+        <figcaption>自適應連續區域覆蓋:480 個子矩形全數認證,最深細分 3 層。</figcaption>
+      </figure>
+      <figure>
+        <img src="./files/outputs/arithmetic_intervals.png" alt="Arithmetic certificate intervals — 有限位置項、Archimedean 項與總和的區間誤差棒圖，總和維持在零的右側" loading="lazy">
+        <figcaption>算術證書區間:有限、Archimedean 兩項與總和,總和區間維持在零的右側。</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="files">
+    <h2 class="doc-h2">檔案 · Files</h2>
+    <p class="section-note">原始節點數據(<code>corrected_nodes.csv</code>、<code>certified_region_cells.csv</code>)跟完整 <code>certificate.json</code> 沒有逐一列出,都在完整 zip 裡。</p>
+    <div id="filelist-out"><p class="loading">載入中…</p></div>
+    <a class="zip-dl" href="../../packages/RH_Validated_Intersection_Certificate_v0.2.zip" download>下載完整封包 (195.0 KB)</a>
+    <p class="zip-note">sha256 b935b9c1d69d7b4aa5219304920729a2f53cebb46022d429093d9d7285de4e8f</p>
+  </section>
+
+  <footer class="sitefoot">
+    <p>半自主軌道逐包詳細頁,格式沿用 <a href="../proto-separation-positivity-intersection-v0.1/">上一包</a>。<a href="../../">回半自主研究</a></p>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+const F = (p) => amralFetchText("./files/" + p);
+
+async function loadDoc(elId, file) {
+  const el = document.getElementById(elId);
+  try {
+    el.innerHTML = amralRenderDoc(await F(file));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+}
+
+async function loadFiles() {
+  const el = document.getElementById("filelist-out");
+  try {
+    const idx = await fetch("./files.json").then((r) => r.json());
+    const groups = { "文件": [], "圖表": [], "資料": [], "程式": [] };
+    for (const f of idx.files) {
+      const ext = f.path.split(".").pop().toLowerCase();
+      if (ext === "md") groups["文件"].push(f);
+      else if (ext === "png" || ext === "jpg" || ext === "svg") groups["圖表"].push(f);
+      else if (ext === "csv" || ext === "json") groups["資料"].push(f);
+      else if (ext === "py" || ext === "txt") groups["程式"].push(f);
+    }
+    const fmt = (b) => b < 1024 ? b + " B" : (b / 1024).toFixed(1) + " KB";
+    el.innerHTML = Object.entries(groups).filter(([, files]) => files.length).map(([label, files]) => `
+      <div class="filegroup">
+        <h3>${label}</h3>
+        <ul class="filelist">
+          ${files.map((f) => `<li><a href="./files/${encodeURIComponent(f.path)}" download>${amralEsc(f.path)}</a><span class="fsize">${fmt(f.size)}</span></li>`).join("")}
+        </ul>
+      </div>`).join("");
+  } catch (e) {
+    el.innerHTML = `<p class="error">檔案清單載入失敗:${e.message}</p>`;
+  }
+}
+
+loadDoc("doc-tech", "嚴格交集證書_v0.2_技術說明.md");
+loadDoc("doc-results", "RESULTS.md");
+loadDoc("doc-trust", "TRUST_BOUNDARY.md");
+loadFiles();
+</script>
+</body>
+</html>
