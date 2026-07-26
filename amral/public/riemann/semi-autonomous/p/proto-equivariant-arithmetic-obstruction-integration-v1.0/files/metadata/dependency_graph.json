@@ -1,0 +1,87 @@
+{
+  "schema_version": "1.0",
+  "case_id": "CASE-0001-RH-EAO-INTEGRATION-20260724",
+  "nodes_ref": "research_nodes.json",
+  "edges": [
+    {
+      "from": "T0",
+      "to": "T1",
+      "type": "methodological_foundation"
+    },
+    {
+      "from": "T1",
+      "to": "T2",
+      "type": "refined_by"
+    },
+    {
+      "from": "T2",
+      "to": "T3",
+      "type": "localized_by"
+    },
+    {
+      "from": "T3",
+      "to": "T4",
+      "type": "requires_analytic_lift"
+    },
+    {
+      "from": "T4",
+      "to": "T5",
+      "type": "normalization_and_matrix_refinement"
+    },
+    {
+      "from": "T5",
+      "to": "C1",
+      "type": "implemented_by"
+    },
+    {
+      "from": "T5",
+      "to": "C2",
+      "type": "implemented_by"
+    },
+    {
+      "from": "C1",
+      "to": "C3",
+      "type": "merged_into"
+    },
+    {
+      "from": "C2",
+      "to": "C3",
+      "type": "merged_into"
+    },
+    {
+      "from": "C3",
+      "to": "C4",
+      "type": "validated_upgrade"
+    },
+    {
+      "from": "C4",
+      "to": "C5",
+      "type": "global_leakage_audit"
+    },
+    {
+      "from": "C5",
+      "to": "C6",
+      "type": "revision_trigger"
+    },
+    {
+      "from": "C6",
+      "to": "N1",
+      "type": "handoff"
+    },
+    {
+      "from": "T3",
+      "to": "N1",
+      "type": "universal_rectangle_requirement"
+    },
+    {
+      "from": "T5",
+      "to": "N1",
+      "type": "explicit_formula_constraints"
+    }
+  ],
+  "closure_condition": {
+    "description": "RH closure requires every regular rational rectangle with positive winding to yield a test function with positive global domination margin and a non-circular arithmetic nonnegativity certificate.",
+    "status": "open"
+  }
+}
+

@@ -170,6 +170,26 @@ table.data th { background: var(--paper-raised); color: var(--ink-dim); font-wei
 .figure-grid img { display: block; width: 100%; height: auto; border: 1px solid var(--line); }
 .figure-grid figcaption { font-size: 0.76rem; color: var(--ink-dim); margin-top: 8px; }
 
+.node-timeline { list-style: none; margin: 0; padding: 0; border: 1px solid var(--line); }
+.node-timeline li { display: grid; grid-template-columns: 3.4em 1fr auto; gap: 4px 12px; align-items: baseline; padding: 8px 12px; border-bottom: 1px solid var(--line); font-size: 0.82rem; }
+.node-timeline li:last-child { border-bottom: none; }
+.node-timeline .node-id { font-weight: 700; }
+.node-timeline .node-id a { text-decoration: none; }
+.node-timeline .node-id a:hover { text-decoration: underline; }
+.node-timeline .node-title { color: var(--ink-dim); }
+.node-timeline .ev-level { justify-self: end; font-size: 0.68rem; color: var(--ink-dim); border: 1px solid var(--line); padding: 1px 6px; }
+.node-timeline .node-event { grid-column: 1 / -1; font-size: 0.78rem; }
+
+.gap-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.gap-item { background: var(--paper-raised); padding: 12px 14px; font-size: 0.8rem; }
+.gap-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px; }
+.gap-id { font-weight: 700; }
+.gap-status { font-size: 0.68rem; color: var(--ink-dim); text-transform: uppercase; letter-spacing: 0.02em; }
+.gap-title { font-weight: 700; margin-bottom: 6px; }
+.gap-arrow { color: var(--ink-dim); font-size: 0.78rem; margin-bottom: 8px; }
+.gap-next { font-size: 0.78rem; }
+.gap-next .k { color: var(--ink-dim); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.04em; display: block; margin-bottom: 2px; }
+
 .filegroup { margin-bottom: 18px; }
 .filegroup h3 { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-dim); margin: 0 0 8px; font-weight: 400; }
 .filelist { list-style: none; margin: 0; padding: 0; font-size: 0.82rem; }

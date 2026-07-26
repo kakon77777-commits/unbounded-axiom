@@ -1,0 +1,108 @@
+{
+  "schema_version": "1.0",
+  "case_id": "CASE-0001-RH-EAO-INTEGRATION-20260724",
+  "gaps": [
+    {
+      "id": "G01",
+      "title": "顯式公式正規化的形式核驗",
+      "status": "open",
+      "from": "採用的乘法群 Riemann-Weil 公式",
+      "to": "證明助理核驗的 Q_zero = Q_arith",
+      "current_evidence": "手稿公式與數值交叉核對",
+      "next_action": "固定單一權威定理版本並形式化端點、符號與收斂"
+    },
+    {
+      "id": "G02",
+      "title": "區域相位塑形引理形式化",
+      "status": "partially_closed",
+      "from": "偏軸緊矩形",
+      "to": "實偶緊支撐一致負函數",
+      "current_evidence": "手稿 Mergelyan/Paley-Wiener 構造與數值實作",
+      "next_action": "形式化平方像幾何、逼近條件與支撐成本"
+    },
+    {
+      "id": "G03",
+      "title": "單一連續區域負證書",
+      "status": "closed_for_one_synthetic_rectangle",
+      "from": "明確 hat-spline",
+      "to": "連續矩形嚴格負界",
+      "current_evidence": "validated numerics E3",
+      "next_action": "參數化為任意有理矩形的證書生成器"
+    },
+    {
+      "id": "G04",
+      "title": "算術正性由純量提升為結構錐",
+      "status": "open",
+      "from": "單一函數 Q_arith > 0",
+      "to": "可構造、非循環的算術正錐",
+      "current_evidence": "單一正區間與浮點矩陣掃描",
+      "next_action": "區間 LDL/Cholesky 或以充分條件生成較小正錐"
+    },
+    {
+      "id": "G05",
+      "title": "目標矩形的零點存在接口",
+      "status": "open",
+      "from": "合成目標矩形",
+      "to": "條件性正繞數觸發器",
+      "current_evidence": "目標矩形沒有附帶 winding certificate",
+      "next_action": "將生成器寫成以任意 positive-winding certificate 為輸入"
+    },
+    {
+      "id": "G06",
+      "title": "臨界線總洩漏控制",
+      "status": "open_and_current_candidate_fails",
+      "from": "局部負裕量",
+      "to": "全部軸上零點正貢獻上界",
+      "current_evidence": "第一個已知軸上零點為目標裕量的 2387.591 倍",
+      "next_action": "以零點計數 majorant 直接最佳化加權軸洩漏"
+    },
+    {
+      "id": "G07",
+      "title": "未知有限窗偏軸洩漏",
+      "status": "open",
+      "from": "目標區域一致負",
+      "to": "控制窗全部非目標軌道上界",
+      "current_evidence": "軸抑制候選控制窗最大正峰 0.267543612562",
+      "next_action": "使用全窗交換法、分帶上界與無條件總零點數"
+    },
+    {
+      "id": "G08",
+      "title": "無窮遠尾部嚴格證書",
+      "status": "partially_closed",
+      "from": "Paley-Wiener 衰減與 N(T)",
+      "to": "機器可核對尾部上界",
+      "current_evidence": "原型 majorant 8.667600624770651",
+      "next_action": "外向區間化常數並證明殼層求和"
+    },
+    {
+      "id": "G09",
+      "title": "全域支配餘量",
+      "status": "open",
+      "from": "區域負值與算術正值",
+      "to": "Delta_K > 0",
+      "current_evidence": "現有候選明確為負餘量",
+      "blocked_by": [
+        "G06",
+        "G07",
+        "G08"
+      ],
+      "next_action": "實作 Global Dominance Certificate Optimizer v0.2"
+    },
+    {
+      "id": "G10",
+      "title": "全部有理矩形到 RH",
+      "status": "open",
+      "from": "每矩形全域支配證書",
+      "to": "全部 winding certificate 為零",
+      "current_evidence": "僅條件式主定理",
+      "blocked_by": [
+        "G01",
+        "G02",
+        "G04",
+        "G09"
+      ],
+      "next_action": "建立統一算法、量詞審計與形式化證書族"
+    }
+  ]
+}
+

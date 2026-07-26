@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>軸抑制與全窗洩漏感知最佳化器 · 半自主研究 · 黎曼猜想 · AMRAL</title>
+<meta name="description" content="RH 半自主研究工程包:軸抑制與全窗洩漏感知最佳化器 v0.1。證明有限臨界線消去會壓縮算術正錐維度,q=15 時完全消失;全窗非正化在現有基底中失敗。不構成黎曼猜想證明。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="./files/軸抑制與全窗洩漏感知最佳化器_v0.1_技術說明.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link active" href="../../../">黎曼猜想</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← 半自主研究</a>
+    <span>/</span>
+    <a href="../../#proto-axis-suppressed-global-window-optimizer-v0.1">工程紀錄</a>
+    <span>/</span>
+    <span>軸抑制與全窗洩漏感知最佳化器</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">工程紀錄</span>
+      <span class="tag">v0.1</span>
+      <span class="tag">2026-07-24</span>
+      <span class="status">CONTROL_WINDOW_NONPOSITIVITY_FAILED</span>
+    </div>
+    <h1>軸抑制與全窗洩漏感知最佳化器</h1>
+    <p class="h1-sub">Axis-Suppressed Global-Window Optimizer v0.1 — 加入有限臨界線消去條件後,算術正方向維度從 12 快速塌縮到 0;目標矩形負性保住了,但全控制窗非正化沒有找到可行解。</p>
+    <div class="claim-box">
+      RH_CLAIM = False
+      <span class="note">— 包內 <code>selected_candidate_summary.json</code> 自報 <code>status="target-negative and arithmetic-positive, but finite control-window nonpositivity failed"</code>,原樣照登。有限維浮點診斷原型,不是區間證書,不是 RH 證明。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">本包摘要一開始就講明它是在回應上一包留下的問題,原樣照引。</p>
+    <blockquote class="cite">「前一輪已經量化:現有局部負證書的負裕量,遠小於臨界線零點產生的正質量。本輪因此不再只最大化單一目標矩形的負性,而建立同時具有有限臨界線取樣消去、算術二次值下界、目標矩形負性、有限偏軸控制窗交換限制的聯合最佳化原型。」— 摘自本包技術說明摘要。</blockquote>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一包 · v0.1</span><a href="../proto-zero-side-leakage-budget-v0.1/">零點側洩漏預算</a></div>
+      <div class="conn-card"><span class="k">整合節點 · v1.0</span><a href="../proto-equivariant-arithmetic-obstruction-integration-v1.0/">等變算術障礙整合總論</a></div>
+      <div class="conn-card"><span class="k">對應理論</span><a href="../../papers/p4-arithmetic-separation/">序列③ · 等變算術分離 §12</a></div>
+    </div>
+  </section>
+
+  <section id="doc-main">
+    <h2 class="doc-h2">技術說明</h2>
+    <p class="doc-meta">主文件 — 為何控制窗不能貼住臨界線的恆等定理論證、paired-bump 基底改造、算術正方向塌縮掃描、目標矩形與全窗交換法、選定 q=12 候選、幾何解讀與下一步建議。</p>
+    <div class="doc" id="doc-tech"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="results">
+    <h2 class="doc-h2">結果數據</h2>
+    <p class="doc-meta">算術正方向維度隨消去數 q 的塌縮表,來自包內 <code>RESULTS.md</code>。</p>
+    <div class="doc" id="doc-results"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="trust">
+    <h2 class="doc-h2">信任邊界</h2>
+    <p class="doc-meta">來自包內 <code>TRUST_BOUNDARY.md</code>。</p>
+    <div class="doc" id="doc-trust"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="figures">
+    <h2 class="doc-h2">圖表 · Figures</h2>
+    <p class="section-note">包內 <code>outputs/</code> 五張圖選三張,原樣照登,無後製。</p>
+    <div class="figure-grid">
+      <figure>
+        <img src="./files/outputs/positive_dimension_tradeoff.png" alt="Arithmetic-positive dimension under axis constraints — 算術正特徵方向數量隨消去的臨界線取樣數 q 增加而線性下降至零" loading="lazy">
+        <figcaption>算術正方向塌縮:q 從 0 增到 15,正特徵方向從 12 降到 0。</figcaption>
+      </figure>
+      <figure>
+        <img src="./files/outputs/target_axis_tradeoff.png" alt="Target negativity versus residual axis leakage — 目標負裕量(藍)跟殘留軸上質量(橘)對數座標對比，兩者差距在所有 q 下都維持數個數量級" loading="lazy">
+        <figcaption>目標負裕量(藍)對比殘留軸上質量(橘):差距在所有 q 下都維持好幾個數量級。</figcaption>
+      </figure>
+      <figure>
+        <img src="./files/outputs/selected_test_function.png" alt="Selected q=12 paired-bump test function — 選定候選的測試函數 psi(t) 圖形，由 24 個實偶配對凸起基底構成" loading="lazy">
+        <figcaption>選定 q=12 候選的測試函數 ψ(t):24 個實偶 paired-bump 基底組成。</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="files">
+    <h2 class="doc-h2">檔案 · Files</h2>
+    <p class="section-note">完整控制窗/目標矩形密網格數據(<code>selected_control_grid.csv</code> 593 KB、<code>selected_target_grid.csv</code> 731 KB)沒有逐一列出,都在完整 zip 裡。</p>
+    <div id="filelist-out"><p class="loading">載入中…</p></div>
+    <a class="zip-dl" href="../../packages/RH_Axis_Suppressed_Global_Window_Optimizer_v0.1.zip" download>下載完整封包 (766.3 KB)</a>
+    <p class="zip-note">sha256 496474dedba4d922f33ddf9614e9653f04487ca5ad3c93d186f60818908c4881</p>
+  </section>
+
+  <footer class="sitefoot">
+    <p>半自主軌道逐包詳細頁,格式沿用 <a href="../proto-zero-side-leakage-budget-v0.1/">上一包</a>。<a href="../../">回半自主研究</a></p>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+const F = (p) => amralFetchText("./files/" + p);
+
+async function loadDoc(elId, file) {
+  const el = document.getElementById(elId);
+  try {
+    el.innerHTML = amralRenderDoc(await F(file));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+}
+
+async function loadFiles() {
+  const el = document.getElementById("filelist-out");
+  try {
+    const idx = await fetch("./files.json").then((r) => r.json());
+    const groups = { "文件": [], "圖表": [], "資料": [], "程式": [] };
+    for (const f of idx.files) {
+      const ext = f.path.split(".").pop().toLowerCase();
+      if (ext === "md") groups["文件"].push(f);
+      else if (ext === "png" || ext === "jpg" || ext === "svg") groups["圖表"].push(f);
+      else if (ext === "csv" || ext === "json") groups["資料"].push(f);
+      else if (ext === "py" || ext === "txt") groups["程式"].push(f);
+    }
+    const fmt = (b) => b < 1024 ? b + " B" : (b / 1024).toFixed(1) + " KB";
+    el.innerHTML = Object.entries(groups).filter(([, files]) => files.length).map(([label, files]) => `
+      <div class="filegroup">
+        <h3>${label}</h3>
+        <ul class="filelist">
+          ${files.map((f) => `<li><a href="./files/${encodeURIComponent(f.path)}" download>${amralEsc(f.path)}</a><span class="fsize">${fmt(f.size)}</span></li>`).join("")}
+        </ul>
+      </div>`).join("");
+  } catch (e) {
+    el.innerHTML = `<p class="error">檔案清單載入失敗:${e.message}</p>`;
+  }
+}
+
+loadDoc("doc-tech", "軸抑制與全窗洩漏感知最佳化器_v0.1_技術說明.md");
+loadDoc("doc-results", "RESULTS.md");
+loadDoc("doc-trust", "TRUST_BOUNDARY.md");
+loadFiles();
+</script>
+</body>
+</html>

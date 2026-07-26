@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.0",
+  "run_date": "2026-07-24",
+  "environment": {
+    "python": "3.12",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "matplotlib": "3.10.8",
+    "mpmath": "1.3.0",
+    "pytest": "9.0.2"
+  },
+  "archive_integrity": {
+    "source_zip_count": 6,
+    "all_source_zips_passed_unzip_test": true,
+    "validated_intersection_manifest_passed": true,
+    "axis_suppressed_optimizer_manifest_passed": true
+  },
+  "test_suites": [
+    {
+      "package": "RH_Arithmetic_Matrix_PSD_v0.1",
+      "passed": 5,
+      "failed": 0
+    },
+    {
+      "package": "RH_Regional_Phase_Shaping_v0.1",
+      "passed": 3,
+      "failed": 0
+    },
+    {
+      "package": "RH_Separation_Positivity_Intersection_v0.1",
+      "passed": 4,
+      "failed": 0
+    },
+    {
+      "package": "RH_Validated_Intersection_Certificate_v0.2",
+      "passed": 1,
+      "failed": 0
+    },
+    {
+      "package": "RH_Axis_Suppressed_Global_Window_Optimizer_v0.1",
+      "passed": 2,
+      "failed": 0
+    }
+  ],
+  "total_tests": {
+    "passed": 15,
+    "failed": 0
+  },
+  "certificate_replay": {
+    "replay_passed": true,
+    "reference_passed": true,
+    "region_upper_negative": true,
+    "arithmetic_lower_positive": true,
+    "no_unresolved_cells": true
+  },
+  "axis_candidate_replay": {
+    "constraint_residual_max": 1.7333621857019492e-16,
+    "c0_normalization": 1.0000000000000036,
+    "arithmetic_quadratic_value": 5.000000000005007e-05,
+    "remaining_first_50_axis_mass": 0.00015436572967193393,
+    "target_dense_max": -2.646079896119489e-08,
+    "control_dense_max": 0.26754361256198883,
+    "target_negative_on_dense_grid": true,
+    "control_nonpositive_on_dense_grid": false
+  },
+  "leakage_replay": {
+    "target_negative_margin": 2.2416560599e-06,
+    "first_axis_zero_mass": 0.005352157501758449,
+    "first_zero_to_target_ratio": 2387.590851915618,
+    "known_axis_mass_sum": 0.023723782340489427,
+    "known_axis_to_target_ratio": 10583.150004531803,
+    "total_tail_majorant": 8.667600624770651,
+    "single_target_strategy_viable_without_axis_suppression": false
+  }
+}
+

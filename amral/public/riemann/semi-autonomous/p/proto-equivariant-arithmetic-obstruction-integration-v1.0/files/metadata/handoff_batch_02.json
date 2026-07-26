@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0",
+  "handoff_id": "RH-EAO-NEXT-20260724",
+  "parent_case_id": "CASE-0001-RH-WEIL-BATCH01",
+  "current_case_id": "CASE-0001-RH-EAO-INTEGRATION-20260724",
+  "batch_label": "Batch 02 candidate continuation",
+  "note": "The numerical batch number remains subject to the parent platform's canonical numbering.",
+  "next_node": {
+    "id": "N1",
+    "title": "RH Global Dominance Certificate Optimizer v0.2",
+    "specification": "handoff/next_experiment_spec.md"
+  },
+  "required_inputs": [
+    "sources/packages/RH_Validated_Intersection_Certificate_v0.2(1).zip",
+    "sources/packages/RH_Zero_Side_Leakage_Budget_v0.1(1).zip",
+    "sources/packages/RH_Axis_Suppressed_Global_Window_Optimizer_v0.1(1).zip",
+    "metadata/gap_map.json",
+    "metadata/claim_ledger.json"
+  ],
+  "primary_objective": "Produce a strictly positive interval lower bound for the global domination margin while retaining a positive arithmetic interval.",
+  "success_fields": [
+    "global_domination_interval",
+    "arithmetic_interval",
+    "target_region_certificate",
+    "axis_budget",
+    "middle_window_budget",
+    "unknown_off_axis_budget",
+    "tail_budget",
+    "trust_boundary"
+  ],
+  "do_not_repeat": [
+    "Do not optimize target-grid negativity alone.",
+    "Do not treat a positive scalar as PSD.",
+    "Do not use only stored critical-line zeros as an all-zero bound.",
+    "Do not assume non-target zeros lie on the critical line."
+  ]
+}
+

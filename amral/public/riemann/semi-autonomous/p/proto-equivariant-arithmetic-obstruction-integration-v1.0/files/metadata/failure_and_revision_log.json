@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0",
+  "case_id": "CASE-0001-RH-EAO-INTEGRATION-20260724",
+  "entries": [
+    {
+      "id": "FR01",
+      "failed_assumption": "Symmetry or equivariant topology alone forces zeros onto the critical axis.",
+      "evidence": "Off-axis four-point orbits are fully compatible with the Klein-four symmetry.",
+      "revision": "Use topology only for typing, localization, and positive obstructions."
+    },
+    {
+      "id": "FR02",
+      "failed_assumption": "Finite-height or finite-rectangle verification lifts automatically to RH.",
+      "evidence": "Regular exhaustion requires every level or an independent tail theorem.",
+      "revision": "Record finite certificates separately from the noncompact lifting gap."
+    },
+    {
+      "id": "FR03",
+      "failed_assumption": "Dense-grid negativity is a continuous-region certificate.",
+      "evidence": "v0.1 only sampled a finite grid.",
+      "revision": "v0.2 introduced interval/Taylor rectangular cover and zero unresolved cells."
+    },
+    {
+      "id": "FR04",
+      "failed_assumption": "A floating positive arithmetic eigenvalue or scalar is a rigorous positivity certificate.",
+      "evidence": "Quadrature, null spaces, and eigenvalues were floating-point.",
+      "revision": "v0.2 certified one arithmetic scalar interval; general PSD remains open."
+    },
+    {
+      "id": "FR05",
+      "failed_assumption": "Regional negativity plus arithmetic positivity implies full zero-side negativity.",
+      "evidence": "The first stored critical-line contribution is about 2387.591 times the target margin.",
+      "revision": "Add explicit axis, middle-window, unknown-orbit, and tail budgets."
+    },
+    {
+      "id": "FR06",
+      "failed_assumption": "Finite critical-line annihilation can be increased without major cost.",
+      "evidence": "Arithmetic-positive directions fall from 12 at q=0 to 0 at q=15 in the supplied basis.",
+      "revision": "Optimize the domination margin under arithmetic-positive dimension constraints."
+    },
+    {
+      "id": "FR07",
+      "failed_assumption": "Target negativity can be extended to a whole control window by the current exchange model.",
+      "evidence": "The selected q=12 candidate has control-window maximum 0.267543612562.",
+      "revision": "Use band certificates, unconditional zero-count majorants, and a global objective."
+    }
+  ]
+}
+

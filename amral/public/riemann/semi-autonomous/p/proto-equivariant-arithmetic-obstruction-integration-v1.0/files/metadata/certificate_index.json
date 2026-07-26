@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0",
+  "case_id": "CASE-0001-RH-EAO-INTEGRATION-20260724",
+  "certificates": [
+    {
+      "id": "CERT-SOURCE-SHA256",
+      "kind": "source_integrity",
+      "status": "passed",
+      "evidence_level": "E3",
+      "artifact": "validation/checksums.sha256",
+      "claim": "Integrated package files have recorded SHA-256 digests."
+    },
+    {
+      "id": "CERT-TEST-SUITE",
+      "kind": "software_tests",
+      "status": "passed",
+      "evidence_level": "E2",
+      "artifact": "validation/test_report.json",
+      "claim": "15 tests across five source packages passed in the integration environment."
+    },
+    {
+      "id": "CERT-VIC-0.2",
+      "kind": "validated_numerics",
+      "status": "passed",
+      "evidence_level": "E3",
+      "source_package": "sources/packages/RH_Validated_Intersection_Certificate_v0.2(1).zip",
+      "claim": "One explicit hat-spline has a continuously negative target block and a positive arithmetic interval.",
+      "region_global_upper": -2.24165605992312e-06,
+      "arithmetic_interval": [
+        0.033762674558557,
+        0.061347696341296
+      ],
+      "certified_cells": 480,
+      "unresolved_cells": 0,
+      "prime_power_count": 98,
+      "not_claimed": [
+        "arithmetic matrix PSD",
+        "target contains a zeta zero",
+        "full zero-side negativity",
+        "RH"
+      ]
+    },
+    {
+      "id": "CERT-LEAKAGE-DIAGNOSTIC-0.1",
+      "kind": "diagnostic_replay",
+      "status": "passed",
+      "evidence_level": "E2",
+      "source_package": "sources/packages/RH_Zero_Side_Leakage_Budget_v0.1(1).zip",
+      "claim": "The supplied single-target function cannot dominate even the first stored critical-line contribution.",
+      "first_zero_to_target_ratio": 2387.590851915618,
+      "known_50_to_target_ratio": 10583.150004531803,
+      "tail_majorant": 8.667600624770651
+    },
+    {
+      "id": "CERT-AXIS-SUPPRESSED-CANDIDATE-0.1",
+      "kind": "floating_candidate_replay",
+      "status": "partial",
+      "evidence_level": "E2",
+      "source_package": "sources/packages/RH_Axis_Suppressed_Global_Window_Optimizer_v0.1(1).zip",
+      "claim": "Finite axis annihilation, target negativity, and positive arithmetic scalar coexist for q=12, but whole-window nonpositivity fails.",
+      "arithmetic_value": 5.000000000005007e-05,
+      "target_dense_max": -2.646079896119489e-08,
+      "control_dense_max": 0.26754361256198883,
+      "control_nonpositive": false
+    }
+  ]
+}
+

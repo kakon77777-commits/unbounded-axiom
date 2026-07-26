@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0",
+  "case_id": "CASE-0001-RH-EAO-INTEGRATION-20260724",
+  "trusted_for_replay": [
+    "CPython runtime",
+    "operating system and filesystem",
+    "NumPy and SciPy for floating prototypes",
+    "mpmath interval arithmetic for the validated certificate",
+    "IEEE floating-point geometry bookkeeping",
+    "stated Riemann-Weil explicit-formula normalization",
+    "hat-spline Fourier identity",
+    "cubic autocorrelation identity",
+    "supplied decimal source data",
+    "prime enumeration implemented in the packages"
+  ],
+  "not_formally_verified": [
+    "the adopted explicit-formula theorem and sign normalization",
+    "all interval elementary-function implementations",
+    "complex Taylor enclosure",
+    "hat-transform and cubic-autocorrelation identities",
+    "composite-midpoint error theorem",
+    "prime enumeration and primality certificates",
+    "stored zeta-zero ordinates as formal zero certificates",
+    "global optimizer optimality",
+    "all-zeta-zero leakage bounds"
+  ],
+  "prohibited_inference": [
+    "platform or package hashes replace mathematical trust roots",
+    "validated numerics imply proof-assistant verification",
+    "one positive arithmetic scalar implies PSD",
+    "finite sampled zeros imply all-zero control",
+    "the package proves RH"
+  ],
+  "target_formalization_stack": [
+    "Lean 4 or equivalent theorem prover",
+    "verified real and complex interval arithmetic",
+    "formal explicit-formula import",
+    "rational or certified algebraic coefficient witnesses"
+  ]
+}
+
