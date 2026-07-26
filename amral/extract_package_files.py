@@ -35,7 +35,8 @@ MANIFEST = CASE_DIR / "manifest.json"
 P_DIR = CASE_DIR / "p"
 
 # extension -> max size (bytes) to treat as "legible enough to extract"
-LEGIBLE = {"md": 1 << 20, "csv": 1 << 20, "txt": 1 << 20, "json": 30_000, "py": 30_000}
+LEGIBLE = {"md": 1 << 20, "csv": 1 << 20, "txt": 1 << 20, "json": 30_000, "py": 30_000,
+           "png": 1 << 20, "jpg": 1 << 20, "jpeg": 1 << 20, "svg": 1 << 20}
 
 
 def should_extract(name, size):

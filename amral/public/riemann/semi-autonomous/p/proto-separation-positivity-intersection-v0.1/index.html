@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>分離—正性交集求解器 · 半自主研究 · 黎曼猜想 · AMRAL</title>
+<meta name="description" content="RH 半自主研究工程包:分離—正性交集求解器 v0.1。首次在同一係數向量上,同時滿足偏軸區塊負方向與算術二次型正性。浮點有限網格結果,不構成區間證書,不證明黎曼猜想。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="./files/分離正性交集求解器_v0.1_技術說明.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link active" href="../../../">黎曼猜想</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← 半自主研究</a>
+    <span>/</span>
+    <a href="../../#proto-separation-positivity-intersection-v0.1">工程紀錄</a>
+    <span>/</span>
+    <span>分離—正性交集求解器</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">工程紀錄</span>
+      <span class="tag">v0.1</span>
+      <span class="tag">2026-07-24</span>
+      <span class="status">INTERSECTION_FOUND_ON_GRID</span>
+    </div>
+    <h1>分離—正性交集求解器</h1>
+    <p class="h1-sub">Separation–Positivity Intersection Solver v0.1 — 在同一組實係數向量上,同時檢驗偏軸區塊負方向與算術二次型正性,六個支撐半徑 R 皆找到有限網格交集。</p>
+    <div class="claim-box">
+      RH_CLAIM = False
+      <span class="note">— 包內 <code>intersection_scan.csv</code> 逐列自報 <code>intersection_found_on_grid=True</code>,原樣照登。有限網格交集不是連續矩形證書,浮點正性不是區間 PSD 證書,這包不證明也不反駁黎曼猜想。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">本包自己的技術說明開頭就寫明它接的是哪兩個包,原樣照引。</p>
+    <blockquote class="cite">「前兩個工程包分別找到:1. 在偏軸矩形上形成負軌道區塊的係數;2. 在另一套基底與約束下數值上保持正的算術矩陣。但兩者尚未證明使用同一個係數向量。本包首次將兩者統一。」— 摘自本包技術說明 §1。</blockquote>
+    <div class="connections">
+      <div class="conn-card"><span class="k">前置包一</span><a href="../../../autonomous/#proto-regional-phase-shaping-v0.1">Regional Phase Shaping v0.1</a></div>
+      <div class="conn-card"><span class="k">前置包二</span><a href="../../../autonomous/#proto-arithmetic-matrix-psd-v0.1">Arithmetic Matrix PSD v0.1</a></div>
+      <div class="conn-card"><span class="k">對應理論</span><a href="../../papers/p5-explicit-formula/">序列④ · 顯式公式中的偏軸正障礙 §7</a></div>
+    </div>
+    <p class="section-note">前置包一、二的檔案跟 AI 自主軌道側支原型區裡的兩個包位元組完全相同,為維持兩軌道「資料不合併」,檔案只留在 AI 自主軌道那邊,這裡連過去看。對應理論指向 Paley–Wiener 區域相位塑形引理——本包是那條引理第一次的數值落地嘗試。</p>
+  </section>
+
+  <section id="doc-main">
+    <h2 class="doc-h2">技術說明</h2>
+    <p class="doc-meta">主文件 — 統一座標、聯合求解、正規化交叉驗證、合法結論邊界、v0.1 實際結果與網格敏感度。</p>
+    <div class="doc" id="doc-tech"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="results">
+    <h2 class="doc-h2">結果數據</h2>
+    <p class="doc-meta">六個支撐半徑的完整數值表與選定係數的正規化稽核,來自包內 <code>RESULTS.md</code>。</p>
+    <div class="doc" id="doc-results"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="figures">
+    <h2 class="doc-h2">圖表 · Figures</h2>
+    <p class="section-note">包內 <code>outputs/</code> 的三張圖,原樣照登,無後製。</p>
+    <div class="figure-grid">
+      <figure>
+        <img src="./files/outputs/selected_region_block.png" alt="Selected regional block, R=3 — 2Re(G(w)^2) 在目標矩形上的熱圖，全區為負" loading="lazy">
+        <figcaption>選定區塊熱圖(R=3):目標矩形內 2Re(G(w)²) 全區為負。</figcaption>
+      </figure>
+      <figure>
+        <img src="./files/outputs/separation_margin.png" alt="Regional separation margin — 密集網格最大區塊隨支撐半徑 R 增加而更負" loading="lazy">
+        <figcaption>區域分離餘量:密集網格最大區塊隨 R 增加而更負(-1.08e-8 → -5.92e-5)。</figcaption>
+      </figure>
+      <figure>
+        <img src="./files/outputs/arithmetic_margin.png" alt="Arithmetic safety margin — 候選算術二次型值(藍)在所有 R 下都高於所需安全餘量(橘)" loading="lazy">
+        <figcaption>算術安全餘量:候選值(藍)在全部六個 R 下都高於所需餘量(橘),對數座標。</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="files">
+    <h2 class="doc-h2">檔案 · Files</h2>
+    <p class="section-note">原始數據(<code>selected_region_block.csv</code>、<code>selected_psi.csv</code> 等大型 CSV)跟編譯快取沒有逐一列出,都在完整 zip 裡。</p>
+    <div id="filelist-out"><p class="loading">載入中…</p></div>
+    <a class="zip-dl" href="../../packages/RH_Separation_Positivity_Intersection_v0.1.zip" download>下載完整封包 (335.8 KB)</a>
+    <p class="zip-note">sha256 6ff96e0da85651dce1f9edb71e116f7290d123cf64e13a5c4a9aaba72e0987b7</p>
+  </section>
+
+  <footer class="sitefoot">
+    <p>半自主軌道逐包詳細頁的格式先在這一包上試,格式沿用 AI 自主軌道的 W-17 示範頁。<a href="../../">回半自主研究</a></p>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+const F = (p) => amralFetchText("./files/" + p);
+
+async function loadDoc(elId, file) {
+  const el = document.getElementById(elId);
+  try {
+    el.innerHTML = amralRenderDoc(await F(file));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+}
+
+async function loadFiles() {
+  const el = document.getElementById("filelist-out");
+  try {
+    const idx = await fetch("./files.json").then((r) => r.json());
+    const groups = { "文件": [], "圖表": [], "資料": [], "程式": [] };
+    for (const f of idx.files) {
+      const ext = f.path.split(".").pop().toLowerCase();
+      if (ext === "md") groups["文件"].push(f);
+      else if (ext === "png" || ext === "jpg" || ext === "svg") groups["圖表"].push(f);
+      else if (ext === "csv" || ext === "json") groups["資料"].push(f);
+      else if (ext === "py" || ext === "txt") groups["程式"].push(f);
+    }
+    const fmt = (b) => b < 1024 ? b + " B" : (b / 1024).toFixed(1) + " KB";
+    el.innerHTML = Object.entries(groups).filter(([, files]) => files.length).map(([label, files]) => `
+      <div class="filegroup">
+        <h3>${label}</h3>
+        <ul class="filelist">
+          ${files.map((f) => `<li><a href="./files/${encodeURIComponent(f.path)}" download>${amralEsc(f.path)}</a><span class="fsize">${fmt(f.size)}</span></li>`).join("")}
+        </ul>
+      </div>`).join("");
+  } catch (e) {
+    el.innerHTML = `<p class="error">檔案清單載入失敗:${e.message}</p>`;
+  }
+}
+
+loadDoc("doc-tech", "分離正性交集求解器_v0.1_技術說明.md");
+loadDoc("doc-results", "RESULTS.md");
+loadFiles();
+</script>
+</body>
+</html>
