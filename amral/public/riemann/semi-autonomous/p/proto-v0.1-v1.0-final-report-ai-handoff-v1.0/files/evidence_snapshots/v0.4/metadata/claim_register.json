@@ -1,0 +1,92 @@
+{
+  "schema": "EveMissLab.RH.ClaimRegister.v0.4",
+  "evidence_levels": {
+    "E0": "Exact algebraic statement inside the explicitly specified finite conic or support model.",
+    "E1": "Automatically recomputed structural, serialization, coverage, or cross-file check.",
+    "E2": "Floating numerical research evidence; named computations are reproducible but not interval-certified.",
+    "E3": "Formal analytic or interval-certified transfer to the intended zeta theorem. No E3 claim is made."
+  },
+  "claims": [
+    {
+      "claim_id": "SPDF-C01",
+      "level": "E0",
+      "claim": "For normalized nonnegative axis and core measures, PSD of W=B_mu+alpha*C_nu implies J(A)>=alpha for every finite primal A satisfying the named PSD, axis-majorant, and core-negativity constraints.",
+      "scope": "Specified finite conic model only.",
+      "evidence": ["METHOD.md", "RH支撐質數對偶前沿_軸網格假逃逸與頻譜缺口轉向_v0.4_半AI自主研究稿.md"]
+    },
+    {
+      "claim_id": "SPDF-C02",
+      "level": "E0",
+      "claim": "Under the package Fourier convention, support of psi in [-R,R] restricts prime-power locations to m*log(p)<2R, equivalently p^m<exp(2R).",
+      "evidence": ["frontier/primecost.py", "METHOD.md"]
+    },
+    {
+      "claim_id": "SPDF-C03",
+      "level": "E1",
+      "claim": "The 18 original patches and their 4-by-4 refinement into 288 subpatches cover the target rectangle in the implemented rational-cell and dense-grid audits.",
+      "evidence": ["outputs/cover_audit.json", "run_cover_audit.py"]
+    },
+    {
+      "claim_id": "SPDF-C04",
+      "level": "E2",
+      "claim": "The uniform frontier contains 126 configurations. The first sampled any-geometry center escape is R=10, while the first sampled original-patch uniform 3-by-3 escape is R=14.",
+      "scope": "Named radii, densities, widths, discrete measures, and floating model.",
+      "evidence": ["outputs/uniform_frontier.json", "run_frontier_sweep.py"]
+    },
+    {
+      "claim_id": "SPDF-C05",
+      "level": "E2",
+      "claim": "At each sampled radius R=10.25,12,14,16, at least one searched difficult subpatch has a reconstructed safe dual lower bound above 1.",
+      "value": {
+        "radii": [10.25, 12.0, 14.0, 16.0],
+        "strongest_safe_lower_bounds": [2.620079895387924, 1.8999498169960598, 1.3981795147030978, 1.0942813396531836]
+      },
+      "scope": "Current compact polynomial-bump dictionaries and discrete five-band/core finite models.",
+      "evidence": ["outputs/joint_dual_summary.json", "outputs/witnesses", "outputs/witness_verification.json"]
+    },
+    {
+      "claim_id": "SPDF-C06",
+      "level": "E2",
+      "claim": "The R=16 coarse axis grid produces a false escape: raw alpha rises from 0.985277 at step 0.25 to 1.192293 at step 0.025, whose safe alpha remains above 1.",
+      "evidence": ["outputs/axis_refinement.json", "run_axis_refinement.py"]
+    },
+    {
+      "claim_id": "SPDF-C07",
+      "level": "E1",
+      "claim": "The joint summary references exactly 12 witness files and no stale witness file remains in the witness directory.",
+      "evidence": ["outputs/witness_verification.json", "verify_saved_witnesses.py"]
+    },
+    {
+      "claim_id": "SPDF-C08",
+      "level": "E2",
+      "claim": "All 12 serialized sparse-measure witnesses remain PSD after each support group is renormalized from its serialized floating weights, and all 12 effective lower bounds exceed 1.",
+      "scope": "Floating reconstruction; no interval transfer.",
+      "evidence": ["outputs/witness_verification.json"]
+    },
+    {
+      "claim_id": "SPDF-C09",
+      "level": "E2",
+      "claim": "The segmented sieve benchmark at R=10.25 enumerates 41,141,456 primes and 41,144,807 prime-power terms below the strict cutoff 799,902,177.",
+      "evidence": ["outputs/prime_cost.json", "outputs/prime_histograms.npz", "run_prime_cost.py"]
+    },
+    {
+      "claim_id": "SPDF-C10",
+      "level": "E2",
+      "claim": "The floating zero-count profile uses the published Trudgian constants 0.112, 0.278, and 2.510 rather than the smaller arXiv abstract constants.",
+      "evidence": ["outputs/source_profile.json", "SOURCES.md", "frontier/axis.py"]
+    },
+    {
+      "claim_id": "SPDF-C11",
+      "level": "E2",
+      "claim": "For this research program, the combined observed dual margins and exponential prime cutoff justify stopping support-only expansion and testing axis-notch dictionary co-design next.",
+      "scope": "Research prioritization, not a theorem excluding R>16.",
+      "evidence": ["NEXT_NODE_AXIS_NOTCH_CODESIGN.md", "outputs/experiment_summary.json"]
+    },
+    {
+      "claim_id": "SPDF-C12",
+      "level": "E0",
+      "claim": "This node does not claim an RH proof, RH disproof, continuous-axis certificate, full refined-cover joint exhaustion, or analytic local-to-global closure.",
+      "evidence": ["TRUST_BOUNDARY.md", "outputs/experiment_summary.json"]
+    }
+  ]
+}

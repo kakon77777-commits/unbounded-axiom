@@ -1,0 +1,61 @@
+{
+  "claims": [
+    {
+      "claim_id": "C10-GREEN-BOX",
+      "evidence": [
+        "local_green/box_green.py",
+        "tests/test_interval_engine.py"
+      ],
+      "statement": "The directed-decimal engine encloses clamped Green pairings for affine-tagged complex-exponent boxes, including exponent sums that cross zero.",
+      "status": "proved_in_implemented_arithmetic"
+    },
+    {
+      "claim_id": "C10-58CELL",
+      "evidence": [
+        "outputs/local_green_cell_certificate_h178e-8.json",
+        "outputs/local_green_cell_verification_h178e-8.json"
+      ],
+      "statement": "For child alpha 1 and every independent choice of the 58 axis locations within uniform half-width 89/50000000 of the inherited rational centers, the abstract projected Green operator is strictly positive.",
+      "status": "certified"
+    },
+    {
+      "claim_id": "C10-COVER-FAMILY",
+      "evidence": [
+        "outputs/local_green_cover_family.json",
+        "outputs/local_green_cover_family_verification.json"
+      ],
+      "statement": "The maximal 58-dimensional product box and every coordinatewise contained rational closed subbox form a downward-closed certified cover family.",
+      "status": "certified"
+    },
+    {
+      "claim_id": "C10-BOUNDARY-AUDIT",
+      "evidence": [
+        "outputs/local_green_radius_ladder.json"
+      ],
+      "statement": "The tested half-width 9/5000000 fails the interval Sylvester lower bound, while 1/10000 and 1/1000 fail the Neumann enclosure; none of these failures is an operator counterexample.",
+      "status": "failure_classified"
+    },
+    {
+      "claim_id": "C10-CORNER-POINT",
+      "evidence": [
+        "data/adversarial_corner_witness_h1e-3.json",
+        "outputs/adversarial_corner_point_certificate_h1e-3.json",
+        "outputs/adversarial_corner_point_verification_h1e-3.json"
+      ],
+      "statement": "One exact rational point displaced by 1/1000 in the inherited adversarial sign pattern remains strictly positive in the abstract model.",
+      "status": "certified_single_point"
+    },
+    {
+      "claim_id": "C10-ZETA-LIMIT",
+      "evidence": [
+        "TRUST_BOUNDARY.md",
+        "metadata/gap_ledger.json"
+      ],
+      "statement": "No result in v1.0 identifies the synthetic 58-location family with actual zeta-zero occupancy or completes the explicit-formula transfer.",
+      "status": "explicit_nonclaim"
+    }
+  ],
+  "explicit_formula_transfer_certified": false,
+  "global_rh_certificate": false,
+  "schema": "RH.ClaimRegister.v1.0"
+}

@@ -1,0 +1,101 @@
+{
+  "schema": "EveMissLab.RH.GapLedger.v0.5",
+  "gaps": [
+    {
+      "gap_id": "GAP-ANC-01",
+      "title": "Continuous Paley-Wiener domain",
+      "status": "next_node",
+      "blocking": true,
+      "detail": "The finite bump and lift spaces are not yet embedded in a rigorously specified continuous Hilbert-domain extremal problem.",
+      "next_action": "Define the compact-support Sobolev or Paley-Wiener domain, structural-zero subspace, and coercive tail functional."
+    },
+    {
+      "gap_id": "GAP-ANC-02",
+      "title": "Reproducing-kernel duality",
+      "status": "open",
+      "blocking": true,
+      "detail": "Discrete dual measures appear stable but have not been derived from a continuous kernel dual or KKT system.",
+      "next_action": "Derive value, derivative, complex-core, and tail kernels and state strong-duality assumptions."
+    },
+    {
+      "gap_id": "GAP-ANC-03",
+      "title": "Galerkin convergence",
+      "status": "open",
+      "blocking": true,
+      "detail": "Observed dictionary saturation may be a basis artifact; no convergence theorem or a posteriori error estimate exists.",
+      "next_action": "Prove density and objective convergence, or construct computable upper and lower error bounds."
+    },
+    {
+      "gap_id": "GAP-ANC-04",
+      "title": "Continuous axis supremum",
+      "status": "open_false_escape_inherited",
+      "blocking": true,
+      "detail": "All axis audits remain discrete; v0.4 already demonstrated a coarse-grid false escape.",
+      "next_action": "Use derivative bounds, adaptive global maximization, or interval enclosures on every band."
+    },
+    {
+      "gap_id": "GAP-ANC-05",
+      "title": "Fourier and tail interval transfer",
+      "status": "open",
+      "blocking": true,
+      "detail": "Fourier transforms, second-derivative tail matrices, and eigenvalues use floating quadrature.",
+      "next_action": "Enclose matrix entries and propagate errors to directed eigenvalue bounds."
+    },
+    {
+      "gap_id": "GAP-ANC-06",
+      "title": "Full refined-cover joint exhaustion",
+      "status": "deferred",
+      "blocking": true,
+      "detail": "The new dictionaries were tested on the inherited difficult pilot patch, not all 288 refined patches.",
+      "next_action": "Exhaust only after a continuous or new finite model crosses the current difficult-patch gate."
+    },
+    {
+      "gap_id": "GAP-ANC-07",
+      "title": "Alternative external dictionaries",
+      "status": "open_but_deprioritized",
+      "blocking": false,
+      "detail": "The subspace theorem does not exclude external atoms beyond the tested spectral-slope family.",
+      "next_action": "Derive any future atoms from the continuous extremal or its kernel residual, not from unguided parameter expansion."
+    },
+    {
+      "gap_id": "GAP-ANC-08",
+      "title": "Theorem-backed zero counts and arithmetic tail",
+      "status": "open_inherited",
+      "blocking": true,
+      "detail": "Published floating count constants are inherited, but hypotheses and directed rounding are not theorem objects.",
+      "next_action": "Create interval-evaluated count majorants and a theorem-backed tail bound."
+    },
+    {
+      "gap_id": "GAP-ANC-09",
+      "title": "Arithmetic histogram error",
+      "status": "open_inherited",
+      "blocking": true,
+      "detail": "No certified interpolation error is attached to the prime-side histogram model.",
+      "next_action": "Bound kernel derivatives per bin and accumulate a directed matrix error."
+    },
+    {
+      "gap_id": "GAP-ANC-10",
+      "title": "Unknown off-axis leakage regions",
+      "status": "open_inherited",
+      "blocking": true,
+      "detail": "The complete zero-side regional budget outside the target patch remains unclosed.",
+      "next_action": "Partition all orbit-type regions and attach a validated sign or leakage bound."
+    },
+    {
+      "gap_id": "GAP-ANC-11",
+      "title": "Zero presence and winding",
+      "status": "open_inherited",
+      "blocking": true,
+      "detail": "No argument-principle object proves a zero exists in a selected target patch.",
+      "next_action": "Attach validated winding only after the global budget architecture is viable."
+    },
+    {
+      "gap_id": "GAP-ANC-12",
+      "title": "Local-to-global RH closure",
+      "status": "open",
+      "blocking": true,
+      "detail": "No formally checked implication closes all quantifiers from local finite objects to RH.",
+      "next_action": "Build and verify the complete theorem dependency graph."
+    }
+  ]
+}

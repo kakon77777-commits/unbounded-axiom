@@ -1,0 +1,84 @@
+{
+  "schema": "RH.BMCC.GapUpdate.v0.1",
+  "parent_case": "CASE-0001-RH-EAO-INTEGRATION-20260724",
+  "node_id": "RH-BMCC-20260724-v0.1",
+  "updates": [
+    {
+      "gap_id": "G03",
+      "previous": "closed_for_one_synthetic_rectangle",
+      "current": "advanced_to_18_patch_E2_family",
+      "evidence": "All 18 adaptive cores pass dense-grid and crude floating Lipschitz sign audits.",
+      "remaining": "Interval enclosure and independent verifier remain open."
+    },
+    {
+      "gap_id": "G04",
+      "previous": "open",
+      "current": "advanced_diagonal_positive_cone_E2",
+      "evidence": "A constructive nonnegative cone of individually arithmetic-positive rank-one tests is implemented.",
+      "remaining": "Arithmetic positivity is floating, and the diagonal cone does not improve the primary energy frontier."
+    },
+    {
+      "gap_id": "G05",
+      "previous": "open",
+      "current": "unchanged",
+      "evidence": "No winding or zero-presence certificate is attached to the target window."
+    },
+    {
+      "gap_id": "G06",
+      "previous": "open_and_current_candidate_fails",
+      "current": "open_but_reduced_by_adaptive_cover",
+      "evidence": "Worst first-50 holdout mass falls from 1122.654086 to 13.079704 under unit-margin normalization.",
+      "remaining": "Every partial budget remains negative; a rigorous full-axis majorant is absent."
+    },
+    {
+      "gap_id": "G07",
+      "previous": "open",
+      "current": "open_with_guard_shaping_progress",
+      "evidence": "Most adaptive guards are nonpositive; multi-test mixtures improve transition guards by up to about 18.06%.",
+      "remaining": "Unknown finite-window off-axis zero counts and positive blocks are not charged."
+    },
+    {
+      "gap_id": "G08",
+      "previous": "partially_closed",
+      "current": "partially_closed_E2_only",
+      "evidence": "Worst adaptive prototype tail falls to 8.471493 from 4063.657732 in the coarse ablation.",
+      "remaining": "Derivative variation, zero-density profile, and integration require outward interval validation."
+    },
+    {
+      "gap_id": "G09",
+      "previous": "open",
+      "current": "open_all_partial_gaps_negative",
+      "evidence": "Adaptive partial gaps range approximately from -8.97 to -20.40 before all unknown off-axis charges.",
+      "blocked_by": [
+        "G06",
+        "G07",
+        "G08",
+        "full PSD Gram search"
+      ]
+    },
+    {
+      "gap_id": "G10",
+      "previous": "open",
+      "current": "unchanged",
+      "evidence": "No universal rational-rectangle quantifier or global theorem is established."
+    }
+  ],
+  "new_gaps": [
+    {
+      "gap_id": "G11",
+      "title": "PSD Gram cross-term frontier",
+      "status": "open",
+      "from": "diagonal nonnegative cone",
+      "to": "full PSD Gram cone with improved leakage-to-margin ratio",
+      "next_action": "Solve patchwise SDP with core, guard, arithmetic, axis-energy, and roughness constraints."
+    },
+    {
+      "gap_id": "G12",
+      "title": "Certificate-family interval rounding",
+      "status": "open",
+      "from": "18 floating local sign audits",
+      "to": "18 independently replayable interval certificates",
+      "next_action": "Attempt only after a full-Gram candidate has a materially positive global floating margin."
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "schema": "EveMissLab.RH.ClaimRegister.v0.9",
+  "claims": [
+    {
+      "claim_id": "C09-SEM-01",
+      "statement": "Cell occupancy plus a universal selected-location PSD family transfers to the all-point operator because every surplus term is PSD.",
+      "status": "PROVED",
+      "evidence_level": "E0",
+      "dependencies": [
+        "nonnegative operator weights",
+        "source cell multiplicity and endpoint conventions",
+        "universal selected-location family"
+      ],
+      "zeta_facing": false
+    },
+    {
+      "claim_id": "C09-SEM-02",
+      "statement": "Total count two does not imply the synthetic operator positivity statement.",
+      "status": "PROVED_BY_EXACT_COUNTEREXAMPLE",
+      "evidence_level": "E0",
+      "evidence": {
+        "schur_determinant": "-254/558009",
+        "negative_quadratic": "-663194/13755479859"
+      },
+      "zeta_facing": false
+    },
+    {
+      "claim_id": "C09-COVER-01",
+      "statement": "The two-cell Dirichlet Green uncertain-location family is strictly positive on the entire root box.",
+      "status": "INTERVAL_PROVED",
+      "evidence_level": "E0",
+      "evidence": {
+        "certified_leaves": 8,
+        "maximum_depth": 7,
+        "unresolved_leaves": 0
+      },
+      "premise_source": "synthetic_axiom",
+      "zeta_facing": false
+    },
+    {
+      "claim_id": "C09-CLAMP-01",
+      "statement": "Conditional on the v0.7 abstract interval theorem, the inherited clamped operator at alpha one remains strictly positive for all 58 independent locations in radius two times ten to the minus fifteen cells.",
+      "status": "CONDITIONAL_INTERVAL_PARENT_PLUS_EXACT_RATIONAL_PROOF",
+      "evidence_level": "E0-parent",
+      "dependencies": [
+        "RH_IntervalGreenKernel_AtomicCertificate_v0.7",
+        "bytes-locked parent witness",
+        "bytes-locked parent certificate"
+      ],
+      "actual_zero_occupancy": false,
+      "zeta_facing": false
+    },
+    {
+      "claim_id": "C09-FLOAT-01",
+      "statement": "A deterministic floating corner search observes a fixed-measure threshold transition between tested half-widths 0.016 and 0.017.",
+      "status": "DIAGNOSTIC_ONLY",
+      "evidence_level": "E2",
+      "universal_quantifier": false,
+      "counterexample_certificate": false,
+      "zeta_facing": false
+    }
+  ],
+  "forbidden_upgrades": [
+    "Do not rename synthetic occupancy axioms as zeta presence theorems.",
+    "Do not interpret the floating corner transition as a universal operator counterexample.",
+    "Do not interpret the parent dual atoms as actual zeta zero locations.",
+    "Do not turn scalar count lower bounds into arbitrary measure operator mass."
+  ],
+  "global_rh_certificate": false
+}
+

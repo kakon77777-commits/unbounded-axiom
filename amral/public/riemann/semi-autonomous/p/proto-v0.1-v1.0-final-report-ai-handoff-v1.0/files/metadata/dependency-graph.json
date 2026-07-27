@@ -1,0 +1,168 @@
+{
+  "edges": [
+    {
+      "from": "RH-BMCC-20260724-v0.1",
+      "relation": "research_pivot_or_dependency",
+      "to": "RH-PSDGRAM-20260724-v0.2"
+    },
+    {
+      "from": "RH-PSDGRAM-20260724-v0.2",
+      "relation": "research_pivot_or_dependency",
+      "to": "RH-AxisTarget-Dual-20260724-v0.3"
+    },
+    {
+      "from": "RH-AxisTarget-Dual-20260724-v0.3",
+      "relation": "research_pivot_or_dependency",
+      "to": "RH-SupportPrime-DualFrontier-20260724-v0.4"
+    },
+    {
+      "from": "RH-SupportPrime-DualFrontier-20260724-v0.4",
+      "relation": "research_pivot_or_dependency",
+      "to": "RH-AxisNotch-CoverCodesign-20260724-v0.5"
+    },
+    {
+      "from": "RH-AxisNotch-CoverCodesign-20260724-v0.5",
+      "relation": "research_pivot_or_dependency",
+      "to": "RH-PaleyWiener-AxisCoreExtremal-20260725-v0.6"
+    },
+    {
+      "from": "RH-PaleyWiener-AxisCoreExtremal-20260725-v0.6",
+      "relation": "research_pivot_or_dependency",
+      "to": "RH-IntervalGreenKernel-AtomicCertificate-20260725-v0.7"
+    },
+    {
+      "from": "RH-IntervalGreenKernel-AtomicCertificate-20260725-v0.7",
+      "relation": "research_pivot_or_dependency",
+      "to": "RH-ZeroCount-SemanticsBridge-20260725-v0.8"
+    },
+    {
+      "from": "RH-ZeroCount-SemanticsBridge-20260725-v0.8",
+      "relation": "research_pivot_or_dependency",
+      "to": "RH-Occupancy-OperatorFamily-20260725-v0.9"
+    },
+    {
+      "from": "RH-Occupancy-OperatorFamily-20260725-v0.9",
+      "relation": "research_pivot_or_dependency",
+      "to": "RH-LocalIntervalGreen-CellCover-20260725-v1.0"
+    },
+    {
+      "from": "RH-LocalIntervalGreen-CellCover-20260725-v1.0",
+      "relation": "requires actual conditional zeta semantics",
+      "to": "FUTURE-CONDITIONAL-OCC"
+    },
+    {
+      "from": "RH-IntervalGreenKernel-AtomicCertificate-20260725-v0.7",
+      "relation": "abstract witness requires zeta-facing admissibility and coefficient direction",
+      "to": "FUTURE-EF-TRANSFER"
+    },
+    {
+      "from": "FUTURE-EF-TRANSFER",
+      "relation": "freezes the legal test-function and support before arithmetic enumeration",
+      "to": "FUTURE-PRIME-CONE"
+    },
+    {
+      "from": "FUTURE-CONDITIONAL-OCC",
+      "relation": "supplies legal occupancy premises",
+      "to": "FUTURE-COMPOSED-CELL"
+    },
+    {
+      "from": "FUTURE-EF-TRANSFER",
+      "relation": "supplies legal operator coefficients",
+      "to": "FUTURE-COMPOSED-CELL"
+    },
+    {
+      "from": "FUTURE-PRIME-CONE",
+      "relation": "supplies arithmetic side of contradiction",
+      "to": "FUTURE-COMPOSED-CELL"
+    },
+    {
+      "from": "FUTURE-COMPOSED-CELL",
+      "relation": "one parameterized cell family must precede all-height exhaustion",
+      "to": "FUTURE-GLOBAL-EXHAUSTION"
+    }
+  ],
+  "global_rh_certificate": false,
+  "nodes": [
+    {
+      "global_rh_certificate": false,
+      "id": "RH-BMCC-20260724-v0.1",
+      "kind": "completed_research_node",
+      "version": "0.1"
+    },
+    {
+      "global_rh_certificate": false,
+      "id": "RH-PSDGRAM-20260724-v0.2",
+      "kind": "completed_research_node",
+      "version": "0.2"
+    },
+    {
+      "global_rh_certificate": false,
+      "id": "RH-AxisTarget-Dual-20260724-v0.3",
+      "kind": "completed_research_node",
+      "version": "0.3"
+    },
+    {
+      "global_rh_certificate": false,
+      "id": "RH-SupportPrime-DualFrontier-20260724-v0.4",
+      "kind": "completed_research_node",
+      "version": "0.4"
+    },
+    {
+      "global_rh_certificate": false,
+      "id": "RH-AxisNotch-CoverCodesign-20260724-v0.5",
+      "kind": "completed_research_node",
+      "version": "0.5"
+    },
+    {
+      "global_rh_certificate": false,
+      "id": "RH-PaleyWiener-AxisCoreExtremal-20260725-v0.6",
+      "kind": "completed_research_node",
+      "version": "0.6"
+    },
+    {
+      "global_rh_certificate": false,
+      "id": "RH-IntervalGreenKernel-AtomicCertificate-20260725-v0.7",
+      "kind": "completed_research_node",
+      "version": "0.7"
+    },
+    {
+      "global_rh_certificate": false,
+      "id": "RH-ZeroCount-SemanticsBridge-20260725-v0.8",
+      "kind": "completed_research_node",
+      "version": "0.8"
+    },
+    {
+      "global_rh_certificate": false,
+      "id": "RH-Occupancy-OperatorFamily-20260725-v0.9",
+      "kind": "completed_research_node",
+      "version": "0.9"
+    },
+    {
+      "global_rh_certificate": false,
+      "id": "RH-LocalIntervalGreen-CellCover-20260725-v1.0",
+      "kind": "completed_research_node",
+      "version": "1.0"
+    },
+    {
+      "id": "FUTURE-CONDITIONAL-OCC",
+      "kind": "open_gate"
+    },
+    {
+      "id": "FUTURE-EF-TRANSFER",
+      "kind": "open_gate"
+    },
+    {
+      "id": "FUTURE-PRIME-CONE",
+      "kind": "open_gate"
+    },
+    {
+      "id": "FUTURE-COMPOSED-CELL",
+      "kind": "blocked_gate"
+    },
+    {
+      "id": "FUTURE-GLOBAL-EXHAUSTION",
+      "kind": "blocked_gate"
+    }
+  ],
+  "schema": "RH.UnifiedDependencyGraph.v1.0"
+}

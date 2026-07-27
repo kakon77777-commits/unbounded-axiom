@@ -1,0 +1,110 @@
+{
+  "schema": "EveMissLab.RH.ClaimRegister.v0.5",
+  "evidence_levels": {
+    "E0": "Exact algebraic or set-inclusion statement inside the explicitly specified finite model.",
+    "E1": "Automatically recomputed structural, serialization, schema, or cross-file check.",
+    "E2": "Floating numerical research evidence; named computations are reproducible but not interval-certified.",
+    "E3": "Formal analytic or interval-certified transfer to the continuous zeta problem. No E3 claim is made."
+  },
+  "claims": [
+    {
+      "claim_id": "ANC-C01",
+      "level": "E0",
+      "claim": "Adding homogeneous value or derivative notch constraints to the parent finite test-function space produces a subspace, so the corresponding primal feasible set is contained in the parent feasible set and cannot improve a minimization optimum.",
+      "scope": "Same objective, PSD Gram formulation, and evaluation rules; homogeneous constraints only.",
+      "evidence": [
+        "METHOD.md",
+        "RH軸缺口共設計的單調性障礙_子空間失效外部升維飽和與PaleyWiener轉向_v0.5_半AI自主研究稿.md"
+      ]
+    },
+    {
+      "claim_id": "ANC-C02",
+      "level": "E0",
+      "claim": "If G is real on the real axis and G(x0)=0, then G(x0+iy)^2=-y^2 G'(x0)^2+O(|y|^3).",
+      "scope": "Local Taylor statement for analytic G.",
+      "evidence": ["METHOD.md"]
+    },
+    {
+      "claim_id": "ANC-C03",
+      "level": "E1",
+      "claim": "The peak atlas consumes exactly 12 parent witness files and records one primary peak for each of five axis bands.",
+      "evidence": ["outputs/peak_atlas.json", "run_peak_atlas.py"]
+    },
+    {
+      "claim_id": "ANC-C04",
+      "level": "E2",
+      "claim": "The equal-witness KDE atlas has primary peaks near 17.83, 20.38, 23.24, 42.18, and 83.05, with the A1 peak overlapping the target real interval.",
+      "scope": "Serialized v0.4 witness supports and named KDE bandwidths only.",
+      "evidence": ["outputs/peak_atlas.json"]
+    },
+    {
+      "claim_id": "ANC-C05",
+      "level": "E2",
+      "claim": "The anchor-flat ablation suppresses the anchor derivative norm to about 1.07e-12 and increases the R=16 optimized-core/uniform-axis threshold to 33.845656.",
+      "scope": "Named R=16 finite dictionary and floating quadrature.",
+      "evidence": ["outputs/notch_screen.json"]
+    },
+    {
+      "claim_id": "ANC-C06",
+      "level": "E2",
+      "claim": "The tested external spectral-slope lift improves the R=16 screen metric by at most 3.10 percent in the scaling sweep, but its joint raw dual alpha improves by only 1.12 percent and retains safe alpha 1.088115 above 1.",
+      "scope": "The t*q_R(t)*sin(omega*t) family and named frequency/power grids.",
+      "evidence": [
+        "outputs/lift_scaling.json",
+        "outputs/lift_joint.json"
+      ]
+    },
+    {
+      "claim_id": "ANC-C07",
+      "level": "E1",
+      "claim": "The polynomial-bump geometry screen contains exactly 27 density-width-power configurations.",
+      "evidence": ["outputs/geometry_screen.json", "run_geometry_screen.py"]
+    },
+    {
+      "claim_id": "ANC-C08",
+      "level": "E2",
+      "claim": "The best tested geometry d12_w2_p5 has raw joint alpha 1.143522, safe alpha 1.071761, safe minimum eigenvalue 0.001151, and raw improvement 3.87 percent versus baseline.",
+      "scope": "R=16 patch x4_Y3__r3_3 with the named finite grids.",
+      "evidence": ["outputs/geometry_joint.json"]
+    },
+    {
+      "claim_id": "ANC-C09",
+      "level": "E2",
+      "claim": "All four serialized joint objects reconstruct PSD safe-budget blocks after each serialized measure is renormalized; the maximum stored-versus-reconstructed minimum-eigenvalue difference is below 5.2e-16.",
+      "scope": "Floating reconstruction, not interval certification.",
+      "evidence": [
+        "outputs/joint_verification.json",
+        "verify_joint_results.py"
+      ]
+    },
+    {
+      "claim_id": "ANC-C10",
+      "level": "E2",
+      "claim": "Dense complementary rank-one audits remain above 1 and show distant-band peak migration while A1 remains the dominant charge.",
+      "scope": "Four named baseline/lift/geometry directions on the 0.025 axis grid and 4,941 core points.",
+      "evidence": [
+        "outputs/lift_joint.json",
+        "outputs/geometry_joint.json"
+      ]
+    },
+    {
+      "claim_id": "ANC-C11",
+      "level": "E2",
+      "claim": "The combined exact subspace exclusion and tested-family saturation justify stopping the three named search branches and formulating a continuous Paley-Wiener axis/core extremal next.",
+      "scope": "Research prioritization; not a theorem about all dictionaries or the continuous problem.",
+      "evidence": [
+        "NEXT_NODE_PALEY_WIENER.md",
+        "outputs/experiment_summary.json"
+      ]
+    },
+    {
+      "claim_id": "ANC-C12",
+      "level": "E0",
+      "claim": "This node does not claim an RH proof, RH disproof, continuous-function-space obstruction, interval certificate, or local-to-global closure.",
+      "evidence": [
+        "TRUST_BOUNDARY.md",
+        "outputs/experiment_summary.json"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "schema": "EveMissLab.RH.ClaimRegister.v0.7",
+  "evidence_levels": {
+    "E0": "Analytic statement proved in the explicitly defined abstract continuous model.",
+    "E1": "Exact serialization, hashing, normalization, or failure-injection check.",
+    "E2": "Floating diagnostic or research-priority evidence.",
+    "E3-A": "Directed-rounding interval theorem inside the abstract continuous model.",
+    "E3-Z": "Directed theorem-backed transfer to the zeta explicit formula. No E3-Z claim is made."
+  },
+  "claims": [
+    {
+      "claim_id": "IGAC-C01",
+      "level": "E0",
+      "claim": "Every required clamped Green pairing is a finite rational combination of endpoint complex exponentials and exponential moments with an explicit recurrence.",
+      "evidence": [
+        "THEORY.md",
+        "interval_cert/green.py"
+      ]
+    },
+    {
+      "claim_id": "IGAC-C02",
+      "level": "E3-A",
+      "claim": "Machin-series pi bounds, Taylor remainders, and directed decimal operations enclose every transcendental quantity used by the continuous Green pairings.",
+      "evidence": [
+        "METHOD.md",
+        "interval_cert/transcendental.py",
+        "outputs/interval_atomic_certificate.json"
+      ]
+    },
+    {
+      "claim_id": "IGAC-C03",
+      "level": "E3-A",
+      "claim": "The two-by-two structural Gram matrix is invertible; its interval determinant lower endpoint exceeds 6.087e20.",
+      "evidence": [
+        "outputs/interval_atomic_certificate.json"
+      ]
+    },
+    {
+      "claim_id": "IGAC-C04",
+      "level": "E3-A",
+      "claim": "The entire interval family A=I+GD is regular because the stored rational approximate inverse has Neumann defect infinity norm below 7.532e-15.",
+      "evidence": [
+        "outputs/interval_atomic_certificate.json",
+        "outputs/certificate_verification.json"
+      ]
+    },
+    {
+      "claim_id": "IGAC-C05",
+      "level": "E3-A",
+      "claim": "The final two-by-two B-inverse-minus-Q matrix is strictly positive definite because its first leading minor and determinant have strictly positive interval lower endpoints.",
+      "evidence": [
+        "outputs/interval_atomic_certificate.json",
+        "outputs/certificate_verification.json"
+      ]
+    },
+    {
+      "claim_id": "IGAC-C06",
+      "level": "E3-A",
+      "claim": "For the exact rational coefficients defining the abstract model, W at alpha=21/20 is strictly positive; by the inherited weak-duality theorem, the corresponding abstract extremal is at least 21/20.",
+      "scope": "Abstract real-even clamped structural-zero Hilbert model only.",
+      "evidence": [
+        "THEORY.md",
+        "TRUST_BOUNDARY.md"
+      ]
+    },
+    {
+      "claim_id": "IGAC-C07",
+      "level": "E1",
+      "claim": "Full replay reproduces the projected Gram hash, Neumann bound, Sylvester bounds, rational probability sums, and all trust flags.",
+      "evidence": [
+        "outputs/certificate_verification.json",
+        "outputs/exact_serialization_audit.json",
+        "tests/test_interval_certificate.py"
+      ]
+    },
+    {
+      "claim_id": "IGAC-C08",
+      "level": "E2",
+      "claim": "The interval-midpoint Schur minimum agrees with the parent fine-grid value within 1.9e-9.",
+      "scope": "Diagnostic cross-check only.",
+      "evidence": [
+        "outputs/floating_crosscheck.json"
+      ]
+    },
+    {
+      "claim_id": "IGAC-C09",
+      "level": "E2",
+      "claim": "All five inherited band coefficients match downward-rounded upper zero-count profiles and none is justified as a lower coefficient by the inherited absolute-S bound alone.",
+      "evidence": [
+        "outputs/coefficient_orientation_audit.json"
+      ]
+    },
+    {
+      "claim_id": "IGAC-C10",
+      "level": "E2",
+      "claim": "Keeping the witness geometry fixed while substituting the direct lower-count profile yields a floating minimum Schur eigenvalue near -5.536, so the current witness does not survive that substitution.",
+      "scope": "Counterstress of one fixed witness, not a universal nonexistence theorem.",
+      "evidence": [
+        "outputs/orientation_stress_test.json"
+      ]
+    },
+    {
+      "claim_id": "IGAC-C11",
+      "level": "E0",
+      "claim": "This node does not certify zeta-facing count coefficients, the tail theorem object, explicit-formula admissibility, a global RH certificate, an RH proof, or an RH disproof.",
+      "evidence": [
+        "TRUST_BOUNDARY.md",
+        "outputs/interval_atomic_certificate.json"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "actual_zeta_occupancy_family": false,
+  "checks": {
+    "corner_diagnostic_verifies": true,
+    "cover_family_verifies": true,
+    "maximum_certificate_actual_zeta_false": true,
+    "maximum_certificate_global_false": true,
+    "maximum_certificate_passes": true,
+    "maximum_certificate_verifies": true,
+    "parent_dependency_verifies": true,
+    "radius_ladder_verifies": true
+  },
+  "corner_checks": {
+    "point_certificate_pass": true,
+    "point_does_not_claim_universal_box": true,
+    "point_shift_is_1e-3": true,
+    "point_verification_pass": true
+  },
+  "global_rh_certificate": false,
+  "input_file_sha256": {
+    "parent_v0.7_interval_atomic_certificate.json": "130d8e70e9a3ace689f326cd051348bea5a48373218a49e22eeb5c56151f8fff",
+    "parent_v0.7_rational_atomic_witness.json": "b9eea7d12cea91530dbe82a9f7f9cf1fcd479bc7727a2242d916479515b7ebdf"
+  },
+  "ladder_checks": {
+    "boundary_failure_is_sylvester": true,
+    "exact_improvement_factor": true,
+    "requested_1e-3_is_neumann_inconclusive": true,
+    "requested_1e-4_is_neumann_inconclusive": true,
+    "requested_1e-6_pass": true,
+    "requested_1e-8_pass": true,
+    "strongest_tested_pass": true
+  },
+  "parent_checks": {
+    "canonical_witness_hash_matches_parent": true,
+    "parent_abstract_certificate_true": true,
+    "parent_global_flag_false": true,
+    "parent_strict_positivity_true": true
+  },
+  "schema": "RH.LocalIntervalGreen.OutputVerification.v1.0",
+  "verification_pass": true
+}

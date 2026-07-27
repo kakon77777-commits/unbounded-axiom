@@ -1,0 +1,41 @@
+{
+  "schema": "EveMissLab.RH.ValidationReport.v0.2",
+  "validated_at": "2026-07-24T00:00:00+08:00",
+  "json_file_count": 68,
+  "unit_test_count": 9,
+  "unit_test_failures": 0,
+  "unit_test_errors": 0,
+  "minimum_saved_gram_eigenvalue": -1.2147266252633453e-14,
+  "true_global_certificate_paths": [],
+  "checks": {
+    "all_json_parse": true,
+    "python_syntax_pass": true,
+    "unit_tests_pass": true,
+    "gram_patch_count_is_18": true,
+    "diagonal_patch_count_is_18": true,
+    "rank_study_count_is_16": true,
+    "saved_grams_psd_to_tolerance": true,
+    "all_refined_core_sign_pass": true,
+    "known_zero_optimization_is_false": true,
+    "known_zero_holdout_is_true": true,
+    "no_true_global_certificate_flag_in_outputs": true
+  },
+  "validation_pass": true,
+  "test_log": [
+    "test_adaptive_cover_is_exact_on_rational_cells (tests.test_psdgram.PSDGramTests.test_adaptive_cover_is_exact_on_rational_cells) ... ok",
+    "test_axis_bands_partition_prefix_and_have_positive_counts (tests.test_psdgram.PSDGramTests.test_axis_bands_partition_prefix_and_have_positive_counts) ... ok",
+    "test_axis_charges_and_majorants_recompute (tests.test_psdgram.PSDGramTests.test_axis_charges_and_majorants_recompute) ... ok",
+    "test_diagonal_lp_satisfies_toy_constraints (tests.test_psdgram.PSDGramTests.test_diagonal_lp_satisfies_toy_constraints) ... ok",
+    "test_factor_from_gram_is_psd_and_normalized (tests.test_psdgram.PSDGramTests.test_factor_from_gram_is_psd_and_normalized) ... ok",
+    "test_full_gram_outputs_are_psd_and_core_negative (tests.test_psdgram.PSDGramTests.test_full_gram_outputs_are_psd_and_core_negative) ... ok",
+    "test_matrix_gradient_matches_centered_difference (tests.test_psdgram.PSDGramTests.test_matrix_gradient_matches_centered_difference) ... ok",
+    "test_rank_sweeps_collapse_to_rank_one (tests.test_psdgram.PSDGramTests.test_rank_sweeps_collapse_to_rank_one) ... ok",
+    "test_summary_keeps_claim_boundary_explicit (tests.test_psdgram.PSDGramTests.test_summary_keeps_claim_boundary_explicit) ... ok",
+    "",
+    "----------------------------------------------------------------------",
+    "Ran 9 tests in 0.021s",
+    "",
+    "OK"
+  ],
+  "trust_level": "E2 floating numerical package validation"
+}

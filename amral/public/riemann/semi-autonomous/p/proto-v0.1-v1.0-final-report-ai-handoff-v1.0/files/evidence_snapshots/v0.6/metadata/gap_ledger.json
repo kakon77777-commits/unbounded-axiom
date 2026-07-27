@@ -1,0 +1,101 @@
+{
+  "schema": "EveMissLab.RH.GapLedger.v0.6",
+  "gaps": [
+    {
+      "gap_id": "GAP-PWAC-01",
+      "title": "Interval Green pairings",
+      "status": "next_node",
+      "blocking": true,
+      "detail": "All explicit Green-kernel trigonometric and hyperbolic pairings are still evaluated in floating arithmetic.",
+      "next_action": "Evaluate each elementary integral with directed ball or interval arithmetic."
+    },
+    {
+      "gap_id": "GAP-PWAC-02",
+      "title": "Structural projection enclosure",
+      "status": "open",
+      "blocking": true,
+      "detail": "The two-by-two structural Gram inverse is not interval-certified.",
+      "next_action": "Enclose the structural Gram determinant and its inverse before projecting any evaluation pairing."
+    },
+    {
+      "gap_id": "GAP-PWAC-03",
+      "title": "Verified positive solve",
+      "status": "open",
+      "blocking": true,
+      "detail": "The positive 60-by-60 system is solved with ordinary floating linear algebra.",
+      "next_action": "Use a verified interval linear solve or residual-based enclosure."
+    },
+    {
+      "gap_id": "GAP-PWAC-04",
+      "title": "Final Schur positivity",
+      "status": "candidate_ready",
+      "blocking": true,
+      "detail": "The rational alpha=21/20 two-by-two Schur minimum is floating-positive but not directed.",
+      "next_action": "Prove both leading principal minor and determinant are strictly positive with intervals."
+    },
+    {
+      "gap_id": "GAP-PWAC-05",
+      "title": "Tail coefficient theorem object",
+      "status": "open_inherited",
+      "blocking": true,
+      "detail": "The rational downward tail scale has not been proved below the actual theorem-backed coefficient.",
+      "next_action": "Package hypotheses, source constants, improper-integral bound, and directed rounding."
+    },
+    {
+      "gap_id": "GAP-PWAC-06",
+      "title": "Band count coefficient theorem objects",
+      "status": "open_inherited",
+      "blocking": true,
+      "detail": "The five rational coefficients come from floating count profiles and need endpoint-valid lower-bound proofs.",
+      "next_action": "Interval-evaluate theta and S(T) majorants under explicit hypotheses."
+    },
+    {
+      "gap_id": "GAP-PWAC-07",
+      "title": "Explicit-formula admissibility transfer",
+      "status": "open",
+      "blocking": true,
+      "detail": "The relation between the clamped H_0^2 closure and every analytic admissibility condition used by the zeta explicit formula is not complete.",
+      "next_action": "Prove density, limit exchange, and tail convergence for the exact test-function class."
+    },
+    {
+      "gap_id": "GAP-PWAC-08",
+      "title": "Strong duality",
+      "status": "not_required_for_obstruction",
+      "blocking": false,
+      "detail": "Infinite-dimensional primal-dual equality has not been proved.",
+      "next_action": "Address only if a primal optimizer or equality characterization becomes necessary; weak duality already validates a certified obstruction."
+    },
+    {
+      "gap_id": "GAP-PWAC-09",
+      "title": "Full refined-cover continuous family",
+      "status": "deferred",
+      "blocking": true,
+      "detail": "Only the inherited difficult patch has a continuous-kernel witness.",
+      "next_action": "Do not expand before the first atomic interval certificate is complete."
+    },
+    {
+      "gap_id": "GAP-PWAC-10",
+      "title": "Unknown off-axis leakage regions",
+      "status": "open_inherited",
+      "blocking": true,
+      "detail": "The target patch continuous obstruction does not close all other orbit-type regions.",
+      "next_action": "Attach validated signs or leakage budgets region by region after coefficient certification."
+    },
+    {
+      "gap_id": "GAP-PWAC-11",
+      "title": "Zero presence and winding",
+      "status": "open_inherited",
+      "blocking": true,
+      "detail": "No argument-principle object proves a zeta zero lies in the target patch.",
+      "next_action": "Add validated winding only when the global contradiction architecture has decision value."
+    },
+    {
+      "gap_id": "GAP-PWAC-12",
+      "title": "Local-to-global RH closure",
+      "status": "open",
+      "blocking": true,
+      "detail": "No checked implication closes all quantifiers from one continuous extremal obstruction to RH.",
+      "next_action": "Maintain a theorem dependency graph separating abstract model, zeta transfer, regional budget, zero presence, and global closure."
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "check_count": 11,
+  "checks": [
+    {
+      "check_id": "required_files",
+      "detail": {
+        "missing": []
+      },
+      "passed": true
+    },
+    {
+      "check_id": "json_parse",
+      "detail": {
+        "failures": []
+      },
+      "passed": true
+    },
+    {
+      "check_id": "canonical_archives",
+      "detail": {
+        "archive_count": 10,
+        "failures": [],
+        "mode": "live_source_reaudit",
+        "require_sources": true,
+        "sources_present": 10
+      },
+      "passed": true
+    },
+    {
+      "check_id": "canonical_snapshots",
+      "detail": {
+        "failures": [],
+        "snapshot_count": 82
+      },
+      "passed": true
+    },
+    {
+      "check_id": "prehistory_sources",
+      "detail": {
+        "failures": [],
+        "mode": "live_source_reaudit",
+        "require_sources": true,
+        "source_count": 13,
+        "sources_present": 13
+      },
+      "passed": true
+    },
+    {
+      "check_id": "hard_flags",
+      "detail": {
+        "failures": []
+      },
+      "passed": true
+    },
+    {
+      "check_id": "timeline",
+      "detail": {
+        "sequences": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "versions": [
+          "0.1",
+          "0.2",
+          "0.3",
+          "0.4",
+          "0.5",
+          "0.6",
+          "0.7",
+          "0.8",
+          "0.9",
+          "1.0"
+        ]
+      },
+      "passed": true
+    },
+    {
+      "check_id": "claim_gap_semantics",
+      "detail": {
+        "claim_count": 18,
+        "open_blocking_gap_count": 7
+      },
+      "passed": true
+    },
+    {
+      "check_id": "markdown_math_delimiters",
+      "detail": [],
+      "passed": true
+    },
+    {
+      "check_id": "report_trust_markers",
+      "detail": {
+        "missing": []
+      },
+      "passed": true
+    },
+    {
+      "check_id": "release_manifest",
+      "detail": {
+        "entry_count": 103,
+        "extra_entries": [],
+        "hash_mismatches": [],
+        "missing_entries": []
+      },
+      "passed": true
+    }
+  ],
+  "failed_count": 0,
+  "passed_count": 11,
+  "schema": "RH.FinalSynthesisValidation.v1.0",
+  "status": "PASS"
+}

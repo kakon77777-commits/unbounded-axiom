@@ -1,0 +1,59 @@
+{
+  "schema": "RH.AxisNotch.ExperimentSummary.v0.5",
+  "date": "2026-07-24",
+  "research_mode": "semi-autonomous AI mathematical research",
+  "parent_node": "RH-SupportPrime-DualFrontier-20260724-v0.4",
+  "target_window": {
+    "x": [
+      20.0,
+      20.5
+    ],
+    "y": [
+      -0.2,
+      -0.1
+    ]
+  },
+  "parent_witness_count_in_peak_atlas": 12,
+  "axis_peak_atlas": {
+    "target_real_interval": [
+      20.0,
+      20.5
+    ],
+    "A1_primary_peak": 20.380000000000372,
+    "A3_primary_peak": 42.17999999999857,
+    "A4_primary_peak": 83.05000000000668,
+    "A1_overlaps_target_real_interval": true,
+    "harmonic_ratios_relative_to_A1": {
+      "A3_over_A1": 2.0696761530911583,
+      "A4_over_A1": 4.07507360157042
+    }
+  },
+  "subspace_notch_result": {
+    "theorem": "Adding homogeneous notch constraints creates a subspace of the already searched parent function space and cannot improve primal feasibility.",
+    "anchor_flat_optimized_core_uniform_threshold": 33.84565604432738,
+    "anchor_flat_derivative_norm": 1.0678414757705747e-12
+  },
+  "external_lift_result": {
+    "family": "t*q_R(t)*sin(omega*t)",
+    "baseline_alpha": 1.1895619864208655,
+    "grid21_alpha": 1.1762297179149144,
+    "relative_improvement": 0.011207712299268313,
+    "crosses_dual_gate": false
+  },
+  "best_geometry_result": {
+    "geometry_id": "d12_w2_p5",
+    "dimension": 190,
+    "alpha": 1.143522344695386,
+    "safe_alpha": 1.071761172347693,
+    "safe_min_eigenvalue": 0.0011506526377602696,
+    "relative_improvement_vs_baseline": 0.038703020314227454,
+    "crosses_dual_gate": false
+  },
+  "primal_search_started": false,
+  "primal_gate_reason": "Every joint candidate retains a reconstructed safe dual lower bound above 1.",
+  "research_decision": "Stop homogeneous subspace notches, stop the tested spectral-slope lift family, and stop further polynomial bump scaling. Formulate the next node as a continuous Paley-Wiener axis-core extremal problem.",
+  "next_node": "RH-PaleyWiener-AxisCoreExtremal-20260724-v0.6",
+  "joint_verification_pass": true,
+  "known_zero_ordinates_used": false,
+  "global_rh_certificate": false
+}

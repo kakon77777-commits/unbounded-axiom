@@ -1,0 +1,50 @@
+{
+  "schema": "EveMissLab.RH.Handoff.v0.5",
+  "from_node": "RH-AxisNotch-CoverCodesign-20260724-v0.5",
+  "to_node": "RH-PaleyWiener-AxisCoreExtremal-20260724-v0.6",
+  "decision": "Stop homogeneous subspace notches, stop the tested spectral-slope lift family, stop further polynomial-bump scaling, and formulate a continuous axis/core extremal problem.",
+  "why": [
+    "Homogeneous notch constraints only shrink the already-searched parent space and cannot improve primal feasibility.",
+    "The 21-frequency external lift improves the joint raw dual lower bound by only 1.12 percent and retains safe alpha 1.088115 above 1.",
+    "The best of 27 local geometries improves the joint raw dual lower bound by 3.87 percent but retains safe alpha 1.071761 above 1 and a near-null tail direction.",
+    "Dense audits show distant-peak migration while the target-near A1 charge remains dominant."
+  ],
+  "reuse_inputs": [
+    "outputs/peak_atlas.json",
+    "outputs/notch_screen.json",
+    "outputs/lift_scaling.json",
+    "outputs/lift_joint.json",
+    "outputs/geometry_screen.json",
+    "outputs/geometry_joint.json",
+    "outputs/joint_verification.json",
+    "data/parent_witnesses/*.witness.json",
+    "notch/"
+  ],
+  "first_actions": [
+    "Define a real-even compact-support Hilbert domain with the structural zeros G(0)=G(i/2)=0.",
+    "Derive reproducing kernels for real-axis evaluation, complex-core evaluation, derivatives, and the tail penalty.",
+    "Formulate the five-band supremum as a measure dual and state strong-duality hypotheses.",
+    "Solve a simplified one-band one-core-point extremal before restoring the full cover.",
+    "Compare v0.5 sparse measures with continuous KKT support and test Galerkin convergence."
+  ],
+  "success_gate": {
+    "analytic": "Produce a rigorous lower bound, separating inequality, or existence/duality theorem for a clearly specified continuous subproblem.",
+    "constructive": "Produce a Galerkin upper bound with explicit convergence or a posteriori error control indicating a value below 1.",
+    "scope": "Continuous extremal progress only; no RH inference without the inherited global gaps."
+  },
+  "stop_rules": [
+    "Do not resume unguided local-bump density scaling.",
+    "Do not accept a coarse-grid-only alpha below 1.",
+    "Do not infer continuous impossibility from finite-basis saturation.",
+    "Do not build large prime matrices before a continuous or certified finite gate has decision value.",
+    "Derive future external atoms from kernel residuals or extremal equations."
+  ],
+  "forbidden_inferences": [
+    "The tested lift saturation proves all external dictionaries fail.",
+    "A finite dual obstruction proves or disproves RH.",
+    "A dual value below 1 proves primal feasibility.",
+    "A local extremal result closes unknown off-axis leakage or zero presence."
+  ],
+  "known_zero_ordinates_used": false,
+  "global_rh_certificate": false
+}

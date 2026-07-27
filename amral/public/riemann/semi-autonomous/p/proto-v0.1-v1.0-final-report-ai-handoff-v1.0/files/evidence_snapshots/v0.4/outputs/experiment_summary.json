@@ -1,0 +1,126 @@
+{
+  "schema": "RH.SupportPrime.ExperimentSummary.v0.4",
+  "date": "2026-07-24",
+  "research_mode": "semi-autonomous AI mathematical research",
+  "target_window": {
+    "x": [
+      20.0,
+      20.5
+    ],
+    "y": [
+      -0.2,
+      -0.1
+    ]
+  },
+  "original_patch_count": 18,
+  "refined_patch_count": 288,
+  "uniform_configuration_count": 126,
+  "uniform_first_center_escape": {
+    "radius": 10.0,
+    "density": 8.0,
+    "width_factor": 1.5,
+    "basis_count": 80,
+    "dimension": 78
+  },
+  "uniform_first_patch_measure_escape": {
+    "radius": 14.0,
+    "density": 8.0,
+    "width_factor": 1.2,
+    "basis_count": 112,
+    "dimension": 110
+  },
+  "joint_radius_rows": [
+    {
+      "radius": 10.25,
+      "dimension": 100,
+      "searched_candidate_count": 2,
+      "strongest_safe_alpha": 2.620079895387924,
+      "at_least_one_searched_patch_blocked": true
+    },
+    {
+      "radius": 12.0,
+      "dimension": 118,
+      "searched_candidate_count": 2,
+      "strongest_safe_alpha": 1.8999498169960598,
+      "at_least_one_searched_patch_blocked": true
+    },
+    {
+      "radius": 14.0,
+      "dimension": 138,
+      "searched_candidate_count": 3,
+      "strongest_safe_alpha": 1.3981795147030978,
+      "at_least_one_searched_patch_blocked": true
+    },
+    {
+      "radius": 16.0,
+      "dimension": 158,
+      "searched_candidate_count": 5,
+      "strongest_safe_alpha": 1.0942813396531836,
+      "at_least_one_searched_patch_blocked": true
+    }
+  ],
+  "all_sampled_support_only_radii_have_a_dual_block": true,
+  "axis_coarse_grid_false_escape": true,
+  "axis_refinement_alpha_path": [
+    {
+      "step": 0.25,
+      "alpha": 0.9852771424921185,
+      "safe_alpha": 0.9803507567796579
+    },
+    {
+      "step": 0.1,
+      "alpha": 1.1243061344611829,
+      "safe_alpha": 1.0621530672305914
+    },
+    {
+      "step": 0.05,
+      "alpha": 1.1395508595401491,
+      "safe_alpha": 1.0697754297700746
+    },
+    {
+      "step": 0.025,
+      "alpha": 1.192292729059357,
+      "safe_alpha": 1.0961463645296785
+    }
+  ],
+  "serialized_witness_count": 12,
+  "all_serialized_witnesses_reconstruct_psd": true,
+  "all_serialized_measures_block_budget": true,
+  "r10_25_prime_benchmark": {
+    "radius": 10.25,
+    "cutoff": 799902177,
+    "prime_count": 41141456,
+    "prime_power_term_count": 41144807,
+    "bin_width": 0.01,
+    "bin_count": 2051,
+    "coefficient_sum": -113124.7579921272,
+    "elapsed_seconds": 4.502982036000503,
+    "segment_size": 2000000,
+    "segment_boolean_bytes": 2000000
+  },
+  "r16_prime_cost_projection": {
+    "radius": 16.0,
+    "strict_integer_cutoff": 78962960182680,
+    "cutoff_float": 78962960182680.69,
+    "pnt_prime_count_proxy": 2467592505708.7715,
+    "log_histogram_bins": 3201,
+    "prime_to_bin_compression_proxy": 770881757.4847771,
+    "dimension": 158,
+    "legacy_dense_matrix_update_proxy": 6.160097931251377e+16,
+    "histogram_matrix_update_proxy": 79909764
+  },
+  "published_s_bound": {
+    "log_coefficient": 0.112,
+    "loglog_coefficient": 0.278,
+    "constant": 2.51,
+    "valid_from": 2.718281828459045,
+    "doi": "10.1016/j.jnt.2013.07.017",
+    "arxiv": "1208.5846"
+  },
+  "primal_high_cost_search_started": false,
+  "primal_gate_reason": "Every sampled radius has at least one searched patch blocked by a reconstructed safe dual witness.",
+  "research_decision": "Stop support-only expansion and proceed to RH_Axis_Notch_Cover_Codesign_v0.5.",
+  "full_refined_cover_joint_gate_exhausted": false,
+  "known_zero_ordinates_used": false,
+  "global_rh_certificate": false
+}

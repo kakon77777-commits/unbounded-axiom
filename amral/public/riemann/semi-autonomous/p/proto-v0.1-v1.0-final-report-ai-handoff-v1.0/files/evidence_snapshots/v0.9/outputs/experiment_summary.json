@@ -1,0 +1,50 @@
+{
+  "schema": "RH.Occupancy.OperatorFamilySummary.v0.9",
+  "node": "RH-Occupancy-OperatorFamily-20260725-v0.9",
+  "summary_pass": true,
+  "checks": {
+    "exact_semantic_bridge": true,
+    "count_only_failure_exact": true,
+    "cover_verification": true,
+    "adaptive_cover_complete": true,
+    "clamped_verification": true,
+    "clamped_coercivity_positive": true,
+    "floating_transition_seen": true,
+    "global_flags_false": true
+  },
+  "exact_results": {
+    "count_only_counterexample_determinant": "-254/558009",
+    "count_only_negative_quadratic": "-663194/13755479859",
+    "synthetic_cover_leaf_count": 8,
+    "synthetic_cover_maximum_depth": 7,
+    "synthetic_cover_minimum_determinant_lower": "996149099768633906407318481/92259342242007809509970517515625",
+    "clamped_certified_uniform_radius": "1/500000000000000",
+    "clamped_budget_critical_radius": "10219558867389/4418649850928252007219200000",
+    "clamped_coercivity_lower_bound": "13498624663403281109/2095807970851259765625"
+  },
+  "floating_diagnostic": {
+    "fixed_location_threshold": 1.1324314422118291,
+    "observed_transition_bracket": {
+      "last_tested_width_above_one": 0.016,
+      "first_tested_width_below_one": 0.017
+    },
+    "tested_width_0_016_threshold": 1.0004604738240965,
+    "tested_width_0_017_threshold": 0.9880516262996298,
+    "diagnostic_to_certified_radius_ratio": 8000000000000.0,
+    "interpretation": "The roughly 8e12 scale gap is a proof-budget gap, not a certified operator-family gap."
+  },
+  "decision": {
+    "occupancy_quantifier_architecture": "retained",
+    "scalar_count_operator_substitution": "rejected",
+    "next_primary_bottleneck": "local interval Green derivatives and adaptive location-cell Schur covers",
+    "zeta_presence_cells": "open",
+    "upper_envelope_no_go_track": "separate"
+  },
+  "classification": {
+    "exact_synthetic_occupancy_family": true,
+    "conditional_abstract_clamped_family": true,
+    "actual_zeta_occupancy_family": false,
+    "explicit_formula_global_transfer": false,
+    "global_rh_certificate": false
+  }
+}

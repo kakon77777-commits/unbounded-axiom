@@ -1,0 +1,118 @@
+{
+  "actual_zeta_occupancy_family": false,
+  "closed_or_resolved_as_no_go": [
+    {
+      "gap_id": "SYN-G01",
+      "resolution": "v0.1 exact finite cover",
+      "statement": "合成目標上的 adaptive finite cover 與多測試函數表示"
+    },
+    {
+      "gap_id": "SYN-G02",
+      "resolution": "v0.1-v0.2 否決已測家族；不是 universal impossibility",
+      "statement": "是否只靠 diagonal/full-Gram finite family 即可閉合全域預算"
+    },
+    {
+      "gap_id": "SYN-G03",
+      "resolution": "v0.3 rational surrogate exact obstruction",
+      "statement": "具名 $R=3$ finite model 是否被 dual gate 阻塞"
+    },
+    {
+      "gap_id": "SYN-G04",
+      "resolution": "v0.4 前沿與 false-escape 審計",
+      "statement": "support-only 擴張與 coarse-grid escape 是否可靠"
+    },
+    {
+      "gap_id": "SYN-G05",
+      "resolution": "v0.5 exact monotonicity obstruction",
+      "statement": "齊次 notch 子空間能否改善 parent optimum"
+    },
+    {
+      "gap_id": "SYN-G06",
+      "resolution": "v0.7 E3-A abstract certificate",
+      "statement": "固定抽象連續 witness 的 interval positivity"
+    },
+    {
+      "gap_id": "SYN-G07",
+      "resolution": "v0.7-v0.8 semantic correction",
+      "statement": "upper/lower count coefficient direction"
+    },
+    {
+      "gap_id": "SYN-G08",
+      "resolution": "v0.8-v0.9 exact counterexamples; universal rule refuted",
+      "statement": "scalar count 是否可代替 arbitrary operator mass"
+    },
+    {
+      "gap_id": "SYN-G09",
+      "resolution": "v0.9 proved under explicit occupancy premises",
+      "statement": "occupancy selection 到 all-point operator 的抽象轉移"
+    }
+  ],
+  "explicit_formula_transfer_certified": false,
+  "global_rh_certificate": false,
+  "open_blocking": [
+    {
+      "gap_id": "SYN-G12",
+      "next_action": "不要尋找已知偏軸零點；建立 source-locked conditional contradiction interface。",
+      "priority": "highest",
+      "statement": "從「若存在偏軸 zeta 零點」合法產生有理 cell、multiplicity、endpoint convention 與 selected-location quantifier 的條件式 occupancy theorem",
+      "track": "conditional_zeta_occupancy"
+    },
+    {
+      "gap_id": "SYN-G13",
+      "next_action": "逐一封裝來源定理、假設、端點、常數與 directed rounding。",
+      "priority": "highest",
+      "statement": "五帶係數與 tail coefficient 的 theorem-backed directed intervals，以及正確 upper/lower orientation",
+      "track": "zeta_coefficients"
+    },
+    {
+      "gap_id": "SYN-G14",
+      "next_action": "先證 transfer theorem，再重用任何 numerical witness。",
+      "priority": "highest",
+      "statement": "clamped $H_0^2$ closure 到 zeta explicit-formula admissible test class 的 density、limit exchange、tail convergence 與 operator identity",
+      "track": "explicit_formula"
+    },
+    {
+      "gap_id": "SYN-G15",
+      "next_action": "只在 G12-G14 有可結合的介面後啟動大規模 prime enumeration。",
+      "priority": "high",
+      "statement": "同一合法 test-function family 的 prime-side nonnegative cone 或 validated arithmetic lower bound",
+      "track": "prime_side"
+    },
+    {
+      "gap_id": "SYN-G16",
+      "next_action": "採 affine/Taylor matrix models 減少 dependency overestimation；不得把更大半徑本身當主成功指標。",
+      "priority": "high",
+      "statement": "將 local interval box 從固定 58 atoms 推廣為高度／cell 參數化的 adaptive family",
+      "track": "operator_scaling"
+    },
+    {
+      "gap_id": "SYN-G17",
+      "next_action": "G12-G16 未閉合前不得宣稱此 gap 有實質進展。",
+      "priority": "blocked",
+      "statement": "全部可能偏軸區域、無窮高度、零點尾與 local-to-global quantifier exhaustion",
+      "track": "global_closure"
+    },
+    {
+      "gap_id": "SYN-G18",
+      "next_action": "至少對關鍵 Green/Schur 與語義轉移做第二實作交叉核驗。",
+      "priority": "recommended",
+      "statement": "對連續模型、interval engine 與 zeta transfer 的獨立外審或 proof-assistant kernel verification",
+      "track": "formal_audit"
+    }
+  ],
+  "partially_closed": [
+    {
+      "current_result": "v1.0 在 $h=1.78\\times10^{-6}$ 的抽象 product box 上完成 interval certificate",
+      "gap_id": "SYN-G10",
+      "remaining": "尚未接上任何合法的 zeta occupancy source",
+      "statement": "58 維 uncertain-location clamped Green family"
+    },
+    {
+      "current_result": "相較 v0.9 半徑提升 $890000000$ 倍",
+      "gap_id": "SYN-G11",
+      "remaining": "rigorous $1.78\\times10^{-6}$ 與 floating transition $0.016$--$0.017$ 相差約四個數量級",
+      "statement": "區間依賴與尺度落差"
+    }
+  ],
+  "schema": "RH.UnifiedGapLedger.v1.0"
+}

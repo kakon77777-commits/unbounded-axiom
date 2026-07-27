@@ -1,0 +1,231 @@
+{
+  "claims": [
+    {
+      "claim_id": "SYN-C01",
+      "evidence_class": "EXACT_FINITE",
+      "origin": [
+        "v0.1"
+      ],
+      "scope": "合成目標 $[20,20.5]\\times[-0.2,-0.1]$；不是 zeta 零點存在證書。",
+      "statement": "18 個有理原子 patch 覆蓋具名目標矩形，且覆蓋可被機器重算。",
+      "status": "proved_in_finite_cover_model",
+      "zeta_facing": false
+    },
+    {
+      "claim_id": "SYN-C02",
+      "evidence_class": "FLOATING_DIAGNOSTIC",
+      "origin": [
+        "v0.1",
+        "v0.2"
+      ],
+      "scope": "僅限已搜尋家族；不是對所有測試函數的不可能定理。",
+      "statement": "對角候選與具名 full-Gram 非凸搜尋家族均未通過全域支配預算；full Gram 雖有局部改善，仍不足以閉合 gap。",
+      "status": "floating_family_failure",
+      "zeta_facing": false
+    },
+    {
+      "claim_id": "SYN-C03",
+      "evidence_class": "EXACT_FINITE",
+      "origin": [
+        "v0.3"
+      ],
+      "scope": "不含 Fourier/count/tail 的定向解析轉移；不排除更大函數類。",
+      "statement": "具名 $R=3$ 有限模型存在 exact rational dual obstruction，足以淘汰該模型家族。",
+      "status": "proved_for_rational_surrogate",
+      "zeta_facing": false
+    },
+    {
+      "claim_id": "SYN-C04",
+      "evidence_class": "REPLAY_STRUCTURAL",
+      "origin": [
+        "v0.4"
+      ],
+      "scope": "有限支撐與網格研究結論。",
+      "statement": "support-only 擴張在 $R\\le16$ 的具名搜尋中仍有 blocked patch，且 coarse axis grid 會產生假 escape。",
+      "status": "diagnostic_frontier",
+      "zeta_facing": false
+    },
+    {
+      "claim_id": "SYN-C05",
+      "evidence_class": "EXACT_FINITE",
+      "origin": [
+        "v0.5"
+      ],
+      "scope": "精確定理適用於齊次子空間；外部 lift 結論只限已測家族。",
+      "statement": "齊次 notch 約束只是縮小可行子空間，不能改善同一 parent minimization；已測外部 lifts 仍未穿過 gate。",
+      "status": "proved_monotonicity_plus_diagnostic_saturation",
+      "zeta_facing": false
+    },
+    {
+      "claim_id": "SYN-C06",
+      "evidence_class": "MODEL_THEOREM",
+      "origin": [
+        "v0.6"
+      ],
+      "scope": "抽象連續 Hilbert/operator 模型。",
+      "statement": "在明確定義的 real-even clamped $H_0^2(-R,R)$ 模型中，弱對偶、clamped Green kernel、投影公式與 rank-two Schur 歸約成立。",
+      "status": "proved_in_continuous_model",
+      "zeta_facing": false
+    },
+    {
+      "claim_id": "SYN-C07",
+      "evidence_class": "FLOATING_DIAGNOSTIC",
+      "origin": [
+        "v0.6"
+      ],
+      "scope": "凍結 witness 的數值研究證據。",
+      "statement": "58 軸原子加 2 核原子的 fixed-measure direct Green threshold 約為 $1.1324412$；Galerkin 與 direct solver 在選定點相差約 $1.05\\times10^{-9}$。",
+      "status": "floating_reproduced",
+      "zeta_facing": false
+    },
+    {
+      "claim_id": "SYN-C08",
+      "evidence_class": "INTERVAL_CERTIFIED_ABSTRACT",
+      "origin": [
+        "v0.7"
+      ],
+      "scope": "Neumann defect upper $7.5314\\times10^{-15}$、第一主子式 lower $0.3524279$、determinant lower $0.0636153$。",
+      "statement": "在 $\\alpha=21/20$ 上，固定 60 正秩、2 負秩抽象 Green 算子嚴格正。",
+      "status": "interval_certified_abstract",
+      "zeta_facing": false
+    },
+    {
+      "claim_id": "SYN-C09",
+      "evidence_class": "EXACT_SEMANTIC",
+      "origin": [
+        "v0.7",
+        "v0.8"
+      ],
+      "scope": "抽象 operator 證書保留；zeta-facing 推論撤回。",
+      "statement": "v0.7 的五帶 positive coefficients 不能由 inherited upper-count profile 合法重解讀為 zero-side lower coefficients。",
+      "status": "semantic_blocker_confirmed",
+      "zeta_facing": true
+    },
+    {
+      "claim_id": "SYN-C10",
+      "evidence_class": "EXACT_SEMANTIC",
+      "origin": [
+        "v0.8"
+      ],
+      "scope": "標量零點和的不等式方向。",
+      "statement": "對非負函數，upper count 乘 band supremum 給 upper bound；lower count 乘 band infimum 給 lower bound。",
+      "status": "proved",
+      "zeta_facing": true
+    },
+    {
+      "claim_id": "SYN-C11",
+      "evidence_class": "EXACT_COUNTEREXAMPLE",
+      "origin": [
+        "v0.8",
+        "v0.9"
+      ],
+      "scope": "exact two-point/rank-one countermodels。",
+      "statement": "scalar lower count 不能普遍支配 arbitrary probability-measure average，也不能替代位置分離的 operator occupancy。",
+      "status": "universal_rule_refuted",
+      "zeta_facing": true
+    },
+    {
+      "claim_id": "SYN-C12",
+      "evidence_class": "MODEL_THEOREM",
+      "origin": [
+        "v0.9"
+      ],
+      "scope": "前提中的 occupancy source 尚未對實際 zeta 建立。",
+      "statement": "若每個 cell 有合法 occupancy，且所有 selected locations 的 operator family 皆 PSD，則加入 surplus PSD terms 後可轉移到 all-point operator。",
+      "status": "proved_abstract_transfer",
+      "zeta_facing": false
+    },
+    {
+      "claim_id": "SYN-C13",
+      "evidence_class": "INTERVAL_CERTIFIED_SYNTHETIC",
+      "origin": [
+        "v0.9"
+      ],
+      "scope": "synthetic axiom；非 zeta presence theorem。",
+      "statement": "兩-cell synthetic Dirichlet Green family 在 8-leaf adaptive cover 上全域嚴格正。",
+      "status": "interval_certified_synthetic",
+      "zeta_facing": false
+    },
+    {
+      "claim_id": "SYN-C14",
+      "evidence_class": "INTERVAL_CERTIFIED_ABSTRACT",
+      "origin": [
+        "v0.9"
+      ],
+      "scope": "固定 parent atoms；無 actual zeta occupancy。",
+      "statement": "條件於 v0.7 parent，58 個獨立位置在每格半徑 $2\\times10^{-15}$ 內時，$\\alpha=1$ 的抽象 clamped operator 保持嚴格正。",
+      "status": "conditional_interval_parent",
+      "zeta_facing": false
+    },
+    {
+      "claim_id": "SYN-C15",
+      "evidence_class": "INTERVAL_CERTIFIED_ABSTRACT",
+      "origin": [
+        "v1.0"
+      ],
+      "scope": "Neumann defect $0.0275573<1$；第一主子式 lower $0.3305743$；determinant lower $6.69375\\times10^{-5}$。",
+      "statement": "對 58 個獨立位置變量，在統一半寬 $h=1.78\\times10^{-6}$ 的 closed product box 上，抽象 projected Green operator 嚴格正。",
+      "status": "interval_certified_abstract",
+      "zeta_facing": false
+    },
+    {
+      "claim_id": "SYN-C16",
+      "evidence_class": "INTERVAL_CERTIFIED_ABSTRACT",
+      "origin": [
+        "v1.0"
+      ],
+      "scope": "已證半徑不宣稱為真實最大 positivity radius。",
+      "statement": "最大已證 product box 及其所有 coordinatewise contained rational closed subboxes 構成 downward-closed 證書族。",
+      "status": "interval_certified_abstract",
+      "zeta_facing": false
+    },
+    {
+      "claim_id": "SYN-C17",
+      "evidence_class": "INTERVAL_METHOD_AUDIT",
+      "origin": [
+        "v1.0"
+      ],
+      "scope": "一個距中心 $10^{-3}$ 的 exact rational corner point 反而仍通過。",
+      "statement": "$1.8\\times10^{-6}$、$10^{-4}$、$10^{-3}$ 的 box 驗證失敗只是所用區間下界／候選逆失敗，不是 operator point counterexample。",
+      "status": "failure_classified",
+      "zeta_facing": false
+    },
+    {
+      "claim_id": "SYN-C18",
+      "evidence_class": "TRUST_BOUNDARY",
+      "origin": [
+        "v0.1-v1.0"
+      ],
+      "scope": "全研究鏈。",
+      "statement": "本鏈沒有 actual zeta occupancy family、沒有完整 explicit-formula transfer、沒有 global RH certificate，也沒有 RH 證明或反證。",
+      "status": "explicit_nonclaim",
+      "zeta_facing": true
+    }
+  ],
+  "global_rh_certificate": false,
+  "normalization": {
+    "EXACT_COUNTEREXAMPLE": "exact counterexample to a proposed universal transfer",
+    "EXACT_FINITE": "exact algebra/rational finite-model result",
+    "EXACT_SEMANTIC": "exact theorem about legal coefficient/quantifier semantics",
+    "FLOATING_DIAGNOSTIC": "reproducible numerical research evidence without directed enclosure",
+    "INTERVAL_CERTIFIED_ABSTRACT": "directed interval theorem inside the abstract Green/operator model",
+    "INTERVAL_CERTIFIED_SYNTHETIC": "directed interval theorem under synthetic premises",
+    "MODEL_THEOREM": "proved in an explicitly defined abstract analytic/operator model",
+    "REPLAY_STRUCTURAL": "machine-recomputed structure or reconstruction check",
+    "TRUST_BOUNDARY": "explicit nonclaim or dependency boundary",
+    "ZETA_TRANSFER": "theorem-backed transfer to actual zeta; no positive claim in this chain"
+  },
+  "raw_canonical_registers": [
+    "evidence_snapshots/v0.1/metadata/claim_ledger.json",
+    "evidence_snapshots/v0.2/metadata/claim_register.json",
+    "evidence_snapshots/v0.3/metadata/claim_register.json",
+    "evidence_snapshots/v0.4/metadata/claim_register.json",
+    "evidence_snapshots/v0.5/metadata/claim_register.json",
+    "evidence_snapshots/v0.6/metadata/claim_register.json",
+    "evidence_snapshots/v0.7/metadata/claim_register.json",
+    "evidence_snapshots/v0.8/metadata/claim_register.json",
+    "evidence_snapshots/v0.9/metadata/claim_register.json",
+    "evidence_snapshots/v1.0/metadata/claim_register.json"
+  ],
+  "schema": "RH.UnifiedClaimRegister.v1.0"
+}

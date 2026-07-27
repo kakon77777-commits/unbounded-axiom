@@ -1,0 +1,93 @@
+{
+  "schema": "EveMissLab.RH.GapLedger.v0.4",
+  "gaps": [
+    {
+      "gap_id": "GAP-SPF-01",
+      "title": "Fourier quadrature transfer",
+      "status": "open",
+      "blocking": true,
+      "detail": "Transforms, tail matrices, and dual PSD margins are floating quadrature objects.",
+      "next_action": "Interval-enclose basis integrals and propagate matrix-entry errors to an eigenvalue margin."
+    },
+    {
+      "gap_id": "GAP-SPF-02",
+      "title": "Continuous axis supremum",
+      "status": "open_false_escape_demonstrated",
+      "blocking": true,
+      "detail": "A step-0.25 axis grid missed peaks and produced a false alpha<1 escape at R=16.",
+      "next_action": "Use adaptive maximization plus derivative or interval enclosures before treating any alpha<1 as a gate pass."
+    },
+    {
+      "gap_id": "GAP-SPF-03",
+      "title": "Full refined-cover joint exhaustion",
+      "status": "open",
+      "blocking": true,
+      "detail": "Only 12 of 288 refined patches received joint axis/core optimization.",
+      "next_action": "Exhaust only after a dictionary can pass the currently blocked difficult patches; otherwise the computation has no decision value."
+    },
+    {
+      "gap_id": "GAP-SPF-04",
+      "title": "Theorem-backed count and tail objects",
+      "status": "source_profile_upgraded_but_open",
+      "blocking": true,
+      "detail": "Published S(T) constants are used, but endpoint hypotheses, directed rounding, and the tail inequality are not packaged as theorem objects.",
+      "next_action": "Create interval-evaluated band counts and a theorem-backed tail matrix."
+    },
+    {
+      "gap_id": "GAP-SPF-05",
+      "title": "Arithmetic histogram error",
+      "status": "open",
+      "blocking": true,
+      "detail": "Linear log-bin deposition reduces matrix updates but has no certified interpolation error.",
+      "next_action": "Bound correlation-kernel derivatives on each bin and accumulate an interval matrix error."
+    },
+    {
+      "gap_id": "GAP-SPF-06",
+      "title": "Large-support prime enumeration",
+      "status": "deprioritized",
+      "blocking": false,
+      "detail": "R=12,14,16 have only PNT-style cost projections; R=16 reaches a cutoff near 7.9e13.",
+      "next_action": "Do not enumerate until dual-gated axis-notch co-design yields a viable finite candidate at an existing radius."
+    },
+    {
+      "gap_id": "GAP-SPF-07",
+      "title": "Axis-notch dictionary",
+      "status": "next_node",
+      "blocking": true,
+      "detail": "Support-only expansion reduces uniform thresholds but joint measures still block sampled radii.",
+      "next_action": "Build RH_Axis_Notch_Cover_Codesign_v0.5 from the active supports in saved witnesses."
+    },
+    {
+      "gap_id": "GAP-SPF-08",
+      "title": "Primal candidate after dual gate",
+      "status": "not_started_by_design",
+      "blocking": true,
+      "detail": "No sampled radius passed the safe dual gate, so high-cost primal search was not launched.",
+      "next_action": "Launch primal Gram, dense core, guard-ring, and dense-axis audits only after a safe dual non-block."
+    },
+    {
+      "gap_id": "GAP-SPF-09",
+      "title": "Unknown off-axis leakage regions",
+      "status": "open",
+      "blocking": true,
+      "detail": "The complete zero-side regional budget remains unclosed.",
+      "next_action": "Partition every orbit-type region and attach a validated sign or leakage bound."
+    },
+    {
+      "gap_id": "GAP-SPF-10",
+      "title": "Zero presence and winding",
+      "status": "open",
+      "blocking": true,
+      "detail": "No argument-principle object proves a zero exists in a selected target patch.",
+      "next_action": "Attach validated winding certificates only after the global budget architecture is viable."
+    },
+    {
+      "gap_id": "GAP-SPF-11",
+      "title": "Local-to-global RH closure",
+      "status": "open",
+      "blocking": true,
+      "detail": "No formally checked implication closes all quantifiers from finite patch witnesses to RH.",
+      "next_action": "Build a theorem dependency graph and independently verify every analytic transfer."
+    }
+  ]
+}

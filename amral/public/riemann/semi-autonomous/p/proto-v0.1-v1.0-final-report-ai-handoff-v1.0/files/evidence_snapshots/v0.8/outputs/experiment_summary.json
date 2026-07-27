@@ -1,0 +1,45 @@
+{
+  "schema": "RH.ZeroCountSemanticsBridge.Summary.v0.8",
+  "node": "RH-ZeroCount-SemanticsBridge-20260725-v0.8",
+  "main_results": {
+    "upper_count_supremum_envelope_valid": true,
+    "lower_count_infimum_minorant_valid": true,
+    "lower_count_arbitrary_measure_transfer_valid": false,
+    "v0_7_abstract_interval_certificate_retained": true,
+    "v0_7_actual_zero_side_obstruction_proved": false,
+    "lower_profile_high_dimension_alpha": 0.12970478622974843,
+    "lower_profile_direct_green_threshold": 0.1297031276259604,
+    "sampled_primal_escape_objective": 0.12970698135219585
+  },
+  "decision": "Stop treating scalar count intervals as operator mass. Retain v0.7 as an abstract certificate and pursue two separate theorem tracks: certify the upper-envelope no-go statement, or add location/occupancy certificates that really dominate zero-side evaluation operators.",
+  "required_next_object": "A band occupancy certificate carrying locations or cells, multiplicities, endpoint conventions, and an operator-dominance statement; scalar counts alone are insufficient.",
+  "prototype_status": {
+    "real_height_interval": [
+      20.395,
+      20.42
+    ],
+    "status": "prototype geometry only",
+    "external_fact": "Platt and Trudgian rigorously verified RH for all nontrivial zeros through height 3e12.",
+    "source": {
+      "arxiv": "2004.09765",
+      "doi": "10.1112/blms.12460"
+    },
+    "actual_unresolved_zeta_target": false,
+    "role_in_v0_8": "calibration patch for coefficient semantics and functional-analytic convergence"
+  },
+  "checks": {
+    "semantic_counterexample_pass": true,
+    "profile_remains_uncertified": true,
+    "lower_profile_escape_observed": true,
+    "global_flag_false": true
+  },
+  "classification": {
+    "exact_semantic_theorems": true,
+    "floating_lower_profile_diagnostic": true,
+    "upper_envelope_method_nogo_fully_certified": false,
+    "actual_zero_side_operator_bridge": false,
+    "explicit_formula_transfer": false,
+    "global_rh_certificate": false
+  },
+  "summary_pass": true
+}

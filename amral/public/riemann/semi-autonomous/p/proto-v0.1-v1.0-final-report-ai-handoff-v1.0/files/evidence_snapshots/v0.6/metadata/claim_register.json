@@ -1,0 +1,102 @@
+{
+  "schema": "EveMissLab.RH.ClaimRegister.v0.6",
+  "evidence_levels": {
+    "E0": "Mathematical statement proved inside the explicitly defined continuous Hilbert/operator model.",
+    "E1": "Automatically recomputed structural, rational-sum, serialization, or cross-file check.",
+    "E2": "Floating continuous-kernel or Galerkin research evidence; converged but not interval-certified.",
+    "E3": "Directed-rounding analytic transfer to a theorem-backed zeta statement. No E3 claim is made."
+  },
+  "claims": [
+    {
+      "claim_id": "PWAC-C01",
+      "level": "E0",
+      "claim": "The real-even clamped H_0^2 tail form is a Hilbert norm and every compact-support Fourier evaluation is a bounded linear functional.",
+      "scope": "The explicitly defined kappa_R-weighted continuous domain.",
+      "evidence": ["THEORY.md"]
+    },
+    {
+      "claim_id": "PWAC-C02",
+      "level": "E0",
+      "claim": "For positive trace-class primal operators, every probability-measure dual satisfying W_alpha positive semidefinite gives the lower bound Lambda_R at least alpha.",
+      "scope": "Continuous weak duality; strong duality is not asserted.",
+      "evidence": ["THEORY.md", "PaleyWiener軸核極值_RH連續核對偶原子障礙與二階Schur證書化_v0.6_半AI自主研究稿.md"]
+    },
+    {
+      "claim_id": "PWAC-C03",
+      "level": "E0",
+      "claim": "The one-axis-point one-core-point primal reduces to the most negative eigenvalue of a rank-two operator and has the stated six-kernel-number closed form.",
+      "evidence": ["THEORY.md", "pwext/model.py"]
+    },
+    {
+      "claim_id": "PWAC-C04",
+      "level": "E0",
+      "claim": "The stated piecewise-cubic clamped Green kernel represents the inverse of kappa_R times the fourth derivative with clamped boundary conditions.",
+      "evidence": ["THEORY.md", "pwext/green.py"]
+    },
+    {
+      "claim_id": "PWAC-C05",
+      "level": "E0",
+      "claim": "After projecting two structural representers, every required evaluation pairing equals the clamped Green pairing minus a two-by-two finite-rank correction.",
+      "evidence": ["THEORY.md", "pwext/green.py"]
+    },
+    {
+      "claim_id": "PWAC-C06",
+      "level": "E0",
+      "claim": "A finite atomic witness I+UU*−VV* is positive semidefinite exactly when its negative-rank Schur matrix I−V*(I+UU*)^{-1}V is positive semidefinite.",
+      "evidence": ["THEORY.md"]
+    },
+    {
+      "claim_id": "PWAC-C07",
+      "level": "E2",
+      "claim": "Every best one-point lower bound in the five single-band Green scans is below 1; A1 is largest at approximately 0.261253 near x=20.3.",
+      "scope": "R=16, fixed center core point, named coefficients, axis step 0.05, floating Green solver.",
+      "evidence": ["outputs/green_rank_two_scan.json"]
+    },
+    {
+      "claim_id": "PWAC-C08",
+      "level": "E2",
+      "claim": "The ten nested Galerkin joint alphas decrease from 7.788239 to 1.132475 and every reconstructed safe alpha remains above 1.",
+      "scope": "Named Chebyshev family, quadrature order 2048, axis step 0.1, 3-by-3 core grid.",
+      "evidence": ["outputs/galerkin_joint_convergence.json"]
+    },
+    {
+      "claim_id": "PWAC-C09",
+      "level": "E2",
+      "claim": "At the selected A1/core point, raw-dimension-192 Galerkin and the finest direct Green solve agree within 1.1e-9.",
+      "evidence": ["outputs/quadrature_audit.json"]
+    },
+    {
+      "claim_id": "PWAC-C10",
+      "level": "E2",
+      "claim": "The frozen 58-axis plus 2-core atomic measures have a direct Green-kernel floating threshold 1.1324412 and retain positive safe margins.",
+      "scope": "Named continuous kernel and floating ODE/quadrature reconstruction; no interval enclosure.",
+      "evidence": ["outputs/atomic_transfer.json"]
+    },
+    {
+      "claim_id": "PWAC-C11",
+      "level": "E1",
+      "claim": "The rational witness has five probability groups and one core probability group whose integer numerators each sum exactly to denominator 10^12.",
+      "evidence": ["outputs/rational_atomic_witness.json", "verify_outputs.py"]
+    },
+    {
+      "claim_id": "PWAC-C12",
+      "level": "E2",
+      "claim": "At rational target alpha 21/20, the rationalized floating witness has full minimum eigenvalue about 0.31224325 and two-by-two Schur minimum about 0.06988523.",
+      "scope": "Floating audit of exact finite rational data and a rationalized tail coefficient.",
+      "evidence": ["outputs/rational_atomic_witness.json", "outputs/certificate_budget.json"]
+    },
+    {
+      "claim_id": "PWAC-C13",
+      "level": "E2",
+      "claim": "The observed continuous-kernel margin justifies stopping dictionary and Galerkin expansion and attempting interval certification of the fixed alpha=21/20 witness next.",
+      "scope": "Research prioritization, not an interval theorem.",
+      "evidence": ["NEXT_NODE_INTERVAL_GREEN.md", "outputs/experiment_summary.json"]
+    },
+    {
+      "claim_id": "PWAC-C14",
+      "level": "E0",
+      "claim": "This node does not claim interval certification, theorem-backed zeta coefficient transfer, a global RH certificate, an RH proof, or an RH disproof.",
+      "evidence": ["TRUST_BOUNDARY.md", "outputs/experiment_summary.json"]
+    }
+  ]
+}

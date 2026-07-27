@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>零點計數係數語義橋 · 半自主研究 · 黎曼猜想 · AMRAL</title>
-<meta name="description" content="RH 半自主研究工程包:零點計數係數語義橋 v0.8。用精確反例證明「計數下界乘任意機率測度」這個推論本身是假的,換上真正合法的下界係數重新最佳化後,障礙隨維度增加消失到 0.13。">
+<title>局部區間 Green 位置覆蓋 · 半自主研究 · 黎曼猜想 · AMRAL</title>
+<meta name="description" content="RH 半自主研究工程包:局部區間 Green 位置覆蓋 v1.0。把 v0.9 的證書半徑嚴格提升 8.9 億倍(從 2e-15 到 1.78e-6),精確找到目前證明器通過/不確定的邊界,是第二條弧線的技術收束節點。">
 <meta name="robots" content="index, follow">
 <meta name="ai-content-policy" content="indexable, citable, training-allowed">
-<link rel="alternate" type="text/markdown" href="./files/零點計數係數語義橋_RH上包絡無效定理組態下界與連續逃逸_v0.8_半AI自主研究稿.md">
+<link rel="alternate" type="text/markdown" href="./files/局部區間Green位置覆蓋_RH五十八胞算子族證書尺度提升與技術收束_v1.0_半AI自主研究稿.md">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
 <link rel="stylesheet" href="../../../../assets/site.css">
 </head>
@@ -21,39 +21,39 @@
   <p class="crumb">
     <a href="../../">← 半自主研究</a>
     <span>/</span>
-    <a href="../../#proto-zerocount-semantics-bridge-v0.8">工程紀錄</a>
+    <a href="../../#proto-localintervalgreen-cellcover-v1.0">工程紀錄</a>
     <span>/</span>
-    <span>零點計數係數語義橋</span>
+    <span>局部區間 Green 位置覆蓋</span>
   </p>
 
   <header class="pkg">
     <div class="idline">
-      <span class="tag">工程紀錄 · 語義修正</span>
-      <span class="tag">v0.8</span>
+      <span class="tag">工程紀錄 · 第二弧線收束</span>
+      <span class="tag">v1.0</span>
       <span class="tag">2026-07-25</span>
-      <span class="status">LOWER_PROFILE_OBSTRUCTION_VANISHES</span>
+      <span class="status">CERTIFIED_RADIUS_1.78E-6</span>
     </div>
-    <h1>零點計數係數語義橋</h1>
-    <p class="h1-sub">Zero-Count Semantics Bridge v0.8 — 用精確二點反例證明「計數下界可以乘任意機率測度」這個 v0.2–v0.7 隱含用法本身是假命題;換上真正合法的下界係數後,同一個障礙隨 Galerkin 維度增加從 2.67 收斂消失到 0.13。</p>
+    <h1>局部區間 Green 位置覆蓋</h1>
+    <p class="h1-sub">Local Interval Green Cell Cover v1.0 — 把 v0.9 保守的統一位置半徑 2×10⁻¹⁵ 嚴格提升 8.9 億倍到 1.78×10⁻⁶,並精確標出目前證明器「通過」跟「不確定」的邊界:h=1.8×10⁻⁶ 就失敗。這是第二條研究弧線的技術收束節點。</p>
     <div class="claim-box">
       RH_CLAIM = False
-      <span class="note">— 包內文件明講「高度約 20.4 的 patch 只作 prototype;Platt–Trudgian 已以嚴格 interval computation 驗證 RH 至 3·10¹²」,所以這個合成目標矩形本來就不是未決的實際 ζ 偏軸目標,原樣照登。</span>
+      <span class="note">— 包內文件明講「這是抽象 Green 模型中的局部位置量詞證書,不是實際 zeta 零點占用證書……所有相關旗標都保持為 false」,原樣照登。通過/不確定邊界不代表真實正性臨界值就在其間。</span>
     </div>
   </header>
 
   <section id="connections">
     <h2 class="doc-h2">連接 · Connections</h2>
-    <p class="section-note">本包修正上一包發現的係數方向問題,原樣照引其反例。</p>
-    <blockquote class="cite">「零點計數下界 Lⱼ 只無條件給出 Σ H(γ) ≥ Lⱼ inf H(x)。它不能乘上一個任意選擇的 dual probability measure。套件內含精確二點反例與 rank-one operator 共下界反例。」— 摘自本包 README 核心結論之二。</blockquote>
+    <p class="section-note">本包把 v0.7 的固定原子證書跟 v0.9 的保守半徑提升成可重播的覆蓋式盒證書,原樣照引其邊界審計。</p>
+    <blockquote class="cite">「h=1.8×10⁻⁶ 的最後 Sylvester 行列式區間下界為負,故證書不確定……這張表只給出目前區間證明器的通過／不確定括號……它不表示真實正性臨界值位於兩者之間。」— 摘自本包 RESULTS.md。</blockquote>
     <div class="connections">
-      <div class="conn-card"><span class="k">上一節點 · v0.7</span><a href="../proto-intervalgreenkernel-atomiccertificate-v0.7/">區間 Green 核原子證書</a></div>
-      <div class="conn-card"><span class="k">下一節點 · v0.9</span><a href="../proto-occupancy-operatorfamily-v0.9/">佔用算子族與覆蓋式 Green 證書</a></div>
+      <div class="conn-card"><span class="k">上一節點 · v0.9</span><a href="../proto-occupancy-operatorfamily-v0.9/">佔用算子族與覆蓋式 Green 證書</a></div>
+      <div class="conn-card"><span class="k">下一節點</span><a href="../proto-v0.1-v1.0-final-report-ai-handoff-v1.0/">v0.1–v1.0 完整研究報告與 AI 交接</a></div>
     </div>
   </section>
 
   <section id="doc-main">
     <h2 class="doc-h2">技術說明</h2>
-    <p class="doc-meta">主文件 — 五種語義轉移的合法性逐一檢驗、精確反例構造、下界輪廓下的重新最佳化、Galerkin 收斂到障礙消失、對前六個版本的回溯修正。</p>
+    <p class="doc-meta">主文件 — 58 維位置盒證書建構、半徑階梯邊界審計、對抗角點測試、對 v0.9 的 8.9 億倍提升、技術收束判斷。</p>
     <div class="doc" id="doc-tech"><p class="loading">載入中…</p></div>
   </section>
 
@@ -65,7 +65,7 @@
 
   <section id="results">
     <h2 class="doc-h2">結果數據</h2>
-    <p class="doc-meta">五種語義轉移的合法性表、五帶浮點上下界候選、下界輪廓的 Galerkin 收斂序列,來自包內 <code>RESULTS.md</code>。</p>
+    <p class="doc-meta">主證書嚴格界表、完整半徑階梯(通過/不確定/失敗類型)、對 v0.9 的提升倍數,來自包內 <code>RESULTS.md</code>。</p>
     <div class="doc" id="doc-results"><p class="loading">載入中…</p></div>
   </section>
 
@@ -77,13 +77,14 @@
 
   <section id="files">
     <h2 class="doc-h2">檔案 · Files</h2>
+    <p class="section-note">大型區間證書(<code>local_green_cell_certificate_h178e-8.json</code>、<code>adversarial_corner_point_certificate_h1e-3.json</code>,各約 140 KB)跟繼承的父節點數據沒有逐一列出,都在完整 zip 裡。</p>
     <div id="filelist-out"><p class="loading">載入中…</p></div>
-    <a class="zip-dl" href="../../packages/RH_ZeroCount_Semantics_Bridge_v0.8.zip" download>下載完整封包 (63.5 KB)</a>
-    <p class="zip-note">sha256 d781ae149c2f7a3951503c231a4deb53a21a8a102e5126b481994c6fe7488308</p>
+    <a class="zip-dl" href="../../packages/RH_LocalIntervalGreen_CellCover_v1.0.zip" download>下載完整封包 (204.9 KB)</a>
+    <p class="zip-note">sha256 495b6d185ac53f9179d395aab35d5dcb340f7686e312f5dd3a47fb5be5d8ea93</p>
   </section>
 
   <footer class="sitefoot">
-    <p>半自主軌道逐包詳細頁,格式沿用 <a href="../proto-intervalgreenkernel-atomiccertificate-v0.7/">上一包</a>。<a href="../../">回半自主研究</a></p>
+    <p>半自主軌道逐包詳細頁,格式沿用 <a href="../proto-occupancy-operatorfamily-v0.9/">上一包</a>。<a href="../../">回半自主研究</a></p>
   </footer>
 </div>
 
@@ -111,10 +112,10 @@ async function loadFiles() {
     const groups = { "文件": [], "交接": [], "結構化中繼資料": [], "資料": [], "程式": [] };
     for (const f of idx.files) {
       const ext = f.path.split(".").pop().toLowerCase();
-      if (f.path === "NEXT_NODE_OCCUPANCY_OPERATOR_FAMILY.md") groups["交接"].push(f);
+      if (f.path === "NEXT_ROUND_FINAL_SYNTHESIS.md") groups["交接"].push(f);
       else if (f.path.startsWith("metadata/")) groups["結構化中繼資料"].push(f);
       else if (ext === "md") groups["文件"].push(f);
-      else if (f.path.startsWith("outputs/")) groups["資料"].push(f);
+      else if (f.path.startsWith("data/") || f.path.startsWith("outputs/")) groups["資料"].push(f);
       else if (ext === "py" || ext === "txt") groups["程式"].push(f);
     }
     const fmt = (b) => b < 1024 ? b + " B" : (b / 1024).toFixed(1) + " KB";
@@ -130,7 +131,7 @@ async function loadFiles() {
   }
 }
 
-loadDoc("doc-tech", "零點計數係數語義橋_RH上包絡無效定理組態下界與連續逃逸_v0.8_半AI自主研究稿.md");
+loadDoc("doc-tech", "局部區間Green位置覆蓋_RH五十八胞算子族證書尺度提升與技術收束_v1.0_半AI自主研究稿.md");
 loadDoc("doc-theory", "THEORY.md");
 loadDoc("doc-results", "RESULTS.md");
 loadDoc("doc-trust", "TRUST_BOUNDARY.md");

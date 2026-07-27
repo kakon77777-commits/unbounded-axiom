@@ -1,0 +1,110 @@
+{
+  "schema": "EveMissLab.RH.DependencyGraph.v0.9",
+  "nodes": [
+    {
+      "id": "D09-PARENT-V07",
+      "kind": "interval_theorem",
+      "status": "INHERITED_LOCKED",
+      "claim": "fixed abstract clamped operator positivity"
+    },
+    {
+      "id": "D09-SEMANTICS",
+      "kind": "exact_theorem",
+      "status": "PROVED",
+      "claim": "occupancy selection transfer"
+    },
+    {
+      "id": "D09-SYN-OCC",
+      "kind": "synthetic_premise",
+      "status": "ASSUMED_SYNTHETIC",
+      "claim": "one point in each of two rational cells"
+    },
+    {
+      "id": "D09-SYN-COVER",
+      "kind": "exact_interval_certificate",
+      "status": "PROVED",
+      "claim": "universal synthetic Dirichlet Green family"
+    },
+    {
+      "id": "D09-CLAMP-BUDGET",
+      "kind": "exact_conditional_theorem",
+      "status": "PROVED_CONDITIONAL",
+      "claim": "58-cell microscopic clamped family"
+    },
+    {
+      "id": "D09-FLOAT",
+      "kind": "floating_diagnostic",
+      "status": "E2_ONLY",
+      "claim": "observed local transition bracket"
+    },
+    {
+      "id": "D09-ZETA-PRESENCE",
+      "kind": "source_theorem",
+      "status": "OPEN",
+      "claim": "actual zeta cell occupancy"
+    },
+    {
+      "id": "D09-EF",
+      "kind": "global_transfer",
+      "status": "OPEN",
+      "claim": "explicit-formula and prime-side positivity"
+    },
+    {
+      "id": "D09-RH",
+      "kind": "global_claim",
+      "status": "OPEN_FALSE_FLAG",
+      "claim": "Riemann Hypothesis"
+    }
+  ],
+  "edges": [
+    {
+      "from": "D09-SEMANTICS",
+      "to": "D09-SYN-COVER",
+      "relation": "types the transfer"
+    },
+    {
+      "from": "D09-SYN-OCC",
+      "to": "D09-SYN-COVER",
+      "relation": "synthetic occupancy premise"
+    },
+    {
+      "from": "D09-PARENT-V07",
+      "to": "D09-CLAMP-BUDGET",
+      "relation": "parent positivity theorem"
+    },
+    {
+      "from": "D09-CLAMP-BUDGET",
+      "to": "D09-FLOAT",
+      "relation": "calibration baseline only"
+    },
+    {
+      "from": "D09-ZETA-PRESENCE",
+      "to": "D09-RH",
+      "relation": "required but insufficient"
+    },
+    {
+      "from": "D09-EF",
+      "to": "D09-RH",
+      "relation": "required global transfer"
+    }
+  ],
+  "blocked_edges": [
+    {
+      "from": "D09-SYN-COVER",
+      "to": "D09-ZETA-PRESENCE",
+      "reason": "synthetic occupancy is not a zeta source theorem"
+    },
+    {
+      "from": "D09-FLOAT",
+      "to": "D09-CLAMP-BUDGET",
+      "reason": "floating diagnostics cannot upgrade universal interval flags"
+    },
+    {
+      "from": "D09-CLAMP-BUDGET",
+      "to": "D09-RH",
+      "reason": "dual-atom calibration is not actual zero occupancy or global transfer"
+    }
+  ],
+  "global_rh_certificate": false
+}
+

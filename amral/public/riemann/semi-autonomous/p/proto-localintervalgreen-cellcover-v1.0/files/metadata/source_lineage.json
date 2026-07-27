@@ -1,0 +1,26 @@
+{
+  "global_rh_certificate": false,
+  "inputs": [
+    {
+      "file": "data/parent_v0.7_rational_atomic_witness.json",
+      "role": "exact atomic centers, weights, five bands, core atoms, tail scale, and clamped radius",
+      "source_package": "RH_IntervalGreenKernel_AtomicCertificate_v0.7"
+    },
+    {
+      "file": "data/parent_v0.7_interval_atomic_certificate.json",
+      "role": "parent abstract interval certificate and classification boundary",
+      "source_package": "RH_IntervalGreenKernel_AtomicCertificate_v0.7"
+    },
+    {
+      "file": "data/parent_v0.9_clamped_radius_certificate.json",
+      "role": "previous uniform radius 1/500000000000000 and its perturbation-budget provenance",
+      "source_package": "RH_Occupancy_OperatorFamily_v0.9"
+    },
+    {
+      "file": "data/parent_v0.9_floating_location_study.json",
+      "role": "non-rigorous scale diagnostic and deterministic corner-sign provenance",
+      "source_package": "RH_Occupancy_OperatorFamily_v0.9"
+    }
+  ],
+  "schema": "RH.SourceLineage.v1.0"
+}

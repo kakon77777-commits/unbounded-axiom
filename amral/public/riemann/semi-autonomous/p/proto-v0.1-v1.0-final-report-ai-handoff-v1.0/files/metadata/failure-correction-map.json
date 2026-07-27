@@ -1,0 +1,72 @@
+{
+  "entries": [
+    {
+      "correction": "改用分帶、多測試函數、全域預算與覆蓋證書族。",
+      "evidence": "已知軸上 leakage 遠大於局部負裕量。",
+      "failed_assumption": "單一局部負窗與單一算術正純量足以逼近顯式公式矛盾。",
+      "stage": "prehistory_to_v0.1"
+    },
+    {
+      "correction": "引入完整 PSD Gram cross terms。",
+      "evidence": "72 candidates 的 partial global gap 全負。",
+      "failed_assumption": "對角非負 cone 的候選多樣性足以改善全域 budget。",
+      "stage": "v0.1_to_v0.2"
+    },
+    {
+      "correction": "轉為 dual lower bound，先判斷函數類是否值得繼續。",
+      "evidence": "requested ranks $1,2,4,8$ 的 selected factors 全部數值秩 1；預算仍負。",
+      "failed_assumption": "增加 factor rank 會帶來有效高秩改良。",
+      "stage": "v0.2_to_v0.3"
+    },
+    {
+      "correction": "淘汰具名 finite family，量化 support-prime frontier。",
+      "evidence": "18 個 rational surrogate exact LDL 均支持 dual obstruction。",
+      "failed_assumption": "目前 $R=3$ patchwise family 尚可由 primal tuning 挽救。",
+      "stage": "v0.3_to_v0.4"
+    },
+    {
+      "correction": "設計 notch 與 geometry，但加入 dense-grid gate。",
+      "evidence": "refinement 把 raw $0.9853$ 提升到 $1.1923$；prime cutoff 快速爆炸。",
+      "failed_assumption": "只增加支撐或依賴 coarse axis grid 可找到真 escape。",
+      "stage": "v0.4_to_v0.5"
+    },
+    {
+      "correction": "改寫為連續 $H_0^2$ extremal 與 Green-kernel dual。",
+      "evidence": "subspace monotonicity theorem；最佳 safe threshold 仍 $1.0717612$。",
+      "failed_assumption": "齊次 notch、已測 external lift 或 polynomial density scaling 會穿過 threshold。",
+      "stage": "v0.5_to_v0.6"
+    },
+    {
+      "correction": "凍結 witness，投入 directed interval certificate。",
+      "evidence": "independent Galerkin/direct Green 在 selected point 相差約 $10^{-9}$，且 rational witness 有足夠 floating margin。",
+      "failed_assumption": "更大字典／更高 Galerkin 維度仍是主瓶頸。",
+      "stage": "v0.6_to_v0.7"
+    },
+    {
+      "correction": "嚴格區分抽象證書與 zeta-facing coefficient legitimacy。",
+      "evidence": "五帶係數對應 upper profile，不是所需 lower coefficient；lower-profile stress 失敗。",
+      "failed_assumption": "抽象 interval positivity 可直接沿用 inherited band coefficients 成為 zeta zero-side obstruction。",
+      "stage": "v0.7_to_v0.8"
+    },
+    {
+      "correction": "以 cell occupancy、位置全稱量詞與 PSD surplus 建立合法 transfer。",
+      "evidence": "exact two-point、rank-one range-intersection 與 count-only Schur counterexamples。",
+      "failed_assumption": "scalar lower count 可重型別為 arbitrary operator distribution。",
+      "stage": "v0.8_to_v0.9"
+    },
+    {
+      "correction": "建立 affine-tagged local Green engine 與 downward-closed cover family。",
+      "evidence": "位置感知區間 Green pairing 將證書半徑提升至 $1.78\\times10^{-6}$。",
+      "failed_assumption": "固定原子的小擾動只能得到 $2\\times10^{-15}$ 等級半徑。",
+      "stage": "v0.9_to_v1.0"
+    },
+    {
+      "correction": "下一節點先做 conditional off-axis cell 與 zeta transfer；局部 radius 僅為從屬工程。",
+      "evidence": "actual zeta occupancy、coefficient transfer、explicit-formula admissibility 全仍為 false。",
+      "failed_assumption": "繼續放大抽象盒半徑是下一階段主 GAP。",
+      "stage": "post_v1.0"
+    }
+  ],
+  "interpretation": "A failure closes only the stated family or inference; it is not silently promoted to a theorem about all admissible test functions.",
+  "schema": "RH.FailureCorrectionMap.v1.0"
+}

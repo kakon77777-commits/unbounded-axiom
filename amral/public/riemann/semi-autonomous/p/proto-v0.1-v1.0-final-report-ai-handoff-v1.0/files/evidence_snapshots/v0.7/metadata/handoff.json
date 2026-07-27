@@ -1,0 +1,45 @@
+{
+  "schema": "EveMissLab.RH.Handoff.v0.7",
+  "from_node": "RH-IntervalGreenKernel-AtomicCertificate-20260725-v0.7",
+  "to_node": "RH-RobustBandCounts-ZetaBridge-20260725-v0.8",
+  "completed": [
+    "Closed-form interval Green pairings for all fixed atoms",
+    "Interval structural projection",
+    "Verified 60-by-60 positive system family",
+    "Final two-by-two Sylvester positivity",
+    "Disk-read full replay and exact serialization audit",
+    "Coefficient upper-versus-lower orientation audit",
+    "Lower-profile counterstress"
+  ],
+  "fixed_facts": {
+    "abstract_continuous_interval_certificate": true,
+    "target_alpha": "21/20",
+    "neumann_defect_upper": "7.5314047536453899529795284723351685266688530666467402072399783321850699737236237E-15",
+    "first_minor_lower": "0.352427949645390326130573359730997367221696681145917758884077111915601144889258875493783364",
+    "determinant_lower": "0.063615317259778630055918103321354863442338163119523019301772513335583128879764494070356188",
+    "coefficient_orientation_blocker": true,
+    "global_rh_certificate": false
+  },
+  "next_actions": [
+    "Reconstruct the original zero-side inequality and determine the legal coefficient direction.",
+    "Represent each band coefficient as a theorem-backed interval [L_j,U_j].",
+    "Establish endpoint conventions and validated lower counts where required.",
+    "Re-optimize against the worst-case lower endpoint vector.",
+    "Build a new interval Schur certificate or a formal robust-failure record.",
+    "Certify the tail theorem object in a separate track."
+  ],
+  "do_not": [
+    "Treat a downward-rounded upper count as a lower count.",
+    "Reuse the current witness under the lower profile without reoptimization.",
+    "Expand the full cover before the robust single-patch bridge.",
+    "Claim an RH proof, disproof, or global certificate."
+  ],
+  "primary_inputs": [
+    "outputs/interval_atomic_certificate.json",
+    "outputs/certificate_verification.json",
+    "outputs/coefficient_orientation_audit.json",
+    "outputs/orientation_stress_test.json",
+    "data/rational_atomic_witness_v0.6.json",
+    "NEXT_NODE_ROBUST_COUNTS.md"
+  ]
+}
