@@ -5,9 +5,16 @@
 // lexical-search-worker.js (the browser) and tests/test_semantic_search.mjs
 // (plain Node) so the exact same scoring logic that ships is the logic tested.
 //
-// Implements Phase 0+1 (exact + lexical retrieval, relation channel) and now
-// Phase 2 (§7 concept dictionary + query expansion). The vector ("semantic")
-// channel is still Phase 3 and intentionally absent — see §16.1/§26.
+// Implements Phase 0+1 (exact + lexical retrieval, relation channel), Phase 2
+// (§7 concept dictionary + query expansion), and now Phase 3's fusion side
+// (§9 weights.semantic): scoreCorpus takes an optional pre-computed
+// `semanticScores` Map<docIndex, normalizedScore 0..1> and folds it in with
+// the same max-fusion pattern as the alias/related-term/relation passes.
+// Computing that Map is deliberately NOT this file's job — it requires an
+// async embedding model and a fetched vector file, both DOM/Worker-only
+// concerns (see semantic-vector.js) — this file stays synchronous and
+// dependency-free so the same scoring logic runs identically in the browser
+// Worker and in tests/test_semantic_search.mjs under plain Node.
 
 export const DEFAULT_WEIGHTS = {
   exact_title: 1.00,
@@ -39,7 +46,7 @@ export const DEFAULT_EXPANSION_LIMITS = {
 export const DEFAULT_CONFIG = {
   semantic_search_enabled: true,
   search: { minimum_results: 5, max_results: 200, initial_threshold: 0.78, threshold_step: 0.08, absolute_floor: 0.28 },
-  channels: { exact: true, lexical: true, dictionary: true, semantic: false, relations: true },
+  channels: { exact: true, lexical: true, dictionary: true, semantic: true, relations: true },
   tiers: DEFAULT_TIERS,
   weights: DEFAULT_WEIGHTS,
   expansion_limits: DEFAULT_EXPANSION_LIMITS,
@@ -302,7 +309,7 @@ function bestIsConfident(results, cfg) {
 // scored at Tier B or better on this same query. A doc with no related_ids
 // never gets a Tier D score out of thin air, and a doc with no dictionary hit
 // never gets an alias score out of thin air either.
-export function scoreCorpus(documents, rawQuery, config, dictionary) {
+export function scoreCorpus(documents, rawQuery, config, dictionary, semanticScores) {
   const cfg = config || DEFAULT_CONFIG;
   const weights = cfg.weights || DEFAULT_WEIGHTS;
   const queryNorm = normalizeQuery(rawQuery);
@@ -312,7 +319,7 @@ export function scoreCorpus(documents, rawQuery, config, dictionary) {
     return { query: { original, normalized: "" }, results: [], relaxed: false, low_confidence: false, empty_query: true, total_candidates: documents.length, expansions: { aliases: [], related: [] } };
   }
   if (queryNorm.length > (cfg.max_query_length || 80)) {
-    return scoreCorpus(documents, original.slice(0, cfg.max_query_length || 80), cfg, dictionary);
+    return scoreCorpus(documents, original.slice(0, cfg.max_query_length || 80), cfg, dictionary, semanticScores);
   }
 
   const queryTokens = tokenize(queryNorm);
@@ -364,6 +371,29 @@ export function scoreCorpus(documents, rawQuery, config, dictionary) {
         break;
       }
     }
+  }
+
+  // §9 weights.semantic / §26 Phase 3: semanticScores is an optional
+  // Map<docIndex, normalizedScore 0..1> pre-computed by semantic-vector.js
+  // (query embedding + cosine similarity against pre-built document
+  // vectors, already floor/ceiling-rescaled — see that file for why a fixed
+  // corpus-calibrated rescale is used instead of raw cosine or a per-query
+  // relative one). Absent/empty (model still loading, load failed, browser
+  // unsupported) degrades to exactly today's exact+lexical+dictionary+
+  // relations behavior — this is the §16.2 "若 API 失效，系統退化為精確搜尋"
+  // requirement, satisfied structurally: nothing above this block knows or
+  // cares whether semanticScores exists.
+  if (cfg.channels.semantic !== false && semanticScores && semanticScores.size) {
+    scored.forEach((r, i) => {
+      const norm = semanticScores.get(i);
+      if (norm === undefined || norm <= 0) return;
+      const s = weights.semantic * norm;
+      if (s > r.score) {
+        r.score = s;
+        r.channels = Array.from(new Set([...r.channels, "semantic"]));
+        r.reasons = [{ tier: "C", label: "摘要語義近似", field: "summary", semantic_score: Number(norm.toFixed(2)) }, ...r.reasons];
+      }
+    });
   }
 
   if (cfg.channels.relations) {

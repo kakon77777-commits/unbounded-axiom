@@ -105,6 +105,72 @@ for (const [cat, stats] of Object.entries(byCategory)) {
   console.log(`  ${cat}: ${stats.pass}/${stats.pass + stats.fail}`);
 }
 
+// --- Phase 3 fusion unit checks: scoreCorpus's semanticScores parameter ---
+// semantic-vector.js itself (real model + fetch) needs a browser and is
+// verified separately via the Browser pane; these checks only exercise the
+// synchronous fusion logic in semantic-core.js with a synthetic score map,
+// which is exactly what that file's own contract promises callers.
+{
+  let semPass = 0, semFail = 0;
+  const semCheck = (label, cond, detail) => {
+    if (cond) { semPass++; console.log(`[PASS] (semantic-fusion) ${label}`); }
+    else { semFail++; console.log(`[FAIL] (semantic-fusion) ${label}${detail ? "\n       " + detail : ""}`); }
+  };
+
+  // Pick a query with NO lexical/exact overlap against some arbitrary doc,
+  // then inject a synthetic high semantic score for that doc's index and
+  // confirm it gets promoted into the results with a "semantic" channel.
+  const nonsenseQuery = "殊塵朧霈闃";
+  const baseline = scoreCorpus(documents, nonsenseQuery, config, dictionary, new Map());
+  const baselineTopId = baseline.results[0] && baseline.results[0].id;
+  const targetIdx = 5; // arbitrary fixed index, unrelated to the query above
+  const targetId = documents[targetIdx].i;
+  const semScores = new Map([[targetIdx, 0.9]]);
+  const boosted = scoreCorpus(documents, nonsenseQuery, config, dictionary, semScores);
+  const boostedHit = boosted.results.find((r) => r.id === targetId);
+
+  semCheck(
+    "empty semanticScores changes nothing vs no 5th arg",
+    JSON.stringify(baseline.results.map((r) => r.id)) === JSON.stringify(
+      scoreCorpus(documents, nonsenseQuery, config, dictionary).results.map((r) => r.id)
+    )
+  );
+  semCheck(
+    `synthetic high semantic score promotes doc ${targetId} into results`,
+    !!boostedHit && boostedHit.channels.includes("semantic"),
+    `boostedHit=${JSON.stringify(boostedHit)}`
+  );
+  semCheck(
+    "promoted doc's top reason is the semantic one",
+    !!boostedHit && boostedHit.reasons[0].label === "摘要語義近似",
+    `reasons=${JSON.stringify(boostedHit && boostedHit.reasons)}`
+  );
+  semCheck(
+    "promoted score respects weights.semantic ceiling (0.55 * 0.9)",
+    !!boostedHit && Math.abs(boostedHit.score - config.weights.semantic * 0.9) < 1e-6,
+    `score=${boostedHit && boostedHit.score}`
+  );
+
+  // A doc that already scores higher via exact/lexical must NOT be
+  // downgraded by a weak synthetic semantic score (max-fusion, not additive).
+  const exactQuery = documents[0].t.slice(0, 4);
+  const exactBaseline = scoreCorpus(documents, exactQuery, config, dictionary, new Map());
+  const exactTop = exactBaseline.results[0];
+  const weakSemMap = new Map([[0, 0.1]]);
+  const exactWithWeakSem = scoreCorpus(documents, exactQuery, config, dictionary, weakSemMap);
+  const stillTop = exactWithWeakSem.results.find((r) => r.id === exactTop.id);
+  semCheck(
+    "weak synthetic semantic score never downgrades an existing exact hit",
+    !!stillTop && stillTop.score === exactTop.score,
+    `before=${exactTop.score} after=${stillTop && stillTop.score}`
+  );
+
+  console.log(`\n--- semantic-fusion: ${semPass}/${semPass + semFail} passed ---`);
+  pass += semPass; fail += semFail;
+  cases.push(...Array(semPass + semFail).fill({ category: "semantic-fusion" }));
+  byCategory["semantic-fusion"] = { pass: semPass, fail: semFail };
+}
+
 const report = {
   generated_at: new Date().toISOString(),
   index_count: documents.length,

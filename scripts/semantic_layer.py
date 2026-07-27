@@ -272,12 +272,13 @@ def write_semantic_index(registry, build_id=None) -> dict:
         "generated_at": _now(),
         "build_id": build_id,
         "count": len(compact),
-        "note": "Dynamic Semantic Revealing search index (Phase 0+1). "
-                "channels.semantic and full channels.relations are honestly "
-                "False/partial — this MVP ships exact+lexical retrieval only; "
-                "see /timeline/ search box. Spec: lm-001862 (動態語"
-                "義顯影本地端實作白皮書).",
-        "channels": {"exact": True, "lexical": True, "semantic": False, "relations": True},
+        "note": "Dynamic Semantic Revealing search index (Phase 0+1+2+3: "
+                "exact/lexical retrieval, concept-dictionary query expansion, "
+                "and local vector search all live). channels.relations stays "
+                "partial by design — same-series credit only, real curated "
+                "Program membership, never guessed. See /timeline/ search box. "
+                "Spec: lm-001862 (動態語義顯影本地端實作白皮書).",
+        "channels": {"exact": True, "lexical": True, "dictionary": True, "semantic": True, "relations": True},
         "documents": compact,
     }
     ai_dir = DIST_DIR / "ai"

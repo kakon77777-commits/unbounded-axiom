@@ -1,6 +1,7 @@
 // Web Worker: owns the semantic index + scoring loop off the main thread, per
 // spec §16.1 ("以 Web Worker 完成：精確搜尋／token overlap／trigram／欄位加權／顯影控制").
 import { scoreCorpus, prepareIndex, DEFAULT_CONFIG } from "./semantic-core.js";
+import { warmUp, semanticScores, semanticStatus } from "./semantic-vector.js";
 
 let documents = null;
 let dictionary = [];
@@ -52,6 +53,12 @@ self.onmessage = async (e) => {
   const { type, query, reqId } = e.data || {};
   if (type === "init") {
     await ensureLoaded();
+    // Kick off model+vector loading in the background now, not on the first
+    // search — by the time the user finishes typing (debounce_ms + typing
+    // time), the model usually has a head start. Never awaited here: init
+    // must not block on a multi-MB model download (§16.2 degrade-gracefully
+    // requirement applies to page load too, not just search).
+    if (!loadError && config.channels.semantic !== false) warmUp();
     self.postMessage({ type: "ready", reqId, meta, config, error: loadError });
     return;
   }
@@ -62,7 +69,18 @@ self.onmessage = async (e) => {
       return;
     }
     const t0 = Date.now();
-    const result = scoreCorpus(documents, query, config, dictionary);
-    self.postMessage({ type: "result", reqId, query, result, meta, latency_ms: Date.now() - t0 });
+    // Only await the (already-warming, usually-cached-after-first-use) vector
+    // scores if the semantic channel is enabled; semanticScores() itself
+    // resolves to an empty Map — never throws — if the model isn't ready yet
+    // or failed to load, so this can't block/break exact+lexical+dictionary.
+    const vecScores = config.channels.semantic !== false
+      ? await semanticScores(query)
+      : new Map();
+    const result = scoreCorpus(documents, query, config, dictionary, vecScores);
+    self.postMessage({
+      type: "result", reqId, query, result, meta,
+      latency_ms: Date.now() - t0,
+      semantic: { ...semanticStatus(), scored: vecScores.size },
+    });
   }
 };
