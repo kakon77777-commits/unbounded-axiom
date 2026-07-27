@@ -12,6 +12,7 @@
   "channels": {
     "exact": true,
     "lexical": true,
+    "dictionary": true,
     "semantic": false,
     "relations": true
   },
@@ -29,7 +30,14 @@
     "semantic": 0.55,
     "series_relation": 0.25,
     "direct_link_relation": 0.30,
-    "anchor_bonus": 0.08
+    "anchor_bonus": 0.08,
+    "related_term": 0.45
+  },
+  "expansion_limits": {
+    "max_aliases": 8,
+    "max_related_terms": 6,
+    "max_graph_depth": 1,
+    "min_expansion_confidence": 0.60
   },
   "display": {
     "default_mode": "reveal",

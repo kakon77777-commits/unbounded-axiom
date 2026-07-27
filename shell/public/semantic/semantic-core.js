@@ -5,10 +5,9 @@
 // lexical-search-worker.js (the browser) and tests/test_semantic_search.mjs
 // (plain Node) so the exact same scoring logic that ships is the logic tested.
 //
-// Implements Phase 1 only: exact + lexical (token-overlap + trigram) retrieval,
-// plus a real (not guessed) relation channel over registry/programs/*.json
-// membership baked into each doc's `r` field at index-build time. The vector
-// ("semantic") channel is Phase 3 and intentionally absent — see §16.1/§26.
+// Implements Phase 0+1 (exact + lexical retrieval, relation channel) and now
+// Phase 2 (§7 concept dictionary + query expansion). The vector ("semantic")
+// channel is still Phase 3 and intentionally absent — see §16.1/§26.
 
 export const DEFAULT_WEIGHTS = {
   exact_title: 1.00,
@@ -19,16 +18,31 @@ export const DEFAULT_WEIGHTS = {
   series_relation: 0.25,
   direct_link_relation: 0.30,
   anchor_bonus: 0.08,
+  // Not in the spec's own §9.1 table — that table has no dedicated bucket for
+  // a dictionary "related" term (as opposed to an "alias", which does have
+  // alias_title). A related-term hit is a weaker, indirect signal — closer to
+  // §10's Tier D "低分語義近似" than to a real title match — so it's floored
+  // low on purpose, not tuned to reach A/B on its own.
+  related_term: 0.45,
 };
 
 export const DEFAULT_TIERS = { tier_A: 0.82, tier_B: 0.68, tier_C: 0.54, tier_D: 0.38 };
 
+// §7.3 "展開限制" — must not recurse/expand without bound.
+export const DEFAULT_EXPANSION_LIMITS = {
+  max_aliases: 8,
+  max_related_terms: 6,
+  max_graph_depth: 1,
+  min_expansion_confidence: 0.60,
+};
+
 export const DEFAULT_CONFIG = {
   semantic_search_enabled: true,
   search: { minimum_results: 5, max_results: 200, initial_threshold: 0.78, threshold_step: 0.08, absolute_floor: 0.28 },
-  channels: { exact: true, lexical: true, semantic: false, relations: true },
+  channels: { exact: true, lexical: true, dictionary: true, semantic: false, relations: true },
   tiers: DEFAULT_TIERS,
   weights: DEFAULT_WEIGHTS,
+  expansion_limits: DEFAULT_EXPANSION_LIMITS,
   display: { default_mode: "reveal", tier_a_opacity: 1.0, tier_b_opacity: 0.92, tier_c_opacity: 0.62, tier_d_opacity: 0.38, hidden_opacity: 0.12 },
   debounce_ms: 300,
   max_query_length: 80,
@@ -78,6 +92,66 @@ function overlapRatio(queryTokens, docTokenSet) {
   let hit = 0;
   for (const t of queryTokens) if (docTokenSet.has(t)) hit++;
   return hit / queryTokens.length;
+}
+
+// §6.3 expand_query / §7 專屬詞典: does the (already-normalized) query name a
+// known concept — by its canonical name, one of its aliases, or a partial
+// match against either — and if so, what ELSE does that concept go by?
+// max_graph_depth is fixed at 1 by construction: this walks straight from the
+// query to a matching concept's own alias/related lists and stops there, it
+// never follows a related term to ITS concept and expands again.
+export function expandQuery(queryNorm, dictionary, limits) {
+  const empty = { aliases: [], related: [] };
+  if (!queryNorm || !dictionary || !dictionary.length) return empty;
+  const L = limits || DEFAULT_EXPANSION_LIMITS;
+
+  const aliasHits = [];
+  const relatedHits = [];
+  for (const entry of dictionary) {
+    const canonicalNorm = normalizeQuery(entry.canonical);
+    const aliasMatch = (entry.aliases || []).find((a) => normalizeQuery(a.term) === queryNorm);
+    const canonicalMatch = canonicalNorm === queryNorm;
+    // a loose (substring) match only counts for queries with enough signal to
+    // not match everything — a 1-char query would "loosely match" half the dictionary
+    const looseMatch = !aliasMatch && !canonicalMatch && queryNorm.length >= 2 && (
+      canonicalNorm.includes(queryNorm)
+      || (entry.aliases || []).some((a) => normalizeQuery(a.term).includes(queryNorm))
+    );
+    if (!aliasMatch && !canonicalMatch && !looseMatch) continue;
+
+    for (const a of (entry.aliases || [])) {
+      if (a.weight < L.min_expansion_confidence) continue;
+      if (normalizeQuery(a.term) === queryNorm) continue; // don't "expand" the query into itself
+      aliasHits.push({ term: a.term, weight: a.weight, concept_id: entry.concept_id, canonical: entry.canonical });
+    }
+    if (!canonicalMatch) {
+      // the query hit this concept via an alias (or a loose partial match) —
+      // the canonical name itself is then a valid expansion target too.
+      aliasHits.push({ term: entry.canonical, weight: aliasMatch ? aliasMatch.weight : 0.75, concept_id: entry.concept_id, canonical: entry.canonical });
+    }
+    for (const r of (entry.related || [])) {
+      if (r.weight < L.min_expansion_confidence) continue;
+      relatedHits.push({ term: r.term, weight: r.weight, concept_id: entry.concept_id, canonical: entry.canonical });
+    }
+  }
+
+  function dedupeSortCap(arr, cap) {
+    const seen = new Set();
+    const out = [];
+    for (const x of arr) {
+      const k = normalizeQuery(x.term);
+      if (!k || seen.has(k)) continue;
+      seen.add(k);
+      out.push(x);
+    }
+    out.sort((a, b) => b.weight - a.weight);
+    return out.slice(0, cap);
+  }
+
+  return {
+    aliases: dedupeSortCap(aliasHits, L.max_aliases),
+    related: dedupeSortCap(relatedHits, L.max_related_terms),
+  };
 }
 
 // Precompute per-document derived fields once at index-load time so a search
@@ -220,31 +294,77 @@ function bestIsConfident(results, cfg) {
   return results.length > 0 && results[0].score >= cfg.tiers.tier_B;
 }
 
-// Full corpus search: exact+lexical scoring pass, then a relation pass that
-// gives real Tier D ("same series") credit ONLY to documents whose `r` list
-// (built from registry/programs/*.json — real curated membership, never
-// guessed) contains a sibling that already scored at Tier B or better on this
-// same query. A doc with no related_ids never gets a Tier D score out of thin air.
-export function scoreCorpus(documents, rawQuery, config) {
+// Full corpus search: exact+lexical scoring pass, then a dictionary-expansion
+// pass (§7 — alias/related-term hits, only when the query itself names a
+// known concept), then a relation pass that gives real Tier D ("same series")
+// credit ONLY to documents whose `r` list (built from registry/programs/*.json
+// — real curated membership, never guessed) contains a sibling that already
+// scored at Tier B or better on this same query. A doc with no related_ids
+// never gets a Tier D score out of thin air, and a doc with no dictionary hit
+// never gets an alias score out of thin air either.
+export function scoreCorpus(documents, rawQuery, config, dictionary) {
   const cfg = config || DEFAULT_CONFIG;
   const weights = cfg.weights || DEFAULT_WEIGHTS;
   const queryNorm = normalizeQuery(rawQuery);
   const original = rawQuery == null ? "" : String(rawQuery);
 
   if (!queryNorm) {
-    return { query: { original, normalized: "" }, results: [], relaxed: false, low_confidence: false, empty_query: true, total_candidates: documents.length };
+    return { query: { original, normalized: "" }, results: [], relaxed: false, low_confidence: false, empty_query: true, total_candidates: documents.length, expansions: { aliases: [], related: [] } };
   }
   if (queryNorm.length > (cfg.max_query_length || 80)) {
-    return scoreCorpus(documents, original.slice(0, cfg.max_query_length || 80), cfg);
+    return scoreCorpus(documents, original.slice(0, cfg.max_query_length || 80), cfg, dictionary);
   }
 
   const queryTokens = tokenize(queryNorm);
   const queryTrigrams = trigrams(queryNorm);
+  const expansions = cfg.channels.dictionary !== false
+    ? expandQuery(queryNorm, dictionary || [], cfg.expansion_limits)
+    : { aliases: [], related: [] };
 
   let scored = documents.map((d) => {
     const r = scoreDocument(d, queryNorm, queryTokens, queryTrigrams, weights);
     return { id: d.i, doc: d, score: r.score, channels: r.channels, reasons: r.reasons };
   });
+
+  if (expansions.aliases.length || expansions.related.length) {
+    for (const r of scored) {
+      const doc = r.doc;
+      for (const a of expansions.aliases) {
+        const an = normalizeQuery(a.term);
+        if (!an) continue;
+        let field = null;
+        if (doc._titleNorm.includes(an)) field = "title";
+        else if (doc._keywordsNorm.includes(an)) field = "keyword";
+        else if (doc._summaryNorm.includes(an)) field = "summary";
+        if (!field) continue;
+        // §10 A 級 explicitly lists "人工別名命中" as a valid exact-tier signal —
+        // scaling the base alias_title weight by this specific alias's own
+        // confidence lets a high-confidence alias reach Tier A like a real
+        // title hit, while a merely-adequate one (near min_expansion_confidence)
+        // lands lower, same pattern as the lexical/relation passes above.
+        const s = Math.min(1, weights.alias_title * a.weight);
+        if (s > r.score) {
+          r.score = s;
+          r.channels = Array.from(new Set([...r.channels, "alias"]));
+          r.reasons = [{ tier: "A", label: `命中已確認別名「${a.term}」`, field, matched_text: a.term, expansion_term: a.term, relation: "alias", concept_id: a.concept_id }, ...r.reasons];
+        }
+        break; // one alias hit is enough signal for this doc; don't keep stacking
+      }
+      for (const rel of expansions.related) {
+        const rn = normalizeQuery(rel.term);
+        if (!rn) continue;
+        const field = doc._titleNorm.includes(rn) ? "title" : (doc._summaryNorm.includes(rn) ? "summary" : null);
+        if (!field) continue;
+        const s = Math.min(1, weights.related_term * rel.weight);
+        if (s > r.score) {
+          r.score = s;
+          r.channels = Array.from(new Set([...r.channels, "related_term"]));
+          r.reasons = [{ tier: "D", label: `與相關詞「${rel.term}」近似`, field, matched_text: rel.term, expansion_term: rel.term, relation: "related", concept_id: rel.concept_id }, ...r.reasons];
+        }
+        break;
+      }
+    }
+  }
 
   if (cfg.channels.relations) {
     const strongIds = new Set(scored.filter((r) => r.score >= cfg.tiers.tier_B).map((r) => r.id));
@@ -279,7 +399,7 @@ export function scoreCorpus(documents, rawQuery, config) {
 
   scored.sort((a, b) => b.score - a.score);
   if (documents.length === 0) {
-    return { query: { original, normalized: queryNorm, tokens: queryTokens }, results: [], relaxed: false, low_confidence: false, empty_index: true, total_candidates: 0 };
+    return { query: { original, normalized: queryNorm, tokens: queryTokens }, results: [], relaxed: false, low_confidence: false, empty_index: true, total_candidates: 0, expansions };
   }
 
   const { results, threshold, relaxed, low_confidence } = ensureMinimumResults(scored, cfg);
@@ -290,6 +410,7 @@ export function scoreCorpus(documents, rawQuery, config) {
   return {
     query: { original, normalized: queryNorm, tokens: queryTokens },
     results: tiered,
+    expansions,
     threshold,
     relaxed,
     low_confidence,

@@ -21,6 +21,7 @@
   var resetBtn = root.querySelector(".semantic-reset-btn");
   var modeBtns = Array.prototype.slice.call(root.querySelectorAll(".semantic-mode-btn"));
   var metaEl = root.querySelector(".semantic-meta");
+  var expansionsEl = root.querySelector(".semantic-expansions");
   var bannerEl = root.querySelector(".semantic-banner");
   var box = root.querySelector(".semantic-box");
   if (!input) return;
@@ -109,11 +110,31 @@
     bannerEl.classList.toggle("low", cls === "low");
   }
 
+  // §14.1 "顯示查詢展開" — a query that names a known concept (dictionary §7)
+  // shows what it was ALSO expanded to search for, so a hit via an alias or a
+  // related term is never a silent surprise.
+  function renderExpansions(expansions) {
+    clearNode(expansionsEl);
+    if (!expansionsEl) return;
+    var aliases = (expansions && expansions.aliases) || [];
+    var related = (expansions && expansions.related) || [];
+    if (!aliases.length && !related.length) {
+      expansionsEl.classList.remove("show");
+      return;
+    }
+    var parts = [];
+    if (aliases.length) parts.push("別名：" + aliases.map(function (a) { return a.term; }).join("、"));
+    if (related.length) parts.push("相關詞：" + related.map(function (r) { return r.term; }).join("、"));
+    expansionsEl.appendChild(escapeText("查詢展開 — " + parts.join(" ｜ ")));
+    expansionsEl.classList.add("show");
+  }
+
   function applyResult(result, latencyMs) {
     resetRows();
 
     if (result.empty_query) {
       showBanner("");
+      renderExpansions(null);
       metaEl.textContent = "";
       return;
     }
@@ -169,6 +190,7 @@
     statsParts.push("A:" + tierCounts.A + " B:" + tierCounts.B + " C:" + tierCounts.C + " D:" + tierCounts.D);
     statsParts.push(latencyMs + "ms");
     metaEl.textContent = statsParts.join(" · ");
+    renderExpansions(result.expansions);
 
     if (result.low_confidence) {
       showBanner("沒有找到高可信度直接結果。以下僅列出語義上最接近的文件。", "low");
@@ -184,6 +206,7 @@
     inputWrap.classList.remove("has-query");
     resetRows();
     showBanner("");
+    renderExpansions(null);
     metaEl.textContent = "";
     latestReqId = ++reqSeq; // invalidate any in-flight search reply
   }

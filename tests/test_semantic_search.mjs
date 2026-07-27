@@ -11,16 +11,21 @@ import { scoreCorpus, prepareIndex, DEFAULT_CONFIG } from "../shell/public/seman
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
 
 const indexPath = join(ROOT, "dist", "ai", "semantic-index.min.json");
+const dictionaryPath = join(ROOT, "dist", "ai", "semantic-dictionary.min.json");
 const configPath = join(ROOT, "shell", "public", "semantic", "search.config.json");
 const queriesPath = join(ROOT, "tests", "semantic_queries.jsonl");
 
 const index = JSON.parse(readFileSync(indexPath, "utf8"));
+const dictionaryFile = JSON.parse(readFileSync(dictionaryPath, "utf8"));
+const dictionary = dictionaryFile.entries || [];
 const userConfig = JSON.parse(readFileSync(configPath, "utf8"));
 const config = {
   ...DEFAULT_CONFIG, ...userConfig,
   search: { ...DEFAULT_CONFIG.search, ...userConfig.search },
   tiers: { ...DEFAULT_CONFIG.tiers, ...userConfig.tiers },
   weights: { ...DEFAULT_CONFIG.weights, ...userConfig.weights },
+  channels: { ...DEFAULT_CONFIG.channels, ...userConfig.channels },
+  expansion_limits: { ...DEFAULT_CONFIG.expansion_limits, ...userConfig.expansion_limits },
 };
 const documents = prepareIndex(index.documents);
 
@@ -32,7 +37,7 @@ const byCategory = {};
 const details = [];
 
 for (const c of cases) {
-  const result = scoreCorpus(documents, c.query, config);
+  const result = scoreCorpus(documents, c.query, config, dictionary);
   const ids = result.results.map((r) => r.id);
   const tierAIds = result.results.filter((r) => r.tier === "A").map((r) => r.id);
   const top10 = ids.slice(0, 10);
@@ -63,6 +68,15 @@ for (const c of cases) {
   }
   if (c.expect_any_result) {
     if (!(result.results.length > 0)) { ok = false; reasons.push(`expected at least one result, got 0`); }
+  }
+  if (c.expect_alias_terms) {
+    const gotTerms = (result.expansions.aliases || []).map((a) => a.term);
+    const hit = c.expect_alias_terms.some((t) => gotTerms.includes(t));
+    if (!hit) { ok = false; reasons.push(`expected one of alias terms ${JSON.stringify(c.expect_alias_terms)} in expansions.aliases=${JSON.stringify(gotTerms)}`); }
+  }
+  if (c.expect_no_expansion) {
+    const total = (result.expansions.aliases || []).length + (result.expansions.related || []).length;
+    if (total > 0) { ok = false; reasons.push(`expected no expansion terms, got aliases=${JSON.stringify(result.expansions.aliases)} related=${JSON.stringify(result.expansions.related)}`); }
   }
   // universal invariant regardless of category: with a non-empty corpus and a
   // non-empty query, the non-zero mechanism must never return zero results.

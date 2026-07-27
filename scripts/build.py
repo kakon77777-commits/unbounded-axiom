@@ -29,6 +29,7 @@ from scripts.companions import write_companions
 from scripts.geo_layer import write_geo_layer
 from scripts.programs import write_programs
 from scripts.semantic_layer import write_semantic_index
+from scripts.semantic_dictionary import write_semantic_dictionary
 
 
 def _write_build_id_file(registry, build_id):
@@ -120,6 +121,7 @@ def main() -> None:
     ai_count = write_ai_layer(registry, entries, build_id)  # §9 AICL /ai/ + §10 AIRS + canonical llms
     program_stats = write_programs(registry, build_id)  # AI Layer v0.2 MVP: /ai/programs/ research-lineage layer
     semantic_stats = write_semantic_index(registry, build_id)  # Dynamic Semantic Revealing Phase 0+1 -> /ai/semantic-index.min.json
+    dictionary_stats = write_semantic_dictionary(registry, build_id)  # Phase 2 concept dictionary -> /ai/semantic-dictionary.min.json
     graph_stats = write_graph_layer(registry)  # Phase A: registry/tcf/ -> /ai/graph.json (real topology)
     write_sitemap_canonical(registry)          # §26.6.6 canonical-only sitemap (replaces legacy)
     route_issues = validate_routes(registry)   # §26.7 route consistency report
@@ -146,6 +148,8 @@ def main() -> None:
     print(f"[diag] semantic: {semantic_stats['count']} docs indexed ({semantic_stats['with_summary']} w/summary, "
           f"{semantic_stats['with_headings']} w/headings, {semantic_stats['with_related']} w/related_ids) "
           f"-> /ai/semantic-index.min.json ({semantic_stats['bytes']/1024:.0f} KB)")
+    print(f"[diag] semantic dictionary: {dictionary_stats['count']} concepts -> /ai/semantic-dictionary.min.json "
+          f"({dictionary_stats['bytes']/1024:.0f} KB)")
     if graph_stats["mapped"]:
         print(f"[diag] graph: /ai/graph.json — {graph_stats['mapped']} nodes / {graph_stats['edges']} verified edges "
               f"(candidates: {graph_stats.get('candidates', 0)}, rejected: {graph_stats.get('rejected', 0)}, "

@@ -31,3 +31,7 @@
 {"query":"","expect_empty_query":true,"category":"edge_case"}
 {"query":"X","expected_any":["lm-001805","lm-001806","lm-001811"],"category":"cross_domain","note":"single latin letter must survive normalization per spec §6.2"}
 {"query":"GPT-5.6","expect_any_result":true,"category":"cross_domain","note":"model name with version number must not be mangled by normalization"}
+{"query":"Fact Modal Ontology","expected_any":["lm-001634"],"expect_alias_terms":["FMO","事實模態本體論"],"category":"dictionary","note":"this exact English phrase appears nowhere in the corpus text — the only way to reach the FMO papers is query -> dictionary canonical/alias match -> \"FMO\" is a literal keyword on those docs. Proves the alias-expansion pathway, not just lexical overlap. Tier lands at B not A: the match is a genuine 2-hop chain (query matches the title_en alias, which expands to the sibling short_title alias \"FMO\", which then matches the doc) rather than the query's own text hitting the doc directly — Tier B (\"近似\") is the more honest read of that than Tier A (\"精確\")."}
+{"query":"Intent–Structure–World Programming","expected_any":["lm-001793"],"expect_alias_terms":["ISWP"],"category":"dictionary","note":"title_en of rp-iswp, not literal text in any ISWP paper — same alias-pathway proof as the FMO case above"}
+{"query":"事實模態本體論","expect_alias_terms":["FMO","Fact Modal Ontology"],"category":"dictionary"}
+{"query":"披薩外送路線規劃SOP標準作業流程","expect_no_expansion":true,"category":"dictionary","note":"a query with no dictionary concept match must not fabricate expansion terms"}
