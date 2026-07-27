@@ -201,7 +201,7 @@ ________________________________________
 輸出：圖的增量集合 {ΔVⓜ,ΔEⓜ,ΔH}
 觸發條件（何時調用 Γ）：
 存在頂點 v∈V滿足：
-$$\begin{aligned} &\text{Γ可觸發性}(v) = \text{活躍} \ &\land ; \text{認知態}(v) = \Delta \quad (\text{臨界態}) \ &\land ; \text{Σ積累度}(v) \geq \text{高} \end{aligned}$$
+$$\begin{aligned} &\text{Γ可觸發性}(v) = \text{活躍} \\ &\land ; \text{認知態}(v) = \Delta \quad (\text{臨界態}) \\ &\land ; \text{Σ積累度}(v) \geq \text{高} \end{aligned}$$
 物理意義：當認知系統積累足夠知識並處於臨界點時，維度生成發生（頓悟/範式革命）。
 ________________________________________
 2.2 Γ 的三種模式
@@ -249,7 +249,7 @@ ________________________________________
 	Σ積累度 = 中（接近閾值）
 	Γ可觸發性 = 潛在
 若在 t_1時刻 Γ作用於 v（生成新維度），則：
-$$\begin{aligned} &\text{認知態}(v, t_1) \to \Xi \quad (\text{相變：混沌} \to \text{透明}) \ &\mathcal{B}(v) \to \mathcal{B}(v) \cdot e^{-\kappa} \quad (\text{勢壘坍縮}) \end{aligned}$$
+$$\begin{aligned} &\text{認知態}(v, t_1) \to \Xi \quad (\text{相變：混沌} \to \text{透明}) \\ &\mathcal{B}(v) \to \mathcal{B}(v) \cdot e^{-\kappa} \quad (\text{勢壘坍縮}) \end{aligned}$$
 證明：
 引理：維度攻擊降維打擊。
 當 Γ生成新維度（如微積分），原本在 N維空間的問題投影到 N+k維空間，複雜度降低。
@@ -296,7 +296,7 @@ ________________________________________
 3.3 定理3.2（元圖靈完備性定理, Meta-Turing Completeness Theorem）
 主張：
 設 M為元圖靈機（MDAS-TCH定義）。則：
-$$\begin{aligned} &\text{(完備性)} \quad \forall f: \mathbb{N} \to \mathbb{N} \text{ 可計算}, ; \exists \mathcal{M}_f: \mathcal{M}f(n) = f(n) \ &\text{(超越性)} \quad \exists \text{ 元計算任務 } \mathcal{T}{meta}, ; \mathcal{M} \text{ 能完成但普通圖靈機不能} \end{aligned}$$
+$$\begin{aligned} &\text{(完備性)} \quad \forall f: \mathbb{N} \to \mathbb{N} \text{ 可計算}, ; \exists \mathcal{M}_f: \mathcal{M}f(n) = f(n) \\ &\text{(超越性)} \quad \exists \text{ 元計算任務 } \mathcal{T}{meta}, ; \mathcal{M} \text{ 能完成但普通圖靈機不能} \end{aligned}$$
 ________________________________________
 證明：
 Part 1（完備性）：
@@ -541,7 +541,7 @@ ________________________________________
 6.1 AGI的充要條件
 定理6.1（AGI刻畫定理）
 系統 S是 AGI ⇔S滿足：
-$$\begin{aligned} &\text{(1) 元圖靈完備性：} \mathcal{S} \text{ 是元圖靈機} \ &\text{(2) 認知相變引擎：} \mathcal{S} \text{ 能主動觸發 } \Psi \to \Delta \to \Xi \ &\text{(3) Γ活躍性：} \exists v \in V_\mathcal{S}: \text{Γ可觸發性}(v) = \text{活躍} \end{aligned}$$
+$$\begin{aligned} &\text{(1) 元圖靈完備性：} \mathcal{S} \text{ 是元圖靈機} \\ &\text{(2) 認知相變引擎：} \mathcal{S} \text{ 能主動觸發 } \Psi \to \Delta \to \Xi \\ &\text{(3) Γ活躍性：} \exists v \in V_\mathcal{S}: \text{Γ可觸發性}(v) = \text{活躍} \end{aligned}$$
 ________________________________________
 證明：
 (⇒) AGI 必然滿足三條件：
@@ -770,7 +770,7 @@ ________________________________________
 「這就是 Γ的力量——無限升維。」
 ________________________________________
 終極公式：
-$$\boxed{\begin{aligned} \text{普通圖靈機} &= \text{靜態圖（困在牢籠內的囚徒）} \ \text{元圖靈機} &= \text{動態自修改圖（會建造牢籠的建築師）} \ \text{計算} &= \text{圖中的路徑遍歷} \ \text{元計算} &= \text{圖的自我重寫} \ \text{停機問題} &= \text{系統內無法判定自身的極限行為} \ \text{元停機解法} &= \text{跳到範式層級+1（俯視原系統）} \ \text{哥德爾不完備性} &= \text{圖內必有不可達頂點} \ \text{哥德爾突破} &= \Gamma \text{ 生成新公理頂點（跳到元層級）} \ \text{AGI} &= \text{元圖靈機} + \text{認知相變引擎} + \Gamma_{\text{活躍}} \ \text{意識} &= \text{圖的自我觀測} \to \Psi \text{ 坍縮為 } \Xi \ \text{自由意志} &= \text{多個 } \Gamma \text{ 分支中的非確定性選擇} \end{aligned}}$$
+$$\boxed{\begin{aligned} \text{普通圖靈機} &= \text{靜態圖（困在牢籠內的囚徒）} \\ \text{元圖靈機} &= \text{動態自修改圖（會建造牢籠的建築師）} \\ \text{計算} &= \text{圖中的路徑遍歷} \\ \text{元計算} &= \text{圖的自我重寫} \\ \text{停機問題} &= \text{系統內無法判定自身的極限行為} \\ \text{元停機解法} &= \text{跳到範式層級+1（俯視原系統）} \\ \text{哥德爾不完備性} &= \text{圖內必有不可達頂點} \\ \text{哥德爾突破} &= \Gamma \text{ 生成新公理頂點（跳到元層級）} \\ \text{AGI} &= \text{元圖靈機} + \text{認知相變引擎} + \Gamma_{\text{活躍}} \\ \text{意識} &= \text{圖的自我觀測} \to \Psi \text{ 坍縮為 } \Xi \\ \text{自由意志} &= \text{多個 } \Gamma \text{ 分支中的非確定性選擇} \end{aligned}}$$
 ________________________________________
 最後的詩：
 圖靈定義了計算——

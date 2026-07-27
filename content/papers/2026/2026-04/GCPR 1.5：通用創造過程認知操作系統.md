@@ -238,11 +238,11 @@ C_fixed=〖"proj" 〗_F (C_violating)
 
 對於多約束，採用交替投影法（Dykstra算法）。
 這對應於：
-T_{verify} + T_{fix} \approx \frac{1}{M(x) \cdot R(x)} + \text{proj_cost} 
+T_{verify} + T_{fix} \approx \frac{1}{M(x) \cdot R(x)} + \text{proj\_cost} 
 當M高（驗證快）且R高（容易理解錯在哪）時，擦除代價低。 
 物理類比：擦除如同工程師發現設計違反了承重規範，需要局部修正而不推倒重來。
 三相的統一邏輯：
-$$\text{Phase}(t) = \begin{cases} \text{速寫} & \text{if } \Sigma < 0.5 \mathcal{B} \text{ and } D > 0.3 D_0 \ \text{慢寫} & \text{if } \Sigma \geq 0.5 \mathcal{B} \text{ and } D > \epsilon_{target} \ \text{擦除} & \text{if } C \notin \mathcal{F} \ \text{完成} & \text{if } D \leq \epsilon_{target} \text{ and } C \in \mathcal{F} \end{cases}$$
+$$\text{Phase}(t) = \begin{cases} \text{速寫} & \text{if } \Sigma < 0.5 \mathcal{B} \text{ and } D > 0.3 D_0 \\ \text{慢寫} & \text{if } \Sigma \geq 0.5 \mathcal{B} \text{ and } D > \epsilon_{target} \\ \text{擦除} & \text{if } C \notin \mathcal{F} \\ \text{完成} & \text{if } D \leq \epsilon_{target} \text{ and } C \in \mathcal{F} \end{cases}$$
 這個決策樹在第五章會進一步細化。
 2.4 Γ引擎的DRC機制與勢壘坍縮
 Γ（維度生成率）是GCPR 1.5中最神秘但也最關鍵的變量。它描述了「創造新方法」這一人類智慧的核心能力。 
@@ -1121,7 +1121,7 @@ def measure_verification_speed(problem_x):
     is_correct, feedback = verify(random_solution, problem_x)
     verify_time = time() - start
     
-    # 速度越快，R越高（驗證效率$M$的組成部分）
+    # 速度越快，R越高（驗證效率 $M$ 的組成部分）
     R1 = 1 / (1 + verify_time)
     
     return R1
@@ -1567,7 +1567,7 @@ def generate_problem_assessment_report(problem_x, agent):
 5.1 總體決策流程與匹配判斷
 核心匹配指標：Σ/B比值 
 這個比值決定了智慧體處於混沌態、臨界態還是秩序態：
-$$\text{State}(t) = \begin{cases} \text{混沌態} & \text{if } \Sigma < 0.5 \mathcal{B} \ \text{臨界態} & \text{if } 0.5 \mathcal{B} \leq \Sigma < 1.5 \mathcal{B} \ \text{秩序態} & \text{if } \Sigma \geq 1.5 \mathcal{B} \end{cases}$$
+$$\text{State}(t) = \begin{cases} \text{混沌態} & \text{if } \Sigma < 0.5 \mathcal{B} \\ \text{臨界態} & \text{if } 0.5 \mathcal{B} \leq \Sigma < 1.5 \mathcal{B} \\ \text{秩序態} & \text{if } \Sigma \geq 1.5 \mathcal{B} \end{cases}$$
 完整決策樹：
 python
 class StrategyRouter:

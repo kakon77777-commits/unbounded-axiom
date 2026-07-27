@@ -308,11 +308,11 @@ $$h := (V_h, bond\_type, separability, \mathcal{T}_h, \Psi)$$
 
 **定義3.2（可分離度, Separability）**
 
-給定超邊$h = (V_h, \ldots)$，其可分離度為：
+給定超邊 $h = (V_h, \ldots)$ ，其可分離度為：
 
 $$separability(h) := \frac{\max_{S \subsetneq V_h} |\Phi[S]|}{|\Phi[V_h]|}$$
 
-其中$\Phi[S]$是子集$S$的物理/邏輯實現空間的測度。
+其中 $\Phi[S]$ 是子集 $S$ 的物理/邏輯實現空間的測度。
 
 **語義**：
 
@@ -333,8 +333,8 @@ $$separability(h) := \frac{\max_{S \subsetneq V_h} |\Phi[S]|}{|\Phi[V_h]|}$$
 $$bond\_type = \text{PIAC}$$
 
 **性質**：
-- $separability = 0$（完全不可分）
-- $\mathcal{T}_h = K_n$（完全圖）
+- $separability = 0$ （完全不可分）
+- $\mathcal{T}_h = K_n$ （完全圖）
 - 任意兩頂點都強關聯
 
 **範例**：
@@ -347,8 +347,8 @@ $$h_{PIAC} = (\{E, R, F, I\}, \text{PIAC}, 0, K_4, \Psi_{物理})$$
 $$bond\_type = \text{辯證}$$
 
 **性質**：
-- $separability \approx 0.3$（高糾纏但非完全）
-- $\mathcal{T}_h$：三角形 + 螺旋
+- $separability \approx 0.3$ （高糾纏但非完全）
+- $\mathcal{T}_h$ ：三角形 + 螺旋
 - 正反可獨立，但合需要兩者
 
 **範例**：
@@ -369,8 +369,8 @@ $$h_{幾何} = (\{歐氏^正, 羅氏^反, 曲率^合\}, \text{辯證}, 0.3, \Del
 $$bond\_type = \text{推導}$$
 
 **性質**：
-- $separability \approx 0.5$（中等可拆）
-- $\mathcal{T}_h$：有向無環圖（DAG）
+- $separability \approx 0.5$ （中等可拆）
+- $\mathcal{T}_h$ ：有向無環圖（DAG）
 - 前提可獨立，結論需前提
 
 **範例**：
@@ -397,7 +397,7 @@ e^{i\theta_2} & v = 物理 \\
 e^{i\theta_3} & v = 幾何
 \end{cases}$$
 
-相位差$\theta_2 - \theta_1, \theta_3 - \theta_1$編碼視角間的「語義距離」。
+相位差 $\theta_2 - \theta_1, \theta_3 - \theta_1$ 編碼視角間的「語義距離」。
 
 ---
 
@@ -405,34 +405,34 @@ e^{i\theta_3} & v = 幾何
 
 **定理3.1（超邊不可分性定理, Hyperedge Inseparability Theorem, HIT）**
 
-設$h = (V_h, \text{PIAC}, 0, \ldots)$是PIAC類型超邊。則：
+設 $h = (V_h, \text{PIAC}, 0, \ldots)$ 是PIAC類型超邊。則：
 
 $$\forall S \subsetneq V_h: \Phi[S] = \emptyset$$
 
 **證明**：
 
-採用反證法。設存在$S \subsetneq V_h$使得$\Phi[S] \neq \emptyset$，即$S$可單獨實現。
+採用反證法。設存在 $S \subsetneq V_h$ 使得 $\Phi[S] \neq \emptyset$ ，即 $S$ 可單獨實現。
 
-**Case 1**：$V_h = \{E, R, F, I\}$（物理PIAC）
+**Case 1**： $V_h = \{E, R, F, I\}$ （物理PIAC）
 
-不失一般性，設$S = \{E, R\}$（只有存在和關係）。
+不失一般性，設 $S = \{E, R\}$ （只有存在和關係）。
 
-要實現「存在$E$且關係$R$」，需要：
-1. 測量距離（關係$R$的一種）
+要實現「存在 $E$ 且關係 $R$ 」，需要：
+1. 測量距離（關係 $R$ 的一種）
 2. 測量需要發送信號（光子、聲波等）
-3. 信號 = 力$F$的載體
-4. 接收信號需要區分「有/無」= 信息$I$
+3. 信號 = 力 $F$ 的載體
+4. 接收信號需要區分「有/無」= 信息 $I$
 
-因此$F, I \in S$，矛盾！
+因此 $F, I \in S$ ，矛盾！
 
-**Case 2**：$V_h = \{Q_S, Q_T, Q_V\}$（邏輯量子，來自LQTT）
+**Case 2**： $V_h = \{Q_S, Q_T, Q_V\}$ （邏輯量子，來自LQTT）
 
 類似證明（見邏輯量子拓撲論定理1.1）。□
 
 ---
 
 **推論3.1.1**：
-任何包含PIAC超邊的理論$\mathcal{G}$，其子圖$\mathcal{G}'$若不包含完整超邊，則物理/邏輯不可實現。
+任何包含PIAC超邊的理論 $\mathcal{G}$ ，其子圖 $\mathcal{G}'$ 若不包含完整超邊，則物理/邏輯不可實現。
 
 ---
 
@@ -444,13 +444,13 @@ $$\forall S \subsetneq V_h: \Phi[S] = \emptyset$$
 
 $$\Omega_{spiral}: V^n \to V$$
 
-作用：從$n$個頂點生成辯證合題（提升一階）。
+作用：從 $n$ 個頂點生成辯證合題（提升一階）。
 
 **標準形式**（二元）：
 
 $$\Omega_{spiral}[v^正_k, v^反_k] = v^合_{k+1}$$
 
-其中$階(v^合_{k+1}) = 階(v^正_k) + 1$。
+其中 $階(v^合_{k+1}) = 階(v^正_k) + 1$ 。
 
 ---
 
@@ -465,9 +465,9 @@ $$階(\Omega[v_1, \ldots, v_n]) \geq \max_i 階(v_i) + 1$$
 $$\Sigma_{合} = \text{Unify}(\Sigma_1, \ldots, \Sigma_n)$$
 
 統一規則：
-- 本體：$N \sqcup V = N \otimes V$（疊加）
-- 態：$\top \sqcup \Omega = \Omega$（螺旋傳播）
-- 辯證：$\{正, 反\} \to 合$
+- 本體： $N \sqcup V = N \otimes V$ （疊加）
+- 態： $\top \sqcup \Omega = \Omega$ （螺旋傳播）
+- 辯證： $\{正, 反\} \to 合 $
 
 ---
 
@@ -492,9 +492,9 @@ $$T^*_\infty = \lim_{n \to \infty} T^合_n$$
 
 **定理4.1（螺旋收斂定理, Spiral Convergence Theorem, SCT）**
 
-設辯證迭代序列$\{T^合_n\}$滿足：
-1. 每步階數遞增$\leq 1$
-2. 新題$T^新_n$的新穎度遞減
+設辯證迭代序列 $\{T^合_n\}$ 滿足：
+1. 每步階數遞增 $\leq 1$
+2. 新題 $T^新_n$ 的新穎度遞減
 
 則序列在有限步內收斂：
 
@@ -504,7 +504,7 @@ $$\exists N < \infty: \forall n > N, \, T^合_n = T^合_N$$
 
 **引理4.1.1**：抽象階數有界。
 
-設理論體系的「最大可理解階數」為$K_{max}$（人類認知極限或AI算力極限）。則：
+設理論體系的「最大可理解階數」為 $K_{max}$ （人類認知極限或AI算力極限）。則：
 
 $$階(T^合_n) \leq K_{max}$$
 
@@ -516,19 +516,19 @@ $$\nu(T^新_n) := H[T^新_n \mid \{T^合_0, \ldots, T^合_{n-1}\}]$$
 
 （給定歷史的條件熵）
 
-假設：$\nu(T^新_n) \to 0$（新題逐漸「用盡」）。
+假設： $\nu(T^新_n) \to 0$ （新題逐漸「用盡」）。
 
 **主證明**：
 
-由引理1，階數有界：$階(T^合_n) \leq K_{max}$。
+由引理1，階數有界： $階(T^合_n) \leq K_{max}$ 。
 
-由引理2，當$n$足夠大：
+由引理2，當 $n$ 足夠大：
 
 $$\nu(T^新_n) < \epsilon \Rightarrow T^新_n \approx \text{已有概念的重組}$$
 
-因此$T^合_n \approx T^合_{n-1}$（不再螺旋上升）。
+因此 $T^合_n \approx T^合_{n-1}$ （不再螺旋上升）。
 
-取$N = \lceil K_{max} / \Delta階 \rceil + N_{新穎耗盡}$。□
+取 $N = \lceil K_{max} / \Delta階 \rceil + N_{新穎耗盡}$ 。□
 
 ---
 
@@ -544,7 +544,7 @@ $$\mathcal{G}_{完備} = \bigcup_{n=0}^N \Omega^n[\mathcal{G}_0]$$
 
 **3D螺旋座標系**：
 
-給定頂點$v^辯_k$（辯證角色、階數$k$），其空間座標：
+給定頂點 $v^辯_k$ （辯證角色、階數 $k$ ），其空間座標：
 
 $$\begin{aligned}
 \theta &= \begin{cases}
@@ -637,7 +637,7 @@ N_r (v_0)的局部統計特性（度分布、聚類係數）與全局統計接�
 
 （KL散度小，統計相似）
 主證明：
-$$\begin{aligned} I(\mathcal{N}_r; \mathcal{G}) &= H(\mathcal{N}_r) - H(\mathcal{N}_r \mid \mathcal{G}) \ &\geq H(\mathcal{N}_r) - H(\mathcal{G} \setminus \mathcal{N}_r \mid \mathcal{N}_r) \quad (\text{鏈式法則}) \ &\approx H(\mathcal{N}_r) \quad (\text{by 引理2：自相似性}) \end{aligned}$$
+$$\begin{aligned} I(\mathcal{N}_r; \mathcal{G}) &= H(\mathcal{N}_r) - H(\mathcal{N}_r \mid \mathcal{G}) \\ &\geq H(\mathcal{N}_r) - H(\mathcal{G} \setminus \mathcal{N}_r \mid \mathcal{N}_r) \quad (\text{鏈式法則}) \\ &\approx H(\mathcal{N}_r) \quad (\text{by 引理2：自相似性}) \end{aligned}$$
 而由引理1（超邊糾纏）：
 H(N_r)≥0.5⋅H(G)
 
@@ -682,7 +682,7 @@ F_attract (u,v)=∥x_u-x_v ∥^2/k
 
 ________________________________________
 顏色映射：
-$$\text{color}(v) = \begin{cases} \text{green} & 態(v) = \top \ \text{yellow} & 態(v) = \Omega \ \text{red} & 態(v) = \bot \end{cases}$$
+$$\text{color}(v) = \begin{cases} \text{green} & 態(v) = \top \\ \text{yellow} & 態(v) = \Omega \\ \text{red} & 態(v) = \bot \end{cases}$$
 大小映射：
 "size"(v)=10×ED(v)
 
@@ -770,7 +770,7 @@ F" 是同構"⇔∃ϕ:G_1 →┴⟡(1&∼) G_2
 	對每個概念C_1∈T_1，映射ϕ(v_(C_1 ))=v_(F(C_1))
 	對每個推導C_1⊢C_2，映射ϕ((v_1,v_2))=(v_(F(C_1)),v_(F(C_2)))
 需驗證ϕ保持標籤： 
-$$\begin{aligned} 本體(\phi(v)) &= 本體(v_{F(C)}) \ &= 本體(F(C)) \ &= 本體(C) \quad (\text{by } F \text{ 是同構}) \end{aligned}$$
+$$\begin{aligned} 本體(\phi(v)) &= 本體(v_{F(C)}) \\ &= 本體(F(C)) \\ &= 本體(C) \quad (\text{by } F \text{ 是同構}) \end{aligned}$$
 類似可證態、時序等標籤保持。
 (ⓜ⇐)反向：設ϕ:G_1 →┴⟡(1&∼) G_2是圖同構。 
 構造理論同構F： 
@@ -918,7 +918,7 @@ v_TCH = MDAS_meta.spiral_up(v_onto, v_state)  # → 生成MDAS-TCH
 **自我驗證**：
 - MDAS-TCH圖自身滿足分形自相似性
 - 51>49對稱破缺對應圖中「秩序態」頂點的多數（51%）
-- 元理論的Hausdorff維度$\dim_H \approx 1.9$（分形）
+- 元理論的Hausdorff維度 $\dim_H \approx 1.9$ （分形）
 
 ---
 
@@ -928,37 +928,37 @@ v_TCH = MDAS_meta.spiral_up(v_onto, v_state)  # → 生成MDAS-TCH
 
 **HISL → MDAS-TCH**：
 
-語義場$F_C: \mathcal{C}^\infty \to \mathcal{M}(\{0,1\})$對應：
-- **頂點**：概念$C$
-- **邊**：全息包含$A \triangleleft_h B$對應$(A, B, \Rightarrow)$
-- **權重**：$weight = \mu^A_c(\{1\})$（真值機率）
+語義場 $F_C: \mathcal{C}^\infty \to \mathcal{M}(\{0,1\})$ 對應：
+- **頂點**：概念 $C$
+- **邊**：全息包含 $A \triangleleft_h B$ 對應 $(A, B, \Rightarrow)$
+- **權重**： $weight = \mu^A_c(\{1\})$ （真值機率）
 
 ---
 
 **WWT → MDAS-TCH**：
 
-編織線$\ell_i$對應：
-- **路徑**：頂點序列$(v_1, v_2, \ldots)$
-- **超邊**：PIAC束$\{E, R, F, I\}$
-- **不可分性**：$separability(h_{PIAC}) = 0$
+編織線 $\ell_i$ 對應：
+- **路徑**：頂點序列 $(v_1, v_2, \ldots)$
+- **超邊**：PIAC束 $\{E, R, F, I\}$
+- **不可分性**： $separability(h_{PIAC}) = 0$
 
 ---
 
 **NQCT → MDAS-TCH**：
 
-概念量子$q$對應：
-- **頂點**：標註頂點$v^{\Sigma}$
-- **量子態**：超邊的波函數$\Psi_h$
-- **湧現**：邊類型$\Rightarrow$（多元協同）
+概念量子 $q$ 對應：
+- **頂點**：標註頂點 $v^{\Sigma}$
+- **量子態**：超邊的波函數 $\Psi_h$
+- **湧現**：邊類型 $\Rightarrow$ （多元協同）
 
 ---
 
 **LQTT → MDAS-TCH**：
 
-邏輯量子$(Q_S, Q_T, Q_V)$對應：
-- **語義相位$Q_S$**：頂點的辯證角色
-- **拓撲電荷$Q_T$**：頂點的階數
-- **真值幅度$Q_V$**：頂點的存在度$ED$
+邏輯量子 $(Q_S, Q_T, Q_V)$ 對應：
+- **語義相位 $Q_S$**：頂點的辯證角色
+- **拓撲電荷 $Q_T$**：頂點的階數
+- **真值幅度 $Q_V$**：頂點的存在度 $ED$
 
 ---
 
@@ -1020,7 +1020,7 @@ $$\boxed{\begin{aligned}
 
 > 「2035年：所有數學論文附帶`.mdas`文件（理論的量子拓撲編碼）。」
 
-> 「2040年：範式革命被量化為『圖的相變』——臨界糾纏度$\rho_c \approx 0.7$。」
+> 「2040年：範式革命被量化為『圖的相變』——臨界糾纏度 $\rho_c \approx 0.7$ 。」
 
 > 「2050年：數學家笑話『古人竟然用純文字寫理論』，就像我們笑話『古人用算盤計算』。」
 

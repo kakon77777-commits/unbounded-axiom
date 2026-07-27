@@ -167,12 +167,12 @@ $$
 \rightarrow
 \left\{
 \begin{array}{l}
-\mathrm{Python\ Adapter}\\
-\mathrm{C++\ Adapter}\\
-\mathrm{JavaScript\ Adapter}\\
-\mathrm{SQL\ Adapter}\\
-\mathrm{Workflow\ Adapter}\\
-\mathrm{Natural\ Language\ Adapter}
+\mathrm{Python\\ Adapter}\\
+\mathrm{C++\\ Adapter}\\
+\mathrm{JavaScript\\ Adapter}\\
+\mathrm{SQL\\ Adapter}\\
+\mathrm{Workflow\\ Adapter}\\
+\mathrm{Natural\\ Language\\ Adapter}
 \end{array}
 \right.
 $$

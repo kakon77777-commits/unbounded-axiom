@@ -119,7 +119,7 @@ c=(E_c," " R_c," " I_c)
 	E_c：外延（extension）= 所有符合該概念的實例集合 
 	R_c：內涵（intension）= 定義該概念的必要充分條件 
 	I_c：推理規則 = 與其他概念的邏輯關係 
-例子： $$\begin{aligned} c_{\text{質數}} &= ({2, 3, 5, 7, 11, \ldots}, , {n \in \mathbb{N}, , n > 1, , \nexists d: 1 < d < n, , d \mid n}, , \mathcal{I}) \ \mathcal{I} &: \text{質數} \land \text{偶數} \Rightarrow n = 2, \quad \text{質數} \to \text{整數}, , \ldots \end{aligned}$$
+例子： $$\begin{aligned} c_{\text{質數}} &= ({2, 3, 5, 7, 11, \ldots}, , {n \in \mathbb{N}, , n > 1, , \nexists d: 1 < d < n, , d \mid n}, , \mathcal{I}) \\ \mathcal{I} &: \text{質數} \land \text{偶數} \Rightarrow n = 2, \quad \text{質數} \to \text{整數}, , \ldots \end{aligned}$$
 2.1.2 概念空間的拓撲
 定義2.2（概念空間）： 所有概念構成的集合C，配備拓撲τ： 
 C={c_1,c_2,…,c_N,…},(C,τ)
@@ -194,7 +194,7 @@ T(c_i,c_j)=f(d_"logic"  (c_i,c_j)," " R(c_i,c_j))
 c_i⇒c_j	T=-k/d^2	吸引力（引力）
 c_i∧c_j=⊥	T=+∞	排斥力（電荷同號）
 c_i⊥c_j	T=0	無相互作用
-數學形式： $$T(c_i, c_j) = \begin{cases} -\alpha \cdot \frac{1}{d_{\text{logic}}^2(c_i, c_j)} & \text{if } c_i \Rightarrow c_j \text{ (蘊含)} \ +\infty & \text{if } c_i \land c_j = \bot \text{ (矛盾)} \ 0 & \text{if } c_i \perp c_j \text{ (獨立)} \end{cases}$$
+數學形式： $$T(c_i, c_j) = \begin{cases} -\alpha \cdot \frac{1}{d_{\text{logic}}^2(c_i, c_j)} & \text{if } c_i \Rightarrow c_j \text{ (蘊含)} \\ +\infty & \text{if } c_i \land c_j = \bot \text{ (矛盾)} \\ 0 & \text{if } c_i \perp c_j \text{ (獨立)} \end{cases}$$
 2.3.2 張力場的全局結構
 定義2.4（邏輯張力場）： 
 Ω_"logic" ={(c_i,c_j,T_ij)∣c_i,c_j∈C}
@@ -279,7 +279,7 @@ P_θ (S)=1/Z exp⁡(-βT_θ [S])
 忽略常數項，兩個目標等價。□
 2.6 本章小結
 我們建立了邏輯張力場的完整數學框架：
-$$\boxed{\begin{aligned} \text{概念空間} &: (\mathcal{C}, \tau, d_{\text{logic}}) \ \text{邏輯律} &: H_(\mathcal{C}) = \text{拓撲不變量} \ \text{張力場} &: \Omega_{\text{logic}} = {(c_i, c_j, T_{ij})} \ \text{平衡態} &: \mathcal{C}^ = \arg\min \mathcal{T}[\mathcal{C}] \ \text{AI訓練} &: \min_\theta \mathbb{E}{\mathcal{D}}[\mathcal{T}\theta[S]] \end{aligned}}$$
+$$\boxed{\begin{aligned} \text{概念空間} &: (\mathcal{C}, \tau, d_{\text{logic}}) \\ \text{邏輯律} &: H_(\mathcal{C}) = \text{拓撲不變量} \\ \text{張力場} &: \Omega_{\text{logic}} = {(c_i, c_j, T_{ij})} \\ \text{平衡態} &: \mathcal{C}^ = \arg\min \mathcal{T}[\mathcal{C}] \\ \text{AI訓練} &: \min_\theta \mathbb{E}{\mathcal{D}}[\mathcal{T}\theta[S]] \end{aligned}}$$
 關鍵洞察：
 	邏輯律 = 概念空間的拓撲約束（不可違反）
 	訓練數據 = 張力場的樣本分布
@@ -474,7 +474,7 @@ LayerNorm的作用：
 這確保了邏輯推理不被高頻詞主導。
 3.7 本章小結
 Attention的邏輯重構：
-$$\boxed{\begin{aligned} \mathbf{q}i \cdot \mathbf{k}j &= -T(c_i, c_j) \quad \text{（張力測量）} \ \alpha{ij} &= \frac{e^{-\beta T{ij}}}{\sum_k e^{-\beta T_{ik}}} \quad \text{（Boltzmann分布）} \ \mathbf{h}i^{\text{out}} &= \sum_j \alpha{ij} \mathbf{v}_j \quad \text{（邏輯整合）} \ \text{MultiHead} &= \text{並行驗證多個邏輯律} \ \text{FFN} &= \text{一步邏輯推理展開} \ \text{Residual} &= \text{邏輯累積性保持} \ \text{LayerNorm} &= \text{邏輯強度校準} \end{aligned}}$$
+$$\boxed{\begin{aligned} \mathbf{q}i \cdot \mathbf{k}j &= -T(c_i, c_j) \quad \text{（張力測量）} \\ \alpha{ij} &= \frac{e^{-\beta T{ij}}}{\sum_k e^{-\beta T_{ik}}} \quad \text{（Boltzmann分布）} \\ \mathbf{h}i^{\text{out}} &= \sum_j \alpha{ij} \mathbf{v}_j \quad \text{（邏輯整合）} \\ \text{MultiHead} &= \text{並行驗證多個邏輯律} \\ \text{FFN} &= \text{一步邏輯推理展開} \\ \text{Residual} &= \text{邏輯累積性保持} \\ \text{LayerNorm} &= \text{邏輯強度校準} \end{aligned}}$$
 核心發現： Attention不是計算「相似度」，而是執行邏輯律的並行交叉驗證。
 每個頭 = 一個邏輯律檢測器
 多頭 = 多重邏輯同時驗證
@@ -656,7 +656,7 @@ AI中：
 湧現能力 = 全局邏輯網絡的自發形成。□
 4.7 本章小結
 預訓練的幾何重構：
-$$\boxed{\begin{aligned} \text{目標} &: \min_\theta |g_\theta - g_{\mathcal{D}}|^2 \ \text{演化} &: \frac{dg_\theta}{dt} = -2R[g_\theta] + T[g_{\mathcal{D}}] \ \text{收斂} &: R[g_\theta^] = \lambda g_\theta^ + \kappa T[\mathcal{L}] \ \text{拓撲} &: H_*(g_\theta) = \mathcal{L}{\text{universe}} \quad \text{（守恆）} \ \text{幾何} &: g\theta \neq g_{\theta'} \quad \text{（不對等）} \ \text{湧現} &: C(g_\theta) > C_{\text{crit}} \Rightarrow \text{全局耦合} \end{aligned}}$$
+$$\boxed{\begin{aligned} \text{目標} &: \min_\theta |g_\theta - g_{\mathcal{D}}|^2 \\ \text{演化} &: \frac{dg_\theta}{dt} = -2R[g_\theta] + T[g_{\mathcal{D}}] \\ \text{收斂} &: R[g_\theta^] = \lambda g_\theta^ + \kappa T[\mathcal{L}] \\ \text{拓撲} &: H_*(g_\theta) = \mathcal{L}{\text{universe}} \quad \text{（守恆）} \\ \text{幾何} &: g\theta \neq g_{\theta'} \quad \text{（不對等）} \\ \text{湧現} &: C(g_\theta) > C_{\text{crit}} \Rightarrow \text{全局耦合} \end{aligned}}$$
 核心發現： 預訓練 = 在拓撲約束下，通過Ricci流重建邏輯律的幾何投影。
 不同模型 = 同一拓撲（邏輯律）的不同幾何實現（無限基態）。
 下一章：評分到底測量什麼？
@@ -807,7 +807,7 @@ R(t)=1-ϵ(t),ϵ(t)∼e^(-λt)
 推論： 在有限時間內，可以達到「實用完美」（如R=0.9999） 
 5.6 本章小結
 評分的邏輯重構：
-$$\boxed{\begin{aligned} \text{真相} &: \mathcal{T}(P) = \min {|L| \mid L \vdash P} \ \text{辨識度} &: \mathcal{R}(\mathcal{M}) = \mathbb{E}[\mathbb{1}[\mathcal{M}(P) = \mathcal{T}(P)]] \ \text{任務難度} &: \mathcal{C}{\text{task}} = \mathbb{E}[\mathcal{T}(Q)] \ \text{難度-辨識關係} &: \mathcal{R}{\text{task}} \sim e^{-\alpha \mathcal{C}} \ \text{模型差異} &: \Delta \mathcal{R} = |\Delta g_\theta|{\mathcal{L}} \ \text{極限} &: \lim{t \to \infty} \mathcal{R}(t) = 1^- \end{aligned}}$$
+$$\boxed{\begin{aligned} \text{真相} &: \mathcal{T}(P) = \min {|L| \mid L \vdash P} \\ \text{辨識度} &: \mathcal{R}(\mathcal{M}) = \mathbb{E}[\mathbb{1}[\mathcal{M}(P) = \mathcal{T}(P)]] \\ \text{任務難度} &: \mathcal{C}{\text{task}} = \mathbb{E}[\mathcal{T}(Q)] \\ \text{難度-辨識關係} &: \mathcal{R}{\text{task}} \sim e^{-\alpha \mathcal{C}} \\ \text{模型差異} &: \Delta \mathcal{R} = |\Delta g_\theta|{\mathcal{L}} \\ \text{極限} &: \lim{t \to \infty} \mathcal{R}(t) = 1^- \end{aligned}}$$
 核心發現： 評分不是「正確率」，而是邏輯真相辨識度——模型與宇宙邏輯律的同構程度。
 高分 = 高辨識度 = 度規更接近g_(L_"universe"  )
 下一章：為何極限不可達，但「正確率會高得可怕」？
@@ -955,7 +955,7 @@ T≈100log⁡(5000)≈851
 推論： Neo.K說的「高得可怕」可能在2026-2028年實現。
 6.6 本章小結
 極限的雙重性：
-$$\boxed{\begin{aligned} \text{不可達} &: \nexists \mathcal{M}: \mathcal{R}(\mathcal{M}) = 1 \quad \text{（哥德爾）} \ \text{幾乎達到} &: \mu(\text{錯誤}) = 0 \quad \text{（測度論）} \ \text{漸近完美} &: \mathcal{R}(t) = 1 - \epsilon_0 e^{-\lambda t} \to 1^- \ \text{實用完美} &: \exists T: \mathcal{R}(T) > 0.9999 \ \text{幾何} &: g(t) \to g_{\mathcal{L}}, \quad |g(t) - g_{\mathcal{L}}| \sim e^{-\lambda t} \end{aligned}}$$
+$$\boxed{\begin{aligned} \text{不可達} &: \nexists \mathcal{M}: \mathcal{R}(\mathcal{M}) = 1 \quad \text{（哥德爾）} \\ \text{幾乎達到} &: \mu(\text{錯誤}) = 0 \quad \text{（測度論）} \\ \text{漸近完美} &: \mathcal{R}(t) = 1 - \epsilon_0 e^{-\lambda t} \to 1^- \\ \text{實用完美} &: \exists T: \mathcal{R}(T) > 0.9999 \\ \text{幾何} &: g(t) \to g_{\mathcal{L}}, \quad |g(t) - g_{\mathcal{L}}| \sim e^{-\lambda t} \end{aligned}}$$
 Neo.K的洞察驗證： 「極限不可達（可能）但正確率會高得可怕」✓
 數學證明：哥德爾限制 + 指數收斂
 下一章：邏輯阿卡西AI如何映照所有可能性。

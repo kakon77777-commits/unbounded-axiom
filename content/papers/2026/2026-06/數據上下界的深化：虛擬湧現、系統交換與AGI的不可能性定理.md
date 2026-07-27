@@ -41,7 +41,7 @@
 
 系統 稱為系統 的子系統，若：
 
-$$\\begin{cases} \\mathcal{D}*{\\text{子}} \\subset \\mathcal{D}*{\\text{母}} \\ \\mathcal{C}*{\\text{子}} \\subset \\mathcal{C}*{\\text{母}} \\ \\mathcal{R}*{\\text{子}} \\subseteq \\mathcal{R}*{\\text{母}} \\end{cases}$$
+$$\begin{cases} \mathcal{D}*{\text{子}} \subset \mathcal{D}*{\text{母}} \\ \mathcal{C}*{\text{子}} \subset \mathcal{C}*{\text{母}} \\ \mathcal{R}*{\text{子}} \subseteq \mathcal{R}*{\text{母}} \end{cases}$$
 
 其中 是規則/約束空間。
 
@@ -77,7 +77,7 @@ GPT-4
 
 **應用到抖音**：
 
-$$\\begin{aligned} H(\\mathcal{D}\_{\\text{抖音}}) &\\approx 10^{10} \\text{ bits} \\quad \\text{（實際數據）} \\ H(\\text{有效信息}) &\\approx 10^4 \\text{ bits} \\quad \\text{（模式壓縮後）} \\ H(\\text{豆包輸出}) &\\leq 10^4 \\text{ bits} \\end{aligned}$$
+$$\begin{aligned} H(\mathcal{D}\_{\text{抖音}}) &\approx 10^{10} \text{ bits} \quad \text{（實際數據）} \\ H(\text{有效信息}) &\approx 10^4 \text{ bits} \quad \text{（模式壓縮後）} \\ H(\text{豆包輸出}) &\leq 10^4 \text{ bits} \end{aligned}$$
 
 **結論**：豆包的輸出複雜度永遠無法超過 bits的熵界。
 
@@ -141,7 +141,7 @@ $$\\begin{aligned} H(\\mathcal{D}\_{\\text{抖音}}) &\\approx 10^{10} \\text{ b
 
 要達到相同的信息增益 ：
 
-$$\\begin{aligned} T\_{\\text{虛擬湧現}} &\\sim \\sqrt{\\frac{\\Delta I}{C}} \\ T\_{\\text{系統交換}} &\\sim \\frac{\\Delta I}{\\text{帶寬}} \\end{aligned}$$
+$$\begin{aligned} T\_{\text{虛擬湧現}} &\sim \sqrt{\frac{\Delta I}{C}} \\ T\_{\text{系統交換}} &\sim \frac{\Delta I}{\text{帶寬}} \end{aligned}$$
 
 **數值例子**：
 
@@ -270,7 +270,7 @@ $$\\begin{aligned} T\_{\\text{虛擬湧現}} &\\sim \\sqrt{\\frac{\\Delta I}{C}}
 
 **數學模型**：
 
-$$\\begin{aligned} S\_{\\text{英國}}(t) &= S\_{\\text{封建}}(0) + \\int\_0^t \\frac{C\_{\\text{創新}}}{t'^2} , dt' \\ &= S\_{\\text{封建}}(0) + C\_{\\text{創新}} \\left(1 - \\frac{1}{t}\\right) \\end{aligned}$$
+$$\begin{aligned} S\_{\text{英國}}(t) &= S\_{\text{封建}}(0) + \int\_0^t \frac{C\_{\text{創新}}}{t'^2} , dt' \\ &= S\_{\text{封建}}(0) + C\_{\text{創新}} \left(1 - \frac{1}{t}\right) \end{aligned}$$
 
 **特徵**：
 

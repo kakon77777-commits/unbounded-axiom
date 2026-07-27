@@ -22,7 +22,7 @@
 
 **命題一（無限遞歸自相似）**：真實的宏中微因果結構在每個尺度都具有和整體相同的形式——宏觀系統的內部包含自己的宏中微分層，無限遞歸，無自然截止。
 
-**命題二（無限維的可處理性）**：儘管遞歸是無限的，在分形衰減條件 $\lambda \in (0,1)$ 下，對任意精度 $\varepsilon$ 存在有效截斷深度 $k_\text{eff}$，使推斷問題退化為有限維問題。無限維不等於不可計算。
+**命題二（無限維的可處理性）**：儘管遞歸是無限的，在分形衰減條件 $\lambda \in (0,1)$ 下，對任意精度 $\varepsilon$ 存在有效截斷深度 $k_\text{eff}$ ，使推斷問題退化為有限維問題。無限維不等於不可計算。
 
 **命題三（跨尺度推斷不確定性下界）**：從尺度 $L_i$ 的觀測推斷尺度 $L_j$ 的因果結構，其後驗不確定性以 $\lambda^{-d(L_i, L_j)}$ 速率增長。尺度距離是根本的認識論障礙。
 
@@ -44,9 +44,9 @@ IRCI 的任務是：在不回避這個無限性的前提下，仍然給出可操
 
 FDCS 的無限語境態 $C^\infty$ 已是無限維的，但 IRCI 的「無限維」指的是更具體的東西：
 
-**時間尺度的無限維**：現實中的因果動態同時在量子時間尺度（飛秒，$10^{-15}$ 秒）、化學反應時間尺度（皮秒到毫秒）、神經認知時間尺度（毫秒到秒）、社會動態時間尺度（小時到年）等等多個時間尺度上運作。每個時間尺度對應一個「維度」，其整體構成無限維的時間-因果相空間。
+**時間尺度的無限維**：現實中的因果動態同時在量子時間尺度（飛秒， $10^{-15}$ 秒）、化學反應時間尺度（皮秒到毫秒）、神經認知時間尺度（毫秒到秒）、社會動態時間尺度（小時到年）等等多個時間尺度上運作。每個時間尺度對應一個「維度」，其整體構成無限維的時間-因果相空間。
 
-**層級路徑的無限維**：FDCS 的層級路徑 $L \in \{M, E, I\}^k$ 中 $k$ 是有限的。IRCI 讓 $k \to \infty$，使路徑空間成為無限乘積空間 $\{M, E, I\}^\infty$。在這個空間中，任何有限深度路徑都只是一個截面。
+**層級路徑的無限維**：FDCS 的層級路徑 $L \in \{M, E, I\}^k$ 中 $k$ 是有限的。IRCI 讓 $k \to \infty$ ，使路徑空間成為無限乘積空間 $\{M, E, I\}^\infty$ 。在這個空間中，任何有限深度路徑都只是一個截面。
 
 **意義**：「無限維」不是說推斷問題是無限難的——而是說真實的因果結構活在無限維空間中，我們的推斷始終是這個無限維現實的有限維投影。清楚地看到這一點，才能清楚地知道我們的推斷在什麼意義上是近似的。
 
@@ -63,11 +63,11 @@ FDCS 的無限語境態 $C^\infty$ 已是無限維的，但 IRCI 的「無限維
 $$\mathcal{S} = (\mathcal{S}_M, \mathcal{S}_E, \mathcal{S}_I, \Phi, \mathcal{W})$$
 
 其中：
-- $\mathcal{S}_M$、$\mathcal{S}_E$、$\mathcal{S}_I$ 分別是宏觀、中觀、微觀子系統，每個本身也是一個 IRCS（遞歸定義）
+- $\mathcal{S}_M$ 、 $\mathcal{S}_E$ 、 $\mathcal{S}_I$ 分別是宏觀、中觀、微觀子系統，每個本身也是一個 IRCS（遞歸定義）
 - $\Phi: \mathcal{S}_M \times \mathcal{S}_E \times \mathcal{S}_I \to \mathcal{S}$ 是跨子系統耦合算子
 - $\mathcal{W}$ 是跨尺度因果權重核（Causal Weight Kernel）
 
-**自相似條件**：對任意層級路徑 $L$，以 $L$ 為根的子系統 $\mathcal{S}_L$ 與整體 $\mathcal{S}$ 在結構上同構（在 $\Phi$ 的意義下）：
+**自相似條件**：對任意層級路徑 $L$ ，以 $L$ 為根的子系統 $\mathcal{S}_L$ 與整體 $\mathcal{S}$ 在結構上同構（在 $\Phi$ 的意義下）：
 
 $$\mathcal{S}_L \cong_\Phi \mathcal{S}$$
 
@@ -87,7 +87,7 @@ $$\mathcal{L}^\infty = \{M, E, I\}^\mathbb{N} \cup \bigcup_{k=0}^\infty \{M, E, 
 
 $$d(L_1, L_2) = \text{depth}(\text{LCA}(L_1, L_2)) + |k_1 - d_\text{LCA}| + |k_2 - d_\text{LCA}|$$
 
-當路徑之一為無限路徑時，距離可能為 $+\infty$——這反映了從有限尺度對無限深度路徑進行推斷的根本困難。
+當路徑之一為無限路徑時，距離可能為 $+\infty$ ——這反映了從有限尺度對無限深度路徑進行推斷的根本困難。
 
 ### 2.3 IRCS 的遞歸函數方程
 
@@ -97,11 +97,11 @@ $$\frac{dx_i^{(L)}}{dt} = F_i^{(L)}\left(x_i^{(L)}, t, c\right) + \sum_{L' \in \
 
 其中求和遍歷 $L$ 的所有祖先尺度和後代尺度——不只是相鄰層級，而是整個無限層級樹上的所有節點。分形衰減律確保遠距離節點的貢獻趨近於零，使求和收斂。
 
-**收斂性條件**：若 FDCS 的分形衰減律成立（$\lambda \in (0,1)$），則上述無限求和絕對收斂：
+**收斂性條件**：若 FDCS 的分形衰減律成立（ $\lambda \in (0,1)$ ），則上述無限求和絕對收斂：
 
 $$\sum_{L' \in \mathcal{L}^\infty} |\mathcal{W}(L, L', t, c)| \leq W_0 \sum_{k=0}^\infty 3^k \lambda^k = \frac{W_0}{1 - 3\lambda}$$
 
-收斂要求 $\lambda < 1/3$。若 $\lambda \geq 1/3$，需要更精細的路徑計數（考慮路徑的樹狀結構而非簡單的指數計數），實際上因果路徑不均勻地分布在不同方向，有效的收斂條件更寬鬆。
+收斂要求 $\lambda < 1/3$ 。若 $\lambda \geq 1/3$ ，需要更精細的路徑計數（考慮路徑的樹狀結構而非簡單的指數計數），實際上因果路徑不均勻地分布在不同方向，有效的收斂條件更寬鬆。
 
 ---
 
@@ -112,7 +112,7 @@ $$\sum_{L' \in \mathcal{L}^\infty} |\mathcal{W}(L, L', t, c)| \leq W_0 \sum_{k=0
 **定義3（跨尺度因果推斷問題，CSCI）**
 
 給定：
-- 觀測集合 $\mathcal{O} = \{(e_\alpha^{(L_\alpha)}, x_\alpha, t_\alpha)\}_{\alpha=1}^{N}$：在尺度 $L_\alpha$ 上對元素 $e_\alpha$ 在時刻 $t_\alpha$ 的觀測值 $x_\alpha$
+- 觀測集合 $\mathcal{O} = \{(e_\alpha^{(L_\alpha)}, x_\alpha, t_\alpha)\}_{\alpha=1}^{N}$ ：在尺度 $L_\alpha$ 上對元素 $e_\alpha$ 在時刻 $t_\alpha$ 的觀測值 $x_\alpha$
 - 查詢：尺度 $L_q$ 上，節點對 $(e_j^{(L_q)}, e_k^{(L_q)})$ 在時刻 $t_q$ 的因果權重 $\mathcal{W}(e_j^{(L_q)}, e_k^{(L_q)}, t_q, c)$
 
 目標：計算後驗分布：
@@ -137,7 +137,7 @@ $$\mathcal{K}(L_q, L_o) = \mathbb{E}\left[\frac{\partial \mathcal{W}^{(L_q)}}{\p
 
 $$\|\mathcal{K}(L_q, L_o)\| \leq K_0 \cdot \lambda^{d(L_q, L_o)}$$
 
-其中 $K_0$ 是與具體尺度路徑無關的常數，$d(L_q, L_o)$ 是層級距離。
+其中 $K_0$ 是與具體尺度路徑無關的常數， $d(L_q, L_o)$ 是層級距離。
 
 **意義**：推斷核的強度以指數速率隨尺度距離衰減。距查詢尺度越遠的觀測，對推斷的貢獻越小。這是因果推斷版本的 Nyquist 採樣定理——你不需要無限多個尺度的觀測，只需要在查詢尺度附近足夠密度的觀測。
 
@@ -145,7 +145,7 @@ $$\|\mathcal{K}(L_q, L_o)\| \leq K_0 \cdot \lambda^{d(L_q, L_o)}$$
 
 **定義5（有效觀測鄰域）**
 
-對精度要求 $\varepsilon$ 和查詢尺度 $L_q$，定義有效觀測鄰域：
+對精度要求 $\varepsilon$ 和查詢尺度 $L_q$ ，定義有效觀測鄰域：
 
 $$\mathcal{N}_\varepsilon(L_q) = \{L_o \in \mathcal{L}^\infty : \|\mathcal{K}(L_q, L_o)\| \geq \varepsilon \cdot K_0\}$$
 
@@ -153,9 +153,9 @@ $$\mathcal{N}_\varepsilon(L_q) = \{L_o \in \mathcal{L}^\infty : \|\mathcal{K}(L_
 
 $$\mathcal{N}_\varepsilon(L_q) = \{L_o : d(L_q, L_o) \leq k_\varepsilon\}$$
 
-其中 $k_\varepsilon = \log \varepsilon / \log \lambda$——恰好等於 FDCS 的有效分形深度。
+其中 $k_\varepsilon = \log \varepsilon / \log \lambda$ ——恰好等於 FDCS 的有效分形深度。
 
-**推論（CSCI 的有限維退化）**：對任意精度 $\varepsilon > 0$，跨尺度因果推斷問題退化為：只需考慮 $\mathcal{N}_\varepsilon(L_q)$ 內的觀測，此集合為有限集（因為有限深度的層級樹是有限的）。
+**推論（CSCI 的有限維退化）**：對任意精度 $\varepsilon > 0$ ，跨尺度因果推斷問題退化為：只需考慮 $\mathcal{N}_\varepsilon(L_q)$ 內的觀測，此集合為有限集（因為有限深度的層級樹是有限的）。
 
 **這是 IRCI 的可處理性定理**：無限遞歸的系統，在有限精度的推斷目標下，有限維觀測就足夠了。
 
@@ -181,7 +181,7 @@ $$H\!\left[\mathcal{W}^{(L_q)} \mid \mathcal{O}^{(L_o)}\right] \geq H_\text{min}
 
 （一）IRCS 的自相似性條件（定義1）
 
-（二）FDCS 的因果傳遞性（非嚴格）：$W_t^\text{間接}(e_i, e_k, c) \geq W_t(e_i, e_j, c) \cdot W_t(e_j, e_k, c)$
+（二）FDCS 的因果傳遞性（非嚴格）： $W_t^\text{間接}(e_i, e_k, c) \geq W_t(e_i, e_j, c) \cdot W_t(e_j, e_k, c)$
 
 （三）觀測無法穿透尺度邊界：從 $L_o$ 的觀測無法獲得 $L_q$ 上的細節，除非通過 $d(L_o, L_q)$ 次因果傳遞
 
@@ -189,7 +189,7 @@ $$H\!\left[\mathcal{W}^{(L_q)} \mid \mathcal{O}^{(L_o)}\right] \geq H_\text{min}
 
 ### 4.2 方向不對稱性的推斷後果
 
-FDCS 中 $\lambda_\downarrow > \lambda_\uparrow$（向下因果比向上因果強）在推斷中產生不對稱性：
+FDCS 中 $\lambda_\downarrow > \lambda_\uparrow$ （向下因果比向上因果強）在推斷中產生不對稱性：
 
 從宏觀觀測推斷微觀因果：
 $$H\!\left[\mathcal{W}^{(L_\text{micro})} \mid \mathcal{O}^{(L_\text{macro})}\right] \geq H_\text{min} \cdot \lambda_\uparrow^{-d}$$
@@ -197,7 +197,7 @@ $$H\!\left[\mathcal{W}^{(L_\text{micro})} \mid \mathcal{O}^{(L_\text{macro})}\ri
 從微觀觀測推斷宏觀因果：
 $$H\!\left[\mathcal{W}^{(L_\text{macro})} \mid \mathcal{O}^{(L_\text{micro})}\right] \geq H_\text{min} \cdot \lambda_\downarrow^{-d}$$
 
-由於 $\lambda_\uparrow < \lambda_\downarrow$，有 $\lambda_\uparrow^{-d} > \lambda_\downarrow^{-d}$，意味著：**從宏觀推斷微觀比從微觀推斷宏觀更不確定**。
+由於 $\lambda_\uparrow < \lambda_\downarrow$ ，有 $\lambda_\uparrow^{-d} > \lambda_\downarrow^{-d}$ ，意味著：**從宏觀推斷微觀比從微觀推斷宏觀更不確定**。
 
 直觀解釋：宏觀現象對微觀細節進行了大量壓縮，大部分微觀細節在宏觀觀測中消失了；但微觀現象在受宏觀約束時，宏觀信息相對較少流失。這與熱力學中的宏觀-微觀不可逆性一致。
 
@@ -211,7 +211,7 @@ IRCI 的實際計算通過以下層次逼近方案進行：
 
 **定義7（深度-$k$ 截斷系統）**
 
-對 IRCS $\mathcal{S}$，深度-$k$ 截斷系統 $\mathcal{S}^{(k)}$ 是保留所有深度 $\leq k$ 的路徑，截斷更深層路徑的有限近似：
+對 IRCS $\mathcal{S}$ ，深度-$k$ 截斷系統 $ \mathcal{S}^{(k)}$ 是保留所有深度 $\leq k$ 的路徑，截斷更深層路徑的有限近似：
 
 $$\mathcal{S}^{(k)} = \mathcal{S} \Big|_{\{L \in \mathcal{L}^\infty : |L| \leq k\}}$$
 
@@ -221,7 +221,7 @@ $$\mathcal{S}^{(k)} = \mathcal{S} \Big|_{\{L \in \mathcal{L}^\infty : |L| \leq k
 
 $$\left\|\mathcal{W}_\text{真實}^{(L_q)} - \mathcal{W}_{\mathcal{S}^{(k)}}^{(L_q)}\right\| \leq C \cdot \lambda^k$$
 
-其中 $C$ 是與 $k$ 無關的常數。選取 $k = k_\text{eff} = \log\varepsilon / \log\lambda$，誤差小於 $\varepsilon$。
+其中 $C$ 是與 $k$ 無關的常數。選取 $k = k_\text{eff} = \log\varepsilon / \log\lambda$ ，誤差小於 $\varepsilon$ 。
 
 **意義**：IRCI 雖然定義在無限遞歸系統上，但計算總是通過有限截斷進行，且截斷誤差有顯式上界。這使 IRCI 既是本體論上誠實的（承認無限），又是認識論上可操作的（截斷到有限）。
 
@@ -231,7 +231,7 @@ $$\left\|\mathcal{W}_\text{真實}^{(L_q)} - \mathcal{W}_{\mathcal{S}^{(k)}}^{(L
 
 **定理4（尺度分離定理）**
 
-若宏觀動態的時間尺度 $\tau_M$ 和微觀動態的時間尺度 $\tau_I$ 相差足夠大（$\tau_M \gg \tau_I$），則：
+若宏觀動態的時間尺度 $\tau_M$ 和微觀動態的時間尺度 $\tau_I$ 相差足夠大（ $\tau_M \gg \tau_I$ ），則：
 
 在時間窗口 $[t, t + \tau_M]$ 內，微觀系統已達到多次準穩態，宏觀系統的有效演化由微觀快動態的時間平均決定：
 
@@ -251,11 +251,11 @@ $$\frac{dx_i^{(M)}}{dt} \approx \bar{F}_i^{(M)}\!\left(\bar{x}^{(I)}, t\right) +
 
 **定義8（架構的跨尺度因果保真度，CSCF）**
 
-對 AI 架構 $\mathcal{A}$ 和 IRCS $\mathcal{S}$，定義跨尺度因果保真度：
+對 AI 架構 $\mathcal{A}$ 和 IRCS $\mathcal{S}$ ，定義跨尺度因果保真度：
 
 $$\text{CSCF}(\mathcal{A}, \mathcal{S}) = 1 - \frac{1}{|\mathcal{Q}|}\sum_{(L_q, L_o) \in \mathcal{Q}} \frac{H\!\left[\mathcal{W}^{(L_q)} \mid \mathcal{O}^{(L_o)}_\mathcal{A}\right] - H\!\left[\mathcal{W}^{(L_q)} \mid \mathcal{O}^{(L_o)}_\text{真實}\right]}{H_\text{min} \cdot \lambda^{-d(L_q, L_o)}}$$
 
-直觀含義：$\text{CSCF}$ 衡量架構 $\mathcal{A}$ 的跨尺度信息傳遞，相對於真實 IRCS 損失了多少跨尺度因果信息。$\text{CSCF} = 1$ 意味著完美保真，$\text{CSCF} = 0$ 意味著跨尺度因果信息完全丟失。
+直觀含義： $\text{CSCF}$ 衡量架構 $\mathcal{A}$ 的跨尺度信息傳遞，相對於真實 IRCS 損失了多少跨尺度因果信息。 $\text{CSCF} = 1$ 意味著完美保真， $\text{CSCF} = 0$ 意味著跨尺度因果信息完全丟失。
 
 ### 6.2 現有架構的 CSCF 評估
 
@@ -285,7 +285,7 @@ $$\|\mathcal{K}_\mathcal{A}(l_1, l_2)\| \sim \lambda^{d(L_{l_1}, L_{l_2})}$$
 
 （三）**雙向性**：架構的跨層連接允許雙向（向上和向下）信息流動，且方向不對稱性與 $\lambda_\downarrow > \lambda_\uparrow$ 一致
 
-**推論**：純前向（feedforward）架構永遠無法達到最優 CSCF，因為它缺乏向上的因果信息流——宏觀對微觀的因果影響（$\lambda_\downarrow$ 方向）無法在純前向架構中表示。這為循環連接和殘差連接的架構設計提供了 IRCI 理論支持。
+**推論**：純前向（feedforward）架構永遠無法達到最優 CSCF，因為它缺乏向上的因果信息流——宏觀對微觀的因果影響（ $\lambda_\downarrow$ 方向）無法在純前向架構中表示。這為循環連接和殘差連接的架構設計提供了 IRCI 理論支持。
 
 ---
 
@@ -295,7 +295,7 @@ DEWMA（EML-EWM-2026-v0.1）提出的設計哲學——黑盒連接層讓因果�
 
 **DEWMA 黑盒連接層的 IRCI 重新定義**
 
-CL 的真實任務是近似跨尺度推斷核 $\mathcal{K}(L_\text{EAL}, L_\text{GWL})$。這個核由 IRCS 的真實因果結構決定，不能由設計者預先規定（因為設計者不知道真實的跨尺度因果結構）。
+CL 的真實任務是近似跨尺度推斷核 $\mathcal{K}(L_\text{EAL}, L_\text{GWL})$ 。這個核由 IRCS 的真實因果結構決定，不能由設計者預先規定（因為設計者不知道真實的跨尺度因果結構）。
 
 DEWMA 選擇用三體聯合訓練讓 CL 自發學習這個核——這在 IRCI 框架下有了更清晰的理論語言：聯合訓練的梯度信號，在 IRCI 的意義下，是對跨尺度推斷核的蒙特卡洛近似。多頭並行結構讓 CL 能夠同時近似多個不同路徑對 $(L_o, L_q)$ 的推斷核，這對應於 IRCI 的有效觀測鄰域覆蓋。
 
@@ -309,7 +309,7 @@ DEWMA 的 real-to-sim 反向校準，在 IRCI 框架下是：用真實世界（�
 
 | 概念 | FDCS | IRCI |
 |---|---|---|
-| 層級深度 | 有限，截斷於 $k_\text{eff}$ | 無限，$k \to \infty$，可按需截斷 |
+| 層級深度 | 有限，截斷於 $k_\text{eff}$ | 無限， $k \to \infty$ ，可按需截斷 |
 | 自相似性 | 隱含（分形衰減律） | 顯式（遞歸函數方程） |
 | 推斷問題 | 未形式化 | 定義3：CSCI 問題 |
 | 觀測-查詢距離 | 分形衰減律描述 | 定理2：不確定性下界 |

@@ -101,7 +101,7 @@ O = Origin （起源）
 -   數學意義：「約等於」（逼近但不等於）
 -   動態感：波動、振盪、永不停歇
 
-$$\\boxed{\\begin{aligned} \\text{O} \\to \\Omega &\\quad \\text{（錯：暗示直達）} \\ \\text{O} \\rightsquigarrow \\Omega &\\quad \\text{（對但複雜）} \\ \\text{O} \\sim \\Omega &\\quad \\text{（最優：簡潔+動態+逼近）} \\end{aligned}}$$
+$$\boxed{\begin{aligned} \text{O} \to \Omega &\quad \text{（錯：暗示直達）} \\ \text{O} \rightsquigarrow \Omega &\quad \text{（對但複雜）} \\ \text{O} \sim \Omega &\quad \text{（最優：簡潔+動態+逼近）} \end{aligned}}$$
 
 **為何是Ω而非∞？**
 

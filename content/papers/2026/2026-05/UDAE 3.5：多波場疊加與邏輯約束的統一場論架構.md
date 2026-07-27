@@ -99,7 +99,7 @@ UDAE 3.5基於以下三個基本主張：
 
 判據由動態曲率κ(t)與LCQP-7S向量共同決定：
 
-$$\text{Mode} = \begin{cases} \text{Convergence} & \text{if } \frac{d\kappa}{dt} < \epsilon \land L_t > \tau_L \ \text{Superposition} & \text{otherwise} \end{cases}$$
+$$\text{Mode} = \begin{cases} \text{Convergence} & \text{if } \frac{d\kappa}{dt} < \epsilon \land L_t > \tau_L \\ \text{Superposition} & \text{otherwise} \end{cases}$$
 
 這種雙模態輸出不是工程上的後處理，而是**場論的自然結果**：當系統的張力場達到穩定吸引子，自然收斂；當系統處於多吸引子盆地，自然保持疊加。
 
@@ -131,7 +131,7 @@ $$\mathbf{T}^{(i)} = \begin{bmatrix} v^{(i)}_{\text{semantic}} \ v^{(i)}_{\text{
 
 其中<![if !msEquation]>  <![endif]>根據時間模態選擇：
 
-$$F_{\text{mode}}^{(i)} = \begin{cases} \nabla^2 \mathbf{T}^{(i)} & \text{Mode I: 連續擴散} \ G(\mathbf{T}^{(i)}_t) - \mathbf{T}^{(i)}_t & \text{Mode II: 離散映射} \ \mu dt + \sigma dW_t & \text{Mode III: 隨機遊走} \ \sum_k \alpha_k |\psi_k\rangle & \text{Mode IV: 疊加態} \ \mathbf{T}^{(i)}(t+P) & \text{Mode V: 循環（週期P）} \end{cases}$$
+$$F_{\text{mode}}^{(i)} = \begin{cases} \nabla^2 \mathbf{T}^{(i)} & \text{Mode I: 連續擴散} \\ G(\mathbf{T}^{(i)}_t) - \mathbf{T}^{(i)}_t & \text{Mode II: 離散映射} \\ \mu dt + \sigma dW_t & \text{Mode III: 隨機遊走} \\ \sum_k \alpha_k |\psi_k\rangle & \text{Mode IV: 疊加態} \\ \mathbf{T}^{(i)}(t+P) & \text{Mode V: 循環（週期P）} \end{cases}$$
 
 **核心創新**：不同波場可以運行在不同的時間「頻率」。語義波場使用慢速連續模態（適合整合長期語境），句法波場使用快速離散模態（適合逐詞解析），情感波場使用循環模態（模擬心跳節律）。
 
@@ -262,7 +262,7 @@ $$\mathbf{W}(t) = \begin{bmatrix} 0 & W_{12}(t) & W_{13}(t) & \cdots & W_{1n}(t)
 
 在計算<![if !msEquation]>  <![endif]>前，先檢查邏輯兼容性：
 
-$$W_{ij}(t) = \begin{cases} 0 & \text{if } S_{\text{exc}}^{(ij)} > \tau_{\text{exc}} \ \tilde{W}_{ij}(t) & \text{otherwise} \end{cases}$$
+$$W_{ij}(t) = \begin{cases} 0 & \text{if } S_{\text{exc}}^{(ij)} > \tau_{\text{exc}} \\ \tilde{W}_{ij}(t) & \text{otherwise} \end{cases}$$
 
 其中排除性得分：
 
@@ -378,7 +378,7 @@ $$W_{ij}(t) = \begin{cases} 0 & \text{if } S_{\text{exc}}^{(ij)} > \tau_{\text{e
 
 **收斂判據**（三重檢查）：
 
-$$\text{Converged} = \begin{cases} \text{True} & \text{if } \begin{cases} \text{std}(\kappa_{t-2}, \kappa_{t-1}, \kappa_t) < 0.1 & \text{(曲率穩定)} \ L_t > 0.6 & \text{(邏輯凝聚)} \ C_t > 0.5 & \text{(因果正確)} \ P_t^{\text{proc}} > 0.7 & \text{(目標導向)} \end{cases} \ \text{False} & \text{otherwise} \end{cases}$$
+$$\text{Converged} = \begin{cases} \text{True} & \text{if } \begin{cases} \text{std}(\kappa_{t-2}, \kappa_{t-1}, \kappa_t) < 0.1 & \text{(曲率穩定)} \\ L_t > 0.6 & \text{(邏輯凝聚)} \\ C_t > 0.5 & \text{(因果正確)} \\ P_t^{\text{proc}} > 0.7 & \text{(目標導向)} \end{cases} \ \text{False} & \text{otherwise} \end{cases}$$
 
 **4.3** **輸出的兩種模式**
 

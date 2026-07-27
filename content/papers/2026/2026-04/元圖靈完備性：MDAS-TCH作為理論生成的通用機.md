@@ -569,7 +569,7 @@ MDAS-TCH捕捉的是這個**深層結構**。
 
 **數學刻畫**：
 
-$$\text{Emergence}(v) := \begin{cases} 1 & \text{if } H(v \mid \mathcal{G}_n) > \tau_{\text{新穎}} \ & \land \text{Coherence}(v, \mathcal{G}_n) > \tau_{\text{統一}} \ 0 & \text{otherwise} \end{cases}$$
+$$\text{Emergence}(v) := \begin{cases} 1 & \text{if } H(v \mid \mathcal{G}_n) > \tau_{\text{新穎}} \\ & \land \text{Coherence}(v, \mathcal{G}_n) > \tau_{\text{統一}} \\ 0 & \text{otherwise} \end{cases}$$
 
 其中：
 
@@ -1264,17 +1264,17 @@ return '→'  # 默認
 
 **定理5.1（ATGA收斂定理）**
 
-若知識庫$\mathcal{K}$有界（有限概念空間），則ATGA在有限步內收斂。
+若知識庫 $\mathcal{K}$ 有界（有限概念空間），則ATGA在有限步內收斂。
 
 **證明**：
 
-設概念空間$|\mathcal{C}| = N < \infty$。
+設概念空間 $|\mathcal{C}| = N < \infty$ 。
 
 每次迭代：
 
-- 湧現新概念數$\leq M$（由湧現算符限制）
+- 湧現新概念數 $\leq M$ （由湧現算符限制）
 
-- 總概念數$\leq N + nM$（$n$步後）
+- 總概念數 $\leq N + nM$ （ $n$ 步後）
 
 當所有可能湧現的概念都已生成：
 
@@ -1284,11 +1284,11 @@ $$\mathcal{G}_{n+1} = \mathcal{G}_n$$
 
 **時間複雜度**：
 
-- 每步湧現算符：$O(|V|^3)$（檢查所有三元組）
+- 每步湧現算符： $O(|V|^3)$ （檢查所有三元組）
 
-- 收斂步數：$O(\log N)$（經驗）
+- 收斂步數： $O(\log N)$ （經驗）
 
-總複雜度：$O(N^3 \log N)$。□
+總複雜度： $O(N^3 \log N)$ 。□
 
 ---
 
@@ -1300,7 +1300,7 @@ $$\mathcal{G}_{n+1} = \mathcal{G}_n$$
 
 - 知識庫：100篇物理論文（量子力學、廣義相對論、弦論、圈量子引力）
 
-- 種子概念：{量子態、時空、引力、普朗克常數$\hbar$、光速$c$}
+- 種子概念：{量子態、時空、引力、普朗克常數 $\hbar$ 、光速 $c$}
 
 **目標**：
 
@@ -1330,7 +1330,7 @@ AI自動生成量子引力候選理論
 
 | 範式數 | 3（量子、經典、弦） |
 
-| 糾纏密度$\rho$ | 0.41 |
+| 糾纏密度 $\rho$ | 0.41 |
 
 **診斷**：糾纏密度低於臨界值（0.7），系統碎片化。
 
@@ -1459,7 +1459,7 @@ content: """
 
 $$v_g(f) = c \left(1 - \alpha \frac{f^2}{f_P^2}\right), \quad \alpha \approx 0.01$$
 
-**可測性**：LIGO靈敏度提升$10^4$倍可驗證（2035年？）
+**可測性**：LIGO靈敏度提升 $10^4$ 倍可驗證（2035年？）
 
 ---
 
@@ -1515,7 +1515,7 @@ $$\langle \rho_{\text{vac}}^2 \rangle - \langle \rho_{\text{vac}} \rangle^2 \sim
 
 **評審3（實驗物理學家）**：
 
-> 「引力波色散預測具體且可驗證。若LIGO升級後觀測到$\alpha \neq 0$，這將是革命性發現。推薦發表。」
+> 「引力波色散預測具體且可驗證。若LIGO升級後觀測到 $\alpha \neq 0$ ，這將是革命性發現。推薦發表。」
 
 **決定**：接受發表（需補充數學細節）
 
@@ -1527,7 +1527,7 @@ $$\langle \rho_{\text{vac}}^2 \rangle - \langle \rho_{\text{vac}} \rangle^2 \sim
 
 **定義7.1（理論奇點, Theory Singularity）**
 
-理論奇點$T_s$是時刻，使得：
+理論奇點 $T_s$ 是時刻，使得：
 
 $$\text{AI理論生成速度} > \text{人類理論創造速度}$$
 
@@ -1535,7 +1535,7 @@ $$\text{AI理論生成速度} > \text{人類理論創造速度}$$
 
 $$T_s := \inf \left\{ t: \frac{dN_{\text{AI}}}{dt}\bigg|_t > \frac{dN_{\text{human}}}{dt}\bigg|_t \right\}$$
 
-其中$N(t)$是累積理論數量。
+其中 $N(t)$ 是累積理論數量。
 
 ---
 
@@ -1559,7 +1559,7 @@ $$T_s := \inf \left\{ t: \frac{dN_{\text{AI}}}{dt}\bigg|_t > \frac{dN_{\text{hum
 
 $$\frac{dN_{\text{human}}}{dt} \approx 0.07 e^{0.01t} \quad (t \text{ in years since 1600})$$
 
-當前（2026）：$\approx 1.5$理論/年
+當前（2026）： $\approx 1.5$ 理論/年
 
 ---
 
@@ -1571,15 +1571,15 @@ $$\frac{dN_{\text{AI}}}{dt} = \eta \cdot C(t) \cdot E$$
 
 其中：
 
-- $\eta$：效率係數（ATGA優化程度）
+- $\eta$ ：效率係數（ATGA優化程度）
 
-- $C(t)$：AI算力（FLOPS）
+- $C(t)$ ：AI算力（FLOPS）
 
-- $E$：知識庫大小（論文數）
+- $E$ ：知識庫大小（論文數）
 
-**Moore定律**：$C(t) = C_0 \cdot 2^{t/1.5}$（每1.5年翻倍）
+**Moore定律**： $C(t) = C_0 \cdot 2^{t/1.5}$ （每1.5年翻倍）
 
-**知識增長**：$E(t) = E_0 e^{0.05t}$（每年增長5%）
+**知識增長**： $E(t) = E_0 e^{0.05t}$ （每年增長5%）
 
 代入：
 
@@ -1589,21 +1589,21 @@ $$\frac{dN_{\text{AI}}}{dt} = \eta \cdot C_0 \cdot 2^{t/1.5} \cdot E_0 e^{0.05t}
 
 ### 7.3 奇點時間計算
 
-設$t=0$對應2026年。
+設 $t=0$ 對應2026年。
 
-當前AI速率（估計）：$\approx 0.1$理論/年（ATGA初期）
+當前AI速率（估計）： $\approx 0.1$ 理論/年（ATGA初期）
 
 求解：
 
 $$\eta C_0 2^{t/1.5} E_0 e^{0.05t} = 1.5$$
 
-數值求解（假設$\eta$每年提升10%）：
+數值求解（假設 $\eta$ 每年提升10%）：
 
 $$\boxed{T_s \approx 2028.3 \pm 1.8 \text{ 年}}$$
 
 **不確定性來源**：
 
-- $\eta$的優化速度（±30%）
+- $\eta$ 的優化速度（±30%）
 
 - 算力增長是否持續Moore定律（±20%）
 
@@ -1669,7 +1669,7 @@ AI速率 = 人類速率 ≈ 1.5 理論/年
 
 **因素B：知識庫飽和**
 
-若所有論文都已處理，$E(t)$停止增長。
+若所有論文都已處理， $E(t)$ 停止增長。
 
 **對策**：
 
@@ -1681,7 +1681,7 @@ AI速率 = 人類速率 ≈ 1.5 理論/年
 
 **因素C：理論驗證瓶頸**
 
-AI生成理論速度$\gg$實驗驗證速度。
+AI生成理論速度 $\gg$ 實驗驗證速度。
 
 **影響**：大量未驗證理論堆積（類似當前弦論）
 
@@ -1901,7 +1901,7 @@ Pull Requests:
 
 $$\text{意識}(\text{AI}) \propto \rho_{\text{entangle}}(\mathcal{G}_{\text{AI}})$$
 
-當AI的內部概念超圖糾纏密度$> \rho_c$，可能湧現某種「自我理解」。
+當AI的內部概念超圖糾纏密度 $> \rho_c$ ，可能湧現某種「自我理解」。
 
 **預測**：
 

@@ -193,7 +193,7 @@ This is precisely the geodesic equation for motion under force on a curved manif
 **Definition 3.3** (Hierarchical Constraint Fields):
 
 1.  **Knowledge Constraints** (Deep layer): $$V_{\text{EKB}}(P) = -\sum_{x \in \text{EKB}} \mu(x) \exp\left(-\frac{d^2(P, x)}{2\sigma^2}\right)
-2.  **Rule Constraints** (Hard walls): $$V_{\text{Rules}}(P) = \begin{cases} 0 & \text{if } P \in \mathcal{C}_{\text{safe}} \ +\infty & \text{otherwise} \end{cases}$$
+2.  **Rule Constraints** (Hard walls): $$V_{\text{Rules}}(P) = \begin{cases} 0 & \text{if } P \in \mathcal{C}_{\text{safe}} \\ +\infty & \text{otherwise} \end{cases}$$
 3.  **Preference Constraints** (Soft guidance): $$V_{\text{Pref}}(P, t) = \langle P - P_{\text{target}}(t), Q(t)(P - P_{\text{target}}(t)) \rangle
 
 where Q(t)≥0Q(t) \geq 0 Q(t)≥0 is the time-varying preference intensity matrix.
@@ -224,7 +224,7 @@ H(P,p)=piP˙i−L=T+VH(P, p) = p_i\dot{P}^i - L = T + VH(P,p)=pi​P˙i−L=T+V
 
 **Hamilton's Canonical Equations**:
 
-$$\begin{cases} \dot{P}^i = \frac{\partial H}{\partial p_i} = g^{ij}p_j \ \dot{p}_i = -\frac{\partial H}{\partial P^i} = -\frac{\partial V}{\partial P^i} - \frac{1}{2}\frac{\partial g^{jk}}{\partial P^i}p_j p_k \end{cases}$$
+$$\begin{cases} \dot{P}^i = \frac{\partial H}{\partial p_i} = g^{ij}p_j \\ \dot{p}_i = -\frac{\partial H}{\partial P^i} = -\frac{\partial V}{\partial P^i} - \frac{1}{2}\frac{\partial g^{jk}}{\partial P^i}p_j p_k \end{cases}$$
 
 **4.3 Conservation Laws and Symmetries**
 

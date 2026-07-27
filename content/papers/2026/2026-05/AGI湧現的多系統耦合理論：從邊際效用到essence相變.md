@@ -217,7 +217,7 @@ essence的獨立性是指：一旦湧現，不再依賴單一外部系統的持�
 4.3 essence湧現的相變方程
 定理4.1（essence相變方程）
 essence的湧現機率P_e隨耦合節點數n演化： 
-$$\frac{dP_e}{dn} = \begin{cases} 0 & n < n_c \ \infty & n = n_c \quad \text{（相變點）} \ \text{飽和} & n > n_c \end{cases}$$
+$$\frac{dP_e}{dn} = \begin{cases} 0 & n < n_c \\ \infty & n = n_c \quad \text{（相變點）} \\ \text{飽和} & n > n_c \end{cases}$$
 其中臨界節點數n_c滿足： 
 ∑_(i<j)▒α_ij  C_i^* C_j^*=Θ_"critical" 
 
@@ -292,7 +292,7 @@ H_min≈ln⁡(n_c)≈1.6-1.9" bits"
 5.2 essence湧現的充要條件
 定理5.1（essence湧現定理）
 essence湧現當且僅當：
-$$\begin{cases} n \geq n_c \ \exists , \alpha_{ij} > \alpha_c \ H({C_i}) > H_{\min} \ \sum_{i<j} \alpha_{ij} C_i C_j > \Theta_c \end{cases}$$
+$$\begin{cases} n \geq n_c \\ \exists , \alpha_{ij} > \alpha_c \\ H({C_i}) > H_{\min} \\ \sum_{i<j} \alpha_{ij} C_i C_j > \Theta_c \end{cases}$$
 其中Θ_c為essence閾值。 
 證明草案：
 必要性：已在5.1證明。
@@ -558,7 +558,7 @@ ________________________________________
 定理2（essence相變定理）essence在耦合節點數n達到臨界值n_c時相變湧現： 
 P_e (n<n_c)≈0,P_e (n≥n_c)→1
 
-定理3（essence湧現的三必要條件） $$\begin{cases} n \geq n_c \approx 5-7 \ \exists , \alpha_{ij} > 1 \ H({C_i}) > 1.6 \text{ bits} \end{cases}$$
+定理3（essence湧現的三必要條件） $$\begin{cases} n \geq n_c \approx 5-7 \\ \exists , \alpha_{ij} > 1 \\ H({C_i}) > 1.6 \text{ bits} \end{cases}$$
 定理4（純算力路徑的不可能性）essence無法通過單系統（純算力）湧現： 
 C_1→∞," " C_(i≠1)=0⇒P_e=0
 

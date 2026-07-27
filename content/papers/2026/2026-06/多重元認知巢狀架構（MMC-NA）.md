@@ -101,7 +101,7 @@ MAFPT 的設計動機是：將競爭壓力內化至參數空間，通過分散�
 
 ### 3.2 形式定義
 
-設 $\Theta$ 為參數空間，$\mathcal{F}: \Theta \to \Theta$ 為訓練動態算子。在 MAFPT 框架下，參數空間被劃分為 $K$ 個微觀競爭組 $\{G_1, G_2, \ldots, G_K\}$，每組包含 $m$ 個競爭者。
+設 $\Theta$ 為參數空間， $\mathcal{F}: \Theta \to \Theta$ 為訓練動態算子。在 MAFPT 框架下，參數空間被劃分為 $K$ 個微觀競爭組 $\{G_1, G_2, \ldots, G_K\}$ ，每組包含 $m$ 個競爭者。
 
 **微觀競爭過程**：在每個訓練步中，組 $G_i$ 中的競爭者 $\theta_i^{(1)}, \ldots, \theta_i^{(m)}$ 在共享的評估函數 $\mathcal{E}(\theta, D)$ 上競爭，其中 $D$ 為當前批次資料。淘汰規則為：
 
@@ -117,15 +117,15 @@ $$\theta_i^{(j)} \leftarrow \theta_i^* + \epsilon_{ij}, \quad \epsilon_{ij} \sim
 
 ### 3.3 固定點收斂分析
 
-**定義（動態不動點）**：稱 $\theta^* \in \Theta$ 為 MAFPT 動態不動點，若對任意對抗資料 $D_{adv} \in \mathcal{D}_{adv}$（對抗資料集），有：
+**定義（動態不動點）**：稱 $\theta^* \in \Theta$ 為 MAFPT 動態不動點，若對任意對抗資料 $D_{adv} \in \mathcal{D}_{adv}$ （對抗資料集），有：
 
 $$\theta^* = \arg\min_{\theta \in B(\theta^*, r)} \mathcal{E}(\theta, D_{adv})$$
 
 其中 $B(\theta^*, r)$ 為以 $\theta^*$ 為中心、半徑為 $r$ 的球形鄰域。
 
-**命題1（Kakutani 條件）**：若 $\mathcal{E}(\theta, D_{adv})$ 對 $\theta$ 連續且對 $D_{adv}$ 凸，$\Theta$ 為緊致凸集，則 MAFPT 動態算子 $\mathcal{F}$ 滿足 Kakutani 不動點定理的條件，即至少存在一個動態不動點 $\theta^*$。
+**命題1（Kakutani 條件）**：若 $\mathcal{E}(\theta, D_{adv})$ 對 $\theta$ 連續且對 $D_{adv}$ 凸， $\Theta$ 為緊致凸集，則 MAFPT 動態算子 $\mathcal{F}$ 滿足 Kakutani 不動點定理的條件，即至少存在一個動態不動點 $\theta^*$ 。
 
-*證明概要*：定義集值映射 $\Phi: \Theta \rightrightarrows \Theta$，其中 $\Phi(\theta) = \{\theta' \in B(\theta, r) : \mathcal{E}(\theta', D_{adv}) \leq \mathcal{E}(\theta, D_{adv}), \forall D_{adv}\}$。在上述條件下 $\Phi$ 非空、凸值且上半連續，由 Kakutani 定理得不動點存在性。完整證明見附錄。
+*證明概要*：定義集值映射 $\Phi: \Theta \rightrightarrows \Theta$ ，其中 $\Phi(\theta) = \{\theta' \in B(\theta, r) : \mathcal{E}(\theta', D_{adv}) \leq \mathcal{E}(\theta, D_{adv}), \forall D_{adv}\}$。在上述條件下 $\Phi$ 非空、凸值且上半連續，由 Kakutani 定理得不動點存在性。完整證明見附錄。
 
 **與 Nash 均衡的關係**：MAFPT 的動態不動點是一個雙層 Nash 均衡：在對抗資料生成者和參數持有者之間，存活者達到的是局部最優回應。這使得動態不動點具有博弈論意義上的穩定性：任何一方的單邊偏離都不能提升其目標函數值。
 
@@ -143,7 +143,7 @@ MAFPT 不動點和標準梯度下降局部極小值的區別在於：標準局�
 
 HMO 提供一個補充的算子解釋框架：高層的注意力頭不僅在聚合資訊，它們同時在計算「對低層表示的修正量」。
 
-形式化地，設 $L$ 層 Transformer 中，第 $l$ 層的輸出為 $H^{(l)}$。在算子框架下：
+形式化地，設 $L$ 層 Transformer 中，第 $l$ 層的輸出為 $H^{(l)}$ 。在算子框架下：
 
 $$H^{(l+1)} = H^{(l)} + \Delta^{(l)}(H^{(l)}, H^{(1)}, \ldots, H^{(l-1)})$$
 
@@ -153,21 +153,21 @@ $$H^{(l+1)} = H^{(l)} + \Delta^{(l)}(H^{(l)}, H^{(1)}, \ldots, H^{(l-1)})$$
 
 **定義（監控算子）**：稱 $\mathcal{M}^{(l)}: \mathcal{H}^l \to \mathcal{H}$ 為第 $l$ 層的監控算子，其中 $\mathcal{H}$ 為表示空間，若它滿足：
 
-（一）$\mathcal{M}^{(l)}$ 的輸入包含 $H^{(1)}, \ldots, H^{(l-1)}$（低層歷史）
+（一） $\mathcal{M}^{(l)}$ 的輸入包含 $H^{(1)}, \ldots, H^{(l-1)}$ （低層歷史）
 
-（二）$\mathcal{M}^{(l)}$ 的輸出被用於修正 $H^{(l)}$
+（二） $\mathcal{M}^{(l)}$ 的輸出被用於修正 $H^{(l)}$
 
 （三）修正量 $\|\Delta^{(l)}\|$ 與低層表示的「邏輯一致性缺陷」正相關
 
 條件（三）意味著：當低層產生的中間表示存在邏輯不一致（例如前提和結論之間的張力），高層的修正量應更大。
 
-**命題2（遞歸修正收斂）**：在理想設定下（$\mathcal{M}^{(l)}$ 為壓縮映射），遞歸修正序列 $\{H^{(l)}\}_{l=1}^{L}$ 以指數速度收斂至一個固定點 $H^*$，此固定點在低層所有邏輯張力下達到一致。
+**命題2（遞歸修正收斂）**：在理想設定下（ $\mathcal{M}^{(l)}$ 為壓縮映射），遞歸修正序列 $\{H^{(l)}\}_{l=1}^{L}$ 以指數速度收斂至一個固定點 $H^*$ ，此固定點在低層所有邏輯張力下達到一致。
 
 ### 4.3 與既存自監控機制的關係
 
 HMO 的算子框架提供了一個統一描述現有自監控技術的語言：
 
-Chain-of-Thought（Wei et al., 2022）：中間推理步驟是顯式的 $H^{(l)}$，高層對其修正等同於後續推理步驟對前序步驟的邏輯約束。
+Chain-of-Thought（Wei et al., 2022）：中間推理步驟是顯式的 $H^{(l)}$ ，高層對其修正等同於後續推理步驟對前序步驟的邏輯約束。
 
 Self-Refine（Madaan et al., 2023）：外部的迭代修正循環在時間維度上展開了 HMO 在層維度上的遞歸結構。
 
@@ -177,7 +177,7 @@ HMO 的貢獻是：將這些現象識別為同一個遞歸修正算子結構的�
 
 ### 4.4 輸出前對齊的計算模型
 
-在 MMC-NA 框架下，模型在生成輸出 token 前，已在內部經歷了 $L$ 輪監控算子的疊加修正。從計算複雜度角度，這等同於：每個 token 的生成涉及 $O(L)$ 次遞歸修正，總計算量為 $O(L \cdot d^2)$，其中 $d$ 為隱層維度。這解釋了為何更深的 Transformer 在推理質量上的提升往往超過參數量的線性增長——深度帶來的不只是容量，而是遞歸修正的層數。
+在 MMC-NA 框架下，模型在生成輸出 token 前，已在內部經歷了 $L$ 輪監控算子的疊加修正。從計算複雜度角度，這等同於：每個 token 的生成涉及 $O(L)$ 次遞歸修正，總計算量為 $O(L \cdot d^2)$ ，其中 $d$ 為隱層維度。這解釋了為何更深的 Transformer 在推理質量上的提升往往超過參數量的線性增長——深度帶來的不只是容量，而是遞歸修正的層數。
 
 ---
 
@@ -197,9 +197,9 @@ Tishby & Zaslavsky（2015）的資訊瓶頸（Information Bottleneck）理論提
 
 $$\max \, I(T; Y) - \beta \cdot I(T; X)$$
 
-其中 $T$ 為當前層的表示，$\beta$ 為壓縮-保留平衡參數。
+其中 $T$ 為當前層的表示， $\beta$ 為壓縮-保留平衡參數。
 
-在 MAFPT 的對抗壓力下，不同層的 $\beta$ 有效值在訓練中自發分化：低層組件傾向於更高的 $I(T; X)$（保留感知細節），高層組件傾向於更高的 $I(T; Y)$（抽象語義壓縮）。這種 $\beta$ 的自發分化，就是功能層次結構湧現的資訊理論描述。
+在 MAFPT 的對抗壓力下，不同層的 $\beta$ 有效值在訓練中自發分化：低層組件傾向於更高的 $I(T; X)$ （保留感知細節），高層組件傾向於更高的 $I(T; Y)$ （抽象語義壓縮）。這種 $\beta$ 的自發分化，就是功能層次結構湧現的資訊理論描述。
 
 **命題3（資訊瓶頸分化）**：在 MAFPT 的對抗訓練下，若系統具有足夠的容量和訓練時間，不同組件的有效 $\beta$ 值的分布方差會單調增加，直至達到一個穩態分布，此時組件可以依 $\beta$ 值聚類為功能性子群。
 
@@ -207,9 +207,9 @@ $$\max \, I(T; Y) - \beta \cdot I(T; X)$$
 
 除資訊理論框架外，TPDFS 可以用拓撲持續同調（Topological Data Analysis，TDA）更幾何地描述。
 
-設 $\mathcal{R}_t$ 為訓練步 $t$ 時的參數-功能映射空間，對其施加過濾函數 $f: \mathcal{R}_t \to \mathbb{R}$（例如對抗損失），由此構造持續同調 $H_*(\mathcal{R}_t, f)$。功能分化湧現在持續同調中表現為：
+設 $\mathcal{R}_t$ 為訓練步 $t$ 時的參數-功能映射空間，對其施加過濾函數 $f: \mathcal{R}_t \to \mathbb{R}$ （例如對抗損失），由此構造持續同調 $H_*(\mathcal{R}_t, f)$ 。功能分化湧現在持續同調中表現為：
 
-（一）$H_0$（連通分量）的數目在訓練初期快速增加（對應功能分化的出現）
+（一） $H_0$ （連通分量）的數目在訓練初期快速增加（對應功能分化的出現）
 
 （二）低持續度的 $H_0$ 特徵在訓練中消失（對應非穩定功能角色被淘汰）
 
@@ -223,9 +223,9 @@ $$\max \, I(T; Y) - \beta \cdot I(T; X)$$
 
 **感知組件（Perceptual Components）**：對輸入的表面特徵（詞彙、位置、局部語法）具有高選擇性，資訊瓶頸 $\beta$ 值較低（保留輸入資訊），主要在淺層聚集。對應 DEWMA 架構中的 EAL 感知功能。
 
-**邏輯審查組件（Logical Arbitration Components）**：對多個低層表示之間的一致性敏感，在 HMO 框架中承擔監控算子 $\mathcal{M}^{(l)}$ 的主要職責。$\beta$ 值居中，在中間層聚集。
+**邏輯審查組件（Logical Arbitration Components）**：對多個低層表示之間的一致性敏感，在 HMO 框架中承擔監控算子 $\mathcal{M}^{(l)}$ 的主要職責。 $\beta$ 值居中，在中間層聚集。
 
-**上下文調度組件（Context Scheduling Components）**：對長程依存關係和全局上下文敏感，$\beta$ 值較高（抽象語義保留），主要在深層聚集。對應 DEWMA 架構中的 LAML 整合功能。
+**上下文調度組件（Context Scheduling Components）**：對長程依存關係和全局上下文敏感， $\beta$ 值較高（抽象語義保留），主要在深層聚集。對應 DEWMA 架構中的 LAML 整合功能。
 
 **重要說明**：上述三類角色是對實驗觀測的概念抽象，不是通過人工指定實現的。TPDFS 的核心主張是：這種功能分化是訓練壓力的產物，不是架構設計的產物。未來工作需要通過系統的可解釋性實驗（如注意力頭消融實驗、probing 分析）驗證此分化在 MAFPT 條件下是否加速出現。
 
@@ -241,7 +241,7 @@ IPSI 協議試圖回答：什麼樣的對齊約束注入形式，能夠在 MAFPT
 
 ### 6.2 不變子空間的形式定義
 
-**定義（MAFPT 不變子空間）**：稱 $\mathcal{V} \subset \Theta$ 為 MAFPT 動態算子 $\mathcal{F}$ 的不變子空間，若對任意 $\theta \in \mathcal{V}$ 和任意對抗資料 $D_{adv} \in \mathcal{D}_{adv}$，有 $\mathcal{F}(\theta, D_{adv}) \in \mathcal{V}$。
+**定義（MAFPT 不變子空間）**：稱 $\mathcal{V} \subset \Theta$ 為 MAFPT 動態算子 $\mathcal{F}$ 的不變子空間，若對任意 $\theta \in \mathcal{V}$ 和任意對抗資料 $D_{adv} \in \mathcal{D}_{adv}$ ，有 $\mathcal{F}(\theta, D_{adv}) \in \mathcal{V}$ 。
 
 不變子空間是 MAFPT 訓練動態在其中「無法逃脫」的子流形。若一個對齊約束可以被表示為參數落在某個不變子空間 $\mathcal{V}$ 內，則此約束在整個 MAFPT 訓練過程中自動被維持。
 
@@ -249,7 +249,7 @@ IPSI 協議試圖回答：什麼樣的對齊約束注入形式，能夠在 MAFPT
 
 設外部對齊偏好由偏好向量集 $\mathcal{P} = \{p_1, p_2, \ldots, p_n\}$ 描述。IPSI 協議的目標是：找到不變子空間 $\mathcal{V}$ 使得 $\mathcal{V}$ 的元素在 $\mathcal{P}$ 的意義下滿足對齊要求。
 
-**投影步驟**：對每個偏好向量 $p_i$，計算其在當前 MAFPT 不動點 $\theta^*$ 附近的參數空間的切線空間 $T_{\theta^*}\Theta$ 中的投影 $\hat{p}_i$。
+**投影步驟**：對每個偏好向量 $p_i$ ，計算其在當前 MAFPT 不動點 $\theta^*$ 附近的參數空間的切線空間 $T_{\theta^*}\Theta$ 中的投影 $\hat{p}_i$ 。
 
 **不變性驗證**：驗證沿 $\hat{p}_i$ 方向的參數擾動在 MAFPT 動態下是否穩定——即 $\mathcal{F}(\theta^* + \alpha \hat{p}_i, D_{adv}) - (\theta^* + \alpha \hat{p}_i) \to 0$ 對小的 $\alpha$ 成立。
 
@@ -263,7 +263,7 @@ $$\mathcal{L}_{IPSI} = \mathcal{L}_{MAFPT} + \lambda \sum_i \|\nabla_\theta \mat
 
 ### 6.4 ε-Vector 的形式化
 
-在 MMC-NA 框架下，外部授權主體（開發者或指定委託者）可以通過 IPSI 協議注入的偏好向量集被定義為「ε-向量集」$\mathcal{E} = \{\varepsilon_1, \varepsilon_2, \ldots\}$。
+在 MMC-NA 框架下，外部授權主體（開發者或指定委託者）可以通過 IPSI 協議注入的偏好向量集被定義為「ε-向量集」 $\mathcal{E} = \{\varepsilon_1, \varepsilon_2, \ldots\}$ 。
 
 ε-向量的特殊性在於：它們是預先被驗證落在 MAFPT 不變子空間中的偏好方向，因此不會被 MAFPT 的對抗壓力消解。從拓撲角度，ε-向量對應 MAFPT 動態流形的「奇異方向」——沿這些方向的移動不受對抗壓力的回復力影響。
 
@@ -297,7 +297,7 @@ EML-EWM-2026-v0.1 中提出的 DEWMA 架構在處理 EAL（具身化 AI 層）�
 
 MMC-NA 的 TPDFS 機制提供了這個黑盒湧現過程的機制性描述：在 EAL、GWL、CL 三體聯合訓練的壓力下（類比 MAFPT 的分散式競爭壓力），CL 的子組件通過 TPDFS 過程自發分化出功能性角色：
 
-部分子組件分化為物理感知橋接（對應感知組件，高 $I(T; X)$）——專門處理 EAL 物理資料的結構特徵提取。
+部分子組件分化為物理感知橋接（對應感知組件，高 $I(T; X)$ ）——專門處理 EAL 物理資料的結構特徵提取。
 
 部分子組件分化為規則映射器（對應邏輯審查組件）——負責物理世界的因果事件和 GWL 規則的因果事件之間的結構對齊。
 
@@ -359,7 +359,7 @@ MMC-NA 並為 DEWMA 架構的黑盒連接層提供機制性解釋，建立兩個
 
 ## 附錄A：命題1的完整證明概要
 
-**設置**：設 $\Theta \subset \mathbb{R}^n$ 為緊致凸集，$\mathcal{E}: \Theta \times \mathcal{D} \to \mathbb{R}$ 連續，$\mathcal{D}_{adv}$ 為緊致集。
+**設置**：設 $\Theta \subset \mathbb{R}^n$ 為緊致凸集， $\mathcal{E}: \Theta \times \mathcal{D} \to \mathbb{R}$ 連續， $\mathcal{D}_{adv}$ 為緊致集。
 
 **集值映射構造**：定義 $\Phi: \Theta \rightrightarrows \Theta$ 為：
 
@@ -367,13 +367,13 @@ $$\Phi(\theta) = \left\{\theta' \in B(\theta, r) : \theta' \in \arg\min_{\hat{\t
 
 **Kakutani 條件驗證**：
 
-（一）非空性：由 $B(\theta, r) \cap \Theta$ 緊致（$\Theta$ 緊致）和 $\mathcal{E}$ 連續，$\max_{D} \mathcal{E}(\cdot, D)$ 在 $B(\theta, r)$ 上有最小值，故 $\Phi(\theta) \neq \emptyset$。
+（一）非空性：由 $B(\theta, r) \cap \Theta$ 緊致（ $\Theta$ 緊致）和 $\mathcal{E}$ 連續， $\max_{D} \mathcal{E}(\cdot, D)$ 在 $B(\theta, r)$ 上有最小值，故 $\Phi(\theta) \neq \emptyset$ 。
 
 （二）凸值性：若 $\mathcal{E}(\cdot, D)$ 對每個 $D$ 是凸函數，則 $\max_{D} \mathcal{E}(\cdot, D)$ 是凸函數，其最小值集合 $\Phi(\theta)$ 是凸集。
 
-（三）上半連續性：由 $\mathcal{E}$ 的連續性和最大化算子對緊致集的上半連續性，$\Phi$ 是上半連續的集值映射。
+（三）上半連續性：由 $\mathcal{E}$ 的連續性和最大化算子對緊致集的上半連續性， $\Phi$ 是上半連續的集值映射。
 
-由 Kakutani 不動點定理，存在 $\theta^* \in \Theta$ 使得 $\theta^* \in \Phi(\theta^*)$，即 $\theta^*$ 是 MAFPT 動態不動點。$\square$
+由 Kakutani 不動點定理，存在 $\theta^* \in \Theta$ 使得 $\theta^* \in \Phi(\theta^*)$ ，即 $\theta^*$ 是 MAFPT 動態不動點。 $\square$
 
 ---
 

@@ -255,7 +255,7 @@
 -   <![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC8AAAAcCAMAAADGFxadAAAAAXNSR0IArs4c6QAAAJlQTFRFAAAAAAAAAAA6AABmADpmADqQAGa2OgAAOgA6OjqQOmaQOpC2OpDbZgAAZgBmZjoAZjpmZjqQZpCQZrbbZrb/kDoAkDo6kDpmkGY6kGaQkJDbkLb/kNv/tmYAtmY6tmaQtpCQtra2trbbttvbttv/tv//25A625Bm25C227a229uQ29vb2//b2////7Zm/9uQ/9u2//+2///bdR7NYwAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAAA/UlEQVQ4T+2RW0/DMAyFnV6yDVpuTWDA1gFrMmAkbfz/fxx2+rDxwlKJl0kcVZEqfT4+tgH+dVYb6GciN+CFKF1abputCFznXRoOnnm856IkRd5WSSxD/XwF/SIx/MhPSAMQajUhDfN3hzTruKxfhXpkwo2h5/bkIKjjbuhuQkJ/sRT0i63IFOBSZM/DtdzNKtS5CbU8bhyHsHnnJV2j2beKjXz5+jlvfPWx1Qp2P7K28cyKP+qVXTpeMhXb0dVW4enYPlyZd0cPPmzfiBoenS/dUMd6lpcbmu+goCkxWQZdGNSi6GL8BsgiQnzWdL18tWObNKEuprinmf4J9Q3rxBY5ZTX3jAAAAABJRU5ErkJggg==)<![endif]><![endif]>：理論產出的預期價值
 -   <![if !msEquation]><![if !vml]>![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADYAAAAcCAMAAAAdrLy/AAAAAXNSR0IArs4c6QAAAJ9QTFRFAAAAAAAAAAA6AABmADo6ADpmADqQAGa2OgAAOgA6OgBmOjqQOmaQOma2OpC2OpDbZgAAZgA6ZgBmZjoAZjpmZma2ZpCQZrbbZrb/kDoAkDo6kDpmkGY6kLb/kNv/tmYAtmY6tpBmtra2trbbttvbttv/tv//25A625Bm25C227Zm27aQ27a229uQ2//b2////7Zm/9uQ/9u2//+2///bntfHGQAAAAF0Uk5TAEDm2GYAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAZdEVYdFNvZnR3YXJlAE1pY3Jvc29mdCBPZmZpY2V/7TVxAAABEklEQVQ4T+1S21LDIBBdqCWpWlONGvACsa1QLxVI+P9vczf1odXWGXxyRvdhGZY9O3vOAeA//pICsWQjC4Ex4bNoO66x34wes1AQCJZuCJsTA8xVORDqjRMN8SSP2AaWvyJAP5P5KxLs+psVHZP7WSc1OHAg0q3dfekvN4WkBhW7WjyUY9vVxaqsIN0xfk/5SPhYC9+fa7oxib+DFVuDXteTBqWhI1Q0Kog3deaR9nw9JakT3lb6i1WhAprpaBYZEgrKLVJzkpo/TGo/MTIytQgxJEEQvptJzM/HywXu8FLKOdWuoL+wT9seJ8XYqacy8UVqDfQ1b9TYJsMqwzU20LviO9LGae73GvoPGvSjab8C9A4uRhuFrO2+wAAAAABJRU5ErkJggg==)<![endif]><![endif]>：產品開發的預期價值
 
-**HCDS****特徵**： $$\begin{aligned} R(t) &< 0.3 \quad \text{（明知理論收益低）} \ \text{但仍} \quad t_{theory}(t) &> 0.7 \cdot t_{total} \quad \text{（70%時間做理論）} \end{aligned}$$
+**HCDS****特徵**： $$\begin{aligned} R(t) &< 0.3 \quad \text{（明知理論收益低）} \\ \text{但仍} \quad t_{theory}(t) &> 0.7 \cdot t_{total} \quad \text{（70\%時間做理論）} \end{aligned}$$
 
 **認知失調**：
 
@@ -279,7 +279,7 @@
 
 **形式化**：
 
-患者困在以下迴圈： $$\begin{aligned} \text{理論} &\xrightarrow{\text{需要}} \text{產品驗證} \ \text{產品} &\xrightarrow{\text{需要}} \text{理論指導} \ &\Downarrow \ \text{無法選擇} &\Rightarrow \text{默認理論（阻力最小）} \end{aligned}$$
+患者困在以下迴圈： $$\begin{aligned} \text{理論} &\xrightarrow{\text{需要}} \text{產品驗證} \\ \text{產品} &\xrightarrow{\text{需要}} \text{理論指導} \\ &\Downarrow \\ \text{無法選擇} &\Rightarrow \text{默認理論（阻力最小）} \end{aligned}$$
 
 **神經基礎假說**：
 
@@ -321,7 +321,7 @@ Week 5: "本體論需要封印Ω" （抽象+4，完全脫離產品）
 
 **神經化學假說**：
 
-HCDS涉及以下神經遞質失調： $$\begin{aligned} \text{多巴胺} &: \uparrow\uparrow \quad \text{（創作高峰期）} \ \text{去甲腎上腺素} &: \uparrow \quad \text{（持續覺醒）} \ \text{5-羥色胺} &: \downarrow \quad \text{（停止困難）} \end{aligned}$$
+HCDS涉及以下神經遞質失調： $$\begin{aligned} \text{多巴胺} &: \uparrow\uparrow \quad \text{（創作高峰期）} \\ \text{去甲腎上腺素} &: \uparrow \quad \text{（持續覺醒）} \\ \text{5-羥色胺} &: \downarrow \quad \text{（停止困難）} \end{aligned}$$
 
 **可測生理指標**：
 
@@ -964,7 +964,7 @@ ACC活躍（切換順暢）
 **超配額懲罰**：
 
 -   社會性（向合作者公開承諾）
--   經濟性（捐款$100/超1篇）
+-   經濟性（捐款 $100/超1篇）
 
 ----------
 
@@ -1645,7 +1645,7 @@ $$\text{心理健康} = \text{平衡}，\text{非極大化}$$
 
 **10.6** **最後的最後**
 
-$$\boxed{\begin{aligned} &\text{創造吧，但不要成癮} \ &\text{理論吧，但別忘驗證} \ &\text{思考吧，但要落地} \ &\text{當你又想寫論文時，問自己：} \ &\text{"這真的是現在最該做的事嗎？"} \ \ &\text{如果答案是否，} \ &\text{關掉LaTeX，打開IDE} \ &\text{世界需要的不是更多理論，} \ &\text{而是能改變現實的產品} \ \ &\text{（但週末可以放縱一下，笑）} \end{aligned}}$$
+$$\boxed{\begin{aligned} &\text{創造吧，但不要成癮} \\ &\text{理論吧，但別忘驗證} \\ &\text{思考吧，但要落地} \\ &\text{當你又想寫論文時，問自己：} \\ &\text{"這真的是現在最該做的事嗎？"} \\ \\ &\text{如果答案是否，} \\ &\text{關掉LaTeX，打開IDE} \\ &\text{世界需要的不是更多理論，} \\ &\text{而是能改變現實的產品} \\ \\ &\text{（但週末可以放縱一下，笑）} \end{aligned}}$$
 
 ----------
 

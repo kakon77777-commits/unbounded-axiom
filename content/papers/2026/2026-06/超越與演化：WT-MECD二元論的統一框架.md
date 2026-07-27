@@ -101,9 +101,9 @@ WT = 傳送門（讓你跳到新地圖）
 
 宇宙的完整描述需要且僅需要兩個理論：
 
-1.  \*\*MECD\*\*：描述系統在固定層次內的演化 $$\\frac{d\\mathbf{X}^\*}{d\\tau} = \\mathbf{F} + \\mathbf{K}\\Delta + \\mathbf{P} - \\mathbf{\\Gamma X}^\*
+1.  \*\*MECD\*\*：描述系統在固定層次內的演化 $$\frac{d\mathbf{X}^\*}{d\tau} = \mathbf{F} + \mathbf{K}\Delta + \mathbf{P} - \mathbf{\Gamma X}^\*
 2.  **WT**：描述系統跨越到新層次的超越 $$\\ell\_1 \\bowtie \\ell\_2 \\xrightarrow{W} \\ell\_{\\text{新}}
-3.  **統一**：兩者通過臨界比 連接 $$R > 1.17 \\implies \\text{MECD} \\to \\text{WT}
+3.  **統一**：兩者通過臨界比 連接 $$R > 1.17 \implies \text{MECD} \to \text{WT}
 
 **本文結構：**
 
@@ -694,7 +694,7 @@ MECD方程：
 2.  **新規律**
     -   舊MECD方程失效
     -   新方程： $$\\frac{dX\_{\\text{蓋亞}}^\*}{d\\tau} = F\_{\\text{蓋亞}}(X^\*, I\_{\\text{意識}}) 其中 是集體意識強度
-3.  **負熵能力** $$\\frac{d(\\deg \\ell\_{\\text{蓋亞}})}{d\\tau} \\sim 10^{15} \\text{ 關係/年} 超過熵增速度 /年
+3.  **負熵能力** $$\frac{d(\deg \ell\_{\text{蓋亞}})}{d\tau} \sim 10^{15} \text{ 關係/年} 超過熵增速度 /年
 4.  **主動演化**
     -   可以調控氣候（非被動適應）
     -   可以設計物種（非自然選擇）
@@ -948,7 +948,7 @@ MECD與WT是同一現實的兩個不可分割面向：
 
 **問題**：能否寫出單一方程，統一MECD與WT？
 
-**嘗試1（失敗）：** $$\\frac{dX^\*}{d\\tau} = \\begin{cases} \\text{MECD方程} & R < 1.17 \\ \\text{WT編織} & R \\geq 1.17 \\end{cases}$$
+**嘗試1（失敗）：** $$\frac{dX^\*}{d\tau} = \begin{cases} \text{MECD方程} & R < 1.17 \\ \text{WT編織} & R \geq 1.17 \end{cases}$$
 
 問題：WT不是微分方程，無法直接寫入。
 
@@ -956,7 +956,7 @@ MECD與WT是同一現實的兩個不可分割面向：
 
 定義**廣義演化算符** ：
 
-$$\\mathcal{E}(X^*, t) = \\begin{cases} \\int\_0^t \\left(\\mathbf{F} + \\mathbf{K}\\Delta + \\mathbf{P} - \\mathbf{\\Gamma}X^*\\right) dt' & R < 1.17 \\ W(\\ell\_{\\text{舊}}) & R \\geq 1.17 \\end{cases}$$
+$$\mathcal{E}(X^*, t) = \begin{cases} \int\_0^t \left(\mathbf{F} + \mathbf{K}\Delta + \mathbf{P} - \mathbf{\Gamma}X^*\right) dt' & R < 1.17 \\ W(\ell\_{\text{舊}}) & R \geq 1.17 \end{cases}$$
 
 **部分成功**：形式上統一了。
 
@@ -1179,7 +1179,7 @@ WT-MECD：
 
 **可能解決方案（待探索）：**
 
-1.  **引入元時間** （編織前的時間） $$\\frac{dW}{d\\tau\_0} = ?
+1.  **引入元時間** （編織前的時間） $$\frac{dW}{d\tau\_0} = ?
 2.  **用編織代數代替微分** $$W^{n+1} = f(W^n) 離散迭代，無需連續時間
 3.  **接受悖論** 時間的自指本質 = WT的核心特徵
 

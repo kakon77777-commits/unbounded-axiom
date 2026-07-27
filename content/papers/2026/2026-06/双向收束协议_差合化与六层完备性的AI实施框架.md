@@ -67,7 +67,7 @@ $$\boxed{\begin{aligned}
 
 $$\Phi_{\downarrow} : \mathcal{L} \to \mathcal{P}(\mathcal{U})$$
 
-给定差合化组态 $\langle \Delta, \mathcal{U}, \nabla \rangle$，生成所有可能的六层结构：
+给定差合化组态 $\langle \Delta, \mathcal{U}, \nabla \rangle$ ，生成所有可能的六层结构：
 
 $$\Phi_{\downarrow}(\langle \Delta, \mathcal{U}, \nabla \rangle) = \left\{ \{E,C,N,P,M,S\} : \begin{aligned}
 &E = \pi_{\infty}(\langle \Delta, \mathcal{U}, \nabla \rangle) \\
@@ -82,7 +82,7 @@ $$\Phi_{\downarrow}(\langle \Delta, \mathcal{U}, \nabla \rangle) = \left\{ \{E,C
 
 $$\Phi_{\uparrow} : \mathcal{U} \to \mathcal{P}(\mathcal{L})$$
 
-给定六层结构 $\{E,C,N,P,M,S\}$，反推可能的差合化组态：
+给定六层结构 $\{E,C,N,P,M,S\}$ ，反推可能的差合化组态：
 
 $$\Phi_{\uparrow}(\{E,C,N,P,M,S\}) = \left\{ \langle \Delta, \mathcal{U}, \nabla \rangle : \begin{aligned}
 &\Delta \text{ 可从 } E \text{ 的维度推导} \\
@@ -100,7 +100,7 @@ $$\exists \, T : \quad T \in \Phi_{\downarrow}(\mathcal{L}) \cap \Phi_{\uparrow}
 
 **物理意义**: 存在理论既可以从下界生成，又可以被上界验证。
 
-**推论1.1**: 若 $\mathcal{M} = \emptyset$，则：
+**推论1.1**: 若 $\mathcal{M} = \emptyset$ ，则：
 - 下界过于严格（无法生成任何六层结构）
 - 或上界过于宽松（包含违反下界约束的结构）
 - 或两者不兼容（需要修正框架）
@@ -151,7 +151,7 @@ def discretize_delta_union_nabla_space(resolution=1000, K_Cl=1.0):
     return configurations
 ```
 
-**复杂度**: $O(n^3)$，其中 $n$ = resolution
+**复杂度**: $O(n^3)$ ，其中 $n$ = resolution
 
 **规模估计**:
 - 若 resolution = 1000 → ~10⁹ 个组态

@@ -27,7 +27,7 @@
 
 更新後的預測算法（算法 6.1 升級版）以 ε\_full 取代舊版的數值觀測斜率，使整個預測流程可以從 N=2 開始自動運行，無需人工校準。
 
-作為獨立補記，附錄 C 給出一個非循環的代數不動點刻畫：定義算子 $T_{\text{top}}(n) = \min\{d \in M6^* : d \mid n\}$，其中 $M6^* = \{n > 1 : n \equiv \pm 1 \pmod{6}\}$，並證明 $\mathrm{Fix}(T_{\text{top}}) = \mathbb{P} \cap M6^*$——整個定義不依賴「質數」概念。ε\_full（幾何動力學）與 $T_{\text{top}}$（代數不動點）構成對同一數論對象的雙重非循環刻畫。
+作為獨立補記，附錄 C 給出一個非循環的代數不動點刻畫：定義算子 $T_{\text{top}}(n) = \min\{d \in M6^* : d \mid n\}$ ，其中 $M6^* = \{n > 1 : n \equiv \pm 1 \pmod{6}\}$ ，並證明 $\mathrm{Fix}(T_{\text{top}}) = \mathbb{P} \cap M6^*$ ——整個定義不依賴「質數」概念。ε\_full（幾何動力學）與 $T_{\text{top}}$ （代數不動點）構成對同一數論對象的雙重非循環刻畫。
 
 **關鍵詞：** 質數幾何學、累積平均斜率、ε\_full、三段式公式、質數預測算法
 
@@ -39,7 +39,7 @@
 
 $$\text{Avg}(N) = \frac{1}{N}\sum_{k=1}^{N} p_k$$
 
-以近似線性的方式增長，斜率 $m(N) \to 1$（$N \to \infty$）。斜率偏離量
+以近似線性的方式增長，斜率 $m(N) \to 1$ （ $N \to \infty$ ）。斜率偏離量
 
 $$\varepsilon(N) = m(N) - 1 \geq 0$$
 
@@ -50,15 +50,15 @@ $$\varepsilon(N) = m(N) - 1 \geq 0$$
 $$p_{\text{V3}}(2) = 2 \cdot \bigl(\ln 2 + \ln\ln 2 - 1 + \cdots\bigr)
 = 2 \cdot (0.693 - 0.366 - 1 + \cdots)$$
 
-多個高階項為負且量值巨大，使 $p_{\text{V3}}(2)$ 產生嚴重偏差。以 V3 累加計算 $\text{Avg}(N)$，小 N 端的 ε 完全不可信。
+多個高階項為負且量值巨大，使 $p_{\text{V3}}(2)$ 產生嚴重偏差。以 V3 累加計算 $\text{Avg}(N)$ ，小 N 端的 ε 完全不可信。
 
-前置論文的數值驗算（觀測區間 $[10^2, 10^3]$ 至 $[10^5, 10^6]$）迴避了這個問題——它只在斜率已穩定的中大尺度做驗算。本文的目標是補上從 N=2 出發的完整公式。
+前置論文的數值驗算（觀測區間 $[10^2, 10^3]$ 至 $[10^5, 10^6]$ ）迴避了這個問題——它只在斜率已穩定的中大尺度做驗算。本文的目標是補上從 N=2 出發的完整公式。
 
 ---
 
 ## 2. 問題的精確陳述
 
-**定義 2.1（動態幾何斜率，沿用前置論文）：** 對觀測區間 $[N_1, N_2]$：
+**定義 2.1（動態幾何斜率，沿用前置論文）：** 對觀測區間 $[N_1, N_2]$ ：
 
 $$m(N_1, N_2) = \frac{\log_{10}\text{Avg}(N_2) - \log_{10}\text{Avg}(N_1)}{\log_{10} N_2 - \log_{10} N_1}$$
 
@@ -69,9 +69,9 @@ m(N) \approx \frac{\ln\text{Avg}(N+\delta N) - \ln\text{Avg}(N-\delta N)}
 {2\ln\delta N}\bigg|_{\delta N = \lfloor N/6 \rfloor}$$
 
 **目標：** 建構函數 $\varepsilon_{\text{full}}(N)$ 使得：
-- 對所有 $N \geq 2$，$|\varepsilon_{\text{full}}(N) - \varepsilon(N)| / |\varepsilon(N)| < 1\%$
-- $\lim_{N\to\infty} \varepsilon_{\text{full}}(N) = 0$（正確漸近）
-- $\varepsilon_{\text{full}}(N) \to 0$ 的速率 $\sim 1/\ln N$（PNT 約束）
+- 對所有 $N \geq 2$ ， $|\varepsilon_{\text{full}}(N) - \varepsilon(N)| / |\varepsilon(N)| < 1\%$
+- $\lim_{N\to\infty} \varepsilon_{\text{full}}(N) = 0$ （正確漸近）
+- $\varepsilon_{\text{full}}(N) \to 0$ 的速率 $\sim 1/\ln N$ （PNT 約束）
 
 **既有結果（前置論文定理 6.1）：** 斜率漸近收斂於 1：
 
@@ -98,7 +98,7 @@ $$\lim_{N_1 \to \infty,\; N_2/N_1 = k} m(N_1, N_2) = 1$$
 
 前三個質數（2, 3, 5）的密度高於大尺度漸近值，導致 Avg(N) 在此區間的增長速率低於 N 自身——對數斜率 m < 1，ε < 0。這是**前置論文從未捕捉到的初始相**。
 
-任何從 N=2 出發的全域公式，必須正確再現此負值初始段。漸近公式 $\varepsilon \approx 1/\ln N$ 完全無法描述這一段（在 N=2 時給出 $1/0.693 \approx 1.44$，與實際值相差 4 個單位）。
+任何從 N=2 出發的全域公式，必須正確再現此負值初始段。漸近公式 $\varepsilon \approx 1/\ln N$ 完全無法描述這一段（在 N=2 時給出 $1/0.693 \approx 1.44$ ，與實際值相差 4 個單位）。
 
 ### 3.2 第一段：精確查表（N < 1000）
 
@@ -110,7 +110,7 @@ $$\varepsilon_{\text{full}}(N) = \varepsilon_{\text{table}}[N]$$
 
 ### 3.3 第二段：回歸擬合公式（1000 ≤ N < 5×10⁶）
 
-令 $L = \ln N$，$\Lambda = \ln\ln N$。
+令 $L = \ln N$ ， $\Lambda = \ln\ln N$ 。
 
 以 554 個等間距數據點（N = 1000 至 113000，真實質數數據）對基向量集 $\{1/L,\; \Lambda/L^2,\; 1/L^2,\; \Lambda^2/L^3,\; \Lambda/L^3,\; 1/L^3\}$ 做約束線性回歸（固定 $a_0 = 1$ 以保留正確漸近項，只擬合修正項），得：
 
@@ -121,12 +121,12 @@ $$\boxed{\varepsilon_{\text{mid}}(N) = \frac{1}{L} + \frac{\beta_1 \Lambda + \be
 | 係數 | 對應項 | 數值 |
 |:---:|:---:|---:|
 | $\beta_1$ | $\Lambda / L^2$ | $160.2971$ |
-| $\beta_2$ | $1 / L^2$ | $-845.5678$ |
+| $\beta_2$ | $1 / L^2$ | $ -845.5678$ |
 | $\beta_3$ | $\Lambda^2 / L^3$ | $763.7534$ |
-| $\beta_4$ | $\Lambda / L^3$ | $-359.9259$ |
+| $\beta_4$ | $\Lambda / L^3$ | $ -359.9259$ |
 | $\beta_5$ | $1 / L^3$ | $1546.2420$ |
 
-係數值雖大，但各項在 $N \geq 1000$（$L \geq 6.9$）時相互部分消去，合計後的修正量約為 $0.01$ 至 $0.05$ 量級。
+係數值雖大，但各項在 $N \geq 1000$ （ $L \geq 6.9$ ）時相互部分消去，合計後的修正量約為 $0.01$ 至 $0.05$ 量級。
 
 ### 3.4 第三段：解析漸近（N ≥ 5×10⁶）
 
@@ -134,7 +134,7 @@ $$\boxed{\varepsilon_{\text{mid}}(N) = \frac{1}{L} + \frac{\beta_1 \Lambda + \be
 
 $$\boxed{\varepsilon_{\text{asy}}(N) = \frac{1}{L} + \frac{1 - \Lambda}{L^2} + \frac{\Lambda^2 - \Lambda - 1}{2L^3}}$$
 
-此式正確捕捉了 PNT 的主導修正，且隨 $N \to \infty$ 保證 $\varepsilon \to 0$。
+此式正確捕捉了 PNT 的主導修正，且隨 $N \to \infty$ 保證 $\varepsilon \to 0$ 。
 
 ### 3.5 完整公式
 
@@ -146,7 +146,7 @@ $$\varepsilon_{\text{full}}(N) = \begin{cases}
 & N \geq 5 \times 10^6
 \end{cases}$$
 
-其中 $L = \ln N$，$\Lambda = \ln\ln N$，係數 $\beta_1, \ldots, \beta_5$ 如上表。
+其中 $L = \ln N$ ， $\Lambda = \ln\ln N$ ，係數 $\beta_1, \ldots, \beta_5$ 如上表。
 
 ---
 
@@ -229,11 +229,11 @@ $$\hat{p}(N+1) = (N+1) \cdot \text{Avg}(N+1) - N \cdot \text{Avg}(N)$$
 
 ## 6. 理論意義
 
-**觀察 6.1（初始相）：** $\varepsilon(N) < 0$（即 $m(N) < 1$）在 $N \lesssim 5$ 時成立。這表明在對數坐標下，前幾個質數的累積平均值以低於線性的速率增長。這是小尺度量子化效應（前幾個質數的特殊分布）壓倒漸近規律的直接體現。
+**觀察 6.1（初始相）：** $\varepsilon(N) < 0$ （即 $m(N) < 1$ ）在 $N \lesssim 5$ 時成立。這表明在對數坐標下，前幾個質數的累積平均值以低於線性的速率增長。這是小尺度量子化效應（前幾個質數的特殊分布）壓倒漸近規律的直接體現。
 
 **觀察 6.2（零點）：** ε 在 $N \approx 5$ 附近穿越零點。此點是「初始量子相」與「漸近幾何相」的轉換邊界。
 
-**觀察 6.3（峰值後單調遞減）：** ε 在 $N \approx 10$–$30$ 達到峰值（約 0.27–0.28），此後單調遞減趨向 0。峰值對應質數序列從「密集初始分布」向「稀疏漸近分布」轉換的臨界尺度。
+**觀察 6.3（峰值後單調遞減）：** ε 在 $ N \approx 10$ –$ 30$ 達到峰值（約 0.27–0.28），此後單調遞減趨向 0。峰值對應質數序列從「密集初始分布」向「稀疏漸近分布」轉換的臨界尺度。
 
 **觀察 6.4（全域一致性）：** 三段式公式的各段均從同一真實質數數據出發——第一段直接使用，第二段以其校準，第三段以 PNT 的解析結果（本身是真實質數行為的極限）。三段在銜接點（N=1000, N=5×10⁶）的誤差均在 0.4% 以內，顯示數學上的一致性。
 
@@ -247,7 +247,7 @@ $$\hat{p}(N+1) = (N+1) \cdot \text{Avg}(N+1) - N \cdot \text{Avg}(N)$$
 
 \[PNT\] Hadamard, J.; de la Vallée Poussin, C.-J., "Sur la distribution des zéros de la fonction ζ(s) et ses conséquences arithmétiques," *Bull. Soc. Math. France* **24** (1896), 199–220.
 
-\[Cipolla1902\] M. Cipolla, "La determinazione assintotica dell' $n$-mo numero primo," *Matematiche di Napoli* **3** (1902), 132–166.
+\[Cipolla1902\] M. Cipolla, "La determinazione assintotica dell' $n$ -mo numero primo," *Matematiche di Napoli* **3** (1902), 132–166.
 
 \[RH-Analytic\] Riemann, B., "Über die Anzahl der Primzahlen unter einer gegebenen Größe," *Monatsberichte der Berliner Akademie* (1859).
 
@@ -421,7 +421,7 @@ function runExample() {
 
 前置論文與本文都以「質數」為已知前提去描述其行為。一個更基礎的問題是：
 
-> **是否存在算子 $T$，使得質數恰好是 $T$ 的不動點集，且 $T$ 的定義中不出現「質數」一詞？**
+> **是否存在算子 $T$ ，使得質數恰好是 $T$ 的不動點集，且 $T$ 的定義中不出現「質數」一詞？**
 
 答案是肯定的。
 
@@ -433,9 +433,9 @@ $$M6^* = \{n \in \mathbb{N} : n > 1,\; n \equiv \pm 1 \pmod{6}\} = \{5, 7, 11, 1
 
 $M6^*$ 僅由模算術定義，不假設質數知識。
 
-**引理 C.1（整除封閉性）：** 若 $n \in M6^*$ 且 $d \mid n$，$d > 1$，則 $d \in M6^*$。
+**引理 C.1（整除封閉性）：** 若 $n \in M6^*$ 且 $d \mid n$ ， $d > 1$ ，則 $d \in M6^*$ 。
 
-*證明：* $n \in M6^*$ 意味 $\gcd(n, 6) = 1$，故 $n$ 的所有質因數 $q$ 均滿足 $q \equiv \pm 1 \pmod{6}$，即 $q \in M6^*$。$n$ 的任何因數 $d > 1$ 是這些質因數的乘積，仍在 $M6^*$ 中（$M6^*$ 在乘法下封閉）。$\square$
+*證明：* $n \in M6^*$ 意味 $\gcd(n, 6) = 1$ ，故 $n$ 的所有質因數 $q$ 均滿足 $q \equiv \pm 1 \pmod{6}$ ，即 $q \in M6^*$ 。 $n$ 的任何因數 $d > 1$ 是這些質因數的乘積，仍在 $M6^*$ 中（ $M6^*$ 在乘法下封閉）。 $\square$
 
 ### C.3 算子 T\_top
 
@@ -443,12 +443,12 @@ $M6^*$ 僅由模算術定義，不假設質數知識。
 
 $$T_{\text{top}} : M6^* \to M6^*, \qquad T_{\text{top}}(n) = \min\{d \in M6^* : d \mid n\}$$
 
-（最小值按自然數大小取；$n$ 本身始終在集合中，故存在。引理 C.1 保證集合中所有元素均在 $M6^*$ 內。）
+（最小值按自然數大小取； $n$ 本身始終在集合中，故存在。引理 C.1 保證集合中所有元素均在 $M6^*$ 內。）
 
 **非循環性核查：** $T_{\text{top}}$ 的定義僅使用：
-- $M6^*$：由 $n > 1$，$n \equiv \pm 1 \pmod{6}$ 定義，無「質數」。✓
-- $d \mid n$：整除關係，純乘法算術。✓
-- $\min$：自然數排序。✓
+- $M6^*$ ：由 $n > 1$ ， $n \equiv \pm 1 \pmod{6}$ 定義，無「質數」。✓
+- $d \mid n$ ：整除關係，純乘法算術。✓
+- $\min$ ：自然數排序。✓
 
 ### C.4 主定理
 
@@ -456,17 +456,17 @@ $$T_{\text{top}} : M6^* \to M6^*, \qquad T_{\text{top}}(n) = \min\{d \in M6^* : 
 
 $$\mathrm{Fix}(T_{\text{top}}) = \mathbb{P} \cap M6^*$$
 
-即：$n \in M6^*$ 是 $T_{\text{top}}$ 的不動點，當且僅當 $n$ 是質數（且 $n > 3$）。
+即： $n \in M6^*$ 是 $T_{\text{top}}$ 的不動點，當且僅當 $n$ 是質數（且 $n > 3$ ）。
 
 **證明：**
 
-$(\supseteq)$ 設 $p \in \mathbb{P} \cap M6^*$。$p$ 的正因數只有 $1$ 與 $p$。由 $1 \notin M6^*$，$p$ 的 $M6^*$-因數集合為 $\{p\}$，故 $T_{\text{top}}(p) = p$。$\square$
+$(\supseteq)$ 設 $p \in \mathbb{P} \cap M6^*$ 。 $p$ 的正因數只有 $1$ 與 $p$ 。由 $1 \notin M6^*$ ， $p$ 的 $M6^*$ -因數集合為 $\{p\}$ ，故 $T_{\text{top}}(p) = p$ 。 $\square$
 
-$(\subseteq)$ 設 $T_{\text{top}}(n) = n$，即不存在 $d \in M6^*$ 使 $d \mid n$ 且 $d < n$。反設 $n$ 是合數，令 $q$ 為 $n$ 的最小質因數。由 $n \in M6^*$ 得 $\gcd(n, 6) = 1$，故 $\gcd(q, 6) = 1$，即 $q \in M6^*$。又 $n$ 是合數故 $q \leq \sqrt{n} < n$。於是 $q \in M6^*$，$q \mid n$，$q < n$，矛盾。故 $n$ 是質數。$\square$
+$(\subseteq)$ 設 $T_{\text{top}}(n) = n$ ，即不存在 $d \in M6^*$ 使 $d \mid n$ 且 $d < n$ 。反設 $n$ 是合數，令 $q$ 為 $n$ 的最小質因數。由 $n \in M6^*$ 得 $\gcd(n, 6) = 1$ ，故 $\gcd(q, 6) = 1$ ，即 $q \in M6^*$ 。又 $n$ 是合數故 $q \leq \sqrt{n} < n$ 。於是 $q \in M6^*$ ， $q \mid n$ ， $q < n$ ，矛盾。故 $n$ 是質數。 $\square$
 
 ### C.5 驗算
 
-| $n$ | $M6^*$-因數集 | $T_{\text{top}}(n)$ | 不動點？ | 質數？ |
+| $n$ | $M6^*$ -因數集 | $T_{\text{top}}(n)$ | 不動點？ | 質數？ |
 |---:|:---|:---:|:---:|:---:|
 | 5 | $\{5\}$ | 5 | ✓ | ✓ |
 | 11 | $\{11\}$ | 11 | ✓ | ✓ |
@@ -478,15 +478,15 @@ $(\subseteq)$ 設 $T_{\text{top}}(n) = n$，即不存在 $d \in M6^*$ 使 $d \mi
 
 ### C.6 拓撲詮釋
 
-在 $(M6^*, \mid)$ 上以整除偏序定義 **Alexandrov 拓撲** $\tau$：
+在 $(M6^*, \mid)$ 上以整除偏序定義 **Alexandrov 拓撲** $\tau$ ：
 
 $$U \in \tau \iff \forall n \in U,\; \forall d \in M6^*: d \mid n \Rightarrow d \in U$$
 
 **命題 C.1：** $n \in M6^*$ 是質數，當且僅當單元素集 $\{n\}$ 是 $\tau$ 中的**開集**（開點）。
 
-*證明：* $\{n\}$ 是開集 $\iff$ $\{n\}$ 向下封閉 $\iff$ $n$ 的所有 $M6^*$-因數均在 $\{n\}$ 中 $\iff$ $n$ 的唯一 $M6^*$-因數是 $n$ 自身 $\iff$ $n$ 是質數。$\square$
+*證明：* $\{n\}$ 是開集 $\iff$ $\{n\}$ 向下封閉 $\iff$ $n$ 的所有 $M6^*$ -因數均在 $\{n\}$ 中 $\iff$ $n$ 的唯一 $M6^*$ -因數是 $n$ 自身 $\iff$ $n$ 是質數。 $\square$
 
-$T_{\text{top}}(n)$ 因此等於：$\tau$ 中包含於 $\{n\}$ 的最大開集的最小元素。**質數是 $\tau$ 中的開點，合數不是。**
+$T_{\text{top}}(n)$ 因此等於： $\tau$ 中包含於 $\{n\}$ 的最大開集的最小元素。**質數是 $\tau$ 中的開點，合數不是。**
 
 ### C.7 與 ε\_full 的關係
 

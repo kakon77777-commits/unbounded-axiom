@@ -22,7 +22,7 @@ $$
 G(t) = (V(t), E(t), X(t), W(t))
 $$
 
-其中 $V(t)$ 為計算實體集合，$E(t)$ 為關係集合，$X(t)$ 為節點狀態，$W(t)$ 為邊權重與流動狀態。
+其中 $V(t)$ 為計算實體集合， $E(t)$ 為關係集合， $X(t)$ 為節點狀態， $W(t)$ 為邊權重與流動狀態。
 
 PHOSPHOR 不要求使用者一次理解全部計算細節，而是透過宏觀、中觀與微觀尺度的連續語義縮放，將同一底層執行真相投影成不同理解層。宏觀層顯示整體 application、CPU、memory、disk、network、GPU 與外部依賴之間的動態關係；中觀層顯示 process、thread、scheduler、runtime、function、database query、cache 與 service 關係；微觀層則可進一步顯示 source line、AST、bytecode、basic block、instruction group、memory access 與 system event。
 
@@ -401,10 +401,10 @@ $$
 
 其中：
 
-- $V(t)$：節點集合
-- $E(t)$：關係集合
-- $X(t)$：狀態
-- $W(t)$：權重、強度與流量
+- $V(t)$ ：節點集合
+- $E(t)$ ：關係集合
+- $X(t)$ ：狀態
+- $W(t)$ ：權重、強度與流量
 
 節點可能包括：
 

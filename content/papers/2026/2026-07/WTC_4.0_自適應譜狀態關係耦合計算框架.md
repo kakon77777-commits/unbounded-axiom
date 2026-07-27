@@ -622,7 +622,7 @@ $$
 
 ## 8.6 自適應參數更新的條件
 
-對光滑損失 $\mathcal L(\vartheta)$ ，若梯度為 $L$-Lipschitz，採
+對光滑損失 $\mathcal L(\vartheta)$ ，若梯度為 $L$ -Lipschitz，採
 
 $$
 \vartheta_{r+1}=\vartheta_r-\eta\nabla\mathcal L(\vartheta_r),

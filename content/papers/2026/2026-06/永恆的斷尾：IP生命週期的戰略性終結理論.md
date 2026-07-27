@@ -585,7 +585,7 @@ III | IV
 
 新模式：
 
-$$Creation(t) = \\begin{cases} High, & t \\in \[t\_1, t\_1 + \\Delta t\_1\] \\ 0, & t \\in (t\_1 + \\Delta t\_1, t\_2) \\ High, & t \\in \[t\_2, t\_2 + \\Delta t\_2\] \\ 0, & ... \\end{cases}$$
+$$Creation(t) = \begin{cases} High, & t \in [t\_1, t\_1 + \Delta t\_1] \\ 0, & t \in (t\_1 + \Delta t\_1, t\_2) \\ High, & t \in [t\_2, t\_2 + \Delta t\_2] \\ 0, & ... \end{cases}$$
 
 高峰期爆發 → 戰略性沉默 → 再次爆發
 

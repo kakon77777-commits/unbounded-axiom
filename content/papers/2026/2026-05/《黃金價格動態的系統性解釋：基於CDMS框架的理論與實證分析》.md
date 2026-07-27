@@ -82,7 +82,7 @@
 
 1.  **文獻綜述與理論缺口識別**：系統回顧黃金價格決定理論、貨幣史研究、避險資產文獻，識別現有研究未能將黃金與貨幣體系結構性風險聯繫起來的理論缺口。
 2.  **CDMS****框架的黃金視角擴展**：將黃金定位為「系統外價值儲存」，分析其在CDMS體系中的獨特地位——不參與債務創造、不受央行資產負債表擴張直接影響、供給剛性約束。
-3.  **多因素驅動模型構建**：基於理論推導，提出黃金價格的決定方程： [ \text{Gold_Price}_t = f(\text{DMR}_t, \text{RGSI}_t, \text{SRI}_t, \text{AYUR}_t, \text{CBSC}_t, \text{CB_Demand}_t, \text{Geopolitical_Risk}_t, \text{Real_Interest_Rate}_t) ] 其中各變量的理論傳導機制在第三章詳細闡述。
+3.  **多因素驅動模型構建**：基於理論推導，提出黃金價格的決定方程： [ \text{Gold\_Price}_t = f(\text{DMR}_t, \text{RGSI}_t, \text{SRI}_t, \text{AYUR}_t, \text{CBSC}_t, \text{CB\_Demand}_t, \text{Geopolitical\_Risk}_t, \text{Real\_Interest\_Rate}_t) ] 其中各變量的理論傳導機制在第三章詳細闡述。
 4.  **認知偏差的行為經濟學分析**：借鑒Kahneman和Tversky的前景理論、Thaler的心理帳戶理論，解構「高點論」的認知基礎。
 
 **實證檢驗方法**
@@ -440,7 +440,7 @@ COVID-19疫情提供了另一個自然實驗。2020年2-3月全球股市暴跌�
 
 我們構建的核心方程為：
 
-[ \frac{\text{Gold_Price}_t}{\text{M2}_t} = \alpha + \beta_1 \text{DMR}_t + \beta_2 \text{RGSI}_t + \beta_3 \text{SRI}_t + \beta_4 \text{AYUR}_t + \gamma X_t + \epsilon_t ]
+[ \frac{\text{Gold\_Price}_t}{\text{M2}_t} = \alpha + \beta_1 \text{DMR}_t + \beta_2 \text{RGSI}_t + \beta_3 \text{SRI}_t + \beta_4 \text{AYUR}_t + \gamma X_t + \epsilon_t ]
 
 其中Gold_Price/M2比率控制了貨幣供應的膨脹效應，使得我們能夠識別黃金的**相對稀缺性變化**而非絕對價格波動。
 
@@ -556,7 +556,7 @@ Kahneman & Tversky (1972)
 -   但黃金本身的價值不依賴任何人的負債承諾
 -   與之對比：銀行創造1億美元存款時，必然對應1億美元貸款（負債）
 
-用數學語言表示： [ \Delta \text{Gold_Stock}_t \perp \Delta D_t ] 即黃金存量變化與債務變化統計獨立。
+用數學語言表示： [ \Delta \text{Gold\_Stock}_t \perp \Delta D_t ] 即黃金存量變化與債務變化統計獨立。
 
 **（2****）價值基礎的非信用性**
 
@@ -699,11 +699,11 @@ Kahneman & Tversky (1972)
 
 **形式化表達**：
 
-定義**黃金風險溢價**為： [ \text{Gold_Premium}_t = \frac{\text{Gold_Price}_t / \text{Gold_Stock}_t}{\text{M2}_t / \text{GDP}_t} - 1 ]
+定義**黃金風險溢價**為： [ \text{Gold\_Premium}_t = \frac{\text{Gold\_Price}_t / \text{Gold\_Stock}_t}{\text{M2}_t / \text{GDP}_t} - 1 ]
 
 即黃金的單位價值增長率與廣義貨幣化率的差異。理論預測：
 
-[ \text{Gold_Premium}_t = \alpha + \beta \cdot \mathbb{I}(\text{DMR}_t > \tau) + \gamma X_t + \epsilon_t ]
+[ \text{Gold\_Premium}_t = \alpha + \beta \cdot \mathbb{I}(\text{DMR}_t > \tau) + \gamma X_t + \epsilon_t ]
 
 其中：
 
@@ -727,7 +727,7 @@ DMR上升意味著每單位新增貨幣對應的實際資產（GDP創造能力�
 
 黃金作為供給剛性資產（年增<2%），其相對於信用貨幣的**稀釋抵抗力**凸顯：
 
-[ \frac{\text{Gold_Price}_t}{\text{M2}t} = \text{constant} \times e^{(g{\text{M2}} - g_{\text{Gold}}) \cdot t} ]
+[ \frac{\text{Gold\_Price}_t}{\text{M2}t} = \text{constant} \times e^{(g{\text{M2}} - g_{\text{Gold}}) \cdot t} ]
 
 當 ( g_{\text{M2}} ) 從5%加速至10%時（DMR超臨界下的典型情況），黃金/M2比率以指數級上升。
 
@@ -768,11 +768,11 @@ DMR上升意味著每單位新增貨幣對應的實際資產（GDP創造能力�
 
 **基準方程**：
 
-[ \ln(\text{Gold_Price}_t) = \alpha + \beta_1 \text{DMR}_t + \beta_2 \text{RGSI}_t + \beta_3 \text{SRI}_t + \beta_4 \text{AYUR}_t + \beta_5 \text{CBSC}_t + \beta_6 \ln(\text{CB_Demand}_t) + \gamma Z_t + \mu_i + \lambda_t + \epsilon_t ]
+[ \ln(\text{Gold\_Price}_t) = \alpha + \beta_1 \text{DMR}_t + \beta_2 \text{RGSI}_t + \beta_3 \text{SRI}_t + \beta_4 \text{AYUR}_t + \beta_5 \text{CBSC}_t + \beta_6 \ln(\text{CB\_Demand}_t) + \gamma Z_t + \mu_i + \lambda_t + \epsilon_t ]
 
 其中：
 
--   ( \ln(\text{Gold_Price}_t) )：對數化黃金價格（控制異方差）
+-   ( \ln(\text{Gold\_Price}_t) )：對數化黃金價格（控制異方差）
 -   **核心解釋變量**：
 
 -   ( \text{DMR}_t )：債務貨幣比率
@@ -780,7 +780,7 @@ DMR上升意味著每單位新增貨幣對應的實際資產（GDP創造能力�
 -   ( \text{SRI}_t )：結構性餘裕指數
 -   ( \text{AYUR}_t )：調整後青年失業率
 -   ( \text{CBSC}_t )：跨境清算集中度
--   ( \ln(\text{CB_Demand}_t) )：央行淨購金量（對數）
+-   ( \ln(\text{CB\_Demand}_t) )：央行淨購金量（對數）
 
 -   **控制變量** ( Z_t )：
 
@@ -788,7 +788,7 @@ DMR上升意味著每單位新增貨幣對應的實際資產（GDP創造能力�
 -   ( \text{DXY}_t )：美元指數
 -   ( \text{VIX}_t )：波動率指數
 -   ( \text{GPR}_t )：地緣政治風險指數
--   ( \ln(\text{Oil_Price}_t) )：原油價格（代理通脹預期）
+-   ( \ln(\text{Oil\_Price}_t) )：原油價格（代理通脹預期）
 
 -   ( \mu_i )：國家/區域固定效應（若使用面板數據）
 -   ( \lambda_t )：時間固定效應
@@ -866,11 +866,11 @@ GPR
 
 **因素1****：DMR****（債務貨幣比率）**
 
-**直接效應**： [ \frac{\partial \ln(\text{Gold_Price})}{\partial \text{DMR}} = \beta_1 + \theta_1 \cdot \mathbb{I}(\text{DMR} > 2.48) ]
+**直接效應**： [ \frac{\partial \ln(\text{Gold\_Price})}{\partial \text{DMR}} = \beta_1 + \theta_1 \cdot \mathbb{I}(\text{DMR} > 2.48) ]
 
 其中 ( \theta_1 > 0 ) 捕捉超臨界後的放大效應。
 
-**間接效應**（通過預期通脹）： [ \text{DMR} \uparrow \Rightarrow E[\pi_{\text{future}}] \uparrow \Rightarrow \text{實際利率} \downarrow \Rightarrow \text{黃金持有成本} \downarrow \Rightarrow \text{Gold_Price} \uparrow ]
+**間接效應**（通過預期通脹）： [ \text{DMR} \uparrow \Rightarrow E[\pi_{\text{future}}] \uparrow \Rightarrow \text{實際利率} \downarrow \Rightarrow \text{黃金持有成本} \downarrow \Rightarrow \text{Gold\_Price} \uparrow ]
 
 **傳導時滯**：DMR變化到黃金價格反應通常有3-6個月滯後，因為：
 
@@ -894,7 +894,7 @@ RGSI = 名義GDP增速 - CPI，衡量扣除通脹後的經濟實際增長感受�
 
 **傳導方程**： [ \text{RGSI}_t < 0 \Rightarrow \text{實際持有成本}_t < 0 \Rightarrow \text{黃金需求}_t \uparrow ]
 
-用彈性表示： [ \eta_{\text{Gold}, \text{RGSI}} = \frac{\partial \ln(\text{Gold_Price})}{\partial \text{RGSI}} \approx -0.15 \text{ 至 } -0.25 ]
+用彈性表示： [ \eta_{\text{Gold}, \text{RGSI}} = \frac{\partial \ln(\text{Gold\_Price})}{\partial \text{RGSI}} \approx -0.15 \text{ 至 } -0.25 ]
 
 即RGSI每下降1個百分點，黃金價格上漲0.15%-0.25%。
 
@@ -918,13 +918,13 @@ RGSI = 名義GDP增速 - CPI，衡量扣除通脹後的經濟實際增長感受�
 
 **傳導機制**：
 
-微觀層面（家庭行為）： [ \text{SRI} \downarrow \Rightarrow \text{經濟不安全感} \uparrow \Rightarrow \begin{cases} \text{削減非必需支出} \ \text{尋求安全資產（如黃金首飾）} \end{cases} ]
+微觀層面（家庭行為）： [ \text{SRI} \downarrow \Rightarrow \text{經濟不安全感} \uparrow \Rightarrow \begin{cases} \text{削減非必需支出} \\ \text{尋求安全資產（如黃金首飾）} \end{cases} ]
 
-宏觀層面（系統性風險）： [ \text{全球SRI均值} \downarrow \Rightarrow \text{社會不穩定預期} \uparrow \Rightarrow \text{精英階層提前配置黃金} \Rightarrow \text{Gold_Price} \uparrow ]
+宏觀層面（系統性風險）： [ \text{全球SRI均值} \downarrow \Rightarrow \text{社會不穩定預期} \uparrow \Rightarrow \text{精英階層提前配置黃金} \Rightarrow \text{Gold\_Price} \uparrow ]
 
 **關鍵洞察**：SRI對黃金價格的影響主要通過**精英階層的預期**而非底層民眾的直接購買。當大量人口SRI<0.15時，雖然他們無力大量購買黃金，但這一信號會被高淨值個人和機構投資者解讀為系統性風險上升的前兆，從而提前配置。
 
-**量化關係**： [ \frac{\partial \ln(\text{Gold_Price})}{\partial \text{SRI_Global}} \approx -2.5 \text{ 至 } -3.5 ]
+**量化關係**： [ \frac{\partial \ln(\text{Gold\_Price})}{\partial \text{SRI\_Global}} \approx -2.5 \text{ 至 } -3.5 ]
 
 即全球平均SRI每下降0.1個單位，黃金價格上漲25%-35%。
 
@@ -934,9 +934,9 @@ RGSI = 名義GDP增速 - CPI，衡量扣除通脹後的經濟實際增長感受�
 
 **理論依據**：青年失業不僅是經濟問題，更是**社會穩定性的領先指標**。Urdal (2006)證實，青年失業率超過22%的國家，發生政治衝突的概率是低失業率國家的3.2倍。
 
-**傳導路徑**： [ \text{AYUR} > 22.8% \Rightarrow \begin{cases} \text{社會不滿情緒} \uparrow \ \text{政治不確定性} \uparrow \ \text{資本外逃傾向} \uparrow \end{cases} \Rightarrow \text{黃金避險需求} \uparrow ]
+**傳導路徑**： [ \text{AYUR} > 22.8% \Rightarrow \begin{cases} \text{社會不滿情緒} \uparrow \\ \text{政治不確定性} \uparrow \\ \text{資本外逃傾向} \uparrow \end{cases} \Rightarrow \text{黃金避險需求} \uparrow ]
 
-**非線性效應**： [ \beta_4 = \begin{cases} 0.05 & \text{若 } AYUR < 22.8% \ 0.15 & \text{若 } AYUR \geq 22.8% \end{cases} ]
+**非線性效應**： [ \beta_4 = \begin{cases} 0.05 & \text{若 } AYUR < 22.8% \\ 0.15 & \text{若 } AYUR \geq 22.8% \end{cases} ]
 
 即失業率在閾值以下時，對黃金價格影響較小；超過閾值後，影響放大3倍。
 
@@ -962,7 +962,7 @@ RGSI = 名義GDP增速 - CPI，衡量扣除通脹後的經濟實際增長感受�
 2.  單一國家的貨幣政策（如美聯儲加息）對全球流動性產生不對稱影響
 3.  儲備貨幣國享有"過度特權"（exorbitant privilege），可通過本幣債務獲取全球資源
 
-理性的非美國家會尋求**去依賴化**（de-risking），黃金作為無國籍資產成為首選： [ \text{CBSC}_{\text{USD}} \uparrow \Rightarrow \text{集中性風險} \uparrow \Rightarrow \text{非美央行購金} \uparrow \Rightarrow \text{Gold_Price} \uparrow ]
+理性的非美國家會尋求**去依賴化**（de-risking），黃金作為無國籍資產成為首選： [ \text{CBSC}_{\text{USD}} \uparrow \Rightarrow \text{集中性風險} \uparrow \Rightarrow \text{非美央行購金} \uparrow \Rightarrow \text{Gold\_Price} \uparrow ]
 
 **量化估計**：CBSC每上升1個百分點，新興市場央行購金量平均增加15-20噸/年。2022-2024年CBSC從49.8%升至51.2%（+1.4個百分點），同期新興市場央行購金從約650噸/年升至約850噸/年，完美驗證。
 
@@ -988,11 +988,11 @@ RGSI = 名義GDP增速 - CPI，衡量扣除通脹後的經濟實際增長感受�
 
 第二條路徑更為重要——央行作為最理性的長期投資者，其集體行動釋放強烈信號。
 
-**領先性分析**：使用格蘭傑因果檢驗，我們預期： [ \text{CB_Demand}_{t-1} \Rightarrow \text{Gold_Price}_t ]
+**領先性分析**：使用格蘭傑因果檢驗，我們預期： [ \text{CB\_Demand}_{t-1} \Rightarrow \text{Gold\_Price}_t ]
 
 即央行購金量領先黃金價格3-6個月（央行數據發布滯後，但市場能通過黃金進出口數據推測）。
 
-**非線性效應**：央行購金對價格的影響存在**累積效應**： [ \frac{\partial \ln(\text{Gold_Price}_t)}{\partial \ln(\text{CB_Demand}t)} = \beta_6 + \phi \sum{i=1}^{4} \ln(\text{CB_Demand}_{t-i}) ]
+**非線性效應**：央行購金對價格的影響存在**累積效應**： [ \frac{\partial \ln(\text{Gold\_Price}_t)}{\partial \ln(\text{CB\_Demand}t)} = \beta_6 + \phi \sum{i=1}^{4} \ln(\text{CB\_Demand}_{t-i}) ]
 
 即不僅當期購金影響價格，過去4個季度的累積購金量也持續影響當前價格。
 
@@ -1010,7 +1010,7 @@ RGSI = 名義GDP增速 - CPI，衡量扣除通脹後的經濟實際增長感受�
 
 黃金不產生利息或股息，其機會成本為實際利率： [ \text{持有成本} = r_{\text{real}} = r_{\text{nominal}} - \pi^e ]
 
-理論預測： [ \frac{\partial \ln(\text{Gold_Price})}{\partial r_{\text{real}}} < 0 ]
+理論預測： [ \frac{\partial \ln(\text{Gold\_Price})}{\partial r_{\text{real}}} < 0 ]
 
 實證估計約為-0.3至-0.5，即實際利率每上升1個百分點，黃金價格下降0.3%-0.5%。
 
@@ -1018,7 +1018,7 @@ RGSI = 名義GDP增速 - CPI，衡量扣除通脹後的經濟實際增長感受�
 
 **美元指數（DXY****）**
 
-黃金以美元計價，美元升值理論上降低非美國家的購買力： [ \frac{\partial \ln(\text{Gold_Price_USD})}{\partial \text{DXY}} < 0 ]
+黃金以美元計價，美元升值理論上降低非美國家的購買力： [ \frac{\partial \ln(\text{Gold\_Price\_USD})}{\partial \text{DXY}} < 0 ]
 
 但這一關係在2008年後有所弱化，原因是：
 
@@ -1030,13 +1030,13 @@ RGSI = 名義GDP增速 - CPI，衡量扣除通脹後的經濟實際增長感受�
 
 **波動率指數（VIX****）**
 
-VIX衡量市場恐慌程度，與黃金避險需求正相關： [ \frac{\partial \ln(\text{Gold_Price})}{\partial \text{VIX}} > 0 ]
+VIX衡量市場恐慌程度，與黃金避險需求正相關： [ \frac{\partial \ln(\text{Gold\_Price})}{\partial \text{VIX}} > 0 ]
 
 但這一關係主要在短期（日度、週度）有效，中長期（季度、年度）VIX對黃金價格的解釋力下降。原因是VIX主要反映股市波動，而黃金對沖的是更深層的系統性風險（如貨幣體系崩潰），後者不一定伴隨高VIX。
 
 **地緣政治風險（GPR****）**
 
-Caldara and Iacoviello (2022)構建的GPR指數基於新聞文本分析，捕捉戰爭、恐怖襲擊、國際緊張等事件。理論上： [ \frac{\partial \ln(\text{Gold_Price})}{\partial \text{GPR}} > 0 ]
+Caldara and Iacoviello (2022)構建的GPR指數基於新聞文本分析，捕捉戰爭、恐怖襲擊、國際緊張等事件。理論上： [ \frac{\partial \ln(\text{Gold\_Price})}{\partial \text{GPR}} > 0 ]
 
 實證顯示，GPR對黃金價格的影響存在**事件類型異質性**：
 
@@ -1047,9 +1047,9 @@ Caldara and Iacoviello (2022)構建的GPR指數基於新聞文本分析，捕捉
 
 **原油價格（Oil Price****）**
 
-原油作為通脹預期的代理變量，與黃金存在正相關： [ \frac{\partial \ln(\text{Gold_Price})}{\partial \ln(\text{Oil_Price})} > 0 ]
+原油作為通脹預期的代理變量，與黃金存在正相關： [ \frac{\partial \ln(\text{Gold\_Price})}{\partial \ln(\text{Oil\_Price})} > 0 ]
 
-理論機制： [ \text{Oil_Price} \uparrow \Rightarrow \pi^e \uparrow \Rightarrow r_{\text{real}} \downarrow \Rightarrow \text{Gold_Price} \uparrow ]
+理論機制： [ \text{Oil\_Price} \uparrow \Rightarrow \pi^e \uparrow \Rightarrow r_{\text{real}} \downarrow \Rightarrow \text{Gold\_Price} \uparrow ]
 
 但這一關係在2010年後有所弱化，因為：
 
@@ -1063,7 +1063,7 @@ Caldara and Iacoviello (2022)構建的GPR指數基於新聞文本分析，捕捉
 
 基準模型為靜態設定，但黃金價格具有明顯的**時間序列特徵**（趨勢、動量、均值回歸）。因此我們擴展為動態面板模型：
 
-[ \ln(\text{Gold_Price}_t) = \rho \ln(\text{Gold_Price}_{t-1}) + \beta' X_t + \gamma' Z_t + \mu_i + \lambda_t + \epsilon_t ]
+[ \ln(\text{Gold\_Price}_t) = \rho \ln(\text{Gold\_Price}_{t-1}) + \beta' X_t + \gamma' Z_t + \mu_i + \lambda_t + \epsilon_t ]
 
 其中 ( \rho ) 為自回歸係數，若 ( 0 < \rho < 1 ) 則存在均值回歸；若 ( \rho \approx 1 ) 則為隨機遊走。
 
@@ -1073,7 +1073,7 @@ Caldara and Iacoviello (2022)構建的GPR指數基於新聞文本分析，捕捉
 
 若黃金價格與核心解釋變量存在協整關係，則可建立ECM：
 
-[ \Delta \ln(\text{Gold_Price}_t) = \alpha \left[ \ln(\text{Gold_Price}_{t-1}) - \theta' X_{t-1} \right] + \beta' \Delta X_t + \epsilon_t ]
+[ \Delta \ln(\text{Gold\_Price}_t) = \alpha \left[ \ln(\text{Gold\_Price}_{t-1}) - \theta' X_{t-1} \right] + \beta' \Delta X_t + \epsilon_t ]
 
 其中：
 
@@ -1376,7 +1376,7 @@ CDMS體系的核心悖論是： [ \text{穩定性需要} \Rightarrow \text{債�
 
 **制度稀缺性的動態模型**：
 
-[ \frac{d(\text{Gold_Price}/\text{M2})}{dt} = \alpha \cdot (\text{RS}_t - \text{RS}^*) + \beta \cdot \text{Risk}_t ]
+[ \frac{d(\text{Gold\_Price}/\text{M2})}{dt} = \alpha \cdot (\text{RS}_t - \text{RS}^*) + \beta \cdot \text{Risk}_t ]
 
 其中：
 
@@ -1498,7 +1498,7 @@ Tversky and Kahneman (1974)的經典實驗:讓被試估計聯合國非洲國家�
 -   當前4200美元僅比1980年實質高點高20-30%
 -   而同期M2增長3000%,黃金相對M2其實處於歷史低位
 
-[ \frac{\text{Gold_Price}_{2024}}{\text{M2}_{2024}} = \frac{4200}{120萬億} = 3.5 \times 10^{-8} ] [ \frac{\text{Gold_Price}_{1980}}{\text{M2}_{1980}} = \frac{850}{1.6萬億} = 5.3 \times 10^{-7} ]
+[ \frac{\text{Gold\_Price}_{2024}}{\text{M2}_{2024}} = \frac{4200}{120萬億} = 3.5 \times 10^{-8} ] [ \frac{\text{Gold\_Price}_{1980}}{\text{M2}_{1980}} = \frac{850}{1.6萬億} = 5.3 \times 10^{-7} ]
 
 2024年的黃金/M2比率僅為1980年的6.6%! 從貨幣購買力角度看,黃金不是「太貴」,而是「還便宜」。
 
@@ -1506,7 +1506,7 @@ Tversky and Kahneman (1974)的經典實驗:讓被試估計聯合國非洲國家�
 
 **論調4****的心理學基礎**
 
-Kahneman and Tversky (1979)的前景理論(Prospect Theory)揭示: [ V(x) = \begin{cases} x^{\alpha} & \text{若 } x \geq 0 \text{ (收益)} \ -\lambda (-x)^{\beta} & \text{若 } x < 0 \text{ (損失)} \end{cases} ]
+Kahneman and Tversky (1979)的前景理論(Prospect Theory)揭示: [ V(x) = \begin{cases} x^{\alpha} & \text{若 } x \geq 0 \text{ (收益)} \\ -\lambda (-x)^{\beta} & \text{若 } x < 0 \text{ (損失)} \end{cases} ]
 
 其中 ( \lambda \approx 2-2.5 ),意味著**損失的痛苦是收益快樂的****2-2.5****倍**。
 
@@ -1527,7 +1527,7 @@ Kahneman and Tversky (1979)的前景理論(Prospect Theory)揭示: [ V(x) = \beg
 
 若賣出黃金換成現金,則: [ W_{\text{real},t+10}^{\text{現金}} = 4200 \cdot (1 + r_{\text{存款}})^{10} / P_{t+10} ]
 
-若繼續持有黃金,則: [ W_{\text{real},t+10}^{\text{黃金}} = \text{Gold_Price}_{t+10} / P_{t+10} ]
+若繼續持有黃金,則: [ W_{\text{real},t+10}^{\text{黃金}} = \text{Gold\_Price}_{t+10} / P_{t+10} ]
 
 當預期通脹率>存款利率時(如當前情況:預期通脹3-4%,存款利率1-2%),持有黃金的實質回報更高。但損失厭惡使投資者過度關注**名義價格波動**而非**實質購買力保護**。
 
@@ -1691,11 +1691,11 @@ Kahneman and Tversky (1979)的前景理論(Prospect Theory)揭示: [ V(x) = \beg
 
 **線性模型 vs** **非線性現實**:
 
-線性假設: [ \text{Gold_Price}_{t+1} = \text{Gold_Price}_t + \alpha \cdot \Delta t ]
+線性假設: [ \text{Gold\_Price}_{t+1} = \text{Gold\_Price}_t + \alpha \cdot \Delta t ]
 
 即價格以恆定速度變化。
 
-現實是非線性的: [ \text{Gold_Price}_{t+1} = f(\text{DMR}_t, \text{RGSI}_t, ...) \cdot \text{Gold_Price}_t ]
+現實是非線性的: [ \text{Gold\_Price}_{t+1} = f(\text{DMR}_t, \text{RGSI}_t, ...) \cdot \text{Gold\_Price}_t ]
 
 即變化率本身是變量的函數。當DMR突破臨界點、RGSI轉負、SRI壓縮時,系統從線性區域進入**非線性區域**,價格動態完全改變。
 
@@ -1878,7 +1878,7 @@ DMR
 -   **季度數據**:GDP、M2、債務總額、央行購金量(主要分析頻率)
 -   **年度數據**:基尼係數、SRI、AYUR(低頻但重要的結構性指標)
 
-**數據聚合處理**:將高頻數據聚合為季度均值,以匹配核心解釋變量的頻率。例如: [ \text{Gold_Price}_{\text{Q1,2024}} = \frac{1}{90} \sum_{t=\text{Jan 1}}^{\text{Mar 31}} \text{Gold_Price}_t ]
+**數據聚合處理**:將高頻數據聚合為季度均值,以匹配核心解釋變量的頻率。例如: [ \text{Gold\_Price}_{\text{Q1,2024}} = \frac{1}{90} \sum_{t=\text{Jan 1}}^{\text{Mar 31}} \text{Gold\_Price}_t ]
 
 **4.1.2** **主要數據來源**
 
@@ -1899,7 +1899,7 @@ DMR
 
 -   **數據調整**:
 
--   **實際價格計算**:使用美國CPI(2020=100)進行通脹調整 [ \text{Real_Gold_Price}_t = \text{Nominal_Price}_t \times \frac{\text{CPI}_{2020}}{\text{CPI}_t} ]
+-   **實際價格計算**:使用美國CPI(2020=100)進行通脹調整 [ \text{Real\_Gold\_Price}_t = \text{Nominal\_Price}_t \times \frac{\text{CPI}_{2020}}{\text{CPI}_t} ]
 -   **單位統一**:統一為美元/金衡盎司(1金衡盎司=31.1035克)
 
 **宏觀經濟指標數據**
@@ -2198,17 +2198,17 @@ A-
 
 **變換形式**:
 
-1.  **對數價格**:( \ln(\text{Gold_Price}_t) )
+1.  **對數價格**:( \ln(\text{Gold\_Price}_t) )
 
 -   用於回歸分析,因為價格呈指數增長
 -   係數解釋為彈性(百分比變化)
 
-3.  **實際價格**:( \text{Real_Gold_Price}_t = \text{Nominal_Price}_t / (\text{CPI}_t / 100) )
+3.  **實際價格**:( \text{Real\_Gold\_Price}_t = \text{Nominal\_Price}_t / (\text{CPI}_t / 100) )
 
 -   扣除通脹,反映真實購買力
 -   基期:2020年=100
 
-5.  **黃金/M2****比率**:( \text{Gold_M2_Ratio}_t = \frac{\text{Gold_Price}_t \times \text{Global_Gold_Stock}}{\text{Global_M2}_t} )
+5.  **黃金/M2****比率**:( \text{Gold\_M2\_Ratio}_t = \frac{\text{Gold\_Price}_t \times \text{Global\_Gold\_Stock}}{\text{Global\_M2}_t} )
 
 -   黃金總價值占廣義貨幣供應的比例
 -   衡量黃金相對稀缺性
@@ -2564,7 +2564,7 @@ SRI<0.10比例
 
 **綜合CBSC****指數**:
 
-加權平均三個維度: [ \text{CBSC}_{\text{__综合},t} = 0.5 \times \text{CBSC}_{\text{SWIFT},t} + 0.3 \times \text{CBSC}_{\text{Reserve},t} + 0.2 \times \text{CBSC}_{\text{FX Trading},t} ]
+加權平均三個維度: [ \text{CBSC}_{\text{\_\_综合},t} = 0.5 \times \text{CBSC}_{\text{SWIFT},t} + 0.3 \times \text{CBSC}_{\text{Reserve},t} + 0.2 \times \text{CBSC}_{\text{FX Trading},t} ]
 
 權重基於對黃金需求影響的相對重要性(通過先驗回歸確定)。
 
@@ -2974,7 +2974,7 @@ DMR vs Gold
 
 由於黃金價格的全球性質,我們首先使用時間序列模型:
 
-[ \ln(\text{Gold_Price}_t) = \alpha + \sum_{i=1}^{6} \beta_i X_{i,t} + \sum_{j=1}^{5} \gamma_j Z_{j,t} + \epsilon_t ]
+[ \ln(\text{Gold\_Price}_t) = \alpha + \sum_{i=1}^{6} \beta_i X_{i,t} + \sum_{j=1}^{5} \gamma_j Z_{j,t} + \epsilon_t ]
 
 其中:
 
@@ -3001,7 +3001,7 @@ DMR vs Gold
 
 考慮黃金價格的慣性和解釋變量的滯後效應:
 
-[ \ln(\text{Gold_Price}_t) = \alpha + \rho \ln(\text{Gold_Price}_{t-1}) + \sum_{i=1}^{6} \left[\beta_{i,0} X_{i,t} + \beta_{i,1} X_{i,t-1}\right] + \sum_{j=1}^{5} \gamma_j Z_{j,t} + \epsilon_t ]
+[ \ln(\text{Gold\_Price}_t) = \alpha + \rho \ln(\text{Gold\_Price}_{t-1}) + \sum_{i=1}^{6} \left[\beta_{i,0} X_{i,t} + \beta_{i,1} X_{i,t-1}\right] + \sum_{j=1}^{5} \gamma_j Z_{j,t} + \epsilon_t ]
 
 **估計方法**:
 
@@ -3010,7 +3010,7 @@ DMR vs Gold
 
 **長期乘數**: [ \beta_i^{\text{long-run}} = \frac{\beta_{i,0} + \beta_{i,1}}{1 - \rho} ]
 
-**短期動態**: [ \Delta \ln(\text{Gold_Price}_t) = -\lambda \left[\ln(\text{Gold_Price}_{t-1}) - \theta' X_{t-1}\right] + \sum_{i=1}^{6} \beta_i \Delta X_{i,t} + \epsilon_t ]
+**短期動態**: [ \Delta \ln(\text{Gold\_Price}_t) = -\lambda \left[\ln(\text{Gold\_Price}_{t-1}) - \theta' X_{t-1}\right] + \sum_{i=1}^{6} \beta_i \Delta X_{i,t} + \epsilon_t ]
 
 其中 ( \lambda = 1 - \rho ) 為調整速度。
 
@@ -3020,7 +3020,7 @@ DMR vs Gold
 
 檢驗DMR和AYUR的非線性效應:
 
-[ \ln(\text{Gold_Price}_t) = \begin{cases} \alpha_1 + \beta_1' X_t + \gamma_1' Z_t + \epsilon_t & \text{若 } q_t \leq \tau \ \alpha_2 + \beta_2' X_t + \gamma_2' Z_t + \epsilon_t & \text{若 } q_t > \tau \end{cases} ]
+[ \ln(\text{Gold\_Price}_t) = \begin{cases} \alpha_1 + \beta_1' X_t + \gamma_1' Z_t + \epsilon_t & \text{若 } q_t \leq \tau \\ \alpha_2 + \beta_2' X_t + \gamma_2' Z_t + \epsilon_t & \text{若 } q_t > \tau \end{cases} ]
 
 其中 ( q_t ) 為門檻變量(DMR或AYUR),( \tau ) 為待估計的門檻值。
 
@@ -3047,7 +3047,7 @@ DMR vs Gold
 
 [ Y_t = A_0 + \sum_{i=1}^{p} A_i Y_{t-i} + \epsilon_t ]
 
-其中: [ Y_t = \begin{bmatrix} \ln(\text{Gold_Price}_t) \ \text{DMR}_t \ \ln(\text{CB_Demand}_t + 100) \ \text{RGSI}_t \end{bmatrix} ]
+其中: [ Y_t = \begin{bmatrix} \ln(\text{Gold\_Price}_t) \ \text{DMR}_t \ \ln(\text{CB\_Demand}_t + 100) \ \text{RGSI}_t \end{bmatrix} ]
 
 (CB_Demand加100避免負值或零值的對數問題)
 
@@ -3070,9 +3070,9 @@ F統計量: [ F = \frac{(SSR_{\text{restricted}} - SSR_{\text{unrestricted}}) / 
 
 **脈衝響應函數(IRF)**:
 
-計算DMR衝擊對黃金價格的動態影響: [ \text{IRF}_h = \frac{\partial \ln(\text{Gold_Price}_{t+h})}{\partial \epsilon_{\text{DMR},t}} ]
+計算DMR衝擊對黃金價格的動態影響: [ \text{IRF}_h = \frac{\partial \ln(\text{Gold\_Price}_{t+h})}{\partial \epsilon_{\text{DMR},t}} ]
 
-使用Cholesky分解識別結構性衝擊,變量排序(外生→內生): [ \text{RGSI} \to \text{DMR} \to \text{CB_Demand} \to \text{Gold_Price} ]
+使用Cholesky分解識別結構性衝擊,變量排序(外生→內生): [ \text{RGSI} \to \text{DMR} \to \text{CB\_Demand} \to \text{Gold\_Price} ]
 
 **方差分解**:
 
@@ -3099,21 +3099,21 @@ F統計量: [ F = \frac{(SSR_{\text{restricted}} - SSR_{\text{unrestricted}}) / 
 -   **弱工具檢驗**:第一階段F統計量 > 10(Stock & Yogo, 2005標準)
 -   **過度識別檢驗**:Hansen J統計量,檢驗IV的外生性
 
-**第二階段回歸**: [ \ln(\text{Gold_Price}_t) = \alpha + \beta \widehat{\text{DMR}}_t + \gamma' Z_t + \epsilon_t ]
+**第二階段回歸**: [ \ln(\text{Gold\_Price}_t) = \alpha + \beta \widehat{\text{DMR}}_t + \gamma' Z_t + \epsilon_t ]
 
 **檢驗2:GMM****動態面板估計**
 
 雖然本研究主要使用時間序列數據,但可以構建偽面板(pseudo-panel):將樣本期分為多個子時期(如每5年一組),每組作為一個「個體」。
 
-**Arellano-Bond GMM****估計**: [ \ln(\text{Gold_Price}_{i,t}) = \rho \ln(\text{Gold_Price}_{i,t-1}) + \beta' X_{i,t} + \mu_i + \epsilon_{i,t} ]
+**Arellano-Bond GMM****估計**: [ \ln(\text{Gold\_Price}_{i,t}) = \rho \ln(\text{Gold\_Price}_{i,t-1}) + \beta' X_{i,t} + \mu_i + \epsilon_{i,t} ]
 
-使用差分GMM消除固定效應 ( \mu_i ),工具變量為 ( \ln(\text{Gold_Price}_{i,t-2}) ) 及其更早滯後項。
+使用差分GMM消除固定效應 ( \mu_i ),工具變量為 ( \ln(\text{Gold\_Price}_{i,t-2}) ) 及其更早滯後項。
 
 **檢驗3:****分位數回歸**
 
 檢驗解釋變量在黃金價格不同分位數的影響是否異質:
 
-[ Q_{\tau}(\ln(\text{Gold_Price}_t) | X_t) = \alpha(\tau) + \beta(\tau)' X_t ]
+[ Q_{\tau}(\ln(\text{Gold\_Price}_t) | X_t) = \alpha(\tau) + \beta(\tau)' X_t ]
 
 其中 ( Q_{\tau} ) 為第 ( \tau ) 分位數(如 ( \tau = 0.1, 0.25, 0.5, 0.75, 0.9 ))。
 
@@ -3143,11 +3143,11 @@ F統計量: [ F = \frac{(SSR_{\text{restricted}} - SSR_{\text{unrestricted}}) / 
 
 使用以下替代指標:
 
-1.  **黃金/****白銀比率**:( \ln(\text{Gold_Price}_t / \text{Silver_Price}_t) )
+1.  **黃金/****白銀比率**:( \ln(\text{Gold\_Price}_t / \text{Silver\_Price}_t) )
 
 -   若黃金相對白銀升值,說明避險需求主導(黃金避險屬性強於白銀)
 
-3.  **黃金/****股票比率**:( \ln(\text{Gold_Price}_t / \text{S&P500}_t) )
+3.  **黃金/****股票比率**:( \ln(\text{Gold\_Price}_t / \text{S&P500}_t) )
 
 -   衡量黃金相對風險資產的表現
 
@@ -3543,7 +3543,7 @@ r≤2
 
 在進入完整實證分析前,先報告僅包含核心解釋變量的簡化模型:
 
-**模型4.1(****簡化OLS)**: [ \ln(\text{Gold_Price}_t) = \alpha + \beta_1 \text{DMR}_t + \beta_2 \text{RGSI}_t + \beta_3 \ln(\text{CB_Demand}_t + 100) + \epsilon_t ]
+**模型4.1(****簡化OLS)**: [ \ln(\text{Gold\_Price}_t) = \alpha + \beta_1 \text{DMR}_t + \beta_2 \text{RGSI}_t + \beta_3 \ln(\text{CB\_Demand}_t + 100) + \epsilon_t ]
 
 **表4.6:****簡化模型回歸結果**(1971Q1-2025Q2, N=216)
 
@@ -3905,7 +3905,7 @@ _2023-2025__年爆發式上漲_:
 
 **5.2.1** **完整模型估計**
 
-**模型5.1(****基準OLS,****全樣本)**: [ \ln(\text{Gold_Price}_t) = \alpha + \sum_{i=1}^{6} \beta_i X_{i,t} + \sum_{j=1}^{5} \gamma_j Z_{j,t} + \epsilon_t ]
+**模型5.1(****基準OLS,****全樣本)**: [ \ln(\text{Gold\_Price}_t) = \alpha + \sum_{i=1}^{6} \beta_i X_{i,t} + \sum_{j=1}^{5} \gamma_j Z_{j,t} + \epsilon_t ]
 
 樣本期:1971Q1-2025Q2(N=216) 標準誤:Newey-West HAC(滯後5階)
 
@@ -4283,7 +4283,7 @@ N
 
 **模型5.2(ARDL(1,1))**:
 
-[ \ln(\text{Gold_Price}_t) = \alpha + \rho \ln(\text{Gold_Price}_{t-1}) + \beta_0 \text{DMR}_t + \beta_1 \text{DMR}_{t-1} + \gamma' Z_t + \epsilon_t ]
+[ \ln(\text{Gold\_Price}_t) = \alpha + \rho \ln(\text{Gold\_Price}_{t-1}) + \beta_0 \text{DMR}_t + \beta_1 \text{DMR}_{t-1} + \gamma' Z_t + \epsilon_t ]
 
 (為簡潔僅展示DMR的動態效應,其他核心變量同樣使用ARDL(1,1)設定)
 
@@ -4442,7 +4442,7 @@ DW統計量
 
 **誤差修正模型(ECM)****形式**:
 
-將ARDL轉換為ECM: [ \Delta \ln(\text{Gold_Price}_t) = -0.128 \left[\ln(\text{Gold_Price}_{t-1}) - 5.32 \cdot \text{DMR}_{t-1} - ...\right] + 0.483 \Delta \text{DMR}_t + ... ]
+將ARDL轉換為ECM: [ \Delta \ln(\text{Gold\_Price}_t) = -0.128 \left[\ln(\text{Gold\_Price}_{t-1}) - 5.32 \cdot \text{DMR}_{t-1} - ...\right] + 0.483 \Delta \text{DMR}_t + ... ]
 
 **解釋**:
 
@@ -4628,7 +4628,7 @@ AYUR
 
 **檢驗方法**:Hansen (1999)單一門檻模型
 
-**模型設定**: [ \ln(\text{Gold_Price}_t) = \begin{cases} \alpha_1 + \beta_1 \text{DMR}_t + \gamma_1' Z_t + \epsilon_t & \text{若 } \text{DMR}_t \leq \tau \ \alpha_2 + \beta_2 \text{DMR}_t + \gamma_2' Z_t + \epsilon_t & \text{若 } \text{DMR}_t > \tau \end{cases} ]
+**模型設定**: [ \ln(\text{Gold\_Price}_t) = \begin{cases} \alpha_1 + \beta_1 \text{DMR}_t + \gamma_1' Z_t + \epsilon_t & \text{若 } \text{DMR}_t \leq \tau \\ \alpha_2 + \beta_2 \text{DMR}_t + \gamma_2' Z_t + \epsilon_t & \text{若 } \text{DMR}_t > \tau \end{cases} ]
 
 **網格搜尋結果**:
 
@@ -4901,7 +4901,7 @@ F統計量
 
 **假設**:當DMR>2.48 **且** AYUR>22.8%同時成立時,兩種風險疊加,對黃金價格的影響呈**超線性**增長。
 
-**模型設定**: [ \ln(\text{Gold_Price}_t) = \alpha + \beta_1 \text{DMR}_t + \beta_2 \text{AYUR}_t + \beta_3 (\text{DMR}_t \times \text{AYUR}_t) + \gamma' Z_t + \epsilon_t ]
+**模型設定**: [ \ln(\text{Gold\_Price}_t) = \alpha + \beta_1 \text{DMR}_t + \beta_2 \text{AYUR}_t + \beta_3 (\text{DMR}_t \times \text{AYUR}_t) + \gamma' Z_t + \epsilon_t ]
 
 **表5.7:DMR×AYUR****交互效應回歸**
 
@@ -4981,7 +4981,7 @@ AIC
 
 **交互項係數解釋**:
 
-[ \frac{\partial \ln(\text{Gold_Price})}{\partial \text{DMR}} = 0.687 + 0.0287 \times \text{AYUR} ]
+[ \frac{\partial \ln(\text{Gold\_Price})}{\partial \text{DMR}} = 0.687 + 0.0287 \times \text{AYUR} ]
 
 **情景分析**:
 
@@ -5097,7 +5097,7 @@ DMR和AYUR的交互效應支持**系統性風險的複合性**——經濟風險
 
 四變量VAR(4): [ Y_t = A_0 + \sum_{i=1}^{4} A_i Y_{t-i} + \epsilon_t ]
 
-其中: [ Y_t = \begin{bmatrix} \text{RGSI}_t \ \text{DMR}_t \ \ln(\text{CB_Demand}_t + 100) \ \ln(\text{Gold_Price}_t) \end{bmatrix} ]
+其中: [ Y_t = \begin{bmatrix} \text{RGSI}_t \ \text{DMR}_t \ \ln(\text{CB\_Demand}_t + 100) \ \ln(\text{Gold\_Price}_t) \end{bmatrix} ]
 
 **變量排序邏輯**(外生→內生):
 
@@ -5238,7 +5238,7 @@ DMR不引起央行購金
 
 **因果鏈條總結**:
 
-[ \boxed{\text{RGSI} \Rightarrow \text{DMR} \Rightarrow \begin{cases} \text{央行購金} \ \text{黃金價格} \end{cases} \Rightarrow \text{黃金價格(通過購金)}} ]
+[ \boxed{\text{RGSI} \Rightarrow \text{DMR} \Rightarrow \begin{cases} \text{央行購金} \\ \text{黃金價格} \end{cases} \Rightarrow \text{黃金價格(通過購金)}} ]
 
 **關鍵發現**:
 
@@ -5564,7 +5564,7 @@ VAR分析的主要發現:
 
 **第一階段回歸**(DMR對IV):
 
-[ \text{DMR}_t = \pi_0 + \pi_1 \text{Election}_t + \pi_2 \text{Disaster}_t + \pi_3 \text{Oil_Shock}_t + ... + v_t ]
+[ \text{DMR}_t = \pi_0 + \pi_1 \text{Election}_t + \pi_2 \text{Disaster}_t + \pi_3 \text{Oil\_Shock}_t + ... + v_t ]
 
 **表5.11:****第一階段回歸結果**
 
@@ -5703,7 +5703,7 @@ R²
 
 **動機**:DMR對黃金價格的影響是否在不同價格水平(分位數)存在差異?例如,在黃金價格極端高位時,DMR的影響是否更強?
 
-**模型設定**: [ Q_{\tau}(\ln(\text{Gold_Price}_t) | X_t) = \alpha(\tau) + \beta(\tau)' X_t ]
+**模型設定**: [ Q_{\tau}(\ln(\text{Gold\_Price}_t) | X_t) = \alpha(\tau) + \beta(\tau)' X_t ]
 
 估計 ( \tau = 0.1, 0.25, 0.5, 0.75, 0.9 ) 五個分位數的係數。
 
@@ -6029,7 +6029,7 @@ R²
 
 **替代指標1:****黃金/****白銀比率**
 
-[ Y_t = \ln\left(\frac{\text{Gold_Price}_t}{\text{Silver_Price}_t}\right) ]
+[ Y_t = \ln\left(\frac{\text{Gold\_Price}_t}{\text{Silver\_Price}_t}\right) ]
 
 **理論**:若黃金上漲主要由避險需求驅動,黃金/白銀比率應上升(黃金避險屬性強於白銀)。
 
@@ -6097,7 +6097,7 @@ R²
 
 **替代指標2:****黃金/****標普500****比率**
 
-[ Y_t = \ln\left(\frac{\text{Gold_Price}_t}{\text{S&P500}_t}\right) ]
+[ Y_t = \ln\left(\frac{\text{Gold\_Price}_t}{\text{S&P500}_t}\right) ]
 
 **理論**:衡量黃金相對於風險資產的表現,若DMR上升,該比率應上升。
 
@@ -6464,7 +6464,7 @@ DMR係數變化<2%,遺漏偏誤可忽略
 
 **2024****年等值($/oz)**
 
-**與當前$4,249****比較**
+**與當前 $4,249****比較**
 
 1980年1月
 
@@ -6518,23 +6518,23 @@ $4,249
 
 **關鍵發現**：
 
-1.  **1980****年的$850****並非真正的歷史最高點**：
+1.  **1980****年的 $850****並非真正的歷史最高點**：
 
--   扣除通脹後，1980年高點僅相當於2024年的$3,287
--   當前$4,249比1980年實質高點僅高出**29.3%**
+-   扣除通脹後，1980年高點僅相當於2024年的 $3,287
+-   當前 $4,249比1980年實質高點僅高出**29.3%**
 -   考慮到同期M2從1.6萬億增至120萬億（增長75倍），黃金實質價格的漲幅遠遠落後於貨幣擴張
 
-3.  **2011****年的$1,920****更不是高點**：
+3.  **2011****年的 $1,920****更不是高點**：
 
--   實質購買力僅相當於$2,658，比當前低60%
--   2011-2024年間，美國累計通脹約41%，名義價格從$1,920漲至$4,249（+121%），扣除通脹後實質漲幅為57%
+-   實質購買力僅相當於 $2,658，比當前低60%
+-   2011-2024年間，美國累計通脹約41%，名義價格從 $1,920漲至 $4,249（+121%），扣除通脹後實質漲幅為57%
 
 5.  **真正的歷史對比基準**：
 
 -   若以黃金/M2比率衡量：
 
--   1980年：$850 / $1.6兆 = 5.3 × 10⁻⁷
--   2024年：$4,249 / $120兆 = 3.5 × 10⁻⁸
+-   1980年： $850 / $1.6兆 = 5.3 × 10⁻⁷
+-   2024年： $4,249 / $120兆 = 3.5 × 10⁻⁸
 
 -   **當前黃金/M2****比率僅為1980****年的6.6%**！
 -   從相對稀缺性看，黃金不是「太貴」，而是「嚴重低估」
@@ -6549,9 +6549,9 @@ $4,249
 
 **1980→2024****累計通脹**
 
-**1980****年$850****等值**
+**1980****年 $850****等值**
 
-**與當前$4,249****比較**
+**與當前 $4,249****比較**
 
 **官方CPI**
 
@@ -6969,7 +6969,7 @@ DM 1,450
 
 針對「高點論」者擔心的「買在高點」問題，我們模擬定期定額策略：
 
-**情景**：投資者從2011年9月（上一個名義高點$1,920）開始，每月投資$1,000於黃金，持續至2024年10月（13年）。
+**情景**：投資者從2011年9月（上一個名義高點 $1,920）開始，每月投資 $1,000於黃金，持續至2024年10月（13年）。
 
 **表6.8****：定期定額vs****一次性投資對比**
 
@@ -6985,7 +6985,7 @@ DM 1,450
 
 **最大浮虧**
 
-**一次性$156k@1920**
+**一次性 $156k@1920**
 
 $156,000
 
@@ -6997,7 +6997,7 @@ $346,200
 
 -45%(2015)
 
-**定期定額$1k/****月**
+**定期定額 $1k/****月**
 
 $156,000
 
@@ -7088,7 +7088,7 @@ $428,500
 
 5.  **期貨-****現貨價差極小**：
 
--   2020-2024年期貨與倫敦現貨的日均價差僅**0.31%**（約$13/盎司）
+-   2020-2024年期貨與倫敦現貨的日均價差僅**0.31%**（約 $13/盎司）
 -   價差主要由倉儲成本和利息成本解釋，不存在系統性偏離
 
 **6.3.2** **套利機制如何約束期貨價格**
@@ -7197,7 +7197,7 @@ $428,500
 
 3.  **加密貨幣抵押型**（如DAI）：
 
--   超額抵押（如存入$150以太坊，借出$100 DAI）
+-   超額抵押（如存入 $150以太坊，借出 $100 DAI）
 -   透過智能合約自動清算維持錨定
 
 5.  **算法型**（如已崩潰的UST）：
@@ -7314,7 +7314,7 @@ $428,500
 
 5.  **穩定幣不能對沖黃金能對沖的風險**：
 
--   **通脹風險**：穩定幣錨定$1，若美元年貶值3%，穩定幣同步貶值3%
+-   **通脹風險**：穩定幣錨定 $1，若美元年貶值3%，穩定幣同步貶值3%
 -   **銀行系統風險**：穩定幣儲備存放在銀行，銀行倒閉→儲備消失→穩定幣脫錨（2023年USDC事件）
 -   **主權信用風險**：若美國債務危機→美元崩潰→穩定幣歸零
 
@@ -7327,14 +7327,14 @@ $428,500
 **過程**：
 
 -   3月10日：SVB倒閉消息傳出
--   3月11日：USDC從$1.00跌至$0.88（-12%）
+-   3月11日：USDC從 $1.00跌至 $0.88（-12%）
 -   恐慌性拋售，24小時交易量暴增300%
--   3月13日：美聯儲宣布FDIC全額擔保SVB存款，USDC回升至$0.97
--   3月15日：Circle確認儲備安全，USDC回歸$1.00
+-   3月13日：美聯儲宣布FDIC全額擔保SVB存款，USDC回升至 $0.97
+-   3月15日：Circle確認儲備安全，USDC回歸 $1.00
 
 **同期黃金表現**：
 
--   3月10-15日：黃金從$1,860漲至$1,918（**+3.1%**）
+-   3月10-15日：黃金從 $1,860漲至 $1,918（**+3.1%**）
 -   典型避險資產表現：銀行系統風險→黃金需求↑
 
 **對比分析**：
@@ -7344,20 +7344,20 @@ $428,500
 
 **案例2****：2022****年5****月TerraUSD(UST)****崩潰**
 
-**機制**：UST為算法穩定幣，通過與LUNA代幣的雙向兌換維持$1錨定
+**機制**：UST為算法穩定幣，通過與LUNA代幣的雙向兌換維持 $1錨定
 
 **崩潰過程**：
 
 -   5月7日：大額贖回觸發死亡螺旋
--   5月9日：UST跌至$0.60
--   5月12日：UST跌至$0.30，LUNA同步歸零
--   損失：$400億市值蒸發，約30萬持有者血本無歸
+-   5月9日：UST跌至 $0.60
+-   5月12日：UST跌至 $0.30，LUNA同步歸零
+-   損失： $400億市值蒸發，約30萬持有者血本無歸
 
 **教訓**：算法穩定幣沒有真實資產支撐，本質上是**龐氏騙局**，在信心崩潰時瞬間歸零。
 
 **同期黃金表現**：
 
--   5月7-12日：黃金從$1,870漲至$1,845（-1.3%，小幅回調主要因美聯儲加息）
+-   5月7-12日：黃金從 $1,870漲至 $1,845（-1.3%，小幅回調主要因美聯儲加息）
 -   5月全月：黃金+0.9%，標普500 -8.8%，UST -99.9%
 
 **6.4.4** **數學模型：穩定幣的系統性風險累積**
@@ -7757,7 +7757,7 @@ $428,500
 
 **7.1.3** **黃金儲備的風險對沖價值測算**
 
-**情景分析**:假設2026年發生重大地緣衝突,美國凍結中國持有的美債(類似2022年對俄羅斯的制裁),中國外匯儲備損失$1萬億。
+**情景分析**:假設2026年發生重大地緣衝突,美國凍結中國持有的美債(類似2022年對俄羅斯的制裁),中國外匯儲備損失 $1萬億。
 
 **表7.3:****不同黃金配置下的儲備損失**
 
@@ -7765,7 +7765,7 @@ $428,500
 
 **黃金配置%**
 
-**黃金價值(****當前$4,249/oz)**
+**黃金價值(****當前 $4,249/oz)**
 
 **美債持有**
 
@@ -7801,8 +7801,8 @@ $9,000億(黃金漲+25%) + $0(凍結)
 
 **對沖效果**:
 
--   當前配置損失$8,200億(100%)
--   最優配置損失$1,000億(12%)
+-   當前配置損失 $8,200億(100%)
+-   最優配置損失 $1,000億(12%)
 -   **風險降低88%**
 
 **期權價值估算**: 將黃金視為對「美元資產被凍結」風險的看跌期權,其隱含期權價值為: [ V_{\text{put}} = P(\text{制裁}) \times E[\text{損失} | \text{制裁}] \times (1 - \text{黃金對沖比率}) ]
@@ -7811,12 +7811,12 @@ $9,000億(黃金漲+25%) + $0(凍結)
 
 -   ( P(\text{制裁}) = 5% ) (未來10年發生概率,基於專家調查)
 -   ( E[\text{損失}] = $8,200億 )
--   當前黃金對沖比率 = 22%(黃金$1,800億 / 總儲備$8,200億)
+-   當前黃金對沖比率 = 22%(黃金 $1,800億 / 總儲備 $8,200億)
 -   最優黃金對沖比率 = 72%
 
 [ V_{\text{put,當前}} = 5% \times $8,200億 \times (1 - 22%) = $320億 ] [ V_{\text{put,最優}} = 5% \times $8,200億 \times (1 - 72%) = $115億 ]
 
-**結論**:增持黃金至最優水平,可降低期權價值(未對沖風險)$205億,即年均節省風險成本約$20億。
+**結論**:增持黃金至最優水平,可降低期權價值(未對沖風險)$205億,即年均節省風險成本約 $20億。
 
 **7.2** **個人投資者的黃金配置策略**
 
@@ -7980,11 +7980,11 @@ ETF流動性高,實物安全性高
 
 **案例演示**:
 
-**投資者A**:35歲,中性風險偏好,年收入$60,000,目標黃金配置18%
+**投資者A**:35歲,中性風險偏好,年收入 $60,000,目標黃金配置18%
 
 1.  **目標金額計算**:
 
--   假設總資產$200,000
+-   假設總資產 $200,000
 -   目標黃金配置:$200,000 × 18% = $36,000
 -   當前持有:$10,000
 -   需增持:$26,000
@@ -7996,7 +7996,7 @@ ETF流動性高,實物安全性高
 
 5.  **執行**:
 
--   每月1號自動扣款$400購買黃金ETF
+-   每月1號自動扣款 $400購買黃金ETF
 -   每年12月31日檢查配置比例,若偏離目標±5%則再平衡
 
 **情景模擬**(假設未來5年黃金價格走勢):
@@ -8124,7 +8124,7 @@ ETF流動性高,實物安全性高
 -   **金條優於金幣**:金條溢價低(接近金價),金幣收藏價值帶來高溢價(10-30%)
 -   **規格選擇**:100克或1公斤金條,便於交易(1盎司≈31.1克)
 -   **購買渠道**:銀行、金店、上海黃金交易所
--   **保管方式**:銀行保險櫃(年費約$100-300)或家用保險櫃
+-   **保管方式**:銀行保險櫃(年費約 $100-300)或家用保險櫃
 
 **7.3** **政策制定者的風險預警機制**
 
@@ -8428,7 +8428,7 @@ IMF協調
 
 -   「一帶一路」國家50%貿易用人民幣結算
 -   建立人民幣離岸清算網路(類似SWIFT,已有CIPS基礎)
--   發行人民幣計價的國際債券(年規模$500億)
+-   發行人民幣計價的國際債券(年規模 $500億)
 
 2.  **歐元區改革**:
 
@@ -8469,7 +8469,7 @@ IMF協調
 3.  **全球基本收入(GBI)****試點**:
 
 -   在最不發達國家試點,資金來源:碳稅、數位稅、托賓稅
--   年人均$200-300,覆蓋10億人口
+-   年人均 $200-300,覆蓋10億人口
 -   評估其對全球需求穩定和CDMS風險的對沖效果
 
 **預期效果**:
@@ -8484,7 +8484,7 @@ IMF協調
 
 **不回到金本位的原因**:
 
-1.  **供給剛性**:年產3,500噸無法支撐$100萬億+的全球貿易
+1.  **供給剛性**:年產3,500噸無法支撐 $100萬億+的全球貿易
 2.  **政策靈活性喪失**:固定匯率限制央行應對危機的能力
 3.  **歷史教訓**:金本位在1930年代大蕭條中加劇了通縮螺旋
 
@@ -8524,7 +8524,7 @@ IMF協調
 
 **優勢**:
 
-1.  **龐大的經濟規模**:GDP約$18萬億(2024),占全球17%
+1.  **龐大的經濟規模**:GDP約 $18萬億(2024),占全球17%
 2.  **貿易網路中心性**:120+國家的最大貿易夥伴
 3.  **黃金產量與消費大國**:年產約370噸(全球第一),消費約1,000噸
 4.  **外匯儲備充足**:$3.2萬億,全球第一
@@ -8670,7 +8670,7 @@ IMF協調
 2.  **個人配置策略**: [ \text{Gold%} = 10% + \frac{\text{Age}}{10} \times 2% + \beta_{\text{risk}} + 3% \times (\text{DMR}-2.5) + 2% \times (-\text{RGSI}) ]
 
 -   當前建議配置15-34%(視年齡和風險偏好)
--   定期定額策略:月投資$400,5年持有期勝率100%
+-   定期定額策略:月投資 $400,5年持有期勝率100%
 -   資產組合:60%股票+30%債券+10%黃金,夏普比率0.51(優於傳統60/40的0.42)
 
 3.  **三級風險預警體系**:
@@ -8685,7 +8685,7 @@ IMF協調
 
 **維度1:****購買力調整的歷史對比**
 
--   當前$4,249僅比1980年實質高點($3,287)高29%
+-   當前 $4,249僅比1980年實質高點($3,287)高29%
 -   考慮M2增長75倍(1.6萬億→120萬億),黃金/M2比率僅為1980年的**6.6%**
 -   **結論**:從相對稀缺性看,黃金被嚴重低估,而非高估
 
@@ -8795,7 +8795,7 @@ IMF協調
 
 **8.4** **最後的思考:****時間會證明一切**
 
-本研究的撰寫始於2025年10月,彼時黃金價格剛突破$4,200,市場中「高點論」甚囂塵上。我們選擇用數據說話,用理論解釋,用歷史驗證。
+本研究的撰寫始於2025年10月,彼時黃金價格剛突破 $4,200,市場中「高點論」甚囂塵上。我們選擇用數據說話,用理論解釋,用歷史驗證。
 
 54年的長期數據(1971-2025)告訴我們:
 
@@ -8803,7 +8803,7 @@ IMF協調
 -   DMR超臨界不是統計巧合,而是複雜系統接近相變的信號
 -   「高點論」不是謹慎分析,而是認知偏誤的集體表現
 
-當2030年回顧這段歷史時,人們可能會說:「2024年的$4,249不是高點,而是新一輪結構性牛市的起點」。正如1980年回顧時,人們意識到$35(1971年)不是高點,而是金本位崩潰後重新定價的開始。
+當2030年回顧這段歷史時,人們可能會說:「2024年的 $4,249不是高點,而是新一輪結構性牛市的起點」。正如1980年回顧時,人們意識到 $35(1971年)不是高點,而是金本位崩潰後重新定價的開始。
 
 **本研究的終極貢獻**,不在於預測未來價格(我們無法也不應該做精確預測),而在於提供了一個**理解黃金價格的系統性框架**:
 
@@ -8893,7 +8893,7 @@ IMF協調
 3.  **個人配置策略**: [ \text{Gold%} = 10% + \frac{\text{Age}}{10} \times 2% + \beta_{\text{risk}} + 3% \times (\text{DMR}-2.5) + 2% \times (-\text{RGSI}) ]
 
 -   當前建議配置15-34%(視年齡和風險偏好)
--   定期定額策略:月投資$400,5年持有期勝率100%
+-   定期定額策略:月投資 $400,5年持有期勝率100%
 -   資產組合:60%股票+30%債券+10%黃金,夏普比率0.51(優於傳統60/40的0.42)
 
 5.  **三級風險預警體系**:
@@ -8908,7 +8908,7 @@ IMF協調
 
 **維度1:****購買力調整的歷史對比**
 
--   當前$4,249僅比1980年實質高點($3,287)高29%
+-   當前 $4,249僅比1980年實質高點($3,287)高29%
 -   考慮M2增長75倍(1.6萬億→120萬億),黃金/M2比率僅為1980年的**6.6%**
 -   **結論**:從相對稀缺性看,黃金被嚴重低估,而非高估
 
@@ -9018,7 +9018,7 @@ IMF協調
 
 **8.4** **最後的思考:****時間會證明一切**
 
-本研究的撰寫始於2024年10月,彼時黃金價格剛突破$4,200,市場中「高點論」甚囂塵上。我們選擇用數據說話,用理論解釋,用歷史驗證。
+本研究的撰寫始於2024年10月,彼時黃金價格剛突破 $4,200,市場中「高點論」甚囂塵上。我們選擇用數據說話,用理論解釋,用歷史驗證。
 
 54年的長期數據(1971-2025)告訴我們:
 
@@ -9026,7 +9026,7 @@ IMF協調
 -   DMR超臨界不是統計巧合,而是複雜系統接近相變的信號
 -   「高點論」不是謹慎分析,而是認知偏誤的集體表現
 
-當2030年回顧這段歷史時,人們可能會說:「2024年的$4,249不是高點,而是新一輪結構性牛市的起點」。正如1980年回顧時,人們意識到$35(1971年)不是高點,而是金本位崩潰後重新定價的開始。
+當2030年回顧這段歷史時,人們可能會說:「2024年的 $4,249不是高點,而是新一輪結構性牛市的起點」。正如1980年回顧時,人們意識到 $35(1971年)不是高點,而是金本位崩潰後重新定價的開始。
 
 **本研究的終極貢獻**,不在於預測未來價格(我們無法也不應該做精確預測),而在於提供了一個**理解黃金價格的系統性框架**:
 

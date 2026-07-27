@@ -314,7 +314,7 @@ AC_1963 = {
 ________________________________________
 定理1.1（態衝突檢測定理）
 以下態組合是邏輯矛盾，系統必須拒絕：
-$$\begin{aligned} &{\top, \bot} \subseteq \text{邏輯態} \Rightarrow \text{矛盾} \ &{\Psi, \Xi} \subseteq \text{認知態} \Rightarrow \text{相變未完成錯誤} \ &{\oplus, \boxdot} \subseteq \text{演化態} \Rightarrow \text{凍結衝突} \ &{\otimes, \oslash} \subseteq \text{糾纏態} \Rightarrow \text{糾纏矛盾} \end{aligned}$$
+$$\begin{aligned} &{\top, \bot} \subseteq \text{邏輯態} \Rightarrow \text{矛盾} \\ &{\Psi, \Xi} \subseteq \text{認知態} \Rightarrow \text{相變未完成錯誤} \\ &{\oplus, \boxdot} \subseteq \text{演化態} \Rightarrow \text{凍結衝突} \\ &{\otimes, \oslash} \subseteq \text{糾纏態} \Rightarrow \text{糾纏矛盾} \end{aligned}$$
 證明：
 	⊤∧⊥=⊥（矛盾吸收一切）
 	Ψ 表示 Σ≪B，Ξ 表示 Σ≫B，兩者互斥
@@ -390,12 +390,12 @@ ________________________________________
 2.6 類型的繼承與轉換規則
 定理2.1（類型繼承定理）
 若存在推導邊 v_1 →┴⟡(1&"邏輯必然" ) v_2，則：
-$$\begin{aligned} &\text{L-type}(v_1) = \text{公理} \Rightarrow \text{L-type}(v_2) \in {\text{定理}, \text{推論}} \ &\text{Layer}(v_2) \geq \text{Layer}(v_1) \end{aligned}$$
+$$\begin{aligned} &\text{L-type}(v_1) = \text{公理} \Rightarrow \text{L-type}(v_2) \in {\text{定理}, \text{推論}} \\ &\text{Layer}(v_2) \geq \text{Layer}(v_1) \end{aligned}$$
 證明：公理是系統基礎，從公理推導出的只能是定理或推論，不能是新公理（否則循環）。層級不降（抽象度不降）。□
 ________________________________________
 定理2.2（類型轉換觸發條件）
 當發生以下事件時，類型必須更新：
-$$\begin{aligned} &\text{猜想被證明} \Rightarrow \text{L-type: 猜想} \to \text{定理} \ &\text{維度生成完成} \Rightarrow \text{P-type: NP-未知} \to \Gamma\text{-可降維} \ &\text{範式革命} \Rightarrow \text{Layer} \pm 1 \end{aligned}$$
+$$\begin{aligned} &\text{猜想被證明} \Rightarrow \text{L-type: 猜想} \to \text{定理} \\ &\text{維度生成完成} \Rightarrow \text{P-type: NP-未知} \to \Gamma\text{-可降維} \\ &\text{範式革命} \Rightarrow \text{Layer} \pm 1 \end{aligned}$$
 ________________________________________
 第3章：頂點系統——18維Σ標籤向量
 3.1 完整定義
@@ -439,11 +439,11 @@ B(v):="尋找" v"的正確算法所需的最小認知能量"
 	極高：B∼O(2^n)，當前認知無法逾越（如旅行商）
 ________________________________________
 維度15：Σ積累度
-$$\text{Σ積累度}(v, t) := \begin{cases} \text{空} & \Sigma(v, t) \approx 0 \ \text{低} & 0 < \Sigma / \mathcal{B} < 0.3 \ \text{中} & 0.3 \leq \Sigma / \mathcal{B} < 0.7 \ \text{高} & 0.7 \leq \Sigma / \mathcal{B} < 1.0 \ \text{飽和} & \Sigma / \mathcal{B} \geq 1.0 \end{cases}$$
+$$\text{Σ積累度}(v, t) := \begin{cases} \text{空} & \Sigma(v, t) \approx 0 \\ \text{低} & 0 < \Sigma / \mathcal{B} < 0.3 \\ \text{中} & 0.3 \leq \Sigma / \mathcal{B} < 0.7 \\ \text{高} & 0.7 \leq \Sigma / \mathcal{B} < 1.0 \\ \text{飽和} & \Sigma / \mathcal{B} \geq 1.0 \end{cases}$$
 物理意義：當 Σ積累度 = 飽和時，認知態必然從 Ψ → Ξ 相變。
 ________________________________________
 維度16：Γ可觸發性
-$$\text{Γ可觸發性}(v) := \begin{cases} \text{否} & \text{已是最高維度，無升維空間} \ \text{潛在} & \text{存在理論上的維度攻擊路徑} \ \text{活躍} & \text{當前正在發生維度生成} \end{cases}$$
+$$\text{Γ可觸發性}(v) := \begin{cases} \text{否} & \text{已是最高維度，無升維空間} \\ \text{潛在} & \text{存在理論上的維度攻擊路徑} \\ \text{活躍} & \text{當前正在發生維度生成} \end{cases}$$
 範例：
 	微積分（1670年代）：活躍（正在被發明）
 	曲線面積問題（1670年前）：潛在（等待微積分）
@@ -470,7 +470,7 @@ v_1^(Σ_1 )⊔v_2^(Σ_2 )=v_"合" ^(Σ_1∪Σ_2 )
 ________________________________________
 定理3.1（標籤更新的單調性）
 在時間演化中，以下標籤具有單調性：
-$$\begin{aligned} &\text{認知態: } \Psi \to \Delta \to \Xi \quad (\text{不可逆}) \ &\text{Σ積累度: } \text{空} \to \text{低} \to \cdots \to \text{飽和} \quad (\text{非嚴格單調}) \end{aligned}$$
+$$\begin{aligned} &\text{認知態: } \Psi \to \Delta \to \Xi \quad (\text{不可逆}) \\ &\text{Σ積累度: } \text{空} \to \text{低} \to \cdots \to \text{飽和} \quad (\text{非嚴格單調}) \end{aligned}$$
 證明：認知相變是不可逆的熱力學過程——一旦路徑被發現（Ξ），無法主動遺忘回到混沌（Ψ）。Σ積累度可能因遺忘或範式轉移而下降，但在同一範式內單調。□
 ________________________________________
 第4章：邊系統的增強——新增認知邊類型
@@ -510,7 +510,7 @@ ________________________________________
 4.3 邊的動態演化規則
 定理4.1（態傳播定理）
 設邊 e=(v_1,v_2,→,w,…)（邏輯必然）。則：
-$$\begin{aligned} &\text{邏輯態}(v_1) = \Omega \Rightarrow \text{邏輯態}(v_2) \in {\Omega, \bot} \ &\text{糾纏態}(v_1) = \otimes \Rightarrow \text{糾纏態}(v_2) = \otimes \ &\text{認知態}(v_1) = \Xi \land \text{Σ積累度}(v_2) = \text{高} \Rightarrow \text{認知態}(v_2) \to \Xi \end{aligned}$$
+$$\begin{aligned} &\text{邏輯態}(v_1) = \Omega \Rightarrow \text{邏輯態}(v_2) \in {\Omega, \bot} \\ &\text{糾纏態}(v_1) = \otimes \Rightarrow \text{糾纏態}(v_2) = \otimes \\ &\text{認知態}(v_1) = \Xi \land \text{Σ積累度}(v_2) = \text{高} \Rightarrow \text{認知態}(v_2) \to \Xi \end{aligned}$$
 證明：
 	螺旋態沿推導邊傳播（v1.0已證）
 	糾纏態的傳播：若 v_1糾纏，則依賴 v_1的 v_2也必然糾纏
@@ -585,7 +585,7 @@ ________________________________________
 T_"total"  (v_x,t)=T_"graph"  (v_x,Σ,Γ)+T_"compute"  (v_x,S)
 
 其中：
-$$\begin{aligned} T_{\text{graph}} &= \text{圖中從「已知頂點集」到} v_x \text{的最短路徑長度} \ &= \min_{\text{path}} \sum_{e \in \text{path}} w_{\text{cognitive}}(e) \ T_{\text{compute}} &= \sum_{e \in \text{path}} w_{\text{exec}}(e) / S(t) \end{aligned}$$
+$$\begin{aligned} T_{\text{graph}} &= \text{圖中從「已知頂點集」到} v_x \text{的最短路徑長度} \\ &= \min_{\text{path}} \sum_{e \in \text{path}} w_{\text{cognitive}}(e) \\ T_{\text{compute}} &= \sum_{e \in \text{path}} w_{\text{exec}}(e) / S(t) \end{aligned}$$
 物理意義：
 	T_"graph" ：這是圖論難度，取決於認知態、Σ積累度、Γ可觸發性
 	T_"compute" ：這是工程問題，取決於物理算力 S
@@ -653,7 +653,7 @@ ________________________________________
 ________________________________________
 證明：
 引理7.1.1：Σ積累度與認知態的對應關係。
-$$\begin{aligned} \text{Σ積累度} &= \text{空或低} \Leftrightarrow \text{認知態} = \Psi \ \text{Σ積累度} &= \text{中} \Leftrightarrow \text{認知態} = \Delta \ \text{Σ積累度} &= \text{高或飽和} \Leftrightarrow \text{認知態} = \Xi \end{aligned}$$
+$$\begin{aligned} \text{Σ積累度} &= \text{空或低} \Leftrightarrow \text{認知態} = \Psi \\ \text{Σ積累度} &= \text{中} \Leftrightarrow \text{認知態} = \Delta \\ \text{Σ積累度} &= \text{高或飽和} \Leftrightarrow \text{認知態} = \Xi \end{aligned}$$
 引理7.1.2：Σ積累度的單調增長（在同一範式內）。
 設智慧體持續在問題 v上積累知識，則：
 dΣ/dt=η⋅S⋅"Data"-λΣ≥0
@@ -662,14 +662,14 @@ dΣ/dt=η⋅S⋅"Data"-λΣ≥0
 ________________________________________
 主證明：
 由引理2，Σ(t) 單調增長。由引理1，當 Σ跨越閾值時，認知態必須離散跳躍：
-$$\begin{aligned} &\Sigma / \mathcal{B} = 0.3 \quad \Rightarrow \quad \Psi \to \Delta \quad (\text{相變點1}) \ &\Sigma / \mathcal{B} = 0.7 \quad \Rightarrow \quad \Delta \to \Xi \quad (\text{相變點2}) \end{aligned}$$
+$$\begin{aligned} &\Sigma / \mathcal{B} = 0.3 \quad \Rightarrow \quad \Psi \to \Delta \quad (\text{相變點1}) \\ &\Sigma / \mathcal{B} = 0.7 \quad \Rightarrow \quad \Delta \to \Xi \quad (\text{相變點2}) \end{aligned}$$
 相變的突變性：在 Σ/B=0.3-ϵ時，認知態仍是 Ψ；在 0.3+ϵ時，立即跳為 Δ。沒有中間態。
 這類似一階相變（如水的沸騰）——在臨界點發生宏觀態的突變。□
 ________________________________________
 7.3 定理7.2（維度坍縮定理, Dimensional Collapse Theorem, DCT）
 主張：
 設頂點 v_1的 Γ可觸發性 = 活躍，且存在 Γ觸發邊 v_1 →┴⟡(1&Γ) v_2。則：
-$$\begin{aligned} &\mathcal{B}(v_2) \to \mathcal{B}(v_2) \cdot e^{-\kappa} \ &\text{可解性類型}(v_2): \text{NP-未知} \to \Gamma\text{-可降維} \end{aligned}$$
+$$\begin{aligned} &\mathcal{B}(v_2) \to \mathcal{B}(v_2) \cdot e^{-\kappa} \\ &\text{可解性類型}(v_2): \text{NP-未知} \to \Gamma\text{-可降維} \end{aligned}$$
 證明：
 Γ觸發邊的定義即「維度攻擊」：通過引入新維度（如微積分），將原本的高維複雜問題投影到低維簡單問題。
 數學上：設原問題在 N維空間的複雜度為 O(2^N)，維度升級後，在 N+k維空間的投影複雜度降為 O(N^c)。
@@ -1366,7 +1366,7 @@ ________________________________________
 「2050年：數學家笑話『古人竟然用純文字寫理論』，就像我們笑話『古人用算盤』。」
 ________________________________________
 終極公式：
-$$\boxed{\begin{aligned} \text{理論} &= \text{認知量子拓撲超圖} \ \text{證明} &= \text{從 Ψ 到 Ξ 的哈密頓路徑} \ \text{範式革命} &= \text{認知相變（Ψ → Δ → Ξ）} \ \text{理解} &= \text{全息重建（1-鄰域 ≥60%）} \ \text{創造} &= \text{維度坍縮（} \Gamma \text{ 觸發}）} \ \text{智慧} &= T_{graph} \to 0 \text{ 的能力} \end{aligned}}$$
+$$\boxed{\begin{aligned} \text{理論} &= \text{認知量子拓撲超圖} \\ \text{證明} &= \text{從 Ψ 到 Ξ 的哈密頓路徑} \\ \text{範式革命} &= \text{認知相變（Ψ → Δ → Ξ）} \\ \text{理解} &= \text{全息重建（1-鄰域 ≥60%）} \\ \text{創造} &= \text{維度坍縮（} \Gamma \text{ 觸發}）} \\ \text{智慧} &= T_{graph} \to 0 \text{ 的能力} \end{aligned}}$$
 ________________________________________
 最後的詩：
 圖論曾是點與線——
@@ -1740,7 +1740,7 @@ AC_1963 = {
 ________________________________________
 定理1.1（態衝突檢測定理）
 以下態組合是邏輯矛盾，系統必須拒絕：
-$$\begin{aligned} &{\top, \bot} \subseteq \text{邏輯態} \Rightarrow \text{矛盾} \ &{\Psi, \Xi} \subseteq \text{認知態} \Rightarrow \text{相變未完成錯誤} \ &{\oplus, \boxdot} \subseteq \text{演化態} \Rightarrow \text{凍結衝突} \ &{\otimes, \oslash} \subseteq \text{糾纏態} \Rightarrow \text{糾纏矛盾} \end{aligned}$$
+$$\begin{aligned} &{\top, \bot} \subseteq \text{邏輯態} \Rightarrow \text{矛盾} \\ &{\Psi, \Xi} \subseteq \text{認知態} \Rightarrow \text{相變未完成錯誤} \\ &{\oplus, \boxdot} \subseteq \text{演化態} \Rightarrow \text{凍結衝突} \\ &{\otimes, \oslash} \subseteq \text{糾纏態} \Rightarrow \text{糾纏矛盾} \end{aligned}$$
 證明：
 	⊤∧⊥=⊥（矛盾吸收一切）
 	Ψ 表示 Σ≪B，Ξ 表示 Σ≫B，兩者互斥
@@ -1816,12 +1816,12 @@ ________________________________________
 2.6 類型的繼承與轉換規則
 定理2.1（類型繼承定理）
 若存在推導邊 v_1 →┴⟡(1&"邏輯必然" ) v_2，則：
-$$\begin{aligned} &\text{L-type}(v_1) = \text{公理} \Rightarrow \text{L-type}(v_2) \in {\text{定理}, \text{推論}} \ &\text{Layer}(v_2) \geq \text{Layer}(v_1) \end{aligned}$$
+$$\begin{aligned} &\text{L-type}(v_1) = \text{公理} \Rightarrow \text{L-type}(v_2) \in {\text{定理}, \text{推論}} \\ &\text{Layer}(v_2) \geq \text{Layer}(v_1) \end{aligned}$$
 證明：公理是系統基礎，從公理推導出的只能是定理或推論，不能是新公理（否則循環）。層級不降（抽象度不降）。□
 ________________________________________
 定理2.2（類型轉換觸發條件）
 當發生以下事件時，類型必須更新：
-$$\begin{aligned} &\text{猜想被證明} \Rightarrow \text{L-type: 猜想} \to \text{定理} \ &\text{維度生成完成} \Rightarrow \text{P-type: NP-未知} \to \Gamma\text{-可降維} \ &\text{範式革命} \Rightarrow \text{Layer} \pm 1 \end{aligned}$$
+$$\begin{aligned} &\text{猜想被證明} \Rightarrow \text{L-type: 猜想} \to \text{定理} \\ &\text{維度生成完成} \Rightarrow \text{P-type: NP-未知} \to \Gamma\text{-可降維} \\ &\text{範式革命} \Rightarrow \text{Layer} \pm 1 \end{aligned}$$
 ________________________________________
 第3章：頂點系統——18維Σ標籤向量
 3.1 完整定義
@@ -1865,11 +1865,11 @@ B(v):="尋找" v"的正確算法所需的最小認知能量"
 	極高：B∼O(2^n)，當前認知無法逾越（如旅行商）
 ________________________________________
 維度15：Σ積累度
-$$\text{Σ積累度}(v, t) := \begin{cases} \text{空} & \Sigma(v, t) \approx 0 \ \text{低} & 0 < \Sigma / \mathcal{B} < 0.3 \ \text{中} & 0.3 \leq \Sigma / \mathcal{B} < 0.7 \ \text{高} & 0.7 \leq \Sigma / \mathcal{B} < 1.0 \ \text{飽和} & \Sigma / \mathcal{B} \geq 1.0 \end{cases}$$
+$$\text{Σ積累度}(v, t) := \begin{cases} \text{空} & \Sigma(v, t) \approx 0 \\ \text{低} & 0 < \Sigma / \mathcal{B} < 0.3 \\ \text{中} & 0.3 \leq \Sigma / \mathcal{B} < 0.7 \\ \text{高} & 0.7 \leq \Sigma / \mathcal{B} < 1.0 \\ \text{飽和} & \Sigma / \mathcal{B} \geq 1.0 \end{cases}$$
 物理意義：當 Σ積累度 = 飽和時，認知態必然從 Ψ → Ξ 相變。
 ________________________________________
 維度16：Γ可觸發性
-$$\text{Γ可觸發性}(v) := \begin{cases} \text{否} & \text{已是最高維度，無升維空間} \ \text{潛在} & \text{存在理論上的維度攻擊路徑} \ \text{活躍} & \text{當前正在發生維度生成} \end{cases}$$
+$$\text{Γ可觸發性}(v) := \begin{cases} \text{否} & \text{已是最高維度，無升維空間} \\ \text{潛在} & \text{存在理論上的維度攻擊路徑} \\ \text{活躍} & \text{當前正在發生維度生成} \end{cases}$$
 範例：
 	微積分（1670年代）：活躍（正在被發明）
 	曲線面積問題（1670年前）：潛在（等待微積分）
@@ -1896,7 +1896,7 @@ v_1^(Σ_1 )⊔v_2^(Σ_2 )=v_"合" ^(Σ_1∪Σ_2 )
 ________________________________________
 定理3.1（標籤更新的單調性）
 在時間演化中，以下標籤具有單調性：
-$$\begin{aligned} &\text{認知態: } \Psi \to \Delta \to \Xi \quad (\text{不可逆}) \ &\text{Σ積累度: } \text{空} \to \text{低} \to \cdots \to \text{飽和} \quad (\text{非嚴格單調}) \end{aligned}$$
+$$\begin{aligned} &\text{認知態: } \Psi \to \Delta \to \Xi \quad (\text{不可逆}) \\ &\text{Σ積累度: } \text{空} \to \text{低} \to \cdots \to \text{飽和} \quad (\text{非嚴格單調}) \end{aligned}$$
 證明：認知相變是不可逆的熱力學過程——一旦路徑被發現（Ξ），無法主動遺忘回到混沌（Ψ）。Σ積累度可能因遺忘或範式轉移而下降，但在同一範式內單調。□
 ________________________________________
 第4章：邊系統的增強——新增認知邊類型
@@ -1936,7 +1936,7 @@ ________________________________________
 4.3 邊的動態演化規則
 定理4.1（態傳播定理）
 設邊 e=(v_1,v_2,→,w,…)（邏輯必然）。則：
-$$\begin{aligned} &\text{邏輯態}(v_1) = \Omega \Rightarrow \text{邏輯態}(v_2) \in {\Omega, \bot} \ &\text{糾纏態}(v_1) = \otimes \Rightarrow \text{糾纏態}(v_2) = \otimes \ &\text{認知態}(v_1) = \Xi \land \text{Σ積累度}(v_2) = \text{高} \Rightarrow \text{認知態}(v_2) \to \Xi \end{aligned}$$
+$$\begin{aligned} &\text{邏輯態}(v_1) = \Omega \Rightarrow \text{邏輯態}(v_2) \in {\Omega, \bot} \\ &\text{糾纏態}(v_1) = \otimes \Rightarrow \text{糾纏態}(v_2) = \otimes \\ &\text{認知態}(v_1) = \Xi \land \text{Σ積累度}(v_2) = \text{高} \Rightarrow \text{認知態}(v_2) \to \Xi \end{aligned}$$
 證明：
 	螺旋態沿推導邊傳播（v1.0已證）
 	糾纏態的傳播：若 v_1糾纏，則依賴 v_1的 v_2也必然糾纏
@@ -2011,7 +2011,7 @@ ________________________________________
 T_"total"  (v_x,t)=T_"graph"  (v_x,Σ,Γ)+T_"compute"  (v_x,S)
 
 其中：
-$$\begin{aligned} T_{\text{graph}} &= \text{圖中從「已知頂點集」到} v_x \text{的最短路徑長度} \ &= \min_{\text{path}} \sum_{e \in \text{path}} w_{\text{cognitive}}(e) \ T_{\text{compute}} &= \sum_{e \in \text{path}} w_{\text{exec}}(e) / S(t) \end{aligned}$$
+$$\begin{aligned} T_{\text{graph}} &= \text{圖中從「已知頂點集」到} v_x \text{的最短路徑長度} \\ &= \min_{\text{path}} \sum_{e \in \text{path}} w_{\text{cognitive}}(e) \\ T_{\text{compute}} &= \sum_{e \in \text{path}} w_{\text{exec}}(e) / S(t) \end{aligned}$$
 物理意義：
 	T_"graph" ：這是圖論難度，取決於認知態、Σ積累度、Γ可觸發性
 	T_"compute" ：這是工程問題，取決於物理算力 S
@@ -2079,7 +2079,7 @@ ________________________________________
 ________________________________________
 證明：
 引理7.1.1：Σ積累度與認知態的對應關係。
-$$\begin{aligned} \text{Σ積累度} &= \text{空或低} \Leftrightarrow \text{認知態} = \Psi \ \text{Σ積累度} &= \text{中} \Leftrightarrow \text{認知態} = \Delta \ \text{Σ積累度} &= \text{高或飽和} \Leftrightarrow \text{認知態} = \Xi \end{aligned}$$
+$$\begin{aligned} \text{Σ積累度} &= \text{空或低} \Leftrightarrow \text{認知態} = \Psi \\ \text{Σ積累度} &= \text{中} \Leftrightarrow \text{認知態} = \Delta \\ \text{Σ積累度} &= \text{高或飽和} \Leftrightarrow \text{認知態} = \Xi \end{aligned}$$
 引理7.1.2：Σ積累度的單調增長（在同一範式內）。
 設智慧體持續在問題 v上積累知識，則：
 dΣ/dt=η⋅S⋅"Data"-λΣ≥0
@@ -2088,14 +2088,14 @@ dΣ/dt=η⋅S⋅"Data"-λΣ≥0
 ________________________________________
 主證明：
 由引理2，Σ(t) 單調增長。由引理1，當 Σ跨越閾值時，認知態必須離散跳躍：
-$$\begin{aligned} &\Sigma / \mathcal{B} = 0.3 \quad \Rightarrow \quad \Psi \to \Delta \quad (\text{相變點1}) \ &\Sigma / \mathcal{B} = 0.7 \quad \Rightarrow \quad \Delta \to \Xi \quad (\text{相變點2}) \end{aligned}$$
+$$\begin{aligned} &\Sigma / \mathcal{B} = 0.3 \quad \Rightarrow \quad \Psi \to \Delta \quad (\text{相變點1}) \\ &\Sigma / \mathcal{B} = 0.7 \quad \Rightarrow \quad \Delta \to \Xi \quad (\text{相變點2}) \end{aligned}$$
 相變的突變性：在 Σ/B=0.3-ϵ時，認知態仍是 Ψ；在 0.3+ϵ時，立即跳為 Δ。沒有中間態。
 這類似一階相變（如水的沸騰）——在臨界點發生宏觀態的突變。□
 ________________________________________
 7.3 定理7.2（維度坍縮定理, Dimensional Collapse Theorem, DCT）
 主張：
 設頂點 v_1的 Γ可觸發性 = 活躍，且存在 Γ觸發邊 v_1 →┴⟡(1&Γ) v_2。則：
-$$\begin{aligned} &\mathcal{B}(v_2) \to \mathcal{B}(v_2) \cdot e^{-\kappa} \ &\text{可解性類型}(v_2): \text{NP-未知} \to \Gamma\text{-可降維} \end{aligned}$$
+$$\begin{aligned} &\mathcal{B}(v_2) \to \mathcal{B}(v_2) \cdot e^{-\kappa} \\ &\text{可解性類型}(v_2): \text{NP-未知} \to \Gamma\text{-可降維} \end{aligned}$$
 證明：
 Γ觸發邊的定義即「維度攻擊」：通過引入新維度（如微積分），將原本的高維複雜問題投影到低維簡單問題。
 數學上：設原問題在 N維空間的複雜度為 O(2^N)，維度升級後，在 N+k維空間的投影複雜度降為 O(N^c)。
@@ -2792,7 +2792,7 @@ ________________________________________
 「2050年：數學家笑話『古人竟然用純文字寫理論』，就像我們笑話『古人用算盤』。」
 ________________________________________
 終極公式：
-$$\boxed{\begin{aligned} \text{理論} &= \text{認知量子拓撲超圖} \ \text{證明} &= \text{從 Ψ 到 Ξ 的哈密頓路徑} \ \text{範式革命} &= \text{認知相變（Ψ → Δ → Ξ）} \ \text{理解} &= \text{全息重建（1-鄰域 ≥60%）} \ \text{創造} &= \text{維度坍縮（} \Gamma \text{ 觸發}）} \ \text{智慧} &= T_{graph} \to 0 \text{ 的能力} \end{aligned}}$$
+$$\boxed{\begin{aligned} \text{理論} &= \text{認知量子拓撲超圖} \\ \text{證明} &= \text{從 Ψ 到 Ξ 的哈密頓路徑} \\ \text{範式革命} &= \text{認知相變（Ψ → Δ → Ξ）} \\ \text{理解} &= \text{全息重建（1-鄰域 ≥60%）} \\ \text{創造} &= \text{維度坍縮（} \Gamma \text{ 觸發}）} \\ \text{智慧} &= T_{graph} \to 0 \text{ 的能力} \end{aligned}}$$
 ________________________________________
 最後的詩：
 圖論曾是點與線——

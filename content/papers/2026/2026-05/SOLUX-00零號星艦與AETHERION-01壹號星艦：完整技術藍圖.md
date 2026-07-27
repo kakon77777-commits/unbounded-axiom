@@ -106,9 +106,9 @@ CO₂相變能量計算： $$Q_{phase} = m \cdot \Delta H_{sublimation} = m \cdo
 
 其中：
 
--   $\dot{m}$：CO₂質量流率
--   $\Delta h$：焓值變化
--   $\eta_{turbine} = 0.25$：渦輪效率
+-   $\dot{m}$ ：CO₂質量流率
+-   $\Delta h$ ：焓值變化
+-   $\eta_{turbine} = 0.25$ ：渦輪效率
 
 **環境友好性**： 這個系統不增加總CO₂排放，反而通過固化儲存減少了直接排放，實現了**碳循環動力系統**（CCCPS）的雛形。
 
@@ -126,34 +126,34 @@ $$E_{total}(t) = E_F(t) + E_A(t) + E_T(t) + E_E(t) - L(t)$$
 
 其中：
 
--   $E_{F0} = 45 \text{ MJ}$（單次燃燒輸出）
--   $N(t) = \lfloor\lambda_F \cdot t\rfloor$，$\lambda_F = 0.5$ Hz（燃燒頻率）
--   $\eta_F = 0.35$（熱效率）
+-   $E_{F0} = 45 \text{ MJ}$ （單次燃燒輸出）
+-   $N(t) = \lfloor\lambda_F \cdot t\rfloor$ ， $\lambda_F = 0.5$ Hz（燃燒頻率）
+-   $\eta_F = 0.35$ （熱效率）
 
 **輔助電力模組（風扇+電轉）**： $$P_A(t) = \frac{1}{2}\rho A v(t)^3 \eta_A$$ $$E_A(t) = \int_0^t P_A(\tau) d\tau$$
 
 其中：
 
--   $\rho = 1.225 \text{ kg/m}^3$（海平面空氣密度）
--   $A = 2.5 \text{ m}^2$（風扇總面積）
--   $\eta_A = 0.42$（機電轉換效率）
+-   $\rho = 1.225 \text{ kg/m}^3$ （海平面空氣密度）
+-   $A = 2.5 \text{ m}^2$ （風扇總面積）
+-   $\eta_A = 0.42$ （機電轉換效率）
 
 **太陽能皮層**： $$P_T(t) = \eta_T \cdot A_T \cdot S(t) \cdot \cos(\theta(t))$$ $$E_T(t) = \int_0^t P_T(\tau) d\tau$$
 
 其中：
 
--   $\eta_T = 0.28$（光電轉換效率）
--   $A_T = 150 \text{ m}^2$（有效照射面積）
--   $S(t)$：太陽輻射強度（1361 W/m²在太空中）
--   $\theta(t)$：入射角
+-   $\eta_T = 0.28$ （光電轉換效率）
+-   $A_T = 150 \text{ m}^2$ （有效照射面積）
+-   $S(t)$ ：太陽輻射強度（1361 W/m²在太空中）
+-   $\theta(t)$ ：入射角
 
 **超臨界CO****₂****渦輪模組**： $$E_E(t) = \eta_E \cdot m_{CO_2}(t) \cdot \Delta H$$
 
 其中：
 
--   $\eta_E = 0.25$（渦輪轉換效率）
--   $\Delta H = 571 \text{ kJ/kg}$（CO₂相變焓）
--   $m_{CO_2}(t)$：乾冰處理量
+-   $\eta_E = 0.25$ （渦輪轉換效率）
+-   $\Delta H = 571 \text{ kJ/kg}$ （CO₂相變焓）
+-   $m_{CO_2}(t)$ ：乾冰處理量
 
 **1.2.2** **系統負載模型**
 
@@ -163,19 +163,19 @@ $$L(t) = L_0 + \alpha v(t)^2 + \beta_{cool} T_{excess}(t) + \gamma_{AI} C(t) + \
 
 其中：
 
--   $L_0 = 50 \text{ kW}$（基本維持負載）
--   $\alpha = 0.15 \text{ kW·s}^2/\text{m}^2$（推進負載係數）
--   $\beta_{cool} = 2.5 \text{ kW/K}$（冷卻功率係數）
--   $\gamma_{AI} = 0.8 \text{ kW·s/GFLOPS}$（AI運算負載）
--   $\delta_{life} = 3.2 \text{ kW/person}$（生命維持功率）
+-   $L_0 = 50 \text{ kW}$ （基本維持負載）
+-   $\alpha = 0.15 \text{ kW·s}^2/\text{m}^2$ （推進負載係數）
+-   $\beta_{cool} = 2.5 \text{ kW/K}$ （冷卻功率係數）
+-   $\gamma_{AI} = 0.8 \text{ kW·s/GFLOPS}$ （AI運算負載）
+-   $\delta_{life} = 3.2 \text{ kW/person}$ （生命維持功率）
 
 **1.2.3** **穩定性分析**
 
 系統穩定運行的判據： $$E_{net}(t) = E_{total}(t) - L(t) > E_{reserve}$$
 
-當$E_{net}(t) < 0$時，啟動降載模式： $$L_{reduced}(t) = \min{L_{critical}, E_{available}(t)}$$
+當 $E_{net}(t) < 0$ 時，啟動降載模式： $$L_{reduced}(t) = \min{L_{critical}, E_{available}(t)}$$
 
-其中$L_{critical} = 25 \text{ kW}$是維持基本功能的最小功率。
+其中 $L_{critical} = 25 \text{ kW}$ 是維持基本功能的最小功率。
 
 **1.3 A.E.I.S.****自主能源整合系統**
 
@@ -215,7 +215,7 @@ return "BALANCED_MODE"
 
 **2.** **預測性維護** $$P_{failure}(t) = 1 - \exp\left(-\int_0^t \lambda(s) ds\right)$$
 
-其中$\lambda(s)$是基於機器學習的故障率函數。
+其中 $\lambda(s)$ 是基於機器學習的故障率函數。
 
 **3.** **駕駛習慣學習** $$H_{pilot}(t+1) = \alpha H_{pilot}(t) + (1-\alpha) A_{current}(t)$$
 
@@ -294,7 +294,7 @@ F.A.T.E.核心、燃燒艙
 -   光電層：鈣鈦礦-矽疊層結構
 -   保護層：透明氟碳聚合物
 
-**電氣參數**： $$V_{oc} = 42.5 \text{ V}, \quad I_{sc} = 12.8 \text{ A/m}^2$$ $$FF = 0.82, \quad \eta = 28.3%$$
+**電氣參數**： $$V_{oc} = 42.5 \text{ V}, \quad I_{sc} = 12.8 \text{ A/m}^2$$ $$FF = 0.82, \quad \eta = 28.3\%$$
 
 **可變形能力**：
 
@@ -446,7 +446,7 @@ AETHERION-01將SOLUX-00的四源系統精簡為三源架構，並融合E.X.I.S.T
 
 **雷電通道模型**： 雷電在空氣中的傳播遵循階梯先導理論： $$v_{leader} = \frac{1.5 \times 10^5}{\sqrt{p/p_0}} \text{ m/s}$$
 
-其中$p$是氣壓，$p_0$是標準大氣壓。
+其中 $p$ 是氣壓， $p_0$ 是標準大氣壓。
 
 **2.2.2** **磁場導控系統**
 
@@ -457,12 +457,12 @@ AETHERION-01將SOLUX-00的四源系統精簡為三源架構，並融合E.X.I.S.T
 其中：
 
 -   $I = 500$ A（超導電流）
--   $N = 2000$（線圈匝數）
+-   $N = 2000$ （線圈匝數）
 -   $r = 1.5$ m（線圈半徑）
 
 **動態磁場調節**： $$\frac{dB}{dt} = -\frac{R}{L}B + \frac{V}{L}$$
 
-通過調節電壓$V$實現磁場強度的精確控制。
+通過調節電壓 $V$ 實現磁場強度的精確控制。
 
 **2.2.3** **場導感應與本體滑動**
 
@@ -494,7 +494,7 @@ AETHERION-01的能源系統基於SOLUX-00，但針對RMP需求進行優化：
 
 **動態分配算法**： $$\vec{P}_{optimal} = \arg\min_{\vec{P}} \left[\sum_i C_i(P_i) + \lambda \left(\sum_i P_i - P_{total}\right)^2\right]$$
 
-其中$C_i(P_i)$是第$i$個系統的成本函數，$\lambda$是拉格朗日乘數。
+其中 $C_i(P_i)$ 是第 $i$ 個系統的成本函數， $\lambda$ 是拉格朗日乘數。
 
 **實時負載平衡**：
 
@@ -534,7 +534,7 @@ return allocation
 
 RMP設備增重後的升阻比重新計算： $$L/D_{new} = \frac{L/D_{original} \times W_{original}}{W_{new}} \times \eta_{interference}$$
 
-其中$\eta_{interference} = 0.95$（設備干擾修正係數）。
+其中 $\eta_{interference} = 0.95$ （設備干擾修正係數）。
 
 **2.4.2 Aero-Spine****的電磁增強**
 
@@ -546,7 +546,7 @@ Aero-Spine集成電磁致動器，響應時間進一步縮短： $$\tau_{respons
 
 支架採用形狀記憶合金（SMA），在電流驅動下實現精確變形： $$\epsilon_{SMA} = \epsilon_0 + \alpha \Delta T + \beta I^2$$
 
-其中$\alpha$是熱膨脹係數，$\beta$是電致應變係數。
+其中 $\alpha$ 是熱膨脹係數， $\beta$ 是電致應變係數。
 
 **2.4.3 JetFlow****的場論增強**
 
@@ -556,10 +556,10 @@ JetFlow系統升級為電離氣體噴射，推力密度大幅提升： $$F_{ion}
 
 其中：
 
--   $\dot{m}$：質量流率
--   $q$：離子電荷
--   $V$：加速電壓
--   $m_i$：離子質量
+-   $\dot{m}$ ：質量流率
+-   $q$ ：離子電荷
+-   $V$ ：加速電壓
+-   $m_i$ ：離子質量
 
 **場同步控制**：
 
@@ -585,7 +585,7 @@ D.H.R.集成量子場感知器，能夠探測：
 
 每個旋翼的轉速根據場感知結果實時調整： $$\omega_i(t+\Delta t) = \omega_i(t) + K \cdot \nabla\Phi_i(t)$$
 
-其中$\Phi_i(t)$是第$i$個方向的場勢。
+其中 $\Phi_i(t)$ 是第 $i$ 個方向的場勢。
 
 **2.6** **多層安全與能量回收系統**
 
@@ -611,7 +611,7 @@ D.H.R.集成量子場感知器，能夠探測：
 
 **廢熱回收**： 利用溫差發電回收系統廢熱： $P_{TEG} = \alpha^2 \frac{(\Delta T)^2}{R_{internal} + R_{load}} \cdot A$
 
-其中$\alpha$是塞貝克係數。
+其中 $\alpha$ 是塞貝克係數。
 
 **2.7** **性能參數與運行模式**
 
@@ -1065,7 +1065,7 @@ _里程碑_：
 -   2028年：技術驗證完成
 -   2030年：累計飛行1000小時
 
-_技術指標_： $\text{成功標準} = \begin{cases} \eta_{energy} > 0.85 & \text{(能源效率)} \ t_{MTBF} > 500\text{h} & \text{(平均故障間隔)} \ C_{operation} < 1000\text{USD/h} & \text{(運營成本)} \end{cases}$
+_技術指標_： $\text{成功標準} = \begin{cases} \eta_{energy} > 0.85 & \text{(能源效率)} \\ t_{MTBF} > 500\text{h} & \text{(平均故障間隔)} \\ C_{operation} < 1000\text{USD/h} & \text{(運營成本)} \end{cases}$
 
 **第二階段（2028-2035）：AETHERION-01關鍵技術突破**
 
@@ -1164,7 +1164,7 @@ return self.balance_sources(learned_patterns, rmp_requirements)
 
 當兩艘星艦協同作業時，總體效能可以達到： $\eta_{total} = \eta_1 + \eta_2 + \xi \sqrt{\eta_1 \eta_2}$
 
-其中$\xi = 0.3$是協同效應係數。
+其中 $\xi = 0.3$ 是協同效應係數。
 
 **任務分工優化**：
 

@@ -48,17 +48,17 @@ $$\text{Being} \equiv \text{Closure}(\mathcal{E}, \mathcal{C}, \mathcal{V}) = \t
 但 $\mathcal{E}, \mathcal{C}, \mathcal{V}$ 至今仍是**敘述性符號**——可以放進論文段落，但無法直接寫成算式、無法合成、無法在代碼中運算。
 
 **本稿的根本訴求**：給予三元算子真正的代數地位，使其能：
-- 左/右作用：$▷(x), x◁$
-- 合成：$▷ \circ \bowtie \circ ◁$
-- 取冪：$▷^n, ⫸^\infty$
-- 取逆（待證）：$▷^{-1} \overset{?}{=} ◁$
-- 進入運算式：$\frac{d}{dt} \bowtie(x, y) = \cdots$
+- 左/右作用： $▷(x), x◁$
+- 合成： $▷ \circ \bowtie \circ ◁$
+- 取冪： $▷^n, ⫸^\infty$
+- 取逆（待證）： $▷^{-1} \overset{?}{=} ◁$
+- 進入運算式： $\frac{d}{dt} \bowtie(x, y) = \cdots$
 
 ### 1.2 為何要正式定位
 
 不正式定位的後果：
 - 不同論文中 $E, C, V$ 與 $\mathcal{E}, \mathcal{C}, \mathcal{V}$ 混用，可讀性下降
-- 與主流符號（能量 $E$、常數 $C$、體積 $V$）混淆
+- 與主流符號（能量 $E$ 、常數 $C$ 、體積 $V$ ）混淆
 - 無法區分動詞態（ing）與名詞態
 - 無法處理 Synthetic Calculus 的差動算子已使用 $\bowtie$ 的事實
 
@@ -126,7 +126,7 @@ $$\boxed{\text{差動} \equiv \text{連結} \equiv \text{關係性運算}}$$
 - 連結：兩個實體之間的關係
 - 範疇論態射：兩個對象之間的關係
 
-三者在拓撲層面是同一個算子，只是作用尺度不同。$\bowtie$ 因此成為「邊界生成算子」的標準符號——直接補強 2026.01 無限交接論的核心命題：**極限源於關係**。
+三者在拓撲層面是同一個算子，只是作用尺度不同。 $\bowtie$ 因此成為「邊界生成算子」的標準符號——直接補強 2026.01 無限交接論的核心命題：**極限源於關係**。
 
 ---
 
@@ -177,11 +177,11 @@ $$⫸ \equiv \lim_{n\to\infty} ▷^n, \quad ⨝ \equiv \int_{\mathcal{M}} \bowti
 
 ### 5.3 升階／降階規則
 
-- **升階算子** $\mathcal{U}$：將三角族提升至三重不等族
+- **升階算子** $\mathcal{U}$ ：將三角族提升至三重不等族
   $$\mathcal{U}: \{▷, \bowtie, ◁\} \to \{⫸, ⨝, ⫷\}$$
-- **降階算子** $\mathcal{D}$：將三重不等族投影回三角族（取某個有限近似）
+- **降階算子** $\mathcal{D}$ ：將三重不等族投影回三角族（取某個有限近似）
   $$\mathcal{D}: \{⫸, ⨝, ⫷\} \to \{▷, \bowtie, ◁\}$$
-- $\mathcal{D} \circ \mathcal{U} = \text{id}$？$\mathcal{U} \circ \mathcal{D} = \text{id}$？**待證**
+- $\mathcal{D} \circ \mathcal{U} = \text{id}$ ？ $\mathcal{U} \circ \mathcal{D} = \text{id}$ ？**待證**
 
 ### 5.4 核心命題
 
@@ -220,7 +220,7 @@ $$\boxed{\text{三重不等族} = \text{三角族在無限疊代下的極限狀�
 
 | 記號 | 語義 |
 |------|------|
-| $▷_\theta$ | 以 $\theta$ 為展開參數（呼應 TUO v0 的 $E_\theta$） |
+| $▷_\theta$ | 以 $\theta$ 為展開參數（呼應 TUO v0 的 $E_\theta$ ） |
 | $▷_n$ | 第 n 次展開 |
 | $▷_{[a,b]}$ | 在區間上的展開 |
 
@@ -256,11 +256,11 @@ $$\text{ETN}(\Omega) \overset{?}{=} ⫸ \circ ⨝ \circ ⫷ (\text{Cl})$$
 - 若成立 → ETN 與 TUO 符號系統完全整合
 
 ### Q5：兩族之間的轉換規則
-- 何時可以從 $\bowtie$ 升階到 $⨝$？
-- 是否需要顯式定義升階算子 $\mathcal{U}$？升階是否可逆？
+- 何時可以從 $\bowtie$ 升階到 $⨝$ ？
+- 是否需要顯式定義升階算子 $\mathcal{U}$ ？升階是否可逆？
 
 ### Q6：差動 vs 連結的形式區分
-- 若兩者都用 $\bowtie$，是否需上下文或下標區分：$\bowtie_{\text{calc}}$ vs $\bowtie_{\text{TUO}}$？
+- 若兩者都用 $\bowtie$ ，是否需上下文或下標區分： $\bowtie_{\text{calc}}$ vs $\bowtie_{\text{TUO}}$ ？
 - 或直接承認**兩者是同一算子的不同應用尺度**——後者哲學上更強
 
 ### Q7：交換律
@@ -280,16 +280,16 @@ $$▷ \circ \bowtie \overset{?}{=} \bowtie \circ ▷$$
 
 正式版需建立完整映射表，本稿僅列出需要對齊的理論清單：
 
-- **TUO**（2026.01–04 系列）：$\mathcal{E}, \mathcal{C}, \mathcal{V} \to ▷, \bowtie, ◁$
+- **TUO**（2026.01–04 系列）： $\mathcal{E}, \mathcal{C}, \mathcal{V} \to ▷, \bowtie, ◁$
 - **ETN**：與三重不等族在極限狀態的兼容
 - **Cl / DCO**：Cl 作為 $⨝$ 的不動點
 - **WT（Weaving Theory v7.3+）**：編織單步 = $\bowtie$ 應用
-- **Synthetic Calculus v0.2**：差動 = $\bowtie$（已就緒）
+- **Synthetic Calculus v0.2**：差動 = $\bowtie$ （已就緒）
 - **HSO**：本體論操作直接用三重不等族
 - **間隙幾何學**：填色操作為 $▷ \bowtie ◁$ 循環
 - **UBCVC**：驗證循環為 $▷ \circ \bowtie \circ ◁$ 的疊代
 - **無限交接論**：「關係即邊界」直接以 $\bowtie$ 為核心算子
-- **泡沫本體論**：$\frac{\partial \mathbf{W}}{\partial t}$ 重寫為三角族／三重不等族表達
+- **泡沫本體論**： $\frac{\partial \mathbf{W}}{\partial t}$ 重寫為三角族／三重不等族表達
 
 ---
 
@@ -303,7 +303,7 @@ $$\boxed{\begin{aligned}
 \end{aligned}}$$
 
 **雙軌發表策略**：
-- 對外（國際發表、arXiv）：$▷, \bowtie, ◁$ 與 $⫸, ⨝, ⫷$
+- 對外（國際發表、arXiv）： $▷, \bowtie, ◁$ 與 $⫸, ⨝, ⫷$
 - 對內（EML 中文出版、內部文獻）：保留 $展^\circ, 連^\circ, 收^\circ$ 作為簽名
 
 對應你光子論文「備忘錄 + UTT」雙軌策略——保險版本給主流，本格版本給未來。
@@ -326,7 +326,7 @@ $$\boxed{\begin{aligned}
 
 ## 結語
 
-符號的命運由使用次數定義。$▷ \bowtie ◁$ 與 $⫸ ⨝ ⫷$ 一旦在多篇論文中重複出現，就會獲得它們自己的本體論重量——不再是被選擇的符號，而是選擇了承擔意義的符號。
+符號的命運由使用次數定義。 $▷ \bowtie ◁$ 與 $⫸ ⨝ ⫷$ 一旦在多篇論文中重複出現，就會獲得它們自己的本體論重量——不再是被選擇的符號，而是選擇了承擔意義的符號。
 
 雙族並立，計算與本體分工而又互通，這是符號學上的三權分立。差動與連結在 $\bowtie$ 中合一，宣告了 Synthetic Calculus 與 TUO 在最底層是同一個運算的不同顯現——這不是巧合，這是定理。
 

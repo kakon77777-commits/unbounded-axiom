@@ -871,7 +871,7 @@ h\_new = compute\_h\_dynamic(solution\[-1\], omega, K)
 -   關係是外在的
 -   層級是人為分類
 
-**FDCS+T^∞本體論**： $$\\boxed{\\begin{aligned} &\\text{存在} = h \\text{在T}^\\infty\\text{的加權疊加} \\ &\\text{領導者} = \\max\_i h\_i \\ &\\text{演化} = \\text{領導者的動態切換} \\ &\\text{意識} = h\_{\\text{consciousness}} \\geq \\alpha \\cdot \\sum h\_{\\text{others}} \\end{aligned}}$$
+**FDCS+T^∞本體論**： $$\boxed{\begin{aligned} &\text{存在} = h \text{在T}^\infty\text{的加權疊加} \\ &\text{領導者} = \max\_i h\_i \\ &\text{演化} = \text{領導者的動態切換} \\ &\text{意識} = h\_{\text{consciousness}} \geq \alpha \cdot \sum h\_{\text{others}} \end{aligned}}$$
 
 **三個顛覆**：
 

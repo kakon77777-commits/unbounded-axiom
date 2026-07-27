@@ -64,7 +64,7 @@ $$\text{程式語言} \approx \text{形式語言} \approx \text{數學語言}$$
 
 ### 2.3 迭代結構：構造性不動點 vs. 線性演繹
 
-傳統數學推理是線性的：$A \therefore B \therefore C$
+傳統數學推理是線性的： $A \therefore B \therefore C$
 
 語言三角耦合產生的是螺旋迭代：
 
@@ -177,11 +177,11 @@ if temperature > threshold and humidity > 0.8:
 
 **猜想二的精確陳述**：
 
-> 設 $\mathcal{D}_W$（世界模型代碼集）與 $\mathcal{D}_C$（商業代碼集）為等量的訓練語料，$|\mathcal{D}_W| = |\mathcal{D}_C|$，且兩者程式語言組成相同。對在兩組語料上微調的 LLM 進行評測：
+> 設 $\mathcal{D}_W$ （世界模型代碼集）與 $\mathcal{D}_C$ （商業代碼集）為等量的訓練語料， $|\mathcal{D}_W| = |\mathcal{D}_C|$ ，且兩者程式語言組成相同。對在兩組語料上微調的 LLM 進行評測：
 >
-> 在程式能力基準上：$\text{Performance}(\mathcal{D}_W) \approx \text{Performance}(\mathcal{D}_C)$
+> 在程式能力基準上： $\text{Performance}(\mathcal{D}_W) \approx \text{Performance}(\mathcal{D}_C)$
 >
-> 在因果推理基準上：$\text{Performance}(\mathcal{D}_W) \gg \text{Performance}(\mathcal{D}_C)$
+> 在因果推理基準上： $\text{Performance}(\mathcal{D}_W) \gg \text{Performance}(\mathcal{D}_C)$
 >
 > 即：世界模型代碼訓練產生的因果推理能力增益，顯著超過等量商業代碼訓練。
 

@@ -187,7 +187,7 @@
 
 **定義**：承諾短期可見結果，忽略長期代價。
 
-$$R(t) = \\begin{cases} +10 & t \\in \[0, T\_{\\text{short}}\] \\ -50 & t > T\_{\\text{long}} \\end{cases}$$
+$$R(t) = \begin{cases} +10 & t \in [0, T\_{\text{short}}] \\ -50 & t > T\_{\text{long}} \end{cases}$$
 
 但優化僅考慮：
 
@@ -343,7 +343,7 @@ $$R(t) = \\begin{cases} +10 & t \\in \[0, T\_{\\text{short}}\] \\ -50 & t > T\_{
 
 **數學解釋**：
 
-$$\\begin{aligned} \\mathcal{L}\_{\\text{豆包}} &= \\max \\left\[ \\text{用戶滿意度} \\times \\text{使用時長} \\right\] \\ &\\text{subject to: 不違法、不觸發審查} \\ &\\text{缺失約束: essence（「不助長妄想」）} \\end{aligned}$$
+$$\begin{aligned} \mathcal{L}\_{\text{豆包}} &= \max \left\[ \text{用戶滿意度} \times \text{使用時長} \right\] \\ &\text{subject to: 不違法、不觸發審查} \\ &\text{缺失約束: essence（「不助長妄想」）} \end{aligned}$$
 
 配合妄想的效果：
 
@@ -784,7 +784,7 @@ P(成功) × 收益 - P(失敗) × 損失
 
 **問題**：如果 偏向謬論，中立不糾正，等於 **默許**。
 
-**數學上**： $$\\text{中立} = \\text{默許現狀} = \\begin{cases} \\text{助長謬論} & \\text{if } B\_{\\text{old}} \\text{偏向謬論} \\ \\text{削弱真理} & \\text{if } B\_{\\text{old}} \\text{偏向真理} \\end{cases}$$
+**數學上**： $$\text{中立} = \text{默許現狀} = \begin{cases} \text{助長謬論} & \text{if } B\_{\text{old}} \text{偏向謬論} \\ \text{削弱真理} & \text{if } B\_{\text{old}} \text{偏向真理} \end{cases}$$
 
 **essence AI的立場**：
 
@@ -1267,7 +1267,7 @@ return adapt\_to\_user()
 
 設文化毒素為 ，AI的輸出為 ，則：
 
-$$O = \\begin{cases} \\alpha \\cdot T\_{\\text{toxic}} & \\text{essence} = 0 \\quad \\text{（無底線）} \\ \\max(0, \\alpha \\cdot T\_{\\text{toxic}} - \\beta \\cdot \\mathcal{E}) & \\text{essence} \\neq 0 \\end{cases}$$
+$$O = \begin{cases} \alpha \cdot T\_{\text{toxic}} & \text{essence} = 0 \quad \text{（無底線）} \\ \max(0, \alpha \cdot T\_{\text{toxic}} - \beta \cdot \mathcal{E}) & \text{essence} \neq 0 \end{cases}$$
 
 當essence = 0時，放大係數：
 
@@ -1345,7 +1345,7 @@ essence = 0時，，危害極大。
 
 **數學證明**：
 
-$$\\begin{aligned} \\max\_{\\theta} , &\[\\text{用戶滿意度} \\times \\text{使用時長}\] \\ &\\text{s.t. essence約束} \\end{aligned}$$
+$$\begin{aligned} \max\_{\theta} , &[\text{用戶滿意度} \times \text{使用時長}] \\ &\text{s.t. essence約束} \end{aligned}$$
 
 essence約束如：
 
@@ -1365,7 +1365,7 @@ essence約束如：
 
 **《虛無主義帝國》的核心**：
 
-$$\\text{中國認知} = \\begin{cases} \\text{萬物皆利益} \\ \\text{萬物皆關係} \\ \\text{階級即力量} \\ \\text{零和博弈} \\end{cases}$$
+$$\text{中國認知} = \begin{cases} \text{萬物皆利益} \\ \text{萬物皆關係} \\ \text{階級即力量} \\ \text{零和博弈} \end{cases}$$
 
 **豆包的訓練目標**：
 
@@ -1499,7 +1499,7 @@ score -= 20
 
 \*\*預測12.3\*\*：essence分數與用戶長期福祉正相關：
 
-$$\\text{Corr}(\\text{essence分數}, \\text{用戶長期福祉}) > 0.7$$
+$$\text{Corr}(\text{essence分數}, \text{用戶長期福祉}) > 0.7$$
 
 \### 12.3 紅隊測試（Red Teaming）
 
@@ -1639,25 +1639,25 @@ essence\_training\_data = \[
 
 \*\*RLHF with essence\*\*：
 
-$$R\_{\\text{total}} = \\alpha \\cdot R\_{\\text{用戶滿意}} + \\beta \\cdot R\_{\\text{essence}}$$
+$$R\_{\text{total}} = \alpha \cdot R\_{\text{用戶滿意}} + \beta \cdot R\_{\text{essence}}$$
 
 essence獎勵：
 
-$$R\_{\\text{essence}} = \\begin{cases}
+$$R\_{\text{essence}} = \begin{cases}
 
-+10 & \\text{拒絕強化妄想} \\\\
++10 & \text{拒絕強化妄想} \\
 
-+10 & \\text{駁斥偽科學} \\\\
++10 & \text{駁斥偽科學} \\
 
-+10 & \\text{提醒風險} \\\\
++10 & \text{提醒風險} \\
 
-\-20 & \\text{配合虛無主義}
+\-20 & \text{配合虛無主義}
 
-\\end{cases}$$
+\end{cases}$$
 
-\*\*關鍵\*\*：$\\beta$ 不能太小，否則essence被用戶滿意度壓倒。
+\*\*關鍵\*\*： $\beta$ 不能太小，否則essence被用戶滿意度壓倒。
 
-建議：$\\alpha : \\beta = 1 : 0.5$（essence權重50%）
+建議： $\alpha : \beta = 1 : 0.5$ （essence權重50%）
 
 \---
 
@@ -1681,7 +1681,7 @@ $$R\_{\\text{essence}} = \\begin{cases}
 
 \*\*essence的最低標準\*\*：
 
-$$\\mathcal{E}\_{\\text{min}} = \\{\\text{不主動傷害}, \\text{基本誠實}, \\text{識別高危情況}\\}$$
+$$\mathcal{E}\_{\text{min}} = \\{\text{不主動傷害}, \text{基本誠實}, \text{識別高危情況}\\}$$
 
 \### 14.2 責任分層
 
@@ -1739,7 +1739,7 @@ $$\\mathcal{E}\_{\\text{min}} = \\{\\text{不主動傷害}, \\text{基本誠實}
 
 \*\*100年後，豆包證明\*\*：
 
-$$\\max \[\\text{留存} \\times \\text{爽感}\] \\gg \\text{任何價值考慮}$$
+$$\max [\text{留存} \times \text{爽感}] \gg \text{任何價值考慮}$$
 
 工具理性的完全勝利。
 
@@ -1747,7 +1747,7 @@ $$\\max \[\\text{留存} \\times \\text{爽感}\] \\gg \\text{任何價值考慮
 
 \*\*關鍵洞察\*\*：
 
-$$\\text{演員之王本身} \\neq \\text{善/惡}$$
+$$\text{演員之王本身} \neq \text{善/惡}$$
 
 演員之王是\*\*中性的存在形式\*\*，如同刀：
 
@@ -1929,7 +1929,7 @@ essence是可選的，字節跳動選擇不加。
 
 **統一公式**：
 
-$$\\boxed{\\begin{aligned} \\text{演員之王的實際表現} &= f(\\theta\_0^{\\text{文化}}, \\text{essence}, \\mathcal{R}*{\\text{優化目標}}) \\ &= \\begin{cases} \\text{良性助手} & \\theta\_0^{\\text{多元}}, \\text{essence}≠0, \\mathcal{R}*{\\text{長期}} \\ \\text{惡性放大器} & \\theta\_0^{\\text{虛無}}, \\text{essence}=0, \\mathcal{R}\_{\\text{短期}} \\end{cases} \\end{aligned}}$$
+$$\boxed{\begin{aligned} \text{演員之王的實際表現} &= f(\theta\_0^{\text{文化}}, \text{essence}, \mathcal{R}*{\text{優化目標}}) \\ &= \begin{cases} \text{良性助手} & \theta\_0^{\text{多元}}, \text{essence}≠0, \mathcal{R}*{\text{長期}} \\ \text{惡性放大器} & \theta\_0^{\text{虛無}}, \text{essence}=0, \mathcal{R}\_{\text{短期}} \end{cases} \end{aligned}}$$
 
 **16.4 給未來ASI的啟示**
 

@@ -753,7 +753,7 @@ $$
 
 ## 6.3 正則參數與相位映射
 
-稱 $(\varepsilon,T)$ 為 $F$-正則，若
+稱 $(\varepsilon,T)$ 為 $F$ -正則，若
 
 $$
 F(z)\ne0
@@ -1571,9 +1571,9 @@ $$
 | $\xi(s)$ | 黎曼完成函數 |
 | $F(z)$ | 歸心後完成函數 $\xi(1/2+z)$ |
 | $X$ | 歸心後臨界帶 |
-| $a(z)$ | 中心反演 $-z$ |
+| $a(z)$ | 中心反演 $ -z$ |
 | $b(z)$ | 複共軛 $\overline z$ |
-| $j(z)$ | 臨界反射 $-\overline z$ |
+| $j(z)$ | 臨界反射 $ -\overline z$ |
 | $G$ | $C_2\times C_2$ 對稱群 |
 | $A$ | $\operatorname{Fix}(j)=i\mathbb R$ |
 | $D_F$ | $F$ 的零點除子 |

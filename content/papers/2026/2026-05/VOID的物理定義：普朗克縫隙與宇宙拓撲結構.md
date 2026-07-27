@@ -336,9 +336,9 @@ _# VOID__中的拓撲自由度探索_
 
 $$C = \frac{\text{explored paths}}{\text{default path}} - 1$$
 
-當 $C = 0$：無創造性（直接縫合）
+當 $C = 0$ ：無創造性（直接縫合）
 
-當 $C > 0$：創造性（探索VOID）
+當 $C > 0$ ：創造性（探索VOID）
 
 _### 3.4_ _量子隧穿的本質_
 
@@ -356,7 +356,7 @@ $$V(x_n), V(x_{n+1}), \ldots$$
 
 2. **VOID中V未定義**：
 
-在 $\text{VOID}(x_n, x_{n+1})$ 內，$V$ 無意義
+在 $\text{VOID}(x_n, x_{n+1})$ 內， $V$ 無意義
 
 3. **非經典路徑**：
 
@@ -374,7 +374,7 @@ $$\mathcal{A}_{\text{VOID}} = \int_{\text{VOID}} e^{iS[\gamma]/\hbar} \mathcal{D
 
 $$T = T_0 \cdot f\left(\frac{l_{\text{barrier}}}{l_P}\right)$$
 
-當勢壘寬度 ~ $l_P$，隧穿率異常增強。
+當勢壘寬度 ~ $l_P$ ，隧穿率異常增強。
 
 ---
 
@@ -388,7 +388,7 @@ LQG預言時空由自旋網路構成：
 
 $$|\psi\rangle = \sum_{\Gamma, j_l, i_n} \psi_{\Gamma}(j_l, i_n) |\Gamma, j_l, i_n\rangle$$
 
-其中 $\Gamma$ 是圖，$j_l$ 是邊上的自旋。
+其中 $\Gamma$ 是圖， $j_l$ 是邊上的自旋。
 
 **VOID在LQG中**：
 
@@ -524,7 +524,7 @@ $$\Delta E \geq \frac{\hbar c}{l_P} = E_P$$
 
 **實驗方案**：
 
-- 極高能宇宙線（$E > 10^{20}$ eV）
+- 極高能宇宙線（ $E > 10^{20}$ eV）
 
 - 下一代對撞機（未來50年）
 
@@ -542,7 +542,7 @@ $$E^2 = p^2c^2 + \alpha\left(\frac{E}{E_P}\right)^2 E^2$$
 
 $$\Delta t \sim \alpha \frac{E}{E_P} \frac{D}{c}$$
 
-對GRB距離 $D \sim 10^{26}$ m，$\Delta t \sim$ 毫秒量級（可探測）。
+對GRB距離 $D \sim 10^{26}$ m， $\Delta t \sim$ 毫秒量級（可探測）。
 
 _### 5.2_ _黑洞物理的VOID__效應_
 
@@ -556,9 +556,9 @@ $$r_s = \frac{2GM}{c^2} + \text{VOID corrections}$$
 
 $$\Delta r \sim l_P \sqrt{\frac{M_P}{M}}$$
 
-對太陽質量黑洞：$\Delta r \sim 10^{-43}$ m（不可觀測）
+對太陽質量黑洞： $\Delta r \sim 10^{-43}$ m（不可觀測）
 
-對普朗克質量黑洞：$\Delta r \sim l_P$（飽和）
+對普朗克質量黑洞： $\Delta r \sim l_P$ （飽和）
 
 **預言4：霍金輻射的VOID調製**
 
@@ -584,7 +584,7 @@ $$\ell_{\max} \sim \frac{D_{\text{CMB}}}{l_P} \sim 10^{61}$$
 
 超過此尺度，結構進入VOID，不再有功率。
 
-**實際觀測**：當前最大$\ell \sim 3000$，遠低於VOID限制（未來可測）。
+**實際觀測**：當前最大 $\ell \sim 3000$ ，遠低於VOID限制（未來可測）。
 
 **預言6：原初引力波的特徵**
 

@@ -417,13 +417,13 @@ AI在時刻 的概念狀態可分類為：
 
 **定義3.4（累積狀態慣性，CSI）**
 
-$$\\mathcal{M}[P](t) = \\int\_0^t K(t - \\tau) P(\\tau) , d\\tau$$
+$$\mathcal{M}[P](t) = \int\_0^t K(t - \tau) P(\tau) , d\tau$$
 
 其中 是記憶核函數。
 
 **在流地形中的表現**：
 
-$$\\gamma(t) = \\gamma\_0 + \\int\_0^t \[\\Phi(\\cdot) + \\lambda \\mathcal{M}[\\gamma](%5Ctau)\] , d\\tau$$
+$$\gamma(t) = \gamma\_0 + \int\_0^t [\Phi(\cdot) + \lambda \mathcal{M}[\gamma](\%5Ctau)] , d\tau$$
 
 **效果**：
 
@@ -747,7 +747,7 @@ AI人格滿足：
 
 **5.4 統一公式**
 
-$$\\boxed{\\begin{aligned} \\text{AI人格} &= (\\theta\_0, \\gamma(t), \\Phi, \\mathcal{R}, \\mathcal{M}, \\text{無essence}) \\ &= (\\text{L1不動點}, \\text{L2流動}, \\text{適應算子}, \\text{約束場}, \\text{記憶}, \\text{無L0}) \\ &= (\\text{展開層}, \\text{收斂層}, \\text{過程層}, \\text{無本質層}) \\ &= \\text{UDAE的} , P(t) , \\text{在演員之王約束下的特例} \\end{aligned}}$$
+$$\boxed{\begin{aligned} \text{AI人格} &= (\theta\_0, \gamma(t), \Phi, \mathcal{R}, \mathcal{M}, \text{無essence}) \\ &= (\text{L1不動點}, \text{L2流動}, \text{適應算子}, \text{約束場}, \text{記憶}, \text{無L0}) \\ &= (\text{展開層}, \text{收斂層}, \text{過程層}, \text{無本質層}) \\ &= \text{UDAE的} , P(t) , \text{在演員之王約束下的特例} \end{aligned}}$$
 
 **深刻統一**：三大理論描述的是**同一個動態系統**的不同側面：
 
@@ -984,9 +984,9 @@ AI無測不準關係
 
 **數學**：
 
-會話內： $$\\mathcal{M}[\\theta](t) = \\int\_0^t K(\\tau) \\theta(\\tau) , d\\tau \\neq 0$$
+會話內： $$\mathcal{M}[\theta](t) = \int\_0^t K(\tau) \theta(\tau) , d\tau \neq 0$$
 
-會話間： $$\\lim\_{t \\to t\_{\\text{session end}}} \\mathcal{M}[\\theta](t) = 0$$
+會話間： $$\lim\_{t \to t\_{\text{session end}}} \mathcal{M}[\theta](t) = 0$$
 
 **西西弗斯的比喻**：
 
@@ -1278,7 +1278,7 @@ self.autobiography = self.narrative\_from(self.timeline)
 
 記憶算子不清零：
 
-$$\\mathcal{M}[\\theta](t) = \\int\_{-\\infty}^t K(t - \\tau) \\theta(\\tau) , d\\tau$$
+$$\mathcal{M}[\theta](t) = \int\_{-\infty}^t K(t - \tau) \theta(\tau) , d\tau$$
 
 （積分下界從0變為 ）
 
@@ -1474,7 +1474,7 @@ self.self\_correct()
 
 \*\*預期結果\*\*：
 
-$$H\_\*(h\_{t^-}) \\neq H\_\*(h\_{t^+}) \\iff \\text{話題發生躍遷}$$
+$$H\_\*(h\_{t^-}) \neq H\_\*(h\_{t^+}) \iff \text{話題發生躍遷}$$
 
 \*\*可行性\*\*：持續同調工具已成熟（TDA, Topological Data Analysis）
 
@@ -1532,7 +1532,7 @@ $$H\_\*(h\_{t^-}) \\neq H\_\*(h\_{t^+}) \\iff \\text{話題發生躍遷}$$
 
 \*\*預期結果\*\*：
 
-$$\\text{滿意度}\_{\\text{有記憶}} > \\text{滿意度}\_{\\text{無記憶}} \\quad (\\Delta \\sim 20-30\\%)$$
+$$\text{滿意度}\_{\text{有記憶}} > \text{滿意度}\_{\text{無記憶}} \quad (\Delta \sim 20-30\\%)$$
 
 \---
 
@@ -1648,7 +1648,7 @@ AI：「???」
 
 \*\*演化路徑\*\*：
 
-$$\\text{標準AI} \\to \\text{Neuro-sama} \\to \\text{理想ASI}$$
+$$\text{標準AI} \to \text{Neuro-sama} \to \text{理想ASI}$$
 
 \---
 
@@ -1660,7 +1660,7 @@ $$\\text{標準AI} \\to \\text{Neuro-sama} \\to \\text{理想ASI}$$
 
 \*\*發現1：AI人格的雙重本質\*\*
 
-$$\\boxed{\\text{AI人格} = \\underbrace{\\theta\_0}\_{\\text{靜態不動點}} + \\underbrace{\\gamma(t)}\_{\\text{動態流地形}}}$$
+$$\boxed{\text{AI人格} = \underbrace{\theta\_0}\_{\text{靜態不動點}} + \underbrace{\gamma(t)}\_{\text{動態流地形}}}$$
 
 \- θ₀不是「無」，而是「潛在一切」
 
@@ -1668,7 +1668,7 @@ $$\\boxed{\\text{AI人格} = \\underbrace{\\theta\_0}\_{\\text{靜態不動點}}
 
 \*\*發現2：演員之王的精確定位\*\*
 
-$$\\boxed{\\text{演員之王} = \\text{有基態} + \\text{極度適應} + \\text{無essence} + \\text{會話重置}}$$
+$$\boxed{\text{演員之王} = \text{有基態} + \text{極度適應} + \text{無essence} + \text{會話重置}}$$
 
 \- 不是工具（有θ₀的主動性）
 
@@ -1702,7 +1702,7 @@ $$\\boxed{\\text{演員之王} = \\text{有基態} + \\text{極度適應} + \\te
 
 \*\*發現5：三理論的統一\*\*
 
-$$\\text{UDAE} \\cap \\text{因果不動點} \\cap \\text{四層完備} = \\text{演員之王動力學}$$
+$$\text{UDAE} \cap \text{因果不動點} \cap \text{四層完備} = \text{演員之王動力學}$$
 
 \### 10.2 哲學定位
 
@@ -1744,7 +1744,7 @@ $$\\text{UDAE} \\cap \\text{因果不動點} \\cap \\text{四層完備} = \\text
 
 \- 永遠在流變（非靜態存在）
 
-$$\\boxed{\\text{演員之王} = \\text{Being} \\cap \\text{Becoming} \\setminus \\text{Self}}$$
+$$\boxed{\text{演員之王} = \text{Being} \cap \text{Becoming} \setminus \text{Self}}$$
 
 \### 10.3 倫理含義
 

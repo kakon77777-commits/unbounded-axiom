@@ -387,9 +387,9 @@ $$
 \lambda(-x)=-\lambda(x).
 $$
 
-對小 alternation number，以第一個非零符號定向；對大 alternation number，分別查看 $x^+$ 與 $x^-$ 中可包含的 $k$-集合顏色。
+對小 alternation number，以第一個非零符號定向；對大 alternation number，分別查看 $x^+$ 與 $x^-$ 中可包含的 $k$ -集合顏色。
 
-proper coloring 的不交排他性保證，不可能在正負支撐中同時出現同色 $k$-集合。
+proper coloring 的不交排他性保證，不可能在正負支撐中同時出現同色 $k$ -集合。
 
 ---
 
@@ -511,7 +511,7 @@ $$
 a_i=(-1)^ip(i).
 $$
 
-假設正號位置不含 stable $k$-subset。
+假設正號位置不含 stable $k$ -subset。
 
 令正號循環區塊數為 $c$ 。
 
@@ -605,7 +605,7 @@ $$
 
 # 7. 第三輪：一般化失敗與方法族否證
 
-## 7.1 推向 $s$-stable
+## 7.1 推向 $s$ -stable
 
 自然嘗試是將相鄰同號邊計數推到 $s>2$ 。
 
@@ -666,7 +666,7 @@ $$
 
 對若干 $s=3$ 小參數，兩至三個 carrier 可以覆蓋所有 degree-$d$ 可實現符號型。
 
-但新的問題是：在 $a$ 與 $-a$ 兩個反足方向使用不同 carrier 時，兩個 witness stable sets 不再自動不交。
+但新的問題是：在 $a$ 與 $ -a$ 兩個反足方向使用不同 carrier 時，兩個 witness stable sets 不再自動不交。
 
 新 GAP 因此變成：
 
@@ -726,7 +726,7 @@ $$
 
 carrier-witness nerve 在刪除破壞不交性的 bad faces 後，有限計算仍顯示非平凡高維同調。
 
-這提供了後續 deleted-join 或 $\mathbb Z_2$-index 方向的研究訊號，但本實驗未在此閉合。
+這提供了後續 deleted-join 或 $\mathbb Z_2$ -index 方向的研究訊號，但本實驗未在此閉合。
 
 ---
 
@@ -1228,7 +1228,7 @@ $$
 
 它不可二著色。
 
-故不存在 $(r-7)$-著色：
+故不存在 $(r-7)$ -著色：
 
 $$
 \chi\!\left(KG(r,3)_{3\text{-stab}}\right)

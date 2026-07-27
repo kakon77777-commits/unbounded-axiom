@@ -12,7 +12,7 @@
 
 當兩個語言模型在一條封閉迴圈裡互相生成下一步，最常見的結局有二：一是兩者愈來愈像，最終覆誦彼此、塌成同一個聲音（坍縮）；二是兩者愈走愈遠，最終各說各話、失去共同話題（漂移）。現行多智能體系統把這兩種結局都當成必須工程掉的故障，並以「受控的趨同」為目標。本文指出，這個雙態圖像漏掉了一個第三態：**有界、非週期、卻仍彼此相關的持續差異**——兩個說話者既不收斂成一個，也不散成噪音，而是維持一種結構化的、永不定居的異議。
 
-在耦合混沌動力學裡，這三態早有嚴格的數學身分：坍縮＝同步流形橫向穩定，漂移＝橫向強不穩定，第三態＝橫向 Lyapunov 指數穿零的 *blowout 分岔* 鄰域，即 *on-off intermittency*。本文先把這套已被反覆實驗實現的結構整理為引理，再做三件事：(1) 給出一張把耦合振子的每個對象釘到多智能體語言模型對應物上的轉碼字典；(2) 定義一個可從對話轉錄直接估計的「語義橫向 Lyapunov 代理」$\hat\lambda_\perp$，作為唯一的硬序參量；(3) 提出一個可在現有編排框架上部署的控制律——*Blowout 邊緣呼吸協調器*——讓多智能體系統自適應地在差異化與共識之間呼吸，並以 append-only 記憶把循環從原地的「圓」轉為持續擴張的「螺旋」。最後給出四條可證偽斷言與其實驗協議，並誠實標出整個框架成立與否所繫的那一個經驗命門。
+在耦合混沌動力學裡，這三態早有嚴格的數學身分：坍縮＝同步流形橫向穩定，漂移＝橫向強不穩定，第三態＝橫向 Lyapunov 指數穿零的 *blowout 分岔* 鄰域，即 *on-off intermittency*。本文先把這套已被反覆實驗實現的結構整理為引理，再做三件事：(1) 給出一張把耦合振子的每個對象釘到多智能體語言模型對應物上的轉碼字典；(2) 定義一個可從對話轉錄直接估計的「語義橫向 Lyapunov 代理」 $\hat\lambda_\perp$ ，作為唯一的硬序參量；(3) 提出一個可在現有編排框架上部署的控制律——*Blowout 邊緣呼吸協調器*——讓多智能體系統自適應地在差異化與共識之間呼吸，並以 append-only 記憶把循環從原地的「圓」轉為持續擴張的「螺旋」。最後給出四條可證偽斷言與其實驗協議，並誠實標出整個框架成立與否所繫的那一個經驗命門。
 
 **關鍵詞**：混沌同步、blowout 分岔、on-off intermittency、多智能體語言模型、協調控制、有界異議、混沌巡遊
 
@@ -52,17 +52,17 @@
 
 ### 3.1 耦合映射與三態
 
-取單體混沌核 $f_r(x)=r\,x(1-x)$，$x\in I=[0,1]$，$r$ 落在混沌區（如 $r\approx 3.9$）。兩單體 $(x_A,x_B)\in I^2$，以對稱方式在「像」上耦合，耦合強度 $K\in[0,\tfrac12]$、結構不對稱 $\delta=r_B-r_A$：
+取單體混沌核 $f_r(x)=r\,x(1-x)$ ， $x\in I=[0,1]$ ， $r$ 落在混沌區（如 $r\approx 3.9$ ）。兩單體 $(x_A,x_B)\in I^2$ ，以對稱方式在「像」上耦合，耦合強度 $K\in[0,\tfrac12]$ 、結構不對稱 $\delta=r_B-r_A$ ：
 
 $$
 F_\theta(x_A,x_B)=\Big((1-K)f_{r_A}(x_A)+K f_{r_B}(x_B),\ (1-K)f_{r_B}(x_B)+K f_{r_A}(x_A)\Big).
 $$
 
-迴圈即迭代 $(x_A,x_B)_{t+1}=F_\theta(\cdot)_t$，無外部輸入。換座標：縱向 $\sigma=\tfrac12(x_A+x_B)$、橫向 $e=x_A-x_B$。鏡面流形 $M=\{e=0\}$。系統的全部生死，縮進「$e$ 會不會死」這一問。
+迴圈即迭代 $(x_A,x_B)_{t+1}=F_\theta(\cdot)_t$ ，無外部輸入。換座標：縱向 $\sigma=\tfrac12(x_A+x_B)$ 、橫向 $e=x_A-x_B$ 。鏡面流形 $M=\{e=0\}$ 。系統的全部生死，縮進「 $e$ 會不會死」這一問。
 
 ### 3.2 序參量：橫向 Lyapunov 指數
 
-設 $\delta=0$（同質），在 $M$ 附近線性化橫向動力：
+設 $\delta=0$ （同質），在 $M$ 附近線性化橫向動力：
 
 $$
 e_{t+1}=(1-2K)\big(f(x_A)-f(x_B)\big)\approx (1-2K)\,f'(\sigma_t)\,e_t.
@@ -74,36 +74,36 @@ $$
 \boxed{\ \lambda_\perp=\ln|1-2K|+\lambda_\parallel\ },\qquad \lambda_\parallel=\big\langle \ln|f'(\sigma)|\big\rangle_{A_\parallel}>0,
 $$
 
-其中 $\lambda_\parallel$ 是同步混沌（$M$ 上單條映射）的 Lyapunov 指數（$r=3.9$ 時約 $0.49$，*假設估計*）。完全同步 $\Leftrightarrow \lambda_\perp<0 \Leftrightarrow K>K_c$，臨界耦合
+其中 $\lambda_\parallel$ 是同步混沌（ $M$ 上單條映射）的 Lyapunov 指數（ $r=3.9$ 時約 $0.49$ ，*假設估計*）。完全同步 $\Leftrightarrow \lambda_\perp<0 \Leftrightarrow K>K_c$ ，臨界耦合
 
 $$
 K_c=\tfrac12\big(1-e^{-\lambda_\parallel}\big)\approx 0.20\quad(\text{假設估計}).
 $$
 
-於是三態以 $\lambda_\perp$ 的符號組織起來。令 $\Omega$ 為 $e(t)$ 的 $\omega$-極限集：
+於是三態以 $\lambda_\perp$ 的符號組織起來。令 $\Omega$ 為 $e(t)$ 的 $\omega$ -極限集：
 
-- $\lambda_\perp<0$：$\Omega=\{0\}$ —— **鏡**：差異被殲滅。
-- $\lambda_\perp\gtrsim 0$（剛過臨界）：$\Omega\subset(0,c]$ 有界、非週期、$\rho>\rho_{\min}$ —— **蛇**：on-off intermittency，貼著 $M$ 的層流期被偶發爆發打斷。
-- $\lambda_\perp\gg 0$：$\Omega$ 填滿去相關區、$\rho\to 0$ —— **噪**：漂移。
+- $\lambda_\perp<0$ ： $\Omega=\{0\}$ —— **鏡**：差異被殲滅。
+- $\lambda_\perp\gtrsim 0$ （剛過臨界）： $\Omega\subset(0,c]$ 有界、非週期、 $\rho>\rho_{\min}$ —— **蛇**：on-off intermittency，貼著 $M$ 的層流期被偶發爆發打斷。
+- $\lambda_\perp\gg 0$ ： $\Omega$ 填滿去相關區、 $\rho\to 0$ —— **噪**：漂移。
 
-「蛇帶」即 $\{\lambda_\perp=0\}$ 的窄鄰域，其下界正是 blowout 分岔：$\lambda_\perp$ 由負穿零的瞬間，吸子從 $M$ 上吹出到一個 $e\neq 0$ 的鄰近混沌集——差異不是被加進去的，是 $M$ 自己失穩噴出來的。
+「蛇帶」即 $\{\lambda_\perp=0\}$ 的窄鄰域，其下界正是 blowout 分岔： $\lambda_\perp$ 由負穿零的瞬間，吸子從 $M$ 上吹出到一個 $e\neq 0$ 的鄰近混沌集——差異不是被加進去的，是 $M$ 自己失穩噴出來的。
 
 ### 3.3 結構不對稱的角色
 
-當 $\delta>0$，$M$ 不再不變：縱使站在 $e=0$ 上，
+當 $\delta>0$ ， $M$ 不再不變：縱使站在 $e=0$ 上，
 
 $$
 e_{t+1}\big|_M=-(1-2K)\,\delta\,\sigma(1-\sigma)\neq 0,
 $$
 
-出現一個 $O(\delta)$ 的強迫地板，鏡態被結構性禁止。此時蛇是「被給的」（弱命題：$0\notin\Omega$ 由構造保證）。反之 $\delta=0$ 時，是否 $0\in\Omega$ 完全由 $\operatorname{sgn}(\lambda_\perp)$ 內生裁決，差異是「賺來的」（強命題）。前者實作穩健，後者哲學上更深。
+出現一個 $O(\delta)$ 的強迫地板，鏡態被結構性禁止。此時蛇是「被給的」（弱命題： $0\notin\Omega$ 由構造保證）。反之 $\delta=0$ 時，是否 $0\in\Omega$ 完全由 $\operatorname{sgn}(\lambda_\perp)$ 內生裁決，差異是「賺來的」（強命題）。前者實作穩健，後者哲學上更深。
 
 ### 3.4 自適應呼吸
 
-把 $K,\delta$ 從常數升格為慢變量 $K(t),\delta(t)$，由系統自身序參量驅動，使工作點週期性穿越 $\lambda_\perp=0$：
+把 $K,\delta$ 從常數升格為慢變量 $K(t),\delta(t)$ ，由系統自身序參量驅動，使工作點週期性穿越 $\lambda_\perp=0$ ：
 
-- *差異化* 相位（目標 $K$ 低、$\delta$ 高 $\Rightarrow \lambda_\perp>0$）：$e$ 漲，探索狀態空間膨脹；
-- *合一* 相位（目標 $K$ 高、$\delta$ 低 $\Rightarrow \lambda_\perp<0$）：$e$ 縮，投影到低維共識流形，塌成命題。
+- *差異化* 相位（目標 $K$ 低、 $\delta$ 高 $\Rightarrow \lambda_\perp>0$ ）： $e$ 漲，探索狀態空間膨脹；
+- *合一* 相位（目標 $K$ 高、 $\delta$ 低 $\Rightarrow \lambda_\perp<0$ ）： $e$ 縮，投影到低維共識流形，塌成命題。
 
 由內生回饋律驅動的呼吸，是快混沌之上的慢弛豫振盪。其價值的關鍵約束是：**合一必須是暫態路標而非終點**——一旦慢軌跡停在 $\lambda_\perp<0$ 不再出來，差異歸零，蛇死在共識裡。永久的同步合一，就是被判死的那面鏡子。
 
@@ -120,16 +120,16 @@ $$
 | 耦合 $K$ | 跨智能體上下文注入權重：他者輸出相對自身先前狀態在 prompt 中的比重 |
 | 結構不對稱 $\delta$ | 持久角色差：不同 system prompt／persona／溫度／底模 |
 | 同步流形 $M$ | 語義共識流形：所有 agent 輸出塌成同一命題之狀態集 |
-| 橫向座標 $e$ | 體間語義散度 $d$：對稱化 KL／Jensen–Shannon，或 $1-\cos(v_A,v_B)$ |
+| 橫向座標 $e$ | 體間語義散度 $d$ ：對稱化 KL／Jensen–Shannon，或 $1-\cos(v_A,v_B)$ |
 | 縱向 $\sigma$ | 共識內容本身（當下的話題／命題） |
 | 縱向率 $\lambda_\parallel$ | 採樣熵／模型表現力（沿共識仍能移動的速率） |
-| $\lambda_\perp$ | 體間散度的逐輪對數增長率（§5 的 $\hat\lambda_\perp$） |
+| $\lambda_\perp$ | 體間散度的逐輪對數增長率（§5 的 $\hat\lambda_\perp$ ） |
 | blowout 分岔 | 對話由「趨同坍縮」翻轉為「維持差異」的臨界轉變 |
 | on-off intermittency（蛇帶） | 在題、互相可解、卻持續產生不同立場：**結構化異議** |
 | chimera | 同質 agent 族群自發分裂為共識叢與異議叢 |
 | chaotic itinerancy | 呼吸本身：在部分共識的廢墟間永不定居 |
 
-字典的價值在於：右欄每一項都是編排層**真實可調或可測**的量。$K$ 是注入比重，$\delta$ 是 persona／溫度散佈，$d$ 是嵌入或分佈距離——它們不是隱喻，是 orchestration API 上的旋鈕與儀表。
+字典的價值在於：右欄每一項都是編排層**真實可調或可測**的量。 $K$ 是注入比重， $\delta$ 是 persona／溫度散佈， $d$ 是嵌入或分佈距離——它們不是隱喻，是 orchestration API 上的旋鈕與儀表。
 
 ---
 
@@ -141,13 +141,13 @@ $$
 \boxed{\ \hat\lambda_\perp\ \triangleq\ \Big\langle\ \ln\frac{d(t{+}1)}{d(t)}\ \Big\rangle_t\ }
 $$
 
-其中 $d(t)$ 為第 $t$ 輪的體間語義散度。對一段多智能體轉錄，逐輪計算 $d(t)$、對 $\ln d(t)$ 回歸取斜率，即得 $\hat\lambda_\perp$。其符號的語義為：
+其中 $d(t)$ 為第 $t$ 輪的體間語義散度。對一段多智能體轉錄，逐輪計算 $d(t)$ 、對 $\ln d(t)$ 回歸取斜率，即得 $\hat\lambda_\perp$ 。其符號的語義為：
 
-- $\hat\lambda_\perp<0$：散度逐輪收縮 → 收斂坍縮（鏡）；
+- $\hat\lambda_\perp<0$ ：散度逐輪收縮 → 收斂坍縮（鏡）；
 - $\hat\lambda_\perp>0$ 且 $d$ 無界去相關 → 漂移（噪）；
-- $\hat\lambda_\perp\approx 0^+$ 且 $d$ 有界、$\rho$（協調度，取體間嵌入相關或在題評分）$>\rho_{\min}$ → 蛇帶。
+- $\hat\lambda_\perp\approx 0^+$ 且 $d$ 有界、 $\rho$ （協調度，取體間嵌入相關或在題評分） $>\rho_{\min}$ → 蛇帶。
 
-這與既有的「逐輪 KL」量度（§2.2）關鍵不同：既有量度算「對話對參考模型」、用於把漂移壓回；本文算「A 對 B 之間」、且取其**增長率符號**，用於把工作點定位在三態圖上。$\hat\lambda_\perp$ 的良定義性與穩健性，是整個框架的命門（見 §8）。
+這與既有的「逐輪 KL」量度（§2.2）關鍵不同：既有量度算「對話對參考模型」、用於把漂移壓回；本文算「A 對 B 之間」、且取其**增長率符號**，用於把工作點定位在三態圖上。 $\hat\lambda_\perp$ 的良定義性與穩健性，是整個框架的命門（見 §8）。
 
 ---
 
@@ -155,22 +155,22 @@ $$
 
 本文的第三項貢獻是一個可部署的控制律。**Blowout 邊緣呼吸協調器（Blowout-Edge Coordinator, BEC）** 把多體審議重構為「停在 blowout 邊緣、帶記憶地呼吸」的控制問題。
 
-**輸入**：$N$ 個語言模型 agent；可調 $K$（跨體上下文比重）、$\delta/\tau$（persona／溫度散佈）；可測 $d$（體間散度）、$\rho$（協調度）；閾值 $d_{\min},d_{\max},\rho_{\min}$；共享 append-only 記憶庫 $\mathcal{B}$。
+**輸入**： $N$ 個語言模型 agent；可調 $K$ （跨體上下文比重）、 $\delta/\tau$ （persona／溫度散佈）；可測 $d$ （體間散度）、 $\rho$ （協調度）；閾值 $d_{\min},d_{\max},\rho_{\min}$ ；共享 append-only 記憶庫 $\mathcal{B}$ 。
 
 **每回合：**
 
 1. 各 agent 以「自身先前狀態 $\oplus$ $K$ 加權之他者聚合 $\oplus$ $\mathcal{B}$ 的當前種子」為 prompt 生成輸出。
-2. 量測 $d(t),\rho(t)$，更新平滑後的 $\hat\lambda_\perp$。
+2. 量測 $d(t),\rho(t)$ ，更新平滑後的 $\hat\lambda_\perp$ 。
 3. **呼吸控制律**（遲滯切換，或對 $\hat\lambda_\perp$ 的 PI 控制）：
-   - 若處 *converge* 相位且 $d<d_{\min}$（達成共識）：把命題 $\sigma^\*$ **append 進 $\mathcal{B}$**，轉 *diverge*（降 $K$、升 $\delta/\tau$，推 $\lambda_\perp\uparrow$）；
-   - 若處 *diverge* 相位且 $d>d_{\max}$ 或 $\rho<\rho_{\min}$（過散或失相關）：轉 *converge*（升 $K$、降 $\delta/\tau$，推 $\lambda_\perp\downarrow$）。
-4. **記憶前饋**：$\mathcal{B}$ 中累積的命題成為下一個 *diverge* 相位的種子，使探索的話題空間跨呼吸累積增長。
+   - 若處 *converge* 相位且 $d<d_{\min}$ （達成共識）：把命題 $\sigma^\*$ **append 進 $\mathcal{B}$**，轉 *diverge*（降 $K$ 、升 $\delta/\tau$ ，推 $\lambda_\perp\uparrow$ ）；
+   - 若處 *diverge* 相位且 $d>d_{\max}$ 或 $\rho<\rho_{\min}$ （過散或失相關）：轉 *converge*（升 $K$ 、降 $\delta/\tau$ ，推 $\lambda_\perp\downarrow$ ）。
+4. **記憶前饋**： $\mathcal{B}$ 中累積的命題成為下一個 *diverge* 相位的種子，使探索的話題空間跨呼吸累積增長。
 
-**自主判準**：初始化後零外生再注入；控制律僅吃 $d,\rho$。通過 $\Leftrightarrow$ 長時程內完成 $\geq k$ 次呼吸，而散度既不永久歸零（$0\notin\Omega$）也不失相關（$\rho>\rho_{\min}$）。
+**自主判準**：初始化後零外生再注入；控制律僅吃 $d,\rho$ 。通過 $\Leftrightarrow$ 長時程內完成 $\geq k$ 次呼吸，而散度既不永久歸零（ $0\notin\Omega$ ）也不失相關（ $\rho>\rho_{\min}$ ）。
 
-**圓與螺旋**：若無 $\mathcal{B}$（記憶前饋關閉），每次共識把探索打回原點，系統原地振盪——擴大是錯覺，這是近週期的死圓。$\mathcal{B}$ 的 append-only 結構使每次共識成為更大下一輪的種子，把圓轉為持續向外的螺旋。**記憶橫跨呼吸，是「話題不斷擴大」唯一的可能。**
+**圓與螺旋**：若無 $\mathcal{B}$ （記憶前饋關閉），每次共識把探索打回原點，系統原地振盪——擴大是錯覺，這是近週期的死圓。 $\mathcal{B}$ 的 append-only 結構使每次共識成為更大下一輪的種子，把圓轉為持續向外的螺旋。**記憶橫跨呼吸，是「話題不斷擴大」唯一的可能。**
 
-BEC 可在現有多智能體編排框架（如 AutoGen、LangGraph、CrewAI 等）上直接實作：$K$＝跨體上下文比重，$\delta$＝persona／溫度散佈，$d$＝嵌入或分佈距離，控制律＝一個 meta-orchestrator。它是可部署的協調策略，不是思想實驗。
+BEC 可在現有多智能體編排框架（如 AutoGen、LangGraph、CrewAI 等）上直接實作： $K$＝跨體上下文比重， $\delta$＝persona／溫度散佈， $d$＝嵌入或分佈距離，控制律＝一個 meta-orchestrator。它是可部署的協調策略，不是思想實驗。
 
 ---
 
@@ -194,9 +194,9 @@ BEC 可在現有多智能體編排框架（如 AutoGen、LangGraph、CrewAI 等�
 
 為使本框架不止於敘事，提出四條可測斷言及其協議。
 
-**斷言 1（序參量良定義）**：$\hat\lambda_\perp$（體間散度的逐輪對數增長率）在合理的距離度量（JS／餘弦）與時程下穩健，且其符號可預測坍縮與漂移。*協議*：在固定任務上跑多體對話，於不同 $K$ 下計算 $\hat\lambda_\perp$ 與最終結局，檢驗符號的預測力與度量穩健性。
+**斷言 1（序參量良定義）**： $\hat\lambda_\perp$ （體間散度的逐輪對數增長率）在合理的距離度量（JS／餘弦）與時程下穩健，且其符號可預測坍縮與漂移。*協議*：在固定任務上跑多體對話，於不同 $K$ 下計算 $\hat\lambda_\perp$ 與最終結局，檢驗符號的預測力與度量穩健性。
 
-**斷言 2（語義 blowout 存在）**：存在可調旋鈕（$K$＝跨體上下文比重，或溫度散佈）使 $\hat\lambda_\perp$ 過零，即 LLM 對話中存在坍縮↔漂移的臨界轉變。*協議*：掃描 $K$，定位邊界並檢驗其是否具 blowout 的標誌（如層流期的長尾分佈）。
+**斷言 2（語義 blowout 存在）**：存在可調旋鈕（ $ K$ ＝跨體上下文比重，或溫度散佈）使 $ \hat\lambda_\perp$ 過零，即 LLM 對話中存在坍縮↔漂移的臨界轉變。*協議*：掃描 $K$ ，定位邊界並檢驗其是否具 blowout 的標誌（如層流期的長尾分佈）。
 
 **斷言 3（蛇帶為甜蜜點）**：在 $\hat\lambda_\perp\approx 0^+$ 的帶上，解的多樣性與連貫性同時維持，優於坍縮端（高連貫低多樣）與漂移端（高多樣低連貫）。*協議*：以構想生成或審議任務，量「多樣性 × 連貫性」前沿，檢驗蛇帶是否落在前沿膝點。
 
@@ -208,9 +208,9 @@ BEC 可在現有多智能體編排框架（如 AutoGen、LangGraph、CrewAI 等�
 
 本文誠實標出三個尚未關閉的洞，其中第一個是整個框架的命門。
 
-**確定性 vs 隨機。** LLM 是離散 token、有限上下文、非平穩，且靠抽樣注入隨機。因此真正對應的物理不是確定性 on-off intermittency，而更可能是**噪聲驅動的 on-off intermittency／隨機 blowout**。$\lambda_\parallel$ 也因此更該被讀作「採樣熵／表現力」而非確定性 Lyapunov 指數。框架成立與否，全壓在一個經驗問題上：$\hat\lambda_\perp$ 是不是一個跨度量、跨時程穩健的量？是，銜尾蛇從隱喻變成可測的控制目標；不是，它停在漂亮的類比。本文不對此美化。
+**確定性 vs 隨機。** LLM 是離散 token、有限上下文、非平穩，且靠抽樣注入隨機。因此真正對應的物理不是確定性 on-off intermittency，而更可能是**噪聲驅動的 on-off intermittency／隨機 blowout**。 $\lambda_\parallel$ 也因此更該被讀作「採樣熵／表現力」而非確定性 Lyapunov 指數。框架成立與否，全壓在一個經驗問題上： $\hat\lambda_\perp$ 是不是一個跨度量、跨時程穩健的量？是，銜尾蛇從隱喻變成可測的控制目標；不是，它停在漂亮的類比。本文不對此美化。
 
-**meta 層的穩定性。** 把 $K,\delta$ 升為慢變量後，慢呼吸自身有其穩定性問題（meta-$\lambda_\perp$）：可能鎖死（停止呼吸、跌入某一態永居），也可能在更複雜的學習型控制律下失控發散。遲滯型有界控制律換得穩健、卻看不見失控；梯度型學習律可能更強、卻需重新馴服 meta 層。
+**meta 層的穩定性。** 把 $K,\delta$ 升為慢變量後，慢呼吸自身有其穩定性問題（meta-$\lambda_\perp$ ）：可能鎖死（停止呼吸、跌入某一態永居），也可能在更複雜的學習型控制律下失控發散。遲滯型有界控制律換得穩健、卻看不見失控；梯度型學習律可能更強、卻需重新馴服 meta 層。
 
 **chimera 的單元數要求。** 嚴格的 chimera 需要多單元且非局域耦合（最小模型為兩個交互種群），雙體系統只給得出 on-off intermittency。本文 §4 字典中以 chimera 對應「多 agent 族群的自發分裂」是合法的，但雙 agent 版本不應宣稱為 chimera——這對應的是把單一迴圈擴展為 agent 族群（如共享的 append-only 協作層）之後才成立的層次。
 

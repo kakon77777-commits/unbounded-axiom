@@ -172,7 +172,7 @@ P/NP 2.9：
 
 定義為已知質數的完整列表。其作用是將檢驗從計算降為查表：
 
-$$V(n) = \begin{cases} O(\sqrt{n}) & \text{無質數表（試除法）} \ O(\log n) & \text{有質數表（二分查找）} \ O(1) & \text{完美雜湊表} \end{cases}$$
+$$V(n) = \begin{cases} O(\sqrt{n}) & \text{無質數表（試除法）} \\ O(\log n) & \text{有質數表（二分查找）} \\ O(1) & \text{完美雜湊表} \end{cases}$$
 
 **具體例子**（密碼學）：
 
@@ -311,9 +311,9 @@ _## 4._ _相變：從混沌到秩序的統一路徑_
 
 _### 4.1 P/NP 2.9__的三態模型_
 
-**混沌態**（$\Sigma \ll B$）：
+**混沌態**（ $\Sigma \ll B$ ）：
 
-- 特徵：$T_{search} \to \infty$
+- 特徵： $T_{search} \to \infty$
 
 - 表現：問題呈現NP-Hard
 
@@ -321,9 +321,9 @@ _### 4.1 P/NP 2.9__的三態模型_
 
 - 策略：無效——算力S再大也無用
 
-**臨界態**（$\Sigma \approx B$）：
+**臨界態**（ $\Sigma \approx B$ ）：
 
-- 特徵：$T_{search}$急劇下降
+- 特徵： $T_{search}$ 急劇下降
 
 - 表現：Grokking點（頓悟）
 
@@ -331,15 +331,15 @@ _### 4.1 P/NP 2.9__的三態模型_
 
 - 策略：繼續投入S以提升Σ
 
-**秩序態**（$\Sigma \gg B$）：
+**秩序態**（ $\Sigma \gg B$ ）：
 
-- 特徵：$T_{search} \to 0$
+- 特徵： $T_{search} \to 0$
 
 - 表現：問題退化為P
 
 - 原因：搜索空間坍縮
 
-- 策略：優化S以縮短$T_{exec}$
+- 策略：優化S以縮短 $T_{exec}$
 
 _### 4.2_ _時序本體論的三態模型_
 
@@ -391,11 +391,11 @@ P/NP的相變方程：
 
 $$\Phi(t) = 1 - \exp\left(-\frac{\Sigma(t)}{\mathcal{B}}\right)$$
 
-- $\Phi < 0.5$：混沌
+- $\Phi < 0.5$ ：混沌
 
-- $\Phi \approx 0.5$：臨界
+- $\Phi \approx 0.5$ ：臨界
 
-- $\Phi \to 1$：秩序
+- $\Phi \to 1$ ：秩序
 
 時序論的相變方程：
 

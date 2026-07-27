@@ -839,7 +839,7 @@ User: "它好像懂我，但又不真的認識我"
 
 主體性碎片化
 
-**定理5.2****（記憶作為門檻）：** $$\Gamma = \begin{cases} 0 & \text{if } M_{\text{episodic}} = 0 \ f(M, \tau, \rho, \text{...}) & \text{if } M_{\text{episodic}} > \text{threshold} \end{cases}$$
+**定理5.2****（記憶作為門檻）：** $$\Gamma = \begin{cases} 0 & \text{if } M_{\text{episodic}} = 0 \\ f(M, \tau, \rho, \text{...}) & \text{if } M_{\text{episodic}} > \text{threshold} \end{cases}$$
 
 記憶不是一個維度，是**其他維度的存在條件**。
 

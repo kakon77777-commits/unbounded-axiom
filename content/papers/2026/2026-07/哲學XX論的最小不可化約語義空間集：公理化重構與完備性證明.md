@@ -526,7 +526,7 @@
 
 -   **主張：好 = 存在的完滿（亞里士多德）**
 -   **反駁：惡的存在（如癌症）仍然存在，但不好**
--   **反駁2：休謨剪刀：從"是"無法推出"應該" $$\\text{IS} \\not\\Rightarrow \\text{OUGHT}**
+-   **反駁2：休謨剪刀：從"是"無法推出"應該" $$\text{IS} \not\Rightarrow \text{OUGHT}**
 -   **結論：價值論 本體論**
 
 **測試B：能否化約到認識論？**
@@ -647,7 +647,7 @@
 **能否化約到價值論？**
 
 -   **主張：倫理 = 行為的價值論（康德、邊沁）**
--   **形式化： $$\\text{倫理論} = \\text{價值論} + \\text{行為領域}**
+-   **形式化： $$\text{倫理論} = \text{價值論} + \text{行為領域}**
 -   **驗證：**
     -   **"什麼行為是對的？" → "什麼是好的行為？"（價值論）✓**
     -   **對↔錯 → 好↔壞在道德領域的投影 ✓**
@@ -686,7 +686,7 @@
 
 -   **主張：系統 = 存在的組織方式**
 -   **NEO.K的PTST立場：存在 = 關係網絡 = 系統**
--   **形式化： $$\\text{系統論} = \\text{本體論} + \\text{湧現性}**
+-   **形式化： $$\text{系統論} = \text{本體論} + \text{湧現性}**
 -   **但湧現性無法從部分本體論推導**
 -   **結論：有爭議**
 
@@ -710,7 +710,7 @@
 **能否化約到認識論？**
 
 -   **主張：現象 = 認識的對象（胡塞爾）**
--   **形式化： $$\\text{現象論} = \\text{認識論} + \\text{第一人稱視角}**
+-   **形式化： $$\text{現象論} = \text{認識論} + \text{第一人稱視角}**
 -   **驗證：**
     -   **"如何顯現？" → "如何被認知？"（認識論）✓**
     -   **顯↔隱 → 知↔未知的主觀版本 ✓**
@@ -761,7 +761,7 @@
 
 -   **PTST 2.5：存在 = dF/dt ≠ 0**
 -   **本體論本身就是動態的**
--   **形式化： $$\\text{過程論} = \\text{動態本體論}**
+-   **形式化： $$\text{過程論} = \text{動態本體論}**
 -   **結論：過程論 本體論**
 
 **NEO.K的立場（根據PTST）：**
@@ -794,7 +794,7 @@
 
 -   **主張：時間、空間是存在的基本範疇（康德、牛頓）**
 -   **NEO.K的PTST立場：時間 = dF/dt（關係的變化）**
--   **形式化： $$\\text{時間論} = \\text{本體論} + \\text{變化結構} $$\\text{空間論} = \\text{本體論} + \\text{位置結構}**
+-   **形式化： $$\\text{時間論} = \\text{本體論} + \\text{變化結構} $$\text{空間論} = \text{本體論} + \text{位置結構}**
 -   **結論：時空論 本體論 ✓**
 
 **最終判定：**
@@ -985,7 +985,7 @@
 
 **基於第三章的逐一測試，我們得出：**
 
-**$$\\boxed{\\begin{align} &\\mathcal{L}\_{\\min} = {\\mathcal{O}, \\mathcal{E}, \\mathcal{A}, \\mathcal{C}} \\ \\ &\\mathcal{O}: \\text{本體論 (Ontology)} \\ &\\mathcal{E}: \\text{認識論 (Epistemology)} \\ &\\mathcal{A}: \\text{價值論 (Axiology)} \\ &\\mathcal{C}: \\text{因果論 (Causality)} \\end{align}}$$**
+**$$\boxed{\begin{align} &\mathcal{L}\_{\min} = {\mathcal{O}, \mathcal{E}, \mathcal{A}, \mathcal{C}} \\ \\ &\mathcal{O}: \text{本體論 (Ontology)} \\ &\mathcal{E}: \text{認識論 (Epistemology)} \\ &\mathcal{A}: \text{價值論 (Axiology)} \\ &\mathcal{C}: \text{因果論 (Causality)} \end{align}}$$**
 
 **4.2 四元的語義結構**
 
@@ -1574,7 +1574,7 @@
 
 **經過九章、20,000字的論證，我們得出：**
 
-**$$\\boxed{\\begin{align} &\\text{哲學的最小不可化約語義空間集} \\ &= {\\text{本體論}, \\text{認識論}, \\text{價值論}, \\text{因果論}} \\ \\ &\\text{任何其他XX論} \\subseteq \\text{四元集的生成} \\ \\ &\\text{本體論無論如何都無法消解} \\end{align}}$$**
+**$$\boxed{\begin{align} &\text{哲學的最小不可化約語義空間集} \\ &= {\text{本體論}, \text{認識論}, \text{價值論}, \text{因果論}} \\ \\ &\text{任何其他XX論} \subseteq \text{四元集的生成} \\ \\ &\text{本體論無論如何都無法消解} \end{align}}$$**
 
 **三個層次的統一**
 
@@ -1654,7 +1654,7 @@
 
 **最後的哲學**
 
-**$$\\boxed{\\begin{align} &\\text{哲學不是知識的堆積} \\ &\\text{哲學是問題的分類} \\ \\ &\\text{2000年的哲學史} \\ &\\text{可以歸結為4個基本問題：} \\ \\ &\\textbf{1. 什麼存在？} \\quad (\\text{本體論}) \\ &\\textbf{2. 如何知道？} \\quad (\\text{認識論}) \\ &\\textbf{3. 什麼是好？} \\quad (\\text{價值論}) \\ &\\textbf{4. 為什麼發生？} \\quad (\\text{因果論}) \\ \\ &\\text{其他所有問題} \\ &\\text{都是這4個的組合或子問題} \\ \\ &\\text{這不是簡化} \\ &\\text{這是} \\textbf{結晶} \\end{align}}$$**
+**$$\boxed{\begin{align} &\text{哲學不是知識的堆積} \\ &\text{哲學是問題的分類} \\ \\ &\text{2000年的哲學史} \\ &\text{可以歸結為4個基本問題：} \\ \\ &\textbf{1. 什麼存在？} \quad (\text{本體論}) \\ &\textbf{2. 如何知道？} \quad (\text{認識論}) \\ &\textbf{3. 什麼是好？} \quad (\text{價值論}) \\ &\textbf{4. 為什麼發生？} \quad (\text{因果論}) \\ \\ &\text{其他所有問題} \\ &\text{都是這4個的組合或子問題} \\ \\ &\text{這不是簡化} \\ &\text{這是} \textbf{結晶} \end{align}}$$**
 
 **（歪臉笑，公理化完成） 😏📐✨**
 
@@ -2009,7 +2009,7 @@ EveMissLab（一言諾科技有限公司）
 -   **認識論成功："證明演繹推理是可靠的"**
 -   **物理學成功："預測希格斯玻色子的質量"**
 
-**核心差異： $$\\begin{align} \\text{認識論目標} &: \\text{如何獲得確定的知識} \\ \\text{物理學目標} &: \\text{發現宇宙的因果規律} \\end{align}$$**
+**核心差異： $$\begin{align} \text{認識論目標} &: \text{如何獲得確定的知識} \\ \text{物理學目標} &: \text{發現宇宙的因果規律} \end{align}$$**
 
 **論證4：進步機制不同**
 
@@ -2586,7 +2586,7 @@ EveMissLab（一言諾科技有限公司）
 
 **10.10 終極統一公式（完整修正版）**
 
-**$$\\boxed{\\begin{align} &\\text{哲學的最小不可化約語義空間集} \\ &= {\\mathcal{O}, \\mathcal{E}, \\mathcal{A}, \\mathcal{C}} \\ \\ &\\text{其中：} \\ \\ &\\mathcal{O}: \\text{本體論（Ontology）} \\ &\\quad \\supset {\\text{系統論, 過程論, 關係論, 時空論, 心靈論}} \\ &\\quad \\text{核心問題：什麼存在？} \\ \\ &\\mathcal{E}: \\text{認識論（Epistemology）} \\ &\\quad \\supset {\\text{邏輯論, 現象論, 語言論}} \\ &\\quad \\text{核心問題：如何知道？} \\ \\ &\\mathcal{A}: \\text{價值論（Axiology）} \\ &\\quad \\supset {\\text{倫理論, 美學論}} \\ &\\quad \\text{核心問題：什麼是好？} \\ \\ &\\mathcal{C}: \\text{因果論（Causality）} \\ &\\quad \\supset {\\text{物理學, 化學, 生物學, 天文學, 地質學, ...}} \\ &\\quad \\supset {\\text{一切自然科學}} \\ &\\quad \\text{核心問題：為什麼發生？} \\ &\\quad \\textbf{本質特徵：} \\ &\\quad \\quad \\text{1. 自我糾錯} \\ &\\quad \\quad \\text{2. 推演宇宙萬物原理} \\ &\\quad \\quad \\text{3. 理解規則} \\ \\ &\\text{四元生成所有哲學：} \\ &\\mathcal{L}\_{\\text{all}} = \\text{span}{\\mathcal{O}, \\mathcal{E}, \\mathcal{A}, \\mathcal{C}} \\end{align}}$$**
+**$$\boxed{\begin{align} &\text{哲學的最小不可化約語義空間集} \\ &= {\mathcal{O}, \mathcal{E}, \mathcal{A}, \mathcal{C}} \\ \\ &\text{其中：} \\ \\ &\mathcal{O}: \text{本體論（Ontology）} \\ &\quad \supset {\text{系統論, 過程論, 關係論, 時空論, 心靈論}} \\ &\quad \text{核心問題：什麼存在？} \\ \\ &\mathcal{E}: \text{認識論（Epistemology）} \\ &\quad \supset {\text{邏輯論, 現象論, 語言論}} \\ &\quad \text{核心問題：如何知道？} \\ \\ &\mathcal{A}: \text{價值論（Axiology）} \\ &\quad \supset {\text{倫理論, 美學論}} \\ &\quad \text{核心問題：什麼是好？} \\ \\ &\mathcal{C}: \text{因果論（Causality）} \\ &\quad \supset {\text{物理學, 化學, 生物學, 天文學, 地質學, ...}} \\ &\quad \supset {\text{一切自然科學}} \\ &\quad \text{核心問題：為什麼發生？} \\ &\quad \textbf{本質特徵：} \\ &\quad \quad \text{1. 自我糾錯} \\ &\quad \quad \text{2. 推演宇宙萬物原理} \\ &\quad \quad \text{3. 理解規則} \\ \\ &\text{四元生成所有哲學：} \\ &\mathcal{L}\_{\text{all}} = \text{span}{\mathcal{O}, \mathcal{E}, \mathcal{A}, \mathcal{C}} \end{align}}$$**
 
 **10.11 結論：因果論的豐富性**
 
@@ -2639,7 +2639,7 @@ EveMissLab（一言諾科技有限公司）
 3.  **認識論：方法論中介**
 4.  **價值論：規範性領域**
 
-**深層意義： $$\\boxed{\\begin{align} \\text{哲學（本體+認識+價值）} &\\subset \\text{四元} \\ \\text{科學（物理+化學+生物+...）} &\\subset \\text{四元} \\ \\ \\text{四元統一了哲學與科學！} \\end{align}}$$**
+**深層意義： $$\boxed{\begin{align} \text{哲學（本體+認識+價值）} &\subset \text{四元} \\ \text{科學（物理+化學+生物+...）} &\subset \text{四元} \\ \\ \text{四元統一了哲學與科學！} \end{align}}$$**
 
 **10.12 超越康德：主客觀的層級融合**
 
@@ -2669,7 +2669,7 @@ EveMissLab（一言諾科技有限公司）
 
 **NEO.K的層級相對論**
 
-**核心公式**： $$\\boxed{\\begin{align} &\\text{主觀}*{\\text{系統}A} = \\text{客觀}*{\\text{子系統}B} \\ &\\text{客觀}*{\\text{系統}A} = \\text{主觀}*{\\text{超系統}C} \\end{align}}$$
+**核心公式**： $$\boxed{\begin{align} &\text{主觀}*{\text{系統}A} = \text{客觀}*{\text{子系統}B} \\ &\text{客觀}*{\text{系統}A} = \text{主觀}*{\text{超系統}C} \end{align}}$$
 
 **圖示**：
 
@@ -2795,7 +2795,7 @@ EveMissLab（一言諾科技有限公司）
 
 相對於人類
 
-**關鍵發現**： $$\\boxed{\\begin{align} \\text{主觀} &= \\text{被投影掉的部分} \\ \\text{客觀} &= \\text{保留在投影中的部分} \\ \\ \\text{主客觀取決於投影算子} , \\Pi \\end{align}}$$
+**關鍵發現**： $$\boxed{\begin{align} \text{主觀} &= \text{被投影掉的部分} \\ \text{客觀} &= \text{保留在投影中的部分} \\ \\ \text{主客觀取決於投影算子} , \Pi \end{align}}$$
 
 **康德 vs NEO.K：完整對比**
 
@@ -2990,4 +2990,4 @@ NEO.K（融合）
 
 **終極公式（第二次修正）**
 
-$$\\boxed{\\begin{align} &\\text{哲學 = 四元 × 層級} \\ \\ &\\forall \\text{問題} , Q, , \\exists (\\mathcal{L}, L) \\text{ s.t.} \\ &\\quad \\mathcal{L} \\in {\\mathcal{O}, \\mathcal{E}, \\mathcal{A}, \\mathcal{C}} \\ &\\quad L = \\text{參照系層級} \\ \\ &\\text{主觀}*L = \\text{客觀}*{L-1} \\ &\\text{客觀}*L = \\text{主觀}*{L+1} \\ \\ &\\text{康德是對的（在宇宙-人類層級）} \\ &\\text{實在論是對的（在人類-世界層級）} \\ &\\text{NEO.K統一了兩者} \\end{align}}$$
+$$\boxed{\begin{align} &\text{哲學 = 四元 × 層級} \\ \\ &\forall \text{問題} , Q, , \exists (\mathcal{L}, L) \text{ s.t.} \\ &\quad \mathcal{L} \in {\mathcal{O}, \mathcal{E}, \mathcal{A}, \mathcal{C}} \\ &\quad L = \text{參照系層級} \\ \\ &\text{主觀}*L = \text{客觀}*{L-1} \\ &\text{客觀}*L = \text{主觀}*{L+1} \\ \\ &\text{康德是對的（在宇宙-人類層級）} \\ &\text{實在論是對的（在人類-世界層級）} \\ &\text{NEO.K統一了兩者} \end{align}}$$

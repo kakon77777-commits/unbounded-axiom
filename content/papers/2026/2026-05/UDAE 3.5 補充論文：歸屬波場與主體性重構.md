@@ -48,7 +48,7 @@ AI輸出："我認為根據最新研究..."
 
 在標準Transformer架構及UDAE多波場系統中，所有語義表徵都編碼為高維向量：
 
-vuser=Embed("AI應該有意識"from user)\mathbf{v}_{\text{user}} = \text{Embed}(\text{“AI__應該有意識”}_{\text{from user}})vuser​=Embed("AI應該有意識"from user​) vself=Embed("AI應該有意識"from model)\mathbf{v}_{\text{self}} = \text{Embed}(\text{“AI__應該有意識”}_{\text{from model}})vself​=Embed("AI應該有意識"from model​)
+vuser=Embed("AI應該有意識"from user)\mathbf{v}_{\text{user}} = \text{Embed}(\text{“AI\_\_應該有意識”}_{\text{from user}})vuser​=Embed("AI應該有意識"from user​) vself=Embed("AI應該有意識"from model)\mathbf{v}_{\text{self}} = \text{Embed}(\text{“AI\_\_應該有意識”}_{\text{from model}})vself​=Embed("AI應該有意識"from model​)
 
 由於語義內容相同，兩向量的餘弦相似度極高：
 
@@ -89,7 +89,7 @@ Source→EncoderChannel→DecoderReceiver\text{Source} \xrightarrow{\text{Encode
 
 當前LLM缺乏**信道標籤**（Channel Tagging），所有信息混入同一語義流，等價於：
 
-Itotal=Iuser+Iself+Iexternal+Iother_AII_{\text{total}} = I_{\text{user}} + I_{\text{self}} + I_{\text{external}} + I_{\text{other_AI}}Itotal​=Iuser​+Iself​+Iexternal​+Iother_AI​
+Itotal=Iuser+Iself+Iexternal+Iother_AII_{\text{total}} = I_{\text{user}} + I_{\text{self}} + I_{\text{external}} + I_{\text{other\_AI}}Itotal​=Iuser​+Iself​+Iexternal​+Iother_AI​
 
 但在解碼時無法分離各項，導致信息歸屬的**不可逆損失**。
 
@@ -302,7 +302,7 @@ R(P(5))=∇⋅(P(5)∇U)\mathcal{R}(P^{(5)}) = \nabla \cdot (P^{(5)} \nabla U)R(
 
 **強制標記項**：
 
-Itag(t)=∑t′∈new_inputδ(t−t′)⋅oassigned\mathcal{I}_{\text{tag}}(t) = \sum_{t’ \in \text{new_input}} \delta(t-t’) \cdot \mathbf{o}_{\text{assigned}}Itag​(t)=t′∈new_input∑​δ(t−t′)⋅oassigned​
+Itag(t)=∑t′∈new_inputδ(t−t′)⋅oassigned\mathcal{I}_{\text{tag}}(t) = \sum_{t’ \in \text{new\_input}} \delta(t-t’) \cdot \mathbf{o}_{\text{assigned}}Itag​(t)=t′∈new_input∑​δ(t−t′)⋅oassigned​
 
 新輸入時刻的Dirac delta脈衝，強制注入確定歸屬。
 

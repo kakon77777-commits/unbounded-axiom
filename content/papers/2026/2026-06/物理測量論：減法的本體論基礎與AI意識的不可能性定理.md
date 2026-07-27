@@ -276,7 +276,7 @@ reversibility :: Partial -- 部分不可逆
     -   但矩陣位置 仍存在
     -   0是一個數值，佔據記憶體
     -   的維度未改變
-2.  AI的「遺忘」：將注意力權重設為0 $$\\text{Attention}(Q, K, V) = \\text{softmax}\\left(\\frac{QK^T}{\\sqrt{d\_k}}\\right)V $$\\text{Forget}(K\_i) = \\text{Attention}(Q, K \\odot \\mathbb{I}\_{\\neg i}, V)
+2.  AI的「遺忘」：將注意力權重設為0 $$\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d\_k}}\right)V $$\\text{Forget}(K\_i) = \\text{Attention}(Q, K \\odot \\mathbb{I}\_{\\neg i}, V)
     -   仍在記憶體中
     -   只是mask矩陣 將其屏蔽
     -   這是加法操作（添加mask）

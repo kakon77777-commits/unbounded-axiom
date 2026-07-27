@@ -99,7 +99,7 @@ $$\hat{O}(\hat{O}) = ?$$
 
 $$\hat{N}: \xi_{\text{對象}} \mapsto \hat{O}_\xi \quad \text{其中} \quad \hat{O}_\xi(\eta) := \xi \star \eta$$
 
-對象與算子在本體論上不分離。任何對象 $\xi$ 都可視為以自身為核心的算子 $\hat{O}_\xi$。
+對象與算子在本體論上不分離。任何對象 $\xi$ 都可視為以自身為核心的算子 $\hat{O}_\xi$ 。
 
 **推論**:由於算子也是對象,所以以下表達式合法:
 
@@ -201,7 +201,7 @@ MOT-1 的第三個推論是:**存在是湧現的,不是先驗給予的**。
 
 $$x_0 \xrightarrow{\hat{O}} \hat{O}(x_0) \xrightarrow{\hat{O}} \hat{O}^2(x_0) \xrightarrow{\hat{O}} \cdots \to x^*$$
 
-迭代過程**動態地產生不動點** $x^*$。
+迭代過程**動態地產生不動點** $x^*$ 。
 
 語言翻譯:**對象不是「先在那裡」然後被算子發現,而是算子作用過程中被「磨」出來的**。
 
@@ -301,7 +301,7 @@ $$\hat{O}(x) \perp x$$
 
 ### 4.3 中間態的禁止:Born 規則的本體論升級
 
-量子力學 Born 規則說:測量會把疊加態 $|\psi\rangle = \alpha |0\rangle + \beta |1\rangle$ 坍塌到本徵態 $|0\rangle$ 或 $|1\rangle$,機率分別為 $|\alpha|^2$ 與 $|\beta|^2$。
+量子力學 Born 規則說:測量會把疊加態 $|\psi\rangle = \alpha |0\rangle + \beta |1\rangle$ 坍塌到本徵態 $|0\rangle$ 或 $|1\rangle$,機率分別為 $|\alpha|^2$ 與 $|\beta|^2$ 。
 
 MOT-2 把 Born 規則**升級為本體論定律**:
 
@@ -424,7 +424,7 @@ $$\boxed{\;\text{計算} \;\equiv\; \text{坍塌} \;\equiv\; \text{顯化} \;\eq
 
 #### 6.2.1 量子力學:Born 規則
 
-**Born 規則**:測量算子 $\hat{M}$ 作用於量子態 $|\psi\rangle$ 時,$|\psi\rangle$ 坍塌至 $\hat{M}$ 的某個本徵態 $|m\rangle$,機率為 $|\langle m | \psi \rangle|^2$。
+**Born 規則**:測量算子 $\hat{M}$ 作用於量子態 $|\psi\rangle$ 時,$|\psi\rangle$ 坍塌至 $ \hat{M}$ 的某個本徵態 $|m\rangle$,機率為 $|\langle m | \psi \rangle|^2$ 。
 
 在 MOT 中:測量 = 算子作用 = 顯真過程 = $|\psi\rangle$ 抵達 $\hat{M}$ 的某不動點。
 
@@ -510,7 +510,7 @@ MOT-4 提供第四個流派:
 
 在任意拓撲完備的算子代數中,每個對象都至少是某個算子的不動點。
 
-**證明草稿**:由 Brouwer 不動點定理,在有界閉凸集上的連續自映射必有不動點。任意對象 $x$ 都可被視為某個恆等附近的算子 $\hat{I} + \epsilon \hat{O}$ 的不動點,其中 $\epsilon \to 0$。
+**證明草稿**:由 Brouwer 不動點定理,在有界閉凸集上的連續自映射必有不動點。任意對象 $x$ 都可被視為某個恆等附近的算子 $\hat{I} + \epsilon \hat{O}$ 的不動點,其中 $\epsilon \to 0$ 。
 
 **定理 7.2 (顯真二相性)**
 
@@ -803,7 +803,7 @@ EveMissLab (一言諾科技有限公司)
 
 **Brouwer 原版**:任意連續映射 $f: D^n \to D^n$ 必有不動點。
 
-**MOT 版本**:任意對象 $x$ 必為某算子 $\hat{O}$ 的不動點,即 $\exists \hat{O}: \hat{O}(x) = x$。
+**MOT 版本**:任意對象 $x$ 必為某算子 $\hat{O}$ 的不動點,即 $\exists \hat{O}: \hat{O}(x) = x$ 。
 
 兩者的差異:
 
@@ -820,7 +820,7 @@ EveMissLab (一言諾科技有限公司)
 
 **命題 C.1**:Born 規則的本體論升級即 MOT-2。
 
-**Born 原版**:測量算子 $\hat{M}$ 作用於 $|\psi\rangle$,坍塌至本徵態 $|m\rangle$ 機率為 $|\langle m | \psi \rangle|^2$。
+**Born 原版**:測量算子 $\hat{M}$ 作用於 $|\psi\rangle$,坍塌至本徵態 $|m\rangle$ 機率為 $|\langle m | \psi \rangle|^2$ 。
 
 **MOT-2 版本**:$\text{align}(x, \hat{O}) \to 0$ 或 $1$,中間態被禁止。
 

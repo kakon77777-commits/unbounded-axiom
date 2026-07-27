@@ -71,7 +71,7 @@ This layer describes the algorithmic execution of OPS. The process is not a vagu
    Input a proposition or concept $P$.
 
 2. **Zeroing**  
-   Apply $\operatorname{Suspension}(P)$: suspend judgment concerning the truth value of $P$. This does not negate $P$; it marks $P$ as raw data.
+   Apply $\operatorname{Suspension}(P)$: suspend judgment concerning the truth value of $P$. This does not negate $ P$ ; it marks $ P$ as raw data.
 
 3. **Shedding Loop**
    - Does $P$ contain culturally inherited values? If yes, remove them temporarily.
@@ -809,7 +809,7 @@ $$
 
 HDRC is not:
 
-- **Classical binary dialectics:** Dialectical reasoning often begins with thesis and antithesis. HDRC handles $N$-ary systems and may seek dynamic coexistence rather than synthesis into one statement.
+- **Classical binary dialectics:** Dialectical reasoning often begins with thesis and antithesis. HDRC handles $N$ -ary systems and may seek dynamic coexistence rather than synthesis into one statement.
 - **Fence-sitting:** It does not compromise to please all parties. It seeks a higher-order law capable of explaining why their local observations diverge.
 - **Complication for its own sake:** HDRC ultimately aims at dimensional compression—a high-dimensional principle that explains lower-dimensional disorder.
 

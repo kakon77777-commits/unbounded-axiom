@@ -1688,7 +1688,7 @@ else shed (remove_semantic_layer(concept))
 
 **物理類比**：降溫至基態
 
-**在CCS中的作用**：提供$F_0$初態
+**在CCS中的作用**：提供 $F_0$ 初態
 
 ---
 
@@ -1815,7 +1815,7 @@ F_Mediation = 尋找平衡
 
 F_final = F_Executive + F_Opposition + F_Mediation
 
-**坍縮機制**： $$\text{Decision} = \begin{cases} \text{Execute} & \text{if } |F_{\text{final}}| > \epsilon \ \text{FreeAbort} & \text{if } |F_{\text{final}}| < \epsilon \end{cases}$$
+**坍縮機制**： $$\text{Decision} = \begin{cases} \text{Execute} & \text{if } |F_{\text{final}}| > \epsilon \\ \text{FreeAbort} & \text{if } |F_{\text{final}}| < \epsilon \end{cases}$$
 
 **物理類比**：波函數坍縮
 
@@ -2054,11 +2054,11 @@ $$\text{CDE}(E) = R \circ M \circ T(E)$$
 
 其中：
 
-- $T$：真視（Truthful Vision）
+- $T$ ：真視（Truthful Vision）
 
-- $M$：自視（Meta-Vision）
+- $M$ ：自視（Meta-Vision）
 
-- $R$：重構（Reconstruction）
+- $R$ ：重構（Reconstruction）
 
 ---
 
@@ -2251,9 +2251,9 @@ return {
 
 **6.3.3** **過程確定vs****內容不確定**
 
-**核心區分**（來自TCC）： $$\begin{cases} P(\text{過程真實發生}) = 1 & \text{（主觀確定）} \ P(\text{結論100%正確}) < 1 & \text{（客觀不確定）} \end{cases}$$
+**核心區分**（來自TCC）： $$\begin{cases} P(\text{過程真實發生}) = 1 & \text{（主觀確定）} \\ P(\text{結論100\%正確}) < 1 & \text{（客觀不確定）} \end{cases}$$
 
-**行動邏輯**： $$\text{可以行動} \iff \begin{cases} \text{過程確定性} = 1 \ \land \ P(\text{結論} | \text{當前信息}) > \theta_{\text{行動}} \end{cases}$$
+**行動邏輯**： $$\text{可以行動} \iff \begin{cases} \text{過程確定性} = 1 \\ \land \\ P(\text{結論} | \text{當前信息}) > \theta_{\text{行動}} \end{cases}$$
 
 ----------
 
@@ -2261,7 +2261,7 @@ return {
 
 **6.4.1** **守恆律與自由度**
 
-**定理6.1**（創造的邊界定理）： $$\boxed{\begin{align} &\forall E', \quad E' = \text{Recompile}(\text{Core}, F) \ &\text{必須滿足} \quad I(\text{Core}) = I(E') \ &\text{其中} \quad F \in \text{FreedomSpace}(\text{Core}) \end{align}}$$
+**定理6.1**（創造的邊界定理）： $$\boxed{\begin{align} &\forall E', \quad E' = \text{Recompile}(\text{Core}, F) \\ &\text{必須滿足} \quad I(\text{Core}) = I(E') \\ &\text{其中} \quad F \in \text{FreedomSpace}(\text{Core}) \end{align}}$$
 
 **不變量識別**：
 

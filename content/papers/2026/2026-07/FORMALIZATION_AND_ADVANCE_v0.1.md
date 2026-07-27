@@ -1,6 +1,6 @@
 # 穩定 Kneser 圖的形式化核心與一般化推進
 
-## ——Lean 4 有限證明、Coq 移植與 $s$-穩定 $3$-集合容量的新研究節點
+## ——Lean 4 有限證明、Coq 移植與 $s$ -穩定 $3$ -集合容量的新研究節點
 
 **作者：Neo.K（研究方向）／Aletheia（形式化、計算與整理）**  
 **版本：v0.1**  
@@ -62,7 +62,7 @@ star-forcing 容量閉合有一個特殊的因子共振；這正說明為何原�
 
 - 圓環距離；
 - 嚴格遞增 triple 的完整枚舉；
-- $3$-stability；
+- $3$ -stability；
 - triple 是否相交；
 - intersecting family 與 star；
 - 有限著色的完整枚舉與 properness 檢查。
@@ -123,7 +123,7 @@ Lean kernel 與外部 checker 均接受的有限陳述。
 目前不能宣稱 Lean 已形式化：
 
 1. $10\le n\le14$ 的所有有理對偶證書；
-2. maximal intersecting $3$-family 的一般分類；
+2. maximal intersecting $3$ -family 的一般分類；
 3. $M_3(n)=3n-28$ 的解析容量引理；
 4. star peeling 的一般遞歸；
 5. $\chi(KG(n,3)_{3\text{-stab}})=n-6$ 的完整無公理機械證明。
@@ -243,7 +243,7 @@ $$
 
 # 4. 為何 $s=3$ 是一個結構共振點
 
-$s$-穩定 triple 的頂點數為：
+$s$ -穩定 triple 的頂點數為：
 
 $$
 V_s(n)

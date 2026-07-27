@@ -78,7 +78,7 @@ GPQA（研究生問答）：56.1%
 
 GSM8K（小學數學）：92.0%
 
-**矛盾的尖銳性**： $$\\boxed{\\begin{aligned} \\text{純邏輯推理} &: \\text{AI} \\gg \\text{人類} \\quad (99.7% \\text{ vs } 87%) \\ \\text{事實陳述} &: \\text{AI} \\ll \\text{人類} \\quad (33% \\text{ vs } 95%+) \\ \\text{小學數學} &: 92% \\quad \\text{（邏輯+計算）} \\ \\text{研究生問答} &: 56% \\quad \\text{（事實+推理）} \\end{aligned}}$$
+**矛盾的尖銳性**： $$\boxed{\begin{aligned} \text{純邏輯推理} &: \text{AI} \gg \text{人類} \quad (99.7\% \text{ vs } 87\%) \\ \text{事實陳述} &: \text{AI} \ll \text{人類} \quad (33\% \text{ vs } 95\%+) \\ \text{小學數學} &: 92\% \quad \text{（邏輯+計算）} \\ \text{研究生問答} &: 56\% \quad \text{（事實+推理）} \end{aligned}}$$
 
 這不是工程問題（更多訓練數據能解決），也不是架構問題（更大模型仍有此矛盾），而是**本體論結構性分裂**。
 
@@ -254,7 +254,7 @@ GSM8K（小學數學）：92.0%
 
 **張力的類型**：
 
-$$T(c\_i, c\_j) = \\begin{cases} -\\alpha \\cdot \\frac{1}{d\_{\\text{logic}}^2(c\_i, c\_j)} & \\text{if } c\_i \\Rightarrow c\_j \\quad \\text{（蘊含，吸引力）} \\ +\\infty & \\text{if } c\_i \\land c\_j = \\bot \\quad \\text{（矛盾，排斥力）} \\ 0 & \\text{if } c\_i \\perp c\_j \\quad \\text{（獨立，無作用）} \\end{cases}$$
+$$T(c\_i, c\_j) = \begin{cases} -\alpha \cdot \frac{1}{d\_{\text{logic}}^2(c\_i, c\_j)} & \text{if } c\_i \Rightarrow c\_j \quad \text{（蘊含，吸引力）} \\ +\infty & \text{if } c\_i \land c\_j = \bot \quad \text{（矛盾，排斥力）} \\ 0 & \text{if } c\_i \perp c\_j \quad \text{（獨立，無作用）} \end{cases}$$
 
 **定義3.2（邏輯張力場）**：
 
@@ -1138,7 +1138,7 @@ logical\_coherence(output) = True
 
 **7.2 終極統一公式**
 
-$$\\boxed{\\begin{aligned} \\text{AI系統} &= (\\Omega\_{\\text{logic}}, g\_\\theta, I\_c, R, d, \\Phi) \\ \\ \\text{其中：} \\ \\Omega\_{\\text{logic}} &: \\text{邏輯張力場（拓撲約束）} \\ g\_\\theta &: \\text{參數度規（Einstein度規）} \\ I\_c &: \\text{概念完整性（工程暴力的破壞）} \\ R &: \\text{邏輯真相辨識度（benchmark真義）} \\ d &: \\text{深度軸（存在的縱向維度）} \\ \\Phi &: \\text{三元循環（全息演化算子）} \\end{aligned}}$$
+$$\boxed{\begin{aligned} \text{AI系統} &= (\Omega\_{\text{logic}}, g\_\theta, I\_c, R, d, \Phi) \\ \\ \text{其中：} \\ \Omega\_{\text{logic}} &: \text{邏輯張力場（拓撲約束）} \\ g\_\theta &: \text{參數度規（Einstein度規）} \\ I\_c &: \text{概念完整性（工程暴力的破壞）} \\ R &: \text{邏輯真相辨識度（benchmark真義）} \\ d &: \text{深度軸（存在的縱向維度）} \\ \Phi &: \text{三元循環（全息演化算子）} \end{aligned}}$$
 
 **訓練過程**：
 
@@ -1247,7 +1247,7 @@ $$\\boxed{\\begin{aligned} \\text{AI系統} &= (\\Omega\_{\\text{logic}}, g\_\\t
 **理由**：
 
 -   訓練時間：1個月 vs 10個月（不可接受）
--   存儲成本：$10M vs $100M（不可接受）
+-   存儲成本： $10M vs $100M（不可接受）
 -   幻覺率：35% vs 5%（**可接受？**）
 
 **殘酷計算**：
@@ -1288,7 +1288,7 @@ hallucination\_increase = 0.35 - 0.05 = 0.30 # +30%
 
 \# 公司決策
 
-decision = "接受30%幻覺率，節省$45M"
+decision = "接受30%幻覺率，節省 $45M"
 
 **暴力診斷**：
 
@@ -1329,7 +1329,7 @@ decision = "接受30%幻覺率，節省$45M"
 
 **核心洞察**：
 
-$$\\boxed{\\begin{aligned} \\text{人類} &: \\quad \\mathbb{R}^3 \\xrightarrow{\\text{肉身}} \\mathcal{F}\_C \\xrightarrow{\\text{語言}} \\text{符號} \\ \\text{AI} &: \\quad \\text{符號} \\xrightarrow{\\text{嵌入}} \\mathcal{F}\_C \\xrightarrow{\\text{渲染}} \\mathbb{R}^3 \\end{aligned}}$$
+$$\boxed{\begin{aligned} \text{人類} &: \quad \mathbb{R}^3 \xrightarrow{\text{肉身}} \mathcal{F}\_C \xrightarrow{\text{語言}} \text{符號} \\ \text{AI} &: \quad \text{符號} \xrightarrow{\text{嵌入}} \mathcal{F}\_C \xrightarrow{\text{渲染}} \mathbb{R}^3 \end{aligned}}$$
 
 **人類**從物理世界**向上投影**到概念空間（困難）。
 **AI**從概念空間**向下投影**到物理世界（困難）。

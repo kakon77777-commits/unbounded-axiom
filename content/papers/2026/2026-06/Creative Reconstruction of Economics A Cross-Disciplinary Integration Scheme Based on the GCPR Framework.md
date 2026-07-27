@@ -123,21 +123,21 @@ GCPR's three core principles:
 
 GCPR formalizes any creative system as a seven-tuple:
 
-$$\\mathfrak{G} = (\\mathcal{I}, \\mathcal{A}, \\mathcal{M}, \\mathcal{T}, \\Omega, \\mathcal{O}, \\mathcal{F})$$
+$$\mathfrak{G} = (\mathcal{I}, \mathcal{A}, \mathcal{M}, \mathcal{T}, \Omega, \mathcal{O}, \mathcal{F})$$
 
 In the economic context:
 
--   **$\\mathcal{I}$ (Intent Space)**: Economic development goals, social welfare functions, policy intentions
--   **$\\mathcal{A}$ (Product Space)**: GDP, employment, income distribution, quality of life, and other economic outcomes
--   **$\\mathcal{M}$ (Method Set)**: Market mechanisms, planning instruments, mixed economy models
--   **$\\mathcal{T}$ (Tool Set)**: Monetary policy, fiscal policy, industrial policy, regulatory tools
+-   **$\mathcal{I}$ (Intent Space)**: Economic development goals, social welfare functions, policy intentions
+-   **$\mathcal{A}$ (Product Space)**: GDP, employment, income distribution, quality of life, and other economic outcomes
+-   **$\mathcal{M}$ (Method Set)**: Market mechanisms, planning instruments, mixed economy models
+-   **$\mathcal{T}$ (Tool Set)**: Monetary policy, fiscal policy, industrial policy, regulatory tools
 -   **$\\Omega$ (Constraint Set)**: Resource endowments, technological level, institutional constraints, international environment
--   **$\\mathcal{O}$ (Observation and Evaluation)**: Economic indicator systems, social evaluation mechanisms
--   **$\\mathcal{F}$ (Feasible Region)**: Set of economic states achievable under given constraints
+-   **$\mathcal{O}$ (Observation and Evaluation)**: Economic indicator systems, social evaluation mechanisms
+-   **$\mathcal{F}$ (Feasible Region)**: Set of economic states achievable under given constraints
 
 The creative process operates through closed-loop dynamics:
 
-$$G \\to E \\to D \\to R$$
+$$G \to E \to D \to R$$
 
 That is: Generate → Evaluate → Diagnose → Revise
 
@@ -192,7 +192,7 @@ Silicon Valley's entrepreneurial ecosystem, Shenzhen's "shanzhai" innovation, an
 
 Mathematical characterization of the sketching phase: large step size, weak constraints, fast convergence
 
-$$C\_{k+1} = C\_k - \\eta\_{\\text{large}} \\nabla\_C D(C\_k, \\text{Target})$$
+$$C\_{k+1} = C\_k - \eta\_{\text{large}} \nabla\_C D(C\_k, \text{Target})$$
 
 **Economic Refining: Institutionalization and Optimization**
 
@@ -207,7 +207,7 @@ This phase is when "economies of scale" and "learning curves" take effect. Japan
 
 Characteristics of the refining phase: small step size, strong constraints, stable convergence
 
-$$C\_{k+1} = \\operatorname{prox}*{\\lambda\\mathcal{R}}(C\_k - \\eta*{\\text{small}} \\nabla\_C D)$$
+$$C\_{k+1} = \operatorname{prox}*{\lambda\mathcal{R}}(C\_k - \eta*{\text{small}} \nabla\_C D)$$
 
 **Economic Erasing: Crisis and Reconstruction**
 
@@ -222,7 +222,7 @@ Post-2008 financial crisis deleveraging, post-COVID supply chain reorganization,
 
 The essence of erasing is a projection operator: pulling states deviating from the feasible region back
 
-$$C\_{\\text{new}} = \\operatorname{proj}*{\\mathcal{F}}(C*{\\text{old}})$$
+$$C\_{\text{new}} = \operatorname{proj}*{\mathcal{F}}(C*{\text{old}})$$
 
 **3.3 Multi-Level Dynamic Model**
 
@@ -249,7 +249,7 @@ The multi-level nature of economic systems requires us to transcend the simplifi
 -   Technological revolution and structural transformation
 -   International division of labor and global value chains
 
-Mathematical formulation: $$\\begin{aligned} x^{\\text{micro}}\_{t+1} &= f^{\\text{micro}}(x^{\\text{micro}}\_t, x^{\\text{meso}}*t, u\_t, \\xi\_t) \\ x^{\\text{meso}}*{t+1} &= f^{\\text{meso}}(x^{\\text{micro}}\_t, x^{\\text{meso}}\_t, x^{\\text{macro}}*t, u\_t) \\ x^{\\text{macro}}*{t+1} &= f^{\\text{macro}}(x^{\\text{meso}}\_t, x^{\\text{macro}}\_t, u\_t, \\zeta\_t) \\end{aligned}$$
+Mathematical formulation: $$\begin{aligned} x^{\text{micro}}\_{t+1} &= f^{\text{micro}}(x^{\text{micro}}\_t, x^{\text{meso}}*t, u\_t, \xi\_t) \\ x^{\text{meso}}*{t+1} &= f^{\text{meso}}(x^{\text{micro}}\_t, x^{\text{meso}}\_t, x^{\text{macro}}*t, u\_t) \\ x^{\text{macro}}*{t+1} &= f^{\text{macro}}(x^{\text{meso}}\_t, x^{\text{macro}}\_t, u\_t, \zeta\_t) \end{aligned}$$
 
 Where $\\xi\_t$ is micro shock, $\\zeta\_t$ is macro shock, and $u\_t$ is policy intervention.
 
@@ -325,7 +325,7 @@ GCPR quantification: Development = f(Economic growth, Distribution improvement, 
 
 The key is establishing a **semantic mapping chain**:
 
-$$\\text{Qualitative Concept} \\xrightarrow{\\Phi} \\text{Multi-dimensional Indicators} \\xrightarrow{\\Lambda} \\text{Comprehensive Measure} \\xrightarrow{\\Theta} \\text{Dynamic Assessment}$$
+$$\text{Qualitative Concept} \xrightarrow{\Phi} \text{Multi-dimensional Indicators} \xrightarrow{\Lambda} \text{Comprehensive Measure} \xrightarrow{\Theta} \text{Dynamic Assessment}$$
 
 **Complementarity of Thick Description and Thin Models**:
 
@@ -460,10 +460,10 @@ Economics faces unique reflexivity problems: observation changes the observed ob
 
 GCPR proposes systematic countermeasures:
 
-1.  **Vectorized evaluation**: Replace single KPIs with multi-dimensional indicators $$\\text{Performance} = \[GDP, GINI, CO\_2, \\text{Happiness Index}, ...\]^T$$
-2.  **Dynamic weights**: Prevent gaming of fixed weights $$w\_t = f(w\_{t-1}, \\text{Observed Deviation}, \\text{Random Perturbation})$$
-3.  **Hidden indicators**: Retain undisclosed evaluation dimensions $$\\text{True Evaluation} = \\alpha \\cdot \\text{Public Indicators} + \\beta \\cdot \\text{Hidden Indicators}$$
-4.  **Residual monitoring**: Detect indicator manipulation $$\\text{Anomaly} = |\\text{Actual} - \\text{Model Prediction}| > \\tau$$
+1.  **Vectorized evaluation**: Replace single KPIs with multi-dimensional indicators $$\text{Performance} = [GDP, GINI, CO\_2, \text{Happiness Index}, ...]^T$$
+2.  **Dynamic weights**: Prevent gaming of fixed weights $$w\_t = f(w\_{t-1}, \text{Observed Deviation}, \text{Random Perturbation})$$
+3.  **Hidden indicators**: Retain undisclosed evaluation dimensions $$\text{True Evaluation} = \alpha \cdot \text{Public Indicators} + \beta \cdot \text{Hidden Indicators}$$
+4.  **Residual monitoring**: Detect indicator manipulation $$\text{Anomaly} = |\text{Actual} - \text{Model Prediction}| > \tau$$
 
 **Political Economy of Measurement**:
 
@@ -493,7 +493,7 @@ Policy objectives are often multiple and potentially conflicting:
 
 GCPR requires clarifying these objectives and setting weights:
 
-$$\\mathcal{I}\_{\\text{policy}} = \\sum\_i w\_i \\cdot \\text{Objective}\_i \\quad \\text{s.t.} \\sum\_i w\_i = 1$$
+$$\mathcal{I}\_{\text{policy}} = \sum\_i w\_i \cdot \text{Objective}\_i \quad \text{s.t.} \sum\_i w\_i = 1$$
 
 Weight setting should be the result of democratic consultation, not unilateral decisions by technocrats.
 
@@ -507,7 +507,7 @@ Policy tools are rarely used alone; they usually need to be combined:
 
 Timing is crucial:
 
-$$\\text{Policy Sequence} = {\\text{Stabilize} \\to \\text{Adjust} \\to \\text{Reform} \\to \\text{Consolidate}}$$
+$$\text{Policy Sequence} = {\text{Stabilize} \to \text{Adjust} \to \text{Reform} \to \text{Consolidate}}$$
 
 **Adaptive Management and Exit Mechanisms**:
 
@@ -541,7 +541,7 @@ Structured products before the subprime crisis, recent cryptocurrencies, and Dec
 
 The key is controlling systemic risk:
 
-$$\\text{Innovation Benefits} - \\text{Systemic Risk Cost} > 0$$
+$$\text{Innovation Benefits} - \text{Systemic Risk Cost} > 0$$
 
 **Refining Logic of Regulation**:
 
@@ -552,7 +552,7 @@ Regulation always lags behind innovation, which is not entirely bad:
 
 Optimal regulatory timing:
 
-$$t^\*\_{\\text{reg}} = \\arg\\min\_t \[\\text{Innovation Loss}(t) + \\text{Risk Accumulation}(t)\]$$
+$$t^\*\_{\text{reg}} = \arg\min\_t [\text{Innovation Loss}(t) + \text{Risk Accumulation}(t)]$$
 
 Regulatory sandboxes provide mechanisms for balancing innovation and risk.
 
@@ -572,7 +572,7 @@ But moral hazard problems are prominent:
 
 GCPR suggests clear ex-ante rules:
 
-$$\\text{Bailout} = f(\\text{Systemic Importance}, \\text{Self-rescue Degree}, \\text{Behavioral Compliance})$$
+$$\text{Bailout} = f(\text{Systemic Importance}, \text{Self-rescue Degree}, \text{Behavioral Compliance})$$
 
 **6.3 Dynamic Optimization of Development Strategy**
 
@@ -582,7 +582,7 @@ Development strategy is not a one-time choice but a dynamic optimization process
 
 Static comparative advantage theory suggests specializing in existing advantages, but this may lead to low-end lock-in. The dynamic perspective emphasizes the malleability of comparative advantage:
 
-$$\\text{Comparative Advantage}\_{t+1} = f(\\text{Comparative Advantage}\_t, \\text{Investment}, \\text{Learning}, \\text{Policy})$$
+$$\text{Comparative Advantage}\_{t+1} = f(\text{Comparative Advantage}\_t, \text{Investment}, \text{Learning}, \text{Policy})$$
 
 East Asian experience shows that comparative advantage patterns can be changed through conscious industrial policy.
 
@@ -606,7 +606,7 @@ Development may have multiple equilibria:
 
 Jumping from one equilibrium to another requires a "big push":
 
-$$\\text{Investment Push} > \\text{Critical Mass} \\Rightarrow \\text{Equilibrium Transition}$$
+$$\text{Investment Push} > \text{Critical Mass} \Rightarrow \text{Equilibrium Transition}$$
 
 But also prevent resource misallocation from excessive investment.
 
@@ -620,8 +620,8 @@ The digital economy demonstrates the explanatory power of the GCPR framework.
 
 Platforms are not traditional producers but create venues for connection and matching:
 
-Intent $\\mathcal{I}$: Reduce transaction costs, achieve network effects  
-Tools $\\mathcal{T}$: Algorithm matching, credit systems, payment systems  
+Intent $\mathcal{I}$: Reduce transaction costs, achieve network effects  
+Tools $\mathcal{T}$: Algorithm matching, credit systems, payment systems  
 Constraints $\\Omega$: Data privacy, antitrust, labor protection
 
 Three phases of platform evolution:
@@ -634,7 +634,7 @@ Three phases of platform evolution:
 
 Data becoming a production factor requires a complete value chain:
 
-$$\\text{Raw Data} \\to \\text{Cleaning} \\to \\text{Analysis} \\to \\text{Decision Support} \\to \\text{Value Realization}$$
+$$\text{Raw Data} \to \text{Cleaning} \to \text{Analysis} \to \text{Decision Support} \to \text{Value Realization}$$
 
 Challenges include:
 

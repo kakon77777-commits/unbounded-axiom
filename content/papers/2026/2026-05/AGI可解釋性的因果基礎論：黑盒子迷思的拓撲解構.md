@@ -447,7 +447,7 @@ AGI黑盒子論
 
 回顧《想像力邊界》的核心方程：
 
-知識增長動力學： $$\begin{cases} \frac{dK}{dt} = \alpha(U - K) \ \frac{dU}{dt} = \beta K \end{cases}$$
+知識增長動力學： $$\begin{cases} \frac{dK}{dt} = \alpha(U - K) \\ \frac{dU}{dt} = \beta K \end{cases}$$
 
 穩態比例： K/U = α/(α+β)
 

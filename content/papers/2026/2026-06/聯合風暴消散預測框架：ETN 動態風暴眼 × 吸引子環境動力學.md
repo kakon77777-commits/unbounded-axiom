@@ -76,7 +76,7 @@ ETN 動態中心論（EML-ETN-2026-v2.0）確立了整數 n 的「風暴眼」�
 
 $$\circledast_n := \left\{ G_{n+1}^- \curvearrowright \circledast \curvearrowleft G_n^- \right\} \cup J_\uparrow(n) \cup J_\downarrow(n)$$
 
-其中 $G_{n+1}^- = \lim_{\varepsilon \to 0^+}(n+1-\varepsilon)$、$G_n^- = \lim_{\varepsilon \to 0^+}(n-\varepsilon)$ 為兩側 GOD POINT，$J_\uparrow$、$J_\downarrow$ 為從中心向兩側發射的無窮旅程。
+其中 $G_{n+1}^- = \lim_{\varepsilon \to 0^+}(n+1-\varepsilon)$ 、 $G_n^- = \lim_{\varepsilon \to 0^+}(n-\varepsilon)$ 為兩側 GOD POINT， $J_\uparrow$ 、 $J_\downarrow$ 為從中心向兩側發射的無窮旅程。
 
 風暴眼原理確立：**⊛_n 的靜止條件是上下 GOD POINT 拉力完全對稱**：
 
@@ -86,11 +86,11 @@ $$\text{SE condition}: \quad F_{\text{up}}(G_{n+1}^-) = F_{\text{down}}(G_n^-)$$
 
 ### 2.2 角向張力剖面
 
-定義以風暴眼為中心、半徑 $r_0$ 的採樣圓上的**角向張力剖面** $T(\theta)$：
+定義以風暴眼為中心、半徑 $r_0$ 的採樣圓上的**角向張力剖面** $T(\theta)$ ：
 
 $$T(\theta) := -\frac{\partial p}{\partial r}\bigg|_{r=r_0,\,\theta} + \alpha \cdot V_r(\theta)$$
 
-其中 $\partial p / \partial r$ 為徑向壓力梯度（向內為正），$V_r(\theta)$ 為 $\theta$ 方向的徑向入流風速，$\alpha$ 為加權係數。
+其中 $\partial p / \partial r$ 為徑向壓力梯度（向內為正）， $V_r(\theta)$ 為 $\theta$ 方向的徑向入流風速， $\alpha$ 為加權係數。
 
 $T(\theta)$ 的可觀測來源包括：
 - 雷達反射率的角向分佈（即時，每 6~10 分鐘）
@@ -103,13 +103,13 @@ $T(\theta)$ 的可觀測來源包括：
 
 $$\text{SE}_n := 1 - \frac{\sigma[T(\theta)]}{\mu[T(\theta)]}$$
 
-其中 $\sigma$ 為角向標準差，$\mu$ 為角向均值。
+其中 $\sigma$ 為角向標準差， $\mu$ 為角向均值。
 
 **性質**：
 - $\text{SE}_n \in [0, 1]$
-- $\text{SE}_n = 1$：$T(\theta)$ 完全均勻，⊛ 完全成立（完美風暴眼）
-- $\text{SE}_n = 0$：$T(\theta)$ 極度不均勻，⊛ 退化（眼牆崩潰）
-- $\text{SE}_n \geq \tau_{\text{SE}} \approx 0.65$：⊛ 判定成立
+- $\text{SE}_n = 1$ ： $T(\theta)$ 完全均勻，⊛ 完全成立（完美風暴眼）
+- $\text{SE}_n = 0$ ： $T(\theta)$ 極度不均勻，⊛ 退化（眼牆崩潰）
+- $\text{SE}_n \geq \tau_{\text{SE}} \approx 0.65$ ：⊛ 判定成立
 
 **⊛ 判定**：
 
@@ -191,13 +191,13 @@ $R_{\text{env}}$ 是**慢速信號**：SST 的下降、風切的增強通常在�
 
 $$\frac{dx}{dt} = \sigma(y-x), \quad \frac{dy}{dt} = x(\rho-z)-y, \quad \frac{dz}{dt} = xy-\beta z$$
 
-取標準參數 $\sigma=10,\, \rho=28,\, \beta=8/3$。Lorenz 吸引子的兩個葉片中心為：
+取標準參數 $\sigma=10,\, \rho=28,\, \beta=8/3$ 。Lorenz 吸引子的兩個葉片中心為：
 
 $$\mathbf{c}_\pm = \left(\pm\sqrt{\beta(\rho-1)},\; \pm\sqrt{\beta(\rho-1)},\; \rho-1\right) \approx (\pm 8.49,\; \pm 8.49,\; 27)$$
 
-距盆地中心距離：$d_L(t) = \min\bigl(\|\mathbf{s}(t) - \mathbf{c}_+\|,\; \|\mathbf{s}(t) - \mathbf{c}_-\|\bigr)$
+距盆地中心距離： $d_L(t) = \min\bigl(\|\mathbf{s}(t) - \mathbf{c}_+\|,\; \|\mathbf{s}(t) - \mathbf{c}_-\|\bigr)$
 
-Lorenz 環境支撐度：$E_L(t) = \text{clip}(1 - d_L / r_A, \; 0, \; 1)$，其中 $r_A \approx 15$ 為盆地半徑。
+Lorenz 環境支撐度： $E_L(t) = \text{clip}(1 - d_L / r_A, \; 0, \; 1)$ ，其中 $r_A \approx 15$ 為盆地半徑。
 
 **注意**：Lorenz 版為純概念教學工具，不代表颱風物理。
 
@@ -223,9 +223,9 @@ $$R_{\text{ETN}} \to 1,\; R_{\text{env}} \to 1 \;\Rightarrow\; R_{\text{joint}} 
 
 $$\text{dissipation imminent} \iff R_{\text{joint}} \geq \tau_{\text{joint}}$$
 
-推薦初始值：$\tau_{\text{joint}} = 0.65$（對應各分量風險均約為 0.42 以上）。
+推薦初始值： $\tau_{\text{joint}} = 0.65$ （對應各分量風險均約為 0.42 以上）。
 
-高置信消散：$R_{\text{joint}} \geq \tau_{\text{HC}} = 0.80$。
+高置信消散： $R_{\text{joint}} \geq \tau_{\text{HC}} = 0.80$ 。
 
 門檻值應依不同洋盆（西太平洋、大西洋、印度洋）以歷史資料定標。
 
@@ -254,7 +254,7 @@ $$\Delta \text{SE}_n = \text{SE}_n^{(t)} - \text{SE}_n^{(t-n)}, \qquad \Delta E 
 | < −0.05 | ≈ 0 | 眼牆退化中 |
 | ≈ 0 | < −0.05 | 環境惡化中 |
 
-趨勢信號提供比即時風險更早的預警能力：RI 信號在強度突破前即可偵測（$\Delta \text{SE}_n$ 上升先於最大風速增加），消散信號在眼完全崩潰前即出現（$\Delta \text{SE}_n$ 下降先於中心氣壓回升）。
+趨勢信號提供比即時風險更早的預警能力：RI 信號在強度突破前即可偵測（ $\Delta \text{SE}_n$ 上升先於最大風速增加），消散信號在眼完全崩潰前即出現（ $\Delta \text{SE}_n$ 下降先於中心氣壓回升）。
 
 ---
 
@@ -266,8 +266,8 @@ $$\underbrace{R_{\text{ETN}}}_{\text{快速（小時尺度）}} \times \underbra
 
 物理意義：
 
-- 一個在環境有利的海域（$E$ 高）出現眼牆混亂（SE_n 低）的颱風，具有恢復能力——環境在「修復」⊛ 結構。對應四象限的第一行右列。
-- 一個在乾燥、高風切環境中（$E$ 低）仍有完好眼牆（SE_n 高）的颱風，正在「預支」最後的結構穩定性。消散不遠，但尚未觸發。對應第二行左列。
+- 一個在環境有利的海域（ $E$ 高）出現眼牆混亂（SE_n 低）的颱風，具有恢復能力——環境在「修復」⊛ 結構。對應四象限的第一行右列。
+- 一個在乾燥、高風切環境中（ $E$ 低）仍有完好眼牆（SE_n 高）的颱風，正在「預支」最後的結構穩定性。消散不遠，但尚未觸發。對應第二行左列。
 - 只有兩個條件同時滿足，消散才是高確信度的、即時的。
 
 這個機制對應到 ETN 動態中心論的風暴眼原理：⊛ 的靜止需要**內部對稱**（眼牆均衡）和**外部錨定**（環境供能）同時成立。內外缺一，⊛ 終將退化。
@@ -306,9 +306,9 @@ $$\underbrace{R_{\text{ETN}}}_{\text{快速（小時尺度）}} \times \underbra
 
 $$\text{顏色} := \begin{cases} \text{綠} & \text{SE}_n > 0.80 \\ \text{黃} & 0.65 < \text{SE}_n \leq 0.80 \\ \text{橙} & 0.50 < \text{SE}_n \leq 0.65 \\ \text{紅} & \text{SE}_n \leq 0.50 \end{cases}$$
 
-**時間序列面板**：$\text{SE}_n$、$E(\mathbf{x})$、$R_{\text{joint}}$ 的 72 小時歷史折線圖。
+**時間序列面板**： $\text{SE}_n$ 、 $E(\mathbf{x})$ 、 $R_{\text{joint}}$ 的 72 小時歷史折線圖。
 
-**預警卡片**：$R_{\text{joint}} \geq \tau_{\text{joint}}$ 時觸發，顯示敵對因子與置信度。
+**預警卡片**： $R_{\text{joint}} \geq \tau_{\text{joint}}$ 時觸發，顯示敵對因子與置信度。
 
 ---
 
@@ -316,9 +316,9 @@ $$\text{顏色} := \begin{cases} \text{綠} & \text{SE}_n > 0.80 \\ \text{黃} &
 
 ### 7.1 當前局限
 
-**門檻定標問題**：$\tau_{\text{SE}}$、$\tau_{\text{joint}}$ 的最佳值依洋盆、季節、颱風強度等條件而異。本框架給出初始推薦值（0.65），正式版需以歷史氣旋資料進行分洋盆的受試者工作特性（ROC）分析定標。
+**門檻定標問題**： $\tau_{\text{SE}}$ 、 $\tau_{\text{joint}}$ 的最佳值依洋盆、季節、颱風強度等條件而異。本框架給出初始推薦值（0.65），正式版需以歷史氣旋資料進行分洋盆的受試者工作特性（ROC）分析定標。
 
-**角向張力估算的不確定性**：$T(\theta)$ 從衛星資料估算時，受雲層覆蓋、傳感器分辨率、時間插值等因素影響，在近赤道地區和雙眼牆期間誤差較大。
+**角向張力估算的不確定性**： $T(\theta)$ 從衛星資料估算時，受雲層覆蓋、傳感器分辨率、時間插值等因素影響，在近赤道地區和雙眼牆期間誤差較大。
 
 **時間不對稱性**：目前的幾何平均對 $R_{\text{ETN}}$ 和 $R_{\text{env}}$ 給予相同權重。物理上，短期（12小時）預報應更信任 ETN，中長期（48~72小時）應更信任吸引子。正式版可引入時間加權：
 
@@ -1208,14 +1208,14 @@ if __name__ == "__main__":
 | $\circledast_n$ | ETN 動態不動點（風暴眼） | ETN |
 | $G_n^-$ | n 域下界 GOD POINT | ETN |
 | $T(\theta)$ | 角向張力剖面 | ETN |
-| $\text{SE}_n$ | ⊛ 對稱度量：$1 - \sigma(T)/\mu(T)$ | ETN |
-| $R_{\text{ETN}}$ | ETN 消散風險：$1 - \text{SE}_n$ | ETN |
+| $\text{SE}_n$ | ⊛ 對稱度量： $1 - \sigma(T)/\mu(T)$ | ETN |
+| $R_{\text{ETN}}$ | ETN 消散風險： $1 - \text{SE}_n$ | ETN |
 | $\vec{F}_{\text{drift}}$ | ⊛ 漂移向量 | ETN |
 | $\mathbf{x}$ | 環境狀態向量 | 吸引子 |
 | $E(\mathbf{x})$ | 環境支撐度 | 吸引子 |
-| $R_{\text{env}}$ | 環境消散風險：$1 - E(\mathbf{x})$ | 吸引子 |
+| $R_{\text{env}}$ | 環境消散風險： $1 - E(\mathbf{x})$ | 吸引子 |
 | $d_A$ | 距消散流形距離 | 吸引子 |
-| $R_{\text{joint}}$ | 聯合消散風險：$\sqrt{R_{\text{ETN}} \cdot R_{\text{env}}}$ | 聯合 |
+| $R_{\text{joint}}$ | 聯合消散風險： $\sqrt{R_{\text{ETN}} \cdot R_{\text{env}}}$ | 聯合 |
 | $\tau_{\text{SE}}$ | ⊛ 成立門檻（推薦 0.65） | 聯合 |
 | $\tau_{\text{joint}}$ | 消散預警門檻（推薦 0.65） | 聯合 |
 
@@ -1226,7 +1226,7 @@ if __name__ == "__main__":
 **版本**：v1.0（概念論文，實驗站發表版）
 **對應程式碼**：ETN-Storm v0.1（EML-ETN-STORM-2026-v0.1）、v0.2 教學概念版
 **後續計劃**：v1.1 加入時間加權聯合風險；v1.2 加入多中心 ETN 形式化；正式版另行開發
-**定標需求**：$\tau_{\text{SE}}$、$\tau_{\text{joint}}$、環境向量權重 $w_i$ 均需以洋盆歷史資料校準
+**定標需求**： $\tau_{\text{SE}}$ 、 $\tau_{\text{joint}}$ 、環境向量權重 $w_i$ 均需以洋盆歷史資料校準
 
 EveMissLab Logic Matrix（一言諾科技有限公司）
 2026 年 6 月

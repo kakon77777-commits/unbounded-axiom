@@ -187,7 +187,7 @@ Cnew=proj⁡F(Cold)C_{\text{new}} = \operatorname{proj}_{\mathcal{F}}(C_{\text{o
 -   技術革命與結構轉型
 -   國際分工與全球價值鏈
 
-數學表述： $$\begin{aligned} x^{\text{micro}}_{t+1} &= f^{\text{micro}}(x^{\text{micro}}_t, x^{\text{meso}}_t, u_t, \xi_t) \ x^{\text{meso}}_{t+1} &= f^{\text{meso}}(x^{\text{micro}}_t, x^{\text{meso}}_t, x^{\text{macro}}_t, u_t) \ x^{\text{macro}}_{t+1} &= f^{\text{macro}}(x^{\text{meso}}_t, x^{\text{macro}}_t, u_t, \zeta_t) \end{aligned}$$
+數學表述： $$\begin{aligned} x^{\text{micro}}_{t+1} &= f^{\text{micro}}(x^{\text{micro}}_t, x^{\text{meso}}_t, u_t, \xi_t) \\ x^{\text{meso}}_{t+1} &= f^{\text{meso}}(x^{\text{micro}}_t, x^{\text{meso}}_t, x^{\text{macro}}_t, u_t) \\ x^{\text{macro}}_{t+1} &= f^{\text{macro}}(x^{\text{meso}}_t, x^{\text{macro}}_t, u_t, \zeta_t) \end{aligned}$$
 
 其中 ξt\xi_t ξt​ 是微觀衝擊，ζt\zeta_t ζt​ 是宏觀衝擊，utu_t ut​ 是政策干預。
 

@@ -13,7 +13,7 @@
 
 ## Abstract
 
-本文建立一個將深度神經網路的計算軌跡與量子過程在同一形式空間中對照的數學框架。我們引入「約束希爾伯特流形」（Constrained Hilbert Manifold, CHM）作為核心結構：在可分複希爾伯特空間 $H$ 中取出一個有限維光滑子流形 $M$，使 AI 的隱層態空間能被視為 $H$ 的一個等距嵌入像。在此框架下，我們提出 **AI–量子軌跡等價猜想（AI-Quantum Trajectory Equivalence Conjecture, AQTE）**：對任意可由連續流表述的神經網路軌跡 $\Phi_{AI}$，存在希爾伯特空間 $H$、自伴算符 $\hat{H}$、與投影 $\pi$，使得 $\Phi_{AI}$ 與量子流 $e^{-i\hat{H}t}$ 經投影後在誤差 $\varepsilon$ 範圍內等價。本文給出三個必要引理（投影誤差有界、拓撲匹配、軌跡不變量保持）作為證明骨架，並列出可由實驗檢驗的證偽預測，使本猜想在未證明前已具備科學內容。本框架的目的不在主張「AI 即量子計算」的等同關係，而在於建立一個可測量、可證偽、可定位的數學橋樑，連接深度學習理論與量子計算理論。
+本文建立一個將深度神經網路的計算軌跡與量子過程在同一形式空間中對照的數學框架。我們引入「約束希爾伯特流形」（Constrained Hilbert Manifold, CHM）作為核心結構：在可分複希爾伯特空間 $H$ 中取出一個有限維光滑子流形 $M$ ，使 AI 的隱層態空間能被視為 $H$ 的一個等距嵌入像。在此框架下，我們提出 **AI–量子軌跡等價猜想（AI-Quantum Trajectory Equivalence Conjecture, AQTE）**：對任意可由連續流表述的神經網路軌跡 $\Phi_{AI}$ ，存在希爾伯特空間 $H$ 、自伴算符 $\hat{H}$ 、與投影 $\pi$ ，使得 $\Phi_{AI}$ 與量子流 $e^{-i\hat{H}t}$ 經投影後在誤差 $\varepsilon$ 範圍內等價。本文給出三個必要引理（投影誤差有界、拓撲匹配、軌跡不變量保持）作為證明骨架，並列出可由實驗檢驗的證偽預測，使本猜想在未證明前已具備科學內容。本框架的目的不在主張「AI 即量子計算」的等同關係，而在於建立一個可測量、可證偽、可定位的數學橋樑，連接深度學習理論與量子計算理論。
 
 **Keywords**: Hilbert manifold, projection embedding, transformer dynamics, quantum simulation, Neural ODE, AI–quantum correspondence
 
@@ -60,33 +60,33 @@
 
 ### 2.1 希爾伯特空間與算符
 
-設 $H$ 為可分複希爾伯特空間，配備內積 $\langle \cdot, \cdot \rangle$ 與誘導範數 $\|\cdot\|$。$H$ 可為有限維（$\mathbb{C}^N$）或無限維（如 $L^2(\mathbb{R})$）。設 $\mathcal{B}(H)$ 為 $H$ 上有界線性算符全體。
+設 $H$ 為可分複希爾伯特空間，配備內積 $\langle \cdot, \cdot \rangle$ 與誘導範數 $\|\cdot\|$ 。 $H$ 可為有限維（ $\mathbb{C}^N$ ）或無限維（如 $L^2(\mathbb{R})$ ）。設 $\mathcal{B}(H)$ 為 $H$ 上有界線性算符全體。
 
-對自伴算符 $\hat{H}: H \to H$，由 Stone 定理，存在唯一強連續單位算符單參數族 $\{U(t)\}_{t \in \mathbb{R}}$ 使得：
+對自伴算符 $\hat{H}: H \to H$ ，由 Stone 定理，存在唯一強連續單位算符單參數族 $\{U(t)\}_{t \in \mathbb{R}}$ 使得：
 
 $$U(t) = e^{-i\hat{H}t}, \quad U(0) = I, \quad U(s+t) = U(s)U(t)$$
 
-且 $U(t)$ 對應的態演化滿足薛丁格方程 $i \frac{d\psi}{dt} = \hat{H}\psi$。
+且 $U(t)$ 對應的態演化滿足薛丁格方程 $i \frac{d\psi}{dt} = \hat{H}\psi$ 。
 
 ### 2.2 黎曼子流形
 
-設 $H$ 配備由內積誘導的實黎曼結構。子集 $M \subset H$ 稱為 $d$ 維光滑黎曼子流形，若 $M$ 為 $H$ 的光滑嵌入子流形（在希爾伯特流形意義下），且 $\dim_\mathbb{R}(M) = d < \infty$。
+設 $H$ 配備由內積誘導的實黎曼結構。子集 $M \subset H$ 稱為 $d$ 維光滑黎曼子流形，若 $M$ 為 $H$ 的光滑嵌入子流形（在希爾伯特流形意義下），且 $\dim_\mathbb{R}(M) = d < \infty$ 。
 
-設 $T_pM \subset H$ 為 $M$ 在 $p$ 點的切空間，$N_pM = (T_pM)^\perp \cap U_p$ 為法空間（$U_p$ 為 $p$ 的有界鄰域）。則 $H$ 在 $M$ 附近可分解為 $H \cong M \oplus N M$（局部）。
+設 $T_pM \subset H$ 為 $M$ 在 $p$ 點的切空間， $N_pM = (T_pM)^\perp \cap U_p$ 為法空間（ $U_p$ 為 $p$ 的有界鄰域）。則 $H$ 在 $M$ 附近可分解為 $H \cong M \oplus N M$ （局部）。
 
-定義 $M$ 的 $\varepsilon$-鄰域：
+定義 $M$ 的 $\varepsilon$ -鄰域：
 
 $$N_\varepsilon(M) := \{ \psi \in H : \mathrm{dist}(\psi, M) < \varepsilon \}$$
 
-當 $\varepsilon$ 足夠小，$N_\varepsilon(M)$ 中每一點可唯一分解為「最近 $M$ 點 + 法分量」。
+當 $\varepsilon$ 足夠小， $N_\varepsilon(M)$ 中每一點可唯一分解為「最近 $M$ 點 + 法分量」。
 
 ### 2.3 單位流與量子演化
 
-希爾伯特空間中的量子流（quantum flow）定義為單參數單位算符族 $\{U(t)\}_{t \geq 0}$ 作用於初始態 $\psi_0 \in H$：
+希爾伯特空間中的量子流（quantum flow）定義為單參數單位算符族 $\{U(t)\}_{t \geq 0}$ 作用於初始態 $\psi_0 \in H$ ：
 
 $$\Phi_Q^{full}: H \times \mathbb{R}_{\geq 0} \to H, \quad \Phi_Q^{full}(\psi_0, t) = U(t)\psi_0$$
 
-此流嚴格保持範數（$\|\Phi_Q^{full}(\psi_0, t)\| = \|\psi_0\|$）並嚴格可逆（$\Phi_Q^{full}(\cdot, -t)$ 為其逆映射）。
+此流嚴格保持範數（ $\|\Phi_Q^{full}(\psi_0, t)\| = \|\psi_0\|$ ）並嚴格可逆（ $\Phi_Q^{full}(\cdot, -t)$ 為其逆映射）。
 
 ### 2.4 神經網路的連續表述
 
@@ -94,7 +94,7 @@ $$\Phi_Q^{full}: H \times \mathbb{R}_{\geq 0} \to H, \quad \Phi_Q^{full}(\psi_0,
 
 $$\frac{dx}{dt} = F_\theta(x, t), \quad x(0) = x_0, \quad x \in \mathbb{R}^d$$
 
-其中 $F_\theta: \mathbb{R}^d \times \mathbb{R} \to \mathbb{R}^d$ 為由參數 $\theta$ 決定的時變向量場。離散層神經網路（包括 transformer）可視為此 ODE 的歐拉離散化：$x_{\ell+1} = x_\ell + F_\theta(x_\ell, \ell)$。
+其中 $F_\theta: \mathbb{R}^d \times \mathbb{R} \to \mathbb{R}^d$ 為由參數 $\theta$ 決定的時變向量場。離散層神經網路（包括 transformer）可視為此 ODE 的歐拉離散化： $x_{\ell+1} = x_\ell + F_\theta(x_\ell, \ell)$ 。
 
 本文採連續表述以避開離散化技術困難；離散結果可作為連續結果的數值近似討論。
 
@@ -107,11 +107,11 @@ $$\frac{dx}{dt} = F_\theta(x, t), \quad x(0) = x_0, \quad x \in \mathbb{R}^d$$
 設 $H$ 為可分複希爾伯特空間。子集 $M \subset H$ 稱為 $H$ 上的 **$d$ 維約束希爾伯特流形**，若：
 
 (i) $M$ 為 $H$ 的光滑黎曼子流形；
-(ii) $\dim_\mathbb{R}(M) = d < \infty$；
-(iii) $M$ 在 $H$ 中閉合（即 $\bar{M} = M$）；
-(iv) 存在均勻正常法叢半徑 $\varepsilon_0 > 0$ 使得 $M$ 的 $\varepsilon_0$-鄰域中每一點具有唯一最近 $M$ 點。
+(ii) $\dim_\mathbb{R}(M) = d < \infty$ ；
+(iii) $M$ 在 $H$ 中閉合（即 $\bar{M} = M$ ）；
+(iv) 存在均勻正常法叢半徑 $\varepsilon_0 > 0$ 使得 $M$ 的 $\varepsilon_0$ -鄰域中每一點具有唯一最近 $M$ 點。
 
-**詮釋**：$H$ 是「理論上的完整態空間」，$M$ 是「實際可被佔據的態空間」。約束的意思是無限維裡只取出有限維可行區段。對 AI 而言，$M$ 對應 AI 隱層態的容許範圍；對量子裝置而言，$M$ 對應裝置物理可實現的態集。
+**詮釋**： $H$ 是「理論上的完整態空間」， $M$ 是「實際可被佔據的態空間」。約束的意思是無限維裡只取出有限維可行區段。對 AI 而言， $M$ 對應 AI 隱層態的容許範圍；對量子裝置而言， $M$ 對應裝置物理可實現的態集。
 
 ### 3.2 Definition 2（投影算符）
 
@@ -119,7 +119,7 @@ $$\frac{dx}{dt} = F_\theta(x, t), \quad x(0) = x_0, \quad x \in \mathbb{R}^d$$
 
 $$\pi_M(\psi) := \arg\min_{p \in M} \|\psi - p\|$$
 
-由條件 (iv)，此投影在 $N_{\varepsilon_0}(M)$ 上唯一且光滑。當 $\psi \in M$ 時 $\pi_M(\psi) = \psi$。投影誤差定義為：
+由條件 (iv)，此投影在 $N_{\varepsilon_0}(M)$ 上唯一且光滑。當 $\psi \in M$ 時 $\pi_M(\psi) = \psi$ 。投影誤差定義為：
 
 $$\delta(\psi) := \|\psi - \pi_M(\psi)\|$$
 
@@ -131,15 +131,15 @@ $$\Phi_Q^M: M \times \mathbb{R}_{\geq 0} \to M, \quad \Phi_Q^M(\psi, t) := \pi_M
 
 當 $\delta(U(t)\psi) > \varepsilon_0$ 時投影不定義；此時稱量子流「離開可投影鄰域」。
 
-**詮釋**：$\Phi_Q^M$ 不是單位演化（因投影破壞範數）；它是「量子演化 + 強制回到可實現流形」。物理對應為**頻繁弱測量**或**裝置約束導致的有效動力學**。
+**詮釋**： $\Phi_Q^M$ 不是單位演化（因投影破壞範數）；它是「量子演化 + 強制回到可實現流形」。物理對應為**頻繁弱測量**或**裝置約束導致的有效動力學**。
 
 ### 3.4 基本性質
 
-**性質 1**：若 $\hat{H}$ 為自伴算符且 $M$ 為 $\hat{H}$ 的不變子流形（即 $U(t)(M) \subseteq M$，$\forall t$），則 $\Phi_Q^M = \Phi_Q^{full}|_M$，無投影誤差。
+**性質 1**：若 $\hat{H}$ 為自伴算符且 $M$ 為 $\hat{H}$ 的不變子流形（即 $U(t)(M) \subseteq M$ ， $\forall t$ ），則 $\Phi_Q^M = \Phi_Q^{full}|_M$ ，無投影誤差。
 
-**性質 2**：若 $\hat{H}$ 為一般自伴算符，則對 $\psi \in M$，存在時間 $\tau(\psi) > 0$ 使得 $U(t)\psi \in N_{\varepsilon_0}(M)$ 對所有 $t \in [0, \tau(\psi)]$。此時 $\Phi_Q^M$ 在 $[0, \tau(\psi)]$ 內良好定義。
+**性質 2**：若 $\hat{H}$ 為一般自伴算符，則對 $\psi \in M$ ，存在時間 $\tau(\psi) > 0$ 使得 $U(t)\psi \in N_{\varepsilon_0}(M)$ 對所有 $t \in [0, \tau(\psi)]$ 。此時 $\Phi_Q^M$ 在 $[0, \tau(\psi)]$ 內良好定義。
 
-**性質 3**：投影量子過程一般**不可逆**——$\pi_M$ 銷毀法分量資訊。這是 $\Phi_Q^M$ 與純量子流的關鍵差別，也是它能對應「不可逆古典計算」的結構基礎。
+**性質 3**：投影量子過程一般**不可逆**—— $\pi_M$ 銷毀法分量資訊。這是 $\Phi_Q^M$ 與純量子流的關鍵差別，也是它能對應「不可逆古典計算」的結構基礎。
 
 ---
 
@@ -159,21 +159,21 @@ $$\Phi_{AI}: \mathbb{R}^d \times \mathbb{R}_{\geq 0} \to \mathbb{R}^d, \quad \fr
 
 $$\iota(x) := x + 0i \in \mathbb{C}^d \subseteq H$$
 
-此處假設 $H \supseteq \mathbb{C}^d$。則 $M_{AI} := \iota(\mathbb{R}^d) \subset H$ 為實 $d$ 維 CHM。
+此處假設 $H \supseteq \mathbb{C}^d$ 。則 $M_{AI} := \iota(\mathbb{R}^d) \subset H$ 為實 $d$ 維 CHM。
 
-**性質**：$M_{AI}$ 是「$\mathbb{C}^d$ 的實軸」——所有虛部為零的點。對 $x, y \in \mathbb{R}^d$，$\|\iota(x) - \iota(y)\|_H = \|x - y\|_{\mathbb{R}^d}$。
+**性質**： $M_{AI}$ 是「 $\mathbb{C}^d$ 的實軸」——所有虛部為零的點。對 $x, y \in \mathbb{R}^d$ ， $\|\iota(x) - \iota(y)\|_H = \|x - y\|_{\mathbb{R}^d}$ 。
 
 ### 4.3 AI 軌跡在 CHM 上
 
-透過 $\iota$，AI 軌跡可視為 $M_{AI}$ 上的曲線：
+透過 $\iota$ ，AI 軌跡可視為 $M_{AI}$ 上的曲線：
 
 $$\tilde{\Phi}_{AI}(x_0, t) := \iota(\Phi_{AI}(x_0, t)) \in M_{AI}$$
 
-注意 $\tilde{\Phi}_{AI}$ 始終位於 $M_{AI}$ 上（虛部恆為零）。其切向量 $\frac{d}{dt}\tilde{\Phi}_{AI}$ 始終位於 $T_{\tilde{\Phi}_{AI}}M_{AI}$。
+注意 $\tilde{\Phi}_{AI}$ 始終位於 $M_{AI}$ 上（虛部恆為零）。其切向量 $\frac{d}{dt}\tilde{\Phi}_{AI}$ 始終位於 $T_{\tilde{\Phi}_{AI}}M_{AI}$ 。
 
 ### 4.4 AI 軌跡的拓撲特徵
 
-設定義 $\Omega(x_0, T) := \{\tilde{\Phi}_{AI}(x_0, t) : t \in [0, T]\}$ 為軌跡像。對固定 $x_0$，$\Omega(x_0, T)$ 為 $M_{AI}$ 上的可微曲線。對軌跡集 $\{\Omega(x_0, T) : x_0 \in K \subset M_{AI}\}$，可定義其拓撲不變量（如 winding number、homotopy class）。
+設定義 $\Omega(x_0, T) := \{\tilde{\Phi}_{AI}(x_0, t) : t \in [0, T]\}$ 為軌跡像。對固定 $x_0$ ， $\Omega(x_0, T)$ 為 $M_{AI}$ 上的可微曲線。對軌跡集 $\{\Omega(x_0, T) : x_0 \in K \subset M_{AI}\}$ ，可定義其拓撲不變量（如 winding number、homotopy class）。
 
 這些拓撲特徵在第 6 節中將作為與量子過程比較的不變量。
 
@@ -185,23 +185,23 @@ $$\tilde{\Phi}_{AI}(x_0, t) := \iota(\Phi_{AI}(x_0, t)) \in M_{AI}$$
 
 **Conjecture（AI–Quantum Trajectory Equivalence, AQTE）**：
 
-對任意給定的 AI 動力系統 $(M_{AI}, F)$，存在：
+對任意給定的 AI 動力系統 $(M_{AI}, F)$ ，存在：
 
-1. 可分複希爾伯特空間 $H \supseteq \mathbb{C}^d$；
-2. 自伴算符 $\hat{H}: H \to H$；
-3. $M_{AI}$ 的 $\varepsilon$-鄰域 $N_\varepsilon(M_{AI}) \subset H$（$\varepsilon \leq \varepsilon_0$）；
+1. 可分複希爾伯特空間 $H \supseteq \mathbb{C}^d$ ；
+2. 自伴算符 $\hat{H}: H \to H$ ；
+3. $M_{AI}$ 的 $\varepsilon$ -鄰域 $N_\varepsilon(M_{AI}) \subset H$ （ $\varepsilon \leq \varepsilon_0$ ）；
 
-使得對由 $\hat{H}$ 生成的量子流 $U(t) = e^{-i\hat{H}t}$，下列估計成立：
+使得對由 $\hat{H}$ 生成的量子流 $U(t) = e^{-i\hat{H}t}$ ，下列估計成立：
 
 $$\boxed{\;\forall x \in M_{AI},\; t \in [0, T]: \quad \|\tilde{\Phi}_{AI}(x, t) - \pi_{M_{AI}}(U(t)\iota(x))\|_H \leq \varepsilon(x, t)\;}$$
 
-其中 $\varepsilon(x, t)$ 為有界函數，$T$ 為由 $F$ 與 $\hat{H}$ 共同決定的有效時間範圍。
+其中 $\varepsilon(x, t)$ 為有界函數， $T$ 為由 $F$ 與 $\hat{H}$ 共同決定的有效時間範圍。
 
 ### 5.2 詮釋
 
 主公式陳述：**AI 軌跡 ≈ 對應量子過程的投影**，誤差 $\varepsilon$ 可量化。
 
-當 $\varepsilon = 0$：AI 計算即量子過程的投影（嚴格等價）。
+當 $\varepsilon = 0$ ：AI 計算即量子過程的投影（嚴格等價）。
 當 $\varepsilon$ 小：AI 計算近似為量子過程的投影，差異可由 $\varepsilon$ 校正。
 當 $\varepsilon$ 大：AI 計算與量子過程無對應關係，AQTE 在該軌跡上失效。
 
@@ -220,7 +220,7 @@ $$\boxed{\;\forall x \in M_{AI},\; t \in [0, T]: \quad \|\tilde{\Phi}_{AI}(x, t)
 
 1. AQTE 不主張「AI 即量子計算」的等同關係——投影意義下的近似 ≠ 等同。
 2. AQTE 不主張古典與量子計算複雜度的同等性（BQP = P 為另一問題）。
-3. AQTE 不主張存在物理上可實現的「對應量子裝置」可運行此 $\hat{H}$——$\hat{H}$ 的存在性是數學的，非工程的。
+3. AQTE 不主張存在物理上可實現的「對應量子裝置」可運行此 $\hat{H}$ —— $\hat{H}$ 的存在性是數學的，非工程的。
 4. AQTE 不主張 AI 系統能執行量子演算法（如 Shor）——投影破壞了相干性。
 
 ---
@@ -231,38 +231,38 @@ $$\boxed{\;\forall x \in M_{AI},\; t \in [0, T]: \quad \|\tilde{\Phi}_{AI}(x, t)
 
 ### 6.1 Lemma A：投影誤差有界
 
-**Lemma A（Bounded Projection Error）**：對任意 $F$ 滿足 Lipschitz 條件 $\|F(x,t) - F(y,t)\| \leq L\|x-y\|$，存在自伴算符 $\hat{H}$ 與常數 $C(L, T) > 0$，使得：
+**Lemma A（Bounded Projection Error）**：對任意 $F$ 滿足 Lipschitz 條件 $\|F(x,t) - F(y,t)\| \leq L\|x-y\|$ ，存在自伴算符 $\hat{H}$ 與常數 $C(L, T) > 0$ ，使得：
 
 $$\varepsilon(x, t) \leq C(L, T) \cdot (1 + \|x\|) \cdot t$$
 
-對所有 $x \in M_{AI}$、$t \in [0, T]$ 成立。
+對所有 $x \in M_{AI}$ 、 $t \in [0, T]$ 成立。
 
-**證明策略**：構造性。給定 $F$，定義 $\hat{H}$ 為使其量子流投影到 $M_{AI}$ 後與 $F$ 生成的流相符的算符。具體構造可參考 Lindblad-type 演化的逆向工程。
+**證明策略**：構造性。給定 $F$ ，定義 $\hat{H}$ 為使其量子流投影到 $M_{AI}$ 後與 $F$ 生成的流相符的算符。具體構造可參考 Lindblad-type 演化的逆向工程。
 
 **主要工具**：Stone 定理、Trotter 乘積公式、Lindblad 演化分解。
 
-**未解問題**：常數 $C(L, T)$ 的最優值（lower bound 與 upper bound）；$\hat{H}$ 是否唯一。
+**未解問題**：常數 $C(L, T)$ 的最優值（lower bound 與 upper bound）； $\hat{H}$ 是否唯一。
 
 ### 6.2 Lemma B：拓撲匹配
 
-**Lemma B（Topological Matching）**：對 AI 軌跡集 $\{\Omega(x_0, T) : x_0 \in K \subset M_{AI}\}$ 與對應量子過程的投影軌跡集 $\{\pi_{M_{AI}}(U(t)\iota(K))\}$，兩者作為 $M_{AI}$ 中的曲線族，具有相同的拓撲不變量：
+**Lemma B（Topological Matching）**：對 AI 軌跡集 $\{\Omega(x_0, T) : x_0 \in K \subset M_{AI}\}$ 與對應量子過程的投影軌跡集 $\{\pi_{M_{AI}}(U(t)\iota(K))\}$ ，兩者作為 $M_{AI}$ 中的曲線族，具有相同的拓撲不變量：
 
 $$\pi_1(\Omega_K) \cong \pi_1(\pi_{M_{AI}}(U(\cdot)\iota(K)))$$
 
 其中 $\pi_1$ 表第一同倫群。
 
-**證明策略**：利用 Lemma A 的 $\varepsilon$-近似性，輔以 $M_{AI}$ 的可縮性（contractibility）討論。若 $\varepsilon$ 小於兩軌跡間的最小同倫距離，則同倫等價。
+**證明策略**：利用 Lemma A 的 $\varepsilon$ -近似性，輔以 $M_{AI}$ 的可縮性（contractibility）討論。若 $\varepsilon$ 小於兩軌跡間的最小同倫距離，則同倫等價。
 
 **主要工具**：代數拓撲（同倫理論）、近似定理。
 
-**未解問題**：$\varepsilon$ 與最小同倫距離的關係；高階同倫群（$\pi_n, n > 1$）的匹配。
+**未解問題**： $\varepsilon$ 與最小同倫距離的關係；高階同倫群（ $\pi_n, n > 1$ ）的匹配。
 
 ### 6.3 Lemma C：軌跡不變量保持
 
 **Lemma C（Trajectory Invariant Preservation）**：對 AI 軌跡與對應量子過程投影軌跡，下列不變量保持：
 
-(a) 軌跡長度（弧長）誤差 $\leq O(\varepsilon \cdot T)$；
-(b) 動量類比（軌跡瞬時方向的累積變化）誤差 $\leq O(\varepsilon)$；
+(a) 軌跡長度（弧長）誤差 $\leq O(\varepsilon \cdot T)$ ；
+(b) 動量類比（軌跡瞬時方向的累積變化）誤差 $\leq O(\varepsilon)$ ；
 (c) 若 $F$ 具有對稱性（如平移不變、旋轉不變），對應 $\hat{H}$ 繼承此對稱性。
 
 **證明策略**：(a)(b) 為 Lemma A 的直接推論；(c) 需 Noether 類比構造。
@@ -279,13 +279,13 @@ $$\pi_1(\Omega_K) \cong \pi_1(\pi_{M_{AI}}(U(\cdot)\iota(K)))$$
 - Lemma B 保證拓撲層面的全域對應；
 - Lemma C 保證幾何層面的不變量匹配。
 
-主定理（待證）：若 Lemma A, B, C 皆成立，則 AQTE 在 $C^1$ 度量意義下成立——即 $\Phi_{AI}$ 與 $\pi_{M_{AI}} \circ \Phi_Q^{full} \circ \iota$ 作為 $M_{AI}$ 上的流，在 $C^1$ 範數下 $\varepsilon$-接近。
+主定理（待證）：若 Lemma A, B, C 皆成立，則 AQTE 在 $C^1$ 度量意義下成立——即 $\Phi_{AI}$ 與 $\pi_{M_{AI}} \circ \Phi_Q^{full} \circ \iota$ 作為 $M_{AI}$ 上的流，在 $C^1$ 範數下 $\varepsilon$ -接近。
 
 ### 6.5 已知限制
 
 以下事項**已知**會破壞嚴格同胚，必須在 $\varepsilon$ 中吸收：
 
-1. **ReLU 不可逆性**：$\text{ReLU}(x) = \max(0, x)$ 在 $x < 0$ 處將資訊銷毀，與 unitary 不相容。
+1. **ReLU 不可逆性**： $\text{ReLU}(x) = \max(0, x)$ 在 $x < 0$ 處將資訊銷毀，與 unitary 不相容。
 2. **LayerNorm 非線性**：normalization 破壞線性結構，無法被任何 Hamiltonian 直接表達。
 3. **Softmax 投影**：輸出層的 softmax + sampling 是嚴格不可逆的測量類動作。
 
@@ -295,7 +295,7 @@ $$\pi_1(\Omega_K) \cong \pi_1(\pi_{M_{AI}}(U(\cdot)\iota(K)))$$
 
 最容易先攻的子命題為：
 
-**AQTE-Attention**：對單一 attention 層 $A: \mathbb{R}^d \to \mathbb{R}^d$（無 LayerNorm、無 MLP、無 ReLU），存在 $\hat{H}_A$ 使得：
+**AQTE-Attention**：對單一 attention 層 $A: \mathbb{R}^d \to \mathbb{R}^d$ （無 LayerNorm、無 MLP、無 ReLU），存在 $\hat{H}_A$ 使得：
 
 $$\|A(x) - \pi_{M_{AI}}(e^{-i\hat{H}_A \tau}\iota(x))\| \leq \varepsilon_A$$
 
@@ -303,7 +303,7 @@ $$\|A(x) - \pi_{M_{AI}}(e^{-i\hat{H}_A \tau}\iota(x))\| \leq \varepsilon_A$$
 
 此子命題的優勢：
 - 縮小至 attention 一層，避開非線性元件
-- attention 機制本身已是雙線性形式（$QK^T V$），結構接近 Hamiltonian 二次型
+- attention 機制本身已是雙線性形式（ $QK^T V$ ），結構接近 Hamiltonian 二次型
 - 可由實驗測量 $\varepsilon_A$
 
 攻下此子命題後，往兩方向推廣：
@@ -318,7 +318,7 @@ $$\|A(x) - \pi_{M_{AI}}(e^{-i\hat{H}_A \tau}\iota(x))\| \leq \varepsilon_A$$
 
 ### 7.1 預測 1（ReLU 飽和區的 $\varepsilon$ 暴漲）
 
-當輸入向量 $x$ 在某層有大量分量落入 ReLU 飽和區（$x_i < 0$）時，該層的投影誤差 $\varepsilon$ 應顯著上升。具體預測：
+當輸入向量 $x$ 在某層有大量分量落入 ReLU 飽和區（ $x_i < 0$ ）時，該層的投影誤差 $\varepsilon$ 應顯著上升。具體預測：
 
 $$\varepsilon_{\text{ReLU layer}}(x) \sim O(\sqrt{n_-(x) / d})$$
 
@@ -332,7 +332,7 @@ LayerNorm 將輸入正規化至單位範數，因此 LayerNorm 之後的 $\varep
 
 $$\frac{d\varepsilon}{d\|x\|} \approx 0 \quad \text{(after LayerNorm)}$$
 
-**檢驗方法**：對固定方向、不同範數的輸入測量 $\varepsilon$。
+**檢驗方法**：對固定方向、不同範數的輸入測量 $\varepsilon$ 。
 
 ### 7.3 預測 3（attention 層 $\varepsilon$ 最小）
 
@@ -340,7 +340,7 @@ $$\frac{d\varepsilon}{d\|x\|} \approx 0 \quad \text{(after LayerNorm)}$$
 
 $$\varepsilon_{\text{attn}} < \varepsilon_{\text{MLP}}, \varepsilon_{\text{LN}}, \varepsilon_{\text{ReLU}}$$
 
-**檢驗方法**：分別測量各組件貢獻的 $\varepsilon$，比較數量級。
+**檢驗方法**：分別測量各組件貢獻的 $\varepsilon$ ，比較數量級。
 
 ### 7.4 預測 4（softmax 處 $\varepsilon$ 發散）
 
@@ -348,7 +348,7 @@ $$\varepsilon_{\text{attn}} < \varepsilon_{\text{MLP}}, \varepsilon_{\text{LN}},
 
 $$\varepsilon_{\text{softmax sampling}} = O(1)$$
 
-**檢驗方法**：比較 softmax 前與採樣後的 $\varepsilon$。
+**檢驗方法**：比較 softmax 前與採樣後的 $\varepsilon$ 。
 
 ### 7.5 預測 5（自迴歸累積 $\varepsilon$ 線性增長）
 
@@ -358,7 +358,7 @@ $$\varepsilon_{\text{step } k} \sim k \cdot \bar{\varepsilon}_1$$
 
 其中 $\bar{\varepsilon}_1$ 為單步平均誤差。
 
-**檢驗方法**：對不同長度生成序列測量端到端 $\varepsilon$。
+**檢驗方法**：對不同長度生成序列測量端到端 $\varepsilon$ 。
 
 ### 7.6 證偽情境
 
@@ -396,7 +396,7 @@ $$\varepsilon_{\text{step } k} \sim k \cdot \bar{\varepsilon}_1$$
 
 ### 8.4 對 AGI 設計的影響
 
-若 AQTE 成立，則 AGI 的設計可被重新表述為**「$\varepsilon$ 最小化」問題**：在約束資源下，設計 AI 系統使其 $\varepsilon$ 儘可能小，即儘可能接近其對應量子過程的純粹投影。這個視角將「智能」與「量子-古典橋接的緊密度」連結，提供一個非經驗式的智能度量。
+若 AQTE 成立，則 AGI 的設計可被重新表述為**「 $\varepsilon$ 最小化」問題**：在約束資源下，設計 AI 系統使其 $\varepsilon$ 儘可能小，即儘可能接近其對應量子過程的純粹投影。這個視角將「智能」與「量子-古典橋接的緊密度」連結，提供一個非經驗式的智能度量。
 
 ---
 

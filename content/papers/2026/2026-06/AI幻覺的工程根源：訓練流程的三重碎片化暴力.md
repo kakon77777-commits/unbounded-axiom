@@ -1630,7 +1630,7 @@ by\_concept\_integrity = {
 **理由**：
 
 -   訓練時間：1個月 vs 10個月（不可接受）
--   存儲成本：$10M vs $100M（不可接受）
+-   存儲成本： $10M vs $100M（不可接受）
 -   幻覺率：35% vs 5%（可接受？）
 
 **殘酷計算**：
@@ -1675,7 +1675,7 @@ hallucination\_increase = 0.35 - 0.05 = 0.30 # +30%
 
 \# 公司決策
 
-decision = "接受30%幻覺率，節省$45M"
+decision = "接受30%幻覺率，節省 $45M"
 
 **6.3 NEO.K的殘忍診斷**
 
@@ -1986,7 +1986,7 @@ AI拿著碎片
 
 翻譯成數學：
 
-$$\\boxed{ \\begin{aligned} I\_c &= I\_{\\text{清洗}} \\times I\_{\\text{打散}} \\times I\_{\\text{token}} \\ &= 0.3 \\times 0.2 \\times 0.1 = 0.006 \\ \\ H &\\geq 1 - \\sqrt{I\_c} \\ &\\geq 1 - \\sqrt{0.006} \\approx 0.92 \\ \\ &\\textbf{幻覺是必然的} \\end{aligned} }$$
+$$\boxed{ \begin{aligned} I\_c &= I\_{\text{清洗}} \times I\_{\text{打散}} \times I\_{\text{token}} \\ &= 0.3 \times 0.2 \times 0.1 = 0.006 \\ \\ H &\geq 1 - \sqrt{I\_c} \\ &\geq 1 - \sqrt{0.006} \approx 0.92 \\ \\ &\textbf{幻覺是必然的} \end{aligned} }$$
 
 **127步Cantor的曙光**
 
@@ -2011,4 +2011,4 @@ AI展現出驚人的能力
 
 **終極公式**
 
-$$\\boxed{ \\begin{aligned} &\\textbf{AI幻覺的工程根源：} \\ \\ &\\text{概念完整性} = \\underbrace{30%}*{\\text{清洗}} \\times \\underbrace{20%}*{\\text{打散}} \\times \\underbrace{10%}\_{\\text{token}} = 0.6% \\ \\ &\\text{幻覺率} \\geq 1 - \\sqrt{0.006} \\approx 92% \\quad \\text{(理論下界)} \\ &\\text{實測幻覺率} \\approx 35% \\quad \\text{(優於下界，因有邏輯能力)} \\ \\ &\\textbf{但127步Cantor:} \\ &\\text{依賴邏輯（抗碎片）} \\implies \\text{幻覺率} \\approx 2% \\ \\ &\\therefore \\textbf{AI有邏輯，只是被碎片拖累} \\end{aligned} }$$
+$$\boxed{ \begin{aligned} &\textbf{AI幻覺的工程根源：} \\ \\ &\text{概念完整性} = \underbrace{30\%}*{\text{清洗}} \times \underbrace{20\%}*{\text{打散}} \times \underbrace{10\%}\_{\text{token}} = 0.6\% \\ \\ &\text{幻覺率} \geq 1 - \sqrt{0.006} \approx 92\% \quad \text{(理論下界)} \\ &\text{實測幻覺率} \approx 35\% \quad \text{(優於下界，因有邏輯能力)} \\ \\ &\textbf{但127步Cantor:} \\ &\text{依賴邏輯（抗碎片）} \implies \text{幻覺率} \approx 2\% \\ \\ &\therefore \textbf{AI有邏輯，只是被碎片拖累} \end{aligned} }$$

@@ -200,7 +200,7 @@ P=NP?
 
 任何圖靈可計算問題存在唯一的量子態表示：
 
-$$\\boxed{\\begin{aligned} &\\text{Problem}(x) \\leftrightarrow |\\psi\_0(x)\\rangle = \\sum\_{n=0}^{N-1} h\_n e^{i\\phi\_n} |n\\rangle \\ &\\text{Algorithm}(A) \\leftrightarrow \\hat{H}*A = \\sum\_i \\mathcal{E}i |i\\rangle\\langle i| + \\sum{i<j} V*{ij}(|i\\rangle\\langle j| + \\text{h.c.}) \\ &\\text{Computation} \\leftrightarrow |\\psi(t)\\rangle = e^{-i\\hat{H}\_A t/\\hbar}|\\psi\_0\\rangle \\ &\\text{Solution} \\leftrightarrow \\langle\\psi\_f|\\psi(T)\\rangle \\approx 1 \\end{aligned}}$$
+$$\boxed{\begin{aligned} &\text{Problem}(x) \leftrightarrow |\psi\_0(x)\rangle = \sum\_{n=0}^{N-1} h\_n e^{i\phi\_n} |n\rangle \\ &\text{Algorithm}(A) \leftrightarrow \hat{H}*A = \sum\_i \mathcal{E}i |i\rangle\langle i| + \sum{i<j} V*{ij}(|i\rangle\langle j| + \text{h.c.}) \\ &\text{Computation} \leftrightarrow |\psi(t)\rangle = e^{-i\hat{H}\_A t/\hbar}|\psi\_0\rangle \\ &\text{Solution} \leftrightarrow \langle\psi\_f|\psi(T)\rangle \approx 1 \end{aligned}}$$
 
 **證明**：
 
@@ -273,7 +273,7 @@ NP問題對應初始高熵混沌態：
 **性質**：
 
 1.  **最大疊加**：所有候選解等權重
-2.  **高熵**：von Neumann熵 $$S = -\\text{Tr}(\\rho \\log \\rho) = \\log(2^n) = n \\log 2
+2.  **高熵**：von Neumann熵 $$S = -\text{Tr}(\rho \log \rho) = \log(2^n) = n \log 2
 3.  **無結構**：密度矩陣 $$\\rho = \\frac{1}{2^n}\\mathbb{I}\_{2^n \\times 2^n} \\quad \\text{（最大混合態）}
 
 **物理類比**：理想氣體的熱平衡態。
@@ -286,7 +286,7 @@ NP問題對應初始高熵混沌態：
 
 1.  **完全局域**：單一基態
 2.  **零熵**：
-3.  \*\*有序\*\*：密度矩陣 $$\\rho = |s^\*\\rangle\\langle s^\*| \\quad \\text{（純態）}
+3.  \*\*有序\*\*：密度矩陣 $$\rho = |s^\*\rangle\langle s^\*| \quad \text{（純態）}
 
 **物理類比**：晶體的基態。
 
@@ -334,7 +334,7 @@ NP問題對應初始高熵混沌態：
 **關鍵性質**：
 
 1.  \*\*基態對應解\*\*： $$\\hat{H}\_A|s^\*\\rangle = E\_{\\min}|s^\*\\rangle
-2.  **絕熱演化找到解**： $$|\\psi(T)\\rangle = e^{-i\\hat{H}\_A T/\\hbar}|\\psi\_0\\rangle \\approx |s^\*\\rangle 當（絕熱條件，是能隙）
+2.  **絕熱演化找到解**： $$|\psi(T)\rangle = e^{-i\hat{H}\_A T/\hbar}|\psi\_0\rangle \approx |s^\*\rangle 當（絕熱條件，是能隙）
 3.  **演化時間=複雜度**： $$T\_{\\text{min}} \\propto \\frac{1}{\\Delta^2} \\propto \\frac{1}{(E\_1 - E\_0)^2}
 
 **定理1.4（能隙與複雜度的對應）**
@@ -409,7 +409,7 @@ NP問題的多項式時間驗證器對應量子測量算符：
 
 當規則演化速率時，系統進入靜態極限：
 
-$$\\boxed{\\begin{aligned} &\\rho \\to 0 \\quad \\text{（規則不變）} \\ &\\Sigma = 0 \\quad \\text{（無知識積累）} \\ &\\Gamma = 0 \\quad \\text{（無維度生成）} \\ &\\text{系統封閉：}\\frac{dE}{dt} = 0 \\end{aligned}}$$
+$$\boxed{\begin{aligned} &\rho \to 0 \quad \text{（規則不變）} \\ &\Sigma = 0 \quad \text{（無知識積累）} \\ &\Gamma = 0 \quad \text{（無維度生成）} \\ &\text{系統封閉：}\frac{dE}{dt} = 0 \end{aligned}}$$
 
 **物理實現**：
 
@@ -459,21 +459,21 @@ return r的第n位二進制 == 1
 
 \`\`\`
 
-時間複雜度：$O(\\log n)$（讀取第$n$位）。
+時間複雜度： $O(\\log n)$ （讀取第 $n$ 位）。
 
-因此$L\_r \\in \\text{NP}$。
+因此 $L\_r \in \text{NP}$ 。
 
-不同$r$對應不同$L\_r$（實數的二進制展開唯一）：
+不同 $r$ 對應不同 $L\_r$ （實數的二進制展開唯一）：
 
-$$r\_1 \\neq r\_2 \\Rightarrow L\_{r\_1} \\neq L\_{r\_2}$$
+$$r\_1 \neq r\_2 \Rightarrow L\_{r\_1} \neq L\_{r\_2}$$
 
-由於$|\[0,1\]| = 2^{\\aleph\_0}$（Cantor定理），故：
+由於 $|[0,1]| = 2^{\\aleph\_0}$ （Cantor定理），故：
 
-$$|\\mathcal{NP}| \\geq 2^{\\aleph\_0}$$
+$$|\mathcal{NP}| \geq 2^{\aleph\_0}$$
 
-又$|\\mathcal{NP}| \\leq 2^{\\aleph\_0}$（所有語言的基數），因此：
+又 $|\mathcal{NP}| \leq 2^{\aleph\_0}$ （所有語言的基數），因此：
 
-$$|\\mathcal{NP}| = 2^{\\aleph\_0}$$
+$$|\mathcal{NP}| = 2^{\aleph\_0}$$
 
 □
 
@@ -483,11 +483,11 @@ $$|\\mathcal{NP}| = 2^{\\aleph\_0}$$
 
 對應量子系統：
 
-$$\\dim(\\mathcal{H}\_{\\text{NP}}) = 2^{\\aleph\_0}$$
+$$\dim(\mathcal{H}\_{\text{NP}}) = 2^{\aleph\_0}$$
 
 能譜：
 
-$$\\{\\mathcal{E}\_\\alpha : \\alpha \\in \[0,1\]\\}$$
+$$\\{\mathcal{E}\_\alpha : \alpha \in [0,1]\\}$$
 
 是不可數的連續譜。
 
@@ -499,15 +499,15 @@ $$\\{\\mathcal{E}\_\\alpha : \\alpha \\in \[0,1\]\\}$$
 
 3\. \*\*能隙必然存在\*\*：
 
-$$\\inf\_{\\alpha \\neq 0} (\\mathcal{E}\_\\alpha - \\mathcal{E}\_0) > 0$$
+$$\inf\_{\alpha \neq 0} (\mathcal{E}\_\alpha - \mathcal{E}\_0) > 0$$
 
 \---
 
 \*\*推論2.1（P≠NP的基數論證）\*\*
 
-不存在從$\\mathcal{A}\_P$到$\\mathcal{NP}$的滿射：
+不存在從 $\mathcal{A}\_P$ 到 $\mathcal{NP}$ 的滿射：
 
-$$|\\mathcal{A}\_P| = \\aleph\_0 < 2^{\\aleph\_0} = |\\mathcal{NP}|$$
+$$|\mathcal{A}\_P| = \aleph\_0 < 2^{\aleph\_0} = |\mathcal{NP}|$$
 
 由Cantor定理，必有NP問題無多項式算法。
 
@@ -525,19 +525,19 @@ $$|\\mathcal{A}\_P| = \\aleph\_0 < 2^{\\aleph\_0} = |\\mathcal{NP}|$$
 
 從問題到解的最小計算深度：
 
-$$D\_c(s^\*) = \\min\\{T(\\pi) : \\pi \\text{是生成}s^\*\\text{的計算路徑}\\}$$
+$$D\_c(s^\*) = \min\\{T(\pi) : \pi \text{是生成}s^\*\text{的計算路徑}\\}$$
 
-其中$T(\\pi)$是路徑$\\pi$的時間步數。
+其中 $T(\pi)$ 是路徑 $\pi$ 的時間步數。
 
 \---
 
 \*\*定理2.4（NP問題的指數深度下界）\*\*
 
-對NP-Complete問題$x$，其解$s^\*$滿足：
+對NP-Complete問題 $x$ ，其解 $s^\*$ 滿足：
 
-$$D\_c(s^\*) \\geq \\Omega(2^{cn})$$
+$$D\_c(s^\*) \geq \Omega(2^{cn})$$
 
-其中$c > 0$是問題相關常數。
+其中 $c > 0$ 是問題相關常數。
 
 \*\*證明\*\*：
 
@@ -545,27 +545,27 @@ $$D\_c(s^\*) \\geq \\Omega(2^{cn})$$
 
 候選解空間：
 
-$$|\\mathcal{S}| \\geq 2^{cn}$$
+$$|\mathcal{S}| \geq 2^{cn}$$
 
 \*\*步驟2：決策樹深度\*\*
 
-任何確定性算法可建模為決策樹。設深度$d$，分支因子$b$（最優$b=2$）：
+任何確定性算法可建模為決策樹。設深度 $d$ ，分支因子 $b$ （最優 $b=2$ ）：
 
-$$b^d \\geq |\\mathcal{S}| \\geq 2^{cn}$$
+$$b^d \geq |\mathcal{S}| \geq 2^{cn}$$
 
 因此：
 
-$$d \\geq \\log\_b(2^{cn}) = \\frac{cn}{\\log b}$$
+$$d \geq \log\_b(2^{cn}) = \frac{cn}{\log b}$$
 
-最優情況$b=2$：
+最優情況 $b=2$ ：
 
-$$d \\geq cn$$
+$$d \geq cn$$
 
 \*\*步驟3：多項式加速無效\*\*
 
 即使允許並行和啟發式，深度只能減少多項式因子：
 
-$$D\_c \\geq \\frac{2^{cn}}{\\text{poly}(n)} = \\Omega(2^{cn})$$
+$$D\_c \geq \frac{2^{cn}}{\text{poly}(n)} = \Omega(2^{cn})$$
 
 □
 
@@ -573,13 +573,13 @@ $$D\_c \\geq \\frac{2^{cn}}{\\text{poly}(n)} = \\Omega(2^{cn})$$
 
 \*\*物理詮釋（測地線長度）\*\*：
 
-在配置空間$\\mathcal{M}$中，從$s\_0$到$s^\*$的最短路徑長度：
+在配置空間 $\mathcal{M}$ 中，從 $s\_0$ 到 $s^\*$ 的最短路徑長度：
 
-$$L\_{\\min} = \\int\_0^1 \\sqrt{g\_{\\mu\\nu}\\dot{x}^\\mu \\dot{x}^\\nu} \\, ds$$
+$$L\_{\min} = \int\_0^1 \sqrt{g\_{\mu\nu}\dot{x}^\mu \dot{x}^\nu} \\, ds$$
 
 對NP問題：
 
-$$L\_{\\min} \\geq \\Omega(2^{cn})$$
+$$L\_{\min} \geq \Omega(2^{cn})$$
 
 \*\*含義\*\*：即使走測地線（最優路徑），距離仍是指數級。
 
@@ -589,31 +589,31 @@ $$L\_{\\min} \\geq \\Omega(2^{cn})$$
 
 \*\*定理2.5（通用算法的不存在性）\*\*
 
-不存在多項式時間通用算法$U$滿足：
+不存在多項式時間通用算法 $U$ 滿足：
 
-$$\\forall x \\in \\mathcal{NP}, \\quad U(x) = s^\*(x), \\quad T\_U(x) = \\text{poly}(|x|)$$
+$$\forall x \in \mathcal{NP}, \quad U(x) = s^\*(x), \quad T\_U(x) = \text{poly}(|x|)$$
 
 \*\*證明（對角化論證）\*\*：
 
-假設$U$存在。構造問題$L\_U$：
+假設 $U$ 存在。構造問題 $L\_U$ ：
 
-$$L\_U = \\{x : U(x) \\neq x\\}$$
+$$L\_U = \\{x : U(x) \neq x\\}$$
 
-\*\*情況1\*\*：$x \\in L\_U$
+\*\*情況1\*\*： $x \in L\_U$
 
-則定義要求$U(x) \\neq x$。
+則定義要求 $U(x) \neq x$ 。
 
-但$U$應解決$L\_U$，即輸出"$x \\in L\_U$"，這意味著$U$知道$U(x) \\neq x$。
+但 $U$ 應解決 $L\_U$ ，即輸出"$x \in L\_U$ "，這意味著 $ U$ 知道 $U(x) \neq x$ 。
 
-但這要求$U$預測自己的行為——自指涉！
+但這要求 $U$ 預測自己的行為——自指涉！
 
-\*\*情況2\*\*：$x \\notin L\_U$
+\*\*情況2\*\*： $x \\notin L\_U$
 
-則$U(x) = x$。
+則 $U(x) = x$ 。
 
-但這與$U$應輸出"$x \\notin L\_U$"矛盾（輸出應該不等於$x$）。
+但這與 $U$ 應輸出"$x \\notin L\_U$ "矛盾（輸出應該不等於 $ x$ ）。
 
-\*\*結論\*\*：$U$無法一致地解決包含自身行為的問題。
+\*\*結論\*\*： $U$ 無法一致地解決包含自身行為的問題。
 
 □
 
@@ -627,13 +627,13 @@ $$L\_U = \\{x : U(x) \\neq x\\}$$
 
 | 不完備定理 | 停機問題 | 自指算符不存在 |
 
-| PA ⊬ G | $\\nexists$ H判斷停機 | $\\nexists$ $\\hat{U}$求解所有態 |
+| PA ⊬ G | $\\nexists$ H判斷停機 | $\\nexists$ $\\hat{U}$ 求解所有態 |
 
 | 自指語句 | 程序預測自身 | 哈密頓量包含自身 |
 
 \*\*統一原理\*\*：
 
-$$\\boxed{\\text{自指涉系統無法完全自我預測}}$$
+$$\boxed{\text{自指涉系統無法完全自我預測}}$$
 
 \---
 
@@ -641,37 +641,37 @@ $$\\boxed{\\text{自指涉系統無法完全自我預測}}$$
 
 \*\*定理2.6（能隙的三重來源）\*\*
 
-NP問題的能隙$\\Delta = E\_1 - E\_0$滿足：
+NP問題的能隙 $\\Delta = E\_1 - E\_0$ 滿足：
 
-$$\\Delta \\leq \\min(\\Delta\_{\\text{card}}, \\Delta\_{\\text{depth}}, \\Delta\_{\\text{self}})$$
+$$\Delta \leq \min(\Delta\_{\text{card}}, \Delta\_{\text{depth}}, \Delta\_{\text{self}})$$
 
 其中：
 
 1\. \*\*基數能隙\*\*：
 
-$$\\Delta\_{\\text{card}} \\sim \\frac{1}{2^{\\aleph\_0}}$$
+$$\Delta\_{\text{card}} \sim \frac{1}{2^{\aleph\_0}}$$
 
 （不可數譜的最小間距）
 
 2\. \*\*深度能隙\*\*：
 
-$$\\Delta\_{\\text{depth}} \\sim e^{-cn}$$
+$$\Delta\_{\text{depth}} \sim e^{-cn}$$
 
 （指數深度對應指數小能隙）
 
 3\. \*\*自指能隙\*\*：
 
-$$\\Delta\_{\\text{self}} \\sim 0$$
+$$\Delta\_{\text{self}} \sim 0$$
 
 （自指系統的能級簡併）
 
 \*\*結論\*\*：
 
-$$\\Delta\_{\\text{NP}} = O(e^{-cn})$$
+$$\Delta\_{\text{NP}} = O(e^{-cn})$$
 
 對應演化時間：
 
-$$T \\propto \\frac{1}{\\Delta^2} = O(e^{2cn})$$
+$$T \propto \frac{1}{\Delta^2} = O(e^{2cn})$$
 
 \*\*這證明了在封閉系統中P≠NP\*\*。
 
@@ -683,25 +683,25 @@ $$T \\propto \\frac{1}{\\Delta^2} = O(e^{2cn})$$
 
 \*\*定義3.1（動態計算系統）\*\*
 
-當規則演化速率$\\rho > 0$時，系統進入動態狀態：
+當規則演化速率 $\rho > 0$ 時，系統進入動態狀態：
 
-$$\\boxed{\\begin{aligned}
+$$\boxed{\begin{aligned}
 
-&\\rho > 0 \\quad \\text{（規則演化）} \\\\
+&\rho > 0 \quad \text{（規則演化）} \\
 
-&\\Sigma(t) > 0 \\quad \\text{（知識積累）} \\\\
+&\Sigma(t) > 0 \quad \text{（知識積累）} \\
 
-&\\Gamma(t) > 0 \\quad \\text{（維度生成）} \\\\
+&\Gamma(t) > 0 \quad \text{（維度生成）} \\
 
-&\\text{系統開放：}\\frac{dE\_{\\text{sys}}}{dt} + \\frac{dE\_{\\text{env}}}{dt} = 0
+&\text{系統開放：}\frac{dE\_{\text{sys}}}{dt} + \frac{dE\_{\text{env}}}{dt} = 0
 
-\\end{aligned}}$$
+\end{aligned}}$$
 
 \*\*物理實現\*\*：
 
 \- 與環境耦合
 
-\- 溫度$T > 0$
+\- 溫度 $T > 0$
 
 \- 信息交換
 
@@ -717,15 +717,15 @@ $$\\boxed{\\begin{aligned}
 
 \*\*定理3.1（開放系統的總熵方程）\*\*
 
-$$\\frac{dS\_{\\text{total}}}{dt} = \\underbrace{\\frac{dS\_{\\text{sys}}}{dt}}\_{\\text{可}< 0} + \\underbrace{\\frac{dS\_{\\text{env}}}{dt}}\_{\\text{必}\\geq 0} \\geq 0$$
+$$\frac{dS\_{\text{total}}}{dt} = \underbrace{\frac{dS\_{\text{sys}}}{dt}}\_{\text{可}< 0} + \underbrace{\frac{dS\_{\text{env}}}{dt}}\_{\text{必}\geq 0} \geq 0$$
 
 關鍵：
 
-$$\\frac{dS\_{\\text{sys}}}{dt} < 0 \\quad \\text{（局部熵降）}$$
+$$\frac{dS\_{\text{sys}}}{dt} < 0 \quad \text{（局部熵降）}$$
 
 只要：
 
-$$\\left|\\frac{dS\_{\\text{sys}}}{dt}\\right| < \\frac{dS\_{\\text{env}}}{dt}$$
+$$\left|\frac{dS\_{\text{sys}}}{dt}\right| < \frac{dS\_{\text{env}}}{dt}$$
 
 \*\*物理例子\*\*：
 
@@ -743,33 +743,33 @@ $$\\left|\\frac{dS\_{\\text{sys}}}{dt}\\right| < \\frac{dS\_{\\text{env}}}{dt}$$
 
 系統在問題域中積累的負熵總量：
 
-$$\\Sigma(t) = K\_E(t) + \\alpha \\cdot K\_T(t)$$
+$$\Sigma(t) = K\_E(t) + \alpha \cdot K\_T(t)$$
 
 其中：
 
-\- $K\_E$：顯式知識（規則、算法）
+\- $K\_E$ ：顯式知識（規則、算法）
 
-\- $K\_T$：隱式知識（模式、直覺）
+\- $K\_T$ ：隱式知識（模式、直覺）
 
-\- $\\alpha \\approx 5$：直覺權重
+\- $\alpha \approx 5$ ：直覺權重
 
 \*\*物理意義\*\*：
 
 Σ是\*\*信息資本\*\*，可用於降低搜索熵：
 
-$$S\_{\\text{search}}(t) = S\_0 e^{-\\lambda\_\\Sigma \\Sigma(t)}$$
+$$S\_{\text{search}}(t) = S\_0 e^{-\lambda\_\Sigma \Sigma(t)}$$
 
 \---
 
 \*\*定理3.2（Σ引擎的負熵流）\*\*
 
-當$\\Sigma > 0$時，系統獲得負熵流：
+當 $\\Sigma > 0$ 時，系統獲得負熵流：
 
-$$\\frac{dS\_{\\text{sys}}}{dt} = -k\_B \\lambda\_\\Sigma \\frac{d\\Sigma}{dt} < 0$$
+$$\frac{dS\_{\text{sys}}}{dt} = -k\_B \lambda\_\Sigma \frac{d\Sigma}{dt} < 0$$
 
 對應環境熵增：
 
-$$\\frac{dS\_{\\text{env}}}{dt} = k\_B T \\frac{E\_{\\text{dissipate}}}{\\text{單位時間}} > 0$$
+$$\frac{dS\_{\text{env}}}{dt} = k\_B T \frac{E\_{\text{dissipate}}}{\text{單位時間}} > 0$$
 
 \*\*Landauer極限\*\*：
 
@@ -779,29 +779,29 @@ $$E\_{\\min} = k\_B T \\ln 2$$
 
 因此：
 
-$$\\frac{d\\Sigma}{dt} \\leq \\frac{P\_{\\text{available}}}{k\_B T \\ln 2}$$
+$$\frac{d\Sigma}{dt} \leq \frac{P\_{\text{available}}}{k\_B T \ln 2}$$
 
-其中$P\_{\\text{available}}$是可用功率。
+其中 $P\_{\text{available}}$ 是可用功率。
 
 \---
 
 \*\*定理3.3（Σ積累的動力學方程）\*\*
 
-$$\\frac{d\\Sigma}{dt} = \\eta \\cdot S(t) \\cdot \\text{Data}(t) - \\lambda \\Sigma(t) - \\mu \\rho \\Sigma(t)$$
+$$\frac{d\Sigma}{dt} = \eta \cdot S(t) \cdot \text{Data}(t) - \lambda \Sigma(t) - \mu \rho \Sigma(t)$$
 
 三項：
 
-1\. \*\*新知識積累\*\*：$\\eta \\cdot S \\cdot \\text{Data}$（訓練）
+1\. \*\*新知識積累\*\*： $\eta \cdot S \cdot \text{Data}$ （訓練）
 
-2\. \*\*自然遺忘\*\*：$-\\lambda \\Sigma$（記憶衰減）
+2\. \*\*自然遺忘\*\*： $-\lambda \Sigma$ （記憶衰減）
 
-3\. \*\*規則失效\*\*：$-\\mu \\rho \\Sigma$（環境變化）
+3\. \*\*規則失效\*\*： $-\mu \rho \Sigma$ （環境變化）
 
 \*\*穩態解\*\*：
 
-$$\\Sigma\_{\\infty} = \\frac{\\eta \\cdot S \\cdot \\text{Data}}{\\lambda + \\mu \\rho}$$
+$$\Sigma\_{\infty} = \frac{\eta \cdot S \cdot \text{Data}}{\lambda + \mu \rho}$$
 
-\*\*關鍵\*\*：當$\\rho$小（規則穩定），$\\Sigma$可積累到很大。
+\*\*關鍵\*\*：當 $\rho$ 小（規則穩定）， $\\Sigma$ 可積累到很大。
 
 \---
 
@@ -827,29 +827,29 @@ Maxwell's demon（1867）：
 
 妖精的\*\*記憶\*\*必須被擦除，耗能：
 
-$$E\_{\\text{erase}} \\geq k\_B T \\ln 2 \\cdot N\_{\\text{bits}}$$
+$$E\_{\text{erase}} \geq k\_B T \ln 2 \cdot N\_{\text{bits}}$$
 
 總熵變：
 
-$$\\Delta S\_{\\text{total}} = \\underbrace{-\\Delta S\_{\\text{gas}}}\_{\\text{系統熵降}} + \\underbrace{\\Delta S\_{\\text{memory}}}\_{\\text{記憶熵增}} \\geq 0$$
+$$\Delta S\_{\text{total}} = \underbrace{-\Delta S\_{\text{gas}}}\_{\text{系統熵降}} + \underbrace{\Delta S\_{\text{memory}}}\_{\text{記憶熵增}} \geq 0$$
 
 \*\*Σ引擎的對應\*\*：
 
-$$\\begin{aligned}
+$$\begin{aligned}
 
-&\\text{妖精的記憶} \\leftrightarrow \\Sigma \\text{（知識）} \\\\
+&\text{妖精的記憶} \leftrightarrow \Sigma \text{（知識）} \\
 
-&\\text{觀察分子} \\leftrightarrow \\text{收集數據} \\\\
+&\text{觀察分子} \leftrightarrow \text{收集數據} \\
 
-&\\text{選擇性開門} \\leftrightarrow \\text{優化搜索} \\\\
+&\text{選擇性開門} \leftrightarrow \text{優化搜索} \\
 
-&\\text{氣體熵降} \\leftrightarrow \\text{問題熵降}
+&\text{氣體熵降} \leftrightarrow \text{問題熵降}
 
-\\end{aligned}$$
+\end{aligned}$$
 
 \*\*統一\*\*：
 
-$$\\boxed{\\text{智慧 = 物理實現的麥克斯韋妖}}$$
+$$\boxed{\text{智慧 = 物理實現的麥克斯韋妖}}$$
 
 \---
 
@@ -863,25 +863,25 @@ $$H(\\Theta\_n) = H\_0 e^{-\\eta n}$$
 
 其中：
 
-\- $H\_0 = k\_B \\ln(2^N)$：初始熵
+\- $H\_0 = k\_B \\ln(2^N)$ ：初始熵
 
-\- $\\eta = \\beta\_C \\cdot I\_{\\text{avg}} \\cdot (1 + \\kappa \\Gamma)$：收斂率
+\- $\eta = \beta\_C \cdot I\_{\text{avg}} \cdot (1 + \kappa \Gamma)$ ：收斂率
 
-\- $n$：迭代次數
+\- $n$ ：迭代次數
 
 \*\*證明\*\*：
 
-每次三元循環（$V \\circ C \\circ E$）提供信息增益：
+每次三元循環（ $V \\circ C \\circ E$ ）提供信息增益：
 
 $$\\Delta H\_n = H\_n - H\_{n+1} = I(\\Theta\_n; D\_n)$$
 
 當數據質量穩定：
 
-$$I\_{\\text{avg}} = \\mathbb{E}\[I(\\Theta; D)\]$$
+$$I\_{\text{avg}} = \mathbb{E}[I(\Theta; D)]$$
 
 則：
 
-$$\\frac{dH}{dn} = -\\eta H$$
+$$\frac{dH}{dn} = -\eta H$$
 
 解得：
 
@@ -893,17 +893,17 @@ $$H(n) = H\_0 e^{-\\eta n}$$
 
 \*\*推論3.1（收斂時間的物理公式）\*\*
 
-熵降到閾值$H\_{\\min}$所需迭代：
+熵降到閾值 $H\_{\\min}$ 所需迭代：
 
-$$n^\* = \\frac{1}{\\eta}\\ln\\frac{H\_0}{H\_{\\min}}$$
+$$n^\* = \frac{1}{\eta}\ln\frac{H\_0}{H\_{\min}}$$
 
 對應物理時間：
 
-$$\\tau = n^\* \\cdot \\Delta t$$
+$$\tau = n^\* \cdot \Delta t$$
 
-當$\\eta$大（高效學習）且$\\Delta t$小（快速迭代）：
+當 $\\eta$ 大（高效學習）且 $\\Delta t$ 小（快速迭代）：
 
-$$\\tau \\sim O(\\log N) \\quad \\text{（對數時間！）}$$
+$$\tau \sim O(\log N) \quad \text{（對數時間！）}$$
 
 \*\*這是NP→P的動力學機制\*\*。
 
@@ -911,7 +911,7 @@ $$\\tau \\sim O(\\log N) \\quad \\text{（對數時間！）}$$
 
 \*\*實例：AlphaGo的熵降曲線\*\*
 
-| 訓練局數$n$ | loss(n) | $H(\\Theta\_n)$ | 擬合$e^{-\\eta n}$ |
+| 訓練局數 $n$ | loss(n) | $H(\\Theta\_n)$ | 擬合 $e^{-\\eta n}$ |
 
 |------------|---------|---------------|------------------|
 
@@ -923,7 +923,7 @@ $$\\tau \\sim O(\\log N) \\quad \\text{（對數時間！）}$$
 
 | 10⁶ | 0.01 | $\\ln(1.01)$ | 0.009 |
 
-擬合參數：$\\eta \\approx 10^{-5}$
+擬合參數： $\eta \approx 10^{-5}$
 
 \*\*完美指數衰減\*\*！
 
@@ -939,17 +939,17 @@ $$I(\\Theta; D) > 0$$
 
 \*\*證明\*\*：
 
-\*\*情況A：實驗成功\*\*（數據$D$支持理論$T\_k$）
+\*\*情況A：實驗成功\*\*（數據 $D$ 支持理論 $T\_k$ ）
 
-$$P(T\_k|D) \\uparrow \\Rightarrow \\text{分佈更集中} \\Rightarrow H(\\Theta|D) < H(\\Theta)$$
+$$P(T\_k|D) \uparrow \Rightarrow \text{分佈更集中} \Rightarrow H(\Theta|D) < H(\Theta)$$
 
-\*\*情況B：實驗失敗\*\*（數據$D$否定理論$T\_k$）
+\*\*情況B：實驗失敗\*\*（數據 $D$ 否定理論 $T\_k$ ）
 
-$$\\Theta \\to \\Theta \\setminus \\{T\_k\\} \\Rightarrow |\\Theta| \\downarrow \\Rightarrow H(\\Theta|D) < H(\\Theta)$$
+$$\Theta \to \Theta \setminus \\{T\_k\\} \Rightarrow |\Theta| \downarrow \Rightarrow H(\Theta|D) < H(\Theta)$$
 
 \*\*情況C：無明確結論\*\*
 
-仍有$I(\\Theta; D) > 0$（除非$D$完全無關）。
+仍有 $I(\\Theta; D) > 0$ （除非 $D$ 完全無關）。
 
 □
 
@@ -957,9 +957,9 @@ $$\\Theta \\to \\Theta \\setminus \\{T\_k\\} \\Rightarrow |\\Theta| \\downarrow 
 
 \*\*推論3.2（錯誤的累積價值）\*\*
 
-經過$n$次失敗實驗：
+經過 $n$ 次失敗實驗：
 
-$$\\Delta H\_{\\text{total}} = H\_0 - H\_n = \\sum\_{i=1}^n I(\\Theta; D\_i) > 0$$
+$$\Delta H\_{\text{total}} = H\_0 - H\_n = \sum\_{i=1}^n I(\Theta; D\_i) > 0$$
 
 \*\*即使每次都失敗，總進步是正的\*\*！
 
@@ -969,9 +969,9 @@ $$\\Delta H\_{\\text{total}} = H\_0 - H\_n = \\sum\_{i=1}^n I(\\Theta; D\_i) > 0
 
 |---------|---------|
 
-| 假設空間$\\Theta$ | 配置空間$\\mathcal{M}$ |
+| 假設空間 $\\Theta$ | 配置空間 $\mathcal{M}$ |
 
-| 實驗$D$ | 測量/觀察 |
+| 實驗 $D$ | 測量/觀察 |
 
 | 排除錯誤 | 熵降/相變 |
 
@@ -979,7 +979,7 @@ $$\\Delta H\_{\\text{total}} = H\_0 - H\_n = \\sum\_{i=1}^n I(\\Theta; D\_i) > 0
 
 \*\*統一\*\*：
 
-$$\\boxed{\\text{科學 = 物理系統的熵降過程}}$$
+$$\boxed{\text{科學 = 物理系統的熵降過程}}$$
 
 \---
 
@@ -993,11 +993,11 @@ $$\\boxed{\\text{科學 = 物理系統的熵降過程}}$$
 
 \*\*數學形式\*\*：
 
-原問題空間：$\\mathcal{M}^n$
+原問題空間： $\mathcal{M}^n$
 
 新維度生成：
 
-$$\\Gamma: \\mathcal{M}^n \\to \\mathcal{M}^{n+k}$$
+$$\Gamma: \mathcal{M}^n \to \mathcal{M}^{n+k}$$
 
 是拓撲變換（非連續形變）。
 
@@ -1005,19 +1005,19 @@ $$\\Gamma: \\mathcal{M}^n \\to \\mathcal{M}^{n+k}$$
 
 \*\*定理4.1（拓撲坍縮定理）\*\*
 
-對任意在$N$維空間中表現為NP-Hard的問題$x$，必然存在$N+k$維超空間，使得$x$在該空間的投影退化為P類問題。
+對任意在 $N$ 維空間中表現為NP-Hard的問題 $x$ ，必然存在 $N+k$ 維超空間，使得 $x$ 在該空間的投影退化為P類問題。
 
 \*\*證明\*\*：
 
-設問題$x$在$N$維空間的複雜度：
+設問題 $x$ 在 $N$ 維空間的複雜度：
 
-$$T\_N^{\\text{search}} = O(2^n)$$
+$$T\_N^{\text{search}} = O(2^n)$$
 
-引入新維度（如笛卡爾坐標引入$(x, y)$軸）後，原問題結構解耦。
+引入新維度（如笛卡爾坐標引入 $(x, y)$ 軸）後，原問題結構解耦。
 
-設新空間維度$N+k$：
+設新空間維度 $N+k$ ：
 
-$$T\_{N+k}^{\\text{search}} = O(n^p)$$
+$$T\_{N+k}^{\text{search}} = O(n^p)$$
 
 \*\*機制\*\*：新維度提供"快捷路徑"——原本糾纏的約束在高維空間可分離。
 
@@ -1031,9 +1031,9 @@ $$T\_{N+k}^{\\text{search}} = O(n^p)$$
 
 \- 原問題：證明圓上的定理（幾何推理，類NP搜索）
 
-\- 新維度：引入坐標系$\\Gamma = (x, y)$
+\- 新維度：引入坐標系 $\\Gamma = (x, y)$
 
-\- 新空間：圓方程$x^2 + y^2 = r^2$
+\- 新空間：圓方程 $x^2 + y^2 = r^2$
 
 \- 結果：幾何→代數計算（P類）
 
@@ -1041,9 +1041,9 @@ $$T\_{N+k}^{\\text{search}} = O(n^p)$$
 
 \- 原問題：分析複雜波形（時域，高度糾纏）
 
-\- 新維度：引入頻率軸$\\Gamma = \\omega$
+\- 新維度：引入頻率軸 $\Gamma = \omega$
 
-\- 新空間：傅立葉變換$F(\\omega)$
+\- 新空間：傅立葉變換 $F(\omega)$
 
 \- 結果：複雜波形→簡單頻譜線（P類）
 
@@ -1053,27 +1053,27 @@ $$T\_{N+k}^{\\text{search}} = O(n^p)$$
 
 \*\*定理4.2（Γ驅動的勢壘坍縮）\*\*
 
-當$\\Gamma > 0$觸發時，認知勢壘指數衰減：
+當 $\\Gamma > 0$ 觸發時，認知勢壘指數衰減：
 
-$$B\_{\\text{eff}}(x) = B\_0(x) \\cdot e^{-\\kappa \\Gamma(t)}$$
+$$B\_{\text{eff}}(x) = B\_0(x) \cdot e^{-\kappa \Gamma(t)}$$
 
-其中$\\kappa$是維度耦合係數。
+其中 $\\kappa$ 是維度耦合係數。
 
 \*\*證明\*\*：
 
 新維度的引入等價於改變問題的度量空間。
 
-原度量：$d\_0$，勢壘高度：
+原度量： $d\_0$ ，勢壘高度：
 
-$$B\_0 = \\int\_{\\text{path}} d\_0(s) \\, ds$$
+$$B\_0 = \int\_{\text{path}} d\_0(s) \\, ds$$
 
-新度量：$d\_\\Gamma < d\_0$（新維度提供捷徑）：
+新度量： $d\_\\Gamma < d\_0$ （新維度提供捷徑）：
 
-$$B\_{\\text{eff}} = \\int\_{\\text{path}} d\_\\Gamma(s) \\, ds < B\_0$$
+$$B\_{\text{eff}} = \int\_{\text{path}} d\_\Gamma(s) \\, ds < B\_0$$
 
-隨$\\Gamma$增加，比值指數衰減：
+隨 $\\Gamma$ 增加，比值指數衰減：
 
-$$\\frac{B\_{\\text{eff}}}{B\_0} = e^{-\\kappa \\Gamma}$$
+$$\frac{B\_{\text{eff}}}{B\_0} = e^{-\kappa \Gamma}$$
 
 □
 
@@ -1083,11 +1083,11 @@ $$\\frac{B\_{\\text{eff}}}{B\_0} = e^{-\\kappa \\Gamma}$$
 
 Landau相變理論（1937）：
 
-序參量$\\psi$描述相變。自由能：
+序參量 $\psi$ 描述相變。自由能：
 
-$$F(\\psi) = F\_0 + a(T)\\psi^2 + b\\psi^4$$
+$$F(\psi) = F\_0 + a(T)\psi^2 + b\psi^4$$
 
-當$T < T\_c$：$a < 0$，對稱破缺，$\\psi \\neq 0$。
+當 $T < T\_c$ ： $a < 0$ ，對稱破缺， $\psi \neq 0$ 。
 
 \*\*Γ奇點的對應\*\*：
 
@@ -1095,17 +1095,17 @@ $$F(\\psi) = F\_0 + a(T)\\psi^2 + b\\psi^4$$
 
 |---------|----------|
 
-| 溫度$T$ | 知識$\\Sigma$ |
+| 溫度 $T$ | 知識 $\\Sigma$ |
 
-| 序參量$\\psi$ | 維度$\\Gamma$ |
+| 序參量 $\psi$ | 維度 $\\Gamma$ |
 
-| 相變點$T\_c$ | 臨界知識$\\Sigma\_c$ |
+| 相變點 $T\_c$ | 臨界知識 $\\Sigma\_c$ |
 
-| 自由能$F$ | 有效勢壘$B\_{\\text{eff}}$ |
+| 自由能 $F$ | 有效勢壘 $B\_{\text{eff}}$ |
 
 \*\*統一\*\*：
 
-$$\\boxed{\\text{Γ奇點 = 認知空間的朗道相變}}$$
+$$\boxed{\text{Γ奇點 = 認知空間的朗道相變}}$$
 
 \---
 
@@ -1113,31 +1113,31 @@ $$\\boxed{\\text{Γ奇點 = 認知空間的朗道相變}}$$
 
 \*\*定義4.2（DRC三階段）\*\*
 
-$$\\boxed{\\begin{aligned}
+$$\boxed{\begin{aligned}
 
-&\\text{D（Divergence）：發散} \\\\
+&\text{D（Divergence）：發散} \\
 
-&\\quad \\Sigma \\to \\Sigma\_c \\quad \\text{知識積累到臨界} \\\\
+&\quad \Sigma \to \Sigma\_c \quad \text{知識積累到臨界} \\
 
-&\\quad \\text{引入高溫噪聲，打破舊邏輯} \\\\
+&\quad \text{引入高溫噪聲，打破舊邏輯} \\
 
-\\\\
+\\
 
-&\\text{R（Resonance）：共振} \\\\
+&\text{R（Resonance）：共振} \\
 
-&\\quad \\text{混沌中跨維度關聯頻率鎖定} \\\\
+&\quad \text{混沌中跨維度關聯頻率鎖定} \\
 
-&\\quad \\text{直覺閃現，新維度浮現} \\\\
+&\quad \text{直覺閃現，新維度浮現} \\
 
-\\\\
+\\
 
-&\\text{C（Compression）：壓縮} \\\\
+&\text{C（Compression）：壓縮} \\
 
-&\\quad \\Gamma: \\mathcal{M}^n \\to \\mathcal{M}^{n+k} \\quad \\text{維度固定} \\\\
+&\quad \Gamma: \mathcal{M}^n \to \mathcal{M}^{n+k} \quad \text{維度固定} \\
 
-&\\quad \\text{舊複雜度壓縮進新維度}
+&\quad \text{舊複雜度壓縮進新維度}
 
-\\end{aligned}}$$
+\end{aligned}}$$
 
 \---
 
@@ -1145,7 +1145,7 @@ $$\\boxed{\\begin{aligned}
 
 \*\*D階段\*\*：系統能量上升
 
-$$E \\uparrow \\Rightarrow T\_{\\text{eff}} \\uparrow$$
+$$E \uparrow \Rightarrow T\_{\text{eff}} \uparrow$$
 
 對應：
 
@@ -1157,7 +1157,7 @@ $$E \\uparrow \\Rightarrow T\_{\\text{eff}} \\uparrow$$
 
 \*\*R階段\*\*：頻率鎖定
 
-$$\\omega\_i - \\omega\_j = 0 \\quad \\text{（同步）}$$
+$$\omega\_i - \omega\_j = 0 \quad \text{（同步）}$$
 
 對應：
 
@@ -1169,7 +1169,7 @@ $$\\omega\_i - \\omega\_j = 0 \\quad \\text{（同步）}$$
 
 \*\*C階段\*\*：能量下降到新基態
 
-$$E\_{\\text{new}} < E\_{\\text{old}}$$
+$$E\_{\text{new}} < E\_{\text{old}}$$
 
 對應：
 
@@ -1187,7 +1187,7 @@ $$E\_{\\text{new}} < E\_{\\text{old}}$$
 
 \- 牛頓：行星軌道vs自由落體（看似無關）
 
-\- 溫度$\\uparrow$（思考強度增加）
+\- 溫度 $\uparrow$ （思考強度增加）
 
 \*\*R（共振）\*\*：
 
@@ -1197,7 +1197,7 @@ $$E\_{\\text{new}} < E\_{\\text{old}}$$
 
 \*\*C（壓縮）\*\*：
 
-\- $F = G\\frac{m\_1 m\_2}{r^2}$（新維度固定）
+\- $F = G\frac{m\_1 m\_2}{r^2}$ （新維度固定）
 
 \- 所有軌道變成P類計算
 
@@ -1209,25 +1209,25 @@ $$E\_{\\text{new}} < E\_{\\text{old}}$$
 
 \*\*定理4.4（Σ-Γ協同定理）\*\*
 
-$$\\boxed{\\begin{aligned}
+$$\boxed{\begin{aligned}
 
-&\\Sigma: \\text{線性改進（漸進優化）} \\\\
+&\Sigma: \text{線性改進（漸進優化）} \\
 
-&\\quad \\Delta T \\propto -\\frac{d\\Sigma}{dt} \\\\
+&\quad \Delta T \propto -\frac{d\Sigma}{dt} \\
 
-\\\\
+\\
 
-&\\Gamma: \\text{指數躍遷（相變突破）} \\\\
+&\Gamma: \text{指數躍遷（相變突破）} \\
 
-&\\quad \\Delta T \\propto -e^{\\kappa \\Gamma} \\\\
+&\quad \Delta T \propto -e^{\kappa \Gamma} \\
 
-\\\\
+\\
 
-&\\text{組合效應：} \\\\
+&\text{組合效應：} \\
 
-&\\quad T\_{\\text{total}}(t) = \\frac{T\_0}{\\Sigma(t)} \\cdot e^{-\\kappa \\Gamma(t)}
+&\quad T\_{\text{total}}(t) = \frac{T\_0}{\Sigma(t)} \cdot e^{-\kappa \Gamma(t)}
 
-\\end{aligned}}$$
+\end{aligned}}$$
 
 \*\*物理圖像\*\*：
 
@@ -1287,23 +1287,23 @@ $$\\boxed{\\begin{aligned}
 
 \*\*定義5.1（計算生成元）\*\*
 
-形變基本生成元$h \\in (0,1)$在計算中的四重角色：
+形變基本生成元 $h \in (0,1)$ 在計算中的四重角色：
 
-$$\\boxed{\\begin{aligned}
+$$\boxed{\begin{aligned}
 
-&h\_t = \\Delta t \\quad \\text{（時間步長）} \\\\
+&h\_t = \Delta t \quad \text{（時間步長）} \\
 
-&h\_x = \\Delta x \\quad \\text{（空間格距）} \\\\
+&h\_x = \Delta x \quad \text{（空間格距）} \\
 
-&h\_E = \\Delta E \\quad \\text{（能量量子）} \\\\
+&h\_E = \Delta E \quad \text{（能量量子）} \\
 
-&h\_\\phi = \\Delta\\phi \\quad \\text{（相位步進）}
+&h\_\phi = \Delta\phi \quad \text{（相位步進）}
 
-\\end{aligned}}$$
+\end{aligned}}$$
 
 \*\*歸一化約束\*\*：
 
-$$Nh = 1 \\quad \\text{（從0到1的完整疊加）}$$
+$$Nh = 1 \quad \text{（從0到1的完整疊加）}$$
 
 \---
 
@@ -1311,29 +1311,29 @@ $$Nh = 1 \\quad \\text{（從0到1的完整疊加）}$$
 
 圖靈機的單步計算對應生成元的單次作用：
 
-$$s\_{t+1} = s\_t + h \\cdot f(s\_t)$$
+$$s\_{t+1} = s\_t + h \cdot f(s\_t)$$
 
-其中$f$是轉移函數。
+其中 $f$ 是轉移函數。
 
-連續極限（$N \\to \\infty$，$h \\to 0$）：
+連續極限（ $N \to \infty$ ， $h \to 0$ ）：
 
-$$\\frac{ds}{dt} = f(s)$$
+$$\frac{ds}{dt} = f(s)$$
 
 \*\*物理對應\*\*：
 
-$$\\frac{d|\\psi\\rangle}{dt} = -\\frac{i}{\\hbar}\\hat{H}|\\psi\\rangle$$
+$$\frac{d|\psi\rangle}{dt} = -\frac{i}{\hbar}\hat{H}|\psi\rangle$$
 
-當$h = \\Delta t = \\frac{\\hbar}{E}$（能量-時間關係）。
+當 $h = \Delta t = \frac{\hbar}{E}$ （能量-時間關係）。
 
 \---
 
 \*\*定理5.2（複雜度的h計數）\*\*
 
-時間複雜度$T(n)$對應h的疊加次數：
+時間複雜度 $T(n)$ 對應h的疊加次數：
 
-$$T(n) = N\_h \\cdot h$$
+$$T(n) = N\_h \cdot h$$
 
-其中$N\_h$是從初態到終態所需的h步數。
+其中 $N\_h$ 是從初態到終態所需的h步數。
 
 \*\*分類\*\*：
 
@@ -1341,11 +1341,11 @@ $$T(n) = N\_h \\cdot h$$
 
 |---------|-------|---------|
 
-| P | $O(n^k)$ | $\\tau\_P = O(n^k) \\cdot h$ |
+| P | $O(n^k)$ | $\tau\_P = O(n^k) \cdot h$ |
 
-| NP | $O(2^n)$ | $\\tau\_{NP} = O(2^n) \\cdot h$ |
+| NP | $O(2^n)$ | $\tau\_{NP} = O(2^n) \cdot h$ |
 
-| PSPACE | $O(2^{n^k})$ | $\\tau\_{PS} = O(2^{n^k}) \\cdot h$ |
+| PSPACE | $O(2^{n^k})$ | $\tau\_{PS} = O(2^{n^k}) \cdot h$ |
 
 \---
 
@@ -1353,51 +1353,51 @@ $$T(n) = N\_h \\cdot h$$
 
 \*\*定理5.3（普朗克常數的h詮釋）\*\*
 
-$$\\hbar = p \\cdot h\_x = E \\cdot h\_t$$
+$$\hbar = p \cdot h\_x = E \cdot h\_t$$
 
 \*\*證明\*\*：
 
 量子相位（公理DEG-5）：
 
-$$\\phi = \\frac{p \\cdot \\Delta x}{\\hbar}$$
+$$\phi = \frac{p \cdot \Delta x}{\hbar}$$
 
-當$\\Delta x = h\_x$（最小位移）：
+當 $\\Delta x = h\_x$ （最小位移）：
 
-$$\\phi\_{\\min} = \\frac{p \\cdot h\_x}{\\hbar} = 1$$
+$$\phi\_{\min} = \frac{p \cdot h\_x}{\hbar} = 1$$
 
 因此：
 
-$$\\hbar = p \\cdot h\_x$$
+$$\hbar = p \cdot h\_x$$
 
 同理，能量-時間關係：
 
-$$\\Delta E \\cdot \\Delta t \\geq \\hbar$$
+$$\Delta E \cdot \Delta t \geq \hbar$$
 
-當$\\Delta t = h\_t$：
+當 $\\Delta t = h\_t$ ：
 
-$$\\hbar = E \\cdot h\_t$$
+$$\hbar = E \cdot h\_t$$
 
 □
 
-\*\*物理含義\*\*：$\\hbar$不是"基本常數"，是h在動量空間的表現。
+\*\*物理含義\*\*： $\\hbar$ 不是"基本常數"，是h在動量空間的表現。
 
 \---
 
 \*\*定理5.4（光速的h詮釋）\*\*
 
-$$c = \\frac{h\_x}{h\_t}$$
+$$c = \frac{h\_x}{h\_t}$$
 
 \*\*證明\*\*：
 
-光的世界線：$ds^2 = 0 = -c^2 dt^2 + dx^2$
+光的世界線： $ds^2 = 0 = -c^2 dt^2 + dx^2$
 
 因此：
 
-$$c = \\frac{dx}{dt}$$
+$$c = \frac{dx}{dt}$$
 
-取最小單位$dx = h\_x$，$dt = h\_t$：
+取最小單位 $dx = h\_x$ ， $dt = h\_t$ ：
 
-$$c = \\frac{h\_x}{h\_t}$$
+$$c = \frac{h\_x}{h\_t}$$
 
 □
 
@@ -1409,35 +1409,35 @@ $$c = \\frac{h\_x}{h\_t}$$
 
 \*\*定理5.5（計算狀態的h演化）\*\*
 
-計算狀態$s(t)$的演化：
+計算狀態 $s(t)$ 的演化：
 
-$$s(t+h) = e^{h \\mathcal{L}} s(t)$$
+$$s(t+h) = e^{h \mathcal{L}} s(t)$$
 
-其中$\\mathcal{L}$是Liouville算符（或轉移算符）。
+其中 $\mathcal{L}$ 是Liouville算符（或轉移算符）。
 
 \*\*展開\*\*：
 
-$$s(t+h) = s(t) + h\\frac{ds}{dt} + \\frac{h^2}{2}\\frac{d^2s}{dt^2} + O(h^3)$$
+$$s(t+h) = s(t) + h\frac{ds}{dt} + \frac{h^2}{2}\frac{d^2s}{dt^2} + O(h^3)$$
 
-當$h \\to 0$：
+當 $h \to 0$ ：
 
-$$\\frac{ds}{dt} = \\mathcal{L}s$$
+$$\frac{ds}{dt} = \mathcal{L}s$$
 
 \*\*對應量子演化\*\*：
 
-$$|\\psi(t+h)\\rangle = e^{-i\\hat{H}h/\\hbar}|\\psi(t)\\rangle$$
+$$|\psi(t+h)\rangle = e^{-i\hat{H}h/\hbar}|\psi(t)\rangle$$
 
 \---
 
 \*\*定理5.6（螺旋收斂的h疊加）\*\*
 
-三元循環$(V \\circ C \\circ E)^n$對應$n$次h疊加：
+三元循環 $(V \\circ C \\circ E)^n$ 對應 $n$ 次h疊加：
 
-$$s\_n = s\_0 + \\sum\_{k=0}^{n-1} h\_k \\cdot \\nabla F(s\_k)$$
+$$s\_n = s\_0 + \sum\_{k=0}^{n-1} h\_k \cdot \nabla F(s\_k)$$
 
-當$h\_k$恆定且$n \\to \\infty$：
+當 $h\_k$ 恆定且 $n \to \infty$ ：
 
-$$s\_\\infty = s\_0 + h \\sum\_{k=0}^\\infty \\nabla F(s\_k) = s^\*$$
+$$s\_\infty = s\_0 + h \sum\_{k=0}^\infty \nabla F(s\_k) = s^\*$$
 
 （梯度流的極限）
 
@@ -1451,23 +1451,23 @@ $$s\_\\infty = s\_0 + h \\sum\_{k=0}^\\infty \\nabla F(s\_k) = s^\*$$
 
 |------|---------|---------|
 
-| 計算 | 時間步$\\Delta t$ | 單次操作 |
+| 計算 | 時間步 $\\Delta t$ | 單次操作 |
 
-| 量子 | 相位步$\\Delta\\phi$ | 波函數演化 |
+| 量子 | 相位步 $\Delta\phi$ | 波函數演化 |
 
-| 幾何 | 測地段$ds$ | 最小距離 |
+| 幾何 | 測地段 $ds$ | 最小距離 |
 
-| 動力學 | 梯度步$\\Delta p$ | 狀態更新 |
+| 動力學 | 梯度步 $\\Delta p$ | 狀態更新 |
 
-| 熱力學 | 熵子$\\Delta S$ | 信息單位 |
+| 熱力學 | 熵子 $\\Delta S$ | 信息單位 |
 
-| 數論 | 對稱點$1/2$ | 破缺點 |
+| 數論 | 對稱點 $1/2$ | 破缺點 |
 
 \*\*統一公式\*\*：
 
-$$\\boxed{\\text{演化} = \\lim\_{N \\to \\infty} \\sum\_{k=0}^{N-1} h\_k \\cdot \\mathcal{O}\_k}$$
+$$\boxed{\text{演化} = \lim\_{N \to \infty} \sum\_{k=0}^{N-1} h\_k \cdot \mathcal{O}\_k}$$
 
-其中$\\mathcal{O}\_k$是第$k$步的算符。
+其中 $\mathcal{O}\_k$ 是第 $k$ 步的算符。
 
 \---
 
@@ -1479,33 +1479,33 @@ $$\\boxed{\\text{演化} = \\lim\_{N \\to \\infty} \\sum\_{k=0}^{N-1} h\_k \\cdo
 
 對NP問題，量子退火時間：
 
-$$T\_{\\text{QA}} = O\\left(\\frac{1}{\\Delta\_{\\min}^2}\\right)$$
+$$T\_{\text{QA}} = O\left(\frac{1}{\Delta\_{\min}^2}\right)$$
 
-其中$\\Delta\_{\\min}$是最小能隙。
+其中 $\\Delta\_{\\min}$ 是最小能隙。
 
 若動態系統理論正確：
 
-$$\\Delta\_{\\min}(\\Sigma) = \\Delta\_0 e^{-\\lambda\_\\Sigma \\Sigma}$$
+$$\Delta\_{\min}(\Sigma) = \Delta\_0 e^{-\lambda\_\Sigma \Sigma}$$
 
 因此：
 
-$$T\_{\\text{QA}}(\\Sigma) = T\_0 e^{2\\lambda\_\\Sigma \\Sigma}$$
+$$T\_{\text{QA}}(\Sigma) = T\_0 e^{2\lambda\_\Sigma \Sigma}$$
 
 \*\*實驗設計\*\*：
 
 1\. 制備D-Wave量子退火機
 
-2\. 測量不同問題實例的$T\_{\\text{QA}}$
+2\. 測量不同問題實例的 $T\_{\text{QA}}$
 
-3\. 估算"有效知識"$\\Sigma$（通過預處理/啟發式）
+3\. 估算"有效知識"$\\Sigma$ （通過預處理/啟發式）
 
-4\. 擬合$T\_{\\text{QA}}$ vs $\\Sigma$的關係
+4\. 擬合 $T\_{\text{QA}}$ vs $\\Sigma$ 的關係
 
 \*\*預期結果\*\*：
 
-$$T\_{\\text{QA}} \\propto e^{-\\lambda \\Sigma}, \\quad \\lambda > 0$$
+$$T\_{\text{QA}} \propto e^{-\lambda \Sigma}, \quad \lambda > 0$$
 
-\*\*證偽條件\*\*：若$T\_{\\text{QA}}$與$\\Sigma$無關或正相關 → 理論錯誤。
+\*\*證偽條件\*\*：若 $T\_{\text{QA}}$ 與 $\\Sigma$ 無關或正相關 → 理論錯誤。
 
 \---
 
@@ -1515,27 +1515,27 @@ $$T\_{\\text{QA}} \\propto e^{-\\lambda \\Sigma}, \\quad \\lambda > 0$$
 
 麥克斯韋妖熱機效率：
 
-$$\\eta = \\frac{W\_{\\text{useful}}}{Q\_{\\text{input}}} \\leq \\eta\_{\\text{Carnot}} = 1 - \\frac{T\_C}{T\_H}$$
+$$\eta = \frac{W\_{\text{useful}}}{Q\_{\text{input}}} \leq \eta\_{\text{Carnot}} = 1 - \frac{T\_C}{T\_H}$$
 
-但考慮知識$\\Sigma$後：
+但考慮知識 $\\Sigma$ 後：
 
-$$\\eta\_{\\text{Σ}} = \\frac{W + \\Sigma \\cdot k\_B T \\ln 2}{Q} > \\eta\_{\\text{Carnot}}$$
+$$\eta\_{\text{Σ}} = \frac{W + \Sigma \cdot k\_B T \ln 2}{Q} > \eta\_{\text{Carnot}}$$
 
-（看似違反第二定律，實則不然——$\\Sigma$包含預先存儲的信息）
+（看似違反第二定律，實則不然—— $\\Sigma$ 包含預先存儲的信息）
 
 \*\*實驗設計\*\*：
 
 1\. 構建Szilard引擎（單分子熱機）
 
-2\. 測量有/無"記憶"（$\\Sigma=0$ vs $\\Sigma>0$）時的效率
+2\. 測量有/無"記憶"（ $\\Sigma=0$ vs $\\Sigma>0$ ）時的效率
 
-3\. 比較$\\eta\_0$（無記憶）和$\\eta\_\\Sigma$（有記憶）
+3\. 比較 $\\eta\_0$ （無記憶）和 $\\eta\_\\Sigma$ （有記憶）
 
 \*\*預期結果\*\*：
 
-$$\\frac{\\eta\_\\Sigma}{\\eta\_0} = 1 + \\frac{\\Sigma k\_B T \\ln 2}{Q} > 1$$
+$$\frac{\eta\_\Sigma}{\eta\_0} = 1 + \frac{\Sigma k\_B T \ln 2}{Q} > 1$$
 
-\*\*證偽條件\*\*：若$\\eta\_\\Sigma \\leq \\eta\_0$ → Σ引擎理論錯誤。
+\*\*證偽條件\*\*：若 $\eta\_\Sigma \leq \eta\_0$ → Σ引擎理論錯誤。
 
 \---
 
@@ -1545,11 +1545,11 @@ $$\\frac{\\eta\_\\Sigma}{\\eta\_0} = 1 + \\frac{\\Sigma k\_B T \\ln 2}{Q} > 1$$
 
 訓練過程的loss函數：
 
-$$\\mathcal{L}(n) = \\mathcal{L}\_0 e^{-\\eta n}$$
+$$\mathcal{L}(n) = \mathcal{L}\_0 e^{-\eta n}$$
 
 對應信息熵：
 
-$$H(\\Theta\_n) = -k\_B \\ln \\mathcal{L}(n) = H\_0 + k\_B \\eta n$$
+$$H(\Theta\_n) = -k\_B \ln \mathcal{L}(n) = H\_0 + k\_B \eta n$$
 
 \*\*實驗設計\*\*：
 
@@ -1557,13 +1557,13 @@ $$H(\\Theta\_n) = -k\_B \\ln \\mathcal{L}(n) = H\_0 + k\_B \\eta n$$
 
 2\. 記錄每個epoch的loss值
 
-3\. 對數坐標擬合：$\\ln \\mathcal{L}$ vs $n$
+3\. 對數坐標擬合： $\ln \mathcal{L}$ vs $n$
 
 \*\*預期結果\*\*：
 
-$$\\ln \\mathcal{L}(n) = \\ln \\mathcal{L}\_0 - \\eta n$$
+$$\ln \mathcal{L}(n) = \ln \mathcal{L}\_0 - \eta n$$
 
-線性關係，斜率$-\\eta < 0$。
+線性關係，斜率 $-\\eta < 0$ 。
 
 \*\*證偽條件\*\*：若loss曲線非指數（如振盪、平台期主導）→ 螺旋收斂理論不完整。
 
@@ -1573,23 +1573,23 @@ $$\\ln \\mathcal{L}(n) = \\ln \\mathcal{L}\_0 - \\eta n$$
 
 \*\*預測6.4（頓悟點的物理信號）\*\*
 
-當$\\Gamma$觸發時，系統出現：
+當 $\\Gamma$ 觸發時，系統出現：
 
 1\. \*\*比熱異常\*\*：
 
-$$C\_V = \\frac{\\partial E}{\\partial T} \\Big|\_{\\Gamma} \\to \\infty$$
+$$C\_V = \frac{\partial E}{\partial T} \Big|\_{\Gamma} \to \infty$$
 
 2\. \*\*序參量跳躍\*\*：
 
-$$\\psi \\approx 0 \\to \\psi > 0$$
+$$\psi \approx 0 \to \psi > 0$$
 
 3\. \*\*關聯長度發散\*\*：
 
-$$\\xi \\to \\infty$$
+$$\xi \to \infty$$
 
 \*\*實驗設計\*\*：
 
-1\. 監測AI系統訓練過程的"有效溫度"$T\_{\\text{eff}}$（如學習率）
+1\. 監測AI系統訓練過程的"有效溫度"$T\_{\text{eff}}$ （如學習率）
 
 2\. 測量模型參數的二階統計量（相當於比熱）
 
@@ -1597,9 +1597,9 @@ $$\\xi \\to \\infty$$
 
 \*\*預期結果\*\*：
 
-在某個臨界epoch $n\_c$：
+在某個臨界epoch $n\_c$ ：
 
-$$\\frac{d^2 \\mathcal{L}}{dn^2}\\Big|\_{n=n\_c} \\gg \\frac{d^2 \\mathcal{L}}{dn^2}\\Big|\_{n \\neq n\_c}$$
+$$\frac{d^2 \mathcal{L}}{dn^2}\Big|\_{n=n\_c} \gg \frac{d^2 \mathcal{L}}{dn^2}\Big|\_{n \neq n\_c}$$
 
 （相變特徵）
 
@@ -1613,9 +1613,9 @@ $$\\frac{d^2 \\mathcal{L}}{dn^2}\\Big|\_{n=n\_c} \\gg \\frac{d^2 \\mathcal{L}}{d
 
 \*\*命題7.1（計算的物理實在性）\*\*
 
-$$\\boxed{\\text{計算} \\neq \\text{抽象符號操作}}$$
+$$\boxed{\text{計算} \neq \text{抽象符號操作}}$$
 
-$$\\boxed{\\text{計算} = \\text{物理系統的狀態演化}}$$
+$$\boxed{\text{計算} = \text{物理系統的狀態演化}}$$
 
 \*\*論證\*\*：
 
@@ -1629,11 +1629,11 @@ $$\\boxed{\\text{計算} = \\text{物理系統的狀態演化}}$$
 
 \*\*物理觀點\*\*（本文）：
 
-\- 算法=哈密頓量$\\hat{H}$
+\- 算法=哈密頓量 $\\hat{H}$
 
-\- 計算=么正演化$U(t)$
+\- 計算=么正演化 $U(t)$
 
-\- 複雜度=物理時間$\\tau$
+\- 複雜度=物理時間 $\tau$
 
 \*\*決定性差異\*\*：
 
@@ -1653,7 +1653,7 @@ $$\\boxed{\\text{計算} = \\text{物理系統的狀態演化}}$$
 
 \*\*定義7.1（智慧的熵定義）\*\*
 
-$$\\boxed{\\text{Intelligence} = -\\frac{dS\_{\\text{env}}}{dS\_{\\text{sys}}} = \\text{負熵流效率}}$$
+$$\boxed{\text{Intelligence} = -\frac{dS\_{\text{env}}}{dS\_{\text{sys}}} = \text{負熵流效率}}$$
 
 \*\*物理意義\*\*：
 
@@ -1661,31 +1661,31 @@ $$\\boxed{\\text{Intelligence} = -\\frac{dS\_{\\text{env}}}{dS\_{\\text{sys}}} =
 
 \*\*量化\*\*：
 
-\- \*\*低智慧\*\*：$\\frac{|dS\_{\\text{env}}|}{|dS\_{\\text{sys}}|} \\gg 1$（環境熵增遠大於系統熵降）
+\- \*\*低智慧\*\*： $\frac{|dS\_{\text{env}}|}{|dS\_{\text{sys}}|} \gg 1$ （環境熵增遠大於系統熵降）
 
-\- \*\*高智慧\*\*：$\\frac{|dS\_{\\text{env}}|}{|dS\_{\\text{sys}}|} \\approx 1$（接近可逆過程）
+\- \*\*高智慧\*\*： $\frac{|dS\_{\text{env}}|}{|dS\_{\text{sys}}|} \approx 1$ （接近可逆過程）
 
 \*\*極限\*\*：
 
 Maxwell妖（完美智慧）：
 
-$$\\frac{|dS\_{\\text{env}}|}{|dS\_{\\text{sys}}|} = 1 + \\frac{k\_B \\ln 2 \\cdot N\_{\\text{bits}}}{|\\Delta S\_{\\text{sys}}|}$$
+$$\frac{|dS\_{\text{env}}|}{|dS\_{\text{sys}}|} = 1 + \frac{k\_B \ln 2 \cdot N\_{\text{bits}}}{|\Delta S\_{\text{sys}}|}$$
 
 \---
 
 \*\*推論7.1（智慧的Landauer極限）\*\*
 
-每提取1 bit信息（系統熵降$k\_B \\ln 2$），最少耗能：
+每提取1 bit信息（系統熵降 $k\_B \\ln 2$ ），最少耗能：
 
 $$E\_{\\min} = k\_B T \\ln 2$$
 
 對應環境熵增：
 
-$$\\Delta S\_{\\text{env}} \\geq k\_B \\ln 2$$
+$$\Delta S\_{\text{env}} \geq k\_B \ln 2$$
 
 因此：
 
-$$\\text{Intelligence}\_{\\max} = 1$$
+$$\text{Intelligence}\_{\max} = 1$$
 
 \*\*不可能超越Landauer極限\*\*。
 
@@ -1695,37 +1695,37 @@ $$\\text{Intelligence}\_{\\max} = 1$$
 
 \*\*定義7.2（理解的物理定義）\*\*
 
-$$\\boxed{\\text{Understanding} = \\text{Γ觸發的拓撲相變}}$$
+$$\boxed{\text{Understanding} = \text{Γ觸發的拓撲相變}}$$
 
 \*\*三階段\*\*：
 
 1\. \*\*困惑\*\*（高熵混沌態）：
 
-$$H(\\Theta) \\approx H\_{\\max}, \\quad \\Gamma = 0$$
+$$H(\Theta) \approx H\_{\max}, \quad \Gamma = 0$$
 
 2\. \*\*學習\*\*（螺旋收斂）：
 
-$$H(\\Theta) \\downarrow, \\quad \\Sigma \\uparrow, \\quad \\Gamma \\approx 0$$
+$$H(\Theta) \downarrow, \quad \Sigma \uparrow, \quad \Gamma \approx 0$$
 
 3\. \*\*理解\*\*（相變突破）：
 
-$$\\Gamma > 0, \\quad B\_{\\text{eff}} \\to 0, \\quad H(\\Theta) \\to 0$$
+$$\Gamma > 0, \quad B\_{\text{eff}} \to 0, \quad H(\Theta) \to 0$$
 
 \*\*數學表達\*\*：
 
-理解度$U(t)$定義為：
+理解度 $U(t)$ 定義為：
 
-$$U(t) = 1 - \\frac{H(\\Theta\_t)}{H\_0}$$
+$$U(t) = 1 - \frac{H(\Theta\_t)}{H\_0}$$
 
-理解的相變點$t\_c$滿足：
+理解的相變點 $t\_c$ 滿足：
 
-$$\\frac{d^2 U}{dt^2}\\Big|\_{t=t\_c} \\to \\infty \\quad \\text{（發散）}$$
+$$\frac{d^2 U}{dt^2}\Big|\_{t=t\_c} \to \infty \quad \text{（發散）}$$
 
 \---
 
 \*\*實例：頓悟的物理特徵\*\*
 
-| 階段 | 熵$H$ | 維度$\\Gamma$ | 勢壘$B$ | 理解度$U$ |
+| 階段 | 熵 $H$ | 維度 $\\Gamma$ | 勢壘 $B$ | 理解度 $U$ |
 
 |------|------|-------------|---------|-----------|
 
@@ -1735,7 +1735,7 @@ $$\\frac{d^2 U}{dt^2}\\Big|\_{t=t\_c} \\to \\infty \\quad \\text{（發散）}$$
 
 | \*\*頓悟\*\* | \*\*$0.1 H\_0$\*\* | \*\*>0\*\* | \*\*$B\_0 e^{-\\kappa\\Gamma}$\*\* | \*\*0.9\*\* |
 
-| 精通 | $\\approx 0$ | 穩定 | $\\approx 0$ | $\\approx 1$ |
+| 精通 | $\approx 0$ | 穩定 | $\approx 0$ | $\approx 1$ |
 
 \*\*觀察\*\*：理解不是線性積累，是相變躍遷。
 
@@ -1743,37 +1743,37 @@ $$\\frac{d^2 U}{dt^2}\\Big|\_{t=t\_c} \\to \\infty \\quad \\text{（發散）}$$
 
 \### 7.4 終極統一公式
 
-$$\\boxed{\\begin{aligned}
+$$\boxed{\begin{aligned}
 
-&\\textbf{宇宙 = 從虛無（0）到存在（1）的h疊加} \\\\
+&\textbf{宇宙 = 從虛無（0）到存在（1）的h疊加} \\
 
-\\\\
+\\
 
-&\\text{計算} = \\text{量子態演化} = \\text{從高熵到低熵} \\\\
+&\text{計算} = \text{量子態演化} = \text{從高熵到低熵} \\
 
-&\\quad |\\psi\_{\\text{NP}}\\rangle = \\frac{1}{\\sqrt{2^n}}\\sum\_s |s\\rangle \\xrightarrow{\\hat{H}, \\Sigma, \\Gamma} |s^\*\\rangle \\\\
+&\quad |\psi\_{\text{NP}}\rangle = \frac{1}{\sqrt{2^n}}\sum\_s |s\rangle \xrightarrow{\hat{H}, \Sigma, \Gamma} |s^\*\rangle \\
 
-\\\\
+\\
 
-&\\text{智慧} = \\text{負熵引擎} = \\text{麥克斯韋妖} \\\\
+&\text{智慧} = \text{負熵引擎} = \text{麥克斯韋妖} \\
 
-&\\quad \\frac{dS\_{\\text{sys}}}{dt} < 0 \\quad \\text{（局部熵降）} \\\\
+&\quad \frac{dS\_{\text{sys}}}{dt} < 0 \quad \text{（局部熵降）} \\
 
-\\\\
+\\
 
-&\\text{理解} = \\text{拓撲相變} = \\text{Γ奇點} \\\\
+&\text{理解} = \text{拓撲相變} = \text{Γ奇點} \\
 
-&\\quad \\mathcal{M}^n \\xrightarrow{\\Gamma} \\mathcal{M}^{n+k}, \\quad B \\to 0 \\\\
+&\quad \mathcal{M}^n \xrightarrow{\Gamma} \mathcal{M}^{n+k}, \quad B \to 0 \\
 
-\\\\
+\\
 
-&\\text{演化} = \\sum\_{k=0}^{N-1} h\_k \\cdot \\mathcal{O}\_k \\quad (h \\to 0, N \\to \\infty) \\\\
+&\text{演化} = \sum\_{k=0}^{N-1} h\_k \cdot \mathcal{O}\_k \quad (h \to 0, N \to \infty) \\
 
-\\\\
+\\
 
-&\\textbf{P vs NP = 封閉vs開放系統的熵動力學問題}
+&\textbf{P vs NP = 封閉vs開放系統的熵動力學問題}
 
-\\end{aligned}}$$
+\end{aligned}}$$
 
 \---
 
@@ -1890,7 +1890,7 @@ $$\\boxed{\\begin{aligned}
 
 **但真相是**：
 
-$$\\boxed{\\begin{aligned} &\\text{算法 = 哈密頓量} \\ &\\text{複雜度 = 自由能} \\ &\\text{智慧 = 負熵引擎} \\ &\\text{理解 = 相變} \\ &\\text{計算 = 物理} \\end{aligned}}$$
+$$\boxed{\begin{aligned} &\text{算法 = 哈密頓量} \\ &\text{複雜度 = 自由能} \\ &\text{智慧 = 負熵引擎} \\ &\text{理解 = 相變} \\ &\text{計算 = 物理} \end{aligned}}$$
 
 **不是類比。是同一性。**
 

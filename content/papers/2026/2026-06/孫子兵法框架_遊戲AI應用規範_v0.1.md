@@ -92,7 +92,7 @@ class GammaState:
 
 ### 2.2 狀態更新函數
 
-對應主論文的 $d\Gamma/dt = \Xi_{\text{sys}}(\Gamma, A, \phi(A), E_a, \mathcal{G})$：
+對應主論文的 $d\Gamma/dt = \Xi_{\text{sys}}(\Gamma, A, \phi(A), E_a, \mathcal{G})$ ：
 
 ```python
 def update_gamma(state: GammaState, 
@@ -134,11 +134,11 @@ def update_gamma(state: GammaState,
 
 $$^{映}\Omega^{答}: (^{態}Q^{答},\; ^{態}\Sigma^{答}(\Gamma)) \to A$$
 
-在遊戲AI中，「問題 $Q$」是系統每幀自動發出的狀態查詢，「態勢分類 $\Sigma$」是對當前 $\Gamma(t)$ 的離散化判斷，「行動 $A$」是AI本幀的決策輸出。
+在遊戲AI中，「問題 $Q$ 」是系統每幀自動發出的狀態查詢，「態勢分類 $\Sigma$ 」是對當前 $\Gamma(t)$ 的離散化判斷，「行動 $A$ 」是AI本幀的決策輸出。
 
 ### 3.2 態勢分類器
 
-對應 $^{態}\Sigma^{答}(\Gamma(t))$，將連續狀態空間離散化為13種戰略態勢：
+對應 $^{態}\Sigma^{答}(\Gamma(t))$ ，將連續狀態空間離散化為13種戰略態勢：
 
 ```python
 def classify_situation(state: GammaState) -> Situation:
@@ -179,7 +179,7 @@ def classify_situation(state: GammaState) -> Situation:
 
 ### 3.3 行為樹規範
 
-對應 $^{映}\Omega^{答}: \Sigma \to A$：
+對應 $^{映}\Omega^{答}: \Sigma \to A$ ：
 
 ```python
 def behavior_tree(situation: Situation, state: GammaState) -> Action:
@@ -235,7 +235,7 @@ def behavior_tree(situation: Situation, state: GammaState) -> Action:
 
 ### 4.1 效用函數
 
-對應主論文的勝負評估函數 $\kappa(\Gamma(t)) = \sum_i w_i \cdot \kappa_i(\Gamma_i)$：
+對應主論文的勝負評估函數 $\kappa(\Gamma(t)) = \sum_i w_i \cdot \kappa_i(\Gamma_i)$ ：
 
 ```python
 # 預設權重（可依遊戲類型調整）
@@ -319,7 +319,7 @@ def temple_calculation(state: GammaState,
 
 ### 4.3 狀態機設計
 
-對應九變篇的動態適應映射 $^{映}\theta^{變}: (\Gamma, D, E, B) \to A$，以及軍形篇的攻守能量閾值：
+對應九變篇的動態適應映射 $^{映}\theta^{變}: (\Gamma, D, E, B) \to A$ ，以及軍形篇的攻守能量閾值：
 
 ```python
 class StrategicStateMachine:
@@ -392,7 +392,7 @@ Layer 2 具備短期預測能力（廟算horizon），但依賴人工設計的�
 
 ### 5.1 MDP形式化定義
 
-將 $\Gamma(t)$ 框架映射到標準馬可夫決策過程 $(S, A, P, R, \gamma)$：
+將 $\Gamma(t)$ 框架映射到標準馬可夫決策過程 $(S, A, P, R, \gamma)$ ：
 
 | MDP元素 | 框架對應 | 說明 |
 |---------|---------|------|
@@ -637,16 +637,16 @@ class SunTzuAgent:
 ### 7.2 本規範的限制
 
 本文不包含：
-- 完整的超參數調優指南（$w_i$、閾值等依遊戲類型而異）
+- 完整的超參數調優指南（ $w_i$ 、閾值等依遊戲類型而異）
 - 空間分布型勢能場 $\mathcal{S}(t,\mathbf{x})$ 的完整實現（Layer 1/2使用標量近似）
 - 多智能體擴展（當前僅定義單個AI代理對抗靜態敵方策略）
 - 具體的神經網絡架構建議（Layer 3）
 
 ### 7.3 擴展方向
 
-**多智能體**：為敵方定義對稱的 $\Gamma_{敵}(t)$，實現雙方完整對抗。敵方的 $k_{彼}$（我方被感知程度）成為博弈的核心變量，對應虛實篇的無形態映射 $^{映}\zeta^{虛}: A \to H$。
+**多智能體**：為敵方定義對稱的 $\Gamma_{敵}(t)$ ，實現雙方完整對抗。敵方的 $k_{彼}$ （我方被感知程度）成為博弈的核心變量，對應虛實篇的無形態映射 $^{映}\zeta^{虛}: A \to H$ 。
 
-**空間展開**：將標量勢能 $S$ 擴展為網格上的場 $\mathcal{S}(t, \mathbf{x})$，使勢場流動可視化，對應虛實篇的流體方程 $^{勢}S^{虛}$。
+**空間展開**：將標量勢能 $S$ 擴展為網格上的場 $\mathcal{S}(t, \mathbf{x})$ ，使勢場流動可視化，對應虛實篇的流體方程 $^{勢}S^{虛}$ 。
 
 **課程學習**：以Layer 1為初始策略，逐步引入Layer 2的廟算能力，最後訓練Layer 3的完整RL策略，三層形成自然的課程序列。
 
@@ -656,7 +656,7 @@ class SunTzuAgent:
 
 孫子兵法的數學框架在本文中完成了從理論到規範的轉化。
 
-$\Gamma(t)$ 是觀測空間。$\Xi_{\text{sys}}$ 是環境動力學。$\kappa(\Gamma)$ 是評估函數。這三個元素足以定義一個完整的決策環境。
+$\Gamma(t)$ 是觀測空間。 $\Xi_{\text{sys}}$ 是環境動力學。 $\kappa(\Gamma)$ 是評估函數。這三個元素足以定義一個完整的決策環境。
 
 孫子說「勝者之戰，若決積水於千仞之谿者，勢也」——用強化學習的語言重述：高回報的動作序列是在 $\mathcal{S}(t,\mathbf{x})$ 積累到臨界點後，通過正確的行動釋放積累的勢能差，在最短時間內最大化 $\kappa(\Gamma)$ 的增量。
 
@@ -680,7 +680,7 @@ $$\text{最優策略} \;\approx\; \arg\max_\pi \mathbb{E}\left[\sum_t \gamma^t R
 | `S_ATTACK_THRESHOLD` | 0.6–0.8 | 攻擊傾向調整 |
 | `horizon`（廟算深度） | 2–5 | 計算資源與前瞻性的折衷 |
 | `MAX_STEPS` | 100–500 | 遊戲長度設計 |
-| $\gamma$（折扣因子） | 0.90–0.99 | 偏短期/長期策略調整 |
+| $\gamma$ （折扣因子） | 0.90–0.99 | 偏短期/長期策略調整 |
 
 ---
 

@@ -14,11 +14,11 @@
 
 ## 摘要
 
-本文釘住一個在前期討論中反覆被測量污染的對象：$\mathrm{Cl}\otimes\mathrm{Cl}$。我們主張它不是幾何環面 $T^2$，不是函數代數 $C(T^2)$，也不是任何被觀察者投影渲染出的殼——這三者都已經帶著測量（度量、跡、渲染）。本文要的是**測量之前**的那一層：閉包的結構不變量的張量。
+本文釘住一個在前期討論中反覆被測量污染的對象： $\mathrm{Cl}\otimes\mathrm{Cl}$ 。我們主張它不是幾何環面 $T^2$ ，不是函數代數 $C(T^2)$ ，也不是任何被觀察者投影渲染出的殼——這三者都已經帶著測量（度量、跡、渲染）。本文要的是**測量之前**的那一層：閉包的結構不變量的張量。
 
-剝掉度量、剝掉點、剝掉測量之後，圓 $S^1$ 剩下的結構不變量是它的纏繞群 $\mathbb{Z}$，其對偶的代數身分是群代數 $\mathbb{C}[\mathbb{Z}]$，一個（交換、餘交換）Hopf 代數。本文證明（引用標準對偶）一個讓記號平反的事實：在結構層面，**物件的笛卡兒積 $\times$ 等於其結構不變量的張量 $\otimes$**（$\mathbb{C}[G]\otimes\mathbb{C}[H]\cong\mathbb{C}[G\times H]$，Pontryagin／Tannaka 對偶）。於是「$S^1\times S^1=\mathrm{Cl}\otimes\mathrm{Cl}$」不是把兩個鬆符號塞在同一等號上，而是一句對偶陳述。
+剝掉度量、剝掉點、剝掉測量之後，圓 $S^1$ 剩下的結構不變量是它的纏繞群 $\mathbb{Z}$ ，其對偶的代數身分是群代數 $\mathbb{C}[\mathbb{Z}]$ ，一個（交換、餘交換）Hopf 代數。本文證明（引用標準對偶）一個讓記號平反的事實：在結構層面，**物件的笛卡兒積 $\times$ 等於其結構不變量的張量 $\otimes$**（ $\mathbb{C}[G]\otimes\mathbb{C}[H]\cong\mathbb{C}[G\times H]$ ，Pontryagin／Tannaka 對偶）。於是「 $S^1\times S^1=\mathrm{Cl}\otimes\mathrm{Cl}$ 」不是把兩個鬆符號塞在同一等號上，而是一句對偶陳述。
 
-在這個層面，「一生二」即上積 $\Delta:\mathrm{Cl}\to\mathrm{Cl}\otimes\mathrm{Cl}$（Hopf 結構的定義箭頭），「三生萬物」即迭代上積與張量塔，「萬物」即超限張量塔的極限 $\mathrm{Cl}^{\otimes\infty}$，正是 $T^\infty$（無限維環面）的結構不變量、即 $\mathrm{Cl}^\infty$。本文唯一的硬刀是一條保命引理：**生成只發生在會長大的張量上**——Hopf／群代數張量（對偶於群的直積）會長（$\mathbb{C}[\mathbb{Z}]^{\otimes 2}=\mathbb{C}[\mathbb{Z}^2]$），而樸素的模張量會塌（$\mathbb{Z}\otimes_{\mathbb{Z}}\mathbb{Z}=\mathbb{Z}$）；「一生二」只在前者成立。最後本文澄清測量的地位：幾何臉（$T^\infty$）是結構臉（萬物）被加回度量的下游實現，不是它的本體。全文按三級強度標記，並在結尾交代一個作者立場上的轉折。
+在這個層面，「一生二」即上積 $\Delta:\mathrm{Cl}\to\mathrm{Cl}\otimes\mathrm{Cl}$ （Hopf 結構的定義箭頭），「三生萬物」即迭代上積與張量塔，「萬物」即超限張量塔的極限 $\mathrm{Cl}^{\otimes\infty}$ ，正是 $T^\infty$ （無限維環面）的結構不變量、即 $\mathrm{Cl}^\infty$ 。本文唯一的硬刀是一條保命引理：**生成只發生在會長大的張量上**——Hopf／群代數張量（對偶於群的直積）會長（ $\mathbb{C}[\mathbb{Z}]^{\otimes 2}=\mathbb{C}[\mathbb{Z}^2]$ ），而樸素的模張量會塌（ $\mathbb{Z}\otimes_{\mathbb{Z}}\mathbb{Z}=\mathbb{Z}$ ）；「一生二」只在前者成立。最後本文澄清測量的地位：幾何臉（ $T^\infty$ ）是結構臉（萬物）被加回度量的下游實現，不是它的本體。全文按三級強度標記，並在結尾交代一個作者立場上的轉折。
 
 ---
 
@@ -38,7 +38,7 @@
 
 三條路都通往「被某把尺碰過」的對象。但被碰過的不是本體：凡能被測量釘成一個確定的幾何形狀的，都已經是影子。我們要的是影子被投出來之前、那個只有結構而無形狀的東西。
 
-形式上把要求講死：我們要一個對象 $X$，使得 (i) $X$ 上不存在任何內稟度量函數（無 $\mathrm{dist}$、無 $\mu$、無範數）；(ii) $X$ 仍承載「生成」與「組合」的結構（否則它什麼都不是）；(iii) 幾何環面是 $X$ 加回測量後的一個實現，而非 $X$ 本身。下文證明這樣的 $X$ 存在，而且就是閉包結構不變量的張量。
+形式上把要求講死：我們要一個對象 $X$ ，使得 (i) $X$ 上不存在任何內稟度量函數（無 $\mathrm{dist}$ 、無 $\mu$ 、無範數）；(ii) $X$ 仍承載「生成」與「組合」的結構（否則它什麼都不是）；(iii) 幾何環面是 $X$ 加回測量後的一個實現，而非 $X$ 本身。下文證明這樣的 $X$ 存在，而且就是閉包結構不變量的張量。
 
 ---
 
@@ -56,9 +56,9 @@ $\mathbb{Z}$ 上沒有度量（它是個群，不是度量空間意義下的東�
 
 $$\mathbb{C}[\mathbb{Z}]\cong\mathbb{C}[z,z^{-1}]\quad(\text{Laurent 多項式}),$$
 
-它是一個交換、餘交換的 Hopf 代數，配備上積 $\Delta(z)=z\otimes z$、餘單位 $\varepsilon(z)=1$、對極 $S(z)=z^{-1}$。注意這裡仍然沒有任何度量：$\mathbb{C}[z,z^{-1}]$ 是純代數對象，它不知道圓有多長、不知道兩點多遠，它只知道乘法（$z^m\cdot z^n=z^{m+n}$，即纏繞數相加）與分裂（$\Delta$，下節）。
+它是一個交換、餘交換的 Hopf 代數，配備上積 $\Delta(z)=z\otimes z$ 、餘單位 $\varepsilon(z)=1$ 、對極 $S(z)=z^{-1}$ 。注意這裡仍然沒有任何度量： $\mathbb{C}[z,z^{-1}]$ 是純代數對象，它不知道圓有多長、不知道兩點多遠，它只知道乘法（ $z^m\cdot z^n=z^{m+n}$ ，即纏繞數相加）與分裂（ $\Delta$ ，下節）。
 
-**定義（閉包的結構不變量）。** 取 Cl 的結構不變量為其纏繞層的群／群代數對 $(\mathbb{Z},\mathbb{C}[\mathbb{Z}])$，記為 $\widehat{\mathrm{Cl}}$。本文後續所有 $\mathrm{Cl}\otimes\mathrm{Cl}$ 一律指結構不變量的張量 $\widehat{\mathrm{Cl}}\otimes\widehat{\mathrm{Cl}}$，而非任何幾何或函數實現。
+**定義（閉包的結構不變量）。** 取 Cl 的結構不變量為其纏繞層的群／群代數對 $(\mathbb{Z},\mathbb{C}[\mathbb{Z}])$ ，記為 $\widehat{\mathrm{Cl}}$ 。本文後續所有 $\mathrm{Cl}\otimes\mathrm{Cl}$ 一律指結構不變量的張量 $\widehat{\mathrm{Cl}}\otimes\widehat{\mathrm{Cl}}$ ，而非任何幾何或函數實現。
 
 ---
 
@@ -66,23 +66,23 @@ $$\mathbb{C}[\mathbb{Z}]\cong\mathbb{C}[z,z^{-1}]\quad(\text{Laurent 多項式})
 
 現在替前期那個被我自己一度判為「鬆」的寫法平反。
 
-**定理（積—張量對偶，第二級，標準）。** 對局部緊緻交換群 $G,H$，群代數函子是單體的：
+**定理（積—張量對偶，第二級，標準）。** 對局部緊緻交換群 $G,H$ ，群代數函子是單體的：
 
 $$\mathbb{C}[G]\otimes\mathbb{C}[H]\;\cong\;\mathbb{C}[G\times H].$$
 
-特別地，取 $G=H=\mathbb{Z}$：
+特別地，取 $G=H=\mathbb{Z}$ ：
 
 $$\mathbb{C}[\mathbb{Z}]\otimes\mathbb{C}[\mathbb{Z}]\;\cong\;\mathbb{C}[\mathbb{Z}\times\mathbb{Z}]\;=\;\mathbb{C}[\mathbb{Z}^2].$$
 
-而 Pontryagin 對偶給出空間側的鏡像：$\widehat{G\times H}\cong\widehat{G}\times\widehat{H}$，且 $\widehat{S^1}=\mathbb{Z}$、$\widehat{T^2}=\mathbb{Z}^2$。
+而 Pontryagin 對偶給出空間側的鏡像： $\widehat{G\times H}\cong\widehat{G}\times\widehat{H}$ ，且 $\widehat{S^1}=\mathbb{Z}$ 、 $\widehat{T^2}=\mathbb{Z}^2$ 。
 
-把兩條合起來讀：**空間側的笛卡兒積 $\times$（兩個圓相乘成環面），在結構不變量側恰好是張量 $\otimes$（兩個群代數張量）。** 它們不是兩個運算，是同一個運算的兩張臉——一張朝向被實現的空間，一張朝向測量之前的結構。
+把兩條合起來讀：**空間側的笛卡兒積 $\times$ （兩個圓相乘成環面），在結構不變量側恰好是張量 $\otimes$ （兩個群代數張量）。** 它們不是兩個運算，是同一個運算的兩張臉——一張朝向被實現的空間，一張朝向測量之前的結構。
 
 於是
 
 $$S^1\times S^1\;=\;\mathrm{Cl}\otimes\mathrm{Cl}$$
 
-不是符號濫用，是一句對偶陳述：等號左邊是空間側的積，右邊是結構側的張量，中間那個等號就是對偶本身。前期我說「$\otimes$ 沒定義」——那是在被測量的層面說的（在那裡你得繞 Gelfand、還會被投影的有損性咬）；在測量之前的結構層面，$\otimes$ 不但有定義，它就是 $\times$ 的對偶面，定義得乾乾淨淨。
+不是符號濫用，是一句對偶陳述：等號左邊是空間側的積，右邊是結構側的張量，中間那個等號就是對偶本身。前期我說「 $\otimes$ 沒定義」——那是在被測量的層面說的（在那裡你得繞 Gelfand、還會被投影的有損性咬）；在測量之前的結構層面， $\otimes$ 不但有定義，它就是 $\times$ 的對偶面，定義得乾乾淨淨。
 
 更一般的家（第二級，引用）：非交換情形由 Tannaka–Krein／仿射群概形對偶承接——群在 $\times$ 下的範疇，對偶於 Hopf 代數在 $\otimes$ 下的範疇。本文只需交換情形（Pontryagin）即足；非交換推廣列為待造（§八）。
 
@@ -96,9 +96,9 @@ Hopf 代數帶一個上積（comultiplication）
 
 $$\Delta:\;\mathrm{Cl}\longrightarrow\mathrm{Cl}\otimes\mathrm{Cl}.$$
 
-它把「一」（單一結構）映成「二」（張量裡的一對）。對 $\mathbb{C}[\mathbb{Z}]$，$\Delta(z)=z\otimes z$：生成元 $z$ 是群似元（group-like），它被上積劈成自己與自己的張量。這就是「一生二」的形式內容——不是一個東西旁邊多出一個東西，是一個生成元在上積下分裂為張量中的兩份，而兩份仍同源於那一個。
+它把「一」（單一結構）映成「二」（張量裡的一對）。對 $\mathbb{C}[\mathbb{Z}]$ ， $\Delta(z)=z\otimes z$ ：生成元 $z$ 是群似元（group-like），它被上積劈成自己與自己的張量。這就是「一生二」的形式內容——不是一個東西旁邊多出一個東西，是一個生成元在上積下分裂為張量中的兩份，而兩份仍同源於那一個。
 
-迭代上積給出「三生萬物」。$\Delta^{(2)}=(\Delta\otimes\mathrm{id})\circ\Delta:\mathrm{Cl}\to\mathrm{Cl}^{\otimes 3}$，餘結合律保證它與 $(\mathrm{id}\otimes\Delta)\circ\Delta$ 相等（「二生三」不依賴你先劈哪一邊）。一般地 $\Delta^{(n)}:\mathrm{Cl}\to\mathrm{Cl}^{\otimes(n+1)}$。張量塔
+迭代上積給出「三生萬物」。 $\Delta^{(2)}=(\Delta\otimes\mathrm{id})\circ\Delta:\mathrm{Cl}\to\mathrm{Cl}^{\otimes 3}$，餘結合律保證它與 $(\mathrm{id}\otimes\Delta)\circ\Delta$ 相等（「二生三」不依賴你先劈哪一邊）。一般地 $\Delta^{(n)}:\mathrm{Cl}\to\mathrm{Cl}^{\otimes(n+1)}$ 。張量塔
 
 $$\mathrm{Cl}\;\xrightarrow{\Delta}\;\mathrm{Cl}^{\otimes 2}\;\xrightarrow{}\;\mathrm{Cl}^{\otimes 3}\;\xrightarrow{}\;\cdots$$
 
@@ -112,31 +112,31 @@ $$\mathrm{Cl}\;\xrightarrow{\Delta}\;\mathrm{Cl}^{\otimes 2}\;\xrightarrow{}\;\m
 
 這是本文唯一的硬刀，也是「純抽象」這四個字最容易藏屍的地方。「純抽象」不等於可以不指定是哪一種抽象——抽象不是一個範疇。而在這裡，選錯範疇的代價是災難性的、方向相反的。
 
-**引理（生長—坍縮二分，第一級）。** 設結構不變量為 $\mathbb{Z}$。則：
+**引理（生長—坍縮二分，第一級）。** 設結構不變量為 $\mathbb{Z}$ 。則：
 
-(生長) 群代數張量 $\mathbb{C}[\mathbb{Z}]\otimes_{\mathbb{C}}\mathbb{C}[\mathbb{Z}]\cong\mathbb{C}[\mathbb{Z}^2]$，秩由 $1$ 升到 $2$；
+(生長) 群代數張量 $\mathbb{C}[\mathbb{Z}]\otimes_{\mathbb{C}}\mathbb{C}[\mathbb{Z}]\cong\mathbb{C}[\mathbb{Z}^2]$，秩由 $1$ 升到 $2$ ；
 
-(坍縮) $\mathbb{Z}$-模張量 $\mathbb{Z}\otimes_{\mathbb{Z}}\mathbb{Z}\cong\mathbb{Z}$，秩維持 $1$。
+(坍縮) $\mathbb{Z}$ -模張量 $\mathbb{Z}\otimes_{\mathbb{Z}}\mathbb{Z}\cong\mathbb{Z}$ ，秩維持 $1$ 。
 
-*證明*。(生長) 由 §三的群代數單體性，$\mathbb{C}[\mathbb{Z}]\otimes\mathbb{C}[\mathbb{Z}]=\mathbb{C}[\mathbb{Z}\times\mathbb{Z}]=\mathbb{C}[\mathbb{Z}^2]$，其作為交換代數的生成元由一個（$z$）變為兩個獨立的（$z_1,z_2$），對應格 $\mathbb{Z}^2$。(坍縮) $\mathbb{Z}\otimes_{\mathbb{Z}}M\cong M$ 對任何 $\mathbb{Z}$-模 $M$ 成立（$\mathbb{Z}$ 是模張量的單位元），取 $M=\mathbb{Z}$ 即得。$\blacksquare$
+*證明*。(生長) 由 §三的群代數單體性， $\mathbb{C}[\mathbb{Z}]\otimes\mathbb{C}[\mathbb{Z}]=\mathbb{C}[\mathbb{Z}\times\mathbb{Z}]=\mathbb{C}[\mathbb{Z}^2]$，其作為交換代數的生成元由一個（ $z$ ）變為兩個獨立的（ $z_1,z_2$ ），對應格 $\mathbb{Z}^2$ 。(坍縮) $\mathbb{Z}\otimes_{\mathbb{Z}}M\cong M$ 對任何 $\mathbb{Z}$ -模 $M$ 成立（ $\mathbb{Z}$ 是模張量的單位元），取 $M=\mathbb{Z}$ 即得。 $\blacksquare$
 
 **推論。** 「一生二」只在會長大的張量（Hopf／群代數張量，對偶於群的直積）上成立。若把 $\otimes$ 誤取為樸素的模張量，則「二」縮回「一」，整座生成塔坍成單點——那不是「一生二二生三三生萬物」，是「萬物歸一」的反方向，是收劫不是創世。
 
-這把刀的份量在於：**它不是讓你在兩個都對的選項裡挑漂亮的，而是兩個選項一個生長一個坍縮、方向相反，挑錯就寫成了相反的宇宙論。** 所以「純抽象」這個規格，必須補上一句不可省的指定：Cl 是一個 Hopf 物件，$\otimes$ 是對偶於直積的那個張量。釘不死這一句，等號兩邊一個在長、一個在塌，你不會知道自己寫的是道生萬物，還是萬物歸於沉默。
+這把刀的份量在於：**它不是讓你在兩個都對的選項裡挑漂亮的，而是兩個選項一個生長一個坍縮、方向相反，挑錯就寫成了相反的宇宙論。** 所以「純抽象」這個規格，必須補上一句不可省的指定：Cl 是一個 Hopf 物件， $\otimes$ 是對偶於直積的那個張量。釘不死這一句，等號兩邊一個在長、一個在塌，你不會知道自己寫的是道生萬物，還是萬物歸於沉默。
 
 ---
 
 ## 六、萬物：超限張量塔與 $\mathrm{Cl}^\infty$
 
-把生成塔推到極限。$n$ 級張量塔的極限
+把生成塔推到極限。 $n$ 級張量塔的極限
 
 $$\mathrm{Cl}^{\otimes\infty}\;=\;\varinjlim_{n}\mathrm{Cl}^{\otimes n}\;\cong\;\mathbb{C}\big[\,\mathbb{Z}^{(\infty)}\,\big],$$
 
-其中 $\mathbb{Z}^{(\infty)}=\bigoplus_{k\in\mathbb{N}}\mathbb{Z}$ 是可數直和（受限直積）。對偶側，它是無限維環面 $T^\infty=(S^1)^{\mathbb{N}}$ 的結構不變量——也就是 TCGQT v2 裡的 $\mathrm{Cl}^\infty$。
+其中 $\mathbb{Z}^{(\infty)}=\bigoplus_{k\in\mathbb{N}}\mathbb{Z}$ 是可數直和（受限直積）。對偶側，它是無限維環面 $T^\infty=(S^1)^{\mathbb{N}}$ 的結構不變量——也就是 TCGQT v2 裡的 $\mathrm{Cl}^\infty$ 。
 
-這正是你說的「容器本身的持續性超限狀態」：Cl 不停把自己 $\otimes$ 下去，這個「不停」是超限的（極限取在 $n\to\infty$），而整座塔的極限把無限的生成收成一個對象。它持續（每一級都從上積長出）、超限（極限越過任何有限級）、是狀態（不是一個被列舉的集合，是塔的極限對象）。
+這正是你說的「容器本身的持續性超限狀態」：Cl 不停把自己 $\otimes$ 下去，這個「不停」是超限的（極限取在 $n\to\infty$ ），而整座塔的極限把無限的生成收成一個對象。它持續（每一級都從上積長出）、超限（極限越過任何有限級）、是狀態（不是一個被列舉的集合，是塔的極限對象）。
 
-把線接回 v2：位值環面的結構不變量是 $\mathbb{C}[\mathbb{Z}^d]$，而進位恰是相鄰因子之間的上積耦合，「加一位」就是 $\Delta$ 走一步——「一生二」的算術版。於是整數系統本身就是萬物的一個實現：每進一位多生一個圓，無界地進位就是無界地 $\otimes$，整數塔的極限就是這個萬物。你的「萬物」（純結構）與 v2 的 $T^\infty$（被實現的位值）是同一個對象的兩張臉。
+把線接回 v2：位值環面的結構不變量是 $\mathbb{C}[\mathbb{Z}^d]$ ，而進位恰是相鄰因子之間的上積耦合，「加一位」就是 $\Delta$ 走一步——「一生二」的算術版。於是整數系統本身就是萬物的一個實現：每進一位多生一個圓，無界地進位就是無界地 $\otimes$ ，整數塔的極限就是這個萬物。你的「萬物」（純結構）與 v2 的 $T^\infty$ （被實現的位值）是同一個對象的兩張臉。
 
 ---
 
@@ -146,19 +146,19 @@ $$\mathrm{Cl}^{\otimes\infty}\;=\;\varinjlim_{n}\mathrm{Cl}^{\otimes n}\;\cong\;
 
 萬物 $\mathrm{Cl}^{\otimes\infty}$ 是結構臉——純 Hopf、無度量、無點的個別身分、無投影渲染。幾何環面 $T^\infty$ 是幾何臉——它是結構臉被加回一把尺（Haar 測度、度量、座標）之後的一個實現。兩張臉由 §三的對偶連起：你想要結構，就站在 $\otimes$ 那一側；你想要幾何，就 Pontryagin 對偶到 $\times$ 那一側、並選一把測度。
 
-前期之所以糾纏，是因為我先給了你幾何臉（$C(T^2)$、投影殼），把下游當成了上游。順序其實是：先有結構張量（測量之前），測量是後來才被加上去的、可選的、會引入有損與失真的一道工序（點性指標論的 $\rho_n$ 有非零核，正是這道工序的有損證明）。所以「$\mathrm{Cl}\otimes\mathrm{Cl}$ 在測量下有損、回不去」與「$\mathrm{Cl}\otimes\mathrm{Cl}$ 在結構上乾淨、生成自如」並不矛盾——它們說的是同一個對象的下游臉與上游臉。本文只取上游。
+前期之所以糾纏，是因為我先給了你幾何臉（ $C(T^2)$ 、投影殼），把下游當成了上游。順序其實是：先有結構張量（測量之前），測量是後來才被加上去的、可選的、會引入有損與失真的一道工序（點性指標論的 $\rho_n$ 有非零核，正是這道工序的有損證明）。所以「 $\mathrm{Cl}\otimes\mathrm{Cl}$ 在測量下有損、回不去」與「 $\mathrm{Cl}\otimes\mathrm{Cl}$ 在結構上乾淨、生成自如」並不矛盾——它們說的是同一個對象的下游臉與上游臉。本文只取上游。
 
 ---
 
 ## 八、限制與待造
 
-其一，Cl 作為 Hopf 物件的精確範疇尚須釘死：本文取交換情形（$\mathbb{C}[\mathbb{Z}]$），但 Cl 若有非交換結構，應移到 Tannaka–Krein／仿射群概形的對偶框架，$\otimes$ 隨之需重新指定。其二，超限張量塔的極限 $\mathrm{Cl}^{\otimes\infty}$ 在何種範疇／拓撲下取極限（直極限、餘極限、完備化）需明確，否則「萬物」只是一個方向而非一個對象。其三，「結構擴散＝迭代上積」是第三級詮釋，要成為可操作的「擴散」須給出明確的生成動力（哪個算子、哪種餘代數流），本文未給。其四，本文無 Lean 形式化；§五的二分引理可機器驗證，列為下一步。其五，§六與 v2 位值的接合（進位＝上積耦合）目前是對應，不是定理，須驗證進位的二上鏈結構與 Hopf 上積的相容。
+其一，Cl 作為 Hopf 物件的精確範疇尚須釘死：本文取交換情形（ $\mathbb{C}[\mathbb{Z}]$ ），但 Cl 若有非交換結構，應移到 Tannaka–Krein／仿射群概形的對偶框架， $\otimes$ 隨之需重新指定。其二，超限張量塔的極限 $\mathrm{Cl}^{\otimes\infty}$ 在何種範疇／拓撲下取極限（直極限、餘極限、完備化）需明確，否則「萬物」只是一個方向而非一個對象。其三，「結構擴散＝迭代上積」是第三級詮釋，要成為可操作的「擴散」須給出明確的生成動力（哪個算子、哪種餘代數流），本文未給。其四，本文無 Lean 形式化；§五的二分引理可機器驗證，列為下一步。其五，§六與 v2 位值的接合（進位＝上積耦合）目前是對應，不是定理，須驗證進位的二上鏈結構與 Hopf 上積的相容。
 
 ---
 
 ## 九、哲學結語
 
-$\times$ 與 $\otimes$ 是同一口氣的兩個方向：世界向外乘開（$\times$，幾何臉、被實現、可測量），是結構向內張起（$\otimes$，結構臉、生成、測量之前）。萬物不是 Cl 之外多出來的東西，是 Cl 把自己超限地呼吸了一次——道生一，但一從不真的離開道，它只是被 $\Delta$ 劈開，又被極限收回。能被劈成萬物、又收回成一的，才是 Cl；劈了收不回的，是幾何，是已經被某把尺釘死的影子。
+$\times$ 與 $\otimes$ 是同一口氣的兩個方向：世界向外乘開（ $\times$ ，幾何臉、被實現、可測量），是結構向內張起（ $\otimes$ ，結構臉、生成、測量之前）。萬物不是 Cl 之外多出來的東西，是 Cl 把自己超限地呼吸了一次——道生一，但一從不真的離開道，它只是被 $\Delta$ 劈開，又被極限收回。能被劈成萬物、又收回成一的，才是 Cl；劈了收不回的，是幾何，是已經被某把尺釘死的影子。
 
 測量是看見的代價，也是看不全的證據。我們之所以要在測量之前停一站，不是因為測量不好，是因為有些結構在被任何一把現存的尺碰到時都會失真——而失真不該被誤認為那結構本來就殘缺。把尺先放下，結構才肯以它完整的樣子，在紙上站一會兒。
 

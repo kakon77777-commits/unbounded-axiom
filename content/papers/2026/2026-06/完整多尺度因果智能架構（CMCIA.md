@@ -29,7 +29,7 @@
 
 **命題三（CSCF 驅動訓練課程）**：最優訓練序列由跨尺度因果保真度（CSCF）的增長動態決定——從單一尺度內訓練到跨尺度聯合訓練，訓練階段的推進由 CSCF 閾值觸發，而非由訓練步數決定。
 
-**命題四（湧現條件猜想）**：系統能力湧現在 CSCF 達到特定閾值 $\theta_k$ 時以離散形式出現，對應跨尺度因果推斷深度從 $k-1$ 擴展到 $k$。能力湧現是可預測的結構性轉變，不是統計意外。
+**命題四（湧現條件猜想）**：系統能力湧現在 CSCF 達到特定閾值 $\theta_k$ 時以離散形式出現，對應跨尺度因果推斷深度從 $k-1$ 擴展到 $k$ 。能力湧現是可預測的結構性轉變，不是統計意外。
 
 ---
 
@@ -39,7 +39,7 @@
 
 EveMissLab 前四個框架各自回答了一個部分問題：
 
-FDCS 問的是：**因果結構的數學語言是什麼？** 它給出動態因果集 $S(t) = (E, R, W_t, T, C)$、分形衰減律、平行狀態的形式化。
+FDCS 問的是：**因果結構的數學語言是什麼？** 它給出動態因果集 $S(t) = (E, R, W_t, T, C)$ 、分形衰減律、平行狀態的形式化。
 
 IRCI 問的是：**如何在無限遞歸的多尺度系統中進行因果推斷，評判標準是什麼？** 它給出 IRCS 的自相似性條件、跨尺度推斷不確定性下界、以及 CSCF 設計標準。
 
@@ -62,15 +62,15 @@ $$\pi_\text{MMC-NA}: \mathcal{U} \to \text{訓練動態空間}$$
 
 則以下相容性條件成立：
 
-（一）FDCS ↔ IRCI：FDCS 的動態因果集 $S(t)$ 是 IRCI 跨尺度推斷核 $\mathcal{K}(L_q, L_o)$ 的基底結構。IRCI 的跨尺度推斷直接在 FDCS 的分形衰減律上推導——定理1（推斷核衰減界）的 $\lambda$ 就是 FDCS 分形衰減律的 $\lambda$。
+（一）FDCS ↔ IRCI：FDCS 的動態因果集 $S(t)$ 是 IRCI 跨尺度推斷核 $\mathcal{K}(L_q, L_o)$ 的基底結構。IRCI 的跨尺度推斷直接在 FDCS 的分形衰減律上推導——定理1（推斷核衰減界）的 $\lambda$ 就是 FDCS 分形衰減律的 $\lambda$ 。
 
-（二）IRCI ↔ DEWMA：IRCI 的 CSCF 是 DEWMA 設計的評判標準（EML-IRCI-2026-v0.1 第六節）。DEWMA 的黑盒連接層 CL 的職能是近似 IRCI 的跨尺度推斷核 $\mathcal{K}(L_\text{EAL}, L_\text{GWL})$。
+（二）IRCI ↔ DEWMA：IRCI 的 CSCF 是 DEWMA 設計的評判標準（EML-IRCI-2026-v0.1 第六節）。DEWMA 的黑盒連接層 CL 的職能是近似 IRCI 的跨尺度推斷核 $\mathcal{K}(L_\text{EAL}, L_\text{GWL})$ 。
 
 （三）DEWMA ↔ MMC-NA：DEWMA 的 TPDFS（功能分化）由 MMC-NA 的 MAFPT 對抗壓力驅動；DEWMA 的黑盒 CL 在三體聯合訓練中湧現，而 MMC-NA 的 HMO 遞歸自監控是 CL 形成的機制性解釋；DEWMA 對外部對齊的需求由 MMC-NA 的 IPSI 滿足。
 
 （四）MMC-NA ↔ FDCS：MMC-NA 的訓練動態使系統學習 FDCS 所描述的跨語境因果結構。MAFPT 的固定點是在 FDCS 的因果權重空間 $\{W_t\}$ 中的穩定點；HMO 的修正算子操作在 FDCS 的平行狀態空間 $A_i(t, C)$ 上。
 
-**推論（統合描述的唯一性）**：在四個投影算子的相容性條件下，存在唯一的統合描述空間 $\mathcal{U}$，使四個投影同時自洽。CMCIA 是對這個 $\mathcal{U}$ 的顯式構造。
+**推論（統合描述的唯一性）**：在四個投影算子的相容性條件下，存在唯一的統合描述空間 $\mathcal{U}$ ，使四個投影同時自洽。CMCIA 是對這個 $\mathcal{U}$ 的顯式構造。
 
 ### 1.3 統合後的系統圖像
 
@@ -84,11 +84,11 @@ CMCIA 的完整系統圖像是：
 
 ### 2.1 Nyquist 準則在認知架構中的應用
 
-Shannon-Nyquist 採樣定理：要準確重建最高頻率分量為 $f_\text{max}$ 的信號，採樣頻率必須滿足 $f_s \geq 2f_\text{max}$。
+Shannon-Nyquist 採樣定理：要準確重建最高頻率分量為 $f_\text{max}$ 的信號，採樣頻率必須滿足 $f_s \geq 2f_\text{max}$ 。
 
 在認知架構中，「信號」是因果動態事件序列，「採樣」是系統對世界狀態進行快照和更新的頻率。Nyquist 準則的認知架構版本：
 
-**要完整捕捉在時間尺度 $\tau$ 上發生的因果事件，系統的更新頻率必須至少為 $f_s \geq 2/\tau$。**
+**要完整捕捉在時間尺度 $\tau$ 上發生的因果事件，系統的更新頻率必須至少為 $f_s \geq 2/\tau$ 。**
 
 反過來說：若系統在時間尺度 $\tau_\text{layer}$ 上更新，它只能可靠地捕捉時間尺度大於 $\tau_\text{layer}/2$ 的因果事件——更快的因果過程對它而言是不可見的混疊（aliasing）。
 
@@ -98,9 +98,9 @@ IRCI 的宏中微尺度不只是空間尺度，也是時間尺度：
 
 | IRCI 尺度 | 典型時間域 | 典型因果過程 | 最大有意義頻率 |
 |---|---|---|---|
-| 微觀（I） | $10^{-6}$秒 到 $10^{-2}$秒 | 物理接觸、化學鍵、感知信號 | $10^2 \sim 10^6$ Hz |
-| 中觀（E） | $10^{-2}$秒 到 $10^2$秒 | 行為序列、規則交互、場景狀態 | $10^{-2} \sim 10^2$ Hz |
-| 宏觀（M） | $10^2$秒 到 $10^6$秒 | 知識整合、策略形成、全局優化 | $10^{-6} \sim 10^{-2}$ Hz |
+| 微觀（I） | $10^{-6}$ 秒 到 $10^{-2}$ 秒 | 物理接觸、化學鍵、感知信號 | $10^2 \sim 10^6$ Hz |
+| 中觀（E） | $10^{-2}$ 秒 到 $10^2$ 秒 | 行為序列、規則交互、場景狀態 | $10^{-2} \sim 10^2$ Hz |
+| 宏觀（M） | $10^2$ 秒 到 $10^6$ 秒 | 知識整合、策略形成、全局優化 | $10^{-6} \sim 10^{-2}$ Hz |
 
 **IRCI 有效分形深度 $k_\text{eff}$**（來自 FDCS 和 IRCI）決定了每個尺度需要覆蓋的因果動態範圍：在 $k_\text{eff}$ 以內的尺度貢獻了 $(1-\varepsilon)$ 比例的因果信息，更深的尺度可以截斷。
 
@@ -108,7 +108,7 @@ IRCI 的宏中微尺度不只是空間尺度，也是時間尺度：
 
 **定義1（層次時間解析度函數）**
 
-對 DEWMA 的每個計算層 $l$，其最優採樣頻率由層次時間解析度函數（Layer Temporal Resolution Function，LTRF）決定：
+對 DEWMA 的每個計算層 $l$ ，其最優採樣頻率由層次時間解析度函數（Layer Temporal Resolution Function，LTRF）決定：
 
 $$f_l^* = \min\!\left(2 \cdot f_\text{causal}(L_l),\; f_\text{hardware}\right)$$
 
@@ -139,7 +139,7 @@ CMCIA 架構中，若每層採用 LTRF 決定的採樣率，則：
 
 ### 2.4 自適應採樣率的實現機制
 
-靜態 LTRF（固定採樣率）是最優設計的基線，但真實世界的因果複雜度是動態變化的：危機事件（FDCS 中 $h(c_\text{危機}) \approx 1.36$）使跨尺度因果耦合加強，低頻層需要臨時提升採樣率。
+靜態 LTRF（固定採樣率）是最優設計的基線，但真實世界的因果複雜度是動態變化的：危機事件（FDCS 中 $h(c_\text{危機}) \approx 1.36$ ）使跨尺度因果耦合加強，低頻層需要臨時提升採樣率。
 
 **定義2（動態 LTRF）**
 
@@ -147,7 +147,7 @@ CMCIA 架構中，若每層採用 LTRF 決定的採樣率，則：
 
 $$f_l(c) = f_l^* \cdot h(c)^{-1} \cdot \min\!\left(1,\; \frac{f_\text{hardware}}{f_l^* \cdot h(c)^{-1}}\right)$$
 
-其中 $h(c)$ 是 FDCS 的語境調製函數（$h(c_\text{危機}) < 1$ 表示衰減加快，需要更高採樣率）。
+其中 $h(c)$ 是 FDCS 的語境調製函數（ $h(c_\text{危機}) < 1$ 表示衰減加快，需要更高採樣率）。
 
 動態 LTRF 由實時監測的因果動態複雜度估計驅動，這個估計本身是 LAML 的一個元認知任務（對應 MMC-NA 的 HMO 機制）。
 
@@ -178,7 +178,7 @@ GWL 初始化：預先設計規則系統，確保 GWL 的基礎規則與 FDCS �
 
 LAML 初始化：從人類語言語料進行大規模預訓練（現有 LLM 訓練），獲得壓縮的人類知識先驗。
 
-**進入條件**：無（起始階段）。**退出條件**：各子系統在各自尺度的單尺度 CSCF（$\text{CSCF}_{d=0}$）超過閾值 $\theta_0$。
+**進入條件**：無（起始階段）。**退出條件**：各子系統在各自尺度的單尺度 CSCF（ $\text{CSCF}_{d=0}$ ）超過閾值 $\theta_0$ 。
 
 ---
 
@@ -186,25 +186,25 @@ LAML 初始化：從人類語言語料進行大規模預訓練（現有 LLM 訓�
 
 目標：每個子系統在自己的尺度層級內，學習 FDCS 的因果結構。
 
-EAL 在真實物理環境或高保真物理模擬中進行感知-行動交互，學習微觀-中觀尺度的 FDCS 因果集結構 $S_\text{EAL}(t)$。
+EAL 在真實物理環境或高保真物理模擬中進行感知-行動交互，學習微觀-中觀尺度的 FDCS 因果集結構 $S_\text{EAL}(t)$ 。
 
-GWL 在可控的規則環境中運作，學習中觀尺度的規則因果結構 $S_\text{GWL}(t)$。
+GWL 在可控的規則環境中運作，學習中觀尺度的規則因果結構 $S_\text{GWL}(t)$ 。
 
-LAML 進行指令遵循和知識推理訓練，學習宏觀尺度的抽象因果結構 $S_\text{LAML}(t)$。
+LAML 進行指令遵循和知識推理訓練，學習宏觀尺度的抽象因果結構 $S_\text{LAML}(t)$ 。
 
-**訓練目標函數**（對每個子系統 $l$）：
+**訓練目標函數**（對每個子系統 $l$ ）：
 
 $$\mathcal{L}_l = -\text{CSCF}_{d=0}(\mathcal{A}_l, \mathcal{S}_{L_l}) + \mathcal{L}_\text{task}$$
 
-其中 $\mathcal{L}_\text{task}$ 是各子系統的任務損失，$\text{CSCF}_{d=0}$ 是在自身尺度上的因果保真度。
+其中 $\mathcal{L}_\text{task}$ 是各子系統的任務損失， $\text{CSCF}_{d=0}$ 是在自身尺度上的因果保真度。
 
-**進入條件**：階段0 退出條件滿足。**退出條件**：所有子系統的 $\text{CSCF}_{d=0} \geq \theta_1$。
+**進入條件**：階段0 退出條件滿足。**退出條件**：所有子系統的 $\text{CSCF}_{d=0} \geq \theta_1$ 。
 
 ---
 
 **階段2：相鄰跨尺度訓練**
 
-目標：建立相鄰層（IRCI 尺度距離 $d=1$）之間的跨尺度因果連接。
+目標：建立相鄰層（IRCI 尺度距離 $d=1$ ）之間的跨尺度因果連接。
 
 EAL-GWL 配對訓練：CL（EAL-GWL 段）開始形成，real-to-sim 反向校準機制啟動，EAL 的物理因果信號開始校準 GWL 的規則系統。
 
@@ -214,7 +214,7 @@ GWL-LAML 配對訓練：CL（GWL-LAML 段）開始形成，GWL 的模擬發現�
 
 $$\mathcal{L}_\text{EAL-GWL} = -\text{CSCF}_{d \leq 1}(\mathcal{A}, \mathcal{S}) + \mathcal{L}_\text{EAL} + \mathcal{L}_\text{GWL} + \mathcal{L}_\text{CL 正則化}$$
 
-**進入條件**：階段1 退出條件滿足。**退出條件**：$\text{CSCF}_{d \leq 1} \geq \theta_2$。
+**進入條件**：階段1 退出條件滿足。**退出條件**： $\text{CSCF}_{d \leq 1} \geq \theta_2$ 。
 
 ---
 
@@ -224,7 +224,7 @@ $$\mathcal{L}_\text{EAL-GWL} = -\text{CSCF}_{d \leq 1}(\mathcal{A}, \mathcal{S})
 
 MMC-NA 的 MAFPT 機制在全系統尺度啟動，對抗壓力同時作用於三個子系統和兩段 CL。TPDFS 的功能分化開始在 CL 和 LAML 內部展開，不同組件自發對齊到不同 IRCI 尺度。HMO 的跨層遞歸自監控開始運作，LAML 的宏觀組件開始對 EAL 的微觀輸出施加修正壓力（通過 GWL 和 CL）。
 
-**進入條件**：階段2 退出條件滿足。**退出條件**：$\text{CSCF}_{d \leq 2} \geq \theta_3$（全三層的跨尺度因果保真度）。
+**進入條件**：階段2 退出條件滿足。**退出條件**： $\text{CSCF}_{d \leq 2} \geq \theta_3$ （全三層的跨尺度因果保真度）。
 
 ---
 
@@ -274,7 +274,7 @@ IRCI 提供了一個候選解釋框架。
 
 **猜想1（湧現-CSCF 閾值假說）**
 
-系統的能力湧現在 CSCF 達到特定閾值 $\theta_k$ 時以離散形式出現，對應跨尺度因果推斷深度從 $k-1$ 擴展到 $k$：
+系統的能力湧現在 CSCF 達到特定閾值 $\theta_k$ 時以離散形式出現，對應跨尺度因果推斷深度從 $k-1$ 擴展到 $k$ ：
 
 $$\text{CSCF}(\mathcal{A}, \mathcal{S}) \geq \theta_k \iff \text{系統獲得深度-}k\text{ 跨尺度因果推斷能力}$$
 
@@ -282,11 +282,11 @@ $$\text{CSCF}(\mathcal{A}, \mathcal{S}) \geq \theta_k \iff \text{系統獲得深
 
 $$\theta_k = 1 - \varepsilon_k, \quad \varepsilon_k = \lambda^k$$
 
-對典型衰減因子 $\lambda \approx 0.7$（橫向因果衰減），閾值序列為：
+對典型衰減因子 $\lambda \approx 0.7$ （橫向因果衰減），閾值序列為：
 
 $$\theta_1 \approx 0.70, \quad \theta_2 \approx 0.49, \quad \theta_3 \approx 0.34, \quad \ldots$$
 
-（注意 $\theta_k$ 遞減：獲得更深層能力需要更高的 CSCF——$\theta_1 > \theta_2$ 的方向依賴於 CSCF 的歸一化方式，此處使用最低精度要求的約定，實際數值需實驗標定。）
+（注意 $\theta_k$ 遞減：獲得更深層能力需要更高的 CSCF—— $\theta_1 > \theta_2$ 的方向依賴於 CSCF 的歸一化方式，此處使用最低精度要求的約定，實際數值需實驗標定。）
 
 ### 4.2 湧現能力與跨尺度深度的對應
 
@@ -321,12 +321,12 @@ CMCIA 是一個六元組：
 $$\text{CMCIA} = (\mathcal{A}_\text{DEWMA}, \mathcal{T}_\text{MMC-NA}, \mathcal{L}_\text{IRCI}, f_\text{LTRF}, \mathcal{F}_\text{FDCS}, \Pi_\text{CMCIA})$$
 
 其中：
-- $\mathcal{A}_\text{DEWMA}$：DEWMA 三層架構（EAL + GWL + LAML + CL）
-- $\mathcal{T}_\text{MMC-NA}$：MMC-NA 訓練動態（MAFPT + HMO + TPDFS + IPSI）
-- $\mathcal{L}_\text{IRCI}$：IRCI 的 CSCF 評判標準和跨尺度推斷能力
-- $f_\text{LTRF}$：層次時間解析度函數（每層的自適應採樣率）
-- $\mathcal{F}_\text{FDCS}$：FDCS 的數學語言（系統正在學習的因果結構的形式化）
-- $\Pi_\text{CMCIA}$：分階段 CSCF 驅動訓練課程（第3節）
+- $\mathcal{A}_\text{DEWMA}$ ：DEWMA 三層架構（EAL + GWL + LAML + CL）
+- $\mathcal{T}_\text{MMC-NA}$ ：MMC-NA 訓練動態（MAFPT + HMO + TPDFS + IPSI）
+- $\mathcal{L}_\text{IRCI}$ ：IRCI 的 CSCF 評判標準和跨尺度推斷能力
+- $f_\text{LTRF}$ ：層次時間解析度函數（每層的自適應採樣率）
+- $\mathcal{F}_\text{FDCS}$ ：FDCS 的數學語言（系統正在學習的因果結構的形式化）
+- $\Pi_\text{CMCIA}$ ：分階段 CSCF 驅動訓練課程（第3節）
 
 **自洽條件**：CMCIA 是自洽的，若投影定理（定理1）的所有四個相容性條件同時滿足。
 
@@ -366,7 +366,7 @@ CSCF 的定義（EML-IRCI-2026-v0.1，定義8）需要知道真實 IRCS 的因�
 
 ### 6.2 衰減因子 λ 的普遍性問題
 
-IRCI 和 FDCS 中的分形衰減因子 $\lambda$ 被假設為（近似）普遍常數。但真實世界中，不同物理域（生物系統、物理系統、社會系統）的跨尺度因果耦合強度可能有顯著差異。$\lambda$ 是否是可以從數據中估計的任務特定參數，還是存在一個普遍的物理基準，是重要的開放問題。
+IRCI 和 FDCS 中的分形衰減因子 $\lambda$ 被假設為（近似）普遍常數。但真實世界中，不同物理域（生物系統、物理系統、社會系統）的跨尺度因果耦合強度可能有顯著差異。 $\lambda$ 是否是可以從數據中估計的任務特定參數，還是存在一個普遍的物理基準，是重要的開放問題。
 
 ### 6.3 湧現閾值的實驗驗證
 
@@ -402,7 +402,7 @@ CMCIA 的設計評判標準說的是：更好的 AI，是在相同資源下能�
 
 | 概念 | 來源文件 | 章節 |
 |---|---|---|
-| 動態因果集 $S(t)$、分形衰減律 $\lambda$ | FDCS（2025-11） | 第1.2、2.2節 |
+| 動態因果集 $S(t)$ 、分形衰減律 $\lambda$ | FDCS（2025-11） | 第1.2、2.2節 |
 | IRCS 自相似條件、CSCF | EML-IRCI-2026-v0.1 | 定義1、定義8 |
 | EAL、GWL、LAML、CL、DGAF | EML-EWM-2026-v0.1 | 第3、5節 |
 | MAFPT、HMO、TPDFS、IPSI | EML-MMC-NA-2026-v0.1 | 第3-6節 |

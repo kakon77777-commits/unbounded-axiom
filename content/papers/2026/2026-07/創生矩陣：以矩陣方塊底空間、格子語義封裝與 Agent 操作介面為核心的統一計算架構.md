@@ -444,12 +444,12 @@ $$
 
 其中：
 
-- $C$：Cells，方塊單元集合；
-- $R$：Relations，關係集合；
-- $S$：States，狀態集合；
-- $P$：Projections，投影集合；
-- $H$：History，歷史事件；
-- $O$：Operations，可執行操作。
+- $C$ ：Cells，方塊單元集合；
+- $R$ ：Relations，關係集合；
+- $S$ ：States，狀態集合；
+- $P$ ：Projections，投影集合；
+- $H$ ：History，歷史事件；
+- $O$ ：Operations，可執行操作。
 
 ---
 
@@ -2554,11 +2554,11 @@ $$
 
 其中：
 
-- $B$：Base Space；
-- $C$：Cell Semantics；
-- $P$：Dynamic Projections；
-- $A$：Agent Operations；
-- $D$：Human–Agent Dialogue。
+- $B$ ：Base Space；
+- $C$ ：Cell Semantics；
+- $P$ ：Dynamic Projections；
+- $A$ ：Agent Operations；
+- $D$ ：Human–Agent Dialogue。
 
 ---
 
@@ -2580,11 +2580,11 @@ $$
 
 其中：
 
-- $\mathcal B_t$：時間 $t$ 的底空間；
-- $\Pi$：投影算子；
-- $\mathcal A$：Agent；
-- $\mathcal O$：操作集合；
-- $\mathcal H$：歷史。
+- $\mathcal B_t$ ：時間 $t$ 的底空間；
+- $\Pi$ ：投影算子；
+- $\mathcal A$ ：Agent；
+- $\mathcal O$ ：操作集合；
+- $\mathcal H$ ：歷史。
 
 演化：
 

@@ -342,7 +342,7 @@ where NoverlapN_{\text{overlap}} Noverlap​ is the number of overlapping matric
 
 The coupled evolution of CSI accumulation and semantic space dimension is:
 
-$$\begin{cases} \frac{dI(t)}{dt} = ||K(0)P(t)||^2 - \gamma_I I(t) + \eta_{\text{rep}} \mathcal{R}_{\text{global}} I(t) \ \frac{d\dim_{\text{eff}}}{dt} = -\kappa_{\text{collapse}} I(t) \dim_{\text{eff}} - \mu_{\text{rep}} \mathcal{R}_{\text{global}} \dim_{\text{eff}} \end{cases}$$
+$$\begin{cases} \frac{dI(t)}{dt} = ||K(0)P(t)||^2 - \gamma_I I(t) + \eta_{\text{rep}} \mathcal{R}_{\text{global}} I(t) \\ \frac{d\dim_{\text{eff}}}{dt} = -\kappa_{\text{collapse}} I(t) \dim_{\text{eff}} - \mu_{\text{rep}} \mathcal{R}_{\text{global}} \dim_{\text{eff}} \end{cases}$$
 
 where dim⁡eff\dim_{\text{eff}} dimeff​ is the effective semantic dimension.
 
@@ -382,7 +382,7 @@ eieff=ei⋅wi(Rlocal)e_i^{\text{eff}} = e_i \cdot w_i(\mathcal{R}_{\text{local}}
 
 where the weight function:
 
-$$w_i(\mathcal{R}) = \begin{cases} 1 - \alpha_i \mathcal{R} & \text{if } e_i \text{ is content-dependent} \ 1 & \text{if } e_i \text{ is structural} \end{cases}$$
+$$w_i(\mathcal{R}) = \begin{cases} 1 - \alpha_i \mathcal{R} & \text{if } e_i \text{ is content-dependent} \\ 1 & \text{if } e_i \text{ is structural} \end{cases}$$
 
 **5.1.2 Constraint Conflict and Resolution Mechanisms**
 
@@ -473,7 +473,7 @@ where At\mathcal{A}_t At​ is the set of active matrices at time tt t.
 
 GSM employs anomaly detection based on statistical control charts:
 
-$$\text{Anomaly} = \begin{cases} \text{True} & \text{if } |I_k(t) - \mu_k| > 3\sigma_k \ \text{False} & \text{otherwise} \end{cases}$$
+$$\text{Anomaly} = \begin{cases} \text{True} & \text{if } |I_k(t) - \mu_k| > 3\sigma_k \\ \text{False} & \text{otherwise} \end{cases}$$
 
 where Ik(t)I_k(t) Ik​(t) is the kk k-th monitoring metric, μk,σk\mu_k, \sigma_k μk​,σk​ are historical statistical parameters.
 

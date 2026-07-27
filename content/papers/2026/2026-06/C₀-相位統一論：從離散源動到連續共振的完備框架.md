@@ -799,7 +799,7 @@ Noether定理不是「發現」守恆律，而是**C₀結構的必然推論**�
 
 **統一公式（燃燒速率的終極版本）：**
 
-$$\\boxed{\\begin{aligned} k\_{\\text{total}} &= \\underbrace{A\_c e^{-E\_a/(k\_BT)}}*{\\text{經典激活（宏觀）}} + \\underbrace{A\_q e^{-S\_0/\\hbar}}*{\\text{量子隧穿（Planck層）}} + \\underbrace{\\sum\_i K\_i \\sin(\\Delta\\phi\_i)}*{\\text{相位共振（所有層）}} \\ &= k*{\\text{thermal}} + k\_{\\text{tunnel}} + k\_{\\text{resonance}} \\end{aligned}}$$
+$$\boxed{\begin{aligned} k\_{\text{total}} &= \underbrace{A\_c e^{-E\_a/(k\_BT)}}*{\text{經典激活（宏觀）}} + \underbrace{A\_q e^{-S\_0/\hbar}}*{\text{量子隧穿（Planck層）}} + \underbrace{\sum\_i K\_i \sin(\Delta\phi\_i)}*{\text{相位共振（所有層）}} \\ &= k*{\text{thermal}} + k\_{\text{tunnel}} + k\_{\text{resonance}} \end{aligned}}$$
 
 **三項的C₀詮釋：**
 
@@ -819,7 +819,7 @@ $$\\boxed{\\begin{aligned} k\_{\\text{total}} &= \\underbrace{A\_c e^{-E\_a/(k\_
 
 **C₀解答（級聯路徑）：**
 
-$$\\begin{aligned} &\\text{Planck層} \\quad (\\tau\_0 \\sim 10^{-44} \\text{ s}) \\ &\\quad \\downarrow \\quad \\times 10^{29} \\quad \\text{（C₀倍頻）} \\ &\\text{質子隧穿} \\quad (\\tau\_q \\sim 10^{-15} \\text{ s}) \\ &\\quad \\downarrow \\quad K\_{qm} = C\_0^{(q,m)} \\approx 0.5 \\ &\\text{分子振動} \\quad (\\tau\_m \\sim 10^{-13} \\text{ s}) \\ &\\quad \\downarrow \\quad K\_{m\\mu} \\approx 0.3 \\ &\\text{自由基擴散} \\quad (\\tau\_\\mu \\sim 10^{-6} \\text{ s}) \\ &\\quad \\downarrow \\quad K\_{\\mu M} \\approx 0.7 \\ &\\text{火焰鋒面} \\quad (\\tau\_M \\sim 10^{-2} \\text{ s}) \\end{aligned}$$
+$$\begin{aligned} &\text{Planck層} \quad (\tau\_0 \sim 10^{-44} \text{ s}) \\ &\quad \downarrow \quad \times 10^{29} \quad \text{（C₀倍頻）} \\ &\text{質子隧穿} \quad (\tau\_q \sim 10^{-15} \text{ s}) \\ &\quad \downarrow \quad K\_{qm} = C\_0^{(q,m)} \approx 0.5 \\ &\text{分子振動} \quad (\tau\_m \sim 10^{-13} \text{ s}) \\ &\quad \downarrow \quad K\_{m\mu} \approx 0.3 \\ &\text{自由基擴散} \quad (\tau\_\mu \sim 10^{-6} \text{ s}) \\ &\quad \downarrow \quad K\_{\mu M} \approx 0.7 \\ &\text{火焰鋒面} \quad (\tau\_M \sim 10^{-2} \text{ s}) \end{aligned}$$
 
 **總傳遞效率：**
 
@@ -895,7 +895,7 @@ C₀是非局域性的本體論來源。
 
 生物鐘的C₀結構：
 
-$$\\begin{aligned} &\\text{分子層：} \\quad \\tau\_{\\text{gene}} \\sim 1 \\text{ hr} \\quad \\text{（基因表達週期）} \\ &\\quad \\downarrow \\quad \\text{嵌套} \\ &\\text{細胞層：} \\quad \\tau\_{\\text{cell}} \\sim 24 \\text{ hr} \\quad \\text{（晝夜節律）} \\ &\\quad \\downarrow \\quad \\text{嵌套} \\ &\\text{環境層：} \\quad \\tau\_{\\text{Earth}} = 24 \\text{ hr} \\quad \\text{（地球自轉）} \\end{aligned}$$
+$$\begin{aligned} &\text{分子層：} \quad \tau\_{\text{gene}} \sim 1 \text{ hr} \quad \text{（基因表達週期）} \\ &\quad \downarrow \quad \text{嵌套} \\ &\text{細胞層：} \quad \tau\_{\text{cell}} \sim 24 \text{ hr} \quad \text{（晝夜節律）} \\ &\quad \downarrow \quad \text{嵌套} \\ &\text{環境層：} \quad \tau\_{\text{Earth}} = 24 \text{ hr} \quad \text{（地球自轉）} \end{aligned}$$
 
 **共振鎖定：**
 
@@ -1075,7 +1075,7 @@ C₀-相位場本身
 
 **終極公式（完全統一版）**
 
-$$\\boxed{\\begin{aligned} \\textbf{本體論層：} \\quad &\\text{Being} = \\int\_0^t \\Delta\_0 , dt = \\sum\_{n=0}^{t/\\tau\_0} (V \\circledast C\_0 \\circledast E)^{(n)} \\\[0.5em\] \\textbf{場論層：} \\quad &\\Phi(\\mathbf{r},t) = \\int\_0^t \\omega(\\mathbf{r},t') dt', \\quad \\Box\\Phi + \\frac{dV}{d\\Phi} = 0 \\\[0.5em\] \\textbf{統一層：} \\quad &\\Phi = \\lim\_{\\tau\_0 \\to 0^+} \\tau\_0 \\sum\_n \\omega\_n, \\quad C\_0(s\_1,s\_2)=1 \\Leftrightarrow |\\Delta\\phi|=0 \\\[0.5em\] \\textbf{守恆層：} \\quad &\\partial\_\\mu J^\\mu = 0, \\quad J^\\mu = (\\rho, \\mathbf{J}), \\quad \\rho = |\\nabla\\Phi|^2 \\\[0.5em\] \\textbf{耦合層：} \\quad &\\frac{d\\Phi\_i}{dt} = \\omega\_i + \\sum\_j K\_{ij}\\sin(\\Delta\\phi\_{ij}), \\quad K\_{ij} = \\langle C\_0^{(i)} | C\_0^{(j)} \\rangle \\\[0.5em\] \\textbf{湧現層：} \\quad &R = \\lim\_{N\\to\\infty} \\frac{1}{N}\\left|\\sum\_{i=1}^N e^{i\\Phi\_i}\\right|, \\quad \\Psi\_{\\text{collective}} = \\arg(R) \\end{aligned}}$$
+$$\boxed{\begin{aligned} \textbf{本體論層：} \quad &\text{Being} = \int\_0^t \Delta\_0 , dt = \sum\_{n=0}^{t/\tau\_0} (V \circledast C\_0 \circledast E)^{(n)} \\[0.5em] \textbf{場論層：} \quad &\Phi(\mathbf{r},t) = \int\_0^t \omega(\mathbf{r},t') dt', \quad \Box\Phi + \frac{dV}{d\Phi} = 0 \\[0.5em] \textbf{統一層：} \quad &\Phi = \lim\_{\tau\_0 \to 0^+} \tau\_0 \sum\_n \omega\_n, \quad C\_0(s\_1,s\_2)=1 \Leftrightarrow |\Delta\phi|=0 \\[0.5em] \textbf{守恆層：} \quad &\partial\_\mu J^\mu = 0, \quad J^\mu = (\rho, \mathbf{J}), \quad \rho = |\nabla\Phi|^2 \\[0.5em] \textbf{耦合層：} \quad &\frac{d\Phi\_i}{dt} = \omega\_i + \sum\_j K\_{ij}\sin(\Delta\phi\_{ij}), \quad K\_{ij} = \langle C\_0^{(i)} | C\_0^{(j)} \rangle \\[0.5em] \textbf{湧現層：} \quad &R = \lim\_{N\to\infty} \frac{1}{N}\left|\sum\_{i=1}^N e^{i\Phi\_i}\right|, \quad \Psi\_{\text{collective}} = \arg(R) \end{aligned}}$$
 
 **六個層次，一個真相：**
 
@@ -1312,7 +1312,7 @@ C₀機制：**視界阻斷了相位耦合**，破壞了虛粒子對的同步湮
 
 **統一公式（最終版）：隨機性的演化**
 
-$$\\boxed{\\begin{aligned} &\\textbf{第一層（本體論）：} \\quad \\text{真空漲落隨機性} = \\langle 0 | \\hat{a}^\\dagger \\hat{a} | 0 \\rangle \\quad \\text{（QFT，真隨機）} \\\[0.5em\] &\\textbf{第二層（快速耦合）：} \\quad \\delta\\Phi\_k \\xrightarrow{K\_{kj} \\gg 1} \\Phi\_{\\text{env}} \\quad \\text{（C₀鎖定，}t \\sim 10\\tau\_0\\text{）} \\\[0.5em\] &\\textbf{第三層（大數法則）：} \\quad \\delta\\Phi\_{\\text{macro}} = \\frac{1}{\\sqrt{N}} \\delta\\Phi\_{\\text{micro}} \\to 0 \\quad \\text{（}N \\sim 10^{99}\\text{）} \\\[0.5em\] &\\textbf{第四層（分形屏蔽）：} \\quad \\Delta E\_{\\text{barrier}} \\propto \\left(\\frac{L}{l\_P}\\right)^{D} \\quad \\text{（尺度勢能）} \\\[0.5em\] &\\textbf{例外（特異點）：} \\quad \\xi \\to \\infty \\Rightarrow \\text{微觀漲落放大到宏觀} \\end{aligned}}$$
+$$\boxed{\begin{aligned} &\textbf{第一層（本體論）：} \quad \text{真空漲落隨機性} = \langle 0 | \hat{a}^\dagger \hat{a} | 0 \rangle \quad \text{（QFT，真隨機）} \\[0.5em] &\textbf{第二層（快速耦合）：} \quad \delta\Phi\_k \xrightarrow{K\_{kj} \gg 1} \Phi\_{\text{env}} \quad \text{（C₀鎖定，}t \sim 10\tau\_0\text{）} \\[0.5em] &\textbf{第三層（大數法則）：} \quad \delta\Phi\_{\text{macro}} = \frac{1}{\sqrt{N}} \delta\Phi\_{\text{micro}} \to 0 \quad \text{（}N \sim 10^{99}\text{）} \\[0.5em] &\textbf{第四層（分形屏蔽）：} \quad \Delta E\_{\text{barrier}} \propto \left(\frac{L}{l\_P}\right)^{D} \quad \text{（尺度勢能）} \\[0.5em] &\textbf{例外（特異點）：} \quad \xi \to \infty \Rightarrow \text{微觀漲落放大到宏觀} \end{aligned}}$$
 
 **哲學總結：隨機與穩定的辯證**
 

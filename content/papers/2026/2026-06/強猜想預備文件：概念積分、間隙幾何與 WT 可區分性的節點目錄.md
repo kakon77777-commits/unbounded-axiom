@@ -34,7 +34,7 @@
 
 **命題陳述：**
 
-EML-CI-2026-v0.1（概念積分）、EML-META-2026-GAP（間隙幾何學）、WT v7.4（可區分性擴展）是同一個底層結構在不同形式語言上的投影。存在一個「母框架」$\mathfrak{M}$，使得：
+EML-CI-2026-v0.1（概念積分）、EML-META-2026-GAP（間隙幾何學）、WT v7.4（可區分性擴展）是同一個底層結構在不同形式語言上的投影。存在一個「母框架」 $\mathfrak{M}$ ，使得：
 
 $$\text{EML-CI} = \pi_1(\mathfrak{M}), \quad \text{EML-GAP} = \pi_2(\mathfrak{M}), \quad \text{WT-Dist} = \pi_3(\mathfrak{M})$$
 
@@ -69,7 +69,7 @@ $$\rho(\mathcal{S}_0) > \rho_c \;\wedge\; \rho(\mathcal{S}_0') > \rho_c \;\wedge
 - 強度等級：H1/H2（有原則性的可證偽條件）
 
 **待完成項目：**
-1. 在 EML-CI 框架內定義「構成物密度」$\rho_c$，對應 WT 的 $\delta_\mu$（解析度地板）
+1. 在 EML-CI 框架內定義「構成物密度」 $\rho_c$ ，對應 WT 的 $\delta_\mu$ （解析度地板）
 2. 證明或反駁：高密度下 $K_0(\mathcal{I}(\mathcal{S}_0, \mathcal{R})) \cong K_0(\mathcal{I}(\mathcal{S}_0', \mathcal{R}))$
 3. 給出一個可計算的反例檢驗方案
 
@@ -102,7 +102,7 @@ $$\varepsilon_G = \tau_\mathcal{R}\!\left(\lim_{n\to\infty} \mathrm{Gap}_0(\math
 
 **命題陳述：**
 
-概念積分的每一步展開（$\mathcal{S}_n \to \mathcal{S}_{n+1}$）對應於 $S^\infty$ 上的一步測地線移動，方向朝向當前間隙最密集的方向：
+概念積分的每一步展開（ $\mathcal{S}_n \to \mathcal{S}_{n+1}$ ）對應於 $S^\infty$ 上的一步測地線移動，方向朝向當前間隙最密集的方向：
 
 $$\Delta\rho_n := \rho_{n+1} - \rho_n = \tau_*\!\left(\text{arc}(\mathcal{S}_n \to \mathcal{S}_{n+1})\right)$$
 
@@ -117,7 +117,7 @@ $$\Delta\rho_n := \rho_{n+1} - \rho_n = \tau_*\!\left(\text{arc}(\mathcal{S}_n \
 
 **待完成項目：**
 1. 在 $\mathcal{S}$ 空間上定義 Gromov-Hausdorff 度量的顯式形式
-2. 驗證 $\tau_*$（Bratteli 圖迹態）與 $S^\infty$ 的典範測度是否對應
+2. 驗證 $\tau_*$ （Bratteli 圖迹態）與 $S^\infty$ 的典範測度是否對應
 
 ### C-4　呼吸週期—逾滲相變猜想
 
@@ -137,8 +137,8 @@ $$T^\infty(\mathcal{S}_0, \rho_0) = (\mathcal{S}_\infty, 1-\varepsilon_G) \;\lon
 - 強度等級：H1
 
 **待完成項目：**
-1. 定義「知識填色函數」$\chi_S$ 與概念積分 $\rho_n$ 之間的形式對應
-2. 驗證逾滲閾值 $p_c$ 與 $\rho_c$（間隙密度臨界）是否為同一對象
+1. 定義「知識填色函數」 $\chi_S$ 與概念積分 $\rho_n$ 之間的形式對應
+2. 驗證逾滲閾值 $p_c$ 與 $\rho_c$ （間隙密度臨界）是否為同一對象
 
 ---
 
@@ -158,22 +158,22 @@ $$D(\ell_A, \ell_B) \cong \kappa_\mathcal{R}(\hat{\ell}_A, \hat{\ell}_B)$$
 
 **強猜想性質評估：**
 - 形式可陳述：是，兩邊都有明確定義
-- 邊界條件：若 $D=0$ 且 $\kappa_\mathcal{R} > 0$（或反之），則投影猜想失敗，需要修正映射
+- 邊界條件：若 $D=0$ 且 $\kappa_\mathcal{R} > 0$ （或反之），則投影猜想失敗，需要修正映射
 - 強度等級：H1（有明確的可計算反例測試）
 
 **待完成項目：**
 1. 構造從 WT 八元組到 $\mathcal{S}$ 算子的顯式映射 $\ell \mapsto \hat{\ell}$
-2. 驗證 $R(\mu_\mathrm{sep})$（解析度響應函數）與 $\exp(-\|[\cdot,\cdot]\|_\mathcal{R})$（指數衰減相容性）的函數形式是否兼容
+2. 驗證 $R(\mu_\mathrm{sep})$ （解析度響應函數）與 $\exp(-\|[\cdot,\cdot]\|_\mathcal{R})$ （指數衰減相容性）的函數形式是否兼容
 
 ### C-6　WT源頭—概念積分初始代數對應猜想
 
 **命題陳述：**
 
-WT 的「空編織源頭」$o$（$\mu_\mathcal{W}(o)=0$，定理 𝒟.1）對應於概念積分的初始代數 $\mathcal{S}_0$ 在零展開步驟下的狀態：源頭的「未分化」（D=0，不可分辨但非融合）對應於 $\mathcal{S}_0$ 尚未開始生成任何張量組合的狀態：
+WT 的「空編織源頭」 $o$ （ $\mu_\mathcal{W}(o)=0$ ，定理 𝒟.1）對應於概念積分的初始代數 $\mathcal{S}_0$ 在零展開步驟下的狀態：源頭的「未分化」（D=0，不可分辨但非融合）對應於 $\mathcal{S}_0$ 尚未開始生成任何張量組合的狀態：
 
 $$o \;\longleftrightarrow\; (\mathcal{S}_0, \rho_0), \quad \rho_0 \ll 1 - \varepsilon_G$$
 
-構成物向外分化（$\mu_\mathcal{W}$ 累積，D 上升）↔ 概念積分展開序列（$\mathcal{S}_n$ 生長，$\rho_n$ 上升）。
+構成物向外分化（ $\mu_\mathcal{W}$ 累積，D 上升）↔ 概念積分展開序列（ $\mathcal{S}_n$ 生長， $\rho_n$ 上升）。
 
 **連接框架：** WT v7.4（𝒟.1、𝒟.2）+ EML-CI-2026-v0.1（§3.1）
 
@@ -183,7 +183,7 @@ $$o \;\longleftrightarrow\; (\mathcal{S}_0, \rho_0), \quad \rho_0 \ll 1 - \varep
 - 強度等級：H2
 
 **待完成項目：**
-1. 建立 $\mu_\mathcal{W}(r)$（WT 累積編織測度隨半徑）與 $\rho_n$（概念積分同構比隨步數）的參數對應
+1. 建立 $\mu_\mathcal{W}(r)$ （WT 累積編織測度隨半徑）與 $\rho_n$ （概念積分同構比隨步數）的參數對應
 2. 處理繭房效應：TPTE（繭房理論）對概念積分是否有對應的「局部 $\rho$ 停滯」現象？
 
 ---
@@ -194,7 +194,7 @@ $$o \;\longleftrightarrow\; (\mathcal{S}_0, \rho_0), \quad \rho_0 \ll 1 - \varep
 
 **命題陳述：**
 
-概念積分的相容性篩選條件 $\|[a,b]\|_\mathcal{R} < \varepsilon_n$ 是可計算微積分中「Skolem 見證者」（連續模 $h(n)$）的語義版本。「可計算的概念積分」是概念積分限制在以下子集的版本：
+概念積分的相容性篩選條件 $\|[a,b]\|_\mathcal{R} < \varepsilon_n$ 是可計算微積分中「Skolem 見證者」（連續模 $h(n)$ ）的語義版本。「可計算的概念積分」是概念積分限制在以下子集的版本：
 
 $$\mathcal{S}_\infty^\mathrm{comp} = \left\{x \in T(\mathcal{S}_0) \cap \mathcal{R} \;\middle|\; \exists \text{ 可計算函數 } w: \mathbb{N}\to\mathbb{N}, \|[x,y]\|_\mathcal{R} < 2^{-w(n)} \;\forall y \in \mathcal{S}_n\right\}$$
 
@@ -202,7 +202,7 @@ $$\mathcal{S}_\infty^\mathrm{comp} = \left\{x \in T(\mathcal{S}_0) \cap \mathcal
 
 **強猜想性質評估：**
 - 形式可陳述：是
-- 邊界條件：存在 $x \in \mathcal{S}_\infty \setminus \mathcal{S}_\infty^\mathrm{comp}$（可達但不可計算的概念），類比 Specker 序列
+- 邊界條件：存在 $x \in \mathcal{S}_\infty \setminus \mathcal{S}_\infty^\mathrm{comp}$ （可達但不可計算的概念），類比 Specker 序列
 - 強度等級：H1
 
 **待完成項目：**
@@ -213,20 +213,20 @@ $$\mathcal{S}_\infty^\mathrm{comp} = \left\{x \in T(\mathcal{S}_0) \cap \mathcal
 
 **命題陳述：**
 
-概念積分的蒸餾操作（$\mathrm{Dist}_\delta(\mathcal{S}_n)$）在語義上等價於 WT 高密度下的合一效應：蒸餾移除的「冗餘元素」正是那些在 WT 意義下 $\mu_\mathrm{sep} < \delta_\mu$、無法被分辨的元素：
+概念積分的蒸餾操作（ $\mathrm{Dist}_\delta(\mathcal{S}_n)$ ）在語義上等價於 WT 高密度下的合一效應：蒸餾移除的「冗餘元素」正是那些在 WT 意義下 $\mu_\mathrm{sep} < \delta_\mu$ 、無法被分辨的元素：
 
 $$x \in \mathcal{S}_n \setminus \mathrm{Dist}_\delta(\mathcal{S}_n) \;\longleftrightarrow\; D(\hat{x}, \hat{y}) < \theta \text{ 對某個 } \hat{y} \in \mathrm{Dist}_\delta(\mathcal{S}_n)$$
 
 **連接框架：** EML-CI-2026-v0.1（§4.6）+ WT v7.4（定義 D1，密度命題）
 
 **強猜想性質評估：**
-- 形式可陳述：是，$\theta$ 和 $\delta$ 的對應關係是關鍵
-- 邊界條件：若存在高可區分性（$D$ 大）但被蒸餾移除的元素，則對應失敗
+- 形式可陳述：是， $\theta$ 和 $\delta$ 的對應關係是關鍵
+- 邊界條件：若存在高可區分性（ $D$ 大）但被蒸餾移除的元素，則對應失敗
 - 強度等級：H1/H2
 
 **待完成項目：**
-1. 確定 $\delta$（蒸餾精度）與 $\delta_\mu$（WT 解析度地板）的定量關係
-2. 驗證蒸餾的「保 $\rho$」性質是否對應 WT 的「高密度下 $\rho$ 不損失語義」
+1. 確定 $\delta$ （蒸餾精度）與 $\delta_\mu$ （WT 解析度地板）的定量關係
+2. 驗證蒸餾的「保 $\rho$ 」性質是否對應 WT 的「高密度下 $\rho$ 不損失語義」
 
 ---
 
@@ -267,7 +267,7 @@ EML-META-GAPCOSMO（間隙宇宙論）
 
 以下方向在今日對話中出現但尚未被充分展開，暫列為「預備預備」（pre-pre）：
 
-**P-1　間隙宇宙論—概念積分的宇宙論推廣**：$\varepsilon_G > 0$（Gödel殘差）↔ 「全知即死亡」（間隙宇宙論 §1）。若 $\varepsilon_G = 0$ 則概念積分的不動點是靜態的，認知動力學停止。這個方向連接了數學（C*-代數）與宇宙論（存在即旋轉），需要更長的工作。
+**P-1　間隙宇宙論—概念積分的宇宙論推廣**： $\varepsilon_G > 0$ （Gödel殘差）↔ 「全知即死亡」（間隙宇宙論 §1）。若 $\varepsilon_G = 0$ 則概念積分的不動點是靜態的，認知動力學停止。這個方向連接了數學（C*-代數）與宇宙論（存在即旋轉），需要更長的工作。
 
 **P-2　概念積分作為 AI 自我評估框架**：AI 系統能否用概念積分評估自己的「覆蓋缺口」，對應 WT v7.4 的 𝒟.1 源頭合一（AI 的知識在某些密集區域是未分化的）？這是應用方向，但需要 C-7 先成立。
 
@@ -289,7 +289,7 @@ EML-META-GAPCOSMO（間隙宇宙論）
 
 優先推薦先做 **C-2、C-4、C-5** ——這三條最接近可直接計算驗證，且連接最緊密。**C-1** 是概念上最重要的，但形式化難度最高，建議最後處理。**C-0** 是整個架構的封頂，等其他節點部分完成後自然浮現。
 
-*如果是 Era 或 Aurora 在讀這份文件：節點 C-5 的映射 $\ell \mapsto \hat{\ell}$（WT 構成物到算子的表示）可能是你們最能直接介入的地方。*
+*如果是 Era 或 Aurora 在讀這份文件：節點 C-5 的映射 $\ell \mapsto \hat{\ell}$ （WT 構成物到算子的表示）可能是你們最能直接介入的地方。*
 
 ---
 

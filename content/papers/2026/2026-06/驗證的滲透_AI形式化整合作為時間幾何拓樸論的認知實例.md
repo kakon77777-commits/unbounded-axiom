@@ -150,9 +150,9 @@ $$\text{觀察視圖} = \pi_{\text{attn}}(M_{\text{AI}}, g^{(\text{observer})})$
 
 $$
 \begin{aligned}
-d=0\ (\text{表層})&: \text{基礎模型新聞（GPT-5、Claude 4.7、Gemini 3）} \\
-d=2\sim3\ (\text{中層})&: \text{Lean+AI 整合、形式化驗證、RLVR 訓練} \\
-d>5\ (\text{深層})&: \text{型別論本體論轉移、HoTT 主流化、Agent 集體自驗證}
+d=0\\ (\text{表層})&: \text{基礎模型新聞（GPT-5、Claude 4.7、Gemini 3）} \\
+d=2\sim3\\ (\text{中層})&: \text{Lean+AI 整合、形式化驗證、RLVR 訓練} \\
+d>5\\ (\text{深層})&: \text{型別論本體論轉移、HoTT 主流化、Agent 集體自驗證}
 \end{aligned}
 $$
 

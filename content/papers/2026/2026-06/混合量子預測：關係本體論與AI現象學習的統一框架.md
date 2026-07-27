@@ -107,7 +107,7 @@
 
 量子系統預測需要**三層結構**：
 
-$$\\boxed{\\begin{aligned} &\\text{Layer 1: 理論約束層（保底）} \\ &\\quad \\text{確保物理定律（么正、厄米、守恆）} \\ \\ &\\text{Layer 2: 現象學習層（提升）} \\ &\\quad \\text{從實驗資料學習有效參數} \\ \\ &\\text{Layer 3: 綜合優化層（統一）} \\ &\\quad \\text{在約束流形上最小化誤差} \\end{aligned}}$$
+$$\boxed{\begin{aligned} &\text{Layer 1: 理論約束層（保底）} \\ &\quad \text{確保物理定律（么正、厄米、守恆）} \\ \\ &\text{Layer 2: 現象學習層（提升）} \\ &\quad \text{從實驗資料學習有效參數} \\ \\ &\text{Layer 3: 綜合優化層（統一）} \\ &\quad \text{在約束流形上最小化誤差} \end{aligned}}$$
 
 **為什麼現有方法失敗**：
 
@@ -283,13 +283,13 @@ $$\\boxed{\\begin{aligned} &\\text{Layer 1: 理論約束層（保底）} \\ &\\q
 
 將關係圖 映射到特徵向量：
 
-$$\\phi(G) = \\left(\\begin{array}{c} \\text{度數序列} \\ \\text{譜特徵（特徵值）} \\ \\text{拓撲不變數} \\ \\text{物理對稱性} \\end{array}\\right) \\in \\mathbb{R}^d$$
+$$\phi(G) = \left(\begin{array}{c} \text{度數序列} \\ \text{譜特徵（特徵值）} \\ \text{拓撲不變數} \\ \text{物理對稱性} \end{array}\right) \in \mathbb{R}^d$$
 
 **例子**：
 
 對於5量子比特鏈狀耦合：
 
-$$\\phi(G) = \\left(\\begin{array}{c} \[2,2,2,2,2\] \\quad (\\text{每個節點度數}) \\ \\lambda\_{\\max}(G) = 2.5 \\quad (\\text{最大特徵值}) \\ \\chi(G) = 5 \\quad (\\text{Euler示性數}) \\ \\text{U(1) 對稱性} \\quad (\\text{相位旋轉不變}) \\end{array}\\right)$$
+$$\phi(G) = \left(\begin{array}{c} [2,2,2,2,2] \quad (\text{每個節點度數}) \\ \lambda\_{\max}(G) = 2.5 \quad (\text{最大特徵值}) \\ \chi(G) = 5 \quad (\text{Euler示性數}) \\ \text{U(1) 對稱性} \quad (\text{相位旋轉不變}) \end{array}\right)$$
 
 **定義3.2**（現象學哈密頓量學習器）
 
@@ -376,9 +376,9 @@ w\_{t+1} = Project(w\_{t+1}, constraints)
 
 給定電路-測量對 ，生成新樣本：
 
-1.  **相位旋轉**： $$C' = U\_\\phi \\cdot C \\cdot U\_\\phi^\\dagger, \\quad U\_\\phi = e^{i\\phi Z}
+1.  **相位旋轉**： $$C' = U\_\phi \cdot C \cdot U\_\phi^\dagger, \quad U\_\phi = e^{i\phi Z}
 2.  **比特置換**： $$C' = \\Pi \\cdot C \\cdot \\Pi^\\dagger, \\quad \\Pi \\text{ 是置換門}
-3.  **時間反演**： $$C' = C^\\dagger \\quad (\\text{電路逆序})
+3.  **時間反演**： $$C' = C^\dagger \quad (\text{電路逆序})
 
 **定理3.4**（增強有效性）
 
@@ -406,7 +406,7 @@ $$\\boxed{\\begin{aligned} &\\min\_{w} \\quad \\mathcal{L}*{\\text{data}}(w) \\ 
 
 **定義4.1**（量子綜合狀態）
 
-$$\\mathbb{D}\[w\] = \\begin{pmatrix} w & \\text{權重矩陣} \\ \\nabla\_w \\mathcal{L} & \\text{梯度} \\ \\nabla^2\_w \\mathcal{L} & \\text{Hessian} \\ \\mathcal{L}*{\\text{physics}}(w) & \\text{約束違反度} \\ |\\langle\\psi*{\\text{pred}}|\\psi\_{\\text{true}}\\rangle|^2 & \\text{保真度} \\end{pmatrix}$$
+$$\\mathbb{D}[w] = \\begin{pmatrix} w & \\text{權重矩陣} \\ \\nabla\_w \\mathcal{L} & \\text{梯度} \\ \\nabla^2\_w \\mathcal{L} & \\text{Hessian} \\ \\mathcal{L}*{\\text{physics}}(w) & \\text{約束違反度} \\ |\\langle\\psi*{\\text{pred}}|\\psi\_{\\text{true}}\\rangle|^2 & \\text{保真度} \\end{pmatrix}$$
 
 **4.3 加權範數與梯度流**
 
@@ -726,7 +726,7 @@ Loss (綜合範數)
 
 \*\*量子糾錯\*\*：更複雜
 
-\- 錯誤類型：bit-flip（$X$）、phase-flip（$Z$）、兩者（$Y$）
+\- 錯誤類型：bit-flip（ $X$ ）、phase-flip（ $Z$ ）、兩者（ $Y$ ）
 
 \- \*\*不可克隆定理\*\*：無法複製量子態
 
@@ -734,7 +734,7 @@ Loss (綜合範數)
 
 \---
 
-\*\*最小距離\*\*：$d=3$ 的碼可以糾正1個錯誤
+\*\*最小距離\*\*： $d=3$ 的碼可以糾正1個錯誤
 
 \*\*經典碼\*\*（如\[7,1,3\] Steane碼）：
 
@@ -800,13 +800,13 @@ q6 -- q7 -- q8
 
 $$\\min\_{w} \\quad P\_{\\text{error}}(w) \\quad \\text{s.t.} \\quad \\text{碼距} \\geq 3$$
 
-其中 $P\_{\\text{error}}$ 是解碼失敗概率（通過Monte Carlo估計）。
+其中 $P\_{\text{error}}$ 是解碼失敗概率（通過Monte Carlo估計）。
 
 \*\*步驟3\*\*：AI學習最優權重
 
 用PINN學習：
 
-$$w^\* = \\arg\\min\_{w \\in \\mathcal{M}} \\mathbb{E}\_{\\text{noise}}\[P\_{\\text{error}}(w, \\text{noise})\]$$
+$$w^\* = \\arg\\min\_{w \\in \\mathcal{M}} \\mathbb{E}\_{\\text{noise}}[P\_{\\text{error}}(w, \\text{noise})]$$
 
 \---
 
@@ -816,7 +816,7 @@ $$w^\* = \\arg\\min\_{w \\in \\mathcal{M}} \\mathbb{E}\_{\\text{noise}}\[P\_{\\t
 
 \- IBM Eagle處理器
 
-\- 雜訊模型：$T\_1 = 100\\mu s$, $T\_2 = 50\\mu s$, 門誤差 $\\sim 0.5\\%$
+\- 雜訊模型： $T\_1 = 100\mu s$, $T\_2 = 50\mu s$, 門誤差 $\sim 0.5\\%$
 
 \*\*對比\*\*：
 
@@ -968,7 +968,7 @@ VQE需要優化參數化電路：
 
 **核心公式**
 
-$$\\boxed{\\begin{aligned} &\\text{量子系統} = G = (V, E, w) \\ \\ &\\text{演化} = \\frac{dw}{dt} = -\\frac{i}{\\hbar}\[H, w\] + \\mathcal{N}*{\\text{AI}}(w) \\ \\ &\\text{優化} = \\min*{w \\in \\mathcal{M}} |\\mathbb{D}\[w\]|\_W \\end{aligned}}$$
+$$\\boxed{\\begin{aligned} &\\text{量子系統} = G = (V, E, w) \\ \\ &\\text{演化} = \\frac{dw}{dt} = -\\frac{i}{\\hbar}[H, w] + \\mathcal{N}*{\\text{AI}}(w) \\ \\ &\\text{優化} = \\min*{w \\in \\mathcal{M}} |\\mathbb{D}[w]|\_W \\end{aligned}}$$
 
 **三個範式的統一**
 

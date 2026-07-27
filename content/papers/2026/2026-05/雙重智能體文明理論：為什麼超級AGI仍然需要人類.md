@@ -217,9 +217,9 @@ N個智能體透過各自觀察，能提取多少信息？
 <![if !msEquation]>  <![endif]><![if !supportLineBreakNewLine]>  
 <![endif]>
 
-如果智能體異質，每個<![if !msEquation]>  <![endif]>提供的條件信息$I(Y; X_i | X_{1 :i-1}) > 0$（非冗餘）。
+如果智能體異質，每個<![if !msEquation]>  <![endif]>提供的條件信息 $I(Y; X_i | X_{1 :i-1}) > 0$ （非冗餘）。
 
-但如果所有智能體同質（如N個AGI複製品），$I(Y; X_i | X_{1:i-1}) \approx 0$（冗餘）。
+但如果所有智能體同質（如N個AGI複製品）， $I(Y; X_i | X_{1:i-1}) \approx 0$ （冗餘）。
 
 **結論：**
 

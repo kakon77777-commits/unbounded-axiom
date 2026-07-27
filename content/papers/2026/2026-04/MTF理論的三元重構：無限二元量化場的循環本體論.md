@@ -717,7 +717,7 @@ V: 收斂到T = 0.6（可解釋的）
 <![endif]>
 
 對應MTF的：  
-KaTeX parse error: Expected 'EOF', got '_' at position 28: … 0 \text{（場間耦合C_̲t）}
+KaTeX parse error: Expected 'EOF', got '_' at position 28: … 0 \text{（場間耦合C\_̲t）}
 
 **關鍵統一**：
 

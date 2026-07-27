@@ -429,7 +429,7 @@ T階段（Transition）：
 
 **視角2：相位場Φ**
 
-反應進度場： $$\\Phi\_{\\text{burn}}(x,t) = \\begin{cases} 0 & \\text{未燃區} \\ \\pi & \\text{反應區} \\ 2\\pi & \\text{燃盡區} \\end{cases}$$
+反應進度場： $$\Phi\_{\text{burn}}(x,t) = \begin{cases} 0 & \text{未燃區} \\ \pi & \text{反應區} \\ 2\pi & \text{燃盡區} \end{cases}$$
 
 演化（Sine-Gordon）：
 
@@ -439,7 +439,7 @@ T階段（Transition）：
 
 **視角3：無限維T^∞**
 
-多尺度相位： $$\\begin{aligned} \\theta\_q &: \\text{質子隧穿} \\quad (10^{15} \\text{ Hz}) \\ \\theta\_v &: \\text{分子振動} \\quad (10^{13} \\text{ Hz}) \\ \\theta\_f &: \\text{火焰鋒面} \\quad (10^{2} \\text{ Hz}) \\end{aligned}$$
+多尺度相位： $$\begin{aligned} \theta\_q &: \text{質子隧穿} \quad (10^{15} \text{ Hz}) \\ \theta\_v &: \text{分子振動} \quad (10^{13} \text{ Hz}) \\ \theta\_f &: \text{火焰鋒面} \quad (10^{2} \text{ Hz}) \end{aligned}$$
 
 能量：
 
@@ -934,9 +934,9 @@ J^μ = ρu^μ
 
 當N→∞：
 
-1.  **h離散化→連續化**： $$\\{h\_1, h\_2, \\ldots\\} \\to \\mu(d\\Phi) \\quad \\text{（測度）}
+1.  **h離散化→連續化**： $$\\{h\_1, h\_2, \ldots\\} \to \mu(d\Phi) \quad \text{（測度）}
 2.  **求和→積分**： $$\\sum\_{i=1}^N h\_i f(\\Phi\_i) \\to \\int\_0^{2\\pi} f(\\Phi) \\, d\\mu(\\Phi)
-3.  **維度→不可數**： $$\\dim(\\mathcal{U}\_N) = N \\to \\aleph\_1
+3.  **維度→不可數**： $$\dim(\mathcal{U}\_N) = N \to \aleph\_1
 
 **Ω的特性**：
 
@@ -977,7 +977,7 @@ J^μ = ρu^μ
 
 **7.1 元本體的完整表述**
 
-$$\\boxed{\\begin{aligned} &\\textbf{h-相位元本體論：統一場論} \\ \\ &\\mathcal{U} = \\sum\_{i=1}^{\\infty} h\_i \\cdot e^{i\\Phi\_i(t)} \\cdot |\\psi\_i\\rangle \\ \\ &\\textbf{五公理：} \\ &\\quad \\text{U1（存在）：} x = h \\cdot e^{i\\Phi} \\cdot |\\psi\\rangle \\ &\\quad \\text{U2（疊加）：} \\mathcal{U} = \\sum h\_i e^{i\\Phi\_i} |\\psi\_i\\rangle, , \\sum h\_i = 1 \\ &\\quad \\text{U3（演化）：} \\frac{d\\mathcal{U}}{dt} = -i\[\\mathcal{H}, \\mathcal{U}\] \\ &\\quad \\text{U4（投影）：} \\mathcal{U} \\cong W \\cong \\Phi \\cong T^\\infty \\cong \\Psi \\ &\\quad \\text{U5（湧現）：} \\Omega = \\lim\_{N\\to\\infty} \\mathcal{U}*N \\ \\ &\\textbf{四投影：} \\ &\\quad W: \\sum*{ij} w\_{ij} e^{i\\phi\_{ij}} |\\psi\_i\\rangle\\langle\\psi\_j| \\ &\\quad \\Phi: \\Phi(r,t) \\neq 0 \\ &\\quad T^\\infty: E = \\sum h\_i \\mathcal{E}*i + \\sum h\_i h\_j K*{ij} \\ &\\quad \\Psi: \\sum \\sqrt{h\_i} e^{i\\Phi\_i} |i\\rangle \\ \\ &\\textbf{三守恆：} \\ &\\quad \\sum h\_i = 1, \\quad Q = \\frac{1}{2\\pi}\\sum h\_i \\Phi\_i \\in \\mathbb{Z}, \\quad \\partial\_t \\rho + \\nabla \\cdot \\mathbf{J} = 0 \\ \\ &\\textbf{存在定義：} \\ &\\quad \\boxed{\\text{Being} = h \\cdot e^{i\\Phi} \\neq 0} \\end{aligned}}$$
+$$\\boxed{\\begin{aligned} &\\textbf{h-相位元本體論：統一場論} \\ \\ &\\mathcal{U} = \\sum\_{i=1}^{\\infty} h\_i \\cdot e^{i\\Phi\_i(t)} \\cdot |\\psi\_i\\rangle \\ \\ &\\textbf{五公理：} \\ &\\quad \\text{U1（存在）：} x = h \\cdot e^{i\\Phi} \\cdot |\\psi\\rangle \\ &\\quad \\text{U2（疊加）：} \\mathcal{U} = \\sum h\_i e^{i\\Phi\_i} |\\psi\_i\\rangle, , \\sum h\_i = 1 \\ &\\quad \\text{U3（演化）：} \\frac{d\\mathcal{U}}{dt} = -i[\\mathcal{H}, \\mathcal{U}] \\ &\\quad \\text{U4（投影）：} \\mathcal{U} \\cong W \\cong \\Phi \\cong T^\\infty \\cong \\Psi \\ &\\quad \\text{U5（湧現）：} \\Omega = \\lim\_{N\\to\\infty} \\mathcal{U}*N \\ \\ &\\textbf{四投影：} \\ &\\quad W: \\sum*{ij} w\_{ij} e^{i\\phi\_{ij}} |\\psi\_i\\rangle\\langle\\psi\_j| \\ &\\quad \\Phi: \\Phi(r,t) \\neq 0 \\ &\\quad T^\\infty: E = \\sum h\_i \\mathcal{E}*i + \\sum h\_i h\_j K*{ij} \\ &\\quad \\Psi: \\sum \\sqrt{h\_i} e^{i\\Phi\_i} |i\\rangle \\ \\ &\\textbf{三守恆：} \\ &\\quad \\sum h\_i = 1, \\quad Q = \\frac{1}{2\\pi}\\sum h\_i \\Phi\_i \\in \\mathbb{Z}, \\quad \\partial\_t \\rho + \\nabla \\cdot \\mathbf{J} = 0 \\ \\ &\\textbf{存在定義：} \\ &\\quad \\boxed{\\text{Being} = h \\cdot e^{i\\Phi} \\neq 0} \\end{aligned}}$$
 
 **7.2 燃燒統一公式**
 

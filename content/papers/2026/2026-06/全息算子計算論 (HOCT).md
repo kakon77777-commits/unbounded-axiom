@@ -119,7 +119,7 @@ $$\hat{D}: X_{\text{不可數}} \mapsto (X_{\text{可數}}, \neg X_{\text{對偶
 | 數值分析 | 連續變換 | 有限元離散化 | 網格節點值 | 收斂階數 |
 | 量子力學 | 量子態 | 投影測量 | 觀測本徵值 | 測量算子守恆 |
 | 偏微分方程 | 解函數空間 | 弱解 | 試驗函數內積 | 弱導數條件 |
-| 範疇論 | 無窮範疇 | 截斷 (truncation) | 有限階 ($n$-範疇) | 同倫等價 |
+| 範疇論 | 無窮範疇 | 截斷 (truncation) | 有限階 ($n$ -範疇) | 同倫等價 |
 
 **統一觀察**:這些工程技巧本質上都是同一個操作的不同實現——將不可數內部「擠出」,將不可計算外部「保留為對偶」。HOCT 把這個操作提升為本體論層的單一原語。
 
@@ -696,15 +696,15 @@ EveMissLab (一言諾科技有限公司)
 
 (供數學家讀者參考)
 
-**命題 C.1**:在任意豐富範疇 $\mathcal{V}$-Cat 中,對象 $X$ 等同於 $X$ 上的恆等態射 $\text{id}_X: X \to X$。
+**命題 C.1**:在任意豐富範疇 $\mathcal{V}$ -Cat 中,對象 $X$ 等同於 $X$ 上的恆等態射 $\text{id}_X: X \to X$ 。
 
-**證明草稿**:範疇 $\mathcal{C}$ 在 $\mathcal{V}$ 中豐富,意味著 $\text{Hom}_\mathcal{C}(X, Y) \in \mathcal{V}$。$\text{id}_X \in \text{Hom}_\mathcal{C}(X, X)$,且通過 Yoneda 引理,對象 $X$ 完全由 $\text{Hom}_\mathcal{C}(-, X)$ 函子決定,而 $\text{id}_X$ 是該函子的「種子」。
+**證明草稿**:範疇 $\mathcal{C}$ 在 $\mathcal{V}$ 中豐富,意味著 $\text{Hom}_\mathcal{C}(X, Y) \in \mathcal{V}$ 。 $\text{id}_X \in \text{Hom}_\mathcal{C}(X, X)$,且通過 Yoneda 引理,對象 $X$ 完全由 $\text{Hom}_\mathcal{C}(-, X)$ 函子決定,而 $\text{id}_X$ 是該函子的「種子」。
 
 **推論 C.1**:任何對象都可被視為以自身為核心的算子。
 
 **對應的線性代數陳述**:向量空間 $V$ 中,任意向量 $v \in V$ 可視為線性算子 $A_v: V^* \to V$ 通過 $A_v(\phi) = \phi(v) \cdot v$ (或更一般的張量積構造)。
 
-**對應的量子力學陳述**:Hilbert 空間 $\mathcal{H}$ 中,任意態 $|\psi\rangle \in \mathcal{H}$ 直接對應投影算子 $P_\psi = |\psi\rangle\langle\psi|$。
+**對應的量子力學陳述**:Hilbert 空間 $\mathcal{H}$ 中,任意態 $|\psi\rangle \in \mathcal{H}$ 直接對應投影算子 $P_\psi = |\psi\rangle\langle\psi|$ 。
 
 ---
 

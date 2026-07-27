@@ -215,7 +215,7 @@ $$
 \operatorname{Align}(v_i,v_j)
 $$
 
-其中 $$v_i\in V_i$$、$$v_j\in V_j$$。
+其中 $$ v_i\in V_i$$ 、$$ v_j\in V_j$$。
 
 對齊不應只依賴文字相似度，而需要同時考慮：
 

@@ -10,7 +10,7 @@
 
 ## 摘要
 
-本文提出 **Theory Compression Format（TCF）**，一個將任意形式理論規範化為統一九節結構的標準格式。TCF 的核心貢獻有二：其一，為跨領域理論提供可機器解析、可版本控制、可交叉引用的標準表達；其二，定義**壓縮率** $\mathrm{CR} = I / K$ 作為辨別「真理論」與「魔術理論」的經驗判準。真理論以少量原語與公理推出大量定理（$\mathrm{CR}$ 隨形式化程度發散），魔術理論則為每個結論獨立添加假設（$\mathrm{CR} \lesssim 1$）。我們以 Dynamic Circle Ontology（DCO v5.0）作為實例，對照一個蓄意構造的魔術理論，展示度量的辨別力（DCO: $\mathrm{CR}=2.25$；魔術理論：$\mathrm{CR}=0.80$）。附參考實現（Python）。
+本文提出 **Theory Compression Format（TCF）**，一個將任意形式理論規範化為統一九節結構的標準格式。TCF 的核心貢獻有二：其一，為跨領域理論提供可機器解析、可版本控制、可交叉引用的標準表達；其二，定義**壓縮率** $\mathrm{CR} = I / K$ 作為辨別「真理論」與「魔術理論」的經驗判準。真理論以少量原語與公理推出大量定理（ $\mathrm{CR}$ 隨形式化程度發散），魔術理論則為每個結論獨立添加假設（ $\mathrm{CR} \lesssim 1$ ）。我們以 Dynamic Circle Ontology（DCO v5.0）作為實例，對照一個蓄意構造的魔術理論，展示度量的辨別力（DCO: $\mathrm{CR}=2.25$ ；魔術理論： $\mathrm{CR}=0.80$ ）。附參考實現（Python）。
 
 ---
 
@@ -82,7 +82,7 @@ $K$ 稱為**結構複雜度**——理論「壓縮後」的描述長度，僅計
 
 $I$ 稱為**推論產出**——可從 $K$ 正式推出的形式化內容。
 
-$\mathrm{CR}$ 稱為**壓縮率**。經驗閾值 $\mathrm{CR}_{\text{crit}} = 1.5$：低於此值，理論進入「魔術區」——每個結構元件平均產出不到 1.5 個推論，暗示公理化失敗。
+$\mathrm{CR}$ 稱為**壓縮率**。經驗閾值 $\mathrm{CR}_{\text{crit}} = 1.5$ ：低於此值，理論進入「魔術區」——每個結構元件平均產出不到 1.5 個推論，暗示公理化失敗。
 
 **度量性質**：
 - $\mathrm{CR}$ 隨理論展開單調**非嚴格**增長（可能持平，但不會下降——因為 $I$ 只增不減）。
@@ -101,16 +101,16 @@ $$\mathrm{FP}(T) = \mathrm{SHA}\text{-}256(\mathrm{canonical}(T))$$
 
 ## 3. 壓縮定理
 
-**定理（TCF 壓縮定理）**。對一個理論 $T$，以下兩陳述**等價**：
+**定理（TCF 壓縮定理）**。對一個理論 $T$ ，以下兩陳述**等價**：
 
-1. 存在某個有限展開 $T^*$ 使得 $\mathrm{CR}(T^*) \geq c$，$c > 1$ 任意大；
+1. 存在某個有限展開 $T^*$ 使得 $\mathrm{CR}(T^*) \geq c$ ， $c > 1$ 任意大；
 2. $T$ 的公理集合對其可推出定理集合構成**非平凡壓縮**——即大多數定理無法還原為「重述某條公理」。
 
-**證明草圖**。($1 \Rightarrow 2$) 若 $T$ 的每條定理都僅是某公理的重述，則 $|\S_4| \leq |\S_1|$，且每個證明僅需一步 AxiomIntro，故 $I \leq 2|\S_1|$、$K \geq |\S_1|$，於是 $\mathrm{CR} \leq 2 + |\S_0|/|\S_1|$——上界有限。反之若 $\mathrm{CR}$ 可無界展開，必存在不可由單條公理還原的定理。
+**證明草圖**。($1 \Rightarrow 2$) 若 $T$ 的每條定理都僅是某公理的重述，則 $|\S_4| \leq |\S_1|$ ，且每個證明僅需一步 AxiomIntro，故 $I \leq 2|\S_1|$ 、 $K \geq |\S_1|$ ，於是 $\mathrm{CR} \leq 2 + |\S_0|/|\S_1|$ ——上界有限。反之若 $\mathrm{CR}$ 可無界展開，必存在不可由單條公理還原的定理。
 
-($2 \Rightarrow 1$) 若公理集合提供非平凡壓縮，則可重複應用推理規則生成新定理而不增 $K$，故 $I$ 可無限增長而 $K$ 固定，$\mathrm{CR} \to \infty$。 $\blacksquare$
+($ 2 \Rightarrow 1$ ) 若公理集合提供非平凡壓縮，則可重複應用推理規則生成新定理而不增 $ K$ ，故 $I$ 可無限增長而 $K$ 固定， $\mathrm{CR} \to \infty$ 。 $\blacksquare$
 
-**推論**。$\mathrm{CR}$ 的增長率是「理論深度」的下界指標——深度意味著從固定假設可持續推出非平凡新結論。
+**推論**。 $\mathrm{CR}$ 的增長率是「理論深度」的下界指標——深度意味著從固定假設可持續推出非平凡新結論。
 
 **注意**。此定理為經驗判準而非形式定理：「重述某條公理」的精確定義涉及同倫型論層級的等價，本規範不強制。實踐上，由形式證明檢查器（如 Lean、Coq、Isabelle）驗證 $T$ 的 §5，可提供此判準的硬下界。
 
@@ -123,12 +123,12 @@ Dynamic Circle Ontology v5.0（Neo.K 2026）以**閉合性 Closure** 為唯一�
 **§0 Primitives（4）**：`Cl`（類型）、`π`（維度投影函數）、`∘`（閉合複合）、`In`（內在關係）。
 
 **§1 Axioms（4）**：
-- `Cl-1` self-consistency：$\forall x \in \mathrm{Cl}.\ x \circ x = x$
-- `Cl-2` duality：$\forall x.\ \exists! y.\ \mathrm{In}(x,y) \wedge \neg\mathrm{In}(y,x)$
-- `Cl-3` conservation：$\forall f.\ \exists f^{-1}.\ f \circ f^{-1} = \mathrm{id}$
-- `Cl-4` generativity：$\forall n.\ \pi_{n+1}(\mathrm{Cl}) = S^n$
+- `Cl-1` self-consistency： $\forall x \in \mathrm{Cl}.\ x \circ x = x$
+- `Cl-2` duality： $\forall x.\ \exists! y.\ \mathrm{In}(x,y) \wedge \neg\mathrm{In}(y,x)$
+- `Cl-3` conservation： $\forall f.\ \exists f^{-1}.\ f \circ f^{-1} = \mathrm{id}$
+- `Cl-4` generativity： $\forall n.\ \pi_{n+1}(\mathrm{Cl}) = S^n$
 
-**§4 Theorems（10）**：維度投影、圓作為 $\pi_2(\mathrm{Cl})$、奇點即無極、反者道之動、維度塌縮、手性守恆、守恆律、神點極限、生成螺旋、$S^\infty$ 可縮性。
+**§4 Theorems（10）**：維度投影、圓作為 $\pi_2(\mathrm{Cl})$ 、奇點即無極、反者道之動、維度塌縮、手性守恆、守恆律、神點極限、生成螺旋、 $S^\infty$ 可縮性。
 
 **§5 Proofs**：已形式化其中兩條（T-DimProj、T-SingWuji），共 8 步。
 
@@ -148,7 +148,7 @@ CR 高於閾值 1.5，DCO v5.0 被判為**真理論候選**。
 為驗證 $\mathrm{CR}$ 的辨別力，我們構造一個蓄意的魔術理論：對每個想得到的結論都添加一條獨立公理。
 
 - §0: 1 個原語 `X`；§1: 4 條形如 `Pᵢ(X)` 的獨立公理；§4: 2 條「定理」（實為公理重述）；§5: 2 個 one-step 證明。
-- 度量：$K = 5$、$I = 4$、$\mathrm{CR} = 0.80$。
+- 度量： $K = 5$ 、 $I = 4$ 、 $\mathrm{CR} = 0.80$ 。
 
 **落入魔術區**，低於閾值 1.5。這是正確的判決：此理論沒有任何真實壓縮——結論數不超過假設數，且每個結論僅是假設的重述。
 

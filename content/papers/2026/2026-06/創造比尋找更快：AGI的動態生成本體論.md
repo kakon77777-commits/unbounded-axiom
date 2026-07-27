@@ -139,13 +139,13 @@ return new\_function(data)
 
 | 動態創造 | $O(n^k)$ | 新的優化問題、創新算法 |
 
-| 無限搜索 | $O(\\infty)$ | 在無限函數庫中找最優解 |
+| 無限搜索 | $O(\infty)$ | 在無限函數庫中找最優解 |
 
 \*\*結論\*\*：
 
 $$
 
-\\boxed{O(1) < O(n^k) \\ll O(\\infty)}
+\boxed{O(1) < O(n^k) \ll O(\infty)}
 
 $$
 
@@ -209,29 +209,29 @@ $$
 
 $$
 
-\\boxed{
+\boxed{
 
-\\begin{aligned}
+\begin{aligned}
 
-&\\text{AGI}(t) = \\bigcup\_{i=1}^{N(t)} \\text{Process}\_i(t) \\\\
+&\text{AGI}(t) = \bigcup\_{i=1}^{N(t)} \text{Process}\_i(t) \\
 
-\\\\
+\\
 
-&\\text{Process}\_i(t) = \\begin{cases}
+&\text{Process}\_i(t) = \begin{cases}
 
-\\text{Generate}(f\_i) & \\text{if new problem} \\\\
+\text{Generate}(f\_i) & \text{if new problem} \\
 
-\\text{Execute}(f\_{\\text{cached}}) & \\text{if known problem}
+\text{Execute}(f\_{\text{cached}}) & \text{if known problem}
 
-\\end{cases}
+\end{cases}
 
-\\end{aligned}
+\end{aligned}
 
 }
 
 $$
 
-其中$N(t)$是時刻$t$的活躍進程數（動態變化）。
+其中 $N(t)$ 是時刻 $t$ 的活躍進程數（動態變化）。
 
 \### 3.2 程式碼即思維
 
@@ -369,27 +369,27 @@ $$
 
 其中：
 
-\- $V(t) = \\{v\_1(t), v\_2(t), \\ldots, v\_{N(t)}(t)\\}$：節點（進程）
+\- $V(t) = \\{v\_1(t), v\_2(t), \\ldots, v\_{N(t)}(t)\\}$ ：節點（進程）
 
-\- $E(t) \\subseteq V(t) \\times V(t)$：邊（數據流）
+\- $E(t) \subseteq V(t) \times V(t)$ ：邊（數據流）
 
-\- $F(t) = \\{f\_1(t), f\_2(t), \\ldots\\}$：動態生成的函數集
+\- $F(t) = \\{f\_1(t), f\_2(t), \\ldots\\}$ ：動態生成的函數集
 
 \*\*演化規則\*\*：
 
 $$
 
-\\boxed{
+\boxed{
 
-\\begin{aligned}
+\begin{aligned}
 
-&V(t+1) = V(t) \\cup \\text{Spawn}(V(t)) \\setminus \\text{Terminate}(V(t)) \\\\
+&V(t+1) = V(t) \cup \text{Spawn}(V(t)) \setminus \text{Terminate}(V(t)) \\
 
-&E(t+1) = \\text{Update}(E(t), V(t+1)) \\\\
+&E(t+1) = \text{Update}(E(t), V(t+1)) \\
 
-&F(t+1) = F(t) \\cup \\text{Generate}(V(t+1))
+&F(t+1) = F(t) \cup \text{Generate}(V(t+1))
 
-\\end{aligned}
+\end{aligned}
 
 }
 

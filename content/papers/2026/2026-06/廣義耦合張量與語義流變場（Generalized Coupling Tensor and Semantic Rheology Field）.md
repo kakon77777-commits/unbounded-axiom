@@ -38,11 +38,11 @@ $$\boldsymbol{\tau}_{ij} = \mu\left(\frac{\partial v_i}{\partial x_j} + \frac{\p
 
 ### 2.1 QR流變系統的耦合
 
-在QR流變系統（MR2.5，3D）中，粒子分為兩類：**Finder粒子**（$\sigma = F$）和**資料粒子**（$\sigma = D$）。黏滯耦合的加權矩陣定義為：
+在QR流變系統（MR2.5，3D）中，粒子分為兩類：**Finder粒子**（ $\sigma = F$ ）和**資料粒子**（ $\sigma = D$ ）。黏滯耦合的加權矩陣定義為：
 
 $$C_{ij}^{\text{QR}} = w^{\text{QR}}(\sigma_i, \sigma_j) \cdot \mathbf{1}[\|\mathbf{r}_i - \mathbf{r}_j\|_{\ell^\infty} \leq 1]$$
 
-其中格指標 $\mathbf{r}_i = \lfloor\mathbf{x}_i / L_{\text{cell}}\rfloor \in \mathbb{Z}^3$，語義權重：
+其中格指標 $\mathbf{r}_i = \lfloor\mathbf{x}_i / L_{\text{cell}}\rfloor \in \mathbb{Z}^3$ ，語義權重：
 $$w^{\text{QR}}(\sigma_i, \sigma_j) = \begin{cases} 1.0 & \sigma_i = \sigma_j \\ 0.4 & \sigma_i \neq \sigma_j \end{cases}$$
 
 這是一個定義在 $\{F, D\}^2$ 上的對稱函數，矩陣形式為：
@@ -50,14 +50,14 @@ $$W^{\text{QR}} = \begin{pmatrix} 1.0 & 0.4 \\ 0.4 & 1.0 \end{pmatrix}$$
 
 ### 2.2 文字流變系統的耦合
 
-在文字流變系統（RHEO-1.0，2D）中，每個粒子攜帶字符索引 $\sigma_i \in \{0, 1, \ldots, L-1\}$，其中 $L$ 是文本長度。黏滯耦合：
+在文字流變系統（RHEO-1.0，2D）中，每個粒子攜帶字符索引 $\sigma_i \in \{0, 1, \ldots, L-1\}$ ，其中 $L$ 是文本長度。黏滯耦合：
 
 $$C_{ij}^{\text{text}} = w^{\text{text}}(\sigma_i, \sigma_j) \cdot \mathbf{1}[\|\mathbf{r}_i - \mathbf{r}_j\|_{\ell^\infty} \leq 1]$$
 
 語義權重：
 $$w^{\text{text}}(\sigma_i, \sigma_j) = \delta_{\sigma_i \sigma_j} = \begin{cases} 1 & \sigma_i = \sigma_j \\ 0 & \sigma_i \neq \sigma_j \end{cases}$$
 
-這是 Kronecker delta 函數——字符不同則完全不耦合。矩陣形式（$L \times L$）為：
+這是 Kronecker delta 函數——字符不同則完全不耦合。矩陣形式（ $L \times L$ ）為：
 $$W^{\text{text}} = I_L$$
 
 即 $L \times L$ 單位矩陣。
@@ -79,23 +79,23 @@ $$C_{ij} = w(\sigma_i, \sigma_j) \cdot K_{\text{spatial}}(\mathbf{x}_i, \mathbf{
 
 ### 3.1 基本定義
 
-設 $\Sigma$ 是有限語義標籤集，$\mathcal{X} \subset \mathbb{R}^d$ 是粒子的位置空間。
+設 $\Sigma$ 是有限語義標籤集， $\mathcal{X} \subset \mathbb{R}^d$ 是粒子的位置空間。
 
-**定義 3.1（語義核函數）。** 語義核函數是一個映射 $w: \Sigma \times \Sigma \to \mathbb{R}_{\geq 0}$，滿足：
-- 對稱性：$w(\sigma, \sigma') = w(\sigma', \sigma)$
-- 自反性：$w(\sigma, \sigma) \geq w(\sigma, \sigma')$ 對所有 $\sigma' \neq \sigma$（自耦合不弱於互耦合）
+**定義 3.1（語義核函數）。** 語義核函數是一個映射 $w: \Sigma \times \Sigma \to \mathbb{R}_{\geq 0}$ ，滿足：
+- 對稱性： $w(\sigma, \sigma') = w(\sigma', \sigma)$
+- 自反性： $w(\sigma, \sigma) \geq w(\sigma, \sigma')$ 對所有 $\sigma' \neq \sigma$ （自耦合不弱於互耦合）
 
 語義核函數的矩陣形式 $W = (w(\sigma, \sigma'))_{\sigma,\sigma' \in \Sigma}$ 是一個 $|\Sigma| \times |\Sigma|$ 的對稱正半定矩陣（在自反性假設下）。
 
-**定義 3.2（空間核函數）。** 空間核函數是一個映射 $K_{\text{spatial}}: \mathbb{R}^d \times \mathbb{R}^d \to \mathbb{R}_{\geq 0}$，通常假設為：
-- 正定性：$K_{\text{spatial}}(\mathbf{x}, \mathbf{x}) > 0$
-- 衰減性：$K_{\text{spatial}}(\mathbf{x}, \mathbf{y}) \to 0$ 當 $\|\mathbf{x} - \mathbf{y}\| \to \infty$
+**定義 3.2（空間核函數）。** 空間核函數是一個映射 $K_{\text{spatial}}: \mathbb{R}^d \times \mathbb{R}^d \to \mathbb{R}_{\geq 0}$ ，通常假設為：
+- 正定性： $K_{\text{spatial}}(\mathbf{x}, \mathbf{x}) > 0$
+- 衰減性： $K_{\text{spatial}}(\mathbf{x}, \mathbf{y}) \to 0$ 當 $\|\mathbf{x} - \mathbf{y}\| \to \infty$
 
 本文主要考慮兩種具體形式：
-- **指示核**：$K^{\text{ind}}(\mathbf{x}, \mathbf{y}) = \mathbf{1}[\|\mathbf{r}_\mathbf{x} - \mathbf{r}_\mathbf{y}\|_{\ell^\infty} \leq 1]$（哈希格鄰域）
-- **高斯核**：$K^{\text{Gauss}}(\mathbf{x}, \mathbf{y}) = \exp(-\|\mathbf{x} - \mathbf{y}\|^2 / 2\ell^2)$（長度尺度 $\ell$）
+- **指示核**： $K^{\text{ind}}(\mathbf{x}, \mathbf{y}) = \mathbf{1}[\|\mathbf{r}_\mathbf{x} - \mathbf{r}_\mathbf{y}\|_{\ell^\infty} \leq 1]$（哈希格鄰域）
+- **高斯核**： $ K^{\text{Gauss}}(\mathbf{x}, \mathbf{y}) = \exp(-\|\mathbf{x} - \mathbf{y}\|^2 / 2\ell^2)$ （長度尺度 $ \ell$ ）
 
-**定義 3.3（廣義耦合張量）。** 給定粒子系統 $\mathcal{P} = \{(p_i, \mathbf{x}_i, \sigma_i)\}_{i=1}^N$，廣義耦合張量（GCT）是 $N \times N$ 矩陣：
+**定義 3.3（廣義耦合張量）。** 給定粒子系統 $\mathcal{P} = \{(p_i, \mathbf{x}_i, \sigma_i)\}_{i=1}^N$ ，廣義耦合張量（GCT）是 $N \times N$ 矩陣：
 $$\mathbf{C} = (C_{ij})_{i,j=1}^N, \quad C_{ij} = w(\sigma_i, \sigma_j) \cdot K_{\text{spatial}}(\mathbf{x}_i, \mathbf{x}_j)$$
 
 ### 3.2 GCT的分解定理
@@ -104,17 +104,17 @@ $$\mathbf{C} = (C_{ij})_{i,j=1}^N, \quad C_{ij} = w(\sigma_i, \sigma_j) \cdot K_
 
 $$\mathbf{C} = \mathbf{W}_{\mathcal{P}} \circ \mathbf{K}_{\mathcal{P}}$$
 
-其中 $\circ$ 是Hadamard（逐元素）積，$\mathbf{W}_{\mathcal{P}}$ 是語義矩陣（$(\mathbf{W}_\mathcal{P})_{ij} = w(\sigma_i, \sigma_j)$），$\mathbf{K}_{\mathcal{P}}$ 是空間矩陣（$(\mathbf{K}_\mathcal{P})_{ij} = K_{\text{spatial}}(\mathbf{x}_i, \mathbf{x}_j)$）。
+其中 $\circ$ 是Hadamard（逐元素）積， $\mathbf{W}_{\mathcal{P}}$ 是語義矩陣（ $(\mathbf{W}_\mathcal{P})_{ij} = w(\sigma_i, \sigma_j)$ ）， $\mathbf{K}_{\mathcal{P}}$ 是空間矩陣（ $(\mathbf{K}_\mathcal{P})_{ij} = K_{\text{spatial}}(\mathbf{x}_i, \mathbf{x}_j)$ ）。
 
 **注記 3.1.** 此分解不是張量積（Kronecker積），而是Hadamard積。Hadamard積的譜性質由Schur乘積定理控制：若 $\mathbf{W}$ 和 $\mathbf{K}$ 均為正半定矩陣，則 $\mathbf{W} \circ \mathbf{K}$ 也是正半定矩陣。
 
-**推論 3.1.** 若 $W = I_L$（文字系統），則 $\mathbf{C} = I_{\text{block}} \circ \mathbf{K}_\mathcal{P}$，其中 $I_{\text{block}}$ 是塊對角指示矩陣（$\sigma_i = \sigma_j$ 的元素為1，否則為0）。這使得 $\mathbf{C}$ 自動是**塊對角矩陣**（每個字符對應一個塊），字符間無耦合。
+**推論 3.1.** 若 $W = I_L$ （文字系統），則 $\mathbf{C} = I_{\text{block}} \circ \mathbf{K}_\mathcal{P}$ ，其中 $I_{\text{block}}$ 是塊對角指示矩陣（ $\sigma_i = \sigma_j$ 的元素為1，否則為0）。這使得 $\mathbf{C}$ 自動是**塊對角矩陣**（每個字符對應一個塊），字符間無耦合。
 
-**推論 3.2.** 若 $W = \mathbf{1}\mathbf{1}^T$（全1矩陣，即語義無差別耦合），則 $\mathbf{C} = \mathbf{K}_\mathcal{P}$，退化為純空間耦合的標準流體黏滯。
+**推論 3.2.** 若 $W = \mathbf{1}\mathbf{1}^T$ （全1矩陣，即語義無差別耦合），則 $\mathbf{C} = \mathbf{K}_\mathcal{P}$ ，退化為純空間耦合的標準流體黏滯。
 
 ### 3.3 GCT的規範化
 
-**定義 3.4（規範化圖拉普拉斯）。** 定義度矩陣 $\mathbf{D} = \mathrm{diag}(d_i)$，$d_i = \sum_j C_{ij}$。規範化GCT：
+**定義 3.4（規範化圖拉普拉斯）。** 定義度矩陣 $\mathbf{D} = \mathrm{diag}(d_i)$ ， $d_i = \sum_j C_{ij}$ 。規範化GCT：
 $$\tilde{\mathbf{C}} = \mathbf{D}^{-1}\mathbf{C}$$
 
 規範化圖拉普拉斯：
@@ -137,40 +137,40 @@ $$\mathbf{v}(t) = e^{-K^*\tilde{\mathcal{L}}t}\mathbf{v}(0)$$
 
 ### 4.1 一般性質
 
-由於 $\mathbf{C}$ 是正半定對稱矩陣（在上述假設下），$\tilde{\mathcal{L}}$ 的特徵值 $\lambda \in [0, 1]$（對規範化圖拉普拉斯）或 $\lambda \in [0, 2]$（對非規範化版本）。
+由於 $\mathbf{C}$ 是正半定對稱矩陣（在上述假設下）， $\tilde{\mathcal{L}}$ 的特徵值 $\lambda \in [0, 1]$ （對規範化圖拉普拉斯）或 $\lambda \in [0, 2]$ （對非規範化版本）。
 
 $\tilde{\mathcal{L}}$ 的特徵值 $\lambda_k$ 和對應的特徵向量 $\mathbf{u}_k$ 描述了速度場在GCT意義下的「正則模式」（normal modes）。
 
-**命題 4.1（零特徵值的意義）。** $\tilde{\mathcal{L}}$ 的零特徵值的重數等於GCT圖的連通分量數 $c_0$。
+**命題 4.1（零特徵值的意義）。** $\tilde{\mathcal{L}}$ 的零特徵值的重數等於GCT圖的連通分量數 $c_0$ 。
 
-**推論 4.1.** 對於文字流變系統（$W = I_L$），GCT圖恰好有 $L$ 個連通分量（每個字符一個）。因此 $\tilde{\mathcal{L}}$ 有 $L$ 個零特徵值，對應 $L$ 個獨立的集體速度模式（每個字符的質心速度）。
+**推論 4.1.** 對於文字流變系統（ $W = I_L$ ），GCT圖恰好有 $L$ 個連通分量（每個字符一個）。因此 $\tilde{\mathcal{L}}$ 有 $L$ 個零特徵值，對應 $L$ 個獨立的集體速度模式（每個字符的質心速度）。
 
-**推論 4.2.** 對於QR系統（$W = W^{\text{QR}}$，對角線1.0，非對角線0.4），GCT圖是連通的（因為 $w(F,D) = 0.4 > 0$），故 $c_0 = 1$，只有一個零特徵值。
+**推論 4.2.** 對於QR系統（ $W = W^{\text{QR}}$ ，對角線1.0，非對角線0.4），GCT圖是連通的（因為 $w(F,D) = 0.4 > 0$ ），故 $c_0 = 1$ ，只有一個零特徵值。
 
 ### 4.2 語義核的效果：積分算子視角
 
-把語義核 $w$ 視為定義在 $\Sigma \times \Sigma$ 上的積分算子。若 $|\Sigma| = m$，則 $w$ 對應一個 $m \times m$ 矩陣 $W$，其特徵值 $\{\mu_k\}_{k=1}^m$ 描述語義空間的「模式」。
+把語義核 $w$ 視為定義在 $\Sigma \times \Sigma$ 上的積分算子。若 $|\Sigma| = m$ ，則 $w$ 對應一個 $m \times m$ 矩陣 $W$ ，其特徵值 $\{\mu_k\}_{k=1}^m$ 描述語義空間的「模式」。
 
 通過Schur乘積定理，GCT的特徵值被語義矩陣特徵值所「調製」：
 
-**命題 4.2（譜調製）。** 設空間核 $\mathbf{K}_\mathcal{P}$ 的特徵值為 $\{\kappa_l\}$，語義矩陣 $W$ 的特徵值為 $\{\mu_k\}$。則GCT的特徵值 $\{\lambda_{kl}\}$ 滿足：
+**命題 4.2（譜調製）。** 設空間核 $\mathbf{K}_\mathcal{P}$ 的特徵值為 $\{\kappa_l\}$ ，語義矩陣 $W$ 的特徵值為 $\{\mu_k\}$ 。則GCT的特徵值 $\{\lambda_{kl}\}$ 滿足：
 
 $$\lambda_{kl} \approx \mu_k \cdot \kappa_l$$
 
 （此近似在粒子在語義類別之間均勻分佈時精確成立；一般情況下為估計。）
 
-**意義：** 語義完全隔離（$W = I_L$，$\mu_k = 1$ 對所有 $k$）時，GCT的譜等於空間核的譜在每個字符塊上的限制。語義全連接（$W = \mathbf{1}\mathbf{1}^T$）時，GCT退化為空間核，語義信息消失。中間的 $W^{\text{QR}}$ 引入了部分語義混合，對應的譜介於兩個極端之間。
+**意義：** 語義完全隔離（ $W = I_L$ ， $\mu_k = 1$ 對所有 $k$ ）時，GCT的譜等於空間核的譜在每個字符塊上的限制。語義全連接（ $W = \mathbf{1}\mathbf{1}^T$ ）時，GCT退化為空間核，語義信息消失。中間的 $W^{\text{QR}}$ 引入了部分語義混合，對應的譜介於兩個極端之間。
 
 ### 4.3 特徵值分析：QR系統的具體計算
 
 對QR系統，語義矩陣：
 $$W^{\text{QR}} = \begin{pmatrix} 1.0 & 0.4 \\ 0.4 & 1.0 \end{pmatrix}$$
 
-特徵值：$\mu_1 = 1.4$（對應 $\mathbf{u}_1 = (1,1)/\sqrt{2}$，集體模式），$\mu_2 = 0.6$（對應 $\mathbf{u}_2 = (1,-1)/\sqrt{2}$，差模）。
+特徵值： $\mu_1 = 1.4$ （對應 $\mathbf{u}_1 = (1,1)/\sqrt{2}$ ，集體模式）， $\mu_2 = 0.6$ （對應 $\mathbf{u}_2 = (1,-1)/\sqrt{2}$ ，差模）。
 
-**解釋：** 集體模式（Finder和資料粒子同向運動）放大因子 $1.4$，差模（Finder和資料粒子反向運動）放大因子 $0.6$。這意味著兩類粒子趨於「同步」的集體運動，而「逆向」運動被壓制。
+**解釋：** 集體模式（Finder和資料粒子同向運動）放大因子 $1.4$ ，差模（Finder和資料粒子反向運動）放大因子 $0.6$ 。這意味著兩類粒子趨於「同步」的集體運動，而「逆向」運動被壓制。
 
-對文字系統，語義矩陣 $W^{\text{text}} = I_L$，所有特徵值為 $1$，即語義不引入任何放大或抑制——所有模式的放大因子均為 $1$，等效於在每個字符塊內的純空間耦合。
+對文字系統，語義矩陣 $W^{\text{text}} = I_L$ ，所有特徵值為 $1$ ，即語義不引入任何放大或抑制——所有模式的放大因子均為 $1$ ，等效於在每個字符塊內的純空間耦合。
 
 ### 4.4 圖熱核的展開
 
@@ -182,8 +182,8 @@ $$\left(e^{-K^*\tilde{\mathcal{L}}t}\right)_{ij} = \sum_k e^{-K^*\lambda_k t} u_
 速度場的演化：
 $$v_i(t) = \sum_k e^{-K^*\lambda_k t} \langle \mathbf{u}_k, \mathbf{v}(0)\rangle u_k(i)$$
 
-- 對 $\lambda_k = 0$（集體模式）：速度分量永不衰減（集體平移保持）
-- 對 $\lambda_k > 0$（差模）：速度分量以速率 $K^*\lambda_k$ 指數衰減
+- 對 $\lambda_k = 0$ （集體模式）：速度分量永不衰減（集體平移保持）
+- 對 $\lambda_k > 0$ （差模）：速度分量以速率 $K^*\lambda_k$ 指數衰減
 
 這揭示了耦合的本質：**消滅差模，保留集體模式**。從信息論角度（見EML-SRC-2026），差模攜帶粒子的個體位置信息，其消滅等效於信息的流失。
 
@@ -193,9 +193,9 @@ $$v_i(t) = \sum_k e^{-K^*\lambda_k t} \langle \mathbf{u}_k, \mathbf{v}(0)\rangle
 
 ### 5.1 從離散到連續
 
-當粒子密度 $\rho(\mathbf{x}, \sigma)$（位置和語義的聯合密度）趨向連續極限，GCT轉化為連續積分算子。
+當粒子密度 $\rho(\mathbf{x}, \sigma)$ （位置和語義的聯合密度）趨向連續極限，GCT轉化為連續積分算子。
 
-定義語義流變場：$\mathbf{v}(\mathbf{x}, \sigma, t)$ 為在位置 $\mathbf{x}$ 處、語義類型為 $\sigma$ 的流速場。
+定義語義流變場： $\mathbf{v}(\mathbf{x}, \sigma, t)$ 為在位置 $\mathbf{x}$ 處、語義類型為 $\sigma$ 的流速場。
 
 **連續GCT算子：**
 $$(\mathcal{L}\mathbf{v})(\mathbf{x}, \sigma) = \int_{\mathbb{R}^d} \int_\Sigma w(\sigma, \sigma') K(\mathbf{x}, \mathbf{x}') \left[\mathbf{v}(\mathbf{x}', \sigma', t) - \mathbf{v}(\mathbf{x}, \sigma, t)\right] \rho(\mathbf{x}', \sigma') d\sigma' d\mathbf{x}'$$
@@ -207,7 +207,7 @@ $$\frac{\partial \mathbf{v}}{\partial t} = -K^* \mathcal{L}\mathbf{v} + \mathbf{
 
 ### 5.2 擴散近似
 
-對短程空間核 $K(\mathbf{x}, \mathbf{x}') = \ell^{-d}k((\mathbf{x}-\mathbf{x}')/\ell)$，$\ell \to 0$ 時：
+對短程空間核 $K(\mathbf{x}, \mathbf{x}') = \ell^{-d}k((\mathbf{x}-\mathbf{x}')/\ell)$ ， $\ell \to 0$ 時：
 
 $$\int K(\mathbf{x}, \mathbf{x}')\left[\mathbf{v}(\mathbf{x}') - \mathbf{v}(\mathbf{x})\right]d\mathbf{x}' \to c_d \ell^2 \nabla^2 \mathbf{v}(\mathbf{x})$$
 
@@ -220,20 +220,20 @@ $$\frac{\partial v_\sigma}{\partial t} = K^* \sum_{\sigma'} w(\sigma, \sigma') \
 其中 $D_{\text{eff}} = K^* c_d \ell^2$ 是有效擴散係數，這是一個**多組分擴散方程**，不同語義成分通過 $W$ 矩陣耦合。
 
 **特殊情形：**
-- $W = I_L$：$\frac{\partial v_\sigma}{\partial t} = D_{\text{eff}} \nabla^2 v_\sigma + F_\sigma^{\text{spring}}$，各語義成分獨立擴散
-- $W = \mathbf{1}\mathbf{1}^T$：$\frac{\partial v_\sigma}{\partial t} = D_{\text{eff}} \nabla^2 V_{\text{total}} + F_\sigma^{\text{spring}}$，所有成分耦合到總速度場
+- $W = I_L$ ： $\frac{\partial v_\sigma}{\partial t} = D_{\text{eff}} \nabla^2 v_\sigma + F_\sigma^{\text{spring}}$，各語義成分獨立擴散
+- $W = \mathbf{1}\mathbf{1}^T$ ： $\frac{\partial v_\sigma}{\partial t} = D_{\text{eff}} \nabla^2 V_{\text{total}} + F_\sigma^{\text{spring}}$，所有成分耦合到總速度場
 
 ### 5.3 語義擴散張量
 
 在一般情況下，SRF方程可以緊湊地寫成：
 $$\frac{\partial \mathbf{V}}{\partial t} = (W \otimes D_{\text{eff}}\nabla^2)\mathbf{V} + \mathbf{F}^{\text{spring}}$$
 
-其中 $\mathbf{V} = (v_{\sigma_1}, v_{\sigma_2}, \ldots, v_{\sigma_m})^T$，$W$ 是語義矩陣，$\otimes$ 表示Kronecker積意義下的耦合（對空間算子 $D_{\text{eff}}\nabla^2$ 作用於每個語義分量，然後通過 $W$ 混合）。
+其中 $\mathbf{V} = (v_{\sigma_1}, v_{\sigma_2}, \ldots, v_{\sigma_m})^T$ ， $W$ 是語義矩陣， $\otimes$ 表示Kronecker積意義下的耦合（對空間算子 $D_{\text{eff}}\nabla^2$ 作用於每個語義分量，然後通過 $W$ 混合）。
 
 **定義 5.1（語義擴散張量）。** 語義擴散張量定義為：
 $$\mathbb{D} = W \otimes (D_{\text{eff}} I_d)$$
 
-其中 $I_d$ 是 $d \times d$ 空間單位矩陣。$\mathbb{D}$ 是一個 $(m \cdot d) \times (m \cdot d)$ 張量，控制語義-空間耦合流變場的擴散。
+其中 $I_d$ 是 $d \times d$ 空間單位矩陣。 $\mathbb{D}$ 是一個 $(m \cdot d) \times (m \cdot d)$ 張量，控制語義-空間耦合流變場的擴散。
 
 $\mathbb{D}$ 的特徵值決定了SRF中所有模式的擴散速率。語義矩陣 $W$ 的特徵值直接調製空間擴散係數。
 
@@ -250,8 +250,8 @@ $$d_\Sigma(\sigma, \sigma') = |\sigma - \sigma'|$$
 $$w_\beta(\sigma, \sigma') = e^{-\beta |\sigma - \sigma'|}$$
 
 其中 $\beta \geq 0$ 控制語義隔離強度：
-- $\beta = 0$：所有字符完全耦合（$w = 1$，等效於單一流體）
-- $\beta \to \infty$：完全隔離（$w = \delta_{\sigma\sigma'}$，等效於獨立字符島）
+- $\beta = 0$ ：所有字符完全耦合（ $w = 1$ ，等效於單一流體）
+- $\beta \to \infty$ ：完全隔離（ $w = \delta_{\sigma\sigma'}$ ，等效於獨立字符島）
 - $\beta$ 有限：部分耦合（鄰近字符耦合更強）
 
 這個廣義化揭示了文字系統的語義距離如何控制流體的拓撲結構。
@@ -279,9 +279,9 @@ $$w(\sigma, \sigma') = \mathbf{1}[\text{pos}(\sigma) = \text{pos}(\sigma')]$$
 $$w(t; \sigma, \sigma') = w_0(\sigma, \sigma') \cdot f(t)$$
 
 其中 $f(t)$ 是時間調製函數。例如：
-- $f(t) = 1$（靜態，本文主要考慮）
-- $f(t) = e^{-\mu_w t}$（語義耦合隨時間衰減，模擬「遺忘」）
-- $f(t) = \sin(\Omega_w t)^2$（週期性語義相關，模擬節律文本）
+- $f(t) = 1$ （靜態，本文主要考慮）
+- $f(t) = e^{-\mu_w t}$ （語義耦合隨時間衰減，模擬「遺忘」）
+- $f(t) = \sin(\Omega_w t)^2$ （週期性語義相關，模擬節律文本）
 
 動態語義核使SRF的連通結構隨時間演化，可能引發拓撲相變（見EML-PCH-2026）。
 
@@ -291,40 +291,40 @@ $$w(t; \sigma, \sigma') = w_0(\sigma, \sigma') \cdot f(t)$$
 
 ### 7.1 Weaving Theory簡介
 
-Weaving Theory（EveMissLab，EML-WT-2026）是一個將各種認知和符號轉換操作形式化為特定代數結構（形態學算子）的框架。其基本對象是「編織算子」（weaving operator）$\mathcal{W}$，作用於符號或概念空間，描述如何將一種模式「編織」成另一種模式。
+Weaving Theory（EveMissLab，EML-WT-2026）是一個將各種認知和符號轉換操作形式化為特定代數結構（形態學算子）的框架。其基本對象是「編織算子」（weaving operator） $\mathcal{W}$ ，作用於符號或概念空間，描述如何將一種模式「編織」成另一種模式。
 
 ### 7.2 GCT作為Weaving算子
 
-**命題 7.1（GCT-Weaving同態）。** 廣義耦合張量 $\mathbf{C}$ 在速度場空間 $\mathbb{R}^{dN}$ 上的作用可以解釋為一個Weaving算子 $\mathcal{W}_C$：
+**命題 7.1（GCT-Weaving同態）。** 廣義耦合張量 $\mathbf{C}$ 在速度場空間 $\mathbb{R}^{dN}$ 上的作用可以解釋為一個Weaving算子 $\mathcal{W}_C$ ：
 
 $$\mathcal{W}_C(\mathbf{v}) = \tilde{\mathbf{C}}\mathbf{v}$$
 
 它將速度場「編織」成鄰域加權平均，其中權重同時由語義和空間決定。
 
 **Weaving形態學的特徵：**
-- 若 $\mathbf{v}$ 是 $\tilde{\mathcal{L}}$ 的特徵向量（特徵值 $\lambda$），則 $\mathcal{W}_C(\mathbf{v}) = (1-\lambda)\mathbf{v}$——編織保留主特徵模式，衰減次特徵模式。
-- Weaving的不動點（$\mathcal{W}_C(\mathbf{v}) = \mathbf{v}$）是 $\lambda = 0$ 的特徵向量——集體速度模式是Weaving的不動點。
-- 多次Weaving的迭代：$\mathcal{W}_C^n(\mathbf{v}) = ((1-\lambda)^n v_\lambda)$——差模（$\lambda > 0$）在迭代下指數衰減。
+- 若 $\mathbf{v}$ 是 $\tilde{\mathcal{L}}$ 的特徵向量（特徵值 $\lambda$ ），則 $\mathcal{W}_C(\mathbf{v}) = (1-\lambda)\mathbf{v}$ ——編織保留主特徵模式，衰減次特徵模式。
+- Weaving的不動點（ $\mathcal{W}_C(\mathbf{v}) = \mathbf{v}$ ）是 $\lambda = 0$ 的特徵向量——集體速度模式是Weaving的不動點。
+- 多次Weaving的迭代： $\mathcal{W}_C^n(\mathbf{v}) = ((1-\lambda)^n v_\lambda)$ ——差模（ $\lambda > 0$ ）在迭代下指數衰減。
 
 ### 7.3 語義核作為Weaving形態矩陣
 
 在Weaving Theory的框架中，語義核矩陣 $W$ 可以解釋為**形態矩陣**（morphology matrix）：它定義了語義空間中模式之間的「可編織性」（weavability）——兩個模式的內積在 $W$ 定義的內積空間下是否足夠大，決定了它們是否可以被耦合地「編織」。
 
-**定義 7.1（$W$-可編織性）。** 語義類型 $\sigma$ 和 $\sigma'$ 是 $W$-可編織的（$W$-weavable），若 $w(\sigma, \sigma') > 0$。
+**定義 7.1（ $W$ -可編織性）。** 語義類型 $\sigma$ 和 $\sigma'$ 是 $W$ -可編織的（ $W$ -weavable），若 $w(\sigma, \sigma') > 0$ 。
 
-$W$-可編織性定義了語義空間上的一個等價關係（的推廣）：若 $W = I_L$，則只有相同標籤的粒子可編織；若 $W = \mathbf{1}\mathbf{1}^T$，則所有粒子均可編織。
+$W$ -可編織性定義了語義空間上的一個等價關係（的推廣）：若 $W = I_L$ ，則只有相同標籤的粒子可編織；若 $W = \mathbf{1}\mathbf{1}^T$ ，則所有粒子均可編織。
 
 ### 7.4 GCT的Weaving代數
 
-定義GCT算子構成的集合 $\mathfrak{C} = \{\mathbf{C}(w, K) \mid w \text{ 是語義核}, K \text{ 是空間核}\}$。
+定義GCT算子構成的集合 $\mathfrak{C} = \{\mathbf{C}(w, K) \mid w \text{ 是語義核}, K \text{ 是空間核}\}$ 。
 
-**命題 7.2（代數封閉性）。** 若 $\mathbf{C}_1, \mathbf{C}_2 \in \mathfrak{C}$（使用相同粒子配置），則：
-- $\alpha\mathbf{C}_1 + \beta\mathbf{C}_2 \in \mathfrak{C}$（對應語義核 $\alpha w_1 + \beta w_2$）
-- $\mathbf{C}_1 \circ \mathbf{C}_2 \in \mathfrak{C}$（Hadamard積，對應語義核 $w_1 \cdot w_2$）
+**命題 7.2（代數封閉性）。** 若 $\mathbf{C}_1, \mathbf{C}_2 \in \mathfrak{C}$ （使用相同粒子配置），則：
+- $\alpha\mathbf{C}_1 + \beta\mathbf{C}_2 \in \mathfrak{C}$ （對應語義核 $\alpha w_1 + \beta w_2$ ）
+- $\mathbf{C}_1 \circ \mathbf{C}_2 \in \mathfrak{C}$ （Hadamard積，對應語義核 $w_1 \cdot w_2$ ）
 
 $\mathfrak{C}$ 在Hadamard積下構成一個**交換的Banach代數**（若在合適范數下完備），稱為**GCT代數**。
 
-GCT代數的乘法單位元是 $\mathbf{C}_{\mathbf{1}} = \mathbf{1}\mathbf{1}^T \circ \mathbf{K}_\mathcal{P}$（語義全連接），零元是 $\mathbf{C}_0 = \mathbf{0}$（完全解耦）。
+GCT代數的乘法單位元是 $\mathbf{C}_{\mathbf{1}} = \mathbf{1}\mathbf{1}^T \circ \mathbf{K}_\mathcal{P}$ （語義全連接），零元是 $\mathbf{C}_0 = \mathbf{0}$ （完全解耦）。
 
 ---
 
@@ -341,7 +341,7 @@ $$w^{(l)}(\sigma, \sigma') = \mathbf{1}[\text{ancestor}_l(\sigma) = \text{ancest
 **多尺度GCT：**
 $$\mathbf{C}^{\text{multi}} = \sum_{l=1}^L \lambda_l \mathbf{C}^{(l)} = \sum_{l=1}^L \lambda_l \left(\mathbf{W}^{(l)} \circ \mathbf{K}^{(l)}_\mathcal{P}\right)$$
 
-其中 $\lambda_l > 0$ 是各層次的耦合強度，$\mathbf{K}^{(l)}$ 是對應層次的空間核（例如更高層次使用更長程的空間核）。
+其中 $\lambda_l > 0$ 是各層次的耦合強度， $\mathbf{K}^{(l)}$ 是對應層次的空間核（例如更高層次使用更長程的空間核）。
 
 **意義：** 多尺度GCT使得流變場在不同尺度上有不同的耦合強度——詞內粒子強耦合，詞間粒子弱耦合，段落間粒子更弱耦合。這模擬了自然語言的多尺度結構如何影響文字「流動」的方式。
 
@@ -356,7 +356,7 @@ $$\frac{d\bar{v}_\alpha}{dt} = -K^* \sum_\beta \bar{C}_{\alpha\beta}(\bar{v}_\be
 
 其中 $\bar{C}_{\alpha\beta} = |B_\alpha|^{-1}|B_\beta|^{-1}\sum_{i\in B_\alpha, j \in B_\beta} C_{ij}$ 是粗粒化GCT。
 
-**猜想 8.1（重整化不變性）。** 若語義核 $w$ 具有自相似結構（例如 $w(\sigma, \sigma') = f(d_\Sigma(\sigma, \sigma'))$，$f$ 是冪律函數），則粗粒化GCT在重整化變換下近似自相似，即流變場具有多尺度自相似結構。
+**猜想 8.1（重整化不變性）。** 若語義核 $w$ 具有自相似結構（例如 $w(\sigma, \sigma') = f(d_\Sigma(\sigma, \sigma'))$ ， $f$ 是冪律函數），則粗粒化GCT在重整化變換下近似自相似，即流變場具有多尺度自相似結構。
 
 這預言了語義流變場在適當的語義核下應表現出**分形流變**行為。
 
@@ -364,14 +364,14 @@ $$\frac{d\bar{v}_\alpha}{dt} = -K^* \sum_\beta \bar{C}_{\alpha\beta}(\bar{v}_\be
 
 ## 9. 開放問題
 
-**問題 9.1（GCT譜的精確計算）。** 對於具體的QR（$N \approx 400$，$29\times29$格點）和文字系統（$N \leq 900$，任意字符串），精確計算GCT的所有特徵值和特徵向量，分析其分佈。特別地，特徵值間隙（spectral gap）$\lambda_2 - \lambda_1$（$\lambda_1 = 0$）控制了耦合的「混合時間」，其與 $K$ 和消息長度的關係值得研究。
+**問題 9.1（GCT譜的精確計算）。** 對於具體的QR（ $N \approx 400$ ， $29\times29$ 格點）和文字系統（ $N \leq 900$ ，任意字符串），精確計算GCT的所有特徵值和特徵向量，分析其分佈。特別地，特徵值間隙（spectral gap） $\lambda_2 - \lambda_1$ （ $\lambda_1 = 0$ ）控制了耦合的「混合時間」，其與 $K$ 和消息長度的關係值得研究。
 
-**問題 9.2（最優語義核設計）。** 給定目標BER水平，找最優語義核 $w^*$：
+**問題 9.2（最優語義核設計）。** 給定目標BER水平，找最優語義核 $w^*$ ：
 $$w^* = \operatorname{argmin}_{w \in \mathcal{W}} \text{BER}(w; K, A, \gamma)$$
 
 其中 $\mathcal{W}$ 是允許的語義核類（例如，正半定矩陣的凸錐）。
 
-**問題 9.3（語義核的逆問題）。** 給定觀測到的BER時間序列 $\{\text{BER}(t_k)\}$，恢復使用的語義核 $\hat{w}$：
+**問題 9.3（語義核的逆問題）。** 給定觀測到的BER時間序列 $\{\text{BER}(t_k)\}$ ，恢復使用的語義核 $\hat{w}$ ：
 $$\hat{w} = \operatorname{argmin}_w \sum_k |\text{BER}_{\text{pred}}(t_k; w) - \text{BER}_{\text{obs}}(t_k)|^2$$
 
 **問題 9.4（GCT代數的表示論）。** GCT代數 $\mathfrak{C}$ 的不可約表示是什麼？它們是否與語義標籤空間 $\Sigma$ 的群結構（若存在）相關？

@@ -550,7 +550,7 @@ z(t)=∫_0^t K(t-τ)μ(τ)dτ
 dμ/dt=∫_0^t K(t-τ)F[μ(τ)]dτ
 
 轉化為耦合的馬可夫方程組：
-$$\begin{aligned} \frac{d\mu}{dt} &= z(t) \ \frac{dz}{dt} &= -\gamma z + F[\mu(t)] \end{aligned}$$
+$$\begin{aligned} \frac{d\mu}{dt} &= z(t) \\ \frac{dz}{dt} &= -\gamma z + F[\mu(t)] \end{aligned}$$
 其中γ與記憶核的衰減率相關。
 定理3.1（算子的存在性）
 對於滿足適當光滑性條件的演化規則θ_"rule" ，在馬可夫情況下，存在唯一的狀態更新算子U滿足上述四條公理。 
@@ -717,7 +717,7 @@ ________________________________________
 4.1 多尺度漸近分析
 快慢變量的識別與分解
 考慮一個包含兩個時間尺度的系統，快變量μ_"fast" 和慢變量μ_"slow" ： 
-$$\begin{aligned} \epsilon \frac{d\mu_{\text{fast}}}{dt} &= F_{\text{fast}}(\mu_{\text{fast}}, \mu_{\text{slow}}) \ \frac{d\mu_{\text{slow}}}{dt} &= G_{\text{slow}}(\mu_{\text{fast}}, \mu_{\text{slow}}) \end{aligned}$$
+$$\begin{aligned} \epsilon \frac{d\mu_{\text{fast}}}{dt} &= F_{\text{fast}}(\mu_{\text{fast}}, \mu_{\text{slow}}) \\ \frac{d\mu_{\text{slow}}}{dt} &= G_{\text{slow}}(\mu_{\text{fast}}, \mu_{\text{slow}}) \end{aligned}$$
 其中ϵ≪1是小參數，表示快慢時間尺度的比值。 
 絕熱近似（零階近似）
 在絕熱極限ϵ→0下，快變量瞬間達到準平衡： 
@@ -1171,7 +1171,7 @@ ________________________________________
 T_P (t)=σ(ϕ_P+w_(S_1,P) (t)T_(S_1 ) (t)+w_(S_2,P) (t)T_(S_2 ) (t)+w_(S_3,P) (t)T_(S_3 ) (t)+w_(S_4,P) (t)T_(S_4 ) (t))
 
 權重的時間演化（唯象參數擬合）：
-$$\begin{aligned} w_{S_1,P}(t) &= 0.8 \cdot e^{-0.01(t-1950)} \quad &\text{（殖民敘事衰減，衰減率從歷史數據估計）} \ w_{S_2,P}(t) &= -0.2 + 0.6 \cdot (1 - e^{-0.02(t-1950)}) \quad &\text{（原住民視角增強）} \ w_{S_3,P}(t) &= 0.5 \cdot \left(1 + \tanh\left(\frac{t-1980}{10}\right)\right) \quad &\text{（後殖民理論S型增長）} \end{aligned}$$
+$$\begin{aligned} w_{S_1,P}(t) &= 0.8 \cdot e^{-0.01(t-1950)} \quad &\text{（殖民敘事衰減，衰減率從歷史數據估計）} \\ w_{S_2,P}(t) &= -0.2 + 0.6 \cdot (1 - e^{-0.02(t-1950)}) \quad &\text{（原住民視角增強）} \\ w_{S_3,P}(t) &= 0.5 \cdot \left(1 + \tanh\left(\frac{t-1980}{10}\right)\right) \quad &\text{（後殖民理論S型增長）} \end{aligned}$$
 模擬結果
 數值求解該動力學系統，得到真值的時間軌跡，與歷史記錄定性吻合：
 	1492-1950：高穩定性，T≈0.95±0.02
@@ -1250,7 +1250,7 @@ T_P^((τ)) (t)=E[(V(t+τ)-V(t))/(V(t))>r_"基準"  " "∣" " F_t]
 	T_P^((1"年" ))=0.8（長期價值被嚴重低估） 
 隨機波動率模型
 價格動力學採用Heston隨機波動率模型：
-$$\begin{aligned} dS &= \mu S dt + \sqrt{v} S dW_1 \ dv &= \kappa(\theta - v) dt + \sigma_v \sqrt{v} dW_2 \end{aligned}$$
+$$\begin{aligned} dS &= \mu S dt + \sqrt{v} S dW_1 \\ dv &= \kappa(\theta - v) dt + \sigma_v \sqrt{v} dW_2 \end{aligned}$$
 其中：
 	S：資產價格 
 	v：瞬時波動率（本身是隨機的） 

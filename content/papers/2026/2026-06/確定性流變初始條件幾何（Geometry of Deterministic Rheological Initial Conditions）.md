@@ -48,46 +48,46 @@ $$\phi_i = \frac{\mathrm{FNV1a}(\mathrm{key}_i) \bmod 10^3}{10^3} \cdot 2\pi, \q
 
 ### 2.1 精確定義
 
-設 $\Sigma$ 是字母集，$\mathcal{S}^* = \bigcup_{l=1}^\infty \Sigma^l$ 是有限字串集合。
+設 $\Sigma$ 是字母集， $\mathcal{S}^* = \bigcup_{l=1}^\infty \Sigma^l$ 是有限字串集合。
 
-對長度為 $\ell$ 的消息 $\mathbf{s} \in \Sigma^\ell$，系統有 $N(\mathbf{s})$ 個粒子（依賴消息，因為不同的QR碼矩陣有不同數量的深色模組）。系統的相空間為 $\Omega(\mathbf{s}) = \mathbb{R}^{2dN(\mathbf{s})}$（位置和速度各 $dN$ 維）。
+對長度為 $\ell$ 的消息 $\mathbf{s} \in \Sigma^\ell$ ，系統有 $N(\mathbf{s})$ 個粒子（依賴消息，因為不同的QR碼矩陣有不同數量的深色模組）。系統的相空間為 $\Omega(\mathbf{s}) = \mathbb{R}^{2dN(\mathbf{s})}$ （位置和速度各 $dN$ 維）。
 
 **定義 2.1（流變初始條件映射，RICM）。** RICM是一個映射族：
 $$\Psi: \mathcal{S}^* \to \bigsqcup_{\mathbf{s}} \Omega(\mathbf{s}), \quad \Psi(\mathbf{s}) = (\mathbf{x}^{(0)}(\mathbf{s}), \boldsymbol{\omega}(\mathbf{s}), \boldsymbol{\phi}(\mathbf{s}), \mathbf{0})$$
 
 其各分量：
-- $\mathbf{x}^{(0)}(\mathbf{s}) \in \mathbb{R}^{dN}$：初始位置（由 $\mathbf{s}$ 的結構性映射 $\mathcal{G}$ 決定）
+- $\mathbf{x}^{(0)}(\mathbf{s}) \in \mathbb{R}^{dN}$ ：初始位置（由 $\mathbf{s}$ 的結構性映射 $\mathcal{G}$ 決定）
 - $\boldsymbol{\omega}(\mathbf{s}) = (\omega_1(\mathbf{s}), \ldots, \omega_N(\mathbf{s})) \in [\omega_{\min}, \omega_{\max}]^N$：固有頻率
 - $\boldsymbol{\phi}(\mathbf{s}) = (\phi_1(\mathbf{s}), \ldots, \phi_N(\mathbf{s})) \in [0, 2\pi)^N$：初始相位
-- $\mathbf{0} \in \mathbb{R}^{dN}$：初始速度為零
+- $\mathbf{0} \in \mathbb{R}^{dN}$ ：初始速度為零
 
-**注記 2.1.** 初始速度為零是設計選擇，使RICM的像位於 $\Omega(\mathbf{s})$ 的一個 $dN$-維子流形（速度超平面）上。
+**注記 2.1.** 初始速度為零是設計選擇，使RICM的像位於 $\Omega(\mathbf{s})$ 的一個 $dN$ -維子流形（速度超平面）上。
 
 ### 2.2 RICM的分解
 
 RICM可以分解為兩個部分：
 
-**位置映射 $\Psi_x$：** $\mathbf{s} \mapsto \mathbf{x}^{(0)}(\mathbf{s})$，這是一個結構性映射（由QR碼矩陣或文字光柵化決定），具有明確的幾何意義（格點或像素）。
+**位置映射 $\Psi_x$ ：** $\mathbf{s} \mapsto \mathbf{x}^{(0)}(\mathbf{s})$ ，這是一個結構性映射（由QR碼矩陣或文字光柵化決定），具有明確的幾何意義（格點或像素）。
 
-**參數映射 $\Psi_\theta$：** $\mathbf{s} \mapsto (\boldsymbol{\omega}(\mathbf{s}), \boldsymbol{\phi}(\mathbf{s}))$，這是由FNV1a哈希函數決定的映射，沒有明確的幾何意義——其幾何性質正是本文的研究對象。
+**參數映射 $\Psi_\theta$ ：** $\mathbf{s} \mapsto (\boldsymbol{\omega}(\mathbf{s}), \boldsymbol{\phi}(\mathbf{s}))$，這是由FNV1a哈希函數決定的映射，沒有明確的幾何意義——其幾何性質正是本文的研究對象。
 
-本文主要研究 $\Psi_\theta$，因為 $\Psi_x$ 的幾何相對簡單（格點）。
+本文主要研究 $\Psi_\theta$ ，因為 $\Psi_x$ 的幾何相對簡單（格點）。
 
 ### 2.3 FNV1a哈希函數的精確定義
 
 **定義 2.2（FNV1a-64）。** FNV1a 64位哈希函數定義為：
 
-初始值：$H_0 = 14695981039346656037$ （即 $0\text{xcbf29ce484222325}$）
+初始值： $H_0 = 14695981039346656037$ （即 $0\text{xcbf29ce484222325}$ ）
 
-對輸入字符串的每個字節 $b_i$：
+對輸入字符串的每個字節 $b_i$ ：
 $$H_{i+1} = (H_i \oplus b_i) \times P \pmod{2^{64}}$$
 
 其中：
-- $\oplus$：64位異或（XOR）
-- $P = 1099511628211$（即 $0\text{x100000001b3}$）：FNV質數
-- 模運算：$2^{64}$（自然溢出）
+- $\oplus$ ：64位異或（XOR）
+- $P = 1099511628211$ （即 $0\text{x100000001b3}$ ）：FNV質數
+- 模運算： $2^{64}$ （自然溢出）
 
-最終哈希值 $H = H_{\text{len}(\text{input})} \in \{0, 1, \ldots, 2^{64}-1\}$。
+最終哈希值 $H = H_{\text{len}(\text{input})} \in \{0, 1, \ldots, 2^{64}-1\}$ 。
 
 **密碼學性質（非形式描述）：**
 - **雪崩效應：** 輸入改變一個位元，平均約 $32$ 個輸出位元改變
@@ -102,11 +102,11 @@ $$\phi_i(\mathbf{s}) = \frac{\mathrm{FNV1a}(\mathrm{key}_i(\mathbf{s})) \bmod M_
 
 $$\omega_i(\mathbf{s}) = \omega_{\min} + \frac{\mathrm{FNV1a}(\mathrm{key}_i(\mathbf{s})) \bmod M_\omega}{M_\omega} \cdot \Delta\omega, \quad M_\omega = 100$$
 
-注意到 $\phi_i$ 和 $\omega_i$ 使用**同一個哈希值**的不同部分（$\bmod 1000$ 和 $\bmod 100$，後者是前者的因子），這意味著它們是**相關的**，不是獨立的：
+注意到 $\phi_i$ 和 $\omega_i$ 使用**同一個哈希值**的不同部分（ $\bmod 1000$ 和 $\bmod 100$ ，後者是前者的因子），這意味著它們是**相關的**，不是獨立的：
 
 $$\omega_i(\mathbf{s}) \text{ 由 } \phi_i(\mathbf{s}) \text{ 唯一確定（因為 } \lfloor H_i \bmod 1000 / 10 \rfloor = H_i \bmod 100）$$
 
-這是一個重要的幾何約束：$(\phi_i, \omega_i)$ 不是在 $[0, 2\pi) \times [\omega_{\min}, \omega_{\max}]$ 上獨立均勻分佈的，而是在一個一維子集（由 $H_i \bmod 1000$ 的100個一維線段組成）上分佈。
+這是一個重要的幾何約束： $(\phi_i, \omega_i)$ 不是在 $[0, 2\pi) \times [\omega_{\min}, \omega_{\max}]$ 上獨立均勻分佈的，而是在一個一維子集（由 $H_i \bmod 1000$ 的100個一維線段組成）上分佈。
 
 ---
 
@@ -116,13 +116,13 @@ $$\omega_i(\mathbf{s}) \text{ 由 } \phi_i(\mathbf{s}) \text{ 唯一確定（因
 
 為了研究不同消息對應的初始條件之間的幾何關係，需要定義相空間距離。
 
-**定義 3.1（相空間距離）。** 對兩個長度相同的消息 $\mathbf{s}, \mathbf{s}' \in \Sigma^\ell$（假設它們映射到相同粒子數 $N$ 的系統，即 QR矩陣結構相同），定義相空間距離：
+**定義 3.1（相空間距離）。** 對兩個長度相同的消息 $\mathbf{s}, \mathbf{s}' \in \Sigma^\ell$ （假設它們映射到相同粒子數 $N$ 的系統，即 QR矩陣結構相同），定義相空間距離：
 
 $$D_\Omega(\mathbf{s}, \mathbf{s}') = \frac{1}{\sqrt{N}}\left[\sum_{i=1}^N \left((\phi_i(\mathbf{s}) - \phi_i(\mathbf{s}'))^2 + \left(\frac{\omega_i(\mathbf{s}) - \omega_i(\mathbf{s}')}{\Delta\omega/(2\pi)}\right)^2\right)\right]^{1/2}$$
 
 這是歸一化的 $L^2$ 距離，用 $\Delta\omega/(2\pi)$ 來統一相位和頻率的量綱。
 
-**注記 3.1.** 對QR系統，消息內容影響QR矩陣的深色模組集合，從而影響粒子索引和哈希種子 $\mathrm{key}_i(\mathbf{s})$。因此 $D_\Omega(\mathbf{s}, \mathbf{s}')$ 不僅依賴於消息的符號差異，還依賴於這些差異如何通過QR編碼傳播到粒子集合。
+**注記 3.1.** 對QR系統，消息內容影響QR矩陣的深色模組集合，從而影響粒子索引和哈希種子 $\mathrm{key}_i(\mathbf{s})$ 。因此 $D_\Omega(\mathbf{s}, \mathbf{s}')$ 不僅依賴於消息的符號差異，還依賴於這些差異如何通過QR編碼傳播到粒子集合。
 
 ### 3.2 同粒子集的距離分佈
 
@@ -132,26 +132,26 @@ $$D_\Omega(\mathbf{s}, \mathbf{s}') = \frac{1}{\sqrt{N}}\left[\sum_{i=1}^N \left
 
 $$D_\Omega^{\Delta}(\mathbf{s}, \mathbf{s}') = \frac{1}{\sqrt{|\Delta\mathcal{P}|}}\left[\sum_{i \in \Delta\mathcal{P}} \left(\Delta\phi_i^2 + \Delta\tilde{\omega}_i^2\right)\right]^{1/2}$$
 
-其中 $\Delta\phi_i = \phi_i(\mathbf{s}) - \phi_i(\mathbf{s}')$，$\Delta\tilde{\omega}_i = (\omega_i(\mathbf{s}) - \omega_i(\mathbf{s}'))/(\Delta\omega/2\pi)$。
+其中 $\Delta\phi_i = \phi_i(\mathbf{s}) - \phi_i(\mathbf{s}')$ ， $\Delta\tilde{\omega}_i = (\omega_i(\mathbf{s}) - \omega_i(\mathbf{s}'))/(\Delta\omega/2\pi)$。
 
 ### 3.3 FNV1a輸出的近似均勻性
 
 **命題 3.1（FNV1a均勻性假設）。** 在啟發式（工程）假設下，FNV1a輸出 $H_i = \mathrm{FNV1a}(\mathrm{key}_i)$ 對「一般」輸入近似均勻分佈在 $\{0, \ldots, 2^{64}-1\}$ 上，且不同粒子的哈希值近似獨立。
 
 在此假設下：
-- $\phi_i$ 均勻分佈在 $\{0, 2\pi/1000, 4\pi/1000, \ldots, 2\pi\}$（離散均勻，1000個值）
-- $\omega_i$ 均勻分佈在 $\{\omega_{\min}, \omega_{\min}+\Delta\omega/100, \ldots, \omega_{\max}\}$（離散均勻，100個值）
+- $\phi_i$ 均勻分佈在 $\{0, 2\pi/1000, 4\pi/1000, \ldots, 2\pi\}$ （離散均勻，1000個值）
+- $\omega_i$ 均勻分佈在 $\{\omega_{\min}, \omega_{\min}+\Delta\omega/100, \ldots, \omega_{\max}\}$ （離散均勻，100個值）
 
-**推論 3.1（期望相空間距離）。** 在均勻性假設下，對兩個消息 $\mathbf{s}$ 和 $\mathbf{s}'$（使所有 $N$ 個粒子的哈希種子均不同），期望相空間距離：
+**推論 3.1（期望相空間距離）。** 在均勻性假設下，對兩個消息 $\mathbf{s}$ 和 $\mathbf{s}'$ （使所有 $N$ 個粒子的哈希種子均不同），期望相空間距離：
 
 $$\mathbb{E}[D_\Omega^2(\mathbf{s}, \mathbf{s}')] = \mathbb{E}[(\Delta\phi)^2] + \mathbb{E}[(\Delta\tilde{\omega})^2]$$
 
 其中：
 $$\mathbb{E}[(\Delta\phi)^2] = \mathbb{E}[\phi_1^2] + \mathbb{E}[\phi_2^2] - 2\mathbb{E}[\phi_1]\mathbb{E}[\phi_2] = 2\mathrm{Var}(\phi)$$
 
-由 $\phi$ 均勻分佈在 $[0, 2\pi)$（取連續近似），$\mathrm{Var}(\phi) = (2\pi)^2/12 = \pi^2/3$，故 $\mathbb{E}[(\Delta\phi)^2] = 2\pi^2/3$。
+由 $\phi$ 均勻分佈在 $[0, 2\pi)$ （取連續近似）， $\mathrm{Var}(\phi) = (2\pi)^2/12 = \pi^2/3$ ，故 $\mathbb{E}[(\Delta\phi)^2] = 2\pi^2/3$ 。
 
-類似地，$\mathrm{Var}(\tilde{\omega}) = (2\pi)^2/12$（在歸一化後），$\mathbb{E}[(\Delta\tilde{\omega})^2] = 2\pi^2/3$。
+類似地， $\mathrm{Var}(\tilde{\omega}) = (2\pi)^2/12$ （在歸一化後）， $\mathbb{E}[(\Delta\tilde{\omega})^2] = 2\pi^2/3$ 。
 
 **總期望距離：**
 $$\mathbb{E}[D_\Omega(\mathbf{s}, \mathbf{s}')] \approx \sqrt{\frac{4\pi^2}{3}} = \frac{2\pi}{\sqrt{3}} \approx 3.63$$
@@ -160,7 +160,7 @@ $$\mathbb{E}[D_\Omega(\mathbf{s}, \mathbf{s}')] \approx \sqrt{\frac{4\pi^2}{3}} 
 
 ### 3.4 距離集中現象
 
-**命題 3.2（距離集中）。** 在高維相空間（$N$ 大時）和均勻性假設下，相空間距離 $D_\Omega(\mathbf{s}, \mathbf{s}')$ 高度集中在其期望值附近：
+**命題 3.2（距離集中）。** 在高維相空間（ $N$ 大時）和均勻性假設下，相空間距離 $D_\Omega(\mathbf{s}, \mathbf{s}')$ 高度集中在其期望值附近：
 
 $$\mathrm{Var}(D_\Omega^2) = O(1/N)$$
 
@@ -182,9 +182,9 @@ FNV1a的雪崩效應在幾何上的含義是：符號空間中的相鄰點（編
 
 **命題 4.1（雪崩幾何）。** 設 $\mathbf{s}$ 和 $\mathbf{s}' = \mathbf{s}$ 只改變第 $k$ 個字符（編輯距離1）。則改變第 $k$ 個字符影響的哈希值 $h_i = \mathrm{FNV1a}(\mathrm{key}_i(\mathbf{s}))$ 對所有依賴該字符的粒子 $i$ 均產生「雪崩」變化。
 
-在啟發式意義下：$|h_i(\mathbf{s}) - h_i(\mathbf{s}')| \approx 2^{63}$（平均差約為最大值的一半）。
+在啟發式意義下： $|h_i(\mathbf{s}) - h_i(\mathbf{s}')| \approx 2^{63}$ （平均差約為最大值的一半）。
 
-因此：$|\phi_i(\mathbf{s}) - \phi_i(\mathbf{s}')| \approx \pi$（均值），相鄰符號對應的相位差約為 $\pi$（反相）。
+因此： $|\phi_i(\mathbf{s}) - \phi_i(\mathbf{s}')| \approx \pi$ （均值），相鄰符號對應的相位差約為 $\pi$ （反相）。
 
 **幾何意義：** 符號空間中的相鄰消息對應的初始條件在相空間中是**反相的**，而非接近的。這與直觀相反——我們可能期望相似的輸入給出相似的初始條件（連續性），但哈希函數的雪崩效應故意破壞了這種連續性。
 
@@ -194,9 +194,9 @@ FNV1a的雪崩效應在幾何上的含義是：符號空間中的相鄰點（編
 
 FNV1a的另一個幾何特徵是：對密鑰的不同字符位置，哈希值的分佈是均勻的，但不是完全獨立的（因為哈希是順序計算的）。
 
-**命題 4.2（位置相關性）。** 對 $\mathrm{key}_i$ 和 $\mathrm{key}_j$（兩個粒子的哈希密鑰），若它們有相同的前綴，則 $H_i$ 和 $H_j$ 高度相關（後續字節不同，但初始積累相同）。
+**命題 4.2（位置相關性）。** 對 $\mathrm{key}_i$ 和 $\mathrm{key}_j$ （兩個粒子的哈希密鑰），若它們有相同的前綴，則 $H_i$ 和 $H_j$ 高度相關（後續字節不同，但初始積累相同）。
 
-在QR系統中，$\mathrm{key}_i = \text{``QR\_r\_c\_text''}$，對不同格點的粒子，密鑰都包含相同的 $\text{text}$ 部分，但位置部分不同。由於FNV1a是順序計算的，不同位置的粒子哈希值有複雜的相關結構。
+在QR系統中， $\mathrm{key}_i = \text{``QR\_r\_c\_text''}$ ，對不同格點的粒子，密鑰都包含相同的 $\text{text}$ 部分，但位置部分不同。由於FNV1a是順序計算的，不同位置的粒子哈希值有複雜的相關結構。
 
 這使得完整的RICM不是真正的「均勻隨機映射」，而是由哈希函數的具體結構決定的**偽隨機映射**，其幾何結構比完全隨機映射更豐富（但也更複雜）。
 
@@ -204,17 +204,17 @@ FNV1a的另一個幾何特徵是：對密鑰的不同字符位置，哈希值的
 
 在符號空間上沒有自然的微分結構，但可以定義離散Jacobian。
 
-**定義 4.1（離散雅可比矩陣）。** 對消息 $\mathbf{s} \in \Sigma^\ell$ 和符號 $\sigma_k \in \Sigma$，定義：
+**定義 4.1（離散雅可比矩陣）。** 對消息 $\mathbf{s} \in \Sigma^\ell$ 和符號 $\sigma_k \in \Sigma$ ，定義：
 
 $$J_{i,k}(\mathbf{s}) = \frac{\phi_i(\mathbf{s} \oplus_k \sigma_k) - \phi_i(\mathbf{s})}{1}$$
 
-其中 $\mathbf{s} \oplus_k \sigma_k$ 表示將 $\mathbf{s}$ 的第 $k$ 個符號替換為 $\sigma_k$。
+其中 $\mathbf{s} \oplus_k \sigma_k$ 表示將 $\mathbf{s}$ 的第 $k$ 個符號替換為 $\sigma_k$ 。
 
 $J$ 是一個 $N \times \ell$ 矩陣，描述了每個符號位置對每個粒子相位的影響。
 
-**命題 4.3（雪崩矩陣的近似性質）。** 在均勻性假設下，$J$ 的每一列（對應一個符號位置）中，$J_{i,k}$ 近似均勻分佈在 $[-\pi, \pi)$ 上，且不同行（不同粒子）近似獨立。
+**命題 4.3（雪崩矩陣的近似性質）。** 在均勻性假設下， $J$ 的每一列（對應一個符號位置）中， $J_{i,k}$ 近似均勻分佈在 $[-\pi, \pi)$ 上，且不同行（不同粒子）近似獨立。
 
-這等效於說：$J$ 近似是一個**隨機矩陣**（每列是均勻隨機的），其奇異值分佈近似遵循Marchenko-Pastur定律（對隨機矩陣普遍成立）。
+這等效於說： $J$ 近似是一個**隨機矩陣**（每列是均勻隨機的），其奇異值分佈近似遵循Marchenko-Pastur定律（對隨機矩陣普遍成立）。
 
 ### 4.4 RICM的局部方向性
 
@@ -222,7 +222,7 @@ $J$ 是一個 $N \times \ell$ 矩陣，描述了每個符號位置對每個粒�
 
 若RICM是「各向同性的」（isotropic），則對所有方向（不同的消息差異），相空間位移的分佈應是相同的。
 
-**命題 4.4（各向同性近似）。** 在均勻性假設下，$\Delta\boldsymbol{\phi}(\mathbf{s}, \mathbf{s}')$ 的方向（歸一化向量 $\Delta\boldsymbol{\phi}/\|\Delta\boldsymbol{\phi}\|$）在 $S^{N-1}$（$N-1$維球面）上近似均勻分佈，獨立於消息差異的具體形式。
+**命題 4.4（各向同性近似）。** 在均勻性假設下， $\Delta\boldsymbol{\phi}(\mathbf{s}, \mathbf{s}')$ 的方向（歸一化向量 $\Delta\boldsymbol{\phi}/\|\Delta\boldsymbol{\phi}\|$ ）在 $S^{N-1}$ （ $N-1$ 維球面）上近似均勻分佈，獨立於消息差異的具體形式。
 
 這意味著：RICM在高維相空間中是**幾何各向同性的**——不同類型的消息差異（改變第一個字符、最後一個字符、增加長度等）在相空間中誘導的初始條件位移方向是均勻分佈的，沒有特別偏好的方向。
 
@@ -232,12 +232,12 @@ $J$ 是一個 $N \times \ell$ 矩陣，描述了每個符號位置對每個粒�
 
 ### 5.1 初始條件幾何的時間演化
 
-設 $\Phi_0 = \Psi(\mathbf{s})$ 和 $\Phi_0' = \Psi(\mathbf{s}')$ 是兩個消息的初始相空間狀態（包含位置和速度）。流變引擎後，兩個系統分別演化到 $\Phi_t = \mathcal{E}^t(\Phi_0)$ 和 $\Phi_t' = \mathcal{E}^t(\Phi_0')$。
+設 $\Phi_0 = \Psi(\mathbf{s})$ 和 $\Phi_0' = \Psi(\mathbf{s}')$ 是兩個消息的初始相空間狀態（包含位置和速度）。流變引擎後，兩個系統分別演化到 $\Phi_t = \mathcal{E}^t(\Phi_0)$ 和 $\Phi_t' = \mathcal{E}^t(\Phi_0')$ 。
 
 定義**動態相空間距離**（僅考慮位置）：
 $$D_x(t) = \frac{1}{\sqrt{N}}\|\mathbf{x}(t) - \mathbf{x}'(t)\| = \frac{1}{\sqrt{N}}\left(\sum_{i=1}^N \|\mathbf{x}_i(t) - \mathbf{x}_i'(t)\|^2\right)^{1/2}$$
 
-初始時，$D_x(0) = \frac{1}{\sqrt{N}}\|\mathbf{x}^{(0)}(\mathbf{s}) - \mathbf{x}^{(0)}(\mathbf{s}')\|$（由位置映射 $\Psi_x$ 決定）。
+初始時， $ D_x(0) = \frac{1}{\sqrt{N}}\|\mathbf{x}^{(0)}(\mathbf{s}) - \mathbf{x}^{(0)}(\mathbf{s}')\|$ （由位置映射 $ \Psi_x$ 決定）。
 
 ### 5.2 Lyapunov指數的意義
 
@@ -246,25 +246,25 @@ $$D_x(t) \sim D_x(0) \cdot e^{\lambda_{\max} t}$$
 
 其中 $\lambda_{\max}$ 是最大Lyapunov指數（MLE）。
 
-- $\lambda_{\max} > 0$：混沌（chaotic）系統，相鄰初始條件指數分離——解碼器面臨難以克服的挑戰
-- $\lambda_{\max} \leq 0$：非混沌系統，軌跡不指數分離——解碼可能有效
+- $\lambda_{\max} > 0$ ：混沌（chaotic）系統，相鄰初始條件指數分離——解碼器面臨難以克服的挑戰
+- $\lambda_{\max} \leq 0$ ：非混沌系統，軌跡不指數分離——解碼可能有效
 
-**命題 5.1（SRC的Lyapunov指數估計）。** 對彈簧-阻尼系統（無耦合），方程 $\ddot{\delta} + \mu\dot{\delta} + k_s\delta = k_s\eta(t)$ 是線性的，因此 $\lambda_{\max} = 0$（線性系統的MLE不超過零）。
+**命題 5.1（SRC的Lyapunov指數估計）。** 對彈簧-阻尼系統（無耦合），方程 $\ddot{\delta} + \mu\dot{\delta} + k_s\delta = k_s\eta(t)$ 是線性的，因此 $\lambda_{\max} = 0$ （線性系統的MLE不超過零）。
 
-引入耦合後（$K > 0$），若耦合矩陣是對稱正半定的，耦合項是線性的，系統仍然是線性的，$\lambda_{\max} \leq 0$。
+引入耦合後（ $K > 0$ ），若耦合矩陣是對稱正半定的，耦合項是線性的，系統仍然是線性的， $\lambda_{\max} \leq 0$ 。
 
-**推論 5.1（SRC是非混沌的）。** 在本文考察的流變系統（線性彈簧 + 線性黏滯耦合 + 線性阻尼）中，動力學是線性的，因此系統是非混沌的（$\lambda_{\max} \leq 0$）。相鄰初始條件對應的軌跡不指數分離，而是至多以多項式速率分離。
+**推論 5.1（SRC是非混沌的）。** 在本文考察的流變系統（線性彈簧 + 線性黏滯耦合 + 線性阻尼）中，動力學是線性的，因此系統是非混沌的（ $\lambda_{\max} \leq 0$ ）。相鄰初始條件對應的軌跡不指數分離，而是至多以多項式速率分離。
 
 這是一個重要結論：SRC的解碼難度不是來自混沌（指數放大誤差），而是來自**量化（quantization）**——在格點重建步驟中，連續的位置被四捨五入到最近的格點，這引入了有限但非零的錯誤率。
 
 ### 5.3 解碼精度的幾何界
 
-**定義 5.1（可解碼球）。** 對消息 $\mathbf{s}$，定義其**可解碼球**：
+**定義 5.1（可解碼球）。** 對消息 $\mathbf{s}$ ，定義其**可解碼球**：
 $$B_{\text{dec}}(\mathbf{s}, t) = \{\mathbf{s}' \mid D(E^t(\Psi(\mathbf{s}')), \Theta^*) = \mathbf{s}\}$$
 
 即在 $t$ 步後，所有可以被正確解碼為 $\mathbf{s}$ 的消息集合。
 
-由於系統是線性的，$B_{\text{dec}}(\mathbf{s}, t)$ 在相空間的原像是一個「格點吸引域」，其大小由格距 $h/2$ 決定。
+由於系統是線性的， $B_{\text{dec}}(\mathbf{s}, t)$ 在相空間的原像是一個「格點吸引域」，其大小由格距 $h/2$ 決定。
 
 **命題 5.2（可解碼球的半徑估計）。** 在線性系統近似下，消息 $\mathbf{s}'$ 可以被解碼為 $\mathbf{s}$ 的條件是：
 
@@ -284,11 +284,11 @@ $$\rho_{\text{dec}}(t) = \frac{|\mathcal{M}(t)|}{|\Sigma^\ell|}$$
 
 其中 $\mathcal{M}(t)$ 是在 $t$ 步後可被成功解碼的消息集合（見EML-SRC-2026定義6.1）。
 
-**猜想 5.1（覆蓋密度的衰減律）。** 在長時極限（$t \to \infty$）下，若系統達到穩態（粒子位移統計量不再變化），則：
+**猜想 5.1（覆蓋密度的衰減律）。** 在長時極限（ $t \to \infty$ ）下，若系統達到穩態（粒子位移統計量不再變化），則：
 
 $$\rho_{\text{dec}}(\infty) = \Pr\!\left[\|\langle\boldsymbol{\delta}\rangle\|_\infty \leq h/2\right] = \prod_{i=1}^N \Pr\!\left[|\langle\delta_i\rangle| \leq h/2\right]$$
 
-在粒子獨立近似下，這是各粒子「在格點附近」概率的乘積。對 $N$ 個粒子，$\rho_{\text{dec}}(\infty) = p_0^N$ 其中 $p_0$ 是單粒子的在格點附近概率。由於 $p_0 < 1$（振幅 $A > 0$ 時），$\rho_{\text{dec}} \to 0$ 指數快於 $N \to \infty$。
+在粒子獨立近似下，這是各粒子「在格點附近」概率的乘積。對 $N$ 個粒子， $\rho_{\text{dec}}(\infty) = p_0^N$ 其中 $p_0$ 是單粒子的在格點附近概率。由於 $p_0 < 1$ （振幅 $A > 0$ 時）， $\rho_{\text{dec}} \to 0$ 指數快於 $N \to \infty$ 。
 
 ---
 
@@ -296,25 +296,25 @@ $$\rho_{\text{dec}}(\infty) = \Pr\!\left[\|\langle\boldsymbol{\delta}\rangle\|_\
 
 ### 6.1 定義
 
-**定義 6.1（RICM的幾何熵）。** 固定長度 $\ell$，對 $\mathbf{s} \in \Sigma^\ell$ 的均勻分佈，定義RICM的**幾何熵**：
+**定義 6.1（RICM的幾何熵）。** 固定長度 $\ell$ ，對 $\mathbf{s} \in \Sigma^\ell$ 的均勻分佈，定義RICM的**幾何熵**：
 
 $$H_{\text{geom}}(\ell) = -\int_{\mathbb{R}^{dN}} p_\Psi(\boldsymbol{\theta}) \ln p_\Psi(\boldsymbol{\theta}) d\boldsymbol{\theta}$$
 
-其中 $p_\Psi$ 是RICM像 $\Psi(\mathbf{s})$（的 $\boldsymbol{\theta}$ 分量）的概率密度函數（由均勻分佈的消息誘導）。
+其中 $p_\Psi$ 是RICM像 $\Psi(\mathbf{s})$ （的 $\boldsymbol{\theta}$ 分量）的概率密度函數（由均勻分佈的消息誘導）。
 
-在均勻性假設下，$p_\Psi$ 近似均勻分佈在 $[0, 2\pi)^N \times [\omega_{\min}, \omega_{\max}]^N$ 上（在粒子獨立假設下），故：
+在均勻性假設下， $p_\Psi$ 近似均勻分佈在 $[0, 2\pi)^N \times [\omega_{\min}, \omega_{\max}]^N$ 上（在粒子獨立假設下），故：
 
 $$H_{\text{geom}}(\ell) \approx N\ln(2\pi) + N\ln(\Delta\omega) = N\ln(2\pi\Delta\omega)$$
 
-在本系統中，$\Delta\omega = 1.6$（QR）或 $1.8$（文字），$H_{\text{geom}} \approx N\ln(2\pi \cdot 1.7) \approx 2.36N$。
+在本系統中， $\Delta\omega = 1.6$ （QR）或 $1.8$ （文字）， $H_{\text{geom}} \approx N\ln(2\pi \cdot 1.7) \approx 2.36N$ 。
 
 ### 6.2 與Shannon熵的比較
 
-**命題 6.1（幾何熵與消息熵）。** 符號串 $\mathbf{s} \in \Sigma^\ell$ 的Shannon熵（均勻分佈）為 $H_s = \ell\log_2|\Sigma|$。
+**命題 6.1（幾何熵與消息熵）。** 符號串 $\mathbf{s} \in \Sigma^\ell$ 的Shannon熵（均勻分佈）為 $H_s = \ell\log_2|\Sigma|$ 。
 
-在本系統中，$|\Sigma| = 36$（英數），$\ell \leq 47$，故 $H_s \leq 47\log_2 36 \approx 242$ 位元。
+在本系統中， $|\Sigma| = 36$ （英數）， $\ell \leq 47$ ，故 $H_s \leq 47\log_2 36 \approx 242$ 位元。
 
-幾何熵 $H_{\text{geom}} \approx 2.36N \approx 2.36 \times 400 = 944$（以奈特為單位，$N = 400$ 為典型粒子數）。
+幾何熵 $H_{\text{geom}} \approx 2.36N \approx 2.36 \times 400 = 944$ （以奈特為單位， $N = 400$ 為典型粒子數）。
 
 幾何熵 $\gg$ 消息熵（以合適單位計）。這意味著：**相空間比消息空間大得多**，RICM的像只佔據相空間的很小一部分。大多數相空間的點不是任何消息的初始條件。
 
@@ -327,10 +327,10 @@ $$H_{\text{geom}}(\ell) \approx N\ln(2\pi) + N\ln(\Delta\omega) = N\ln(2\pi\Delt
 **定義 6.2（可區分距離）。** 最小可區分相空間距離：
 $$d_{\min}(\ell) = \min_{\mathbf{s} \neq \mathbf{s}'} D_\Omega(\mathbf{s}, \mathbf{s}')$$
 
-**猜想 6.1（最小距離的下界）。** 由FNV1a的碰撞概率（$\lesssim 2^{-64}$），以高概率（對大多數消息集合）有：
+**猜想 6.1（最小距離的下界）。** 由FNV1a的碰撞概率（ $\lesssim 2^{-64}$ ），以高概率（對大多數消息集合）有：
 $$d_{\min}(\ell) \gtrsim c \cdot \frac{2\pi}{\sqrt{3}}$$
 
-對某個常數 $c \in (0,1)$（依賴 $N$ 和 $\ell$）。即最小距離不太可能遠小於期望距離。
+對某個常數 $c \in (0,1)$ （依賴 $N$ 和 $\ell$ ）。即最小距離不太可能遠小於期望距離。
 
 ---
 
@@ -350,7 +350,7 @@ $$\{D_\Omega^h(\mathbf{s}, \mathbf{s}')\}_{\mathbf{s} \neq \mathbf{s}'} \overset
 
 （等分佈意義下）。
 
-**命題 7.1（完全均勻哈希的普適性）。** 若哈希函數 $h$ 是理想的（真正均勻隨機），則對任意其他理想哈希函數 $h'$，RICM是等價的。因此，理想哈希函數定義了一個普適類 $\mathcal{U}_{\text{ideal}}$。
+**命題 7.1（完全均勻哈希的普適性）。** 若哈希函數 $h$ 是理想的（真正均勻隨機），則對任意其他理想哈希函數 $h'$ ，RICM是等價的。因此，理想哈希函數定義了一個普適類 $\mathcal{U}_{\text{ideal}}$ 。
 
 FNV1a是 $\mathcal{U}_{\text{ideal}}$ 的近似成員（在其偽隨機性假設下）。
 
@@ -360,10 +360,10 @@ FNV1a是 $\mathcal{U}_{\text{ideal}}$ 的近似成員（在其偽隨機性假設
 $$\Delta_{\text{geom}}(h) = \sup_{\mathbf{s}, \mathbf{s}'} |D_\Omega^h(\mathbf{s}, \mathbf{s}') - D_\Omega^{\text{ideal}}(\mathbf{s}, \mathbf{s}')|$$
 
 **猜想 7.1（幾何普適類）。** 所有滿足以下條件的哈希函數 $h$ 屬於同一普適類：
-1. 碰撞概率 $\leq O(2^{-64})$（低碰撞）
+1. 碰撞概率 $\leq O(2^{-64})$ （低碰撞）
 2. 輸出的統計矩 $|\mathbb{E}[H^k] - \mathbb{E}[\text{Uniform}^k]| \leq O(2^{-k \cdot \text{const}})$（低偶數矩偏差）
 
-對這類哈希函數，幾何偏差 $\Delta_{\text{geom}}(h) = O(N^{-1/2})$（集中不等式估計），在 $N \to \infty$ 時趨向零。
+對這類哈希函數，幾何偏差 $\Delta_{\text{geom}}(h) = O(N^{-1/2})$ （集中不等式估計），在 $N \to \infty$ 時趨向零。
 
 **流變意義：** 若猜想7.1成立，則流變場的統計性質（BER、Betti數等）對哈希函數的具體選擇是**不敏感的**，只要它是「足夠均勻的」——這是SRC理論的普適性基礎。
 
@@ -386,7 +386,7 @@ LSH-RICM和FNV1a-RICM代表了兩個相反的設計哲學：前者優化**消息
 
 ### 8.1 RICM的對稱群
 
-**定義 8.1（RICM對稱群）。** RICM的對稱群 $\text{Sym}(\Psi)$ 是符號空間上的變換群 $G$，使得 $\Psi$ 在 $G$ 的作用下與相空間的某個等距變換 $R_g$ 交換：
+**定義 8.1（RICM對稱群）。** RICM的對稱群 $\text{Sym}(\Psi)$ 是符號空間上的變換群 $G$ ，使得 $\Psi$ 在 $G$ 的作用下與相空間的某個等距變換 $R_g$ 交換：
 $$\Psi(g \cdot \mathbf{s}) = R_g \cdot \Psi(\mathbf{s}) \text{ 對所有 } g \in G, \mathbf{s} \in \mathcal{S}^*$$
 
 **命題 8.1（FNV1a的循環對稱性）。** 對FNV1a，符號串的整體字符替換（所有字符換用相同的其他字符）不保持哈希值。因此 $\text{Sym}(\Psi)$ 在符號替換意義下通常是平凡的。
@@ -413,11 +413,11 @@ $$I(\mathbf{s}) = \int_0^\infty \text{BER}(t; \mathbf{s}) e^{-\mu t} dt$$
 
 **問題 9.2（哈希函數的流變最優性）。** 在所有可能的哈希函數中，哪一個使SRC的信道容量（見EML-SRC-2026第6節）最大化？最優哈希函數是否有類似「糾錯碼最優設計」的標準？
 
-**問題 9.3（RICM的測度論性質）。** 在 $|\Sigma^\ell|$ 個消息的均勻分佈下，RICM誘導的相空間測度 $\mu_\Psi$ 的奇異性如何？$\mu_\Psi$ 是純點測度（點質量）還是有連續部分？在 $\ell \to \infty$ 的極限下，$\mu_\Psi$ 是否收斂到某個極限測度？
+**問題 9.3（RICM的測度論性質）。** 在 $|\Sigma^\ell|$ 個消息的均勻分佈下，RICM誘導的相空間測度 $\mu_\Psi$ 的奇異性如何？ $\mu_\Psi$ 是純點測度（點質量）還是有連續部分？在 $\ell \to \infty$ 的極限下， $\mu_\Psi$ 是否收斂到某個極限測度？
 
 **問題 9.4（密碼學與流體力學的橋接）。** 是否可以構造一個實際的「流變哈希函數」：輸入一個密鑰，通過一個流體動力學仿真（而非算術運算）來計算其哈希值？這樣的系統是否具有計算複雜性上的優勢（或劣勢）？
 
-**問題 9.5（RICM與量子初始條件的類比）。** 在量子力學中，量子態由 Hilbert 空間中的向量描述，測量選擇基底；在SRC中，初始條件由相空間中的點描述，解碼選擇「觀測基底」（旋轉角 $\Theta$）。這兩種結構是否有嚴格的數學類比（例如，通過Koopman算子理論將古典動力系統映射到Hilbert空間）？
+**問題 9.5（RICM與量子初始條件的類比）。** 在量子力學中，量子態由 Hilbert 空間中的向量描述，測量選擇基底；在SRC中，初始條件由相空間中的點描述，解碼選擇「觀測基底」（旋轉角 $\Theta$ ）。這兩種結構是否有嚴格的數學類比（例如，通過Koopman算子理論將古典動力系統映射到Hilbert空間）？
 
 ---
 

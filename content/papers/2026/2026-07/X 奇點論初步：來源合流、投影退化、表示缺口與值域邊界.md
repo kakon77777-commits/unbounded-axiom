@@ -988,7 +988,7 @@ $$
 \widetilde f(z)
 =
 \begin{cases}
-\dfrac1z,&z\neq0,\\[4pt]
+\dfrac1z,&z\neq0,\[4pt]
 \infty,&z=0.
 \end{cases}
 $$

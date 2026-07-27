@@ -199,7 +199,7 @@ This makes the gradient flow geometrically invariant on the semantic manifold.
 
 **Proof**: For any P1,P2∈BP_1, P_2 \in \mathcal{B} P1​,P2​∈B, we have:
 
-$$\begin{aligned} |\mathcal{A}_{\text{loc}}(P_1, X) - \mathcal{A}_{\text{loc}}(P_2, X)| &= |\nabla_P \mathcal{E}_{\text{loc}}(P_1, X) - \nabla_P \mathcal{E}_{\text{loc}}(P_2, X)| \ &= |(P_1 - \Phi(X)) - (P_2 - \Phi(X)) + \nabla \mathcal{R}_{\text{loc}}(P_1) - \nabla \mathcal{R}_{\text{loc}}(P_2)| \ &\leq |P_1 - P_2| + |\nabla \mathcal{R}_{\text{loc}}(P_1) - \nabla \mathcal{R}_{\text{loc}}(P_2)| \ &\leq |P_1 - P_2| + \beta |P_1 - P_2| \ &= (1 + \beta)|P_1 - P_2| \end{aligned}$$
+$$\begin{aligned} |\mathcal{A}_{\text{loc}}(P_1, X) - \mathcal{A}_{\text{loc}}(P_2, X)| &= |\nabla_P \mathcal{E}_{\text{loc}}(P_1, X) - \nabla_P \mathcal{E}_{\text{loc}}(P_2, X)| \\ &= |(P_1 - \Phi(X)) - (P_2 - \Phi(X)) + \nabla \mathcal{R}_{\text{loc}}(P_1) - \nabla \mathcal{R}_{\text{loc}}(P_2)| \\ &\leq |P_1 - P_2| + |\nabla \mathcal{R}_{\text{loc}}(P_1) - \nabla \mathcal{R}_{\text{loc}}(P_2)| \\ &\leq |P_1 - P_2| + \beta |P_1 - P_2| \\ &= (1 + \beta)|P_1 - P_2| \end{aligned}$$
 
 Therefore Aloc\mathcal{A}_{\text{loc}} Aloc​ is (1+β)(1+\beta) (1+β)-Lipschitz continuous. □
 
@@ -248,9 +248,9 @@ This structure allows local reasoning while maintaining global consistency.
 
 The state (Ploc,Pglob)∈Hloc×Hglob(P^{\text{loc}}, P^{\text{glob}}) \in \mathcal{H}_{\text{loc}} \times \mathcal{H}_{\text{glob}} (Ploc,Pglob)∈Hloc​×Hglob​ of the dual-core system evolves according to:
 
-$$\begin{aligned} \frac{\partial P^{\text{loc}}}{\partial t} &= \alpha_{\text{loc}}(t) \mathcal{A}_{\text{loc}}(P^{\text{loc}}, X) - \beta_{\text{loc}}(t) \mathcal{R}_{\text{loc}}(P^{\text{loc}}) \ &\quad + \Gamma_{lg}(P^{\text{glob}} \to P^{\text{loc}}) + \delta_{\text{loc}}(t) \nabla \psi_{\mathcal{C}}(P^{\text{loc}}) + \Sigma_{\text{loc}}(P^{\text{loc}}) \xi_{\text{loc}}(t) \end{aligned}$$
+$$\begin{aligned} \frac{\partial P^{\text{loc}}}{\partial t} &= \alpha_{\text{loc}}(t) \mathcal{A}_{\text{loc}}(P^{\text{loc}}, X) - \beta_{\text{loc}}(t) \mathcal{R}_{\text{loc}}(P^{\text{loc}}) \\ &\quad + \Gamma_{lg}(P^{\text{glob}} \to P^{\text{loc}}) + \delta_{\text{loc}}(t) \nabla \psi_{\mathcal{C}}(P^{\text{loc}}) + \Sigma_{\text{loc}}(P^{\text{loc}}) \xi_{\text{loc}}(t) \end{aligned}$$
 
-$$\begin{aligned} \frac{\partial P^{\text{glob}}}{\partial t} &= \alpha_{\text{glob}}(t) \mathcal{A}_{\text{glob}}(P^{\text{glob}}, X, \mathcal{G}) - \beta_{\text{glob}}(t) \mathcal{R}_{\text{glob}}(P^{\text{glob}}) \ &\quad + \Gamma_{gl}(P^{\text{loc}} \to P^{\text{glob}}) + \gamma(t) \int_0^t K(t-\tau) P^{\text{glob}}(\tau) d\tau \ &\quad + \delta_{\text{glob}}(t) \nabla \psi_{\mathcal{C}}(P^{\text{glob}}) + \Sigma_{\text{glob}}(P^{\text{glob}}) \xi_{\text{glob}}(t) \end{aligned}$$
+$$\begin{aligned} \frac{\partial P^{\text{glob}}}{\partial t} &= \alpha_{\text{glob}}(t) \mathcal{A}_{\text{glob}}(P^{\text{glob}}, X, \mathcal{G}) - \beta_{\text{glob}}(t) \mathcal{R}_{\text{glob}}(P^{\text{glob}}) \\ &\quad + \Gamma_{gl}(P^{\text{loc}} \to P^{\text{glob}}) + \gamma(t) \int_0^t K(t-\tau) P^{\text{glob}}(\tau) d\tau \\ &\quad + \delta_{\text{glob}}(t) \nabla \psi_{\mathcal{C}}(P^{\text{glob}}) + \Sigma_{\text{glob}}(P^{\text{glob}}) \xi_{\text{glob}}(t) \end{aligned}$$
 
 where coupling operators are defined as:
 
@@ -378,13 +378,13 @@ where BM={u∈B:∥u∥≤2M}B_M = \{u \in \mathcal{B}: \|u\| \leq 2M\} BM​={u
 
 By induction: Assume ∥u(n)(t)∥≤2M\|u^{(n)}(t)\| \leq 2M ∥u(n)(t)∥≤2M for all t∈[0,T∗]t \in [0,T^*] t∈[0,T∗], then:
 
-$$\begin{aligned} |u^{(n+1)}(t)| &\leq |u_0| + \int_0^t |F(s, u^{(n)}(s))| ds \ &\leq M - 1 + \int_0^t (C_1 + C_2 \cdot 2M) ds \ &\leq M - 1 + T^*(C_1 + 2C_2M) \ &\leq M - 1 + \frac{1}{2C_2}(C_1 + 2C_2M) \ &\leq M - 1 + \frac{C_1}{2C_2} + M \ &< 2M \end{aligned}$$
+$$\begin{aligned} |u^{(n+1)}(t)| &\leq |u_0| + \int_0^t |F(s, u^{(n)}(s))| ds \\ &\leq M - 1 + \int_0^t (C_1 + C_2 \cdot 2M) ds \\ &\leq M - 1 + T^*(C_1 + 2C_2M) \\ &\leq M - 1 + \frac{1}{2C_2}(C_1 + 2C_2M) \\ &\leq M - 1 + \frac{C_1}{2C_2} + M \\ &< 2M \end{aligned}$$
 
 **Step 2**: Prove {u(n)}\{u^{(n)}\} {u(n)} is a Cauchy sequence.
 
 Define dn(t)=∥u(n+1)(t)−u(n)(t)∥d_n(t) = \|u^{(n+1)}(t) - u^{(n)}(t)\| dn​(t)=∥u(n+1)(t)−u(n)(t)∥, we have:
 
-$$\begin{aligned} d_n(t) &= \left|\int_0^t [F(s, u^{(n)}(s)) - F(s, u^{(n-1)}(s))] ds\right| \ &\leq \int_0^t L_{B_{2M}} |u^{(n)}(s) - u^{(n-1)}(s)| ds \ &= L_{B_{2M}} \int_0^t d_{n-1}(s) ds \end{aligned}$$
+$$\begin{aligned} d_n(t) &= \left|\int_0^t [F(s, u^{(n)}(s)) - F(s, u^{(n-1)}(s))] ds\right| \\ &\leq \int_0^t L_{B_{2M}} |u^{(n)}(s) - u^{(n-1)}(s)| ds \\ &= L_{B_{2M}} \int_0^t d_{n-1}(s) ds \end{aligned}$$
 
 By iteration:
 
@@ -406,9 +406,7 @@ When coefficients are not smooth enough, we need to consider weak solutions.
 
 **Definition 3.1** (Weak Solution): (Ploc,Pglob)(P^{\text{loc}}, P^{\text{glob}}) (Ploc,Pglob) is called a weak solution if for any test functions (ϕ,ψ)∈C0∞([0,T]×Ω)(\phi, \psi) \in C_0^{\infty}([0,T] \times \Omega) (ϕ,ψ)∈C0∞​([0,T]×Ω):
 
-$$\begin{aligned} &\int_
-
-$$\begin{aligned} &\int_0^T \int_{\Omega} \left[-P^{\text{loc}} \partial_t \phi + \langle \nabla P^{\text{loc}}, \nabla \phi \rangle + f_{\text{loc}}(P^{\text{loc}}, P^{\text{glob}}) \phi\right] dx dt \ &= \int_{\Omega} P_0^{\text{loc}} \phi(0,x) dx \end{aligned}$$
+$$\begin{aligned} &\int_0^T \int_{\Omega} \left[-P^{\text{loc}} \partial_t \phi + \langle \nabla P^{\text{loc}}, \nabla \phi \rangle + f_{\text{loc}}(P^{\text{loc}}, P^{\text{glob}}) \phi\right] dx dt \\ &= \int_{\Omega} P_0^{\text{loc}} \phi(0,x) dx \end{aligned}$$
 
 and the corresponding equation for PglobP^{\text{glob}} Pglob.
 
@@ -990,7 +988,7 @@ LPMS breaks through this limitation via hierarchical structure:
 
 Memory system has multiple timescales:
 
-$$\begin{aligned} \epsilon \dot{M}^S &= f_S(M^S, M^M, X) \ \dot{M}^M &= f_M(M^S, M^M, M^L) \ \delta \dot{M}^L &= f_L(M^M, M^L) \end{aligned}$$
+$$\begin{aligned} \epsilon \dot{M}^S &= f_S(M^S, M^M, X) \\ \dot{M}^M &= f_M(M^S, M^M, M^L) \\ \delta \dot{M}^L &= f_L(M^M, M^L) \end{aligned}$$
 
 where ϵ≪1\epsilon \ll 1 ϵ≪1 (fast variable), δ≪1\delta \ll 1 δ≪1 (slow variable).
 
@@ -1062,7 +1060,7 @@ H(M,p,u)=L(M,u)+pTf(M,u)H(M,p,u) = L(M,u) + p^T f(M,u)H(M,p,u)=L(M,u)+pTf(M,u)
 
 Optimal trajectory satisfies:
 
-$$\begin{aligned} \dot{M} &= \frac{\partial H}{\partial p} = f(M,u^*) \ \dot{p} &= -\frac{\partial H}{\partial M} = -\nabla_M L - (\nabla_M f)^T p \ 0 &= \frac{\partial H}{\partial u} = \nabla_u L + p^T \nabla_u f \end{aligned}$$
+$$\begin{aligned} \dot{M} &= \frac{\partial H}{\partial p} = f(M,u^*) \\ \dot{p} &= -\frac{\partial H}{\partial M} = -\nabla_M L - (\nabla_M f)^T p \\ 0 &= \frac{\partial H}{\partial u} = \nabla_u L + p^T \nabla_u f \end{aligned}$$
 
 This provides the optimal strategy for memory consolidation.
 
@@ -1163,7 +1161,7 @@ min⁡x∈Cf(x)s.t.gi(x)≤0,hj(x)=0\min_{x \in \mathcal{C}} f(x) \quad \text{s.
 
 Generalized KKT conditions (using subdifferential):
 
-$$\begin{aligned} 0 &\in \partial f(x^_) + \sum_i \mu_i^_ \partial g_i(x^_) + \sum_j \lambda_j^_ \partial h_j(x^_) + N_{\mathcal{C}}(x^_) \ \mu_i^* &\geq 0, \quad \mu_i^* g_i(x^_) = 0 \ h_j(x^_) &= 0 \end{aligned}$$
+$$\begin{aligned} 0 &\in \partial f(x^_) + \sum_i \mu_i^_ \partial g_i(x^_) + \sum_j \lambda_j^_ \partial h_j(x^_) + N_{\mathcal{C}}(x^_) \\ \mu_i^* &\geq 0, \quad \mu_i^* g_i(x^_) = 0 \\ h_j(x^_) &= 0 \end{aligned}$$
 
 where NC(x)N_{\mathcal{C}}(x) NC​(x) is the normal cone.
 
@@ -1411,7 +1409,7 @@ Choosing η=O(1/T)\eta = O(1/\sqrt{T}) η=O(1/T​) yields O(1/T)O(1/\sqrt{T}) O
 
 Adam update rules:
 
-$$\begin{aligned} m_{t+1} &= \beta_1 m_t + (1-\beta_1) g_t \ v_{t+1} &= \beta_2 v_t + (1-\beta_2) g_t^2 \ x_{t+1} &= x_t - \eta \frac{m_{t+1}}{\sqrt{v_{t+1}} + \epsilon} \end{aligned}$$
+$$\begin{aligned} m_{t+1} &= \beta_1 m_t + (1-\beta_1) g_t \\ v_{t+1} &= \beta_2 v_t + (1-\beta_2) g_t^2 \\ x_{t+1} &= x_t - \eta \frac{m_{t+1}}{\sqrt{v_{t+1}} + \epsilon} \end{aligned}$$
 
 **Theorem 8.4**: Under appropriate conditions, Adam achieves:
 
@@ -1502,7 +1500,7 @@ AmTP+PAm=−QA_m^T P + P A_m = -QAmT​P+PAm​=−Q
 
 Consider system:
 
-$$\begin{aligned} \dot{x} &= Ax + B_1 w + B_2 u \ z &= C_1 x + D_{12} u \ y &= C_2 x + D_{21} w \end{aligned}$$
+$$\begin{aligned} \dot{x} &= Ax + B_1 w + B_2 u \\ z &= C_1 x + D_{12} u \\ y &= C_2 x + D_{21} w \end{aligned}$$
 
 H∞ control problem: Find controller KK K such that:
 
@@ -1752,7 +1750,7 @@ Optimal strategy: Prioritize retention of high-value, low-redundancy memories.
 
 Consider truncated system:
 
-$$\begin{aligned} \partial_t P^{\text{loc}} &= f_R^{\text{loc}}(P^{\text{loc}}, P^{\text{glob}}, t) \ \partial_t P^{\text{glob}} &= f_R^{\text{glob}}(P^{\text{loc}}, P^{\text{glob}}, t) \end{aligned}$$
+$$\begin{aligned} \partial_t P^{\text{loc}} &= f_R^{\text{loc}}(P^{\text{loc}}, P^{\text{glob}}, t) \\ \partial_t P^{\text{glob}} &= f_R^{\text{glob}}(P^{\text{loc}}, P^{\text{glob}}, t) \end{aligned}$$
 
 where fRf_R fR​ is nonlinear term truncated to ball BRB_R BR​.
 
@@ -1766,7 +1764,7 @@ E(t)=12∥Ploc(t)∥W2,22+12∥Pglob(t)∥W2,22E(t) = \frac{1}{2}\|P^{\text{loc}
 
 Computing time derivative:
 
-$$\begin{aligned} \frac{dE}{dt} &= \langle P^{\text{loc}}, \partial_t P^{\text{loc}} \rangle_{W^{2,2}} + \langle P^{\text{glob}}, \partial_t P^{\text{glob}} \rangle_{W^{2,2}} \ &= \langle P^{\text{loc}}, f^{\text{loc}} \rangle + \langle P^{\text{glob}}, f^{\text{glob}} \rangle \ &\leq -\alpha E + C(|X|^2 + 1) \end{aligned}$$
+$$\begin{aligned} \frac{dE}{dt} &= \langle P^{\text{loc}}, \partial_t P^{\text{loc}} \rangle_{W^{2,2}} + \langle P^{\text{glob}}, \partial_t P^{\text{glob}} \rangle_{W^{2,2}} \\ &= \langle P^{\text{loc}}, f^{\text{loc}} \rangle + \langle P^{\text{glob}}, f^{\text{glob}} \rangle \\ &\leq -\alpha E + C(|X|^2 + 1) \end{aligned}$$
 
 By Gronwall's inequality:
 
@@ -2042,7 +2040,7 @@ Weakened condition allowing bounded energy accumulation:
 
 Consider cascade:
 
-$$\begin{aligned} \dot{x}_1 &= f_1(x_1, x_2) \ \dot{x}_2 &= f_2(x_2) \end{aligned}$$
+$$\begin{aligned} \dot{x}_1 &= f_1(x_1, x_2) \\ \dot{x}_2 &= f_2(x_2) \end{aligned}$$
 
 **Theorem 13.2**: If subsystem x2x_2 x2​ is GAS and x1x_1 x1​-subsystem is ISS with respect to x2x_2 x2​, then cascade system is GAS.
 

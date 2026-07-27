@@ -95,15 +95,15 @@ Zach Highley 在其〈The Danger of the Feynman Technique〉一文中報告：�
 
 ### 2.1 Reconstructibility（生成式重建）
 
-**定義**：對知識物件 $K$，能否從更基礎的元件 $\{e_1, e_2, \ldots, e_n\}$ 出發，**生成式地**重新得到 $K$，而非從記憶中**調用** $K$。
+**定義**：對知識物件 $K$ ，能否從更基礎的元件 $\{e_1, e_2, \ldots, e_n\}$ 出發，**生成式地**重新得到 $K$ ，而非從記憶中**調用** $K$ 。
 
 形式化：
 
 $$K \;\text{is understood} \iff \exists\, f: \{e_1, \ldots, e_n\} \to K \text{ such that } f \text{ is constructively executable by the cognitive system.}$$
 
 關鍵區分：
-- **Recall**（調用）：$K$ 被當作一個 atomic token 從記憶提取
-- **Create**（重建）：$K$ 被視為一個結構，從更底層元件組裝出來
+- **Recall**（調用）： $K$ 被當作一個 atomic token 從記憶提取
+- **Create**（重建）： $K$ 被視為一個結構，從更底層元件組裝出來
 
 調用是寄生在記憶上的「假結點」，在第一次擾動下崩塌（換個問法、換個語境、換個提問者，立刻露餡）。重建則是知識在認知系統內擁有真實的結構支撐。
 
@@ -147,11 +147,11 @@ ERC 的關鍵認識論立場：
 
 **核心命題**：「在不同的人面前，用不同的話，說同一件事」此一日常表述，其數學形式為**等變映射（equivariant map）**。
 
-設 $X$ 為某一知識物件之底層結構，$G, G'$ 為不同語境（小孩語境、博士語境、AI 語境等）所對應的對稱群。一個合格的重建協議 $f$ 必須滿足：
+設 $X$ 為某一知識物件之底層結構， $G, G'$ 為不同語境（小孩語境、博士語境、AI 語境等）所對應的對稱群。一個合格的重建協議 $f$ 必須滿足：
 
 $$f(g \cdot x) = g \cdot f(x), \quad \forall g \in G, x \in X$$
 
-亦即：群作用 $g$（換對象）與映射 $f$（重建）必須交換。底層結構 $X$ 被映射為不同表象，但**底層的不變量必須保持**。
+亦即：群作用 $g$ （換對象）與映射 $f$ （重建）必須交換。底層結構 $X$ 被映射為不同表象，但**底層的不變量必須保持**。
 
 **推論 3.1**：「教給小孩」並非費曼學習法的目的，而是**將外部群限制為「小孩語言群」之單一特例**。市面版本鎖死於此特例，導致：
 - 等變性退化為單一映射
@@ -164,7 +164,7 @@ $$f(g \cdot x) = g \cdot f(x), \quad \forall g \in G, x \in X$$
 
 知識物件不應被建模為點，而應被建模為**拓撲空間中的緊緻不變集（compact invariant set）**——一塊帶有內部結構的鄰域。
 
-設認知空間為拓撲空間 $\mathcal{T}$，知識物件 $K$ 對應於 $\mathcal{T}$ 中一個區域 $U_K \subset \mathcal{T}$。$U_K$ 具有：
+設認知空間為拓撲空間 $\mathcal{T}$ ，知識物件 $K$ 對應於 $\mathcal{T}$ 中一個區域 $U_K \subset \mathcal{T}$ 。 $U_K$ 具有：
 - 內部拓撲（連通性、洞、維度）
 - 外部邊界（與其他知識物件的接連關係）
 - 動態結構（在新資訊輸入下的演化）
@@ -190,7 +190,7 @@ $$f(g \cdot x) = g \cdot f(x), \quad \forall g \in G, x \in X$$
 
 $$\mathcal{E}_1 \subset \mathcal{E}_2 \subset \mathcal{E}_3 \subset \cdots \to \mathcal{E}_\infty$$
 
-每一個 $\mathcal{E}_n$ 都是一個 Closure，$\mathcal{E}_{n+1}$ 是包含 $\mathcal{E}_n$ 的更大 Closure。極限 $\mathcal{E}_\infty$ 對應於 EveMissLab 框架中的 **GOD POINT**：
+每一個 $\mathcal{E}_n$ 都是一個 Closure， $\mathcal{E}_{n+1}$ 是包含 $\mathcal{E}_n$ 的更大 Closure。極限 $\mathcal{E}_\infty$ 對應於 EveMissLab 框架中的 **GOD POINT**：
 
 $$G = \lim_{\varepsilon \to 0^+} (\text{Cl} + \varepsilon)$$
 
@@ -223,7 +223,7 @@ $$G = \lim_{\varepsilon \to 0^+} (\text{Cl} + \varepsilon)$$
 
 真實情況是：**沒有任何概念真正定位於一個點。所有知識地址都是動態不動點群 / 不動點集（compact invariant sets / attractors）**。
 
-形式化：對認知-外界耦合系統 $\Phi: \mathcal{T} \times \mathcal{E} \to \mathcal{T} \times \mathcal{E}$，知識地址 $K$ 對應一個吸引子 $A_K \subset \mathcal{T} \times \mathcal{E}$，滿足：
+形式化：對認知-外界耦合系統 $\Phi: \mathcal{T} \times \mathcal{E} \to \mathcal{T} \times \mathcal{E}$ ，知識地址 $K$ 對應一個吸引子 $A_K \subset \mathcal{T} \times \mathcal{E}$ ，滿足：
 
 $$\Phi(A_K) = A_K, \quad \text{且存在開鄰域 } N(A_K) \text{ 使得 } \lim_{n \to \infty} \Phi^n(N(A_K)) = A_K$$
 
@@ -253,7 +253,7 @@ $$\text{dual-infinity opposition} + \text{infinitesimal deviation} + \text{dynam
 
 $$50.\overline{\cdots 9} > 49.9\overline{\cdots}$$
 
-此表達式中的兩端都是極限結構，相差一個無窮小 $\varepsilon$，但兩者並不重合——它們之間存在動態張力。將此結構投射到認知層：
+此表達式中的兩端都是極限結構，相差一個無窮小 $\varepsilon$ ，但兩者並不重合——它們之間存在動態張力。將此結構投射到認知層：
 
 - **dual-infinity**：知識物件在內部（自洽性極限）與外部（驗證環境極限）兩個方向上的雙重收斂
 - **infinitesimal deviation**：當前認知狀態與極限不動點之間永遠保留 $\varepsilon$ 的差距
@@ -267,7 +267,7 @@ $$50.\overline{\cdots 9} > 49.9\overline{\cdots}$$
 
 當兩個帶有局部對稱性的系統互動時，物理學提供了精確的數學工具：**規範場論（gauge theory）**。
 
-設學習者的不動點集為 $A$，外部不動點集為 $A'$。當兩者互動時，必須引入一個**規範場 $\mathcal{G}$** 來協調兩邊的局部變換。此規範場的物理對應是 principal bundle 上的 connection；其認知對應是**對話本身**。
+設學習者的不動點集為 $A$ ，外部不動點集為 $A'$ 。當兩者互動時，必須引入一個**規範場 $\mathcal{G}$** 來協調兩邊的局部變換。此規範場的物理對應是 principal bundle 上的 connection；其認知對應是**對話本身**。
 
 **關鍵命題**：對話本身就是規範場。
 
@@ -427,7 +427,7 @@ F1–F6 並非互斥分類。學習者可能：
 當代大型語言模型（LLM）與人類個體的對話，在拓撲結構上構成一個典型的雙邊規範場耦合場域：
 
 - 人類個體不動點集 $A_H$
-- AI 系統不動點集 $A_{AI}$（在某次對話實例中）
+- AI 系統不動點集 $A_{AI}$ （在某次對話實例中）
 - 對話作為規範場 $\mathcal{G}$
 
 當此耦合健康運作時，AI 為人類提供了一個**前所未有的高頻寬 Cl-2 驗證環境**：
