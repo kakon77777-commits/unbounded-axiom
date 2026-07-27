@@ -1,0 +1,103 @@
+{
+  "schema": "RH.ZeroCount.TypedBandProfile.v0.8",
+  "source_profile": {
+    "log_coefficient": 0.112,
+    "loglog_coefficient": 0.278,
+    "constant": 2.51,
+    "valid_from": 2.718281828459045,
+    "source_doi": "10.1016/j.jnt.2013.07.017",
+    "source_arxiv": "1208.5846",
+    "status": "conservative floating profile inherited from v0.4-v0.7; not interval-enclosed in this node"
+  },
+  "difference_identity": "N(b)-N(a)=(theta(b)-theta(a))/pi+S(b)-S(a), subject to the adopted endpoint convention",
+  "rows": [
+    {
+      "band_id": "A0",
+      "start": 14.0,
+      "stop": 18.0,
+      "theta_increment": 0.5932848919675601,
+      "absolute_S_endpoint_budget": 6.204138379081252,
+      "floating_count_lower": 0.0,
+      "floating_count_upper": 6.797423271048812,
+      "lower_role": "count_lower_candidate",
+      "upper_role": "count_upper_candidate",
+      "endpoint_theorem_certified": false,
+      "directed_transcendental_enclosure": false
+    },
+    {
+      "band_id": "A1",
+      "start": 18.0,
+      "stop": 23.0,
+      "theta_increment": 0.9389801933034505,
+      "absolute_S_endpoint_budget": 6.307656787303248,
+      "floating_count_lower": 0.0,
+      "floating_count_upper": 7.246636980606699,
+      "lower_role": "count_lower_candidate",
+      "upper_role": "count_upper_candidate",
+      "endpoint_theorem_certified": false,
+      "directed_transcendental_enclosure": false
+    },
+    {
+      "band_id": "A2",
+      "start": 23.0,
+      "stop": 35.0,
+      "theta_increment": 2.907071530546944,
+      "absolute_S_endpoint_budget": 6.439698991783985,
+      "floating_count_lower": 0.0,
+      "floating_count_upper": 9.346770522330928,
+      "lower_role": "count_lower_candidate",
+      "upper_role": "count_upper_candidate",
+      "endpoint_theorem_certified": false,
+      "directed_transcendental_enclosure": false
+    },
+    {
+      "band_id": "A3",
+      "start": 35.0,
+      "stop": 70.0,
+      "theta_increment": 11.718768201082662,
+      "absolute_S_endpoint_budget": 6.648805405513781,
+      "floating_count_lower": 5.069962795568881,
+      "floating_count_upper": 18.367573606596444,
+      "lower_role": "count_lower_candidate",
+      "upper_role": "count_upper_candidate",
+      "endpoint_theorem_certified": false,
+      "directed_transcendental_enclosure": false
+    },
+    {
+      "band_id": "A4",
+      "start": 70.0,
+      "stop": 145.0,
+      "theta_increment": 33.64386493538803,
+      "absolute_S_endpoint_budget": 6.901497793848572,
+      "floating_count_lower": 26.74236714153946,
+      "floating_count_upper": 40.5453627292366,
+      "lower_role": "count_lower_candidate",
+      "upper_role": "count_upper_candidate",
+      "endpoint_theorem_certified": false,
+      "directed_transcendental_enclosure": false
+    }
+  ],
+  "downward_floating_lower_profile": [
+    0.0,
+    0.0,
+    0.0,
+    5.069962795568,
+    26.742367141539
+  ],
+  "upward_floating_upper_profile": [
+    6.797423271049,
+    7.246636980607,
+    9.346770522331,
+    18.367573606597,
+    40.545362729237
+  ],
+  "semantic_roles": {
+    "upper": "may weight a supremum leakage majorant after source and endpoint certification",
+    "lower": "may weight an infimum minorant, but not an arbitrary probability measure or atomic operator"
+  },
+  "endpoint_conventions_certified": false,
+  "directed_theta_and_log_enclosures_certified": false,
+  "zeta_facing_profile_certified": false,
+  "known_zero_ordinate_table_used": false,
+  "global_rh_certificate": false
+}

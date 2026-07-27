@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>佔用算子族與覆蓋式 Green 證書 · 半自主研究 · 黎曼猜想 · AMRAL</title>
+<meta name="description" content="RH 半自主研究工程包:佔用算子族 v0.9。用精確有理數證明整族不確定位置(半徑 2e-15)的算子聯合正定,但誠實量化出精確微半徑跟浮點局部尺度之間有約 8 兆倍的證明預算落差。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="./files/占用算子族與覆蓋式Green證書_RH位置量詞語義橋精確合成模型與微半徑轉移_v0.9_半AI自主研究稿.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link active" href="../../../">黎曼猜想</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← 半自主研究</a>
+    <span>/</span>
+    <a href="../../#proto-occupancy-operatorfamily-v0.9">工程紀錄</a>
+    <span>/</span>
+    <span>佔用算子族與覆蓋式 Green 證書</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">工程紀錄</span>
+      <span class="tag">v0.9</span>
+      <span class="tag">2026-07-25</span>
+      <span class="status">EXACT_SYNTHETIC_FAMILY_ONLY</span>
+    </div>
+    <h1>佔用算子族與覆蓋式 Green 證書</h1>
+    <p class="h1-sub">Occupancy Operator Family v0.9 — 不再把未知零點位置塌縮成單一 scalar count,而是保留位置不確定性,用精確有理數證明整族允許位置(半徑 2×10⁻¹⁵)的算子聯合正定;同時誠實量化出跟浮點直覺尺度間約 8 兆倍的證明預算落差。</p>
+    <div class="claim-box">
+      RH_CLAIM = False
+      <span class="note">— 包內文件自報 <code>exact_synthetic_occupancy_family=true</code>、<code>conditional_abstract_clamped_family=true</code>,但 <code>actual_zeta_occupancy_family=false</code>、<code>global_rh_certificate=false</code>,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">本包把上一包發現的「位置量詞」問題正式建成三層可重播物件,原樣照引其誠實落差。</p>
+    <blockquote class="cite">「浮點對抗角點診斷在 cell 半徑 0.016 時仍得到門檻約 1.0004702,在 0.017 時約為 0.9880614。這不是 universal certificate,但顯示精確微半徑與浮點局部尺度之間約有 8×10¹² 的 proof-budget gap。」— 摘自本包 README「本輪精確結果」。</blockquote>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一節點 · v0.8</span><a href="../proto-zerocount-semantics-bridge-v0.8/">零點計數係數語義橋</a></div>
+      <div class="conn-card"><span class="k">下一節點 · v1.0</span><a href="../proto-localintervalgreen-cellcover-v1.0/">局部區間 Green 胞覆蓋</a></div>
+    </div>
+  </section>
+
+  <section id="doc-main">
+    <h2 class="doc-h2">技術說明</h2>
+    <p class="doc-meta">主文件 — occupancy-to-operator 精確轉移定理、全有理 Dirichlet Green–Schur 自適應覆蓋、58-cell 微半徑證書的精確有理下界、浮點對抗角點的落差量化。</p>
+    <div class="doc" id="doc-tech"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="theory">
+    <h2 class="doc-h2">定理</h2>
+    <p class="doc-meta">來自包內 <code>THEORY.md</code>。</p>
+    <div class="doc" id="doc-theory"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="results">
+    <h2 class="doc-h2">結果數據</h2>
+    <p class="doc-meta">精確語義橋、自適應二分覆蓋結果、58-cell 微半徑證書、浮點角點診斷,來自包內 <code>RESULTS.md</code>。</p>
+    <div class="doc" id="doc-results"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="trust">
+    <h2 class="doc-h2">信任邊界</h2>
+    <p class="doc-meta">來自包內 <code>TRUST_BOUNDARY.md</code>。</p>
+    <div class="doc" id="doc-trust"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="files">
+    <h2 class="doc-h2">檔案 · Files</h2>
+    <p class="section-note">繼承自 v0.7 的大型區間證書(140 KB)沒有逐一列出,在完整 zip 裡。</p>
+    <div id="filelist-out"><p class="loading">載入中…</p></div>
+    <a class="zip-dl" href="../../packages/RH_Occupancy_OperatorFamily_v0.9.zip" download>下載完整封包 (124.3 KB)</a>
+    <p class="zip-note">sha256 bc5f204e1f6f441d8e20b4463f92968df18017dc1736067a1a595372ecc7a113</p>
+  </section>
+
+  <footer class="sitefoot">
+    <p>半自主軌道逐包詳細頁,格式沿用 <a href="../proto-zerocount-semantics-bridge-v0.8/">上一包</a>。<a href="../../">回半自主研究</a></p>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+const F = (p) => amralFetchText("./files/" + p);
+
+async function loadDoc(elId, file) {
+  const el = document.getElementById(elId);
+  try {
+    el.innerHTML = amralRenderDoc(await F(file));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+}
+
+async function loadFiles() {
+  const el = document.getElementById("filelist-out");
+  try {
+    const idx = await fetch("./files.json").then((r) => r.json());
+    const groups = { "文件": [], "交接": [], "結構化中繼資料": [], "資料": [], "程式": [] };
+    for (const f of idx.files) {
+      const ext = f.path.split(".").pop().toLowerCase();
+      if (f.path === "NEXT_NODE_LOCAL_INTERVAL_GREEN.md") groups["交接"].push(f);
+      else if (f.path.startsWith("metadata/")) groups["結構化中繼資料"].push(f);
+      else if (ext === "md") groups["文件"].push(f);
+      else if (f.path.startsWith("data/") || f.path.startsWith("outputs/")) groups["資料"].push(f);
+      else if (ext === "py" || ext === "txt") groups["程式"].push(f);
+    }
+    const fmt = (b) => b < 1024 ? b + " B" : (b / 1024).toFixed(1) + " KB";
+    el.innerHTML = Object.entries(groups).filter(([, files]) => files.length).map(([label, files]) => `
+      <div class="filegroup">
+        <h3>${label}</h3>
+        <ul class="filelist">
+          ${files.map((f) => `<li><a href="./files/${encodeURIComponent(f.path)}" download>${amralEsc(f.path)}</a><span class="fsize">${fmt(f.size)}</span></li>`).join("")}
+        </ul>
+      </div>`).join("");
+  } catch (e) {
+    el.innerHTML = `<p class="error">檔案清單載入失敗:${e.message}</p>`;
+  }
+}
+
+loadDoc("doc-tech", "占用算子族與覆蓋式Green證書_RH位置量詞語義橋精確合成模型與微半徑轉移_v0.9_半AI自主研究稿.md");
+loadDoc("doc-theory", "THEORY.md");
+loadDoc("doc-results", "RESULTS.md");
+loadDoc("doc-trust", "TRUST_BOUNDARY.md");
+loadFiles();
+</script>
+</body>
+</html>

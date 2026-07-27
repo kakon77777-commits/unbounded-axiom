@@ -1,0 +1,308 @@
+{
+  "schema": "RH.LowerProfile.RobustSearch.v0.8",
+  "configuration": {
+    "radius": 16.0,
+    "patch": {
+      "patch_id": "x4_Y3__r3_3",
+      "x_min": 20.395,
+      "x_max": 20.42,
+      "y_min": -0.10625,
+      "y_max": -0.1,
+      "guard_dx": 0.00375,
+      "guard_dy": 0.0015
+    },
+    "count_profile": [
+      0.0,
+      0.0,
+      0.0,
+      5.069962795568,
+      26.742367141539
+    ],
+    "profile_status": "floating downward-rounded lower candidate; not a zeta-facing operator lower certificate",
+    "raw_dimensions": [
+      24,
+      40,
+      64,
+      80,
+      96,
+      120,
+      144,
+      160,
+      176,
+      192
+    ],
+    "quadrature_order": 2048,
+    "axis_step": 0.05,
+    "core_measure_grid": [
+      3,
+      3
+    ]
+  },
+  "galerkin_rows": [
+    {
+      "raw_dimension": 24,
+      "effective_dimension": 22,
+      "alpha": 2.666266379384492,
+      "safe_alpha": 1.833133189692246,
+      "safe_minimum_eigenvalue": 0.31371640339179996,
+      "outer_iterations": 2,
+      "optimizer_success": true
+    },
+    {
+      "raw_dimension": 40,
+      "effective_dimension": 38,
+      "alpha": 1.0616159316633986,
+      "safe_alpha": 1.0308079658316993,
+      "safe_minimum_eigenvalue": 0.029062714309780156,
+      "outer_iterations": 2,
+      "optimizer_success": true
+    },
+    {
+      "raw_dimension": 64,
+      "effective_dimension": 62,
+      "alpha": 0.456599224839897,
+      "safe_alpha": 0.45431622871569755,
+      "safe_minimum_eigenvalue": 0.005001773262208312,
+      "outer_iterations": 2,
+      "optimizer_success": true
+    },
+    {
+      "raw_dimension": 80,
+      "effective_dimension": 78,
+      "alpha": 0.31681242631348416,
+      "safe_alpha": 0.31522836418191674,
+      "safe_minimum_eigenvalue": 0.005001031208716766,
+      "outer_iterations": 2,
+      "optimizer_success": true
+    },
+    {
+      "raw_dimension": 96,
+      "effective_dimension": 94,
+      "alpha": 0.2363398269659225,
+      "safe_alpha": 0.2351581278310929,
+      "safe_minimum_eigenvalue": 0.005000899026085538,
+      "outer_iterations": 3,
+      "optimizer_success": true
+    },
+    {
+      "raw_dimension": 120,
+      "effective_dimension": 118,
+      "alpha": 0.17058591259897987,
+      "safe_alpha": 0.16973298303598497,
+      "safe_minimum_eigenvalue": 0.005000642738872466,
+      "outer_iterations": 2,
+      "optimizer_success": true
+    },
+    {
+      "raw_dimension": 144,
+      "effective_dimension": 142,
+      "alpha": 0.13944281081084695,
+      "safe_alpha": 0.1387455967567927,
+      "safe_minimum_eigenvalue": 0.005000610253269435,
+      "outer_iterations": 3,
+      "optimizer_success": true
+    },
+    {
+      "raw_dimension": 160,
+      "effective_dimension": 158,
+      "alpha": 0.13015108545690926,
+      "safe_alpha": 0.12950033002962472,
+      "safe_minimum_eigenvalue": 0.005000180062144353,
+      "outer_iterations": 3,
+      "optimizer_success": true
+    },
+    {
+      "raw_dimension": 176,
+      "effective_dimension": 174,
+      "alpha": 0.12970490919890684,
+      "safe_alpha": 0.1290563846529123,
+      "safe_minimum_eigenvalue": 0.005000181911824952,
+      "outer_iterations": 4,
+      "optimizer_success": true
+    },
+    {
+      "raw_dimension": 192,
+      "effective_dimension": 190,
+      "alpha": 0.12970478622974843,
+      "safe_alpha": 0.12905626229859968,
+      "safe_minimum_eigenvalue": 0.0050001755174266275,
+      "outer_iterations": 4,
+      "optimizer_success": true
+    }
+  ],
+  "final_atomic_measures": {
+    "axis_supports": [
+      [],
+      [],
+      [],
+      [
+        {
+          "x": 35.15,
+          "weight": 0.606684053557053
+        },
+        {
+          "x": 35.5,
+          "weight": 0.393305946542943
+        },
+        {
+          "x": 36.1,
+          "weight": 9.999900000999987e-06
+        }
+      ],
+      [
+        {
+          "x": 70.0,
+          "weight": 0.14394592855713015
+        },
+        {
+          "x": 70.45,
+          "weight": 0.024599211673614313
+        },
+        {
+          "x": 70.65,
+          "weight": 0.041937433029080304
+        },
+        {
+          "x": 82.5,
+          "weight": 0.13587657358855895
+        },
+        {
+          "x": 95.0,
+          "weight": 0.13680250400891392
+        },
+        {
+          "x": 107.5,
+          "weight": 0.12958500239591692
+        },
+        {
+          "x": 120.0,
+          "weight": 0.12900990649311656
+        },
+        {
+          "x": 132.5,
+          "weight": 0.12938331650210383
+        },
+        {
+          "x": 145.0,
+          "weight": 0.12886012375156525
+        }
+      ]
+    ],
+    "core_support": [
+      {
+        "point_index": 2,
+        "x": 20.395,
+        "y": -0.1,
+        "weight": 0.48008780967338366
+      },
+      {
+        "point_index": 8,
+        "x": 20.42,
+        "y": -0.1,
+        "weight": 0.5199121903266164
+      }
+    ]
+  },
+  "direct_green_transfer": [
+    {
+      "time_step": 0.019999999999999574,
+      "time_grid_count": 1601,
+      "evaluation_function_count": 16,
+      "effective_kernel_rank": 16,
+      "projected_gram_minimum_retained_eigenvalue": 0.0017767357498206801,
+      "projected_gram_maximum_eigenvalue": 13.859287389349584,
+      "minimum_generalized_eigenvalue": -7.710214883604822,
+      "raw_threshold_for_fixed_measures": 0.12969807133734015,
+      "structural_gram_condition": 4625.84428403791,
+      "interval_certified": false,
+      "global_rh_certificate": false
+    },
+    {
+      "time_step": 0.009999999999999787,
+      "time_grid_count": 3201,
+      "evaluation_function_count": 16,
+      "effective_kernel_rank": 16,
+      "projected_gram_minimum_retained_eigenvalue": 0.00114954989553276,
+      "projected_gram_maximum_eigenvalue": 13.858751204087767,
+      "minimum_generalized_eigenvalue": -7.70993148495554,
+      "raw_threshold_for_fixed_measures": 0.12970283872837382,
+      "structural_gram_condition": 4625.844283661019,
+      "interval_certified": false,
+      "global_rh_certificate": false
+    },
+    {
+      "time_step": 0.005000000000000782,
+      "time_grid_count": 6401,
+      "evaluation_function_count": 16,
+      "effective_kernel_rank": 16,
+      "projected_gram_minimum_retained_eigenvalue": 0.0011388243325572652,
+      "projected_gram_maximum_eigenvalue": 13.858718711692317,
+      "minimum_generalized_eigenvalue": -7.709914312041983,
+      "raw_threshold_for_fixed_measures": 0.1297031276259604,
+      "structural_gram_condition": 4625.8442836406675,
+      "interval_certified": false,
+      "global_rh_certificate": false
+    }
+  ],
+  "primal_escape_diagnostic": {
+    "core_grid": [
+      101,
+      101
+    ],
+    "axis_step": 0.01,
+    "raw_core_minimum": -9.869623462726683,
+    "raw_core_maximum": -7.7098117992282456,
+    "normalization_scale": 0.12970485221184003,
+    "normalized_core_minimum": -1.2801380526194732,
+    "normalized_core_maximum": -1.0,
+    "tail_raw": 0.9999648617713575,
+    "axis_rows": [
+      {
+        "band_id": "A0",
+        "coefficient": 0.0,
+        "sampled_maximum": 0.013102518884849465,
+        "sampled_argmax": 17.86,
+        "sampled_charge": 0.0
+      },
+      {
+        "band_id": "A1",
+        "coefficient": 0.0,
+        "sampled_maximum": 1.636812837514924,
+        "sampled_argmax": 20.28,
+        "sampled_charge": 0.0
+      },
+      {
+        "band_id": "A2",
+        "coefficient": 0.0,
+        "sampled_maximum": 0.0030997206175279145,
+        "sampled_argmax": 23.15,
+        "sampled_charge": 0.0
+      },
+      {
+        "band_id": "A3",
+        "coefficient": 5.069962795568,
+        "sampled_maximum": 1.0012298179439336e-05,
+        "sampled_argmax": 36.1,
+        "sampled_charge": 5.076197926789065e-05
+      },
+      {
+        "band_id": "A4",
+        "coefficient": 26.742367141539,
+        "sampled_maximum": 2.95980085804135e-08,
+        "sampled_argmax": 70.07,
+        "sampled_charge": 7.915208121158393e-07
+      }
+    ],
+    "normalized_objective": 0.12970698135219585,
+    "below_one_on_sampled_problem": true,
+    "continuous_patch_certified": false,
+    "evidence_level": "E2 dense-grid Galerkin diagnostic"
+  },
+  "first_dimension_below_one": 64,
+  "high_dimension_obstruction_above_one": false,
+  "fixed_measure_direct_threshold_last": 0.1297031276259604,
+  "interpretation": "Under the lower candidate profile the high-dimensional abstract envelope obstruction disappears. This does not repair the actual-zero operator bridge, because count lower bounds do not locate the zeros.",
+  "interval_certified": false,
+  "actual_zero_side_theorem": false,
+  "global_rh_certificate": false
+}

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>區間 Green 核原子證書 · 半自主研究 · 黎曼猜想 · AMRAL</title>
+<meta name="description" content="RH 半自主研究工程包:區間 Green 核原子證書 v0.7。用 90 位區間算術嚴格證明 W_21/20 為正定,這是整個序列第一個真正的區間定理;同時誠實抓到既有係數是上界而非下界,不能機械替換。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="./files/區間Green核原子證書_RH抽象連續障礙的有理包絡與二階Sylvester判定_v0.7_半AI自主研究稿.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link active" href="../../../">黎曼猜想</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← 半自主研究</a>
+    <span>/</span>
+    <a href="../../#proto-intervalgreenkernel-atomiccertificate-v0.7">工程紀錄</a>
+    <span>/</span>
+    <span>區間 Green 核原子證書</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">工程紀錄 · Layer A 定理</span>
+      <span class="tag">v0.7</span>
+      <span class="tag">2026-07-25</span>
+      <span class="status">W_21_20_STRICTLY_PSD</span>
+    </div>
+    <h1>區間 Green 核原子證書</h1>
+    <p class="h1-sub">Interval Green-Kernel Atomic Certificate v0.7 — 用 90 位方向性十進位區間算術把 v0.6 的浮點見證升級成嚴格定理:W_21/20 ≻ 0。這是整個序列第一次不靠浮點的真正證明,但同時抓到既有係數方向是上界不是下界,不能機械替換。</p>
+    <div class="claim-box">
+      RH_CLAIM = False
+      <span class="note">— 包內文件明講「Layer A 區間定理成立;既有 coefficient data 尚不能直接轉成 zeta-facing positive-axis lower contribution」,原樣照登。這是抽象模型內的嚴格定理,不是 RH 證明。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">本包把上一包的浮點連續核見證升級成區間定理,原樣照引其發現的新阻塞。</p>
+    <blockquote class="cite">「五個既有 band coefficients 是由……形成的上界輪廓,而非……形成的下界證書。把上界向下取整,不會使它成為下界。」— 摘自本包 README「本輪同時發現的阻塞」。</blockquote>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一節點 · v0.6</span><a href="../proto-paleywiener-axiscore-extremal-v0.6/">Paley–Wiener 軸核極值</a></div>
+      <div class="conn-card"><span class="k">下一節點 · v0.8</span><a href="../proto-zerocount-semantics-bridge-v0.8/">零點計數係數語義橋</a></div>
+    </div>
+  </section>
+
+  <section id="doc-main">
+    <h2 class="doc-h2">技術說明</h2>
+    <p class="doc-meta">主文件 — 90 位區間算術重建、浮點交叉檢查、係數方向審計、置換下界後的反壓測試、研究判斷:關閉四個 v0.6 gap 但開出一個新的方向性 gap。</p>
+    <div class="doc" id="doc-tech"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="theory">
+    <h2 class="doc-h2">定理</h2>
+    <p class="doc-meta">來自包內 <code>THEORY.md</code>。</p>
+    <div class="doc" id="doc-theory"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="results">
+    <h2 class="doc-h2">結果數據</h2>
+    <p class="doc-meta">核心 enclosure 嚴格界表、五帶係數方向審計表、反壓測試特徵值,來自包內 <code>RESULTS.md</code>。</p>
+    <div class="doc" id="doc-results"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="trust">
+    <h2 class="doc-h2">信任邊界</h2>
+    <p class="doc-meta">來自包內 <code>TRUST_BOUNDARY.md</code>。</p>
+    <div class="doc" id="doc-trust"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="files">
+    <h2 class="doc-h2">檔案 · Files</h2>
+    <p class="section-note">完整區間證書(<code>interval_atomic_certificate.json</code>,140 KB)沒有逐一列出,在完整 zip 裡。</p>
+    <div id="filelist-out"><p class="loading">載入中…</p></div>
+    <a class="zip-dl" href="../../packages/RH_IntervalGreenKernel_AtomicCertificate_v0.7.zip" download>下載完整封包 (115.6 KB)</a>
+    <p class="zip-note">sha256 6ba5c3dd340d0aae58ac509bf3502b4e17d94961b8a254053f3f133655c50697</p>
+  </section>
+
+  <footer class="sitefoot">
+    <p>半自主軌道逐包詳細頁,格式沿用 <a href="../proto-paleywiener-axiscore-extremal-v0.6/">上一包</a>。<a href="../../">回半自主研究</a></p>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+const F = (p) => amralFetchText("./files/" + p);
+
+async function loadDoc(elId, file) {
+  const el = document.getElementById(elId);
+  try {
+    el.innerHTML = amralRenderDoc(await F(file));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+}
+
+async function loadFiles() {
+  const el = document.getElementById("filelist-out");
+  try {
+    const idx = await fetch("./files.json").then((r) => r.json());
+    const groups = { "文件": [], "交接": [], "結構化中繼資料": [], "資料": [], "程式": [] };
+    for (const f of idx.files) {
+      const ext = f.path.split(".").pop().toLowerCase();
+      if (f.path === "NEXT_NODE_ROBUST_COUNTS.md") groups["交接"].push(f);
+      else if (f.path.startsWith("metadata/")) groups["結構化中繼資料"].push(f);
+      else if (ext === "md") groups["文件"].push(f);
+      else if (f.path.startsWith("data/") || f.path.startsWith("outputs/")) groups["資料"].push(f);
+      else if (ext === "py" || ext === "txt") groups["程式"].push(f);
+    }
+    const fmt = (b) => b < 1024 ? b + " B" : (b / 1024).toFixed(1) + " KB";
+    el.innerHTML = Object.entries(groups).filter(([, files]) => files.length).map(([label, files]) => `
+      <div class="filegroup">
+        <h3>${label}</h3>
+        <ul class="filelist">
+          ${files.map((f) => `<li><a href="./files/${encodeURIComponent(f.path)}" download>${amralEsc(f.path)}</a><span class="fsize">${fmt(f.size)}</span></li>`).join("")}
+        </ul>
+      </div>`).join("");
+  } catch (e) {
+    el.innerHTML = `<p class="error">檔案清單載入失敗:${e.message}</p>`;
+  }
+}
+
+loadDoc("doc-tech", "區間Green核原子證書_RH抽象連續障礙的有理包絡與二階Sylvester判定_v0.7_半AI自主研究稿.md");
+loadDoc("doc-theory", "THEORY.md");
+loadDoc("doc-results", "RESULTS.md");
+loadDoc("doc-trust", "TRUST_BOUNDARY.md");
+loadFiles();
+</script>
+</body>
+</html>

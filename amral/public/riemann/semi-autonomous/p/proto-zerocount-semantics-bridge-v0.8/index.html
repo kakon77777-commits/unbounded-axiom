@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>零點計數係數語義橋 · 半自主研究 · 黎曼猜想 · AMRAL</title>
+<meta name="description" content="RH 半自主研究工程包:零點計數係數語義橋 v0.8。用精確反例證明「計數下界乘任意機率測度」這個推論本身是假的,換上真正合法的下界係數重新最佳化後,障礙隨維度增加消失到 0.13。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="./files/零點計數係數語義橋_RH上包絡無效定理組態下界與連續逃逸_v0.8_半AI自主研究稿.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link active" href="../../../">黎曼猜想</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← 半自主研究</a>
+    <span>/</span>
+    <a href="../../#proto-zerocount-semantics-bridge-v0.8">工程紀錄</a>
+    <span>/</span>
+    <span>零點計數係數語義橋</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">工程紀錄 · 語義修正</span>
+      <span class="tag">v0.8</span>
+      <span class="tag">2026-07-25</span>
+      <span class="status">LOWER_PROFILE_OBSTRUCTION_VANISHES</span>
+    </div>
+    <h1>零點計數係數語義橋</h1>
+    <p class="h1-sub">Zero-Count Semantics Bridge v0.8 — 用精確二點反例證明「計數下界可以乘任意機率測度」這個 v0.2–v0.7 隱含用法本身是假命題;換上真正合法的下界係數後,同一個障礙隨 Galerkin 維度增加從 2.67 收斂消失到 0.13。</p>
+    <div class="claim-box">
+      RH_CLAIM = False
+      <span class="note">— 包內文件明講「高度約 20.4 的 patch 只作 prototype;Platt–Trudgian 已以嚴格 interval computation 驗證 RH 至 3·10¹²」,所以這個合成目標矩形本來就不是未決的實際 ζ 偏軸目標,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">本包修正上一包發現的係數方向問題,原樣照引其反例。</p>
+    <blockquote class="cite">「零點計數下界 Lⱼ 只無條件給出 Σ H(γ) ≥ Lⱼ inf H(x)。它不能乘上一個任意選擇的 dual probability measure。套件內含精確二點反例與 rank-one operator 共下界反例。」— 摘自本包 README 核心結論之二。</blockquote>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一節點 · v0.7</span><a href="../proto-intervalgreenkernel-atomiccertificate-v0.7/">區間 Green 核原子證書</a></div>
+      <div class="conn-card"><span class="k">下一節點 · v0.9</span><a href="../proto-occupancy-operatorfamily-v0.9/">佔用算子族</a></div>
+    </div>
+  </section>
+
+  <section id="doc-main">
+    <h2 class="doc-h2">技術說明</h2>
+    <p class="doc-meta">主文件 — 五種語義轉移的合法性逐一檢驗、精確反例構造、下界輪廓下的重新最佳化、Galerkin 收斂到障礙消失、對前六個版本的回溯修正。</p>
+    <div class="doc" id="doc-tech"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="theory">
+    <h2 class="doc-h2">定理</h2>
+    <p class="doc-meta">來自包內 <code>THEORY.md</code>。</p>
+    <div class="doc" id="doc-theory"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="results">
+    <h2 class="doc-h2">結果數據</h2>
+    <p class="doc-meta">五種語義轉移的合法性表、五帶浮點上下界候選、下界輪廓的 Galerkin 收斂序列,來自包內 <code>RESULTS.md</code>。</p>
+    <div class="doc" id="doc-results"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="trust">
+    <h2 class="doc-h2">信任邊界</h2>
+    <p class="doc-meta">來自包內 <code>TRUST_BOUNDARY.md</code>。</p>
+    <div class="doc" id="doc-trust"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="files">
+    <h2 class="doc-h2">檔案 · Files</h2>
+    <div id="filelist-out"><p class="loading">載入中…</p></div>
+    <a class="zip-dl" href="../../packages/RH_ZeroCount_Semantics_Bridge_v0.8.zip" download>下載完整封包 (63.5 KB)</a>
+    <p class="zip-note">sha256 d781ae149c2f7a3951503c231a4deb53a21a8a102e5126b481994c6fe7488308</p>
+  </section>
+
+  <footer class="sitefoot">
+    <p>半自主軌道逐包詳細頁,格式沿用 <a href="../proto-intervalgreenkernel-atomiccertificate-v0.7/">上一包</a>。<a href="../../">回半自主研究</a></p>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+const F = (p) => amralFetchText("./files/" + p);
+
+async function loadDoc(elId, file) {
+  const el = document.getElementById(elId);
+  try {
+    el.innerHTML = amralRenderDoc(await F(file));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+}
+
+async function loadFiles() {
+  const el = document.getElementById("filelist-out");
+  try {
+    const idx = await fetch("./files.json").then((r) => r.json());
+    const groups = { "文件": [], "交接": [], "結構化中繼資料": [], "資料": [], "程式": [] };
+    for (const f of idx.files) {
+      const ext = f.path.split(".").pop().toLowerCase();
+      if (f.path === "NEXT_NODE_OCCUPANCY_OPERATOR_FAMILY.md") groups["交接"].push(f);
+      else if (f.path.startsWith("metadata/")) groups["結構化中繼資料"].push(f);
+      else if (ext === "md") groups["文件"].push(f);
+      else if (f.path.startsWith("outputs/")) groups["資料"].push(f);
+      else if (ext === "py" || ext === "txt") groups["程式"].push(f);
+    }
+    const fmt = (b) => b < 1024 ? b + " B" : (b / 1024).toFixed(1) + " KB";
+    el.innerHTML = Object.entries(groups).filter(([, files]) => files.length).map(([label, files]) => `
+      <div class="filegroup">
+        <h3>${label}</h3>
+        <ul class="filelist">
+          ${files.map((f) => `<li><a href="./files/${encodeURIComponent(f.path)}" download>${amralEsc(f.path)}</a><span class="fsize">${fmt(f.size)}</span></li>`).join("")}
+        </ul>
+      </div>`).join("");
+  } catch (e) {
+    el.innerHTML = `<p class="error">檔案清單載入失敗:${e.message}</p>`;
+  }
+}
+
+loadDoc("doc-tech", "零點計數係數語義橋_RH上包絡無效定理組態下界與連續逃逸_v0.8_半AI自主研究稿.md");
+loadDoc("doc-theory", "THEORY.md");
+loadDoc("doc-results", "RESULTS.md");
+loadDoc("doc-trust", "TRUST_BOUNDARY.md");
+loadFiles();
+</script>
+</body>
+</html>

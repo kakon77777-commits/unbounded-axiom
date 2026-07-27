@@ -1,0 +1,86 @@
+{
+  "schema": "RH.CoefficientOrientationAudit.v0.7",
+  "source_bound": {
+    "statement": "|S(T)| <= 0.112 log(T) + 0.278 log log(T) + 2.510 for T >= e",
+    "doi": "10.1016/j.jnt.2013.07.017"
+  },
+  "zero_count_difference_identity": "N(b)-N(a) = (theta(b)-theta(a))/pi + S(b)-S(a), away from endpoint zeros under the standard convention",
+  "rows": [
+    {
+      "band": "A0",
+      "interval": [
+        14.0,
+        18.0
+      ],
+      "theta_increment": 0.5932848919675601,
+      "absolute_S_endpoint_budget": 6.204138379081252,
+      "lower_count_from_absolute_S_only": 0.0,
+      "upper_count_from_absolute_S_only": 6.797423271048812,
+      "stored_positive_coefficient": 6.797423271048,
+      "stored_matches_downward_rounded_upper": true,
+      "stored_is_justified_positive_lower_coefficient": false
+    },
+    {
+      "band": "A1",
+      "interval": [
+        18.0,
+        23.0
+      ],
+      "theta_increment": 0.9389801933034505,
+      "absolute_S_endpoint_budget": 6.307656787303248,
+      "lower_count_from_absolute_S_only": 0.0,
+      "upper_count_from_absolute_S_only": 7.246636980606699,
+      "stored_positive_coefficient": 7.246636980606,
+      "stored_matches_downward_rounded_upper": true,
+      "stored_is_justified_positive_lower_coefficient": false
+    },
+    {
+      "band": "A2",
+      "interval": [
+        23.0,
+        35.0
+      ],
+      "theta_increment": 2.907071530546944,
+      "absolute_S_endpoint_budget": 6.439698991783985,
+      "lower_count_from_absolute_S_only": 0.0,
+      "upper_count_from_absolute_S_only": 9.346770522330928,
+      "stored_positive_coefficient": 9.34677052233,
+      "stored_matches_downward_rounded_upper": true,
+      "stored_is_justified_positive_lower_coefficient": false
+    },
+    {
+      "band": "A3",
+      "interval": [
+        35.0,
+        70.0
+      ],
+      "theta_increment": 11.718768201082662,
+      "absolute_S_endpoint_budget": 6.648805405513781,
+      "lower_count_from_absolute_S_only": 5.069962795568881,
+      "upper_count_from_absolute_S_only": 18.367573606596444,
+      "stored_positive_coefficient": 18.367573606596,
+      "stored_matches_downward_rounded_upper": true,
+      "stored_is_justified_positive_lower_coefficient": false
+    },
+    {
+      "band": "A4",
+      "interval": [
+        70.0,
+        145.0
+      ],
+      "theta_increment": 33.64386493538803,
+      "absolute_S_endpoint_budget": 6.901497793848572,
+      "lower_count_from_absolute_S_only": 26.74236714153946,
+      "upper_count_from_absolute_S_only": 40.5453627292366,
+      "stored_positive_coefficient": 40.545362729236,
+      "stored_matches_downward_rounded_upper": true,
+      "stored_is_justified_positive_lower_coefficient": false
+    }
+  ],
+  "all_stored_coefficients_match_upper_profile": true,
+  "all_stored_coefficients_are_lower_certificates": false,
+  "orientation_blocker_confirmed": true,
+  "consequence": "The Layer A interval theorem remains valid for its exact abstract coefficients. A zeta-facing positive-axis transfer cannot use these stored majorants as lower counts without a separate inequality-direction derivation or validated zero-count/presence certificates.",
+  "known_zero_ordinate_table_used": false,
+  "global_rh_certificate": false
+}

@@ -1,0 +1,60 @@
+{
+  "schema": "EveMissLab.RH.Handoff.v0.6",
+  "from_node": "RH-PaleyWiener-AxisCoreExtremal-20260725-v0.6",
+  "to_node": "RH-IntervalGreenKernel-AtomicCertificate-20260725-v0.7",
+  "decision": "Stop dictionary and Galerkin expansion. Interval-certify the fixed rational atomic Green-kernel witness at alpha=21/20.",
+  "why": [
+    "Nested Galerkin and an independent direct Green solver agree at the selected point to about 1e-9.",
+    "The frozen atomic measures retain a direct continuous-kernel floating threshold about 1.1324412.",
+    "At alpha=21/20 the rationalized witness has a floating full margin about 0.31224325 and Schur margin about 0.06988523.",
+    "Only two core-imaginary negative directions remain, reducing infinite-dimensional PSD to a two-by-two Schur test."
+  ],
+  "fixed_input": "outputs/rational_atomic_witness.json",
+  "fixed_target_alpha": {
+    "numerator": 21,
+    "denominator": 20
+  },
+  "fixed_atom_counts": {
+    "axis": 58,
+    "core": 2,
+    "positive_rank": 60,
+    "negative_rank": 2
+  },
+  "reuse_inputs": [
+    "outputs/rational_atomic_witness.json",
+    "outputs/atomic_transfer.json",
+    "outputs/certificate_budget.json",
+    "outputs/experiment_summary.json",
+    "THEORY.md",
+    "pwext/green.py"
+  ],
+  "first_actions": [
+    "Implement interval or ball evaluation of the explicit clamped Green pairings.",
+    "Certify invertibility of the two-by-two structural Gram matrix.",
+    "Build interval enclosures for every projected pairing used by the 62 evaluation vectors.",
+    "Perform a verified solve of the positive 60-by-60 system.",
+    "Prove the final two-by-two Schur matrix is positive definite at alpha=21/20.",
+    "Separately certify the tail and five count coefficients against their zeta-facing source theorems."
+  ],
+  "success_gate": {
+    "layer_A": "A machine-checkable interval proof that the abstract continuous witness W_{21/20} is positive semidefinite.",
+    "layer_B": "Directed theorem-backed validation that the rational tail and count coefficients are conservative for the intended explicit-formula model.",
+    "scope": "A certified continuous-model obstruction for one patch; not RH closure."
+  },
+  "stop_rules": [
+    "Do not return to dictionary search.",
+    "Do not increase Galerkin dimension.",
+    "Do not replace interval arithmetic with ordinary high precision.",
+    "Do not expand to other patches before Layer A is complete.",
+    "Do not merge abstract-model certification with zeta coefficient legitimacy."
+  ],
+  "forbidden_inferences": [
+    "Floating Green convergence is already an interval certificate.",
+    "An abstract continuous obstruction proves RH.",
+    "One patch closes all off-axis leakage regions.",
+    "Weak duality requires an unproved strong-duality theorem."
+  ],
+  "known_zero_ordinates_used": false,
+  "interval_certified": false,
+  "global_rh_certificate": false
+}

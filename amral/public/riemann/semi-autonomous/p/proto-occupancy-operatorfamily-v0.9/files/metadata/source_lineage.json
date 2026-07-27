@@ -1,0 +1,30 @@
+{
+  "schema": "EveMissLab.RH.SourceLineage.v0.9",
+  "parents": [
+    {
+      "node": "RH-ZeroCount-SemanticsBridge-20260725-v0.8",
+      "role": "semantic correction and v0.9 routing",
+      "locally_replayed_in_v0.9": false
+    },
+    {
+      "node": "RH-IntervalGreenKernel-AtomicCertificate-20260725-v0.7",
+      "role": "fixed abstract clamped positivity parent",
+      "bundled_files": [
+        "data/parent_v0.7_rational_atomic_witness.json",
+        "data/parent_v0.7_interval_atomic_certificate.json"
+      ],
+      "full_parent_interval_replay_owned_by_parent": true
+    }
+  ],
+  "new_sources": [
+    {
+      "source_id": "SYN-DG2-20260725",
+      "kind": "synthetic model input",
+      "zeta_facing": false
+    }
+  ],
+  "external_zeta_ordinate_table_used": false,
+  "argument_principle_presence_source_used": false,
+  "turing_presence_source_used": false,
+  "global_rh_certificate": false
+}

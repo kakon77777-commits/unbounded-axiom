@@ -1,0 +1,39 @@
+{
+  "schema": "RH.CoefficientOrientationStressTest.v0.7",
+  "substitution": "Replace each stored upper-profile band coefficient by max(0, Delta theta/pi - B(a) - B(b)); keep atoms, probability weights, core measure, alpha, and kernel fixed.",
+  "lower_profile": [
+    0.0,
+    0.0,
+    0.0,
+    5.069962795568881,
+    26.74236714153946
+  ],
+  "floating_two_by_two_test_matrix": [
+    [
+      -2.3660288037207855,
+      -3.075840443256629
+    ],
+    [
+      -3.075840443256629,
+      -1.9282983755288605
+    ]
+  ],
+  "floating_schur_matrix": [
+    [
+      -2.940410579850723,
+      -3.1747424313202397
+    ],
+    [
+      -3.1747424313202393,
+      -1.6530107311208444
+    ]
+  ],
+  "floating_schur_eigenvalues": [
+    -5.53605304212116,
+    0.9426317311495921
+  ],
+  "fixed_witness_survives_lower_profile": false,
+  "role": "Diagnostic counterstress only; it is not an interval nonexistence theorem for all possible witnesses.",
+  "required_response": "Re-derive coefficient orientation, add validated lower zero counts/presence, or redesign the dual. Do not merely reuse the current upper-profile coefficients.",
+  "global_rh_certificate": false
+}

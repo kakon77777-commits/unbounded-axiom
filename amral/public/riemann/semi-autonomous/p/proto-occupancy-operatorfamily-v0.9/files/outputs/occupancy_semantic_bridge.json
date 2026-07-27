@@ -1,0 +1,62 @@
+{
+  "schema": "RH.Occupancy.SemanticBridge.v0.9",
+  "exact_transfer_theorem": {
+    "name": "OccupancySelectionOperatorTransfer",
+    "premises": [
+      "Each certified cell I_r contains at least ell_r actual points, with endpoint and multiplicity conventions fixed.",
+      "For every selection x_rk in I_r of ell_r points, the selected finite-rank operator W(x) is PSD.",
+      "Every unselected actual point contributes a PSD rank-one operator with the same nonnegative sign."
+    ],
+    "conclusion": "The operator containing all actual points is PSD; the surplus over a selected configuration is PSD.",
+    "quantifier_preserved": true,
+    "definition_substitution_forbidden": "A scalar count lower bound may not be replaced by an arbitrary probability measure or fixed operator floor."
+  },
+  "count_only_counterexample": {
+    "description": "The same total count two in the broad union permits both points at 1/5; the Schur determinant is negative.",
+    "configuration": [
+      "1/5",
+      "1/5"
+    ],
+    "exact_point_proof": {
+      "positive_system": [
+        [
+          "29/25",
+          "4/25"
+        ],
+        [
+          "4/25",
+          "29/25"
+        ]
+      ],
+      "schur_matrix": [
+        [
+          "2611/24651",
+          "-29/297"
+        ],
+        [
+          "-29/297",
+          "2113/24651"
+        ]
+      ],
+      "schur_determinant": "-254/558009"
+    },
+    "negative_direction": [
+      "-29/297",
+      "-2611/24651"
+    ],
+    "negative_quadratic_value": "-663194/13755479859",
+    "count_two_suffices_for_operator_positivity": false
+  },
+  "type_rules": {
+    "cell_occupancy_plus_universal_family": "valid actual-configuration transfer",
+    "scalar_count_lower_plus_arbitrary_measure": "invalid",
+    "scalar_count_lower_plus_fixed_nonzero_psd_floor": "generally invalid"
+  },
+  "classification": {
+    "exact_semantic_theorem": true,
+    "exact_count_only_counterexample": true,
+    "synthetic_operator_model": true,
+    "zeta_facing_presence_theorem": false,
+    "global_rh_certificate": false
+  }
+}

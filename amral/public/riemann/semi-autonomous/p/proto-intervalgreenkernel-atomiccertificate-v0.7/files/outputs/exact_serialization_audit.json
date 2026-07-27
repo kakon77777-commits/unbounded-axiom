@@ -1,0 +1,18 @@
+{
+  "schema": "RH.IntervalGreenKernel.ExactSerializationAudit.v0.7",
+  "certificate_sha256": "130d8e70e9a3ace689f326cd051348bea5a48373218a49e22eeb5c56151f8fff",
+  "checks": {
+    "serialized_neumann_defect_below_one": true,
+    "serialized_first_minor_strictly_positive": true,
+    "serialized_determinant_strictly_positive": true,
+    "all_axis_probabilities_exactly_one": true,
+    "core_probability_exactly_one": true,
+    "full_recomputation_passed": true,
+    "abstract_interval_flag_true": true,
+    "layer_b_flags_false": true,
+    "global_flag_false": true
+  },
+  "audit_pass": true,
+  "interpretation": "Exact Fraction arithmetic validates the serialized proof inequalities and trust flags after full interval replay.",
+  "global_rh_certificate": false
+}

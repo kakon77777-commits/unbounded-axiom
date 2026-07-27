@@ -1,0 +1,58 @@
+{
+  "schema": "EveMissLab.RH.SourceLineage.v0.7",
+  "parent_package": {
+    "name": "RH_PaleyWiener_AxisCore_Extremal_v0.6",
+    "node_id": "RH-PaleyWiener-AxisCore-Extremal-20260725-v0.6",
+    "copied_artifacts": [
+      "data/rational_atomic_witness_v0.6.json",
+      "data/parent_handoff_v0.6.json"
+    ]
+  },
+  "external_primary_sources": [
+    {
+      "author": "R. E. A. C. Paley and N. Wiener",
+      "title": "Fourier Transforms in the Complex Domain",
+      "doi": "10.1090/coll/019",
+      "used_for": "Compact-support and entire Fourier-transform framework."
+    },
+    {
+      "author": "N. Aronszajn",
+      "title": "Theory of Reproducing Kernels",
+      "doi": "10.1090/S0002-9947-1950-0051437-7",
+      "used_for": "Reproducing-kernel and representer background."
+    },
+    {
+      "author": "Timothy S. Trudgian",
+      "title": "An improved upper bound for the argument of the Riemann zeta-function on the critical line II",
+      "doi": "10.1016/j.jnt.2013.07.017",
+      "used_for": "Inherited absolute S(T) bound and coefficient-orientation audit; no zeta-facing coefficient certificate is claimed."
+    }
+  ],
+  "software_specifications": [
+    {
+      "name": "Python decimal",
+      "url": "https://docs.python.org/3.11/library/decimal.html",
+      "used_for": "Directed ROUND_FLOOR and ROUND_CEILING arithmetic."
+    },
+    {
+      "name": "SciPy loggamma",
+      "url": "https://docs.scipy.org/doc/scipy/reference/generated/scipy.special.loggamma.html",
+      "used_for": "Floating coefficient-orientation diagnostic only."
+    },
+    {
+      "name": "NumPy linear algebra",
+      "url": "https://numpy.org/doc/stable/reference/generated/numpy.linalg.solve.html",
+      "used_for": "Candidate generation only; proof uses interval residual bounds."
+    }
+  ],
+  "internally_derived_results": [
+    "closed exponential clamped Green representation",
+    "directed Machin and Taylor enclosures",
+    "two-orientation pairing intersection",
+    "Neumann interval family regularity",
+    "square-root-free two-by-two Schur certificate",
+    "band coefficient direction audit"
+  ],
+  "known_zero_ordinate_table_used": false,
+  "global_rh_certificate": false
+}
