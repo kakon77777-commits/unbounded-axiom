@@ -1,0 +1,90 @@
+{
+  "schema": "RH.AxisNotch.JointVerification.v0.5",
+  "row_count": 4,
+  "rows": [
+    {
+      "family": "lift",
+      "configuration_id": "baseline",
+      "dimension": 158,
+      "reconstruction": {
+        "minimum_eigenvalue": 0.11499015114928718,
+        "stored_minimum_eigenvalue": 0.11499015114928766,
+        "minimum_eigenvalue_abs_difference": 4.85722573273506e-16,
+        "raw_axis_weight_sums": [
+          1.0000000000000004,
+          1.0000000000000002,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "raw_core_weight_sum": 1.0,
+        "normalized_measure_convention": true,
+        "safe_budget_block": true
+      }
+    },
+    {
+      "family": "lift",
+      "configuration_id": "grid21_p4",
+      "dimension": 173,
+      "reconstruction": {
+        "minimum_eigenvalue": 0.11499014848125196,
+        "stored_minimum_eigenvalue": 0.11499014848125177,
+        "minimum_eigenvalue_abs_difference": 1.8041124150158794e-16,
+        "raw_axis_weight_sums": [
+          1.0000000000000004,
+          0.9999999999999991,
+          0.9999999999999999,
+          0.9999999999999999,
+          0.9999999999999999
+        ],
+        "raw_core_weight_sum": 0.9999999999999999,
+        "normalized_measure_convention": true,
+        "safe_budget_block": true
+      }
+    },
+    {
+      "family": "geometry",
+      "configuration_id": "d10_w2_p4",
+      "dimension": 158,
+      "reconstruction": {
+        "minimum_eigenvalue": 0.005438063322482638,
+        "stored_minimum_eigenvalue": 0.005438063322483152,
+        "minimum_eigenvalue_abs_difference": 5.143455106271233e-16,
+        "raw_axis_weight_sums": [
+          0.9999999999999987,
+          1.0000000000000009,
+          1.0,
+          1.0,
+          1.00000000000001
+        ],
+        "raw_core_weight_sum": 1.0,
+        "normalized_measure_convention": true,
+        "safe_budget_block": true
+      }
+    },
+    {
+      "family": "geometry",
+      "configuration_id": "d12_w2_p5",
+      "dimension": 190,
+      "reconstruction": {
+        "minimum_eigenvalue": 0.0011506526377604083,
+        "stored_minimum_eigenvalue": 0.0011506526377602696,
+        "minimum_eigenvalue_abs_difference": 1.3877787807814457e-16,
+        "raw_axis_weight_sums": [
+          1.0,
+          1.0000000000000002,
+          0.9999999999999983,
+          1.0000000000000004,
+          0.9999999999999998
+        ],
+        "raw_core_weight_sum": 1.0,
+        "normalized_measure_convention": true,
+        "safe_budget_block": true
+      }
+    }
+  ],
+  "all_reconstructed_psd_and_block_budget": true,
+  "maximum_minimum_eigenvalue_abs_difference": 5.143455106271233e-16,
+  "verification_level": "E2 floating reconstruction with normalized serialized measures; no interval analytic transfer",
+  "global_rh_certificate": false
+}

@@ -1,0 +1,161 @@
+{
+  "schema": "RH.SupportPrime.PrimeCost.v0.4",
+  "fourier_convention": "G(w)=integral psi(t) exp(i*w*t) dt",
+  "support_derivation": "supp(psi) subset [-R,R] implies the correlation support is contained in [-2R,2R]. A prime-power term at m*log(p) can occur only when m*log(p)<2R, equivalently p^m<exp(2R).",
+  "benchmark_rows": [
+    {
+      "radius": 3.0,
+      "cutoff": 403,
+      "prime_count": 79,
+      "prime_power_term_count": 98,
+      "bin_width": 0.01,
+      "bin_count": 601,
+      "coefficient_sum": -75.19047916462515,
+      "elapsed_seconds": 0.0004903179997199913,
+      "segment_size": 1000000,
+      "segment_boolean_bytes": 1000000
+    },
+    {
+      "radius": 7.0,
+      "cutoff": 1202604,
+      "prime_count": 93117,
+      "prime_power_term_count": 93371,
+      "bin_width": 0.01,
+      "bin_count": 1401,
+      "coefficient_sum": -4381.98568014716,
+      "elapsed_seconds": 0.014278148000812507,
+      "segment_size": 1000000,
+      "segment_boolean_bytes": 1000000
+    },
+    {
+      "radius": 8.0,
+      "cutoff": 8886110,
+      "prime_count": 595341,
+      "prime_power_term_count": 595877,
+      "bin_width": 0.01,
+      "bin_count": 1601,
+      "coefficient_sum": -11918.679927555175,
+      "elapsed_seconds": 0.053929819000586576,
+      "segment_size": 1000000,
+      "segment_boolean_bytes": 1000000
+    },
+    {
+      "radius": 8.5,
+      "cutoff": 24154952,
+      "prime_count": 1516233,
+      "prime_power_term_count": 1517020,
+      "bin_width": 0.01,
+      "bin_count": 1701,
+      "coefficient_sum": -19653.39268761402,
+      "elapsed_seconds": 0.12847585500003333,
+      "segment_size": 1000000,
+      "segment_boolean_bytes": 1000000
+    },
+    {
+      "radius": 9.0,
+      "cutoff": 65659969,
+      "prime_count": 3877186,
+      "prime_power_term_count": 3878366,
+      "bin_width": 0.01,
+      "bin_count": 1801,
+      "coefficient_sum": -32406.20292947886,
+      "elapsed_seconds": 0.3025469049998719,
+      "segment_size": 1000000,
+      "segment_boolean_bytes": 1000000
+    },
+    {
+      "radius": 10.25,
+      "cutoff": 799902177,
+      "prime_count": 41141456,
+      "prime_power_term_count": 41144807,
+      "bin_width": 0.01,
+      "bin_count": 2051,
+      "coefficient_sum": -113124.7579921272,
+      "elapsed_seconds": 4.502982036000503,
+      "segment_size": 2000000,
+      "segment_boolean_bytes": 2000000
+    }
+  ],
+  "projection_rows": [
+    {
+      "radius": 3.0,
+      "strict_integer_cutoff": 403,
+      "cutoff_float": 403.4287934927351,
+      "pnt_prime_count_proxy": 67.23813224878919,
+      "log_histogram_bins": 601,
+      "prime_to_bin_compression_proxy": 0.1118770919281018,
+      "dimension": 28,
+      "legacy_dense_matrix_update_proxy": 52714.695683050726,
+      "histogram_matrix_update_proxy": 471184
+    },
+    {
+      "radius": 7.0,
+      "strict_integer_cutoff": 1202604,
+      "cutoff_float": 1202604.2841647768,
+      "pnt_prime_count_proxy": 85900.30601176978,
+      "log_histogram_bins": 1401,
+      "prime_to_bin_compression_proxy": 61.313566032669364,
+      "dimension": 68,
+      "legacy_dense_matrix_update_proxy": 397203014.9984234,
+      "histogram_matrix_update_proxy": 6478224
+    },
+    {
+      "radius": 8.5,
+      "strict_integer_cutoff": 24154952,
+      "cutoff_float": 24154952.7535753,
+      "pnt_prime_count_proxy": 1420879.5737397235,
+      "log_histogram_bins": 1701,
+      "prime_to_bin_compression_proxy": 835.3201491709133,
+      "dimension": 83,
+      "legacy_dense_matrix_update_proxy": 9788439383.492954,
+      "histogram_matrix_update_proxy": 11718189
+    },
+    {
+      "radius": 10.25,
+      "strict_integer_cutoff": 799902177,
+      "cutoff_float": 799902177.4755054,
+      "pnt_prime_count_proxy": 39019618.41343929,
+      "log_histogram_bins": 2051,
+      "prime_to_bin_compression_proxy": 19024.679870033782,
+      "dimension": 100,
+      "legacy_dense_matrix_update_proxy": 390196184134.3929,
+      "histogram_matrix_update_proxy": 20510000
+    },
+    {
+      "radius": 12.0,
+      "strict_integer_cutoff": 26489122129,
+      "cutoff_float": 26489122129.84347,
+      "pnt_prime_count_proxy": 1103713422.0768113,
+      "log_histogram_bins": 2401,
+      "prime_to_bin_compression_proxy": 459689.0554255774,
+      "dimension": 118,
+      "legacy_dense_matrix_update_proxy": 15368105688997.521,
+      "histogram_matrix_update_proxy": 33431524
+    },
+    {
+      "radius": 14.0,
+      "strict_integer_cutoff": 1446257064291,
+      "cutoff_float": 1446257064291.475,
+      "pnt_prime_count_proxy": 51652038010.40983,
+      "log_histogram_bins": 2801,
+      "prime_to_bin_compression_proxy": 18440570.51424842,
+      "dimension": 138,
+      "legacy_dense_matrix_update_proxy": 983661411870244.9,
+      "histogram_matrix_update_proxy": 53342244
+    },
+    {
+      "radius": 16.0,
+      "strict_integer_cutoff": 78962960182680,
+      "cutoff_float": 78962960182680.69,
+      "pnt_prime_count_proxy": 2467592505708.7715,
+      "log_histogram_bins": 3201,
+      "prime_to_bin_compression_proxy": 770881757.4847771,
+      "dimension": 158,
+      "legacy_dense_matrix_update_proxy": 6.160097931251377e+16,
+      "histogram_matrix_update_proxy": 79909764
+    }
+  ],
+  "histogram_artifact": "outputs/prime_histograms.npz",
+  "compression_scope": "Linear log-bin aggregation reduces matrix updates. It does not remove prime enumeration and is not yet supplied with an interval interpolation error.",
+  "global_rh_certificate": false
+}

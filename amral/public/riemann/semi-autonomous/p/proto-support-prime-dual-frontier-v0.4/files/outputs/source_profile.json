@@ -1,0 +1,74 @@
+{
+  "schema": "RH.SupportPrime.SourceProfile.v0.4",
+  "published_s_bound": {
+    "log_coefficient": 0.112,
+    "loglog_coefficient": 0.278,
+    "constant": 2.51,
+    "valid_from": 2.718281828459045,
+    "doi": "10.1016/j.jnt.2013.07.017",
+    "arxiv": "1208.5846"
+  },
+  "primary_source": {
+    "author": "Timothy S. Trudgian",
+    "title": "An improved upper bound for the argument of the Riemann zeta-function on the critical line II",
+    "journal": "Journal of Number Theory 134 (2014), 280-292",
+    "doi_url": "https://doi.org/10.1016/j.jnt.2013.07.017",
+    "arxiv_url": "https://arxiv.org/abs/1208.5846",
+    "note": "The arXiv abstract reports 0.111, 0.275, 2.450; the published abstract reports the conservative 0.112, 0.278, 2.510 constants used here."
+  },
+  "band_rows": [
+    {
+      "band_id": "A0",
+      "interval": [
+        14.0,
+        18.0
+      ],
+      "legacy_preprint_profile": 6.6657984212280645,
+      "published_profile": 6.797423271048812,
+      "increase": 0.1316248498207475
+    },
+    {
+      "band_id": "A1",
+      "interval": [
+        18.0,
+        23.0
+      ],
+      "legacy_preprint_profile": 7.113998598824585,
+      "published_profile": 7.246636980606699,
+      "increase": 0.1326383817821135
+    },
+    {
+      "band_id": "A2",
+      "interval": [
+        23.0,
+        35.0
+      ],
+      "legacy_preprint_profile": 9.212845960736463,
+      "published_profile": 9.346770522330928,
+      "increase": 0.13392456159446553
+    },
+    {
+      "band_id": "A3",
+      "interval": [
+        35.0,
+        70.0
+      ],
+      "legacy_preprint_profile": 18.2316247098161,
+      "published_profile": 18.367573606596444,
+      "increase": 0.13594889678034505
+    },
+    {
+      "band_id": "A4",
+      "interval": [
+        70.0,
+        145.0
+      ],
+      "legacy_preprint_profile": 40.40698348427097,
+      "published_profile": 40.5453627292366,
+      "increase": 0.13837924496563403
+    }
+  ],
+  "source_aligned_tail_multiplier": 9.935682232184019e-07,
+  "certification_status": "Source-aligned floating implementation; directed-rounding and interval transfer remain open.",
+  "global_rh_certificate": false
+}

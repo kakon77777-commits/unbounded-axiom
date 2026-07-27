@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>支撐—質數對偶前沿 · 半自主研究 · 黎曼猜想 · AMRAL</title>
+<meta name="description" content="RH 半自主研究工程包:支撐—質數對偶前沿 v0.4。四個支撐半徑 R=10.25/12/14/16 全部被對偶見證阻擋,且發現粗軸網格會產生假逃逸——加密網格後 α 從 0.99 變回 1.19。質數枚舉在 R=16 已逼近 79 兆項。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="./files/RH支撐質數對偶前沿_軸網格假逃逸與頻譜缺口轉向_v0.4_半AI自主研究稿.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link active" href="../../../">黎曼猜想</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← 半自主研究</a>
+    <span>/</span>
+    <a href="../../#proto-support-prime-dual-frontier-v0.4">工程紀錄</a>
+    <span>/</span>
+    <span>支撐—質數對偶前沿</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">工程紀錄</span>
+      <span class="tag">v0.4</span>
+      <span class="tag">2026-07-24</span>
+      <span class="status">ALL_FOUR_RADII_BLOCKED</span>
+    </div>
+    <h1>支撐—質數對偶前沿</h1>
+    <p class="h1-sub">Support–Prime Dual Frontier v0.4 — 把對偶見證方法擴大到四個支撐半徑,全部被安全下界(2.62 → 1.09)阻擋,同時抓到一個方法論陷阱:粗軸網格會產生假逃逸。質數枚舉成本在 R=16 已達 79 兆項。</p>
+    <div class="claim-box">
+      RH_CLAIM = False
+      <span class="note">— 包內文件自報「不是 RH 證明、不是 RH 反證,也不是連續解析問題的 interval certificate」,原樣照登。四個半徑的安全下界都嚴格大於 1,12 份 witness 全部 floating 重建並保持 PSD。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">本包把上一包的對偶見證方法推廣到多個支撐半徑,原樣照引其決策。</p>
+    <blockquote class="cite">「不再以增加 R 作主要方向。下一節點共設計 axis notches、dictionary 與 cover,並要求任何 α&lt;1 結果接受 dense-axis audit。」— 摘自本包 RESULTS.md §決策。</blockquote>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一節點 · v0.3</span><a href="../proto-axis-target-dual-obstruction-v0.3/">軸—目標對偶障礙</a></div>
+      <div class="conn-card"><span class="k">下一節點 · v0.5</span><a href="../proto-axis-notch-cover-codesign-v0.5/">軸缺口與覆蓋共同設計</a></div>
+    </div>
+  </section>
+
+  <section id="doc-main">
+    <h2 class="doc-h2">技術說明</h2>
+    <p class="doc-meta">主文件 — uniform frontier 掃描、288 子矩形聯合對偶最佳化、粗軸網格假逃逸診斷、實際質數枚舉、頻譜缺口轉向決策。</p>
+    <div class="doc" id="doc-tech"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="results">
+    <h2 class="doc-h2">結果數據</h2>
+    <p class="doc-meta">四個半徑的安全下界表、粗網格假逃逸對照、uniform frontier 摘要、質數成本,來自包內 <code>RESULTS.md</code>。</p>
+    <div class="doc" id="doc-results"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="trust">
+    <h2 class="doc-h2">信任邊界</h2>
+    <p class="doc-meta">來自包內 <code>TRUST_BOUNDARY.md</code>。</p>
+    <div class="doc" id="doc-trust"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="files">
+    <h2 class="doc-h2">檔案 · Files</h2>
+    <p class="section-note">大型頻譜掃描數據(<code>uniform_frontier.json</code> 186 KB)跟質數直方圖(<code>prime_histograms.npz</code>)沒有逐一列出,都在完整 zip 裡。</p>
+    <div id="filelist-out"><p class="loading">載入中…</p></div>
+    <a class="zip-dl" href="../../packages/RH_Support_Prime_Dual_Frontier_v0.4.zip" download>下載完整封包 (176.7 KB)</a>
+    <p class="zip-note">sha256 dc8240726dd87779e367c40b13d12060ba7cfeda6741dfafdedc790859366363</p>
+  </section>
+
+  <footer class="sitefoot">
+    <p>半自主軌道逐包詳細頁,格式沿用 <a href="../proto-axis-target-dual-obstruction-v0.3/">上一包</a>。<a href="../../">回半自主研究</a></p>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+const F = (p) => amralFetchText("./files/" + p);
+
+async function loadDoc(elId, file) {
+  const el = document.getElementById(elId);
+  try {
+    el.innerHTML = amralRenderDoc(await F(file));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+}
+
+async function loadFiles() {
+  const el = document.getElementById("filelist-out");
+  try {
+    const idx = await fetch("./files.json").then((r) => r.json());
+    const groups = { "文件": [], "交接": [], "結構化中繼資料": [], "資料": [], "程式": [] };
+    for (const f of idx.files) {
+      const ext = f.path.split(".").pop().toLowerCase();
+      if (f.path === "NEXT_NODE_AXIS_NOTCH_CODESIGN.md") groups["交接"].push(f);
+      else if (f.path.startsWith("metadata/")) groups["結構化中繼資料"].push(f);
+      else if (ext === "md") groups["文件"].push(f);
+      else if (f.path.startsWith("data/") || f.path.startsWith("outputs/")) groups["資料"].push(f);
+      else if (ext === "py" || ext === "txt") groups["程式"].push(f);
+    }
+    const fmt = (b) => b < 1024 ? b + " B" : (b / 1024).toFixed(1) + " KB";
+    el.innerHTML = Object.entries(groups).filter(([, files]) => files.length).map(([label, files]) => `
+      <div class="filegroup">
+        <h3>${label}</h3>
+        <ul class="filelist">
+          ${files.map((f) => `<li><a href="./files/${encodeURIComponent(f.path)}" download>${amralEsc(f.path)}</a><span class="fsize">${fmt(f.size)}</span></li>`).join("")}
+        </ul>
+      </div>`).join("");
+  } catch (e) {
+    el.innerHTML = `<p class="error">檔案清單載入失敗:${e.message}</p>`;
+  }
+}
+
+loadDoc("doc-tech", "RH支撐質數對偶前沿_軸網格假逃逸與頻譜缺口轉向_v0.4_半AI自主研究稿.md");
+loadDoc("doc-results", "RESULTS.md");
+loadDoc("doc-trust", "TRUST_BOUNDARY.md");
+loadFiles();
+</script>
+</body>
+</html>

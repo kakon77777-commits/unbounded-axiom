@@ -1,0 +1,144 @@
+{
+  "schema": "RH.AxisNotch.LiftScaling.v0.5",
+  "configuration": {
+    "radius": 16.0,
+    "patch": {
+      "patch_id": "x4_Y3__r3_3",
+      "x_min": 20.395000000000003,
+      "x_max": 20.42,
+      "y_min": -0.10625000000000001,
+      "y_max": -0.1,
+      "guard_dx": 0.00375,
+      "guard_dy": 0.0015
+    },
+    "frequency_step": 0.1
+  },
+  "rows": [
+    {
+      "lift_id": "baseline",
+      "frequency_count": 0,
+      "powers": [
+        4
+      ],
+      "requested_atom_count": 0,
+      "total_basis_count": 160,
+      "dimension": 158,
+      "effective_added_dimension": 0,
+      "uniform_axis_uniform_core_threshold": 0.22418858851966847,
+      "optimized_core_uniform_axis_threshold": 0.2519270995197932,
+      "tail_minimum_eigenvalue": 0.1149901614371005,
+      "relative_improvement_vs_baseline": 0.0
+    },
+    {
+      "lift_id": "grid5_p4",
+      "frequency_count": 5,
+      "powers": [
+        4
+      ],
+      "requested_atom_count": 5,
+      "total_basis_count": 165,
+      "dimension": 163,
+      "effective_added_dimension": 5,
+      "uniform_axis_uniform_core_threshold": 0.2195662930101524,
+      "optimized_core_uniform_axis_threshold": 0.24664531006781734,
+      "tail_minimum_eigenvalue": 0.11499016043320331,
+      "relative_improvement_vs_baseline": 0.020965547025483366
+    },
+    {
+      "lift_id": "grid9_p4",
+      "frequency_count": 9,
+      "powers": [
+        4
+      ],
+      "requested_atom_count": 9,
+      "total_basis_count": 169,
+      "dimension": 166,
+      "effective_added_dimension": 8,
+      "uniform_axis_uniform_core_threshold": 0.2187640002569826,
+      "optimized_core_uniform_axis_threshold": 0.24575491161055,
+      "tail_minimum_eigenvalue": 0.11499016015033418,
+      "relative_improvement_vs_baseline": 0.024499896680461264
+    },
+    {
+      "lift_id": "grid13_p4",
+      "frequency_count": 13,
+      "powers": [
+        4
+      ],
+      "requested_atom_count": 13,
+      "total_basis_count": 173,
+      "dimension": 168,
+      "effective_added_dimension": 10,
+      "uniform_axis_uniform_core_threshold": 0.2183087097981997,
+      "optimized_core_uniform_axis_threshold": 0.2452483681366745,
+      "tail_minimum_eigenvalue": 0.11499016001924749,
+      "relative_improvement_vs_baseline": 0.026510571494091972
+    },
+    {
+      "lift_id": "grid21_p4",
+      "frequency_count": 21,
+      "powers": [
+        4
+      ],
+      "requested_atom_count": 21,
+      "total_basis_count": 181,
+      "dimension": 173,
+      "effective_added_dimension": 15,
+      "uniform_axis_uniform_core_threshold": 0.21729873286169146,
+      "optimized_core_uniform_axis_threshold": 0.24412262992168765,
+      "tail_minimum_eigenvalue": 0.11499015972707857,
+      "relative_improvement_vs_baseline": 0.03097907931692112
+    },
+    {
+      "lift_id": "grid9_p46",
+      "frequency_count": 9,
+      "powers": [
+        4,
+        6
+      ],
+      "requested_atom_count": 18,
+      "total_basis_count": 178,
+      "dimension": 168,
+      "effective_added_dimension": 10,
+      "uniform_axis_uniform_core_threshold": 0.21816631489060428,
+      "optimized_core_uniform_axis_threshold": 0.24508995854004736,
+      "tail_minimum_eigenvalue": 0.11499016003843551,
+      "relative_improvement_vs_baseline": 0.027139362906088094
+    },
+    {
+      "lift_id": "grid13_p46",
+      "frequency_count": 13,
+      "powers": [
+        4,
+        6
+      ],
+      "requested_atom_count": 26,
+      "total_basis_count": 186,
+      "dimension": 170,
+      "effective_added_dimension": 12,
+      "uniform_axis_uniform_core_threshold": 0.21780319534302128,
+      "optimized_core_uniform_axis_threshold": 0.24468689272653388,
+      "tail_minimum_eigenvalue": 0.11499015986803561,
+      "relative_improvement_vs_baseline": 0.028739293260074517
+    },
+    {
+      "lift_id": "grid9_p468",
+      "frequency_count": 9,
+      "powers": [
+        4,
+        6,
+        8
+      ],
+      "requested_atom_count": 27,
+      "total_basis_count": 187,
+      "dimension": 169,
+      "effective_added_dimension": 11,
+      "uniform_axis_uniform_core_threshold": 0.21796956282917415,
+      "optimized_core_uniform_axis_threshold": 0.2448655247717711,
+      "tail_minimum_eigenvalue": 0.11499015988238585,
+      "relative_improvement_vs_baseline": 0.02803023081471745
+    }
+  ],
+  "interpretation": "This is a uniform-axis/core screen, not the joint dual gate. It tests whether added external directions show a meaningful scaling trend before expensive optimization.",
+  "global_rh_certificate": false
+}

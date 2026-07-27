@@ -1,0 +1,54 @@
+{
+  "schema": "RH.PaleyWiener.ExperimentSummary.v0.6",
+  "date": "2026-07-25",
+  "research_mode": "semi-autonomous AI mathematical research",
+  "parent_node": "RH-AxisNotch-CoverCodesign-20260724-v0.5",
+  "continuous_domain": "real-even clamped H_0^2(-R,R), structural zeros G(0)=G(i/2)=0, tail inner product",
+  "exact_results": {
+    "trace_class_primal_measure_dual_weak_duality": true,
+    "one_axis_one_core_rank_two_closed_form": true,
+    "explicit_clamped_green_kernel": true,
+    "finite_atomic_psd_reduces_to_core_negative_rank": true,
+    "final_negative_schur_rank": 2
+  },
+  "single_band_result": {
+    "all_best_single_point_lower_bounds_below_one": true,
+    "A1_best_single_point_lower_bound": 0.26125331168208926,
+    "A1_best_x": 20.3
+  },
+  "galerkin_result": {
+    "raw_dimension": 192,
+    "effective_dimension": 190,
+    "joint_alpha": 1.1324752108835305,
+    "safe_alpha": 1.0662376054417653,
+    "safe_minimum_eigenvalue": 0.25699987684393333,
+    "monotone_raw_alpha_nonincreasing": true
+  },
+  "independent_kernel_agreement": {
+    "galerkin_point_extremal_raw_dimension_192": 0.11244168194950825,
+    "direct_green_point_extremal_finest": 0.11244168089610021,
+    "absolute_difference": 1.0534080413515667e-09
+  },
+  "continuous_kernel_atomic_result": {
+    "axis_atom_count": 58,
+    "core_atom_count": 2,
+    "raw_threshold_for_fixed_measures": 1.1324411996648391,
+    "safe_alpha": 1.0662376054417653,
+    "safe_full_minimum_eigenvalue": 0.25682657250711,
+    "safe_schur_minimum_eigenvalue": 0.056087081072383305,
+    "floating_obstruction_pass": true
+  },
+  "rational_certificate_candidate": {
+    "target_alpha": 1.05,
+    "weight_denominator": 1000000000000,
+    "full_minimum_eigenvalue": 0.31224324948222837,
+    "schur_minimum_eigenvalue": 0.06988523379762435,
+    "floating_pass": true,
+    "interval_certified": false
+  },
+  "research_decision": "Stop dictionary and Galerkin expansion. Preserve the rational 58-axis-plus-2-core atomic witness and next interval-certify the explicit Green-kernel 2-by-2 Schur certificate at alpha=21/20.",
+  "next_node": "RH-IntervalGreenKernel-AtomicCertificate-20260725-v0.7",
+  "known_zero_ordinates_used": false,
+  "interval_certified": false,
+  "global_rh_certificate": false
+}

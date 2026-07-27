@@ -1,0 +1,696 @@
+{
+  "schema": "RH.AxisTarget.DualExperimentSummary.v0.3",
+  "research_mode": "semi-autonomous AI mathematical research",
+  "provenance": {
+    "technical_research_lead": "OpenAI Codex (AI research collaborator)",
+    "research_field_and_authorization": "Neo.K / EveMissLab",
+    "technical_judgments_attributed_to_ai": true
+  },
+  "parent_node": "RH-PSDGRAM-20260724-v0.2",
+  "patch_count": 18,
+  "dimension": 22,
+  "known_zero_ordinates_used": false,
+  "primary_witness": {
+    "alpha": 2.0,
+    "tail_fraction": 0.001,
+    "axis_band": "A1",
+    "axis_interval": [
+      18.0,
+      23.0
+    ],
+    "axis_grid_count": 26,
+    "axis_measure": "uniform probability measure",
+    "count_coefficient_downward": 7.113998598824
+  },
+  "finite_floating_pass_count": 18,
+  "primary_min_eigenvalue_range": [
+    3.1042101910186086e-05,
+    3.104242267483654e-05
+  ],
+  "stress_rho_1e_6_min_eigenvalue_range": [
+    1.6148647147402253e-08,
+    3.104475383148371e-08
+  ],
+  "tail_only_optimal_alpha_range": [
+    3.0128899398709117,
+    8.706214521390356
+  ],
+  "hybrid_optimal_alpha_range": [
+    3.1226737819022627,
+    9.891210694418081
+  ],
+  "axis_only_min_eigenvalue_range": [
+    -1.1127262617670358e-06,
+    -2.4418929376488183e-17
+  ],
+  "tail_matrix_min_eigenvalue": 0.031041478249658156,
+  "tail_matrix_positive_definite": true,
+  "rational_surrogate_all_exact_ldl_positive": true,
+  "parent_primal_crosscheck": {
+    "all_pairings_nonnegative": true,
+    "all_subobjectives_at_least_2": true,
+    "witness_pairing_range": [
+      9.512352558606016,
+      28.155430988869007
+    ],
+    "identity_residual_abs_max": 1.0658141036401503e-14
+  },
+  "dual_lower_bound": 2.0,
+  "target_budget": 1.0,
+  "current_r3_patchwise_function_class_rejected": true,
+  "global_rh_certificate": false,
+  "interpretation": "For every patch, the finite-model objective is at least 2 whenever the block is at most -1 at the rational patch center. The target budget below 1 is therefore impossible for the current R=3 patchwise function class.",
+  "trust_boundary": "Exact LDL positivity applies to the exported decimal-rational surrogate. Transfer to the Fourier integrals, count bound, and tail theorem remains E2 floating and is not an RH proof.",
+  "patch_rows": [
+    {
+      "patch_id": "X0_Y0",
+      "center": {
+        "x": "201/10",
+        "y": "-9/50"
+      },
+      "alpha": 2.0,
+      "tail_fraction": 0.001,
+      "axis_band_id": "A1",
+      "axis_interval": [
+        18.0,
+        23.0
+      ],
+      "axis_grid_count": 26,
+      "axis_count_original": 7.113998598824585,
+      "axis_count_downward": 7.113998598824,
+      "tail_only_optimal_single_point_alpha": 3.2218994079433774,
+      "hybrid_optimal_single_point_alpha": 3.6819553167669916,
+      "tail_only_alpha_2_min_eigenvalue": 0.031041470858530953,
+      "primary_alpha_2_min_eigenvalue": 3.1042101910186086e-05,
+      "stress_rho_1e_6_alpha_2_min_eigenvalue": 1.6148647147402253e-08,
+      "axis_only_alpha_2_min_eigenvalue": -2.1563520297408085e-07,
+      "dual_lower_bound": 2.0,
+      "target_budget": 1.0,
+      "finite_floating_dual_pass": true,
+      "parent_primal_crosscheck": {
+        "center_core_value": -2.4733747637745873,
+        "dual_subobjective_value": 15.40973961522838,
+        "witness_pairing": 10.462990087679206,
+        "identity_residual": 0.0,
+        "pairing_nonnegative": true,
+        "subobjective_at_least_2": true
+      },
+      "global_rh_certificate": false
+    },
+    {
+      "patch_id": "X1_Y0",
+      "center": {
+        "x": "81/4",
+        "y": "-9/50"
+      },
+      "alpha": 2.0,
+      "tail_fraction": 0.001,
+      "axis_band_id": "A1",
+      "axis_interval": [
+        18.0,
+        23.0
+      ],
+      "axis_grid_count": 26,
+      "axis_count_original": 7.113998598824585,
+      "axis_count_downward": 7.113998598824,
+      "tail_only_optimal_single_point_alpha": 3.0371512579813302,
+      "hybrid_optimal_single_point_alpha": 3.4446340822454036,
+      "tail_only_alpha_2_min_eigenvalue": 0.03104147394012619,
+      "primary_alpha_2_min_eigenvalue": 3.104229438674912e-05,
+      "stress_rho_1e_6_alpha_2_min_eigenvalue": 3.092425800291097e-08,
+      "axis_only_alpha_2_min_eigenvalue": -1.5055832103648633e-07,
+      "dual_lower_bound": 2.0,
+      "target_budget": 1.0,
+      "finite_floating_dual_pass": true,
+      "parent_primal_crosscheck": {
+        "center_core_value": -2.5201281966251075,
+        "dual_subobjective_value": 14.552608951856234,
+        "witness_pairing": 9.512352558606016,
+        "identity_residual": 1.7763568394002505e-15,
+        "pairing_nonnegative": true,
+        "subobjective_at_least_2": true
+      },
+      "global_rh_certificate": false
+    },
+    {
+      "patch_id": "X2_Y0",
+      "center": {
+        "x": "102/5",
+        "y": "-9/50"
+      },
+      "alpha": 2.0,
+      "tail_fraction": 0.001,
+      "axis_band_id": "A1",
+      "axis_interval": [
+        18.0,
+        23.0
+      ],
+      "axis_grid_count": 26,
+      "axis_count_original": 7.113998598824585,
+      "axis_count_downward": 7.113998598824,
+      "tail_only_optimal_single_point_alpha": 3.0128899398709117,
+      "hybrid_optimal_single_point_alpha": 3.1226737819022627,
+      "tail_only_alpha_2_min_eigenvalue": 0.031041478370752832,
+      "primary_alpha_2_min_eigenvalue": 3.104242267483654e-05,
+      "stress_rho_1e_6_alpha_2_min_eigenvalue": 3.1022219293714516e-08,
+      "axis_only_alpha_2_min_eigenvalue": -1.1127262617670358e-06,
+      "dual_lower_bound": 2.0,
+      "target_budget": 1.0,
+      "finite_floating_dual_pass": true,
+      "parent_primal_crosscheck": {
+        "center_core_value": -2.5356725119441705,
+        "dual_subobjective_value": 16.633270275299306,
+        "witness_pairing": 11.561925251410964,
+        "identity_residual": 1.7763568394002505e-15,
+        "pairing_nonnegative": true,
+        "subobjective_at_least_2": true
+      },
+      "global_rh_certificate": false
+    },
+    {
+      "patch_id": "X0_Y1",
+      "center": {
+        "x": "201/10",
+        "y": "-61/400"
+      },
+      "alpha": 2.0,
+      "tail_fraction": 0.001,
+      "axis_band_id": "A1",
+      "axis_interval": [
+        18.0,
+        23.0
+      ],
+      "axis_grid_count": 26,
+      "axis_count_original": 7.113998598824585,
+      "axis_count_downward": 7.113998598824,
+      "tail_only_optimal_single_point_alpha": 4.561870969320457,
+      "hybrid_optimal_single_point_alpha": 5.255283742140585,
+      "tail_only_alpha_2_min_eigenvalue": 0.031041476350190958,
+      "primary_alpha_2_min_eigenvalue": 3.1042235931990984e-05,
+      "stress_rho_1e_6_alpha_2_min_eigenvalue": 3.104371133926076e-08,
+      "axis_only_alpha_2_min_eigenvalue": -6.047988707567178e-09,
+      "dual_lower_bound": 2.0,
+      "target_budget": 1.0,
+      "finite_floating_dual_pass": true,
+      "parent_primal_crosscheck": {
+        "center_core_value": -3.5159791701099317,
+        "dual_subobjective_value": 31.290552540445944,
+        "witness_pairing": 24.258594200226085,
+        "identity_residual": -3.552713678800501e-15,
+        "pairing_nonnegative": true,
+        "subobjective_at_least_2": true
+      },
+      "global_rh_certificate": false
+    },
+    {
+      "patch_id": "X1_Y1",
+      "center": {
+        "x": "81/4",
+        "y": "-61/400"
+      },
+      "alpha": 2.0,
+      "tail_fraction": 0.001,
+      "axis_band_id": "A1",
+      "axis_interval": [
+        18.0,
+        23.0
+      ],
+      "axis_grid_count": 26,
+      "axis_count_original": 7.113998598824585,
+      "axis_count_downward": 7.113998598824,
+      "tail_only_optimal_single_point_alpha": 4.304072829110326,
+      "hybrid_optimal_single_point_alpha": 4.9205964423713455,
+      "tail_only_alpha_2_min_eigenvalue": 0.031041477136379836,
+      "primary_alpha_2_min_eigenvalue": 3.104234611180927e-05,
+      "stress_rho_1e_6_alpha_2_min_eigenvalue": 3.104373372658818e-08,
+      "axis_only_alpha_2_min_eigenvalue": -2.7198772097623885e-10,
+      "dual_lower_bound": 2.0,
+      "target_budget": 1.0,
+      "finite_floating_dual_pass": true,
+      "parent_primal_crosscheck": {
+        "center_core_value": -3.535651503568364,
+        "dual_subobjective_value": 28.360436047722985,
+        "witness_pairing": 21.289133040586258,
+        "identity_residual": 0.0,
+        "pairing_nonnegative": true,
+        "subobjective_at_least_2": true
+      },
+      "global_rh_certificate": false
+    },
+    {
+      "patch_id": "X2_Y1",
+      "center": {
+        "x": "102/5",
+        "y": "-61/400"
+      },
+      "alpha": 2.0,
+      "tail_fraction": 0.001,
+      "axis_band_id": "A1",
+      "axis_interval": [
+        18.0,
+        23.0
+      ],
+      "axis_grid_count": 26,
+      "axis_count_original": 7.113998598824585,
+      "axis_count_downward": 7.113998598824,
+      "tail_only_optimal_single_point_alpha": 4.270687759277167,
+      "hybrid_optimal_single_point_alpha": 4.466983467910441,
+      "tail_only_alpha_2_min_eigenvalue": 0.031041478719565186,
+      "primary_alpha_2_min_eigenvalue": 3.10424173999203e-05,
+      "stress_rho_1e_6_alpha_2_min_eigenvalue": 3.1044410155275434e-08,
+      "axis_only_alpha_2_min_eigenvalue": -1.2573330771100384e-10,
+      "dual_lower_bound": 2.0,
+      "target_budget": 1.0,
+      "finite_floating_dual_pass": true,
+      "parent_primal_crosscheck": {
+        "center_core_value": -3.532666624337997,
+        "dual_subobjective_value": 29.900556890940877,
+        "witness_pairing": 22.835223642264882,
+        "identity_residual": 0.0,
+        "pairing_nonnegative": true,
+        "subobjective_at_least_2": true
+      },
+      "global_rh_certificate": false
+    },
+    {
+      "patch_id": "x0_Y2",
+      "center": {
+        "x": "401/20",
+        "y": "-13/100"
+      },
+      "alpha": 2.0,
+      "tail_fraction": 0.001,
+      "axis_band_id": "A1",
+      "axis_interval": [
+        18.0,
+        23.0
+      ],
+      "axis_grid_count": 26,
+      "axis_count_original": 7.113998598824585,
+      "axis_count_downward": 7.113998598824,
+      "tail_only_optimal_single_point_alpha": 6.472065548741606,
+      "hybrid_optimal_single_point_alpha": 7.32432667871372,
+      "tail_only_alpha_2_min_eigenvalue": 0.031041478843735974,
+      "primary_alpha_2_min_eigenvalue": 3.104227225668702e-05,
+      "stress_rho_1e_6_alpha_2_min_eigenvalue": 3.104444335892e-08,
+      "axis_only_alpha_2_min_eigenvalue": -1.364217714422898e-13,
+      "dual_lower_bound": 2.0,
+      "target_budget": 1.0,
+      "finite_floating_dual_pass": true,
+      "parent_primal_crosscheck": {
+        "center_core_value": -1.6343780778018702,
+        "dual_subobjective_value": 20.769741786420568,
+        "witness_pairing": 17.50098563081683,
+        "identity_residual": -3.552713678800501e-15,
+        "pairing_nonnegative": true,
+        "subobjective_at_least_2": true
+      },
+      "global_rh_certificate": false
+    },
+    {
+      "patch_id": "x1_Y2",
+      "center": {
+        "x": "2013/100",
+        "y": "-13/100"
+      },
+      "alpha": 2.0,
+      "tail_fraction": 0.001,
+      "axis_band_id": "A1",
+      "axis_interval": [
+        18.0,
+        23.0
+      ],
+      "axis_grid_count": 26,
+      "axis_count_original": 7.113998598824585,
+      "axis_count_downward": 7.113998598824,
+      "tail_only_optimal_single_point_alpha": 6.269426036190538,
+      "hybrid_optimal_single_point_alpha": 7.320474490438703,
+      "tail_only_alpha_2_min_eigenvalue": 0.0310414781663264,
+      "primary_alpha_2_min_eigenvalue": 3.104230121235913e-05,
+      "stress_rho_1e_6_alpha_2_min_eigenvalue": 3.104428100859862e-08,
+      "axis_only_alpha_2_min_eigenvalue": -5.985481204732355e-14,
+      "dual_lower_bound": 2.0,
+      "target_budget": 1.0,
+      "finite_floating_dual_pass": true,
+      "parent_primal_crosscheck": {
+        "center_core_value": -1.637002158351321,
+        "dual_subobjective_value": 19.616599293489532,
+        "witness_pairing": 16.34259497678689,
+        "identity_residual": 0.0,
+        "pairing_nonnegative": true,
+        "subobjective_at_least_2": true
+      },
+      "global_rh_certificate": false
+    },
+    {
+      "patch_id": "x2_Y2",
+      "center": {
+        "x": "2021/100",
+        "y": "-13/100"
+      },
+      "alpha": 2.0,
+      "tail_fraction": 0.001,
+      "axis_band_id": "A1",
+      "axis_interval": [
+        18.0,
+        23.0
+      ],
+      "axis_grid_count": 26,
+      "axis_count_original": 7.113998598824585,
+      "axis_count_downward": 7.113998598824,
+      "tail_only_optimal_single_point_alpha": 6.0709699011179765,
+      "hybrid_optimal_single_point_alpha": 7.070699777775239,
+      "tail_only_alpha_2_min_eigenvalue": 0.03104147809958918,
+      "primary_alpha_2_min_eigenvalue": 3.104234308480843e-05,
+      "stress_rho_1e_6_alpha_2_min_eigenvalue": 3.1044253302281026e-08,
+      "axis_only_alpha_2_min_eigenvalue": -1.1121063289339747e-15,
+      "dual_lower_bound": 2.0,
+      "target_budget": 1.0,
+      "finite_floating_dual_pass": true,
+      "parent_primal_crosscheck": {
+        "center_core_value": -1.640455827593003,
+        "dual_subobjective_value": 18.77284241982918,
+        "witness_pairing": 15.491930764643174,
+        "identity_residual": -1.7763568394002505e-15,
+        "pairing_nonnegative": true,
+        "subobjective_at_least_2": true
+      },
+      "global_rh_certificate": false
+    },
+    {
+      "patch_id": "x3_Y2",
+      "center": {
+        "x": "2029/100",
+        "y": "-13/100"
+      },
+      "alpha": 2.0,
+      "tail_fraction": 0.001,
+      "axis_band_id": "A1",
+      "axis_interval": [
+        18.0,
+        23.0
+      ],
+      "axis_grid_count": 26,
+      "axis_count_original": 7.113998598824585,
+      "axis_count_downward": 7.113998598824,
+      "tail_only_optimal_single_point_alpha": 5.93963485130312,
+      "hybrid_optimal_single_point_alpha": 6.698910591411161,
+      "tail_only_alpha_2_min_eigenvalue": 0.031041478413156697,
+      "primary_alpha_2_min_eigenvalue": 3.1042384328349065e-05,
+      "stress_rho_1e_6_alpha_2_min_eigenvalue": 3.104435951425865e-08,
+      "axis_only_alpha_2_min_eigenvalue": -6.076787601703308e-16,
+      "dual_lower_bound": 2.0,
+      "target_budget": 1.0,
+      "finite_floating_dual_pass": true,
+      "parent_primal_crosscheck": {
+        "center_core_value": -1.6441007366053202,
+        "dual_subobjective_value": 19.312442150586506,
+        "witness_pairing": 16.024240677375875,
+        "identity_residual": -1.0658141036401503e-14,
+        "pairing_nonnegative": true,
+        "subobjective_at_least_2": true
+      },
+      "global_rh_certificate": false
+    },
+    {
+      "patch_id": "x4_Y2",
+      "center": {
+        "x": "2037/100",
+        "y": "-13/100"
+      },
+      "alpha": 2.0,
+      "tail_fraction": 0.001,
+      "axis_band_id": "A1",
+      "axis_interval": [
+        18.0,
+        23.0
+      ],
+      "axis_grid_count": 26,
+      "axis_count_original": 7.113998598824585,
+      "axis_count_downward": 7.113998598824,
+      "tail_only_optimal_single_point_alpha": 5.920488153574008,
+      "hybrid_optimal_single_point_alpha": 6.35652248857202,
+      "tail_only_alpha_2_min_eigenvalue": 0.031041478785395902,
+      "primary_alpha_2_min_eigenvalue": 3.1042410397169256e-05,
+      "stress_rho_1e_6_alpha_2_min_eigenvalue": 3.104454472795166e-08,
+      "axis_only_alpha_2_min_eigenvalue": -1.849611386727212e-15,
+      "dual_lower_bound": 2.0,
+      "target_budget": 1.0,
+      "finite_floating_dual_pass": true,
+      "parent_primal_crosscheck": {
+        "center_core_value": -1.6455181809915826,
+        "dual_subobjective_value": 21.2307513082261,
+        "witness_pairing": 17.939714946242944,
+        "identity_residual": -7.105427357601002e-15,
+        "pairing_nonnegative": true,
+        "subobjective_at_least_2": true
+      },
+      "global_rh_certificate": false
+    },
+    {
+      "patch_id": "x5_Y2",
+      "center": {
+        "x": "409/20",
+        "y": "-13/100"
+      },
+      "alpha": 2.0,
+      "tail_fraction": 0.001,
+      "axis_band_id": "A1",
+      "axis_interval": [
+        18.0,
+        23.0
+      ],
+      "axis_grid_count": 26,
+      "axis_count_original": 7.113998598824585,
+      "axis_count_downward": 7.113998598824,
+      "tail_only_optimal_single_point_alpha": 6.039412364630682,
+      "hybrid_optimal_single_point_alpha": 6.160416553448276,
+      "tail_only_alpha_2_min_eigenvalue": 0.031041478936867022,
+      "primary_alpha_2_min_eigenvalue": 3.104240997422213e-05,
+      "stress_rho_1e_6_alpha_2_min_eigenvalue": 3.104472768526038e-08,
+      "axis_only_alpha_2_min_eigenvalue": -7.251538795572884e-14,
+      "dual_lower_bound": 2.0,
+      "target_budget": 1.0,
+      "finite_floating_dual_pass": true,
+      "parent_primal_crosscheck": {
+        "center_core_value": -1.6417836902493077,
+        "dual_subobjective_value": 21.962556423948136,
+        "witness_pairing": 18.678989043449523,
+        "identity_residual": -3.552713678800501e-15,
+        "pairing_nonnegative": true,
+        "subobjective_at_least_2": true
+      },
+      "global_rh_certificate": false
+    },
+    {
+      "patch_id": "x0_Y3",
+      "center": {
+        "x": "401/20",
+        "y": "-9/80"
+      },
+      "alpha": 2.0,
+      "tail_fraction": 0.001,
+      "axis_band_id": "A1",
+      "axis_interval": [
+        18.0,
+        23.0
+      ],
+      "axis_grid_count": 26,
+      "axis_count_original": 7.113998598824585,
+      "axis_count_downward": 7.113998598824,
+      "tail_only_optimal_single_point_alpha": 8.706214521390356,
+      "hybrid_optimal_single_point_alpha": 9.891210694418081,
+      "tail_only_alpha_2_min_eigenvalue": 0.03104147983515335,
+      "primary_alpha_2_min_eigenvalue": 3.104230143762073e-05,
+      "stress_rho_1e_6_alpha_2_min_eigenvalue": 3.104457512098855e-08,
+      "axis_only_alpha_2_min_eigenvalue": -2.922756923710749e-16,
+      "dual_lower_bound": 2.0,
+      "target_budget": 1.0,
+      "finite_floating_dual_pass": true,
+      "parent_primal_crosscheck": {
+        "center_core_value": -1.7502661133668003,
+        "dual_subobjective_value": 29.955310548097444,
+        "witness_pairing": 26.45477832136385,
+        "identity_residual": -7.105427357601002e-15,
+        "pairing_nonnegative": true,
+        "subobjective_at_least_2": true
+      },
+      "global_rh_certificate": false
+    },
+    {
+      "patch_id": "x1_Y3",
+      "center": {
+        "x": "2013/100",
+        "y": "-9/80"
+      },
+      "alpha": 2.0,
+      "tail_fraction": 0.001,
+      "axis_band_id": "A1",
+      "axis_interval": [
+        18.0,
+        23.0
+      ],
+      "axis_grid_count": 26,
+      "axis_count_original": 7.113998598824585,
+      "axis_count_downward": 7.113998598824,
+      "tail_only_optimal_single_point_alpha": 8.435656949283599,
+      "hybrid_optimal_single_point_alpha": 9.886020547724652,
+      "tail_only_alpha_2_min_eigenvalue": 0.03104147905194143,
+      "primary_alpha_2_min_eigenvalue": 3.10423235329548e-05,
+      "stress_rho_1e_6_alpha_2_min_eigenvalue": 3.104446355766066e-08,
+      "axis_only_alpha_2_min_eigenvalue": -4.606704394797758e-17,
+      "dual_lower_bound": 2.0,
+      "target_budget": 1.0,
+      "finite_floating_dual_pass": true,
+      "parent_primal_crosscheck": {
+        "center_core_value": -1.7530910472252546,
+        "dual_subobjective_value": 28.296008981696808,
+        "witness_pairing": 24.789826887246303,
+        "identity_residual": -3.552713678800501e-15,
+        "pairing_nonnegative": true,
+        "subobjective_at_least_2": true
+      },
+      "global_rh_certificate": false
+    },
+    {
+      "patch_id": "x2_Y3",
+      "center": {
+        "x": "2021/100",
+        "y": "-9/80"
+      },
+      "alpha": 2.0,
+      "tail_fraction": 0.001,
+      "axis_band_id": "A1",
+      "axis_interval": [
+        18.0,
+        23.0
+      ],
+      "axis_grid_count": 26,
+      "axis_count_original": 7.113998598824585,
+      "axis_count_downward": 7.113998598824,
+      "tail_only_optimal_single_point_alpha": 8.170485806980054,
+      "hybrid_optimal_single_point_alpha": 9.550636501878639,
+      "tail_only_alpha_2_min_eigenvalue": 0.031041478754022276,
+      "primary_alpha_2_min_eigenvalue": 3.104235623795093e-05,
+      "stress_rho_1e_6_alpha_2_min_eigenvalue": 3.1044438978353736e-08,
+      "axis_only_alpha_2_min_eigenvalue": -8.114302334813115e-17,
+      "dual_lower_bound": 2.0,
+      "target_budget": 1.0,
+      "finite_floating_dual_pass": true,
+      "parent_primal_crosscheck": {
+        "center_core_value": -1.7568087575041706,
+        "dual_subobjective_value": 27.08798288051168,
+        "witness_pairing": 23.57436536550334,
+        "identity_residual": 0.0,
+        "pairing_nonnegative": true,
+        "subobjective_at_least_2": true
+      },
+      "global_rh_certificate": false
+    },
+    {
+      "patch_id": "x3_Y3",
+      "center": {
+        "x": "2029/100",
+        "y": "-9/80"
+      },
+      "alpha": 2.0,
+      "tail_fraction": 0.001,
+      "axis_band_id": "A1",
+      "axis_interval": [
+        18.0,
+        23.0
+      ],
+      "axis_grid_count": 26,
+      "axis_count_original": 7.113998598824585,
+      "axis_count_downward": 7.113998598824,
+      "tail_only_optimal_single_point_alpha": 7.995000072071326,
+      "hybrid_optimal_single_point_alpha": 9.051550381327932,
+      "tail_only_alpha_2_min_eigenvalue": 0.031041478786198,
+      "primary_alpha_2_min_eigenvalue": 3.104238850238401e-05,
+      "stress_rho_1e_6_alpha_2_min_eigenvalue": 3.104450643194601e-08,
+      "axis_only_alpha_2_min_eigenvalue": -3.379930111359728e-17,
+      "dual_lower_bound": 2.0,
+      "target_budget": 1.0,
+      "finite_floating_dual_pass": true,
+      "parent_primal_crosscheck": {
+        "center_core_value": -1.7607270406562028,
+        "dual_subobjective_value": 27.88156171770964,
+        "witness_pairing": 24.360107636397224,
+        "identity_residual": 1.0658141036401503e-14,
+        "pairing_nonnegative": true,
+        "subobjective_at_least_2": true
+      },
+      "global_rh_certificate": false
+    },
+    {
+      "patch_id": "x4_Y3",
+      "center": {
+        "x": "2037/100",
+        "y": "-9/80"
+      },
+      "alpha": 2.0,
+      "tail_fraction": 0.001,
+      "axis_band_id": "A1",
+      "axis_interval": [
+        18.0,
+        23.0
+      ],
+      "axis_grid_count": 26,
+      "axis_count_original": 7.113998598824585,
+      "axis_count_downward": 7.113998598824,
+      "tail_only_optimal_single_point_alpha": 7.969638366942507,
+      "hybrid_optimal_single_point_alpha": 8.592049326418575,
+      "tail_only_alpha_2_min_eigenvalue": 0.031041478929958375,
+      "primary_alpha_2_min_eigenvalue": 3.104240872691809e-05,
+      "stress_rho_1e_6_alpha_2_min_eigenvalue": 3.104463039292086e-08,
+      "axis_only_alpha_2_min_eigenvalue": -1.4429022245659873e-16,
+      "dual_lower_bound": 2.0,
+      "target_budget": 1.0,
+      "finite_floating_dual_pass": true,
+      "parent_primal_crosscheck": {
+        "center_core_value": -1.7622317919935768,
+        "dual_subobjective_value": 30.671034959553005,
+        "witness_pairing": 27.146571375565852,
+        "identity_residual": 0.0,
+        "pairing_nonnegative": true,
+        "subobjective_at_least_2": true
+      },
+      "global_rh_certificate": false
+    },
+    {
+      "patch_id": "x5_Y3",
+      "center": {
+        "x": "409/20",
+        "y": "-9/80"
+      },
+      "alpha": 2.0,
+      "tail_fraction": 0.001,
+      "axis_band_id": "A1",
+      "axis_interval": [
+        18.0,
+        23.0
+      ],
+      "axis_grid_count": 26,
+      "axis_count_original": 7.113998598824585,
+      "axis_count_downward": 7.113998598824,
+      "tail_only_optimal_single_point_alpha": 8.129163903588394,
+      "hybrid_optimal_single_point_alpha": 8.32904774407948,
+      "tail_only_alpha_2_min_eigenvalue": 0.03104147899818775,
+      "primary_alpha_2_min_eigenvalue": 3.104240838364262e-05,
+      "stress_rho_1e_6_alpha_2_min_eigenvalue": 3.104475383148371e-08,
+      "axis_only_alpha_2_min_eigenvalue": -2.4418929376488183e-17,
+      "dual_lower_bound": 2.0,
+      "target_budget": 1.0,
+      "finite_floating_dual_pass": true,
+      "parent_primal_crosscheck": {
+        "center_core_value": -1.7582371331135764,
+        "dual_subobjective_value": 31.67190525509616,
+        "witness_pairing": 28.155430988869007,
+        "identity_residual": 0.0,
+        "pairing_nonnegative": true,
+        "subobjective_at_least_2": true
+      },
+      "global_rh_certificate": false
+    }
+  ]
+}

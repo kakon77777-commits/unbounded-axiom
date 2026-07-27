@@ -1,0 +1,174 @@
+{
+  "schema": "RH.PaleyWiener.AtomicTransfer.v0.6",
+  "source_raw_dimension": 192,
+  "source_effective_dimension": 190,
+  "source_joint_alpha": 1.1324752108835305,
+  "source_safe_alpha": 1.0662376054417653,
+  "galerkin_transfer_rows": [
+    {
+      "dimension": 190,
+      "raw_threshold_for_fixed_measures": 1.1324752097991995,
+      "safe_minimum_eigenvalue": 0.25699987295703897,
+      "raw_minimum_eigenvalue": -4.59839649818929e-09,
+      "safe_psd": true,
+      "raw_dimension": 192,
+      "maximum_structural_residual": 4.5439407897655827e-10
+    },
+    {
+      "dimension": 206,
+      "raw_threshold_for_fixed_measures": 1.1324731124649292,
+      "safe_minimum_eigenvalue": 0.25698825967209865,
+      "raw_minimum_eigenvalue": -8.898803425371073e-06,
+      "safe_psd": true,
+      "raw_dimension": 208,
+      "maximum_structural_residual": 1.1850652639568568e-09
+    },
+    {
+      "dimension": 222,
+      "raw_threshold_for_fixed_measures": 1.1324657713680815,
+      "safe_minimum_eigenvalue": 0.25694846702857216,
+      "raw_minimum_eigenvalue": -4.00288338989808e-05,
+      "safe_psd": true,
+      "raw_dimension": 224,
+      "maximum_structural_residual": 1.1415832504460684e-09
+    },
+    {
+      "dimension": 254,
+      "raw_threshold_for_fixed_measures": 1.1324524646649252,
+      "safe_minimum_eigenvalue": 0.2568813927132662,
+      "raw_minimum_eigenvalue": -9.645140938941338e-05,
+      "safe_psd": true,
+      "raw_dimension": 256,
+      "maximum_structural_residual": 9.184545892930634e-10
+    },
+    {
+      "dimension": 285,
+      "raw_threshold_for_fixed_measures": 1.1324423912079613,
+      "safe_minimum_eigenvalue": 0.2568334378727969,
+      "raw_minimum_eigenvalue": -0.0001391616890230178,
+      "safe_psd": true,
+      "raw_dimension": 288,
+      "maximum_structural_residual": 2.0183066250087875e-09
+    }
+  ],
+  "direct_green_transfer_rows": [
+    {
+      "time_step": 0.019999999999999574,
+      "time_grid_count": 1601,
+      "evaluation_function_count": 62,
+      "effective_kernel_rank": 62,
+      "projected_gram_minimum_retained_eigenvalue": 1.7886633343962018e-07,
+      "projected_gram_maximum_eigenvalue": 19.80430075984034,
+      "minimum_generalized_eigenvalue": -0.8830556641407865,
+      "raw_threshold_for_fixed_measures": 1.132431443008749,
+      "structural_gram_condition": 4625.84428403791,
+      "tested_safe_alpha": 1.0662376054417653,
+      "tested_safe_minimum_eigenvalue": 0.2567953826031449,
+      "tested_safe_psd": true,
+      "positive_rank_for_schur_test": 60,
+      "negative_rank_for_schur_test": 2,
+      "positive_system_condition": 21.897641869332546,
+      "schur_certificate_minimum_eigenvalue": 0.05607926153997922,
+      "schur_certificate_matrix": [
+        [
+          0.42967332339046393,
+          -0.4491142691155998
+        ],
+        [
+          -0.4491142691155998,
+          0.5959797774212054
+        ]
+      ]
+    },
+    {
+      "time_step": 0.009999999999999787,
+      "time_grid_count": 3201,
+      "evaluation_function_count": 62,
+      "effective_kernel_rank": 62,
+      "projected_gram_minimum_retained_eigenvalue": 1.788544116021991e-07,
+      "projected_gram_maximum_eigenvalue": 19.80409384365058,
+      "minimum_generalized_eigenvalue": -0.8830485168722995,
+      "raw_threshold_for_fixed_measures": 1.1324406087469974,
+      "structural_gram_condition": 4625.844283661019,
+      "tested_safe_alpha": 1.0662376054417653,
+      "tested_safe_minimum_eigenvalue": 0.25682468226870525,
+      "tested_safe_psd": true,
+      "positive_rank_for_schur_test": 60,
+      "negative_rank_for_schur_test": 2,
+      "positive_system_condition": 21.89685441869367,
+      "schur_certificate_minimum_eigenvalue": 0.056086607479060274,
+      "schur_certificate_matrix": [
+        [
+          0.42967733656046736,
+          -0.449110733555808
+        ],
+        [
+          -0.449110733555808,
+          0.5959834392098191
+        ]
+      ]
+    },
+    {
+      "time_step": 0.005000000000000782,
+      "time_grid_count": 6401,
+      "evaluation_function_count": 62,
+      "effective_kernel_rank": 62,
+      "projected_gram_minimum_retained_eigenvalue": 1.7885384759539414e-07,
+      "projected_gram_maximum_eigenvalue": 19.804081119986503,
+      "minimum_generalized_eigenvalue": -0.8830480825493683,
+      "raw_threshold_for_fixed_measures": 1.1324411657324371,
+      "structural_gram_condition": 4625.8442836406675,
+      "tested_safe_alpha": 1.0662376054417653,
+      "tested_safe_minimum_eigenvalue": 0.25682646393383624,
+      "tested_safe_psd": true,
+      "positive_rank_for_schur_test": 60,
+      "negative_rank_for_schur_test": 2,
+      "positive_system_condition": 21.896806675062738,
+      "schur_certificate_minimum_eigenvalue": 0.05608705387700397,
+      "schur_certificate_matrix": [
+        [
+          0.4296775801410213,
+          -0.44911051876030994
+        ],
+        [
+          -0.44911051876030994,
+          0.595983662279254
+        ]
+      ]
+    },
+    {
+      "time_step": 0.0024999999999995026,
+      "time_grid_count": 12801,
+      "evaluation_function_count": 62,
+      "effective_kernel_rank": 62,
+      "projected_gram_minimum_retained_eigenvalue": 1.7885360478939443e-07,
+      "projected_gram_maximum_eigenvalue": 19.80408032677776,
+      "minimum_generalized_eigenvalue": -0.8830480560897671,
+      "raw_threshold_for_fixed_measures": 1.1324411996648391,
+      "structural_gram_condition": 4625.844283633895,
+      "tested_safe_alpha": 1.0662376054417653,
+      "tested_safe_minimum_eigenvalue": 0.25682657250711,
+      "tested_safe_psd": true,
+      "positive_rank_for_schur_test": 60,
+      "negative_rank_for_schur_test": 2,
+      "positive_system_condition": 21.89680370941714,
+      "schur_certificate_minimum_eigenvalue": 0.056087081072383305,
+      "schur_certificate_matrix": [
+        [
+          0.4296775952926799,
+          -0.4491105055829083
+        ],
+        [
+          -0.4491105055829083,
+          0.5959836751973566
+        ]
+      ]
+    }
+  ],
+  "direct_green_finest_raw_threshold_above_one": true,
+  "direct_green_finest_safe_psd": true,
+  "continuous_kernel_floating_obstruction": true,
+  "interval_certified": false,
+  "interpretation": "The final Galerkin atomic measures are evaluated in an independent direct Green-kernel solver. Passing supports a continuous-kernel floating obstruction but does not replace interval enclosure of elementary kernel integrals.",
+  "global_rh_certificate": false
+}

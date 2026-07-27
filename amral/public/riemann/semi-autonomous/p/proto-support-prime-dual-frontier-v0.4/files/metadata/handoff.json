@@ -1,0 +1,46 @@
+{
+  "schema": "EveMissLab.RH.Handoff.v0.4",
+  "from_node": "RH-SupportPrime-DualFrontier-20260724-v0.4",
+  "to_node": "RH-AxisNotch-CoverCodesign-20260724-v0.5",
+  "decision": "Stop support-only radius expansion and co-design axis spectral notches, dictionary geometry, and patch constraints.",
+  "why": [
+    "Every sampled joint radius through R=16 has at least one reconstructed safe dual block.",
+    "A coarse R=16 axis grid produced a reproducible false escape.",
+    "The prime-power cutoff grows as exp(2R) and reaches 78,962,960,182,680 at R=16."
+  ],
+  "reuse_inputs": [
+    "outputs/joint_dual_summary.json",
+    "outputs/axis_refinement.json",
+    "outputs/witnesses/*.witness.json",
+    "outputs/witness_verification.json",
+    "outputs/uniform_frontier.json",
+    "outputs/prime_cost.json",
+    "frontier/"
+  ],
+  "fixed_initial_radii": [10.25, 12.0, 14.0, 16.0],
+  "first_actions": [
+    "Extract active axis support locations and weights from every saved witness.",
+    "Cluster recurrent peaks by band and radius.",
+    "Add controllable value or derivative notch constraints at recurrent peaks.",
+    "Rebuild constrained coordinates without increasing support.",
+    "Audit each candidate with adaptive axis maximization before accepting alpha below 1."
+  ],
+  "success_gate": {
+    "dual": "At least one currently blocked patch has no reconstructed safe dual lower bound at or above 1 under refined/adaptive axis audit.",
+    "primal": "A PSD Gram candidate has dense core maximum at most -1 and dense axis-plus-tail objective below 1.",
+    "scope": "Finite-model progress only."
+  },
+  "stop_rules": [
+    "Stop a notch family if energy merely moves to adjacent bands or band edges.",
+    "Stop if core negativity is lost faster than axis charge decreases.",
+    "Reject every coarse-grid-only pass.",
+    "Do not expand beyond R=16 before a current-radius dictionary passes the dual gate.",
+    "Do not build large arithmetic matrices before a primal candidate survives dense geometric audits."
+  ],
+  "forbidden_inferences": [
+    "An alpha below 1 from a searched witness family proves primal feasibility.",
+    "A histogram without interval interpolation error is an arithmetic certificate.",
+    "A finite-model obstruction proves or disproves RH."
+  ],
+  "global_rh_certificate": false
+}

@@ -1,0 +1,122 @@
+{
+  "schema": "RH.PaleyWiener.QuadratureAudit.v0.6",
+  "configuration": {
+    "radius": 16.0,
+    "axis_x": 20.4,
+    "core_point": {
+      "x": 20.407500000000002,
+      "y": -0.10312500000000001
+    },
+    "band": "A1",
+    "count_coefficient": 7.246636980606
+  },
+  "galerkin_dimension_rows": [
+    {
+      "raw_dimension": 40,
+      "effective_dimension": 38,
+      "point_extremal": 0.878995189998116,
+      "maximum_structural_residual": 1.5808857964025314e-09
+    },
+    {
+      "raw_dimension": 64,
+      "effective_dimension": 62,
+      "point_extremal": 0.3835485470223673,
+      "maximum_structural_residual": 7.491781734030359e-10
+    },
+    {
+      "raw_dimension": 80,
+      "effective_dimension": 78,
+      "point_extremal": 0.2687955627325962,
+      "maximum_structural_residual": 9.484681125434875e-10
+    },
+    {
+      "raw_dimension": 96,
+      "effective_dimension": 94,
+      "point_extremal": 0.20178783516519266,
+      "maximum_structural_residual": 3.339174935431473e-10
+    },
+    {
+      "raw_dimension": 112,
+      "effective_dimension": 110,
+      "point_extremal": 0.16138197378478678,
+      "maximum_structural_residual": 9.211727053805841e-10
+    },
+    {
+      "raw_dimension": 128,
+      "effective_dimension": 126,
+      "point_extremal": 0.13561469887236483,
+      "maximum_structural_residual": 4.858539761220303e-10
+    },
+    {
+      "raw_dimension": 144,
+      "effective_dimension": 142,
+      "point_extremal": 0.1209906814762534,
+      "maximum_structural_residual": 2.881469094658339e-09
+    },
+    {
+      "raw_dimension": 160,
+      "effective_dimension": 158,
+      "point_extremal": 0.11355632098377615,
+      "maximum_structural_residual": 1.5713700701163883e-09
+    },
+    {
+      "raw_dimension": 176,
+      "effective_dimension": 174,
+      "point_extremal": 0.11244168208157738,
+      "maximum_structural_residual": 1.366031409320852e-09
+    },
+    {
+      "raw_dimension": 192,
+      "effective_dimension": 190,
+      "point_extremal": 0.11244168194950825,
+      "maximum_structural_residual": 1.4142057868357704e-09
+    }
+  ],
+  "galerkin_quadrature_rows_at_raw_dimension_192": [
+    {
+      "quadrature_order": 1024,
+      "effective_dimension": 190,
+      "point_extremal": 0.11244168171004891
+    },
+    {
+      "quadrature_order": 1536,
+      "effective_dimension": 190,
+      "point_extremal": 0.11244168181308721
+    },
+    {
+      "quadrature_order": 2048,
+      "effective_dimension": 190,
+      "point_extremal": 0.11244168194950825
+    },
+    {
+      "quadrature_order": 2560,
+      "effective_dimension": 190,
+      "point_extremal": 0.11244168183811706
+    }
+  ],
+  "direct_green_rows": [
+    {
+      "time_step": 0.019999999999999574,
+      "time_grid_count": 1601,
+      "point_extremal": 0.1124372807606897
+    },
+    {
+      "time_step": 0.009999999999999787,
+      "time_grid_count": 3201,
+      "point_extremal": 0.11244141498244165
+    },
+    {
+      "time_step": 0.005000000000000782,
+      "time_grid_count": 6401,
+      "point_extremal": 0.11244166541100949
+    },
+    {
+      "time_step": 0.0024999999999995026,
+      "time_grid_count": 12801,
+      "point_extremal": 0.11244168089610021
+    }
+  ],
+  "galerkin_approaches_direct_green_from_above": true,
+  "interval_certified": false,
+  "global_rh_certificate": false
+}
