@@ -31,6 +31,7 @@ async function ensureLoaded() {
           weights: { ...DEFAULT_CONFIG.weights, ...loaded.weights },
           channels: { ...DEFAULT_CONFIG.channels, ...loaded.channels },
           expansion_limits: { ...DEFAULT_CONFIG.expansion_limits, ...loaded.expansion_limits },
+          diversity: { ...DEFAULT_CONFIG.diversity, ...loaded.diversity },
           display: { ...DEFAULT_CONFIG.display, ...loaded.display },
         };
       } catch { /* keep DEFAULT_CONFIG */ }

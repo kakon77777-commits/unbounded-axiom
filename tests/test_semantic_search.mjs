@@ -6,7 +6,7 @@
 import { readFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
-import { scoreCorpus, prepareIndex, DEFAULT_CONFIG } from "../shell/public/semantic/semantic-core.js";
+import { scoreCorpus, prepareIndex, DEFAULT_CONFIG, diversityRerank, titlePrefixKey } from "../shell/public/semantic/semantic-core.js";
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
 
@@ -26,6 +26,7 @@ const config = {
   weights: { ...DEFAULT_CONFIG.weights, ...userConfig.weights },
   channels: { ...DEFAULT_CONFIG.channels, ...userConfig.channels },
   expansion_limits: { ...DEFAULT_CONFIG.expansion_limits, ...userConfig.expansion_limits },
+  diversity: { ...DEFAULT_CONFIG.diversity, ...userConfig.diversity },
 };
 const documents = prepareIndex(index.documents);
 
@@ -169,6 +170,166 @@ for (const [cat, stats] of Object.entries(byCategory)) {
   pass += semPass; fail += semFail;
   cases.push(...Array(semPass + semFail).fill({ category: "semantic-fusion" }));
   byCategory["semantic-fusion"] = { pass: semPass, fail: semFail };
+}
+
+// --- Phase 4 §20 diversity reranking unit checks ---
+// Synthetic result arrays (score-sorted, matching what ensureMinimumResults
+// hands to diversityRerank) rather than real search output, so each case
+// isolates exactly one quota behavior.
+{
+  let divPass = 0, divFail = 0;
+  const divCheck = (label, cond, detail) => {
+    if (cond) { divPass++; console.log(`[PASS] (diversity) ${label}`); }
+    else { divFail++; console.log(`[FAIL] (diversity) ${label}${detail ? "\n       " + detail : ""}`); }
+  };
+  const cfg = { diversity: { max_per_series_top_10: 2, max_same_title_prefix_top_10: 2 } };
+  const mk = (id, score, series, title) => ({ id, score, doc: { p: series, t: title || id } });
+
+  // 6 candidates all in the SAME series, quota=2 -> only 2 should survive
+  // into the top-10 window's head, the rest demoted (not dropped) after it.
+  const sameSeries = [1, 2, 3, 4, 5, 6].map((n) => mk(`s${n}`, 1 - n * 0.01, "seriesA"));
+  const rerankedSeries = diversityRerank(sameSeries, cfg);
+  const headIds = rerankedSeries.slice(0, 2).map((r) => r.id);
+  divCheck(
+    "series quota caps same-series docs in the head at max_per_series_top_10",
+    headIds.length === 2 && headIds[0] === "s1" && headIds[1] === "s2",
+    `head=${JSON.stringify(rerankedSeries.map((r) => r.id))}`
+  );
+  divCheck(
+    "demoted same-series docs are held, not dropped",
+    rerankedSeries.length === sameSeries.length,
+    `before=${sameSeries.length} after=${rerankedSeries.length}`
+  );
+  divCheck(
+    "highest-scored doc from an over-quota series still appears before lower ones from elsewhere",
+    rerankedSeries.findIndex((r) => r.id === "s3") < rerankedSeries.length,
+    `order=${JSON.stringify(rerankedSeries.map((r) => r.id))}`
+  );
+
+  // title-prefix quota, independent of series (all docs series-less here)
+  const samePrefix = [1, 2, 3, 4].map((n) =>
+    mk(`p${n}`, 1 - n * 0.01, null, `文明原生複雜度升級命題_變體${n}的完整論述`)
+  );
+  const rerankedPrefix = diversityRerank(samePrefix, cfg);
+  const prefixHeadIds = rerankedPrefix.slice(0, 2).map((r) => r.id);
+  divCheck(
+    "title-prefix quota caps same-lineage docs in the head",
+    prefixHeadIds.length === 2 && prefixHeadIds[0] === "p1" && prefixHeadIds[1] === "p2",
+    `head=${JSON.stringify(rerankedPrefix.map((r) => r.id))}`
+  );
+
+  // mixed corpus: diverse candidates should NOT be reordered relative to
+  // each other just because unrelated over-quota docs exist elsewhere.
+  const mixed = [
+    mk("a1", 0.9, "seriesA"), mk("a2", 0.85, "seriesA"), mk("a3", 0.8, "seriesA"),
+    mk("b1", 0.75, "seriesB"), mk("c1", 0.7, null, "獨立論文一"), mk("d1", 0.65, null, "獨立論文二"),
+  ];
+  const rerankedMixed = diversityRerank(mixed, cfg);
+  divCheck(
+    "diverse non-quota-violating docs keep their relative score order",
+    rerankedMixed.findIndex((r) => r.id === "b1") < rerankedMixed.findIndex((r) => r.id === "a3"),
+    `order=${JSON.stringify(rerankedMixed.map((r) => r.id))}`
+  );
+
+  // backfill: quotas so tight the head can't reach 10 -> fill anyway.
+  const small = [1, 2, 3].map((n) => mk(`x${n}`, 1 - n * 0.01, "onlySeries"));
+  const rerankedSmall = diversityRerank(small, cfg);
+  divCheck(
+    "backfills past the quota when too few candidates exist to fill the window",
+    rerankedSmall.length === 3,
+    `got=${rerankedSmall.length}`
+  );
+
+  divCheck(
+    "titlePrefixKey groups a real corpus-observed near-duplicate lineage",
+    titlePrefixKey("文明原生複雜度升級命題_形式化草案、載體幾何與後人類必要性的文明理論") ===
+    titlePrefixKey("文明原生複雜度升級命題_從認知—系統複雜度鴻溝、載體幾何到後人類文明的必要性"),
+  );
+  divCheck(
+    "titlePrefixKey does not conflate unrelated titles",
+    titlePrefixKey("黎曼猜想的方法論重構") !== titlePrefixKey("量子力學的測量問題"),
+  );
+
+  console.log(`\n--- diversity: ${divPass}/${divPass + divFail} passed ---`);
+  pass += divPass; fail += divFail;
+  cases.push(...Array(divPass + divFail).fill({ category: "diversity" }));
+  byCategory["diversity"] = { pass: divPass, fail: divFail };
+}
+
+// --- Phase 4 §19 relation-type checks, against the REAL built index ---
+// Regression guard for a real bug found while building this: _merge_relations
+// used to pick a winning relation type by which map was passed first, not by
+// _REL_PRIORITY, so previous_version/next_version (always a subset of
+// same_series pairs, since both come from the same Program's iterations)
+// silently lost to same_series 100% of the time -- zero "p"/"n" entries
+// anywhere in the corpus. These checks use the SAME real rp-x-integral pair
+// (lm-001807 seq 1, lm-001809 seq 2) that surfaced the bug, so if the merge
+// logic ever regresses to "first map wins" again, this fails immediately
+// instead of silently shipping an empty relation type.
+{
+  let relPass = 0, relFail = 0;
+  const relCheck = (label, cond, detail) => {
+    if (cond) { relPass++; console.log(`[PASS] (relations) ${label}`); }
+    else { relFail++; console.log(`[FAIL] (relations) ${label}${detail ? "\n       " + detail : ""}`); }
+  };
+  const byId = new Map(documents.map((d) => [d.i, d]));
+  const typeCounts = {};
+  for (const d of documents) for (const [, t] of d.r || []) typeCounts[t] = (typeCounts[t] || 0) + 1;
+
+  relCheck(
+    "previous_version relations exist in the built index (not silently lost to same_series)",
+    (typeCounts.p || 0) > 0,
+    `typeCounts=${JSON.stringify(typeCounts)}`
+  );
+  relCheck(
+    "next_version relations exist in the built index",
+    (typeCounts.n || 0) > 0,
+    `typeCounts=${JSON.stringify(typeCounts)}`
+  );
+  relCheck(
+    "previous_version and next_version counts are symmetric (one pair produces one of each)",
+    (typeCounts.p || 0) === (typeCounts.n || 0),
+    `p=${typeCounts.p} n=${typeCounts.n}`
+  );
+
+  const seq2 = byId.get("lm-001809");
+  const seq2Rel = seq2 && (seq2.r || []).find(([tid]) => tid === "lm-001807");
+  relCheck(
+    "lm-001809 (seq 2) records lm-001807 (seq 1) as its previous_version",
+    !!seq2Rel && seq2Rel[1] === "p",
+    `seq2Rel=${JSON.stringify(seq2Rel)}`
+  );
+
+  // End-to-end: querying the seq-1 paper's own title should let the seq-2
+  // paper surface via the relation pass with the CORRECT direction label
+  // ("is the matched result's later version", not the inverted phrasing).
+  const seq1 = byId.get("lm-001807");
+  if (seq1 && seq2Rel) {
+    const q = seq1.t.slice(0, 8);
+    const result = scoreCorpus(documents, q, config, dictionary, new Map());
+    const hit = result.results.find((r) => r.id === "lm-001809");
+    relCheck(
+      "querying the seq-1 paper's title surfaces the seq-2 paper via relation",
+      !!hit,
+      `results=${JSON.stringify(result.results.slice(0, 5).map((r) => r.id))}`
+    );
+    if (hit) {
+      const relReason = hit.reasons.find((rs) => rs.relation === "next_version_of");
+      relCheck(
+        "the surfaced doc's relation reason uses the next-version-of label, not same_series",
+        !!relReason && relReason.label === "是已匹配結果的後續版本",
+        `reasons=${JSON.stringify(hit.reasons)}`
+      );
+    }
+  }
+
+  relCheck("explicit_link relations exist (graph_layer.py's external_ref-backed edges)", (typeCounts.e || 0) > 0);
+  relCheck("same_primary_keyword relations exist", (typeCounts.k || 0) > 0);
+
+  console.log(`\n--- relations: ${relPass}/${relPass + relFail} passed ---`);
+  pass += relPass; fail += relFail;
+  cases.push(...Array(relPass + relFail).fill({ category: "relations" }));
+  byCategory["relations"] = { pass: relPass, fail: relFail };
 }
 
 const report = {

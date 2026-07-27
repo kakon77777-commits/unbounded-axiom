@@ -43,6 +43,24 @@ export const DEFAULT_EXPANSION_LIMITS = {
   min_expansion_confidence: 0.60,
 };
 
+// §20 多樣性重排 — see diversityRerank() below for the full reasoning.
+export const DEFAULT_DIVERSITY = { max_per_series_top_10: 4, max_same_title_prefix_top_10: 3 };
+
+// §19's 5 relation types, keyed by the single-letter type code semantic_layer.py
+// writes into each doc's compact "r" list ([targetId, typeCode] pairs). Labels
+// describe the CANDIDATE doc (the one this relation entry is attached to) --
+// see the relation-pass comment in scoreCorpus for the previous/next direction
+// derivation. weightKey picks which §9.1 raw channel weight applies before the
+// tier_D floor (see that same comment for why the specific value barely
+// matters today -- both available weights land below tier_D either way).
+const REL_TYPE_META = {
+  s: { label: "與直接結果屬於同系列", relation: "same_series", weightKey: "series_relation" },
+  p: { label: "是已匹配結果的後續版本", relation: "next_version_of", weightKey: "direct_link_relation" },
+  n: { label: "是已匹配結果的前一版本", relation: "previous_version_of", weightKey: "direct_link_relation" },
+  e: { label: "與直接結果有明確引用關係", relation: "explicit_link", weightKey: "direct_link_relation" },
+  k: { label: "與直接結果共享核心關鍵詞", relation: "same_primary_keyword", weightKey: "series_relation" },
+};
+
 export const DEFAULT_CONFIG = {
   semantic_search_enabled: true,
   search: { minimum_results: 5, max_results: 200, initial_threshold: 0.78, threshold_step: 0.08, absolute_floor: 0.28 },
@@ -50,6 +68,7 @@ export const DEFAULT_CONFIG = {
   tiers: DEFAULT_TIERS,
   weights: DEFAULT_WEIGHTS,
   expansion_limits: DEFAULT_EXPANSION_LIMITS,
+  diversity: DEFAULT_DIVERSITY,
   display: { default_mode: "reveal", tier_a_opacity: 1.0, tier_b_opacity: 0.92, tier_c_opacity: 0.62, tier_d_opacity: 0.38, hidden_opacity: 0.12 },
   debounce_ms: 300,
   max_query_length: 80,
@@ -301,6 +320,61 @@ function bestIsConfident(results, cfg) {
   return results.length > 0 && results[0].score >= cfg.tiers.tier_B;
 }
 
+// §20 多樣性重排 (diversity reranking): a title's "lineage" prefix — the run
+// of characters before the first series-separator-like punctuation. Doesn't
+// claim any relationship (unlike "series"/"r", which come from real curated
+// Program membership) — this is presentation-only grouping to avoid the top
+// of a result list reading as N near-duplicates of the same paper, not a
+// fact shown to the user. A short minimum (4) keeps trivially-common openers
+// from grouping unrelated titles; titles with no separator in the first 40
+// chars just become their own singleton group (never triggers the quota).
+export function titlePrefixKey(title) {
+  const n = normalizeQuery(title || "");
+  const m = n.match(/^[^_\-—:：（(]{4,40}/);
+  return m ? m[0] : n;
+}
+
+// Greedy single pass over the already score-sorted results: fill the first
+// 10 slots only with candidates that don't push either quota over its limit,
+// holding everything else back to fill in afterward (still in score order —
+// nothing is dropped, an over-quota candidate just loses its early slot to a
+// more diverse neighbour). "series" quota only applies to docs that actually
+// carry a Program label (`doc.p`) — real curated membership, per
+// semantic_layer.py's _compact(); doc-less/unlabelled candidates are never
+// quota-limited by series, only by title-prefix. If the quotas are so tight
+// the window can't reach 10 candidates (e.g. a query whose only matches all
+// share one series), backfill unconditionally from the held-back queue in
+// its own score order — matching this module's existing non-zero-results
+// philosophy: a full top-10 beats a strictly-diverse-but-short one.
+export function diversityRerank(results, cfg) {
+  const d = (cfg && cfg.diversity) || DEFAULT_DIVERSITY;
+  if (!d || d.max_per_series_top_10 == null) return results;
+  const WINDOW = 10;
+  const head = [];
+  const heldBack = [];
+  const seriesCount = new Map();
+  const prefixCount = new Map();
+
+  for (const r of results) {
+    if (head.length >= WINDOW) { heldBack.push(r); continue; }
+    const seriesKey = r.doc.p || null;
+    const prefixKey = titlePrefixKey(r.doc.t);
+    const seriesN = seriesKey ? (seriesCount.get(seriesKey) || 0) : 0;
+    const prefixN = prefixCount.get(prefixKey) || 0;
+    const seriesOk = !seriesKey || seriesN < d.max_per_series_top_10;
+    const prefixOk = prefixN < d.max_same_title_prefix_top_10;
+    if (seriesOk && prefixOk) {
+      head.push(r);
+      if (seriesKey) seriesCount.set(seriesKey, seriesN + 1);
+      prefixCount.set(prefixKey, prefixN + 1);
+    } else {
+      heldBack.push(r);
+    }
+  }
+  while (head.length < WINDOW && heldBack.length) head.push(heldBack.shift());
+  return head.concat(heldBack);
+}
+
 // Full corpus search: exact+lexical scoring pass, then a dictionary-expansion
 // pass (§7 — alias/related-term hits, only when the query itself names a
 // known concept), then a relation pass that gives real Tier D ("same series")
@@ -400,18 +474,29 @@ export function scoreCorpus(documents, rawQuery, config, dictionary, semanticSco
     const strongIds = new Set(scored.filter((r) => r.score >= cfg.tiers.tier_B).map((r) => r.id));
     for (const r of scored) {
       if (r.score < cfg.tiers.tier_D && (r.doc.r || []).length) {
-        const relatedStrong = r.doc.r.filter((rid) => strongIds.has(rid) && rid !== r.id);
+        // r.doc.r is [[targetId, typeCode], ...] (§19's 5 relation types —
+        // see semantic_layer.py's module docstring for how each is sourced).
+        // A pair [targetId, "p"] on r.doc means targetId is r.doc's OWN
+        // previous version, i.e. r.doc is the LATER one -- the label below
+        // describes r.doc (why IT is included), which is the inverse of
+        // what the stored type says about targetId; verified against a
+        // concrete constructed example before trusting this, given how many
+        // direction bugs today's earlier KaTeX regex work turned up.
+        const relatedStrong = r.doc.r.filter(([tid]) => strongIds.has(tid) && tid !== r.id);
         if (relatedStrong.length) {
-          // weights.series_relation (§9.1, e.g. 0.25) is a *raw channel* score
-          // meant to be re-weighted by the §9.2 fusion formula's G coefficient
-          // (0.10) before comparison against tier thresholds — this MVP skips
-          // that second fusion stage (see module header) and takes a plain
-          // max() across channels instead, so a bare 0.25 would fall below
-          // both tier_D (0.38) and, worse, the absolute_floor (0.28) and get
-          // silently dropped by ensureMinimumResults. Floor a relation-only
-          // score at tier_D itself: "confirmed same-series" is definitionally
-          // what Tier D means (§10), never invisible.
-          const s = Math.max(weights.series_relation, cfg.tiers.tier_D);
+          const [targetId, rtype] = relatedStrong[0];
+          const meta = REL_TYPE_META[rtype] || REL_TYPE_META.s;
+          // weights.series_relation/direct_link_relation (§9.1) are *raw
+          // channel* scores meant to be re-weighted by the §9.2 fusion
+          // formula's G coefficient (0.10) before comparison against tier
+          // thresholds — this MVP skips that second fusion stage (see module
+          // header) and takes a plain max() across channels instead, so a
+          // bare 0.25-0.30 would fall below both tier_D (0.38) and, worse,
+          // the absolute_floor (0.28) and get silently dropped by
+          // ensureMinimumResults. Floor a relation-only score at tier_D
+          // itself: a confirmed relation is definitionally what Tier D means
+          // (§10), never invisible.
+          const s = Math.max(weights[meta.weightKey], cfg.tiers.tier_D);
           if (s > r.score) {
             r.score = s;
             r.channels = Array.from(new Set([...r.channels, "relation"]));
@@ -420,7 +505,7 @@ export function scoreCorpus(documents, rawQuery, config, dictionary, semanticSco
             // is now the actual explanation for this doc's tier — the reason
             // shown first in the UI (§15) must track whichever signal is
             // actually winning, not just accumulation order.
-            r.reasons = [{ tier: "D", label: "與直接結果屬於同系列", field: "related_ids", relation: "same_series", related_to: relatedStrong[0] }, ...r.reasons];
+            r.reasons = [{ tier: "D", label: meta.label, field: "related_ids", relation: meta.relation, related_to: targetId }, ...r.reasons];
           }
         }
       }
@@ -433,7 +518,8 @@ export function scoreCorpus(documents, rawQuery, config, dictionary, semanticSco
   }
 
   const { results, threshold, relaxed, low_confidence } = ensureMinimumResults(scored, cfg);
-  const tiered = results
+  const diversified = diversityRerank(results, cfg);
+  const tiered = diversified
     .slice(0, cfg.search.max_results || 200)
     .map((r) => ({ ...r, tier: assignTier(r.score, cfg.tiers) || "D" }));
 
