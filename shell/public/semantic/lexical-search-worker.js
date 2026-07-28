@@ -8,6 +8,7 @@ let dictionary = [];
 let config = DEFAULT_CONFIG;
 let meta = null;
 let loadError = null;
+let idToIndex = null; // doc_id -> array index into `documents`, for chunk aggregation (Phase 5)
 
 async function ensureLoaded() {
   if (documents || loadError) return;
@@ -20,6 +21,7 @@ async function ensureLoaded() {
     if (!idxRes.ok) throw new Error(`index fetch failed: ${idxRes.status}`);
     const idx = await idxRes.json();
     documents = prepareIndex(idx.documents || []);
+    idToIndex = new Map(documents.map((d, i) => [d.i, i]));
     meta = { count: idx.count, generated_at: idx.generated_at, build_id: idx.build_id, channels: idx.channels };
     if (cfgRes && cfgRes.ok) {
       try {
@@ -75,7 +77,7 @@ self.onmessage = async (e) => {
     // resolves to an empty Map — never throws — if the model isn't ready yet
     // or failed to load, so this can't block/break exact+lexical+dictionary.
     const vecScores = config.channels.semantic !== false
-      ? await semanticScores(query)
+      ? await semanticScores(query, idToIndex)
       : new Map();
     const result = scoreCorpus(documents, query, config, dictionary, vecScores);
     self.postMessage({

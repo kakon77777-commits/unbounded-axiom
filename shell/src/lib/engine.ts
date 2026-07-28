@@ -63,6 +63,35 @@ export function getMedia(): Record<string, Media> {
   catch { return {}; }
 }
 
+// §26 Phase 5 "建立搜尋品質儀表板" — DSRS's own test-suite output, copied into
+// dist/ai/ by build.py (see that file's _copy_quality_report) from
+// tests/quality-report.json. Whatever the LAST `node tests/test_semantic_search.mjs`
+// run produced, not necessarily this exact commit — same "best effort,
+// usually current" tradeoff as everything else Phase 3+ added, and null
+// (never a thrown error) if no test run has ever happened yet.
+export interface QualityReport {
+  generated_at: string;
+  index_count: number;
+  index_build_id: string;
+  total: number;
+  passed: number;
+  failed: number;
+  by_category: Record<string, { pass: number; fail: number }>;
+  details: Array<{
+    query?: string;
+    category: string;
+    ok: boolean;
+    reasons: string[];
+    result_count?: number;
+    low_confidence?: boolean;
+    relaxed?: boolean;
+  }>;
+}
+export function getQualityReport(): QualityReport | null {
+  try { return readJSON('ai/quality-report.json') as QualityReport; }
+  catch { return null; }
+}
+
 export interface Featured {
   audio?: string; audio_title?: string; audio_kind?: string;
   video?: string; video_title?: string; desc_zh?: string; desc_en?: string;

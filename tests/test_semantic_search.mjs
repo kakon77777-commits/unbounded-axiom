@@ -121,12 +121,15 @@ for (const [cat, stats] of Object.entries(byCategory)) {
   // Pick a query with NO lexical/exact overlap against some arbitrary doc,
   // then inject a synthetic high semantic score for that doc's index and
   // confirm it gets promoted into the results with a "semantic" channel.
+  // semanticScores entries are {score, source, heading} objects (Phase 5,
+  // §17.2): source is "doc" or "chunk", heading is the matched section's
+  // heading text for chunk hits (or null for doc hits / headingless chunks).
   const nonsenseQuery = "殊塵朧霈闃";
   const baseline = scoreCorpus(documents, nonsenseQuery, config, dictionary, new Map());
   const baselineTopId = baseline.results[0] && baseline.results[0].id;
   const targetIdx = 5; // arbitrary fixed index, unrelated to the query above
   const targetId = documents[targetIdx].i;
-  const semScores = new Map([[targetIdx, 0.9]]);
+  const semScores = new Map([[targetIdx, { score: 0.9, source: "doc", heading: null }]]);
   const boosted = scoreCorpus(documents, nonsenseQuery, config, dictionary, semScores);
   const boostedHit = boosted.results.find((r) => r.id === targetId);
 
@@ -142,7 +145,7 @@ for (const [cat, stats] of Object.entries(byCategory)) {
     `boostedHit=${JSON.stringify(boostedHit)}`
   );
   semCheck(
-    "promoted doc's top reason is the semantic one",
+    "promoted doc's top reason is the doc-level semantic label",
     !!boostedHit && boostedHit.reasons[0].label === "摘要語義近似",
     `reasons=${JSON.stringify(boostedHit && boostedHit.reasons)}`
   );
@@ -152,12 +155,58 @@ for (const [cat, stats] of Object.entries(byCategory)) {
     `score=${boostedHit && boostedHit.score}`
   );
 
+  // A chunk-source hit with a heading must surface the distinct "段落語義
+  // 近似（heading）" label -- this is the whole point of Phase 5 chunk
+  // vectors: telling the reader WHICH passage matched, not just "the doc".
+  const chunkTargetIdx = 6;
+  const chunkTargetId = documents[chunkTargetIdx].i;
+  const chunkScores = new Map([[chunkTargetIdx, { score: 0.85, source: "chunk", heading: "步驟四：進行奇點微分" }]]);
+  const chunkBoosted = scoreCorpus(documents, nonsenseQuery, config, dictionary, chunkScores);
+  const chunkHit = chunkBoosted.results.find((r) => r.id === chunkTargetId);
+  semCheck(
+    "chunk-source hit with heading gets the distinct paragraph label",
+    !!chunkHit && chunkHit.reasons[0].label === "段落語義近似（步驟四：進行奇點微分）",
+    `reasons=${JSON.stringify(chunkHit && chunkHit.reasons)}`
+  );
+  semCheck(
+    "chunk-source reason records field=chunk and semantic_source=chunk",
+    !!chunkHit && chunkHit.reasons[0].field === "chunk" && chunkHit.reasons[0].semantic_source === "chunk",
+    `reasons=${JSON.stringify(chunkHit && chunkHit.reasons)}`
+  );
+
+  // A chunk-source hit with NO heading (e.g. a lead paragraph before the
+  // first heading) falls back to the generic paragraph label, never crashes
+  // and never silently claims a heading that doesn't exist.
+  const chunkNoHeadingIdx = 7;
+  const chunkNoHeadingId = documents[chunkNoHeadingIdx].i;
+  const chunkNoHeadingScores = new Map([[chunkNoHeadingIdx, { score: 0.8, source: "chunk", heading: null }]]);
+  const chunkNoHeadingBoosted = scoreCorpus(documents, nonsenseQuery, config, dictionary, chunkNoHeadingScores);
+  const chunkNoHeadingHit = chunkNoHeadingBoosted.results.find((r) => r.id === chunkNoHeadingId);
+  semCheck(
+    "chunk-source hit with no heading falls back to the generic paragraph label",
+    !!chunkNoHeadingHit && chunkNoHeadingHit.reasons[0].label === "段落語義近似",
+    `reasons=${JSON.stringify(chunkNoHeadingHit && chunkNoHeadingHit.reasons)}`
+  );
+
+  // A doc-level hit competing against a chunk-level hit for the SAME doc:
+  // max-fusion must keep whichever score is higher, regardless of source.
+  const bothIdx = 8;
+  const bothId = documents[bothIdx].i;
+  const bothScores = new Map([[bothIdx, { score: 0.4, source: "doc", heading: null }]]);
+  const bothBoosted = scoreCorpus(documents, nonsenseQuery, config, dictionary, bothScores);
+  const bothHit = bothBoosted.results.find((r) => r.id === bothId);
+  semCheck(
+    "lower doc-level score still promotes when it's the only channel present",
+    !!bothHit && bothHit.reasons[0].label === "摘要語義近似",
+    `reasons=${JSON.stringify(bothHit && bothHit.reasons)}`
+  );
+
   // A doc that already scores higher via exact/lexical must NOT be
   // downgraded by a weak synthetic semantic score (max-fusion, not additive).
   const exactQuery = documents[0].t.slice(0, 4);
   const exactBaseline = scoreCorpus(documents, exactQuery, config, dictionary, new Map());
   const exactTop = exactBaseline.results[0];
-  const weakSemMap = new Map([[0, 0.1]]);
+  const weakSemMap = new Map([[0, { score: 0.1, source: "doc", heading: null }]]);
   const exactWithWeakSem = scoreCorpus(documents, exactQuery, config, dictionary, weakSemMap);
   const stillTop = exactWithWeakSem.results.find((r) => r.id === exactTop.id);
   semCheck(

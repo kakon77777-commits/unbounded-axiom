@@ -1,0 +1,145 @@
+---
+import Base from '../layouts/Base.astro';
+import { getQualityReport, getBuildId } from '../lib/engine';
+
+const report = getQualityReport();
+const buildId = getBuildId();
+
+const CATEGORY_LABELS: Record<string, { zh: string; note: string }> = {
+  exact: { zh: '精確查詢', note: '完整或近乎完整的標題 — 應命中 A 級' },
+  alias: { zh: '別名查詢', note: '已知縮寫或別稱 — 應透過詞典展開命中' },
+  natural_language: { zh: '自然語言查詢', note: '用自己的話描述論文主題，不含原文關鍵詞' },
+  typo: { zh: '錯字查詢', note: '真實標題帶一個手誤字 — 應仍可透過詞彙相似命中' },
+  zero_data: { zh: '零資料查詢', note: '語料庫中確實不存在的日常主題 — 應誠實顯示低可信提示' },
+  cross_domain: { zh: '跨領域查詢', note: '混合兩個不相關領域的詞彙 — 測試曖昧查詢的降級行為' },
+  dictionary: { zh: '詞典展開', note: '概念詞典別名/相關詞展開路徑的端到端驗證' },
+  edge_case: { zh: '邊界案例', note: '空字串等邊界輸入' },
+  'semantic-fusion': { zh: '語義融合（單元測試）', note: 'Phase 3 向量分數融合邏輯 — 合成資料' },
+  diversity: { zh: '多樣性重排（單元測試）', note: 'Phase 4 §20 配額演算法 — 合成資料' },
+  relations: { zh: '關聯索引（單元測試）', note: 'Phase 4 §19 五種關聯類型 — 對照真實語料庫' },
+};
+
+const categories = report ? Object.entries(report.by_category) : [];
+const failingDetails = report ? report.details.filter((d) => !d.ok) : [];
+const passRate = report && report.total > 0 ? (report.passed / report.total) * 100 : null;
+---
+<Base title="搜尋品質儀表板 · Search Quality — Logic Matrix">
+  <header class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Dynamic Semantic Revealing · §26 Phase 5</div>
+      <h1>搜尋品質儀表板</h1>
+      <p class="lede">
+        動態語義顯影搜尋的自動化測試結果 —— 精確、別名、自然語言、錯字、零資料、跨領域，
+        六類最低 90 案例（白皮書 §21），加上向量融合、多樣性重排、關聯索引三組單元測試。
+        每次跑 <code>node tests/test_semantic_search.mjs</code> 都會重新產生這份報告。
+      </p>
+      {report ? (
+        <div class="stats">
+          <div class="stat"><div class="n">{report.passed}/{report.total}</div><div class="l">通過 · Pass</div></div>
+          <div class="stat"><div class="n">{passRate?.toFixed(1)}%</div><div class="l">通過率</div></div>
+          <div class="stat"><div class="n">{report.index_count}</div><div class="l">索引文件數</div></div>
+          <div class="stat"><div class="n">{categories.length}</div><div class="l">測試類別</div></div>
+        </div>
+      ) : (
+        <p class="note seed">尚無測試報告 —— 執行一次 <code>node tests/test_semantic_search.mjs</code> 後重新建置即可看到。</p>
+      )}
+    </div>
+  </header>
+
+  {report && (
+    <section class="section">
+      <div class="wrap">
+        <div class="eyebrow">分類明細 · By category</div>
+        <h2>Category breakdown</h2>
+        <div class="cat-grid">
+          {categories.map(([key, stats]) => {
+            const total = stats.pass + stats.fail;
+            const rate = total > 0 ? (stats.pass / total) * 100 : 0;
+            const label = CATEGORY_LABELS[key] || { zh: key, note: '' };
+            return (
+              <div class="cat-card">
+                <div class="cat-head">
+                  <span class="cat-name">{label.zh}</span>
+                  <span class={`cat-count ${stats.fail > 0 ? 'has-fail' : ''}`}>{stats.pass}/{total}</span>
+                </div>
+                <div class="cat-bar"><div class="cat-bar-fill" style={`width:${rate}%`} data-fail={stats.fail > 0}></div></div>
+                <div class="cat-note">{label.note}</div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {report && (
+    <section class="section">
+      <div class="wrap">
+        <div class="eyebrow">驗收標準 · §22.2 品質驗收</div>
+        <h2>Acceptance criteria (§22.2)</h2>
+        <p class="note">白皮書規定的量化門檻，逐項對照本次結果：</p>
+        <div class="papers">
+          {[
+            { label: '精確查詢 Top-3 命中率 > 95%', pass: (report.by_category.exact?.pass ?? 0) / Math.max(1, (report.by_category.exact?.pass ?? 0) + (report.by_category.exact?.fail ?? 0)) > 0.95 },
+            { label: '已知別名 Top-5 命中率 > 90%', pass: (report.by_category.alias?.pass ?? 0) / Math.max(1, (report.by_category.alias?.pass ?? 0) + (report.by_category.alias?.fail ?? 0)) > 0.90 },
+            { label: '自然語言查詢 Top-10 可用率 > 80%', pass: (report.by_category.natural_language?.pass ?? 0) / Math.max(1, (report.by_category.natural_language?.pass ?? 0) + (report.by_category.natural_language?.fail ?? 0)) > 0.80 },
+            { label: '零資料查詢誠實顯示低可信提示', pass: (report.by_category.zero_data?.fail ?? 1) === 0 },
+          ].map((c) => (
+            <div class="paper-row">
+              <span class="pid">{c.pass ? '✓' : '✗'}</span>
+              <span class="pt">{c.label}</span>
+              <span class="pmeta">{c.pass ? '達標' : '未達標'}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {report && failingDetails.length > 0 && (
+    <section class="section">
+      <div class="wrap">
+        <div class="eyebrow" style="color:#d98a5f">失敗案例 · Failing cases</div>
+        <h2>What's currently failing</h2>
+        <div class="papers">
+          {failingDetails.map((d) => (
+            <div class="paper-row">
+              <span class="pid">{d.category}</span>
+              <span class="pt">{d.query || '(unit test)'}</span>
+              <span class="pmeta">{(d.reasons || []).join(' · ')}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {report && (
+    <footer class="section">
+      <div class="wrap">
+        <p class="note">
+          報告產生於 {report.generated_at}，對照索引建置 {report.index_build_id}。
+          此頁面本身建置於 {buildId ?? '—'}——兩者不一致代表報告是舊的（dist/ 每次建置都會清空重來，
+          這裡永遠顯示「最近一次測試」的結果，不一定是這次 commit 的即時結果）。
+        </p>
+      </div>
+    </footer>
+  )}
+
+  <style>
+    .note { color: var(--paper-dim); max-width: var(--measure); line-height: 1.75; margin-top: 0.6rem; }
+    .note code { font-family: var(--mono); font-size: 0.82em; color: var(--teal); }
+    .note.seed { padding: 1.2rem 1.4rem; border: 1px dashed var(--line-strong); border-radius: 0.6rem; margin-top: 1.2rem; }
+
+    .cat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
+    .cat-card { border: 1px solid var(--line); border-radius: 0.6rem; background: var(--surface); padding: 1rem 1.2rem; }
+    .cat-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.55rem; }
+    .cat-name { font-size: 0.95rem; color: var(--paper); }
+    .cat-count { font-family: var(--mono); font-size: 0.85rem; color: var(--gold); }
+    .cat-count.has-fail { color: #d98a5f; }
+    .cat-bar { height: 5px; border-radius: 3px; background: rgba(233,227,214,0.08); overflow: hidden; }
+    .cat-bar-fill { height: 100%; background: var(--teal); }
+    .cat-bar-fill[data-fail="true"] { background: #d98a5f; }
+    .cat-note { font-family: var(--mono); font-size: 0.72rem; color: var(--paper-faint); margin-top: 0.5rem; line-height: 1.5; }
+  </style>
+</Base>

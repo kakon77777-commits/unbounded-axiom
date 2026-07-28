@@ -6,15 +6,17 @@
 // (plain Node) so the exact same scoring logic that ships is the logic tested.
 //
 // Implements Phase 0+1 (exact + lexical retrieval, relation channel), Phase 2
-// (§7 concept dictionary + query expansion), and now Phase 3's fusion side
-// (§9 weights.semantic): scoreCorpus takes an optional pre-computed
-// `semanticScores` Map<docIndex, normalizedScore 0..1> and folds it in with
-// the same max-fusion pattern as the alias/related-term/relation passes.
-// Computing that Map is deliberately NOT this file's job — it requires an
-// async embedding model and a fetched vector file, both DOM/Worker-only
-// concerns (see semantic-vector.js) — this file stays synchronous and
-// dependency-free so the same scoring logic runs identically in the browser
-// Worker and in tests/test_semantic_search.mjs under plain Node.
+// (§7 concept dictionary + query expansion), Phase 3's fusion side (§9
+// weights.semantic), and Phase 5's chunk-level fusion (§17.2/§26 Phase 5):
+// scoreCorpus takes an optional pre-computed `semanticScores`
+// Map<docIndex, {score, source, heading}> (score 0..1; source is "doc" or
+// "chunk"; heading is the matched section's heading text or null) and folds
+// it in with the same max-fusion pattern as the alias/related-term/relation
+// passes. Computing that Map is deliberately NOT this file's job — it
+// requires an async embedding model and fetched vector files, both
+// DOM/Worker-only concerns (see semantic-vector.js) — this file stays
+// synchronous and dependency-free so the same scoring logic runs identically
+// in the browser Worker and in tests/test_semantic_search.mjs under plain Node.
 
 export const DEFAULT_WEIGHTS = {
   exact_title: 1.00,
@@ -447,25 +449,38 @@ export function scoreCorpus(documents, rawQuery, config, dictionary, semanticSco
     }
   }
 
-  // §9 weights.semantic / §26 Phase 3: semanticScores is an optional
-  // Map<docIndex, normalizedScore 0..1> pre-computed by semantic-vector.js
-  // (query embedding + cosine similarity against pre-built document
-  // vectors, already floor/ceiling-rescaled — see that file for why a fixed
-  // corpus-calibrated rescale is used instead of raw cosine or a per-query
-  // relative one). Absent/empty (model still loading, load failed, browser
-  // unsupported) degrades to exactly today's exact+lexical+dictionary+
-  // relations behavior — this is the §16.2 "若 API 失效，系統退化為精確搜尋"
-  // requirement, satisfied structurally: nothing above this block knows or
-  // cares whether semanticScores exists.
+  // §9 weights.semantic / §26 Phase 3+5: semanticScores is an optional
+  // Map<docIndex, {score, source, heading}> pre-computed by
+  // semantic-vector.js (query embedding + cosine similarity against
+  // pre-built document AND chunk vectors, already floor/ceiling-rescaled —
+  // see that file for why a fixed corpus-calibrated rescale is used instead
+  // of raw cosine or a per-query relative one). source is "doc" (whole-
+  // document title+summary+headings vector, Phase 3) or "chunk" (a specific
+  // section's vector, Phase 5 §17.2/§17.3) — the label/field below reflect
+  // whichever one actually produced the winning score, so the UI never
+  // claims "summary similarity" when what really matched was one paragraph
+  // on page 8 (§15: a hit reason must name what actually matched, not just
+  // assert "AI thinks so"). Absent/empty (model still loading, load failed,
+  // browser unsupported) degrades to exactly today's exact+lexical+
+  // dictionary+relations behavior — this is the §16.2 "若 API 失效，系統退化
+  // 為精確搜尋" requirement, satisfied structurally: nothing above this block
+  // knows or cares whether semanticScores exists.
   if (cfg.channels.semantic !== false && semanticScores && semanticScores.size) {
     scored.forEach((r, i) => {
-      const norm = semanticScores.get(i);
-      if (norm === undefined || norm <= 0) return;
-      const s = weights.semantic * norm;
+      const hit = semanticScores.get(i);
+      if (!hit || hit.score <= 0) return;
+      const s = weights.semantic * hit.score;
       if (s > r.score) {
         r.score = s;
         r.channels = Array.from(new Set([...r.channels, "semantic"]));
-        r.reasons = [{ tier: "C", label: "摘要語義近似", field: "summary", semantic_score: Number(norm.toFixed(2)) }, ...r.reasons];
+        const isChunk = hit.source === "chunk";
+        const label = isChunk
+          ? (hit.heading ? `段落語義近似（${hit.heading}）` : "段落語義近似")
+          : "摘要語義近似";
+        r.reasons = [{
+          tier: "C", label, field: isChunk ? "chunk" : "summary",
+          semantic_score: Number(hit.score.toFixed(2)), semantic_source: hit.source,
+        }, ...r.reasons];
       }
     });
   }

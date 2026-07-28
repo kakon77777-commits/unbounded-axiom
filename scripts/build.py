@@ -31,6 +31,23 @@ from scripts.programs import write_programs
 from scripts.semantic_layer import write_semantic_index
 from scripts.semantic_dictionary import write_semantic_dictionary
 from scripts.build_embeddings import build_embeddings
+from scripts.build_chunk_embeddings import build_chunk_embeddings
+
+
+def _copy_quality_report():
+    """§26 Phase 5 "建立搜尋品質儀表板": copy tests/quality-report.json (written
+    by `node tests/test_semantic_search.mjs`) into dist/ai/ so the Astro
+    dashboard page can read it. Best-effort and silent if absent — DIST_DIR
+    is wiped every build, so this always reflects whichever test run most
+    recently happened, not necessarily this exact commit; that's an accepted
+    tradeoff (same as every other "copy the last known-good state" asset in
+    this pipeline), not a bug — a dashboard with no data yet (before the
+    first-ever test run) must not fail the build over it."""
+    src = ROOT / "tests" / "quality-report.json"
+    if not src.exists():
+        return False
+    (DIST_DIR / "ai" / "quality-report.json").write_text(src.read_text(encoding="utf-8"), encoding="utf-8")
+    return True
 
 
 def _write_build_id_file(registry, build_id):
@@ -124,6 +141,8 @@ def main() -> None:
     semantic_stats = write_semantic_index(registry, build_id)  # Dynamic Semantic Revealing Phase 0+1 -> /ai/semantic-index.min.json
     dictionary_stats = write_semantic_dictionary(registry, build_id)  # Phase 2 concept dictionary -> /ai/semantic-dictionary.min.json
     embedding_stats = build_embeddings(registry, build_id)  # Phase 3 doc-level vectors -> /ai/semantic-vectors.bin (+meta)
+    chunk_stats = build_chunk_embeddings(registry, build_id)  # Phase 5 chunk-level vectors -> /ai/semantic-chunks.bin (+meta)
+    quality_report_copied = _copy_quality_report()  # Phase 5 quality dashboard data -> /ai/quality-report.json
     graph_stats = write_graph_layer(registry)  # Phase A: registry/tcf/ -> /ai/graph.json (real topology)
     write_sitemap_canonical(registry)          # §26.6.6 canonical-only sitemap (replaces legacy)
     route_issues = validate_routes(registry)   # §26.7 route consistency report
@@ -155,6 +174,10 @@ def main() -> None:
     print(f"[diag] semantic vectors: {embedding_stats['covered']}/{embedding_stats['total']} docs covered "
           f"({embedding_stats['embedded_now']} newly embedded this run) -> /ai/semantic-vectors.bin "
           f"({embedding_stats['bytes']/1024:.0f} KB)")
+    print(f"[diag] semantic chunks: {chunk_stats['total_chunks']} chunks / {chunk_stats['docs_with_chunks']} docs "
+          f"({chunk_stats['embedded_now']} newly embedded this run) -> /ai/semantic-chunks.bin "
+          f"({chunk_stats['bytes']/1024:.0f} KB)")
+    print(f"[diag] quality report: {'copied -> /ai/quality-report.json' if quality_report_copied else 'none yet (no test run has happened)'}")
     if graph_stats["mapped"]:
         print(f"[diag] graph: /ai/graph.json — {graph_stats['mapped']} nodes / {graph_stats['edges']} verified edges "
               f"(candidates: {graph_stats.get('candidates', 0)}, rejected: {graph_stats.get('rejected', 0)}, "
