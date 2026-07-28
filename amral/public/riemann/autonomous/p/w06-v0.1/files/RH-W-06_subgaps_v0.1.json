@@ -1,0 +1,93 @@
+[
+  {
+    "id": "RH-W-06-FORMULA-LOCK",
+    "title": "加法座標 Weil 顯式公式固定",
+    "status": "CLOSED",
+    "scope": "本工程正規化",
+    "next_dependency": "RH-W-06-MULTIPRIME"
+  },
+  {
+    "id": "RH-W-06-SUPPORT-CHAMBER",
+    "title": "log2 與 log3 間的算術支撐腔室",
+    "status": "CLOSED_FOR_PRIME2",
+    "scope": "B-spline 相關支撐",
+    "next_dependency": "RH-W-07-CHAMBER-COMPILER"
+  },
+  {
+    "id": "RH-W-06-SQRT2-COEFFICIENT",
+    "title": "log2/sqrt2 嚴格區間",
+    "status": "CLOSED",
+    "scope": "integer sqrt plus log interval",
+    "next_dependency": "RH-W-06-PRIME2-SAMPLE"
+  },
+  {
+    "id": "RH-W-06-PRIME2-SAMPLE",
+    "title": "n=2 spline sample 嚴格求值",
+    "status": "CLOSED_FOR_CURRENT_BASES",
+    "scope": "2D and 5D",
+    "next_dependency": "RH-W-07-MULTIPRIME-SAMPLES"
+  },
+  {
+    "id": "RH-W-06-2D-MATRIX",
+    "title": "首個 prime-active 2x2 矩陣",
+    "status": "CLOSED_POSITIVE",
+    "scope": "local finite subspace",
+    "next_dependency": "NONE"
+  },
+  {
+    "id": "RH-W-06-5D-TOEPLITZ",
+    "title": "首個 prime-active 5x5 Toeplitz 矩陣",
+    "status": "CLOSED_POSITIVE",
+    "scope": "local finite subspace",
+    "next_dependency": "RH-W-07-HIGH-DIM"
+  },
+  {
+    "id": "RH-W-06-NATURAL-INTERVAL-LDL",
+    "title": "直接區間 LDL",
+    "status": "CLOSED_AS_INCONCLUSIVE_METHOD",
+    "scope": "dependency blow-up",
+    "next_dependency": "RH-W-06-MIDPOINT-MARGIN"
+  },
+  {
+    "id": "RH-W-06-MIDPOINT-MARGIN",
+    "title": "中點譜裕度加擾動正定證書",
+    "status": "CLOSED",
+    "scope": "5D interval family",
+    "next_dependency": "RH-W-07-GENERIC-CERTIFIER"
+  },
+  {
+    "id": "RH-W-06-PRIME-STABILIZATION-WITNESS",
+    "title": "同一 witness 的 prime-free 負與 full 正",
+    "status": "CLOSED_LOCAL_DECOMPOSITION",
+    "scope": "artificial comparison only",
+    "next_dependency": "NONE"
+  },
+  {
+    "id": "RH-W-06-MULTIPRIME",
+    "title": "同時活化 n=2 以上 prime powers",
+    "status": "OPEN_ENGINEERING",
+    "scope": "larger support chambers",
+    "next_dependency": "RH-W-07-MULTIPRIME-CHAMBER-COMPILER"
+  },
+  {
+    "id": "RH-W-06-PARAMETER-SEARCH",
+    "title": "支撐尺度與平移的 certified optimization",
+    "status": "OPEN_ENGINEERING",
+    "scope": "automatic chamber compiler",
+    "next_dependency": "RH-W-07-SEARCH"
+  },
+  {
+    "id": "RH-W-06-NEGATIVE-WITNESS",
+    "title": "真實 Weil 負證人",
+    "status": "NOT_FOUND",
+    "scope": "RH remains open",
+    "next_dependency": "UNKNOWN"
+  },
+  {
+    "id": "RH-W-06-FORMAL-BACKEND",
+    "title": "Arb Lean Coq 完全形式化後端",
+    "status": "OPEN",
+    "scope": "software trust reduction",
+    "next_dependency": "RH-W-07-FORMALIZATION"
+  }
+]

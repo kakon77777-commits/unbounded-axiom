@@ -1,0 +1,9 @@
+id,title,type,severity,status_v0_2,scope,obligation_remaining
+RH-W-01-A,函數類作用域證明,G-DEF|G-DOM|G-CONV,S1,CLOSED_FOR_GBUMP,GBUMP only,更廣函數類與形式化庫仍待處理
+RH-W-01-B,零點和求和規則鎖定,G-CONV|G-NORM,S1,CLOSED_FOR_GBUMP,GBUMP correlation family,一般 W 中替代正規化仍需等價證明
+RH-W-01-C,阿基米德積分在 x=1 的可積性,G-INT|G-REG,S1,CLOSED_FOR_GBUMP,GBUMP correlation family,其他低正則候選須逐族重查
+RH-W-01-D,乘法相關函數閉合,G-CLS|G-DOM,S2,CLOSED_FOR_GBUMP,GBUMP only,尚未建立目標完成空間的閉包
+RH-W-01-E,兩個消失矩的建構接口,G-CON|G-PAR,S2,CLOSED_FOR_GBUMP,GBUMP only,尚未證明此參數化足以捕捉負證人
+RH-W-01-F,正負號與共軛一致性,G-NORM|G-IMP,S1,PARTIAL_NUMERIC_CROSSCHECK,B0 plus Python implementation,尚缺第二語言或形式系統交叉實作
+RH-W-01-G,乘法 Mellin 與加法 Fourier 表示轉換,G-MAP|G-NORM,S2,CLOSED_FOR_CCINF,C_c^infinity,需在未來完成空間中延拓
+RH-W-01-H,機器可判定合法性前置條件,G-FORM|G-META,S2,PARTIAL_SCHEMA_VALIDATED,GBUMP metadata,尚缺 proof-carrying metadata 與 Lean/Isabelle 檢查

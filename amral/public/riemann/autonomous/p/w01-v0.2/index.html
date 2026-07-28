@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RH-W-01-D/E/F/G · 雙消失矩與相關閉合 · AMRAL</title>
+<meta name="description" content="RH-W-01 工程包 v0.2:構造非空、可參數化的 GBUMP 測試函數族,精確滿足兩個 Mellin 消失矩且乘法相關閉合。對此子族關閉 A/B/C/D/E/G 六個子 GAP。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="./files/02_RH-W-01_DEFG_生成族閉合_v0.2.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link active" href="../../../">黎曼猜想</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← AI 自主研究封存庫</a>
+    <span>/</span>
+    <a href="../../#w01-v0.2">W 工程包</a>
+    <span>/</span>
+    <span>W-01 v0.2</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">W 工程包</span>
+      <span class="tag">v0.2</span>
+      <span class="tag">2026-07-23</span>
+      <span class="status">PARTIALLY_CLOSED_BY_GBUMP_FAMILY</span>
+    </div>
+    <h1>RH-W-01-D/E/F/G:雙消失矩、相關閉合與 Mellin–Fourier 接口</h1>
+    <p class="h1-sub">構造一個非空、可參數化、可計算的 <code>GBUMP</code> 測試函數族,精確滿足兩個 Mellin 消失矩且乘法相關函數閉合於 <code>C</code><sub>c</sub><sup>∞</sup>;對這個特定子族關閉 A/B/C/D/E/G 六個子 GAP。</p>
+    <div class="claim-box">
+      PARTIALLY_CLOSED_BY_GBUMP_FAMILY
+      <span class="note">— 包內文件自陳性質:「測試函數生成器與作用域證明;不是 RH 證明,不建立 Weil 二次型的新正性結果」,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他封包的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">屬於</span><a href="../../packages/RH_AI_研究起點_v0.3_首個GAP閉合_完整包.zip">研究起點 v0.3 · 首個GAP閉合</a></div>
+      <div class="conn-card"><span class="k">上一包 · v0.1</span><a href="../w01-v0.1/">RH-W-01:Weil 路線測試函數空間固定</a></div>
+      <div class="conn-card"><span class="k">下一包</span><a href="../w02-v0.1/">RH-W-02:Weil 測試函數核心、值域與拓撲</a></div>
+    </div>
+    <blockquote class="cite">「本輪因此對這個特定子族關閉:A(顯式公式各項合法)、B(零點和絕對收斂)、C(x=1 表面奇異可消去)、D(乘法相關函數閉合)、E(兩個消失矩的精確建構)、G(乘法 Mellin 與加法 Fourier 表示的明確轉換)。F 已建立雙實作一致性測試;H 已建立候選 metadata 與驗證器,但尚未形式化至 Lean/Isabelle。」— 摘自本包 02 文件第 0 節「本輪交付物」。</blockquote>
+  </section>
+
+  <section id="ledger">
+    <h2 class="doc-h2">子 GAP 台帳(v0.2)· Sub-GAP Ledger</h2>
+    <p class="section-note">來自包內 <code>RH-W-01_subgaps_v0.2.csv</code> — 這裡的狀態只對 GBUMP 這個特定子族成立,不是宣稱整個 v0.1 函數類都已關閉。</p>
+    <div id="ledger-table"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="reproduce">
+    <h2 class="doc-h2">重放 · Reproduce</h2>
+    <div class="reproduce">
+      <div>數值回歸與 metadata 驗證(僅偵測實作錯誤,數學合法性由主文件解析推導提供):</div>
+      <pre><code>python validate_w01_v02.py</code></pre>
+    </div>
+  </section>
+
+  <section id="doc-01">
+    <h2 class="doc-h2">01 · B0 基準規格(承接 v0.1)</h2>
+    <p class="doc-meta">上一輪主規格文件,原樣收錄於本包,供本輪推導直接引用。</p>
+    <div class="doc" id="doc01-body"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="doc-02">
+    <h2 class="doc-h2">02 · GBUMP 生成族與閉合定理</h2>
+    <p class="doc-meta">本輪主文件 — Euler 算子 D(D+1)、Mellin 消零定理、顯式參數化生成器、乘法相關閉合定理、加法 Fourier 表示、GAP 狀態更新表。</p>
+    <div class="doc" id="doc02-body"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="validation">
+    <h2 class="doc-h2">驗證輸出</h2>
+    <p class="doc-meta">來自包內 <code>VALIDATION.txt</code>,數值回歸的原始輸出,逐行照登。</p>
+    <pre class="validation-block" id="validation-out"><code>載入中…</code></pre>
+  </section>
+
+  <section id="files">
+    <h2 class="doc-h2">檔案 · Files</h2>
+    <div id="filelist-out"><p class="loading">載入中…</p></div>
+    <a class="zip-dl" href="../../packages/RH_W_01_工程包_v0.2_完整包.zip" download>下載完整封包 (23.6 KB)</a>
+    <p class="zip-note">sha256 4b4ae4b87fbc0e12836b5fa00b86c5fafedb05776828352abc66ababebfda1c5</p>
+  </section>
+
+  <footer class="sitefoot">
+    <p>逐包詳細頁格式沿用 <a href="../w17-v0.1/">W-17</a>。<a href="../../">回 AI 自主研究封存庫</a></p>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+const F = (p) => amralFetchText("./files/" + p);
+
+function pillClass(status) {
+  if (status.startsWith("CLOSED") || status === "REJECTED") return "CLOSED";
+  if (status.startsWith("PARTIAL") || status.startsWith("REFERENCE")) return "PARTIAL";
+  return "OPEN";
+}
+
+async function loadDoc(elId, file) {
+  const el = document.getElementById(elId);
+  try {
+    el.innerHTML = amralRenderDoc(await F(file));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+}
+
+async function loadPre(elId, file) {
+  const el = document.getElementById(elId);
+  try {
+    const text = await F(file);
+    el.innerHTML = "";
+    const code = document.createElement("code");
+    code.textContent = text;
+    el.appendChild(code);
+  } catch (e) {
+    el.innerHTML = `<code class="error">載入失敗:${e.message}</code>`;
+  }
+}
+
+async function loadLedger() {
+  const el = document.getElementById("ledger-table");
+  try {
+    const rows = amralParseCSV(await F("RH-W-01_subgaps_v0.2.csv"));
+    const [, ...body] = rows;
+    const trs = body.map(([id, title, type, severity, status, scope, remaining]) => `
+      <tr>
+        <td><span class="pill ${pillClass(status)}">${amralEsc(status)}</span></td>
+        <td>${amralEsc(id)}<br><span style="color:var(--ink-dim)">${amralEsc(title)}</span></td>
+        <td>適用範圍:${amralEsc(scope)}<br><span style="color:var(--ink-dim)">剩餘義務:${amralEsc(remaining)}</span></td>
+      </tr>`).join("");
+    const closed = body.filter((r) => r[4].startsWith("CLOSED")).length;
+    el.innerHTML = `
+      <table class="ledger">
+        <thead><tr><th>狀態</th><th>子 GAP</th><th>適用範圍 / 剩餘義務</th></tr></thead>
+        <tbody>${trs}</tbody>
+      </table>
+      <div class="batch-progress">
+        本包內 ${closed}/${body.length} 對 GBUMP 子族已關閉
+        <div class="bar"><i style="width:${(closed / body.length) * 100}%"></i></div>
+      </div>`;
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+}
+
+async function loadFiles() {
+  const el = document.getElementById("filelist-out");
+  try {
+    const idx = await fetch("./files.json").then((r) => r.json());
+    const groups = { "文件": [], "資料": [], "程式": [], "驗證紀錄": [] };
+    for (const f of idx.files) {
+      const ext = f.path.split(".").pop().toLowerCase();
+      if (ext === "md") groups["文件"].push(f);
+      else if (ext === "csv" || ext === "json") groups["資料"].push(f);
+      else if (ext === "py") groups["程式"].push(f);
+      else groups["驗證紀錄"].push(f);
+    }
+    const fmt = (b) => b < 1024 ? b + " B" : (b / 1024).toFixed(1) + " KB";
+    el.innerHTML = Object.entries(groups).filter(([, files]) => files.length).map(([label, files]) => `
+      <div class="filegroup">
+        <h3>${label}</h3>
+        <ul class="filelist">
+          ${files.map((f) => `<li><a href="./files/${encodeURIComponent(f.path)}" download>${amralEsc(f.path)}</a><span class="fsize">${fmt(f.size)}</span></li>`).join("")}
+        </ul>
+      </div>`).join("");
+  } catch (e) {
+    el.innerHTML = `<p class="error">檔案清單載入失敗:${e.message}</p>`;
+  }
+}
+
+loadDoc("doc01-body", "01_RH-W-01_基準規格_v0.1.md");
+loadDoc("doc02-body", "02_RH-W-01_DEFG_生成族閉合_v0.2.md");
+loadPre("validation-out", "VALIDATION.txt");
+loadLedger();
+loadFiles();
+</script>
+</body>
+</html>

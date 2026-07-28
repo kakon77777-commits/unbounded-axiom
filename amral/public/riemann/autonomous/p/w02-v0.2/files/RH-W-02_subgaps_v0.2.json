@@ -1,0 +1,122 @@
+[
+  {
+    "id": "RH-W-02-RANGE",
+    "parent": "RH-W-02",
+    "status": "CLOSED",
+    "severity": "S1",
+    "statement": "D(D+1)C_c^infty equals the compact smooth double-moment-zero core",
+    "next_action": "formalize range theorem"
+  },
+  {
+    "id": "RH-W-02-INVERSE",
+    "parent": "RH-W-02",
+    "status": "CLOSED",
+    "severity": "S1",
+    "statement": "Explicit unique inverse exists and is support preserving",
+    "next_action": "encode inverse operator"
+  },
+  {
+    "id": "RH-W-02-SUPPORT",
+    "parent": "RH-W-02",
+    "status": "CLOSED",
+    "severity": "S1",
+    "statement": "Inverse preserves a fixed compact support interval",
+    "next_action": "add support metadata"
+  },
+  {
+    "id": "RH-W-02-ATOM-DENSE",
+    "parent": "RH-W-02",
+    "status": "CLOSED",
+    "severity": "S2",
+    "statement": "Finite translated/scaled bump atoms are dense after applying D(D+1)",
+    "next_action": "formalize mollifier/Riemann-sum proof"
+  },
+  {
+    "id": "RH-W-02-Q-LF",
+    "parent": "RH-W-02",
+    "status": "CLOSED",
+    "severity": "S2",
+    "statement": "B0 arithmetic quadratic form is continuous on the compact smooth LF core",
+    "next_action": "derive explicit seminorm bounds"
+  },
+  {
+    "id": "RH-W-02-TRANSFER-CORE",
+    "parent": "RH-W-02",
+    "status": "CLOSED_CONDITIONAL",
+    "severity": "S2",
+    "statement": "Positivity on the dense atom dictionary transfers to the full compact core",
+    "next_action": "depends on future atom positivity"
+  },
+  {
+    "id": "RH-W-02-L2",
+    "parent": "RH-W-02",
+    "status": "REJECTED",
+    "severity": "S3",
+    "statement": "Raw L2 completion lacks point-evaluation control for the Weil functional",
+    "next_action": "retain as failure witness"
+  },
+  {
+    "id": "RH-W-02-ADELTA-NORM",
+    "parent": "RH-W-02",
+    "status": "REFERENCE_LOCKED",
+    "severity": "S2",
+    "statement": "Lagarias strip-uniform analytic space is locked as a candidate unconditional completion",
+    "next_action": "audit bounded-strip membership and density"
+  },
+  {
+    "id": "RH-W-02-NORMALIZATION",
+    "parent": "RH-W-02",
+    "status": "CLOSED_FOR_ENDPOINT_NULL_CORE",
+    "severity": "S3",
+    "statement": "B0 trace-negativity and covariance-positivity are the same form with opposite sign on the endpoint-null correlation core",
+    "next_action": "use Q_B0=-E_B0=W as the sole interface"
+  },
+  {
+    "id": "RH-W-02-ENDPOINTS",
+    "parent": "RH-W-02",
+    "status": "CLOSED",
+    "severity": "S2",
+    "statement": "Double Mellin moment constraints force both endpoint terms of every correlation C_g to vanish",
+    "next_action": "enforce automatic endpoint checks"
+  },
+  {
+    "id": "RH-W-02-STAR",
+    "parent": "RH-W-02",
+    "status": "CLOSED",
+    "severity": "S2",
+    "statement": "Hermitian involution and multiplicative convolution reproduce the Clay correlation integral",
+    "next_action": "freeze conjugation and measure conventions"
+  },
+  {
+    "id": "RH-W-02-SIGN",
+    "parent": "RH-W-02",
+    "status": "CLOSED",
+    "severity": "S2",
+    "statement": "Arithmetic negativity equals covariance positivity after defining Q_B0=-E_B0",
+    "next_action": "reject sign-confused candidates"
+  },
+  {
+    "id": "RH-W-02-REGULARIZATION-BRIDGE",
+    "parent": "RH-W-02",
+    "status": "OPEN",
+    "severity": "S3",
+    "statement": "Compact endpoint-null core has not been connected to singular Li covariance test functions requiring cutoff regularization",
+    "next_action": "build a cutoff-compatible bridge or prove it unnecessary"
+  },
+  {
+    "id": "RH-W-02-GLOBAL-DENSITY",
+    "parent": "RH-W-02",
+    "status": "OPEN",
+    "severity": "S3",
+    "statement": "Compact Mellin core density in a RH-equivalent strip analytic space is unproved here",
+    "next_action": "prove density, direct separation, or find obstruction"
+  },
+  {
+    "id": "RH-W-02-RH-SUFFICIENCY",
+    "parent": "RH-W-02",
+    "status": "BLOCKED",
+    "severity": "S4",
+    "statement": "Positivity on the compact core has not yet been shown sufficient for RH",
+    "next_action": "attack direct off-line-zero separation"
+  }
+]

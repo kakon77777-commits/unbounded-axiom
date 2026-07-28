@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RH-W-04 rational interval negative witness certificate",
+  "type": "object",
+  "required": [
+    "certificate_version",
+    "problem_id",
+    "rigor_level",
+    "dimension",
+    "M_lower",
+    "M_upper",
+    "witness",
+    "semantics"
+  ],
+  "properties": {
+    "certificate_version": {"const": "RH-W-04-v0.1"},
+    "problem_id": {"type": "string"},
+    "rigor_level": {
+      "enum": ["EXACT_RATIONAL", "RIGOROUS_INTERVAL", "FLOATING_POINT_ONLY", "TEMPLATE"]
+    },
+    "dimension": {"type": "integer", "minimum": 1},
+    "M_lower": {"type": "array"},
+    "M_upper": {"type": "array"},
+    "G_lower": {"type": "array"},
+    "G_upper": {"type": "array"},
+    "witness": {"type": "array", "items": {"type": "string"}},
+    "semantics": {"const": "NEGATIVE_ONLY"},
+    "normalization_contract_sha256": {"type": "string"},
+    "basis_manifest_sha256": {"type": "string"},
+    "attachments": {"type": "array"},
+    "notes": {"type": "string"}
+  }
+}

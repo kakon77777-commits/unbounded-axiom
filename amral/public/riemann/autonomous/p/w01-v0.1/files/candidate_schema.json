@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RH-W-01 Candidate Generator",
+  "type": "object",
+  "required": [
+    "candidate_id",
+    "formula",
+    "domain",
+    "regularity_proof",
+    "bound_at_zero",
+    "bound_at_infinity",
+    "vanishing_mellin_0",
+    "vanishing_mellin_1",
+    "correlation_exists",
+    "correlation_in_W",
+    "sign_convention",
+    "unproved_items"
+  ],
+  "properties": {
+    "candidate_id": {"type": "string", "minLength": 1},
+    "formula": {"type": "string", "minLength": 1},
+    "domain": {"const": "(0,infinity)"},
+    "regularity_proof": {"type": "string", "minLength": 1},
+    "bound_at_zero": {"type": "string", "minLength": 1},
+    "bound_at_infinity": {"type": "string", "minLength": 1},
+    "vanishing_mellin_0": {"type": "string", "minLength": 1},
+    "vanishing_mellin_1": {"type": "string", "minLength": 1},
+    "correlation_exists": {"type": "string", "minLength": 1},
+    "correlation_in_W": {"type": "string", "minLength": 1},
+    "sign_convention": {"const": "Q_B0=-E_arith"},
+    "numerical_checks": {"type": "array", "items": {"type": "string"}},
+    "unproved_items": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": false
+}

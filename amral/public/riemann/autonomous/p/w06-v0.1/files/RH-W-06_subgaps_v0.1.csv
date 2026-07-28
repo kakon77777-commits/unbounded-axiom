@@ -1,0 +1,14 @@
+id,title,status,scope,next_dependency
+RH-W-06-FORMULA-LOCK,加法座標 Weil 顯式公式固定,CLOSED,本工程正規化,RH-W-06-MULTIPRIME
+RH-W-06-SUPPORT-CHAMBER,log2 與 log3 間的算術支撐腔室,CLOSED_FOR_PRIME2,B-spline 相關支撐,RH-W-07-CHAMBER-COMPILER
+RH-W-06-SQRT2-COEFFICIENT,log2/sqrt2 嚴格區間,CLOSED,integer sqrt plus log interval,RH-W-06-PRIME2-SAMPLE
+RH-W-06-PRIME2-SAMPLE,n=2 spline sample 嚴格求值,CLOSED_FOR_CURRENT_BASES,2D and 5D,RH-W-07-MULTIPRIME-SAMPLES
+RH-W-06-2D-MATRIX,首個 prime-active 2x2 矩陣,CLOSED_POSITIVE,local finite subspace,NONE
+RH-W-06-5D-TOEPLITZ,首個 prime-active 5x5 Toeplitz 矩陣,CLOSED_POSITIVE,local finite subspace,RH-W-07-HIGH-DIM
+RH-W-06-NATURAL-INTERVAL-LDL,直接區間 LDL,CLOSED_AS_INCONCLUSIVE_METHOD,dependency blow-up,RH-W-06-MIDPOINT-MARGIN
+RH-W-06-MIDPOINT-MARGIN,中點譜裕度加擾動正定證書,CLOSED,5D interval family,RH-W-07-GENERIC-CERTIFIER
+RH-W-06-PRIME-STABILIZATION-WITNESS,同一 witness 的 prime-free 負與 full 正,CLOSED_LOCAL_DECOMPOSITION,artificial comparison only,NONE
+RH-W-06-MULTIPRIME,同時活化 n=2 以上 prime powers,OPEN_ENGINEERING,larger support chambers,RH-W-07-MULTIPRIME-CHAMBER-COMPILER
+RH-W-06-PARAMETER-SEARCH,支撐尺度與平移的 certified optimization,OPEN_ENGINEERING,automatic chamber compiler,RH-W-07-SEARCH
+RH-W-06-NEGATIVE-WITNESS,真實 Weil 負證人,NOT_FOUND,RH remains open,UNKNOWN
+RH-W-06-FORMAL-BACKEND,Arb Lean Coq 完全形式化後端,OPEN,software trust reduction,RH-W-07-FORMALIZATION

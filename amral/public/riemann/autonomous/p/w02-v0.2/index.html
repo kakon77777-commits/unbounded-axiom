@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RH-W-02 v0.2 · Weil正規化對齊與符號閉合 · AMRAL</title>
+<meta name="description" content="RH-W-02 工程包 v0.2:把 Bombieri/Clay 的 trace-negativity 與 Lagarias 的 covariance-positivity 逐項對齊,鎖定唯一統一二次型 Q_B0=-E_B0=W。狀態 CLOSED_FOR_ENDPOINT_NULL_CORE。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="./files/02_RH-W-02_正規化對齊_v0.2.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link active" href="../../../">黎曼猜想</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← AI 自主研究封存庫</a>
+    <span>/</span>
+    <a href="../../#w02-v0.2">W 工程包</a>
+    <span>/</span>
+    <span>W-02 v0.2</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">W 工程包</span>
+      <span class="tag">v0.2</span>
+      <span class="tag">2026-07-23</span>
+      <span class="status">CLOSED_FOR_ENDPOINT_NULL_CORE / GLOBAL_BRIDGE_OPEN</span>
+    </div>
+    <h1>RH-W-02:Weil 正規化對齊與符號閉合</h1>
+    <p class="h1-sub">把 Bombieri／Clay 的顯式公式「trace-negativity」與 Lagarias 的 Weil「covariance-positivity」逐項對齊 — 在雙消失矩核心上兩者只差一個負號,鎖定唯一統一二次型 <code>Q_B0 = -E_B0 = W</code>,作為後續所有程式與 AI 代理的唯一合法接口。</p>
+    <div class="claim-box">
+      CLOSED_FOR_ENDPOINT_NULL_CORE
+      <span class="note">— 包內文件自陳性質:「文獻正規化、符號審計與接口閉合;不是 RH 證明」,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他封包的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">屬於</span><a href="../../packages/RH_AI_研究起點_v0.5_正規化閉合_完整包.zip">研究起點 v0.5 · 正規化閉合</a></div>
+      <div class="conn-card"><span class="k">上一包 · v0.1</span><a href="../w02-v0.1/">RH-W-02:Weil 測試函數核心、值域與拓撲</a></div>
+      <div class="conn-card"><span class="k">下一包</span><a href="../w03-v0.1/">RH-W-03:緊支撐分離、負證人存在性與雙核心架構</a></div>
+    </div>
+    <blockquote class="cite">「Bombieri／Clay 使用的顯式公式『trace-negativity』與 Lagarias 使用的 Weil『covariance-positivity』在一般測試函數上並不相同,因為兩者相差端點項……然而對本工程的雙消失矩核心……端點項精確消失,因此有 E_B0(C_{g,h}) = -⟨g,h⟩_W。這不是新的 RH 等價判準,而是把兩種既有表述鎖成同一個工程接口。」— 摘自本包 02 文件第 0 節。</blockquote>
+  </section>
+
+  <section id="ledger">
+    <h2 class="doc-h2">GAP 台帳(v0.2)· GAP Ledger</h2>
+    <p class="section-note">來自包內 <code>RH-W-02_subgaps_v0.2.csv</code>,狀態與下一步都是包自己記的,不是我事後加的判斷。</p>
+    <div id="ledger-table"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="reproduce">
+    <h2 class="doc-h2">重放 · Reproduce</h2>
+    <div class="reproduce">
+      <div>相關積分、卷積、Mellin 因子化及有限零點和回歸:</div>
+      <pre><code>python rh_w02_normalization_validate.py</code></pre>
+    </div>
+  </section>
+
+  <section id="doc-01">
+    <h2 class="doc-h2">01 · 核心值域與拓撲(承接 v0.1)</h2>
+    <p class="doc-meta">上一輪主文件,原樣收錄於本包,供本輪推導直接引用。</p>
+    <div class="doc" id="doc01-body"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="doc-02">
+    <h2 class="doc-h2">02 · 正規化對齊與符號閉合</h2>
+    <p class="doc-meta">本輪主文件 — 固定唯一 Mellin 慣例與 Hermitian 對合、Clay 相關函數與 Lagarias 卷積的恆等、三個泛函的分開命名、正負號轉換表、AI 代理不可違反的正規化規則。</p>
+    <div class="doc" id="doc02-body"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="validation">
+    <h2 class="doc-h2">驗證輸出</h2>
+    <p class="doc-meta">來自包內 <code>VALIDATION_v0.2.txt</code>(數值回歸)與 <code>REGISTRY_VALIDATION.txt</code>(登錄一致性),逐行照登。</p>
+    <pre class="validation-block" id="validation-out"><code>載入中…</code></pre>
+    <pre class="validation-block" id="registry-out" style="margin-top:8px"><code>載入中…</code></pre>
+  </section>
+
+  <section id="files">
+    <h2 class="doc-h2">檔案 · Files</h2>
+    <div id="filelist-out"><p class="loading">載入中…</p></div>
+    <a class="zip-dl" href="../../packages/RH_W_02_工程包_v0.2_完整包.zip" download>下載完整封包 (18.1 KB)</a>
+    <p class="zip-note">sha256 d7e5a07e87f217c871946ce3f87217bb56a7a40a43f95716aa094aadbc338abd</p>
+  </section>
+
+  <footer class="sitefoot">
+    <p>逐包詳細頁格式沿用 <a href="../w17-v0.1/">W-17</a>。<a href="../../">回 AI 自主研究封存庫</a></p>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+const F = (p) => amralFetchText("./files/" + p);
+
+function pillClass(status) {
+  if (status.startsWith("CLOSED") || status === "REJECTED") return "CLOSED";
+  if (status.startsWith("PARTIAL") || status.startsWith("REFERENCE")) return "PARTIAL";
+  return "OPEN";
+}
+
+async function loadDoc(elId, file) {
+  const el = document.getElementById(elId);
+  try {
+    el.innerHTML = amralRenderDoc(await F(file));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+}
+
+async function loadPre(elId, file) {
+  const el = document.getElementById(elId);
+  try {
+    const text = await F(file);
+    el.innerHTML = "";
+    const code = document.createElement("code");
+    code.textContent = text;
+    el.appendChild(code);
+  } catch (e) {
+    el.innerHTML = `<code class="error">載入失敗:${e.message}</code>`;
+  }
+}
+
+async function loadLedger() {
+  const el = document.getElementById("ledger-table");
+  try {
+    const rows = amralParseCSV(await F("RH-W-02_subgaps_v0.2.csv"));
+    const [, ...body] = rows;
+    const trs = body.map(([id, parent, status, severity, statement, next]) => `
+      <tr>
+        <td><span class="pill ${pillClass(status)}">${amralEsc(status)}</span></td>
+        <td>${amralEsc(id)}<br><span style="color:var(--ink-dim)">${amralEsc(statement)}</span></td>
+        <td>下一步:${amralEsc(next)}</td>
+      </tr>`).join("");
+    const closed = body.filter((r) => r[2].startsWith("CLOSED")).length;
+    el.innerHTML = `
+      <table class="ledger">
+        <thead><tr><th>狀態</th><th>項目</th><th>下一步</th></tr></thead>
+        <tbody>${trs}</tbody>
+      </table>
+      <div class="batch-progress">
+        本包內 ${closed}/${body.length} 已關閉
+        <div class="bar"><i style="width:${(closed / body.length) * 100}%"></i></div>
+      </div>`;
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+}
+
+async function loadFiles() {
+  const el = document.getElementById("filelist-out");
+  try {
+    const idx = await fetch("./files.json").then((r) => r.json());
+    const groups = { "文件": [], "資料": [], "程式": [], "驗證紀錄": [] };
+    for (const f of idx.files) {
+      const ext = f.path.split(".").pop().toLowerCase();
+      if (ext === "md") groups["文件"].push(f);
+      else if (ext === "csv" || ext === "json") groups["資料"].push(f);
+      else if (ext === "py") groups["程式"].push(f);
+      else groups["驗證紀錄"].push(f);
+    }
+    const fmt = (b) => b < 1024 ? b + " B" : (b / 1024).toFixed(1) + " KB";
+    el.innerHTML = Object.entries(groups).filter(([, files]) => files.length).map(([label, files]) => `
+      <div class="filegroup">
+        <h3>${label}</h3>
+        <ul class="filelist">
+          ${files.map((f) => `<li><a href="./files/${encodeURIComponent(f.path)}" download>${amralEsc(f.path)}</a><span class="fsize">${fmt(f.size)}</span></li>`).join("")}
+        </ul>
+      </div>`).join("");
+  } catch (e) {
+    el.innerHTML = `<p class="error">檔案清單載入失敗:${e.message}</p>`;
+  }
+}
+
+loadDoc("doc01-body", "01_RH-W-02_核心值域與拓撲_v0.1.md");
+loadDoc("doc02-body", "02_RH-W-02_正規化對齊_v0.2.md");
+loadPre("validation-out", "VALIDATION_v0.2.txt");
+loadPre("registry-out", "REGISTRY_VALIDATION.txt");
+loadLedger();
+loadFiles();
+</script>
+</body>
+</html>

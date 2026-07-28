@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RH-W-05 · 第一份真實Weil矩陣有理區間 · AMRAL</title>
+<meta name="description" content="RH-W-05 工程包:產生第一份不依賴合成零點的真實 Riemann zeta Weil 2×2 有理區間矩陣,支撐控制在 log2 以內使素數項解析為零。整條「公式—區間—證書—小驗證器」流水線首次跑通。RH_CLAIM=False。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="./files/01_RH-W-05_真實Weil矩陣區間_v0.1.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link active" href="../../../">黎曼猜想</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← AI 自主研究封存庫</a>
+    <span>/</span>
+    <a href="../../#w05-v0.1">W 工程包</a>
+    <span>/</span>
+    <span>W-05</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">W 工程包</span>
+      <span class="tag">v0.1</span>
+      <span class="tag">2026-07-23</span>
+      <span class="status">CLOSED_FOR_PRIME_FREE_2D_SPLINE_BASIS</span>
+    </div>
+    <h1>RH-W-05:第一份真實 Weil 矩陣有理區間</h1>
+    <p class="h1-sub">從浮點候選推進到可重播的 2×2 數學收據 — 用兩個平移 cubic B-spline、把相關支撐刻意控制在 <code>log2</code> 以內使素數項解析為零,產生第一份真實 Riemann zeta Weil 矩陣的完整有理區間,並以只用 <code>Fraction</code> 的小型驗證器確認二維子空間嚴格正定。</p>
+    <div class="claim-box">
+      RH_CLAIM = False
+      <span class="note">— 包內驗證器與證書自己輸出的宣稱狀態,原樣照登。這是有限維局部正性證書:「有限維正性 ⇏ RH」。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他封包的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">屬於</span><a href="../../packages/RH_AI_研究起點_v0.8_真實矩陣流水線_完整包.zip">研究起點 v0.8 · 真實矩陣流水線</a></div>
+      <div class="conn-card"><span class="k">上一包</span><a href="../w04-v0.1/">RH-W-04:有限維完備性與有理負證書</a></div>
+      <div class="conn-card"><span class="k">下一包</span><a href="../w06-v0.1/">RH-W-06:第一素數活化與算術支撐腔室</a></div>
+      <div class="conn-card"><span class="k">Batch 01</span>5 / 20</div>
+    </div>
+    <blockquote class="cite">「本輪關閉的是:真實 zeta Weil 元素 → 有理區間矩陣 → exact verifier,在以下限定作用域中:二維;cubic B-spline 平移基底;最大相關支撐小於 log2;素數項因此為零……第一個真實 Weil 矩陣,已從抽象公式落成為可重播、可審計、可拒絕錯誤宣稱的有理區間物件。」— 摘自本包 01 文件第 10、13 節。</blockquote>
+  </section>
+
+  <section id="ledger">
+    <h2 class="doc-h2">GAP 台帳 · GAP Ledger</h2>
+    <p class="section-note">來自包內 <code>RH-W-05_subgaps_v0.1.csv</code>,狀態與下一步都是包自己記的,不是我事後加的判斷。</p>
+    <div id="ledger-table"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="reproduce">
+    <h2 class="doc-h2">重放 · Reproduce</h2>
+    <div class="reproduce">
+      <div>有理區間生成器 → 小型 exact verifier → 獨立浮點交叉檢查:</div>
+      <pre><code>python build_rigorous_matrix.py
+python verify_matrix_certificate.py
+python crosscheck_mpmath.py</code></pre>
+    </div>
+  </section>
+
+  <section id="doc-01">
+    <h2 class="doc-h2">01 · 第一份真實 Weil 矩陣有理區間</h2>
+    <p class="doc-meta">主文件 — 固定顯式公式、B-spline 相關函數的封閉卷積、素數項的解析排除、阿基米德積分的六次分部積分尾界、超越常數的有理包絡、分項區間帳本、獨立浮點交叉檢查。</p>
+    <div class="doc" id="doc01-body"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="doc-02">
+    <h2 class="doc-h2">02 · 證書與信任邊界</h2>
+    <p class="doc-meta">L0(數學規格)/ L1(嚴格數值生成)/ L2(小型 exact verifier)三層證書架構,以及完整信任基礎清單(CPython 版本、libmpdec 版本、Decimal.exp 契約)。</p>
+    <div class="doc" id="doc02-body"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="validation">
+    <h2 class="doc-h2">驗證輸出</h2>
+    <p class="doc-meta">來自包內 <code>VALIDATION.txt</code>(有理區間建構)、<code>EXACT_VERIFY.txt</code>(exact verifier)與 <code>CROSSCHECK.txt</code>(獨立 mpmath 交叉檢查,不進入證明路徑),逐行照登。</p>
+    <pre class="validation-block" id="validation-out"><code>載入中…</code></pre>
+    <pre class="validation-block" id="exact-out" style="margin-top:8px"><code>載入中…</code></pre>
+    <pre class="validation-block" id="crosscheck-out" style="margin-top:8px"><code>載入中…</code></pre>
+  </section>
+
+  <section id="files">
+    <h2 class="doc-h2">檔案 · Files</h2>
+    <div id="filelist-out"><p class="loading">載入中…</p></div>
+    <a class="zip-dl" href="../../packages/RH_W_05_工程包_v0.1_完整包.zip" download>下載完整封包 (25.6 KB)</a>
+    <p class="zip-note">sha256 f98438fef7f338d8db8c8597a2cc0f1a923439b5efd0081a85855124b32d5bfb</p>
+  </section>
+
+  <footer class="sitefoot">
+    <p>逐包詳細頁格式沿用 <a href="../w17-v0.1/">W-17</a>。<a href="../../">回 AI 自主研究封存庫</a></p>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+const F = (p) => amralFetchText("./files/" + p);
+
+function pillClass(status) {
+  if (status.startsWith("CLOSED") || status === "REJECTED") return "CLOSED";
+  if (status.startsWith("PARTIAL") || status.startsWith("REFERENCE")) return "PARTIAL";
+  return "OPEN";
+}
+
+async function loadDoc(elId, file) {
+  const el = document.getElementById(elId);
+  try {
+    el.innerHTML = amralRenderDoc(await F(file));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+}
+
+async function loadPre(elId, file) {
+  const el = document.getElementById(elId);
+  try {
+    const text = await F(file);
+    el.innerHTML = "";
+    const code = document.createElement("code");
+    code.textContent = text;
+    el.appendChild(code);
+  } catch (e) {
+    el.innerHTML = `<code class="error">載入失敗:${e.message}</code>`;
+  }
+}
+
+async function loadLedger() {
+  const el = document.getElementById("ledger-table");
+  try {
+    const rows = amralParseCSV(await F("RH-W-05_subgaps_v0.1.csv"));
+    const [, ...body] = rows;
+    const trs = body.map(([id, title, status, scope, next]) => `
+      <tr>
+        <td><span class="pill ${pillClass(status)}">${amralEsc(status)}</span></td>
+        <td>${amralEsc(id)}<br><span style="color:var(--ink-dim)">${amralEsc(title)}</span></td>
+        <td>範圍:${amralEsc(scope)}<br><span style="color:var(--ink-dim)">下一步:${amralEsc(next)}</span></td>
+      </tr>`).join("");
+    const closed = body.filter((r) => r[2].startsWith("CLOSED")).length;
+    el.innerHTML = `
+      <table class="ledger">
+        <thead><tr><th>狀態</th><th>子 GAP</th><th>範圍 / 下一步</th></tr></thead>
+        <tbody>${trs}</tbody>
+      </table>
+      <div class="batch-progress">
+        本包內 ${closed}/${body.length} 已關閉
+        <div class="bar"><i style="width:${(closed / body.length) * 100}%"></i></div>
+      </div>`;
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+}
+
+async function loadFiles() {
+  const el = document.getElementById("filelist-out");
+  try {
+    const idx = await fetch("./files.json").then((r) => r.json());
+    const groups = { "文件": [], "資料": [], "程式": [], "驗證紀錄": [] };
+    for (const f of idx.files) {
+      const ext = f.path.split(".").pop().toLowerCase();
+      if (ext === "md") groups["文件"].push(f);
+      else if (ext === "csv" || ext === "json") groups["資料"].push(f);
+      else if (ext === "py") groups["程式"].push(f);
+      else groups["驗證紀錄"].push(f);
+    }
+    const fmt = (b) => b < 1024 ? b + " B" : (b / 1024).toFixed(1) + " KB";
+    el.innerHTML = Object.entries(groups).filter(([, files]) => files.length).map(([label, files]) => `
+      <div class="filegroup">
+        <h3>${label}</h3>
+        <ul class="filelist">
+          ${files.map((f) => `<li><a href="./files/${encodeURIComponent(f.path)}" download>${amralEsc(f.path)}</a><span class="fsize">${fmt(f.size)}</span></li>`).join("")}
+        </ul>
+      </div>`).join("");
+  } catch (e) {
+    el.innerHTML = `<p class="error">檔案清單載入失敗:${e.message}</p>`;
+  }
+}
+
+loadDoc("doc01-body", "01_RH-W-05_真實Weil矩陣區間_v0.1.md");
+loadDoc("doc02-body", "02_RH-W-05_證書與信任邊界_v0.1.md");
+loadPre("validation-out", "VALIDATION.txt");
+loadPre("exact-out", "EXACT_VERIFY.txt");
+loadPre("crosscheck-out", "CROSSCHECK.txt");
+loadLedger();
+loadFiles();
+</script>
+</body>
+</html>

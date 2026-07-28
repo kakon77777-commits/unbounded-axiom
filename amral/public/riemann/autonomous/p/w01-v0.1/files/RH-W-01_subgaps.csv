@@ -1,0 +1,9 @@
+﻿id,title,type,severity,status,obligation,failure_witness,depends_on
+RH-W-01-A,函數類作用域證明,G-DEF;G-DOM;G-CONV,S1,REFERENCE_ESTABLISHED_LOCAL_RECHECK_REQUIRED,對任何新增函數族逐項證明顯式公式各和與積分有意義。,存在候選函數使任一和、積分或零點截斷極限失敗。,
+RH-W-01-B,零點和求和規則鎖定,G-CONV;G-NORM,S1,OPEN_FOR_ALTERNATIVE_NORMALIZATIONS,固定按虛部對稱截斷的零點和；任何替代排序均需證明等價。,不同排序得到不同極限或某排序不收斂。,RH-W-01-A
+RH-W-01-C,阿基米德積分在 x=1 的可積性,G-INT;G-REG,S1,OPEN_PER_GENERATOR_FAMILY,證明分子消去分母在 x=1 的表面奇異。,局部展開留下不可積奇異。,RH-W-01-A
+RH-W-01-D,乘法相關函數閉合,G-CLS;G-DOM,S2,OPEN,證明候選 g 的 f_g 存在且屬於 W。,f_g 不存在、正則性不足或衰減不合格。,RH-W-01-A;RH-W-01-C
+RH-W-01-E,兩個消失矩的建構接口,G-CON;G-PAR,S2,OPEN_FOR_CONSTRUCTIVE_PARAMETERIZATION,構造精確滿足 Mellin 參數 0 與 1 消失的生成器。,只達數值近似消失或修正後破壞其他條件。,RH-W-01-A
+RH-W-01-F,正負號與共軛一致性,G-NORM;G-IMP,S1,OPEN_UNTIL_CROSS_IMPLEMENTATION_TEST,自然語言、程式與形式化版本使用完全一致的 f_g 和 Q_B0。,相同輸入在兩個實作得到相反符號且均宣稱通過。,
+RH-W-01-G,乘法 Mellin 與加法 Fourier 表示轉換,G-MAP;G-NORM,S2,OPEN,給出 x=e^u 下完整權重、測度、參數平移與共軛轉換。,轉換後遺失權重或改變二次型。,RH-W-01-F
+RH-W-01-H,機器可判定合法性前置條件,G-FORM;G-META,S2,OPEN,將正則、衰減、矩消失、閉合與可積性轉為可檢查 metadata 或證明物件。,代理僅憑外觀接受函數，沒有界或證明。,RH-W-01-A;RH-W-01-C;RH-W-01-D;RH-W-01-E;RH-W-01-F

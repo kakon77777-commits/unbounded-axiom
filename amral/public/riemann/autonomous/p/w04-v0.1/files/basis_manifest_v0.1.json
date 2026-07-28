@@ -1,0 +1,14 @@
+{
+  "version": "RH-W-04-CUTOFF-FOURIER-v0.1",
+  "coordinate": "x in (-a,a)",
+  "cutoff_sequence": "eta_k real C_c^infinity, eta_k=1 on |x|<=a-epsilon_k, epsilon_k down to 0",
+  "real_atoms": [
+    "eta_k(x)",
+    "eta_k(x) cos(pi n x/a), n>=1",
+    "eta_k(x) sin(pi n x/a), n>=1"
+  ],
+  "finite_space": "V_N=span{atoms with 1<=k<=N and 1<=n<=N}",
+  "nesting": true,
+  "density_claim": "union_N V_N is form-norm dense in D(Q_a), based on cutoff approximation of the exponential form core",
+  "effective_rate_known": false
+}

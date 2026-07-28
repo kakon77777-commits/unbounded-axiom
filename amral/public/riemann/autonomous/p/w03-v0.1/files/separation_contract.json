@@ -1,0 +1,14 @@
+{
+  "version": "RH-W-03-v0.1",
+  "mellin_transform": "g_hat(s)=integral_0_inf g(x) x^s dx/x",
+  "log_coordinate": "psi(u)=exp(u/2) g(exp(u))",
+  "fourier_laplace": "Fpsi(z)=integral_R psi(u) exp(i z u) du",
+  "zero_coordinate": "rho=1/2+i gamma",
+  "full_core": "C_c^infinity(0,infinity)",
+  "endpoint_null_core": "{g in full_core: g_hat(0)=g_hat(1)=0}",
+  "correlation": "C_g(x)=integral_0_inf g(xy) conjugate(g(y)) dy",
+  "full_quadratic_form": "Q_full(g)=sum_rho g_hat(rho) conjugate(g_hat(1-conjugate(rho)))",
+  "arithmetic_interface": "Q_full(g)=2 Re(g_hat(0) conjugate(g_hat(1)))-E_B0(C_g)",
+  "negative_semantics": "certified Q_full(g)<0 refutes RH",
+  "positive_semantics": "finite-dimensional Q>=0 does not prove RH"
+}

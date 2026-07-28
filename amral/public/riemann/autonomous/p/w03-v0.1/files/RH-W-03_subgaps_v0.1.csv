@@ -1,0 +1,11 @@
+﻿id,parent,status,severity,statement,next_action
+RH-W-03-FULL-COMPACT-SEPARATION,RH-W-03,CLOSED_BY_KNOWN_CRITERION,S4,"If RH is false, a smooth compactly supported Weil negative witness exists",encode the criterion as a permanent dependency
+RH-W-03-FINITE-RADIUS,RH-W-03,CLOSED_BY_KNOWN_CRITERION,S3,"A negative witness, if one exists, occurs in some finite logarithmic support window",scan support radius through finite-dimensional subspaces
+RH-W-03-SPECTRAL-ISOLATION,RH-W-03,REFERENCE_CLOSED,S3,A hypothetical nonreal zero can be isolated by compact-support Paley-Wiener interpolation while suppressing the remaining zero contributions,turn the existence proof into a certified witness generator
+RH-W-03-ENDPOINT-CORRECTION,RH-W-03,CLOSED,S2,The full compact quadratic form equals two endpoint terms minus the B0 arithmetic side,implement endpoint-corrected arithmetic matrices
+RH-W-03-CORE-SPLIT,RH-W-03,CLOSED,S2,Full compact core carries RH separation; the endpoint-null core is a simplifying subspace,prevent future agents from conflating the two cores
+RH-W-03-C00-SEPARATION,RH-W-03,OPEN,S3,It is not established here that the double-moment-zero compact core alone retains the full RH separation property,construct a projection preserving negativity or exhibit an obstruction
+RH-W-03-CONSTRUCTIVE-WITNESS,RH-W-03,OPEN_ENGINEERING,S3,Convert the off-axis interpolation proof into an explicit certified compact witness generator,"specify zero enclosures, interpolation basis, and tail bounds"
+RH-W-03-SUPPORT-THRESHOLD,RH-W-03,CONDITIONAL_OBJECT_DEFINED,S2,"Under failure of RH, continuity and small-support positivity define a first zero-crossing support radius","use only as an engineering scan parameter, not as an observed invariant"
+RH-W-03-FINITE-CERTIFICATE,RH-W-03,OPEN_ENGINEERING,S4,Build interval-certified finite-dimensional matrices whose negative Rayleigh quotient would rigorously refute RH,start RH-W-04-GALERKIN-CERTIFICATE
+RH-W-03-POSITIVE-NONCERTIFICATE,RH-W-03,LOCKED_WARNING,S4,Finite-dimensional nonnegativity is never accepted as a proof of RH,enforce one-sided certificate semantics in all validators

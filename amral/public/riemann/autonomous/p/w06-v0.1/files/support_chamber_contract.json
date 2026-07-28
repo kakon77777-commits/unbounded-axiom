@@ -1,0 +1,122 @@
+{
+  "schema": "RH-W-06-support-chamber-v0.1",
+  "basis_family": "translated normalized cubic B-splines; correlations are beta_7",
+  "h": {
+    "num": "1",
+    "den": "10"
+  },
+  "shift_grid": [
+    {
+      "num": "-3",
+      "den": "10"
+    },
+    {
+      "num": "-3",
+      "den": "20"
+    },
+    {
+      "num": "0",
+      "den": "1"
+    },
+    {
+      "num": "3",
+      "den": "20"
+    },
+    {
+      "num": "3",
+      "den": "10"
+    }
+  ],
+  "log2_interval": {
+    "lower": {
+      "num": "17328679513998632735430803036454414201887503359006381353017",
+      "den": "25000000000000000000000000000000000000000000000000000000000"
+    },
+    "upper": {
+      "num": "693147180559945309417232121458176568075500134360255254120681",
+      "den": "1000000000000000000000000000000000000000000000000000000000000"
+    },
+    "decimal_lower": "0.69314718055994528623",
+    "decimal_upper": "0.69314718055994528623"
+  },
+  "log3_interval": {
+    "lower": {
+      "num": "549306144334054845697622618461262852323745278911374725867347",
+      "den": "500000000000000000000000000000000000000000000000000000000000"
+    },
+    "upper": {
+      "num": "219722457733621938279049047384505140929498111564549890346939",
+      "den": "200000000000000000000000000000000000000000000000000000000000"
+    },
+    "decimal_lower": "1.0986122886681097821",
+    "decimal_upper": "1.0986122886681097821"
+  },
+  "lags": [
+    {
+      "lag": 0,
+      "center_separation": {
+        "num": "0",
+        "den": "1"
+      },
+      "correlation_radius": {
+        "num": "2",
+        "den": "5"
+      },
+      "n2_active": false,
+      "n_ge_3_excluded": true
+    },
+    {
+      "lag": 1,
+      "center_separation": {
+        "num": "3",
+        "den": "20"
+      },
+      "correlation_radius": {
+        "num": "11",
+        "den": "20"
+      },
+      "n2_active": false,
+      "n_ge_3_excluded": true
+    },
+    {
+      "lag": 2,
+      "center_separation": {
+        "num": "3",
+        "den": "10"
+      },
+      "correlation_radius": {
+        "num": "7",
+        "den": "10"
+      },
+      "n2_active": true,
+      "n_ge_3_excluded": true
+    },
+    {
+      "lag": 3,
+      "center_separation": {
+        "num": "9",
+        "den": "20"
+      },
+      "correlation_radius": {
+        "num": "17",
+        "den": "20"
+      },
+      "n2_active": true,
+      "n_ge_3_excluded": true
+    },
+    {
+      "lag": 4,
+      "center_separation": {
+        "num": "3",
+        "den": "5"
+      },
+      "correlation_radius": {
+        "num": "1",
+        "den": "1"
+      },
+      "n2_active": true,
+      "n_ge_3_excluded": true
+    }
+  ],
+  "rule": "For correlation support [-R,R], only von Mangoldt indices n with log(n)<=R can contribute. In this contract R<=1<log(3), hence only n=2 is possible."
+}

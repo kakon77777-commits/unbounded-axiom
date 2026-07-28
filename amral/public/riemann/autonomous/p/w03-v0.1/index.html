@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RH-W-03 · 緊支撐分離與雙核心架構 · AMRAL</title>
+<meta name="description" content="RH-W-03 工程包:引用 Suzuki 的緊支撐 Weil 判準,證明「若 RH 為假,則存在緊支撐平滑負證人」是已知定理而非待研究 GAP,把焦點轉移到有限維可驗證負證書的建構。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="./files/01_RH-W-03_緊支撐分離與核心分裂_v0.1.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link active" href="../../../">黎曼猜想</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← AI 自主研究封存庫</a>
+    <span>/</span>
+    <a href="../../#w03-v0.1">W 工程包</a>
+    <span>/</span>
+    <span>W-03</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">W 工程包</span>
+      <span class="tag">v0.1</span>
+      <span class="tag">2026-07-23</span>
+      <span class="status">EXISTENTIAL_SEPARATION_CLOSED / CONSTRUCTIVE_SEARCH_OPEN</span>
+    </div>
+    <h1>RH-W-03:緊支撐分離、負證人存在性與雙核心架構</h1>
+    <p class="h1-sub">引用 Suzuki 對 Weil 判準的緊支撐版本,確認「若 RH 為假,則存在具有限對數支撐的緊支撐平滑負證人」是既有理論已關閉的結論,不是新的待研究 GAP;真正剩下的是把這個存在性定理變成有限維、可計算、可嚴格驗證的負特徵值證書。</p>
+    <div class="claim-box">
+      EXISTENTIAL_SEPARATION_CLOSED
+      <span class="note">— 包內文件自陳性質:「既有等價判準的工程化拆解;不是 RH 證明」,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他封包的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">屬於</span><a href="../../packages/RH_AI_研究起點_v0.6_緊支撐分離閉合_完整包.zip">研究起點 v0.6 · 緊支撐分離閉合</a></div>
+      <div class="conn-card"><span class="k">上一包</span><a href="../w02-v0.2/">RH-W-02:Weil 正規化對齊與符號閉合</a></div>
+      <div class="conn-card"><span class="k">下一包</span><a href="../w04-v0.1/">RH-W-04:有限維完備性與有理負證書</a></div>
+      <div class="conn-card"><span class="k">Batch 01</span>3 / 20</div>
+    </div>
+    <blockquote class="cite">「¬RH ⟹ ∃g∈C_c^∞(0,∞), Q_full(g)&lt;0……『離軸零點能否被緊支撐平滑測試函數看見』不是新的未解 GAP;這是 Weil–Bombieri–Yoshida 型判準已經提供的存在性結論。真正尚未完成的是……必須把存在性定理變成有限維、可計算、可嚴格驗證的負特徵值證書。」— 摘自本包主文件第 0 節。</blockquote>
+  </section>
+
+  <section id="reference">
+    <h2 class="doc-h2">外部依賴 · External Dependency</h2>
+    <p class="section-note">本包的存在性結論不是自行推導,而是直接引用已發表文獻。原樣列出。</p>
+    <ul class="filelist" style="border:1px solid var(--line)">
+      <li><a href="https://arxiv.org/abs/2206.03682" target="_blank" rel="noopener">Masatoshi Suzuki, <em>Aspects of the screw function corresponding to the Riemann zeta function</em>, arXiv:2206.03682</a></li>
+      <li><a href="https://arxiv.org/abs/2301.00421" target="_blank" rel="noopener">Masatoshi Suzuki, <em>On the Hilbert space derived from the Weil distribution</em>, arXiv:2301.00421</a></li>
+      <li><a href="https://arxiv.org/abs/2606.09096" target="_blank" rel="noopener">Masatoshi Suzuki, <em>Weil's quadratic form via the screw function</em>, arXiv:2606.09096</a></li>
+    </ul>
+  </section>
+
+  <section id="ledger">
+    <h2 class="doc-h2">GAP 台帳 · GAP Ledger</h2>
+    <p class="section-note">來自包內 <code>RH-W-03_subgaps_v0.1.csv</code>,狀態與下一步都是包自己記的,不是我事後加的判斷。</p>
+    <div id="ledger-table"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="reproduce">
+    <h2 class="doc-h2">重放 · Reproduce</h2>
+    <div class="reproduce">
+      <div>登錄檢查器:</div>
+      <pre><code>python validate_registry.py</code></pre>
+      <div>合成零點集合上的分離幾何測試(只測程式接口,不是 RH 的數值實驗):</div>
+      <pre><code>python rh_w03_toy_certificate.py</code></pre>
+    </div>
+  </section>
+
+  <section id="doc-01">
+    <h2 class="doc-h2">01 · 緊支撐分離與雙核心架構</h2>
+    <p class="doc-meta">主文件 — 完整核心與端點零核心的雙核心架構、完整端點修正公式、加法座標與 Weil 二次型、緊支撐分離定理的工程版本、存在性與建構性的三層區分。</p>
+    <div class="doc" id="doc01-body"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="doc-02">
+    <h2 class="doc-h2">02 · 有限支撐譜掃描規格</h2>
+    <p class="doc-meta">下一輪(W-04)的規格文件 — 掃描對象、矩陣接口、一側證書邏輯、嚴格負特徵值證書格式。</p>
+    <div class="doc" id="doc02-body"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="validation">
+    <h2 class="doc-h2">驗證輸出</h2>
+    <p class="doc-meta">來自包內 <code>TOY_VALIDATION.txt</code>(合成模型,不是 RH 數值證據)與 <code>REGISTRY_VALIDATION.txt</code>,逐行照登。</p>
+    <pre class="validation-block" id="validation-out"><code>載入中…</code></pre>
+    <pre class="validation-block" id="registry-out" style="margin-top:8px"><code>載入中…</code></pre>
+  </section>
+
+  <section id="files">
+    <h2 class="doc-h2">檔案 · Files</h2>
+    <div id="filelist-out"><p class="loading">載入中…</p></div>
+    <a class="zip-dl" href="../../packages/RH_W_03_工程包_v0.1_完整包.zip" download>下載完整封包 (14.6 KB)</a>
+    <p class="zip-note">sha256 5301490c00e0c18f3b206e56a6519aced4ee467d4bcabd9157e5b2ad9c13b327</p>
+  </section>
+
+  <footer class="sitefoot">
+    <p>逐包詳細頁格式沿用 <a href="../w17-v0.1/">W-17</a>。<a href="../../">回 AI 自主研究封存庫</a></p>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+const F = (p) => amralFetchText("./files/" + p);
+
+function pillClass(status) {
+  if (status.startsWith("CLOSED") || status === "REJECTED") return "CLOSED";
+  if (status.startsWith("PARTIAL") || status.startsWith("REFERENCE") || status.startsWith("CONDITIONAL")) return "PARTIAL";
+  return "OPEN";
+}
+
+async function loadDoc(elId, file) {
+  const el = document.getElementById(elId);
+  try {
+    el.innerHTML = amralRenderDoc(await F(file));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+}
+
+async function loadPre(elId, file) {
+  const el = document.getElementById(elId);
+  try {
+    const text = await F(file);
+    el.innerHTML = "";
+    const code = document.createElement("code");
+    code.textContent = text;
+    el.appendChild(code);
+  } catch (e) {
+    el.innerHTML = `<code class="error">載入失敗:${e.message}</code>`;
+  }
+}
+
+async function loadLedger() {
+  const el = document.getElementById("ledger-table");
+  try {
+    const rows = amralParseCSV(await F("RH-W-03_subgaps_v0.1.csv"));
+    const [, ...body] = rows;
+    const trs = body.map(([id, parent, status, severity, statement, next]) => `
+      <tr>
+        <td><span class="pill ${pillClass(status)}">${amralEsc(status)}</span></td>
+        <td>${amralEsc(id)}<br><span style="color:var(--ink-dim)">${amralEsc(statement)}</span></td>
+        <td>下一步:${amralEsc(next)}</td>
+      </tr>`).join("");
+    const closed = body.filter((r) => r[2].startsWith("CLOSED") || r[2].startsWith("REFERENCE_CLOSED")).length;
+    el.innerHTML = `
+      <table class="ledger">
+        <thead><tr><th>狀態</th><th>項目</th><th>下一步</th></tr></thead>
+        <tbody>${trs}</tbody>
+      </table>
+      <div class="batch-progress">
+        本包內 ${closed}/${body.length} 已關閉
+        <div class="bar"><i style="width:${(closed / body.length) * 100}%"></i></div>
+      </div>`;
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+}
+
+async function loadFiles() {
+  const el = document.getElementById("filelist-out");
+  try {
+    const idx = await fetch("./files.json").then((r) => r.json());
+    const groups = { "文件": [], "資料": [], "程式": [], "驗證紀錄": [] };
+    for (const f of idx.files) {
+      const ext = f.path.split(".").pop().toLowerCase();
+      if (ext === "md") groups["文件"].push(f);
+      else if (ext === "csv" || ext === "json") groups["資料"].push(f);
+      else if (ext === "py") groups["程式"].push(f);
+      else groups["驗證紀錄"].push(f);
+    }
+    const fmt = (b) => b < 1024 ? b + " B" : (b / 1024).toFixed(1) + " KB";
+    el.innerHTML = Object.entries(groups).filter(([, files]) => files.length).map(([label, files]) => `
+      <div class="filegroup">
+        <h3>${label}</h3>
+        <ul class="filelist">
+          ${files.map((f) => `<li><a href="./files/${encodeURIComponent(f.path)}" download>${amralEsc(f.path)}</a><span class="fsize">${fmt(f.size)}</span></li>`).join("")}
+        </ul>
+      </div>`).join("");
+  } catch (e) {
+    el.innerHTML = `<p class="error">檔案清單載入失敗:${e.message}</p>`;
+  }
+}
+
+loadDoc("doc01-body", "01_RH-W-03_緊支撐分離與核心分裂_v0.1.md");
+loadDoc("doc02-body", "02_RH-W-03_有限支撐譜掃描規格_v0.1.md");
+loadPre("validation-out", "TOY_VALIDATION.txt");
+loadPre("registry-out", "REGISTRY_VALIDATION.txt");
+loadLedger();
+loadFiles();
+</script>
+</body>
+</html>

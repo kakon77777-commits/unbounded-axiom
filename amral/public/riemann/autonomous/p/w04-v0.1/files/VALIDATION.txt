@@ -1,0 +1,22 @@
+== exact demo: expected PASS ==
+{
+  "status": "CERTIFIED_NEGATIVE",
+  "q_lower": "-51/25 (-2.04)",
+  "q_upper": "-49/25 (-1.96)",
+  "negative_margin": "49/25 (1.96)",
+  "g_lower": "499/250 (1.996)",
+  "g_upper": "501/250 (2.004)",
+  "denominator_certified_positive": true,
+  "rayleigh_upper": "-490/499 (-0.9819639278557114)"
+}
+
+== floating candidate: expected REJECTION ==
+{
+  "status": "REJECTED_NOT_RIGOROUS",
+  "reason": "rigor_level='FLOATING_POINT_ONLY' is not a rigorous certificate level"
+}
+rejection_exit_code=1
+
+== registry ==
+records=12
+REGISTRY_OK

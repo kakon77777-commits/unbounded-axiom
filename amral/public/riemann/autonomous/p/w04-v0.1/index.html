@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RH-W-04 · 有限維完備性與有理負證書 · AMRAL</title>
+<meta name="description" content="RH-W-04 工程包:構造 cutoff–Fourier 有限維字典並證明 Rayleigh–Ritz 極限收斂到真實譜底,把嚴格負證書縮減成「有理向量 + 有理區間矩陣 + 純有理驗證器」。示範驗證器正確接受精確負證書、拒絕浮點候選。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="./files/01_RH-W-04_有限維完備性與負證書_v0.1.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link active" href="../../../">黎曼猜想</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← AI 自主研究封存庫</a>
+    <span>/</span>
+    <a href="../../#w04-v0.1">W 工程包</a>
+    <span>/</span>
+    <span>W-04</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">W 工程包</span>
+      <span class="tag">v0.1</span>
+      <span class="tag">2026-07-23</span>
+      <span class="status">SPECIFICATION_COMPLETE / ENTRY_ENCLOSURES_OPEN</span>
+    </div>
+    <h1>RH-W-04:有限維完備性與有理負證書</h1>
+    <p class="h1-sub">構造明確的巢狀 cutoff–Fourier 有限維字典,證明其 Rayleigh–Ritz 最小值必定收斂到真實譜底;並把嚴格負證書縮減成「一個有理向量 + 一組有理區間矩陣 + 一個只用 <code>fractions.Fraction</code> 的小型驗證器」。示範驗證器正確接受精確負證書、正確拒絕看似為負的浮點候選。</p>
+    <div class="claim-box">
+      SPECIFICATION_COMPLETE / ENTRY_ENCLOSURES_OPEN
+      <span class="note">— 包內文件自陳定位:「非 RH 證明;建立 Weil 二次型的有限維必達性與機器可驗負證書」,原樣照登。真實 zeta Weil 矩陣的嚴格區間包絡尚未完成。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他封包的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">屬於</span><a href="../../packages/RH_AI_研究起點_v0.7_有限維負證書_完整包.zip">研究起點 v0.7 · 有限維負證書</a></div>
+      <div class="conn-card"><span class="k">上一包</span><a href="../w03-v0.1/">RH-W-03:緊支撐分離、負證人存在性與雙核心架構</a></div>
+      <div class="conn-card"><span class="k">下一包</span><a href="../w05-v0.1/">RH-W-05:第一份真實 Weil 矩陣有理區間</a></div>
+      <div class="conn-card"><span class="k">Batch 01</span>4 / 20</div>
+    </div>
+    <blockquote class="cite">「本輪把問題由:『有限維掃描也許永遠漏掉真正負方向』,改寫成:『指定的 cutoff–Fourier 字典在 form norm 下完整;若負方向存在,有限維終究必達。真正剩下的問題,只是如何嚴格包住矩陣元素。』」— 摘自本包 01 文件第 12 節「結語」。</blockquote>
+  </section>
+
+  <section id="ledger">
+    <h2 class="doc-h2">GAP 台帳 · GAP Ledger</h2>
+    <p class="section-note">來自包內 <code>RH-W-04_subgaps_v0.1.csv</code>,狀態與下一步都是包自己記的,不是我事後加的判斷。</p>
+    <div id="ledger-table"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="reproduce">
+    <h2 class="doc-h2">重放 · Reproduce</h2>
+    <div class="reproduce">
+      <div>只用 <code>fractions.Fraction</code> 的純有理負證書驗證器:</div>
+      <pre><code>python verify_negative_certificate.py</code></pre>
+    </div>
+  </section>
+
+  <section id="doc-01">
+    <h2 class="doc-h2">01 · 有限維完備性與有理負證書</h2>
+    <p class="doc-meta">主文件 — 固定支撐 Weil 形式、cutoff–Fourier 完備字典、Rayleigh–Ritz 必達性定理、有理 witness 化簡、分量區間負證書、浮點候選到有理證人的防火牆、真實 RH 證書的最小可信邊界。</p>
+    <div class="doc" id="doc01-body"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="doc-02">
+    <h2 class="doc-h2">02 · 真實 Weil 矩陣包絡工作分解</h2>
+    <p class="doc-meta">下一輪工作分解 — 端點/素數/阿基米德/奇異/Hermitian/雜湊六個子工作包,搜尋層與驗證層分離,接受/拒絕規則。</p>
+    <div class="doc" id="doc02-body"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="validation">
+    <h2 class="doc-h2">驗證輸出</h2>
+    <p class="doc-meta">來自包內 <code>VALIDATION.txt</code> — 精確示範證書(<code>CERTIFIED_NEGATIVE</code>,分數精確計算)與應被拒絕的浮點候選(<code>REJECTED_NOT_RIGOROUS</code>),逐行照登。</p>
+    <pre class="validation-block" id="validation-out"><code>載入中…</code></pre>
+  </section>
+
+  <section id="files">
+    <h2 class="doc-h2">檔案 · Files</h2>
+    <div id="filelist-out"><p class="loading">載入中…</p></div>
+    <a class="zip-dl" href="../../packages/RH_W_04_工程包_v0.1_完整包.zip" download>下載完整封包 (18.1 KB)</a>
+    <p class="zip-note">sha256 30de96d27c7a25e6e7fa637c614ac2bdb3903624498f119413817c4d15f3ed4a</p>
+  </section>
+
+  <footer class="sitefoot">
+    <p>逐包詳細頁格式沿用 <a href="../w17-v0.1/">W-17</a>。<a href="../../">回 AI 自主研究封存庫</a></p>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+const F = (p) => amralFetchText("./files/" + p);
+
+function pillClass(status) {
+  if (status.startsWith("CLOSED") || status === "REJECTED") return "CLOSED";
+  if (status.startsWith("PARTIAL") || status.startsWith("REFERENCE")) return "PARTIAL";
+  return "OPEN";
+}
+
+async function loadDoc(elId, file) {
+  const el = document.getElementById(elId);
+  try {
+    el.innerHTML = amralRenderDoc(await F(file));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+}
+
+async function loadPre(elId, file) {
+  const el = document.getElementById(elId);
+  try {
+    const text = await F(file);
+    el.innerHTML = "";
+    const code = document.createElement("code");
+    code.textContent = text;
+    el.appendChild(code);
+  } catch (e) {
+    el.innerHTML = `<code class="error">載入失敗:${e.message}</code>`;
+  }
+}
+
+async function loadLedger() {
+  const el = document.getElementById("ledger-table");
+  try {
+    const rows = amralParseCSV(await F("RH-W-04_subgaps_v0.1.csv"));
+    const [, ...body] = rows;
+    const trs = body.map(([id, parent, status, severity, statement, next]) => `
+      <tr>
+        <td><span class="pill ${pillClass(status)}">${amralEsc(status)}</span></td>
+        <td>${amralEsc(id)}<br><span style="color:var(--ink-dim)">${amralEsc(statement)}</span></td>
+        <td>下一步:${amralEsc(next)}</td>
+      </tr>`).join("");
+    const closed = body.filter((r) => r[2].startsWith("CLOSED")).length;
+    el.innerHTML = `
+      <table class="ledger">
+        <thead><tr><th>狀態</th><th>項目</th><th>下一步</th></tr></thead>
+        <tbody>${trs}</tbody>
+      </table>
+      <div class="batch-progress">
+        本包內 ${closed}/${body.length} 已關閉
+        <div class="bar"><i style="width:${(closed / body.length) * 100}%"></i></div>
+      </div>`;
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+}
+
+async function loadFiles() {
+  const el = document.getElementById("filelist-out");
+  try {
+    const idx = await fetch("./files.json").then((r) => r.json());
+    const groups = { "文件": [], "資料": [], "程式": [], "驗證紀錄": [] };
+    for (const f of idx.files) {
+      const ext = f.path.split(".").pop().toLowerCase();
+      if (ext === "md") groups["文件"].push(f);
+      else if (ext === "csv" || ext === "json") groups["資料"].push(f);
+      else if (ext === "py") groups["程式"].push(f);
+      else groups["驗證紀錄"].push(f);
+    }
+    const fmt = (b) => b < 1024 ? b + " B" : (b / 1024).toFixed(1) + " KB";
+    el.innerHTML = Object.entries(groups).filter(([, files]) => files.length).map(([label, files]) => `
+      <div class="filegroup">
+        <h3>${label}</h3>
+        <ul class="filelist">
+          ${files.map((f) => `<li><a href="./files/${encodeURIComponent(f.path)}" download>${amralEsc(f.path)}</a><span class="fsize">${fmt(f.size)}</span></li>`).join("")}
+        </ul>
+      </div>`).join("");
+  } catch (e) {
+    el.innerHTML = `<p class="error">檔案清單載入失敗:${e.message}</p>`;
+  }
+}
+
+loadDoc("doc01-body", "01_RH-W-04_有限維完備性與負證書_v0.1.md");
+loadDoc("doc02-body", "02_RH-W-04_矩陣包絡工作分解_v0.1.md");
+loadPre("validation-out", "VALIDATION.txt");
+loadLedger();
+loadFiles();
+</script>
+</body>
+</html>

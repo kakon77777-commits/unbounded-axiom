@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RH-W-02 · Weil測試函數核心、值域與拓撲 · AMRAL</title>
+<meta name="description" content="RH-W-02 工程包:證明 D(D+1)C_c^∞(0,∞) 精確等於緊支撐平滑雙消失矩核心。上一輪的 GBUMP 生成核心不是任意小子族,而是精確覆蓋全部合法核心測試函數。狀態 CORE_CLOSED / GLOBAL_BRIDGE_OPEN。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="./files/RH-W-02_核心值域與拓撲_v0.1.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link active" href="../../../">黎曼猜想</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← AI 自主研究封存庫</a>
+    <span>/</span>
+    <a href="../../#w02-v0.1">W 工程包</a>
+    <span>/</span>
+    <span>W-02</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">W 工程包</span>
+      <span class="tag">v0.1</span>
+      <span class="tag">2026-07-23</span>
+      <span class="status">CORE_CLOSED / GLOBAL_BRIDGE_OPEN</span>
+    </div>
+    <h1>RH-W-02:Weil 測試函數核心、值域與拓撲</h1>
+    <p class="h1-sub">證明 <code>D(D+1)C</code><sub>c</sub><sup>∞</sup><code>(0,∞)</code> 精確等於緊支撐平滑雙消失矩核心 <code>C₀₀</code> — 上一輪的 GBUMP 生成核心不是任意小子族,而是精確覆蓋全部合法核心測試函數;同時排除裸 L² 完成,把通往 RH 等價空間的密度橋單獨標為下一個真正 GAP。</p>
+    <div class="claim-box">
+      CORE_CLOSED / GLOBAL_BRIDGE_OPEN
+      <span class="note">— 包內文件自陳性質:「函數空間與閉包工程;不是 RH 證明,不建立新的 Weil 正性結果」,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他封包的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">屬於</span><a href="../../packages/RH_AI_研究起點_v0.4_核心拓撲閉合_完整包.zip">研究起點 v0.4 · 核心拓撲閉合</a></div>
+      <div class="conn-card"><span class="k">上一包</span><a href="../w01-v0.2/">RH-W-01-D/E/F/G:雙消失矩、相關閉合與 Mellin–Fourier 接口</a></div>
+      <div class="conn-card"><span class="k">下一包 · v0.2</span><a href="../w02-v0.2/">RH-W-02:Weil 正規化對齊與符號閉合</a></div>
+      <div class="conn-card"><span class="k">Batch 01</span>2 / 20</div>
+    </div>
+    <blockquote class="cite">「本輪證明:AC_c^∞(0,∞)=C₀₀。所以 RH-W-01 建立的解析生成核心並不是只覆蓋部分合法函數,而是精確覆蓋全部緊支撐平滑、雙消失矩的測試函數。然而這仍不等於 RH。真正未完成的橋是:C₀₀ → 一個已知與 RH 等價的完整 Weil 測試空間。」— 摘自本包主文件第 0 節「本輪結論」。</blockquote>
+  </section>
+
+  <section id="ledger">
+    <h2 class="doc-h2">GAP 台帳 · GAP Ledger</h2>
+    <p class="section-note">來自包內 <code>RH-W-02_subgaps_v0.1.csv</code>,狀態與下一步都是包自己記的,不是我事後加的判斷。</p>
+    <div id="ledger-table"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="reproduce">
+    <h2 class="doc-h2">重放 · Reproduce</h2>
+    <div class="reproduce">
+      <div>值域反演、矩條件與 L² 失敗證人的數值回歸(只檢查實作與公式一致性,閉合結果由主文件解析證明提供):</div>
+      <pre><code>python rh_w02_validate.py</code></pre>
+    </div>
+  </section>
+
+  <section id="doc-main">
+    <h2 class="doc-h2">主文件</h2>
+    <p class="doc-meta">精確值域定理(必要性/充分性/唯一性)、對數座標反演公式、原子字典稠密性、B0 泛函連續性、合法閉包傳遞、為何裸 L² 被拒絕、尚未跨越的全域密度橋。</p>
+    <div class="doc" id="doc-main-body"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="validation">
+    <h2 class="doc-h2">驗證輸出</h2>
+    <p class="doc-meta">來自包內 <code>VALIDATION.txt</code>,數值回歸的原始輸出,逐行照登。</p>
+    <pre class="validation-block" id="validation-out"><code>載入中…</code></pre>
+  </section>
+
+  <section id="files">
+    <h2 class="doc-h2">檔案 · Files</h2>
+    <div id="filelist-out"><p class="loading">載入中…</p></div>
+    <a class="zip-dl" href="../../packages/RH_W_02_工程包_v0.1_完整包.zip" download>下載完整封包 (11.4 KB)</a>
+    <p class="zip-note">sha256 4ede874570f511c4ccbbf14720f3f21dc7e806019e8e3a50e516fd5920c088ee</p>
+  </section>
+
+  <footer class="sitefoot">
+    <p>逐包詳細頁格式沿用 <a href="../w17-v0.1/">W-17</a>。<a href="../../">回 AI 自主研究封存庫</a></p>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+const F = (p) => amralFetchText("./files/" + p);
+
+function pillClass(status) {
+  if (status.startsWith("CLOSED") || status === "REJECTED") return "CLOSED";
+  if (status.startsWith("PARTIAL") || status.startsWith("REFERENCE")) return "PARTIAL";
+  return "OPEN";
+}
+
+async function loadDoc(elId, file) {
+  const el = document.getElementById(elId);
+  try {
+    el.innerHTML = amralRenderDoc(await F(file));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+}
+
+async function loadPre(elId, file) {
+  const el = document.getElementById(elId);
+  try {
+    const text = await F(file);
+    el.innerHTML = "";
+    const code = document.createElement("code");
+    code.textContent = text;
+    el.appendChild(code);
+  } catch (e) {
+    el.innerHTML = `<code class="error">載入失敗:${e.message}</code>`;
+  }
+}
+
+async function loadLedger() {
+  const el = document.getElementById("ledger-table");
+  try {
+    const rows = amralParseCSV(await F("RH-W-02_subgaps_v0.1.csv"));
+    const [, ...body] = rows;
+    const trs = body.map(([id, parent, status, severity, statement, next]) => `
+      <tr>
+        <td><span class="pill ${pillClass(status)}">${amralEsc(status)}</span></td>
+        <td>${amralEsc(id)}<br><span style="color:var(--ink-dim)">${amralEsc(statement)}</span></td>
+        <td>下一步:${amralEsc(next)}</td>
+      </tr>`).join("");
+    const closed = body.filter((r) => r[2].startsWith("CLOSED")).length;
+    el.innerHTML = `
+      <table class="ledger">
+        <thead><tr><th>狀態</th><th>項目</th><th>下一步</th></tr></thead>
+        <tbody>${trs}</tbody>
+      </table>
+      <div class="batch-progress">
+        本包內 ${closed}/${body.length} 已關閉
+        <div class="bar"><i style="width:${(closed / body.length) * 100}%"></i></div>
+      </div>`;
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+}
+
+async function loadFiles() {
+  const el = document.getElementById("filelist-out");
+  try {
+    const idx = await fetch("./files.json").then((r) => r.json());
+    const groups = { "文件": [], "資料": [], "程式": [], "驗證紀錄": [] };
+    for (const f of idx.files) {
+      const ext = f.path.split(".").pop().toLowerCase();
+      if (ext === "md") groups["文件"].push(f);
+      else if (ext === "csv" || ext === "json") groups["資料"].push(f);
+      else if (ext === "py") groups["程式"].push(f);
+      else groups["驗證紀錄"].push(f);
+    }
+    const fmt = (b) => b < 1024 ? b + " B" : (b / 1024).toFixed(1) + " KB";
+    el.innerHTML = Object.entries(groups).filter(([, files]) => files.length).map(([label, files]) => `
+      <div class="filegroup">
+        <h3>${label}</h3>
+        <ul class="filelist">
+          ${files.map((f) => `<li><a href="./files/${encodeURIComponent(f.path)}" download>${amralEsc(f.path)}</a><span class="fsize">${fmt(f.size)}</span></li>`).join("")}
+        </ul>
+      </div>`).join("");
+  } catch (e) {
+    el.innerHTML = `<p class="error">檔案清單載入失敗:${e.message}</p>`;
+  }
+}
+
+loadDoc("doc-main-body", "RH-W-02_核心值域與拓撲_v0.1.md");
+loadPre("validation-out", "VALIDATION.txt");
+loadLedger();
+loadFiles();
+</script>
+</body>
+</html>
