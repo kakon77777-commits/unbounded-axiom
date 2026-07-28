@@ -103,7 +103,19 @@ def _extract_units(body: str) -> list:
 
 def _bucket_units(units: list) -> list:
     """Greedy length-balanced grouping into <= MAX_CHUNKS_PER_DOC buckets,
-    preserving order. Returns [(heading_or_None, joined_text), ...]."""
+    preserving order. Returns [(heading_or_None, joined_text), ...].
+
+    A bucket's heading is whichever unit's heading was the FIRST one actually
+    placed into THAT bucket -- decided only once the flush decision for the
+    incoming unit has already been made, not "peeked" from the incoming unit
+    before deciding whether it even joins the current bucket. Getting this
+    order backwards (checking the incoming unit's heading before the flush
+    check) silently mislabels the case that matters most: a document that
+    opens with real pre-heading content (an intro/abstract paragraph before
+    its first `##`) gets that intro merged into the SAME decision step as
+    the first real heading, so the intro's bucket inherits that heading's
+    name instead of staying `None` (see build/chunk.py in the DRVS package,
+    where this exact bug was caught by a test)."""
     if not units:
         return []
     total_len = sum(len(t) for _, t in units)
@@ -111,16 +123,16 @@ def _bucket_units(units: list) -> list:
 
     buckets = []
     cur_heading = None
+    cur_heading_set = False
     cur_parts = []
     cur_len = 0
     for heading, text in units:
-        if cur_heading is None and heading:
-            cur_heading = heading
         if cur_parts and cur_len + len(text) > target and len(buckets) < MAX_CHUNKS_PER_DOC - 1:
             buckets.append((cur_heading, " ".join(cur_parts)))
-            cur_heading, cur_parts, cur_len = heading, [], 0
-            if heading:
-                cur_heading = heading
+            cur_heading, cur_heading_set, cur_parts, cur_len = None, False, [], 0
+        if not cur_heading_set and heading:
+            cur_heading = heading
+            cur_heading_set = True
         cur_parts.append(text)
         cur_len += len(text)
     if cur_parts:
