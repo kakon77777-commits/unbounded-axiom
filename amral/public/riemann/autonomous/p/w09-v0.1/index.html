@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RH-W-07 · 多素數支撐腔室編譯器 · AMRAL</title>
-<meta name="description" content="RH-W-07 工程包:把單一 n=2 耦合擴展成 2,3,4,5,7 五個 von Mangoldt 層的九維真實 Weil 區間矩陣,建立 prime power 進入又離開支撐窗的活化圖,以四個有理 witness 證明各層可翻轉指定方向的正負號。RH_CLAIM=False。">
+<title>RH-W-09 · 自適應腔室延拓 · AMRAL</title>
+<meta name="description" content="RH-W-09 工程包:從固定網格改成局部自適應延拓,把最低廣義譜底從 10^-5 推低 9110 倍到 10^-9,終點恰好逼近 log3 的素數活化邊界。邊界前後都以純有理驗證器證出十五維正裕度。RH_CLAIM=False。">
 <meta name="robots" content="index, follow">
 <meta name="ai-content-policy" content="indexable, citable, training-allowed">
-<link rel="alternate" type="text/markdown" href="./files/01_RH-W-07_多素數支撐腔室編譯器_v0.1.md">
+<link rel="alternate" type="text/markdown" href="./files/01_RH-W-09_自適應腔室延拓_v0.1.md">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
 <link rel="stylesheet" href="../../../../assets/site.css">
 </head>
@@ -21,9 +21,9 @@
   <p class="crumb">
     <a href="../../">← AI 自主研究封存庫</a>
     <span>/</span>
-    <a href="../../#w07-v0.1">W 工程包</a>
+    <a href="../../#w09-v0.1">W 工程包</a>
     <span>/</span>
-    <span>W-07</span>
+    <span>W-09</span>
   </p>
 
   <header class="pkg">
@@ -31,13 +31,13 @@
       <span class="tag">W 工程包</span>
       <span class="tag">v0.1</span>
       <span class="tag">2026-07-23</span>
-      <span class="status">CLOSED_FOR_ONE_9D_RATIONAL_SPLINE_FAMILY</span>
+      <span class="status">CLOSED_FOR_ONE_LOCAL_CONTINUATION_POLICY_AND_ONE_CERTIFIED_15D_CHAMBER</span>
     </div>
-    <h1>RH-W-07:多素數支撐腔室編譯器</h1>
-    <p class="h1-sub">從單一 <code>n=2</code> 耦合,推進到 <code>2,3,4,5,7</code> 五個 von Mangoldt 層的九維真實 Weil 區間矩陣 — 完整平移支撐窗編譯出 prime power 「進入又離開」的 band-pass 活化圖(第 6 個 lag 時 2 已離開窗、3 與 4 仍在窗內),並以四個有理整數 witness 逐一證明加入 2、3、4、5 時同一方向由負翻正。</p>
+    <h1>RH-W-09:自適應腔室延拓</h1>
+    <p class="h1-sub">把固定網格搜尋改寫成局部延拓問題 — 從 W-08 的候選出發,每輪評估九個鄰點,自動把十五維最低廣義譜底從 <code>1.2×10⁻⁵</code> 一路推低到 <code>1.32×10⁻⁹</code>(下降約 9110 倍),終點恰好逼近 <code>log3</code> 的 lag-1 素數活化邊界,只差約 <code>9.67×10⁻⁵</code>。</p>
     <div class="claim-box">
       RH_CLAIM = False
-      <span class="note">— 包內驗證器自己輸出的宣稱狀態,原樣照登。「此九維子空間正定 ⇏ RH」;不得由正的有限矩陣回推出 RH,對 7 本輪沒有找到嚴格符號翻轉。</span>
+      <span class="note">— 包內驗證器自己輸出的宣稱狀態,原樣照登。「十五維正裕度 ⇏ RH」;浮點延拓路徑只能輸出 NUMERICAL_CANDIDATE_ONLY,沒有證明譜底在此邊界取得局部極小。</span>
     </div>
   </header>
 
@@ -45,58 +45,60 @@
     <h2 class="doc-h2">連接 · Connections</h2>
     <p class="section-note">跟其他封包的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
     <div class="connections">
-      <div class="conn-card"><span class="k">屬於</span><a href="../../packages/RH_AI_研究起點_v1.0_多素數腔室編譯器_完整包.zip">研究起點 v1.0 · 多素數腔室編譯器</a></div>
-      <div class="conn-card"><span class="k">上一包</span><a href="../w06-v0.1/">RH-W-06:第一素數活化與算術支撐腔室</a></div>
-      <div class="conn-card"><span class="k">下一包</span><a href="../w08-v0.1/">RH-W-08:腔室搜尋與嚴格細化</a></div>
-      <div class="conn-card"><span class="k">Batch 01</span>7 / 20</div>
+      <div class="conn-card"><span class="k">屬於</span><a href="../../packages/RH_AI_研究起點_v1.2_自適應延拓與十億分之一裕度_完整包.zip">研究起點 v1.2 · 自適應延拓與十億分之一裕度</a></div>
+      <div class="conn-card"><span class="k">上一包</span><a href="../w08-v0.1/">RH-W-08:腔室搜尋與嚴格細化</a></div>
+      <div class="conn-card"><span class="k">下一包</span><a href="../w10-v0.1/">RH-W-10:素數邊界局部模態與七階軟啟動</a></div>
+      <div class="conn-card"><span class="k">Batch 01</span>9 / 20</div>
     </div>
-    <blockquote class="cite">「真正需要編譯的是完整平移支撐窗,不是單一半徑。當相關窗沿實軸移動時,某個 log p^k 會進入,也會再次離開。這使 prime-power 活化圖具有 band-pass 性質,而不是『支撐愈大,所有舊素數永遠保留』的低通結構。」— 摘自本包 01 文件第 1 節。</blockquote>
+    <blockquote class="cite">「搜尋器自動把最低模態推向一條離散算術耦合即將改變的幾何邊界……這一點的重要性不是『三這個素數特別神祕』,而是搜尋器自動把最低模態推向一條離散算術耦合即將改變的幾何邊界。是否所有低模態都傾向此類邊界,目前仍是開放研究問題。」— 摘自本包 01 文件第 6 節。</blockquote>
   </section>
 
   <section id="ledger">
     <h2 class="doc-h2">GAP 台帳 · GAP Ledger</h2>
-    <p class="section-note">來自包內 <code>RH-W-07_subgaps_v0.1.csv</code>,狀態與依賴都是包自己記的,不是我事後加的判斷。</p>
+    <p class="section-note">來自包內 <code>RH-W-09_subgaps_v0.1.csv</code>,狀態與依賴都是包自己記的,不是我事後加的判斷。</p>
     <div id="ledger-table"><p class="loading">載入中…</p></div>
-  </section>
-
-  <section id="activation">
-    <h2 class="doc-h2">Prime-power 活化圖</h2>
-    <p class="section-note">來自包內 <code>prime_power_activation_graph.csv</code> — 九個 lag 中,哪些 prime power 進入或離開相關支撐窗,逐列照原始資料。</p>
-    <div class="datatable-wrap" id="csv-activation"><p class="loading">載入中…</p></div>
   </section>
 
   <section id="reproduce">
     <h2 class="doc-h2">重放 · Reproduce</h2>
     <div class="reproduce">
-      <div>九維多素數矩陣建構 → 純有理 exact verifier:</div>
-      <pre><code>python build_multiprime_chamber.py
-python verify_multiprime_certificate.py</code></pre>
+      <div>自適應延拓(需 NumPy/SciPy)→ 嚴格區間證書 → 純有理 exact verifier:</div>
+      <pre><code>python adaptive_continuation.py
+python build_continuation_certificate.py
+python verify_continuation_certificate.py</code></pre>
     </div>
   </section>
 
   <section id="doc-01">
-    <h2 class="doc-h2">01 · 多素數支撐腔室編譯器</h2>
-    <p class="doc-meta">主文件 — 為何不能只看最大支撐半徑、固定九維 B-spline 字典、編譯出的 prime-power 活化圖、稀疏算術圖分解、阿基米德尾界的第二次工程修正、九維 exact 正定證書、四個 ablation sign-flip witness。</p>
+    <h2 class="doc-h2">01 · 自適應腔室延拓</h2>
+    <p class="doc-meta">主文件 — 局部延拓政策(九鄰點步進 + 減半)、prime-power 活化邊界追蹤器、延拓終點與下降 9110 倍、最近的活化邊界(lag=1, n=3)。</p>
     <div class="doc" id="doc01-body"><p class="loading">載入中…</p></div>
   </section>
 
   <section id="doc-02">
-    <h2 class="doc-h2">02 · 證書架構與 GAP 更新</h2>
-    <p class="doc-meta">L0(探索)/ L1(區間生成)/ L2(exact verifier)/ L3(形式化,尚未完成)四層信任架構,固定有理網格 midpoint 的工程理由。</p>
+    <h2 class="doc-h2">02 · 十億分之一正裕度證書</h2>
+    <p class="doc-meta">十五維真實矩陣分解、有理中心與擾動半徑、exact LDL^T 證書、為何十五維正裕度仍不是 RH 證明。</p>
     <div class="doc" id="doc02-body"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="doc-03">
+    <h2 class="doc-h2">03 · 精度升級與信任邊界</h2>
+    <p class="doc-meta">為何 10⁻⁹ 尺度候選需要重新設計常數與尾界 — Euler 常數的 Binet/digamma 區間、阿基米德冪次尾的二段延拓、計算成本與證書精度解耦。</p>
+    <div class="doc" id="doc03-body"><p class="loading">載入中…</p></div>
   </section>
 
   <section id="validation">
     <h2 class="doc-h2">驗證輸出</h2>
-    <p class="doc-meta">來自包內 <code>VALIDATION.txt</code>,逐行照登 — 九個 lag 區間、活化圖、正定裕度、四個符號翻轉 witness。</p>
+    <p class="doc-meta">來自包內 <code>EXACT_VERIFY.txt</code>,逐行照登。</p>
     <pre class="validation-block" id="validation-out"><code>載入中…</code></pre>
   </section>
 
   <section id="files">
     <h2 class="doc-h2">檔案 · Files</h2>
+    <p class="section-note">完整延拓路徑(<code>adaptive_continuation_path.json</code>)與十五維區間證書沒有逐一列出,都在完整 zip 裡。</p>
     <div id="filelist-out"><p class="loading">載入中…</p></div>
-    <a class="zip-dl" href="../../packages/RH_W_07_工程包_v0.1_完整包.zip" download>下載完整封包 (57.2 KB)</a>
-    <p class="zip-note">sha256 12f2f2b50c3c271723a3854a350e647973282ff74886919a370f8bc2fabadc59</p>
+    <a class="zip-dl" href="../../packages/RH_W_09_工程包_v0.1_完整包.zip" download>下載完整封包 (88.1 KB)</a>
+    <p class="zip-note">sha256 61871e8c9c8fbdf9ca788a873140049c194386b816fde99dd718659f6ec0166b</p>
   </section>
 
   <footer class="sitefoot">
@@ -143,7 +145,7 @@ async function loadPre(elId, file) {
 async function loadLedger() {
   const el = document.getElementById("ledger-table");
   try {
-    const rows = amralParseCSV(await F("RH-W-07_subgaps_v0.1.csv"));
+    const rows = amralParseCSV(await F("RH-W-09_subgaps_v0.1.csv"));
     const [, ...body] = rows;
     const trs = body.map(([id, title, status, depends, next]) => `
       <tr>
@@ -161,19 +163,6 @@ async function loadLedger() {
         本包內 ${closed}/${body.length} 已關閉
         <div class="bar"><i style="width:${(closed / body.length) * 100}%"></i></div>
       </div>`;
-  } catch (e) {
-    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
-  }
-}
-
-async function loadActivationTable() {
-  const el = document.getElementById("csv-activation");
-  try {
-    const rows = amralParseCSV(await F("prime_power_activation_graph.csv"));
-    const [head, ...body] = rows;
-    const th = head.map((h) => `<th>${amralEsc(h)}</th>`).join("");
-    const trs = body.map((r) => `<tr>${r.map((v) => `<td>${amralEsc(v) || "—"}</td>`).join("")}</tr>`).join("");
-    el.innerHTML = `<table class="data"><thead><tr>${th}</tr></thead><tbody>${trs}</tbody></table>`;
   } catch (e) {
     el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
   }
@@ -204,11 +193,11 @@ async function loadFiles() {
   }
 }
 
-loadDoc("doc01-body", "01_RH-W-07_多素數支撐腔室編譯器_v0.1.md");
-loadDoc("doc02-body", "02_RH-W-07_證書架構與GAP更新_v0.1.md");
-loadPre("validation-out", "VALIDATION.txt");
+loadDoc("doc01-body", "01_RH-W-09_自適應腔室延拓_v0.1.md");
+loadDoc("doc02-body", "02_RH-W-09_十億分之一正裕度證書_v0.1.md");
+loadDoc("doc03-body", "03_RH-W-09_精度升級與信任邊界_v0.1.md");
+loadPre("validation-out", "EXACT_VERIFY.txt");
 loadLedger();
-loadActivationTable();
 loadFiles();
 </script>
 </body>

@@ -1,0 +1,12 @@
+id,title,status,depends_on,next_action
+RH-W-09-A,局部座標延拓政策,CLOSED_FOR_ONE_DETERMINISTIC_POLICY,RH-W-08,擴充為多起點與信賴域方法
+RH-W-09-B,prime-power 活化邊界追蹤,CLOSED_FOR_TRANSLATED_BSPLINE_FAMILY,RH-W-09-A,建立邊界法向局部模型
+RH-W-09-C,十五維近臨界候選,CLOSED_AS_NUMERICAL_CANDIDATE,RH-W-09-A,保存路徑與嚴格重建
+RH-W-09-D,Euler gamma 高解析區間,CLOSED_UNDER_BINET_REMAINDER,RH-W-08,形式化 Binet 餘項
+RH-W-09-E,阿基米德冪次尾解析度,CLOSED_FOR_RATIONAL_CONTINUATION_TO_20000,RH-W-08,研究 Euler-Maclaurin 閉式尾界
+RH-W-09-F,十五維真實 Weil 區間矩陣,CLOSED,RH-W-09-D|RH-W-09-E,擴充到邊界兩側
+RH-W-09-G,廣義正裕度 delta=1e-9,CLOSED,RH-W-09-F,追蹤更低模態
+RH-W-09-H,全域腔室最小值,OPEN,RH-W-09-A,多起點與維度延拓
+RH-W-09-I,prime-3 邊界穿越定律,OPEN,RH-W-09-B|RH-W-09-G,計算單側導數與新增矩陣塊
+RH-W-09-J,負證人,NOT_FOUND,RH-W-09-H,只接受 exact negative certificate
+RH-W-09-K,形式化後端,OPEN,RH-W-09-D|RH-W-09-E|RH-W-09-G,Lean/Isabelle 原型
