@@ -1,0 +1,103 @@
+{
+  "id": "rp-gplm",
+  "schema_version": "0.2",
+  "type": "ai_native_research_lineage",
+  "title": "GPLM 萬能容器嚴格重建",
+  "title_en": "GPLM Universal Container Rigorous Rebuild",
+  "short_title": "GPLM",
+  "status": "completed",
+  "open_ended": false,
+  "started_at": "2026-07-28",
+  "completed_at": "2026-07-28",
+  "reference_method": "2025年兩篇探索稿（幾何比例極限法、萬能容器公理化簡化）作為基礎，2026年以可證明、可形式化、可計算重放的方式重建為兩篇新版本，第三篇（嚴格重建總審計）審計並統整前兩篇的修正與驗證狀態。",
+  "canonical_route": "/ai/programs/gplm/",
+  "visibility": "public",
+  "languages": [
+    "zh-Hant"
+  ],
+  "agency": {
+    "initiative": "human",
+    "primary_authorship": "collaborative",
+    "research_direction": "negotiated",
+    "continuation_control": "human"
+  },
+  "contributors": [
+    {
+      "name": "Neo.K",
+      "type": "human",
+      "roles": [
+        "problem_proposer",
+        "continuation_decider",
+        "curator",
+        "co_author"
+      ]
+    },
+    {
+      "name": "Aletheia（GPT）",
+      "type": "ai",
+      "model": "Aletheia（GPT）",
+      "roles": [
+        "co_author",
+        "formalizer"
+      ]
+    }
+  ],
+  "foundation_artifacts": [
+    {
+      "id": "lm-000473",
+      "title": "幾何比例極限法：從萬能容器到跨領域優化的統一理論框架"
+    },
+    {
+      "id": "lm-000927",
+      "title": "萬能容器問題的公理化簡化：從優化問題到普適幾何常數"
+    }
+  ],
+  "applied_artifacts": [],
+  "iterations": [
+    {
+      "sequence": 1,
+      "id": "lm-001884",
+      "title": "01_幾何比例極限法的非公理化重建_v1.0",
+      "topic": "幾何比例極限法：嚴格重建",
+      "iteration_type": "foundation",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 2,
+      "id": "lm-001885",
+      "title": "02_萬能曲線的圓形容器定理_v1.0",
+      "topic": "萬能曲線圓形容器定理：嚴格重建",
+      "iteration_type": "graph_expansion",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 3,
+      "id": "lm-001883",
+      "title": "00_嚴格重建總審計",
+      "topic": "總審計：系列收束",
+      "iteration_type": "synthesis",
+      "is_checkpoint": true
+    }
+  ],
+  "current_state": {
+    "sequence": 3,
+    "artifact_id": "lm-001883",
+    "status": "completed",
+    "phase_status": "closed_by_design",
+    "declaration": "2025年兩篇探索稿的核心結論（形狀鎖定公理、尺度不變性定理）在2026年的嚴格重建中被審計、修正並以可計算驗證（SymPy符號恆等式、Python數值驗證）確認，Lean 4形式化草案已提供但尚未在本環境編譯。",
+    "stop_reason": "第三篇（00_嚴格重建總審計）明文審計前兩篇並收束整個重建工作，兩篇驗證腳本與Lean草案已作為附件證據，系列封閉。",
+    "unresolved_gaps": [
+      "Lean 4／Mathlib 形式化草案尚未在本環境編譯通過"
+    ],
+    "next_actions": [],
+    "handoff_required_tasks": [],
+    "stewardship": "foundation_artifacts為2025年原稿（已發表為lm-000473/lm-000927，本次比對確認除行末空白外內容一致，未重新發布）；iterations為2026年重建版本，含形式化（.lean）與計算驗證（.py）附件，見companions。"
+  },
+  "integrity": {
+    "files_seen": 5,
+    "files_imported": 5,
+    "missing_sequences": [],
+    "missing_note": "",
+    "duplicate_resolved": []
+  }
+}

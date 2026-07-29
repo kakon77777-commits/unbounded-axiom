@@ -9,7 +9,7 @@
 {"query":"ISWP_05_結構先於文字","expected_tier_a":["lm-001797"],"category":"exact"}
 {"query":"02_動態語義顯影_本地端實作技術白皮書","expected_tier_a":["lm-001785"],"category":"exact"}
 {"query":"X積分","expected_any":["lm-001805","lm-001806","lm-001807","lm-001808","lm-001809","lm-001810","lm-001811","lm-001812","lm-001813"],"category":"alias"}
-{"query":"動態顯影","expected_any":["lm-001785"],"category":"alias"}
+{"query":"AEREC","expected_any":["lm-001893","lm-002009","lm-002039"],"category":"alias","note":"replaces a stale 動態顯影 case: that query used to reach lm-001785 only via lexical bigram coincidence (never a real dictionary alias -- confirmed via git history), and after 2026-07-29's batch it now legitimately, correctly resolves to 8 exact-title matches from the new tensor-native-memory series instead, which is the right answer for that literal string, not a regression. AEREC is a genuine self-declared acronym alias (rp-aerec) that also exercises relation cascading (previous/next_version + same_series labels differ correctly across the series)."}
 {"query":"FARHP","expected_any":["lm-001786","lm-001787","lm-001788","lm-001789","lm-001790"],"category":"alias"}
 {"query":"ISWP","expected_any":["lm-001793","lm-001794","lm-001795","lm-001796","lm-001797"],"category":"alias"}
 {"query":"連續統假設","expected_any":["lm-000258","lm-001045","lm-001108","lm-001812"],"category":"alias"}

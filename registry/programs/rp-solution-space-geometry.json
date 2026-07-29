@@ -1,0 +1,143 @@
+{
+  "id": "rp-solution-space-geometry",
+  "schema_version": "0.2",
+  "type": "ai_native_research_lineage",
+  "title": "解空間幾何計算論：從PNP二分到概念積分快速通道",
+  "title_en": "Solution-Space Geometric Computation",
+  "short_title": "GCS",
+  "status": "completed",
+  "open_ended": false,
+  "started_at": "2026-07-28",
+  "completed_at": "2026-07-28",
+  "reference_method": "第一篇（總命題）提出以概念積分與幾何快速通道超越P/NP二分的框架，依序展開六算子框架、解空間本體論、概念積分填充、幾何快速通道、共同時間座標層、攤銷複雜度、強弱猜想分級，第九篇（計算實驗）統整為圖搜尋到概念積分智慧體的完整實驗設計。",
+  "canonical_route": "/ai/programs/solution-space-geometry/",
+  "visibility": "public",
+  "languages": [
+    "zh-Hant"
+  ],
+  "agency": {
+    "initiative": "human",
+    "primary_authorship": "collaborative",
+    "research_direction": "negotiated",
+    "continuation_control": "human"
+  },
+  "contributors": [
+    {
+      "name": "Neo.K",
+      "type": "human",
+      "roles": [
+        "problem_proposer",
+        "continuation_decider",
+        "curator",
+        "co_author"
+      ]
+    },
+    {
+      "name": "Aletheia（GPT）",
+      "type": "ai",
+      "model": "Aletheia（GPT）",
+      "roles": [
+        "co_author",
+        "formalizer"
+      ]
+    }
+  ],
+  "foundation_artifacts": [],
+  "applied_artifacts": [],
+  "iterations": [
+    {
+      "sequence": 1,
+      "id": "lm-002037",
+      "title": "超越P_NP二分_解空間幾何計算論的總命題_v0.1",
+      "topic": "總命題：開篇論題",
+      "iteration_type": "foundation",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 2,
+      "id": "lm-002030",
+      "title": "解不只是答案_六算子框架_v0.1",
+      "topic": "六算子框架",
+      "iteration_type": "graph_expansion",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 3,
+      "id": "lm-002032",
+      "title": "解空間本體論_問題狀態圖與任務等價終態_v0.1",
+      "topic": "解空間本體論",
+      "iteration_type": "graph_expansion",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 4,
+      "id": "lm-001999",
+      "title": "概念積分與解空間填充_智慧體如何長期建造快速通道_v0.1",
+      "topic": "概念積分與解空間填充",
+      "iteration_type": "graph_expansion",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 5,
+      "id": "lm-001971",
+      "title": "幾何快速通道_解空間折疊橋接投影與隧穿算子_v0.1",
+      "topic": "幾何快速通道",
+      "iteration_type": "graph_expansion",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 6,
+      "id": "lm-001930",
+      "title": "共同時間座標層_異質解題系統的時序對齊與跨時空轉換_v0.1",
+      "topic": "共同時間座標層（與Neo另一獨立專案CTCL『共同時間座標層』同名同構，但應用對象不同，見stewardship）",
+      "iteration_type": "graph_expansion",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 7,
+      "id": "lm-001982",
+      "title": "快速究竟有多快_建造穿越驗證與攤銷複雜度_v0.1",
+      "topic": "攤銷複雜度",
+      "iteration_type": "graph_expansion",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 8,
+      "id": "lm-002038",
+      "title": "通用通道還是自適應通道_幾何快速演算法的強弱猜想_v0.1",
+      "topic": "強弱猜想分級",
+      "iteration_type": "graph_expansion",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 9,
+      "id": "lm-002031",
+      "title": "解空間幾何快速通道的計算實驗_從圖搜尋到概念積分智慧體_v0.1",
+      "topic": "封頂：計算實驗",
+      "iteration_type": "synthesis",
+      "is_checkpoint": true
+    }
+  ],
+  "current_state": {
+    "sequence": 9,
+    "artifact_id": "lm-002031",
+    "status": "completed",
+    "phase_status": "closed_by_design",
+    "declaration": "P對NP的傳統二分只回答「有沒有捷徑」，本系列改問「捷徑如何被建造」——概念積分是智慧體長期建造解空間快速通道的機制。",
+    "stop_reason": "第九篇（計算實驗）統整全部八篇形式化裝置為圖搜尋到概念積分智慧體的實驗設計，系列自身宣告封頂。",
+    "unresolved_gaps": [
+      "本系列延續語料庫既有P-vs-NP相關約70篇既有論文（如《動態速率理論2.0》《完全NP問題的終極計算重構》），為承接既有脈絡的新形式化裝置（九元解空間模型、六算子代數、隧穿算子鏈），非全新獨立主張——已檢查具體機制（六算子、隧穿算子、共同時間層）於既有語料庫零重複。",
+      "『概念積分』一詞在語料庫中已存在另一篇《概念積分：知識宇宙的生成擴張代數》，該篇以C*代數／K理論／Bratteli圖形式化，與本系列的圖／元組版本是完全不同的數學語域——同名異義，非重複，但可能造成讀者混淆，建議Neo後續評估是否需要消歧義。"
+    ],
+    "next_actions": [],
+    "handoff_required_tasks": [],
+    "stewardship": "第六篇『共同時間座標層』與Neo另一獨立上線專案CTCL（commoninstant.org 背後的同名白皮書）共享相同核心骨架（τᵢ: Tᵢ→T*局部時間映射至共同參照層），但應用對象不同（本篇是AI智慧體跨解題系統的抽象時間校準，非真實UTC/TAI/閏秒基礎設施），且本篇未引用既有CTCL白皮書——建議Neo決定是否需要加註消歧義或互相連結，本次發布保留原樣未強加連結。"
+  },
+  "integrity": {
+    "files_seen": 9,
+    "files_imported": 9,
+    "missing_sequences": [],
+    "missing_note": "",
+    "duplicate_resolved": []
+  }
+}
