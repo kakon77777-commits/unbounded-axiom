@@ -1,0 +1,21 @@
+{
+  "mellin_convention": "integral_0_inf_f_x_x^s_dx_over_x",
+  "convolution": "(a*b)(x)=integral_0_inf a(y)b(x/y)dy/y",
+  "star_involution": "h*(x)=x^{-1} conjugate(h(x^{-1}))",
+  "correlation": "C_g_h=g*h*",
+  "zero_functional": "W[f]=symmetric_sum_rho fhat(rho)",
+  "trace_functional": "T[f]=fhat(0)-W[f]+fhat(1)",
+  "arithmetic_functional": "E_B0[f]=T[f]",
+  "endpoint_null_core": [
+    "ghat(0)=0",
+    "ghat(1)=0"
+  ],
+  "unified_form": "Q_B0(g)=-E_B0[C_g]=W[C_g]=<g,g>_W",
+  "forbidden_shortcuts": [
+    "drop endpoint terms without proof",
+    "omit complex conjugation",
+    "replace dy/y convolution measure by dy",
+    "infer global positivity from finitely many zeros",
+    "treat normalization equivalence as an RH proof"
+  ]
+}

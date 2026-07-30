@@ -1,0 +1,21 @@
+RH-W-20 FINAL ARCHIVE VALIDATION
+
+Working-directory verifier:
+- research_nodes=20/20
+- backend_records=16/16
+- adversarial_expected_rejections=16/16
+- adversarial_expected_survivals=1/1
+- offline_round_packages=19/19
+- status=BATCH01_RELEASE_VERIFIED
+- RH_CLAIM=False
+
+Final archive procedure:
+1. zip archive constructed
+2. unzip -t: no errors
+3. archive extracted to a fresh directory
+4. python verify_batch01_release.py: PASS
+
+Known preserved states:
+- RH-W-06 = LEGACY_INCOMPLETE
+- RH-W-14 = SUPERSEDED_RECERTIFIED
+- external authenticity = NOT_PROVIDED

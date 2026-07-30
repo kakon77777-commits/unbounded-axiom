@@ -1,0 +1,20 @@
+{
+  "schema": "RH-BATCH01-RELEASE-MANIFEST-v0.1",
+  "release_id": "RH-BATCH-01-CASE-0001-v0.1",
+  "date": "2026-07-24",
+  "rounds": "RH-W-01..RH-W-20",
+  "node_count": 20,
+  "platform_case": "platform_case_0001/case_manifest.json",
+  "backend": "backend_v0.2/rh_certificate_manifest_v0.2.json",
+  "verifier": "verify_batch01_release.py",
+  "status": "BATCH01_COMPLETE",
+  "claim_firewall": {
+    "RH_CLAIM": false,
+    "allowed_conclusion": "FINITE_BATCH_CONSOLIDATION_AND_PLATFORM_RELEASE_ONLY"
+  },
+  "known_exceptions": {
+    "RH-W-06": "LEGACY_INCOMPLETE",
+    "RH-W-14": "SUPERSEDED_RECERTIFIED"
+  },
+  "external_authenticity": "NOT_PROVIDED"
+}

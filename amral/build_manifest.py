@@ -50,8 +50,13 @@ CASE_RE = re.compile(r"^RH_CASE_(\d+)_(.+?)_v([\d.]+)\.zip$")
 PROTOTYPE_RE = re.compile(r"^RH_(.+)_v([\d.]+)\.zip$")
 # primary doc inside a package, e.g. "01_RH-W-17_腔室感知切分與事件薄層_v0.1.md"
 # or (older, simpler packages) "RH-W-01_測試函數空間固定_v0.1.md" with no "01_" prefix.
-W_TITLE_RE_PREFIXED = re.compile(r"^01_RH-W-\d+_(.+?)_v[\d.]+\.md$")
-W_TITLE_RE_BARE = re.compile(r"^RH-W-\d+_(.+?)_v[\d.]+\.md$")
+# The number is captured (not just \d+) because later packages (W-18+) bundle
+# archived copies of earlier rounds' docs under records/W<N>/ — without checking
+# the number matches this package's own, and without preferring top-level paths,
+# find_w_title() would happily pick up e.g. records/W15/01_RH-W-15_..._v0.1.md's
+# title for the W-18 package itself.
+W_TITLE_RE_PREFIXED = re.compile(r"^01_RH-W-(\d+)_(.+?)_v[\d.]+\.md$")
+W_TITLE_RE_BARE = re.compile(r"^RH-W-(\d+)_(.+?)_v[\d.]+\.md$")
 
 # Lexical stamp: tag a card with whichever keyword its own title uses first.
 # This quotes the package's own vocabulary rather than asserting a verdict.
@@ -88,13 +93,18 @@ def stamp_for(title):
     return None
 
 
-def find_w_title(names):
-    basenames = [n.rsplit("/", 1)[-1] for n in names]
-    for pattern in (W_TITLE_RE_PREFIXED, W_TITLE_RE_BARE):
-        for base in basenames:
-            m = pattern.match(base)
-            if m:
-                return m.group(1)
+def find_w_title(names, expected_number):
+    # Top-level entries (no "/") first, so a package's own doc always wins
+    # over an archived records/W<N>/... copy of some other round's doc.
+    top_level = [n for n in names if "/" not in n]
+    nested = [n for n in names if "/" in n]
+    for bucket in (top_level, nested):
+        basenames = [n.rsplit("/", 1)[-1] for n in bucket]
+        for pattern in (W_TITLE_RE_PREFIXED, W_TITLE_RE_BARE):
+            for base in basenames:
+                m = pattern.match(base)
+                if m and m.group(1) == expected_number:
+                    return m.group(2)
     return None
 
 
@@ -106,7 +116,6 @@ def build_entry(path):
         names = decoded_names(zf)
         file_count = sum(1 for n in names if not n.endswith("/"))
         generated_at = latest_zip_timestamp(zf)
-        w_title = find_w_title(names)
 
     m = ORIGIN_RE.match(name)
     if m:
@@ -125,6 +134,7 @@ def build_entry(path):
     m = W_RE.match(name)
     if m:
         number, version = m.group(1), m.group(2)
+        w_title = find_w_title(names, number)
         title = (w_title or f"W-{number}").replace("_", " ").strip()
         entry = {
             "series": "engineering", "series_label": "W 工程包",

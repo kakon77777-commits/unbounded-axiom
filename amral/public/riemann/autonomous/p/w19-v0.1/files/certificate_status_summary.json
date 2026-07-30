@@ -1,0 +1,24 @@
+{
+  "schema": "RH-W-19-certificate-status-summary-v0.1",
+  "round": "RH-W-19",
+  "batch_progress": "19/20",
+  "backend_schema": "RH-CERT-BACKEND-MANIFEST-v0.2",
+  "record_count": 16,
+  "status_counts": {
+    "PROTOCOL_ONLY": 1,
+    "VERIFIED": 13,
+    "LEGACY_INCOMPLETE": 1,
+    "SUPERSEDED_RECERTIFIED": 1
+  },
+  "full_replay": "16/16",
+  "expected_rejections": "16/16",
+  "expected_survivals": "1/1",
+  "known_external_trust_gap": "TOKEN_ONLY_COLLUDING_VERIFIER",
+  "legacy_incomplete": [
+    "RH-W-06"
+  ],
+  "superseded_recertified": [
+    "RH-W-14"
+  ],
+  "RH_CLAIM": false
+}

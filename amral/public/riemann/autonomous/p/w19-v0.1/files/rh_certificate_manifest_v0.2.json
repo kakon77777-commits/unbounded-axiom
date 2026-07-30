@@ -1,0 +1,403 @@
+{
+  "schema": "RH-CERT-BACKEND-MANIFEST-v0.2",
+  "batch": "RH Engineering Relay — Batch 01",
+  "round": "RH-W-19",
+  "date": "2026-07-24",
+  "claim_firewall": {
+    "RH_CLAIM": false,
+    "allowed_global_conclusion": "FINITE_CERTIFICATE_AND_ADVERSARIAL_AUDIT_ONLY"
+  },
+  "trust_model": {
+    "internal_integrity": "SHA-256 allowlist plus unindexed security-file rejection",
+    "semantic_replay": "native verifier in isolated temporary directory",
+    "dependency_graph": "acyclic directed graph required",
+    "external_authenticity": "NOT_PROVIDED; requires signed release, reproducible build, or independent mirror",
+    "colluding_generator_and_verifier": "NOT_DETECTABLE_INSIDE_THE_SAME_SELF_AUTHENTICATED_PACKAGE"
+  },
+  "status_vocabulary": {
+    "VERIFIED": "complete packaged verifier replayed",
+    "VERIFIED_WITH_LIMITATION": "checks are valid but do not reconstruct every historical input",
+    "PROTOCOL_ONLY": "verification protocol exists; no target witness is asserted",
+    "SUPERSEDED_RECERTIFIED": "old derivation replaced; conclusion re-established by a later audit",
+    "LEGACY_INCOMPLETE": "historical public artifact set is missing a required input",
+    "EXPECTED_SURVIVAL": "attack survives self-authenticated package checks and requires an external trust root"
+  },
+  "records": [
+    {
+      "id": "RH-W-04",
+      "kind": "PROTOCOL_ONLY",
+      "status": "PROTOCOL_ONLY",
+      "directory": "records/W04",
+      "command": [
+        "python",
+        "verify_protocol_selftest.py"
+      ],
+      "expected_token": "PROTOCOL_SELFTEST_OK_NO_RH_WITNESS_PRESENT",
+      "claim": {
+        "negative_witness_present": false,
+        "RH_CLAIM": false
+      },
+      "dependencies": [],
+      "notes": [],
+      "timeout_seconds": 90,
+      "input_digest": "cc04ad3ba5dde16c4f8e99ebe86e7bd3d30051584db4b886cd63a9dd7250b5b8"
+    },
+    {
+      "id": "RH-W-05",
+      "kind": "NUMERICAL_MATRIX",
+      "status": "VERIFIED",
+      "directory": "records/W05",
+      "command": [
+        "python",
+        "verify_matrix_certificate.py"
+      ],
+      "expected_token": "CERTIFICATE_OK",
+      "claim": {
+        "dimension": 2,
+        "finite_subspace_positive": true,
+        "RH_CLAIM": false
+      },
+      "dependencies": [],
+      "notes": [],
+      "timeout_seconds": 90,
+      "input_digest": "17add25356c1ece2df1283e8fbbcf7ad994992316ed313b07876e11cde8e8203"
+    },
+    {
+      "id": "RH-W-06",
+      "kind": "NUMERICAL_MATRIX",
+      "status": "LEGACY_INCOMPLETE",
+      "directory": "records/W06",
+      "command": [
+        "python",
+        "verify_w06_partial_audit.py"
+      ],
+      "expected_token": "LEGACY_INCOMPLETE_PARTIAL_AUDIT_ONLY",
+      "claim": {
+        "dimension": 5,
+        "partial_internal_audit": true,
+        "RH_CLAIM": false
+      },
+      "dependencies": [],
+      "notes": [
+        "missing weil_matrix_prime2_2x2_interval.json; no green full replay"
+      ],
+      "timeout_seconds": 90,
+      "input_digest": "49b14c313bd1240e578ba8caebddeca88920e3ab8f6a46327f0cbe9506786ee1"
+    },
+    {
+      "id": "RH-W-07",
+      "kind": "NUMERICAL_MATRIX",
+      "status": "VERIFIED",
+      "directory": "records/W07",
+      "command": [
+        "python",
+        "verify_multiprime_certificate.py"
+      ],
+      "expected_token": "CERTIFIED_POSITIVE_ON_THIS_9D_SUBSPACE",
+      "claim": {
+        "dimension": 9,
+        "active_prime_powers": [
+          2,
+          3,
+          4,
+          5,
+          7
+        ],
+        "RH_CLAIM": false
+      },
+      "dependencies": [],
+      "notes": [],
+      "timeout_seconds": 90,
+      "input_digest": "277b54327a1122d2b60bcaf5b42664c2e6f6c3e56ef0de8e14797f44ed132f6b"
+    },
+    {
+      "id": "RH-W-08",
+      "kind": "NUMERICAL_MATRIX",
+      "status": "VERIFIED",
+      "directory": "records/W08",
+      "command": [
+        "python",
+        "verify_refined_certificate.py"
+      ],
+      "expected_token": "CERTIFIED_POSITIVE_GENERALIZED_MARGIN",
+      "claim": {
+        "dimension": 13,
+        "lower_margin": "1e-5",
+        "RH_CLAIM": false
+      },
+      "dependencies": [],
+      "notes": [],
+      "timeout_seconds": 90,
+      "input_digest": "8aa242d59bbdb8ace3ac5420075ba494e1746e5812f2ceb647e580fc91a81263"
+    },
+    {
+      "id": "RH-W-09",
+      "kind": "NUMERICAL_MATRIX",
+      "status": "VERIFIED",
+      "directory": "records/W09",
+      "command": [
+        "python",
+        "verify_continuation_certificate.py"
+      ],
+      "expected_token": "CERTIFIED_POSITIVE_GENERALIZED_MARGIN",
+      "claim": {
+        "dimension": 15,
+        "lower_margin": "1e-9",
+        "RH_CLAIM": false
+      },
+      "dependencies": [],
+      "notes": [],
+      "timeout_seconds": 90,
+      "input_digest": "45b0aadc09af901cc5a1f1db371a05c22b7f459ce813754035cbd4f7358174af"
+    },
+    {
+      "id": "RH-W-10",
+      "kind": "STRUCTURAL_IDENTITY_AND_MATRIX",
+      "status": "VERIFIED",
+      "directory": "records/W10",
+      "command": [
+        "python",
+        "verify_w10_bundle.py"
+      ],
+      "expected_token": "EXACT_W10_BUNDLE_CERTIFICATE_OK",
+      "claim": {
+        "activation_order": 7,
+        "boundary_regularity": "C6_not_C7",
+        "post_boundary_dimension": 15,
+        "RH_CLAIM": false
+      },
+      "dependencies": [
+        "RH-W-09"
+      ],
+      "notes": [],
+      "timeout_seconds": 90,
+      "input_digest": "ebf079655f428d181b8d275a700216aff184c9f1726bb024b1269b7e2de5a87a"
+    },
+    {
+      "id": "RH-W-11",
+      "kind": "STRUCTURAL_IDENTITY",
+      "status": "VERIFIED",
+      "directory": "records/W11",
+      "command": [
+        "python",
+        "verify_kernel_sensitivity.py"
+      ],
+      "expected_token": "EXACT_INTERVAL_VERIFICATION_OK",
+      "claim": {
+        "activation_orders": [
+          1,
+          3,
+          5,
+          7,
+          9,
+          11
+        ],
+        "RH_CLAIM": false
+      },
+      "dependencies": [
+        "RH-W-10"
+      ],
+      "notes": [],
+      "timeout_seconds": 90,
+      "input_digest": "f3547d1523c2a54267c251646c7d7ce31d7be829e544bf64a31aae64510b2ddd"
+    },
+    {
+      "id": "RH-W-12",
+      "kind": "NUMERICAL_MATRIX",
+      "status": "VERIFIED",
+      "directory": "records/W12",
+      "command": [
+        "python",
+        "verify_mixed_dictionary.py"
+      ],
+      "expected_token": "EXACT_MIXED_DICTIONARY_CERTIFICATE_OK",
+      "claim": {
+        "dimension": 10,
+        "mixed_degrees": [
+          1,
+          3
+        ],
+        "cross_cancellation": true,
+        "RH_CLAIM": false
+      },
+      "dependencies": [
+        "RH-W-11"
+      ],
+      "notes": [],
+      "timeout_seconds": 90,
+      "input_digest": "8255b773d96d25667a4d4c96c87150628d3e97c2e76637d082af9e83bb23e928"
+    },
+    {
+      "id": "RH-W-13",
+      "kind": "NUMERICAL_MATRIX",
+      "status": "VERIFIED",
+      "directory": "records/W13",
+      "command": [
+        "python",
+        "verify_cross_regularity.py"
+      ],
+      "expected_token": "EXACT_CROSS_REGULARITY_CERTIFICATE_OK",
+      "claim": {
+        "dimension": 10,
+        "eigenvalue_bracket": [
+          "1e-8",
+          "5e-8"
+        ],
+        "RH_CLAIM": false
+      },
+      "dependencies": [
+        "RH-W-12"
+      ],
+      "notes": [],
+      "timeout_seconds": 90,
+      "input_digest": "2df0cf944dd9aad606cd3b834d09c5d1cc92daa82c5ee153ef426bed9884c5c4"
+    },
+    {
+      "id": "RH-W-14",
+      "kind": "PARAMETER_REGION",
+      "status": "SUPERSEDED_RECERTIFIED",
+      "directory": "records/W14",
+      "command": [
+        "python",
+        "verify_w14_supersession.py"
+      ],
+      "expected_token": "SUPERSEDED_RECERTIFIED_BY_W15",
+      "claim": {
+        "dimension": 10,
+        "parameter_dimension": 2,
+        "original_conclusion_preserved": true,
+        "RH_CLAIM": false
+      },
+      "dependencies": [
+        "RH-W-13",
+        "RH-W-15"
+      ],
+      "notes": [
+        "original first-derivative derivation omitted support-exterior archimedean tail; corrected by W15"
+      ],
+      "timeout_seconds": 90,
+      "input_digest": "c34b555e9dd57f03de6b835a4a7d652e83614995c4a97893ab4970a08bcacdd9"
+    },
+    {
+      "id": "RH-W-15",
+      "kind": "PARAMETER_REGION",
+      "status": "VERIFIED",
+      "directory": "records/W15",
+      "command": [
+        "python",
+        "verify_w15_backend_adapter.py"
+      ],
+      "expected_token": "EXACT_INTERVAL_TAYLOR_TUBE_CERTIFICATE_OK",
+      "claim": {
+        "dimension": 10,
+        "parameter_dimension": 2,
+        "eigenvalue_bracket": [
+          "1e-8",
+          "5e-8"
+        ],
+        "RH_CLAIM": false
+      },
+      "dependencies": [
+        "RH-W-13"
+      ],
+      "notes": [],
+      "timeout_seconds": 90,
+      "input_digest": "36c0ef6c76ec6523b3de697fd4ffac97b10c591f68713023b2dcd0d05b01baf3"
+    },
+    {
+      "id": "RH-W-16",
+      "kind": "PARAMETER_REGION",
+      "status": "VERIFIED",
+      "directory": "records/W16",
+      "command": [
+        "python",
+        "verify_three_parameter_tube.py"
+      ],
+      "expected_token": "EXACT_THREE_PARAMETER_TUBE_CERTIFICATE_OK",
+      "claim": {
+        "dimension": 10,
+        "parameter_dimension": 3,
+        "eigenvalue_bracket": [
+          "1e-8",
+          "5e-8"
+        ],
+        "RH_CLAIM": false
+      },
+      "dependencies": [
+        "RH-W-15"
+      ],
+      "notes": [],
+      "timeout_seconds": 90,
+      "input_digest": "4509b71919530e1e23ef720946b9ef31b8df558001a3a8d7b45a1ad8b3d75908"
+    },
+    {
+      "id": "RH-W-17",
+      "kind": "CHAMBER_COVER",
+      "status": "VERIFIED",
+      "directory": "records/W17",
+      "command": [
+        "python",
+        "verify_chamber_subdivision.py"
+      ],
+      "expected_token": "EXACT_CHAMBER_SUBDIVISION_CERTIFICATE_OK",
+      "claim": {
+        "dimension": 10,
+        "cells": 3,
+        "closed_domain_cover": true,
+        "RH_CLAIM": false
+      },
+      "dependencies": [
+        "RH-W-16"
+      ],
+      "notes": [],
+      "timeout_seconds": 90,
+      "input_digest": "65b5b2347ba9593d409ea1f0361f8422e6cfe6e1ce61552a331d7d6c498923f4"
+    },
+    {
+      "id": "RH-W-18",
+      "kind": "CERTIFICATE_BACKEND",
+      "status": "VERIFIED",
+      "directory": "records/W18",
+      "command": [
+        "python",
+        "verify_backend_selftest.py"
+      ],
+      "expected_token": "BACKEND_SCHEMA_SELFTEST_OK",
+      "claim": {
+        "backend_schema": "v0.1",
+        "RH_CLAIM": false
+      },
+      "dependencies": [
+        "RH-W-17"
+      ],
+      "notes": [
+        "structural self-test of the W18 backend contract"
+      ],
+      "timeout_seconds": 30,
+      "input_digest": "b79dc889fa7412ef07c3833cbcd8462a784e23b27f6818867a6cfb2a24f843ea"
+    },
+    {
+      "id": "RH-W-19",
+      "kind": "ADVERSARIAL_AUDIT",
+      "status": "VERIFIED",
+      "directory": "records/W19",
+      "command": [
+        "python",
+        "verify_adversarial_zoo.py"
+      ],
+      "expected_token": "ADVERSARIAL_CERTIFICATE_ZOO_OK",
+      "claim": {
+        "synthetic_error_classes": 6,
+        "RH_CLAIM": false
+      },
+      "dependencies": [
+        "RH-W-18"
+      ],
+      "notes": [
+        "verifies exact rejection of synthetic interval, tail, witness, coverage, and floating-point failure modes"
+      ],
+      "timeout_seconds": 60,
+      "input_digest": "95b494567f852080bd0e74aaadef29c07d923282fb018778ed136c4d9d9d11ad"
+    }
+  ]
+}

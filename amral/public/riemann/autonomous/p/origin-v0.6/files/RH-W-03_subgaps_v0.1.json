@@ -1,0 +1,82 @@
+[
+  {
+    "id": "RH-W-03-FULL-COMPACT-SEPARATION",
+    "parent": "RH-W-03",
+    "status": "CLOSED_BY_KNOWN_CRITERION",
+    "severity": "S4",
+    "statement": "If RH is false, a smooth compactly supported Weil negative witness exists",
+    "next_action": "encode the criterion as a permanent dependency"
+  },
+  {
+    "id": "RH-W-03-FINITE-RADIUS",
+    "parent": "RH-W-03",
+    "status": "CLOSED_BY_KNOWN_CRITERION",
+    "severity": "S3",
+    "statement": "A negative witness, if one exists, occurs in some finite logarithmic support window",
+    "next_action": "scan support radius through finite-dimensional subspaces"
+  },
+  {
+    "id": "RH-W-03-SPECTRAL-ISOLATION",
+    "parent": "RH-W-03",
+    "status": "REFERENCE_CLOSED",
+    "severity": "S3",
+    "statement": "A hypothetical nonreal zero can be isolated by compact-support Paley-Wiener interpolation while suppressing the remaining zero contributions",
+    "next_action": "turn the existence proof into a certified witness generator"
+  },
+  {
+    "id": "RH-W-03-ENDPOINT-CORRECTION",
+    "parent": "RH-W-03",
+    "status": "CLOSED",
+    "severity": "S2",
+    "statement": "The full compact quadratic form equals two endpoint terms minus the B0 arithmetic side",
+    "next_action": "implement endpoint-corrected arithmetic matrices"
+  },
+  {
+    "id": "RH-W-03-CORE-SPLIT",
+    "parent": "RH-W-03",
+    "status": "CLOSED",
+    "severity": "S2",
+    "statement": "Full compact core carries RH separation; the endpoint-null core is a simplifying subspace",
+    "next_action": "prevent future agents from conflating the two cores"
+  },
+  {
+    "id": "RH-W-03-C00-SEPARATION",
+    "parent": "RH-W-03",
+    "status": "OPEN",
+    "severity": "S3",
+    "statement": "It is not established here that the double-moment-zero compact core alone retains the full RH separation property",
+    "next_action": "construct a projection preserving negativity or exhibit an obstruction"
+  },
+  {
+    "id": "RH-W-03-CONSTRUCTIVE-WITNESS",
+    "parent": "RH-W-03",
+    "status": "OPEN_ENGINEERING",
+    "severity": "S3",
+    "statement": "Convert the off-axis interpolation proof into an explicit certified compact witness generator",
+    "next_action": "specify zero enclosures, interpolation basis, and tail bounds"
+  },
+  {
+    "id": "RH-W-03-SUPPORT-THRESHOLD",
+    "parent": "RH-W-03",
+    "status": "CONDITIONAL_OBJECT_DEFINED",
+    "severity": "S2",
+    "statement": "Under failure of RH, continuity and small-support positivity define a first zero-crossing support radius",
+    "next_action": "use only as an engineering scan parameter, not as an observed invariant"
+  },
+  {
+    "id": "RH-W-03-FINITE-CERTIFICATE",
+    "parent": "RH-W-03",
+    "status": "OPEN_ENGINEERING",
+    "severity": "S4",
+    "statement": "Build interval-certified finite-dimensional matrices whose negative Rayleigh quotient would rigorously refute RH",
+    "next_action": "start RH-W-04-GALERKIN-CERTIFICATE"
+  },
+  {
+    "id": "RH-W-03-POSITIVE-NONCERTIFICATE",
+    "parent": "RH-W-03",
+    "status": "LOCKED_WARNING",
+    "severity": "S4",
+    "statement": "Finite-dimensional nonnegativity is never accepted as a proof of RH",
+    "next_action": "enforce one-sided certificate semantics in all validators"
+  }
+]

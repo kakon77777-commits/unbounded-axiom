@@ -1,0 +1,16 @@
+id,parent,status,severity,statement,next_action
+RH-W-02-RANGE,RH-W-02,CLOSED,S1,D(D+1)C_c^infty equals the compact smooth double-moment-zero core,formalize range theorem
+RH-W-02-INVERSE,RH-W-02,CLOSED,S1,Explicit unique inverse exists and is support preserving,encode inverse operator
+RH-W-02-SUPPORT,RH-W-02,CLOSED,S1,Inverse preserves a fixed compact support interval,add support metadata
+RH-W-02-ATOM-DENSE,RH-W-02,CLOSED,S2,Finite translated/scaled bump atoms are dense after applying D(D+1),formalize mollifier/Riemann-sum proof
+RH-W-02-Q-LF,RH-W-02,CLOSED,S2,B0 arithmetic quadratic form is continuous on the compact smooth LF core,derive explicit seminorm bounds
+RH-W-02-TRANSFER-CORE,RH-W-02,CLOSED_CONDITIONAL,S2,Positivity on the dense atom dictionary transfers to the full compact core,depends on future atom positivity
+RH-W-02-L2,RH-W-02,REJECTED,S3,Raw L2 completion lacks point-evaluation control for the Weil functional,retain as failure witness
+RH-W-02-ADELTA-NORM,RH-W-02,REFERENCE_LOCKED,S2,Lagarias strip-uniform analytic space is locked as a candidate unconditional completion,audit bounded-strip membership and density
+RH-W-02-NORMALIZATION,RH-W-02,CLOSED_FOR_ENDPOINT_NULL_CORE,S3,B0 trace-negativity and covariance-positivity are the same form with opposite sign on the endpoint-null correlation core,use Q_B0=-E_B0=W as the sole interface
+RH-W-02-ENDPOINTS,RH-W-02,CLOSED,S2,Double Mellin moment constraints force both endpoint terms of every correlation C_g to vanish,enforce automatic endpoint checks
+RH-W-02-STAR,RH-W-02,CLOSED,S2,Hermitian involution and multiplicative convolution reproduce the Clay correlation integral,freeze conjugation and measure conventions
+RH-W-02-SIGN,RH-W-02,CLOSED,S2,Arithmetic negativity equals covariance positivity after defining Q_B0=-E_B0,reject sign-confused candidates
+RH-W-02-REGULARIZATION-BRIDGE,RH-W-02,OPEN,S3,Compact endpoint-null core has not been connected to singular Li covariance test functions requiring cutoff regularization,build a cutoff-compatible bridge or prove it unnecessary
+RH-W-02-GLOBAL-DENSITY,RH-W-02,OPEN,S3,Compact Mellin core density in a RH-equivalent strip analytic space is unproved here,"prove density, direct separation, or find obstruction"
+RH-W-02-RH-SUFFICIENCY,RH-W-02,BLOCKED,S4,Positivity on the compact core has not yet been shown sufficient for RH,attack direct off-line-zero separation

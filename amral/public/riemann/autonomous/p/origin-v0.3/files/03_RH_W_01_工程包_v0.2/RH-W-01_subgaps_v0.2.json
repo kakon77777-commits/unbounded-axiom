@@ -1,0 +1,74 @@
+[
+  {
+    "id": "RH-W-01-A",
+    "title": "函數類作用域證明",
+    "type": "G-DEF|G-DOM|G-CONV",
+    "severity": "S1",
+    "status_v0_2": "CLOSED_FOR_GBUMP",
+    "scope": "GBUMP only",
+    "obligation_remaining": "更廣函數類與形式化庫仍待處理"
+  },
+  {
+    "id": "RH-W-01-B",
+    "title": "零點和求和規則鎖定",
+    "type": "G-CONV|G-NORM",
+    "severity": "S1",
+    "status_v0_2": "CLOSED_FOR_GBUMP",
+    "scope": "GBUMP correlation family",
+    "obligation_remaining": "一般 W 中替代正規化仍需等價證明"
+  },
+  {
+    "id": "RH-W-01-C",
+    "title": "阿基米德積分在 x=1 的可積性",
+    "type": "G-INT|G-REG",
+    "severity": "S1",
+    "status_v0_2": "CLOSED_FOR_GBUMP",
+    "scope": "GBUMP correlation family",
+    "obligation_remaining": "其他低正則候選須逐族重查"
+  },
+  {
+    "id": "RH-W-01-D",
+    "title": "乘法相關函數閉合",
+    "type": "G-CLS|G-DOM",
+    "severity": "S2",
+    "status_v0_2": "CLOSED_FOR_GBUMP",
+    "scope": "GBUMP only",
+    "obligation_remaining": "尚未建立目標完成空間的閉包"
+  },
+  {
+    "id": "RH-W-01-E",
+    "title": "兩個消失矩的建構接口",
+    "type": "G-CON|G-PAR",
+    "severity": "S2",
+    "status_v0_2": "CLOSED_FOR_GBUMP",
+    "scope": "GBUMP only",
+    "obligation_remaining": "尚未證明此參數化足以捕捉負證人"
+  },
+  {
+    "id": "RH-W-01-F",
+    "title": "正負號與共軛一致性",
+    "type": "G-NORM|G-IMP",
+    "severity": "S1",
+    "status_v0_2": "PARTIAL_NUMERIC_CROSSCHECK",
+    "scope": "B0 plus Python implementation",
+    "obligation_remaining": "尚缺第二語言或形式系統交叉實作"
+  },
+  {
+    "id": "RH-W-01-G",
+    "title": "乘法 Mellin 與加法 Fourier 表示轉換",
+    "type": "G-MAP|G-NORM",
+    "severity": "S2",
+    "status_v0_2": "CLOSED_FOR_CCINF",
+    "scope": "C_c^infinity",
+    "obligation_remaining": "需在未來完成空間中延拓"
+  },
+  {
+    "id": "RH-W-01-H",
+    "title": "機器可判定合法性前置條件",
+    "type": "G-FORM|G-META",
+    "severity": "S2",
+    "status_v0_2": "PARTIAL_SCHEMA_VALIDATED",
+    "scope": "GBUMP metadata",
+    "obligation_remaining": "尚缺 proof-carrying metadata 與 Lean/Isabelle 檢查"
+  }
+]

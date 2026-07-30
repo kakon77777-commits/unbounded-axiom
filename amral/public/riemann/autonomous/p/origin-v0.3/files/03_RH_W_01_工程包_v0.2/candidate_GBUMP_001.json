@@ -1,0 +1,28 @@
+{
+  "candidate_id": "GBUMP-001",
+  "family": "g_theta = D(D+1) h_theta with h_theta a compact smooth log-bump",
+  "formula": "h_theta(x)=A eta((log(x)-mu)/sigma) exp(i tau log(x)); g_theta=D(D+1)h_theta",
+  "domain": "x in (0,infinity)",
+  "parameter_constraints": {
+    "A": "complex",
+    "mu": "real",
+    "sigma": "real and strictly positive",
+    "tau": "real"
+  },
+  "regularity_proof": "h_theta and g_theta are C_c^infinity(0,infinity); local differential operators preserve support",
+  "bound_at_zero": "g_theta is identically zero below exp(mu-sigma)",
+  "bound_at_infinity": "g_theta is identically zero above exp(mu+sigma)",
+  "vanishing_mellin_0": "M[g](s)=s(s-1)M[h](s), hence M[g](0)=0 exactly",
+  "vanishing_mellin_1": "M[g](s)=s(s-1)M[h](s), hence M[g](1)=0 exactly",
+  "correlation_exists": "both factors have compact support; the y-integral is over a finite interval",
+  "correlation_in_W": "f_g is C_c^infinity with support contained in [a/b,b/a]",
+  "sign_convention": "Q_B0(g)=-E_arith(f_g); RH criterion is Q_B0(g)>=0",
+  "numerical_checks": "validate_w01_v02.py; numerical checks are regressions, not proofs",
+  "unproved_items": [
+    "density of span(GBUMP) in a target Weil completion",
+    "continuity or closability of Q_B0 in the future target topology",
+    "compression of every negative witness into GBUMP",
+    "Weil positivity on GBUMP",
+    "Riemann hypothesis"
+  ]
+}

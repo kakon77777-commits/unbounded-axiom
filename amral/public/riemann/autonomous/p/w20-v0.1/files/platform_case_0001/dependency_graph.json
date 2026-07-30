@@ -1,0 +1,148 @@
+{
+  "schema": "RH-RESEARCH-GRAPH-v0.1",
+  "case_id": "CASE-0001-RH-WEIL-BATCH01",
+  "nodes": [
+    "RH-W-01",
+    "RH-W-02",
+    "RH-W-03",
+    "RH-W-04",
+    "RH-W-05",
+    "RH-W-06",
+    "RH-W-07",
+    "RH-W-08",
+    "RH-W-09",
+    "RH-W-10",
+    "RH-W-11",
+    "RH-W-12",
+    "RH-W-13",
+    "RH-W-14",
+    "RH-W-15",
+    "RH-W-16",
+    "RH-W-17",
+    "RH-W-18",
+    "RH-W-19",
+    "RH-W-20"
+  ],
+  "edges": [
+    {
+      "from": "RH-W-01",
+      "to": "RH-W-02",
+      "type": "RESEARCH_RELAY"
+    },
+    {
+      "from": "RH-W-02",
+      "to": "RH-W-03",
+      "type": "RESEARCH_RELAY"
+    },
+    {
+      "from": "RH-W-03",
+      "to": "RH-W-04",
+      "type": "RESEARCH_RELAY"
+    },
+    {
+      "from": "RH-W-04",
+      "to": "RH-W-05",
+      "type": "RESEARCH_RELAY"
+    },
+    {
+      "from": "RH-W-05",
+      "to": "RH-W-06",
+      "type": "RESEARCH_RELAY"
+    },
+    {
+      "from": "RH-W-06",
+      "to": "RH-W-07",
+      "type": "RESEARCH_RELAY"
+    },
+    {
+      "from": "RH-W-07",
+      "to": "RH-W-08",
+      "type": "RESEARCH_RELAY"
+    },
+    {
+      "from": "RH-W-08",
+      "to": "RH-W-09",
+      "type": "RESEARCH_RELAY"
+    },
+    {
+      "from": "RH-W-09",
+      "to": "RH-W-10",
+      "type": "RESEARCH_RELAY"
+    },
+    {
+      "from": "RH-W-10",
+      "to": "RH-W-11",
+      "type": "RESEARCH_RELAY"
+    },
+    {
+      "from": "RH-W-11",
+      "to": "RH-W-12",
+      "type": "RESEARCH_RELAY"
+    },
+    {
+      "from": "RH-W-12",
+      "to": "RH-W-13",
+      "type": "RESEARCH_RELAY"
+    },
+    {
+      "from": "RH-W-13",
+      "to": "RH-W-14",
+      "type": "RESEARCH_RELAY"
+    },
+    {
+      "from": "RH-W-14",
+      "to": "RH-W-15",
+      "type": "RESEARCH_RELAY"
+    },
+    {
+      "from": "RH-W-15",
+      "to": "RH-W-16",
+      "type": "RESEARCH_RELAY"
+    },
+    {
+      "from": "RH-W-16",
+      "to": "RH-W-17",
+      "type": "RESEARCH_RELAY"
+    },
+    {
+      "from": "RH-W-17",
+      "to": "RH-W-18",
+      "type": "RESEARCH_RELAY"
+    },
+    {
+      "from": "RH-W-18",
+      "to": "RH-W-19",
+      "type": "RESEARCH_RELAY"
+    },
+    {
+      "from": "RH-W-19",
+      "to": "RH-W-20",
+      "type": "RESEARCH_RELAY"
+    },
+    {
+      "from": "RH-W-15",
+      "to": "RH-W-14",
+      "type": "RECERTIFIES"
+    },
+    {
+      "from": "RH-W-13",
+      "to": "RH-W-14",
+      "type": "PARAMETER_REGION_EXTENDS"
+    },
+    {
+      "from": "RH-W-11",
+      "to": "RH-W-12",
+      "type": "DICTIONARY_DESIGN_INPUT"
+    },
+    {
+      "from": "RH-W-19",
+      "to": "RH-W-20",
+      "type": "TRUST_AUDIT_INPUT"
+    }
+  ],
+  "edge_semantics": {
+    "RESEARCH_RELAY": "chronological handoff, not logical implication",
+    "RECERTIFIES": "later node replaces a derivation while preserving a re-proved conclusion"
+  },
+  "rh_claim": false
+}

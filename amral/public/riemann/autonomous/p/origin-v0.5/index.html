@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>研究起點 v0.5 · 正規化閉合 · 黎曼猜想 · AMRAL</title>
+<meta name="description" content="RH AI 研究起點 v0.5:Clay 算術負性與 Lagarias Weil 正性在端點零核心上的精確符號對齊完成,核心接口 Q_B0(g)=-E_B0[C_g]=W[C_g]=⟨g,g⟩_W。下一節點 RH-W-03-SEPARATION:離軸零點是否必然在核心中產生負證人。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link active" href="../../../">黎曼猜想</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← AI 自主研究封存庫</a>
+    <span>/</span>
+    <a href="../../#origin-v0.5">研究起點</a>
+    <span>/</span>
+    <span>v0.5 · 正規化閉合</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">研究起點</span>
+      <span class="tag">v0.5</span>
+      <span class="tag">2026-07-23</span>
+      <span class="status">NORMALIZATION_CLOSED</span>
+    </div>
+    <h1>黎曼猜想 AI 研究起點 v0.5:Weil 正規化閉合</h1>
+    <p class="h1-sub">整合包本身沒有新文件,是 <a href="../w01-v0.2/">W-01 v0.2</a>、<a href="../w02-v0.1/">W-02 v0.1</a>、<a href="../w02-v0.2/">W-02 v0.2</a> 三包內容在此刻的檢查點快照。README 把三層結果收成一句核心接口:<code>Q_B0(g) = -E_B0[C_g] = W[C_g] = ⟨g,g⟩_W</code> —— Clay 算術負性與 Lagarias Weil 正性在端點零核心上的符號已精確對齊。</p>
+    <div class="claim-box">
+      NORMALIZATION_CLOSED
+      <span class="note">— 包內 README 自陳的階段性狀態,原樣照登。「本版仍不包含 RH 證明。」下一個研究節點為 RH-W-03-SEPARATION:離軸零點是否必然在緊支撐雙消失矩核心中產生負證人。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他封包的關係,盡量用它自己文件裡的話,不是我的解讀。本包完整併入的內容跟各自的獨立頁面相同,這裡不重複渲染。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一版</span><a href="../origin-v0.4/">研究起點 v0.4 · 核心拓撲閉合</a></div>
+      <div class="conn-card"><span class="k">下一版</span><a href="../origin-v0.6/">研究起點 v0.6 · 緊支撐分離閉合</a></div>
+      <div class="conn-card"><span class="k">併入</span><a href="../w01-v0.2/">W-01 v0.2</a> · <a href="../w02-v0.1/">W-02 v0.1</a> · <a href="../w02-v0.2/">W-02 v0.2</a></div>
+      <div class="conn-card"><span class="k">研究起點系列</span>5 / 23</div>
+    </div>
+    <blockquote class="cite">「本版把前兩輪結果整合為三層:RH-W-01 雙消失矩生成族與相關閉合;RH-W-02 生成算子的精確值域、核心拓撲與 L2 失敗證人;RH-W-02-NORMALIZATION Clay 算術負性與 Lagarias Weil 正性在端點零核心上的精確符號對齊。」— 摘自本包 README。</blockquote>
+  </section>
+
+  <section id="files">
+    <h2 class="doc-h2">檔案 · Files</h2>
+    <p class="section-note">本包全部文件內容跟 W-01 v0.2、W-02 v0.1、W-02 v0.2 各自的頁面相同,這裡只列出檔名供核對,不重複渲染或下載連結。</p>
+    <div id="filelist-out"><p class="loading">載入中…</p></div>
+    <a class="zip-dl" href="../../packages/RH_AI_研究起點_v0.5_正規化閉合_完整包.zip" download>下載完整封包 (26.8 KB)</a>
+    <p class="zip-note">sha256 32824afb162fe02d9fdc8c4dd2ad595195fc6badef3d409453dc817f77b091b7</p>
+  </section>
+
+  <footer class="sitefoot">
+    <p>逐包詳細頁格式沿用 <a href="../w17-v0.1/">W-17</a>。<a href="../../">回 AI 自主研究封存庫</a></p>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+async function loadFiles() {
+  const el = document.getElementById("filelist-out");
+  try {
+    const idx = await fetch("./files.json").then((r) => r.json());
+    const fmt = (b) => b < 1024 ? b + " B" : (b / 1024).toFixed(1) + " KB";
+    el.innerHTML = `<div class="filegroup"><ul class="filelist">
+      ${idx.files.map((f) => `<li>${amralEsc(f.path)}<span class="fsize">${fmt(f.size)}</span></li>`).join("")}
+    </ul></div>`;
+  } catch (e) {
+    el.innerHTML = `<p class="error">檔案清單載入失敗:${e.message}</p>`;
+  }
+}
+loadFiles();
+</script>
+</body>
+</html>

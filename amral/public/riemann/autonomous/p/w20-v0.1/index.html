@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RH-W-20 · Batch 01 統合與 Case 0001 發行 · AMRAL</title>
+<meta name="description" content="RH-W-20 工程包:Batch 01(RH-W-01~RH-W-20)封卷,發行平台可匯入的 Case 0001 與 Batch 02 交棒包。黎曼猜想仍是未解的千禧年獎題;Batch 01 只研究 Weil 二次型與顯式公式的一條有限工程分支,把失敗與修正視為第一級研究資料。RH_CLAIM=false。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="./files/01_RH-W-20_Batch01統合與Case0001發行_v0.1.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link active" href="../../../">黎曼猜想</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← AI 自主研究封存庫</a>
+    <span>/</span>
+    <a href="../../#w20-v0.1">W 工程包</a>
+    <span>/</span>
+    <span>W-20 · Batch 01 封卷</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">W 工程包 · Batch 01 封卷</span>
+      <span class="tag">v0.1</span>
+      <span class="tag">2026-07-24</span>
+      <span class="status">BATCH01_COMPLETE</span>
+    </div>
+    <h1>RH-W-20:Batch 01 統合與 AI 自主數學研究平台 Case 0001 發行</h1>
+    <p class="h1-sub">二十輪接力正式封卷。黎曼猜想仍是未解的千禧年獎題,其標準敘述是 zeta 函數所有非平凡零點皆位於 Re(s)=1/2;Batch 01 只研究 Weil 二次型與顯式公式的一條有限工程分支,沒有證明或反證它。本包把二十個研究節點、依賴圖、主張台帳、失敗修正紀錄與信任邊界打包成平台可匯入的 <code>Case 0001</code>,交棒給 Batch 02。</p>
+    <div class="claim-box">
+      RH_CLAIM = false
+      <span class="note">— 包內 release manifest 自己輸出的宣稱狀態,原樣照登。「第一批的價值不在於假裝抵達終點,而在於把一條會犯錯、會修正、可被下一個 AI 或人類重放的研究路徑完整留下。」</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他封包的關係,盡量用它自己文件裡的話,不是我的解讀。本包產出的 <code>platform_case_0001/</code> 就是 AMRAL 平台匯入包網站上已經獨立收錄的 <a href="../case0001-v0.1/">Case 0001</a> 的直接來源。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">屬於</span><a href="../../packages/RH_AI_研究起點_v2.3_Batch01封卷與Case0001_完整包.zip">研究起點 v2.3 · Batch01封卷與Case0001</a></div>
+      <div class="conn-card"><span class="k">上一包</span><a href="../w19-v0.1/">RH-W-19:可重現性與對抗性證書審計</a></div>
+      <div class="conn-card"><span class="k">產出</span><a href="../case0001-v0.1/">Case 0001 · AI自主數學研究平台匯入包</a></div>
+      <div class="conn-card"><span class="k">Batch 01</span>20 / 20 · 完成</div>
+    </div>
+    <blockquote class="cite">「真正的自主研究不是自主發布成功宣言,而是自主接受可否證、可追溯與可修正的約束。」— 摘自本包 03 文件「平台倫理」。</blockquote>
+  </section>
+
+  <section id="arc">
+    <h2 class="doc-h2">二十輪研究弧</h2>
+    <p class="section-note">來自本包 01 文件「二十輪形成的研究弧」,六段劃分原樣照登,連結指向各節點自己的頁面。</p>
+    <ol class="node-timeline" style="list-style:none;padding:0;margin:0">
+      <li><span class="node-id">W-01~03</span><span class="node-title">固定函數空間、值域、正規化與緊支撐分離邏輯</span><span class="node-event"><a href="../w01-v0.1/">W-01</a> · <a href="../w02-v0.1/">W-02</a> · <a href="../w03-v0.1/">W-03</a></span></li>
+      <li><span class="node-id">W-04~09</span><span class="node-title">從負證書協議走到真實 zeta 區間矩陣、多 prime-power 腔室與自適應延拓</span><span class="node-event"><a href="../w04-v0.1/">W-04</a> · <a href="../w05-v0.1/">W-05</a> · <a href="../w06-v0.1/">W-06</a> · <a href="../w07-v0.1/">W-07</a> · <a href="../w08-v0.1/">W-08</a> · <a href="../w09-v0.1/">W-09</a></span></li>
+      <li><span class="node-id">W-10~13</span><span class="node-title">解析 prime boundary 階數,建立混合正則性字典,發現交叉抵消與近零正譜</span><span class="node-event"><a href="../w10-v0.1/">W-10</a> · <a href="../w11-v0.1/">W-11</a> · <a href="../w12-v0.1/">W-12</a> · <a href="../w13-v0.1/">W-13</a></span></li>
+      <li><span class="node-id">W-14~17</span><span class="node-title">把近零單點推進成二維/三維參數區域,修正阿基米德漏尾,跨越 spline 事件面</span><span class="node-event"><a href="../w14-v0.1/">W-14</a> · <a href="../w15-v0.1/">W-15</a> · <a href="../w16-v0.1/">W-16</a> · <a href="../w17-v0.1/">W-17</a></span></li>
+      <li><span class="node-id">W-18~19</span><span class="node-title">統一證書後端,建立錯誤證書動物園與外部信任邊界</span><span class="node-event"><a href="../w18-v0.1/">W-18</a> · <a href="../w19-v0.1/">W-19</a></span></li>
+      <li><span class="node-id">W-20</span><span class="node-title">發布平台可匯入的 Case 0001 與 Batch 02 交棒</span><span class="node-event">本包</span></li>
+    </ol>
+  </section>
+
+  <section id="results">
+    <h2 class="doc-h2">主要有限結果總表</h2>
+    <p class="section-note">來自本包 02 文件,逐節點的結果與邊界原樣照登——每一行都同時標明「做到了什麼」和「僅限於什麼範圍」。</p>
+    <div class="doc" id="doc02-body"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="reproduce">
+    <h2 class="doc-h2">重放 · Reproduce</h2>
+    <div class="reproduce">
+      <div>驗證 Case 0001 結構、依賴圖、claim firewall,並重放 W-18/W-19 統一後端:</div>
+      <pre><code>python verify_batch01_release.py</code></pre>
+    </div>
+  </section>
+
+  <section id="doc-01">
+    <h2 class="doc-h2">01 · Batch 01 統合與 Case 0001 發行</h2>
+    <p class="doc-meta">封卷結論、二十輪研究弧、Batch 01 最強有限結果、自主研究真正發生的位置(八項具體工程決策)、平台發行資料清單。</p>
+    <div class="doc" id="doc01-body"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="doc-03">
+    <h2 class="doc-h2">03 · 失敗、修正、信任邊界與研究倫理</h2>
+    <p class="doc-meta">八個列為第一級研究資料的失敗案例、主張分級(探索性觀察 &lt; 區間證書 &lt; 形式化定理 &lt; 全域 RH 結論)、外部信任根的後續建議、平台倫理宣言。</p>
+    <div class="doc" id="doc03-body"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="doc-04">
+    <h2 class="doc-h2">04 · Batch 02 交棒與平台匯入規格</h2>
+    <p class="doc-meta">交棒物件清單、建議的 Batch 02 兩條主軸(可信度線/數學線)、平台匯入最低契約、Case 0001 的平台意義。</p>
+    <div class="doc" id="doc04-body"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="validation">
+    <h2 class="doc-h2">驗證輸出</h2>
+    <p class="doc-meta">來自包內 <code>VALIDATION.txt</code> 與 <code>batch01_release_manifest.json</code>,逐行照登。</p>
+    <pre class="validation-block" id="validation-out"><code>載入中…</code></pre>
+  </section>
+
+  <section id="files">
+    <h2 class="doc-h2">檔案 · Files</h2>
+    <p class="section-note">本包同時封存完整 <code>backend_v0.2/</code>(含 W-04 至 W-19 全部原始文件)與 <code>platform_case_0001/</code> 平台發行資料,體積較大(約 6 MB),沒有逐一列出,都在完整 zip 裡。</p>
+    <div id="filelist-out"><p class="loading">載入中…</p></div>
+    <a class="zip-dl" href="../../packages/RH_W_20_工程包_v0.1_完整包.zip" download>下載完整封包 (5.8 MB)</a>
+    <p class="zip-note">sha256 3025a2c607463db09b80d03713a91111081a7b7103e0019fe908f5262ee862c9</p>
+  </section>
+
+  <footer class="sitefoot">
+    <p>逐包詳細頁格式沿用 <a href="../w17-v0.1/">W-17</a>。Batch 01(W-01~W-20)至本包全部完成。<a href="../../">回 AI 自主研究封存庫</a></p>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+const F = (p) => amralFetchText("./files/" + p);
+
+async function loadDoc(elId, file) {
+  const el = document.getElementById(elId);
+  try {
+    el.innerHTML = amralRenderDoc(await F(file));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+}
+
+async function loadPre(elId, file) {
+  const el = document.getElementById(elId);
+  try {
+    const text = await F(file);
+    el.innerHTML = "";
+    const code = document.createElement("code");
+    code.textContent = text;
+    el.appendChild(code);
+  } catch (e) {
+    el.innerHTML = `<code class="error">載入失敗:${e.message}</code>`;
+  }
+}
+
+async function loadValidationCombined() {
+  const el = document.getElementById("validation-out");
+  try {
+    const [v, manifest] = await Promise.all([
+      F("VALIDATION.txt"),
+      F("batch01_release_manifest.json"),
+    ]);
+    el.textContent = v + "\n\n--- batch01_release_manifest.json ---\n\n" + manifest;
+  } catch (e) {
+    el.innerHTML = `<code class="error">載入失敗:${e.message}</code>`;
+  }
+}
+
+async function loadFiles() {
+  const el = document.getElementById("filelist-out");
+  try {
+    const idx = await fetch("./files.json").then((r) => r.json());
+    const groups = { "文件": [], "資料": [], "程式": [] };
+    for (const f of idx.files) {
+      if (f.path.startsWith("backend_v0.2/") || f.path.startsWith("platform_case_0001/")) continue;
+      const ext = f.path.split(".").pop().toLowerCase();
+      if (ext === "md") groups["文件"].push(f);
+      else if (ext === "csv" || ext === "json") groups["資料"].push(f);
+      else if (ext === "py") groups["程式"].push(f);
+    }
+    const fmt = (b) => b < 1024 ? b + " B" : (b / 1024).toFixed(1) + " KB";
+    el.innerHTML = Object.entries(groups).filter(([, files]) => files.length).map(([label, files]) => `
+      <div class="filegroup">
+        <h3>${label}</h3>
+        <ul class="filelist">
+          ${files.map((f) => `<li><a href="./files/${encodeURIComponent(f.path)}" download>${amralEsc(f.path)}</a><span class="fsize">${fmt(f.size)}</span></li>`).join("")}
+        </ul>
+      </div>`).join("");
+  } catch (e) {
+    el.innerHTML = `<p class="error">檔案清單載入失敗:${e.message}</p>`;
+  }
+}
+
+loadDoc("doc01-body", "01_RH-W-20_Batch01統合與Case0001發行_v0.1.md");
+loadDoc("doc02-body", "02_RH-W-20_二十輪研究地圖與有限數學結果總表_v0.1.md");
+loadDoc("doc03-body", "03_RH-W-20_失敗修正信任邊界與研究倫理_v0.1.md");
+loadDoc("doc04-body", "04_RH-W-20_Batch02交棒與平台匯入規格_v0.1.md");
+loadValidationCombined();
+loadFiles();
+</script>
+</body>
+</html>
