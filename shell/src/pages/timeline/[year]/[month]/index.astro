@@ -1,0 +1,258 @@
+---
+import Base from '../../../../layouts/Base.astro';
+import { getTimeline, getPapers, getSummaries, type Paper, type TimelineDay } from '../../../../lib/engine';
+
+interface MonthProps {
+  year: number;
+  monthData: { month: string; count: number; human_ai_count: number; ai_autonomous_count: number; days: TimelineDay[] };
+}
+
+export function getStaticPaths() {
+  const timeline = getTimeline();
+  const paths: Array<{ params: { year: string; month: string }; props: MonthProps }> = [];
+  for (const y of timeline) {
+    for (const m of y.months) {
+      paths.push({
+        params: { year: String(y.year), month: m.month.slice(5, 7) },
+        props: { year: y.year, monthData: m },
+      });
+    }
+  }
+  return paths;
+}
+
+const { year, monthData } = Astro.props as MonthProps;
+const fullMonth = monthData.month; // 'YYYY-MM'
+
+// Same fallback rule as scripts/ai_layer.py's _day_bucket(): created missing, or its
+// YYYY-MM disagreeing with the paper's own (folder-authoritative) month, buckets to
+// '??' rather than showing a day number that would read as wrong under this heading.
+function dayBucket(p: Paper): string {
+  if (!p.created || !p.month || p.created.slice(0, 7) !== p.month) return '??';
+  return p.created.slice(8, 10);
+}
+
+const summaries = getSummaries();
+const monthPapers = getPapers().filter((p) => p.month === fullMonth);
+
+// Build-time consistency check (spec §9): this page's own grouping must reproduce
+// EXACTLY the counts scripts/ai_layer.py already computed and hard-gated at build
+// time — if these two independent computations ever disagree, that's a real bug,
+// not a display quirk, and the build should fail rather than ship a mismatch.
+if (monthPapers.length !== monthData.count) {
+  throw new Error(
+    `Timeline consistency: ${fullMonth} has ${monthPapers.length} papers via getPapers() ` +
+    `but ${monthData.count} in ai/timeline.json`
+  );
+}
+
+const byDay = new Map<string, Paper[]>();
+for (const p of monthPapers) {
+  const d = dayBucket(p);
+  if (!byDay.has(d)) byDay.set(d, []);
+  byDay.get(d)!.push(p);
+}
+for (const dc of monthData.days) {
+  const got = byDay.get(dc.day)?.length ?? 0;
+  if (got !== dc.count) {
+    throw new Error(`Timeline consistency: ${fullMonth} day ${dc.day} has ${got} papers via ` +
+      `getPapers() but ${dc.count} in ai/timeline.json`);
+  }
+}
+
+// Newest day first, '??' (unknown-day) last — same ordering rule as ai_layer.py's own
+// day list, so the two never present a differently-ordered view of the same data.
+const days = [...byDay.keys()].sort((a, b) => (a === '??' ? 1 : b === '??' ? -1 : b.localeCompare(a)));
+for (const d of days) byDay.get(d)!.sort((a, b) => b.id.localeCompare(a.id));
+const latestDay = days[0];
+
+const monthNum = parseInt(fullMonth.slice(5, 7), 10);
+const monthLabel = `${year} 年 ${monthNum} 月`;
+function dayLabel(d: string): string {
+  return d === '??' ? '日期不詳' : `${monthNum} 月 ${parseInt(d, 10)} 日`;
+}
+
+const authorLabel: Record<string, string> = { collaborative: '人機協力', ai_autonomous: 'AI 自主' };
+
+const ORIGIN = 'https://logic.evemisslab.com';
+const canonical = `${ORIGIN}/timeline/${year}/${fullMonth.slice(5, 7)}/`;
+const jsonld = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: `Logic Matrix｜${monthLabel}`,
+  url: canonical,
+  numberOfItems: monthData.count,
+  isPartOf: { '@type': 'WebSite', name: 'Logic Matrix', url: ORIGIN },
+};
+const itemListJsonld = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  numberOfItems: monthData.count,
+  itemListElement: monthPapers.map((p, i) => ({
+    '@type': 'ListItem', position: i + 1, url: `${ORIGIN}${p.canonical_url}`, name: p.title,
+  })),
+};
+---
+<Base title={`${monthLabel} — Timeline · Logic Matrix`} description={`${monthLabel}：共 ${monthData.count} 篇論文，依日期分組。`}>
+  <Fragment slot="head">
+    <link rel="canonical" href={canonical} />
+    <link rel="stylesheet" href="/semantic/semantic-filter.css" />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonld)} />
+    <script type="application/ld+json" set:html={JSON.stringify(itemListJsonld)} />
+  </Fragment>
+
+  <header class="hero">
+    <div class="wrap">
+      <a class="back" href="/timeline/">← Timeline</a>
+      <div class="eyebrow">Chronological archive</div>
+      <h1>{monthLabel}</h1>
+      <p class="lede">共 {monthData.count} 篇論文 · 人機協力 {monthData.human_ai_count} · AI 自主 {monthData.ai_autonomous_count}</p>
+    </div>
+  </header>
+
+  <div class="wrap" data-semantic-root>
+    <div class="semantic-box">
+      <div class="row">
+        <div class="semantic-input-wrap">
+          <svg class="semantic-input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input class="semantic-input" type="text" placeholder={`搜尋本月（${monthLabel}）— 標題、章節、關鍵詞…`} maxlength="80" autocomplete="off" spellcheck="false" aria-label={`搜尋 ${monthLabel} 的論文`} />
+          <button class="semantic-clear" type="button" aria-label="清除">×</button>
+        </div>
+        <button class="semantic-mode-btn" type="button" data-mode="reveal" aria-pressed="true">顯影</button>
+        <button class="semantic-mode-btn" type="button" data-mode="focus" aria-pressed="false">只看結果</button>
+        <button class="semantic-reset-btn" type="button">重設</button>
+      </div>
+      <div class="semantic-meta" aria-live="polite"></div>
+      <div class="semantic-expansions" aria-live="polite"></div>
+      <div class="semantic-banner" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <div class="wrap controls">
+    <div class="control-group" role="group" aria-label="依作者類型篩選">
+      <button type="button" data-filter-value="all" aria-pressed="true">全部</button>
+      <button type="button" data-filter-value="collaborative" aria-pressed="false">人機協力</button>
+      <button type="button" data-filter-value="ai_autonomous" aria-pressed="false">AI 自主</button>
+    </div>
+    <div class="control-group" role="group" aria-label="日期排序">
+      <button type="button" data-sort-value="newest" aria-pressed="true">最新優先</button>
+      <button type="button" data-sort-value="earliest" aria-pressed="false">最早優先</button>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="day-list">
+      {days.map((d) => (
+        <section class="section day-group" id={`day-${d}`} data-day={d}>
+          <details open={d === latestDay}>
+            <summary>
+              <h2 class="day-date">{dayLabel(d)}</h2>
+              <span class="day-count">{byDay.get(d)!.length} 篇</span>
+            </summary>
+            <div class="papers">
+              {byDay.get(d)!.map((p) => (
+                <a class="paper-row" href={`/p/${p.id}/`} data-doc-id={p.id} data-authorship={p.authorship}>
+                  <div class="prow-top">
+                    <span class="pid">{p.id}</span>
+                    <span class="pt">{p.title}</span>
+                    <span class="pmeta">{authorLabel[p.authorship] ?? p.authorship} · {p.created ?? p.month}</span>
+                  </div>
+                  {summaries[p.id] && <span class="psum">{summaries[p.id]}</span>}
+                </a>
+              ))}
+            </div>
+          </details>
+        </section>
+      ))}
+    </div>
+  </div>
+
+  <script src="/semantic/semantic-filter.js" defer></script>
+  <script>
+    (function () {
+      var filterBtns = document.querySelectorAll('[data-filter-value]');
+      filterBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          document.body.setAttribute('data-paper-filter', btn.getAttribute('data-filter-value') || 'all');
+          filterBtns.forEach(function (b) { b.setAttribute('aria-pressed', String(b === btn)); });
+        });
+      });
+      // Real DOM reorder, not a CSS-only flip — flex-direction:reverse would move rows
+      // visually while leaving reading/DOM order (and so screen readers, and find-in-page)
+      // pointed the wrong way, a WCAG 1.3.2 mismatch. '??' (date unknown) always sorts
+      // last regardless of direction — it isn't really "earliest" or "latest".
+      var dayList = document.querySelector('.day-list');
+      var sortBtns = document.querySelectorAll('[data-sort-value]');
+      function applySort(order) {
+        if (!dayList) return;
+        var groups = Array.prototype.slice.call(dayList.children);
+        groups.sort(function (a, b) {
+          var da = a.getAttribute('data-day'), db = b.getAttribute('data-day');
+          if (da === '??') return 1;
+          if (db === '??') return -1;
+          var na = parseInt(da, 10), nb = parseInt(db, 10);
+          return order === 'earliest' ? na - nb : nb - na;
+        });
+        groups.forEach(function (g) { dayList.appendChild(g); });
+      }
+      sortBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          applySort(btn.getAttribute('data-sort-value') || 'newest');
+          sortBtns.forEach(function (b) { b.setAttribute('aria-pressed', String(b === btn)); });
+        });
+      });
+    })();
+  </script>
+</Base>
+
+<style is:global>
+  body[data-paper-filter="collaborative"] .paper-row[data-authorship="ai_autonomous"] { display: none; }
+  body[data-paper-filter="ai_autonomous"] .paper-row[data-authorship="collaborative"] { display: none; }
+  /* A day whose every row was just filtered out shouldn't linger as an empty-looking
+     dead end showing a now-misleading total count — hide the whole group instead. */
+  body[data-paper-filter="collaborative"] .day-group:not(:has(.paper-row[data-authorship="collaborative"])) { display: none; }
+  body[data-paper-filter="ai_autonomous"] .day-group:not(:has(.paper-row[data-authorship="ai_autonomous"])) { display: none; }
+</style>
+
+<style>
+  [data-semantic-root] { padding-top: 0.4rem; }
+  .back { font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--paper-faint); }
+  .back:hover { color: var(--gold); }
+
+  .controls { display: flex; flex-wrap: wrap; gap: 1.6rem; margin-bottom: 1.8rem; }
+  .control-group { display: inline-flex; gap: 0.5rem; flex-wrap: wrap; }
+  .control-group button {
+    font: inherit; font-size: 0.78rem; font-family: var(--mono); color: var(--paper-dim);
+    background: transparent; border: 1px solid var(--line-strong); border-radius: 7px;
+    padding: 0.4rem 0.8rem; cursor: pointer;
+  }
+  .control-group button:hover { border-color: var(--gold-dim); }
+  .control-group button[aria-pressed="true"] { color: var(--ink); background: var(--gold); border-color: var(--gold); }
+
+  .day-list { display: flex; flex-direction: column; }
+
+  .day-group.section { padding: 0.3rem 0 1.6rem; border-bottom: 1px solid var(--line); }
+  .day-group:last-child { border-bottom: none; }
+  .day-group summary {
+    display: flex; align-items: baseline; gap: 0.9rem; cursor: pointer; list-style: none;
+    padding: 0.7rem 0.2rem; font-family: var(--serif);
+  }
+  .day-group summary::-webkit-details-marker { display: none; }
+  .day-group summary::before {
+    content: '▸'; display: inline-block; color: var(--paper-faint); font-size: 0.8em;
+    transition: transform .15s; width: 1em;
+  }
+  .day-group details[open] summary::before { transform: rotate(90deg); }
+  .day-date { font-size: 1.15rem; color: var(--paper); }
+  .day-count { font-family: var(--mono); font-size: 0.78rem; color: var(--paper-faint); }
+
+  .paper-row { display: block; padding: 1.05rem 0.4rem; border-top: 1px solid var(--line); }
+  .paper-row:first-child { border-top: none; }
+  .prow-top { display: grid; grid-template-columns: 8.5rem 1fr auto; gap: 1.3rem; align-items: baseline; }
+  .psum { display: block; margin-top: 0.4rem; font-size: 0.86rem; line-height: 1.6; color: var(--paper-faint); }
+
+  @media (max-width: 640px) {
+    .prow-top { grid-template-columns: 1fr; gap: 0.25rem; }
+    .pmeta { white-space: normal; }
+  }
+</style>

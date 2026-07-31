@@ -54,7 +54,7 @@ const monthCount = timeline.reduce((a, y) => a + y.months.length, 0);
             <div class="year-h"><span class="y">{y.year}</span><span class="eyebrow">{y.count} papers</span></div>
             <div class="months">
               {y.months.map((m) => (
-                <a class="month-pill" href={`/timeline/#${m.month}`}><span>{m.month}</span><span class="c">{m.count}</span></a>
+                <a class="month-pill" href={`/timeline/${y.year}/${m.month.slice(5, 7)}/`}><span>{m.month}</span><span class="c">{m.count}</span></a>
               ))}
             </div>
           </div>

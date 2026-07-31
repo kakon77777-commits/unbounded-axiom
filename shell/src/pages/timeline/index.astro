@@ -1,0 +1,92 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getTimeline, getCorpus } from '../../lib/engine';
+
+const timeline = getTimeline(); // ai_layer.py emits years ascending
+const years = [...timeline].sort((a, b) => b.year - a.year); // newest first for display
+const corpus = getCorpus();
+
+function monthLabel(m: string): string {
+  const [y, mm] = m.split('-');
+  return `${y} 年 ${parseInt(mm, 10)} 月`;
+}
+
+const monthCount = years.reduce((n, y) => n + y.months.length, 0);
+const monthsDesc = years.flatMap((y) => [...y.months].sort((a, b) => b.month.localeCompare(a.month)));
+const latestMonth = monthsDesc[0];
+const latestMonthHref = latestMonth ? `/timeline/${latestMonth.month.slice(0, 4)}/${latestMonth.month.slice(5, 7)}/` : '/timeline/';
+---
+<Base title="Timeline — Logic Matrix" description="依年份與月份探索 Logic Matrix 的公開研究論文。">
+  <header class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Chronological archive</div>
+      <h1>Timeline</h1>
+      <p class="lede">依年份與月份探索 Logic Matrix 的公開研究論文 — 目前累積 {corpus.count} 篇，橫跨 {monthCount} 個月份。</p>
+      <div class="stats">
+        <div class="stat"><div class="n">{corpus.count}</div><div class="l">Papers</div></div>
+        <div class="stat"><div class="n">{years.length}</div><div class="l">Years</div></div>
+        <div class="stat"><div class="n">{monthCount}</div><div class="l">Months</div></div>
+      </div>
+    </div>
+  </header>
+
+  {years.map((y) => (
+    <section class="section">
+      <div class="wrap">
+        <div class="year-head">
+          <h2>{y.year}</h2>
+          <span class="eyebrow">{y.count} 篇 · 人機協力 {y.human_ai_count} · AI 自主 {y.ai_autonomous_count}</span>
+        </div>
+        <div class="month-grid">
+          {[...y.months].sort((a, b) => b.month.localeCompare(a.month)).map((m) => (
+            <a class="month-card" href={`/timeline/${y.year}/${m.month.slice(5, 7)}/`}>
+              <div class="mc-top">
+                <span class="mc-month">{monthLabel(m.month)}</span>
+                <span class="mc-count">{m.count} 篇</span>
+              </div>
+              {m.ai_autonomous_count > 0 && (
+                <div class="mc-sub">人機協力 {m.human_ai_count} · AI 自主 {m.ai_autonomous_count}</div>
+              )}
+              <div class="mc-cta">查看本月 →</div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <section class="section">
+    <div class="wrap">
+      <h2>其他入口</h2>
+      <div class="explore-links">
+        <a href="/">隨機探索</a>
+        <a href={latestMonthHref}>最新論文</a>
+        <a href="/ai/">AI Layer</a>
+        <a href="/search-quality/">搜尋品質</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .year-head { display: flex; align-items: baseline; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.6rem; }
+  .year-head h2 { font-family: var(--mono); font-size: clamp(1.5rem, 3.2vw, 2rem); color: var(--paper); font-weight: 600; }
+
+  .month-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(14.5rem, 1fr)); gap: 1rem; }
+  .month-card {
+    display: flex; flex-direction: column; gap: 0.5rem; min-height: 7.2rem;
+    padding: 1.3rem 1.4rem; border: 1px solid var(--line); border-radius: 0.7rem; background: var(--surface);
+  }
+  .month-card:hover { border-color: var(--gold-dim); background: color-mix(in srgb, var(--surface) 80%, var(--gold) 6%); }
+  .month-card:hover .mc-cta { color: var(--gold); }
+  .mc-top { display: flex; align-items: baseline; justify-content: space-between; gap: 0.6rem; }
+  .mc-month { font-family: var(--serif); font-size: 1.15rem; color: var(--paper); }
+  .mc-count { font-family: var(--mono); font-size: 0.82rem; color: var(--gold); white-space: nowrap; }
+  .mc-sub { font-family: var(--mono); font-size: 0.7rem; color: var(--paper-faint); letter-spacing: 0.02em; }
+  .mc-cta {
+    margin-top: auto; font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--paper-dim); transition: color .15s;
+  }
+
+  .explore-links { display: flex; flex-wrap: wrap; gap: 1.4rem; font-family: var(--mono); font-size: 0.82rem; }
+</style>

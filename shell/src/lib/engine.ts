@@ -29,6 +29,8 @@ export interface Paper {
   language: string;
   authorship: string;
   month: string | null;
+  created: string | null; // 'YYYY-MM-DD', git first-add date — day precision for Timeline grouping
+  date_confidence: string;
   canonical_url: string;
   raw_url: string;
   api_url: string;
@@ -114,12 +116,40 @@ export function getCompanions(): Record<string, Companion[]> {
   catch { return {}; }
 }
 
+export interface TimelineDay {
+  day: string; // '01'..'31', or '??' when created is missing/disagrees with the paper's own month
+  count: number;
+  human_ai_count: number;
+  ai_autonomous_count: number;
+}
 export function getTimeline(): Array<{
   year: number;
   count: number;
-  months: Array<{ month: string; count: number }>;
+  human_ai_count: number;
+  ai_autonomous_count: number;
+  months: Array<{
+    month: string;
+    count: number;
+    human_ai_count: number;
+    ai_autonomous_count: number;
+    days: TimelineDay[];
+  }>;
 }> {
   return readJSON('ai/timeline.json').timeline;
+}
+
+// Doc summaries computed once for the semantic-search layer (scripts/semantic_layer.py
+// _extract_summary()) — reused here for Timeline paper cards instead of re-deriving the
+// same one-line summary a second time from raw markdown.
+export function getSummaries(): Record<string, string> {
+  try {
+    const docs = readJSON('ai/semantic-index.min.json').documents as Array<{ i: string; s: string }>;
+    const out: Record<string, string> = {};
+    for (const d of docs) if (d.s) out[d.i] = d.s;
+    return out;
+  } catch {
+    return {};
+  }
 }
 
 export function getRaw(rawUrl: string): string {

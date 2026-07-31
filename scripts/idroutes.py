@@ -153,7 +153,8 @@ def write_api(registry) -> None:
     for item in registry["items"]:
         (apidir / f"{item['id']}.json").write_text(
             json.dumps(item, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    idx_fields = ("id", "title", "language", "authorship", "month", "canonical_url", "raw_url", "api_url")
+    idx_fields = ("id", "title", "language", "authorship", "month", "created", "date_confidence",
+                  "canonical_url", "raw_url", "api_url")
     index = {
         "version": "0.2",
         "count": len(registry["items"]),

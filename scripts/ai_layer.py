@@ -10,6 +10,7 @@ tools (tools.runtime_enabled = false).
 """
 import json
 import shutil
+import sys
 from collections import Counter, defaultdict
 from datetime import datetime, timezone
 
@@ -42,18 +43,105 @@ def _wj(path, obj):
     path.write_text(json.dumps(obj, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
+def _day_bucket(it):
+    """Day-of-month for Timeline grouping, from the git first-add date (§9 Human-Friendly
+    Timeline spec). '??' when the date is unavailable OR disagrees with the paper's own
+    (folder-authoritative) month — showing a day number that belongs to a different month
+    would read as silently wrong under that month's heading. Two real, confirmed cases as
+    of 2026-07-31 exercise this fallback: lm-001284 (no git-derivable created date) and
+    lm-000199 (created lands one day into the PRECEDING month)."""
+    created, month = it.get("created"), it.get("month")
+    if not created or not month or created[:7] != month:
+        return "??"
+    return created[8:10]
+
+
+def _auth_counts(counter):
+    return counter.get("collaborative", 0), counter.get("ai_autonomous", 0)
+
+
 def _timeline(items):
-    by_year = defaultdict(Counter)
+    by_year = defaultdict(Counter)          # year -> Counter(month)
+    year_auth = defaultdict(Counter)         # year -> Counter(authorship)
+    month_auth = defaultdict(Counter)        # month -> Counter(authorship)
+    by_month_day = defaultdict(Counter)      # month -> Counter(day)
+    day_auth = defaultdict(Counter)          # (month, day) -> Counter(authorship)
+    dated = 0
     for it in items:
-        if it.get("month"):
-            by_year[it["year"]][it["month"]] += 1
+        if not it.get("month"):
+            continue
+        dated += 1
+        y, m, auth = it["year"], it["month"], it.get("authorship", "collaborative")
+        by_year[y][m] += 1
+        year_auth[y][auth] += 1
+        month_auth[m][auth] += 1
+        d = _day_bucket(it)
+        by_month_day[m][d] += 1
+        day_auth[(m, d)][auth] += 1
+
     years = []
     for y in sorted(by_year):
-        months = [{"month": m, "count": c, "index": f"/ai/archive/{m}.json"}
-                  for m, c in sorted(by_year[y].items())]
+        months = []
+        for m, c in sorted(by_year[y].items()):
+            mh, ma = _auth_counts(month_auth[m])
+            days = [
+                {"day": d, "count": dc, **dict(zip(
+                    ("human_ai_count", "ai_autonomous_count"), _auth_counts(day_auth[(m, d)])))}
+                for d, dc in sorted(by_month_day[m].items(), key=lambda kv: (kv[0] == "??", kv[0]))
+            ]
+            months.append({"month": m, "count": c, "human_ai_count": mh, "ai_autonomous_count": ma,
+                           "index": f"/ai/archive/{m}.json", "days": days})
+        yh, ya = _auth_counts(year_auth[y])
         years.append({"year": y, "count": sum(by_year[y].values()),
+                      "human_ai_count": yh, "ai_autonomous_count": ya,
                       "index": f"/ai/archive/{y}.json", "months": months})
+
+    _validate_timeline_consistency(items, years, dated)
     return years
+
+
+def _validate_timeline_consistency(items, years, dated):
+    """Human-Friendly Timeline spec §9/§9.1: homepage/timeline/month/day/author-type
+    counts must all trace back to the SAME numbers. Recomputes independently from
+    `items` (not from the `years` structure just built) and hard-aborts the build —
+    rather than deploying a Timeline that quietly disagrees with the corpus count —
+    if anything drifts. The one case this actually guards against: a future paper
+    with no derivable month (registry.py's date_confidence='unknown' path) would be
+    silently excluded from every `years` bucket while still counting toward
+    len(items); that must fail the build, not ship a mismatched Timeline."""
+    total = len(items)
+    undated = total - dated
+    errors = []
+    if undated:
+        errors.append(f"{undated} item(s) have no month (date_confidence=unknown) and are "
+                       f"excluded from the Timeline — homepage total ({total}) would not equal "
+                       f"the Timeline sum ({dated}).")
+
+    month_sum = sum(m["count"] for y in years for m in y["months"])
+    if month_sum != dated:
+        errors.append(f"month-sum ({month_sum}) != dated corpus count ({dated})")
+
+    for y in years:
+        year_month_sum = sum(m["count"] for m in y["months"])
+        if year_month_sum != y["count"]:
+            errors.append(f"year {y['year']}: month-sum ({year_month_sum}) != year count ({y['count']})")
+        if y["human_ai_count"] + y["ai_autonomous_count"] != y["count"]:
+            errors.append(f"year {y['year']}: author-type sum != year count")
+        for m in y["months"]:
+            day_sum = sum(d["count"] for d in m["days"])
+            if day_sum != m["count"]:
+                errors.append(f"month {m['month']}: day-sum ({day_sum}) != month count ({m['count']})")
+            if m["human_ai_count"] + m["ai_autonomous_count"] != m["count"]:
+                errors.append(f"month {m['month']}: author-type sum != month count")
+            for d in m["days"]:
+                if d["human_ai_count"] + d["ai_autonomous_count"] != d["count"]:
+                    errors.append(f"month {m['month']} day {d['day']}: author-type sum != day count")
+
+    if errors:
+        print("[FATAL] Timeline consistency gate failed (spec §9.1 — aborting build, NOT deploying):")
+        for e in errors:
+            print(f"  - {e}")
+        sys.exit(1)
 
 
 def write_ai_layer(registry, entries, build_id=None):
