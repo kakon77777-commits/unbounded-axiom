@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第 2 輪 · 相位跳躍與手性修正 · Moser 蟲問題 · AMRAL</title>
+<meta name="description" content="Moser Skew Lab 第 2 輪:對偶接觸壓力帳本、完整相位掃描、拓撲導引三連桿搜尋。發現三連桿候選逼近 Wetzel 認證尺度,但精確複核後暴露一個假警報——方向保持尺度超過1不代表反駁 Wetzel 覆蓋,因為論文允許反射;完成手性修正。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="./files/reports/ROUND_02_REPORT.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../">AMRAL</a>
+  <a class="link" href="../../../methodology/">方法論</a>
+  <a class="link" href="../../../riemann/">黎曼猜想</a>
+  <a class="link active" href="../../">Moser 蟲問題</a>
+  <a class="link" href="../../../skew-field/">歪度場</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← Moser 蟲問題</a>
+    <span>/</span>
+    <a href="../../#round-v0.2.2">輪次</a>
+    <span>/</span>
+    <span>第 2 輪</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">第 2 輪</span>
+      <span class="tag">v0.2.2</span>
+      <span class="tag">2026-07-26</span>
+      <span class="status">CHIRALITY_CORRECTED</span>
+    </div>
+    <h1>相位跳躍、對偶接觸壓力帳本與拓撲導引曲線搜尋</h1>
+    <p class="h1-sub">256 個支撐方向、每條曲線 360 個完整旋轉相位。拓撲導引三連桿搜尋找到疑似逼近 Wetzel 認證尺度 1 的候選——但精確三法向複核揭露這是方向保持版本的假警報,論文允許反射,修正後的合同難度重新搜尋得到更穩健的結果。</p>
+    <div class="claim-box">
+      探索性計算;非形式證明;非普適覆蓋證書
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。本輪額外做了一次自我糾錯:先發現一個表面破紀錄的候選,再證明它不成立。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他封包的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一輪</span><a href="../round-v0.1/">第 1 輪 · 支撐歪度線性規劃</a></div>
+      <div class="conn-card"><span class="k">下一輪</span><a href="../round-v0.3/">第 3 輪 · 接觸帳本逆向生成</a></div>
+      <div class="conn-card"><span class="k">輪次進度</span>2 / 15</div>
+    </div>
+    <blockquote class="cite">「因為只要任一手性可以放入,該曲線就被合同覆蓋……所以 s₊&gt;1 並未反駁 Wetzel 覆蓋結果;鏡像分支仍可放入。」— 摘自本包手性修正報告,解釋一個表面破紀錄的候選為什麼不是真的反例。</blockquote>
+  </section>
+
+  <section id="doc-main">
+    <h2 class="doc-h2">第 2 輪核心內容</h2>
+    <p class="doc-meta">對偶接觸壓力帳本、完整相位掃描表、相位跳躍的結構分析、拓撲導引三連桿搜尋、最佳候選的接觸壓力帳本、本輪判斷與下一輪的接觸帳本逆向生成器設計。</p>
+    <div class="doc" id="doc-main-body"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="doc-correction">
+    <h2 class="doc-h2">手性修正 · Chirality Correction</h2>
+    <p class="doc-meta">發現初版三連桿搜尋只考慮方向保持版本,漏了 Wetzel 論文允許反射的慣例;定義合同難度 s_cong = min(s₊,s₋) 跟手性歪度 χ,重新搜尋得到更穩健的候選,並訂下「兩個理論分支必須永久分開」的規則。</p>
+    <div class="doc" id="doc-correction-body"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="doc-addendum">
+    <h2 class="doc-h2">精確三法向複核附錄</h2>
+    <p class="doc-meta">Wetzel 三角形是三個半空間交集,精確最小尺度可用頂點閉式公式算出,不需要角度離散近似。複核後發現網格近似確實低估了尺度,精確重搜得到一條三段折線逼近認證尺度 1。</p>
+    <div class="doc" id="doc-addendum-body"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="files">
+    <h2 class="doc-h2">檔案 · Files</h2>
+    <div id="filelist-out"><p class="loading">載入中…</p></div>
+    <a class="zip-dl" href="../../packages/Moser_Skew_Lab_v0.2.2.zip" download>下載完整封包 (975.1 KB)</a>
+    <p class="zip-note">sha256 4375eba4e285a87c400383914dadf8fe3a5ef8327583674f1434e409b1a2fd40</p>
+  </section>
+
+  <footer class="sitefoot">
+    <p>逐包詳細頁格式沿用<a href="../round-v0.1/">第 1 輪</a>。<a href="../../">回 Moser 蟲問題</a></p>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../assets/render.js?v=2"></script>
+<script>
+const F = (p) => amralFetchText("./files/" + p);
+
+async function loadDoc(elId, file) {
+  const el = document.getElementById(elId);
+  try {
+    el.innerHTML = amralRenderDoc(await F(file));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+}
+
+async function loadFiles() {
+  const el = document.getElementById("filelist-out");
+  try {
+    const idx = await fetch("./files.json").then((r) => r.json());
+    const groups = { "文件": [], "資料": [], "圖表": [], "程式": [] };
+    for (const f of idx.files) {
+      const ext = f.path.split(".").pop().toLowerCase();
+      if (ext === "md") groups["文件"].push(f);
+      else if (f.path.startsWith("figures/")) groups["圖表"].push(f);
+      else if (f.path.startsWith("data/")) groups["資料"].push(f);
+      else if (ext === "py") groups["程式"].push(f);
+    }
+    const fmt = (b) => b < 1024 ? b + " B" : (b / 1024).toFixed(1) + " KB";
+    el.innerHTML = Object.entries(groups).filter(([, files]) => files.length).map(([label, files]) => `
+      <div class="filegroup">
+        <h3>${label}</h3>
+        <ul class="filelist">
+          ${files.map((f) => `<li><a href="./files/${encodeURIComponent(f.path)}" download>${amralEsc(f.path)}</a><span class="fsize">${fmt(f.size)}</span></li>`).join("")}
+        </ul>
+      </div>`).join("");
+  } catch (e) {
+    el.innerHTML = `<p class="error">檔案清單載入失敗:${e.message}</p>`;
+  }
+}
+
+loadDoc("doc-main-body", "reports/ROUND_02_REPORT.md");
+loadDoc("doc-correction-body", "reports/ROUND_02_CHIRALITY_CORRECTION.md");
+loadDoc("doc-addendum-body", "reports/ROUND_02_EXACT_ADDENDUM.md");
+loadFiles();
+</script>
+</body>
+</html>

@@ -1,0 +1,377 @@
+{
+  "experiment": "Center-Generated Bridge Experiment Round 8",
+  "version": "0.8",
+  "date": "2026-07-28",
+  "parameters": {
+    "L": 1.0,
+    "rho": 0.04,
+    "tau": 3.141592653589793
+  },
+  "attack_candidate": {
+    "family": "Fourier-16 local-penetration residual from Round 7",
+    "coefficients": [
+      0.06481874243249497,
+      0.1904818273844645,
+      1.8800161903235233,
+      -0.14631802043764966,
+      -0.5178290829125313,
+      0.44369690937384154,
+      -0.6030252049908977,
+      0.3322185818081782,
+      0.5373431114145669,
+      0.5514743214873661,
+      0.3517346786599248,
+      -0.5610136456755448,
+      0.02779152350779976,
+      -0.03782582416523117,
+      -0.052391246326050564,
+      0.7719373092764348,
+      0.3581374058704057,
+      0.09327765441083453,
+      0.16010206180356445,
+      -0.27079698500837457,
+      0.09209597571037617,
+      0.15167789083820993,
+      0.0183807630818517,
+      -0.07891587249922374,
+      -0.21193939843229187,
+      -0.08635551295236932,
+      -0.06908619806226152,
+      0.003458220720969093,
+      0.1757341611939753,
+      -0.19444537318464727,
+      -0.014979696739632032,
+      0.2855744634744541
+    ],
+    "curvature_box": {
+      "boxes": 200000,
+      "derivative_bound": 354.2702568252685,
+      "log_error": 0.0008856756420631713,
+      "Zlo": 2.8229871479993696,
+      "Zhi": 2.8279920813479507,
+      "kmax_lo": 21.42656943993888,
+      "kmax_hi": 21.50261202111391,
+      "kmin_lo": 0.0072986925926776716,
+      "kmin_hi": 0.007324595545808198,
+      "radius_lo": 0.04650597792575511,
+      "rho_margin": 0.006505977925755108
+    },
+    "sampled_max_curvature": 21.464493569004933,
+    "sampled_min_curvature": 0.007311634534295097,
+    "sampled_min_radial_dot": 0.00019999979801667753,
+    "best_placement_against_round7": {
+      "parity": -1,
+      "phi": 3.172952517638663,
+      "translation": [
+        0.13286123504338426,
+        0.5718878548518509
+      ]
+    },
+    "outside_area_high": 0.007080929040941278,
+    "outside_fraction_of_tube": 0.08327903680713913,
+    "spatial_exposure_metrics": {
+      "outside_area": 0.007080869231592164,
+      "component_count": 4,
+      "component_areas": [
+        0.0059496562391345076,
+        0.0010746076656907198,
+        4.3599926486604104e-05,
+        1.3005400280332358e-05
+      ],
+      "largest_component_fraction": 0.8402437673314723,
+      "positive_deficit_arclength_fraction": 0.23135372925414918,
+      "deficit_runs": 4,
+      "max_clearance_deficit": 0.07357367003889967,
+      "mean_positive_deficit": 0.018700912258018666,
+      "deficit_entropy": 1.7911891518742118,
+      "effective_deficit_bins": 5.996579071477117,
+      "largest_bin_mass_fraction": 0.36151804592979625
+    },
+    "tube_audit": {
+      "polyline_length": 0.9999998678025885,
+      "simple": true,
+      "buffer_valid": true,
+      "buffer_area": 0.0850265244774029,
+      "expected_area": 0.08502654824574367,
+      "area_difference": -2.3768340767782448e-08
+    }
+  },
+  "container_response": {
+    "round7_saved_area": 0.20432036098795725,
+    "naive_added_raw_area": 0.21140072056715017,
+    "naive_added_filled_area": 0.21140072056715017,
+    "final_raw_union_area": 0.20893865353605884,
+    "final_hole_areas": [],
+    "final_simply_connected_area": 0.20893865353605884,
+    "attack_exposure": 0.007080929040941278,
+    "area_recovered_by_rearrangement": 0.002462067031091336,
+    "recovery_ratio": 0.34770395478557853,
+    "net_area_increase": 0.004618292548101588,
+    "relative_net_increase": 0.022603192974848908,
+    "net_attack_fraction": 0.6522156233170884,
+    "connected": true,
+    "valid": true
+  },
+  "cycle_comparison": {
+    "round5": {
+      "attack_exposure": 0.0066644584512298485,
+      "net_area_increase": 0.002818179860791886,
+      "recovery_ratio": 0.5771329536502964,
+      "net_fraction": 0.4228670463497036
+    },
+    "round6": {
+      "attack_exposure": 0.004934177791818109,
+      "net_area_increase": 0.004464130666875232,
+      "recovery_ratio": 0.09544338912390884,
+      "net_fraction": 0.9047364840151662
+    },
+    "round7": {
+      "attack_exposure": 0.006847625978345335,
+      "net_area_increase": 0.005593838790930533,
+      "recovery_ratio": 0.1830980826611888,
+      "net_fraction": 0.816901917338983
+    },
+    "round8": {
+      "attack_exposure": 0.007080929040941278,
+      "net_area_increase": 0.004618292548101588,
+      "recovery_ratio": 0.34770395478557853,
+      "net_fraction": 0.6522156233170884
+    },
+    "area_sequence": {
+      "A4": 0.1914442116693596,
+      "A5": 0.19426239153015148,
+      "A6": 0.19872652219702672,
+      "A7": 0.20432036098795725,
+      "A8": 0.20893865353605884
+    },
+    "increment_sequence": {
+      "DeltaA5": 0.002818179860791886,
+      "DeltaA6": 0.004464130666875232,
+      "DeltaA7": 0.005593838790930533,
+      "DeltaA8": 0.004618292548101588
+    }
+  },
+  "leave_one_out_high": {
+    "archimedean": {
+      "outside_area": 2.755752543015008e-07,
+      "container_without_area": 0.20893837796080256,
+      "covered": false
+    },
+    "constant": {
+      "outside_area": 0.0008789522969537327,
+      "container_without_area": 0.20805970123910314,
+      "covered": false
+    },
+    "curvature_saturated": {
+      "outside_area": 0.00017095966977190714,
+      "container_without_area": 0.20876769386628505,
+      "covered": false
+    },
+    "round1_finite_width": {
+      "outside_area": 0.0008288212468666046,
+      "container_without_area": 0.2081098322891901,
+      "covered": false
+    },
+    "round2_quadratic_exponential": {
+      "outside_area": 0.0003058908307100668,
+      "container_without_area": 0.20863276270534759,
+      "covered": false
+    },
+    "round3_double_harmonic": {
+      "outside_area": 0.007320161833697018,
+      "container_without_area": 0.20161849170236312,
+      "covered": false
+    },
+    "round4_fourier10": {
+      "outside_area": 0.008606249631898648,
+      "container_without_area": 0.20033240390415916,
+      "covered": false
+    },
+    "round5_fourier12": {
+      "outside_area": 0.0008792636966410293,
+      "container_without_area": 0.20805938983941605,
+      "covered": false
+    },
+    "round6_holdout": {
+      "outside_area": 0.002061809501190746,
+      "container_without_area": 0.20687684403486647,
+      "covered": false
+    },
+    "round7_fourier14": {
+      "outside_area": 0.005407020379339966,
+      "container_without_area": 0.20353163315671763,
+      "covered": false
+    },
+    "round8_fourier16": {
+      "outside_area": 0.0028237062153121987,
+      "container_without_area": 0.20611494732074612,
+      "covered": false
+    }
+  },
+  "active_threshold_1e-3": [
+    "round3_double_harmonic",
+    "round4_fourier10",
+    "round6_holdout",
+    "round7_fourier14",
+    "round8_fourier16"
+  ],
+  "dual_pool_audit": {
+    "fourier18_distributed_lineage": {
+      "valid_candidates": 24,
+      "sampled_max_global_outside": 0.004050690308001477,
+      "selected_index": 9
+    },
+    "fourier18_localized_lineage": {
+      "valid_candidates": 24,
+      "sampled_max_global_outside": 0.003625184186356987,
+      "selected_index": 1
+    },
+    "bspline_holdout": {
+      "valid_candidates": 20,
+      "candidates_with_local_upper_bound_above_1e-3": 9,
+      "refined_max_global_outside": 2.14198541138033e-05,
+      "conclusion": "No robust residual above 1e-3 among the refined candidates."
+    },
+    "search_warning": "Local inherited-pose screening did not preserve global placement ranking."
+  },
+  "round9_seed": {
+    "family": "Fourier-18 distributed-lineage mixed spatial challenger",
+    "coefficients": [
+      0.3651196339474563,
+      0.12792764667633003,
+      1.8112895719458846,
+      -0.1989224675951974,
+      -0.5840327235876656,
+      0.3334165892555623,
+      -0.3644007082421449,
+      0.27127392482958024,
+      0.7473852789568036,
+      0.5987824208813758,
+      0.15250690321184956,
+      -0.2983451335997709,
+      -0.21045984741687784,
+      0.1521295466974175,
+      0.022721037934165772,
+      0.6081436545398459,
+      0.49676251246585434,
+      -0.013869977523364233,
+      0.04761188172725786,
+      -0.3899654593175117,
+      0.03019408242618428,
+      0.003463054477472527,
+      -0.0722361050944939,
+      -0.052729427735812504,
+      0.10540508921697657,
+      -0.0839169283294809,
+      -0.2528595537099656,
+      0.20573900535015194,
+      -0.05313983103834467,
+      -0.017135503189946152,
+      0.014208390209889794,
+      -0.02536123721272316,
+      0.09034485615310307,
+      -0.024220342213730758,
+      -0.030432016443340457,
+      0.012761429047459522
+    ],
+    "curvature_box": {
+      "boxes": 200000,
+      "derivative_bound": 320.2206106674641,
+      "log_error": 0.0008005515266686603,
+      "Zlo": 2.75899313930393,
+      "Zhi": 2.763414109913739,
+      "kmax_lo": 20.321848458778838,
+      "kmax_hi": 20.387027508692192,
+      "kmin_lo": 0.004336751501902281,
+      "kmin_hi": 0.004350660932591021,
+      "radius_lo": 0.04905079956230211,
+      "rho_margin": 0.009050799562302106
+    },
+    "sampled_max_curvature": 20.354131085490867,
+    "sampled_min_curvature": 0.004343752694901859,
+    "sampled_min_radial_dot": 0.00019999973229937491,
+    "best_placement": {
+      "parity": 1,
+      "phi": -0.19780820831524865,
+      "translation": [
+        0.0895743202379536,
+        -0.02517057350753909
+      ]
+    },
+    "outside_area_high": 0.004050717098905142,
+    "outside_fraction_of_tube": 0.047640615578063476,
+    "spatial_exposure_metrics": {
+      "outside_area": 0.004050717098905142,
+      "component_count": 5,
+      "component_areas": [
+        0.0024392712238172774,
+        0.0012776983305302348,
+        0.00020295246123442444,
+        6.6819505896273e-05,
+        6.397557742693218e-05
+      ],
+      "largest_component_fraction": 0.6021825677425319,
+      "positive_deficit_arclength_fraction": 0.3645270945810838,
+      "deficit_runs": 5,
+      "max_clearance_deficit": 0.03141520940195851,
+      "mean_positive_deficit": 0.01105413420592927,
+      "deficit_entropy": 2.3194468617772293,
+      "effective_deficit_bins": 10.170047308069488,
+      "largest_bin_mass_fraction": 0.18959201411919582
+    },
+    "spectral_metrics": {
+      "modes": 18,
+      "amplitudes": [
+        0.3868821912133827,
+        1.822180029951505,
+        0.672503415762358,
+        0.45428781456233397,
+        0.9576665091554054,
+        0.33506443301241867,
+        0.25968586090331763,
+        0.6085679502914076,
+        0.49695610476971375,
+        0.39286123598839356,
+        0.03039202789997984,
+        0.08943403954070867,
+        0.13473041116649953,
+        0.3259854171966483,
+        0.055834282590147735,
+        0.029070099850473614,
+        0.09353511645513204,
+        0.03299941963339791
+      ],
+      "spectral_entropy": 1.6399906230750927,
+      "effective_modes": 5.155121172823918,
+      "high_mode_power_fraction": 0.04906690270131506,
+      "last_quarter_power_fraction": 0.01954120892778894,
+      "max_mode": 2
+    },
+    "tube_audit": {
+      "polyline_length": 0.9999998560239514,
+      "simple": true,
+      "buffer_valid": true,
+      "buffer_area": 0.08502658870439789,
+      "expected_area": 0.08502654824574367,
+      "area_difference": 4.0458654218533674e-08
+    }
+  },
+  "mode_transition": {
+    "round7_attack": "distributed four-leaf",
+    "round8_attack": "localized deep penetration",
+    "round9_seed": "mixed five-component attack",
+    "conclusion": "Spectral lineage and spatial exposure phenotype are not equivalent."
+  },
+  "convergence_diagnostics": {
+    "net_increments_monotone_decreasing": false,
+    "round9_seed_positive": true,
+    "conclusion": "No convergence: the Round 8 net increment remains substantial and both Fourier-18 lineages produce positive residual challengers."
+  },
+  "status": {
+    "global_curve_optimum": false,
+    "global_placement_certificate": false,
+    "global_nonconvex_container_optimum": false,
+    "formal_interval_curvature": false,
+    "new_kakeya_or_moser_bound": false
+  }
+}

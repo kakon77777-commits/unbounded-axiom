@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第 1 輪 · 四族普適支撐張力比較 · 歪度場 · AMRAL</title>
+<meta name="description" content="Center-Generated Bridge Experiment 第 1 輪:常曲率、阿基米德螺旋、接觸飽和平滑螺旋、有限寬度曲率層四族的普適支撐張力比較。發現最大曲率排序不是共同容器壓力排序——有限寬度曲率集中比局部接觸飽和更能產生普適支撐壓力。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="./files/reports/ROUND_01_REPORT.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../">AMRAL</a>
+  <a class="link" href="../../../methodology/">方法論</a>
+  <a class="link" href="../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../moser/">Moser 蟲問題</a>
+  <a class="link active" href="../../">歪度場</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← 歪度場</a>
+    <span>/</span>
+    <a href="../../#round-v0.1">實驗輪次</a>
+    <span>/</span>
+    <span>第 1 輪</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">第 1 輪</span>
+      <span class="tag">v0.1</span>
+      <span class="tag">2026-07-27</span>
+    </div>
+    <h1>常曲率、阿基米德、接觸飽和與有限寬度曲率層的普適支撐張力比較</h1>
+    <p class="h1-sub">固定 (L,ρ,τ)=(1, 0.04, π),四族曲線的無端帽法向帶總面積都相同(2ρL=0.08),所以比較改成等量異形曲線對共同凸容器造成的額外支撐張力。最大曲率排序不是共同容器壓力排序。</p>
+    <div class="claim-box">
+      有限族、凸容器、離散方向、有限預算搜尋
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。「不是全域證明,也不是新的掛谷或 Moser 界。」</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他封包的關係,盡量用它自己文件裡的話,不是我的解讀。本案例的理論基礎見<a href="../../papers/kakeya-moser-bridge/">從原始掛谷針到 Moser 蟲</a>。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">理論基礎</span><a href="../../papers/kakeya-moser-bridge/">從原始掛谷針到 Moser 蟲 v0.1</a></div>
+      <div class="conn-card"><span class="k">下一輪</span><a href="../round-v0.2/">第 2 輪 · 曲率飽和術語修正與雙骨架容器</a></div>
+      <div class="conn-card"><span class="k">實驗輪次進度</span>1 / 11</div>
+    </div>
+    <blockquote class="cite">「接觸飽和螺旋達到 max κ≈25,但只提供約 1.46% 的活動方向。有限寬度曲率層的最大曲率較低,卻主導超過一半方向……曲率的有限寬度分布與全域支撐配置,比單一最大曲率更重要。」— 摘自本包主文件第 6 節「第一個主要發現」。</blockquote>
+  </section>
+
+  <section id="doc-method">
+    <h2 class="doc-h2">實驗方法 · Method</h2>
+    <p class="doc-meta">固定參數 (L,ρ,τ)、四個曲線族的精確定義、共同凸容器代理、leave-one-out 支撐張力的定義。</p>
+    <div class="doc" id="doc-method-body"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="doc-main">
+    <h2 class="doc-h2">第 1 輪核心內容</h2>
+    <p class="doc-meta">四曲線族比較表、共同凸厚化容器面積、leave-one-out 支撐張力表、活動支撐方向分布、三個主要發現、對「量度守恆歪線纖維—萬有覆蓋張力理論」的回饋、誠實邊界、下一輪節點。</p>
+    <div class="doc" id="doc-main-body"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="files">
+    <h2 class="doc-h2">檔案 · Files</h2>
+    <div id="filelist-out"><p class="loading">載入中…</p></div>
+    <a class="zip-dl" href="../../packages/CenterGenerated_Bridge_Experiment_v0.1.zip" download>下載完整封包 (828.8 KB)</a>
+    <p class="zip-note">sha256 f73780ea247e8ebadf03e5139d7a2ffc2d847b95eeb20d67c602dd52b5398b20</p>
+  </section>
+
+  <footer class="sitefoot">
+    <p>逐包詳細頁格式沿用 Moser 蟲問題案例的既有樣板。<a href="../../">回歪度場</a></p>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../assets/render.js?v=2"></script>
+<script>
+const F = (p) => amralFetchText("./files/" + p);
+
+async function loadDoc(elId, file) {
+  const el = document.getElementById(elId);
+  try {
+    el.innerHTML = amralRenderDoc(await F(file));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+}
+
+async function loadFiles() {
+  const el = document.getElementById("filelist-out");
+  try {
+    const idx = await fetch("./files.json").then((r) => r.json());
+    const groups = { "文件": [], "資料": [], "圖表": [], "程式": [] };
+    for (const f of idx.files) {
+      const ext = f.path.split(".").pop().toLowerCase();
+      if (ext === "md") groups["文件"].push(f);
+      else if (f.path.startsWith("figures/")) groups["圖表"].push(f);
+      else if (f.path.startsWith("data/")) groups["資料"].push(f);
+      else if (ext === "py") groups["程式"].push(f);
+    }
+    const fmt = (b) => b < 1024 ? b + " B" : (b / 1024).toFixed(1) + " KB";
+    el.innerHTML = Object.entries(groups).filter(([, files]) => files.length).map(([label, files]) => `
+      <div class="filegroup">
+        <h3>${label}</h3>
+        <ul class="filelist">
+          ${files.map((f) => `<li><a href="./files/${encodeURIComponent(f.path)}" download>${amralEsc(f.path)}</a><span class="fsize">${fmt(f.size)}</span></li>`).join("")}
+        </ul>
+      </div>`).join("");
+  } catch (e) {
+    el.innerHTML = `<p class="error">檔案清單載入失敗:${e.message}</p>`;
+  }
+}
+
+loadDoc("doc-method-body", "reports/EXPERIMENT_METHOD.md");
+loadDoc("doc-main-body", "reports/ROUND_01_REPORT.md");
+loadFiles();
+</script>
+</body>
+</html>

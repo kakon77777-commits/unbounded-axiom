@@ -1,0 +1,171 @@
+{
+  "experiment": "Moser Skew Lab v0.5",
+  "status": "numerical contact-event reconstruction; no formal proof",
+  "triangle": {
+    "A": 0.5489319726576604,
+    "B": 0.9507780665420775,
+    "B_over_A": 1.7320508075688774
+  },
+  "event_solution": {
+    "parameters": {
+      "l1": 0.19431311615307248,
+      "l2": 0.1415930791195921,
+      "l3": 0.32818760945467085,
+      "beta_radians": 1.4082767308631334,
+      "delta_radians": 0.04759059497406796,
+      "alpha_radians": 1.4558673258372015,
+      "beta_degrees": 80.68831306493847,
+      "delta_degrees": 2.7267402365306013,
+      "alpha_degrees": 83.41505330146907
+    },
+    "event_phases_radians": [
+      0.1149290009576951,
+      0.16251959593176313,
+      2.0943951023931953,
+      4.71238898038469
+    ],
+    "event_phases_degrees": [
+      6.584946698530925,
+      9.31168693506153,
+      119.99999999999999,
+      270.0
+    ],
+    "common_scale": 0.9989037571325088,
+    "branch_values": [
+      0.9989037571325086,
+      0.9989037571325087,
+      0.9989037571325088,
+      0.9989037571325087
+    ],
+    "branch_spread": 2.220446049250313e-16,
+    "branch_pressures": [
+      0.027979394124321075,
+      0.02875008279347347,
+      0.7365401384664308,
+      0.20673038461577467
+    ],
+    "equation_residual_norm": 2.7774802003157474e-16,
+    "improvement_over_round4": 6.656150519646076e-09,
+    "distance_to_one": 0.001096242867491215
+  },
+  "contact_ledgers": [
+    {
+      "label": "B1",
+      "phase": 0.1149290009576951,
+      "phase_degrees": 6.584946698530925,
+      "scale": 0.9989037571325086,
+      "left_contact_vertices": [
+        0,
+        1
+      ],
+      "bottom_contact_vertices": [
+        0
+      ],
+      "hypotenuse_contact_vertices": [
+        3
+      ]
+    },
+    {
+      "label": "B2",
+      "phase": 0.16251959593176313,
+      "phase_degrees": 9.31168693506153,
+      "scale": 0.9989037571325087,
+      "left_contact_vertices": [
+        1,
+        2
+      ],
+      "bottom_contact_vertices": [
+        0
+      ],
+      "hypotenuse_contact_vertices": [
+        3
+      ]
+    },
+    {
+      "label": "B3",
+      "phase": 2.0943951023931953,
+      "phase_degrees": 119.99999999999999,
+      "scale": 0.998903757132509,
+      "left_contact_vertices": [
+        3
+      ],
+      "bottom_contact_vertices": [
+        2
+      ],
+      "hypotenuse_contact_vertices": [
+        0,
+        5
+      ]
+    },
+    {
+      "label": "B4",
+      "phase": 4.71238898038469,
+      "phase_degrees": 270.0,
+      "scale": 0.9989037571325088,
+      "left_contact_vertices": [
+        0,
+        5
+      ],
+      "bottom_contact_vertices": [
+        5
+      ],
+      "hypotenuse_contact_vertices": [
+        2
+      ]
+    }
+  ],
+  "cusp_slopes": [
+    {
+      "label": "B1",
+      "phase": 0.1149290009576951,
+      "left_derivative": -0.33021028134072594,
+      "right_derivative": 0.023773716328889805
+    },
+    {
+      "label": "B2",
+      "phase": 0.16251959593176313,
+      "left_derivative": -0.023773716328889805,
+      "right_derivative": 0.2341691507368182
+    },
+    {
+      "label": "B3",
+      "phase": 2.0943951023931953,
+      "left_derivative": -0.26765543115203627,
+      "right_derivative": 0.6128333507327
+    },
+    {
+      "label": "B4",
+      "phase": 4.71238898038469,
+      "left_derivative": -0.33021028134072594,
+      "right_derivative": 0.4323154279006758
+    }
+  ],
+  "isolation_diagnostics": {
+    "jacobian_shape": [
+      9,
+      9
+    ],
+    "jacobian_rank": 9,
+    "singular_values": [
+      5.871893692930392,
+      5.849344455061941,
+      1.4373138935704077,
+      1.4015445761935503,
+      1.031187081950182,
+      0.1309202185474871,
+      0.07724825063441013,
+      0.04244417524512541,
+      0.03607219048175249
+    ],
+    "condition_number": 162.78173336606085,
+    "perturbation_trials": 40,
+    "successful_trials": 40,
+    "maximum_root_distance": 8.312345999720775e-15
+  },
+  "full_phase_audit": {
+    "phase_grid": 262144,
+    "grid_minimum": 0.9989037571325088,
+    "grid_phase": 4.71238898038469,
+    "event_scale_minus_grid_minimum": 0.0
+  }
+}

@@ -1,0 +1,575 @@
+{
+  "experiment": "Center-Generated Bridge Experiment Round 9",
+  "version": "0.9",
+  "date": "2026-07-28",
+  "parameters": {
+    "L": 1.0,
+    "rho": 0.04,
+    "tau": 3.141592653589793
+  },
+  "attack_candidate": {
+    "family": "Fourier-18 mixed phenotype",
+    "coefficients": [
+      0.3651196339474563,
+      0.12792764667633003,
+      1.8112895719458846,
+      -0.1989224675951974,
+      -0.5840327235876656,
+      0.3334165892555623,
+      -0.3644007082421449,
+      0.27127392482958024,
+      0.7473852789568036,
+      0.5987824208813758,
+      0.15250690321184956,
+      -0.2983451335997709,
+      -0.21045984741687784,
+      0.1521295466974175,
+      0.022721037934165772,
+      0.6081436545398459,
+      0.49676251246585434,
+      -0.013869977523364233,
+      0.04761188172725786,
+      -0.3899654593175117,
+      0.03019408242618428,
+      0.003463054477472527,
+      -0.0722361050944939,
+      -0.052729427735812504,
+      0.10540508921697657,
+      -0.0839169283294809,
+      -0.2528595537099656,
+      0.20573900535015194,
+      -0.05313983103834467,
+      -0.017135503189946152,
+      0.014208390209889794,
+      -0.02536123721272316,
+      0.09034485615310307,
+      -0.024220342213730758,
+      -0.030432016443340457,
+      0.012761429047459522
+    ],
+    "curvature_box": {
+      "boxes": 200000,
+      "derivative_bound": 320.2206106674641,
+      "log_error": 0.0008005515266686603,
+      "Zlo": 2.75899313930393,
+      "Zhi": 2.763414109913739,
+      "kmax_lo": 20.321848458778838,
+      "kmax_hi": 20.387027508692192,
+      "kmin_lo": 0.004336751501902281,
+      "kmin_hi": 0.004350660932591021,
+      "radius_lo": 0.04905079956230211,
+      "rho_margin": 0.009050799562302106
+    },
+    "sampled_max_curvature": 20.354131085490867,
+    "sampled_min_curvature": 0.004343752694901859,
+    "sampled_min_radial_dot": 0.00019999973229937491,
+    "best_placement_against_round8": {
+      "parity": 1,
+      "phi": -0.19780820831524865,
+      "translation": [
+        0.0895743202379536,
+        -0.02517057350753909
+      ]
+    },
+    "outside_area_high": 0.004050717098905142,
+    "outside_fraction_of_tube": 0.047640615578063476,
+    "spatial_exposure_metrics": {
+      "outside_area": 0.004050717098905142,
+      "component_count": 5,
+      "component_areas": [
+        0.0024392712238172774,
+        0.0012776983305302348,
+        0.00020295246123442444,
+        6.6819505896273e-05,
+        6.397557742693218e-05
+      ],
+      "largest_component_fraction": 0.6021825677425319,
+      "positive_deficit_arclength_fraction": 0.3658170914542729,
+      "deficit_runs": 5,
+      "max_clearance_deficit": 0.03141508926441858,
+      "mean_positive_deficit": 0.011020468030345107,
+      "deficit_entropy": 2.320199974771651,
+      "effective_deficit_bins": 10.177709387694797,
+      "largest_bin_mass_fraction": 0.1894223544661635
+    },
+    "spectral_metrics": {
+      "modes": 18,
+      "amplitudes": [
+        0.3868821912133827,
+        1.822180029951505,
+        0.672503415762358,
+        0.45428781456233397,
+        0.9576665091554054,
+        0.33506443301241867,
+        0.25968586090331763,
+        0.6085679502914076,
+        0.49695610476971375,
+        0.39286123598839356,
+        0.03039202789997984,
+        0.08943403954070867,
+        0.13473041116649953,
+        0.3259854171966483,
+        0.055834282590147735,
+        0.029070099850473614,
+        0.09353511645513204,
+        0.03299941963339791
+      ],
+      "spectral_entropy": 1.6399906230750927,
+      "effective_modes": 5.155121172823918,
+      "high_mode_power_fraction": 0.04906690270131506,
+      "last_quarter_power_fraction": 0.01954120892778894,
+      "max_mode": 2
+    },
+    "tube_audit": {
+      "polyline_length": 0.9999998560239514,
+      "simple": true,
+      "buffer_valid": true,
+      "buffer_area": 0.08502658870439789,
+      "expected_area": 0.08502654824574367,
+      "area_difference": 4.0458654218533674e-08
+    }
+  },
+  "container_response": {
+    "round8_saved_area": 0.20893865359715985,
+    "naive_added_filled_area": 0.2129893439051622,
+    "final_raw_union_area": 0.2114026290255688,
+    "final_hole_areas": [],
+    "final_simply_connected_area": 0.2114026290255688,
+    "attack_exposure": 0.004050717098905142,
+    "area_recovered_by_rearrangement": 0.0015867148795933872,
+    "recovery_ratio": 0.39171209463683765,
+    "net_area_increase": 0.0024639754284089543,
+    "relative_net_increase": 0.01179281758539315,
+    "net_attack_fraction": 0.6082812914964948,
+    "connected": true,
+    "valid": true
+  },
+  "cycle_comparison": {
+    "round5": {
+      "attack_exposure": 0.0066644584512298485,
+      "net_area_increase": 0.002818179860791886,
+      "recovery_ratio": 0.5771329536502964,
+      "net_fraction": 0.4228670463497036
+    },
+    "round6": {
+      "attack_exposure": 0.004934177791818109,
+      "net_area_increase": 0.004464130666875232,
+      "recovery_ratio": 0.09544338912390884,
+      "net_fraction": 0.9047364840151662
+    },
+    "round7": {
+      "attack_exposure": 0.006847625978345335,
+      "net_area_increase": 0.005593838790930533,
+      "recovery_ratio": 0.1830980826611888,
+      "net_fraction": 0.816901917338983
+    },
+    "round8": {
+      "attack_exposure": 0.007080929040941278,
+      "net_area_increase": 0.004618292548101588,
+      "recovery_ratio": 0.34770395478557853,
+      "net_fraction": 0.6522156233170884
+    },
+    "round9": {
+      "attack_exposure": 0.004050717098905142,
+      "net_area_increase": 0.0024639754284089543,
+      "recovery_ratio": 0.39171209463683765,
+      "net_fraction": 0.6082812914964948
+    },
+    "area_sequence": {
+      "A4": 0.1914442116693596,
+      "A5": 0.19426239153015148,
+      "A6": 0.19872652219702672,
+      "A7": 0.20432036098795725,
+      "A8": 0.20893865353605884,
+      "A9": 0.2114026290255688
+    },
+    "increment_sequence": {
+      "DeltaA5": 0.002818179860791886,
+      "DeltaA6": 0.004464130666875232,
+      "DeltaA7": 0.005593838790930533,
+      "DeltaA8": 0.004618292548101588,
+      "dA9": 0.0024639754284089543
+    }
+  },
+  "leave_one_out_high": {
+    "archimedean": {
+      "outside_area": 3.797940332850554e-07,
+      "container_without_area": 0.21140164356940383,
+      "covered": false
+    },
+    "constant": {
+      "outside_area": 0.00039520534116915817,
+      "container_without_area": 0.21100681802226573,
+      "covered": false
+    },
+    "curvature_saturated": {
+      "outside_area": 0.0001214364697141596,
+      "container_without_area": 0.21128058689372303,
+      "covered": false
+    },
+    "round1_finite_width": {
+      "outside_area": 0.0007929873917248122,
+      "container_without_area": 0.2106090359717123,
+      "covered": false
+    },
+    "round2_quadratic_exponential": {
+      "outside_area": 0.00027257606630513284,
+      "container_without_area": 0.21112944729713184,
+      "covered": false
+    },
+    "round3_double_harmonic": {
+      "outside_area": 0.006981984813600423,
+      "container_without_area": 0.2044200385498365,
+      "covered": false
+    },
+    "round4_fourier10": {
+      "outside_area": 0.009658593580830004,
+      "container_without_area": 0.20174342978260743,
+      "covered": false
+    },
+    "round5_fourier12": {
+      "outside_area": 0.0019116023513185815,
+      "container_without_area": 0.20949042101211784,
+      "covered": false
+    },
+    "round6_holdout": {
+      "outside_area": 0.0003817105001582139,
+      "container_without_area": 0.21102031286327902,
+      "covered": false
+    },
+    "round7_fourier14": {
+      "outside_area": 0.00470831277289447,
+      "container_without_area": 0.20669371059054262,
+      "covered": false
+    },
+    "round8_fourier16": {
+      "outside_area": 0.001952499209881178,
+      "container_without_area": 0.209449524153556,
+      "covered": false
+    },
+    "round9_seed": {
+      "outside_area": 0.0006641648182812925,
+      "container_without_area": 0.2107378585451553,
+      "covered": false
+    }
+  },
+  "active_threshold_1e-3": [
+    "round3_double_harmonic",
+    "round4_fourier10",
+    "round5_fourier12",
+    "round7_fourier14",
+    "round8_fourier16"
+  ],
+  "transient_forcing": {
+    "round9_attack_initial_exposure": 0.004050717098905142,
+    "round9_attack_final_leave_one_out": 0.0006641648182812925,
+    "below_activity_threshold": true,
+    "interpretation": "The curve forces a container expansion but becomes sub-threshold after global rearrangement."
+  },
+  "three_pool_audit": {
+    "fourier20_distributed": {
+      "valid_candidates": 12,
+      "refined_candidates": 4,
+      "best_outside": 0.0037550302948409367,
+      "spatial_metrics": {
+        "outside_area": 0.0037550302948409367,
+        "component_count": 6,
+        "component_areas": [
+          0.002968677921955876,
+          0.0005953945271905479,
+          0.00014980395245107624,
+          3.762198838077212e-05,
+          2.3991852414385784e-06,
+          1.1327196212261132e-06
+        ],
+        "largest_component_fraction": 0.790586943075949,
+        "positive_deficit_arclength_fraction": 0.28226477935054123,
+        "deficit_runs": 6,
+        "max_clearance_deficit": 0.04372571186272632,
+        "mean_positive_deficit": 0.007150612418433909,
+        "deficit_entropy": 1.4574060308879202,
+        "effective_deficit_bins": 4.294804476515651,
+        "largest_bin_mass_fraction": 0.49783869577212037
+      }
+    },
+    "fourier20_localized": {
+      "valid_candidates": 12,
+      "refined_candidates": 4,
+      "best_outside": 0.0
+    },
+    "fourier20_mixed": {
+      "valid_candidates": 12,
+      "refined_candidates": 4,
+      "best_outside": 0.004423629899966247,
+      "spatial_metrics": {
+        "outside_area": 0.004423629899966247,
+        "component_count": 5,
+        "component_areas": [
+          0.002797570002080665,
+          0.0008110640143995959,
+          0.0006637975683915132,
+          0.00012512563504480075,
+          2.607268004967135e-05
+        ],
+        "largest_component_fraction": 0.6324150223557381,
+        "positive_deficit_arclength_fraction": 0.3688592839300583,
+        "deficit_runs": 5,
+        "max_clearance_deficit": 0.033355781073110796,
+        "mean_positive_deficit": 0.00838988150379925,
+        "deficit_entropy": 2.335335872223064,
+        "effective_deficit_bins": 10.33292989073826,
+        "largest_bin_mass_fraction": 0.24704481307167342
+      }
+    },
+    "moving_knot_bspline": {
+      "valid_candidates": 20,
+      "refined_candidates": 5,
+      "best_outside": 0.002135639003001672,
+      "spatial_metrics": {
+        "outside_area": 0.002135639003001672,
+        "component_count": 5,
+        "component_areas": [
+          0.0008946832018304287,
+          0.0006356505821240123,
+          0.00031088698450791824,
+          0.00023132314163434612,
+          6.309509290496675e-05
+        ],
+        "largest_component_fraction": 0.4189299786026282,
+        "positive_deficit_arclength_fraction": 0.29475437135720234,
+        "deficit_runs": 5,
+        "max_clearance_deficit": 0.018386089281801896,
+        "mean_positive_deficit": 0.00437473380857495,
+        "deficit_entropy": 2.2035813901220225,
+        "effective_deficit_bins": 9.057393541804242,
+        "largest_bin_mass_fraction": 0.2804544017642062
+      }
+    },
+    "search_warning": "Inherited/local placements substantially overestimate exposure; all reported best values use global congruence refinement."
+  },
+  "round10_seed": {
+    "family": "Fourier-20 mixed-lineage challenger",
+    "coefficients": [
+      0.38231517186178243,
+      0.25256319995133886,
+      1.8111623607865113,
+      -0.3036707042758256,
+      -0.5407394932076693,
+      0.31251229333900776,
+      -0.450804964452057,
+      0.35150176941876055,
+      0.7582780741717503,
+      0.5970980539091332,
+      0.1390333869421711,
+      -0.34828021912521645,
+      -0.2312295086873858,
+      0.18872937713551668,
+      0.02131280436973131,
+      0.6063006046427485,
+      0.529002153263813,
+      0.022813738572978415,
+      0.03835253206531548,
+      -0.4722928823508743,
+      0.0009051508287539096,
+      -0.02746423658368001,
+      -0.03458412456923098,
+      -0.019034110880370256,
+      0.13072598596366208,
+      -0.15008835965114964,
+      -0.21805583017455618,
+      0.20236659123896378,
+      -0.04963203842743397,
+      0.06214415267740672,
+      0.011861612492339158,
+      -0.08154962642327548,
+      0.10117121505317246,
+      -0.04187082859889572,
+      -0.01942701277920223,
+      0.05268850128652441,
+      0.012068376517342579,
+      -0.05676809956549568,
+      -0.0054313193969359715,
+      0.01411789629765852
+    ],
+    "curvature_box": {
+      "boxes": 100000,
+      "derivative_bound": 361.0292028939147,
+      "log_box_error": 0.0018051460144695736,
+      "normalization_lower": 2.7734722820152014,
+      "normalization_upper": 2.7835034236671565,
+      "kmax_lo": 20.78761039503478,
+      "kmax_hi": 20.93825228998846,
+      "kmin_lo": 0.002384274389542596,
+      "kmin_hi": 0.002401552547315659,
+      "radius_lo": 0.04775947801900095,
+      "rho_margin": 0.007759478019000947
+    },
+    "sampled_max_curvature": 20.8627105427624,
+    "sampled_min_curvature": 0.0023948033551711104,
+    "sampled_min_radial_dot": 0.0008333110213409573,
+    "best_placement": {
+      "parity": -1,
+      "phi": 3.426612040573851,
+      "translation": [
+        0.22875416225185494,
+        0.30838790312727027
+      ]
+    },
+    "outside_area_high": 0.004423629899966247,
+    "outside_fraction_of_tube": 0.05202645516293422,
+    "spatial_exposure_metrics": {
+      "outside_area": 0.004423629899966247,
+      "component_count": 5,
+      "component_areas": [
+        0.002797570002080665,
+        0.0008110640143995959,
+        0.0006637975683915132,
+        0.00012512563504480075,
+        2.607268004967135e-05
+      ],
+      "largest_component_fraction": 0.6324150223557381,
+      "positive_deficit_arclength_fraction": 0.3688592839300583,
+      "deficit_runs": 5,
+      "max_clearance_deficit": 0.033355781073110796,
+      "mean_positive_deficit": 0.00838988150379925,
+      "deficit_entropy": 2.335335872223064,
+      "effective_deficit_bins": 10.33292989073826,
+      "largest_bin_mass_fraction": 0.24704481307167342
+    },
+    "spectral_metrics": {
+      "modes": 20,
+      "amplitudes": [
+        0.45820635155502176,
+        1.8364435721701728,
+        0.6245503446500474,
+        0.5716455281720831,
+        0.9651485500956278,
+        0.3750058582456016,
+        0.29847255063367206,
+        0.6066750850498682,
+        0.5294938572121747,
+        0.4738475318444931,
+        0.027479148260947633,
+        0.03947605665750209,
+        0.19903718021752723,
+        0.2974904743395874,
+        0.07953134571007282,
+        0.08240776310939527,
+        0.10949329222785008,
+        0.056155916815090565,
+        0.05803673698651895,
+        0.015126606567997102
+      ],
+      "spectral_entropy": 1.7316724362832845,
+      "effective_modes": 5.650095435661888,
+      "high_mode_power_fraction": 0.02498320607514956,
+      "last_quarter_power_fraction": 0.003930301850785707,
+      "max_mode": 2
+    },
+    "tube_audit": {
+      "polyline_length": 0.9999975657797898,
+      "simple": true,
+      "buffer_valid": true,
+      "buffer_area": 0.0850262599657437,
+      "expected_area": 0.08502654824574367,
+      "area_difference": -2.8827999996872133e-07
+    }
+  },
+  "non_fourier_holdout": {
+    "family": "moving-knot natural cubic B-spline log-curvature",
+    "knots": [
+      0.0,
+      0.05416375692885905,
+      0.15216754541291463,
+      0.19214751509134476,
+      0.2655071201663223,
+      0.33646441539047295,
+      0.4034061596632672,
+      0.4789298399605842,
+      0.5352826072830918,
+      0.5832460849381845,
+      0.6572675810231535,
+      0.7409658098822915,
+      0.7854172631065387,
+      0.8612944486672437,
+      0.9251040380527323,
+      1.0
+    ],
+    "values": [
+      2.3825557603750562,
+      1.7962401626238795,
+      0.2883962594813576,
+      -0.6655055367760344,
+      -2.4019254952786615,
+      -2.2407930329579164,
+      1.1859665025730846,
+      1.625191563022715,
+      0.5506598888000517,
+      0.3298438336846471,
+      0.048383121440734575,
+      -3.5876261176279223,
+      0.5894444837056414,
+      0.3269656987828186,
+      -0.4027307923528942,
+      2.100097924019003
+    ],
+    "curvature_box": {
+      "boxes": 100000,
+      "derivative_bound": 109.45075587857501,
+      "log_box_error": 0.000547253779392875,
+      "normalization_lower": 2.2413718464171213,
+      "normalization_upper": 2.243826387857122,
+      "kmax_lo": 15.157618959651039,
+      "kmax_hi": 15.190835559255568,
+      "kmin_lo": 0.027647847777770705,
+      "kmin_hi": 0.027708435624186813,
+      "radius_lo": 0.0658291636493105,
+      "rho_margin": 0.025829163649310503
+    },
+    "sampled_max_curvature": 15.174829474619289,
+    "sampled_min_curvature": 0.027678841032322772,
+    "sampled_min_radial_dot": 0.0008333003078870445,
+    "outside_area_high": 0.002135639003001672,
+    "outside_fraction_of_tube": 0.025117319790864023,
+    "spatial_exposure_metrics": {
+      "outside_area": 0.002135639003001672,
+      "component_count": 5,
+      "component_areas": [
+        0.0008946832018304287,
+        0.0006356505821240123,
+        0.00031088698450791824,
+        0.00023132314163434612,
+        6.309509290496675e-05
+      ],
+      "largest_component_fraction": 0.4189299786026282,
+      "positive_deficit_arclength_fraction": 0.29475437135720234,
+      "deficit_runs": 5,
+      "max_clearance_deficit": 0.018386089281801896,
+      "mean_positive_deficit": 0.00437473380857495,
+      "deficit_entropy": 2.2035813901220225,
+      "effective_deficit_bins": 9.057393541804242,
+      "largest_bin_mass_fraction": 0.2804544017642062
+    },
+    "tube_audit": {
+      "polyline_length": 0.999998189125734,
+      "simple": true,
+      "buffer_valid": true,
+      "buffer_area": 0.08502632207115231,
+      "expected_area": 0.08502654824574367,
+      "area_difference": -2.2617459136120566e-07
+    }
+  },
+  "convergence_diagnostics": {
+    "dA9_lower_than_dA8": true,
+    "round10_seed_positive": true,
+    "non_fourier_holdout_positive": true,
+    "conclusion": "No convergence: both Fourier-20 and moving-knot spline holdouts remain positive."
+  },
+  "status": {
+    "global_curve_optimum": false,
+    "global_placement_certificate": false,
+    "global_nonconvex_container_optimum": false,
+    "formal_interval_curvature": false,
+    "new_kakeya_or_moser_bound": false
+  }
+}

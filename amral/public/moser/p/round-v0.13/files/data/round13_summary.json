@@ -1,0 +1,182 @@
+{
+  "experiment": "Moser Skew Lab v0.13",
+  "status": "five-parameter smooth event-KKT numerical candidate",
+  "round8_reference": {
+    "parameters": {
+      "wing_length": 0.3361057714712081,
+      "beta_radians": 1.405382794839393,
+      "delta_radians": 0.05204734906280986,
+      "transition_center": 0.5801781668857768,
+      "epsilon": 0.037
+    },
+    "scale": 0.9989143390846327
+  },
+  "round13_candidate": {
+    "parameters": {
+      "wing_length": 0.33610428455831365,
+      "beta_radians": 1.4054077050409917,
+      "delta_radians": 0.05200850038234944,
+      "transition_center": 0.5801647299465723,
+      "epsilon": 0.03682334435307599,
+      "center_length": 0.3277914308833727,
+      "alpha_radians": 1.457416205423341,
+      "beta_degrees": 80.52392999401569,
+      "delta_degrees": 2.9798675707131514,
+      "alpha_degrees": 83.50379756472884
+    },
+    "branch_phases": {
+      "B1_low": 0.1548659210888264,
+      "B2_low": 0.12390282204235298,
+      "B3_120deg": 2.0943951023931953,
+      "B4_270deg": 4.71238898038469
+    },
+    "branch_values": {
+      "B1_low": 0.9989143432974892,
+      "B2_low": 0.9989143432974851,
+      "B3_120deg": 0.9989143432975421,
+      "B4_270deg": 0.9989143432975425
+    },
+    "common_scale": 0.9989143432974851,
+    "branch_spread": 5.739853037312059e-14,
+    "improvement_over_round8": 4.2128524002649215e-09,
+    "distance_to_one": 0.0010856567025149255,
+    "parameter_shift": {
+      "wing_length": -1.4869128944772214e-06,
+      "beta_radians": 2.4910201598560278e-05,
+      "delta_radians": -3.884868046041823e-05,
+      "transition_center": -1.3436939204525267e-05,
+      "epsilon": -0.0001766556469240052
+    }
+  },
+  "smooth_event_kkt": {
+    "unknown_count": 12,
+    "equation_count": 12,
+    "branch_pressures": [
+      0.02825233,
+      0.02837576,
+      0.73604316,
+      0.20732874
+    ],
+    "gradient_matrix": [
+      [
+        -2.8658848681,
+        -0.2485271309,
+        -0.0107159146,
+        -0.0067273598,
+        -0.0077793094
+      ],
+      [
+        -2.79325078,
+        -0.2683196074,
+        -0.0198294143,
+        -0.0251093788,
+        -0.0077729156
+      ],
+      [
+        0.2619861337,
+        0.0952776671,
+        0.0470784227,
+        0.0051080742,
+        0.0004734202
+      ],
+      [
+        -0.1572601802,
+        -0.2676582922,
+        -0.1629602289,
+        -0.013781158,
+        0.0004432044
+      ]
+    ],
+    "weighted_stationarity_residual": [
+      7.92303109024174e-09,
+      -2.4601682404565255e-08,
+      -1.2172673240943544e-08,
+      -2.8343874670266987e-08,
+      7.059235300514802e-10
+    ],
+    "weighted_stationarity_norm": 4.025002772641155e-08,
+    "jacobian_rank": 12,
+    "jacobian_singular_values": [
+      429267986.0,
+      135912243.0,
+      28142255.7,
+      1317309.6,
+      4293.49382,
+      1359.68065,
+      815.797353,
+      357.849948,
+      274.156156,
+      86.597013,
+      12.6726492,
+      11.3975365
+    ],
+    "jacobian_condition_number": 37663225.38208147
+  },
+  "basin_restarts": {
+    "trials": 20,
+    "successful": 20,
+    "minimum_scale": 0.9989143432972127,
+    "maximum_scale": 0.9989143432972523,
+    "maximum_parameter_distance": 3.9e-07
+  },
+  "curvature_ledger": {
+    "total_turn_radians": 0.05200850038234944,
+    "peak_curvature": 2.1011016211133104,
+    "transition_width_5_95": 0.03644180135175618
+  },
+  "full_phase_audit": {
+    "local_minimum_count": 8,
+    "controlling_minima": [
+      {
+        "name": "B1_low",
+        "phase": 0.1548659210888264,
+        "scale": 0.9989143432974892
+      },
+      {
+        "name": "B2_low",
+        "phase": 0.12390282204235298,
+        "scale": 0.9989143432974851
+      },
+      {
+        "name": "B3_120deg",
+        "phase": 2.0943951023931953,
+        "scale": 0.9989143432975421
+      },
+      {
+        "name": "B4_270deg",
+        "phase": 4.71238898038469,
+        "scale": 0.9989143432975425
+      }
+    ],
+    "other_minima": [
+      {
+        "phase": 1.73608,
+        "scale": 1.029349885,
+        "source": "smooth"
+      },
+      {
+        "phase": 3.02827,
+        "scale": 1.0998191738,
+        "source": "contact switch"
+      },
+      {
+        "phase": 3.77896,
+        "scale": 1.1275893354,
+        "source": "smooth"
+      },
+      {
+        "phase": 5.23599,
+        "scale": 1.0814431618,
+        "source": "contact switch"
+      }
+    ],
+    "no_new_lower_branch_found": true
+  },
+  "limitations": [
+    "Finite-difference parameter gradients",
+    "Numerical full-rank Jacobian only",
+    "Highly ill-conditioned KKT system",
+    "No interval KKT or Arb certificate",
+    "No new Moser area bound"
+  ]
+}

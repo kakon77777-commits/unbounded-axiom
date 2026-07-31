@@ -1,0 +1,164 @@
+{
+  "experiment": "Center-Generated Bridge Experiment Round 3",
+  "version": "0.3",
+  "date": "2026-07-27",
+  "parameters": {
+    "L": 1.0,
+    "rho": 0.04,
+    "tau": 3.141592653589793
+  },
+  "new_family": {
+    "name_zh": "雙頻對數曲率重分配曲線",
+    "definition": "kappa(s)=pi exp(g(s))/integral exp(g), g=a1 cos(2pi s)+b1 sin(2pi s)+a2 cos(4pi s)+b2 sin(4pi s)",
+    "coefficients": {
+      "a1": 2.8910519514819617,
+      "b1": 1.2356729211268873,
+      "a2": 2.084611650923618,
+      "b2": -0.5610840858996916
+    },
+    "sampled_max_curvature": 24.939999999999998,
+    "sampled_min_curvature": 0.00279863851054774,
+    "endpoint": [
+      -0.07691727663549831,
+      0.9437997622590331
+    ],
+    "minimum_radial_dot_excluding_origin": 0.000199998757256905,
+    "support_tension_against_round2_pair": {
+      "E_plus": 0.02998023273240446,
+      "E_minus": 0.029353956445687213,
+      "E_congruent": 0.029353956445687213
+    }
+  },
+  "curvature_boxes": {
+    "status": "semi-verified outward-style floating interval boxes",
+    "formal_directed_rounding_library": false,
+    "quadratic_exponential": {
+      "boxes": 400000,
+      "theta_box": [
+        0.39870094436278464,
+        0.3987080037654611
+      ],
+      "max_lower": 24.949352913573463,
+      "max_upper": 24.950611058937103,
+      "local_radius_lower": 0.04007917872784155,
+      "rho_margin": 7.917872784155011e-05
+    },
+    "double_harmonic": {
+      "boxes": 200000,
+      "derivative_bound": 59.17577024810024,
+      "log_box_error": 0.0001479394256202506,
+      "normalization_lower": 18.25331661429668,
+      "normalization_upper": 18.258718183713547,
+      "max_lower": 24.93262254743925,
+      "max_upper": 24.947380985153806,
+      "min_lower": 0.0027978104870563505,
+      "min_upper": 0.0027994666029234954,
+      "local_radius_lower": 0.040084367998191886,
+      "rho_margin": 8.436799819188517e-05
+    }
+  },
+  "normal_strip_theorem": {
+    "condition": "positive curvature, tangent-angle span at most pi, radius of curvature at least R0",
+    "conclusion": "direct normal map is injective for |t|<R0",
+    "core_identity": "t+u=[1/sin(Delta/2)] integral R(v) cos(v-mid) dv >=2R0"
+  },
+  "tube_audit": {
+    "polyline_length": 0.9999997322919807,
+    "simple": true,
+    "buffer_valid": true,
+    "buffer_area": 0.08502645230676302,
+    "expected_area": 0.08502654824574367,
+    "area_difference": -9.593898064874651e-08,
+    "min_radial_dot_excluding_origin": 0.000199998757256905
+  },
+  "round02_clarke_ledger": {
+    "active_boundary": "max curvature approximately 24.95",
+    "left_point": {
+      "c": 0.9533448569085957,
+      "q": 1.0893544502432846,
+      "E_plus": 0.08484407789796368,
+      "E_minus": 0.08484407828668745,
+      "E_congruent": 0.08484407789796368,
+      "max_kappa": 24.95,
+      "resolution": "high_neighbor"
+    },
+    "root_point": {
+      "c": 0.9538448569085957,
+      "q": 1.0900735478479215,
+      "E_plus": 0.08484419967080102,
+      "E_minus": 0.08484420438774676,
+      "E_congruent": 0.08484419967080102,
+      "max_kappa": 24.94998170675039,
+      "resolution": "high_root"
+    },
+    "right_point": {
+      "c": 0.9543448569085956,
+      "q": 1.0907935158351474,
+      "E_plus": 0.08484426051975487,
+      "E_minus": 0.08484418771856282,
+      "E_congruent": 0.08484418771856282,
+      "max_kappa": 24.95,
+      "resolution": "high_neighbor"
+    },
+    "left_control_branch": "plus",
+    "right_control_branch": "minus",
+    "left_projected_secant": 0.00024354567468301466,
+    "right_projected_secant": -2.3904476398331344e-05,
+    "right_minus_secant": -3.3338367871897154e-05,
+    "projected_clarke_box": [
+      -3.3338367871897154e-05,
+      0.00024354567468301466
+    ],
+    "contains_zero": true,
+    "dq_dc_left": 1.4381952092740653,
+    "dq_dc_right": 1.4399359744518478
+  },
+  "final_pair_container": {
+    "families": [
+      "constant_curvature_semicircle",
+      "reflected_double_harmonic_log_curvature"
+    ],
+    "new_curve_placement": {
+      "reflected_x": true,
+      "phi": 3.22291039121942,
+      "translation": [
+        4.96269692007445e-14,
+        0.781836823760026
+      ]
+    },
+    "center_hull_area": 0.19140363454844334,
+    "center_hull_perimeter": 2.1258273595277792,
+    "convex_thick_area": 0.2814632771752982,
+    "active_support_share": {
+      "constant_curvature": 0.22152777777777777,
+      "double_harmonic": 0.7788194444444444,
+      "ties": 0.00034722222222222224
+    },
+    "redundancy_tensions": {
+      "round2_quadratic_exponential": -0.0017306511624905197,
+      "archimedean": -0.005662251312856372,
+      "curvature_saturated": -0.003456227782521953,
+      "round1_finite_width": -0.010677110003408648
+    },
+    "leave_one_out_tensions": {
+      "new_curve_against_constant": 0.15522229570771048,
+      "constant_against_new_curve": 0.12828437767802467
+    }
+  },
+  "area_comparison": {
+    "round2_pair": 0.26962448798891914,
+    "round3_pair": 0.2814632771752982,
+    "increase": 0.01183878918637904,
+    "relative_increase": 0.043908434559050816,
+    "single_full_tube_area": 0.08502654824574367,
+    "ratio_to_single_tube": 3.3102987594158617
+  },
+  "status": {
+    "normal_strip_injectivity_theorem": true,
+    "full_reach_formal_certificate": false,
+    "curvature_box_formal_certificate": false,
+    "global_family_optimum": false,
+    "global_container_optimum": false,
+    "new_kakeya_or_moser_bound": false
+  }
+}

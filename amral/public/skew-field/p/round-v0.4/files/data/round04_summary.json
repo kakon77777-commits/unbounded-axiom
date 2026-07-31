@@ -1,0 +1,293 @@
+{
+  "experiment": "Center-Generated Bridge Experiment Round 4",
+  "version": "0.4",
+  "date": "2026-07-27",
+  "parameters": {
+    "L": 1.0,
+    "rho": 0.04,
+    "tau": 3.141592653589793
+  },
+  "fourier_function_space": {
+    "definition": "kappa(s)=pi exp(g(s))/integral exp(g), g=sum_m a_m cos(2pi m s)+b_m sin(2pi m s)",
+    "mode_results": {
+      "M6": {
+        "coefficients": [
+          0.07259071741972539,
+          0.5290307910174747,
+          1.8674729666545429,
+          -0.6429245396423391,
+          -1.1087926555342054,
+          0.15604903996790404,
+          -0.37626222547840066,
+          0.5819162587940416,
+          1.149373890181975,
+          0.6077058487227196,
+          0.14658089749054384,
+          -0.6536263725253425
+        ],
+        "E_congruent": 0.042842089938762734,
+        "sampled_max_curvature": 24.80852517023604,
+        "sampled_min_radial_dot": 3.743158693735038e-05
+      },
+      "M8": {
+        "coefficients": [
+          0.0888319790838086,
+          0.08518377427103842,
+          1.900533651232311,
+          -0.5026959653591456,
+          -1.0169096051705064,
+          0.08438134910255587,
+          -0.43798430028169877,
+          0.34850964895826686,
+          0.9181313150311463,
+          0.7468799500584575,
+          0.07881940915542895,
+          -0.8087294015335084,
+          -0.34970684398794233,
+          0.11598557737752152,
+          -0.13640299373342785,
+          0.38818449742555844
+        ],
+        "E_congruent": 0.044261255903512195,
+        "sampled_max_curvature": 24.874873536085158,
+        "sampled_min_radial_dot": 0.00019999998480597
+      },
+      "M10": {
+        "coefficients": [
+          -0.16891363738442855,
+          -0.04682268187518584,
+          1.8015183143735718,
+          -0.5083560487996948,
+          -0.635189749072414,
+          0.25622619102808364,
+          -0.44578721274880917,
+          0.3865091335105789,
+          0.7501646937723951,
+          0.6925692345674821,
+          0.15407501167965776,
+          -0.7213519209212451,
+          -0.36238710187375567,
+          0.00786373600071166,
+          0.06732788684990021,
+          0.6564666841993362,
+          0.35053584859194004,
+          0.11594209871092383,
+          0.00893531915450112,
+          -0.5089990067984367
+        ],
+        "E_plus": 0.04587136403694819,
+        "E_minus": 0.04587135862634452,
+        "E_congruent": 0.04587135862634452,
+        "sampled_max_curvature": 24.50003348171813,
+        "sampled_min_curvature": 0.0025445820996030754,
+        "sampled_min_radial_dot": 0.00012499998820684373,
+        "endpoint": [
+          -0.011707101644601349,
+          0.4818105003222552
+        ]
+      }
+    },
+    "M10_curvature_box": {
+      "boxes": 300000,
+      "derivative_bound": 258.01841846225045,
+      "log_error": 0.0004300306974370841,
+      "Zlo": 2.9242236825665864,
+      "Zhi": 2.9267397763083918,
+      "kmax_lo": 24.478974504950568,
+      "kmax_hi": 24.52111758210884,
+      "kmin_lo": 0.002542374005178133,
+      "kmin_hi": 0.0025467509640186184,
+      "radius_lo": 0.0407811755174496,
+      "rho_margin": 0.0007811755174495991
+    },
+    "M10_tube_audit": {
+      "length": 0.9999999375863109,
+      "simple": true,
+      "buffer_valid": true,
+      "buffer_area": 0.08502645503768706,
+      "expected": 0.08502654824574367,
+      "diff": -9.32080566062865e-08,
+      "kmax_sample": 24.50003348171813,
+      "kmin_sample": 0.0025445820996030754,
+      "radial_min": 0.00012499998820684373,
+      "endpoint": [
+        -0.011707101644601349,
+        0.4818105003222552
+      ]
+    },
+    "mode_amplitudes": [
+      0.1752831436060612,
+      1.8718691485717247,
+      0.6849218045116072,
+      0.5900131772574665,
+      1.020979535765541,
+      0.7376230087523414,
+      0.3624724126721214,
+      0.6599102604228426,
+      0.3692126100251251,
+      0.5090774291305673
+    ],
+    "active_width_gradient_amplitudes": [
+      0.09144585771670588,
+      0.04592945545693353,
+      0.07110721294808191,
+      0.04308340090198946,
+      0.020137330278009114,
+      0.063755766928613,
+      0.015262472426815755,
+      0.0384809612603261,
+      0.01842720214713496,
+      0.03369055583539582
+    ]
+  },
+  "adjoint_sensitivity": {
+    "formula_delta_kappa": "delta kappa=kappa(delta g-(1/tau) integral kappa delta g)",
+    "active_world_direction": 0.0,
+    "active_curve_direction": 0.024293446834131593,
+    "active_support_s": 0.466625,
+    "opposite_support_s": 0.0,
+    "max_abs_error": 7.537290719695361e-05,
+    "relative_l2_error": 0.0011942405849882513
+  },
+  "convex_finite_family": {
+    "active_skeletons": [
+      "round3_double_harmonic",
+      "round4_fourier10"
+    ],
+    "pair_placement": {
+      "parity": 1,
+      "phi": 0.057024369480403556,
+      "translation": [
+        -0.013862802333597027,
+        0.1701010212127661
+      ]
+    },
+    "center_hull_area": 0.21144168449519896,
+    "center_hull_perimeter": 2.2227781323238993,
+    "thick_area": 0.3053793580338986,
+    "support_tensions_of_redundant_families": {
+      "constant_semicircle": -0.0022005992580215,
+      "archimedean": -0.009732018775176276,
+      "curvature_saturated": -0.008970600135819493,
+      "round1_finite_width": -0.012506378655574503,
+      "round2_quadratic_exponential": -0.006615209420814796
+    }
+  },
+  "nonconvex_finite_family": {
+    "families": [
+      "constant",
+      "round3_double_harmonic",
+      "round4_fourier10",
+      "round2_quadratic_exponential",
+      "archimedean",
+      "curvature_saturated",
+      "round1_finite_width"
+    ],
+    "placements": {
+      "round3_double_harmonic": {
+        "parity": 1,
+        "phi": 0.6269522956562634,
+        "translation": [
+          0.45082109913020285,
+          0.11949811759274881
+        ]
+      },
+      "round4_fourier10": {
+        "parity": -1,
+        "phi": 2.7018495587953812,
+        "translation": [
+          0.18026658886413732,
+          0.495889861158457
+        ]
+      },
+      "round2_quadratic_exponential": {
+        "parity": 1,
+        "phi": 5.556678212897904,
+        "translation": [
+          0.3234744233750747,
+          0.09172007465664295
+        ]
+      },
+      "archimedean": {
+        "parity": 1,
+        "phi": 5.852993358841072,
+        "translation": [
+          0.03022454582999146,
+          0.03633657934496357
+        ]
+      },
+      "curvature_saturated": {
+        "parity": 1,
+        "phi": 5.892575676552987,
+        "translation": [
+          0.10983545686634993,
+          0.038790444365394125
+        ]
+      },
+      "round1_finite_width": {
+        "parity": 1,
+        "phi": 5.957122706563863,
+        "translation": [
+          0.20632876689558652,
+          0.041224966575607445
+        ]
+      }
+    },
+    "raw_union_area_high": 0.19104912634519086,
+    "raw_union_holes": [
+      0.00039508532416874105
+    ],
+    "filled_simply_connected_area_high": 0.1914442116693596,
+    "connected": true,
+    "valid": true,
+    "convex_reduction_raw": 0.3743875565944982,
+    "convex_reduction_filled": 0.37309380404123993,
+    "ratio_filled_to_single_tube": 2.251581601502247,
+    "leave_one_out_high": {
+      "constant": {
+        "outside_area": 0.012476830549836532,
+        "covered": false,
+        "container_without_area": 0.17789792850287048
+      },
+      "round3_double_harmonic": {
+        "outside_area": 0.007413539937256941,
+        "covered": false,
+        "container_without_area": 0.18392797009773013
+      },
+      "round4_fourier10": {
+        "outside_area": 0.007769004818731891,
+        "covered": false,
+        "container_without_area": 0.18362378385958852
+      },
+      "round2_quadratic_exponential": {
+        "outside_area": 0.00024661146974973405,
+        "covered": false,
+        "container_without_area": 0.1911962999006028
+      },
+      "archimedean": {
+        "outside_area": 0.0,
+        "covered": true,
+        "container_without_area": 0.1914437677646877
+      },
+      "curvature_saturated": {
+        "outside_area": 0.0009677880763779651,
+        "covered": false,
+        "container_without_area": 0.19046914552524383
+      },
+      "round1_finite_width": {
+        "outside_area": 0.004358544320107172,
+        "covered": false,
+        "container_without_area": 0.1870856673507369
+      }
+    },
+    "archimedean_redundant_in_filled_container": true
+  },
+  "status": {
+    "global_fourier_optimum": false,
+    "global_convex_container_optimum": false,
+    "global_nonconvex_container_optimum": false,
+    "curvature_box_formal_directed_rounding": false,
+    "adjoint_formula_numerically_verified": true,
+    "new_kakeya_or_moser_bound": false
+  }
+}

@@ -1,0 +1,536 @@
+{
+  "experiment": "Center-Generated Bridge Experiment Round 11",
+  "version": "1.1",
+  "date": "2026-07-28",
+  "parameters": {
+    "L": 1.0,
+    "rho": 0.04,
+    "tau": 3.141592653589793
+  },
+  "attack_candidate": {
+    "family": "Fourier-22 distributed-lineage residual",
+    "coefficients": [
+      0.739256447035336,
+      0.2745821070136059,
+      1.698380890692349,
+      -0.29261149512963863,
+      -0.5758239276809007,
+      0.10228960267999901,
+      -0.5561694433172248,
+      0.2933777834182288,
+      0.9589073558737087,
+      0.6152522848483498,
+      0.3000458758550158,
+      -0.33755546222914595,
+      -0.11687270179634829,
+      0.12061318463028001,
+      -0.1465982109719087,
+      0.41881174531635146,
+      0.3878044066376466,
+      0.04185769126560727,
+      0.14623024581047717,
+      -0.2615766515790108,
+      -0.09562720777621943,
+      0.15104632334660353,
+      0.009573277354052154,
+      -0.028662078213549734,
+      -0.0016101959325835226,
+      -0.2381202605785905,
+      -0.1542257637528394,
+      0.08658114447557255,
+      -0.0962940624012444,
+      -0.15777107332892007,
+      -0.026596804897858806,
+      -0.04979703866007116,
+      -0.00012216553362589568,
+      0.05033233997114055,
+      -0.04986599090952556,
+      0.04835934326964215,
+      0.02956058087096078,
+      -0.07145868578883847,
+      -0.07391258452715715,
+      -0.040418005657189254,
+      0.05672163386464174,
+      0.0705819075206206,
+      0.02534214101193941,
+      0.04062205624005624
+    ],
+    "curvature_box": {
+      "boxes": 200000,
+      "derivative_bound": 388.9613356837672,
+      "log_box_error": 0.000972403339209418,
+      "normalization_lower": 2.6893573292938115,
+      "normalization_upper": 2.69459269862897,
+      "kmax_lo": 21.67759222046562,
+      "kmax_hi": 21.76207386666938,
+      "kmin_lo": 0.003429496089577364,
+      "kmin_hi": 0.0034428614796239293,
+      "radius_lo": 0.0459515028818826,
+      "rho_margin": 0.005951502881882599
+    },
+    "sampled_max_curvature": 21.71724748288538,
+    "sampled_min_curvature": 0.0034366698681941718,
+    "sampled_min_radial_dot": 0.0008333060991343234,
+    "best_placement": [
+      1,
+      0.10147090648693412,
+      0.19375257120365666,
+      0.4099530358963652
+    ],
+    "outside_area_high": 0.0017806554903773931,
+    "outside_fraction_of_tube": 0.020942418805314965,
+    "spatial_exposure_metrics": {
+      "positive_deficit_arclength_fraction": 0.2472939217318901,
+      "max_clearance_deficit": 0.023001260409411403,
+      "mean_positive_deficit": 0.005796351076740062,
+      "deficit_entropy": 1.7758538499091931,
+      "effective_deficit_bins": 5.90532124227227,
+      "outside_area": 0.0017806554903773931,
+      "component_count": 4,
+      "component_areas": [
+        0.001287862146497221,
+        0.0002330948702696472,
+        0.00017746996688680828,
+        8.222850672371675e-05
+      ],
+      "largest_component_fraction": 0.7232517201989873
+    },
+    "tube_audit": {
+      "polyline_length": 0.9999975211132748,
+      "simple": true,
+      "buffer_valid": true,
+      "buffer_area": 0.08502625732637348,
+      "expected_area": 0.08502654824574367,
+      "area_difference": -2.909193701911006e-07
+    },
+    "role": "Round 11 Fourier-22 distributed-lineage formal attack"
+  },
+  "container_response": {
+    "round10_saved_area": 0.21379793262561514,
+    "naive_added_filled_area": 0.2155781704965802,
+    "final_raw_union_area": 0.21398181378598763,
+    "final_hole_areas": [],
+    "final_simply_connected_area": 0.21398181378598763,
+    "attack_exposure": 0.0017806554903773931,
+    "area_recovered_by_rearrangement": 0.001596356710592578,
+    "recovery_ratio": 0.896499474052808,
+    "net_area_increase": 0.00018388116037248992,
+    "relative_net_increase": 0.0008600698711829317,
+    "net_attack_fraction": 0.10326599466667077,
+    "connected": true,
+    "valid": true
+  },
+  "leave_one_out_high": {
+    "archimedean": {
+      "outside_area": 1.1853714040646104e-05,
+      "others_filled_area": 0.213969960071947
+    },
+    "constant": {
+      "outside_area": 0.0004784335202375933,
+      "others_filled_area": 0.21350338026575014
+    },
+    "curvature_saturated": {
+      "outside_area": 3.783481061073363e-07,
+      "others_filled_area": 0.21398143543788256
+    },
+    "round10_fourier20": {
+      "outside_area": 0.001680034923012472,
+      "others_filled_area": 0.21230177886297544
+    },
+    "round1_finite_width": {
+      "outside_area": 0.0002179791694604301,
+      "others_filled_area": 0.21376383461652834
+    },
+    "round2_quadratic_exponential": {
+      "outside_area": 0.00021150517505364282,
+      "others_filled_area": 0.21377030861093493
+    },
+    "round3_double_harmonic": {
+      "outside_area": 0.006743987201506412,
+      "others_filled_area": 0.2072378265844818
+    },
+    "round4_fourier10": {
+      "outside_area": 0.012543448956233466,
+      "others_filled_area": 0.2014383648297551
+    },
+    "round5_fourier12": {
+      "outside_area": 0.0010979502794300218,
+      "others_filled_area": 0.2128838635065587
+    },
+    "round6_holdout": {
+      "outside_area": 0.0,
+      "others_filled_area": 0.21398181378598763
+    },
+    "round7_fourier14": {
+      "outside_area": 0.0018974863697343242,
+      "others_filled_area": 0.2120843274162544
+    },
+    "round8_fourier16": {
+      "outside_area": 0.0017390060414859093,
+      "others_filled_area": 0.21224280774450172
+    },
+    "round9_seed": {
+      "outside_area": 0.0,
+      "others_filled_area": 0.21398181378598763
+    },
+    "round11_fourier22": {
+      "outside_area": 0.0012744596167700785,
+      "others_filled_area": 0.212707354169219
+    }
+  },
+  "active_threshold_1e-3": [
+    "round10_fourier20",
+    "round3_double_harmonic",
+    "round4_fourier10",
+    "round5_fourier12",
+    "round7_fourier14",
+    "round8_fourier16",
+    "round11_fourier22"
+  ],
+  "round11_attack_persistence": {
+    "initial_attack_exposure": 0.0017806554903773931,
+    "final_leave_one_out": 0.0012744596167700785,
+    "persistence_ratio": 0.7157249808608227,
+    "classification": "persistent_skeleton"
+  },
+  "placement_bracket": {
+    "status": "global upper bound plus local Lipschitz lower bound; global lower bound remains vacuous",
+    "global_feasible_upper": 0.0017806554903773931,
+    "global_certified_lower": 0.0,
+    "tube_perimeter": 2.2513205994856094,
+    "rotation_radius": 0.48508297956192953,
+    "positive_motion_threshold": 0.00039525110505937646,
+    "local_cell": {
+      "half_translation_x": 5e-05,
+      "half_translation_y": 5e-05,
+      "half_rotation": 0.0001,
+      "maximum_point_motion": 0.00011921897605463591,
+      "certified_lower": 0.0012437659131498326
+    },
+    "global_uniform_partition_estimate": {
+      "translation_cells_x": 9067,
+      "translation_cells_y": 10576,
+      "rotation_cells": 11567,
+      "total_cells": 1109189611664
+    },
+    "interpretation": "The best numerical basin is locally separated from zero exposure, but the perimeter-based Lipschitz bound is too weak to certify the entire SE(2) domain at practical resolution."
+  },
+  "historical_pressure_memory": {
+    "round5": {
+      "curve": "round5_fourier12",
+      "attack_exposure": 0.0066644584512298485,
+      "net_area_increase": 0.002818179860791886,
+      "absorption_ratio": 0.5771329536502964,
+      "terminal_leave_one_out_in_C11": 0.0010979502794300218,
+      "persistence_ratio": 0.16474711148171503,
+      "classification": "persistent_skeleton"
+    },
+    "round6": {
+      "curve": "round6_holdout",
+      "attack_exposure": 0.004934177791818109,
+      "net_area_increase": 0.004464130666875232,
+      "absorption_ratio": 0.09544338912390884,
+      "terminal_leave_one_out_in_C11": 0.0,
+      "persistence_ratio": 0.0,
+      "classification": "transient_forcing"
+    },
+    "round7": {
+      "curve": "round7_fourier14",
+      "attack_exposure": 0.006847625978345335,
+      "net_area_increase": 0.005593838790930533,
+      "absorption_ratio": 0.1830980826611888,
+      "terminal_leave_one_out_in_C11": 0.0018974863697343242,
+      "persistence_ratio": 0.2771013451574109,
+      "classification": "persistent_skeleton"
+    },
+    "round8": {
+      "curve": "round8_fourier16",
+      "attack_exposure": 0.007080929040941278,
+      "net_area_increase": 0.004618292548101588,
+      "absorption_ratio": 0.34770395478557853,
+      "terminal_leave_one_out_in_C11": 0.0017390060414859093,
+      "persistence_ratio": 0.24559009579550042,
+      "classification": "persistent_skeleton"
+    },
+    "round9": {
+      "curve": "round9_seed",
+      "attack_exposure": 0.004050717098905142,
+      "net_area_increase": 0.0024639754284089543,
+      "absorption_ratio": 0.39171209463683765,
+      "terminal_leave_one_out_in_C11": 0.0,
+      "persistence_ratio": 0.0,
+      "classification": "transient_forcing"
+    },
+    "round10": {
+      "curve": "round10_fourier20",
+      "attack_exposure": 0.004423629899966247,
+      "net_area_increase": 0.0023953036000463335,
+      "absorption_ratio": 0.4585030497075267,
+      "terminal_leave_one_out_in_C11": 0.001680034923012472,
+      "persistence_ratio": 0.3797865013583734,
+      "classification": "persistent_skeleton"
+    },
+    "round11": {
+      "curve": "round11_fourier22",
+      "attack_exposure": 0.0017806554903773931,
+      "net_area_increase": 0.00018388116037248992,
+      "absorption_ratio": 0.896499474052808,
+      "terminal_leave_one_out_in_C11": 0.0012744596167700785,
+      "persistence_ratio": 0.7157249808608227,
+      "classification": "persistent_skeleton"
+    }
+  },
+  "fourier24_and_bspline_audit": {
+    "distributed": {
+      "outside_high": 0.0010256032860475636,
+      "outside_search": 0.0010249779764197288,
+      "placement": [
+        -1,
+        [
+          3.557233514293066,
+          0.2142415407394503,
+          0.37790298713317144
+        ]
+      ],
+      "sampled_max_curvature": 16.220085835399956
+    },
+    "mixed": {
+      "outside_high": 0.0,
+      "outside_search": 0.0,
+      "placement": [
+        1,
+        [
+          6.0816088015339815,
+          0.21315966132753347,
+          0.3342985693107754
+        ]
+      ],
+      "sampled_max_curvature": 20.526613892910863
+    },
+    "localized": {
+      "outside_high": 0.001631401070024348,
+      "outside_search": 0.0016310759708174582,
+      "placement": [
+        1,
+        [
+          5.72664513927848,
+          0.26433145980627154,
+          0.2251208867623261
+        ]
+      ],
+      "sampled_max_curvature": 16.602895287344733
+    },
+    "bspline": {
+      "outside_high": 2.44505997641594e-06,
+      "outside_search": 2.417498079798555e-06,
+      "placement": [
+        1,
+        [
+          5.887064849832909,
+          0.22770152187004,
+          0.29944746871069494
+        ]
+      ],
+      "sampled_max_curvature": 16.47692200482892
+    }
+  },
+  "round12_seed": {
+    "family": "Fourier-24 localized-lineage residual",
+    "coefficients": [
+      -0.17294102434966674,
+      0.2425947831765309,
+      1.531461940838861,
+      -0.027735869900647817,
+      -0.6525428976838369,
+      0.47308605606241594,
+      -0.5534868814692232,
+      0.40332236107910474,
+      0.7498298834687358,
+      0.37094457277229487,
+      0.5505523871231193,
+      -0.7707775096786879,
+      0.027145705796488832,
+      -0.1861024616408742,
+      -0.056906477063639216,
+      0.9502002100759588,
+      0.28120759971310255,
+      0.03229900565699104,
+      0.1431508851953196,
+      -0.1928936427626713,
+      -0.11934049613472945,
+      0.14441263764460172,
+      0.08502879413497418,
+      -0.1223535268967253,
+      -0.12987031899068205,
+      -0.0486203433280145,
+      -0.04568671788131733,
+      0.09062278016252794,
+      0.10678356425449373,
+      -0.3188138409945877,
+      -0.0726093522562908,
+      0.29240981399943555,
+      0.06494020163048198,
+      -0.09677123689411819,
+      -0.0023853863163387015,
+      0.02624929310988711,
+      0.09226786337865611,
+      -0.010336657942591141,
+      -0.04970034728029075,
+      -0.05695605027211577,
+      -0.04730174721620232,
+      -0.045302788186940134,
+      0.003664158972344651,
+      0.005672590089547184,
+      -0.003634625053692376,
+      0.0054150344227503425,
+      -0.032171903394980335,
+      0.015390068804476601
+    ],
+    "curvature_box": {
+      "boxes": 200000,
+      "derivative_bound": 456.7324037646974,
+      "log_box_error": 0.0011418310094117436,
+      "normalization_lower": 2.743543777757229,
+      "normalization_upper": 2.7498162638726518,
+      "kmax_lo": 16.565094818618103,
+      "kmax_hi": 16.6409260153703,
+      "kmin_lo": 0.005711763928828319,
+      "kmin_hi": 0.005737911071300604,
+      "radius_lo": 0.06009280968356902,
+      "rho_margin": 0.020092809683569017
+    },
+    "sampled_max_curvature": 16.602895287344733,
+    "sampled_min_curvature": 0.005724867303595629,
+    "sampled_min_radial_dot": 0.0005555538668107368,
+    "outside_area_high": 0.001631401070024348,
+    "outside_fraction_of_tube": 0.019186992855034224,
+    "spatial_exposure_metrics": {
+      "positive_deficit_arclength_fraction": 0.24708495280399778,
+      "max_clearance_deficit": 0.015090250589140038,
+      "mean_positive_deficit": 0.0070813117547540525,
+      "deficit_entropy": 1.986423456418934,
+      "effective_deficit_bins": 7.289416170183758,
+      "outside_area": 0.001631401070024348,
+      "component_count": 4,
+      "component_areas": [
+        0.0013484923852085779,
+        0.0002216040991575367,
+        5.623043257847918e-05,
+        5.074153079754359e-06
+      ],
+      "largest_component_fraction": 0.8265854485362402
+    },
+    "spectral_metrics": {
+      "modes": 24,
+      "amplitudes": [
+        0.2979275528170902,
+        1.5317130784572797,
+        0.8059917181698022,
+        0.6848479064032755,
+        0.8365672299414784,
+        0.9472095335211976,
+        0.18807183620091175,
+        0.9519027189582929,
+        0.28305642529862285,
+        0.24020852056173325,
+        0.18734237088591146,
+        0.14899758849094,
+        0.1386731320049977,
+        0.10148775529665117,
+        0.3362216453540965,
+        0.30128992243064256,
+        0.11654141786431636,
+        0.026357455428150548,
+        0.09284505969562669,
+        0.07559177324538222,
+        0.06549654881912685,
+        0.006753098496145509,
+        0.006521740341388903,
+        0.03566350495762399
+      ],
+      "spectral_entropy": 1.991131958032685,
+      "effective_modes": 7.323819328086848,
+      "high_mode_power_fraction": 0.04082668346076696,
+      "max_mode": 2
+    },
+    "tube_audit": {
+      "polyline_length": 0.999999119220159,
+      "simple": true,
+      "buffer_valid": true,
+      "buffer_area": 0.08502640733492044,
+      "expected_area": 0.08502654824574367,
+      "area_difference": -1.4091082323197668e-07
+    }
+  },
+  "cycle_comparison": {
+    "round5": {
+      "attack_exposure": 0.0066644584512298485,
+      "net_area_increase": 0.002818179860791886,
+      "recovery_ratio": 0.5771329536502964,
+      "net_fraction": 0.4228670463497036
+    },
+    "round6": {
+      "attack_exposure": 0.004934177791818109,
+      "net_area_increase": 0.004464130666875232,
+      "recovery_ratio": 0.09544338912390884,
+      "net_fraction": 0.9047364840151662
+    },
+    "round7": {
+      "attack_exposure": 0.006847625978345335,
+      "net_area_increase": 0.005593838790930533,
+      "recovery_ratio": 0.1830980826611888,
+      "net_fraction": 0.816901917338983
+    },
+    "round8": {
+      "attack_exposure": 0.007080929040941278,
+      "net_area_increase": 0.004618292548101588,
+      "recovery_ratio": 0.34770395478557853,
+      "net_fraction": 0.6522156233170884
+    },
+    "round9": {
+      "attack_exposure": 0.004050717098905142,
+      "net_area_increase": 0.0024639754284089543,
+      "recovery_ratio": 0.39171209463683765,
+      "net_fraction": 0.6082812914964948
+    },
+    "area_sequence": {
+      "A4": 0.1914442116693596,
+      "A5": 0.19426239153015148,
+      "A6": 0.19872652219702672,
+      "A7": 0.20432036098795725,
+      "A8": 0.20893865353605884,
+      "A9": 0.2114026290255688,
+      "A10": 0.21379793262561514,
+      "A11": 0.21398181378598763
+    },
+    "increment_sequence": {
+      "DeltaA5": 0.002818179860791886,
+      "DeltaA6": 0.004464130666875232,
+      "DeltaA7": 0.005593838790930533,
+      "DeltaA8": 0.004618292548101588,
+      "dA9": 0.0024639754284089543,
+      "dA10": 0.0023953036000463335,
+      "dA11": 0.00018388116037248992
+    },
+    "round10": {
+      "attack_exposure": 0.004423629899966247,
+      "net_area_increase": 0.0023953036000463335,
+      "recovery_ratio": 0.4585030497075267,
+      "net_fraction": 0.5414792046831518
+    },
+    "round11": {
+      "attack_exposure": 0.0017806554903773931,
+      "net_area_increase": 0.00018388116037248992,
+      "recovery_ratio": 0.896499474052808,
+      "net_fraction": 0.10326599466667077
+    }
+  },
+  "status": {
+    "global_curve_optimum": false,
+    "global_placement_certificate": false,
+    "local_placement_basin_certificate": true,
+    "global_nonconvex_container_optimum": false,
+    "formal_interval_curvature": false,
+    "new_kakeya_or_moser_bound": false
+  }
+}

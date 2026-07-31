@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>歪度場 · AMRAL</title>
+<meta name="description" content="AMRAL 案例:歪度場——掛谷針問題、中心生成式雙向偏移螺旋、Moser 蟲問題的統一橋接理論。證明正厚度掃掠面積不變量,把掛谷退化通道封死,轉譯成 Moser 型萬有容納問題。原始工程包未經改動,逐輪留痕。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../">AMRAL</a>
+  <a class="link" href="../methodology/">方法論</a>
+  <a class="link" href="../riemann/">黎曼猜想</a>
+  <a class="link" href="../moser/">Moser 蟲問題</a>
+  <a class="link active" href="./">歪度場</a>
+</div></nav>
+<div class="wrap">
+  <header class="page">
+    <p class="eyebrow"><a href="../">← AMRAL</a> · PROGRAM-UNIVERSAL-COVERING</p>
+    <h1>歪度場</h1>
+    <p class="subtitle">掛谷—Moser 橋接理論 · 半自主研究(Neo 主導)</p>
+    <p class="lede">
+      把掛谷針問題、Neo 提出的「中心生成式雙向偏移螺旋」幾何、跟 Moser 蟲問題三者統一起來的橋接理論。
+      核心命題:在「正厚度 + 內部不可重疊」條件下,任何合法中心線的雙向法向帶掃掠面積是固定不變量 <code>2ρL</code>,
+      跟曲線形狀無關——這把掛谷針問題裡「靠重疊把掃掠面積壓向零」的退化通道封死,同時把最佳化問題轉譯成
+      Moser 型萬有容納問題。方法論見<a href="../methodology/">方法論頁</a>。直接攻堅 Moser 問題本身見另一案例
+      <a href="../moser/">Moser 蟲問題</a>。
+    </p>
+    <div class="stats" id="stats" aria-label="封存庫統計"></div>
+    <p class="notice">
+      每一輪的 README 都自己聲明「不構成掛谷或 Moser 問題的新界」——這是探索性數值研究跟命題型理論草案,不是形式證明。
+      原始封包未經改動,逐輪留痕,含驗證與雜湊。
+    </p>
+  </header>
+
+  <section id="papers">
+    <h2 class="doc-h2">理論論文 · Papers</h2>
+    <p class="section-note">三篇原文,未經改寫。前兩篇建立橋接理論本身;第三篇是純幾何命題的獨立形式化,是前兩篇共用的基礎命題。</p>
+    <div class="case-grid">
+      <a class="case-card" href="./papers/kakeya-moser-bridge/">
+        <span class="k">v0.1 · 2026-07-27</span>
+        <h3>從原始掛谷針到 Moser 蟲</h3>
+        <p>中心生成式雙向偏移螺旋的正厚度橋接理論——建立掛谷、螺旋、Moser 三者的第一版統一接口。</p>
+      </a>
+      <a class="case-card" href="./papers/skew-fiber-universal-tension/">
+        <span class="k">v0.2 · 2026-07-27</span>
+        <h3>從原始掛谷針到 Moser 蟲 II</h3>
+        <p>量度守恆歪線纖維、信息忠實核與普適覆蓋張力——統一擴展版,證明纖維一階矩可逆重建曲率。</p>
+      </a>
+      <a class="case-card" href="./papers/center-generated-spiral-proposition/">
+        <span class="k">v0.1 · 2026-07-27</span>
+        <h3>中心生成式雙向偏移螺旋命題</h3>
+        <p>完整轉向、正厚度、不可重疊與螺旋環帶的形式化幾何——前兩篇共用的基礎命題,獨立於掛谷/Moser 框架成立。</p>
+      </a>
+    </div>
+  </section>
+
+  <div id="content">
+    <p class="loading">載入清單中…</p>
+  </div>
+
+  <footer class="sitefoot">
+    <span>SHA-256 逐包核驗 · 原始位元組,不重新打包</span>
+    <span id="generated-note"></span>
+  </footer>
+</div>
+
+<script>
+const fmtSize = (b) => {
+  if (b < 1024) return b + " B";
+  if (b < 1024 * 1024) return (b / 1024).toFixed(1) + " KB";
+  return (b / (1024 * 1024)).toFixed(2) + " MB";
+};
+const fmtDate = (iso) => {
+  if (!iso) return "—";
+  const d = new Date(iso);
+  if (isNaN(d)) return iso;
+  return d.toLocaleString("zh-TW", {
+    year: "numeric", month: "2-digit", day: "2-digit",
+    hour: "2-digit", minute: "2-digit", hour12: false,
+  }).replace(/\//g, "-");
+};
+
+function cardHTML(pkg) {
+  const href = "./packages/" + encodeURIComponent(pkg.filename);
+  const shortHash = pkg.sha256.slice(0, 16) + "…";
+  const titleInner = pkg.has_detail_page
+    ? `<a class="title-link" href="./p/${pkg.id}/">${pkg.title} <span class="detail-hint">→ 詳細頁</span></a>`
+    : pkg.title;
+  return `
+    <article class="card" id="${pkg.id}">
+      <div class="card-top">
+        <span class="tag">第 ${pkg.version} 輪</span>
+      </div>
+      <div class="title">${titleInner}</div>
+      <div class="meta">
+        <span>${fmtDate(pkg.generated_at)} UTC</span>
+        <span>${fmtSize(pkg.size)} · ${pkg.file_count} 檔</span>
+      </div>
+      <button class="hash" type="button" data-hash="${pkg.sha256}" title="點擊複製完整 SHA-256:${pkg.sha256}">
+        sha256 ${shortHash}
+      </button>
+      <a class="dl" href="${href}" download="${pkg.filename}">下載 ${fmtSize(pkg.size)}</a>
+    </article>`;
+}
+
+const PAGE_SIZE = 20;
+let manifest = null;
+let page = 0;
+
+function pagerHTML(totalPages) {
+  if (totalPages <= 1) return "";
+  let nums = "";
+  for (let i = 0; i < totalPages; i++) {
+    nums += `<button class="page-btn ${i === page ? "active" : ""}" data-page="${i}">${i + 1}</button>`;
+  }
+  return `<div class="pager">
+    <button class="page-btn" data-page="${page - 1}" ${page === 0 ? "disabled" : ""}>‹ 上一頁</button>
+    ${nums}
+    <button class="page-btn" data-page="${page + 1}" ${page === totalPages - 1 ? "disabled" : ""}>下一頁 ›</button>
+  </div>`;
+}
+
+function render() {
+  const content = document.getElementById("content");
+  const rounds = manifest.rounds;
+  const totalPages = Math.ceil(rounds.length / PAGE_SIZE);
+  const shown = rounds.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE);
+  content.innerHTML = `
+    <section class="series" id="rounds">
+      <div class="series-head">
+        <h2>實驗輪次 · Experiment Rounds</h2>
+        <span class="count">${rounds.length} 包${totalPages > 1 ? ` · 第 ${page + 1}/${totalPages} 頁` : ""}</span>
+      </div>
+      <p class="series-note">依版本順序排列,每輪封存為獨立 zip,原始位元組不重新打包。</p>
+      <div class="grid">${shown.map(cardHTML).join("")}</div>
+      ${pagerHTML(totalPages)}
+    </section>`;
+}
+
+async function boot() {
+  const content = document.getElementById("content");
+  try {
+    const res = await fetch("./manifest.json");
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    manifest = await res.json();
+  } catch (e) {
+    content.innerHTML = `<p class="error">清單載入失敗:${e.message}</p>`;
+    return;
+  }
+
+  const dates = manifest.rounds.map((p) => p.generated_at).filter(Boolean).sort();
+  document.getElementById("stats").innerHTML = `
+    <div class="stat"><span class="n">${manifest.counts.total}</span><span class="l">封存包</span></div>
+    <div class="stat"><span class="n">${(manifest.total_size / (1024 * 1024)).toFixed(1)} MB</span><span class="l">總大小</span></div>
+  `;
+  document.getElementById("generated-note").textContent =
+    dates.length ? `${fmtDate(dates[0])} → ${fmtDate(dates[dates.length - 1])} UTC` : "";
+
+  if (location.hash.length > 1) {
+    const id = decodeURIComponent(location.hash.slice(1));
+    const idx = manifest.rounds.findIndex((p) => p.id === id);
+    if (idx !== -1) page = Math.floor(idx / PAGE_SIZE);
+  }
+
+  render();
+
+  if (location.hash.length > 1) {
+    const target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    if (target) target.scrollIntoView({ block: "center" });
+  }
+
+  content.addEventListener("click", (ev) => {
+    const pageBtn = ev.target.closest(".page-btn");
+    if (pageBtn) {
+      if (pageBtn.disabled) return;
+      page = Number(pageBtn.dataset.page);
+      render();
+      document.getElementById("rounds")?.scrollIntoView({ block: "start" });
+      return;
+    }
+    const btn = ev.target.closest(".hash");
+    if (!btn) return;
+    navigator.clipboard?.writeText(btn.dataset.hash).then(() => {
+      btn.classList.add("copied");
+      const original = btn.textContent;
+      btn.textContent = "已複製完整雜湊 ✓";
+      setTimeout(() => { btn.classList.remove("copied"); btn.textContent = original; }, 1400);
+    });
+  });
+}
+
+boot();
+</script>
+</body>
+</html>

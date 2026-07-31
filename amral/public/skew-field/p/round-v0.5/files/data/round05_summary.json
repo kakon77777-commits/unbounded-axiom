@@ -1,0 +1,199 @@
+{
+  "experiment": "Center-Generated Bridge Experiment Round 5",
+  "version": "0.5",
+  "date": "2026-07-27",
+  "parameters": {
+    "L": 1.0,
+    "rho": 0.04,
+    "tau": 3.141592653589793
+  },
+  "exposure_functional": {
+    "definition": "A_C(gamma)=inf_{g in E(2)} area((g T_rho(gamma)) \\ C)",
+    "zero_equivalence": "A_C(gamma)=0 iff an exact congruent placement is contained, for compact tube and closed C with attained infimum"
+  },
+  "round4_container": {
+    "filled_area": 0.1914442116693596
+  },
+  "attack_candidate": {
+    "family": "Fourier-12 positive log-curvature adversary",
+    "coefficients": [
+      0.6350455349918801,
+      -0.020507958830842443,
+      1.9246516082699698,
+      -0.18379895840362914,
+      -0.6063925425080318,
+      0.4106616098061311,
+      -0.45853531001857567,
+      0.42586443120843254,
+      0.6616472341198956,
+      0.6710613979258754,
+      0.1584665355162378,
+      -0.5036445365424034,
+      -0.12952885557179336,
+      0.20074482142225092,
+      -0.04353646510488308,
+      0.7036393643662658,
+      0.5795260273171406,
+      0.18892443041207468,
+      0.22220155789523946,
+      -0.6390733383095324,
+      -0.4026669694904981,
+      0.087364915346165,
+      0.042936305269233775,
+      -0.10409751761404679
+    ],
+    "curvature_box": {
+      "boxes": 200000,
+      "derivative_bound": 333.4505776242175,
+      "log_error": 0.0008336264440605438,
+      "Zlo": 3.3101202056885626,
+      "Zhi": 3.3156436163432446,
+      "kmax_lo": 19.278187626135963,
+      "kmax_hi": 19.34257814975454,
+      "kmin_lo": 0.0018255152964604328,
+      "kmin_hi": 0.0018316126479383007,
+      "radius_lo": 0.0516994162958928,
+      "rho_margin": 0.0116994162958928
+    },
+    "sampled_max_curvature": 19.31025155423594,
+    "sampled_min_curvature": 0.0018290983211701173,
+    "sampled_min_radial_dot": 0.0004999949916449041,
+    "tube_audit": {
+      "length": 0.999999111451729,
+      "simple": true,
+      "buffer_valid": true,
+      "buffer_area": 0.08502623342790457,
+      "expected": 0.08502654824574367,
+      "diff": -3.148178391032541e-07,
+      "radial_min": 0.0004999949916449041
+    },
+    "best_placement_against_round4": {
+      "parity": -1,
+      "phi": 3.860327682355742,
+      "translation": [
+        -0.09563094847410811,
+        0.7339832241295983
+      ],
+      "outside_area_high": 0.0066644584512298485,
+      "outside_fraction_of_tube": 0.0783814613104066
+    },
+    "placement_branch_ledger_count": 8
+  },
+  "container_response": {
+    "naive_added_filled_area": 0.19810884328924125,
+    "final_raw_union_area": 0.19408212646970244,
+    "final_hole_areas": [
+      0.00018026506044905324
+    ],
+    "final_simply_connected_area": 0.19426239153015148,
+    "attack_exposure": 0.0066644584512298485,
+    "area_recovered_by_rearrangement": 0.003846451759089764,
+    "recovery_ratio": 0.5771589375547755,
+    "net_area_increase": 0.002818179860791886,
+    "relative_net_increase": 0.014720632377536293,
+    "net_attack_fraction": 0.4228670463497036,
+    "connected": true,
+    "valid": true
+  },
+  "leave_one_out_high": {
+    "archimedean": {
+      "outside_area": 4.3566080741258666e-05,
+      "covered": false,
+      "container_without_area": 0.19421882544941052
+    },
+    "constant": {
+      "outside_area": 0.00971261165931847,
+      "covered": false,
+      "container_without_area": 0.18454977987083251
+    },
+    "curvature_saturated": {
+      "outside_area": 0.00042571802454275916,
+      "covered": false,
+      "container_without_area": 0.19383667350560893
+    },
+    "round1_finite_width": {
+      "outside_area": 0.0006737185402206434,
+      "covered": false,
+      "container_without_area": 0.19358867298993068
+    },
+    "round2_quadratic_exponential": {
+      "outside_area": 0.0002462662388135167,
+      "covered": false,
+      "container_without_area": 0.19401612529133777
+    },
+    "round3_double_harmonic": {
+      "outside_area": 0.007655203323694703,
+      "covered": false,
+      "container_without_area": 0.18660718820645664
+    },
+    "round4_fourier10": {
+      "outside_area": 0.007965433132312301,
+      "covered": false,
+      "container_without_area": 0.18629695839783925
+    },
+    "round5_fourier12": {
+      "outside_area": 0.0040679904819757315,
+      "covered": false,
+      "container_without_area": 0.1901944010481755
+    }
+  },
+  "active_threshold_1e-3": [
+    "constant",
+    "round3_double_harmonic",
+    "round4_fourier10",
+    "round5_fourier12"
+  ],
+  "holdout_audit": {
+    "random_candidates_generated": 50,
+    "valid_candidates_screened": 30,
+    "exact_candidates_recomputed": 4,
+    "residual_challenger": {
+      "coefficients": [
+        0.24577104758971208,
+        0.2238713323331018,
+        1.5152216256214663,
+        -0.254431691674534,
+        -0.4460750333349083,
+        0.20380391873629397,
+        -0.5043616888277508,
+        0.39639266236552645,
+        0.8237717553905165,
+        0.6056230785793012,
+        0.22644043044143697,
+        -0.6922035691460681,
+        -0.3157808251887939,
+        0.13928452580259265,
+        -0.039555705925012605,
+        0.5979343967636338,
+        0.28589575343403906,
+        0.13418105634623811,
+        0.061148955874478036,
+        -0.46434894027437273,
+        0.2010647418074803,
+        0.06394395969333659,
+        0.028686460509947054,
+        0.05376240680111272
+      ],
+      "sampled_max_curvature": 15.540501909156939,
+      "sampled_min_curvature": 0.00472459618840449,
+      "sampled_min_radial_dot": 0.0004999959713403953,
+      "best_placement": {
+        "parity": 1,
+        "phi": 6.063185791574381,
+        "translation": [
+          0.015983395071926636,
+          -0.021698374034833302
+        ]
+      },
+      "outside_area_high": 0.004934177791818109
+    },
+    "converged": false
+  },
+  "status": {
+    "global_curve_optimum": false,
+    "global_placement_certificate": false,
+    "global_nonconvex_container_optimum": false,
+    "formal_interval_curvature": false,
+    "new_kakeya_or_moser_bound": false
+  }
+}

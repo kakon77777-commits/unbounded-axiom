@@ -1,0 +1,456 @@
+{
+  "experiment": "Center-Generated Bridge Experiment Round 10",
+  "version": "1.0",
+  "date": "2026-07-28",
+  "parameters": {
+    "L": 1.0,
+    "rho": 0.04,
+    "tau": 3.141592653589793
+  },
+  "attack_candidate": {
+    "family": "Fourier-20 mixed-lineage challenger",
+    "coefficients": [
+      0.38231517186178243,
+      0.25256319995133886,
+      1.8111623607865113,
+      -0.3036707042758256,
+      -0.5407394932076693,
+      0.31251229333900776,
+      -0.450804964452057,
+      0.35150176941876055,
+      0.7582780741717503,
+      0.5970980539091332,
+      0.1390333869421711,
+      -0.34828021912521645,
+      -0.2312295086873858,
+      0.18872937713551668,
+      0.02131280436973131,
+      0.6063006046427485,
+      0.529002153263813,
+      0.022813738572978415,
+      0.03835253206531548,
+      -0.4722928823508743,
+      0.0009051508287539096,
+      -0.02746423658368001,
+      -0.03458412456923098,
+      -0.019034110880370256,
+      0.13072598596366208,
+      -0.15008835965114964,
+      -0.21805583017455618,
+      0.20236659123896378,
+      -0.04963203842743397,
+      0.06214415267740672,
+      0.011861612492339158,
+      -0.08154962642327548,
+      0.10117121505317246,
+      -0.04187082859889572,
+      -0.01942701277920223,
+      0.05268850128652441,
+      0.012068376517342579,
+      -0.05676809956549568,
+      -0.0054313193969359715,
+      0.01411789629765852
+    ],
+    "curvature_box": {
+      "boxes": 100000,
+      "derivative_bound": 361.0292028939147,
+      "log_box_error": 0.0018051460144695736,
+      "normalization_lower": 2.7734722820152014,
+      "normalization_upper": 2.7835034236671565,
+      "kmax_lo": 20.78761039503478,
+      "kmax_hi": 20.93825228998846,
+      "kmin_lo": 0.002384274389542596,
+      "kmin_hi": 0.002401552547315659,
+      "radius_lo": 0.04775947801900095,
+      "rho_margin": 0.007759478019000947
+    },
+    "sampled_max_curvature": 20.8627105427624,
+    "sampled_min_curvature": 0.0023948033551711104,
+    "sampled_min_radial_dot": 0.0008333110213409573,
+    "best_placement": {
+      "parity": -1,
+      "phi": 3.426612040573851,
+      "translation": [
+        0.22875416225185494,
+        0.30838790312727027
+      ]
+    },
+    "outside_area_high": 0.004423629899966247,
+    "outside_fraction_of_tube": 0.05202645516293422,
+    "spatial_exposure_metrics": {
+      "outside_area": 0.004423629899966247,
+      "component_count": 5,
+      "component_areas": [
+        0.002797570002080665,
+        0.0008110640143995959,
+        0.0006637975683915132,
+        0.00012512563504480075,
+        2.607268004967135e-05
+      ],
+      "largest_component_fraction": 0.6324150223557381,
+      "positive_deficit_arclength_fraction": 0.3688592839300583,
+      "deficit_runs": 5,
+      "max_clearance_deficit": 0.033355781073110796,
+      "mean_positive_deficit": 0.00838988150379925,
+      "deficit_entropy": 2.335335872223064,
+      "effective_deficit_bins": 10.33292989073826,
+      "largest_bin_mass_fraction": 0.24704481307167342
+    },
+    "spectral_metrics": {
+      "modes": 20,
+      "amplitudes": [
+        0.45820635155502176,
+        1.8364435721701728,
+        0.6245503446500474,
+        0.5716455281720831,
+        0.9651485500956278,
+        0.3750058582456016,
+        0.29847255063367206,
+        0.6066750850498682,
+        0.5294938572121747,
+        0.4738475318444931,
+        0.027479148260947633,
+        0.03947605665750209,
+        0.19903718021752723,
+        0.2974904743395874,
+        0.07953134571007282,
+        0.08240776310939527,
+        0.10949329222785008,
+        0.056155916815090565,
+        0.05803673698651895,
+        0.015126606567997102
+      ],
+      "spectral_entropy": 1.7316724362832845,
+      "effective_modes": 5.650095435661888,
+      "high_mode_power_fraction": 0.02498320607514956,
+      "last_quarter_power_fraction": 0.003930301850785707,
+      "max_mode": 2
+    },
+    "tube_audit": {
+      "polyline_length": 0.9999975657797898,
+      "simple": true,
+      "buffer_valid": true,
+      "buffer_area": 0.0850262599657437,
+      "expected_area": 0.08502654824574367,
+      "area_difference": -2.8827999996872133e-07
+    },
+    "role": "Round 10 Fourier-20 formal attack"
+  },
+  "container_response": {
+    "round9_saved_area": 0.2114026290255688,
+    "naive_added_filled_area": 0.21582618042552706,
+    "final_raw_union_area": 0.21379793262561514,
+    "final_hole_areas": [],
+    "final_simply_connected_area": 0.21379793262561514,
+    "attack_exposure": 0.004423629899966247,
+    "area_recovered_by_rearrangement": 0.0020282477999119253,
+    "recovery_ratio": 0.4585030497075267,
+    "net_area_increase": 0.0023953036000463335,
+    "relative_net_increase": 0.011330528911050701,
+    "net_attack_fraction": 0.5414792046831518,
+    "connected": true,
+    "valid": true
+  },
+  "leave_one_out_high": {
+    "archimedean": {
+      "outside_area": 0.0
+    },
+    "constant": {
+      "outside_area": 0.000207385219541794
+    },
+    "curvature_saturated": {
+      "outside_area": 0.00013514958751761658
+    },
+    "round1_finite_width": {
+      "outside_area": 0.0007863435156556553
+    },
+    "round2_quadratic_exponential": {
+      "outside_area": 0.0002453656269208399
+    },
+    "round3_double_harmonic": {
+      "outside_area": 0.006879408520748373
+    },
+    "round4_fourier10": {
+      "outside_area": 0.010254868981537713
+    },
+    "round5_fourier12": {
+      "outside_area": 0.0027735140189264363
+    },
+    "round6_holdout": {
+      "outside_area": 1.0477376353291141e-07
+    },
+    "round7_fourier14": {
+      "outside_area": 0.0027629251822957747
+    },
+    "round8_fourier16": {
+      "outside_area": 0.001996811389616526
+    },
+    "round9_seed": {
+      "outside_area": 4.475020160587393e-05
+    },
+    "round10_fourier20": {
+      "outside_area": 0.0023074673794844596
+    }
+  },
+  "active_threshold_1e-3": [
+    "round3_double_harmonic",
+    "round4_fourier10",
+    "round5_fourier12",
+    "round7_fourier14",
+    "round8_fourier16",
+    "round10_fourier20"
+  ],
+  "historical_pressure_memory": {
+    "round5": {
+      "curve": "round5_fourier12",
+      "attack_exposure": 0.0066644584512298485,
+      "net_area_increase": 0.002818179860791886,
+      "absorption_ratio": 0.5771329536502964,
+      "final_leave_one_out_in_C10": 0.0027735140189264363,
+      "persistence_ratio": 0.41616495011903276,
+      "classification": "persistent_skeleton"
+    },
+    "round6": {
+      "curve": "round6_holdout",
+      "attack_exposure": 0.004934177791818109,
+      "net_area_increase": 0.004464130666875232,
+      "absorption_ratio": 0.09544338912390884,
+      "final_leave_one_out_in_C10": 1.0477376353291141e-07,
+      "persistence_ratio": 2.1234290281685442e-05,
+      "classification": "transient_forcing"
+    },
+    "round7": {
+      "curve": "round7_fourier14",
+      "attack_exposure": 0.006847625978345335,
+      "net_area_increase": 0.005593838790930533,
+      "absorption_ratio": 0.1830980826611888,
+      "final_leave_one_out_in_C10": 0.0027629251822957747,
+      "persistence_ratio": 0.4034865792952392,
+      "classification": "persistent_skeleton"
+    },
+    "round8": {
+      "curve": "round8_fourier16",
+      "attack_exposure": 0.007080929040941278,
+      "net_area_increase": 0.004618292548101588,
+      "absorption_ratio": 0.34770395478557853,
+      "final_leave_one_out_in_C10": 0.001996811389616526,
+      "persistence_ratio": 0.281998503031332,
+      "classification": "persistent_skeleton"
+    },
+    "round9": {
+      "curve": "round9_seed",
+      "attack_exposure": 0.004050717098905142,
+      "net_area_increase": 0.0024639754284089543,
+      "absorption_ratio": 0.39171209463683765,
+      "final_leave_one_out_in_C10": 4.475020160587393e-05,
+      "persistence_ratio": 0.011047476412995949,
+      "classification": "transient_forcing"
+    },
+    "round10": {
+      "curve": "round10_fourier20",
+      "attack_exposure": 0.004423629899966247,
+      "net_area_increase": 0.0023953036000463335,
+      "absorption_ratio": 0.4585030497075267,
+      "final_leave_one_out_in_C10": 0.0023074673794844596,
+      "persistence_ratio": 0.5216230633358514,
+      "classification": "persistent_skeleton"
+    }
+  },
+  "round10_attack_persistence": {
+    "initial_attack_exposure": 0.004423629899966247,
+    "final_leave_one_out": 0.0023074673794844596,
+    "persistence_ratio": 0.5216230633358514,
+    "classification": "persistent_skeleton"
+  },
+  "placement_certification": {
+    "mixed_pool_low_budget_false_value": 0.040938380333605015,
+    "mixed_pool_robust_value": 0.00022574120708704514,
+    "overestimate_factor": 181.35094102610736,
+    "interpretation": "The apparent hard case collapsed after multi-seed full-congruence placement search; placement optimization was the dominant error."
+  },
+  "fourier22_and_bspline_audit": {
+    "mixed": {
+      "robust_outside": 0.00022574120708704514,
+      "placement": [
+        1,
+        0.0793108651791692,
+        0.1974995799800457,
+        0.40572597453324716
+      ]
+    },
+    "distributed": {
+      "robust_outside": 0.0017806554903773931,
+      "placement": [
+        1,
+        0.10147090648693412,
+        0.19375257120365666,
+        0.4099530358963652
+      ]
+    },
+    "localized": {
+      "robust_outside": 0.0003724055559242493
+    },
+    "moving_knot_bspline": {
+      "robust_outside": 9.111356841164823e-10
+    }
+  },
+  "round11_seed": {
+    "family": "Fourier-22 distributed-lineage residual",
+    "coefficients": [
+      0.739256447035336,
+      0.2745821070136059,
+      1.698380890692349,
+      -0.29261149512963863,
+      -0.5758239276809007,
+      0.10228960267999901,
+      -0.5561694433172248,
+      0.2933777834182288,
+      0.9589073558737087,
+      0.6152522848483498,
+      0.3000458758550158,
+      -0.33755546222914595,
+      -0.11687270179634829,
+      0.12061318463028001,
+      -0.1465982109719087,
+      0.41881174531635146,
+      0.3878044066376466,
+      0.04185769126560727,
+      0.14623024581047717,
+      -0.2615766515790108,
+      -0.09562720777621943,
+      0.15104632334660353,
+      0.009573277354052154,
+      -0.028662078213549734,
+      -0.0016101959325835226,
+      -0.2381202605785905,
+      -0.1542257637528394,
+      0.08658114447557255,
+      -0.0962940624012444,
+      -0.15777107332892007,
+      -0.026596804897858806,
+      -0.04979703866007116,
+      -0.00012216553362589568,
+      0.05033233997114055,
+      -0.04986599090952556,
+      0.04835934326964215,
+      0.02956058087096078,
+      -0.07145868578883847,
+      -0.07391258452715715,
+      -0.040418005657189254,
+      0.05672163386464174,
+      0.0705819075206206,
+      0.02534214101193941,
+      0.04062205624005624
+    ],
+    "curvature_box": {
+      "boxes": 200000,
+      "derivative_bound": 388.9613356837672,
+      "log_box_error": 0.000972403339209418,
+      "normalization_lower": 2.6893573292938115,
+      "normalization_upper": 2.69459269862897,
+      "kmax_lo": 21.67759222046562,
+      "kmax_hi": 21.76207386666938,
+      "kmin_lo": 0.003429496089577364,
+      "kmin_hi": 0.0034428614796239293,
+      "radius_lo": 0.0459515028818826,
+      "rho_margin": 0.005951502881882599
+    },
+    "sampled_max_curvature": 21.71724748288538,
+    "sampled_min_curvature": 0.0034366698681941718,
+    "sampled_min_radial_dot": 0.0008333060991343234,
+    "best_placement": [
+      1,
+      0.10147090648693412,
+      0.19375257120365666,
+      0.4099530358963652
+    ],
+    "outside_area_high": 0.0017806554903773931,
+    "outside_fraction_of_tube": 0.020942418805314965,
+    "spatial_exposure_metrics": {
+      "positive_deficit_arclength_fraction": 0.2472939217318901,
+      "max_clearance_deficit": 0.023001260409411403,
+      "mean_positive_deficit": 0.005796351076740062,
+      "deficit_entropy": 1.7758538499091931,
+      "effective_deficit_bins": 5.90532124227227,
+      "outside_area": 0.0017806554903773931,
+      "component_count": 4,
+      "component_areas": [
+        0.001287862146497221,
+        0.0002330948702696472,
+        0.00017746996688680828,
+        8.222850672371675e-05
+      ],
+      "largest_component_fraction": 0.7232517201989873
+    },
+    "tube_audit": {
+      "polyline_length": 0.9999975211132748,
+      "simple": true,
+      "buffer_valid": true,
+      "buffer_area": 0.08502625732637348,
+      "expected_area": 0.08502654824574367,
+      "area_difference": -2.909193701911006e-07
+    }
+  },
+  "cycle_comparison": {
+    "round5": {
+      "attack_exposure": 0.0066644584512298485,
+      "net_area_increase": 0.002818179860791886,
+      "recovery_ratio": 0.5771329536502964,
+      "net_fraction": 0.4228670463497036
+    },
+    "round6": {
+      "attack_exposure": 0.004934177791818109,
+      "net_area_increase": 0.004464130666875232,
+      "recovery_ratio": 0.09544338912390884,
+      "net_fraction": 0.9047364840151662
+    },
+    "round7": {
+      "attack_exposure": 0.006847625978345335,
+      "net_area_increase": 0.005593838790930533,
+      "recovery_ratio": 0.1830980826611888,
+      "net_fraction": 0.816901917338983
+    },
+    "round8": {
+      "attack_exposure": 0.007080929040941278,
+      "net_area_increase": 0.004618292548101588,
+      "recovery_ratio": 0.34770395478557853,
+      "net_fraction": 0.6522156233170884
+    },
+    "round9": {
+      "attack_exposure": 0.004050717098905142,
+      "net_area_increase": 0.0024639754284089543,
+      "recovery_ratio": 0.39171209463683765,
+      "net_fraction": 0.6082812914964948
+    },
+    "area_sequence": {
+      "A4": 0.1914442116693596,
+      "A5": 0.19426239153015148,
+      "A6": 0.19872652219702672,
+      "A7": 0.20432036098795725,
+      "A8": 0.20893865353605884,
+      "A9": 0.2114026290255688,
+      "A10": 0.21379793262561514
+    },
+    "increment_sequence": {
+      "DeltaA5": 0.002818179860791886,
+      "DeltaA6": 0.004464130666875232,
+      "DeltaA7": 0.005593838790930533,
+      "DeltaA8": 0.004618292548101588,
+      "dA9": 0.0024639754284089543,
+      "dA10": 0.0023953036000463335
+    },
+    "round10": {
+      "attack_exposure": 0.004423629899966247,
+      "net_area_increase": 0.0023953036000463335,
+      "recovery_ratio": 0.4585030497075267,
+      "net_fraction": 0.5414792046831518
+    }
+  },
+  "status": {
+    "global_curve_optimum": false,
+    "global_placement_certificate": false,
+    "global_nonconvex_container_optimum": false,
+    "formal_interval_curvature": false,
+    "new_kakeya_or_moser_bound": false
+  }
+}

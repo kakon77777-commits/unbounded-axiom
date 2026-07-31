@@ -1,0 +1,82 @@
+{
+  "experiment": "Moser Skew Lab v0.11",
+  "status": "semi-validated interval-box certificate; formal directed-rounding proof pending",
+  "exact_contact_partition": {
+    "edge_count": 19,
+    "interval_count": 18,
+    "all_boundaries_symbolic": true,
+    "maximum_difference_from_round10_numeric_edges": 5.240252676230739e-14
+  },
+  "special_branch_certificate": {
+    "quadrature_partition_count": 262144,
+    "coordinate_midpoint_error_bound": 9.174572128674399e-12,
+    "q_difference_midpoint_error_bound": 5.484602124841186e-12,
+    "s270_interval": [
+      0.9989143390757518,
+      0.9989143390935133
+    ],
+    "s120_minus_s270_interval": [
+      1.6349560074843125e-09,
+      1.6417123458293262e-09
+    ],
+    "s120_interval": [
+      0.9989143407107078,
+      0.9989143407352257
+    ],
+    "event_control_branch_B1": "0.998903757132508674955129824900556480217268226712192103789438679951256334479142928925854041099053715211292510933368824931",
+    "smooth_minus_event_interval": [
+      "0.000010581943243125044870175099443519782731773287807896210561320048743665520857071074",
+      "0.000010581961004625044870175099443519782731773287807896210561320048743665520857071074"
+    ],
+    "status": {
+      "s120_strictly_above_s270": true,
+      "smooth_candidate_strictly_above_event_control_branch": true,
+      "rounding_model": "composite midpoint analytic second-derivative bound plus explicit floating padding",
+      "formal_directed_rounding": "not used"
+    }
+  },
+  "derivative_boxes": {
+    "interval_count": 18,
+    "total_certified_subboxes": 579,
+    "total_unresolved_subboxes": 0,
+    "all_interval_interiors_resolved": true
+  },
+  "stationary_roots": {
+    "root_count": 12,
+    "all_second_derivative_boxes_exclude_zero": true,
+    "smooth_minimum_count": 4,
+    "smooth_maximum_count": 8
+  },
+  "boundary_neighborhoods": {
+    "boundary_count": 17,
+    "side_derivative_signs_fully_resolved": 16,
+    "scale_exclusion_passed_count": 14,
+    "unresolved_derivative_but_scale_safe": [
+      10
+    ],
+    "globally_safe_count": 17,
+    "all_boundaries_globally_safe": true
+  },
+  "global_candidate": {
+    "phase": "3*pi/2",
+    "s270_interval": [
+      0.9989143390757518,
+      0.9989143390935133
+    ],
+    "event_control_comparison_interval": [
+      "0.000010581943243125044870175099443519782731773287807896210561320048743665520857071074",
+      "0.000010581961004625044870175099443519782731773287807896210561320048743665520857071074"
+    ]
+  },
+  "certificate_status": {
+    "exact_symbolic_contact_boundaries": "passed",
+    "all_interval_interior_derivative_boxes": "passed",
+    "all_stationary_root_uniqueness_boxes": "passed",
+    "s120_minus_s270_positive_interval": "passed",
+    "smooth_minus_event_positive_interval": "passed",
+    "boundary_neighborhood_scale_exclusion": "passed",
+    "directed_rounding_for_all_floating_operations": "pending",
+    "independent_interval_library_reproduction": "pending",
+    "formal_proof": "not attempted"
+  }
+}

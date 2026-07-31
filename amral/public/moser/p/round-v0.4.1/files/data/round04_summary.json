@@ -1,0 +1,229 @@
+{
+  "experiment": "Moser Skew Lab v0.4",
+  "method": {
+    "curve_family": "mirror-symmetric five-link",
+    "optimization": "SLSQP epigraph branch equalization",
+    "tracked_branch_count": 4,
+    "formal_proof": false
+  },
+  "before": {
+    "parameters": {
+      "l1": 0.1915275890370537,
+      "l2": 0.1440083662833447,
+      "l3": 0.32892808935920326,
+      "inner_angle_degrees": 80.87459061164482,
+      "outer_angle_degrees": 83.20204746532767
+    },
+    "tracked_branch_values": [
+      0.999388066721849,
+      0.999238612436933,
+      0.9987543763114789,
+      0.9993018906114062
+    ],
+    "global_scale": 0.9987543716681546
+  },
+  "after": {
+    "parameters": {
+      "l1": 0.19432258122860266,
+      "l2": 0.1415865166935808,
+      "l3": 0.32818180415563303,
+      "inner_angle_degrees": 80.68621471313776,
+      "outer_angle_degrees": 83.41615042021652
+    },
+    "tracked_branch_phases": [
+      0.11490985414710647,
+      0.16255621772601425,
+      2.094395111146395,
+      4.712389010499167
+    ],
+    "tracked_branch_values": [
+      0.9989037634981995,
+      0.9989037634954647,
+      0.9989037634954658,
+      0.9989037634954652
+    ],
+    "branch_spread": 2.734812376559148e-12,
+    "global_scale": 0.9989037504763583,
+    "improvement": 0.00014937880820364846,
+    "distance_to_one": 0.0010962495236417347
+  },
+  "sensitivity_matrix": [
+    [
+      -2.8088232072454034,
+      -2.7232508758578966,
+      -0.27436980648554155,
+      -0.02382432845449145
+    ],
+    [
+      -2.885254003492932,
+      -2.8840837474897185,
+      -0.24383978192155098,
+      -0.009740157180804232
+    ],
+    [
+      0.2680624668904841,
+      0.2542216535061925,
+      0.09494274183508011,
+      0.04679436355070621
+    ],
+    [
+      -0.17308713839980783,
+      -0.1354626953942173,
+      -0.2676057279660249,
+      -0.16241876332756533
+    ]
+  ],
+  "sensitivity_columns": [
+    "l1",
+    "l2",
+    "beta_radians",
+    "delta_radians"
+  ],
+  "branch_pressure_ledger": {
+    "weights": [
+      0.02800958288597405,
+      0.028799089563752354,
+      0.7367588827551471,
+      0.20643244479512643
+    ],
+    "stationarity_residual": [
+      -5.2423798652625607e-08,
+      5.874066063182323e-08,
+      5.617998791313377e-08,
+      -1.5654701760488241e-07
+    ],
+    "stationarity_norm": 1.8401597658773347e-07
+  },
+  "branch_contact_ledgers": [
+    {
+      "label": "B1 low phase",
+      "phase": 0.11490985414710647,
+      "value": 0.9989037634981995,
+      "left_contact_vertices": [
+        0,
+        1
+      ],
+      "bottom_contact_vertices": [
+        0
+      ],
+      "hypotenuse_contact_vertices": [
+        3
+      ]
+    },
+    {
+      "label": "B2 low phase",
+      "phase": 0.16255621772601425,
+      "value": 0.9989037634954647,
+      "left_contact_vertices": [
+        1,
+        2
+      ],
+      "bottom_contact_vertices": [
+        0
+      ],
+      "hypotenuse_contact_vertices": [
+        3
+      ]
+    },
+    {
+      "label": "B3 120°",
+      "phase": 2.094395111146395,
+      "value": 0.9989037634954658,
+      "left_contact_vertices": [
+        3
+      ],
+      "bottom_contact_vertices": [
+        2
+      ],
+      "hypotenuse_contact_vertices": [
+        0,
+        5
+      ]
+    },
+    {
+      "label": "B4 270°",
+      "phase": 4.712389010499167,
+      "value": 0.9989037634954652,
+      "left_contact_vertices": [
+        0,
+        5
+      ],
+      "bottom_contact_vertices": [
+        5
+      ],
+      "hypotenuse_contact_vertices": [
+        2
+      ]
+    }
+  ],
+  "all_final_local_minima": [
+    {
+      "phase": 0.11490985262332193,
+      "scale": 0.9989037634619311
+    },
+    {
+      "phase": 0.16255621907927525,
+      "scale": 0.9989037634632549
+    },
+    {
+      "phase": 1.6857061794186625,
+      "scale": 1.0300973585169608
+    },
+    {
+      "phase": 1.733352545873956,
+      "scale": 1.0290527050200924
+    },
+    {
+      "phase": 2.094395102393335,
+      "scale": 0.9989037581313519
+    },
+    {
+      "phase": 3.026682800966246,
+      "scale": 1.0997214314957298
+    },
+    {
+      "phase": 3.780101281811361,
+      "scale": 1.1273807508803793
+    },
+    {
+      "phase": 4.712388980384675,
+      "scale": 0.9989037504763583
+    },
+    {
+      "phase": 5.23598775598303,
+      "scale": 1.0812363823590183
+    }
+  ],
+  "resolution_stability": [
+    {
+      "phase_grid": 2048,
+      "global_scale": 0.9989037504763572,
+      "local_minimum_count": 8
+    },
+    {
+      "phase_grid": 4096,
+      "global_scale": 0.9989037504763558,
+      "local_minimum_count": 9
+    },
+    {
+      "phase_grid": 8192,
+      "global_scale": 0.9989037504763592,
+      "local_minimum_count": 9
+    },
+    {
+      "phase_grid": 16384,
+      "global_scale": 0.9989037504763572,
+      "local_minimum_count": 9
+    },
+    {
+      "phase_grid": 32768,
+      "global_scale": 0.998903750476358,
+      "local_minimum_count": 9
+    },
+    {
+      "phase_grid": 65536,
+      "global_scale": 0.9989037504763583,
+      "local_minimum_count": 9
+    }
+  ]
+}

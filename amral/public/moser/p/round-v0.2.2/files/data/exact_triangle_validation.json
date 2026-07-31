@@ -1,0 +1,38 @@
+{
+  "exact_triangle_method": {
+    "triangle_legs": [
+      0.5489319726576604,
+      0.9507780665420775
+    ],
+    "formula": "max_i(x_i/A+y_i/B)-min_i(x_i)/A-min_i(y_i)/B",
+    "why_exact_for_polyline": "The three triangle facet inequalities are sufficient; linear extrema on each segment occur at vertices."
+  },
+  "u_equal": {
+    "exact_scale": 0.9578298391285576,
+    "exact_phase": 0.0
+  },
+  "round02_grid_candidate": {
+    "old_256_direction_scale": 0.9933108209696215,
+    "exact_scale": 1.0008373696367956,
+    "exact_phase": 2.1792654453666307
+  },
+  "optimized_three_link": {
+    "exact_scale": 1.0073150395731503,
+    "exact_phase": 2.2388037029596064,
+    "parameters": {
+      "l1": 0.28622167714902247,
+      "l2": 0.35925628286119515,
+      "l3": 0.3545220399897824,
+      "alpha1_radians": 1.4037797476440605,
+      "alpha3_radians": 1.407290899474309,
+      "alpha1_degrees": 80.43065490594444,
+      "alpha3_degrees": 80.63182908704731
+    },
+    "contact_vertex_indices": {
+      "left_edge": 2,
+      "bottom_edge": 1,
+      "hypotenuse": 3
+    },
+    "distance_to_certified_scale_one": -0.007315039573150273
+  }
+}

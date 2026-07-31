@@ -1,0 +1,253 @@
+{
+  "experiment": "Moser Skew Lab v0.3",
+  "method": {
+    "container_kernel": "exact three-facet formula",
+    "reflection": "eliminated by mirror-symmetric curve parameterizations",
+    "outer_objective": "maximize minimum scale over continuous rotation",
+    "formal_proof": false
+  },
+  "baseline_3link": {
+    "scale": 0.9985743747112573,
+    "phase": 2.094396758063918,
+    "local_minimum_count": 7,
+    "metrics": {
+      "minimum": 0.9987120735364008,
+      "maximum": 1.2517618124055314,
+      "barrier": 0.2530497388691306,
+      "local_minimum_count": 7,
+      "best_local_minima": [
+        0.9987120735364008,
+        0.9988735293159449,
+        0.9991323368861175,
+        1.0258020936389587,
+        1.0796152860884267,
+        1.1001910038054088,
+        1.1263684268365806
+      ]
+    },
+    "contact_ledger": {
+      "scale": 0.9985743747112573,
+      "phase": 2.094396758063918,
+      "left_contact_vertices": [
+        2
+      ],
+      "bottom_contact_vertices": [
+        1
+      ],
+      "hypotenuse_contact_vertices": [
+        0,
+        3
+      ],
+      "contact_multiplicity": 4
+    }
+  },
+  "best_5link": {
+    "scale": 0.9987543716677795,
+    "phase": 2.094395102392958,
+    "improvement_over_3link": 0.00017999695652215486,
+    "distance_to_one": 0.0012456283322205275,
+    "parameters": {
+      "l1": 0.1915275890370537,
+      "l2": 0.1440083662833447,
+      "l3": 0.32892808935920326,
+      "outer_angle_degrees": 83.20204746532765,
+      "inner_angle_degrees": 80.87459061164482
+    },
+    "local_minimum_count": 8,
+    "metrics": {
+      "minimum": 0.9988916399809026,
+      "maximum": 1.2497398640451953,
+      "barrier": 0.25084822406429275,
+      "local_minimum_count": 8,
+      "best_local_minima": [
+        0.9988916399809026,
+        0.9992505101926692,
+        0.9993018778022961,
+        0.9993919754798712,
+        1.0289698737287254,
+        1.0817246037010662,
+        1.101139324246961,
+        1.128442490479769
+      ]
+    },
+    "contact_ledger": {
+      "scale": 0.9987543716677795,
+      "phase": 2.094395102392958,
+      "left_contact_vertices": [
+        3
+      ],
+      "bottom_contact_vertices": [
+        2
+      ],
+      "hypotenuse_contact_vertices": [
+        0,
+        5
+      ],
+      "contact_multiplicity": 4
+    }
+  },
+  "best_7link": {
+    "scale": 0.9986741579563148,
+    "phase": 2.0943951023930705,
+    "improvement_over_3link": 9.978324505743874e-05,
+    "improvement_over_5link": -8.021371146471612e-05,
+    "distance_to_one": 0.0013258420436852436,
+    "parameters": {
+      "l1": 0.123558719183404,
+      "l2": 0.1387194732193499,
+      "l3": 0.07267121156025957,
+      "l4": 0.33010119207397304,
+      "outer_angle_degrees": 83.13833037414815,
+      "middle_angle_degrees": 82.51914853951739,
+      "inner_angle_degrees": 80.18827110568047
+    },
+    "local_minimum_count": 7,
+    "metrics": {
+      "minimum": 0.9988114152449166,
+      "maximum": 1.2502706641116643,
+      "barrier": 0.25145924886674775,
+      "local_minimum_count": 7,
+      "best_local_minima": [
+        0.9988114152449166,
+        0.999059629669044,
+        0.9992216201008897,
+        1.0285567038024443,
+        1.081091912929429,
+        1.1014101331092558,
+        1.1278812004953203
+      ]
+    },
+    "contact_ledger": {
+      "scale": 0.9986741579563148,
+      "phase": 2.0943951023930705,
+      "left_contact_vertices": [
+        4
+      ],
+      "bottom_contact_vertices": [
+        3
+      ],
+      "hypotenuse_contact_vertices": [
+        0,
+        7
+      ],
+      "contact_multiplicity": 4
+    }
+  },
+  "triangle_contact_pressure_entropy": 0.9633706498267606,
+  "resolution_stability": {
+    "baseline_3link": [
+      {
+        "phase_grid": 2048,
+        "scale": 0.9985743747153534,
+        "phase": 2.0943967580486733,
+        "local_minimum_count": 7
+      },
+      {
+        "phase_grid": 4096,
+        "scale": 0.9985743747123778,
+        "phase": 2.0943967580597476,
+        "local_minimum_count": 7
+      },
+      {
+        "phase_grid": 8192,
+        "scale": 0.9985743747120629,
+        "phase": 2.094396758065978,
+        "local_minimum_count": 7
+      },
+      {
+        "phase_grid": 16384,
+        "scale": 0.9985743747112354,
+        "phase": 2.0943967580639997,
+        "local_minimum_count": 7
+      },
+      {
+        "phase_grid": 32768,
+        "scale": 0.9985743747112573,
+        "phase": 2.094396758063918,
+        "local_minimum_count": 7
+      },
+      {
+        "phase_grid": 65536,
+        "scale": 0.9985743747111256,
+        "phase": 2.0943967580644083,
+        "local_minimum_count": 7
+      }
+    ],
+    "best_5link": [
+      {
+        "phase_grid": 2048,
+        "scale": 0.9987543716732117,
+        "phase": 2.0943951023727423,
+        "local_minimum_count": 8
+      },
+      {
+        "phase_grid": 4096,
+        "scale": 0.9987543716681635,
+        "phase": 2.094395102391529,
+        "local_minimum_count": 8
+      },
+      {
+        "phase_grid": 8192,
+        "scale": 0.9987543716683277,
+        "phase": 2.094395102394191,
+        "local_minimum_count": 8
+      },
+      {
+        "phase_grid": 16384,
+        "scale": 0.9987543716679086,
+        "phase": 2.094395102392477,
+        "local_minimum_count": 8
+      },
+      {
+        "phase_grid": 32768,
+        "scale": 0.9987543716681543,
+        "phase": 2.094395102391563,
+        "local_minimum_count": 8
+      },
+      {
+        "phase_grid": 65536,
+        "scale": 0.9987543716677795,
+        "phase": 2.094395102392958,
+        "local_minimum_count": 8
+      }
+    ],
+    "best_7link": [
+      {
+        "phase_grid": 2048,
+        "scale": 0.9986741579607755,
+        "phase": 2.0943951023764686,
+        "local_minimum_count": 7
+      },
+      {
+        "phase_grid": 4096,
+        "scale": 0.9986741579564472,
+        "phase": 2.0943951023925775,
+        "local_minimum_count": 7
+      },
+      {
+        "phase_grid": 8192,
+        "scale": 0.9986741579571569,
+        "phase": 2.0943951023946172,
+        "local_minimum_count": 7
+      },
+      {
+        "phase_grid": 16384,
+        "scale": 0.9986741579566596,
+        "phase": 2.094395102391787,
+        "local_minimum_count": 7
+      },
+      {
+        "phase_grid": 32768,
+        "scale": 0.9986741579564371,
+        "phase": 2.0943951023926153,
+        "local_minimum_count": 7
+      },
+      {
+        "phase_grid": 65536,
+        "scale": 0.9986741579563148,
+        "phase": 2.0943951023930705,
+        "local_minimum_count": 7
+      }
+    ]
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "experiment": "Center-Generated Bridge Experiment Round 2",
+  "version": "0.2",
+  "date": "2026-07-27",
+  "parameters": {
+    "L": 1.0,
+    "rho": 0.04,
+    "tau": 3.141592653589793
+  },
+  "terminology_correction": {
+    "old_label": "contact-saturated smooth spiral",
+    "corrected_label": "curvature-saturated smooth spiral",
+    "reason": "max curvature = 1/rho only saturates local focal radius; it does not prove reach(gamma)=rho"
+  },
+  "quadratic_exponential_candidate": {
+    "definition": "r'(theta) proportional to exp(q (theta-c)^2)",
+    "q": 1.0900735478479215,
+    "c": 0.9538448569085957,
+    "Theta": 2.8237610705958756,
+    "b": 0.05726345467965576,
+    "max_curvature": 24.94998170675039,
+    "min_curvature": 0.25390999190745206,
+    "min_local_radius": 0.04008018970729117,
+    "local_radius_margin_over_rho": 8.018970729117142e-05,
+    "E_plus": 0.08484419967080102,
+    "phi_plus": 4.981029632712781,
+    "E_minus": 0.08484420438774676,
+    "phi_minus": 1.3058737131540807,
+    "E_congruent": 0.08484419967080102,
+    "chirality_gap": 4.716945736782385e-09,
+    "old_finite_layer_E_congruent": 0.04607302316318733,
+    "improvement_over_old": 0.03877117650761369,
+    "improvement_ratio": 1.8415157904939075,
+    "individual_center_hull_area": 0.08016436986855524,
+    "individual_center_hull_perimeter": 1.8518859734884257,
+    "individual_convex_thick_area": 0.15926635705383593
+  },
+  "phase_branch_margins": {
+    "plus_next_margin": 0.00035114846224387763,
+    "minus_next_margin": 0.00012674021116125533
+  },
+  "tube_audit": {
+    "line_length": 0.9999999324319092,
+    "buffer_area": 0.0850265654147473,
+    "expected_tube_area": 0.08502654284029641,
+    "area_deficit": -2.257445089193233e-08,
+    "valid": true,
+    "simple_line": true,
+    "max_curvature": 24.94993220813184,
+    "min_local_radius": 0.04008026922309928,
+    "local_radius_margin": 8.026922309927603e-05,
+    "pair_counts_within_2rho_plus_5e-4": {
+      "0.08": 38035,
+      "0.1": 0,
+      "0.12": 0,
+      "0.15": 0
+    },
+    "min_nonlocal_distance": {
+      "0.08": 0.06975664011055906,
+      "0.1": null,
+      "0.12": null,
+      "0.15": null
+    }
+  },
+  "final_pair_container": {
+    "families": [
+      "constant_curvature",
+      "mirrored_quadratic_exponential"
+    ],
+    "candidate_placement": {
+      "phi": 1.2464391714436909,
+      "translation": [
+        0.005559004544580486,
+        0.6424976069457519
+      ]
+    },
+    "center_hull_area": 0.18400665857512877,
+    "center_hull_perimeter": 2.014782029201167,
+    "convex_thick_area": 0.26962448798891914,
+    "support_share": {
+      "constant_curvature": 0.32881944444444444,
+      "quadratic_exponential": 0.6715277777777777,
+      "ties": 0.00034722222222222224
+    },
+    "archimedean_congruent_tension": -0.006272925747876401,
+    "archimedean_best": {
+      "reflected": true,
+      "z": -0.006272925747876401,
+      "phi": 0.4579615134535524,
+      "translation": [
+        0.0062729257448443645,
+        0.5832212097646476
+      ]
+    },
+    "curvature_saturated_congruent_tension": -0.004494710586567911,
+    "curvature_saturated_best": {
+      "reflected": true,
+      "z": -0.004494710586567911,
+      "phi": 0.5496622885918805,
+      "translation": [
+        0.004494710583535867,
+        0.545380812522831
+      ]
+    }
+  },
+  "area_comparison": {
+    "baseline_three": 0.2449150729368793,
+    "round1_all_four": 0.2562598971099081,
+    "round2_pair_all_family": 0.26962448798891914,
+    "increment_vs_baseline": 0.02470941505203983,
+    "relative_vs_baseline": 0.10088972783805783,
+    "increment_vs_round1": 0.01336459087901104,
+    "relative_vs_round1": 0.05215248671265593,
+    "ratio_to_single_tube": 3.1710623746556266,
+    "single_tube_area": 0.08502654824574367
+  },
+  "status": {
+    "global_proof": false,
+    "interval_reach_certificate": false,
+    "container_global_optimum_certificate": false,
+    "new_kakeya_or_moser_bound": false
+  }
+}

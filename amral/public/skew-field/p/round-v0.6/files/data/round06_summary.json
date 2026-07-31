@@ -1,0 +1,238 @@
+{
+  "experiment": "Center-Generated Bridge Experiment Round 6",
+  "version": "0.6",
+  "date": "2026-07-28",
+  "parameters": {
+    "L": 1.0,
+    "rho": 0.04,
+    "tau": 3.141592653589793
+  },
+  "attack_candidate": {
+    "family": "Round 5 holdout Fourier-12 used as Round 6 attack",
+    "coefficients": [
+      0.24577104758971208,
+      0.2238713323331018,
+      1.5152216256214663,
+      -0.254431691674534,
+      -0.4460750333349083,
+      0.20380391873629397,
+      -0.5043616888277508,
+      0.39639266236552645,
+      0.8237717553905165,
+      0.6056230785793012,
+      0.22644043044143697,
+      -0.6922035691460681,
+      -0.3157808251887939,
+      0.13928452580259265,
+      -0.039555705925012605,
+      0.5979343967636338,
+      0.28589575343403906,
+      0.13418105634623811,
+      0.061148955874478036,
+      -0.46434894027437273,
+      0.2010647418074803,
+      0.06394395969333659,
+      0.028686460509947054,
+      0.05376240680111272
+    ],
+    "curvature_box": {
+      "boxes": 200000,
+      "derivative_bound": 272.97909352392355,
+      "log_error": 0.0006824477338098089,
+      "Zlo": 2.233477750367572,
+      "Zhi": 2.2365282953900354,
+      "kmax_lo": 15.519775636550817,
+      "kmax_hi": 15.562199256863344,
+      "kmin_lo": 0.004717458670527493,
+      "kmin_hi": 0.004730353939129652,
+      "radius_lo": 0.06425826989453134,
+      "rho_margin": 0.024258269894531344
+    },
+    "sampled_max_curvature": 15.540501909156939,
+    "sampled_min_curvature": 0.00472459618840449,
+    "sampled_min_radial_dot": 0.0004999959713403953,
+    "best_placement_against_round5": {
+      "parity": 1,
+      "phi": 6.063185791574381,
+      "translation": [
+        0.015983395071926636,
+        -0.021698374034833302
+      ]
+    },
+    "outside_area_high": 0.004934177791818109,
+    "outside_fraction_of_tube": 0.05803102552813683
+  },
+  "container_response": {
+    "round5_saved_area": 0.19426239153015148,
+    "round5_high_replay_area": 0.19426294250347276,
+    "naive_added_raw_area": 0.19904097449401564,
+    "naive_added_filled_area": 0.19919745684801776,
+    "final_raw_union_area": 0.1986471187249222,
+    "final_hole_areas": [
+      7.940347210453813e-05
+    ],
+    "final_simply_connected_area": 0.19872652219702672,
+    "attack_exposure": 0.004934177791818109,
+    "area_recovered_by_rearrangement": 0.00047093465099104503,
+    "recovery_ratio": 0.09544338912390884,
+    "net_area_increase_vs_saved_round5": 0.004464130666875232,
+    "relative_net_increase_vs_saved_round5": 0.02297990172834022,
+    "net_attack_fraction": 0.9047364840151662,
+    "connected": true,
+    "valid": true
+  },
+  "cycle_comparison": {
+    "round5": {
+      "attack_exposure": 0.0066644584512298485,
+      "net_area_increase": 0.002818179860791886,
+      "recovery_ratio": 0.5771329536502964,
+      "net_fraction": 0.4228670463497036
+    },
+    "round6": {
+      "attack_exposure": 0.004934177791818109,
+      "net_area_increase": 0.004464130666875232,
+      "recovery_ratio": 0.09544338912390884,
+      "net_fraction": 0.9047364840151662
+    },
+    "area_sequence": {
+      "A4": 0.1914442116693596,
+      "A5": 0.19426239153015148,
+      "A6": 0.19872652219702672
+    },
+    "increment_sequence": {
+      "DeltaA5": 0.002818179860791886,
+      "DeltaA6": 0.004464130666875232
+    }
+  },
+  "leave_one_out_high": {
+    "archimedean": {
+      "outside_area": 1.5208262764094699e-05,
+      "container_without_area": 0.19871075319501777,
+      "covered": false
+    },
+    "constant": {
+      "outside_area": 0.0027608054660074282,
+      "container_without_area": 0.19596515599177453,
+      "covered": false
+    },
+    "curvature_saturated": {
+      "outside_area": 0.0005992558901686037,
+      "container_without_area": 0.1981267055676134,
+      "covered": false
+    },
+    "round1_finite_width": {
+      "outside_area": 0.0006899913914646426,
+      "container_without_area": 0.1980359700663173,
+      "covered": false
+    },
+    "round2_quadratic_exponential": {
+      "outside_area": 0.0002960864733539431,
+      "container_without_area": 0.19842987498442785,
+      "covered": false
+    },
+    "round3_double_harmonic": {
+      "outside_area": 0.00780076513344937,
+      "container_without_area": 0.19092519632433236,
+      "covered": false
+    },
+    "round4_fourier10": {
+      "outside_area": 0.008326284463316368,
+      "container_without_area": 0.19039967699446536,
+      "covered": false
+    },
+    "round5_fourier12": {
+      "outside_area": 0.003787840300507021,
+      "container_without_area": 0.19493812115727457,
+      "covered": false
+    },
+    "round6_holdout": {
+      "outside_area": 0.004968182832726395,
+      "container_without_area": 0.1937577786250567,
+      "covered": false
+    }
+  },
+  "active_threshold_1e-3": [
+    "constant",
+    "round3_double_harmonic",
+    "round4_fourier10",
+    "round5_fourier12",
+    "round6_holdout"
+  ],
+  "residual_audit": {
+    "family": "Independent Fourier-14 perturbation challenger",
+    "random_generated": 20,
+    "valid_screened": 15,
+    "top_refined": 5,
+    "candidate_id": 0,
+    "coefficients": [
+      0.40949788743124804,
+      0.10575227221648666,
+      1.8210075229189335,
+      -0.18923134021698962,
+      -0.4489403284808044,
+      0.1979979809878391,
+      -0.40228388963970774,
+      0.27024971212447824,
+      0.7388225008594056,
+      0.7390536239249907,
+      0.2799566301425021,
+      -0.4689763498432303,
+      -0.21234196636870642,
+      0.14147104182843914,
+      -0.08732545900018313,
+      0.5308325261802807,
+      0.4301159889300977,
+      0.08562623934585586,
+      0.1954840690944212,
+      -0.32546421584114993,
+      -0.09080574828924737,
+      0.1419996242025716,
+      0.10040648339930423,
+      -0.05004598684854782,
+      0.0188285306752663,
+      -0.10925385091786774,
+      0.019523699673052425,
+      0.013592149683346974
+    ],
+    "curvature_box": {
+      "boxes": 200000,
+      "derivative_bound": 281.59826072187184,
+      "log_error": 0.0007039956518046797,
+      "Zlo": 2.7028185141970766,
+      "Zhi": 2.70662673950523,
+      "kmax_lo": 21.737588058489603,
+      "kmax_hi": 21.79888699624941,
+      "kmin_lo": 0.003922046923500715,
+      "kmin_hi": 0.003933106904470456,
+      "radius_lo": 0.045873901735077306,
+      "rho_margin": 0.005873901735077305
+    },
+    "sampled_max_curvature": 21.768197164532207,
+    "sampled_min_curvature": 0.0039276008983654695,
+    "sampled_min_radial_dot": 0.00033333010790539784,
+    "best_placement": {
+      "parity": -1,
+      "phi": -2.443996077123234,
+      "translation": [
+        -0.09004381402868829,
+        0.7074688127658033
+      ]
+    },
+    "outside_area_high": 0.006847625978345335,
+    "outside_fraction_of_tube": 0.0805351867288146,
+    "converged": false
+  },
+  "convergence_diagnostics": {
+    "attack_exposure_decreased_round5_to_round6": true,
+    "net_increment_decreased_round5_to_round6": false,
+    "residual_exposure_below_round6_attack": false,
+    "conclusion": "No monotone convergence: Round 6 net increment exceeded Round 5 and a new Fourier-14 challenger remains."
+  },
+  "status": {
+    "global_curve_optimum": false,
+    "global_placement_certificate": false,
+    "global_nonconvex_container_optimum": false,
+    "formal_interval_curvature": false,
+    "new_kakeya_or_moser_bound": false
+  }
+}

@@ -1,0 +1,298 @@
+{
+  "experiment": "Center-Generated Kakeya-Moser Bridge Family Experiment",
+  "version": "0.1",
+  "date": "2026-07-27",
+  "parameters": {
+    "L": 1.0,
+    "rho": 0.04,
+    "tau": 3.141592653589793,
+    "tau_description": "pi: all unoriented needle directions"
+  },
+  "families": {
+    "constant_curvature": {
+      "length_sampled": 0.9999988538678117,
+      "total_turn_target": 3.141592653589793,
+      "max_curvature": 3.141592653589793,
+      "min_local_curvature_radius": 0.3183098861837907,
+      "radial_derivative_proxy_min": 0.0,
+      "endpoint": [
+        3.8981718325193755e-17,
+        0.6366197723675814
+      ],
+      "endpoint_radius": 0.6366197723675814,
+      "center_hull_area": 0.15915421344223546,
+      "center_hull_perimeter": 1.6366186262353932,
+      "individual_convex_thick_area": 0.22964550673739487,
+      "strip_area_invariant": 0.08,
+      "full_tube_area_invariant": 0.08502654824574367,
+      "Theta_polar": null,
+      "b": null
+    },
+    "archimedean": {
+      "length_sampled": 0.9999986270284567,
+      "total_turn_target": 3.141592653589793,
+      "max_curvature": 6.045120808378747,
+      "min_local_curvature_radius": 0.16542266593150054,
+      "radial_derivative_proxy_min": 0.0,
+      "endpoint": [
+        -0.2967535792185589,
+        0.6020411498269738
+      ],
+      "endpoint_radius": 0.6712050602193119,
+      "center_hull_area": 0.1523306601206853,
+      "center_hull_perimeter": 1.6712036872477687,
+      "individual_convex_thick_area": 0.22420535585633972,
+      "strip_area_invariant": 0.08,
+      "full_tube_area_invariant": 0.08502654824574367,
+      "Theta_polar": 2.0287578381104363,
+      "b": 0.3308453318630011
+    },
+    "contact_saturated": {
+      "length_sampled": 0.9999957520285794,
+      "total_turn_target": 3.141592653589793,
+      "max_curvature": 24.977598675002312,
+      "min_local_curvature_radius": 0.04003587426523929,
+      "radial_derivative_proxy_min": 0.0,
+      "endpoint": [
+        -0.35262180236573776,
+        0.5755768914631113
+      ],
+      "endpoint_radius": 0.6750043655340309,
+      "center_hull_area": 0.1386062953352809,
+      "center_hull_perimeter": 1.671317131002683,
+      "individual_convex_thick_area": 0.21048552882113192,
+      "strip_area_invariant": 0.08,
+      "full_tube_area_invariant": 0.08502654824574367,
+      "Theta_polar": 2.120458615038148,
+      "b": 0.41353511495971185,
+      "a": 3.2081476359583294,
+      "c": 0.8,
+      "eps": 0.2
+    },
+    "finite_width_layer": {
+      "length_sampled": 0.9999963899193544,
+      "total_turn_target": 3.141592653589793,
+      "max_curvature": 22.51835456283087,
+      "min_local_curvature_radius": 0.04440821806983246,
+      "radial_derivative_proxy_min": 0.0,
+      "endpoint": [
+        -0.5037302328978246,
+        0.5863454336278595
+      ],
+      "endpoint_radius": 0.7730104236499914,
+      "center_hull_area": 0.12868143945830823,
+      "center_hull_perimeter": 1.7729561919212706,
+      "individual_convex_thick_area": 0.20462623538090274,
+      "strip_area_invariant": 0.08,
+      "full_tube_area_invariant": 0.08502654824574367,
+      "Theta_polar": 2.2805505982698002,
+      "b": 0.6645282911156268,
+      "a": 2.4154390877463543,
+      "c": 0.7041053560989852,
+      "eps": 0.5499956161363398
+    }
+  },
+  "family_definitions": {
+    "constant_curvature": {
+      "formula": "gamma(s)=(sin(pi s)/pi,(1-cos(pi s))/pi)",
+      "role": "constant-curvature semicircle control"
+    },
+    "archimedean": {
+      "formula": "r(theta)=b theta; endpoint theta solves theta+atan(theta)=pi",
+      "role": "uniform radial pitch spiral"
+    },
+    "contact_saturated": {
+      "formula": "r(theta)=b integral_0^theta exp(-a exp(-((u-c)/eps)^2)) du",
+      "parameters": {
+        "a": 3.2081476359583294,
+        "c": 0.8,
+        "eps": 0.2
+      },
+      "role": "smooth spiral calibrated to max curvature=1/rho"
+    },
+    "finite_width_layer": {
+      "formula": "r(theta)=b integral_0^theta exp(-a exp(-((u-c)/eps)^2)) du",
+      "parameters": {
+        "a": 2.4154390877463543,
+        "c": 0.7041053560989852,
+        "eps": 0.5499956161363398
+      },
+      "role": "finite-width pitch/curvature layer selected by finite-budget max-min support-tension search"
+    }
+  },
+  "container_model": {
+    "center_hull": "H=conv(union_i g_i gamma_i)",
+    "thick_container": "C=H plus rho-disk",
+    "area_formula": "Area(C)=Area(H)+rho Per(H)+pi rho^2",
+    "motion_group": "SE(2), no reflections in this first experiment",
+    "directions_for_active_share": 1440
+  },
+  "baseline_three": {
+    "families": [
+      "constant_curvature",
+      "archimedean",
+      "contact_saturated"
+    ],
+    "optimized_proxy_area": 0.2449150729368793,
+    "center_hull_area": 0.16897344514870039,
+    "center_hull_perimeter": 1.7728769885608817
+  },
+  "all_four": {
+    "optimized_proxy_area": 0.2562598971099081,
+    "center_hull_area": 0.1758742323162057,
+    "center_hull_perimeter": 1.8839779136989687,
+    "placements": {
+      "constant_curvature": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "archimedean": [
+        5.8174645868070725,
+        [
+          0.0039637040870663,
+          0.047438707982824076
+        ]
+      ],
+      "contact_saturated": [
+        5.735110256807311,
+        [
+          0.0010713920412548695,
+          0.08072960067355897
+        ]
+      ],
+      "finite_width_layer": [
+        5.573431036735272,
+        [
+          4.6946283374250105e-12,
+          0.010194824680153047
+        ]
+      ]
+    },
+    "increment_over_baseline": 0.011344824173028789,
+    "relative_increment_over_baseline": 0.04632146170910694,
+    "ratio_to_single_full_tube_area": 3.0138809865509995,
+    "ratio_to_single_strip_area": 3.203248713873851,
+    "active_support_share": {
+      "constant_curvature": 0.43125,
+      "archimedean": 0.0,
+      "contact_saturated": 0.014583333333333334,
+      "finite_width_layer": 0.5555555555555556
+    },
+    "unique_support_share": {
+      "constant_curvature": 0.43125,
+      "archimedean": 0.0,
+      "contact_saturated": 0.013888888888888888,
+      "finite_width_layer": 0.5548611111111111
+    },
+    "fixed_placement_replay": {
+      "center_hull_area": 0.1758742323162057,
+      "center_hull_perimeter": 1.8839779136989687,
+      "thick_area": 0.2562598971099081,
+      "difference_from_saved": 0.0,
+      "grid": "exact optimization grids"
+    }
+  },
+  "leave_one_out": {
+    "constant_curvature": {
+      "container_without": [
+        "archimedean",
+        "contact_saturated",
+        "finite_width_layer"
+      ],
+      "area_without": 0.24768435919282034,
+      "center_hull_area": 0.16832650563048435,
+      "center_hull_perimeter": 1.8582826329148077,
+      "support_tension": {
+        "z": 0.011591403869510098,
+        "positive_tension": 0.011591403869510098,
+        "phi": 0.4709559550356947,
+        "translation": [
+          0.006950284101715909,
+          -0.04483073878098205
+        ]
+      },
+      "area_increment_to_all4": 0.008575537917087761
+    },
+    "archimedean": {
+      "container_without": [
+        "constant_curvature",
+        "contact_saturated",
+        "finite_width_layer"
+      ],
+      "area_without": 0.25625989710982033,
+      "center_hull_area": 0.17587423231599253,
+      "center_hull_perimeter": 1.8839779137021027,
+      "support_tension": {
+        "z": -0.004327897460414489,
+        "positive_tension": 0.0,
+        "phi": 5.825223793488059,
+        "translation": [
+          0.004327897460286669,
+          0.048544385322731684
+        ]
+      },
+      "area_increment_to_all4": 8.776313009661862e-14
+    },
+    "contact_saturated": {
+      "container_without": [
+        "constant_curvature",
+        "archimedean",
+        "finite_width_layer"
+      ],
+      "area_without": 0.2559858105555899,
+      "center_hull_area": 0.17582315778245494,
+      "center_hull_perimeter": 1.878402613184782,
+      "support_tension": {
+        "z": 0.0009732102986258024,
+        "positive_tension": 0.0009732102986258024,
+        "phi": 5.733523006246118,
+        "translation": [
+          -0.0009732102993071424,
+          0.07831350921537472
+        ]
+      },
+      "area_increment_to_all4": 0.00027408655431820916
+    },
+    "finite_width_layer": {
+      "container_without": [
+        "constant_curvature",
+        "archimedean",
+        "contact_saturated"
+      ],
+      "area_without": 0.2449150729368793,
+      "center_hull_area": 0.16897344514870039,
+      "center_hull_perimeter": 1.7728769885608817,
+      "support_tension": {
+        "z": 0.046058168407816666,
+        "positive_tension": 0.046058168407816666,
+        "phi": 5.698880050331347,
+        "translation": [
+          0.08635683039405515,
+          -0.0031607699767559213
+        ],
+        "coarse_min": 0.04608431482391243,
+        "coarse_max": 0.24600453505230643
+      },
+      "area_increment_to_all4": 0.011344824173028789
+    }
+  },
+  "tension_definition": "E_inf(gamma|H)=inf_{phi,t} max_theta [h_gamma(theta-phi)+t dot u_theta-h_H(theta)]",
+  "interpretation": {
+    "archimedean_redundant_in_all4_proxy": true,
+    "finite_width_layer_largest_leave_one_out_tension": true,
+    "constant_curvature_second_largest_area_increment": true,
+    "contact_saturated_small_but_nonzero_increment": true
+  },
+  "limitations": [
+    "finite family only",
+    "convex container proxy only",
+    "finite-budget differential-evolution/Powell search; no global certificate",
+    "support directions and curves discretized",
+    "SE(2) only; reflection/chirality audit pending",
+    "reach certified only through local curvature calibration plus sampled geometric checks; full interval reach certificate pending",
+    "not a new Moser or Kakeya bound"
+  ]
+}
