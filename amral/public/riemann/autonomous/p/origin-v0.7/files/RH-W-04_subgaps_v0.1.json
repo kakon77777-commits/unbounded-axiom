@@ -1,0 +1,98 @@
+[
+  {
+    "id": "RH-W-04-CUTOFF-FOURIER-CORE",
+    "parent": "RH-W-04",
+    "status": "CLOSED_BY_FORM_CORE_CONSTRUCTION",
+    "severity": "S3",
+    "statement": "A concrete countable real cutoff-Fourier dictionary is form-norm dense in the localized Weil form domain",
+    "next_action": "freeze one explicit flat-cutoff formula for numerical implementation"
+  },
+  {
+    "id": "RH-W-04-RAYLEIGH-RITZ-LIMIT",
+    "parent": "RH-W-04",
+    "status": "CLOSED",
+    "severity": "S3",
+    "statement": "Nested finite-dimensional minima decrease to the localized spectral bottom",
+    "next_action": "use the theorem as the convergence contract"
+  },
+  {
+    "id": "RH-W-04-FINITE-DETECTION",
+    "parent": "RH-W-04",
+    "status": "CLOSED_NON_EFFECTIVE",
+    "severity": "S4",
+    "statement": "Any strictly negative localized spectral bottom is detected by some finite cutoff-Fourier subspace",
+    "next_action": "seek effective support and dimension bounds, but do not require them for negative certificates"
+  },
+  {
+    "id": "RH-W-04-REAL-BASIS",
+    "parent": "RH-W-04",
+    "status": "CLOSED",
+    "severity": "S2",
+    "statement": "Cosine, sine and constant cutoff atoms suffice, allowing real symmetric interval matrices",
+    "next_action": "implement a deterministic real basis ordering"
+  },
+  {
+    "id": "RH-W-04-RATIONAL-WITNESS-REDUCTION",
+    "parent": "RH-W-04",
+    "status": "CLOSED",
+    "severity": "S4",
+    "statement": "A single rational vector and a strictly negative componentwise interval upper bound suffice; full eigenvalue verification is unnecessary",
+    "next_action": "optimize candidate rationalization and sparsity"
+  },
+  {
+    "id": "RH-W-04-EXACT-VERIFIER",
+    "parent": "RH-W-04",
+    "status": "CLOSED_FOR_SUPPLIED_INTERVALS",
+    "severity": "S3",
+    "statement": "A small Fraction-based verifier checks interval negativity without floating-point arithmetic",
+    "next_action": "port the verifier kernel to Lean or another proof assistant"
+  },
+  {
+    "id": "RH-W-04-MATRIX-ENCLOSURE",
+    "parent": "RH-W-04",
+    "status": "OPEN_ENGINEERING",
+    "severity": "S4",
+    "statement": "Produce rigorous rational enclosures for actual zeta Weil matrix entries",
+    "next_action": "complete an m=2 arithmetic-side enclosure pipeline"
+  },
+  {
+    "id": "RH-W-04-ARCHIMEDEAN-ENCLOSURE",
+    "parent": "RH-W-04",
+    "status": "OPEN_ENGINEERING",
+    "severity": "S4",
+    "statement": "Bound the archimedean integral or continuous screw kernel with directed rounding and analytic tail bounds",
+    "next_action": "select Arb/MPFI or a replayable rational Taylor-model method"
+  },
+  {
+    "id": "RH-W-04-PRIME-ENCLOSURE",
+    "parent": "RH-W-04",
+    "status": "OPEN_ENGINEERING",
+    "severity": "S3",
+    "statement": "Certify the finite prime-power sum, constants and shifted overlap integrals",
+    "next_action": "freeze support radius and generate a complete prime-power manifest"
+  },
+  {
+    "id": "RH-W-04-EFFECTIVE-N",
+    "parent": "RH-W-04",
+    "status": "OPEN_THEORETICAL",
+    "severity": "S2",
+    "statement": "No effective dimension bound is known here for detecting a hypothetical negative direction",
+    "next_action": "treat N as a search parameter, not a theorem"
+  },
+  {
+    "id": "RH-W-04-TRUE-ZETA-CERTIFICATE",
+    "parent": "RH-W-04",
+    "status": "NOT_PRODUCED",
+    "severity": "S4",
+    "statement": "No rigorous negative certificate for the true zeta Weil form has been found or claimed",
+    "next_action": "build the matrix enclosure pipeline before any true scan"
+  },
+  {
+    "id": "RH-W-04-POSITIVE-NONCERTIFICATE",
+    "parent": "RH-W-04",
+    "status": "LOCKED_WARNING",
+    "severity": "S4",
+    "statement": "Finite-dimensional positivity or failure to find a negative witness is never evidence sufficient to prove RH",
+    "next_action": "enforce NEGATIVE_ONLY semantics in every tool"
+  }
+]

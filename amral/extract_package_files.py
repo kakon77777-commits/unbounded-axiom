@@ -54,9 +54,16 @@ def extract_one(pkg):
     index = []
     with zipfile.ZipFile(zpath) as zf:
         pairs = decoded_infolist(zf)
-        # strip the single top-level "<PackageName>/" wrapper folder, if present
+        # strip the single top-level "<PackageName>/" wrapper folder, if present.
+        # Only valid when EVERY entry sits under it -- if any entry has no "/" at
+        # all, it's already at the true zip root, so a folder that merely happens
+        # to be the only *subfolder* present (e.g. one nested RH_W_xx_工程包/
+        # alongside loose top-level files) is not a whole-zip wrapper. Stripping
+        # it anyway collides that subfolder's README.md/SHA256SUMS.txt/etc. onto
+        # the already-top-level files of the same name and silently drops one.
+        has_unnested = any("/" not in n for n, i in pairs if not i.is_dir())
         roots = {n.split("/", 1)[0] for n, i in pairs if "/" in n}
-        prefix = (list(roots)[0] + "/") if len(roots) == 1 else ""
+        prefix = (list(roots)[0] + "/") if len(roots) == 1 and not has_unnested else ""
         for name, info in pairs:
             if info.is_dir():
                 continue

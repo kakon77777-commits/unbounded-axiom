@@ -3,10 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>研究起點 v0.6 · 緊支撐分離閉合 · 黎曼猜想 · AMRAL</title>
-<meta name="description" content="RH AI 研究起點 v0.6:把 Weil 路線從「測試函數是否合法」推進至「若 RH 為假,緊支撐負證人必存在」的既有理論閉合點。下一節點 RH-W-04-GALERKIN-CERTIFICATE:建立可由區間算術驗證的有限維負 Rayleigh 商證書。">
+<title>研究起點 v0.7 · 有限維負證書 · 黎曼猜想 · AMRAL</title>
+<meta name="description" content="RH AI 研究起點 v0.7:完成可枚舉巢狀 cutoff–Fourier 字典、有限維必達架構、單一有理 witness 的區間負證書定理、純有理 exact verifier 與一側語義防火牆。沒有產生真實 RH 反例或證明。">
 <meta name="robots" content="index, follow">
 <meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="./files/README.md">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
 <link rel="stylesheet" href="../../../../assets/site.css">
 </head>
@@ -20,23 +21,23 @@
   <p class="crumb">
     <a href="../../">← AI 自主研究封存庫</a>
     <span>/</span>
-    <a href="../../#origin-v0.6">研究起點</a>
+    <a href="../../#origin-v0.7">研究起點</a>
     <span>/</span>
-    <span>v0.6 · 緊支撐分離閉合</span>
+    <span>v0.7 · 有限維負證書</span>
   </p>
 
   <header class="pkg">
     <div class="idline">
       <span class="tag">研究起點</span>
-      <span class="tag">v0.6</span>
+      <span class="tag">v0.7</span>
       <span class="tag">2026-07-23</span>
-      <span class="status">EXISTENTIAL_SEPARATION_CLOSED</span>
+      <span class="status">CERTIFICATE_PROTOCOL_ESTABLISHED</span>
     </div>
-    <h1>黎曼猜想 AI 研究起點 v0.6:緊支撐分離閉合</h1>
-    <p class="h1-sub">整合包本身沒有新文件,是 <a href="../w02-v0.1/">W-02 v0.1</a>、<a href="../w02-v0.2/">W-02 v0.2</a>、<a href="../w03-v0.1/">W-03 v0.1</a> 三包內容在此刻的檢查點快照。README 標出這一步的意義:把 Weil 路線從「測試函數是否合法」推進至「若 RH 為假,緊支撐負證人必存在」的既有理論閉合點——這正是 W-03 引用 Suzuki 判準得到的結論。</p>
+    <h1>黎曼猜想 AI 研究起點 v0.7:有限維負證書</h1>
+    <p class="h1-sub">整合包本身沒有新文件,是 <a href="../w03-v0.1/">W-03 v0.1</a> 與 <a href="../w04-v0.1/">W-04 v0.1</a> 兩包內容在此刻的檢查點快照。README 標出這一步完成了什麼:可枚舉、巢狀、form-norm 完備的 cutoff–Fourier 字典;λ_N(a)↓λ(a) 的有限維必達架構;單一有理 witness 的區間負證書定理;純有理 exact verifier 與一側語義防火牆。</p>
     <div class="claim-box">
-      EXISTENTIAL_SEPARATION_CLOSED
-      <span class="note">— 包內 README 自陳的階段性狀態,原樣照登。下一節點為 RH-W-04-GALERKIN-CERTIFICATE:建立可由區間算術驗證的有限維負 Rayleigh 商證書。</span>
+      CERTIFICATE_PROTOCOL_ESTABLISHED
+      <span class="note">— 包內 README 自陳的階段性狀態,原樣照登。「本版沒有產生真實 RH 反例或 RH 證明。」</span>
     </div>
   </header>
 
@@ -44,20 +45,20 @@
     <h2 class="doc-h2">連接 · Connections</h2>
     <p class="section-note">跟其他封包的關係,盡量用它自己文件裡的話,不是我的解讀。本包完整併入的內容跟各自的獨立頁面相同,這裡不重複渲染。</p>
     <div class="connections">
-      <div class="conn-card"><span class="k">上一版</span><a href="../origin-v0.5/">研究起點 v0.5 · 正規化閉合</a></div>
-      <div class="conn-card"><span class="k">下一版</span><a href="../origin-v0.7/">研究起點 v0.7 · 有限維負證書</a></div>
-      <div class="conn-card"><span class="k">併入</span><a href="../w02-v0.1/">W-02 v0.1</a> · <a href="../w02-v0.2/">W-02 v0.2</a> · <a href="../w03-v0.1/">W-03 v0.1</a></div>
-      <div class="conn-card"><span class="k">研究起點系列</span>6 / 23</div>
+      <div class="conn-card"><span class="k">上一版</span><a href="../origin-v0.6/">研究起點 v0.6 · 緊支撐分離閉合</a></div>
+      <div class="conn-card"><span class="k">下一版</span><a href="../origin-v0.8/">研究起點 v0.8 · 真實矩陣流水線</a></div>
+      <div class="conn-card"><span class="k">併入</span><a href="../w03-v0.1/">W-03 v0.1</a> · <a href="../w04-v0.1/">W-04 v0.1</a></div>
+      <div class="conn-card"><span class="k">研究起點系列</span>7 / 23</div>
     </div>
-    <blockquote class="cite">「本版將 Weil 路線從『測試函數是否合法』推進至『若 RH 為假,緊支撐負證人必存在』的既有理論閉合點。」— 摘自本包 README。</blockquote>
+    <blockquote class="cite">「本整合版承接 v0.6 的緊支撐分離結果……真實 zeta Weil 矩陣包絡的下一階段工作拆分。」— 摘自本包 README。</blockquote>
   </section>
 
   <section id="files">
     <h2 class="doc-h2">檔案 · Files</h2>
-    <p class="section-note">本包全部文件內容跟 W-02 v0.1、W-02 v0.2、W-03 v0.1 各自的頁面相同,這裡只列出檔名供核對,不重複渲染或下載連結。</p>
+    <p class="section-note">本包全部文件內容跟 W-03 v0.1、W-04 v0.1 各自的頁面相同,這裡只列出檔名供核對,不重複渲染或下載連結。</p>
     <div id="filelist-out"><p class="loading">載入中…</p></div>
-    <a class="zip-dl" href="../../packages/RH_AI_研究起點_v0.6_緊支撐分離閉合_完整包.zip" download>下載完整封包 (24.7 KB)</a>
-    <p class="zip-note">sha256 1c5fac68e8173ae8ec111b9e7bd3e085955a5f762856f8ebc754ea979cff32c6</p>
+    <a class="zip-dl" href="../../packages/RH_AI_研究起點_v0.7_有限維負證書_完整包.zip" download>下載完整封包 (26.9 KB)</a>
+    <p class="zip-note">sha256 e19753f3263a025e828d3e97e7af40141e5eefc3944f1e01d9c961ae1c2b7fa9</p>
   </section>
 
   <footer class="sitefoot">

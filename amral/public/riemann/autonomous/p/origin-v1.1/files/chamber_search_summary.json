@@ -1,0 +1,145 @@
+{
+  "schema": "RH-W-08-search-summary-v0.1",
+  "date": "2026-07-23",
+  "search_layer": "FLOATING_POINT_EXPLORATION_ONLY",
+  "candidate_count": 122,
+  "parameter_grid": {
+    "h": [
+      "3/50",
+      "2/25",
+      "1/10",
+      "3/25",
+      "3/20"
+    ],
+    "spacing_to_h_ratio": [
+      "3/2",
+      "2",
+      "5/2",
+      "3",
+      "7/2",
+      "4"
+    ],
+    "dimensions": [
+      5,
+      7,
+      9,
+      11,
+      13
+    ],
+    "max_correlation_radius_cutoff": "19/5"
+  },
+  "top_10": [
+    {
+      "h": 0.15,
+      "d": 0.22499999999999998,
+      "ratio": 1.5,
+      "N": 13,
+      "max_radius": 3.3,
+      "lambda_min": 1.2020901345911073e-05,
+      "lambda_max": 2.6500432613200235,
+      "gram_min": 0.2963914484250341
+    },
+    {
+      "h": 0.15,
+      "d": 0.22499999999999998,
+      "ratio": 1.5,
+      "N": 11,
+      "max_radius": 2.85,
+      "lambda_min": 1.3382205860729047e-05,
+      "lambda_max": 2.2395794885298432,
+      "gram_min": 0.29807203396496956
+    },
+    {
+      "h": 0.15,
+      "d": 0.22499999999999998,
+      "ratio": 1.5,
+      "N": 9,
+      "max_radius": 2.4,
+      "lambda_min": 1.532010677324753e-05,
+      "lambda_max": 1.8212637202854816,
+      "gram_min": 0.300848710943489
+    },
+    {
+      "h": 0.15,
+      "d": 0.3,
+      "ratio": 2.0,
+      "N": 11,
+      "max_radius": 3.6,
+      "lambda_min": 1.6297077963967093e-05,
+      "lambda_max": 0.7976268334214369,
+      "gram_min": 0.4333686114465404
+    },
+    {
+      "h": 0.12,
+      "d": 0.18,
+      "ratio": 1.5,
+      "N": 13,
+      "max_radius": 2.64,
+      "lambda_min": 1.8329182639493322e-05,
+      "lambda_max": 2.533371946608137,
+      "gram_min": 0.2963914484250341
+    },
+    {
+      "h": 0.12,
+      "d": 0.24,
+      "ratio": 2.0,
+      "N": 13,
+      "max_radius": 3.36,
+      "lambda_min": 2.164559229904722e-05,
+      "lambda_max": 1.3941868300047628,
+      "gram_min": 0.4329399406897425
+    },
+    {
+      "h": 0.15,
+      "d": 0.3,
+      "ratio": 2.0,
+      "N": 9,
+      "max_radius": 3.0,
+      "lambda_min": 2.2326436069984036e-05,
+      "lambda_max": 0.6465528484295847,
+      "gram_min": 0.4340766738272033
+    },
+    {
+      "h": 0.12,
+      "d": 0.3,
+      "ratio": 2.5,
+      "N": 11,
+      "max_radius": 3.48,
+      "lambda_min": 2.7532791405343707e-05,
+      "lambda_max": 1.0913912360280578,
+      "gram_min": 0.47283992939153086
+    },
+    {
+      "h": 0.15,
+      "d": 0.375,
+      "ratio": 2.5,
+      "N": 9,
+      "max_radius": 3.6,
+      "lambda_min": 3.458117670749645e-05,
+      "lambda_max": 0.6311188368219568,
+      "gram_min": 0.47294037652222426
+    },
+    {
+      "h": 0.15,
+      "d": 0.22499999999999998,
+      "ratio": 1.5,
+      "N": 7,
+      "max_radius": 1.9499999999999997,
+      "lambda_min": 3.68361983043163e-05,
+      "lambda_max": 1.3995162579755114,
+      "gram_min": 0.3059258104747812
+    }
+  ],
+  "selected_for_rigorous_refinement": {
+    "h": 0.15,
+    "d": 0.22499999999999998,
+    "ratio": 1.5,
+    "N": 13,
+    "max_radius": 3.3,
+    "lambda_min": 1.2020901345911073e-05,
+    "lambda_max": 2.6500432613200235,
+    "gram_min": 0.2963914484250341
+  },
+  "selection_rule": "smallest exploratory generalized eigenvalue, followed by exact interval rebuild",
+  "scope_warning": "Search ranking is not a proof. Only refined_13x13_interval.json changes certificate status."
+}

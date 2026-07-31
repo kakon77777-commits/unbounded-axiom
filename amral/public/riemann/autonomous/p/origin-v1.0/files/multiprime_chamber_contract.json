@@ -1,0 +1,19 @@
+{
+  "schema": "RH-W-07-multiprime-chamber-contract-v0.1",
+  "basis": {
+    "family": "translated normalized cubic B-splines",
+    "h": "1/10",
+    "shifts": ["-4/5", "-3/5", "-2/5", "-1/5", "0", "1/5", "2/5", "3/5", "4/5"],
+    "correlation": "f_ij(x)=beta_7((x-(t_i-t_j))/h)"
+  },
+  "support_rule": "n contributes iff Lambda(n)!=0 and +log(n) or -log(n) lies in the exact correlation support interval",
+  "nonzero_von_mangoldt_indices": [2, 3, 4, 5, 7],
+  "excluded_tail": "all n>=8, because max |support|=2<log(8)",
+  "activation_by_lag": [[], [], [2], [2], [2, 3], [2, 3, 4], [3, 4], [3, 4, 5], [4, 5, 7]],
+  "certificate": {
+    "dimension": 9,
+    "delta": "1/2000",
+    "status": "CERTIFIED_POSITIVE_ON_THIS_9D_SUBSPACE",
+    "rh_claim": false
+  }
+}

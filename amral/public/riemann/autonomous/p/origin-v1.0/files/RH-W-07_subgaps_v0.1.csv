@@ -1,0 +1,12 @@
+id,title,status,depends_on,next_action
+RH-W-07-VM-FILTER,von Mangoldt prime-power filter,CLOSED_FOR_N_LE_7,RH-W-06,Generalize certified factorization beyond fixed N
+RH-W-07-SHIFTED-WINDOW,Full shifted support-window activation,CLOSED_FOR_CURRENT_SPLINES,RH-W-07-VM-FILTER,Parameterize arbitrary rational shifts and widths
+RH-W-07-ACTIVATION-GRAPH,Prime-power activation graph,CLOSED_9_LAGS,RH-W-07-SHIFTED-WINDOW,Compile chamber boundaries symbolically
+RH-W-07-MATRIX,True 9x9 multiprime Weil interval matrix,CLOSED,RH-W-05;RH-W-07-ACTIVATION-GRAPH,Scale dimension and support
+RH-W-07-POSCERT,Midpoint-margin exact positivity certificate,CLOSED_9D,RH-W-07-MATRIX,Formalize verifier in Lean or Coq
+RH-W-07-ABLATION,Cumulative prime-power ablation witnesses,CLOSED_FOR_4_FIXED_WITNESSES,RH-W-07-MATRIX,Search and certify a minimal witness basis
+RH-W-07-CHAMBER-COMPILER,General support-chamber compiler,PARTIAL_FIXED_FAMILY,RH-W-07-ACTIVATION-GRAPH,Accept arbitrary rational basis specifications
+RH-W-07-PRIME-TAIL,Unbounded prime-power completeness,OPEN_ENGINEERING,RH-W-07-CHAMBER-COMPILER,Add certified enumeration for arbitrary support
+RH-W-07-PARAMETER-SEARCH,Automated chamber and basis optimization,OPEN_ENGINEERING,RH-W-07-POSCERT,Separate exploratory optimizer from exact verifier
+RH-W-07-NEGATIVE-WITNESS,True-zeta negative witness,NOT_FOUND,RH-W-07-PARAMETER-SEARCH,No claim until exact negative interval exists
+RH-W-07-FORMAL,Formal proof backend,OPEN,RH-W-07-POSCERT,Port rational verifier and spline lemmas

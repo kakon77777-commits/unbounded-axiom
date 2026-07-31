@@ -1,0 +1,250 @@
+{
+  "schema": "RH-W-11-kernel-sensitivity-v0.1",
+  "date": "2026-07-23",
+  "scope": "local prime-3 boundary law for centered cardinal B-spline family; not RH evidence",
+  "source_parameter": {
+    "h": {
+      "num": "87",
+      "den": "400"
+    },
+    "d_theta_plus": {
+      "num": "73189",
+      "den": "320000"
+    },
+    "mu_cubic_boundary": {
+      "lower": {
+        "num": "20667266378061720950952615494859070501888435450109653061",
+        "den": "200000000000000000000000000000000000000000000000000000000000"
+      },
+      "upper": {
+        "num": "51668165945154302377381538737147676254721088625274132653",
+        "den": "500000000000000000000000000000000000000000000000000000000000"
+      },
+      "decimal_lower": "0.00010333633189030859922",
+      "decimal_upper": "0.00010333633189030859922"
+    },
+    "normalized_penetration_eps": {
+      "lower": {
+        "num": "47510957190946484944718656310020851728479161954275064508045977011494252873563218390804597701",
+        "den": "100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "upper": {
+        "num": "47510957190946484944718656310020851728479161954275064508505747126436781609195402298850574713",
+        "den": "100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "decimal_lower": "0.00047510957190946486199",
+      "decimal_upper": "0.00047510957190946486199"
+    },
+    "coefficient_log3_over_sqrt3": {
+      "lower": {
+        "num": "63428410059756397718638777254464905519953670192920081275616018609284012248591118735256653725173",
+        "den": "100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "upper": {
+        "num": "63428410059756397718638777254464905519953670192920081275616076344310931211167569650134703920919",
+        "den": "100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "decimal_lower": "0.63428410059756401562",
+      "decimal_upper": "0.63428410059756401562"
+    }
+  },
+  "general_auto_law": {
+    "basis": "v_{m,h,t}(x)=h^{-1/2} beta_m((x-t)/h)",
+    "correlation": "v_m * tilde(v_m) = beta_{2m+1}",
+    "activation": "p_{n,m}(eps)=-(Lambda(n)/sqrt(n))*eps_+^(2m+1)/(2m+1)!; for n=3, Lambda(3)=log(3)",
+    "regularity": "C^(2m) but not C^(2m+1) at activation boundary",
+    "arch_tail": "after retaining even derivatives through order 2m, local Laplace remainder yields O(K^-(2m+1)) under the package's termwise tail scheme"
+  },
+  "general_cross_law": {
+    "correlation": "v_m * tilde(v_n) = beta_{m+n+1}",
+    "activation_order": "m+n+1",
+    "boundary_regularity": "C^(m+n) but not C^(m+n+1)",
+    "fourier_decay": "|xi|^-(m+n+2) up to the centered sinc normalization"
+  },
+  "auto_family": [
+    {
+      "basis_degree_m": 0,
+      "basis_regularity": "jump / piecewise constant",
+      "correlation_degree": 1,
+      "correlation_regularity": "C^0",
+      "prime_activation_order": 1,
+      "fourier_decay_power": 2,
+      "arch_tail_remainder_power_K": 1,
+      "prime3_entry_lower": "-0.00030135444750388853431",
+      "prime3_entry_upper": "-0.00030135444750388853431",
+      "prime3_abs_midpoint": 0.00030135444750388853,
+      "target_eps_for_abs_1e-12_approx": 1.5765805875598838e-12,
+      "unit_constant_K_for_tail_1e-12_heuristic": 1000000000000,
+      "status": "WEIL_W_ADMISSIBLE; exact local activation interval"
+    },
+    {
+      "basis_degree_m": 1,
+      "basis_regularity": "C^0",
+      "correlation_degree": 3,
+      "correlation_regularity": "C^2",
+      "prime_activation_order": 3,
+      "fourier_decay_power": 4,
+      "arch_tail_remainder_power_K": 3,
+      "prime3_entry_lower": "-1.1337411636542357889e-11",
+      "prime3_entry_upper": "-1.1337411636542357889e-11",
+      "prime3_abs_midpoint": 1.1337411636542358e-11,
+      "target_eps_for_abs_1e-12_approx": 0.00021148966131847286,
+      "unit_constant_K_for_tail_1e-12_heuristic": 10000,
+      "status": "WEIL_W_ADMISSIBLE; exact local activation interval"
+    },
+    {
+      "basis_degree_m": 2,
+      "basis_regularity": "C^1",
+      "correlation_degree": 5,
+      "correlation_regularity": "C^4",
+      "prime_activation_order": 5,
+      "fourier_decay_power": 6,
+      "arch_tail_remainder_power_K": 5,
+      "prime3_entry_lower": "-1.2795918926806031441e-19",
+      "prime3_entry_upper": "-1.2795918926806031441e-19",
+      "prime3_abs_midpoint": 1.2795918926806031e-19,
+      "target_eps_for_abs_1e-12_approx": 0.011360030154061534,
+      "unit_constant_K_for_tail_1e-12_heuristic": 252,
+      "status": "WEIL_W_ADMISSIBLE; exact local activation interval"
+    },
+    {
+      "basis_degree_m": 3,
+      "basis_regularity": "C^2",
+      "correlation_degree": 7,
+      "correlation_regularity": "C^6",
+      "prime_activation_order": 7,
+      "fourier_decay_power": 8,
+      "arch_tail_remainder_power_K": 7,
+      "prime3_entry_lower": "-6.8771698359407511731e-28",
+      "prime3_entry_upper": "-6.8771698359407511731e-28",
+      "prime3_abs_midpoint": 6.877169835940751e-28,
+      "target_eps_for_abs_1e-12_approx": 0.06964310114251708,
+      "unit_constant_K_for_tail_1e-12_heuristic": 52,
+      "status": "WEIL_W_ADMISSIBLE; exact local activation interval"
+    },
+    {
+      "basis_degree_m": 4,
+      "basis_regularity": "C^3",
+      "correlation_degree": 9,
+      "correlation_regularity": "C^8",
+      "prime_activation_order": 9,
+      "fourier_decay_power": 10,
+      "arch_tail_remainder_power_K": 9,
+      "prime3_entry_lower": "-2.1560797141674476637e-36",
+      "prime3_entry_upper": "-2.1560797141674476637e-36",
+      "prime3_abs_midpoint": 2.1560797141674477e-36,
+      "target_eps_for_abs_1e-12_approx": 0.20248207308134267,
+      "unit_constant_K_for_tail_1e-12_heuristic": 22,
+      "status": "WEIL_W_ADMISSIBLE; exact local activation interval"
+    },
+    {
+      "basis_degree_m": 5,
+      "basis_regularity": "C^4",
+      "correlation_degree": 11,
+      "correlation_regularity": "C^10",
+      "prime_activation_order": 11,
+      "fourier_decay_power": 12,
+      "arch_tail_remainder_power_K": 11,
+      "prime3_entry_lower": "-4.4244540443418940102e-45",
+      "prime3_entry_upper": "-4.4244540443418940102e-45",
+      "prime3_abs_midpoint": 4.424454044341894e-45,
+      "target_eps_for_abs_1e-12_approx": 0.4150297827109387,
+      "unit_constant_K_for_tail_1e-12_heuristic": 13,
+      "status": "WEIL_W_ADMISSIBLE; exact local activation interval"
+    }
+  ],
+  "successive_order_ratios": [
+    {
+      "from_m": 0,
+      "to_m": 1,
+      "identity": "|p_{m+1}|/|p_m| = eps^2/((2m+2)(2m+3))",
+      "ratio": {
+        "lower": {
+          "num": "94053793883331229478329626117917799452059544445805635284163830264630321769938629527703",
+          "den": "2500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "upper": {
+          "num": "940537938833312294783296261179177994520595444458056352859841734520229074000044784284701",
+          "den": "25000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "decimal_lower": "3.7621517553332490879e-08",
+        "decimal_upper": "3.7621517553332490879e-08"
+      }
+    },
+    {
+      "from_m": 1,
+      "to_m": 2,
+      "identity": "|p_{m+1}|/|p_m| = eps^2/((2m+2)(2m+3))",
+      "ratio": {
+        "lower": {
+          "num": "282161381649993688434988878353753398356178633337416905852491490793890965309815888583109",
+          "den": "25000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "upper": {
+          "num": "564322763299987376869977756707506796712357266674833811715905040712137444400026870570821",
+          "den": "50000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "decimal_lower": "1.1286455265999747264e-08",
+        "decimal_upper": "1.1286455265999747264e-08"
+      }
+    },
+    {
+      "from_m": 2,
+      "to_m": 3,
+      "identity": "|p_{m+1}|/|p_m| = eps^2/((2m+2)(2m+3))",
+      "ratio": {
+        "lower": {
+          "num": "107490050152378547975233858420477485088068050795206440324758663159577510594215576603089",
+          "den": "20000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "upper": {
+          "num": "53745025076189273987616929210238742544034025397603220163419527686870232800002559101983",
+          "den": "10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "decimal_lower": "5.3745025076189277411e-09",
+        "decimal_upper": "5.3745025076189277411e-09"
+      }
+    },
+    {
+      "from_m": 3,
+      "to_m": 4,
+      "identity": "|p_{m+1}|/|p_m| = eps^2/((2m+2)(2m+3))",
+      "ratio": {
+        "lower": {
+          "num": "313512646277770764927765420393059331506865148152685450947212767548767739233128765092343",
+          "den": "100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "upper": {
+          "num": "156756323138885382463882710196529665753432574076342725476640289086704845666674130714117",
+          "den": "50000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "decimal_lower": "3.1351264627777077111e-09",
+        "decimal_upper": "3.1351264627777077111e-09"
+      }
+    },
+    {
+      "from_m": 4,
+      "to_m": 5,
+      "identity": "|p_{m+1}|/|p_m| = eps^2/((2m+2)(2m+3))",
+      "ratio": {
+        "lower": {
+          "num": "205208277563631773407264638802729744259039006063575931529084720577375247498047918969533",
+          "den": "100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "upper": {
+          "num": "51302069390907943351816159700682436064759751515893982883264094610194313127275170051893",
+          "den": "25000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "decimal_lower": "2.0520827756363176467e-09",
+        "decimal_upper": "2.0520827756363176467e-09"
+      }
+    }
+  ],
+  "engineering_decision": {
+    "single_best_kernel": false,
+    "sensor_candidate": "m=1 (linear B-spline; cubic correlation; order-3 activation)",
+    "certifier_candidate": "m=3 (cubic B-spline; degree-7 correlation; order-7 tail remainder)",
+    "next_gap": "construct and certify a mixed m=1/m=3 dictionary with activation orders 3,5,7"
+  },
+  "warning": "All positivity statements remain finite-dimensional when matrices are later built. This artifact only certifies local kernel scaling laws."
+}
