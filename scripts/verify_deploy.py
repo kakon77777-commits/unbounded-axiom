@@ -37,7 +37,6 @@ DIST_DIR = ROOT / "dist"
 
 STAT_RE = re.compile(r'<div class="n"[^>]*>(\d+)</div>')
 BUILD_ID_META_RE = re.compile(r'name="build-id"\s+content="([^"]*)"')
-TIMELINE_TOTAL_RE = re.compile(r'([\d,]+)\s+in total')
 
 
 def _fetch(url: str) -> str:
@@ -92,9 +91,13 @@ def one_pass(base_url: str, truth: dict) -> list[tuple[str, bool, str]]:
         return total_ok and bid_ok, f"total={stats[0] if stats else '?'} (want {count}), build_id={page_bid} (want {bid})"
 
     def timeline():
+        # Timeline homepage no longer flat-lists every paper with an "N in total"
+        # sentence (Human-Friendly Timeline restructuring) — it uses the same
+        # `<div class="n">` stat-tile markup as the homepage/AI Layer, so reuse
+        # STAT_RE rather than scraping for text that no longer exists on the page.
         html = _fetch(base_url + "/timeline/")
-        m = TIMELINE_TOTAL_RE.search(html)
-        total = int(m.group(1).replace(",", "")) if m else None
+        stats = STAT_RE.findall(html)
+        total = int(stats[0]) if stats else None
         page_bid_m = BUILD_ID_META_RE.search(html)
         page_bid = page_bid_m.group(1) if page_bid_m else None
         ok = total == count and page_bid == bid
