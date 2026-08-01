@@ -1,0 +1,14 @@
+id,title,status,dependency,next_action
+RH-W-11-BSPLINE-CONVOLUTION,不同 degree B-spline 交叉相關閉合,CLOSED,RH-W-10,archive
+RH-W-11-ACTIVATION-LAW,一般 prime-power 邊界啟動階數,CLOSED,RH-W-11-BSPLINE-CONVOLUTION,formalize in proof assistant
+RH-W-11-REGULARITY-DUALITY,啟動階數與邊界正則性對偶,CLOSED,RH-W-11-ACTIVATION-LAW,archive
+RH-W-11-FOURIER-DECAY,核階數與 Fourier 衰減次序,CLOSED_STANDARD,RH-W-11-BSPLINE-CONVOLUTION,lock transform convention
+RH-W-11-ARCH-TAIL-ORDER,package-compatible 阿基米德保守尾界階數,CLOSED_AS_ORDER_BOUND,RH-W-11-REGULARITY-DUALITY,derive degree-specific constants
+RH-W-11-W-ADMISSIBILITY,低階分段多項式在 Bombieri W 類中的合法性,CLOSED_WITH_ENDPOINT_CONVENTION,RH-W-02-NORMALIZATION,preserve midpoint convention
+RH-W-11-PARETO,單一最佳核是否存在,NO_SINGLE_DOMINATOR,RH-W-11-ACTIVATION-LAW,build mixed dictionary
+RH-W-11-MIXED-LADDER,不同 degree 交叉核形成中間啟動階,CLOSED_FORMULA,RH-W-11-BSPLINE-CONVOLUTION,start RH-W-12
+RH-W-12-CROSS-ARCH,degree 3/5/7 阿基米德區間積分器,OPEN_ENGINEERING,RH-W-11-MIXED-LADDER,generalize polynomial assembler
+RH-W-12-CROSS-PRIME,多 block prime-power 支撐編譯,OPEN_ENGINEERING,RH-W-11-MIXED-LADDER,generalize activation graph
+RH-W-12-GRAM-CONDITION,混合 degree Gram 正定與條件控制,OPEN_ENGINEERING,RH-W-11-MIXED-LADDER,build exact block Gram
+RH-W-12-MIXED-MATRIX,m=1/3 真實 Weil 混合矩陣,OPEN,RH-W-12-CROSS-ARCH;RH-W-12-CROSS-PRIME,construct first 2N matrix
+RH-W-11-NEGATIVE-WITNESS,真實 Weil 負證人,NOT_FOUND,RH-W-12-MIXED-MATRIX,none

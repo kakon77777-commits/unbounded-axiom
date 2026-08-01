@@ -1,0 +1,115 @@
+{
+  "schema": "RH-W-10-prime3-soft-activation-v0.1",
+  "date": "2026-07-23",
+  "basis": {
+    "h": {
+      "num": "87",
+      "den": "400"
+    },
+    "degree_of_correlation_spline": 7,
+    "dimension": 15
+  },
+  "boundary": {
+    "equation": "mu=d+4h-log(3)=0",
+    "symbolic_lag1_prime3_entry": "p3(mu)=-(log(3)/sqrt(3))*(mu_+/h)^7/7! for 0<mu<h",
+    "regularity": "C^6 but not C^7 at mu=0",
+    "derivatives_0_through_6_at_boundary": "all zero from both sides",
+    "seventh_derivative_jump": "-(log(3)/sqrt(3))/h^7"
+  },
+  "theta_minus": {
+    "d": {
+      "num": "117",
+      "den": "512"
+    },
+    "mu_d_plus_4h_minus_log3": {
+      "lower": {
+        "num": "-19332733621938279049047384505140929498111564549890346939",
+        "den": "200000000000000000000000000000000000000000000000000000000000"
+      },
+      "upper": {
+        "num": "-48331834054845697622618461262852323745278911374725867347",
+        "den": "500000000000000000000000000000000000000000000000000000000000"
+      },
+      "decimal_lower": "-9.6663668109691396817e-05",
+      "decimal_upper": "-9.6663668109691396817e-05"
+    },
+    "state": "INACTIVE",
+    "prime3_lag1_entry": {
+      "lower": {
+        "num": "0",
+        "den": "1"
+      },
+      "upper": {
+        "num": "0",
+        "den": "1"
+      },
+      "decimal_lower": "0",
+      "decimal_upper": "0"
+    },
+    "positive_log3_sample_outside_gap": {
+      "lower": {
+        "num": "228563956834054845697622618461262852323745278911374725867347",
+        "den": "500000000000000000000000000000000000000000000000000000000000"
+      },
+      "upper": {
+        "num": "91425582733621938279049047384505140929498111564549890346939",
+        "den": "200000000000000000000000000000000000000000000000000000000000"
+      },
+      "decimal_lower": "0.45712791366810967553",
+      "decimal_upper": "0.45712791366810967553"
+    }
+  },
+  "theta_zero": {
+    "mu": "0 exactly (symbolic transcendental boundary)",
+    "prime3_lag1_entry": "0",
+    "state": "BOUNDARY"
+  },
+  "theta_plus": {
+    "d": {
+      "num": "73189",
+      "den": "320000"
+    },
+    "mu_d_plus_4h_minus_log3": {
+      "lower": {
+        "num": "20667266378061720950952615494859070501888435450109653061",
+        "den": "200000000000000000000000000000000000000000000000000000000000"
+      },
+      "upper": {
+        "num": "51668165945154302377381538737147676254721088625274132653",
+        "den": "500000000000000000000000000000000000000000000000000000000000"
+      },
+      "decimal_lower": "0.00010333633189030859922",
+      "decimal_upper": "0.00010333633189030859922"
+    },
+    "state": "ACTIVE_FIRST_SPLINE_PIECE",
+    "prime3_lag1_entry": {
+      "lower": {
+        "num": "-6877169835940751114505051623117768403888110038623339190491",
+        "den": "10000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "upper": {
+        "num": "-859646229492593889313131452889721050486013754827917398753",
+        "den": "1250000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "decimal_lower": "-6.8771698359407511731e-28",
+      "decimal_upper": "-6.8771698359407511731e-28"
+    },
+    "positive_log3_sample_outside_gap": {
+      "lower": {
+        "num": "228663956834054845697622618461262852323745278911374725867347",
+        "den": "500000000000000000000000000000000000000000000000000000000000"
+      },
+      "upper": {
+        "num": "91465582733621938279049047384505140929498111564549890346939",
+        "den": "200000000000000000000000000000000000000000000000000000000000"
+      },
+      "decimal_lower": "0.45732791366810970901",
+      "decimal_upper": "0.45732791366810970901"
+    }
+  },
+  "quadratic_effect": {
+    "formula": "Delta Q_3(c)=2*p3(mu)*sum_{i=1}^{N-1} c_i c_{i+1}",
+    "sign_rule": "since p3(mu)<0, positive adjacent correlation lowers Q; negative adjacent correlation raises Q"
+  },
+  "scope_warning": "This certificate isolates the new prime-3 lag-1 block only. It is not an RH proof and not a full chamber certificate."
+}

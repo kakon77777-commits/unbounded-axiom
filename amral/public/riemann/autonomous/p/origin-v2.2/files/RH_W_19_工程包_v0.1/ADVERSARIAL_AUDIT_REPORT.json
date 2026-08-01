@@ -1,0 +1,24 @@
+{
+  "schema": "RH-W-19-adversarial-audit-report-v0.1",
+  "date": "2026-07-24",
+  "result": "PASS_WITH_DECLARED_EXTERNAL_TRUST_GAP",
+  "expected_rejections_confirmed": {
+    "passed": 16,
+    "total": 16
+  },
+  "expected_survivals_confirmed": {
+    "passed": 1,
+    "total": 1
+  },
+  "floating_false_negative": {
+    "matrix": "Hilbert-14",
+    "exact_ldlt_positive_pivots": 14,
+    "double_lambda_min": "-7.595982536164227e-18"
+  },
+  "external_trust_required": [
+    "signed release manifest",
+    "reproducible build",
+    "independent verifier or mirror"
+  ],
+  "RH_CLAIM": false
+}

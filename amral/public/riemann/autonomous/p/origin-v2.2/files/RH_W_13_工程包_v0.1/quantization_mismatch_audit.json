@@ -1,0 +1,21 @@
+{
+  "schema": "RH-W-13-quantization-mismatch-audit-v0.1",
+  "false_alarm_parameters_raw": {
+    "h": 0.17919521,
+    "d": 0.17823161,
+    "sigma": 0.01146941
+  },
+  "matrix_cache_parameters_rounded": {
+    "h": 0.179195,
+    "d": 0.178232,
+    "sigma": 0.011469
+  },
+  "metric_parameters_in_buggy_run": "unrounded raw parameters",
+  "buggy_mixed_generalized_min": -3.3206018958691534e-07,
+  "coherent_rounded_double_generalized_min": 8.76357114e-08,
+  "independent_80digit_generalized_min": 8.7620973e-08,
+  "root_cause": "M and G represented different dictionaries because only M used quantized cache keys",
+  "rule": "Every generalized eigenvalue evaluation must build M and G from one canonical parameter object; quantization must occur once before both matrices.",
+  "mathematical_status": "NUMERICAL_FALSE_NEGATIVE_REJECTED",
+  "RH_CLAIM": false
+}

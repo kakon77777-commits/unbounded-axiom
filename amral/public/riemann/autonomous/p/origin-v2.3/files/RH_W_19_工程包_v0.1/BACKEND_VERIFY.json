@@ -1,0 +1,22 @@
+{
+  "schema": "RH-CERT-BACKEND-RUN-v0.2",
+  "overall": "PASS_WITH_DECLARED_LIMITATIONS",
+  "counts": {
+    "VERIFIED": 1
+  },
+  "results": [
+    {
+      "id": "RH-W-19",
+      "kind": "ADVERSARIAL_AUDIT",
+      "declared_status": "VERIFIED",
+      "execution": "PASS",
+      "returncode": 0,
+      "expected_token": "ADVERSARIAL_CERTIFICATE_ZOO_OK",
+      "input_digest": "95b494567f852080bd0e74aaadef29c07d923282fb018778ed136c4d9d9d11ad",
+      "output": "INWARD_INTERVAL=REJECTED\nENDPOINT_SWAP=REJECTED\nTAIL_OMISSION=REJECTED\nWITNESS_VERSION_MISMATCH=REJECTED\nCOVERAGE_GAP=REJECTED\nFLOAT_FALSE_NEGATIVE=REJECTED_BY_EXACT_LDL\nexact_hilbert_ldlt_pivots_positive=14\ndouble_hilbert_lambda_min=-7.595982536164227e-18\nsynthetic_cases_verified=6/6\nstatus=ADVERSARIAL_CERTIFICATE_ZOO_OK\nRH_CLAIM=False\n",
+      "ok": true
+    }
+  ],
+  "trust_root": "SELF_AUTHENTICATED_PACKAGE_ONLY",
+  "RH_CLAIM": false
+}

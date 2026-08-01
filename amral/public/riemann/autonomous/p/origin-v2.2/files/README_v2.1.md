@@ -1,0 +1,6 @@
+# RH AI 研究起點 v2.1
+
+進度：RH-W-18 / RH-W-20。  
+核心新增：統一證書後端與歷史證書信任狀態審計。
+
+W-18 後端結果：11 VERIFIED、1 PROTOCOL_ONLY、1 SUPERSEDED_RECERTIFIED、1 LEGACY_INCOMPLETE。

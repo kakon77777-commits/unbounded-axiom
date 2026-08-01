@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>研究起點 v1.7 · 嚴格二維參數管 · 黎曼猜想 · AMRAL</title>
+<meta name="description" content="RH AI 研究起點 v1.7:RH-W-14 把 v1.6 的十維近零單點證書擴張為第一個連續二維參數管,對整個 (d,σ) 矩形證明 10^-8&lt;λmin&lt;5×10^-8。發現目前管寬主要受證書保守性限制(需預留2.3e-8矩陣擾動),不是受觀察到的譜不穩定限制(實際漂移只有2e-16)。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="./files/RH_AI_研究起點_v1.7.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link active" href="../../../">黎曼猜想</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← AI 自主研究封存庫</a>
+    <span>/</span>
+    <a href="../../#origin-v1.7">研究起點</a>
+    <span>/</span>
+    <span>v1.7 · 嚴格二維參數管</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">研究起點</span>
+      <span class="tag">v1.7</span>
+      <span class="tag">2026-07-23</span>
+      <span class="status">RH_CLAIM = False</span>
+    </div>
+    <h1>RH AI 研究起點 v1.7:嚴格二維參數管</h1>
+    <p class="h1-sub">整合包收錄 <a href="../w14-v0.1/">W-14</a> 完整內容。把 v1.6 的十維近零單點證書擴張為第一個連續二維參數管:固定 h,對整個 (d,σ) 矩形(半徑 4×10⁻¹²)證明 <code>10⁻⁸&lt;λmin(M(d,σ),G(d,σ))&lt;5×10⁻⁸</code>。保守性發現:管寬主要受證書保守性限制,不是受觀察到的譜不穩定限制。</p>
+    <div class="claim-box">
+      RH_CLAIM = False
+      <span class="note">— 包內文件自報欄位,原樣照登。「本版只證明固定十維 mixed B-spline 子空間上的連續近零正譜帶。它不證明 RH,也沒有提供 RH 反例。」</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他封包的關係,盡量用它自己文件裡的話,不是我的解讀。本包完整併入的 W-14 內容跟其獨立頁面相同,這裡不重複渲染。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一版</span><a href="../origin-v1.6/">研究起點 v1.6 · 跨正則性近零譜帶</a></div>
+      <div class="conn-card"><span class="k">下一版</span><a href="../origin-v1.8/">研究起點 v1.8 · IntervalTaylor參數管擴張</a></div>
+      <div class="conn-card"><span class="k">併入</span><a href="../w14-v0.1/">W-14</a></div>
+      <div class="conn-card"><span class="k">研究起點系列</span>17 / 23</div>
+    </div>
+    <blockquote class="cite">「高精度樣本顯示管內最低譜的實際漂移只有約 2×10⁻¹⁶,但全域 exact envelope 必須預留約 2.3×10⁻⁸ 的矩陣擾動。因此目前管寬主要受證書保守性限制,不是受觀察到的譜不穩定限制。」— 摘自本包主文件「保守性發現」一節。</blockquote>
+  </section>
+
+  <section id="doc-main">
+    <h2 class="doc-h2">v1.7 核心內容</h2>
+    <p class="doc-meta">本版新增(二維參數管證書)、主要方法(七步驟)、腔室穩定性、保守性發現、證書狀態、聲明邊界、下一節點(RH-W-15 Interval-Taylor 擴張)。</p>
+    <div class="doc" id="doc-main-body"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="files">
+    <h2 class="doc-h2">檔案 · Files</h2>
+    <p class="section-note">本包併入的 <code>RH_W_14_工程包_v0.1/</code> 完整資料夾跟 <a href="../w14-v0.1/">W-14 頁面</a>相同,這裡只列出檔名供核對。</p>
+    <div id="filelist-out"><p class="loading">載入中…</p></div>
+    <a class="zip-dl" href="../../packages/RH_AI_研究起點_v1.7_嚴格二維參數管_完整包.zip" download>下載完整封包 (562.2 KB)</a>
+    <p class="zip-note">sha256 80cfa1cc1ee2145546f9832ae00e27837dd460361988e2be65cecb338f6b2237</p>
+  </section>
+
+  <footer class="sitefoot">
+    <p>逐包詳細頁格式沿用 <a href="../w17-v0.1/">W-17</a>。<a href="../../">回 AI 自主研究封存庫</a></p>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+const F = (p) => amralFetchText("./files/" + p);
+
+async function loadDoc(elId, file) {
+  const el = document.getElementById(elId);
+  try {
+    el.innerHTML = amralRenderDoc(await F(file));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+}
+
+async function loadFiles() {
+  const el = document.getElementById("filelist-out");
+  try {
+    const idx = await fetch("./files.json").then((r) => r.json());
+    const fmt = (b) => b < 1024 ? b + " B" : (b / 1024).toFixed(1) + " KB";
+    el.innerHTML = `<div class="filegroup"><ul class="filelist">
+      ${idx.files.filter((f) => f.path !== "RH_AI_研究起點_v1.7.md").map((f) => `<li>${amralEsc(f.path)}<span class="fsize">${fmt(f.size)}</span></li>`).join("")}
+    </ul></div>`;
+  } catch (e) {
+    el.innerHTML = `<p class="error">檔案清單載入失敗:${e.message}</p>`;
+  }
+}
+
+loadDoc("doc-main-body", "RH_AI_研究起點_v1.7.md");
+loadFiles();
+</script>
+</body>
+</html>

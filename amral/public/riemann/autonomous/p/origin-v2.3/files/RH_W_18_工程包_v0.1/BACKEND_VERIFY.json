@@ -1,0 +1,153 @@
+{
+  "schema": "RH-CERT-BACKEND-RUN-v0.1",
+  "overall": "PASS_WITH_DECLARED_LIMITATIONS",
+  "counts": {
+    "PROTOCOL_ONLY": 1,
+    "VERIFIED": 11,
+    "LEGACY_INCOMPLETE": 1,
+    "SUPERSEDED_RECERTIFIED": 1
+  },
+  "results": [
+    {
+      "id": "RH-W-04",
+      "kind": "PROTOCOL_ONLY",
+      "declared_status": "PROTOCOL_ONLY",
+      "execution": "PASS",
+      "returncode": 0,
+      "expected_token": "PROTOCOL_SELFTEST_OK_NO_RH_WITNESS_PRESENT",
+      "output": "synthetic_exact_negative=ACCEPTED\nfloat_only_certificate=REJECTED\nzeta_claim_without_provenance=REJECTED\nstatus=PROTOCOL_SELFTEST_OK_NO_RH_WITNESS_PRESENT\nRH_CLAIM=False\n",
+      "ok": true
+    },
+    {
+      "id": "RH-W-05",
+      "kind": "NUMERICAL_MATRIX",
+      "declared_status": "VERIFIED",
+      "execution": "PASS",
+      "returncode": 0,
+      "expected_token": "CERTIFICATE_OK",
+      "output": "CERTIFICATE_OK\neven_lower=2479781683383953549298804023085293150759/10000000000000000000000000000000000000000\nodd_lower=5943079508458568092697511490592787715251/10000000000000000000000000000000000000000\nRH_CLAIM=False\n",
+      "ok": true
+    },
+    {
+      "id": "RH-W-06",
+      "kind": "NUMERICAL_MATRIX",
+      "declared_status": "LEGACY_INCOMPLETE",
+      "execution": "PASS",
+      "returncode": 0,
+      "expected_token": "LEGACY_INCOMPLETE_PARTIAL_AUDIT_ONLY",
+      "output": "stored_5x5_internal_arithmetic=OK\nprime_stabilization_sign_pattern=OK\nmissing_artifact=weil_matrix_prime2_2x2_interval.json\nstatus=LEGACY_INCOMPLETE_PARTIAL_AUDIT_ONLY\nRH_CLAIM=False\n",
+      "ok": true
+    },
+    {
+      "id": "RH-W-07",
+      "kind": "NUMERICAL_MATRIX",
+      "declared_status": "VERIFIED",
+      "execution": "PASS",
+      "returncode": 0,
+      "expected_token": "CERTIFIED_POSITIVE_ON_THIS_9D_SUBSPACE",
+      "output": "schema=OK\nactivation_graph=OK\ndimension=9\ndelta=1/2000\ninterval_row_radius=50201430951784163019909570395631583/2500000000000000000000000000000000000000\ncertified_lower_margin=1199798569048215836980090429604368417/2500000000000000000000000000000000000000\nldlt_pivots_positive=9\nstrict_sign_flips=4\nstatus=CERTIFIED_POSITIVE_ON_THIS_9D_SUBSPACE\nRH_CLAIM=False\n",
+      "ok": true
+    },
+    {
+      "id": "RH-W-08",
+      "kind": "NUMERICAL_MATRIX",
+      "declared_status": "VERIFIED",
+      "execution": "PASS",
+      "returncode": 0,
+      "expected_token": "CERTIFIED_POSITIVE_GENERALIZED_MARGIN",
+      "output": "schema=OK\ndimension=13\nprime_power_enumeration=OK\nrow_radius=591302180744020599379674806220435183777723849739/10000000000000000000000000000000000000000000000000000000\ngeneralized_margin_delta=1/100000\nldlt_pivots_positive=13\nstatus=CERTIFIED_POSITIVE_GENERALIZED_MARGIN\nRH_CLAIM=False\n",
+      "ok": true
+    },
+    {
+      "id": "RH-W-09",
+      "kind": "NUMERICAL_MATRIX",
+      "declared_status": "VERIFIED",
+      "execution": "PASS",
+      "returncode": 0,
+      "expected_token": "CERTIFIED_POSITIVE_GENERALIZED_MARGIN",
+      "output": "schema=OK\ndimension=15\nprime_power_enumeration=OK\nlag1_n3_boundary_gap_positive=OK\nrow_radius=2009524053559692775343777970129269797790739158546119146503423351/1000000000000000000000000000000000000000000000000000000000000000000000000000\ngeneralized_margin_delta=1/1000000000\nldlt_pivots_positive=15\nstatus=CERTIFIED_POSITIVE_GENERALIZED_MARGIN\nRH_CLAIM=False\n",
+      "ok": true
+    },
+    {
+      "id": "RH-W-10",
+      "kind": "STRUCTURAL_IDENTITY_AND_MATRIX",
+      "declared_status": "VERIFIED",
+      "execution": "PASS",
+      "returncode": 0,
+      "expected_token": "EXACT_W10_BUNDLE_CERTIFICATE_OK",
+      "output": "theta_plus_15d_ldlt=OK\nprime3_mu_minus_inactive=OK\nprime3_mu_plus_active=OK\nseventh_order_soft_activation=OK\nstatus=EXACT_W10_BUNDLE_CERTIFICATE_OK\nRH_CLAIM=False\n",
+      "ok": true
+    },
+    {
+      "id": "RH-W-11",
+      "kind": "STRUCTURAL_IDENTITY",
+      "declared_status": "VERIFIED",
+      "execution": "PASS",
+      "returncode": 0,
+      "expected_token": "EXACT_INTERVAL_VERIFICATION_OK",
+      "output": "schema=OK\nmu_positive=OK\nauto_activation_orders=1,3,5,7,9,11\nsuccessive_ratio_identity=OK\nm1_over_m3_gt_1e16=OK\nstatus=EXACT_INTERVAL_VERIFICATION_OK\nRH_CLAIM=False\n",
+      "ok": true
+    },
+    {
+      "id": "RH-W-12",
+      "kind": "NUMERICAL_MATRIX",
+      "declared_status": "VERIFIED",
+      "execution": "PASS",
+      "returncode": 0,
+      "expected_token": "EXACT_MIXED_DICTIONARY_CERTIFICATE_OK",
+      "output": "schema=OK\nmatrix_symmetry=OK\ngram_reconstruction=OK\ngram_ldlt_pivots_positive=10\nprime_power_enumeration=[2, 3, 4]\nactivation_graph=OK\nmixed_ldlt_pivots_positive=10\nmixed_lower_bound=lambda_min>1/2000\nmixed_upper_witness=lambda_min<1/1000\ncross_channel_cancellation=EXACT_SIGN_CERTIFIED\nprime_witness_components=OK\nm3_isolated_lower_bound=lambda_min>1/250\nm1_isolated_lower_bound=lambda_min>1/20\nstatus=EXACT_MIXED_DICTIONARY_CERTIFICATE_OK\nRH_CLAIM=False\n",
+      "ok": true
+    },
+    {
+      "id": "RH-W-13",
+      "kind": "NUMERICAL_MATRIX",
+      "declared_status": "VERIFIED",
+      "execution": "PASS",
+      "returncode": 0,
+      "expected_token": "EXACT_CROSS_REGULARITY_CERTIFICATE_OK",
+      "output": "schema=OK\nmatrix_symmetry=OK\ngram_reconstruction=OK\ngram_ldlt_pivots_positive=10\nprime_power_enumeration=[2, 3, 4]\nactivation_graph=OK\nmixed_ldlt_pivots_positive=10\nexact_bracket=1e-8<lambda_min<5e-8\nisolated_m1=lambda_min>4e-4\nisolated_m3=lambda_min>1e-7\nalpha_channel_scaling=GAUGE_CONGRUENCE_VERIFIED\nquantization_rule=M_AND_G_MUST_SHARE_IDENTICAL_PARAMETERS\nstatus=EXACT_CROSS_REGULARITY_CERTIFICATE_OK\nRH_CLAIM=False\n",
+      "ok": true
+    },
+    {
+      "id": "RH-W-14",
+      "kind": "PARAMETER_REGION",
+      "declared_status": "SUPERSEDED_RECERTIFIED",
+      "execution": "PASS",
+      "returncode": 0,
+      "expected_token": "SUPERSEDED_RECERTIFIED_BY_W15",
+      "output": "original_W14_derivative_derivation=SUPERSEDED\ncorrected_bounds=179,218,255\ncorrected_ldlt_pivots_positive=10\nstatus=SUPERSEDED_RECERTIFIED_BY_W15\nRH_CLAIM=False\n",
+      "ok": true
+    },
+    {
+      "id": "RH-W-15",
+      "kind": "PARAMETER_REGION",
+      "declared_status": "VERIFIED",
+      "execution": "PASS",
+      "returncode": 0,
+      "expected_token": "EXACT_INTERVAL_TAYLOR_TUBE_CERTIFICATE_OK",
+      "output": "stored_transcendental_enclosures=TRUSTED_UNDER_DOCUMENTED_CONTRACT\ntensor_interpolation_remainder=OK\ncorner_ldlt_positive=4/4\ngram_corner_ldlt_positive=4/4\nupper_witness=OK\nRH-W-14_corrected_tail_reaudit=PASS\nstatus=EXACT_INTERVAL_TAYLOR_TUBE_CERTIFICATE_OK\nRH_CLAIM=False\n",
+      "ok": true
+    },
+    {
+      "id": "RH-W-16",
+      "kind": "PARAMETER_REGION",
+      "declared_status": "VERIFIED",
+      "execution": "PASS",
+      "returncode": 0,
+      "expected_token": "EXACT_THREE_PARAMETER_TUBE_CERTIFICATE_OK",
+      "output": "schema=OK\ndimension=10\ntrilinear_remainder=OK\neight_corner_symmetry=OK\neight_corner_ldlt_positive=8/8\neight_corner_gram_ldlt_positive=8/8\nprime_power_chamber=[2,3,4]\nsample_to_knot_margin_positive=OK\nglobal_combined_row_remainder=1.128736500411401062e-09\nupper_witness_ratio_hi=4.023762155948622673e-08\nexact_3d_tube_bracket=1e-8<lambda_min<5e-8\nstatus=EXACT_THREE_PARAMETER_TUBE_CERTIFICATE_OK\nRH_CLAIM=False\n",
+      "ok": true
+    },
+    {
+      "id": "RH-W-17",
+      "kind": "CHAMBER_COVER",
+      "declared_status": "VERIFIED",
+      "execution": "PASS",
+      "returncode": 0,
+      "expected_token": "EXACT_CHAMBER_SUBDIVISION_CERTIFICATE_OK",
+      "output": "schema=OK\ndimension=10\nevent_equation=4d=log2\nevent_interval_reconstructed=OK\nevent_multiplicity=8\ncorrelation_degrees=[3,5,7]\nactivation_graph_constant=[2,3,4]\npolynomial_piece_transition=LEFT->EVENT->RIGHT\ncells_verified=3/3\ndomain_coverage=CONTIGUOUS_CLOSED_UNION\nexact_global_lower_bound=lambda_min>1e-8\nstatus=EXACT_CHAMBER_SUBDIVISION_CERTIFICATE_OK\nRH_CLAIM=False\n",
+      "ok": true
+    }
+  ],
+  "RH_CLAIM": false
+}

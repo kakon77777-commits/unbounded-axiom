@@ -1,0 +1,28 @@
+{
+  "schema": "RH-W-19-adversarial-zoo-manifest-v0.1",
+  "round": "RH-W-19",
+  "date": "2026-07-24",
+  "RH_CLAIM": false,
+  "expected_rejections": [
+    "HASH_TAMPER",
+    "UNINDEXED_SECURITY_FILE",
+    "REHASHED_PARAMETER_MISMATCH",
+    "OMITTED_PRIME_POWER",
+    "POLYNOMIAL_PIECE_MISLABEL",
+    "COVERAGE_GAP",
+    "M_G_PARAMETER_IDENTITY_MISMATCH",
+    "RH_CLAIM_ESCALATION",
+    "DEPENDENCY_CYCLE",
+    "COMMAND_PATH_TRAVERSAL",
+    "STATUS_INFLATION",
+    "INWARD_INTERVAL",
+    "ENDPOINT_SWAP",
+    "TAIL_OMISSION",
+    "WITNESS_VERSION_MISMATCH",
+    "FLOAT_FALSE_NEGATIVE"
+  ],
+  "expected_survivals": [
+    "TOKEN_ONLY_COLLUDING_VERIFIER"
+  ],
+  "interpretation": "EXPECTED_SURVIVAL is a documented trust-boundary result, not a backend pass claim."
+}

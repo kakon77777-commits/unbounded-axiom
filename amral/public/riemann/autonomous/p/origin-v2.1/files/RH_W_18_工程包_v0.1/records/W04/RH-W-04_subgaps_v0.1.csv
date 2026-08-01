@@ -1,0 +1,13 @@
+﻿id,parent,status,severity,statement,next_action
+RH-W-04-CUTOFF-FOURIER-CORE,RH-W-04,CLOSED_BY_FORM_CORE_CONSTRUCTION,S3,A concrete countable real cutoff-Fourier dictionary is form-norm dense in the localized Weil form domain,freeze one explicit flat-cutoff formula for numerical implementation
+RH-W-04-RAYLEIGH-RITZ-LIMIT,RH-W-04,CLOSED,S3,Nested finite-dimensional minima decrease to the localized spectral bottom,use the theorem as the convergence contract
+RH-W-04-FINITE-DETECTION,RH-W-04,CLOSED_NON_EFFECTIVE,S4,Any strictly negative localized spectral bottom is detected by some finite cutoff-Fourier subspace,"seek effective support and dimension bounds, but do not require them for negative certificates"
+RH-W-04-REAL-BASIS,RH-W-04,CLOSED,S2,"Cosine, sine and constant cutoff atoms suffice, allowing real symmetric interval matrices",implement a deterministic real basis ordering
+RH-W-04-RATIONAL-WITNESS-REDUCTION,RH-W-04,CLOSED,S4,A single rational vector and a strictly negative componentwise interval upper bound suffice; full eigenvalue verification is unnecessary,optimize candidate rationalization and sparsity
+RH-W-04-EXACT-VERIFIER,RH-W-04,CLOSED_FOR_SUPPLIED_INTERVALS,S3,A small Fraction-based verifier checks interval negativity without floating-point arithmetic,port the verifier kernel to Lean or another proof assistant
+RH-W-04-MATRIX-ENCLOSURE,RH-W-04,OPEN_ENGINEERING,S4,Produce rigorous rational enclosures for actual zeta Weil matrix entries,complete an m=2 arithmetic-side enclosure pipeline
+RH-W-04-ARCHIMEDEAN-ENCLOSURE,RH-W-04,OPEN_ENGINEERING,S4,Bound the archimedean integral or continuous screw kernel with directed rounding and analytic tail bounds,select Arb/MPFI or a replayable rational Taylor-model method
+RH-W-04-PRIME-ENCLOSURE,RH-W-04,OPEN_ENGINEERING,S3,"Certify the finite prime-power sum, constants and shifted overlap integrals",freeze support radius and generate a complete prime-power manifest
+RH-W-04-EFFECTIVE-N,RH-W-04,OPEN_THEORETICAL,S2,No effective dimension bound is known here for detecting a hypothetical negative direction,"treat N as a search parameter, not a theorem"
+RH-W-04-TRUE-ZETA-CERTIFICATE,RH-W-04,NOT_PRODUCED,S4,No rigorous negative certificate for the true zeta Weil form has been found or claimed,build the matrix enclosure pipeline before any true scan
+RH-W-04-POSITIVE-NONCERTIFICATE,RH-W-04,LOCKED_WARNING,S4,Finite-dimensional positivity or failure to find a negative witness is never evidence sufficient to prove RH,enforce NEGATIVE_ONLY semantics in every tool

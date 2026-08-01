@@ -1,0 +1,10 @@
+id,title,status,dependency,next_action
+RH-W-10-BOUNDARY-PARAMETER,prime-3 lag-1 邊界參數,CLOSED,RH-W-09,none
+RH-W-10-ACTIVATION-ORDER,prime-3 新區塊出現階數,CLOSED,RH-W-10-BOUNDARY-PARAMETER,compare other kernel degrees
+RH-W-10-REGULARITY,邊界正則性,CLOSED,RH-W-10-ACTIVATION-ORDER,formalize piecewise derivative statement
+RH-W-10-MODE-SIGN,局部區塊對模態的符號,CLOSED_FORMULA,RH-W-10-ACTIVATION-ORDER,apply to other eigenmodes
+RH-W-10-THETA-MINUS,邊界前完整十五維證書,CERTIFIED_POSITIVE,RH-W-09,archive
+RH-W-10-THETA-ZERO-FULL,超越參數邊界完整矩陣,NOT_BUILT,RH-W-10-BOUNDARY-PARAMETER,optional interval parameter enclosure
+RH-W-10-THETA-PLUS,邊界後完整十五維證書,CERTIFIED_POSITIVE,RH-W-10-ACTIVATION-ORDER,archive
+RH-W-10-AVOIDED-CROSSING,邊界附近模態交換,NOT_OBSERVED_LOCALLY,RH-W-10-THETA-PLUS,expand continuation interval
+RH-W-10-OTHER-KERNEL-ORDERS,不同核的門檻靈敏度,OPEN,RH-W-10-REGULARITY,start RH-W-11

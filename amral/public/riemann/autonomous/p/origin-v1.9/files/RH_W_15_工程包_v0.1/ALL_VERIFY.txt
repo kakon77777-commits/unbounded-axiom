@@ -1,0 +1,32 @@
+$ python verify_cross_regularity.py
+schema=OK
+matrix_symmetry=OK
+gram_reconstruction=OK
+gram_ldlt_pivots_positive=10
+prime_power_enumeration=[2, 3, 4]
+activation_graph=OK
+mixed_ldlt_pivots_positive=10
+exact_bracket=1e-8<lambda_min<5e-8
+isolated_m1=lambda_min>4e-4
+isolated_m3=lambda_min>1e-7
+alpha_channel_scaling=GAUGE_CONGRUENCE_VERIFIED
+quantization_rule=M_AND_G_MUST_SHARE_IDENTICAL_PARAMETERS
+status=EXACT_CROSS_REGULARITY_CERTIFICATE_OK
+RH_CLAIM=False
+
+$ python verify_interval_taylor_tube.py
+schema=OK
+four_corner_matrices=OK
+tensor_interpolation_remainder=OK
+second_derivative_bounds={3:2494,5:3110,7:3697}
+global_second_order_row_remainder=1.098800000402575332e-09
+corner_ldlt_positive=4/4
+gram_corner_ldlt_positive=4/4
+exact_tube_bracket=1e-8<lambda_min<5e-8
+RH-W-14_corrected_tail_reaudit=PASS
+RH-W-14_corrected_L={3:179,5:218,7:255}
+status=EXACT_INTERVAL_TAYLOR_TUBE_CERTIFICATE_OK
+RH_CLAIM=False
+
+ALL_CERTIFICATES_OK
+RH_CLAIM=False

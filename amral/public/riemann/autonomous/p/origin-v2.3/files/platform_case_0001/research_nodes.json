@@ -1,0 +1,384 @@
+{
+  "schema": "RH-RESEARCH-NODES-v0.1",
+  "nodes": [
+    {
+      "node_id": "RH-W-01",
+      "ordinal": 1,
+      "batch_id": "RH-BATCH-01",
+      "title_zh_tw": "Weil 測試函數空間與生成族固定",
+      "node_type": "ANALYTIC_FOUNDATION",
+      "status": "DOCUMENTED_DERIVATION",
+      "verification_mode": "DOCUMENT_REVIEW",
+      "summary_zh_tw": "固定 Bombieri／Clay 乘法群表述；以 $D(D+1)$ 生成雙消失矩緊支撐核心，建立 Mellin–Fourier 與相關閉合接口。",
+      "depends_on": [],
+      "limitations_zh_tw": [
+        "沒有證明 RH，也沒有完成全域 Weil 測試空間充分性。"
+      ],
+      "rh_claim": false,
+      "artifact_hint": "RH_W_01_工程包_v0.2_完整包.zip",
+      "public_visibility": "PUBLIC_WITH_TRUST_BOUNDARY"
+    },
+    {
+      "node_id": "RH-W-02",
+      "ordinal": 2,
+      "batch_id": "RH-BATCH-01",
+      "title_zh_tw": "核心值域、拓撲與正規化閉合",
+      "node_type": "ANALYTIC_FOUNDATION",
+      "status": "DOCUMENTED_DERIVATION",
+      "verification_mode": "DOCUMENT_REVIEW",
+      "summary_zh_tw": "證明 $D(D+1)C_c^\\infty(0,\\infty)=\\mathcal C_{00}$，給出顯式反演與 LF 連續性；在雙消失矩核心上對齊 $Q_{B0}=W=\\langle\\cdot,\\cdot\\rangle_W$。",
+      "depends_on": [
+        "RH-W-01"
+      ],
+      "limitations_zh_tw": [
+        "裸 $L^2$ 完成被拒絕；核心到完整 RH 等價測試空間的全域橋仍開放。"
+      ],
+      "rh_claim": false,
+      "artifact_hint": "RH_W_02_工程包_v0.2_完整包.zip",
+      "public_visibility": "PUBLIC_WITH_TRUST_BOUNDARY"
+    },
+    {
+      "node_id": "RH-W-03",
+      "ordinal": 3,
+      "batch_id": "RH-BATCH-01",
+      "title_zh_tw": "緊支撐分離與雙核心架構",
+      "node_type": "STRUCTURAL_BRIDGE",
+      "status": "LITERATURE_GROUNDED_STRUCTURAL_RESULT",
+      "verification_mode": "DOCUMENT_AND_SOURCE_REVIEW",
+      "summary_zh_tw": "整理 $\\neg RH$ 時完整 Weil 核心存在有限對數支撐負證人的分離邏輯；區分完整核心與端點零簡化核心，建立有限支撐譜掃描規格。",
+      "depends_on": [
+        "RH-W-02"
+      ],
+      "limitations_zh_tw": [
+        "存在性不等於未知離軸零點下的可計算建構；雙消失矩子空間是否單獨完備分離仍未封閉。"
+      ],
+      "rh_claim": false,
+      "artifact_hint": "RH_W_03_工程包_v0.1_完整包.zip",
+      "public_visibility": "PUBLIC_WITH_TRUST_BOUNDARY"
+    },
+    {
+      "node_id": "RH-W-04",
+      "ordinal": 4,
+      "batch_id": "RH-BATCH-01",
+      "title_zh_tw": "有限維完備性與有理負證書協議",
+      "node_type": "PROTOCOL",
+      "status": "PROTOCOL_ONLY",
+      "verification_mode": "EXECUTABLE_PROTOCOL_SELFTEST",
+      "summary_zh_tw": "建立有限字典下負方向終將可見的條件性完備性框架，以及有理負二次型 witness 的最小驗證格式。",
+      "depends_on": [
+        "RH-W-03"
+      ],
+      "limitations_zh_tw": [
+        "本輪沒有找到真實負 Weil witness。"
+      ],
+      "rh_claim": false,
+      "artifact_hint": "RH_W_04_工程包_v0.1_完整包.zip",
+      "public_visibility": "PUBLIC_WITH_TRUST_BOUNDARY"
+    },
+    {
+      "node_id": "RH-W-05",
+      "ordinal": 5,
+      "batch_id": "RH-BATCH-01",
+      "title_zh_tw": "第一份真實 zeta 二維 Weil 區間矩陣",
+      "node_type": "NUMERICAL_MATRIX",
+      "status": "VERIFIED",
+      "verification_mode": "EXACT_INTERVAL_REPLAY",
+      "summary_zh_tw": "以完整顯式公式建立 2×2 有理區間矩陣；支撐低於 $\\log2$，所有 prime 項解析為零，證明固定二維子空間正定。",
+      "depends_on": [
+        "RH-W-04"
+      ],
+      "limitations_zh_tw": [
+        "有限維局部正性不推出 RH。"
+      ],
+      "rh_claim": false,
+      "artifact_hint": "RH_W_05_工程包_v0.1_完整包.zip",
+      "public_visibility": "PUBLIC_WITH_TRUST_BOUNDARY"
+    },
+    {
+      "node_id": "RH-W-06",
+      "ordinal": 6,
+      "batch_id": "RH-BATCH-01",
+      "title_zh_tw": "第一素數活化與五維穩定化",
+      "node_type": "NUMERICAL_MATRIX",
+      "status": "LEGACY_INCOMPLETE",
+      "verification_mode": "PARTIAL_EXECUTABLE_AUDIT",
+      "summary_zh_tw": "在 $\\log2<R<\\log3$ 腔室隔離 $n=2$；展示 prime-free witness 可負而加入 $n=2$ 後恢復正性。",
+      "depends_on": [
+        "RH-W-05"
+      ],
+      "limitations_zh_tw": [
+        "公開包缺少原始 2×2 artifact，故不能標記完整綠色重放。"
+      ],
+      "rh_claim": false,
+      "artifact_hint": "RH_W_06_工程包_v0.1_完整包.zip",
+      "public_visibility": "PUBLIC_WITH_TRUST_BOUNDARY"
+    },
+    {
+      "node_id": "RH-W-07",
+      "ordinal": 7,
+      "batch_id": "RH-BATCH-01",
+      "title_zh_tw": "多素數冪腔室編譯器",
+      "node_type": "NUMERICAL_MATRIX",
+      "status": "VERIFIED",
+      "verification_mode": "EXACT_INTERVAL_REPLAY",
+      "summary_zh_tw": "建立 9 維 Toeplitz 矩陣，活化索引為 $2,3,4,5,7$；明確把 prime powers 分開計算。",
+      "depends_on": [
+        "RH-W-06"
+      ],
+      "limitations_zh_tw": [
+        "仍只覆蓋固定有限維字典。"
+      ],
+      "rh_claim": false,
+      "artifact_hint": "RH_W_07_工程包_v0.1_完整包.zip",
+      "public_visibility": "PUBLIC_WITH_TRUST_BOUNDARY"
+    },
+    {
+      "node_id": "RH-W-08",
+      "ordinal": 8,
+      "batch_id": "RH-BATCH-01",
+      "title_zh_tw": "自動腔室搜尋與嚴格細化",
+      "node_type": "NUMERICAL_MATRIX",
+      "status": "VERIFIED",
+      "verification_mode": "EXACT_INTERVAL_REPLAY",
+      "summary_zh_tw": "搜索 122 個候選後選定 13 維腔室，證明 $Q(c)>10^{-5}c^TGc$；將阿基米德尾首項誤差由 $O(K^{-2})$ 改善至 $O(K^{-3})$。",
+      "depends_on": [
+        "RH-W-07"
+      ],
+      "limitations_zh_tw": [
+        "搜尋完整性只相對於指定候選族。"
+      ],
+      "rh_claim": false,
+      "artifact_hint": "RH_W_08_工程包_v0.1_完整包.zip",
+      "public_visibility": "PUBLIC_WITH_TRUST_BOUNDARY"
+    },
+    {
+      "node_id": "RH-W-09",
+      "ordinal": 9,
+      "batch_id": "RH-BATCH-01",
+      "title_zh_tw": "自適應延拓與十億分之一裕度",
+      "node_type": "NUMERICAL_MATRIX",
+      "status": "VERIFIED",
+      "verification_mode": "EXACT_INTERVAL_REPLAY",
+      "summary_zh_tw": "建立 15 維腔室並證明 $Q(c)>10^{-9}c^TGc$；接近 lag-1 的 $n=3$ 邊界。",
+      "depends_on": [
+        "RH-W-08"
+      ],
+      "limitations_zh_tw": [
+        "接近零譜不代表接近 RH 證明或反例。"
+      ],
+      "rh_claim": false,
+      "artifact_hint": "RH_W_09_工程包_v0.1_完整包.zip",
+      "public_visibility": "PUBLIC_WITH_TRUST_BOUNDARY"
+    },
+    {
+      "node_id": "RH-W-10",
+      "ordinal": 10,
+      "batch_id": "RH-BATCH-01",
+      "title_zh_tw": "素數邊界局部模態與七階軟啟動",
+      "node_type": "STRUCTURAL_IDENTITY_AND_MATRIX",
+      "status": "VERIFIED",
+      "verification_mode": "EXACT_SYMBOLIC_AND_INTERVAL_REPLAY",
+      "summary_zh_tw": "證明 degree-7 correlation 的 prime-3 活化量按 $\\mu_+^7/7!$ 出現，故邊界為 $C^6$ 非 $C^7$；邊界前後均保持正性。",
+      "depends_on": [
+        "RH-W-09"
+      ],
+      "limitations_zh_tw": [
+        "新 prime-3 微小項不足以解釋原近零模態。"
+      ],
+      "rh_claim": false,
+      "artifact_hint": "RH_W_10_工程包_v0.1_完整包.zip",
+      "public_visibility": "PUBLIC_WITH_TRUST_BOUNDARY"
+    },
+    {
+      "node_id": "RH-W-11",
+      "ordinal": 11,
+      "batch_id": "RH-BATCH-01",
+      "title_zh_tw": "核靈敏度與正則性對偶",
+      "node_type": "STRUCTURAL_IDENTITY",
+      "status": "VERIFIED",
+      "verification_mode": "EXACT_SYMBOLIC_REPLAY",
+      "summary_zh_tw": "由 $\\beta_m*\\beta_n=\\beta_{m+n+1}$ 得到活化階數 $r=m+n+1$，同時控制邊界正則性、Fourier 衰減與尾界階數，提出混合階字典。",
+      "depends_on": [
+        "RH-W-10"
+      ],
+      "limitations_zh_tw": [
+        "Pareto 設計原則不是完整最佳化定理。"
+      ],
+      "rh_claim": false,
+      "artifact_hint": "RH_W_11_工程包_v0.1_完整包.zip",
+      "public_visibility": "PUBLIC_WITH_TRUST_BOUNDARY"
+    },
+    {
+      "node_id": "RH-W-12",
+      "ordinal": 12,
+      "batch_id": "RH-BATCH-01",
+      "title_zh_tw": "混合階字典與交叉抵消模態",
+      "node_type": "NUMERICAL_MATRIX",
+      "status": "VERIFIED",
+      "verification_mode": "EXACT_INTERVAL_REPLAY",
+      "summary_zh_tw": "建立 $m=1/3$ 的 10 維混合字典，證明 $1/2000<\\lambda_{min}<1/1000$；發現自通道為正、跨通道負的交叉正則性抵消。",
+      "depends_on": [
+        "RH-W-11"
+      ],
+      "limitations_zh_tw": [
+        "抵消模態仍為有限維現象。"
+      ],
+      "rh_claim": false,
+      "artifact_hint": "RH_W_12_工程包_v0.1_完整包.zip",
+      "public_visibility": "PUBLIC_WITH_TRUST_BOUNDARY"
+    },
+    {
+      "node_id": "RH-W-13",
+      "ordinal": 13,
+      "batch_id": "RH-BATCH-01",
+      "title_zh_tw": "跨正則性近零譜帶與一致量化審計",
+      "node_type": "NUMERICAL_MATRIX",
+      "status": "VERIFIED",
+      "verification_mode": "EXACT_INTERVAL_REPLAY",
+      "summary_zh_tw": "識別通道縮放 $\\alpha$ 為廣義譜規範參數；修正 M/G 參數身分錯配造成的假負值；證明 $10^{-8}<\\lambda_{min}<5\\times10^{-8}$。",
+      "depends_on": [
+        "RH-W-12"
+      ],
+      "limitations_zh_tw": [
+        "近零正譜不是 RH 結論；參數與 Gram 必須共享同一身分版本。"
+      ],
+      "rh_claim": false,
+      "artifact_hint": "RH_W_13_工程包_v0.1_完整包.zip",
+      "public_visibility": "PUBLIC_WITH_TRUST_BOUNDARY"
+    },
+    {
+      "node_id": "RH-W-14",
+      "ordinal": 14,
+      "batch_id": "RH-BATCH-01",
+      "title_zh_tw": "第一個嚴格二維低譜參數管",
+      "node_type": "PARAMETER_REGION",
+      "status": "SUPERSEDED_RECERTIFIED",
+      "verification_mode": "SUPERSEDED_THEN_EXACTLY_RECERTIFIED",
+      "summary_zh_tw": "固定 $h$，對極小 $(d,\\sigma)$ 有理矩形證明同一近零正譜夾界。原一階阿基米德界漏掉支撐外尾，後由 W-15 修正並回溯重證。",
+      "depends_on": [
+        "RH-W-13"
+      ],
+      "limitations_zh_tw": [
+        "原導數推導已被取代；只保留經 W-15 重證的結論。"
+      ],
+      "rh_claim": false,
+      "artifact_hint": "RH_W_14_工程包_v0.1_完整包.zip",
+      "public_visibility": "PUBLIC_WITH_TRUST_BOUNDARY"
+    },
+    {
+      "node_id": "RH-W-15",
+      "ordinal": 15,
+      "batch_id": "RH-BATCH-01",
+      "title_zh_tw": "Interval–Taylor 參數管擴張與尾修正",
+      "node_type": "PARAMETER_REGION",
+      "status": "VERIFIED",
+      "verification_mode": "EXACT_INTERVAL_TAYLOR_REPLAY",
+      "summary_zh_tw": "補入 $\\operatorname{artanh}(e^{-R})$ 支撐外尾；以四角凸組合加二階餘項將二維半徑放大 25,000 倍，仍證明 $10^{-8}<\\lambda_{min}<5\\times10^{-8}$。",
+      "depends_on": [
+        "RH-W-14"
+      ],
+      "limitations_zh_tw": [
+        "區域寬度仍主要受保守曲率包絡限制。"
+      ],
+      "rh_claim": false,
+      "artifact_hint": "RH_W_15_工程包_v0.1_完整包.zip",
+      "public_visibility": "PUBLIC_WITH_TRUST_BOUNDARY"
+    },
+    {
+      "node_id": "RH-W-16",
+      "ordinal": 16,
+      "batch_id": "RH-BATCH-01",
+      "title_zh_tw": "三參數近零譜管",
+      "node_type": "PARAMETER_REGION",
+      "status": "VERIFIED",
+      "verification_mode": "EXACT_TRILINEAR_REPLAY",
+      "summary_zh_tw": "加入尺度 $h$，對非退化 $(h,d,\\sigma)$ 三維盒以八角凸組合與二階餘項證明同一譜夾界。",
+      "depends_on": [
+        "RH-W-15"
+      ],
+      "limitations_zh_tw": [
+        "尺度方向曲率較大，盒寬仍很小。"
+      ],
+      "rh_claim": false,
+      "artifact_hint": "RH_W_16_工程包_v0.1_完整包.zip",
+      "public_visibility": "PUBLIC_WITH_TRUST_BOUNDARY"
+    },
+    {
+      "node_id": "RH-W-17",
+      "ordinal": 17,
+      "batch_id": "RH-BATCH-01",
+      "title_zh_tw": "腔室感知切分與事件薄層",
+      "node_type": "CHAMBER_COVER",
+      "status": "VERIFIED",
+      "verification_mode": "EXACT_CLOSED_COVER_REPLAY",
+      "summary_zh_tw": "穿越 $4d=\\log2$ 的 spline 中央 knot，把區間切成左腔室、事件薄層、右腔室；三段閉區間完整覆蓋並證明 $\\lambda_{min}>10^{-8}$。",
+      "depends_on": [
+        "RH-W-16"
+      ],
+      "limitations_zh_tw": [
+        "本例是 polynomial-piece 事件，不是 prime power 進退事件。"
+      ],
+      "rh_claim": false,
+      "artifact_hint": "RH_W_17_工程包_v0.1_完整包.zip",
+      "public_visibility": "PUBLIC_WITH_TRUST_BOUNDARY"
+    },
+    {
+      "node_id": "RH-W-18",
+      "ordinal": 18,
+      "batch_id": "RH-BATCH-01",
+      "title_zh_tw": "統一證書後端與歷史狀態模型",
+      "node_type": "CERTIFICATE_BACKEND",
+      "status": "VERIFIED",
+      "verification_mode": "BACKEND_REPLAY",
+      "summary_zh_tw": "統一 NUMERICAL_MATRIX、PARAMETER_REGION、CHAMBER_COVER、STRUCTURAL_IDENTITY、PROTOCOL_ONLY 等類型，提供單一 CLI 與分層狀態。",
+      "depends_on": [
+        "RH-W-17"
+      ],
+      "limitations_zh_tw": [
+        "自我認證封包不提供外部真實性。"
+      ],
+      "rh_claim": false,
+      "artifact_hint": "RH_W_18_工程包_v0.1_完整包.zip",
+      "public_visibility": "PUBLIC_WITH_TRUST_BOUNDARY"
+    },
+    {
+      "node_id": "RH-W-19",
+      "ordinal": 19,
+      "batch_id": "RH-BATCH-01",
+      "title_zh_tw": "可重現性與對抗性證書審計",
+      "node_type": "ADVERSARIAL_AUDIT",
+      "status": "VERIFIED",
+      "verification_mode": "BACKEND_AND_REDTEAM_REPLAY",
+      "summary_zh_tw": "建立錯誤證書動物園；16/16 預期錯誤被拒絕，並以 14 階 Hilbert exact 正定／double 假負例說明浮點負值不能作為負證書。",
+      "depends_on": [
+        "RH-W-18"
+      ],
+      "limitations_zh_tw": [
+        "證書、verifier、manifest 與 hash 同時串通時，封包內部無法自證，必須有外部信任根。"
+      ],
+      "rh_claim": false,
+      "artifact_hint": "RH_W_19_工程包_v0.1_完整包.zip",
+      "public_visibility": "PUBLIC_WITH_TRUST_BOUNDARY"
+    },
+    {
+      "node_id": "RH-W-20",
+      "ordinal": 20,
+      "batch_id": "RH-BATCH-01",
+      "title_zh_tw": "Batch 01 統合與 AI 自主數學研究平台 Case 0001 發行",
+      "node_type": "BATCH_RELEASE",
+      "status": "VERIFIED_RELEASE",
+      "verification_mode": "RELEASE_SCHEMA_AND_BACKEND_REPLAY",
+      "summary_zh_tw": "封裝 W-01～W-20 的研究圖譜、主張台帳、失敗與修正、證書索引、平台匯入資料及 Batch 02 交棒；重放 W-19 後端與對抗審計。",
+      "depends_on": [
+        "RH-W-19"
+      ],
+      "limitations_zh_tw": [
+        "Batch 01 沒有證明或反證 RH；它只完成第一批有限研究工程與可信交棒。"
+      ],
+      "rh_claim": false,
+      "artifact_hint": "RH_W_20_工程包_v0.1_完整包.zip",
+      "public_visibility": "PUBLIC_WITH_TRUST_BOUNDARY"
+    }
+  ],
+  "rh_claim": false
+}

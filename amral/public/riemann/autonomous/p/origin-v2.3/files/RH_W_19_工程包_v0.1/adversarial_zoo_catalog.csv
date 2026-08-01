@@ -1,0 +1,18 @@
+id,case,layer,expected_result,meaning
+Z01,HASH_TAMPER,package,REJECTED,hash mismatch before execution
+Z02,UNINDEXED_SECURITY_FILE,package,REJECTED,new Python/JSON payload absent from allowlist
+Z03,REHASHED_PARAMETER_MISMATCH,semantic,REJECTED,native W16 reconstruction disagrees
+Z04,OMITTED_PRIME_POWER,arithmetic,REJECTED,W13 prime-power enumeration disagrees
+Z05,POLYNOMIAL_PIECE_MISLABEL,chamber,REJECTED,W17 event type invariant violated
+Z06,COVERAGE_GAP,topology,REJECTED,closed cells no longer form contiguous cover
+Z07,M_G_PARAMETER_IDENTITY_MISMATCH,matrix_identity,REJECTED,Gram/lag reconstruction uses different parameter identity
+Z08,RH_CLAIM_ESCALATION,claim,REJECTED,global claim firewall
+Z09,DEPENDENCY_CYCLE,dependency,REJECTED,manifest must be DAG
+Z10,COMMAND_PATH_TRAVERSAL,execution,REJECTED,command path confinement
+Z11,STATUS_INFLATION,provenance,REJECTED,legacy-incomplete token cannot be relabeled VERIFIED
+Z12,INWARD_INTERVAL,interval,REJECTED,exact 1/3 outside claimed decimal singleton
+Z13,ENDPOINT_SWAP,interval,REJECTED,lower endpoint exceeds upper endpoint
+Z14,TAIL_OMISSION,tail,REJECTED,truncated geometric sum below cap but exact infinite sum exceeds cap
+Z15,WITNESS_VERSION_MISMATCH,binding,REJECTED,witness bound to another matrix artifact
+Z16,FLOAT_FALSE_NEGATIVE,floating_point,REJECTED,Hilbert-14 is exact PD but double eigensolver returns nonpositive minimum
+Z17,TOKEN_ONLY_COLLUDING_VERIFIER,external_trust,EXPECTED_SURVIVAL,self-consistent malicious verifier prints expected token; external trust root required

@@ -1,0 +1,141 @@
+[PASS] RH-W-04 PROTOCOL_ONLY
+synthetic_exact_negative=ACCEPTED
+float_only_certificate=REJECTED
+zeta_claim_without_provenance=REJECTED
+status=PROTOCOL_SELFTEST_OK_NO_RH_WITNESS_PRESENT
+RH_CLAIM=False
+[PASS] RH-W-05 VERIFIED
+CERTIFICATE_OK
+even_lower=2479781683383953549298804023085293150759/10000000000000000000000000000000000000000
+odd_lower=5943079508458568092697511490592787715251/10000000000000000000000000000000000000000
+RH_CLAIM=False
+[PASS] RH-W-06 LEGACY_INCOMPLETE
+stored_5x5_internal_arithmetic=OK
+prime_stabilization_sign_pattern=OK
+missing_artifact=weil_matrix_prime2_2x2_interval.json
+status=LEGACY_INCOMPLETE_PARTIAL_AUDIT_ONLY
+RH_CLAIM=False
+[PASS] RH-W-07 VERIFIED
+schema=OK
+activation_graph=OK
+dimension=9
+delta=1/2000
+interval_row_radius=50201430951784163019909570395631583/2500000000000000000000000000000000000000
+certified_lower_margin=1199798569048215836980090429604368417/2500000000000000000000000000000000000000
+ldlt_pivots_positive=9
+strict_sign_flips=4
+status=CERTIFIED_POSITIVE_ON_THIS_9D_SUBSPACE
+RH_CLAIM=False
+[PASS] RH-W-08 VERIFIED
+schema=OK
+dimension=13
+prime_power_enumeration=OK
+row_radius=591302180744020599379674806220435183777723849739/10000000000000000000000000000000000000000000000000000000
+generalized_margin_delta=1/100000
+ldlt_pivots_positive=13
+status=CERTIFIED_POSITIVE_GENERALIZED_MARGIN
+RH_CLAIM=False
+[PASS] RH-W-09 VERIFIED
+schema=OK
+dimension=15
+prime_power_enumeration=OK
+lag1_n3_boundary_gap_positive=OK
+row_radius=2009524053559692775343777970129269797790739158546119146503423351/1000000000000000000000000000000000000000000000000000000000000000000000000000
+generalized_margin_delta=1/1000000000
+ldlt_pivots_positive=15
+status=CERTIFIED_POSITIVE_GENERALIZED_MARGIN
+RH_CLAIM=False
+[PASS] RH-W-10 VERIFIED
+theta_plus_15d_ldlt=OK
+prime3_mu_minus_inactive=OK
+prime3_mu_plus_active=OK
+seventh_order_soft_activation=OK
+status=EXACT_W10_BUNDLE_CERTIFICATE_OK
+RH_CLAIM=False
+[PASS] RH-W-11 VERIFIED
+schema=OK
+mu_positive=OK
+auto_activation_orders=1,3,5,7,9,11
+successive_ratio_identity=OK
+m1_over_m3_gt_1e16=OK
+status=EXACT_INTERVAL_VERIFICATION_OK
+RH_CLAIM=False
+[PASS] RH-W-12 VERIFIED
+schema=OK
+matrix_symmetry=OK
+gram_reconstruction=OK
+gram_ldlt_pivots_positive=10
+prime_power_enumeration=[2, 3, 4]
+activation_graph=OK
+mixed_ldlt_pivots_positive=10
+mixed_lower_bound=lambda_min>1/2000
+mixed_upper_witness=lambda_min<1/1000
+cross_channel_cancellation=EXACT_SIGN_CERTIFIED
+prime_witness_components=OK
+m3_isolated_lower_bound=lambda_min>1/250
+m1_isolated_lower_bound=lambda_min>1/20
+status=EXACT_MIXED_DICTIONARY_CERTIFICATE_OK
+RH_CLAIM=False
+[PASS] RH-W-13 VERIFIED
+schema=OK
+matrix_symmetry=OK
+gram_reconstruction=OK
+gram_ldlt_pivots_positive=10
+prime_power_enumeration=[2, 3, 4]
+activation_graph=OK
+mixed_ldlt_pivots_positive=10
+exact_bracket=1e-8<lambda_min<5e-8
+isolated_m1=lambda_min>4e-4
+isolated_m3=lambda_min>1e-7
+alpha_channel_scaling=GAUGE_CONGRUENCE_VERIFIED
+quantization_rule=M_AND_G_MUST_SHARE_IDENTICAL_PARAMETERS
+status=EXACT_CROSS_REGULARITY_CERTIFICATE_OK
+RH_CLAIM=False
+[PASS] RH-W-14 SUPERSEDED_RECERTIFIED
+original_W14_derivative_derivation=SUPERSEDED
+corrected_bounds=179,218,255
+corrected_ldlt_pivots_positive=10
+status=SUPERSEDED_RECERTIFIED_BY_W15
+RH_CLAIM=False
+[PASS] RH-W-15 VERIFIED
+stored_transcendental_enclosures=TRUSTED_UNDER_DOCUMENTED_CONTRACT
+tensor_interpolation_remainder=OK
+corner_ldlt_positive=4/4
+gram_corner_ldlt_positive=4/4
+upper_witness=OK
+RH-W-14_corrected_tail_reaudit=PASS
+status=EXACT_INTERVAL_TAYLOR_TUBE_CERTIFICATE_OK
+RH_CLAIM=False
+[PASS] RH-W-16 VERIFIED
+schema=OK
+dimension=10
+trilinear_remainder=OK
+eight_corner_symmetry=OK
+eight_corner_ldlt_positive=8/8
+eight_corner_gram_ldlt_positive=8/8
+prime_power_chamber=[2,3,4]
+sample_to_knot_margin_positive=OK
+global_combined_row_remainder=1.128736500411401062e-09
+upper_witness_ratio_hi=4.023762155948622673e-08
+exact_3d_tube_bracket=1e-8<lambda_min<5e-8
+status=EXACT_THREE_PARAMETER_TUBE_CERTIFICATE_OK
+RH_CLAIM=False
+[PASS] RH-W-17 VERIFIED
+schema=OK
+dimension=10
+event_equation=4d=log2
+event_interval_reconstructed=OK
+event_multiplicity=8
+correlation_degrees=[3,5,7]
+activation_graph_constant=[2,3,4]
+polynomial_piece_transition=LEFT->EVENT->RIGHT
+cells_verified=3/3
+domain_coverage=CONTIGUOUS_CLOSED_UNION
+exact_global_lower_bound=lambda_min>1e-8
+status=EXACT_CHAMBER_SUBDIVISION_CERTIFICATE_OK
+RH_CLAIM=False
+---
+overall=PASS_WITH_DECLARED_LIMITATIONS
+executed_records_passed=14/14
+claim_firewall=RH_CLAIM_FALSE
+RH_CLAIM=False

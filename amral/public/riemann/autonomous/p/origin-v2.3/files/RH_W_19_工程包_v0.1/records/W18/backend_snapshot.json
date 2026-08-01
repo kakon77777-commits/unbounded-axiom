@@ -1,0 +1,29 @@
+{
+  "schema": "RH-W-18-backend-selftest-v0.1",
+  "manifest_schema_predecessor": "RH-CERT-BACKEND-MANIFEST-v0.1",
+  "certificate_kinds": [
+    "NUMERICAL_MATRIX",
+    "PARAMETER_REGION",
+    "CHAMBER_COVER",
+    "STRUCTURAL_IDENTITY",
+    "PROTOCOL_ONLY"
+  ],
+  "status_vocabulary": [
+    "VERIFIED",
+    "VERIFIED_WITH_LIMITATION",
+    "PROTOCOL_ONLY",
+    "SUPERSEDED_RECERTIFIED",
+    "LEGACY_INCOMPLETE"
+  ],
+  "claim_firewall": {
+    "RH_CLAIM": false,
+    "allowed_global_conclusion": "FINITE_CERTIFICATE_BACKEND_ONLY"
+  },
+  "historical_record_count": 14,
+  "known_legacy_incomplete": [
+    "RH-W-06"
+  ],
+  "superseded_recertified": [
+    "RH-W-14"
+  ]
+}

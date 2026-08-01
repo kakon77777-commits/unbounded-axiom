@@ -1,0 +1,45 @@
+{
+  "schema": "RH-W-18-status-summary-v0.1",
+  "total_records": 14,
+  "status_counts": {
+    "PROTOCOL_ONLY": 1,
+    "VERIFIED": 11,
+    "LEGACY_INCOMPLETE": 1,
+    "SUPERSEDED_RECERTIFIED": 1
+  },
+  "fully_verified_ids": [
+    "RH-W-05",
+    "RH-W-07",
+    "RH-W-08",
+    "RH-W-09",
+    "RH-W-10",
+    "RH-W-11",
+    "RH-W-12",
+    "RH-W-13",
+    "RH-W-15",
+    "RH-W-16",
+    "RH-W-17"
+  ],
+  "declared_limitations": [
+    {
+      "id": "RH-W-04",
+      "status": "PROTOCOL_ONLY",
+      "notes": []
+    },
+    {
+      "id": "RH-W-06",
+      "status": "LEGACY_INCOMPLETE",
+      "notes": [
+        "missing weil_matrix_prime2_2x2_interval.json; no green full replay"
+      ]
+    },
+    {
+      "id": "RH-W-14",
+      "status": "SUPERSEDED_RECERTIFIED",
+      "notes": [
+        "original first-derivative derivation omitted support-exterior archimedean tail; corrected by W15"
+      ]
+    }
+  ],
+  "RH_CLAIM": false
+}
