@@ -2537,9 +2537,9 @@ def write_sitemap(entries) -> None:
 
     urls = [
         f"  <url><loc>{SITE_URL}/</loc><lastmod>{now_iso}</lastmod></url>",
-        f"  <url><loc>{SITE_URL}/cosmomind.html</loc><lastmod>{now_iso}</lastmod></url>",
-        f"  <url><loc>{SITE_URL}/base-space.html</loc><lastmod>{now_iso}</lastmod></url>",
-        f"  <url><loc>{SITE_URL}/deconstruction.html</loc><lastmod>{now_iso}</lastmod></url>",
+        f"  <url><loc>{SITE_URL}/cosmomind</loc><lastmod>{now_iso}</lastmod></url>",
+        f"  <url><loc>{SITE_URL}/base-space</loc><lastmod>{now_iso}</lastmod></url>",
+        f"  <url><loc>{SITE_URL}/deconstruction</loc><lastmod>{now_iso}</lastmod></url>",
         f"  <url><loc>{SITE_URL}/llms.txt</loc><lastmod>{now_iso}</lastmod></url>",
         f"  <url><loc>{SITE_URL}/llms-full.txt</loc><lastmod>{now_iso}</lastmod></url>",
     ]
