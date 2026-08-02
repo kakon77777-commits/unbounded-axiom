@@ -215,7 +215,10 @@ def write_sitemap_canonical(registry) -> None:
     Legacy /papers/ URLs are intentionally NOT listed — they 301 to canonical, so
     crawlers converge on one stable route per paper instead of guessing."""
     now_iso = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-    fixed = ["/", "/cosmomind.html", "/base-space.html", "/deconstruction.html",
+    # Extensionless: the three root pages 307 to that form, so listing the
+    # .html spelling pointed crawlers at three redirects. (/papers/*.html are
+    # real files and are excluded from this sitemap anyway, per the docstring.)
+    fixed = ["/", "/cosmomind", "/base-space", "/deconstruction",
              "/llms.txt", "/llms-full.txt"]
     urls = [f"  <url><loc>{SITE_URL}{u}</loc><lastmod>{now_iso}</lastmod></url>" for u in fixed]
     for it in registry["items"]:
