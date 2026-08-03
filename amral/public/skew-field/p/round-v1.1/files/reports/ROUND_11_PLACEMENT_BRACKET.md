@@ -8,8 +8,8 @@
 \inf_{g\in E(2)}
 \mu_2
 \left[
-(gT_ho(\gamma_{11}))\setminus C_{10}
-ight]
+(gT_\rho(\gamma_{11}))\setminus C_{10}
+\right]
 \le
 U,
 \]

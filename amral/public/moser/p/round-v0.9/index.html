@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第 9 輪 · 任意精度重建與 Darboux 尖點包絡 · Moser 蟲問題 · AMRAL</title>
+<meta name="description" content="Moser Skew Lab 第 9 輪:以最高 120 位十進位精度、雙求積演算法(tanh-sinh 與 Gauss-Legendre)重新確認第 8 輪平滑候選超越五連桿事件根約 1.058e-5,排除雙精度誤差可能。並建立單調 Darboux 尖點下界(4096 分割仍保留 7.8e-6 正差),是嚴格數學單調性論證而非純數值巧合。發現 120° 分支是最接近的競爭者,差距僅約 1.64e-9。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="./files/reports/ROUND_09_REPORT.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../">AMRAL</a>
+  <a class="link" href="../../../methodology/">方法論</a>
+  <a class="link" href="../../../riemann/">黎曼猜想</a>
+  <a class="link active" href="../../">Moser 蟲問題</a>
+  <a class="link" href="../../../skew-field/">歪度場</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← Moser 蟲問題</a>
+    <span>/</span>
+    <a href="../../#round-v0.9">輪次</a>
+    <span>/</span>
+    <span>第 9 輪</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">第 9 輪</span>
+      <span class="tag">v0.9</span>
+      <span class="tag">2026-07-26</span>
+    </div>
+    <h1>任意精度重建、單調 Darboux 尖點包絡與證書邊界</h1>
+    <p class="h1-sub">第 8 輪平滑候選相對五連桿事件控制的提升約為 10⁻⁵,本輪不擴大曲線族,而是檢查這個差值是否來自雙精度誤差、積分誤差或採樣誤差。以固定十進位參數明確定義曲線,用 mpmath 在 40 至 120 位精度、tanh-sinh 與 Gauss-Legendre 兩種求積法交叉驗證,結果完全一致。並利用 sinθ(u) 單調下降、cosθ(u) 單調上升的性質,建立數學上嚴格的 Darboux 上下和包絡——4096 分割時下界仍比事件控制高出至少 7.8×10⁻⁶,這個正性不依賴求積器的巧合,而來自被積函數的單調次序。同時發現全相位圓中最接近 270° 的競爭者是 120°,任意精度差距僅約 1.6383×10⁻⁹,解釋了為何完整區間證書如此困難。</p>
+    <div class="claim-box">
+      任意精度數值審計;非完整區間證書
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。延續 Moser Skew Lab v0.8。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他封包的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一輪</span><a href="../round-v0.8.3/">第 8 輪 · 有限寬度曲率層超越五連桿</a></div>
+      <div class="conn-card"><span class="k">下一輪</span><a href="../round-v0.10/">第 10 輪 · 完整相位接觸區間圖</a></div>
+      <div class="conn-card"><span class="k">輪次進度</span>9 / 15</div>
+    </div>
+    <blockquote class="cite">「因此平滑候選已從雙精度候選提升成:任意精度确认、雙算法一致,並具有單調 Darboux 尖點下界的候選。下一個核心不是增加更多小數位,而是完成整个相位圓的分段區間排除。」— 摘自本包主文件第 13 節「結論」(原文用字照錄)。</blockquote>
+  </section>
+
+  <section id="doc-main">
+    <h2 class="doc-h2">第 9 輪核心內容</h2>
+    <p class="doc-meta">本輪目標、明確曲線定義(固定十進位參數)、270° 尖點降維公式、任意精度雙算法結果(40-120位)、五連桿事件控制重算、單調 Darboux 尖點包絡、四個控制分支獨立高精度審計、非光滑尖點單側導數、峰值寬度診斷、證書狀態表、尚缺的全域步驟、第 10 輪方向、結論。</p>
+    <div class="doc" id="doc-main-body"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="doc-audit">
+    <h2 class="doc-h2">第 9 輪任意精度審計</h2>
+    <p class="doc-meta">平滑候選 270 度尖點、事件控制最低值、差值、4096 分割 Darboux 包絡的完整高精度數字帳本,以及誠實邊界(包絡只針對 270 度尖點,完整合同難度仍需全相位區間排除)。</p>
+    <div class="doc" id="doc-audit-body"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="doc-certificate">
+    <h2 class="doc-h2">第 9 輪區間證書接口草案</h2>
+    <p class="doc-meta">已有物件清單、尚缺物件(相位圓拆分區間、interval Newton)、最終機讀目標的形式表述。</p>
+    <div class="doc" id="doc-certificate-body"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="files">
+    <h2 class="doc-h2">檔案 · Files</h2>
+    <div id="filelist-out"><p class="loading">載入中…</p></div>
+    <a class="zip-dl" href="../../packages/Moser_Skew_Lab_v0.9.zip" download>下載完整封包 (198.9 KB)</a>
+    <p class="zip-note">sha256 2cc4d8b3c09a0c7af2437b892d008b9bbfadd0782350f1ef1a47451197302fa5</p>
+  </section>
+
+  <footer class="sitefoot">
+    <p>逐包詳細頁格式沿用 <a href="../round-v0.1/">第 1 輪</a>。<a href="../../">回 Moser 蟲問題</a></p>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../assets/render.js?v=2"></script>
+<script>
+const F = (p) => amralFetchText("./files/" + p);
+
+async function loadDoc(elId, file) {
+  const el = document.getElementById(elId);
+  try {
+    el.innerHTML = amralRenderDoc(await F(file));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+}
+
+async function loadFiles() {
+  const el = document.getElementById("filelist-out");
+  try {
+    const idx = await fetch("./files.json").then((r) => r.json());
+    const groups = { "文件": [], "資料": [], "圖表": [], "程式": [] };
+    for (const f of idx.files) {
+      const ext = f.path.split(".").pop().toLowerCase();
+      if (ext === "md") groups["文件"].push(f);
+      else if (f.path.startsWith("figures/")) groups["圖表"].push(f);
+      else if (f.path.startsWith("data/")) groups["資料"].push(f);
+      else if (ext === "py") groups["程式"].push(f);
+    }
+    const fmt = (b) => b < 1024 ? b + " B" : (b / 1024).toFixed(1) + " KB";
+    el.innerHTML = Object.entries(groups).filter(([, files]) => files.length).map(([label, files]) => `
+      <div class="filegroup">
+        <h3>${label}</h3>
+        <ul class="filelist">
+          ${files.map((f) => `<li><a href="./files/${encodeURIComponent(f.path)}" download>${amralEsc(f.path)}</a><span class="fsize">${fmt(f.size)}</span></li>`).join("")}
+        </ul>
+      </div>`).join("");
+  } catch (e) {
+    el.innerHTML = `<p class="error">檔案清單載入失敗:${e.message}</p>`;
+  }
+}
+
+loadDoc("doc-main-body", "reports/ROUND_09_REPORT.md");
+loadDoc("doc-audit-body", "reports/ROUND_09_ARBITRARY_PRECISION_AUDIT.md");
+loadDoc("doc-certificate-body", "reports/ROUND_09_INTERVAL_CERTIFICATE_DRAFT.md");
+loadFiles();
+</script>
+</body>
+</html>

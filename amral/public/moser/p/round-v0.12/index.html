@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第 12 輪 · mpmath.iv 獨立重播與 Arb 缺席邊界 · Moser 蟲問題 · AMRAL</title>
+<meta name="description" content="Moser Skew Lab 第 12 輪:環境沒有 python-flint／Arb／Sage,改用 mpmath.iv 有向區間算術作獨立後備驗證。最關鍵的兩個差值(120°-270°、平滑候選-事件控制)均獨立重播成功,嚴格為正;19/19 解析邊界、12/12 駐點根盒通過。但邊界直接定號僅 5/17(其餘 dependency inflation),579 個葉盒未能完整重播——誠實記錄「未跑完」而非寫成「通過」。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="./files/reports/ROUND_12_REPORT.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../">AMRAL</a>
+  <a class="link" href="../../../methodology/">方法論</a>
+  <a class="link" href="../../../riemann/">黎曼猜想</a>
+  <a class="link active" href="../../">Moser 蟲問題</a>
+  <a class="link" href="../../../skew-field/">歪度場</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← Moser 蟲問題</a>
+    <span>/</span>
+    <a href="../../#round-v0.12">輪次</a>
+    <span>/</span>
+    <span>第 12 輪</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">第 12 輪</span>
+      <span class="tag">v0.12</span>
+      <span class="tag">2026-07-27</span>
+    </div>
+    <h1>獨立 mpmath.iv 重播、Interval Newton 與 Arb 缺席邊界</h1>
+    <p class="h1-sub">第 11 輪交接要求用 Arb／python-flint 的 ball arithmetic 重算全部區間盒,但本輪環境沒有 python-flint、Arb 或 Sage,套件庫也沒有可安裝的版本。因此改用 mpmath.iv 有向區間算術作獨立後備驗證,而不宣稱完成 Arb 重播。最關鍵的兩個差值都獨立重播成功且嚴格為正:s₁₂₀-s₂₇₀∈[1.585e-9,1.692e-9],平滑候選減事件控制∈[1.058e-5 級距]。19 個解析邊界全數確認(19/19),12 個駐點根盒全數通過 interval Newton(12/12)。但 18 個內部邊界中只有 5 個能被 mpmath.iv 直接定號,其餘因 atanh(±1) 附近的自然區間擴張(dependency inflation)過寬而無法獨立重現第 11 輪的窄盒——這不是發現反例,第 11 輪的解析誤差界仍然保留,只是未被本輪後備函式庫獨立重播。原計畫逐一重播的 579 個導數葉盒也因執行時間超限未能完成。本輪明確記錄「未跑完」而非寫成「通過」。</p>
+    <div class="claim-box">
+      部分獨立區間重播;不是 Arb 證書;非形式證明
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他封包的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一輪</span><a href="../round-v0.11/">第 11 輪 · 導數區間盒與 120°/270° 專用證書</a></div>
+      <div class="conn-card"><span class="k">下一輪</span><a href="../../packages/Moser_Skew_Lab_v0.13.zip">第 13 輪(封包)</a></div>
+      <div class="conn-card"><span class="k">輪次進度</span>12 / 15</div>
+    </div>
+    <blockquote class="cite">「本輪沒有把『未跑完』寫成『通過』。」— 摘自本包主文件第 6 節「未完成的部分」,對 579 個導數葉盒未能逐一獨立重播的誠實記錄。</blockquote>
+  </section>
+
+  <section id="doc-main">
+    <h2 class="doc-h2">第 12 輪核心內容</h2>
+    <p class="doc-meta">環境結果(無 python-flint/Arb/Sage)、特殊競爭分支的 mpmath.iv 重算、解析接觸邊界(19/19)、十二個駐點根盒、邊界盒重播(5/17 直接定號,其餘 dependency inflation)、未完成的部分、研究判定、第 13 輪方向。</p>
+    <div class="doc" id="doc-main-body"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="doc-audit">
+    <h2 class="doc-h2">第 12 輪 IV 重播審計</h2>
+    <p class="doc-meta">特殊差值、平滑—事件差值、解析邊界、interval Newton、邊界直接定號、579 葉盒與 Arb 可用性的逐項通過/未完成清單。</p>
+    <div class="doc" id="doc-audit-body"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="doc-handoff">
+    <h2 class="doc-h2">第 13 輪平滑事件—KKT 交接</h2>
+    <p class="doc-meta">未知量 p=(w,β,δ,c,ε) 的五參數駐定系統交接:四分支等高、分支壓力與五參數駐定、Jacobian 秩、擾動回根與曲率帳本檢查項目。</p>
+    <div class="doc" id="doc-handoff-body"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="files">
+    <h2 class="doc-h2">檔案 · Files</h2>
+    <div id="filelist-out"><p class="loading">載入中…</p></div>
+    <a class="zip-dl" href="../../packages/Moser_Skew_Lab_v0.12.zip" download>下載完整封包 (103.9 KB)</a>
+    <p class="zip-note">sha256 08b394e1ed9165d0e97973717a8cb4b81500478c28a7b589c6473075f6ae961a</p>
+  </section>
+
+  <footer class="sitefoot">
+    <p>逐包詳細頁格式沿用 <a href="../round-v0.1/">第 1 輪</a>。<a href="../../">回 Moser 蟲問題</a></p>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../assets/render.js?v=2"></script>
+<script>
+const F = (p) => amralFetchText("./files/" + p);
+
+async function loadDoc(elId, file) {
+  const el = document.getElementById(elId);
+  try {
+    el.innerHTML = amralRenderDoc(await F(file));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+}
+
+async function loadFiles() {
+  const el = document.getElementById("filelist-out");
+  try {
+    const idx = await fetch("./files.json").then((r) => r.json());
+    const groups = { "文件": [], "資料": [], "圖表": [], "程式": [] };
+    for (const f of idx.files) {
+      const ext = f.path.split(".").pop().toLowerCase();
+      if (ext === "md") groups["文件"].push(f);
+      else if (f.path.startsWith("figures/")) groups["圖表"].push(f);
+      else if (f.path.startsWith("data/")) groups["資料"].push(f);
+      else if (ext === "py") groups["程式"].push(f);
+    }
+    const fmt = (b) => b < 1024 ? b + " B" : (b / 1024).toFixed(1) + " KB";
+    el.innerHTML = Object.entries(groups).filter(([, files]) => files.length).map(([label, files]) => `
+      <div class="filegroup">
+        <h3>${label}</h3>
+        <ul class="filelist">
+          ${files.map((f) => `<li><a href="./files/${encodeURIComponent(f.path)}" download>${amralEsc(f.path)}</a><span class="fsize">${fmt(f.size)}</span></li>`).join("")}
+        </ul>
+      </div>`).join("");
+  } catch (e) {
+    el.innerHTML = `<p class="error">檔案清單載入失敗:${e.message}</p>`;
+  }
+}
+
+loadDoc("doc-main-body", "reports/ROUND_12_REPORT.md");
+loadDoc("doc-audit-body", "reports/ROUND_12_IV_REPLAY_AUDIT.md");
+loadDoc("doc-handoff-body", "reports/ROUND_13_SMOOTH_KKT_HANDOFF.md");
+loadFiles();
+</script>
+</body>
+</html>

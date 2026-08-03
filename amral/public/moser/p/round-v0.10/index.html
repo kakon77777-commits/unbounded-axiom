@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第 10 輪 · 完整相位接觸區間圖 · Moser 蟲問題 · AMRAL</title>
+<meta name="description" content="Moser Skew Lab 第 10 輪:把整個相位圓拆成 18 個活動支撐身份區間,用包絡定理求導數(不必顯式微分支撐點位置),枚舉全部 12 個光滑駐點與 17 個接觸切換,建立逐區間最小值的「全域排除帳本」。四種相位解析度(32768 至 262144)全部一致確認 270° 仍為全域最低,最接近的競爭者是 120°,差距約 1.64e-9。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="./files/reports/ROUND_10_REPORT.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../">AMRAL</a>
+  <a class="link" href="../../../methodology/">方法論</a>
+  <a class="link" href="../../../riemann/">黎曼猜想</a>
+  <a class="link active" href="../../">Moser 蟲問題</a>
+  <a class="link" href="../../../skew-field/">歪度場</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← Moser 蟲問題</a>
+    <span>/</span>
+    <a href="../../#round-v0.10">輪次</a>
+    <span>/</span>
+    <span>第 10 輪</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">第 10 輪</span>
+      <span class="tag">v0.10</span>
+      <span class="tag">2026-07-26</span>
+    </div>
+    <h1>完整相位接觸區間圖、包絡導數與全域數值排除帳本</h1>
+    <p class="h1-sub">第 9 輪只驗證了 270° 尖點本身,本輪把整個 [0,2π) 相位圓拆成 18 個活動支撐身份區間——在每個區間內,支撐點對法向泛函已是極值,由包絡定理可直接求 s'(φ) 而不必顯式微分支撐點位置。完整枚舉出 12 個光滑駐點與 17 個接觸切換(其中 4 個是尖點局部極小),對每個區間建立最小值帳本。四種相位取樣密度(32768 至 262144 點)與三種導數取樣密度(257/1025/4097)全部一致,沒有隨解析度增加而冒出新的隱藏區間或駐點。完整數值排序確認 270° 仍是全域最低,最接近的競爭者是 120°,差距約 1.6383×10⁻⁹——真正需要嚴格區間處理的主要競爭,只剩這一組。</p>
+    <div class="claim-box">
+      完整相位數值分解;非嚴格區間證書;非形式證明
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。延續 Moser Skew Lab v0.9。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他封包的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一輪</span><a href="../round-v0.9/">第 9 輪 · 任意精度重建與 Darboux 尖點包絡</a></div>
+      <div class="conn-card"><span class="k">下一輪</span><a href="../round-v0.11/">第 11 輪 · 精確接觸邊界與導數區間盒</a></div>
+      <div class="conn-card"><span class="k">輪次進度</span>10 / 15</div>
+    </div>
+    <blockquote class="cite">「第 8 輪的平滑超越現在具有三層支撐:任意精度尖點值;單調 Darboux 正下界;完整相位接觸區間數值排除。剩下的關鍵工作,是把第三層從『完整數值帳本』轉成『逐區間嚴格包絡』。」— 摘自本包主文件第 14 節「結論」。</blockquote>
+  </section>
+
+  <section id="doc-main">
+    <h2 class="doc-h2">第 10 輪核心內容</h2>
+    <p class="doc-meta">活動支撐身份定義、包絡導數公式、相位圓分解(18 個區間完整表)、多解析度穩定性、光滑駐點枚舉(12 個)、接觸切換邊界(17 個)、完整局部極小排序、最接近的競爭分支(120° 對 270°)、全域數值排除達成了什麼、證書狀態表、與事件控制的關係、第 11 輪方向、限制、結論。</p>
+    <div class="doc" id="doc-main-body"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="doc-certificate">
+    <h2 class="doc-h2">第 10 輪全域相位證書接口</h2>
+    <p class="doc-meta">已生成的機讀帳本清單、每個區間包含的物件結構、下一層嚴格化的五個步驟、最終目標的形式表述。</p>
+    <div class="doc" id="doc-certificate-body"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="files">
+    <h2 class="doc-h2">檔案 · Files</h2>
+    <div id="filelist-out"><p class="loading">載入中…</p></div>
+    <a class="zip-dl" href="../../packages/Moser_Skew_Lab_v0.10.zip" download>下載完整封包 (392.0 KB)</a>
+    <p class="zip-note">sha256 f269d6424bc9027bdfb3d56fb4d317c0f447e7e3d550410b04cf3313dbfbd990</p>
+  </section>
+
+  <footer class="sitefoot">
+    <p>逐包詳細頁格式沿用 <a href="../round-v0.1/">第 1 輪</a>。<a href="../../">回 Moser 蟲問題</a></p>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../assets/render.js?v=2"></script>
+<script>
+const F = (p) => amralFetchText("./files/" + p);
+
+async function loadDoc(elId, file) {
+  const el = document.getElementById(elId);
+  try {
+    el.innerHTML = amralRenderDoc(await F(file));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+}
+
+async function loadFiles() {
+  const el = document.getElementById("filelist-out");
+  try {
+    const idx = await fetch("./files.json").then((r) => r.json());
+    const groups = { "文件": [], "資料": [], "圖表": [], "程式": [] };
+    for (const f of idx.files) {
+      const ext = f.path.split(".").pop().toLowerCase();
+      if (ext === "md") groups["文件"].push(f);
+      else if (f.path.startsWith("figures/")) groups["圖表"].push(f);
+      else if (f.path.startsWith("data/")) groups["資料"].push(f);
+      else if (ext === "py") groups["程式"].push(f);
+    }
+    const fmt = (b) => b < 1024 ? b + " B" : (b / 1024).toFixed(1) + " KB";
+    el.innerHTML = Object.entries(groups).filter(([, files]) => files.length).map(([label, files]) => `
+      <div class="filegroup">
+        <h3>${label}</h3>
+        <ul class="filelist">
+          ${files.map((f) => `<li><a href="./files/${encodeURIComponent(f.path)}" download>${amralEsc(f.path)}</a><span class="fsize">${fmt(f.size)}</span></li>`).join("")}
+        </ul>
+      </div>`).join("");
+  } catch (e) {
+    el.innerHTML = `<p class="error">檔案清單載入失敗:${e.message}</p>`;
+  }
+}
+
+loadDoc("doc-main-body", "reports/ROUND_10_REPORT.md");
+loadDoc("doc-certificate-body", "reports/ROUND_10_GLOBAL_CERTIFICATE_INTERFACE.md");
+loadFiles();
+</script>
+</body>
+</html>

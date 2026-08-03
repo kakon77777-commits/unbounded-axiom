@@ -79,8 +79,7 @@ e_{11}^{\mathrm{res}}
 \[
 \boxed{
 \text{容器局部近均衡}
-
-ot\Rightarrow
+\not\Rightarrow
 \text{曲率母系同步封閉}.
 }
 \]
