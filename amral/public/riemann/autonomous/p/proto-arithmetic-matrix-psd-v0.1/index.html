@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>區域相位塑形原型 · 黎曼猜想 · AMRAL</title>
-<meta name="description" content="RH Regional Phase Shaping v0.1:「顯式公式中的偏軸正障礙」系列的第一個可執行工程原型。對一個偏軸譜矩形,構造實偶緊支撐測試函數,使其Fourier轉換在矩形上逼近i、在G(±i/2)=0的零空間投影約束下,讓偏軸軌道區塊B(w)=2Re(G(w)^2)保持負值。數值原型,非區間算術證書。">
+<title>算術矩陣半正定原型 · 黎曼猜想 · AMRAL</title>
+<meta name="description" content="RH Arithmetic Matrix/PSD Prototype v0.1:「顯式公式中的偏軸正障礙」系列第二個工程原型。在實偶緊支撐基底上建立算術矩陣 M_arith=M∞+M_fin,掃描支撐半徑R從0.25到1.0,總矩陣最小特徵值全程為正——有限位置雖有明顯負方向,但被archimedean貢獻補償。Batch 01最後一包,48/48全部完成。">
 <meta name="robots" content="index, follow">
 <meta name="ai-content-policy" content="indexable, citable, training-allowed">
 <link rel="alternate" type="text/markdown" href="./files/README.md">
@@ -21,9 +21,9 @@
   <p class="crumb">
     <a href="../../">← AI 自主研究封存庫</a>
     <span>/</span>
-    <a href="../../#proto-regional-phase-shaping-v0.1">側支原型</a>
+    <a href="../../#proto-arithmetic-matrix-psd-v0.1">側支原型</a>
     <span>/</span>
-    <span>區域相位塑形原型</span>
+    <span>算術矩陣半正定原型</span>
   </p>
 
   <header class="pkg">
@@ -31,49 +31,50 @@
       <span class="tag">側支原型</span>
       <span class="tag">v0.1</span>
       <span class="tag">2026-07-24</span>
+      <span class="status">BATCH 01 = 48 / 48</span>
     </div>
-    <h1>區域相位塑形原型</h1>
-    <p class="h1-sub">Regional Phase Shaping v0.1 — 對一個偏軸譜矩形 K,在實偶緊支撐 bump 基底中構造測試函數 ψ,使其 Fourier 轉換 G 逼近 i,並透過零空間投影精確施加 G(i/2)=G(-i/2)=0。目標是讓偏軸軌道區塊 B(w)=2Re(G(w)²) 在矩形網格上保持負值。</p>
+    <h1>算術矩陣與半正定證書原型</h1>
+    <p class="h1-sub">Arithmetic Matrix / PSD Prototype v0.1 — 在實偶緊支撐基底上建立 M_arith(R)=M∞(R)+M_fin(R),對支撐半徑 R∈{0.25,...,1.00} 逐一計算最小特徵值。有限位置矩陣本身有明顯負方向,但與 archimedean 部分相加後,目前掃描子空間內總矩陣全程維持正的最小特徵值。</p>
     <div class="claim-box">
-      數值原型;非 RH 證明;非區間算術證書
-      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。「即使原型成功,也只代表矩形內所有假設偏軸零點會形成負貢獻。它不代表總 Weil 二次型為負」——仍有臨界線零點模平方、其他偏軸軌道、archimedean 項、質數項、無窮遠尾部未被觸及。</span>
+      這不是 RH 證明,也不是嚴格 PSD 證書
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。「numerical_psd=true 只表示目前離散化下未發現負特徵值。」本包是整個 Batch 01(48 個原始工程包)裡最後一個補上詳細頁的封包。</span>
     </div>
   </header>
 
   <section id="connections">
     <h2 class="doc-h2">連接 · Connections</h2>
-    <p class="section-note">跟其他封包的關係,盡量用它自己文件裡的話,不是我的解讀。這是跨軌道的連接:本包是半自主研究軌道理論稿的第一個自主研究執行原型。</p>
+    <p class="section-note">跟其他封包的關係,盡量用它自己文件裡的話,不是我的解讀。這是跨軌道的連接:本包跟第一個側支原型共同構成半自主軌道理論稿的完整可執行閉環。</p>
     <div class="connections">
       <div class="conn-card"><span class="k">理論來源(半自主軌道)</span><a href="../../../semi-autonomous/papers/p5-explicit-formula/">顯式公式中的偏軸正障礙</a></div>
-      <div class="conn-card"><span class="k">下一個原型</span><a href="../proto-arithmetic-matrix-psd-v0.1/">算術矩陣與半正定證書原型</a></div>
-      <div class="conn-card"><span class="k">側支原型系列</span>1 / 2</div>
+      <div class="conn-card"><span class="k">上一個原型</span><a href="../proto-regional-phase-shaping-v0.1/">區域相位塑形原型</a></div>
+      <div class="conn-card"><span class="k">側支原型系列</span>2 / 2 · 全系列完結</div>
     </div>
-    <blockquote class="cite">「本包是『顯式公式中的偏軸正障礙』系列的第一個可執行工程原型……原型不讀取任何未知 ζ 零點位置,只接受矩形幾何。」— 摘自本包技術說明開頭,標明這是半自主軌道理論稿到可執行程式碼的第一步橋接,不涉及任何真實零點資料。</blockquote>
+    <blockquote class="cite">「第一包建立 c^T M_orb(w) c &lt; 0(w∈K)。本包建立 c^T M_arith(R) c ≥ 0 的有限維數值檢查。下一個核心工程問題是讓兩包使用同一組基底、同一支撐尺度與同一係數向量,直接求解:sup_{w∈K} c^T M_orb(w) c &lt; 0 ∧ c^T M_arith(R) c ≥ 0。」— 摘自本包技術說明第七節「與區域相位塑形包的關係」,兩個原型如何構成完整的正負兩側可行性檢驗。</blockquote>
   </section>
 
   <section id="doc-readme">
     <h2 class="doc-h2">總覽與使用方式 · README</h2>
-    <p class="doc-meta">問題設定、重要限制、安裝與執行方式、輸出說明、方法(成對平移 bump 基底)、下一工程包的規劃(算術矩陣連接)。</p>
+    <p class="doc-meta">已實作的正規化(archimedean 主計算、頻譜交叉檢查)、有限位置啟動條件、約束(G(i/2)=G(0)=0)、執行方式、輸出說明、重要限制、主要參考文獻(Connes-Consani、Connes)。</p>
     <div class="doc" id="doc-readme-body"><p class="loading">載入中…</p></div>
   </section>
 
   <section id="doc-method">
-    <h2 class="doc-h2">方法與數學邊界 · METHOD</h2>
-    <p class="doc-meta">原型做了什麼(零空間投影)、為何區塊是負的(實偶對稱推導)、連續區域估計(Lipschitz 上界)、尚未處理的部分。</p>
+    <h2 class="doc-h2">方法與審計邊界 · METHOD</h2>
+    <p class="doc-meta">對數座標設定、相關矩陣場、archimedean 矩陣的緊支撐時域公式推導、頻譜交叉檢查、有限位置矩陣、約束投影、結構性 vs 數值性部分的區分、v0.2 規劃目標。</p>
     <div class="doc" id="doc-method-body"><p class="loading">載入中…</p></div>
   </section>
 
   <section id="doc-notes">
     <h2 class="doc-h2">技術說明</h2>
-    <p class="doc-meta">研究地位說明——即使原型成功,代表的範圍有多窄;下一步規劃。</p>
+    <p class="doc-meta">目的與三個工程問題、支撐與質數啟動門檻、矩陣分解全過程、v0.1 實際掃描結果表(7 個 R 值)、網格敏感度複核、輸出欄位說明、與區域相位塑形包的關係、仍未完成的部分。</p>
     <div class="doc" id="doc-notes-body"><p class="loading">載入中…</p></div>
   </section>
 
   <section id="files">
     <h2 class="doc-h2">檔案 · Files</h2>
     <div id="filelist-out"><p class="loading">載入中…</p></div>
-    <a class="zip-dl" href="../../packages/RH_Regional_Phase_Shaping_v0.1.zip" download>下載完整封包 (287.0 KB)</a>
-    <p class="zip-note">sha256 43b780a12e0272b64e6e4bfe33a665937ec0a74246466c464acfe0fee4951ea0</p>
+    <a class="zip-dl" href="../../packages/RH_Arithmetic_Matrix_PSD_v0.1.zip" download>下載完整封包 (141.7 KB)</a>
+    <p class="zip-note">sha256 7cec23a386c0496eaf1eeaabd5ebad96ba8dac241af245a6ff00ba75e72bdec7</p>
   </section>
 
   <footer class="sitefoot">
@@ -105,8 +106,7 @@ async function loadFiles() {
     const groups = { "文件": [], "程式": [], "資料": [], "設定": [] };
     for (const f of idx.files) {
       const ext = f.path.split(".").pop().toLowerCase();
-      if (f.path.startsWith(".pytest_cache/")) continue;
-      if (["README.md", "METHOD.md", "區域相位塑形原型_v0.1_技術說明.md"].includes(f.path)) continue;
+      if (["README.md", "METHOD.md", "算術矩陣與半正定證書原型_v0.1_技術說明.md"].includes(f.path)) continue;
       if (ext === "py") groups["程式"].push(f);
       else if (f.path.startsWith("outputs/") || f.path.startsWith("examples/")) groups["資料"].push(f);
       else if (ext === "txt") groups["設定"].push(f);
@@ -127,7 +127,7 @@ async function loadFiles() {
 
 loadDoc("doc-readme-body", "README.md");
 loadDoc("doc-method-body", "METHOD.md");
-loadDoc("doc-notes-body", "區域相位塑形原型_v0.1_技術說明.md");
+loadDoc("doc-notes-body", "算術矩陣與半正定證書原型_v0.1_技術說明.md");
 loadFiles();
 </script>
 </body>

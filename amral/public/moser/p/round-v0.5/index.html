@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>第 3 輪 · 接觸帳本逆向生成 · Moser 蟲問題 · AMRAL</title>
-<meta name="description" content="Moser Skew Lab 第 3 輪:接觸帳本逆向生成、鏡像對稱多連桿與自由度有效性檢驗。五連桿優於三連桿,但七連桿並未優於五連桿——發現目前有效自由度不是線段數,而是能否抬高最低放置分支;找到斜邊雙端點接觸的四接觸骨架結構。">
+<title>第 5 輪 · 接觸事件方程與孤立候選 · Moser 蟲問題 · AMRAL</title>
+<meta name="description" content="Moser Skew Lab 第 5 輪:把四個尖點接觸事件寫成精確解析相位公式,加上分支壓力駐定條件,組成9方程9未知的事件-KKT聯立系統,數值解出孤立候選 s=0.998903757132509。9x9 Jacobian 滿秩,40個隨機擾動初值全部收斂回同一根。">
 <meta name="robots" content="index, follow">
 <meta name="ai-content-policy" content="indexable, citable, training-allowed">
-<link rel="alternate" type="text/markdown" href="./files/reports/ROUND_03_REPORT.md">
+<link rel="alternate" type="text/markdown" href="./files/reports/ROUND_05_REPORT.md">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
 <link rel="stylesheet" href="../../../assets/site.css">
 </head>
@@ -23,22 +23,22 @@
   <p class="crumb">
     <a href="../../">← Moser 蟲問題</a>
     <span>/</span>
-    <a href="../../#round-v0.3">輪次</a>
+    <a href="../../#round-v0.5">輪次</a>
     <span>/</span>
-    <span>第 3 輪</span>
+    <span>第 5 輪</span>
   </p>
 
   <header class="pkg">
     <div class="idline">
-      <span class="tag">第 3 輪</span>
-      <span class="tag">v0.3</span>
+      <span class="tag">第 5 輪</span>
+      <span class="tag">v0.5</span>
       <span class="tag">2026-07-26</span>
     </div>
-    <h1>接觸帳本逆向生成、鏡像對稱多連桿與自由度有效性檢驗</h1>
-    <p class="h1-sub">不再從任意曲線座標隨機生成,改從目標接觸帳本逆向限制搜尋空間,強制鏡像對稱以在參數層排除手性假警報。五連桿優於三連桿,但七連桿未優於五連桿——目前有效自由度不是線段數。</p>
+    <h1>接觸事件方程、非光滑 KKT 系統與五連桿孤立候選</h1>
+    <p class="h1-sub">從黑箱分支追蹤轉向明確接觸事件:四個尖點的精確解析相位公式 + 分支壓力駐定條件,組成 9 方程 9 未知的事件—KKT 聯立系統。數值解 s=0.998903757132509,9×9 Jacobian 滿秩、40 個隨機擾動初值全部收斂回同一根,強烈支持這是數值孤立駐定點。</p>
     <div class="claim-box">
-      探索性數值研究;非形式證明;非普適覆蓋證書
-      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。容器核:Wetzel 認證三角形的精確三法向公式。搜尋族:鏡像對稱 3、5、7 段折線。</span>
+      數值結構重建;非形式證明;非區間證書
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。「真正成果不是小數點後的提升,而是把候選的生成原因完整寫出。」</span>
     </div>
   </header>
 
@@ -46,28 +46,28 @@
     <h2 class="doc-h2">連接 · Connections</h2>
     <p class="section-note">跟其他封包的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
     <div class="connections">
-      <div class="conn-card"><span class="k">上一輪</span><a href="../round-v0.2.2/">第 2 輪 · 相位跳躍與手性修正</a></div>
-      <div class="conn-card"><span class="k">下一輪</span><a href="../round-v0.4.1/">第 4 輪 · 相位分支帳本與四分支等高化</a></div>
-      <div class="conn-card"><span class="k">輪次進度</span>3 / 15</div>
+      <div class="conn-card"><span class="k">上一輪</span><a href="../round-v0.4.1/">第 4 輪 · 相位分支帳本與四分支等高化</a></div>
+      <div class="conn-card"><span class="k">下一輪</span><a href="../round-v0.6.1/">第 6 輪 · 手性越界與局部穩定性</a></div>
+      <div class="conn-card"><span class="k">輪次進度</span>5 / 15</div>
     </div>
-    <blockquote class="cite">「增加到七段並未繼續改善;新增參數大量退化為近平行子段……目前有效自由度不是『線段數』,而是:能否增加新的獨立活動頂點;能否抬高最低相位分支;能否在不創造更容易放置的新相位下,重新分配端點與內部接觸;能否讓多個局部極小同時上升。」— 摘自本包主文件第 6 節「自由度有效性判定」。</blockquote>
+    <blockquote class="cite">「這個提升只有約 10⁻⁹,其意義不是實質提高 Moser 下界,而是把第 4 輪的黑箱等高點投影到精確事件方程的駐定解上……四個尖點接觸事件等高 + 四分支壓力駐定 = 數值孤立五連桿候選。」— 摘自本包主文件第 5 節、結論。</blockquote>
   </section>
 
   <section id="doc-main">
-    <h2 class="doc-h2">第 3 輪核心內容</h2>
-    <p class="doc-meta">接觸帳本逆向生成方法、精確容納核公式、三/五/七連桿結果比較、自由度有效性判定、斜邊雙端點接觸的四接觸骨架發現、接觸壓力熵、下一輪的相位分支帳本設計。</p>
+    <h2 class="doc-h2">第 5 輪核心內容</h2>
+    <p class="doc-meta">四個精確接觸事件的解析相位公式、事件尺度函數、九方程事件-KKT 系統、事件系統解、分支壓力帳本、非光滑局部極小檢查、孤立性診斷(Jacobian 秩、擾動回根測試)、完整相位審計、第 6 輪的兩條路徑(拓撲越界搜尋 vs 局部拓撲極限證書)。</p>
     <div class="doc" id="doc-main-body"><p class="loading">載入中…</p></div>
   </section>
 
   <section id="files">
     <h2 class="doc-h2">檔案 · Files</h2>
     <div id="filelist-out"><p class="loading">載入中…</p></div>
-    <a class="zip-dl" href="../../packages/Moser_Skew_Lab_v0.3.zip" download>下載完整封包 (383.4 KB)</a>
-    <p class="zip-note">sha256 9f4a3644d3e6bd8c089599a96067fe09d08fa5af2f1beb399e97a76df40ca3bc</p>
+    <a class="zip-dl" href="../../packages/Moser_Skew_Lab_v0.5.zip" download>下載完整封包 (417.9 KB)</a>
+    <p class="zip-note">sha256 2a86975f16ef806febc8ba73f0264552840877266c0dd5f349b721d872379bb8</p>
   </section>
 
   <footer class="sitefoot">
-    <p>逐包詳細頁格式沿用<a href="../round-v0.1/">第 1 輪</a>。<a href="../../">回 Moser 蟲問題</a></p>
+    <p>逐包詳細頁格式沿用 <a href="../round-v0.1/">第 1 輪</a>。<a href="../../">回 Moser 蟲問題</a></p>
   </footer>
 </div>
 
@@ -113,7 +113,7 @@ async function loadFiles() {
   }
 }
 
-loadDoc("doc-main-body", "reports/ROUND_03_REPORT.md");
+loadDoc("doc-main-body", "reports/ROUND_05_REPORT.md");
 loadFiles();
 </script>
 </body>

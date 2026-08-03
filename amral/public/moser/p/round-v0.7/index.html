@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第 7 輪 · 折線曲率弧混合族 · Moser 蟲問題 · AMRAL</title>
+<meta name="description" content="Moser Skew Lab 第 7 輪:比較分段曲率翼(m=2,3,4,6,8)與連續常曲率圓弧翼,測試第3-6輪的近平行雙側翼是離散折點骨架還是平滑翼的粗近似。排序:離散事件五連桿(0.998904)>常曲率圓弧翼(0.998862)>最佳多段候選(0.998839)。有限轉向連續攤平會釋放少量合同容納壓力。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="./files/reports/ROUND_07_REPORT.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../">AMRAL</a>
+  <a class="link" href="../../../methodology/">方法論</a>
+  <a class="link" href="../../../riemann/">黎曼猜想</a>
+  <a class="link active" href="../../">Moser 蟲問題</a>
+  <a class="link" href="../../../skew-field/">歪度場</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← Moser 蟲問題</a>
+    <span>/</span>
+    <a href="../../#round-v0.7">輪次</a>
+    <span>/</span>
+    <span>第 7 輪</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">第 7 輪</span>
+      <span class="tag">v0.7</span>
+      <span class="tag">2026-07-26</span>
+    </div>
+    <h1>折線—曲率弧混合族、曲率集中與離散折點價值</h1>
+    <p class="h1-sub">比較分段曲率翼(每側 2/3/4/6/8 段)與連續常曲率圓弧翼,檢驗第 3~6 輪的近平行雙側翼究竟是離散折點骨架、還是平滑小曲率翼的粗離散近似。最終排序:離散事件五連桿 &gt; 常曲率圓弧翼 &gt; 本輪最佳多段候選——有限轉向連續攤平確實會釋放少量合同容納壓力。</p>
+    <div class="claim-box">
+      探索性數值研究;非形式證明;非區間證書
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。延續 Moser Skew Lab v0.6。容器:Wetzel 認證三角形。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他封包的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一輪</span><a href="../round-v0.6.1/">第 6 輪 · 手性越界與局部穩定性</a></div>
+      <div class="conn-card"><span class="k">下一輪</span><a href="../../packages/Moser_Skew_Lab_v0.8.3.zip">第 8 輪(封包)</a></div>
+      <div class="conn-card"><span class="k">輪次進度</span>7 / 15</div>
+    </div>
+    <blockquote class="cite">「離散事件骨架把總轉角集中在兩段之間的折點;常曲率翼則把同一轉角分散到整條側翼……有效因素可能不是『有沒有曲率』,而是:曲率在曲線參數上的集中位置。」— 摘自本包主文件第 7 節「曲率集中工作命題」。</blockquote>
+  </section>
+
+  <section id="doc-main">
+    <h2 class="doc-h2">第 7 輪核心內容</h2>
+    <p class="doc-meta">分段曲率翼結果表(五種段數比較)、必要的搜尋審計(啟發式未回到已知控制解的警告)、連續常曲率翼的解析等高、最終排序表、曲率集中工作命題、不能過度推論之處、最佳分段候選的解析度審計、第 8 輪方向(可控曲率集中族)。</p>
+    <div class="doc" id="doc-main-body"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="doc-interpretation">
+    <h2 class="doc-h2">判定附註 · Interpretation</h2>
+    <p class="doc-meta">兩個可靠高階控制的比較與暫定工作命題,聲明僅適用於本輪研究族。</p>
+    <div class="doc" id="doc-interpretation-body"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="doc-audit">
+    <h2 class="doc-h2">搜尋控制審計</h2>
+    <p class="doc-meta">解釋為什麼 m=2 分段族的啟發式搜尋結果不能直接當作該族的數學劣勢——是搜尋不足,不是曲率效應。</p>
+    <div class="doc" id="doc-audit-body"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="files">
+    <h2 class="doc-h2">檔案 · Files</h2>
+    <div id="filelist-out"><p class="loading">載入中…</p></div>
+    <a class="zip-dl" href="../../packages/Moser_Skew_Lab_v0.7.zip" download>下載完整封包 (351.6 KB)</a>
+    <p class="zip-note">sha256 61b02f8d8864a5b8cfb183e1c14203e57e360816d602cfb3b3ebbaba321f41ec</p>
+  </section>
+
+  <footer class="sitefoot">
+    <p>逐包詳細頁格式沿用 <a href="../round-v0.1/">第 1 輪</a>。<a href="../../">回 Moser 蟲問題</a></p>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../assets/render.js?v=2"></script>
+<script>
+const F = (p) => amralFetchText("./files/" + p);
+
+async function loadDoc(elId, file) {
+  const el = document.getElementById(elId);
+  try {
+    el.innerHTML = amralRenderDoc(await F(file));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+}
+
+async function loadFiles() {
+  const el = document.getElementById("filelist-out");
+  try {
+    const idx = await fetch("./files.json").then((r) => r.json());
+    const groups = { "文件": [], "資料": [], "圖表": [], "程式": [] };
+    for (const f of idx.files) {
+      const ext = f.path.split(".").pop().toLowerCase();
+      if (ext === "md") groups["文件"].push(f);
+      else if (f.path.startsWith("figures/")) groups["圖表"].push(f);
+      else if (f.path.startsWith("data/")) groups["資料"].push(f);
+      else if (ext === "py") groups["程式"].push(f);
+    }
+    const fmt = (b) => b < 1024 ? b + " B" : (b / 1024).toFixed(1) + " KB";
+    el.innerHTML = Object.entries(groups).filter(([, files]) => files.length).map(([label, files]) => `
+      <div class="filegroup">
+        <h3>${label}</h3>
+        <ul class="filelist">
+          ${files.map((f) => `<li><a href="./files/${encodeURIComponent(f.path)}" download>${amralEsc(f.path)}</a><span class="fsize">${fmt(f.size)}</span></li>`).join("")}
+        </ul>
+      </div>`).join("");
+  } catch (e) {
+    el.innerHTML = `<p class="error">檔案清單載入失敗:${e.message}</p>`;
+  }
+}
+
+loadDoc("doc-main-body", "reports/ROUND_07_REPORT.md");
+loadDoc("doc-interpretation-body", "reports/ROUND_07_INTERPRETATION.md");
+loadDoc("doc-audit-body", "reports/ROUND_07_SEARCH_AUDIT.md");
+loadFiles();
+</script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第 7 輪 · 第三次非凸交替循環與空間外露熵 · 歪度場 · AMRAL</title>
+<meta name="description" content="Center-Generated Bridge Experiment 第 7 輪:第三次交替循環,首次量化外露空間分布——本輪攻擊的有效頻譜模式比第6輪少,但空間缺口更分散(4個連通分量,最大分量占比僅37%)。頻譜複雜度不蘊含空間攻擊分散度。提出外露模式交替猜想:分散覆蓋型與局部穿透型攻擊可能交替出現。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="./files/reports/ROUND_07_REPORT.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../">AMRAL</a>
+  <a class="link" href="../../../methodology/">方法論</a>
+  <a class="link" href="../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../moser/">Moser 蟲問題</a>
+  <a class="link active" href="../../">歪度場</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← 歪度場</a>
+    <span>/</span>
+    <a href="../../#round-v0.7">實驗輪次</a>
+    <span>/</span>
+    <span>第 7 輪</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">第 7 輪</span>
+      <span class="tag">v0.7</span>
+      <span class="tag">2026-07-28</span>
+    </div>
+    <h1>第三次非凸交替循環、空間外露熵與 Fourier-16 殘餘攻擊</h1>
+    <p class="h1-sub">第三次交替循環 C₆→γ₇→C₇,首次系統性量化外露的「空間分布」而不只是總量:本輪攻擊的有效頻譜模式比第 6 輪少(4.85 對 6.13),但空間缺口反而更分散(4 個連通分量,最大分量僅占 37%)。提出「外露模式交替猜想」:容器修補分散型攻擊後,可能在另一尺度留下局部穿透型弱點。</p>
+    <div class="claim-box">
+      有限 Fourier 曲率族、有限合同搜尋與非凸容器座標下降候選
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。「頻譜複雜度不蘊含空間攻擊分散度。」</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他封包的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一輪</span><a href="../round-v0.6/">第 6 輪 · 第二次非凸交替循環</a></div>
+      <div class="conn-card"><span class="k">下一輪</span><a href="../../packages/CenterGenerated_Bridge_Experiment_v0.8.zip">第 8 輪(封包)</a></div>
+      <div class="conn-card"><span class="k">實驗輪次進度</span>7 / 11</div>
+    </div>
+    <blockquote class="cite">「非凸普適容器的困難度至少有三個彼此不同的軸:總外露量、外露空間分布(分散葉片或局部深缺口)、容器吸收率。相同量級的攻擊,可以因空間分布不同而得到完全不同的容器回應。」— 摘自本包主文件第 9 節「理論回饋」。</blockquote>
+  </section>
+
+  <section id="doc-main">
+    <h2 class="doc-h2">第 7 輪核心內容</h2>
+    <p class="doc-meta">第三次交替循環、攻擊合法性、正式攻擊量(四個連通分量)、容器回應、空間新穎度、十族活動帳本、Fourier-16 殘餘攻擊、收斂診斷、理論回饋(三個困難度軸)、下一節點(雙目標攻擊)。</p>
+    <div class="doc" id="doc-main-body"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="doc-method">
+    <h2 class="doc-h2">實驗方法 · Method</h2>
+    <p class="doc-meta">正式攻擊沿用第6輪殘餘候選、十族容器三階段座標下降、空間外露帳本(缺口盒熵)設計、Fourier-16 殘餘搜尋流程。</p>
+    <div class="doc" id="doc-method-body"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="doc-response">
+    <h2 class="doc-h2">第三個曲線—容器交替回應循環</h2>
+    <p class="doc-meta">攻擊步、直接加入、容器回應數值、三循環吸收率完整對照表。</p>
+    <div class="doc" id="doc-response-body"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="doc-convergence">
+    <h2 class="doc-h2">收斂與殘餘審計</h2>
+    <p class="doc-meta">面積增量序列(尚未下降)、攻擊序列(非單調)、Fourier-16 保留審計、更合理的停止準則設計。</p>
+    <div class="doc" id="doc-convergence-body"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="doc-novelty">
+    <h2 class="doc-h2">頻譜新穎度與空間外露新穎度的分離</h2>
+    <p class="doc-meta">缺口分布熵的正式定義、第6輪與第7輪的空間分布數據對比、頻譜複雜度不蘊含空間分散度的論證、外露模式交替猜想。</p>
+    <div class="doc" id="doc-novelty-body"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="files">
+    <h2 class="doc-h2">檔案 · Files</h2>
+    <div id="filelist-out"><p class="loading">載入中…</p></div>
+    <a class="zip-dl" href="../../packages/CenterGenerated_Bridge_Experiment_v0.7.zip" download>下載完整封包 (2700.8 KB)</a>
+    <p class="zip-note">sha256 b16b54df63f28703480a50f5981be5c6418de43c0047189125d423d0182c00a6</p>
+  </section>
+
+  <footer class="sitefoot">
+    <p>逐包詳細頁格式沿用<a href="../round-v0.1/">第 1 輪</a>。<a href="../../">回歪度場</a></p>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../assets/render.js?v=2"></script>
+<script>
+const F = (p) => amralFetchText("./files/" + p);
+
+async function loadDoc(elId, file) {
+  const el = document.getElementById(elId);
+  try {
+    el.innerHTML = amralRenderDoc(await F(file));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+}
+
+async function loadFiles() {
+  const el = document.getElementById("filelist-out");
+  try {
+    const idx = await fetch("./files.json").then((r) => r.json());
+    const groups = { "文件": [], "資料": [], "圖表": [], "程式": [] };
+    for (const f of idx.files) {
+      const ext = f.path.split(".").pop().toLowerCase();
+      if (ext === "md") groups["文件"].push(f);
+      else if (f.path.startsWith("figures/")) groups["圖表"].push(f);
+      else if (f.path.startsWith("data/")) groups["資料"].push(f);
+      else if (ext === "py") groups["程式"].push(f);
+    }
+    const fmt = (b) => b < 1024 ? b + " B" : (b / 1024).toFixed(1) + " KB";
+    el.innerHTML = Object.entries(groups).filter(([, files]) => files.length).map(([label, files]) => `
+      <div class="filegroup">
+        <h3>${label}</h3>
+        <ul class="filelist">
+          ${files.map((f) => `<li><a href="./files/${encodeURIComponent(f.path)}" download>${amralEsc(f.path)}</a><span class="fsize">${fmt(f.size)}</span></li>`).join("")}
+        </ul>
+      </div>`).join("");
+  } catch (e) {
+    el.innerHTML = `<p class="error">檔案清單載入失敗:${e.message}</p>`;
+  }
+}
+
+loadDoc("doc-main-body", "reports/ROUND_07_REPORT.md");
+loadDoc("doc-method-body", "reports/ROUND_07_METHOD.md");
+loadDoc("doc-response-body", "reports/ROUND_07_ALTERNATING_RESPONSE.md");
+loadDoc("doc-convergence-body", "reports/ROUND_07_CONVERGENCE_DIAGNOSTICS.md");
+loadDoc("doc-novelty-body", "reports/ROUND_07_SPATIAL_NOVELTY.md");
+loadFiles();
+</script>
+</body>
+</html>

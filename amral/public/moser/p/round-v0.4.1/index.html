@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>第 3 輪 · 接觸帳本逆向生成 · Moser 蟲問題 · AMRAL</title>
-<meta name="description" content="Moser Skew Lab 第 3 輪:接觸帳本逆向生成、鏡像對稱多連桿與自由度有效性檢驗。五連桿優於三連桿,但七連桿並未優於五連桿——發現目前有效自由度不是線段數,而是能否抬高最低放置分支;找到斜邊雙端點接觸的四接觸骨架結構。">
+<title>第 4 輪 · 相位分支帳本與四分支等高化 · Moser 蟲問題 · AMRAL</title>
+<meta name="description" content="Moser Skew Lab 第 4 輪:相位分支帳本、靈敏度矩陣與四分支等高化。直接求解四個最低相位分支的 max-min 等高問題,五連桿臨界尺度從0.998754371668提升到0.998903750476。四個分支用不同接觸拓撲,靈敏度矩陣顯示沒有單一方向能讓四分支同時上升。">
 <meta name="robots" content="index, follow">
 <meta name="ai-content-policy" content="indexable, citable, training-allowed">
-<link rel="alternate" type="text/markdown" href="./files/reports/ROUND_03_REPORT.md">
+<link rel="alternate" type="text/markdown" href="./files/reports/ROUND_04_REPORT.md">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
 <link rel="stylesheet" href="../../../assets/site.css">
 </head>
@@ -23,22 +23,22 @@
   <p class="crumb">
     <a href="../../">← Moser 蟲問題</a>
     <span>/</span>
-    <a href="../../#round-v0.3">輪次</a>
+    <a href="../../#round-v0.4.1">輪次</a>
     <span>/</span>
-    <span>第 3 輪</span>
+    <span>第 4 輪</span>
   </p>
 
   <header class="pkg">
     <div class="idline">
-      <span class="tag">第 3 輪</span>
-      <span class="tag">v0.3</span>
+      <span class="tag">第 4 輪</span>
+      <span class="tag">v0.4.1</span>
       <span class="tag">2026-07-26</span>
     </div>
-    <h1>接觸帳本逆向生成、鏡像對稱多連桿與自由度有效性檢驗</h1>
-    <p class="h1-sub">不再從任意曲線座標隨機生成,改從目標接觸帳本逆向限制搜尋空間,強制鏡像對稱以在參數層排除手性假警報。五連桿優於三連桿,但七連桿未優於五連桿——目前有效自由度不是線段數。</p>
+    <h1>相位分支帳本、靈敏度矩陣與四分支等高化</h1>
+    <p class="h1-sub">直接求解四個最低相位分支的 max-min 等高問題:五連桿臨界尺度從第 3 輪的 0.998754371668 提升到 0.998903750476。四個分支使用完全不同的接觸拓撲,靈敏度矩陣顯示沒有單一參數方向能讓四個分支同時上升。</p>
     <div class="claim-box">
       探索性數值研究;非形式證明;非普適覆蓋證書
-      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。容器核:Wetzel 認證三角形的精確三法向公式。搜尋族:鏡像對稱 3、5、7 段折線。</span>
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。曲線族:鏡像對稱五連桿。容器核:Wetzel 認證三角形的精確三法向公式。</span>
     </div>
   </header>
 
@@ -46,28 +46,28 @@
     <h2 class="doc-h2">連接 · Connections</h2>
     <p class="section-note">跟其他封包的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
     <div class="connections">
-      <div class="conn-card"><span class="k">上一輪</span><a href="../round-v0.2.2/">第 2 輪 · 相位跳躍與手性修正</a></div>
-      <div class="conn-card"><span class="k">下一輪</span><a href="../round-v0.4.1/">第 4 輪 · 相位分支帳本與四分支等高化</a></div>
-      <div class="conn-card"><span class="k">輪次進度</span>3 / 15</div>
+      <div class="conn-card"><span class="k">上一輪</span><a href="../round-v0.3/">第 3 輪 · 接觸帳本逆向生成</a></div>
+      <div class="conn-card"><span class="k">下一輪</span><a href="../round-v0.5/">第 5 輪 · 接觸事件方程與孤立候選</a></div>
+      <div class="conn-card"><span class="k">輪次進度</span>4 / 15</div>
     </div>
-    <blockquote class="cite">「增加到七段並未繼續改善;新增參數大量退化為近平行子段……目前有效自由度不是『線段數』,而是:能否增加新的獨立活動頂點;能否抬高最低相位分支;能否在不創造更容易放置的新相位下,重新分配端點與內部接觸;能否讓多個局部極小同時上升。」— 摘自本包主文件第 6 節「自由度有效性判定」。</blockquote>
+    <blockquote class="cite">「不同分支對同一參數的反應方向互相衝突。沒有一個局部方向能讓四個分支全部上升,因而形成 max-min 等高點……曲線難度不是單一接觸帳本,而是一組競爭放置分支的多帳本平衡。」— 摘自本包主文件第 5 節、第 7 節。</blockquote>
   </section>
 
   <section id="doc-main">
-    <h2 class="doc-h2">第 3 輪核心內容</h2>
-    <p class="doc-meta">接觸帳本逆向生成方法、精確容納核公式、三/五/七連桿結果比較、自由度有效性判定、斜邊雙端點接觸的四接觸骨架發現、接觸壓力熵、下一輪的相位分支帳本設計。</p>
+    <h2 class="doc-h2">第 4 輪核心內容</h2>
+    <p class="doc-meta">分支等高結果表、參數重新分配、分支接觸帳本(四種不同拓撲)、分支靈敏度矩陣、第二層分支壓力帳本、研究判定、第 5 輪方向(接觸事件方程化)。</p>
     <div class="doc" id="doc-main-body"><p class="loading">載入中…</p></div>
   </section>
 
   <section id="files">
     <h2 class="doc-h2">檔案 · Files</h2>
     <div id="filelist-out"><p class="loading">載入中…</p></div>
-    <a class="zip-dl" href="../../packages/Moser_Skew_Lab_v0.3.zip" download>下載完整封包 (383.4 KB)</a>
-    <p class="zip-note">sha256 9f4a3644d3e6bd8c089599a96067fe09d08fa5af2f1beb399e97a76df40ca3bc</p>
+    <a class="zip-dl" href="../../packages/Moser_Skew_Lab_v0.4.1.zip" download>下載完整封包 (486.8 KB)</a>
+    <p class="zip-note">sha256 acc4235cb12e35ef597e353cbfd35c5f054502c463c113ab1d455760bf3b1485</p>
   </section>
 
   <footer class="sitefoot">
-    <p>逐包詳細頁格式沿用<a href="../round-v0.1/">第 1 輪</a>。<a href="../../">回 Moser 蟲問題</a></p>
+    <p>逐包詳細頁格式沿用 <a href="../round-v0.1/">第 1 輪</a>。<a href="../../">回 Moser 蟲問題</a></p>
   </footer>
 </div>
 
@@ -113,7 +113,7 @@ async function loadFiles() {
   }
 }
 
-loadDoc("doc-main-body", "reports/ROUND_03_REPORT.md");
+loadDoc("doc-main-body", "reports/ROUND_04_REPORT.md");
 loadFiles();
 </script>
 </body>

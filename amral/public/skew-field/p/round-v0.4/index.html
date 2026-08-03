@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>第 3 輪 · 法向單射定理與雙頻對數曲率 · 歪度場 · AMRAL</title>
-<meta name="description" content="Center-Generated Bridge Experiment 第 3 輪:證明半轉向正曲率法向單射定理,把局部曲率半徑下界提升為法向帶全局單射性;找到比第 2 輪更強的雙頻對數曲率新骨架,共同容器面積推進到 0.281463277175。本輪首次含有正式證明的定理,不只是數值候選。">
+<title>第 4 輪 · Fourier曲率空間與非凸容器削減 · 歪度場 · AMRAL</title>
+<meta name="description" content="Center-Generated Bridge Experiment 第 4 輪:提高曲率函數維度(Fourier 6/8/10模)仍能增加凸支撐張力,但同時發現凸化成本佔目前有限族容器面積的37.31%——非凸單連通容器只需0.191,遠低於凸容器的0.305。凸支撐冗餘不等於非凸容器冗餘。">
 <meta name="robots" content="index, follow">
 <meta name="ai-content-policy" content="indexable, citable, training-allowed">
-<link rel="alternate" type="text/markdown" href="./files/reports/ROUND_03_REPORT.md">
+<link rel="alternate" type="text/markdown" href="./files/reports/ROUND_04_REPORT.md">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
 <link rel="stylesheet" href="../../../assets/site.css">
 </head>
@@ -23,22 +23,22 @@
   <p class="crumb">
     <a href="../../">← 歪度場</a>
     <span>/</span>
-    <a href="../../#round-v0.3">實驗輪次</a>
+    <a href="../../#round-v0.4">實驗輪次</a>
     <span>/</span>
-    <span>第 3 輪</span>
+    <span>第 4 輪</span>
   </p>
 
   <header class="pkg">
     <div class="idline">
-      <span class="tag">第 3 輪</span>
-      <span class="tag">v0.3</span>
+      <span class="tag">第 4 輪</span>
+      <span class="tag">v0.4</span>
       <span class="tag">2026-07-27</span>
     </div>
-    <h1>法向單射定理、曲率外包盒、Clarke 邊界帳本與雙頻對數曲率新骨架</h1>
-    <p class="h1-sub">本輪有兩層進展:證明半轉向正曲率法向單射定理(把局部曲率半徑下界提升為直接法向帶的全局單射性);在更大的曲率函數空間中,找到比第 2 輪二次指數曲線更強的雙頻對數曲率骨架,面積推進到 0.281463277175。</p>
+    <h1>Fourier 曲率函數空間、伴隨靈敏度與非凸容器削減</h1>
+    <p class="h1-sub">把曲率函數從固定公式推廣到 Fourier 級數(6/8/10 模式),支撐張力仍隨維度上升;但同時發現,把七個測試族的管狀鄰域直接非凸聯集(不強制凸化),單連通容器只要 0.191,遠低於同族凸容器的 0.305——凸化成本佔了目前容器面積的 37.31%。</p>
     <div class="claim-box">
-      解析法向帶定理＋半驗證曲率盒＋有限族數值容器實驗
-      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。這是本案例第一輪含有正式證明定理(非純數值候選)的封包。</span>
+      有限維函數空間候選＋半驗證曲率盒＋有限族非凸容器候選
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。「凸支撐冗餘 ≠ 非凸容器冗餘。」</span>
     </div>
   </header>
 
@@ -46,36 +46,42 @@
     <h2 class="doc-h2">連接 · Connections</h2>
     <p class="section-note">跟其他封包的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
     <div class="connections">
-      <div class="conn-card"><span class="k">上一輪</span><a href="../round-v0.2/">第 2 輪 · 曲率飽和術語修正與雙骨架容器</a></div>
-      <div class="conn-card"><span class="k">下一輪</span><a href="../round-v0.4/">第 4 輪 · Fourier曲率空間與非凸容器削減</a></div>
-      <div class="conn-card"><span class="k">實驗輪次進度</span>3 / 11</div>
+      <div class="conn-card"><span class="k">上一輪</span><a href="../round-v0.3/">第 3 輪 · 法向單射定理與雙頻對數曲率</a></div>
+      <div class="conn-card"><span class="k">下一輪</span><a href="../round-v0.5/">第 5 輪 · 第一個非凸交替對抗循環</a></div>
+      <div class="conn-card"><span class="k">實驗輪次進度</span>4 / 11</div>
     </div>
-    <blockquote class="cite">「若曲率半徑 R(v)≥R₀,兩條法線交會的有號距離滿足 t+u≥2R₀。所以不可能同時有 |t|&lt;R₀ 與 |u|&lt;R₀。本定理證明的是直接雙向法向帶的全局單射性,不自動完成圓形端帽的全局 reach 證明。」— 摘自本包法向單射定理全文。</blockquote>
+    <blockquote class="cite">「支撐函數只記錄凸包;非凸容器還必須記錄:凹槽、狹窄通道、局部空缺、管狀邊界間的互補嵌合。因此:凸支撐冗餘不等於非凸容器冗餘。第 1 輪有限寬度族在凸問題中已冗餘,但在非凸容器 leave-one-out 中仍有非零貢獻。」— 摘自本包主文件第 9 節「結構判斷」。</blockquote>
   </section>
 
   <section id="doc-main">
-    <h2 class="doc-h2">第 3 輪核心內容</h2>
-    <p class="doc-meta">法向單射定理摘要、曲率外包盒、Clarke 邊界帳本、雙頻對數曲率新族的定義與係數、第 3 輪最終雙骨架、舊族全部冗餘的驗證、面積推進、誠實邊界、第 4 輪節點(轉向 B-spline/Fourier 曲率函數空間)。</p>
+    <h2 class="doc-h2">第 4 輪核心內容</h2>
+    <p class="doc-meta">Fourier 曲率函數空間定義、維度推進(6→8→10模)、Fourier-10 候選的曲率盒與手性審計、頻譜與敏感度(振幅不蘊含張力敏感度)、伴隨梯度推導、凸有限族容器、非凸有限族容器(37.31%削減)、結構判斷、誠實邊界、下一節點(交替對抗系統)。</p>
     <div class="doc" id="doc-main-body"><p class="loading">載入中…</p></div>
-  </section>
-
-  <section id="doc-theorem">
-    <h2 class="doc-h2">半轉向正曲率法向單射定理</h2>
-    <p class="doc-meta">獨立成篇的定理全文與證明——本案例迄今唯一一份不是數值候選、而是解析證明的文件。</p>
-    <div class="doc" id="doc-theorem-body"><p class="loading">載入中…</p></div>
   </section>
 
   <section id="doc-method">
     <h2 class="doc-h2">實驗方法 · Method</h2>
-    <p class="doc-meta">曲率函數參數化、搜尋與驗證流程、五層證書架構(解析法向單射、向外浮點曲率盒、離散法線交會重播、端帽 buffer 審計、投影 Clarke 割線盒)。</p>
+    <p class="doc-meta">曲率函數空間參數化、三層搜尋分層、凸/非凸容器公式、驗證層清單。</p>
     <div class="doc" id="doc-method-body"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="doc-sensitivity">
+    <h2 class="doc-h2">曲率—支撐函數伴隨靈敏度</h2>
+    <p class="doc-meta">完整伴隨梯度推導(曲率正規化、中心線變分、支撐函數變分),數值核對(有限差分 vs 伴隨梯度)。</p>
+    <div class="doc" id="doc-sensitivity-body"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="doc-pruning">
+    <h2 class="doc-h2">非凸容器削減</h2>
+    <p class="doc-meta">七個測試族的非凸聯集面積、孔洞填補、相對凸容器 37.31% 的削減、leave-one-out 逐族分析。</p>
+    <div class="doc" id="doc-pruning-body"><p class="loading">載入中…</p></div>
   </section>
 
   <section id="files">
     <h2 class="doc-h2">檔案 · Files</h2>
     <div id="filelist-out"><p class="loading">載入中…</p></div>
-    <a class="zip-dl" href="../../packages/CenterGenerated_Bridge_Experiment_v0.3.zip" download>下載完整封包 (1.0 MB)</a>
-    <p class="zip-note">sha256 ca8df6103b8eb5cb6b1ef2d96a9c5b4ca8e9644a9d44b558c6cfbdfb4ae72e73</p>
+    <a class="zip-dl" href="../../packages/CenterGenerated_Bridge_Experiment_v0.4.zip" download>下載完整封包 (2862.4 KB)</a>
+    <p class="zip-note">sha256 ac08e76579ac23f7946c36292c687c1a24659f3eb620e068152a63754fd932fb</p>
   </section>
 
   <footer class="sitefoot">
@@ -125,9 +131,10 @@ async function loadFiles() {
   }
 }
 
-loadDoc("doc-main-body", "reports/ROUND_03_REPORT.md");
-loadDoc("doc-theorem-body", "reports/ROUND_03_NORMAL_INJECTIVITY_THEOREM.md");
-loadDoc("doc-method-body", "reports/ROUND_03_METHOD.md");
+loadDoc("doc-main-body", "reports/ROUND_04_REPORT.md");
+loadDoc("doc-method-body", "reports/ROUND_04_METHOD.md");
+loadDoc("doc-sensitivity-body", "reports/ROUND_04_ADJOINT_SENSITIVITY.md");
+loadDoc("doc-pruning-body", "reports/ROUND_04_NONCONVEX_PRUNING.md");
 loadFiles();
 </script>
 </body>

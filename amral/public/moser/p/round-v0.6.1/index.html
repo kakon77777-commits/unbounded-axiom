@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第 6 輪 · 手性越界與局部穩定性 · Moser 蟲問題 · AMRAL</title>
+<meta name="description" content="Moser Skew Lab 第 6 輪:八維手性越界搜尋(四對稱+四反對稱參數)測試能否逃離第5輪的鏡像對稱五連桿平台。八維搜尋沒有產生可重現的正超越,1600條隨機接觸拓撲抽樣加上局部穩定盒審計,都支持事件根對小型手性破缺具有局部穩定性。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="./files/reports/ROUND_06_REPORT.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../">AMRAL</a>
+  <a class="link" href="../../../methodology/">方法論</a>
+  <a class="link" href="../../../riemann/">黎曼猜想</a>
+  <a class="link active" href="../../">Moser 蟲問題</a>
+  <a class="link" href="../../../skew-field/">歪度場</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← Moser 蟲問題</a>
+    <span>/</span>
+    <a href="../../#round-v0.6.1">輪次</a>
+    <span>/</span>
+    <span>第 6 輪</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">第 6 輪</span>
+      <span class="tag">v0.6.1</span>
+      <span class="tag">2026-07-26</span>
+    </div>
+    <h1>手性越界、八維接觸拓撲搜尋與局部穩定性草案</h1>
+    <p class="h1-sub">離開固定鏡像五連桿平台,在四個對稱+四個反對稱參數(共八維)上同時搜尋非對稱方向與新接觸身份。八維搜尋沒有產生可重現的正超越;1600 條隨機接觸拓撲抽樣加上多尺度局部穩定盒審計,共同支持第 5 輪事件根對小型手性破缺具有局部穩定性。</p>
+    <div class="claim-box">
+      探索性數值研究;非形式證明;非區間證書
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。延續 Moser Skew Lab v0.5。目標:離開固定鏡像五連桿平台,測試非對稱方向與新接觸身份。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他封包的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一輪</span><a href="../round-v0.5/">第 5 輪 · 接觸事件方程與孤立候選</a></div>
+      <div class="conn-card"><span class="k">下一輪</span><a href="../round-v0.7/">第 7 輪 · 折線曲率弧混合族</a></div>
+      <div class="conn-card"><span class="k">輪次進度</span>6 / 15</div>
+    </div>
+    <blockquote class="cite">「四個單模態掃描的共同特徵是……零擾動附近形成尖頂或近尖頂;單獨破壞左右對稱沒有提供穩定正增益。因此:鏡像對稱不是任意美學限制,而是合同極小值對手性分支的自然平衡點。」— 摘自本包主文件第 2 節「四個基本手性模態」。</blockquote>
+  </section>
+
+  <section id="doc-main">
+    <h2 class="doc-h2">第 6 輪核心內容</h2>
+    <p class="doc-meta">一般五連桿鄰域(對稱+反對稱參數化)、四個基本手性模態、八維拓撲越界搜尋、隨機接觸拓撲普查(1600 條候選)、局部接觸穩定性草案(12 個尺度的抽樣穩定盒)、本輪判定的兩種情境、第 7 輪方向。</p>
+    <div class="doc" id="doc-main-body"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="doc-interpretation">
+    <h2 class="doc-h2">判定附註 · Interpretation</h2>
+    <p class="doc-meta">簡短的一段結論:八維搜尋沒有產生可重現的正超越,四個單模態都在零擾動附近取得合同尖頂,支持事件根局部穩定。</p>
+    <div class="doc" id="doc-interpretation-body"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="doc-audit">
+    <h2 class="doc-h2">局部越界補充審計</h2>
+    <p class="doc-meta">以事件根為中心、七個尺度半徑、每個半徑 900 個八維方向,共 6300 個合法候選的多尺度普查——高解析複核中沒有發現可重現的局部手性越界。</p>
+    <div class="doc" id="doc-audit-body"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="files">
+    <h2 class="doc-h2">檔案 · Files</h2>
+    <div id="filelist-out"><p class="loading">載入中…</p></div>
+    <a class="zip-dl" href="../../packages/Moser_Skew_Lab_v0.6.1.zip" download>下載完整封包 (761.7 KB)</a>
+    <p class="zip-note">sha256 6fddf5567de9272064a30869a4c358d274346e69b70a7c5bcc993b115a19bfa1</p>
+  </section>
+
+  <footer class="sitefoot">
+    <p>逐包詳細頁格式沿用 <a href="../round-v0.1/">第 1 輪</a>。<a href="../../">回 Moser 蟲問題</a></p>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../assets/render.js?v=2"></script>
+<script>
+const F = (p) => amralFetchText("./files/" + p);
+
+async function loadDoc(elId, file) {
+  const el = document.getElementById(elId);
+  try {
+    el.innerHTML = amralRenderDoc(await F(file));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+}
+
+async function loadFiles() {
+  const el = document.getElementById("filelist-out");
+  try {
+    const idx = await fetch("./files.json").then((r) => r.json());
+    const groups = { "文件": [], "資料": [], "圖表": [], "程式": [] };
+    for (const f of idx.files) {
+      const ext = f.path.split(".").pop().toLowerCase();
+      if (ext === "md") groups["文件"].push(f);
+      else if (f.path.startsWith("figures/")) groups["圖表"].push(f);
+      else if (f.path.startsWith("data/")) groups["資料"].push(f);
+      else if (ext === "py") groups["程式"].push(f);
+    }
+    const fmt = (b) => b < 1024 ? b + " B" : (b / 1024).toFixed(1) + " KB";
+    el.innerHTML = Object.entries(groups).filter(([, files]) => files.length).map(([label, files]) => `
+      <div class="filegroup">
+        <h3>${label}</h3>
+        <ul class="filelist">
+          ${files.map((f) => `<li><a href="./files/${encodeURIComponent(f.path)}" download>${amralEsc(f.path)}</a><span class="fsize">${fmt(f.size)}</span></li>`).join("")}
+        </ul>
+      </div>`).join("");
+  } catch (e) {
+    el.innerHTML = `<p class="error">檔案清單載入失敗:${e.message}</p>`;
+  }
+}
+
+loadDoc("doc-main-body", "reports/ROUND_06_REPORT.md");
+loadDoc("doc-interpretation-body", "reports/ROUND_06_INTERPRETATION.md");
+loadDoc("doc-audit-body", "reports/ROUND_06_LOCAL_ESCAPE_AUDIT.md");
+loadFiles();
+</script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第 5 輪 · 第一個非凸交替對抗循環 · 歪度場 · AMRAL</title>
+<meta name="description" content="Center-Generated Bridge Experiment 第 5 輪:第一次完整曲線-容器交替循環。Fourier-12攻擊曲線對第4輪容器外露0.00666,容器重排吸收57.7%,淨增量僅1.47%。保留樣本測試顯示系統尚未收斂。真正的普適容器研究必須是曲率函數與非凸容器的交替對抗。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="./files/reports/ROUND_05_REPORT.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../">AMRAL</a>
+  <a class="link" href="../../../methodology/">方法論</a>
+  <a class="link" href="../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../moser/">Moser 蟲問題</a>
+  <a class="link active" href="../../">歪度場</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← 歪度場</a>
+    <span>/</span>
+    <a href="../../#round-v0.5">實驗輪次</a>
+    <span>/</span>
+    <span>第 5 輪</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">第 5 輪</span>
+      <span class="tag">v0.5</span>
+      <span class="tag">2026-07-27</span>
+    </div>
+    <h1>非凸面積外露張力與第一個曲線—容器交替對抗循環</h1>
+    <p class="h1-sub">研究問題正式轉向:不再問「哪條曲線最難放入某個凸包」,改問「哪條曲線即使利用現有非凸凹槽,仍留下最大外露面積」。第一次完整循環 C₄→γ₅→C₅:Fourier-12 攻擊曲線外露 0.00666,容器重排吸收 57.7%,淨增量僅 1.47%。保留樣本測試證實系統尚未收斂。</p>
+    <div class="claim-box">
+      有限 Fourier 族、有限放置搜尋與非凸容器座標下降候選
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。「真正的普適容器研究必須是曲率函數與非凸容器的交替對抗,而不是只對固定凸容器排序曲線。」</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他封包的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一輪</span><a href="../round-v0.4/">第 4 輪 · Fourier曲率空間與非凸容器削減</a></div>
+      <div class="conn-card"><span class="k">下一輪</span><a href="../round-v0.6/">第 6 輪 · 第二次非凸交替循環</a></div>
+      <div class="conn-card"><span class="k">實驗輪次進度</span>5 / 11</div>
+    </div>
+    <blockquote class="cite">「本輪第一次直接量化:曲線攻擊壓力 → 容器重排吸收 → 容器淨增量。得到:約 57.7% 的初始外露壓力可由重新配置吸收……所以只計算『新曲線對固定容器的外露量』會高估長期普適容器的面積增量;必須讓容器回應後再記帳。」— 摘自本包主文件第 9 節。</blockquote>
+  </section>
+
+  <section id="doc-main">
+    <h2 class="doc-h2">第 5 輪核心內容</h2>
+    <p class="doc-meta">研究轉向(從凸支撐缺口到非凸面積外露張力)、面積外露張力定義、Fourier-12 攻擊曲線、多分支放置審計、直接加入與防守回應、最終容器、活動骨架、保留樣本測試(尚未收斂)、本輪理論訊號、誠實邊界、下一節點。</p>
+    <div class="doc" id="doc-main-body"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="doc-method">
+    <h2 class="doc-h2">實驗方法 · Method</h2>
+    <p class="doc-meta">防守容器、Fourier-12 曲率族、搜尋分層(清距場篩選+管狀外露重算)、容器更新流程、高解析重播、保留樣本設計。</p>
+    <div class="doc" id="doc-method-body"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="doc-response">
+    <h2 class="doc-h2">第一個曲線—容器交替回應循環</h2>
+    <p class="doc-meta">攻擊步、直接加入、容器回應、回收比例與淨增量的完整數值分解、活動族清單。</p>
+    <div class="doc" id="doc-response-body"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="doc-clearance">
+    <h2 class="doc-h2">清距場、形態腐蝕與面積外露張力</h2>
+    <p class="doc-meta">厚化曲線包含條件的形態腐蝕表述、為何不能直接用多邊形負 buffer、面積外露張力的精確定義、快速代理與最終重算的分工。</p>
+    <div class="doc" id="doc-clearance-body"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="files">
+    <h2 class="doc-h2">檔案 · Files</h2>
+    <div id="filelist-out"><p class="loading">載入中…</p></div>
+    <a class="zip-dl" href="../../packages/CenterGenerated_Bridge_Experiment_v0.5.zip" download>下載完整封包 (2152.6 KB)</a>
+    <p class="zip-note">sha256 38a06fb39508be627886fad455778080f2638e81f729fcd87fdb2b29de258dbd</p>
+  </section>
+
+  <footer class="sitefoot">
+    <p>逐包詳細頁格式沿用<a href="../round-v0.1/">第 1 輪</a>。<a href="../../">回歪度場</a></p>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../assets/render.js?v=2"></script>
+<script>
+const F = (p) => amralFetchText("./files/" + p);
+
+async function loadDoc(elId, file) {
+  const el = document.getElementById(elId);
+  try {
+    el.innerHTML = amralRenderDoc(await F(file));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+}
+
+async function loadFiles() {
+  const el = document.getElementById("filelist-out");
+  try {
+    const idx = await fetch("./files.json").then((r) => r.json());
+    const groups = { "文件": [], "資料": [], "圖表": [], "程式": [] };
+    for (const f of idx.files) {
+      const ext = f.path.split(".").pop().toLowerCase();
+      if (ext === "md") groups["文件"].push(f);
+      else if (f.path.startsWith("figures/")) groups["圖表"].push(f);
+      else if (f.path.startsWith("data/")) groups["資料"].push(f);
+      else if (ext === "py") groups["程式"].push(f);
+    }
+    const fmt = (b) => b < 1024 ? b + " B" : (b / 1024).toFixed(1) + " KB";
+    el.innerHTML = Object.entries(groups).filter(([, files]) => files.length).map(([label, files]) => `
+      <div class="filegroup">
+        <h3>${label}</h3>
+        <ul class="filelist">
+          ${files.map((f) => `<li><a href="./files/${encodeURIComponent(f.path)}" download>${amralEsc(f.path)}</a><span class="fsize">${fmt(f.size)}</span></li>`).join("")}
+        </ul>
+      </div>`).join("");
+  } catch (e) {
+    el.innerHTML = `<p class="error">檔案清單載入失敗:${e.message}</p>`;
+  }
+}
+
+loadDoc("doc-main-body", "reports/ROUND_05_REPORT.md");
+loadDoc("doc-method-body", "reports/ROUND_05_METHOD.md");
+loadDoc("doc-response-body", "reports/ROUND_05_ALTERNATING_RESPONSE.md");
+loadDoc("doc-clearance-body", "reports/ROUND_05_CLEARANCE_AND_EXPOSURE.md");
+loadFiles();
+</script>
+</body>
+</html>

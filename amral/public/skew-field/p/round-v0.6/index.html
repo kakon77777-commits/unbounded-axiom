@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第 6 輪 · 第二次非凸交替循環 · 歪度場 · AMRAL</title>
+<meta name="description" content="Center-Generated Bridge Experiment 第 6 輪:第二次交替循環,攻擊外露量比第5輪小(0.00493<0.00666),但容器淨增量反而更大(0.00446>0.00282)——吸收率只有9.5%,遠低於第5輪的57.7%。攻擊外露量的下降不足以保證容器淨增量下降。Fourier-14殘餘攻擊顯示仍未收斂。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="./files/reports/ROUND_06_REPORT.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../">AMRAL</a>
+  <a class="link" href="../../../methodology/">方法論</a>
+  <a class="link" href="../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../moser/">Moser 蟲問題</a>
+  <a class="link active" href="../../">歪度場</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← 歪度場</a>
+    <span>/</span>
+    <a href="../../#round-v0.6">實驗輪次</a>
+    <span>/</span>
+    <span>第 6 輪</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">第 6 輪</span>
+      <span class="tag">v0.6</span>
+      <span class="tag">2026-07-28</span>
+    </div>
+    <h1>第二次非凸交替循環、吸收係數與 Fourier-14 殘餘攻擊</h1>
+    <p class="h1-sub">完成第二個交替循環 C₅→γ₆→C₆:攻擊外露量比第 5 輪小(0.00493 對 0.00666),但容器淨增量反而更大(0.00446 對 0.00282)——本輪吸收率只有 9.5%,遠低於第 5 輪的 57.7%。攻擊與現有非凸結構的幾何互補性,比攻擊外露量本身更能決定容器淨增量。</p>
+    <div class="claim-box">
+      有限 Fourier 族、有限合同搜尋與非凸容器座標下降候選
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。「攻擊外露量的下降,不足以保證容器淨增量下降。」</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他封包的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一輪</span><a href="../round-v0.5/">第 5 輪 · 第一個非凸交替對抗循環</a></div>
+      <div class="conn-card"><span class="k">下一輪</span><a href="../round-v0.7/">第 7 輪 · 第三次非凸交替循環</a></div>
+      <div class="conn-card"><span class="k">實驗輪次進度</span>6 / 11</div>
+    </div>
+    <blockquote class="cite">「容器能否吸收一條攻擊,取決於攻擊與現有非凸結構的幾何互補性,而不只取決於攻擊外露量本身。」— 摘自本包主文件結論,對照第 5 輪 57.7% 吸收率與本輪 9.5% 吸收率的落差。</blockquote>
+  </section>
+
+  <section id="doc-main">
+    <h2 class="doc-h2">第 6 輪核心內容</h2>
+    <p class="doc-meta">本輪目標(直接延續第5輪保留候選)、正式攻擊、第二次容器回應、活動骨架、與第5輪比較、Fourier-14 殘餘攻擊、收斂判定(尚無單調收斂證據)、誠實邊界、下一節點。</p>
+    <div class="doc" id="doc-main-body"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="doc-method">
+    <h2 class="doc-h2">實驗方法 · Method</h2>
+    <p class="doc-meta">初始攻擊(直接沿用第5輪保留候選,不重新挑選)、九族容器回應流程、leave-one-out 設計、Fourier-14 殘餘攻擊搜尋、誠實邊界。</p>
+    <div class="doc" id="doc-method-body"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="doc-response">
+    <h2 class="doc-h2">第二個曲線—容器交替回應循環</h2>
+    <p class="doc-meta">攻擊步、直接加入、容器回應的完整數值分解、與第一循環的吸收率/新穎係數對比。</p>
+    <div class="doc" id="doc-response-body"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="doc-convergence">
+    <h2 class="doc-h2">攻擊—回應序列與收斂判準</h2>
+    <p class="doc-meta">正式定義吸收係數與新穎係數、兩輪數值比較、必要監測量清單、第6輪的獨立 Fourier-14 保留審計判定。</p>
+    <div class="doc" id="doc-convergence-body"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="files">
+    <h2 class="doc-h2">檔案 · Files</h2>
+    <div id="filelist-out"><p class="loading">載入中…</p></div>
+    <a class="zip-dl" href="../../packages/CenterGenerated_Bridge_Experiment_v0.6.zip" download>下載完整封包 (2281.4 KB)</a>
+    <p class="zip-note">sha256 864fbae33ff82b00ab221e569e611982776f6a5be665d15b749592778a50d5d2</p>
+  </section>
+
+  <footer class="sitefoot">
+    <p>逐包詳細頁格式沿用<a href="../round-v0.1/">第 1 輪</a>。<a href="../../">回歪度場</a></p>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../assets/render.js?v=2"></script>
+<script>
+const F = (p) => amralFetchText("./files/" + p);
+
+async function loadDoc(elId, file) {
+  const el = document.getElementById(elId);
+  try {
+    el.innerHTML = amralRenderDoc(await F(file));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+}
+
+async function loadFiles() {
+  const el = document.getElementById("filelist-out");
+  try {
+    const idx = await fetch("./files.json").then((r) => r.json());
+    const groups = { "文件": [], "資料": [], "圖表": [], "程式": [] };
+    for (const f of idx.files) {
+      const ext = f.path.split(".").pop().toLowerCase();
+      if (ext === "md") groups["文件"].push(f);
+      else if (f.path.startsWith("figures/")) groups["圖表"].push(f);
+      else if (f.path.startsWith("data/")) groups["資料"].push(f);
+      else if (ext === "py") groups["程式"].push(f);
+    }
+    const fmt = (b) => b < 1024 ? b + " B" : (b / 1024).toFixed(1) + " KB";
+    el.innerHTML = Object.entries(groups).filter(([, files]) => files.length).map(([label, files]) => `
+      <div class="filegroup">
+        <h3>${label}</h3>
+        <ul class="filelist">
+          ${files.map((f) => `<li><a href="./files/${encodeURIComponent(f.path)}" download>${amralEsc(f.path)}</a><span class="fsize">${fmt(f.size)}</span></li>`).join("")}
+        </ul>
+      </div>`).join("");
+  } catch (e) {
+    el.innerHTML = `<p class="error">檔案清單載入失敗:${e.message}</p>`;
+  }
+}
+
+loadDoc("doc-main-body", "reports/ROUND_06_REPORT.md");
+loadDoc("doc-method-body", "reports/ROUND_06_METHOD.md");
+loadDoc("doc-response-body", "reports/ROUND_06_ALTERNATING_RESPONSE.md");
+loadDoc("doc-convergence-body", "reports/ROUND_06_CONVERGENCE_DIAGNOSTICS.md");
+loadFiles();
+</script>
+</body>
+</html>
