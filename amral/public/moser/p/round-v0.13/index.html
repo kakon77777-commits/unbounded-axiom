@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第 13 輪 · 五參數事件—KKT 孤立性與峰值修正 · Moser 蟲問題 · AMRAL</title>
+<meta name="description" content="Moser Skew Lab 第 13 輪:把第 8 輪的平滑候選升級成正式 12 未知量五參數事件—KKT 系統(四分支等高+雙駐定+分支壓力平衡),得到極小修正 s=0.998914343297485(較第 8 輪僅提升約 4.2e-9)。Jacobian 12x12 滿秩但條件數約 3.77e7,高度病態——支持數值孤立,不支持穩健區間可逆性。20/20 隨機擾動盆地測試全部收斂回同一根。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="./files/reports/ROUND_13_REPORT.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../">AMRAL</a>
+  <a class="link" href="../../../methodology/">方法論</a>
+  <a class="link" href="../../../riemann/">黎曼猜想</a>
+  <a class="link active" href="../../">Moser 蟲問題</a>
+  <a class="link" href="../../../skew-field/">歪度場</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← Moser 蟲問題</a>
+    <span>/</span>
+    <a href="../../#round-v0.13">輪次</a>
+    <span>/</span>
+    <span>第 13 輪</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">第 13 輪</span>
+      <span class="tag">v0.13</span>
+      <span class="tag">2026-07-26</span>
+    </div>
+    <h1>平滑五參數事件—KKT 系統、孤立性與峰值修正</h1>
+    <p class="h1-sub">把第 12 輪交接的五參數 p=(w,β,δ,c,ε) 正式寫成 12 未知量事件—KKT 系統:四個控制分支(兩個低相位駐點、120°、270°)等高、雙駐定條件、分支壓力加權梯度平衡、乘子和為一。求解得到 s₁₃=0.998914343297485,較第 8 輪只提升約 4.2×10⁻⁹——這是峰值位置的精細修正,不是新的幾何級突破。完整 12×12 Jacobian 數值滿秩,但條件數高達約 3.77×10⁷,高度病態:支持數值孤立,但不支持穩健的區間可逆性結論。120° 分支承擔了約 73.6% 的分支壓力,270° 分支約 20.7%。20 組隨機擾動全數收斂回同一尺度盆地。</p>
+    <div class="claim-box">
+      數值事件—KKT 重建;非區間 KKT 證書;非形式證明
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。延續 Moser Skew Lab v0.12。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他封包的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一輪</span><a href="../round-v0.12/">第 12 輪 · mpmath.iv 獨立重播</a></div>
+      <div class="conn-card"><span class="k">下一輪</span><a href="../round-v0.14/">第 14 輪 · 雙峰曲率分裂與手性破缺</a></div>
+      <div class="conn-card"><span class="k">輪次進度</span>13 / 15</div>
+    </div>
+    <blockquote class="cite">「目前最準確的描述是:有限寬度 tanh 曲率層,在五參數族中形成數值孤立、但高度病態的極小極大候選。」— 摘自本包主文件第 15 節「結論」。</blockquote>
+  </section>
+
+  <section id="doc-main">
+    <h2 class="doc-h2">第 13 輪核心內容</h2>
+    <p class="doc-meta">十二變數系統定義、五參數候選、四分支等高、參數修正量、分支壓力分布、五參數梯度、四分支控制五參數的機制、Jacobian 孤立性(滿秩但病態)、局部盆地(20/20)、曲率帳本、完整相位審計、判定、限制、第 14 輪方向、結論。</p>
+    <div class="doc" id="doc-main-body"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="doc-audit">
+    <h2 class="doc-h2">第 13 輪 KKT 審計</h2>
+    <p class="doc-meta">候選完整參數與分支數值、壓力、駐定殘差、Jacobian 秩與奇異值列表、局部盆地測試結果的機讀帳本。</p>
+    <div class="doc" id="doc-audit-body"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="doc-handoff">
+    <h2 class="doc-h2">第 14 輪交接:曲率分布越界</h2>
+    <p class="doc-meta">基準尺度、下一輪五項測試方向(雙峰、非對稱、biarc、雙手性、新分支)、新候選必須通過的判準。</p>
+    <div class="doc" id="doc-handoff-body"><p class="loading">載入中…</p></div>
+  </section>
+
+  <section id="files">
+    <h2 class="doc-h2">檔案 · Files</h2>
+    <div id="filelist-out"><p class="loading">載入中…</p></div>
+    <a class="zip-dl" href="../../packages/Moser_Skew_Lab_v0.13.zip" download>下載完整封包 (258.8 KB)</a>
+    <p class="zip-note">sha256 35ea4218bb7396137f226d4b3b8d9ae34b6581306b2df84f28f7defea2f880e4</p>
+  </section>
+
+  <footer class="sitefoot">
+    <p>逐包詳細頁格式沿用 <a href="../round-v0.1/">第 1 輪</a>。<a href="../../">回 Moser 蟲問題</a></p>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../assets/render.js?v=2"></script>
+<script>
+const F = (p) => amralFetchText("./files/" + p);
+
+async function loadDoc(elId, file) {
+  const el = document.getElementById(elId);
+  try {
+    el.innerHTML = amralRenderDoc(await F(file));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+}
+
+async function loadFiles() {
+  const el = document.getElementById("filelist-out");
+  try {
+    const idx = await fetch("./files.json").then((r) => r.json());
+    const groups = { "文件": [], "資料": [], "圖表": [], "程式": [] };
+    for (const f of idx.files) {
+      const ext = f.path.split(".").pop().toLowerCase();
+      if (ext === "md") groups["文件"].push(f);
+      else if (f.path.startsWith("figures/")) groups["圖表"].push(f);
+      else if (f.path.startsWith("data/")) groups["資料"].push(f);
+      else if (ext === "py") groups["程式"].push(f);
+    }
+    const fmt = (b) => b < 1024 ? b + " B" : (b / 1024).toFixed(1) + " KB";
+    el.innerHTML = Object.entries(groups).filter(([, files]) => files.length).map(([label, files]) => `
+      <div class="filegroup">
+        <h3>${label}</h3>
+        <ul class="filelist">
+          ${files.map((f) => `<li><a href="./files/${encodeURIComponent(f.path)}" download>${amralEsc(f.path)}</a><span class="fsize">${fmt(f.size)}</span></li>`).join("")}
+        </ul>
+      </div>`).join("");
+  } catch (e) {
+    el.innerHTML = `<p class="error">檔案清單載入失敗:${e.message}</p>`;
+  }
+}
+
+loadDoc("doc-main-body", "reports/ROUND_13_REPORT.md");
+loadDoc("doc-audit-body", "reports/ROUND_13_KKT_AUDIT.md");
+loadDoc("doc-handoff-body", "reports/ROUND_14_CURVATURE_DISTRIBUTION_HANDOFF.md");
+loadFiles();
+</script>
+</body>
+</html>
