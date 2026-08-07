@@ -1,0 +1,132 @@
+{
+  "id": "rp-state-driven-local-embodied-ai",
+  "schema_version": "0.2",
+  "type": "ai_native_research_lineage",
+  "title": "狀態驅動的本地具身 AI 系列",
+  "title_en": "State-Driven Local Embodied AI",
+  "short_title": "狀態驅動的本地具身AI",
+  "status": "completed",
+  "open_ended": false,
+  "started_at": "2026-08-07",
+  "completed_at": "2026-08-07",
+  "reference_method": "8 篇論文的完整序列，篇序取自系列自身的檔名編號與內文自陳，非事後推斷。",
+  "canonical_route": "/ai/programs/state-driven-local-embodied-ai/",
+  "visibility": "public",
+  "languages": [
+    "zh-Hant"
+  ],
+  "agency": {
+    "initiative": "human",
+    "primary_authorship": "collaborative",
+    "research_direction": "negotiated",
+    "continuation_control": "human"
+  },
+  "contributors": [
+    {
+      "name": "Neo.K",
+      "type": "human",
+      "roles": [
+        "problem_proposer",
+        "continuation_decider",
+        "curator",
+        "co_author"
+      ]
+    },
+    {
+      "name": "Aletheia",
+      "type": "ai",
+      "model": "Aletheia",
+      "roles": [
+        "co_author",
+        "formalizer"
+      ]
+    }
+  ],
+  "foundation_artifacts": [],
+  "applied_artifacts": [],
+  "iterations": [
+    {
+      "sequence": 1,
+      "id": "lm-002048",
+      "title": "01_二白機器人_低算力系統為何能產生強烈智能感",
+      "topic": "二白機器人_低算力系統為何能產生強烈智能感",
+      "iteration_type": "foundation",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 2,
+      "id": "lm-002061",
+      "title": "02_先反應再思考_具身智能的雙時間尺度架構",
+      "topic": "先反應再思考_具身智能的雙時間尺度架構",
+      "iteration_type": "applied",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 3,
+      "id": "lm-002073",
+      "title": "03_大模型不應控制一切_狀態機行為樹與LLM的分工",
+      "topic": "大模型不應控制一切_狀態機行為樹與LLM的分工",
+      "iteration_type": "applied",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 4,
+      "id": "lm-002089",
+      "title": "04_從狀態機到世界狀態機_AI為何不應每輪重新理解世界",
+      "topic": "從狀態機到世界狀態機_AI為何不應每輪重新理解世界",
+      "iteration_type": "applied",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 5,
+      "id": "lm-002100",
+      "title": "05_按需智能_事件驅動多模型路由與稀疏推理",
+      "topic": "按需智能_事件驅動多模型路由與稀疏推理",
+      "iteration_type": "applied",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 6,
+      "id": "lm-002118",
+      "title": "06_迷你具身智能的本地計算核心_Jetson_x86_ARM與外部主腦",
+      "topic": "迷你具身智能的本地計算核心_Jetson_x86_ARM與外部主腦",
+      "iteration_type": "applied",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 7,
+      "id": "lm-002127",
+      "title": "07_本地大語言模型手機_從AI功能手機到個人AI_Runtime",
+      "topic": "本地大語言模型手機_從AI功能手機到個人AI_Runtime",
+      "iteration_type": "applied",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 8,
+      "id": "lm-002133",
+      "title": "08_可攜式AI主腦_手機眼鏡機器人與電腦的跨身體智能",
+      "topic": "可攜式AI主腦_手機眼鏡機器人與電腦的跨身體智能",
+      "iteration_type": "synthesis",
+      "is_checkpoint": true
+    }
+  ],
+  "current_state": {
+    "sequence": 8,
+    "artifact_id": "lm-002133",
+    "status": "completed",
+    "phase_status": "closed_by_design",
+    "declaration": "以 2026 年真實消費硬體與一個名為「二白」的機器人案例，重新設計具身 AI 的狀態機、安全優先序（硬安全 > 即時穩定控制 > 局部技能 > 具身規劃 > 大型模型意圖）與可攜式 AI 主腦架構。「Authority is assigned by consequence, not intelligence.」",
+    "stop_reason": "第八篇版本升為 v1.0（其餘為 v0.1），並以統一公式收束全系列，明確結案。",
+    "unresolved_gaps": [],
+    "next_actions": [],
+    "handoff_required_tasks": [],
+    "stewardship": "與既有已發表的 lm-001620（多模型具身智能體的最小完備分層架構）、lm-001627、lm-001184 在核心論點上有相當程度的重疊但未互相引用，判定為同一作者對相近題材的獨立成文，非重複，發布時建議標註 see-also 關係供讀者自行比對。"
+  },
+  "integrity": {
+    "files_seen": 8,
+    "files_imported": 8,
+    "missing_sequences": [],
+    "missing_note": "",
+    "duplicate_resolved": []
+  }
+}

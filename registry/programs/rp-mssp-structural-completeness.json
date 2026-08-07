@@ -1,0 +1,173 @@
+{
+  "id": "rp-mssp-structural-completeness",
+  "schema_version": "0.2",
+  "type": "ai_native_research_lineage",
+  "title": "表觀完好系統系列：從靜態到動態 MSSP",
+  "title_en": "Apparent Structural Completeness: From Static to Dynamic MSSP",
+  "short_title": "表觀完好系統系列",
+  "status": "completed",
+  "open_ended": false,
+  "started_at": "2026-08-07",
+  "completed_at": "2026-08-07",
+  "reference_method": "12 篇論文的完整序列，篇序取自系列自身的檔名編號與內文自陳，非事後推斷。",
+  "canonical_route": "/ai/programs/mssp-structural-completeness/",
+  "visibility": "public",
+  "languages": [
+    "zh-Hant"
+  ],
+  "agency": {
+    "initiative": "human",
+    "primary_authorship": "collaborative",
+    "research_direction": "negotiated",
+    "continuation_control": "human"
+  },
+  "contributors": [
+    {
+      "name": "Neo.K",
+      "type": "human",
+      "roles": [
+        "problem_proposer",
+        "continuation_decider",
+        "curator",
+        "co_author"
+      ]
+    },
+    {
+      "name": "Aletheia",
+      "type": "ai",
+      "model": "Aletheia",
+      "roles": [
+        "co_author",
+        "formalizer"
+      ]
+    }
+  ],
+  "foundation_artifacts": [
+    {
+      "id": "lm-000100",
+      "note": "MSSP：母集與子集範式（既有正典來源）"
+    },
+    {
+      "id": "lm-000020",
+      "note": "MSSP 架構的記憶體管理範式（既有正典來源）"
+    }
+  ],
+  "applied_artifacts": [],
+  "iterations": [
+    {
+      "sequence": 1,
+      "id": "lm-002049",
+      "title": "01_功能正常不代表結構正常_軟體表觀完好命題",
+      "topic": "軟體表觀完好命題",
+      "iteration_type": "foundation",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 2,
+      "id": "lm-002070",
+      "title": "02_補償性完好_為什麼不完整的軟體仍然可以正常運作",
+      "topic": "為什麼不完整的軟體仍然可以正常運作",
+      "iteration_type": "applied",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 3,
+      "id": "lm-002079",
+      "title": "03_真正的系統在哪裡_宣告架構與有效架構的分離",
+      "topic": "宣告架構與有效架構的分離",
+      "iteration_type": "applied",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 4,
+      "id": "lm-002087",
+      "title": "04_屎山為什麼沒有死_Big_Ball_of_Mud作為生存架構",
+      "topic": "Big_Ball_of_Mud作為生存架構",
+      "iteration_type": "applied",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 5,
+      "id": "lm-002099",
+      "title": "05_技術債架構侵蝕與歷史殘留_三種不同的結構負擔",
+      "topic": "三種不同的結構負擔",
+      "iteration_type": "applied",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 6,
+      "id": "lm-002109",
+      "title": "06_今天的Workaround明天的Architecture_補償凝固命題",
+      "topic": "補償凝固命題",
+      "iteration_type": "applied",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 7,
+      "id": "lm-002121",
+      "title": "07_修好真的比較簡單嗎_複雜度轉移與重構悖論",
+      "topic": "複雜度轉移與重構悖論",
+      "iteration_type": "applied",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 8,
+      "id": "lm-002137",
+      "title": "08_成功軟體為什麼越活越複雜_軟體演化的結構動力學",
+      "topic": "軟體演化的結構動力學",
+      "iteration_type": "applied",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 9,
+      "id": "lm-002148",
+      "title": "09_程式語言也是歷史妥協體嗎_從理想語言到生態相容性",
+      "topic": "從理想語言到生態相容性",
+      "iteration_type": "applied",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 10,
+      "id": "lm-002151",
+      "title": "10_AI寫得越快屎山會長得越快嗎_AI原生開發的新技術債",
+      "topic": "AI原生開發的新技術債",
+      "iteration_type": "applied",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 11,
+      "id": "lm-002159",
+      "title": "11_從靜態MSSP到動態MSSP_讓架構角色成為可觀察狀態",
+      "topic": "讓架構角色成為可觀察狀態",
+      "iteration_type": "applied",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 12,
+      "id": "lm-002166",
+      "title": "12_軟體結構動力學_補償負載架構健康與智能治理",
+      "topic": "補償負載架構健康與智能治理",
+      "iteration_type": "synthesis",
+      "is_checkpoint": true
+    }
+  ],
+  "current_state": {
+    "sequence": 12,
+    "artifact_id": "lm-002166",
+    "status": "completed",
+    "phase_status": "closed_by_design",
+    "declaration": "功能正常不代表結構正常；表觀完好是常態而非例外。本系列將既有 MSSP（母集與子集範式）從靜態分類升級為動態、可觀察的架構角色狀態，並提出補償負載、架構健康與智能治理作為軟體結構動力學的核心量測。",
+    "stop_reason": "12/12 完成，00 索引確認全系列已封頂。",
+    "unresolved_gaps": [],
+    "next_actions": [],
+    "handoff_required_tasks": [],
+    "stewardship": "篇序 1–12 取自 00_系列索引.md 自身的完成度聲明（12/12），非本次推斷。foundation_artifacts 指向既有 MSSP 論文（lm-000100 母集子集範式、lm-000020 MSSP 架構記憶體管理），本系列在多篇（尤其第 11 篇）內文明確自陳是在既有 MSSP 上做靜態→動態的形式化延伸，而非重新定義或取代。"
+  },
+  "integrity": {
+    "files_seen": 12,
+    "files_imported": 12,
+    "missing_sequences": [],
+    "missing_note": "",
+    "duplicate_resolved": []
+  }
+}

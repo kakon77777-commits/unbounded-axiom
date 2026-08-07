@@ -1,0 +1,133 @@
+{
+  "id": "rp-rabcl",
+  "schema_version": "0.2",
+  "type": "ai_native_research_lineage",
+  "title": "遞歸自適應積木組合語言（RABCL）系列",
+  "title_en": "Recursive Adaptive Block Composition Language",
+  "short_title": "RABCL",
+  "status": "completed",
+  "open_ended": false,
+  "started_at": "2026-08-07",
+  "completed_at": "2026-08-07",
+  "reference_method": "7 篇論文的完整序列，篇序取自系列自身的檔名編號與內文自陳，非事後推斷。",
+  "canonical_route": "/ai/programs/rabcl/",
+  "visibility": "public",
+  "languages": [
+    "zh-Hant"
+  ],
+  "agency": {
+    "initiative": "human",
+    "primary_authorship": "collaborative",
+    "research_direction": "negotiated",
+    "continuation_control": "human"
+  },
+  "contributors": [
+    {
+      "name": "Neo.K",
+      "type": "human",
+      "roles": [
+        "problem_proposer",
+        "continuation_decider",
+        "curator",
+        "co_author"
+      ]
+    },
+    {
+      "name": "Aletheia",
+      "type": "ai",
+      "model": "Aletheia",
+      "roles": [
+        "co_author",
+        "formalizer"
+      ]
+    }
+  ],
+  "foundation_artifacts": [
+    {
+      "id": "lm-001893",
+      "note": "AI 自適應封裝與遞歸演化計算論系列（既有九篇，RABCL 第 06 篇直接應用其演化模型）"
+    },
+    {
+      "id": "lm-000100",
+      "note": "MSSP：母集與子集範式（背景引用）"
+    }
+  ],
+  "applied_artifacts": [],
+  "iterations": [
+    {
+      "sequence": 1,
+      "id": "lm-002059",
+      "title": "01_連線即封裝_從工作流到高階語言基元的總命題_v0.1",
+      "topic": "連線即封裝_從工作流到高階語言基元的總命題_v0.1",
+      "iteration_type": "foundation",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 2,
+      "id": "lm-002064",
+      "title": "02_封裝靜止屏障_工作流連線後為何必須先不動_v0.1",
+      "topic": "封裝靜止屏障_工作流連線後為何必須先不動_v0.1",
+      "iteration_type": "applied",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 3,
+      "id": "lm-002074",
+      "title": "03_工作流如何成為函數_邊界端口契約狀態與副作用_v0.1",
+      "topic": "工作流如何成為函數_邊界端口契約狀態與副作用_v0.1",
+      "iteration_type": "applied",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 4,
+      "id": "lm-002095",
+      "title": "04_遞歸閉包積木組合語言_折疊展開引用與再封裝_v0.1",
+      "topic": "遞歸閉包積木組合語言_折疊展開引用與再封裝_v0.1",
+      "iteration_type": "applied",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 5,
+      "id": "lm-002103",
+      "title": "05_權威結構與執行派發_格子語言CAIR_MSSP與RDR的接合_v0.1",
+      "topic": "權威結構與執行派發_格子語言CAIR_MSSP與RDR的接合_v0.1",
+      "iteration_type": "applied",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 6,
+      "id": "lm-002115",
+      "title": "06_演化積木_AEREC驅動的版本族證書回滾與停止_v0.1",
+      "topic": "演化積木_AEREC驅動的版本族證書回滾與停止_v0.1",
+      "iteration_type": "applied",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 7,
+      "id": "lm-002126",
+      "title": "07_從畫布到自編譯工作台_RABCL統合總論與MVP前置邊界_v0.1",
+      "topic": "從畫布到自編譯工作台_RABCL統合總論與MVP前置邊界_v0.1",
+      "iteration_type": "synthesis",
+      "is_checkpoint": true
+    }
+  ],
+  "current_state": {
+    "sequence": 7,
+    "artifact_id": "lm-002126",
+    "status": "completed",
+    "phase_status": "closed_by_design",
+    "declaration": "工作流不應該只有一種凍結的版本；RABCL 將既有 AEREC（AI 自適應封裝與遞歸演化計算論）的跨代演化模型具體應用到工作流積木的折疊、展開、引用與再封裝上。",
+    "stop_reason": "第七篇「0. 系列封頂聲明」列出全部 7 篇標題並宣告封頂。",
+    "unresolved_gaps": [],
+    "next_actions": [],
+    "handoff_required_tasks": [],
+    "stewardship": "foundation_artifacts 指向既有已發表的 AEREC 九篇系列（以 lm-001893 為代表）與 MSSP 母集子集範式（lm-000100）——RABCL 第 06 篇明確將 AEREC 的演化模型應用於工作流版本族，屬正當延伸引用而非重複。"
+  },
+  "integrity": {
+    "files_seen": 7,
+    "files_imported": 7,
+    "missing_sequences": [],
+    "missing_note": "",
+    "duplicate_resolved": []
+  }
+}
