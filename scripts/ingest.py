@@ -7,7 +7,7 @@ non-blocked files to ingest/03-after (organized by inferred YYYY/YYYY-MM). NEVER
 writes to content/papers/ or the registry — only publish_ingested.py may promote
 to canon.
 
-Run: python scripts/ingest.py [--source "Human&Ai/01-before"]
+Run: python scripts/ingest.py [--source "Human&Ai/01-before"] [--ctcl-instant-file f.json]
 
 --source takes a path relative to ingest/ (or an absolute path) so alternate
 intake folders (e.g. authorship-split Human&Ai/ vs AI/) can be staged without
@@ -15,6 +15,15 @@ moving files into the default ingest/01-before/. Run each source's full 3-stage
 flow (stage1 -> review -> publish) to completion before starting the next one —
 id_candidate assignment reads the registry fresh each run, so two un-published
 sources staged back-to-back would propose colliding candidate ids.
+
+--ctcl-instant-file points at a JSON file holding one verified CTCL instant
+({instant_id, rfc3339, source, signature_alg} — see scripts/registry.py's
+_ctcl_dates() for the exact shape). Per Neo's 2026-08-07 policy: every paper
+published before that date keeps its git-first-add date forever; every paper
+staged from here on gets this run's CTCL instant instead (one instant per
+ingest run, same as build_id is one id per build — not one CTCL call per
+file). Omit it and this script behaves exactly as before (git-first-add at
+build time) — CTCL only ever adds dates, never required to run.
 """
 import argparse
 import hashlib
@@ -45,6 +54,15 @@ def _resolve_source(source: str | None) -> Path:
     return p if p.is_absolute() else INGEST / p
 
 
+def _load_ctcl_instant(path: str | None) -> dict | None:
+    if not path:
+        return None
+    raw = json.loads(Path(path).read_text(encoding="utf-8"))
+    return {"instant_id": raw["instant_id"], "rfc3339": raw["rfc3339"],
+            "source": raw["source"], "signature_alg": raw["signature_alg"],
+            "date": raw["rfc3339"][:10]}
+
+
 def _hash(p):
     h = hashlib.sha256()
     h.update(p.read_bytes())
@@ -64,10 +82,12 @@ def _sub(month):
     return f"{month.split('-')[0]}/{month}" if month else "undated"
 
 
-def main(source: str | None = None):
+def main(source: str | None = None, ctcl_instant_file: str | None = None):
     BEFORE = _resolve_source(source)
     for d in (BEFORE, STAGING, AFTER, REPORTS):
         d.mkdir(parents=True, exist_ok=True)
+    ctcl_instant = _load_ctcl_instant(ctcl_instant_file)
+    ctcl_new = {}
     reg = load_registry()
     known_hashes = {it.get("hash") for it in reg.get("items", [])}
     known_titles = {it.get("title") for it in reg.get("items", [])}
@@ -92,6 +112,8 @@ def main(source: str | None = None):
         dup = (h in known_hashes) or (title in known_titles)
         month, conf = _infer_date(f.name)
         needs_review = dup or conf == "unknown"
+        if ctcl_instant:
+            ctcl_new[f.name] = ctcl_instant
         cand = next_candidate()
         unit = STAGING / cand
         unit.mkdir(parents=True, exist_ok=True)
@@ -133,6 +155,13 @@ def main(source: str | None = None):
                 shutil.copy2(f, dest / f.name)
             ready.append(meta)
 
+    if ctcl_new:
+        ctcl_path = ROOT / "registry" / "ctcl-dates.json"
+        existing = json.loads(ctcl_path.read_text(encoding="utf-8")) if ctcl_path.exists() else {}
+        existing.update(ctcl_new)
+        ctcl_path.write_text(json.dumps(existing, ensure_ascii=False, indent=2, sort_keys=True),
+                              encoding="utf-8")
+
     now = datetime.now(timezone.utc)
     ts = now.strftime("%Y-%m-%dT%H%M%SZ")
     iso = now.strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -159,4 +188,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--source", default=None,
                          help='Path relative to ingest/ (or absolute) to stage instead of 01-before/.')
-    main(parser.parse_args().source)
+    parser.add_argument("--ctcl-instant-file", default=None,
+                         help="JSON file with one verified CTCL instant, stamped onto every "
+                              "file staged this run (see module docstring).")
+    args = parser.parse_args()
+    main(args.source, args.ctcl_instant_file)

@@ -9,7 +9,10 @@ title/slug changes and rebuilds; new files get the next free id.
 Dates use the git first-add month as the *publication / upload date* (an
 objective public date), which per project policy is distinct from the author's
 in-text writing date. Untracked files (no git history) get date_confidence
-'unknown'.
+'unknown'. Papers ingested from 2026-08-07 onward (Neo's CTCL-as-base-timestamp
+policy) get a verified CTCL instant instead, via registry/ctcl-dates.json —
+see _ctcl_dates(). Everything published before that date keeps git-first-add
+forever; the two sources never mix for the same paper.
 """
 import hashlib
 import json
@@ -45,6 +48,23 @@ def _git_first_add_dates():
             if base not in seen:
                 seen[base] = cur
     return seen
+
+
+def _ctcl_dates():
+    """basename -> {'instant_id', 'rfc3339', 'source', 'signature_alg', 'date'}, from
+    registry/ctcl-dates.json. Populated by ingest.py when run with --ctcl-instant-file
+    (Neo's 2026-08-07 policy: every paper ingested from that date on is dated by a
+    verified, Ed25519-signed CTCL instant instead of git-first-add). Absent entirely for
+    any paper published before that switch — those keep git-first-add, forever, by
+    design (mirrors _ai_authored_set() / _reserved_companion_ids(): an optional sidecar,
+    {} if missing, never required)."""
+    p = REGISTRY_DIR / "ctcl-dates.json"
+    if p.exists():
+        try:
+            return json.loads(p.read_text(encoding="utf-8"))
+        except Exception:
+            pass
+    return {}
 
 
 def _hash_file(p) -> str:
@@ -114,6 +134,7 @@ def build_registry(entries) -> dict:
         return f"lm-{n:06d}"
 
     dates = _git_first_add_dates()  # basename -> 'YYYY-MM-DD'
+    ctcl_dates = _ctcl_dates()      # basename -> CTCL instant record (CTCL-era papers only)
     ai_set = _ai_authored_set()     # ids/basenames that are AI-autonomous (default: none)
 
     cur = []
@@ -134,7 +155,8 @@ def build_registry(entries) -> dict:
     items = []
     for base, rel, slug, display, ext, src in cur:
         eid = by_base[base]["id"]
-        d = dates.get(base)                    # git first-add 'YYYY-MM-DD' or None
+        ctcl = ctcl_dates.get(base)             # CTCL instant record, if this paper is CTCL-era
+        d = ctcl["date"] if ctcl else dates.get(base)  # 'YYYY-MM-DD' or None
         mp = _month_from_path(rel)             # folder-path month 'YYYY-MM' (authoritative §5)
         if mp:
             year, month, conf = int(mp[:4]), mp, "explicit"
@@ -142,6 +164,9 @@ def build_registry(entries) -> dict:
             year, month, conf = int(d[:4]), d[:7], "explicit"
         else:
             year, month, conf = None, None, "unknown"
+        basis = (f"ctcl-verified-instant ({ctcl['instant_id']}, {ctcl['signature_alg']}-signed, "
+                  f"{ctcl['rfc3339']})" if ctcl else
+                 "git-first-add (publication/upload date; not the author's in-text writing date)")
         items.append({
             "id": eid,
             "title": display,
@@ -154,7 +179,7 @@ def build_registry(entries) -> dict:
             "year": year,
             "month": month,
             "date_confidence": conf,
-            "date_basis": "git-first-add (publication/upload date; not the author's in-text writing date)",
+            "date_basis": basis,
             "canonical_url": f"/p/{eid}/",
             "raw_url": f"/raw/{eid}.{ext}",
             "api_url": f"/api/papers/{eid}.json",
