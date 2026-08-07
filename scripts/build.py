@@ -175,8 +175,8 @@ def main() -> None:
           f"({embedding_stats['embedded_now']} newly embedded this run) -> /ai/semantic-vectors.bin "
           f"({embedding_stats['bytes']/1024:.0f} KB)")
     print(f"[diag] semantic chunks: {chunk_stats['total_chunks']} chunks / {chunk_stats['docs_with_chunks']} docs "
-          f"({chunk_stats['embedded_now']} newly embedded this run) -> /ai/semantic-chunks.bin "
-          f"({chunk_stats['bytes']/1024:.0f} KB)")
+          f"({chunk_stats['embedded_now']} newly embedded this run) -> {chunk_stats['shard_count']} shard(s) "
+          f"({chunk_stats['bytes']/1024:.0f} KB total)")
     print(f"[diag] quality report: {'copied -> /ai/quality-report.json' if quality_report_copied else 'none yet (no test run has happened)'}")
     if graph_stats["mapped"]:
         print(f"[diag] graph: /ai/graph.json — {graph_stats['mapped']} nodes / {graph_stats['edges']} verified edges "

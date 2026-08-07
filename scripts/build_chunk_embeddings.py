@@ -250,21 +250,42 @@ def build_chunk_embeddings(registry, build_id=None, force: bool = False) -> dict
     # name a real field, never just say "AI thinks so" — showing "chunk N of
     # doc X matched" without naming what chunk N actually IS would be exactly
     # that opaque non-answer).
-    dist_packed = bytearray()
+    #
+    # Sharded, not one file: Cloudflare Workers caps a single static asset at
+    # 25 MiB, and this corpus crossed that (26.4 MiB) the day it passed ~2300
+    # papers / 13.5k chunks -- the first hard scaling wall this pipeline has
+    # hit. Splitting into fixed-size-budget shards (well under the cap, so
+    # the NEXT growth spurt doesn't immediately blow it again) rather than a
+    # fixed shard COUNT means this doesn't need touching again until the
+    # corpus roughly triples from here. The client fetches every shard and
+    # concatenates them back into one buffer before anything downstream of
+    # the fetch touches it, so scoreCorpus/aggregation logic is unchanged.
     doc_ids = []
     headings = []
     for cid in final_ids:
-        dist_packed += struct.pack(f"<{DIM}f", *vectors[cid])
         doc_ids.append(all_chunks[cid]["doc_id"])
         headings.append(all_chunks[cid]["heading"])
     ai_dir = DIST_DIR / "ai"
     ai_dir.mkdir(parents=True, exist_ok=True)
-    (ai_dir / "semantic-chunks.bin").write_bytes(bytes(dist_packed))
+    bytes_per_chunk = DIM * 4
+    max_shard_bytes = 18 * 1024 * 1024  # comfortably under the 25 MiB cap
+    chunks_per_shard = max(1, max_shard_bytes // bytes_per_chunk)
+    shard_count = max(1, -(-len(final_ids) // chunks_per_shard))  # ceil div
+    for old in ai_dir.glob("semantic-chunks-*.bin"):
+        old.unlink()
+    for shard_idx in range(shard_count):
+        shard_ids = final_ids[shard_idx * chunks_per_shard: (shard_idx + 1) * chunks_per_shard]
+        shard_packed = bytearray()
+        for cid in shard_ids:
+            shard_packed += struct.pack(f"<{DIM}f", *vectors[cid])
+        (ai_dir / f"semantic-chunks-{shard_idx}.bin").write_bytes(bytes(shard_packed))
     (ai_dir / "semantic-chunks-meta.json").write_text(json.dumps({
-        "schema_version": "0.1", "generated_at": _now(), "build_id": build_id,
+        "schema_version": "0.2", "generated_at": _now(), "build_id": build_id,
         "model": ONNX_MODEL_NAME, "dim": DIM, "query_instruction": QUERY_INSTRUCTION,
         "count": len(final_ids), "docs_covered": len(set(doc_ids)),
         "max_chunks_per_doc": MAX_CHUNKS_PER_DOC,
+        "shard_count": shard_count, "chunks_per_shard": chunks_per_shard,
+        "shard_url_pattern": "/ai/semantic-chunks-{n}.bin",
         "doc_ids": doc_ids,
         "headings": headings,
         "note": "Phase 5 chunk-level vectors (§17.2/§17.3). doc_ids[i]/"
@@ -274,7 +295,12 @@ def build_chunk_embeddings(registry, build_id=None, force: bool = False) -> dict
                 "per-document score via max(chunk similarities) per §17.3's "
                 "MVP formula. Complementary to semantic-vectors.bin (whole-"
                 "document title+summary+headings): this set captures WHICH "
-                "passage matched, not just that some part of the doc did.",
+                "passage matched, not just that some part of the doc did. "
+                "Vectors are split across shard_count files "
+                "(semantic-chunks-0.bin, -1.bin, ...) in chunk order -- "
+                "concatenate all shards in order to reproduce the single "
+                "flat vector array; doc_ids/headings index into that "
+                "concatenated array, not any one shard.",
     }, ensure_ascii=False), encoding="utf-8")
 
     return {
@@ -282,7 +308,8 @@ def build_chunk_embeddings(registry, build_id=None, force: bool = False) -> dict
         "docs_with_chunks": len(set(all_chunks[cid]["doc_id"] for cid in all_chunks)),
         "total_chunks": len(final_ids),
         "embedded_now": len(to_embed),
-        "bytes": len(dist_packed),
+        "bytes": len(final_ids) * bytes_per_chunk,
+        "shard_count": shard_count,
     }
 
 

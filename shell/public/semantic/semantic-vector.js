@@ -103,11 +103,30 @@ async function loadVectors() {
 // document list) to fold a chunk hit back into the doc-index-keyed scores
 // Map scoreCorpus expects; this module has no document list of its own.
 async function loadChunkVectors() {
-  const [metaRes, vecRes] = await Promise.all([fetch(CHUNKS_META_URL), fetch(CHUNKS_URL)]);
-  if (!metaRes.ok || !vecRes.ok) throw new Error("semantic-chunks fetch failed");
+  const metaRes = await fetch(CHUNKS_META_URL);
+  if (!metaRes.ok) throw new Error("semantic-chunks fetch failed");
   const meta = await metaRes.json();
-  const buf = await vecRes.arrayBuffer();
-  const flat = new Float32Array(buf);
+  // Vectors are split across meta.shard_count files (Cloudflare's 25 MiB
+  // per-asset cap forced this once the corpus passed ~2300 papers) --
+  // fetch every shard in parallel and concatenate in order, so everything
+  // below this point sees exactly the same single flat buffer it always did.
+  const shardCount = meta.shard_count || 1;
+  const shardUrls = shardCount > 1
+    ? Array.from({ length: shardCount }, (_, i) => `/ai/semantic-chunks-${i}.bin`)
+    : [CHUNKS_URL];
+  const shardBufs = await Promise.all(shardUrls.map(async (u) => {
+    const r = await fetch(u);
+    if (!r.ok) throw new Error(`semantic-chunks shard fetch failed: ${u}`);
+    return r.arrayBuffer();
+  }));
+  const totalBytes = shardBufs.reduce((sum, b) => sum + b.byteLength, 0);
+  const merged = new Uint8Array(totalBytes);
+  let offset = 0;
+  for (const b of shardBufs) {
+    merged.set(new Uint8Array(b), offset);
+    offset += b.byteLength;
+  }
+  const flat = new Float32Array(merged.buffer);
   const dim = meta.dim;
   const count = flat.length / dim;
   if (!Number.isInteger(count) || meta.doc_ids.length !== count) {

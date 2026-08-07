@@ -83,7 +83,8 @@ def main(source: str | None = None):
 
     files = sorted(p for p in BEFORE.rglob("*")
                    if p.is_file() and p.suffix.lower() in FIRST_STAGE_EXTS
-                   and p.suffix.lower() in SUPPORTED_EXTS)
+                   and p.suffix.lower() in SUPPORTED_EXTS
+                   and p.name.lower() != "readme.md")
     ready, review = [], []
     for f in files:
         title, ext = f.stem, f.suffix.lower().lstrip(".")
