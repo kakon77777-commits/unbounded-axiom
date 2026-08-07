@@ -14,7 +14,10 @@ SUPPORTED_EXTS = {".docx", ".md", ".pdf", ".tex", ".ipynb", ".py", ".lean", ".ts
 SITE_TITLE   = "EVEMISSLAB Logic Matrix"
 SITE_VERSION = "V2.1"
 SITE_TAGLINE = "EveMissLab Theoretical Corpus Access Point"
-SITE_URL     = "https://logic.evemisslab.com"   # ← 完美鎖定主權網域
+SITE_URL     = "https://unboundedaxiom.org"   # ← 主權網域。2026-08-07 從
+# logic.evemisslab.com 遷來：Unbounded Axiom 是傘狀站，Logic Matrix 是它
+# 底下的主要區域，所以語料庫保留根目錄，未來的區域各自拿自己的前綴。
+# 舊網域永久 301，路徑一個字不動 —— 它承載 2051 個已被引用的網址。
 SITE_AUTHOR  = "Neo.K (許筌崴)"
 SITE_ORG     = "EveMissLab / 一言諾科技有限公司"
 

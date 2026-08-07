@@ -28,7 +28,7 @@ ROOT = Path(__file__).resolve().parent.parent
 BUILD_ID_PATH = ROOT / "dist" / "ai" / "build-id.json"
 BEACON_URL = "https://beacon.evemiss.com/api/v1/events"
 SITE_ID = "logic_evemisslab"
-SITE_URL = "https://logic.evemisslab.com/"
+SITE_URL = "https://unboundedaxiom.org/"
 
 
 def main() -> int:

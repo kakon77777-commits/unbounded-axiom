@@ -29,10 +29,50 @@ let LEGACY_MAP = null;
 // module-scope cache: retired path ("/p/{id}/" or "/raw/{id}.{ext}") -> parent target
 let COMPANION_REDIR = null;
 
+// The corpus answers on one hostname. Everything else 301s to it in ONE hop,
+// path and query untouched.
+//
+// One hop matters: with three hostnames it is tempting to chain
+// logic.evemisslab.com -> unboundedaxiom.com -> unboundedaxiom.org, and every
+// extra hop is a fetch a crawler may not make and a little signal lost. They
+// all point at the canonical directly instead.
+//
+// Path-for-path matters more. logic.evemisslab.com carries 2051 URLs that AI
+// systems have already ingested and cited; sending them all to "/" would throw
+// away every one of those citations. /p/lm-002045/ is the same path on the new
+// host, so the redirect is a host swap and nothing else.
+//
+// workers.dev is deliberately NOT redirected: it is the deploy target, and
+// bouncing it would make a smoke test against a fresh deployment measure the
+// old host instead of the new build.
+const CANONICAL_HOST = "unboundedaxiom.org";
+const NON_CANONICAL = new Set([
+  "logic.evemisslab.com",
+  "www.logic.evemisslab.com",
+  "unboundedaxiom.com",
+  "www.unboundedaxiom.com",
+  "www.unboundedaxiom.org",
+]);
+
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
     const p = url.pathname;
+
+    if (NON_CANONICAL.has(url.hostname)) {
+      const target = new URL(url);
+      target.hostname = CANONICAL_HOST;
+      target.protocol = "https:";
+      target.port = "";
+      return new Response(null, {
+        status: 301,
+        headers: {
+          Location: target.toString(),
+          "Cache-Control": "public, max-age=3600",
+        },
+      });
+    }
+
     try {
       // Retired-id 301s: a paper demoted to a companion attachment. Its old /p/{id}/
       // (no static asset -> Worker runs) and /raw/{id}.{ext} (run_worker_first) both

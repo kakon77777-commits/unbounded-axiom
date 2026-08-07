@@ -10,7 +10,10 @@ const { id } = Astro.params;
 const program = getProgram(`rp-${id}`);
 if (!program) throw new Error(`Program rp-${id} not found`);
 
-const ORIGIN = 'https://logic.evemisslab.com';
+// from astro.config.mjs, so the domain lives in one place. A literal here
+// is how the 2026-08-07 move left 2074 pages on the old host while the
+// sitemap and manifest had already moved.
+const ORIGIN = Astro.site ? Astro.site.origin : 'https://unboundedaxiom.org';
 const canonical = `${ORIGIN}${program.canonical_route}`;
 
 const roleLabel: Record<string, string> = {

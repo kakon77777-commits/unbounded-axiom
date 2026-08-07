@@ -2,6 +2,16 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "unbounded-axiom",
   "main": "src/worker.js",
+  // Every hostname is listed here, INCLUDING the old one. wrangler treats this
+  // block as the source of truth on deploy, so a domain attached in the
+  // dashboard but missing here would be detached — and logic.evemisslab.com is
+  // exactly the domain that must keep answering, because it is what 2051
+  // already-cited URLs resolve through. The Worker 301s the non-canonical ones.
+  "routes": [
+    { "pattern": "unboundedaxiom.org", "custom_domain": true },
+    { "pattern": "unboundedaxiom.com", "custom_domain": true },
+    { "pattern": "logic.evemisslab.com", "custom_domain": true }
+  ],
   "compatibility_date": "2026-04-23",
   "observability": {
     "enabled": true
@@ -9,12 +19,13 @@
   "assets": {
     "directory": "dist",
     "binding": "ASSETS",
-    "run_worker_first": [
-      "/raw/*",
-      "/ai/*",
-      "/media/*",
-      "/papers-metadata.json"
-    ]
+    // true, not a path list. Host canonicalisation is a HOST concern, and a
+    // path list cannot express it: with the list above, a request to the old
+    // domain for /p/lm-002045/ was answered straight from ASSETS and the Worker
+    // never ran, so the 301 fired for /ai/* and nothing else. The Worker's
+    // general path already ends in env.ASSETS.fetch(request), so running it
+    // first costs one function call before the same asset is served.
+    "run_worker_first": true
   },
   "compatibility_flags": [
     "nodejs_compat"

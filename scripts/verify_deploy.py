@@ -20,7 +20,7 @@ project) means the deploy is NOT actually finished yet, regardless of what
 wrangler printed. Exits non-zero in that case — treat that as "do not tell
 Neo this deploy is done."
 
-Usage: python scripts/verify_deploy.py [--base-url https://logic.evemisslab.com]
+Usage: python scripts/verify_deploy.py [--base-url https://unboundedaxiom.org]
                                         [--retries 5] [--delay 5]
 """
 import argparse
@@ -175,7 +175,7 @@ def one_pass(base_url: str, truth: dict) -> list[tuple[str, bool, str]]:
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--base-url", default="https://logic.evemisslab.com")
+    ap.add_argument("--base-url", default="https://unboundedaxiom.org")
     ap.add_argument("--retries", type=int, default=5)
     ap.add_argument("--delay", type=float, default=5.0)
     args = ap.parse_args()

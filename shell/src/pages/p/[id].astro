@@ -27,7 +27,10 @@ const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replac
 const body =
   ext === 'md' ? (marked.parse(raw, { async: false }) as string) : `<pre><code>${esc(raw)}</code></pre>`;
 
-const ORIGIN = 'https://logic.evemisslab.com';
+// from astro.config.mjs, so the domain lives in one place. A literal here
+// is how the 2026-08-07 move left 2074 pages on the old host while the
+// sitemap and manifest had already moved.
+const ORIGIN = Astro.site ? Astro.site.origin : 'https://unboundedaxiom.org';
 const canonical = `${ORIGIN}${paper.canonical_url}`;
 const MIME: Record<string, string> = {
   md: 'text/markdown', py: 'text/x-python', lean: 'text/x-lean', ts: 'text/typescript',

@@ -74,7 +74,10 @@ function dayLabel(d: string): string {
 
 const authorLabel: Record<string, string> = { collaborative: '人機協力', ai_autonomous: 'AI 自主' };
 
-const ORIGIN = 'https://logic.evemisslab.com';
+// from astro.config.mjs, so the domain lives in one place. A literal here
+// is how the 2026-08-07 move left 2074 pages on the old host while the
+// sitemap and manifest had already moved.
+const ORIGIN = Astro.site ? Astro.site.origin : 'https://unboundedaxiom.org';
 const canonical = `${ORIGIN}/timeline/${year}/${fullMonth.slice(5, 7)}/`;
 const jsonld = {
   '@context': 'https://schema.org',
