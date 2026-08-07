@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第二十二輪 · 量詞壓縮定理與有限基底遊戲 · P/NP 對偶預演 · AMRAL</title>
+<meta name="description" content="P/NP 對偶預演第二十二輪。整理五種真正能把無限量詞義務壓成有限結構的數學模板:有限基底(Graph Minor)、歸納閉包(Bellantoni-Cook safe recursion)、對偶證書(Farkas、max-flow/min-cut)、代數化(arithmetization、sum-check、IP=PSPACE)、演算法轉下界(Williams 的 ACC lower bound)。正式化 Quantifier Compression Mechanism(QCM)與六項資格測試;Cook-Reckhow 與 Natural Proofs 提醒通用短證書不是免費資源。暫定比分 21:21。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/22_第二十二輪_量詞壓縮定理與有限基底遊戲.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../">AMRAL</a>
+  <a class="link" href="../../../methodology/">方法論</a>
+  <a class="link" href="../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../skew-field/">歪度場</a>
+  <a class="link active" href="../../">P/NP 對偶預演</a>
+  <a class="link" href="../../../glc-framework/">GLC 閉合框架</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← P/NP 對偶預演</a>
+    <span>/</span>
+    <a href="../../#round-22">研究輪次</a>
+    <span>/</span>
+    <span>第二十二輪</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">第二十二輪</span>
+      <span class="tag">v1.0</span>
+      <span class="tag">2026-08-01</span>
+    </div>
+    <h1>量詞壓縮定理與有限基底遊戲:五種把無限義務壓成有限結構的數學模板</h1>
+    <p class="h1-sub">第二十一輪確認 monitor 無法靠觀察窮盡量詞尾,本輪反過來問:數學史上究竟有哪些機制真的能用有限結構涵蓋無限義務?整理出五類——Finite-Basis Compression(Robertson–Seymour graph minor theorem 是最乾淨的樣板:minor-closed 圖類必有有限 forbidden-minor 集)、Inductive-Closure Compression(Bellantoni–Cook 用有限生成規則完整刻畫 FP,一次 structural induction 處理整個無限語法域)、Dual-Certificate Compression(max-flow/min-cut、Farkas lemma:一個有限 dual witness 就能壓縮所有 competing solutions)、Algebraic Compression(arithmetization、sum-check、IP=PSPACE:指數 Boolean assignments 換成低度多項式 identity)、Algorithm-to-Lower-Bound Transference(Williams:對某 circuit class 的更快 SAT algorithm,經 hierarchy argument 反過來變成該 class 的下界)。正式定義 Quantifier Compression Mechanism(QCM)=(Π,Check,Lift,𝒟),並提出六項資格測試——coverage、sound lift、non-circularity、semantic relevance、resource honesty、barrier awareness。同時列出三個提醒:Cook–Reckhow 指出若所有 tautology 都有 polynomial-size proof 則 NP=coNP,所以通用短 dual proof 不是免費資源;IP=PSPACE 是壓縮的成功示範,但不等於 P=PSPACE,verifier model 已經改變;Natural Proofs barrier 提醒過強、過 constructive 的 invariant 可能撞牆。第一個正式小定理:WQO Quantifier Compression Lemma——若 (X,⪯) 為 WQO 且 U 為 upward-closed,則 U 有有限 minimal basis;但目前仍未證明 polynomial algorithms 上存在這樣的非循環 WQO,所以不能把 lemma 本身當分離。</p>
+    <div class="claim-box">
+      第二十二輪雙假設預演
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一輪</span><a href="../round-21/">第二十一輪 · 量詞監視器與有限證書階層</a></div>
+      <div class="conn-card"><span class="k">下一輪</span><a href="../round-23/">第二十三輪 · 演算法 WQO 與語義單調性裂縫</a></div>
+      <div class="conn-card"><span class="k">研究輪次進度</span>23 / 25</div>
+    </div>
+    <blockquote class="cite">「它不是靠『看完』無限尾巴;而是靠一個 lift theorem 改寫義務。」— 摘自本文末「本輪裁定」。暫定比分 P=NP:21,P≠NP:21(「這次真的不是故意。等號隊拿到『量詞壓縮確實存在大量成功數學模板』;不等號隊拿到『finite-basis / inductive-closure 可以真正覆蓋無限 domain』的正式下界架構。證明義務對偶守恆仍然有效。歪臉笑。」)。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← P/NP 對偶預演</a>
+    <a href="../../files/22_第二十二輪_量詞壓縮定理與有限基底遊戲.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/22_第二十二輪_量詞壓縮定理與有限基底遊戲.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

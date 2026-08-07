@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>P/NP 動態四層閉合框架:啟發式重描述 · GLC 閉合框架 · AMRAL</title>
+<meta name="description" content="P/NP 動態四層閉合框架主稿。提出 GCC(全域計算複雜度)⟺ USRT(全稱狀態速率變換)⟺ USEG(全稱有效序列生成)三相等價綱領,以及作為封頂驗收條件的 GLC(全域無損完成)標準版與強韌版。核心表述:過程自由,最終帳本不自由。概念論文,非 P vs. NP 證明。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/P_NP_動態四層閉合框架_啟發式研究提案_v1.0.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../">AMRAL</a>
+  <a class="link" href="../../../methodology/">方法論</a>
+  <a class="link" href="../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link active" href="../../">GLC 閉合框架</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← GLC 閉合框架</a>
+    <span>/</span>
+    <span>主稿</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">v1.0</span>
+      <span class="tag">2026-08-02</span>
+      <span class="tag">概念論文</span>
+    </div>
+    <h1>P/NP 動態四層閉合框架:從全域複雜度、狀態速率、有效序列到無損完成的啟發式重描述</h1>
+    <p class="h1-sub">不修改 P、NP、NP-complete 或多項式歸約的傳統定義,改變的是觀察座標。提出 GCC ⟺ USRT ⟺ USEG 三相等價綱領——待形式化,非已證明——並將 GLC 定位為「最終帳本」式的封頂驗收條件,而不是第四個平行等價量。</p>
+    <div class="claim-box">
+      概念論文／啟發式研究綱領;非 P vs. NP 證明
+      <span class="note">— 文件自陳的性質,原樣照登。</span>
+    </div>
+  </header>
+
+  <div class="connections">
+    <div class="conn-card"><span class="k">下一步</span><a href="../handoff-gcc-first/">方案 A · 研究交接(傳統順序)</a></div>
+    <div class="conn-card"><span class="k">另一方案</span><a href="../handoff-glc-first/">方案 B · GLC 優先交接</a></div>
+  </div>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← GLC 閉合框架</a>
+    <a href="../../files/P_NP_動態四層閉合框架_啟發式研究提案_v1.0.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/P_NP_動態四層閉合框架_啟發式研究提案_v1.0.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

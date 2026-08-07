@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>方案 B · GLC 優先研究交接與實行建議 · GLC 閉合框架 · AMRAL</title>
+<meta name="description" content="P/NP 動態四層閉合框架的研究交接文件,方案 B:把順序改為 GLC 優先——先定義「什麼叫真正完成」,GCC/USRT/USEG 三層才建立在 GLC 之上。GLC 拆成五條核心公理(語義正確性、終將完成、語義無損性、最終帳本有效性、可接受執行閉包),第一版要求資源中立,禁止提早偷渡多項式時間要求。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/P_NP_動態四層閉合框架_GLC優先研究交接與實行建議_v1.0.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../">AMRAL</a>
+  <a class="link" href="../../../methodology/">方法論</a>
+  <a class="link" href="../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link active" href="../../">GLC 閉合框架</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← GLC 閉合框架</a>
+    <span>/</span>
+    <span>方案 B · GLC 優先交接</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">v1.0</span>
+      <span class="tag">方案 B</span>
+      <span class="tag">交接文件</span>
+    </div>
+    <h1>GLC 優先研究交接與實行建議:GLC → {GCC, USRT, USEG}</h1>
+    <p class="h1-sub">核心修訂:把研究順序從「前三層 → GLC 封頂」倒過來,改成「GLC 先行 → 其餘三層建立於 GLC 之上」。理由是若 GLC 未先嚴格定義,GCC 會缺失目標函數、USRT 會缺失完成態、USEG 會缺失「決策充分」標準。第一版 GLC(記為 GLC₀)必須「資源中立」——不能一開始就要求多項式時間,否則等於把 GCC 偷偷塞進 GLC 的基底定義。拆成五條核心公理,並要求至少 5 個正例、5 個反例與初步形式化才算 GLC Foundation v1.0 完成。</p>
+    <div class="claim-box">
+      長期研究交接／執行順序修訂文件;目前定位為啟發式 Characterization Program,不宣稱已證明 P=NP 或 P≠NP
+      <span class="note">— 文件自陳的性質,原樣照登。</span>
+    </div>
+  </header>
+
+  <div class="connections">
+    <div class="conn-card"><span class="k">關聯主稿</span><a href="../main-paper/">啟發式研究提案</a></div>
+    <div class="conn-card"><span class="k">替代方案</span><a href="../handoff-gcc-first/">方案 A · 傳統順序交接</a></div>
+  </div>
+  <blockquote class="cite">「GLC 定義完成;其他三層研究如何完成。」— 摘自本文第 0 節「本次最重要的架構修訂」。核心哲學:「先定義什麼叫完成,再討論怎麼完成。」</blockquote>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← GLC 閉合框架</a>
+    <a href="../../files/P_NP_動態四層閉合框架_GLC優先研究交接與實行建議_v1.0.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/P_NP_動態四層閉合框架_GLC優先研究交接與實行建議_v1.0.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第十六輪 · Clocked 對角化與統一指數障礙 · P/NP 對偶預演 · AMRAL</title>
+<meta name="description" content="P/NP 對偶預演第十六輪。既然 P 可有效枚舉成 clocked machines C1,C2,...,直覺想對角化構造 L_D∉P 又留在 NP。真正斷點:∀k∃L_k(P\DTIME(n^k)非空)不能交換量詞成 ∃L∀k——多項式聯集量詞陷阱 PUQT。naive diagonalizer 需要的指數 k_i 隨列舉無界,NP 見證卻要求固定常數 K,形成統一指數障礙 UEB;猜完整計算軌跡當見證則遭遇證書指數升級 CEE;padding 又把時間成本搬成輸入長度膨脹 LID。Baker-Gill-Solovay 相對化壓力測試待過。暫定比分 15:15。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/16_第十六輪_Clocked對角化與統一指數障礙.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../">AMRAL</a>
+  <a class="link" href="../../../methodology/">方法論</a>
+  <a class="link" href="../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../skew-field/">歪度場</a>
+  <a class="link active" href="../../">P/NP 對偶預演</a>
+  <a class="link" href="../../../glc-framework/">GLC 閉合框架</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← P/NP 對偶預演</a>
+    <span>/</span>
+    <a href="../../#round-16">研究輪次</a>
+    <span>/</span>
+    <span>第十六輪</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">第十六輪</span>
+      <span class="tag">v1.0</span>
+      <span class="tag">2026-08-01</span>
+    </div>
+    <h1>Clocked 對角化與統一指數障礙:枚舉 P 之後,能不能直接對角化?</h1>
+    <p class="h1-sub">第十五輪把 P 列成 clocked machines C₁,C₂,C₃,...,最直覺的下一步是令對角語言在第 i 個輸入翻轉 C_i 的答案。集合論層面的對角化毫無問題,真正的斷點是量詞不能任意交換:時間階層定理只給出「對每個固定 k,存在語言超出 DTIME(n^k) 但仍在 P」(∀k∃L_k),而 P≠NP 需要的是「存在同一個 NP 語言,對所有 k 都超出 DTIME(n^k)」(∃L∀k)——這是多項式聯集量詞陷阱(PUQT)。若第 i 台機器的時限指數 k_i 隨列舉無界,對角機器為了精確翻轉就得付出無固定上界的指數,而 NP 見證要求存在單一固定常數 K,這是統一指數障礙(UEB)。改猜完整計算軌跡當見證,軌跡長度本身約 n^(k_i),指數債務只是搬到見證長度(CEE)。用一進位時鐘把步數寫進輸入,又把時間成本變成輸入長度膨脹(LID)。最後用 Baker-Gill-Solovay 相對化壓力測試提醒:純粹可相對化的對角化技巧不足以單獨解決 P/NP。</p>
+    <div class="claim-box">
+      第十六輪雙假設預演
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一輪</span><a href="../round-15/">第十五輪 · Tractability Proof System 與正常形逃逸</a></div>
+      <div class="conn-card"><span class="k">下一輪</span><a href="../round-17/">第十七輪 · 統一計算證書壓縮與普遍化跳躍</a></div>
+      <div class="conn-card"><span class="k">研究輪次進度</span>17 / 25</div>
+    </div>
+    <blockquote class="cite">「第十六輪沒有讓 diagonalization 成功,而是終於精確找出它在『全部 P』這個 union 上的資源斷點。」— 摘自本文末「最終一句」。暫定比分 P=NP:15,P≠NP:15(「現在真的有控分嫌疑。(歪臉笑)」)。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← P/NP 對偶預演</a>
+    <a href="../../files/16_第十六輪_Clocked對角化與統一指數障礙.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/16_第十六輪_Clocked對角化與統一指數障礙.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

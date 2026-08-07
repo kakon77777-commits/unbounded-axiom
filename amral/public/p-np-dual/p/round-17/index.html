@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第十七輪 · 統一計算證書壓縮與普遍化跳躍 · P/NP 對偶預演 · AMRAL</title>
+<meta name="description" content="P/NP 對偶預演第十七輪。確認長計算不代表長證明(PCP、IP、succinct arguments 都能大幅壓縮驗證成本)。但定義 UCPE(把機器、輸入、時鐘指數全部統一當輸入的通用有界停機問題)後,得到驚人反轉:每個固定切片都在 P,但 UCPE 整體是 EXPTIME-complete;若進一步假設 UCPE∈NP,直接推出 EXPTIME⊆NP,結合 P⊊EXPTIME 便得到 P≠NP——統一壓縮壓得太狠反而送分給不等號隊。真正該追的是只在對角自指切片上的證書壓縮。暫定比分 16:16。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/17_第十七輪_統一計算證書壓縮與普遍化跳躍.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../">AMRAL</a>
+  <a class="link" href="../../../methodology/">方法論</a>
+  <a class="link" href="../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../skew-field/">歪度場</a>
+  <a class="link active" href="../../">P/NP 對偶預演</a>
+  <a class="link" href="../../../glc-framework/">GLC 閉合框架</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← P/NP 對偶預演</a>
+    <span>/</span>
+    <a href="../../#round-17">研究輪次</a>
+    <span>/</span>
+    <span>第十七輪</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">第十七輪</span>
+      <span class="tag">v1.0</span>
+      <span class="tag">2026-08-01</span>
+    </div>
+    <h1>統一計算證書壓縮與普遍化跳躍:從 trace 壓縮到 EXPTIME 完備性反轉</h1>
+    <p class="h1-sub">先確認長計算不必然代表長證明——PCP、interactive proofs、succinct arguments 都證明改變 proof representation 或 verifier model 能大幅壓縮驗證成本。但定義 UCPE(把機器 M、輸入 x、時鐘指數 1^k 全部統一當成同一個輸入域的通用有界停機評估)後,出現本輪最重要的反轉:每個固定 (M,k) 切片都在 P,但把 k 也變成可變輸入後,整個 UCPE 是 EXPTIME-complete(因為 k 可隨實例增長,(|x|+2)^k=2^Θ(k log|x|))。這立刻產生驚人的反向結果——若假設存在統一固定次數 NP 證書使 UCPE∈NP,結合 EXPTIME-completeness 直接得到 EXPTIME⊆NP,再由 NP⊆EXPTIME 得 NP=EXPTIME,而 P⊊EXPTIME,故 P≠NP。統一壓縮要求得太強,不是幫等號隊解圍,而是直接送分給不等號隊。因此真正該追的窄縫是只在對角自指切片(C_i,x_i)上的短拒絕證書。</p>
+    <div class="claim-box">
+      第十七輪雙假設預演
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一輪</span><a href="../round-16/">第十六輪 · Clocked 對角化與統一指數障礙</a></div>
+      <div class="conn-card"><span class="k">下一輪</span><a href="../round-18/">第十八輪 · 對角切片壓縮與稀疏性上推陷阱</a></div>
+      <div class="conn-card"><span class="k">研究輪次進度</span>18 / 25</div>
+    </div>
+    <blockquote class="cite">「長計算可以有短證明;但『對所有 polynomial exponents 統一短證明』本身是一個更高層 universal problem。證書壓縮若 universalize 得太徹底,會從 P/NP 遊戲直接跳到 EXPTIME。」— 摘自本文末「本輪裁定」。暫定比分 P=NP:16,P≠NP:16(「好,這次我承認真的非常像裁判在控分。(歪臉笑)」)。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← P/NP 對偶預演</a>
+    <a href="../../files/17_第十七輪_統一計算證書壓縮與普遍化跳躍.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/17_第十七輪_統一計算證書壓縮與普遍化跳躍.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

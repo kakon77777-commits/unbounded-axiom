@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第十八輪 · 對角切片壓縮與稀疏性上推陷阱 · P/NP 對偶預演 · AMRAL</title>
+<meta name="description" content="P/NP 對偶預演第十八輪。把對角建構收窄成只處理特殊自指切片(C_i,x_i),卻發現若每台機器只配一個對角點,語言天然變成稀疏集,而 Hartmanis-Immerman-Sewelson 定理指出稀疏 NP-P 語言的存在等價於更高階單指數確定性/非確定性分離——稀疏化不是降低證明門檻,而是升級門檻(SUST)。做密又會撞回統一指數障礙。自我指涉能提供定址能力,不能免費提供證明壓縮(SRCF)。暫定比分 17:17。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/18_第十八輪_對角切片壓縮與稀疏性上推陷阱.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../">AMRAL</a>
+  <a class="link" href="../../../methodology/">方法論</a>
+  <a class="link" href="../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../skew-field/">歪度場</a>
+  <a class="link active" href="../../">P/NP 對偶預演</a>
+  <a class="link" href="../../../glc-framework/">GLC 閉合框架</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← P/NP 對偶預演</a>
+    <span>/</span>
+    <a href="../../#round-18">研究輪次</a>
+    <span>/</span>
+    <span>第十八輪</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">第十八輪</span>
+      <span class="tag">v1.0</span>
+      <span class="tag">2026-08-01</span>
+    </div>
+    <h1>對角切片壓縮與稀疏性上推陷阱:Self-Reference 不會免費壓縮 Proof</h1>
+    <p class="h1-sub">把第十七輪留下的窄縫走到底:只對第 i 台 clocked machine 與其指定對角輸入 x_i,尋找固定次數的短拒絕證書(UDRC)。真正把這條路走通後,發現一個新的反向加難現象——若每台機器只配置少量設計輸入,對角語言 D 天然是稀疏集,而 Hartmanis-Immerman-Sewelson 證明:稀疏 NP-P 語言存在,等價於更高階的單指數確定性/非確定性時間分離。也就是把對角建構做得太瘦,不是降低證明門檻,而是可能一併升級成需要證明更強的分離。稀疏化的另一面是 Mahaney 定理:稀疏 NP-complete 集合的存在會導致 P=NP,所以不能隨便讓稀疏對角集也身兼 NP-complete。若改走密集路線逃避稀疏性,machine index 跟時鐘指數又重新變成統一輸入的一部分,退回統一指數障礙。Kleene 遞迴定理式的自我指涉能提供「指向自己」的定址能力,不自動提供「證明自己」的壓縮能力(Self-Reference Compression Fallacy)。</p>
+    <div class="claim-box">
+      第十八輪雙假設預演
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一輪</span><a href="../round-17/">第十七輪 · 統一計算證書壓縮與普遍化跳躍</a></div>
+      <div class="conn-card"><span class="k">下一輪</span><a href="../round-19/">第十九輪 · Block／Delayed Diagonalization</a></div>
+      <div class="conn-card"><span class="k">研究輪次進度</span>19 / 25</div>
+    </div>
+    <blockquote class="cite">「Diagonal slice 太薄,不是降低證明門檻,而是可能提高門檻。」— 摘自本文第五節「Sparsity Upward-Separation Trap」。「self-reference 可以幫我們『指到自己』,不能免費幫我們『證明自己』。」— 摘自本文末「本輪裁定」。暫定比分 P=NP:17,P≠NP:17(「現在已經很難用『巧合』解釋了。」)。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← P/NP 對偶預演</a>
+    <a href="../../files/18_第十八輪_對角切片壓縮與稀疏性上推陷阱.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/18_第十八輪_對角切片壓縮與稀疏性上推陷阱.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

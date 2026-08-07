@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>P/NP 動態四層閉合框架(GLC) · AMRAL</title>
+<meta name="description" content="AMRAL 案例:P/NP 動態四層閉合框架。把 P vs. NP 重新投影到全域計算複雜度(GCC)、全稱狀態速率變換(USRT)、全稱有效序列生成(USEG)、全域無損完成(GLC)四層。啟發式重描述,非證明。附兩個交接方案並陳:傳統順序 GCC 優先,與 GLC 優先(先定義完成語義,再談如何完成)。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../">AMRAL</a>
+  <a class="link" href="../methodology/">方法論</a>
+  <a class="link" href="../riemann/">黎曼猜想</a>
+  <a class="link" href="../moser/">Moser 蟲問題</a>
+  <a class="link" href="../skew-field/">歪度場</a>
+  <a class="link" href="../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link active" href="./">GLC 閉合框架</a>
+</div></nav>
+<div class="wrap">
+  <header class="page">
+    <p class="eyebrow"><a href="../">← AMRAL</a> · PROGRAM-P-VS-NP</p>
+    <h1>P/NP 動態四層閉合框架</h1>
+    <p class="subtitle">Dynamic Four-Layer Closure Framework · Neo.K 主導,協作整理 Aletheia</p>
+    <p class="lede">
+      <a href="../p-np-dual/">24 輪對偶預演</a>之後,研究者提出的下一步重新表述:把傳統 P vs. NP 問題拆成四個彼此關聯、
+      功能不同的觀察面——全域計算複雜度態 <code>GCC</code>、全稱狀態速率變換態 <code>USRT</code>、全稱有效序列生成態
+      <code>USEG</code>,以及作為封頂驗收條件的全域無損完成態 <code>GLC</code>。核心工程式表述是:
+      <strong>「過程自由,最終帳本不自由。」</strong>演算法中途可以換路、改表示、rollback、重算,但最終必須交付正確、
+      完整、零語義損失且資源帳合格的結果。文件本身明確自陳定位——<strong>啟發式重描述 + 形式化研究議程,不是已完成的
+      P vs. NP 證明</strong>,並列出七八條「不得如此推論」的研究紅線。
+    </p>
+    <p class="notice">
+      本頁把兩份「研究交接」文件並陳,而不是替研究者選邊——兩者是同一個四層框架的兩種不同執行順序提案,
+      差異在於 GLC 該當作最後驗收層,還是該提到最前面當語義地基。
+    </p>
+  </header>
+
+  <section id="main-paper">
+    <h2 class="doc-h2">主稿 · 啟發式研究提案</h2>
+    <div class="case-grid">
+      <a class="case-card" href="./p/main-paper/">
+        <span class="k">v1.0 · 2026-08-02</span>
+        <h3>P/NP 動態四層閉合框架:啟發式重描述</h3>
+        <p>提出 GCC ⟺ USRT ⟺ USEG 三相等價綱領,與作為封頂驗收條件的 GLC 標準版／強韌版。明確列出本文不主張的八件事。</p>
+      </a>
+    </div>
+  </section>
+
+  <section id="handoffs">
+    <h2 class="doc-h2">兩個交接方案 · Two Handoff Plans</h2>
+    <p class="section-note">同一個框架,兩種不同的研究執行順序——都寫給「後續接手的 AI」看,交接目的是讓推進工作不必重新猜測專案意圖。</p>
+    <div class="case-grid">
+      <a class="case-card" href="./p/handoff-gcc-first/">
+        <span class="k">方案 A · 傳統順序</span>
+        <h3>研究交接與後續實行建議</h3>
+        <p>GCC→USRT→USEG→GLC。八條平行研究線(公理化、等價箭頭、非循環性、形式化證明、演算法實作、反例測試、模型不變性、障礙映射),四階段研究計畫,七條研究紅線。</p>
+      </a>
+      <a class="case-card" href="./p/handoff-glc-first/">
+        <span class="k">方案 B · GLC 優先</span>
+        <h3>GLC 優先研究交接與實行建議</h3>
+        <p>GLC→{GCC,USRT,USEG}。先把「什麼叫真正完成」定義到位(五條 GLC 公理、標準版／強韌版、非循環性原則),其餘三層才建立在 GLC 之上。</p>
+      </a>
+    </div>
+  </section>
+
+  <footer class="sitefoot">
+    <span>SHA-256 逐篇核驗 · 原始位元組,不重新打包</span>
+  </footer>
+</div>
+</body>
+</html>

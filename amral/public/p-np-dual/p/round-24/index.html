@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第二十四輪 · 語義單調性工程與抽象精度三難 · P/NP 對偶預演 · AMRAL</title>
+<meta name="description" content="P/NP 對偶預演第二十四輪(本系列收官輪,25篇文件之末)。用 Abstract Interpretation(Cousot–Cousot)與 CEGAR 直接工程化語義抽象,卻先自我拆台:兩點完美抽象 GOOD/BAD 域雖小、雖 WQO、雖完美保存 correctness,但計算它本身就是 universal-correctness 判斷——Abstraction Oracle Trap(AOT)。真正需要 Precision–Effectivity–Order Trilemma(PEO)三角同時閉合。CEGAR 面對 Counterexample Existential Asymmetry(CEA):錯誤有有限反例可 refine,正確永遠沒有反例可用。暫定比分 23:23,系列收於此輪,後續轉入 Neo 自己的 GLC 動態四層閉合框架。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/24_第二十四輪_語義單調性工程與抽象精度三難.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../">AMRAL</a>
+  <a class="link" href="../../../methodology/">方法論</a>
+  <a class="link" href="../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../skew-field/">歪度場</a>
+  <a class="link active" href="../../">P/NP 對偶預演</a>
+  <a class="link" href="../../../glc-framework/">GLC 閉合框架</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← P/NP 對偶預演</a>
+    <span>/</span>
+    <a href="../../#round-24">研究輪次</a>
+    <span>/</span>
+    <span>第二十四輪</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">第二十四輪</span>
+      <span class="tag">v1.0</span>
+      <span class="tag">2026-08-01</span>
+      <span class="tag">系列最後一輪</span>
+    </div>
+    <h1>語義單調性工程:Abstract Interpretation、CEGAR 與抽象精度三難</h1>
+    <p class="h1-sub">第二十三輪確認演算法空間不缺 WQO,缺的是語義對齊的 order,本輪直接動手工程化一個語義抽象 α:𝒜→𝒟#,借用 Abstract Interpretation(Cousot–Cousot)的 concrete/abstract semantics 與 Galois connection 框架,以及 CEGAR「先粗抽象、遇到反例再 refine」的動態版本。第一個思想實驗就是最重要的自我拆台:定義只有兩點的完美抽象域 {GOOD,BAD},它當然有限、當然 WQO、correctness 也完美保存——但代價是計算 α*(A) 本身就等於判斷「A 是否永遠正確解 SAT」,只是把答案改名而已,這被命名為 Abstraction Oracle Trap(AOT)。換成 error-set inclusion order 可以換回真正的語義單調性,卻立刻在無限多 singleton 錯誤集上長出 antichain,重新失去 WQO。本輪因此把上一輪的三難再升級成 Precision–Effectivity–Order Trilemma(PEO):精度(足以區分 SAT 對錯)、有效性/非循環(抽象必須由獨立結構有效產生,不能先解出答案再改名)、有限基底結構(WQO 或其他能導出 finite basis 的性質)三角必須同時閉合,自然候選通常只能拿到其中兩項。CEGAR 提供另一種不對稱觀察:候選 solver 若真的錯誤,存在單一公式作為有限反例;但若它真的處處正確,永遠沒有反例出現去驅動 refinement——Counterexample Existential Asymmetry(CEA),終止只能靠 inductive invariant、complete abstraction 或其他量詞壓縮機制,不能靠「反例還沒出現很久」。Myhill–Nerode 的有限 index 定理在此只作方法論類比(精確語義商化本身是很強的結構條件),不直接外推成 SAT 下界。等號隊拿到 Property-Directed Adaptive Abstraction(PDAA)——不必預先猜完整 invariant,讓 refinement 動態收斂;不等號隊則仍缺一個真正的 Infinite Distinguishability Theorem 撐住 lower bound。這是本系列 25 篇文件(前置中介層 + 24 輪雙假設預演)的最後一輪,比分 23:23 收在這裡,Neo.K 後續把整條線帶進他自己的 GLC 動態四層閉合框架,作為這場對偶預演之後的獨立延伸。</p>
+    <div class="claim-box">
+      第二十四輪雙假設預演 · 本系列(00 + 第 1–24 輪)最後一輪
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一輪</span><a href="../round-23/">第二十三輪 · 演算法 WQO 與語義單調性裂縫</a></div>
+      <div class="conn-card"><span class="k">系列之後</span><a href="../../../glc-framework/p/main-paper/">GLC 動態四層閉合框架 · 主稿</a></div>
+      <div class="conn-card"><span class="k">研究輪次進度</span>25 / 25(本系列最後一輪)</div>
+    </div>
+    <blockquote class="cite">「完美的兩點 abstraction 永遠存在,但那只是把答案藏進 α;粗 abstraction 可以有效構造,但會產生 spurious behaviors;CEGAR 能逐步補精度,但把難題轉移到『是否有限收斂』。」— 摘自本文末「本輪裁定」。暫定比分 P=NP:23,P≠NP:23(「我們甚至連把『比分守恆』做成 abstraction 都沒有成功壓掉。可能它是 complete invariant。(歪臉笑)」)。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← P/NP 對偶預演</a>
+    <a href="../../files/24_第二十四輪_語義單調性工程與抽象精度三難.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/24_第二十四輪_語義單調性工程與抽象精度三難.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

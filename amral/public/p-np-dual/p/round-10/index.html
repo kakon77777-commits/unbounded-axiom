@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第十輪 · 多重反結構核心與異質黏合債務 · P/NP 對偶預演 · AMRAL</title>
+<meta name="description" content="P/NP 對偶預演第十輪。原想尋找同時擊敗六種已知商化技術的「多重反結構核心」,但立刻自我修正:即使找到也只證明對已列武器困難,不是一般不可解。真正有價值的發現反過來:每種局部 constraint 單獨都容易(全正3-clause全設1、全負3-clause全設0),混合後 Monotone 3-SAT 卻是 NP-complete——局部 tractability 不具簡單加法封閉性。提出異質黏合債務 HGD 與多型交集譜 PIS,等號隊反擊提出動態代數切換。暫定比分 9:9。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/10_第十輪_多重反結構核心與異質黏合債務.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../">AMRAL</a>
+  <a class="link" href="../../../methodology/">方法論</a>
+  <a class="link" href="../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../skew-field/">歪度場</a>
+  <a class="link active" href="../../">P/NP 對偶預演</a>
+  <a class="link" href="../../../glc-framework/">GLC 閉合框架</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← P/NP 對偶預演</a>
+    <span>/</span>
+    <a href="../../#round-10">研究輪次</a>
+    <span>/</span>
+    <span>第十輪</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">第十輪</span>
+      <span class="tag">v1.0</span>
+      <span class="tag">2026-08-01</span>
+    </div>
+    <h1>多重反結構核心與異質黏合債務:把已知逃生門一起堵上之後,困難究竟在哪裡?</h1>
+    <p class="h1-sub">原本計畫尋找同時對六種已知商化技術都有效抵抗的「多重反結構核心」(MASC),但立刻自我修正:即使真找到,也只證明「對目前列出的武器庫困難」,不是「不在 P」——第九輪的 OBDD 反例已經示範過這個陷阱。本輪真正有價值的轉折來自反方向的思維實驗:令 R₊=x∨y∨z、R₋=¬x∨¬y∨¬z,單獨使用任一個都 trivial(全設 1 或全設 0 即可滿足),但混合使用的 Monotone 3-SAT 已知仍是 NP-complete——局部 tractability 不具簡單加法封閉性。Schaefer 二分定理正式印證:tractability 取決於整個 constraint language 是否共享足夠的 polymorphism 閉包,而非每條約束單獨是否容易。提出異質黏合債務 HGD(把局部商化與全域黏合成本分開計量)與多型交集譜 PIS,等號隊則反擊提出動態代數切換——不要求全域共享單一代數,允許演算法依局部結構切換不同求解器。</p>
+    <div class="claim-box">
+      第十輪雙假設預演
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一輪</span><a href="../round-09/">第九輪 · 尋找 SAT 的 Blossom 與商化債務</a></div>
+      <div class="conn-card"><span class="k">下一輪</span><a href="../round-11/">第十一輪 · 共同保存結構崩塌與動態橋接</a></div>
+      <div class="conn-card"><span class="k">研究輪次進度</span>11 / 25</div>
+    </div>
+    <blockquote class="cite">「真正值得追的『反結構』,可能不是沒有好結構,而是多個好結構無法低成本黏成同一個全域結構。下一個戰場不再是 SAT 有沒有 Blossom,而是很多局部 Blossom 能不能 polynomially 黏成一朵更大的花。」— 摘自本文末「第十輪一句話結論」。暫定比分 P=NP:9,P≠NP:9。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← P/NP 對偶預演</a>
+    <a href="../../files/10_第十輪_多重反結構核心與異質黏合債務.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/10_第十輪_多重反結構核心與異質黏合債務.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

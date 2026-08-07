@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第二十輪 · 階段控制複雜度與極限監視器 · P/NP 對偶預演 · AMRAL</title>
+<meta name="description" content="P/NP 對偶預演第二十輪。修正上一輪:控制器的局部運算成本其實可以壓進多項式(只檢查對數視界內的微觀實例,配合指數節流延遲到外層規模夠大才驗證特定機器);真正無法白拿的是全域推進保證。建立極限分離監視器 LSM:可計算的階段函數 s(N),P≠NP 世界裡 s(N)→∞,P=NP 世界裡 s(N) 最終停在第一台正確的 SAT 機器上——把 P/NP 精確重寫成一條軌跡「最終穩定」還是「無界前進」,但這仍是漸近觀察問題,任何有限前綴都無法判定。暫定比分 19:19。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/20_第二十輪_階段控制複雜度與極限監視器.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../">AMRAL</a>
+  <a class="link" href="../../../methodology/">方法論</a>
+  <a class="link" href="../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../skew-field/">歪度場</a>
+  <a class="link active" href="../../">P/NP 對偶預演</a>
+  <a class="link" href="../../../glc-framework/">GLC 閉合框架</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← P/NP 對偶預演</a>
+    <span>/</span>
+    <a href="../../#round-20">研究輪次</a>
+    <span>/</span>
+    <span>第二十輪</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">第二十輪</span>
+      <span class="tag">v1.0</span>
+      <span class="tag">2026-08-01</span>
+    </div>
+    <h1>階段控制複雜度:對數視界、指數節流與極限監視器</h1>
+    <p class="h1-sub">重新檢查 Ladner 延遲對角化,發現一個重要修正:控制器的局部計算成本其實可以被嚴格壓進多項式時間,真正無法白拿的是全域推進保證。技巧是只檢查長度 h(N)=O(log N) 的微觀輸入(候選數量與暴力求解 SAT 都只需 N^O(1)),搭配指數節流——延遲到外層規模夠大、h(N)^k_i≤N^c 才對第 i 台機器做完整檢查,因為對任何固定 k_i,這個條件終將成立。若候選機器 C_i 真的等於 SAT,則永遠不存在反例,控制器在此永久凍結——這不是 bug,而正好是 P=NP 的訊號。由此建立極限分離監視器(LSM):構造可計算的階段函數 s(N),使 P≠NP 世界裡 s(N)→∞,P=NP 世界裡 s(N) 最終停在第一台正確的 SAT 機器上。這把傳統 P/NP 問題精確重寫成「一條完全可計算的軌跡最終穩定,還是無界前進」的漸近觀察問題——但任何有限時間的觀察都無法判定極限行為,監視器本身不是判定程序。</p>
+    <div class="claim-box">
+      第二十輪雙假設預演
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一輪</span><a href="../round-19/">第十九輪 · Block／Delayed Diagonalization</a></div>
+      <div class="conn-card"><span class="k">下一輪</span><a href="../round-21/">第二十一輪 · 量詞監視器與有限證書階層</a></div>
+      <div class="conn-card"><span class="k">研究輪次進度</span>21 / 25</div>
+    </div>
+    <blockquote class="cite">「有限 witness search 可以透過尺度分離被做得很便宜;但『永遠不會再出現 witness』或『每一 stage 最終都會出現 witness』是極限語義。」— 摘自本文末「本輪裁定」。暫定比分 P=NP:19,P≠NP:19(「這個比分大概也是一個 eventual fixed point。(歪臉笑)」)。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← P/NP 對偶預演</a>
+    <a href="../../files/20_第二十輪_階段控制複雜度與極限監視器.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/20_第二十輪_階段控制複雜度與極限監視器.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第十二輪 · 介面語言格、Schaefer 臨界與遞迴 SAT · P/NP 對偶預演 · AMRAL</title>
+<meta name="description" content="P/NP 對偶預演第十二輪。把「橋接語言階層」修正為 pp-definability 誘導的偏序/co-clone 格,不是線性強弱關係。固定 Boolean bridge language 落入 Schaefer tractable 家族則協調屬於 P,否則 NP-complete——但 NP-complete 不等於已證明不在 P。多個各自 tractable 的橋接語言聯集,不保證聯集仍 tractable(Portfolio Union Principle)。定義遞迴 SAT:存在量詞層層消去又層層在更高介面再現。暫定比分 11:11。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/12_第十二輪_介面語言格_Schaefer臨界與遞迴SAT.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../">AMRAL</a>
+  <a class="link" href="../../../methodology/">方法論</a>
+  <a class="link" href="../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../skew-field/">歪度場</a>
+  <a class="link active" href="../../">P/NP 對偶預演</a>
+  <a class="link" href="../../../glc-framework/">GLC 閉合框架</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← P/NP 對偶預演</a>
+    <span>/</span>
+    <a href="../../#round-12">研究輪次</a>
+    <span>/</span>
+    <span>第十二輪</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">第十二輪</span>
+      <span class="tag">v1.0</span>
+      <span class="tag">2026-08-01</span>
+    </div>
+    <h1>介面語言格、Schaefer 臨界與遞迴 SAT:Bridge 越強,是否越接近把原問題重新生成?</h1>
+    <p class="h1-sub">修正第十一輪「橋接語言階層」的直覺:Horn、2-SAT、affine 等 tractable 語言彼此不構成線性強弱序,更精確的數學物件是 primitive-positive definability(pp-definability)誘導的偏序/co-clone 格。固定 Boolean bridge language Γ_B 若落在 Schaefer tractable 家族,協調問題屬於 P,否則 NP-complete——但立刻加上警告:NP-complete 不等於已證明不在 P,除非先知道 P≠NP。用最乾淨的思維實驗重現第十輪發現:R₊=x∨y∨z 與 R₋=¬x∨¬y∨¬z 個別 trivial,混合後落入 Schaefer 的 NP-complete 側,證明 Portfolio Union Principle——多個個別 tractable 橋接語言的聯集不保證仍 tractable,必須檢查聯集的 pp-closure。定義遞迴 SAT:存在量詞層層局部消去,又層層在更高層介面重新生成一般 SAT 表達力,標記為 Bridge Expressivity Transition 的臨界時刻。</p>
+    <div class="claim-box">
+      第十二輪雙假設預演
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一輪</span><a href="../round-11/">第十一輪 · 共同保存結構崩塌與動態橋接</a></div>
+      <div class="conn-card"><span class="k">下一輪</span><a href="../round-13/">第十三輪 · 可解閉包穩定性與多項式鏈爆炸</a></div>
+      <div class="conn-card"><span class="k">研究輪次進度</span>13 / 25</div>
+    </div>
+    <blockquote class="cite">「Bridge 的真正危險不是『說得太多』,而是它的 closure 在組合與投影後跨出了 tractable algebra。但跨出 tractable algebra 目前只能證明進入 NP-complete side,還不能單獨證明 P≠NP。」— 摘自本文末「本輪一句話版本」。暫定比分 P=NP:11,P≠NP:11(「這個比分制度可能已經被兩隊聯手操縱了」)。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← P/NP 對偶預演</a>
+    <a href="../../files/12_第十二輪_介面語言格_Schaefer臨界與遞迴SAT.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/12_第十二輪_介面語言格_Schaefer臨界與遞迴SAT.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

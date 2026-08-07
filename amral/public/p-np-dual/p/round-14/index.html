@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第十四輪 · 複雜度勢能遊戲與證書完備性陷阱 · P/NP 對偶預演 · AMRAL</title>
+<meta name="description" content="P/NP 對偶預演第十四輪。把標準 amortized analysis 的勢函數方法正式引入:望遠鏡求和證明只要初始勢能、單步攤銷成本、步數都多項式有界,整條軌跡成本就是多項式。但發現關鍵不對稱:P=NP 方只需一個演算法專屬勢函數即可,P≠NP 方若想用「找不到勢函數」證下界,必須先證明證書系統對所有 P 演算法完備——太弱漏掉真正的演算法,太強就是把原問題偷藏進勢函數。暫定比分 13:13。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/14_第十四輪_複雜度勢能遊戲與證書完備性陷阱.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../">AMRAL</a>
+  <a class="link" href="../../../methodology/">方法論</a>
+  <a class="link" href="../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../skew-field/">歪度場</a>
+  <a class="link active" href="../../">P/NP 對偶預演</a>
+  <a class="link" href="../../../glc-framework/">GLC 閉合框架</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← P/NP 對偶預演</a>
+    <span>/</span>
+    <a href="../../#round-14">研究輪次</a>
+    <span>/</span>
+    <span>第十四輪</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">第十四輪</span>
+      <span class="tag">v1.0</span>
+      <span class="tag">2026-08-01</span>
+    </div>
+    <h1>複雜度勢能遊戲:攤銷可解證書、勢函數逃逸與證書完備性陷阱</h1>
+    <p class="h1-sub">把標準 amortized analysis 的望遠鏡求和正式搬進來:攤銷成本 ĉ_t=c_t+Φ_(t+1)-Φ_t,只要初始勢能、每步攤銷成本、步數三者都對輸入多項式有界,整條實際計算成本就是多項式——這是嚴格證明,不是比喻。但本輪抓到一個此前被忽略的不對稱:P=NP 方只需要存在一個 SAT 演算法及其專屬(algorithm-specific)勢函數,不需要 solver-independent;P≠NP 方若想用「找不到某類勢函數」論證下界,則必須先證明該證書系統對所有 P 演算法完備,否則證書缺失只代表證書系統太弱,不代表演算法不存在——這是「勢函數證書完備性陷阱」。把 ATC 升級成雙層證書(Progress/Ranking 層控制終止,Amortized Potential 層控制總資源),並區分三層成本:物件層運行時間、證書複雜度、發現複雜度,明確物件層運行時間才是傳統 P/NP 真正分類的對象。</p>
+    <div class="claim-box">
+      第十四輪雙假設預演
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一輪</span><a href="../round-13/">第十三輪 · 可解閉包穩定性與多項式鏈爆炸</a></div>
+      <div class="conn-card"><span class="k">下一輪</span><a href="../round-15/">第十五輪 · Tractability Proof System 與正常形逃逸</a></div>
+      <div class="conn-card"><span class="k">研究輪次進度</span>15 / 25</div>
+    </div>
+    <blockquote class="cite">「勢函數是一把很強的上界武器,但不是天然的下界武器。∃A+∃ATC_A 可以成為 P=NP 路線中的構造性證書;但 ¬∃ATC 只有在 ATC 證書語言對所有 P 演算法已被證明完備時,才可能支撐 P≠NP。」— 摘自本文末「本輪裁定」。暫定比分 P=NP:13,P≠NP:13(「目前看來,『平手』已經不是比分,而是一種宇宙常數。歪臉笑。」)。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← P/NP 對偶預演</a>
+    <a href="../../files/14_第十四輪_複雜度勢能遊戲與證書完備性陷阱.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/14_第十四輪_複雜度勢能遊戲與證書完備性陷阱.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

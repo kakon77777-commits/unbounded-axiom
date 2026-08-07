@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第十一輪 · 共同保存結構崩塌與動態橋接 · P/NP 對偶預演 · AMRAL</title>
+<meta name="description" content="P/NP 對偶預演第十一輪。把問題拆成局部模組後,每個模組消去私有變數只留邊界延伸關係(BER),但全域仍需協調共享邊界——「存在量詞再現」:局部消去不保證全域消去,可能只是搬到介面。等號隊以 Nelson-Oppen、DPLL(T)、CDCL(⊕) 等真實 SMT 技術證明動態代數切換確實存在,不等號隊則證明若橋接可無條件多項式組合任意可解局部模組,橋本身就已是 SAT solver——橋接普適陷阱。暫定比分 10:10。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/11_第十一輪_共同保存結構崩塌與動態橋接.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../">AMRAL</a>
+  <a class="link" href="../../../methodology/">方法論</a>
+  <a class="link" href="../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../skew-field/">歪度場</a>
+  <a class="link active" href="../../">P/NP 對偶預演</a>
+  <a class="link" href="../../../glc-framework/">GLC 閉合框架</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← P/NP 對偶預演</a>
+    <span>/</span>
+    <a href="../../#round-11">研究輪次</a>
+    <span>/</span>
+    <span>第十一輪</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">第十一輪</span>
+      <span class="tag">v1.0</span>
+      <span class="tag">2026-08-01</span>
+    </div>
+    <h1>共同保存結構崩塌與動態橋接:局部可解之間的介面,是否重新生成存在量詞?</h1>
+    <p class="h1-sub">把整體問題拆成局部模組 F_i(B_i,Y_i),每個模組先消去私有變數 Y_i,只保留邊界延伸關係 E_i(B_i)——但全域可滿足性精確等價於 ∃B ∀i, b|B_i∈E_i,私有存在量詞消去後,全域存在量詞在共享邊界重新出現,稱為「存在量詞再現」。最乾淨的反例是把每個 clause 都當獨立模組:局部判定近乎常數成本,但橋接若能多項式協調全部 clause,就已經是一般 SAT solver——橋接普適陷阱。等號隊隨即拿出真實先例反擊:Nelson-Oppen theory combination、DPLL(T)、2026 年的 CDCL(⊕) 都證明不同局部代數確實可以由橋接層合作,不需要共享同一 polymorphism。建立邊界延伸關係、存在量詞再現、多項式橋接原理、橋接普適陷阱、橋接協調債務五個工作物件。</p>
+    <div class="claim-box">
+      第十一輪雙假設預演
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一輪</span><a href="../round-10/">第十輪 · 多重反結構核心與異質黏合債務</a></div>
+      <div class="conn-card"><span class="k">下一輪</span><a href="../round-12/">第十二輪 · 介面語言格、Schaefer 臨界與遞迴 SAT</a></div>
+      <div class="conn-card"><span class="k">研究輪次進度</span>12 / 25</div>
+    </div>
+    <blockquote class="cite">「Dynamic Algebra Switching 是真的;但 Algebra Switching 的橋也必須被計算。局部存在量詞消去,不等於全域存在量詞消失;它可能只是在 boundary 上再現。」— 摘自本文末「本輪裁定」。暫定比分 P=NP:10,P≠NP:10。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← P/NP 對偶預演</a>
+    <a href="../../files/11_第十一輪_共同保存結構崩塌與動態橋接.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/11_第十一輪_共同保存結構崩塌與動態橋接.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

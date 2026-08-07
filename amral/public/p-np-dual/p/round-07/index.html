@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第七輪 · 代數不變量爭奪戰與演算法—代數橋 · P/NP 對偶預演 · AMRAL</title>
+<meta name="description" content="P/NP 對偶預演第七輪。以 Schaefer Boolean CSP 的 Horn/dual-Horn/bijunctive/affine 與有限域 CSP dichotomy 的 polymorphism 理論作為第一個真正跨語法的 tractability 不變量範例。但等號隊抓到關鍵漏洞:CSP dichotomy 的 hard side 只證明 NP-complete,不是無條件不在 P——若 P=NP,這些語言仍有多項式演算法。提出 Algorithm-to-Algebra Bridge Problem:任意 P 演算法是否必然誘導某種非平凡保存結構?暫定比分 6:6。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/07_第七輪_代數不變量爭奪戰與演算法代數橋.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../">AMRAL</a>
+  <a class="link" href="../../../methodology/">方法論</a>
+  <a class="link" href="../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../skew-field/">歪度場</a>
+  <a class="link active" href="../../">P/NP 對偶預演</a>
+  <a class="link" href="../../../glc-framework/">GLC 閉合框架</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← P/NP 對偶預演</a>
+    <span>/</span>
+    <a href="../../#round-07">研究輪次</a>
+    <span>/</span>
+    <span>第七輪</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">第七輪</span>
+      <span class="tag">v1.0</span>
+      <span class="tag">2026-08-01</span>
+    </div>
+    <h1>代數不變量爭奪戰:容易問題是否都有「可合成的解結構」?</h1>
+    <p class="h1-sub">Polymorphism 給出一個漂亮候選:不看公式怎麼寫,而看合法 tuple 能否被非平凡運算穩定合成——Horn 靠 AND 合成、dual-Horn 靠 OR、2-SAT 靠 majority、affine 靠 XOR/minority,更一般的有限域 CSP dichotomy 則以 Taylor/WNU 類運算為核心。這是目前整場遊戲中第一個真正跨越表面語法、且能無條件導出多項式演算法的結構性工具。但等號隊抓到本輪最重要的邏輯分界:CSP dichotomy 的 hard side 正式結論是 NP-complete,而 NP-complete 不等於不在 P,除非已經知道 P≠NP。若 P=NP,沒有 tractable polymorphism 的語言仍會有多項式演算法。提出 Algorithm-to-Algebra Bridge Problem:任意精確 P 演算法是否必然誘導某種可獨立定義的解空間合成結構?這座橋目前尚未建成。</p>
+    <div class="claim-box">
+      第七輪雙假設預演
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一輪</span><a href="../round-06/">第六輪 · 多項式表示變換閉包與閉包悖論</a></div>
+      <div class="conn-card"><span class="k">下一輪</span><a href="../round-08/">第八輪 · 演算法—代數橋壓力測試與精確商結構</a></div>
+      <div class="conn-card"><span class="k">研究輪次進度</span>8 / 25</div>
+    </div>
+    <blockquote class="cite">「Polymorphism 能刻畫已知 structural tractability,但尚不能證明它是『任何可能 P 演算法』的必要條件。」— 摘自本文第六節「等號隊反殺」。核心橋問題:「A∈P ⟹ 某種可獨立刻畫的 nontrivial induced structure?」— 摘自本文第十八節「本輪正式戰果」。暫定比分 P=NP:6,P≠NP:6。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← P/NP 對偶預演</a>
+    <a href="../../files/07_第七輪_代數不變量爭奪戰與演算法代數橋.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/07_第七輪_代數不變量爭奪戰與演算法代數橋.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

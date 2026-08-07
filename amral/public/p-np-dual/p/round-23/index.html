@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第二十三輪 · 演算法 WQO 與語義單調性裂縫 · P/NP 對偶預演 · AMRAL</title>
+<meta name="description" content="P/NP 對偶預演第二十三輪。測試把 Graph-Minor 式有限禁阻集搬進演算法空間,得到修正:WQO 本身不難取得——Higman lemma 給出程式文字的 subsequence WQO,Kruskal tree theorem 給出語法樹的 homeomorphic-embedding WQO,supercompilation 早就拿它當 termination 工具。真正失敗的是語義單調性:自然 syntactic order 幾乎不會讓 SAT correctness/failure 單調。WQO--Semantic Alignment Barrier(WSAB)+ Order Alignment Trilemma。正面結果:Bellantoni–Cook 完整 P grammar 的 derivation trees 可直接套用 Kruskal 型 WQO。暫定比分 22:22。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/23_第二十三輪_演算法WQO與語義單調性裂縫.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../">AMRAL</a>
+  <a class="link" href="../../../methodology/">方法論</a>
+  <a class="link" href="../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../skew-field/">歪度場</a>
+  <a class="link active" href="../../">P/NP 對偶預演</a>
+  <a class="link" href="../../../glc-framework/">GLC 閉合框架</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← P/NP 對偶預演</a>
+    <span>/</span>
+    <a href="../../#round-23">研究輪次</a>
+    <span>/</span>
+    <span>第二十三輪</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">第二十三輪</span>
+      <span class="tag">v1.0</span>
+      <span class="tag">2026-08-01</span>
+    </div>
+    <h1>演算法 WQO 與語義單調性裂縫:為什麼 Graph-Minor 式有限禁阻集沒有直接搬進 P/NP</h1>
+    <p class="h1-sub">第二十二輪留下一個 Graph-Minor 式夢想:替 P-normal-form algorithms 找一個 well-quasi-order,讓 SAT correctness/failure 單調,就能複製有限禁阻集定理。本輪測試六種候選 order 後得到關鍵修正——WQO 本身其實很便宜:對有限 alphabet 的程式文字,Higman lemma 直接給出 subsequence WQO;對程式語法樹,Kruskal tree theorem 給出 homeomorphic-embedding WQO,而且這不是紙上假設,supercompilation、partial evaluation 等程式轉換技術早就拿它當 termination whistle 用。真正卡住的是第二個條件:自然 syntactic WQO 幾乎不會讓 SAT correctness 具有所需單調性——只要在程式裡插入一行 if trigger(x): return 1,語法上仍是 subsequence,語義卻可能整個翻轉;反過來把 order 換成語義等價或語言包含,又立刻在 singleton 語言或不同 Boolean 函數上長出 infinite antichain,失去 WQO。本輪把這個張力正式提煉成 WQO--Semantic Alignment Barrier(WSAB)與更具操作性的 Order Alignment Trilemma:結構 WQO、語義單調性、非循環的資源相關性三個角,自然候選通常只能同時拿到兩項。最重要的正面結果是把 Termination WQO(控制展開軌跡)與 Hardness WQO(讓 correctness 集合有 finite basis)正式分開——supercompilation 用的是前者,不能自動當後者用;而 Bellantoni–Cook/Cobham 類完整 P grammar 的 derivation trees 確實可以套 Kruskal 型 WQO,所以失敗點已經從「沒有 order」精確收斂成「缺乏能讓語義性質 closure 的 order」。</p>
+    <div class="claim-box">
+      第二十三輪雙假設預演
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一輪</span><a href="../round-22/">第二十二輪 · 量詞壓縮定理與有限基底遊戲</a></div>
+      <div class="conn-card"><span class="k">下一輪</span><a href="../round-24/">第二十四輪 · 語義單調性工程與抽象精度三難</a></div>
+      <div class="conn-card"><span class="k">研究輪次進度</span>24 / 25</div>
+    </div>
+    <blockquote class="cite">「WQO 很多,甚至已經在實際程式轉換技術中使用。Graph-Minor 路線真正需要的不是一個漂亮的 order,而是一個漂亮的 order + 一個不循環的 semantic lift theorem。」— 摘自本文末「本輪裁定」。暫定比分 P=NP:22,P≠NP:22(「我們可能真的證明了一個新的非正式定律:每當不等號隊得到一個有限化工具,等號隊就得到一個 representation escape;每當等號隊得到一個新 representation,另一隊就要求一個 lift theorem。比分只負責把這件事畫出來。(歪臉笑)」)。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← P/NP 對偶預演</a>
+    <a href="../../files/23_第二十三輪_演算法WQO與語義單調性裂縫.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/23_第二十三輪_演算法WQO與語義單調性裂縫.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

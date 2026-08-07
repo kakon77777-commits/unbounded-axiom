@@ -16,6 +16,8 @@
   <a class="link" href="riemann/">黎曼猜想</a>
   <a class="link" href="moser/">Moser 蟲問題</a>
   <a class="link" href="skew-field/">歪度場</a>
+  <a class="link" href="p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="glc-framework/">GLC 閉合框架</a>
 </div></nav>
 <div class="wrap narrow">
   <header class="page">
@@ -50,6 +52,18 @@
     </p>
   </section>
 
+  <section id="outlook-pnp">
+    <h2 class="doc-h2">第三條計畫線:P versus NP</h2>
+    <p class="lede">
+      <code>PROGRAM-P-VS-NP</code> 是另一個獨立問題族,分兩個各自獨立的案例。<code>p-np-dual/</code> 是傳統 P/NP 對偶討論:
+      不預先選邊,同時把 <code>H<sub>=</sub>: P=NP</code> 與 <code>H<sub>≠</sub>: P≠NP</code> 建到各自最強版本,在同一套計算模型、
+      資源帳本與正確性標準下逐輪互相攻擊,24 輪覆蓋量詞壓縮、跨表示不變量、Clocked 對角化、WQO 與語義單調性等主流工具鏈,
+      不急於宣布證明完成。<code>glc-framework/</code> 則是第 24 輪之後,研究者自己另外提出的「動態四層閉合框架」——
+      把問題重新投影到 GCC／USRT／USEG／GLC 四層,核心表述「過程自由,最終帳本不自由」,附兩個執行順序互異的研究交接方案並陳。
+      這條線目前只做到「把已完成的研究攤開展示」,還沒有繼續往下推進。
+    </p>
+  </section>
+
   <nav class="case-grid" aria-label="內容導覽">
     <a class="case-card" href="methodology/">
       <span class="k">方法論</span>
@@ -71,9 +85,19 @@
       <h3>歪度場</h3>
       <p>掛谷針問題、中心生成式雙向偏移螺旋、Moser 蟲問題的統一橋接理論——證明正厚度掃掠面積不變量,把掛谷退化通道封死。</p>
     </a>
+    <a class="case-card" href="p-np-dual/">
+      <span class="k">PROGRAM-P-VS-NP · 2026-08</span>
+      <h3>P/NP 對偶證明預演研究區</h3>
+      <p>雙假設對偶預演法:P=NP 與 P≠NP 同時建到最強版本,在統一模型與資源帳本下逐輪互攻。24 輪,不急於宣布證明完成。</p>
+    </a>
+    <a class="case-card" href="glc-framework/">
+      <span class="k">PROGRAM-P-VS-NP · 2026-08</span>
+      <h3>P/NP 動態四層閉合框架</h3>
+      <p>24 輪對偶預演之後的重新表述:GCC／USRT／USEG／GLC 四層,「過程自由,最終帳本不自由」。兩個交接方案並陳,不替研究者選邊。</p>
+    </a>
   </nav>
 
-  <p class="notice">兩條計畫線各自獨立編號、獨立驗證。下一個希爾伯特問題會加進第一條線;下一個萬有覆蓋類問題會加進第二條線——都不重寫這頁,只加卡片。</p>
+  <p class="notice">三條計畫線各自獨立編號、獨立驗證。下一個希爾伯特問題會加進第一條線;下一個萬有覆蓋類問題會加進第二條線;下一個 P/NP 類問題會加進第三條線——都不重寫這頁,只加卡片。</p>
 
   <footer class="sitefoot">
     <span>EveMissLab · Logic Matrix 系列</span>

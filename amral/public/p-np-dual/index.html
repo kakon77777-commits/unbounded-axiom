@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>P/NP 對偶證明預演研究區 · AMRAL</title>
+<meta name="description" content="AMRAL 案例:P/NP 對偶證明預演研究區。雙假設對偶預演法——同時把 P=NP 與 P≠NP 建到最強版本,在統一模型、統一資源帳本下逐輪互相攻擊。24 輪逐輪推進,每輪固定記錄雙方最強主張、思維實驗、已知障礙審查與被排除的錯誤路線,不急於宣布證明完成。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../">AMRAL</a>
+  <a class="link" href="../methodology/">方法論</a>
+  <a class="link" href="../riemann/">黎曼猜想</a>
+  <a class="link" href="../moser/">Moser 蟲問題</a>
+  <a class="link" href="../skew-field/">歪度場</a>
+  <a class="link active" href="./">P/NP 對偶預演</a>
+  <a class="link" href="../glc-framework/">GLC 閉合框架</a>
+</div></nav>
+<div class="wrap">
+  <header class="page">
+    <p class="eyebrow"><a href="../">← AMRAL</a> · PROGRAM-P-VS-NP</p>
+    <h1>P/NP 對偶證明預演研究區</h1>
+    <p class="subtitle">Dual-Hypothesis Rehearsal for P vs. NP · Neo.K 主導,協作整理 Aletheia</p>
+    <p class="lede">
+      不是先選邊站,而是同時把 <code>H<sub>=</sub>: P=NP</code> 與 <code>H<sub>≠</sub>: P≠NP</code> 兩個假設都建到各自最強的版本,
+      在同一個計算模型、同一套資源帳本、同一套正確性標準下逐輪互相攻擊。研究過程不急於宣布證明完成,而以思維實驗、
+      預演證明、反例生成、障礙審查與歷史累積逐輪推進——24 輪覆蓋了從存在量詞壓縮、跨表示不變量、代數—演算法橋、
+      商化債務、動態代數切換、量詞交換與可計算性層級,到 Clocked 對角化、稀疏性上推陷阱、WQO 與語義單調性裂縫等
+      幾乎整條主流複雜度理論工具鏈。第 24 輪之後,研究者自己另外提出「動態四層閉合框架(GLC)」作為下一步的重新表述,
+      見另一案例<a href="../glc-framework/">GLC 閉合框架</a>。
+    </p>
+    <div class="stats" id="stats" aria-label="研究區統計"></div>
+    <p class="notice">
+      每一輪文件都明確標示「本輪暫定成果」與「被排除的錯誤路線」——這是預演證明與思維實驗,不是已完成的 P/NP 證明。
+      原始文件未經改動,逐輪留痕,含 SHA-256 驗證。
+    </p>
+  </header>
+
+  <div id="content">
+    <p class="loading">載入清單中…</p>
+  </div>
+
+  <footer class="sitefoot">
+    <span>SHA-256 逐篇核驗 · 原始位元組,不重新打包</span>
+    <span id="generated-note"></span>
+  </footer>
+</div>
+
+<script>
+const fmtSize = (b) => {
+  if (b < 1024) return b + " B";
+  if (b < 1024 * 1024) return (b / 1024).toFixed(1) + " KB";
+  return (b / (1024 * 1024)).toFixed(2) + " MB";
+};
+
+function cardHTML(pkg) {
+  const href = "./files/" + encodeURIComponent(pkg.filename);
+  const shortHash = pkg.sha256.slice(0, 16) + "…";
+  const label = pkg.version === "00" ? "中介層" : `第 ${parseInt(pkg.version, 10)} 輪`;
+  const titleInner = pkg.has_detail_page
+    ? `<a class="title-link" href="./p/${pkg.id}/">${pkg.title} <span class="detail-hint">→ 詳細頁</span></a>`
+    : pkg.title;
+  return `
+    <article class="card" id="${pkg.id}">
+      <div class="card-top">
+        <span class="tag">${label}</span>
+      </div>
+      <div class="title">${titleInner}</div>
+      <div class="meta">
+        <span>${fmtSize(pkg.size)}</span>
+      </div>
+      <button class="hash" type="button" data-hash="${pkg.sha256}" title="點擊複製完整 SHA-256:${pkg.sha256}">
+        sha256 ${shortHash}
+      </button>
+      <a class="dl" href="${href}" download>下載原始 .md</a>
+    </article>`;
+}
+
+let manifest = null;
+
+function render() {
+  const content = document.getElementById("content");
+  const rounds = manifest.rounds;
+  content.innerHTML = `
+    <section class="series" id="rounds">
+      <div class="series-head">
+        <h2>研究輪次 · Rounds</h2>
+        <span class="count">${rounds.length} 篇</span>
+      </div>
+      <p class="series-note">00 為中介層前導稿,01-24 依輪次順序排列。每篇為獨立 Markdown 文件,原始位元組不重新打包。</p>
+      <div class="grid">${rounds.map(cardHTML).join("")}</div>
+    </section>`;
+}
+
+async function boot() {
+  const content = document.getElementById("content");
+  try {
+    const res = await fetch("./manifest.json");
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    manifest = await res.json();
+  } catch (e) {
+    content.innerHTML = `<p class="error">清單載入失敗:${e.message}</p>`;
+    return;
+  }
+
+  document.getElementById("stats").innerHTML = `
+    <div class="stat"><span class="n">${manifest.counts.total}</span><span class="l">篇文件</span></div>
+    <div class="stat"><span class="n">${(manifest.total_size / 1024).toFixed(0)} KB</span><span class="l">總大小</span></div>
+  `;
+  document.getElementById("generated-note").textContent = "2026-08-01 → 2026-08-02";
+
+  render();
+
+  if (location.hash.length > 1) {
+    const target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    if (target) target.scrollIntoView({ block: "center" });
+  }
+
+  content.addEventListener("click", (ev) => {
+    const btn = ev.target.closest(".hash");
+    if (!btn) return;
+    navigator.clipboard?.writeText(btn.dataset.hash).then(() => {
+      btn.classList.add("copied");
+      const original = btn.textContent;
+      btn.textContent = "已複製完整雜湊 ✓";
+      setTimeout(() => { btn.classList.remove("copied"); btn.textContent = original; }, 1400);
+    });
+  });
+}
+
+boot();
+</script>
+</body>
+</html>

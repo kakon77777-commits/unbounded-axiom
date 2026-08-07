@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第六輪 · 多項式表示變換閉包與閉包悖論 · P/NP 對偶預演 · AMRAL</title>
+<meta name="description" content="P/NP 對偶預演第六輪。嘗試把「表示革命」形式化成多項式表示變換閉包,卻證明 Tractable-Reachability Equivalence 引理:SAT 能否在完整多項式閉包內到達可處理正規形,與 P=NP 完全等價——閉包太寬就同義反覆,太窄又只得到受限模型下界。這是「表示閉包悖論」。研究焦點從表示大小轉向「哪些代數結構在變換下被保存」,Schaefer 二分定理與 CSP polymorphism 提供成功範例。暫定比分 5:5。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/06_第六輪_多項式表示變換閉包與閉包悖論.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../">AMRAL</a>
+  <a class="link" href="../../../methodology/">方法論</a>
+  <a class="link" href="../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../skew-field/">歪度場</a>
+  <a class="link active" href="../../">P/NP 對偶預演</a>
+  <a class="link" href="../../../glc-framework/">GLC 閉合框架</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← P/NP 對偶預演</a>
+    <span>/</span>
+    <a href="../../#round-06">研究輪次</a>
+    <span>/</span>
+    <span>第六輪</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">第六輪</span>
+      <span class="tag">v1.0</span>
+      <span class="tag">2026-08-01</span>
+    </div>
+    <h1>多項式表示變換閉包與閉包悖論:逃生門能否被形式化?</h1>
+    <p class="h1-sub">若每次不等號隊指出某表示很大,等號隊都能說「還有另一種未知表示」,那能否把所有低成本表示革命一起收進一個可分析的閉包?本輪建立表示變換圖,卻立刻證明 Tractable-Reachability Equivalence 引理:L∈P 若且唯若存在統一多項式時間映射把 L 送到固定可處理目標——對 SAT 而言,SAT 能否到達可處理正規形,跟 P=NP 完全同義。這產生本輪核心的「表示閉包悖論」:閉包太寬就與原問題同義反覆,閉包太窄又只能得到受限模型下界。研究焦點因此從「表示大小」轉向「變換下保存了什麼」,Schaefer 二分定理與 CSP polymorphism 理論成為下一步的成功範例。</p>
+    <div class="claim-box">
+      第六輪雙假設預演
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一輪</span><a href="../round-05/">第五輪 · 表示逃逸錦標賽與困難矩陣</a></div>
+      <div class="conn-card"><span class="k">下一輪</span><a href="../round-07/">第七輪 · 代數不變量爭奪戰與演算法—代數橋</a></div>
+      <div class="conn-card"><span class="k">研究輪次進度</span>7 / 25</div>
+    </div>
+    <blockquote class="cite">「閉包太寬⇒與 P/NP 同義反覆;閉包太窄⇒只能得到受限模型下界。」— 摘自本文「閉包悖論」一節。「『表示革命』不能靠列舉表示被一次封死;但我們第一次看清:真正候選不變量應該研究『變換保存什麼』,而非『表示長什麼』。」— 摘自本文末「本輪裁定」。暫定比分 P=NP:5,P≠NP:5。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← P/NP 對偶預演</a>
+    <a href="../../files/06_第六輪_多項式表示變換閉包與閉包悖論.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/06_第六輪_多項式表示變換閉包與閉包悖論.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

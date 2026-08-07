@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>00 · 數學構造—狀態機中介層 · P/NP 對偶預演 · AMRAL</title>
+<meta name="description" content="P/NP 對偶預演研究區的前置文件。補上原 P/NP 認知動力學系列缺失的中間層:認知發現如何經由形式化規格、數學構造、基底編碼與狀態轉移,成為可重複執行的能力。把三階段時間模型(搜索/執行/驗證)擴充為六階段,提出構造中介原理、複雜度轉移原理、歷史能力凝結原理三個核心命題。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/00_數學構造狀態機中介層_v1.0.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../">AMRAL</a>
+  <a class="link" href="../../../methodology/">方法論</a>
+  <a class="link" href="../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../skew-field/">歪度場</a>
+  <a class="link active" href="../../">P/NP 對偶預演</a>
+  <a class="link" href="../../../glc-framework/">GLC 閉合框架</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← P/NP 對偶預演</a>
+    <span>/</span>
+    <a href="../../#round-00">研究輪次</a>
+    <span>/</span>
+    <span>00 · 中介層</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">前置文件</span>
+      <span class="tag">v1.0</span>
+      <span class="tag">2026-08-01</span>
+    </div>
+    <h1>從認知發現到可執行世界:數學構造—狀態機中介層</h1>
+    <p class="h1-sub">補上原「P/NP 動態速率」系列缺失的中間層:智慧體「看懂」之後,理解究竟如何成為一個可重複運行的東西?本文把這條路徑拆成六階段——認知發現、形式化規格、數學構造、基底編碼與實現、狀態轉移與執行、驗證與穩定化——並把原本的三階段時間模型(搜索/執行/驗證)擴充為六項時間。核心提醒:「認知坍縮」不會自動等於演算法完成;任何聲稱「搜索被消除」的論證,都必須交代被消除的成本究竟消失、被攤銷,還是轉移到了表示、構造、精度、記憶或基底之中。這篇論文的作用是補橋,不是提前跨河——它不主張已解決 P/NP,而是為後續 24 輪對偶預演提供共同的資源記帳語言。</p>
+    <div class="claim-box">
+      理論補充論文／工作論文
+      <span class="note">— 文件自陳的性質,原樣照登。原屬「P/NP 動態速率理論」系列,本文是其中介層補完稿。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">下一篇</span><a href="../round-01/">第一輪 · 存在量詞狀態坍縮</a></div>
+      <div class="conn-card"><span class="k">研究輪次進度</span>1 / 25</div>
+    </div>
+    <blockquote class="cite">「當一個問題看似由指數搜索轉為直接求值時,不應立即宣稱複雜度已消失;應先追問它被轉化為了什麼、被保存在哪裡、由何種基底承載,以及所有成本是否都已被完整計量。」— 摘自本文第十二節「結論」。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← P/NP 對偶預演</a>
+    <a href="../../files/00_數學構造狀態機中介層_v1.0.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/00_數學構造狀態機中介層_v1.0.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

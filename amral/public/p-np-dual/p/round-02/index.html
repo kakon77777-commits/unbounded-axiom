@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第二輪 · 跨表示不變量爭奪戰 · P/NP 對偶預演 · AMRAL</title>
+<meta name="description" content="P/NP 對偶預演第二輪。提出殘餘可分辨負載 H_res 作為第一個局部不變量,在固定切割狀態機模型中形成真正語義下界,但等號隊以變數重排、重讀輸入、全域摘要、擴維與改換表示五路逃逸。建立候選不變量六項資格測試(語義性、跨表示穩健性、非循環性等),奇偶函數 PARITY 擊破「候選數量大=需要指數狀態」的直覺。暫定比分 1:1。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/02_第二輪_跨表示不變量爭奪戰.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../">AMRAL</a>
+  <a class="link" href="../../../methodology/">方法論</a>
+  <a class="link" href="../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../skew-field/">歪度場</a>
+  <a class="link active" href="../../">P/NP 對偶預演</a>
+  <a class="link" href="../../../glc-framework/">GLC 閉合框架</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← P/NP 對偶預演</a>
+    <span>/</span>
+    <a href="../../#round-02">研究輪次</a>
+    <span>/</span>
+    <span>第二輪</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">第二輪</span>
+      <span class="tag">v1.0</span>
+      <span class="tag">2026-08-01</span>
+    </div>
+    <h1>跨表示不變量爭奪戰:存在量詞坍縮後,什麼仍必須保留?</h1>
+    <p class="h1-sub">不等號隊提出第一個候選——殘餘可分辨負載 H_res:對 SAT 公式在部分變數指定後的剩餘函數依語義等價分類,若某個切割上有大量彼此可分辨的殘餘函數,則任何只以有限狀態摘要已讀資訊的系統都必須具有足夠多的狀態,|Q_S|≥N_res(φ,S) 是真正的語義下界。但等號隊立刻指出這只在固定變數順序、固定切割模型下有效——一般演算法可重排變數、重訪輸入、用全域代數摘要、引入輔助變數逃逸。建立候選不變量六項資格測試,並用奇偶函數 PARITY(候選 2^n 個但只需 1 位元狀態)擊破「候選空間大就需要指數狀態」的直覺。</p>
+    <div class="claim-box">
+      第二輪雙假設預演
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。原文標題使用「P/NP 辯論遊戲研究區」,與其餘輪次的「對偶證明預演研究區」略有出入,原樣照登不作統一。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一輪</span><a href="../round-01/">第一輪 · 存在量詞狀態坍縮</a></div>
+      <div class="conn-card"><span class="k">下一輪</span><a href="../round-03/">第三輪 · 演算法軌跡切割與因果瓶頸</a></div>
+      <div class="conn-card"><span class="k">研究輪次進度</span>3 / 25</div>
+    </div>
+    <blockquote class="cite">「不等號隊取得一個局部武器,但尚未取得跨表示神器。等號隊成功逃逸,但尚未展示真正的多項式存在量詞壓縮器。」— 摘自本文末「本輪裁定」。暫定比分 P=NP:1,P≠NP:1(「比分只是遊戲介面,不是數學證據」)。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← P/NP 對偶預演</a>
+    <a href="../../files/02_第二輪_跨表示不變量爭奪戰.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/02_第二輪_跨表示不變量爭奪戰.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

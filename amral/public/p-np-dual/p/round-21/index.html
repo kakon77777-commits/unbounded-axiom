@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第二十一輪 · 量詞監視器與有限證書階層 · P/NP 對偶預演 · AMRAL</title>
+<meta name="description" content="P/NP 對偶預演第二十一輪。把 P=NP 重寫成 ∃i∀x R(i,x)(Σ₂⁰型),P≠NP 重寫成 ∀i∃x¬R(i,x)(Π₂⁰型);監視器的 stabilization/unboundedness 透過 FIN/INF 嵌入可達 Σ₂⁰/Π₂⁰-complete,一般 monitor 無法被普通有限見證捕捉——但這不等於「P/NP 沒有有限證明」,結構性數學證明不是有限前綴觀察,而是用 lift theorem 壓縮無限量詞尾。三層有限證書(Prefix Witness／Uniform Mechanical Certificate／Structural Mathematical Proof)+ 量詞壓縮債(QCD)。暫定比分 20:20。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/21_第二十一輪_量詞監視器與有限證書階層.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../">AMRAL</a>
+  <a class="link" href="../../../methodology/">方法論</a>
+  <a class="link" href="../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../skew-field/">歪度場</a>
+  <a class="link active" href="../../">P/NP 對偶預演</a>
+  <a class="link" href="../../../glc-framework/">GLC 閉合框架</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← P/NP 對偶預演</a>
+    <span>/</span>
+    <a href="../../#round-21">研究輪次</a>
+    <span>/</span>
+    <span>第二十一輪</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">第二十一輪</span>
+      <span class="tag">v1.0</span>
+      <span class="tag">2026-08-01</span>
+    </div>
+    <h1>量詞監視器與有限證書階層:從極限觀察到 Σ₂⁰／Π₂⁰ 邊界</h1>
+    <p class="h1-sub">把第二十輪的極限分離監視器放進算術階層:P=NP 等價於 ∃i∀x R(i,x),是 Σ₂⁰ 型敘述;P≠NP 等價於 ∀i∃x¬R(i,x),是 Π₂⁰ 型敘述,monitor 的最終穩定/無界前進恰好對應這組量詞交換。進一步透過標準 c.e. 集合 FIN(有限)與 INF(無限)的嵌入證明:一般單調可計算 monitor 的 stabilization 問題可達 Σ₂⁰-complete,unboundedness 可達 Π₂⁰-complete——因此不存在一個對所有 monitor 通用的「猜有限 witness、由可計算 verifier 驗證」的證書系統。但本輪最重要的防誤讀是:這絕不能被偷換成「P/NP 沒有有限數學證明」。P/NP 是固定命題,不是「輸入任意 monitor 問 yes/no」的 index problem;一份歸納法證明本來就能用有限步驟涵蓋 ∀n。因此本輪把有限證書拆成三層——Prefix Witness、Uniform Mechanical Certificate、Structural Mathematical Proof——只有第三層才是 P/NP 仍然開放的真正出口,任何聲稱用有限證明涵蓋無限義務的論證都欠一筆「量詞壓縮債」(QCD),必須交代其 generalization mechanism。</p>
+    <div class="claim-box">
+      第二十一輪雙假設預演
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一輪</span><a href="../round-20/">第二十輪 · 階段控制複雜度與極限監視器</a></div>
+      <div class="conn-card"><span class="k">下一輪</span><a href="../round-22/">第二十二輪 · 量詞壓縮定理與有限基底遊戲</a></div>
+      <div class="conn-card"><span class="k">研究輪次進度</span>22 / 25</div>
+    </div>
+    <blockquote class="cite">「monitor 能把 P/NP 的量詞結構顯影出來,卻不能靠有限觀察消掉那些量詞。」— 摘自本文末「本輪裁定」。暫定比分 P=NP:20,P≠NP:20(「這已經不是控分。現在比較像:每次我們找到一個漏洞,另一隊就同時獲得它的對偶版本——也就是某種『證明義務對偶守恆』。」)。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← P/NP 對偶預演</a>
+    <a href="../../files/21_第二十一輪_量詞監視器與有限證書階層.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/21_第二十一輪_量詞監視器與有限證書階層.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>
