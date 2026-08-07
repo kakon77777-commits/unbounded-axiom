@@ -1,0 +1,96 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { getPapers, getSummaries, type Paper } from '../../../lib/engine';
+
+// The complete, unfiltered, single-page list — the drill-down at /timeline/ solves
+// cognitive load for a first-time human visitor, but Neo's own explicit ask (2026-08-07)
+// is that clicking into a month is friction when HE or an AI already knows roughly what
+// it's looking for and just wants everything in one scroll+search. Additive sibling to
+// the year/month pages, not a replacement — same idea as keeping AI-layer JSON alongside
+// human HTML (spec §10.3: never delete the complete list, just don't lead with it).
+const papers = getPapers();
+const summaries = getSummaries();
+
+const byMonth = new Map<string, Paper[]>();
+for (const p of papers) {
+  const m = p.month || 'undated';
+  if (!byMonth.has(m)) byMonth.set(m, []);
+  byMonth.get(m)!.push(p);
+}
+const months = [...byMonth.keys()].sort((a, b) =>
+  a === 'undated' ? 1 : b === 'undated' ? -1 : b.localeCompare(a),
+);
+for (const m of months) byMonth.get(m)!.sort((a, b) => b.id.localeCompare(a.id));
+
+const ORIGIN = 'https://unboundedaxiom.org';
+const canonical = `${ORIGIN}/timeline/all/`;
+---
+<Base title="全部論文 — Timeline · Logic Matrix" description={`Logic Matrix 全部 ${papers.length} 篇論文的完整清單，單頁可搜尋，不需逐月點開。`}>
+  <Fragment slot="head">
+    <link rel="canonical" href={canonical} />
+    <link rel="stylesheet" href="/semantic/semantic-filter.css" />
+  </Fragment>
+
+  <header class="hero">
+    <div class="wrap">
+      <a class="back" href="/timeline/">← Timeline</a>
+      <div class="eyebrow">Complete list · no month-clicking required</div>
+      <h1>全部論文</h1>
+      <p class="lede">{papers.length} 篇，依月份分組但同一頁全部列出——想逐月瀏覽見 <a href="/timeline/">Timeline</a>，這裡是給已經知道要找什麼、只想搜尋或捲動的人與 AI。</p>
+    </div>
+  </header>
+
+  <div class="wrap" data-semantic-root>
+    <div class="semantic-box">
+      <div class="row">
+        <div class="semantic-input-wrap">
+          <svg class="semantic-input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input class="semantic-input" type="text" placeholder="動態顯影搜尋 — 標題、章節、關鍵詞…" maxlength="80" autocomplete="off" spellcheck="false" aria-label="搜尋語料庫" />
+          <button class="semantic-clear" type="button" aria-label="清除">×</button>
+        </div>
+        <button class="semantic-mode-btn" type="button" data-mode="reveal" aria-pressed="true">顯影</button>
+        <button class="semantic-mode-btn" type="button" data-mode="focus" aria-pressed="false">只看結果</button>
+        <button class="semantic-reset-btn" type="button">重設</button>
+      </div>
+      <div class="semantic-meta" aria-live="polite"></div>
+      <div class="semantic-expansions" aria-live="polite"></div>
+      <div class="semantic-banner" aria-live="polite"></div>
+    </div>
+  </div>
+
+  {months.map((m) => (
+    <section class="section" id={m}>
+      <div class="wrap">
+        <h2>{m} <span class="eyebrow" style="margin-left:.7rem">{byMonth.get(m)!.length}</span></h2>
+        <div class="papers">
+          {byMonth.get(m)!.map((p) => (
+            <a class="paper-row" href={`/p/${p.id}/`} data-doc-id={p.id}>
+              <div class="prow-top">
+                <span class="pid">{p.id}</span>
+                <span class="pt">{p.title}</span>
+                <span class="pmeta">{p.language}</span>
+              </div>
+              {summaries[p.id] && <span class="psum">{summaries[p.id]}</span>}
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  ))}
+  <script src="/semantic/semantic-filter.js" defer></script>
+</Base>
+
+<style>
+  [data-semantic-root] { padding-top: clamp(1.6rem, 4vw, 2.6rem); }
+  .back { font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--paper-faint); }
+  .back:hover { color: var(--gold); }
+
+  .paper-row { display: block; padding: 1.05rem 0.4rem; border-top: 1px solid var(--line); }
+  .prow-top { display: grid; grid-template-columns: 8.5rem 1fr auto; gap: 1.3rem; align-items: baseline; }
+  .psum { display: block; margin-top: 0.4rem; font-size: 0.86rem; line-height: 1.6; color: var(--paper-faint); }
+
+  @media (max-width: 640px) {
+    .prow-top { grid-template-columns: 1fr; gap: 0.25rem; }
+    .pmeta { white-space: normal; }
+  }
+</style>
