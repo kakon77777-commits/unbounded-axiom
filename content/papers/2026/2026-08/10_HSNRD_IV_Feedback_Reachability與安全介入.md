@@ -1,6 +1,12 @@
 # HSNRD IV：Feedback、Reachability 與安全介入
 ## ——從迴路極性、路徑閘門到反事實介入與約束式安全優化
 
+**系列：**《高階集合欲求》  
+**篇次：** 10 / 10  
+**作者：** Neo.K × Aletheia  
+**機構：** EveMissLab／一言諾科技有限公司  
+**日期：** 2026-08-07  
+
 ### 摘要
 
 前三篇數學方法論已依序建立 HSNRD 的 typed hierarchical ontology、micro-to-macro projection，以及可重寫的 CTMC / PDMP 混合結構動力學。但一個能夠出生、死亡、合併、分裂與改型的高階系統，仍然留下最重要的控制問題：哪些 feedback 真正支配系統？哪些節點只是局部迴路的重要元件，哪些卻控制世界線的入口與出口？如果介入某條強回饋迴路，系統是否必然變得「更好」？如何避免一個看似合理的 intervention 反而把系統推進新的吸收陷阱？

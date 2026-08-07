@@ -1,6 +1,12 @@
 # HSNRD III：結構重寫、歷史路徑與混合動力學
 ## ——從 Birth / Death / Merge / Split / Retype 到 CTMC 與 PDMP
 
+**系列：**《高階集合欲求》  
+**篇次：** 09 / 10  
+**作者：** Neo.K × Aletheia  
+**機構：** EveMissLab／一言諾科技有限公司  
+**日期：** 2026-08-07  
+
 ### 摘要
 
 HSNRD I 建立了 typed set-node、階梯集合、incidence 與 relation bundle；HSNRD II 則建立 micro-to-macro projection、資訊失真、dynamical closure 與 causal abstraction。然而，一個真正的高階社會系統不只是在固定拓撲上改變數值。家庭會形成與解散，公司會合併與分拆，機構會被創設、永久化、撤銷或改型；也就是說，高階存在的節點集合、類型與關係拓撲本身會隨歷史改變。

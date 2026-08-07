@@ -3,6 +3,8 @@
 **副標題：從一次性 Computer Use 到 Persistent Computer Habitat**  
 **系列：**《發展式智能體：持續計算環境、共適應學習與外部性有界自治》  
 **篇次：** 05 / 14  
+**作者：** Neo.K × Aletheia  
+**機構：** EveMissLab／一言諾科技有限公司  
 **版本：** v0.1  
 **日期：** 2026-08-01
 
