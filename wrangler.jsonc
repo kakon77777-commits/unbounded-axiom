@@ -10,7 +10,14 @@
   "routes": [
     { "pattern": "unboundedaxiom.org", "custom_domain": true },
     { "pattern": "unboundedaxiom.com", "custom_domain": true },
-    { "pattern": "logic.evemisslab.com", "custom_domain": true }
+    { "pattern": "logic.evemisslab.com", "custom_domain": true },
+    // www on both new apexes. A Worker custom domain creates its own DNS
+    // record, which is the only DNS write this deploy token can make — and it
+    // is the write that matters here, because without it the www entries in
+    // the Worker's NON_CANONICAL set are unreachable code: nothing resolves
+    // there, so the 301 never runs and a visitor typing www just fails.
+    { "pattern": "www.unboundedaxiom.org", "custom_domain": true },
+    { "pattern": "www.unboundedaxiom.com", "custom_domain": true }
   ],
   "compatibility_date": "2026-04-23",
   "observability": {
