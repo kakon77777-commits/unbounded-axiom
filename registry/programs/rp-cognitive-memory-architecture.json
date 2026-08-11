@@ -65,27 +65,49 @@
       "id": "lm-002411",
       "title": "多表示智能記憶",
       "topic": "多表示智能記憶",
+      "iteration_type": "applied",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 5,
+      "id": "lm-002421",
+      "title": "展開—收斂—自適應",
+      "topic": "展開—收斂—自適應",
+      "iteration_type": "applied",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 6,
+      "id": "lm-002422",
+      "title": "無界展開記憶",
+      "topic": "無界展開記憶",
       "iteration_type": "synthesis",
       "is_checkpoint": true
     }
   ],
   "current_state": {
-    "sequence": 4,
-    "artifact_id": "lm-002411",
+    "sequence": 6,
+    "artifact_id": "lm-002422",
     "status": "completed",
     "phase_status": "closed_by_design",
-    "declaration": "本系列（原資料夾名 Theseus_3，但實際主題是 AI Agent 記憶架構工程，非忒修斯之船式主體連續性問題）處理對話介面與認知工作區的邊界、完整資訊區與工作記憶的分離、對話記錄不等於記憶本身、以及多重表示形式的智能記憶整合。",
-    "stop_reason": "4 篇構成一組完整的記憶工程主題小輯；原資料夾另外 2 篇（展開—收斂—自適應、無界展開記憶）因依賴一篇語料庫中不存在的前置論文（自稱引用《拓樸記憶與相位狀態：智能記憶的幾何化猜想》『第五篇』，全庫搜尋未找到此文），已排除本次發布，另行保留待作者確認。",
-    "unresolved_gaps": [],
+    "declaration": "本系列（原資料夾名 Theseus_3，但實際主題是 AI Agent 記憶架構工程，非忒修斯之船式主體連續性問題）處理對話介面與認知工作區的邊界、完整資訊區與工作記憶的分離、對話記錄不等於記憶本身、多重表示形式的智能記憶整合，並將既有《理論呼吸論》的展開—收斂—自適應算子分解與《無界展開論》的 UBE 形式裝置應用到記憶狀態管理，分別產生 MDP 控制器與 M-UBE 記憶模型。",
+    "stop_reason": "6 篇構成一組完整的記憶工程主題小輯。",
+    "unresolved_gaps": [
+      "第 5、6 篇自稱引用一篇《拓樸記憶與相位狀態：智能記憶的幾何化猜想》『第五篇』作為前置依賴（X_t,τ_t／𝒫_t,Φ_t 等形式物件），但全庫搜尋（含 ingest/ 暫存區）找不到此文——經與作者確認，這篇論文本身尚未交付／尚未寫成，屬於正常的『預告未來論文』模式（本語料庫已有多篇這類前向引用），非缺陷，未做刪改，僅記錄於此供未來該文交付時回頭核對。"
+    ],
     "next_actions": [],
     "handoff_required_tasks": [],
-    "stewardship": "原資料夾第三篇（對話不是記憶）與既有 lm-002351／lm-002117／lm-002155（記憶編譯型母AI／狀態智能體／文明記憶編譯體）主題鄰近但目標範圍不同（對話→認知狀態 vs. 世界狀態→行動計畫），非重複，建議交叉引用。篇序取自審查時的邏輯順序，原始檔名無編號前綴。"
+    "stewardship": "原資料夾第三篇（對話不是記憶）與既有 lm-002351／lm-002117／lm-002155（記憶編譯型母AI／狀態智能體／文明記憶編譯體）主題鄰近但目標範圍不同（對話→認知狀態 vs. 世界狀態→行動計畫），非重複，建議交叉引用。第五、六篇分別是既有 lm-001874（理論呼吸論）與 lm-002269（無界展開論）形式裝置向記憶領域的合法應用延伸，已在文中明確引註，非重複。篇序取自審查時的邏輯順序，原始檔名無編號前綴。",
+    "cross_references": [
+      {"id": "lm-001874", "relation": "applies_framework", "note": "第五篇沿用其展開—收斂—自適應算子分解，應用於記憶狀態而非理論版本"},
+      {"id": "lm-002269", "relation": "applies_framework", "note": "第六篇沿用其 UBE 形式裝置，relabel 為 M-UBE"}
+    ]
   },
   "integrity": {
-    "files_seen": 4,
-    "files_imported": 4,
+    "files_seen": 6,
+    "files_imported": 6,
     "missing_sequences": [],
-    "missing_note": "",
+    "missing_note": "第 5、6 篇引用的『拓樸記憶與相位狀態』第五篇尚未交付，見 unresolved_gaps",
     "duplicate_resolved": []
   }
 }
