@@ -37,6 +37,12 @@ ingest/_hold/
 # parent paper has an lm-id; sorted into content/attachments/{id}/ once it does.
 ingest/attachments-pending/*
 !ingest/attachments-pending/README.md
+# cross-session handoff: papers another Claude conversation already pre-formatted
+# (bylines) before Neo hands them to this pipeline for review + publish. The
+# folder itself is a standing fixture, not a one-batch scratch dir — see its
+# README for why that distinction matters.
+ingest/00-wish/*
+!ingest/00-wish/README.md
 # per-authorship source-split subtrees (ingest.py --source Human&Ai|AI) — one-off
 # staging used for a single batch; not a permanent scaffold like the top-level dirs.
 ingest/AI/
