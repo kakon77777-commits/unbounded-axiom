@@ -1,0 +1,54 @@
+{
+  "id": "rp-position-relation-truth-boundary",
+  "schema_version": "0.2",
+  "type": "ai_native_research_lineage",
+  "title": "立場、關係與真理邊界三部曲",
+  "title_en": "Position, Relation, and the Boundary of Truth: A Trilogy",
+  "short_title": "立場關係與真理邊界",
+  "status": "completed",
+  "open_ended": false,
+  "started_at": "2026-08-09",
+  "completed_at": "2026-08-09",
+  "reference_method": "3 篇論文的完整序列，篇序取自各篇檔名自身的羅馬數字編號（I-III），第三篇明確標示「三部曲於 III 正式封頂」。",
+  "canonical_route": "/ai/programs/position-relation-truth-boundary/",
+  "visibility": "public",
+  "languages": ["zh-Hant"],
+  "agency": {
+    "initiative": "human",
+    "primary_authorship": "collaborative",
+    "research_direction": "negotiated",
+    "continuation_control": "human"
+  },
+  "contributors": [
+    {"name": "Neo.K", "type": "human", "roles": ["problem_proposer", "continuation_decider", "curator", "co_author"]}
+  ],
+  "foundation_artifacts": [],
+  "applied_artifacts": [],
+  "iterations": [
+    {"sequence": 1, "id": "lm-002512", "title": "立場關係與真理邊界 I：本體平等作為規範選擇", "topic": "本體平等作為規範而非事實選擇", "iteration_type": "foundation", "is_checkpoint": false},
+    {"sequence": 2, "id": "lm-002511", "title": "立場關係與真理邊界 II：不平等關係不只一種（型別學）", "topic": "不平等關係型別學", "iteration_type": "applied", "is_checkpoint": false},
+    {"sequence": 3, "id": "lm-002510", "title": "立場關係與真理邊界 III：客觀不等於真理，真理也不等於客觀", "topic": "客觀性與真理的脫鉤，三部曲封頂", "iteration_type": "synthesis", "is_checkpoint": true}
+  ],
+  "current_state": {
+    "sequence": 3,
+    "artifact_id": "lm-002510",
+    "status": "completed",
+    "phase_status": "closed_by_design",
+    "declaration": "三部曲從「本體平等是規範選擇而非事實描述」出發，接著建立不平等關係的型別學，最終在第三篇論證客觀性與真理彼此不蘊含。三篇皆明確標示以 OOE 系列（同日、同作者）為前置理論。",
+    "stop_reason": "第三篇明確標示「三部曲於 III 正式封頂」，並宣告後續轉往「真理—客觀性形式化／認識論運行時工程線」（未在本三部曲範圍內）。",
+    "unresolved_gaps": [
+      "三篇均在標頭將 RSFW（I-VII）與 Continuity Object Theory（COT）列為前置理論，並在內文引用特定編號結論為已確立（如「RSFW-VI 已經討論過主人—伴侶動物關係」「RSFW-IV 已建立 χ≠π」）——但全語料庫搜尋不到任何 RSFW 或 COT 相關文件。不確定是尚未交付還是引註疏漏，未擅自處理，留待作者確認。"
+    ],
+    "next_actions": [],
+    "handoff_required_tasks": [],
+    "stewardship": "3 篇原始檔案皆以裸 \\[...\\]/\\(...\\) 為唯一數學分隔符；核對後透過 normalize_math.py 的 convert() 統一轉換為 $$/$ 格式（740 個區塊，含大量不含任何 \\command 的純變量等式，轉換前完全不會渲染）。另修正 3 處 \\boxed{} 未閉合（I ×2、II ×1），並移除第二篇中 121 個由 AI 搜尋工具殘留、以隱藏 Unicode Private-Use-Area 字元包裹的引註垃圾字串（含整份參考文獻列表尾端）。",
+    "cross_references": []
+  },
+  "integrity": {
+    "files_seen": 3,
+    "files_imported": 3,
+    "missing_sequences": [],
+    "missing_note": "",
+    "duplicate_resolved": []
+  }
+}

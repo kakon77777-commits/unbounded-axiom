@@ -1,0 +1,61 @@
+{
+  "id": "rp-ooe",
+  "schema_version": "0.2",
+  "type": "ai_native_research_lineage",
+  "title": "操作本體工程系列（Operational Ontology Engineering）",
+  "title_en": "Operational Ontology Engineering",
+  "short_title": "OOE",
+  "status": "completed",
+  "open_ended": false,
+  "started_at": "2026-08-08",
+  "completed_at": "2026-08-09",
+  "reference_method": "8 篇論文的完整序列，篇序取自各篇檔名自身的羅馬數字編號（OOE-I 至 OOE-VIII），第八篇明確標示「OOE 理論系列至本篇 VIII 封頂」。",
+  "canonical_route": "/ai/programs/ooe/",
+  "visibility": "public",
+  "languages": ["zh-Hant"],
+  "agency": {
+    "initiative": "human",
+    "primary_authorship": "collaborative",
+    "research_direction": "negotiated",
+    "continuation_control": "human"
+  },
+  "contributors": [
+    {"name": "Neo.K", "type": "human", "roles": ["problem_proposer", "continuation_decider", "curator", "co_author"]}
+  ],
+  "foundation_artifacts": [],
+  "applied_artifacts": [],
+  "iterations": [
+    {"sequence": 1, "id": "lm-002473", "title": "OOE-I 本體論何時變成工程問題", "topic": "操作本體技術（OOT）／編譯器／協議／治理債，系列開篇", "iteration_type": "foundation", "is_checkpoint": false},
+    {"sequence": 2, "id": "lm-002471", "title": "OOE-II 人類早就在做本體工程：操作本體技術史", "topic": "歷史模式庫、本體快取", "iteration_type": "applied", "is_checkpoint": false},
+    {"sequence": 3, "id": "lm-002470", "title": "OOE-III 本體編譯器：從模糊世界到可執行制度狀態", "topic": "7 模組本體編譯器架構", "iteration_type": "applied", "is_checkpoint": false},
+    {"sequence": 4, "id": "lm-002472", "title": "OOE-IV 法律作為文明本體編譯器", "topic": "法律擬制／推定／資格工具箱", "iteration_type": "applied", "is_checkpoint": false},
+    {"sequence": 5, "id": "lm-002477", "title": "OOE-V 醫療本體工程：生命死亡人格自主與治療後的我", "topic": "醫療反身性本體／生命週期同意裝置", "iteration_type": "applied", "is_checkpoint": false},
+    {"sequence": 6, "id": "lm-002476", "title": "OOE-VI 身份否認不會消除問題：能力地位解耦與本體治理債", "topic": "能力—地位落差／治理債正式化", "iteration_type": "applied", "is_checkpoint": false},
+    {"sequence": 7, "id": "lm-002475", "title": "OOE-VII AI與Agent的操作本體：主體工具代理者與人格", "topic": "7 軸類型化本體", "iteration_type": "applied", "is_checkpoint": false},
+    {"sequence": 8, "id": "lm-002474", "title": "OOE-VIII 後人類時代的操作本體基礎設施", "topic": "5 層基礎設施統合，系列封頂", "iteration_type": "synthesis", "is_checkpoint": true}
+  ],
+  "current_state": {
+    "sequence": 8,
+    "artifact_id": "lm-002474",
+    "status": "completed",
+    "phase_status": "closed_by_design",
+    "declaration": "本系列提出「操作本體工程」（OOE）：本體論從何時起變成一個工程問題，依序考察其歷史模式、編譯器架構、法律／醫療應用、能力—地位解耦造成的治理債、AI／Agent 的操作本體，最終在第八篇統合為後人類時代的操作本體基礎設施。",
+    "stop_reason": "第八篇明確標示「OOE 理論系列至本篇 VIII 封頂」，並宣告後續轉往「OOE Runtime／可執行人格協議工程線」（未在本系列範圍內）。",
+    "unresolved_gaps": [
+      "全 8 篇（連同同日的立場、關係與真理邊界三部曲）均在標頭將 Continuity Object Theory（COT）列為「前置理論」，並在內文多處引用其形式化結果（如 OOE-II 引用「COT 對身份向量與連續性對象的形式化」）視為已確立——但全語料庫搜尋不到任何 COT 相關文件，COT 本身在這些文件中也從未被定義。不確定是尚未交付還是引註疏漏，未擅自處理，留待作者確認。"
+    ],
+    "next_actions": [],
+    "handoff_required_tasks": [],
+    "stewardship": "全 8 篇原始檔案皆以裸 \\[...\\]/\\(...\\) 為唯一數學分隔符（非 $/$$）；核對後轉換為 $$.../$$／$.../$ 格式（本站另有原生 \\[...\\] 渲染器，但要求區塊內至少含一個 \\command 才會被辨識，本系列大量純變量/符號等式（如「S_A.」）不含任何指令，轉換前完全不會渲染——已透過既有 normalize_math.py 的 convert() 統一修正，2,378 個區塊全數確認轉換）。另修正 3 處 \\boxed{} 未閉合（OOE-III ×1、OOE-VI ×2）與 OOE-VII 中 69 個由 AI 搜尋工具殘留、以隱藏 Unicode Private-Use-Area 字元包裹的引註垃圾字串（citeturnNNNsearchN 樣式，已確認移除後不影響原句語意）。",
+    "cross_references": [
+      {"id": "rp-realizability-subject-continuity", "relation": "cites", "note": "無限階 Self-World 遞迴系列（同日發布）與 OOE 皆探討跨層主體/本體連續性議題，但角度不同：OOE 聚焦制度化操作本體工程，無限階系列聚焦形式化遞迴框架。"}
+    ]
+  },
+  "integrity": {
+    "files_seen": 8,
+    "files_imported": 8,
+    "missing_sequences": [],
+    "missing_note": "",
+    "duplicate_resolved": []
+  }
+}

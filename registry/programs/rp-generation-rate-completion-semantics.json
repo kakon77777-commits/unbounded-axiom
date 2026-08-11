@@ -1,0 +1,65 @@
+{
+  "id": "rp-generation-rate-completion-semantics",
+  "schema_version": "0.2",
+  "type": "ai_native_research_lineage",
+  "title": "生成速率—完成語義—認識邊界系列",
+  "title_en": "Generation Rate, Completion Semantics, and Epistemic Boundaries",
+  "short_title": "生成速率系列",
+  "status": "completed",
+  "open_ended": false,
+  "started_at": "2026-08-09",
+  "completed_at": "2026-08-09",
+  "reference_method": "7 篇論文的完整序列，篇序取自各篇標頭自陳的「系列：生成速率—完成語義—認識邊界系列 N」。第八份檔案（差合化的保真擴張）標頭以「定位：差合化未來擴張方法論／Foundation Refactoring 前置論文」取代「系列」欄位，第七篇本文亦明確指出「三元本體、差合化、此間計算」屬於另一個尚未開始的「Foundation Refactoring」計畫——故未列入本系列編號序列，改列為關聯前導論文。",
+  "canonical_route": "/ai/programs/generation-rate-completion-semantics/",
+  "visibility": "public",
+  "languages": ["zh-Hant"],
+  "agency": {
+    "initiative": "human",
+    "primary_authorship": "collaborative",
+    "research_direction": "negotiated",
+    "continuation_control": "human"
+  },
+  "contributors": [
+    {"name": "Neo.K", "type": "human", "roles": ["problem_proposer", "continuation_decider", "curator", "co_author"]}
+  ],
+  "foundation_artifacts": [
+    {"id": "lm-001269", "title": "三元湧動論"},
+    {"id": "lm-000464", "title": "差合化三位一體本體論"}
+  ],
+  "applied_artifacts": [],
+  "iterations": [
+    {"sequence": 1, "id": "lm-002495", "title": "內稟速率的認識論極限：從絕對速率到關係速率類", "topic": "系列開篇，內稟速率認識論極限", "iteration_type": "foundation", "is_checkpoint": false},
+    {"sequence": 2, "id": "lm-002505", "title": "極致信息速率作為虛擬錨點：尺度、比較域與重整化", "topic": "虛擬錨點、重整化", "iteration_type": "applied", "is_checkpoint": false},
+    {"sequence": 3, "id": "lm-002507", "title": "無界生成、極限與完成：0.999...的生成語義重構", "topic": "0.999...=1 的生成語義重構", "iteration_type": "applied", "is_checkpoint": false},
+    {"sequence": 4, "id": "lm-002509", "title": "生成速率與完成語義：無界過程的一般生成系統", "topic": "USEG/USRT/GLC/GCC 形式定義", "iteration_type": "applied", "is_checkpoint": false},
+    {"sequence": 5, "id": "lm-002492", "title": "三元湧動的速率重構：速率不是第四元", "topic": "三元湧動速率重構，修正並收斂舊版〈三元湧動論〉的統一場宣稱", "iteration_type": "applied", "is_checkpoint": false},
+    {"sequence": 6, "id": "lm-002499", "title": "從三元生成到 P-NP 四層：USEG、USRT、GLC 與 GCC 的結構映射", "topic": "P-NP 四層結構映射", "iteration_type": "applied", "is_checkpoint": false},
+    {"sequence": 7, "id": "lm-002496", "title": "基底理論何以跨域衍生：類構、認知投影與理論實現的判別框架", "topic": "跨域衍生判別框架，系列封頂（本文明確宣告七篇系列完成）", "iteration_type": "synthesis", "is_checkpoint": true}
+  ],
+  "current_state": {
+    "sequence": 7,
+    "artifact_id": "lm-002496",
+    "status": "completed",
+    "phase_status": "closed_by_design",
+    "declaration": "本系列從內稟速率的認識論極限出發，依序建立虛擬錨點重整化、0.999...的生成語義重構、USEG/USRT/GLC/GCC 四概念的形式定義、三元湧動速率的自我修正、P-NP 四層結構映射，最終在第七篇提出跨域衍生的判別框架並明確宣告系列完成。",
+    "stop_reason": "第七篇本文明確陳述「生成速率—完成語義—認識邊界」七篇系列完成，並指出系列本身不再橫向擴張，「差合化」等相關議題留給獨立的、尚未開始的 Foundation Refactoring 計畫。",
+    "unresolved_gaps": [],
+    "next_actions": [],
+    "handoff_required_tasks": [],
+    "stewardship": "第三篇原始檔名含 \\ldots 的 LaTeX 片段（Windows 檔名不可含反斜線，原始匯出時被消毒為 -ldots），若不修正會導致發布標題直接顯示破損字串「$0.999-ldots$」；已改名為使用純省略號的檔名再發布。全 7 篇 + 1 篇關聯前導論文皆核對零數學/LaTeX 損壞，僅需既有的行內 $ 相鄰標點空格修正（CJK 標點/連字號緊貼 $ 導致不渲染，已透過 normalize_math.py 的 pad_inline_math() 統一修正 38 處）。第五篇中 \\\\[2mm]/\\\\[4mm] 為合法 LaTeX array 換行間距語法（非損毀的顯示數學分隔符），核對後確認不需改動。",
+    "cross_references": [
+      {"id": "lm-002407", "relation": "unrelated_namesake", "note": "同日稍早發布的〈P-NP 的量詞張力重構：GLC、GCC、USRT 與 USEG 作為全域證明接口〉（全域量詞—證明張力—研究路由系列 III）對 GLC/GCC/USRT/USEG 四個縮寫給出了不同的定義（量詞位置證明接口 vs. 本系列的完成規格/速率轉換/有效生成層），兩系列互不引用對方，屬於同一天內獨立產生的命名巧合，非抄襲或重複——已在此標註以避免未來混淆。"},
+      {"id": "lm-001393", "relation": "independently_convergent", "note": "第三篇與已發布〈0.999判定域：表示序列極限與完備化中的多層等號〉共享同一核心謎題（0.999...=1），但透過不同裝置處理（Eq(x,y|D,I,E) 值域/詮釋/等價三元組 vs. 本篇的生成/完成算子框架），第三篇的速率理論角度為新增視角，非重複。"},
+      {"id": "lm-001269", "relation": "extends", "note": "第五篇明確修正並收斂已發布〈三元湧動論〉（f=c⁵/ħG~10⁴³Hz、「終極統一」／「範式終結」宣稱），以更審慎、可證偽導向的形式重新處理同一構造，屬於作者自我修正的譜系而非重複發表。"},
+      {"id": "lm-000464", "relation": "extends", "note": "差合化的保真擴張（關聯前導論文，非本系列正式編號成員）明確延伸已發布〈差合化三位一體本體論〉（同一 Cl=⟨Δ,∪,∇⟩ 記號），為更審慎、形式化的後續處理。"},
+      {"id": "lm-002497", "relation": "cites", "note": "差合化的保真擴張——本次與本系列 7 篇同批發布，但標頭以「定位」而非「系列」自陳，且第七篇本文明確指出其屬於另一個尚未開始的 Foundation Refactoring 計畫，故未列入本系列 iterations 編號，僅在此登記其存在與去向。"}
+    ]
+  },
+  "integrity": {
+    "files_seen": 8,
+    "files_imported": 8,
+    "missing_sequences": [],
+    "missing_note": "第八份檔案（差合化的保真擴張）依設計不計入本系列編號序列，見 reference_method。",
+    "duplicate_resolved": []
+  }
+}
