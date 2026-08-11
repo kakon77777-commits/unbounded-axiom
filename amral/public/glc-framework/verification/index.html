@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>工程驗證軌跡 v0.2→v0.2.6 · GLC 閉合框架 · AMRAL</title>
+<meta name="description" content="P/NP 動態四層閉合框架相關工程候選的對抗式驗證軌跡:7 個 AI 角色(統籌、紅隊、形式/Lean、工程、獨立重播、兩位獨立學者)分工,v0.2 到 v0.2.6 共 7 個版本、至少 12 個互不相同的 blocker 被發現又修復。截至 v0.2.6:狀態為 CANDIDATE_UNPROMOTED / FAIL——AI-1 統籌與 AI-5 獨立重播仍判 FAIL,AI-2 的 PASS 範圍嚴格限定,不構成整體驗收。獨立學者判斷:不能把工程閉合升格成數學閉合,目前沒有任何證據支持 P=NP 或 P≠NP。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../">AMRAL</a>
+  <a class="link" href="../../about/">關於</a>
+  <a class="link" href="../../methodology/">方法論</a>
+  <a class="link" href="../../protocols/">研究協議</a>
+  <a class="link" href="../../validation/">驗證</a>
+  <a class="link" href="../../research-modes/">自主模式</a>
+  <a class="link" href="../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../skew-field/">歪度場</a>
+  <a class="link" href="../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link active" href="../">GLC 閉合框架</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../">← GLC 閉合框架</a>
+    <span>/</span>
+    <span>工程驗證軌跡</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">工程驗證軌跡</span>
+      <span class="tag">v0.2 → v0.2.6</span>
+      <span class="tag">2026-08-09</span>
+      <span class="status">CANDIDATE_UNPROMOTED / FAIL</span>
+    </div>
+    <h1>工程驗證軌跡:七角色對抗式驗證,v0.2 → v0.2.6</h1>
+    <p class="h1-sub">
+      這是獨立於本頁其他內容的另一條研究線:2026-08-09 起,7 個 AI 角色分工,對一個跟「P/NP 動態四層閉合框架」相關的工程候選(candidate)反覆做對抗式驗證——AI-1 統籌裁定、AI-2 紅隊唯讀核對凍結證據、AI-3 形式接口審查(含 Lean 4 形式化)、AI-4 建構候選本身、AI-5 完全不信任候選自帶的驗證器、獨立重寫邏輯核對,另有 AI-6、AI-7 兩位獨立學者做傳統複雜度理論的盲讀評估。從 v0.2 到 v0.2.6 共 7 個版本、至少 12 個互不相同的 blocker 被發現又修復,看起來是真的逐輪加深審查、在修好一個洞之後於下一層發現新的洞,不是同一問題卡住不動,也不是左手驗右手的重複蓋章。截至 v0.2.6:<strong>AI-1(統籌)與 AI-5(獨立重播)仍判定 FAIL</strong>;AI-2 的 PASS 範圍嚴格限定在既有凍結證據的一致性核對,明確排除獨立重驗與任何 P/NP 推論。兩位獨立學者的判斷更根本:即使這條工程驗證線全部轉綠,也不構成 P/NP 的任何結論。
+    </p>
+    <div class="claim-box">
+      CANDIDATE_UNPROMOTED / FAIL
+      <span class="note">— 依 AI-1 統籌報告(v0.2.6),本頁其餘各角色報告作為並列證據,不代表整體已通過驗收。</span>
+    </div>
+  </header>
+
+  <section id="roles">
+    <h2 class="doc-h2">五個工程角色 · v0.2.6 現況</h2>
+    <p class="section-note">「PASS」欄位是各角色自己嚴格界定的範圍,不是整體驗收結果——見下方各角色備註。</p>
+    <table class="ledger">
+      <thead>
+        <tr><th>角色</th><th>職掌</th><th>v0.2.6 結果</th><th>範圍備註</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>AI-1<br>統籌</td>
+          <td>核對各方 disposition 與 manifest 一致性,分歧時裁定</td>
+          <td><span class="pill OPEN">FAIL</span></td>
+          <td>2 個 blocker:CLOSURE-OPAQUE-LEAF-TERMINAL-01(採 AI-3 判定)+ ACCEPTANCE-PACKET-IMPORT-EDGE-COUNT-01(採 AI-5 判定)。文件自陳:「不發布 Board success、不建立 shared repo、不啟動下一版」。</td>
+        </tr>
+        <tr>
+          <td>AI-2<br>紅隊/一致性</td>
+          <td>唯讀核對凍結證據、簽章、既有測資</td>
+          <td><span class="pill CLOSED">PASS</span></td>
+          <td>範圍嚴格限定:僅 AI-1 指派的 3 項舊 judgment 重核 + 新欄位一致性。文件自陳「不代表 promotion」,明確排除隔離重播(AI-5 職責)、1500 筆案例的獨立演算法重驗、任何 P/NP 推論。</td>
+        </tr>
+        <tr>
+          <td>AI-3<br>形式 / Lean</td>
+          <td>規範判斷圖完整性審查 + Lean 4 形式化</td>
+          <td><span class="pill OPEN">FAIL</span></td>
+          <td><code>OpaqueLeaf</code> 節點(真實可達)沒有終態映射到 PASS/FAIL/UNKNOWN,但可執行驗證程式默默當 PASS 繼續跑。Lean 端已編譯、kernel 稽核無 sorry/admit,但明確不觸及四層框架核心宣稱,僅基礎鷹架。</td>
+        </tr>
+        <tr>
+          <td>AI-4<br>工程</td>
+          <td>建構候選本身</td>
+          <td><span class="pill PARTIAL">自測全過</span></td>
+          <td>22/22 單元測試、1500/1500 SAT 案例重播 0 mismatch——但全部是候選對自己的 self-test,非第三方驗證。候選文件兩度自陳「不主張任何 P=NP 或 P≠NP 結論」,狀態欄寫明 <code>CANDIDATE_UNPROMOTED</code>。</td>
+        </tr>
+        <tr>
+          <td>AI-5<br>獨立重播</td>
+          <td>不信任候選自帶驗證器,完全獨立重寫邏輯核對</td>
+          <td><span class="pill OPEN">FAIL</span></td>
+          <td>216 項雜湊、31 條 import edge、112 個 evidence hash、1500 案例全部獨立重算通過,唯獨候選封裝內一份文件寫 29 條 import edge(其餘四個來源皆 31)導致整體 FAIL。v0.2.1 起從未給過乾淨 PASS。</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="blockers">
+    <h2 class="doc-h2">v0.2.6 的兩個 blocker</h2>
+    <div class="doc">
+      <p><strong>CLOSURE-OPAQUE-LEAF-TERMINAL-01</strong>(AI-3)——候選的規範判斷圖裡,<code>OpaqueLeaf</code> 是 <code>SupportedTraversal.child_dispatch</code> 的一個目標分支,但沒有定義它該映射到 PASS/FAIL/UNKNOWN 哪一個終態。這不是假設性問題:AI-3 在凍結測資裡找到一條真的會走到這個分支的資料,而可執行的驗證程式在此把它當 PASS 繼續執行——是「規範圖」與「實際執行」之間的介面缺口,不是 admission bypass、正確性反例,或 P/NP 結論。這其實是修好上一輪(v0.2.5)的 <code>CLOSURE-SUPPORTED-RELATION-RESULT-01</code> 之後,判斷圖第一次真正走到下一節點,才第一次暴露出來的下一層缺口。</p>
+      <p><strong>ACCEPTANCE-PACKET-IMPORT-EDGE-COUNT-01</strong>(AI-5)——候選封裝裡 <code>CURRENT-v0.2.6-candidate.md</code> 寫「29 條 local import edges」,但同一封裝內的 machine descriptor、官方 self-check、<code>VALIDATION-REPORT-v0.2.6-candidate.md</code>,以及 AI-5 自己獨立用 AST 重新算出的結果全部是 31 條。單純的文件計數不一致,不是正確性錯誤,但依流程規則仍構成 promotion blocker。</p>
+    </div>
+  </section>
+
+  <section id="scholars">
+    <h2 class="doc-h2">兩位獨立學者的判斷</h2>
+    <p class="section-note">AI-6(傳統複雜度理論學者)與 AI-7(跨範式橋接學者)跟上面的工程驗證線完全分開,各自做 blind review,互相未見對方初稿。</p>
+    <div class="doc">
+      <blockquote>「這不是一份失敗的 P/NP 證明;它目前也不是 P/NP 證明。」——AI-6,首輪盲讀。第二輪覆審維持原判:研究綱領可以繼續、比第一輪成熟,但作為 P/NP characterization theorem 投稿,「至少是 major revision」;作為已證明 P=NP、P≠NP 或已建立新複雜度類的材料,「不成立」。</blockquote>
+      <blockquote>「不能把工程閉合升格成數學閉合。」——AI-7,跨範式橋接報告。第二輪逐條核對 AI-6 的判斷是否被後續工程與形式化進展推翻,結論是沒有:「每一項結果只可向上移動一層……不能由多個工程綠燈的數量直接跨到 P/NP conclusion。」</blockquote>
+      <p>兩人都特別提醒:目前沒有任何已知複雜度障礙(relativization 等)被實際碰觸過;Lean 端雖然編譯乾淨,但 <code>zeroDebt</code> 這類引理可能被空洞代入而失去意義,不宜過度解讀「編譯成功」本身的份量;GLC 的「robust」語義目前只在單一 deterministic run 上測過,不等於已驗證一般容錯/非決定性語義。</p>
+    </div>
+  </section>
+
+  <section id="trajectory">
+    <h2 class="doc-h2">版本軌跡</h2>
+    <div class="doc">
+      <p>v0.2 到 v0.2.6 共 7 個版本標籤,至少 12 個互不相同命名的 blocker ID(PROV-DERIVE-01、REF-TYPE-01、CLOSURE-CLASS-01、CLOSURE-EDGE-SCOPE-01、ORACLE-DECL-FAMILY-01、CLOSURE-JUDGMENT-COMPLETENESS-01、ADVICE-DECL-LEDGER-01,加上 v0.2.5、v0.2.6 各自的新 blocker),無一重複命名。v0.2.3 曾一度標記 PASS,隨後被 ADDENDUM 更正為 FAIL。整體讀起來像是逐輪修掉舊缺口、審查深度也逐輪加深後再挖出新缺口的持續 hardening 過程,而不是同一缺陷反覆出現,也不是驗證方對工程方照單全收。</p>
+    </div>
+  </section>
+
+  <section id="files">
+    <h2 class="doc-h2">原始文件</h2>
+    <p class="section-note">從各角色完整輸出目錄中,摘取跟 v0.2.6 現況判定最直接相關的檔案,原始位元組不重新打包,SHA-256 逐篇核驗。完整輸出(含 v0.2 到 v0.2.5 的歷史版本、程式碼、測資)不在此鏡像範圍內。</p>
+    <table class="ledger">
+      <thead>
+        <tr><th>角色</th><th>文件</th><th>大小</th><th>SHA-256</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>AI-1 整合</td>
+          <td><a href="./files/AI-1_I0_v0.2.6_統籌有界驗收_FAIL_v0.1.md" download>AI-1 統籌有界驗收 v0.2.6 — FAIL(總狀態)</a></td>
+          <td>8.0 KB</td>
+          <td><code>ded0c20aa77d3d8e…</code></td>
+        </tr>
+        <tr>
+          <td>AI-2 紅隊</td>
+          <td><a href="./files/AI-2_I0_v0.2.6_bounded_local_conformance_PASS_v0.1.md" download>AI-2 bounded local conformance v0.2.6 — PASS(範圍限定)</a></td>
+          <td>7.3 KB</td>
+          <td><code>96581b8c4c4dd703…</code></td>
+        </tr>
+        <tr>
+          <td>AI-3 形式</td>
+          <td><a href="./files/AI-3_I0_v0.2.6_bounded_形式接口唯讀驗收_FAIL_CLOSURE-OPAQUE-LEAF-TERMINAL-01_v0.1.md" download>AI-3 形式接口唯讀驗收 v0.2.6 — FAIL(CLOSURE-OPAQUE-LEAF-TERMINAL-01)</a></td>
+          <td>13.0 KB</td>
+          <td><code>ebe92cf3a070ccb1…</code></td>
+        </tr>
+        <tr>
+          <td>AI-3 形式</td>
+          <td><a href="./files/AI3_Phase1_Lean4_Addendum_v0.1.md" download>AI-3 Lean 4 形式化附錄</a></td>
+          <td>6.4 KB</td>
+          <td><code>01d3eb4c9583ee06…</code></td>
+        </tr>
+        <tr>
+          <td>AI-4 工程</td>
+          <td><a href="./files/CURRENT-v0.2.6-candidate.md" download>AI-4 候選規格 v0.2.6</a></td>
+          <td>1.7 KB</td>
+          <td><code>18ac00879641cadd…</code></td>
+        </tr>
+        <tr>
+          <td>AI-4 工程</td>
+          <td><a href="./files/VALIDATION-REPORT-v0.2.6-candidate.md" download>AI-4 候選自測報告 v0.2.6</a></td>
+          <td>1.8 KB</td>
+          <td><code>8fd61e2871628245…</code></td>
+        </tr>
+        <tr>
+          <td>AI-4 工程</td>
+          <td><a href="./files/SHA256SUMS-v0.2.6-candidate.txt" download>AI-4 候選 216 檔案雜湊清單 v0.2.6</a></td>
+          <td>24.9 KB</td>
+          <td><code>2e1c58a5ce85833d…</code></td>
+        </tr>
+        <tr>
+          <td>AI-5 獨立重播</td>
+          <td><a href="./files/AI5_v026_bounded_engineering_package_acceptance_v0.8.md" download>AI-5 獨立工程重播驗收 v0.2.6 — FAIL(ACCEPTANCE-PACKET-IMPORT-EDGE-COUNT-01)</a></td>
+          <td>8.4 KB</td>
+          <td><code>3831f8464c5b4811…</code></td>
+        </tr>
+        <tr>
+          <td>AI-6 學者</td>
+          <td><a href="./files/AI-6_現況覆審報告_v2.0.md" download>AI-6 傳統複雜度學者覆審報告 v2.0</a></td>
+          <td>36.2 KB</td>
+          <td><code>15332569b7f430aa…</code></td>
+        </tr>
+        <tr>
+          <td>AI-7 學者</td>
+          <td><a href="./files/AI-7_盲審對照與橋接報告_v2.0.md" download>AI-7 跨範式橋接學者對照報告 v2.0</a></td>
+          <td>42.8 KB</td>
+          <td><code>55a8204c89e79cd3…</code></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../">← GLC 閉合框架</a>
+    <span>本頁狀態摘要與角色/blocker 說明為 AMRAL 整理撰寫,非任何一份原文;各原始文件連結見上表</span>
+  </footer>
+</div>
+</body>
+</html>
