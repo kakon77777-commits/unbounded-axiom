@@ -598,7 +598,7 @@ $$f_P = \frac{c}{l_P} \sim 10^{43} \text{ Hz}$$
 
 $$n_{\text{VOID}} = -\frac{2}{3} + \epsilon_{\text{VOID}}$$
 
-$\epsilon_{\text{VOID}}$ 編碼VOID結構信息。
+ $\epsilon_{\text{VOID}}$ 編碼VOID結構信息。
 
 **探測**：需要空間引力波探測器（LISA、天琴等）。
 
@@ -724,7 +724,7 @@ $$\Delta x \cdot \Delta p \geq \frac{\hbar}{2}$$
 
 **VOID詮釋**：
 
-$\Delta x < l_P$ 無意義，因為進入VOID
+ $\Delta x < l_P$ 無意義，因為進入VOID
 
 VOID中物理量未定義
 

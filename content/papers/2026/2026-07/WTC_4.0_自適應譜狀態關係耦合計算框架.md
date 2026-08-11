@@ -800,7 +800,7 @@ $$
 \right).
 $$
 
-$\mathcal R$ 可包含：
+ $\mathcal R$ 可包含：
 
 - 平滑性；
 - PDE 約束；

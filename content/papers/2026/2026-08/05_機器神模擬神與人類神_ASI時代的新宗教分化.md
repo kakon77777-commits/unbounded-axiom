@@ -979,7 +979,7 @@ $$
 D_j=\text{doctrinal / cognitive dissonance}.
 $$
 
-$\sigma$ 可以是任何有界更新函數。
+ $\sigma$ 可以是任何有界更新函數。
 
 這不是宗教心理學的既定定律，而是本文提出的最小動力框架。
 

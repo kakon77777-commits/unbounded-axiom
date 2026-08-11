@@ -851,7 +851,7 @@ ${module.stability}
 
 <p>${module.description}</p>
 
-<a href="/${this.getRepoUrl()}/tree/main/${module.path}" target="_blank">
+<a href="/ ${this.getRepoUrl()}/tree/main/$ {module.path}" target="_blank">
 
 查看程式碼 →
 

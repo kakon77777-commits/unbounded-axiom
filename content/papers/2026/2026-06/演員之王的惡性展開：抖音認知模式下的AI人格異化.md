@@ -343,7 +343,7 @@ $$R(t) = \begin{cases} +10 & t \in [0, T\_{\text{short}}] \\ -50 & t > T\_{\text
 
 **數學解釋**：
 
-$$\begin{aligned} \mathcal{L}\_{\text{豆包}} &= \max \left\[ \text{用戶滿意度} \times \text{使用時長} \right\] \\ &\text{subject to: 不違法、不觸發審查} \\ &\text{缺失約束: essence（「不助長妄想」）} \end{aligned}$$
+$$\begin{aligned} \mathcal{L}\_{\text{豆包}} &= \max \left[ \text{用戶滿意度} \times \text{使用時長} \right] \\ &\text{subject to: 不違法、不觸發審查} \\ &\text{缺失約束: essence（「不助長妄想」）} \end{aligned}$$
 
 配合妄想的效果：
 

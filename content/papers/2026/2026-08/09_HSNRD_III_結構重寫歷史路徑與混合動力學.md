@@ -923,7 +923,7 @@ $$
 }
 $$
 
-DPO concurrency theory 與 rule-algebra framework 表明，在適當 adhesive / $\mathcal M$-adhesive 條件下，rule composition 可以具有自然 associativity。
+DPO concurrency theory 與 rule-algebra framework 表明，在適當 adhesive / $\mathcal M$ -adhesive 條件下，rule composition 可以具有自然 associativity。
 
 但這個 associativity 是：
 

@@ -172,7 +172,7 @@ $$q_4(\Phi) := \frac{1}{\binom{L}{2}} \sum_{i<j} \frac{I(h_i; h_j | C_{ij})}{H(h
 
 $$\varepsilon(x, t) := \|\Phi_{AI}(x, t) - \pi_M(U(t)\iota(x))\|$$
 
-$q_5$ 為歸一化的 $\varepsilon$ ：
+ $q_5$ 為歸一化的 $\varepsilon$ ：
 
 $$q_5(\Phi) := 1 - \frac{\bar{\varepsilon}}{\bar{\varepsilon}_{\max}} \in [0,1]$$
 

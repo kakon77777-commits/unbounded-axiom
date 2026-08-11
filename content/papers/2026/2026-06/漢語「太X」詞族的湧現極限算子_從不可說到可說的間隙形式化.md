@@ -193,7 +193,7 @@ $$\text{太X} \leftrightarrow G_X \leftrightarrow \pi_n(\text{Cl})\big|_{\vareps
 
 **性質 1（方向不可逆性）**：
 
-$\hat{T}_X$ 的方向性為嚴格 $\varepsilon \to 0^+$ ，不存在 $\varepsilon \to 0^-$ 。
+ $\hat{T}_X$ 的方向性為嚴格 $\varepsilon \to 0^+$ ，不存在 $\varepsilon \to 0^-$ 。
 
 即：湧現只能從非 X 走向 X，不能反向。形式化： $\hat{T}_X$ 是非對稱算子， $\hat{T}_X^{-1}$ 不存在（或在定義域之外）。
 
@@ -211,7 +211,7 @@ $$\hat{T}_X \prec \hat{N}_X, \quad \hat{T}_X \prec \hat{\neg}_X$$
 
 **性質 4（不動點缺失）**：
 
-$\hat{T}_X$ 沒有不動點——不存在使 $\hat{T}_X(x) = x$ 成立的 $x$ 。
+ $\hat{T}_X$ 沒有不動點——不存在使 $\hat{T}_X(x) = x$ 成立的 $x$ 。
 
 這對應湧現過程的本質：一個已在湧現臨界態的概念，在算子作用下必然進一步分化，不可能在臨界態停留。不動點的存在性是 X 數算子族的特徵（定數： $\hat{V}(x)=x$ ），太X 算子族的不動點缺失從代數結構上區分了兩者。
 

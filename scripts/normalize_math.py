@@ -110,7 +110,10 @@ def pad_inline_math(t: str) -> str:
     identical."""
     def pad_prose(seg):
         o, last = [], 0
-        for mm in re.finditer(r"\$[^$\n]+?\$", seg):
+        # \\. before [^$\\\n]: a literal \$ (e.g. a "$D:n" label) is one escaped unit,
+        # not a delimiter — matches the renderer's own span rule, else this splits one
+        # valid span like $\$D:n$ into three bogus ones and pads garbage into the middle.
+        for mm in re.finditer(r"\$(?:\\.|[^$\\\n])+?\$", seg):
             o.append(seg[last:mm.start()])
             left = seg[mm.start() - 1] if mm.start() > 0 else None
             right = seg[mm.end()] if mm.end() < len(seg) else None

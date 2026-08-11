@@ -418,7 +418,7 @@ $$
 X=(X_1,X_2,X_3)
 $$
 
-三者 independent Bernoulli$(1/2)$ 。
+三者 independent Bernoulli $(1/2)$ 。
 
 則：
 

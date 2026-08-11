@@ -416,7 +416,7 @@ OPSEC約束：
 
 第四章：TrustedSec，「Benchmarking Self-Hosted LLMs for Offensive Security」（2026年4月，本地模型研究的25%佔比數據）；GreyNoise AI系統攻擊會話統計，91,000次攻擊會話（2025年10月至2026年1月）；Rescana，LLMjacking報告（2026年1月，API金鑰地下市場定價）
 
-第五章：「Towards Cybersecurity Superintelligence」（CAI 3,600倍速度與156倍成本降低數據）；Hadrian，「The AI Offensive Security Boom: 70 New Tools in 18 Months」（Excalibur $28.50 vs $15,000-$50,000人工測試等效數據；RapidPen 200-400秒數據）（2026年4月）
+第五章：「Towards Cybersecurity Superintelligence」（CAI 3,600倍速度與156倍成本降低數據）；Hadrian，「The AI Offensive Security Boom: 70 New Tools in 18 Months」（Excalibur $28.50 vs $ 15,000-$50,000人工測試等效數據；RapidPen 200-400秒數據）（2026年4月）
 
 ---
 

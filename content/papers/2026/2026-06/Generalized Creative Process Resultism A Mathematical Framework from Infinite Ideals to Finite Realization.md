@@ -147,7 +147,7 @@ $$\min\_{0 \leq k < K} \left( \mathcal{F}(C\_k; h, \Theta) - \mathcal{F}^\* \rig
 
 **This result shows that error converges at rate $\mathcal{O}(1/K)$. Stopping rules ensure resource constraints are satisfied:**
 
-$$H = \mathbb{I}[\text{Comp}(C\_k) \geq \tau] \vee \mathbb{I}\left\[\sum\_{j=1}^k \mathcal{B}(u\_j) \geq B\_{\max}\right\] \vee \mathbb{I}[k \geq K\_{\max}]$$
+$$H = \mathbb{I}[\text{Comp}(C\_k) \geq \tau] \vee \mathbb{I}\left[\sum\_{j=1}^k \mathcal{B}(u\_j) \geq B\_{\max}\right] \vee \mathbb{I}[k \geq K\_{\max}]$$
 
 **Rate-Distortion Theory Perspective:**
 
@@ -157,7 +157,7 @@ $$\min\_{{u\_k}} D(C\_K, \mathcal{I}\_\theta(h)) \quad \text{s.t.} \quad R({u\_k
 
 **The corresponding Lagrangian:**
 
-$$\min\_{{u\_k}} \left\[ D(C\_K, \mathcal{I}\_\theta(h)) + \mu R({u\_k}) \right\]$$
+$$\min\_{{u\_k}} \left[ D(C\_K, \mathcal{I}\_\theta(h)) + \mu R({u\_k}) \right]$$
 
 **The parameter $\mu$ controls the trade-off between speed and quality: small $\mu$ emphasizes quality (slow writing), large $\mu$ emphasizes efficiency (sketching).**
 
@@ -207,7 +207,7 @@ $$A\_{t+1} = R\left( G(I\_t, M\_t, T\_t), D(E(A\_t, I\_t)) \right) \quad \text{s
 
 *Definition 3.1 (GCPR Fixed Point): $A^ \in \mathcal{F}$ is a fixed point if:*\*
 
-$$A^\* = R\\left( G(I^*, M^*, T^*), D(E(A^*, I^\*)) \\right)$$
+$$A^\* = R\left( G(I^*, M^*, T^*), D(E(A^*, I^\*)) \right)$$
 
 **3.4 Six Meta-Axioms and Three Categories of Guarantees**
 

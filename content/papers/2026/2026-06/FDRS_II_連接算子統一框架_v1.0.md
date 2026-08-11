@@ -15,7 +15,7 @@
 
 本文引入三個**連接算子**：信息失真算子 $\mathcal{D}$ 、表示轉換算子 $\mathcal{R}$ 、以及維度元算子 $\Delta$ 。以 $\mathbb{R}$ 上有限維鏈複形範疇 $\mathbf{Ch}(\mathbb{R})$ 的受限子範疇 $\mathbf{Ch}_{\mathrm{FDRS}}(\mathbb{R})$ （FDRS 容許範疇）為工作環境，三個算子共同構成一個封閉的代數系統，並通過十個公理完整規範其行為。
 
-主要結果包括： $\mathcal{D}$ -$\Delta$ 譜對應定理（ $k$ 步維度降解的信息失真精確等於被捨棄邊界算子奇異值的能量比，SVD 成為整個框架的通用計算語言）； $\mathcal{R}$ -$\Delta$ 非交換性定理（表示轉換與維度降解的順序依賴性，其非交換量可從譜數據計算）；以及 FDRS 算子網絡的正式構造（以所有可能的結構-模式-維度組合為節點、算子作用為有向邊、 $\mathcal{D}$ 值為邊權的加權有向圖，將「最優展平策略」歸結為圖上的最短路徑問題）。
+主要結果包括： $\mathcal{D}$ - $\Delta$ 譜對應定理（ $k$ 步維度降解的信息失真精確等於被捨棄邊界算子奇異值的能量比，SVD 成為整個框架的通用計算語言）； $\mathcal{R}$ - $\Delta$ 非交換性定理（表示轉換與維度降解的順序依賴性，其非交換量可從譜數據計算）；以及 FDRS 算子網絡的正式構造（以所有可能的結構-模式-維度組合為節點、算子作用為有向邊、 $\mathcal{D}$ 值為邊權的加權有向圖，將「最優展平策略」歸結為圖上的最短路徑問題）。
 
 本框架為 FDRS 向奇異值分解理論與組合數學方向的深化發展奠定了嚴格的代數基礎，亦指明了向完整算子代數理論升級的具體路徑。
 
@@ -55,9 +55,9 @@
 
 本文的核心貢獻是建立 **FDRS 連接算子代數**，包含三個算子和一套公理系統，使三條路線統一在鏈複形範疇的一個可計算子範疇內。主要成果如下：
 
-$\mathcal{D}$ -$\Delta$ **譜對應定理**： $k$ 步維度降解的信息失真，精確等於被捨棄的邊界算子奇異值平方和在全鏈複形能量中的佔比。這將 SVD 從「線性化路線的特有工具」提升為整個 FDRS 框架的通用計算語言。
+ $\mathcal{D}$ - $\Delta$ **譜對應定理**： $k$ 步維度降解的信息失真，精確等於被捨棄的邊界算子奇異值平方和在全鏈複形能量中的佔比。這將 SVD 從「線性化路線的特有工具」提升為整個 FDRS 框架的通用計算語言。
 
-$\mathcal{R}$ -$\Delta$ **非交換性定理**：表示轉換與維度降解一般不可交換，其非交換量是可計算的，由模式翻譯函數的度量性質決定。非交換量等於零的等價條件被精確刻畫。
+ $\mathcal{R}$ - $\Delta$ **非交換性定理**：表示轉換與維度降解一般不可交換，其非交換量是可計算的，由模式翻譯函數的度量性質決定。非交換量等於零的等價條件被精確刻畫。
 
 **FDRS 算子網絡**：以所有可能的（結構，模式，降解步數）三元組為節點、以算子作用為有向邊、以 $\mathcal{D}$ 值為邊權的加權有向圖。「最優展平路徑」歸結為此圖上的最短路徑問題，且在 FDRS 容許範疇內可用標準算法計算。
 
@@ -163,13 +163,13 @@ $$\varphi_{\text{top} \to \text{spec}}: \beta_0 \;\mapsto\; \operatorname{mult}(
 
 $$\mathcal{R}: \mathfrak{Rep} \to \mathfrak{Rep}, \qquad \mathcal{R}(C_*(H),\, H,\, m) = (C_*(H),\, H,\, m')$$
 
-$\mathcal{R}$ 保持底層鏈複形 $C_*(H)$ 完全不動，只更換模式標籤，所有不變量通過 $\varphi_{m \to m'}$ 相容轉換。
+ $\mathcal{R}$ 保持底層鏈複形 $C_*(H)$ 完全不動，只更換模式標籤，所有不變量通過 $\varphi_{m \to m'}$ 相容轉換。
 
 **「容器同一性」的意義。** $\mathcal{R}$ 的核心設計哲學是：**容器**（底層鏈複形 $C_*(H)$ ）在模式切換下嚴格不變。我們切換的是「看這個容器的角度」，而不是「容器本身」。模式翻譯函數 $\varphi_{m \to m'}$ 是不同角度之間的「讀數字典」，確保任何模式給出的讀數都忠實反映同一個底層對象。這就是「容器同一性」名稱的來源： $\mathcal{R}$ 的作用範圍是觀察者，而不是被觀察的容器。
 
 ### 3.3　維度元算子 $\Delta$
 
-$\Delta$ 是三個算子中在操作上最具實體感的一個：它執行實際的維度降解。選擇何種數學構造來實現「把頂維度折疊進下一維」，對理論的整體代數結構有決定性影響。
+ $\Delta$ 是三個算子中在操作上最具實體感的一個：它執行實際的維度降解。選擇何種數學構造來實現「把頂維度折疊進下一維」，對理論的整體代數結構有決定性影響。
 
 **為何不是截斷。** 最直觀的「降維」操作是直接截斷：丟掉頂層鏈群 $C_n$ ，得到 $(C_{n-1} \to \cdots \to C_0)$ 。然而，截斷完全丟失了 $\partial_n$ 攜帶的連結信息——即 $C_n$ 如何通過邊界映射耦合到 $C_{n-1}$ 。這恰恰違背了 FDRS 的根本原則：展平不是丟棄信息，而是將信息重新分佈。
 
@@ -247,7 +247,7 @@ $$\mathcal{D}(\Delta_k(H)) = 1 - \prod_{j=0}^{k-1}(1 - d_j)$$
 
 ### 4.4　跨算子公理
 
-**A10（ $\mathcal{R}$ -$\Delta$ 有界非交換性）** 一般地， $\mathcal{R}_{m \to m'} \circ \Delta_k \neq \Delta_k \circ \mathcal{R}_{m \to m'}$ （作為從 $\mathfrak{Rep}$ 到 $\mathfrak{Rep}$ 的映射）。失真差有上界：
+**A10（ $\mathcal{R}$ - $\Delta$ 有界非交換性）** 一般地， $\mathcal{R}_{m \to m'} \circ \Delta_k \neq \Delta_k \circ \mathcal{R}_{m \to m'}$ （作為從 $\mathfrak{Rep}$ 到 $\mathfrak{Rep}$ 的映射）。失真差有上界：
 
 $$\left|\mathcal{D}(\mathcal{R}_{m \to m'} \circ \Delta_k) - \mathcal{D}(\Delta_k \circ \mathcal{R}_{m \to m'})\right| \leq \varepsilon(k, m, m')$$
 
@@ -259,9 +259,9 @@ A10 揭示了 FDRS 框架中一個非平凡的結構性事實：「先換觀察�
 
 ## 第五章　主要定理
 
-### 5.1　$\mathcal{D}$ -$\Delta$ 譜對應定理
+### 5.1　 $\mathcal{D}$ - $\Delta$ 譜對應定理
 
-**定理 5.1（ $\mathcal{D}$ -$\Delta$ 譜對應）。** 設 $C_*(H) \in \mathbf{Ch}_{\mathrm{FDRS}}(\mathbb{R})$ ，頂維度為 $n$ ，則 $k$ 步維度降解的信息失真為：
+**定理 5.1（ $\mathcal{D}$ - $\Delta$ 譜對應）。** 設 $C_*(H) \in \mathbf{Ch}_{\mathrm{FDRS}}(\mathbb{R})$ ，頂維度為 $n$ ，則 $k$ 步維度降解的信息失真為：
 
 $$\mathcal{D}(\Delta_k(H)) = \frac{\displaystyle\sum_{j=0}^{k-1} \sum_i \sigma_i(\partial_{n-j})^2}{\displaystyle\sum_l \dim C_l(H)}$$
 
@@ -281,9 +281,9 @@ $$\text{第 } k \text{ 步降解的信息失真} = \frac{\text{被捨棄的邊�
 
 完整證明見附錄 A。
 
-### 5.2　$\mathcal{R}$ -$\Delta$ 非交換性定理
+### 5.2　 $\mathcal{R}$ - $\Delta$ 非交換性定理
 
-**定理 5.2（ $\mathcal{R}$ -$\Delta$ 非交換量的精確表達）。** 在 $\mathbf{Ch}_{\mathrm{FDRS}}(\mathbb{R})$ 內，設模式對 $(m, m')$ 和結構 $C_*(H)$ ，則
+**定理 5.2（ $\mathcal{R}$ - $\Delta$ 非交換量的精確表達）。** 在 $\mathbf{Ch}_{\mathrm{FDRS}}(\mathbb{R})$ 內，設模式對 $(m, m')$ 和結構 $C_*(H)$ ，則
 
 $$\mathcal{D}(\mathcal{R}_{m \to m'} \circ \Delta_1) - \mathcal{D}(\Delta_1 \circ \mathcal{R}_{m \to m'}) = \mathcal{D}_m(\partial_n) - \mathcal{D}_{m'}(\partial_n^{(m')})$$
 
@@ -317,11 +317,11 @@ $$\mathcal{G}_{\mathrm{FDRS}} = (V, E, w)$$
 
 **有向邊集** $E$ 包含三類有向邊：
 
-$\mathcal{D}$ -測量邊： $(H, m, k) \xrightarrow{d = \mathcal{D}(f)} (H', m, k)$ ，對應鏈映射 $f: C_*(H) \to C_*(H')$ 在模式 $m$ 下的一次結構轉換，邊權為其失真值 $d \in [0,1]$ 。
+ $\mathcal{D}$ -測量邊： $(H, m, k) \xrightarrow{d = \mathcal{D}(f)} (H', m, k)$ ，對應鏈映射 $f: C_*(H) \to C_*(H')$ 在模式 $m$ 下的一次結構轉換，邊權為其失真值 $d \in [0,1]$ 。
 
-$\mathcal{R}$ -模式邊： $(H, m, k) \xrightarrow{d=0} (H, m', k)$ ，對應模式切換 $\mathcal{R}_{m \to m'}$ ，由 A6，邊權恆為零。
+ $\mathcal{R}$ -模式邊： $(H, m, k) \xrightarrow{d=0} (H, m', k)$ ，對應模式切換 $\mathcal{R}_{m \to m'}$ ，由 A6，邊權恆為零。
 
-$\Delta$ -降維邊： $(H, m, k) \xrightarrow{d = d_k} (H, m, k+1)$ ，對應一步維度降解 $\Delta_1$ ，邊權為 $d_k = \mathcal{D}(\Delta_1 \text{ on } \Delta_k(H))$ ，由定理 5.1 可計算。
+ $\Delta$ -降維邊： $(H, m, k) \xrightarrow{d = d_k} (H, m, k+1)$ ，對應一步維度降解 $\Delta_1$ ，邊權為 $d_k = \mathcal{D}(\Delta_1 \text{ on } \Delta_k(H))$ ，由定理 5.1 可計算。
 
 **邊權函數** $w: E \to [0,1]$ 由 $\mathcal{D}$ 值給出。
 
@@ -343,7 +343,7 @@ $$\mathcal{D}_{\mathrm{total}} = 1 - \prod_{e \in \text{path}}(1 - w(e))$$
 
 算子網絡的引入使 FDRS 的原始問題框架發生了一次範式轉移：三條路線不再是「三選一的替代方案」，而是**同一個結構空間中不同類型的有向邊**。每條展平路徑（一個從初始到目標節點的有向路徑序列）是一個具體的操作方案，帶有精確可計算的代價。
 
-$\mathcal{R}$ -$\Delta$ 非交換性（定理 5.2）在網絡結構中有直接的幾何體現：從 $(H, m, 0)$ 到 $(H', m', k)$ 存在多條不同路徑，它們走過不同的中間節點序列（先切換模式再降維，或先降維再切換模式），累積失真一般不同。最優路徑的存在性由命題 6.1 保證，其唯一性取決於具體結構 $H$ 和目標 $(m', k)$ 。
+ $\mathcal{R}$ - $\Delta$ 非交換性（定理 5.2）在網絡結構中有直接的幾何體現：從 $(H, m, 0)$ 到 $(H', m', k)$ 存在多條不同路徑，它們走過不同的中間節點序列（先切換模式再降維，或先降維再切換模式），累積失真一般不同。最優路徑的存在性由命題 6.1 保證，其唯一性取決於具體結構 $H$ 和目標 $(m', k)$ 。
 
 這個多路徑結構正是初始 FDRS 三條路線「三選一」困境所缺少的東西。三條路線從來不是競爭者——它們是同一個空間中的不同維度的邊，各有代價，皆可計算，可以系統性比較和組合。網狀式理論把「哪條路更好」從直覺判斷轉化為圖上的最優化計算。
 
@@ -446,7 +446,7 @@ $$= \sum_{k \leq n-1} \dim C_k - \dim C_n = \sum_k \dim C_k - 2\dim C_n$$
 
 **修正：引入耦合信息的正確計算框架。**
 
-$\mathcal{D}$ 的定義基於鏈映射 $f = \pi$ 在全鏈複形上的 HS 範數。然而， $\pi$ 的設計是「從 $C_*(H)$ 到 $\Delta_1(H)$ 」，它所測量的是「 $\Delta_1$ 操作後保留下來的鏈群結構佔原始結構的比例」。
+ $\mathcal{D}$ 的定義基於鏈映射 $f = \pi$ 在全鏈複形上的 HS 範數。然而， $\pi$ 的設計是「從 $C_*(H)$ 到 $\Delta_1(H)$ 」，它所測量的是「 $\Delta_1$ 操作後保留下來的鏈群結構佔原始結構的比例」。
 
 更精確地，定義「被捨棄的信息算子」 $\delta: C_*(H) \to C_*(H)$ 為 $\mathrm{id} - \tilde{\pi}$ （其中 $\tilde{\pi}$ 是 $\pi$ 在 $C_*(H)$ 上的提升），則
 
@@ -454,7 +454,7 @@ $$\mathcal{D}(\Delta_1) = \frac{\|\delta\|^2_{\mathrm{HS}}}{\|\mathrm{id}\|^2_{\
 
 「被捨棄」的部分包含兩類信息： $C_n$ 本身（維度 $\dim C_n$ ），以及 $C_{n-1}$ 中 $\operatorname{im}(\partial_n)$ 佔據的子空間（維度 $\operatorname{rank}(\partial_n) = \dim C_n$ ，奇異值由 $\partial_n$ 的奇異值決定）。
 
-$\partial_n$ 的奇異值 $\{\sigma_i(\partial_n)\}$ 精確刻畫了 $\operatorname{im}(\partial_n)$ 的「幾何形狀」——它以多大的「拉伸程度」嵌入 $C_{n-1}$ 。被捨棄的信息能量為：
+ $\partial_n$ 的奇異值 $\{\sigma_i(\partial_n)\}$ 精確刻畫了 $\operatorname{im}(\partial_n)$ 的「幾何形狀」——它以多大的「拉伸程度」嵌入 $C_{n-1}$ 。被捨棄的信息能量為：
 
 $$\|\delta\|^2_{\mathrm{HS}} = \underbrace{\dim C_n}_{C_n \text{ 本身}} + \underbrace{\sum_i \sigma_i(\partial_n)^2}_{\text{耦合能量，即 } \|\partial_n\|^2_{\mathrm{HS}}}$$
 
@@ -621,11 +621,11 @@ FDRS 容許條件驗證： $\operatorname{rank}(\partial_2) = 1 = \dim C_2$ 。�
 
 $$\mathcal{D}(\Delta_1) = \frac{\sigma_1(\partial_2)^2}{\dim C_0 + \dim C_1 + \dim C_2} = \frac{3}{3 + 3 + 1} = \frac{3}{7} \approx 0.429$$
 
-$\Delta_1(H)$ ： $C_2$ 消去， $C_1' = C_1/\operatorname{im}(\partial_2) = \mathbb{R}^3/\mathbb{R} \cong \mathbb{R}^2$， $C_0$ 不變。
+ $\Delta_1(H)$ ： $C_2$ 消去， $C_1' = C_1/\operatorname{im}(\partial_2) = \mathbb{R}^3/\mathbb{R} \cong \mathbb{R}^2$， $C_0$ 不變。
 
 算子網絡片段：節點 $(H, \text{lin}, 0)$ 通過代價 $3/7$ 的 $\Delta$ -邊連接到 $(\Delta_1 H, \text{lin}, 1)$ ；通過三條代價為零的 $\mathcal{R}$ -邊連接到 $(H, \text{top}, 0)$ 和 $(H, \text{spec}, 0)$ 。
 
-非交換量（ $\text{lin} \to \text{spec}$ ）：Laplacian $L = \partial_1 \partial_1^T$ 的特徵值為 $\{0, 3, 3\}$ （三角形圖的 Laplacian）。譜模式下 $\mathcal{D}_{\text{spec}}(\Delta_1) = \lambda_{\max}(L_2)/\sum_j \lambda_j = 3/(0+3+3) \cdot (\dim C_2/\text{total})\dots$（此計算需完整模式翻譯後精確化，略）。
+非交換量（ $\text{lin} \to \text{spec}$ ）：Laplacian $L = \partial_1 \partial_1^T$ 的特徵值為 $\{0, 3, 3\}$ （三角形圖的 Laplacian）。譜模式下 $\mathcal{D}_{\text{spec}}(\Delta_1) = \lambda_{\max}(L_2)/\sum_j \lambda_j = 3/(0+3+3) \cdot (\dim C_2/\text{total})\dots$ （此計算需完整模式翻譯後精確化，略）。
 
 ---
 
@@ -635,7 +635,7 @@ Rubik's cube 的狀態空間 $\Omega \subset \mathbb{R}^{54}$ 的鏈複形由群
 
 FDRS 容許條件：每個邊界算子 $\partial_k$ （由生成元組合而來）的秩等於相應鏈群的維度，因為置換矩陣是滿秩的。✓
 
-$\mathcal{D}(\Delta_k)$ 計算：所有 $\sigma_i(\partial_{n-j}) = 1$ ，故
+ $\mathcal{D}(\Delta_k)$ 計算：所有 $\sigma_i(\partial_{n-j}) = 1$ ，故
 
 $$\mathcal{D}(\Delta_k) = \frac{\sum_{j=0}^{k-1} \dim C_{n-j}}{\sum_l \dim C_l(H)}$$
 

@@ -76,7 +76,7 @@ $$\text{Hom}_{M_d}(\Pi_d(m), m') \cong \text{Hom}_{M_{d+1}}(m, \iota_d(m'))$$
 
 **命題 A1.2（深度空間的逆系統）**【標準定理】
 
-$(\{M_d\}, \{\Pi_d\})$ 構成一個逆系統（inverse system）於集合（或適當範疇）中。其逆極限：
+ $(\{M_d\}, \{\Pi_d\})$ 構成一個逆系統（inverse system）於集合（或適當範疇）中。其逆極限：
 
 $$M_\infty = \varprojlim_{d} M_d = \{(m_0, m_1, m_2, \ldots) : \Pi_d(m_{d+1}) = m_d, \forall d\}$$
 
@@ -130,7 +130,7 @@ $$DH(P, x) = \begin{cases} 1 & \text{若 } P \text{ 在輸入 } x \text{ 上的�
 
 **定理 A3.1（深度停機問題不可判定）**【標準定理】
 
-$DH$ 不可判定。
+ $DH$ 不可判定。
 
 **證明**：歸約自標準停機問題 $H$ 。
 
@@ -230,7 +230,7 @@ $$G = \lim_{\varepsilon \to 0^+}(Cl + \varepsilon)$$
 - $+\varepsilon$ 表示對純 Cl 結構加入一個無窮小的「偏移」
 - $G$ 是 $\varepsilon \to 0^+$ 的極限，即「從有偏移趨近無偏移」的極限點
 
-$G$ 是逼近但不到達 T 的過程的極限——一個動態的「臨界點」。
+ $G$ 是逼近但不到達 T 的過程的極限——一個動態的「臨界點」。
 
 ### A5.2 介質的形式刻畫
 

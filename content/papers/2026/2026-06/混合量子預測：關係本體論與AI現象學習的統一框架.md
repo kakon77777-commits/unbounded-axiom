@@ -396,7 +396,7 @@ w\_{t+1} = Project(w\_{t+1}, constraints)
 
 **目標**：在物理約束下最小化預測誤差
 
-$$\\boxed{\\begin{aligned} &\\min\_{w} \\quad \\mathcal{L}*{\\text{data}}(w) \\ &\\text{s.t.} \\quad w \\in \\mathcal{M}*{\\text{physics}} \\end{aligned}}$$
+$$\boxed{\begin{aligned} &\min\_{w} \quad \mathcal{L}*{\text{data}}(w) \\ &\text{s.t.} \quad w \in \mathcal{M}*{\text{physics}} \end{aligned}}$$
 
 其中 是物理約束流形：
 
@@ -406,7 +406,7 @@ $$\\boxed{\\begin{aligned} &\\min\_{w} \\quad \\mathcal{L}*{\\text{data}}(w) \\ 
 
 **定義4.1**（量子綜合狀態）
 
-$$\\mathbb{D}[w] = \\begin{pmatrix} w & \\text{權重矩陣} \\ \\nabla\_w \\mathcal{L} & \\text{梯度} \\ \\nabla^2\_w \\mathcal{L} & \\text{Hessian} \\ \\mathcal{L}*{\\text{physics}}(w) & \\text{約束違反度} \\ |\\langle\\psi*{\\text{pred}}|\\psi\_{\\text{true}}\\rangle|^2 & \\text{保真度} \\end{pmatrix}$$
+$$\mathbb{D}[w] = \begin{pmatrix} w & \text{權重矩陣} \\ \nabla\_w \mathcal{L} & \text{梯度} \\ \nabla^2\_w \mathcal{L} & \text{Hessian} \\ \mathcal{L}*{\text{physics}}(w) & \text{約束違反度} \\ |\langle\psi*{\text{pred}}|\psi\_{\text{true}}\rangle|^2 & \text{保真度} \end{pmatrix}$$
 
 **4.3 加權範數與梯度流**
 
@@ -968,7 +968,7 @@ VQE需要優化參數化電路：
 
 **核心公式**
 
-$$\\boxed{\\begin{aligned} &\\text{量子系統} = G = (V, E, w) \\ \\ &\\text{演化} = \\frac{dw}{dt} = -\\frac{i}{\\hbar}[H, w] + \\mathcal{N}*{\\text{AI}}(w) \\ \\ &\\text{優化} = \\min*{w \\in \\mathcal{M}} |\\mathbb{D}[w]|\_W \\end{aligned}}$$
+$$\boxed{\begin{aligned} &\text{量子系統} = G = (V, E, w) \\ \\ &\text{演化} = \frac{dw}{dt} = -\frac{i}{\hbar}[H, w] + \mathcal{N}*{\text{AI}}(w) \\ \\ &\text{優化} = \min*{w \in \mathcal{M}} |\mathbb{D}[w]|\_W \end{aligned}}$$
 
 **三個範式的統一**
 

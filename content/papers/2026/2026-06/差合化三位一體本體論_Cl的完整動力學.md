@@ -321,7 +321,7 @@ $$\nabla(X,t) \text{ 連續可微}$$
 
 $$\lim_{t \to t_c^-} \nabla(X,t) \neq \lim_{t \to t_c^+} \nabla(X,t)$$
 
-$\nabla$ 在 $t_c$ 不連續。
+ $\nabla$ 在 $t_c$ 不連續。
 
 例子: 水的沸騰、社會革命、意識的湧現
 
@@ -900,7 +900,7 @@ $$\forall X, \quad \nabla(X) \neq 0$$
 差合化:
 $$\lim_{t \to \infty} \nabla(X) \to 0 \quad \land \quad \Delta(X, \text{Cl}) \to 0$$
 
-變化趨於寧靜,差異趨於消融,但**不是坍塌**(因為仍保持 $\mathcal{U} > 0$)。
+變化趨於寧靜,差異趨於消融,但**不是坍塌**(因為仍保持 $\mathcal{U} > 0$ )。
 
 ---
 

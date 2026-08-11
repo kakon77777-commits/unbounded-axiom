@@ -1161,7 +1161,7 @@ min⁡x∈Cf(x)s.t.gi(x)≤0,hj(x)=0\min_{x \in \mathcal{C}} f(x) \quad \text{s.
 
 Generalized KKT conditions (using subdifferential):
 
-$$\begin{aligned} 0 &\in \partial f(x^_) + \sum_i \mu_i^_ \partial g_i(x^_) + \sum_j \lambda_j^_ \partial h_j(x^_) + N_{\mathcal{C}}(x^_) \\ \mu_i^* &\geq 0, \quad \mu_i^* g_i(x^_) = 0 \\ h_j(x^_) &= 0 \end{aligned}$$
+$$\begin{aligned} 0 &\in \partial f(x^*) + \sum_i \mu_i^* \partial g_i(x^*) + \sum_j \lambda_j^* \partial h_j(x^*) + N_{\mathcal{C}}(x^*) \\ \mu_i^* &\geq 0, \quad \mu_i^* g_i(x^*) = 0 \\ h_j(x^*) &= 0 \end{aligned}$$
 
 where NC(x)N_{\mathcal{C}}(x) NC​(x) is the normal cone.
 

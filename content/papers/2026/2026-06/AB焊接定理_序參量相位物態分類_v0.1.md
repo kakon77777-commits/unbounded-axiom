@@ -17,7 +17,7 @@ $$\theta=\arg\psi\in S^1\ (\text{於 }|\psi|\neq 0),\qquad a=\text{U(1) Berry �
 
 規範群 $G=\mathrm{U}(1)$ 作用：實空間 $\theta\to\theta+\alpha$ ；Berry $a\to a+d\chi$ 。**絕對相位是規範自由度、不可觀測**（統籌表 §0/§5 之核心事實）。可觀測者只有 $G$ -不變量，凡三：
 
-- **I1 剛度 stiffness**　$\rho_s=\dfrac1V\dfrac{\partial^2 F}{\partial(\nabla\theta)^2}\ge 0$ ，規範不變的響應係數（helicity modulus）。`[既有]`
+- **I1 剛度 stiffness**　 $\rho_s=\dfrac1V\dfrac{\partial^2 F}{\partial(\nabla\theta)^2}\ge 0$ ，規範不變的響應係數（helicity modulus）。`[既有]`
 - **I2 實空間拓樸荷**　繞數 $w=\dfrac1{2\pi}\oint\nabla\theta\cdot d\boldsymbol\ell\in\mathbb{Z}$ ，即 $\pi_1(S^1)=\mathbb{Z}$ 。`[既有]`
 - **I3 動量空間拓樸荷**　Chern 數 $C=\dfrac1{2\pi}\displaystyle\int_{\mathrm{BZ}} da=\dfrac1{2\pi}\int F\in\mathbb{Z}$，U(1) Bloch 叢的第一陳省類。`[既有]`
 
@@ -37,7 +37,7 @@ $$B_{\text{有序}}=\{\rho_s>0\},\quad B_{\text{無序}}=\{\rho_s=0\},\quad \tex
 （Goldstone：有序 ⟺ S¹ Goldstone 模有有限剛度。超流/超導/三維 XY。）
 
 **(b) 缺陷面（無局部序參量可分時）**　`[既有]`
-二維 XY，Mermin–Wagner 禁止真長程序，但 BKT 相變由 I2（渦旋＝$\theta$ 繞 $2\pi$ 的點）束縛—解離控制：低溫渦旋成對束縛、 $\rho_s>0$ ；高溫自由、 $\rho_s=0$ 。 $\rho_s$ 在 $T_{\text{BKT}}$ 普適跳變（Nelson–Kosterlitz）。物態邊界＝圓相位拓樸缺陷的凝聚。此處 (a)(b) 互鎖：B 仍讀自 I1，而 I1 的崩解由 I2 觸發。
+二維 XY，Mermin–Wagner 禁止真長程序，但 BKT 相變由 I2（渦旋＝ $\theta$ 繞 $2\pi$ 的點）束縛—解離控制：低溫渦旋成對束縛、 $\rho_s>0$ ；高溫自由、 $\rho_s=0$ 。 $\rho_s$ 在 $T_{\text{BKT}}$ 普適跳變（Nelson–Kosterlitz）。物態邊界＝圓相位拓樸缺陷的凝聚。此處 (a)(b) 互鎖：B 仍讀自 I1，而 I1 的崩解由 I2 觸發。
 
 **(c) 陳省面（無任何局部序參量）**　`[既有]`
 能帶絕緣體之「平庸 vs 拓樸」（TKNN 1982）：兩相局部全同、對稱性相同，**沒有 Landau 序參量**；唯一區分者是 Berry 相位（A 量）的整體不變量 $C$ 。霍爾電導 $\sigma_{xy}=C\,e^2/h$ 。物態標籤＝A 的陳省數。
@@ -52,7 +52,7 @@ $$\boxed{\ \mathcal{B}=\pi_0\big(\mathcal{A}/G\big)\ }$$
 
 `[既有]` 三面各自的機制是現成的，焊接只是並置後抽取共結構：
 
-- (a) 自發對稱破缺 → Goldstone 模 → 該模的勁度 $\rho_s$＝序的操作定義（Fisher–Barber–Jasnow 螺旋模量）。剛度的有無，就是物態區的歸屬。
+- (a) 自發對稱破缺 → Goldstone 模 → 該模的勁度 $\rho_s$ ＝序的操作定義（Fisher–Barber–Jasnow 螺旋模量）。剛度的有無，就是物態區的歸屬。
 - (b) 二維下序被漲落殺死，但**拓樸缺陷**仍給整數標籤；BKT＝I2 的解離轉變。把「相」的判斷從局部序量轉移到拓樸荷——這正是「判斷域＝相對/不變，不是絕對」的具體實現。
 - (c) Berry 曲率積分＝陳省數（Thouless 等）。**完全沒有局部序參量**的物態分類，只能靠 A 的整體不變量——這是 A→B 最純的範例，也是 Landau 框架照不到、必須靠圓相位拓樸的地方。
 
@@ -80,7 +80,7 @@ $$\text{A 圓相位}\ \xrightarrow{\ \text{取 }G\text{-不變量}\ }\ \text{B �
 
 **漏洞一：兩面不可混為一談。** `[既有]` 對稱破缺序（面 a，有局部序參量，Landau）與拓樸序（面 b/c，無局部序參量，長程糾纏）是**真正不同的分類綱領**。圓相位 A 在兩者都出現，但角色不同：(a) 是實空間被破缺的 Goldstone 方向；(c) 是動量空間的 Berry holonomy。焊接**只**在「兩者皆為某 U(1) 相位結構的 $G$ -不變量」這一層成立，**不**主張對稱破缺與拓樸序是同一現象。把它們說成一回事，就是過度統一——本定理刻意不踩。
 
-**漏洞二：定理只對阿貝爾 (U(1)) 乾淨。** `[綱領]` 一般序參量流形 $\mathcal{M}$ 的缺陷分類是 $\pi_k(\mathcal{M})$ （Mermin, *Rev. Mod. Phys.* 1979）。圓相位＝$\mathcal{M}=S^1$ 、 $\pi_1=\mathbb{Z}$ 、 $c_1$ 的最乾淨特例。非阿貝爾序參量（ $\mathbb{RP}^2$ 向列、非阿貝爾任意子、 $\pi_{k>1}$ ）需要完整同倫理論。故全稱焊接「B＝序參量場的同倫/上同調不變量」對 U(1) 是**定理**，對一般 $\mathcal{M}$ 是**綱領**。
+**漏洞二：定理只對阿貝爾 (U(1)) 乾淨。** `[綱領]` 一般序參量流形 $\mathcal{M}$ 的缺陷分類是 $\pi_k(\mathcal{M})$ （Mermin, *Rev. Mod. Phys.* 1979）。圓相位＝ $\mathcal{M}=S^1$ 、 $\pi_1=\mathbb{Z}$ 、 $c_1$ 的最乾淨特例。非阿貝爾序參量（ $\mathbb{RP}^2$ 向列、非阿貝爾任意子、 $\pi_{k>1}$ ）需要完整同倫理論。故全稱焊接「B＝序參量場的同倫/上同調不變量」對 U(1) 是**定理**，對一般 $\mathcal{M}$ 是**綱領**。
 
 **漏洞三：SPT/SET 需更細的上同調。** `[綱領]` 對稱保護拓樸相的分類用群上同調（Chen–Gu–Liu–Wen 類），是 I3 的精緻化，本文只指方向、未納入。
 

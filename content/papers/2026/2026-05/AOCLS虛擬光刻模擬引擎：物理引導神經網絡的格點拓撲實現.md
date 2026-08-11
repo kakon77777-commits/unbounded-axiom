@@ -284,7 +284,7 @@ $$
 
 這導致：
 
-- 無法預測聚合體收縮（ $\sim$5-10%體積變化）
+- 無法預測聚合體收縮（ $\sim$ 5-10%體積變化）
 
 - 無法預測熱積累導致的性能漂移
 
@@ -2110,7 +2110,7 @@ plt.plot(lattice_spacings, volumes_pgnn, 's--', label='PGNN', linewidth=2)
 
 # Richardson外推線
 
-plt.axhline(y=15.162, color='r', linestyle=':', label='$V_\infty$ (外推)')
+plt.axhline(y=15.162, color='r', linestyle=':', label=' $V_\infty$ (外推)')
 
 plt.xlabel('Lattice Spacing $a$ (nm)', fontsize=14)
 

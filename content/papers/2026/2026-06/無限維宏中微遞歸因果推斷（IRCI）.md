@@ -209,15 +209,15 @@ $$H\!\left[\mathcal{W}^{(L_\text{macro})} \mid \mathcal{O}^{(L_\text{micro})}\ri
 
 IRCI 的實際計算通過以下層次逼近方案進行：
 
-**定義7（深度-$k$ 截斷系統）**
+**定義7（深度- $k$ 截斷系統）**
 
-對 IRCS $\mathcal{S}$ ，深度-$k$ 截斷系統 $ \mathcal{S}^{(k)}$ 是保留所有深度 $\leq k$ 的路徑，截斷更深層路徑的有限近似：
+對 IRCS $\mathcal{S}$ ，深度- $k$ 截斷系統 $ \mathcal{S}^{(k)}$ 是保留所有深度 $\leq k$ 的路徑，截斷更深層路徑的有限近似：
 
 $$\mathcal{S}^{(k)} = \mathcal{S} \Big|_{\{L \in \mathcal{L}^\infty : |L| \leq k\}}$$
 
 **定理3（截斷誤差界）**
 
-真實 IRCS 和深度-$k$ 截斷系統之間的因果推斷誤差界：
+真實 IRCS 和深度- $k$ 截斷系統之間的因果推斷誤差界：
 
 $$\left\|\mathcal{W}_\text{真實}^{(L_q)} - \mathcal{W}_{\mathcal{S}^{(k)}}^{(L_q)}\right\| \leq C \cdot \lambda^k$$
 
@@ -338,7 +338,7 @@ DEWMA 的 real-to-sim 反向校準，在 IRCI 框架下是：用真實世界（�
 |---|---|
 | $\mathcal{S}$ | 無限遞歸因果系統（IRCS） |
 | $\mathcal{L}^\infty$ | 無限層級路徑空間 |
-| $L \in \{M,E,I\}^k$ | 深度-$k$ 層級路徑 |
+| $L \in \{M,E,I\}^k$ | 深度- $k$ 層級路徑 |
 | $d(L_i, L_j)$ | FDCS 層級距離 |
 | $\mathcal{W}(L_q, L_o, t, c)$ | 跨尺度因果權重核 |
 | $\mathcal{K}(L_q, L_o)$ | 跨尺度推斷核 |

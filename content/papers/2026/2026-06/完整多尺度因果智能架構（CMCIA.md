@@ -420,7 +420,7 @@ CMCIA 的設計評判標準說的是：更好的 AI，是在相同資源下能�
 | LTRF | 層次時間解析度函數（Layer Temporal Resolution Function） |
 | $f_l^*$ | 層 $l$ 的最優採樣頻率 |
 | $f_\text{causal}(L_l)$ | IRCI 尺度 $L_l$ 上的最大有意義因果頻率 |
-| $\theta_k$ | 深度-$k$ 湧現 CSCF 閾值 |
+| $\theta_k$ | 深度- $k$ 湧現 CSCF 閾值 |
 | CLCC | 跨層因果一致性（代理度量） |
 | CPA | 反事實預測準確率（代理度量） |
 | ICGA | 層間因果梯度對齊（代理度量） |

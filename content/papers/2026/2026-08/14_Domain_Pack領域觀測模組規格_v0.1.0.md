@@ -328,7 +328,7 @@ $$
 5. 領域專用程式碼必須經 Tool／Plugin Registry 事前安裝；
 6. Pack 只能引用已註冊 tool ID，不可附帶可執行 binary。
 
-這和 JSON Schema 的基本設計相容：Schema 用於描述與驗證 JSON 結構，並能透過 `$ref` 與 `$defs` 重用子 schema；OpenAPI 也採用 Components 物件保存可重用 schema，只有被顯式引用才生效。
+這和 JSON Schema 的基本設計相容：Schema 用於描述與驗證 JSON 結構，並能透過 ` $ref` 與 `$ defs` 重用子 schema；OpenAPI 也採用 Components 物件保存可重用 schema，只有被顯式引用才生效。
 
 ---
 
@@ -1129,7 +1129,7 @@ $$
 - file reference；
 - unsupported version。
 
-JSON Schema Draft 2020-12 提供 `$ref`、`$defs`、vocabulary 與 reusable schema 機制，適合 Domain Pack 這類多檔配置契約。
+JSON Schema Draft 2020-12 提供 ` $ref`、`$ defs`、vocabulary 與 reusable schema 機制，適合 Domain Pack 這類多檔配置契約。
 
 ### 29.2 Semantic Validation
 
@@ -1963,7 +1963,7 @@ Domain Pack 的新意不在單項技術，而在於將它們組合成**AI 領域
 
 本文件於 2026-08-01 重新查核以下資料：
 
-1. JSON Schema, **JSON Schema: A Media Type for Describing JSON Documents, Draft 2020-12**：JSON 結構描述、`$ref`、`$defs`、schema vocabulary 與 bundling。
+1. JSON Schema, **JSON Schema: A Media Type for Describing JSON Documents, Draft 2020-12**：JSON 結構描述、` $ref`、`$ defs`、schema vocabulary 與 bundling。
    - https://json-schema.org/draft/2020-12/json-schema-core
 2. OpenAPI Initiative, **OpenAPI Specification v3.1.0**：多文件組合、Reference Object、Schema Object 與 Components reusable objects。
    - https://spec.openapis.org/oas/v3.1.0.html

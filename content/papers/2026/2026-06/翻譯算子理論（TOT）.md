@@ -128,9 +128,9 @@ $$\frac{d_i}{\dim(H_{\text{Cl}})} = \frac{\aleph_0}{2^{\aleph_0}} = 0$$
 
 **注： $\delta_{ij}(E)$ 與 $\Delta_{ij}(E)$ 的區別**
 
-$\Delta_{ij}(E) = \mathfrak{T}_{ij}(E) - T_{ij}^*(E)$ 是理論失真——需要知道 $T_{ij}^*$ （需要訪問 Cl）。
+ $\Delta_{ij}(E) = \mathfrak{T}_{ij}(E) - T_{ij}^*(E)$ 是理論失真——需要知道 $T_{ij}^*$ （需要訪問 Cl）。
 
-$\delta_{ij}(E) = E - \mathfrak{T}_{ji}(\mathfrak{T}_{ij}(E))$ 是可觀測回路損失——只需要兩個方向的翻譯系統即可計算。
+ $\delta_{ij}(E) = E - \mathfrak{T}_{ji}(\mathfrak{T}_{ij}(E))$ 是可觀測回路損失——只需要兩個方向的翻譯系統即可計算。
 
 重建算子 $\mathcal{R}$ 使用 $\delta_{ij}$ （可觀測量）；失真代數（§4）使用 $\Delta_{ij}$ （理論量）。
 
@@ -145,7 +145,7 @@ $$\iota_i \circ \pi_i \neq \text{Id}_{H_{\text{Cl}}} \quad \text{（Cl 無法從
 
 **命題 3.2（理想翻譯的因式分解唯一性）**
 
-$T_{ij}^* = \pi_j \circ \iota_i$ 是滿足 $T = \pi_j \circ A$ 的所有算子 $A: L_i \to H_{\text{Cl}}$ 中，Frobenius 範數最小者：
+ $T_{ij}^* = \pi_j \circ \iota_i$ 是滿足 $T = \pi_j \circ A$ 的所有算子 $A: L_i \to H_{\text{Cl}}$ 中，Frobenius 範數最小者：
 
 $$T_{ij}^* = \underset{\substack{T: L_i \to L_j \\ T = \pi_j \circ A,\; A \in \mathcal{B}(L_i, H_{\text{Cl}})}}{\arg\min} \|A\|_F$$
 
@@ -160,7 +160,7 @@ $$\dim(\mathfrak{L}_{ij}) = \text{rank}(E_i) - \text{rank}(E_i \cdot E_j)$$
 $$ E_i^2 = E_i \quad \text{（ $ E_i$ 是斜投影算子，故冪等）}$$
 $$E_i \neq E_i^* \quad \text{（非正交，故「斜」投影）}$$
 
-$E_i$ 的固定點集合正是語言 $i$ 可以「完整往返」的 Cl 內容——能用語言 $i$ 表達，且提升後還原為原義的 Cl 元素。
+ $E_i$ 的固定點集合正是語言 $i$ 可以「完整往返」的 Cl 內容——能用語言 $i$ 表達，且提升後還原為原義的 Cl 元素。
 
 ---
 
@@ -176,7 +176,7 @@ $$\Delta_{ij} := \mathfrak{T}_{ij} - T_{ij}^* = \mathfrak{T}_{ij} - \pi_j \circ 
 
 **命題 4.1（失真空間的線性結構）**
 
-$\text{Dist}(i, j)$ 在逐點加法與純量乘法下構成線性空間，其中：
+ $\text{Dist}(i, j)$ 在逐點加法與純量乘法下構成線性空間，其中：
 
 - **零元** $0_{\text{Dist}} = T_{ij}^*$ ：理想翻譯是失真的零元，即「零失真 = 理想翻譯」
 - **加法意義**： $\Delta_{ij} + \Delta_{ij}'$ 對應「兩個不同翻譯系統失真的疊加」
@@ -184,7 +184,7 @@ $\text{Dist}(i, j)$ 在逐點加法與純量乘法下構成線性空間，其中
 
 **命題 4.2（失真的雙模結構）**
 
-$\text{Dist}(i, j)$ 構成 $\text{End}(L_j)$ -$\text{End}(L_i)$ 雙模（bimodule）：
+ $\text{Dist}(i, j)$ 構成 $\text{End}(L_j)$ - $\text{End}(L_i)$ 雙模（bimodule）：
 
 $$f \cdot \Delta_{ij} := f \circ \Delta_{ij}, \quad f \in \text{End}(L_j) \quad \text{（目標語言後處理）}$$
 $$\Delta_{ij} \cdot g := \Delta_{ij} \circ g, \quad g \in \text{End}(L_i) \quad \text{（源語言預處理）}$$
@@ -253,7 +253,7 @@ $$\|\Delta_{i \to j_1 \to \cdots \to j_n \to k}\|_{\text{op}} \leq \prod_{\ell=0
 
 $$Z_{ij} := \ker(\Delta_{ij}) = \{x \in L_i \mid \mathfrak{T}_{ij}(x) = T_{ij}^*(x)\}$$
 
-$Z_{ij}$ 是語言 $i$ 中翻譯到語言 $j$ 時完全無失真的子空間——即「可被完美翻譯的語言 $i$ 內容」。
+ $Z_{ij}$ 是語言 $i$ 中翻譯到語言 $j$ 時完全無失真的子空間——即「可被完美翻譯的語言 $i$ 內容」。
 
 **命題 4.3（正交分解）**
 
@@ -265,7 +265,7 @@ $$\mathfrak{T}_{ij}(x) = \underbrace{T_{ij}^*(P_{Z_{ij}} x)}_{\text{無失真部
 
 **定義 4.3（失真譜）**
 
-$\Delta_{ij}^\dagger \Delta_{ij}$ 是正半定算子，其譜：
+ $\Delta_{ij}^\dagger \Delta_{ij}$ 是正半定算子，其譜：
 
 $$\sigma(\Delta_{ij}^\dagger \Delta_{ij}) = \{\lambda_1 \geq \lambda_2 \geq \cdots \geq 0\}$$
 
@@ -516,7 +516,7 @@ $$\mathfrak{T}_{ji}^{\text{MT}} \circ \mathfrak{T}_{ij}^{\text{MT}} \neq \text{I
 
 若 $\mathfrak{T}_{ij}^{\text{MT}}(x_0) = \pi_j(A(x_0))$ ，最優 $A$ 是 $\iota_i$ （精確語義提升），但我們要驗證這能否被 $\text{MT}_{ij}$ 學習。
 
-$\text{MT}_{ij}$ 從語料庫 $\mathcal{C}_{ij}$ 學習 $P_\theta(y | x)$ 。對 $x_0$ （其語義 $\iota_i(x_0) \in \ker(\pi_j)$ ，即在 $L_j$ 中無等效概念），語料庫 $\mathcal{C}_{ij}$ 中不存在「精確等效」的目標語言樣本——因為 $L_j$ 中不存在能表達 $\iota_i(x_0)$ 的串（由 $\mathfrak{L}_{ij}$ 的定義）。
+ $\text{MT}_{ij}$ 從語料庫 $\mathcal{C}_{ij}$ 學習 $P_\theta(y | x)$ 。對 $x_0$ （其語義 $\iota_i(x_0) \in \ker(\pi_j)$ ，即在 $L_j$ 中無等效概念），語料庫 $\mathcal{C}_{ij}$ 中不存在「精確等效」的目標語言樣本——因為 $L_j$ 中不存在能表達 $\iota_i(x_0)$ 的串（由 $\mathfrak{L}_{ij}$ 的定義）。
 
 因此 $P_\theta(y | x_0)$ 集中在 $L_j$ 中的語義近鄰上，而非精確語義投影 $\pi_j(\iota_i(x_0))$ （後者在 $L_j$ 中甚至不存在作為一個「好的」翻譯）。
 
@@ -654,7 +654,7 @@ BMO 形式化了「邊界的雙向標記」。 $\pi_i$ 和 $\iota_i$ 是 BMO 的
 - $\pi_i$ （向外標記）：從 Cl 向語言 $i$ 的邊界投影——「Cl 看到語言 $i$ 能表達的東西」
 - $\iota_i$ （向內標記）：從語言 $i$ 試圖回到 Cl 邊界——「語言 $i$ 試圖指向 Cl 的深層語義」
 
-$\pi_i \circ \iota_i \neq \text{Id}$ （BMO 的非完全可逆性）正是語言邊界的不完全性的算子表達。
+ $\pi_i \circ \iota_i \neq \text{Id}$ （BMO 的非完全可逆性）正是語言邊界的不完全性的算子表達。
 
 ### 9.4 編織理論（WT）
 

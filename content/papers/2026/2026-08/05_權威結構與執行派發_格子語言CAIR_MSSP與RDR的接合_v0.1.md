@@ -275,7 +275,7 @@ Q_{v,e}
 (P^\ast_v,e).
 $$
 
-$Q_{v,e}$ 可以是：
+ $Q_{v,e}$ 可以是：
 
 - 直譯圖；
 - Python／JavaScript 函數；

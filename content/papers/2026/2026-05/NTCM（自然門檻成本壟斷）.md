@@ -162,7 +162,7 @@ NTCM 強度可量化為：
 
 **S（規模成本）：極高**
 
-需要稀釋制冷機（10 mK 級超低溫、單台成本 $0.5M–$2M USD）、超純電磁屏蔽、雷射陣列、超導電路或離子阱、龐大配套電子學、低溫真空系統。一台具備科研意義的 QC 從硬體成本到運維成本在數百萬至數千萬美元級。具備商業意義的容錯量子計算（FTQC）預估需要百萬邏輯 qubit 級系統，物理 qubit 預估 10⁸–10⁹ 級，**單系統成本可能達到數百億美元級**。
+需要稀釋制冷機（10 mK 級超低溫、單台成本 $0.5M–$ 2M USD）、超純電磁屏蔽、雷射陣列、超導電路或離子阱、龐大配套電子學、低溫真空系統。一台具備科研意義的 QC 從硬體成本到運維成本在數百萬至數千萬美元級。具備商業意義的容錯量子計算（FTQC）預估需要百萬邏輯 qubit 級系統，物理 qubit 預估 10⁸–10⁹ 級，**單系統成本可能達到數百億美元級**。
 
 **三軸座標**：U=高、B=低、S=極高 → **乾淨的 NTCM**。
 
@@ -251,18 +251,18 @@ QC 領域的未來性誠實案例：
 
 - U：極高（CERN LHC、Fermilab、KEK 都運作中、產出真實物理發現如 Higgs boson）
 - B：低（論文公開、合作集團跨國、開放資料政策成熟）
-- S：極高（LHC 建設成本 ~$5B、運維年成本 ~$1B、HL-LHC 升級 ~$1.5B）
+- S：極高（LHC 建設成本 ~$5B、運維年成本 ~$ 1B、HL-LHC 升級 ~$1.5B）
 - 擁有者：國際合作體（CERN 24 個會員國 + 觀察國）、Fermilab（美國 DOE）、KEK（日本）
 - 使用democratization：透過 ATLAS、CMS、LHCb、ALICE 合作集團，全球數千研究者可參與分析
 - 擁有democratization：**零**
 
-未來的對撞機（FCC、ILC、CEPC）成本預計 $15B–$30B，**S 隨能量提升而上升**——這意味著粒子物理的 NTCM 強度將**單調遞增**，不會隨時間下降。
+未來的對撞機（FCC、ILC、CEPC）成本預計 $15B–$ 30B，**S 隨能量提升而上升**——這意味著粒子物理的 NTCM 強度將**單調遞增**，不會隨時間下降。
 
 ### VI.2 大型空間望遠鏡
 
 - U：極高（JWST、Roman Space Telescope、Athena）
 - B：低（觀測資料 1 年禁運期後公開、儀器規格公開）
-- S：極高（JWST 建設成本 $10B、運維年成本 ~$170M）
+- S：極高（JWST 建設成本 $10B、運維年成本 ~$ 170M）
 - 擁有者：NASA + ESA + CSA 聯盟（JWST）
 - 使用democratization：透過觀測時間競標（每年數百研究團隊參與），少數時間給「公開觀測者」
 - 擁有democratization：**結構性不可能**
@@ -271,7 +271,7 @@ QC 領域的未來性誠實案例：
 
 - U：高（TSMC N3、Samsung 3GAE、Intel 18A 製程能力真實）
 - B：**中-高**（這裡是邊界案例——商業 IP 比上述兩例更嚴格保護，但物理原理仍公開）
-- S：極高（單座先進 fab 建設成本 $20B–$30B、TSMC 2nm 廠 ~$40B）
+- S：極高（單座先進 fab 建設成本 $20B–$ 30B、TSMC 2nm 廠 ~$40B）
 - 擁有者：TSMC、Samsung、Intel、SMIC（落後 2–3 代）
 - 使用democratization：透過 foundry 服務（fabless 設計公司皆可使用）
 - 擁有democratization：**零**
@@ -282,7 +282,7 @@ QC 領域的未來性誠實案例：
 
 - U：高（前沿 LLM 真實能力強）
 - B：**變動中**（有些公司 weights 公開——Meta Llama、Mistral；前沿模型 weights 不公開——OpenAI GPT、Anthropic Claude、Google Gemini）
-- S：極高（GPT-4 級訓練成本估算 $100M+，前沿模型訓練向 $1B 級邁進）
+- S：極高（GPT-4 級訓練成本估算 $100M+，前沿模型訓練向 $ 1B 級邁進）
 - 擁有者：OpenAI、Google DeepMind、Anthropic、Meta、xAI、DeepSeek、Alibaba、少數其他
 
 這是 NTCM 與 ITCM 混合的最複雜案例：

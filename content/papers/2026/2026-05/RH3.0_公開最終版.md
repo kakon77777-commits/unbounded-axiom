@@ -37,7 +37,7 @@
 
 **第三章（核心）。** De Bruijn-Newman 函數 $H_\lambda(z)=\int_0^\infty e^{\lambda u^2}\Phi(u)\cos(zu)\,du$ ， $H_0=\Xi$ ； $\Lambda=\sup\{\lambda:H_\lambda\text{ 有複零點}\}$ ；RH $\Leftrightarrow\Lambda\leq 0$ ，結合 $\Lambda\geq 0$ 得 RH $\Leftrightarrow\Lambda=0$ 。宣稱熱核等價於對 Dirichlet 係數的對角乘子 $K_\lambda(n)=\exp(-\tfrac{\lambda}{4}(\log n)^2)$ ；主定理： $K_\lambda$ 對 $\lambda\neq 0$ 不乘法， $R_\lambda(p,q)=\exp(-\tfrac{\lambda}{2}\log p\log q)\neq 1$ ；故 $\Lambda>0$ 破壞歐拉乘積，矛盾，得 $\Lambda=0$ 。
 
-**第四章（瞬間形變）。** 算符 $D_{\text{inst}}F=\lim_{\epsilon\to 0}(\partial_t F+\delta(t)\Delta_{\text{top}}F)$；宣稱繞數只在臨界線上為整數，偏離則「連續化」。
+**第四章（瞬間形變）。** 算符 $D_{\text{inst}}F=\lim_{\epsilon\to 0}(\partial_t F+\delta(t)\Delta_{\text{top}}F)$ ；宣稱繞數只在臨界線上為整數，偏離則「連續化」。
 
 **第五章（歷史自洽性）。** 宣稱 $\Lambda>0$ 使歐拉乘積失效，進而 RSA、QED、哈希、弦論皆應崩潰；由它們精確運作貝葉斯地推出 $\Lambda=0$ 。
 
@@ -88,11 +88,11 @@ $$\Phi_B[\Gamma]=\oint_\Gamma\mathrm{Im}\frac{d\Xi}{\Xi}=\oint_\Gamma d(\arg\Xi)
 
 ## §2.5 第四章：未定義的算符
 
-$D_{\text{inst}}$ 不是良定義物件（Dirac $\delta$ 乘上從未定義的 $\Delta_{\text{top}}$ ）。定理 4.1 真但平凡；定理 4.2（ $t\neq 0$ 繞數「連續化」）假——繞數對閉圍道恆為整數。本章無嚴格內容。
+ $D_{\text{inst}}$ 不是良定義物件（Dirac $\delta$ 乘上從未定義的 $\Delta_{\text{top}}$ ）。定理 4.1 真但平凡；定理 4.2（ $t\neq 0$ 繞數「連續化」）假——繞數對閉圍道恆為整數。本章無嚴格內容。
 
 ## §2.6 數值方案：數值符合不是結構證據
 
-$\Delta_\lambda$ 測的只是「 $g_\lambda$ 不乘法」，對 $\zeta$ 或 $\Lambda$ 零信息。「 $\zeta(2)$ 精確 $\Rightarrow\Lambda\approx 0$ 」把虛構的 $\zeta_\lambda$ 與真實 $\zeta(2)$ 等同。一般原則：**在一個與目標物件無因果連結的數量上觀測到任意高的數值符合，對目標物件不提供證據。**
+ $\Delta_\lambda$ 測的只是「 $g_\lambda$ 不乘法」，對 $\zeta$ 或 $\Lambda$ 零信息。「 $\zeta(2)$ 精確 $\Rightarrow\Lambda\approx 0$ 」把虛構的 $\zeta_\lambda$ 與真實 $\zeta(2)$ 等同。一般原則：**在一個與目標物件無因果連結的數量上觀測到任意高的數值符合，對目標物件不提供證據。**
 
 ## §2.7 Lean4 附錄：主定理真但無關，最終定理循環
 
@@ -158,11 +158,11 @@ $\Delta_\lambda$ 測的只是「 $g_\lambda$ 不乘法」，對 $\zeta$ 或 $\La
 
 ## §4.2 De Bruijn-Newman 框架的正確陳述
 
-$H_\lambda=e^{-\lambda\partial_z^2}\Xi$ （附錄 A.5）。 $\Lambda$ 存在唯一。**Rodgers-Tao： $\Lambda\geq 0$**（2018 預印，2020 發表於 *Forum of Mathematics, Pi*）。**RH $\Leftrightarrow\Lambda=0$**——完全正確。本進路真正有價值的部分，是它正確地把 RH 翻譯成了 $\Lambda=0$ 。
+ $H_\lambda=e^{-\lambda\partial_z^2}\Xi$ （附錄 A.5）。 $\Lambda$ 存在唯一。**Rodgers-Tao： $\Lambda\geq 0$**（2018 預印，2020 發表於 *Forum of Mathematics, Pi*）。**RH $\Leftrightarrow\Lambda=0$**——完全正確。本進路真正有價值的部分，是它正確地把 RH 翻譯成了 $\Lambda=0$ 。
 
 ## §4.3 開放邊界與反噬直覺的真相
 
-$\Lambda\leq 0$ 與 RH 嚴格等價，無已知方法能合上——這是「當下數學無法解決」的誠實陳述。更進一步： $\Lambda\geq 0$ 不說「秩序剛性」，它說「無餘裕」。Newman 提出此猜想正是為了**定量地說「RH 若為真，也只是勉強為真」**；Rodgers-Tao 證明了它，意味著系統恰好坐在相變點上、margin 為零。真實圖景是「臨界、邊緣、無餘裕」，與原構想正好相反。任何誠實的後續工作，方向應是理解這個「勉強」，而非假裝它是「必然」。
+ $\Lambda\leq 0$ 與 RH 嚴格等價，無已知方法能合上——這是「當下數學無法解決」的誠實陳述。更進一步： $\Lambda\geq 0$ 不說「秩序剛性」，它說「無餘裕」。Newman 提出此猜想正是為了**定量地說「RH 若為真，也只是勉強為真」**；Rodgers-Tao 證明了它，意味著系統恰好坐在相變點上、margin 為零。真實圖景是「臨界、邊緣、無餘裕」，與原構想正好相反。任何誠實的後續工作，方向應是理解這個「勉強」，而非假裝它是「必然」。
 
 ---
 
@@ -174,7 +174,7 @@ $\Lambda\leq 0$ 與 RH 嚴格等價，無已知方法能合上——這是「當
 
 $$\prod_{p\leq X}(1-p^{-s})^{-1}=\prod_{p\leq X}\sum_{k\geq 0}p^{-ks}=\sum_{n\in S_X}n^{-s},$$
 
-$S_X$ 為僅含 $\leq X$ 質因數的整數集。由算術基本定理，每個 $n=\prod p_i^{a_i}$ 唯一對應一組指數，展開無重複無遺漏； $X\to\infty$ 由絕對收斂得 $\prod_p(1-p^{-s})^{-1}=\zeta(s)$ 。 $\blacksquare$
+ $S_X$ 為僅含 $\leq X$ 質因數的整數集。由算術基本定理，每個 $n=\prod p_i^{a_i}$ 唯一對應一組指數，展開無重複無遺漏； $X\to\infty$ 由絕對收斂得 $\prod_p(1-p^{-s})^{-1}=\zeta(s)$ 。 $\blacksquare$
 
 **作用域：** 此式要求 $\mathrm{Re}(s)>1$ 。在臨界帶 $0<\mathrm{Re}(s)<1$ 乘積發散，等式不成立。故歐拉乘積對臨界帶零點無直接約束——此即 §2.1 的核心。
 
@@ -208,7 +208,7 @@ $$\boxed{\;\Lambda(s)=\int_1^\infty\big[t^{s/2-1}+t^{(1-s)/2-1}\big]\psi(t)\,dt-
 
 ## A.4 歸心偶函數性
 
-$s=k+\tfrac12\Rightarrow 1-s=(-k)+\tfrac12$ ，代入 $\xi(s)=\xi(1-s)$ 得 $\Xi(k)=\Xi(-k)$ 。又 $\overline{\zeta(\bar s)}=\zeta(s)$ （Schwarz 反射）連同 $\Gamma,\pi^{-s/2}$ 實性，給出 $\Xi(t)\in\mathbb{R}$ （ $t\in\mathbb{R}$ ）。 $\blacksquare$
+ $s=k+\tfrac12\Rightarrow 1-s=(-k)+\tfrac12$ ，代入 $\xi(s)=\xi(1-s)$ 得 $\Xi(k)=\Xi(-k)$ 。又 $\overline{\zeta(\bar s)}=\zeta(s)$ （Schwarz 反射）連同 $\Gamma,\pi^{-s/2}$ 實性，給出 $\Xi(t)\in\mathbb{R}$ （ $t\in\mathbb{R}$ ）。 $\blacksquare$
 
 ## A.5 De Bruijn-Newman 流 ＝ 逆向熱方程
 
@@ -224,7 +224,7 @@ $$\partial_\lambda H_\lambda=\int_0^\infty u^2 e^{\lambda u^2}\Phi\cos(zu)du,\qu
 
 ## A.7 $g_\lambda$ 的非乘法性
 
-$g_\lambda(n)=\exp(-\tfrac\lambda4(\log n)^2)$ ，由 $\log(pq)=\log p+\log q$ 展開平方、平方項相消：
+ $g_\lambda(n)=\exp(-\tfrac\lambda4(\log n)^2)$ ，由 $\log(pq)=\log p+\log q$ 展開平方、平方項相消：
 
 $$\boxed{R_\lambda(p,q)=\frac{g_\lambda(pq)}{g_\lambda(p)g_\lambda(q)}=\exp\!\Big(-\tfrac\lambda2\log p\log q\Big)}.$$
 
@@ -306,7 +306,7 @@ $$\Delta_\lambda(2,3)=|0.992006-0.995791|=\boxed{3.78\times 10^{-3}}.$$
    $H_\lambda=e^{-\lambda\partial_z^2}\Xi$ 的離散化與零點追蹤，是數值地約束 $\Lambda$ （從上界一側）的可行程序——這正是 Polymath15 計畫所做的事的數學骨架。
 
 5. **$R_\lambda(p,q)=\exp(-\tfrac\lambda2\log p\log q)$ （A.7） $\to$ 平滑核／篩權重的解析工具。**
-   這是「Gaussian-in-$\log$ 平滑如何脫離乘法性」的閉式刻畫，可用於設計或分析 $L$ 函數數值求和中的平滑核。此項較前四項溫和，誠實標註其價值為輔助性。
+   這是「Gaussian-in- $\log$ 平滑如何脫離乘法性」的閉式刻畫，可用於設計或分析 $L$ 函數數值求和中的平滑核。此項較前四項溫和，誠實標註其價值為輔助性。
 
 **誠實的邊界。** 上述演算法的數學基礎多為經典（Riemann 的 Mellin 表示、標準的輻角計數、Polymath15 的熱流追蹤）；本文的貢獻不是發明它們，而是**把它們從一個證明嘗試中推導、組裝、並驗證為一套可運行的工具**，並指出指向何處。對 RH 是啟發，對計算是工具——這兩者，都是真的。
 

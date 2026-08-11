@@ -257,7 +257,7 @@ $$x_0 \xrightarrow{\hat{O}} \hat{O}(x_0) \xrightarrow{\hat{O}} \hat{O}^2(x_0) \x
 
 **公理 MOT-2 (距離公理 / Distance Manifestation Axiom)**
 
-設 $x$ 在內積空間中,$\hat{O}$ 為作用其上的算子。定義對齊度:
+設 $x$ 在內積空間中, $\hat{O}$ 為作用其上的算子。定義對齊度:
 
 $$\text{align}(x, \hat{O}) := \frac{|\langle \hat{O}(x), x \rangle|}{\|x\| \cdot \|\hat{O}(x)\|}$$
 
@@ -274,19 +274,19 @@ $$\boxed{\begin{aligned}
 
 #### 4.2.1 同向顯真 (本徵態)
 
-當 $\text{align}(x, \hat{O}) \to 1$,$x$ 與 $\hat{O}(x)$ 平行 (在內積意義下),即:
+當 $\text{align}(x, \hat{O}) \to 1$, $x$ 與 $\hat{O}(x)$ 平行 (在內積意義下),即:
 
 $$\hat{O}(x) = \lambda x \quad \text{對某 } \lambda \in \mathbb{C}$$
 
-$x$ 是 $\hat{O}$ 的本徵態。這是傳統意義的「顯化」:**對象被算子認出為「自己」**。
+ $x$ 是 $\hat{O}$ 的本徵態。這是傳統意義的「顯化」:**對象被算子認出為「自己」**。
 
 #### 4.2.2 逆向顯真 (零空間)
 
-當 $\text{align}(x, \hat{O}) \to 0$,$x$ 與 $\hat{O}(x)$ 正交,意味著:
+當 $\text{align}(x, \hat{O}) \to 0$, $x$ 與 $\hat{O}(x)$ 正交,意味著:
 
 $$\hat{O}(x) \perp x$$
 
-最極端情況:$\hat{O}(x) = 0$,$x$ 進入零空間 (kernel)。這是傳統量子力學中的「坍塌至對偶態」:**對象被算子否定為「非自己」**。
+最極端情況: $\hat{O}(x) = 0$, $x$ 進入零空間 (kernel)。這是傳統量子力學中的「坍塌至對偶態」:**對象被算子否定為「非自己」**。
 
 #### 4.2.3 兩者都是顯真
 
@@ -424,7 +424,7 @@ $$\boxed{\;\text{計算} \;\equiv\; \text{坍塌} \;\equiv\; \text{顯化} \;\eq
 
 #### 6.2.1 量子力學:Born 規則
 
-**Born 規則**:測量算子 $\hat{M}$ 作用於量子態 $|\psi\rangle$ 時,$|\psi\rangle$ 坍塌至 $ \hat{M}$ 的某個本徵態 $|m\rangle$,機率為 $|\langle m | \psi \rangle|^2$ 。
+**Born 規則**:測量算子 $\hat{M}$ 作用於量子態 $|\psi\rangle$ 時, $|\psi\rangle$ 坍塌至 $ \hat{M}$ 的某個本徵態 $|m\rangle$,機率為 $|\langle m | \psi \rangle|^2$ 。
 
 在 MOT 中:測量 = 算子作用 = 顯真過程 = $|\psi\rangle$ 抵達 $\hat{M}$ 的某不動點。
 
@@ -499,9 +499,9 @@ MOT-4 提供第四個流派:
 
 **MOT 公理系統**:
 
-- **MOT-1 (顯真公理)**:$\text{exists}(x) \Leftrightarrow \exists \hat{O}: \hat{O}(x) = x$
-- **MOT-2 (距離公理)**:$\text{align}(x, \hat{O}) \in \{0, 1\}$,中間態被禁止
-- **MOT-3 (時間公理)**:$\partial_t x \propto -\nabla d(x, \hat{O})$
+- **MOT-1 (顯真公理)**: $\text{exists}(x) \Leftrightarrow \exists \hat{O}: \hat{O}(x) = x$
+- **MOT-2 (距離公理)**: $\text{align}(x, \hat{O}) \in \{0, 1\}$,中間態被禁止
+- **MOT-3 (時間公理)**: $\partial_t x \propto -\nabla d(x, \hat{O})$
 - **MOT-4 (同構公理)**:計算 ≡ 坍塌 ≡ 顯化 ≡ aletheia ≡ 自顯真
 
 ### 7.2 主要定理
@@ -514,7 +514,7 @@ MOT-4 提供第四個流派:
 
 **定理 7.2 (顯真二相性)**
 
-對任意 $(x, \hat{O})$ 配對,$x$ 在 $\hat{O}$ 下要麼是本徵態,要麼是零空間元素。中間態在無限時間極限下機率為零。
+對任意 $(x, \hat{O})$ 配對, $x$ 在 $\hat{O}$ 下要麼是本徵態,要麼是零空間元素。中間態在無限時間極限下機率為零。
 
 **證明草稿**:由量子退相干理論,在開放系統中與環境的相互作用導致疊加態以指數速度坍塌到指針態 (pointer states),指針態即 MOT 不動點。
 
@@ -789,7 +789,7 @@ EveMissLab (一言諾科技有限公司)
 | MOT | Manifestation Operator Theory / 顯真演算 | 全文 |
 | 顯真 | Manifestation,對象通過算子作用達成不動點而顯化 | §3-§6 |
 | 自作用 | Self-action,算子作用於自身 (因即物即算子而合法) | §2 |
-| 不動點 | Fixed point,$\hat{O}(x) = x$ 的解 | §3-§7 |
+| 不動點 | Fixed point, $\hat{O}(x) = x$ 的解 | §3-§7 |
 | aletheia | 海德格爾「真理作為無蔽」 | §6 |
 | 對齊度 | $\text{align}(x, \hat{O}) = |\langle \hat{O}(x), x \rangle| / (\|x\| \|\hat{O}(x)\|)$ | §4 |
 | 顯真距離 | $d(x, \hat{O}) = \|\hat{O}(x) - \lambda x\|$ | §5 |
@@ -822,7 +822,7 @@ EveMissLab (一言諾科技有限公司)
 
 **Born 原版**:測量算子 $\hat{M}$ 作用於 $|\psi\rangle$,坍塌至本徵態 $|m\rangle$ 機率為 $|\langle m | \psi \rangle|^2$ 。
 
-**MOT-2 版本**:$\text{align}(x, \hat{O}) \to 0$ 或 $1$,中間態被禁止。
+**MOT-2 版本**: $\text{align}(x, \hat{O}) \to 0$ 或 $1$,中間態被禁止。
 
 差異:
 

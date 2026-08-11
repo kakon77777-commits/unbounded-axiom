@@ -11,11 +11,11 @@
 
 ## 摘要
 
-本文把單元之間的**耦合強度 $\kappa$**(頻寬)確立為搜尋、學習與演化系統的**母控制變數**,並主張一條跨基底不變的原理:**最優耦合 $\kappa^*$ 是中間值——須結構化(模組化)、隨時間退火、隨環境波動性自適應——因為差異化(differentiation)即 optionality,而 optionality 是搜尋空間中對抗不確定性的價值本身。** 全耦合($\kappa\to1$)使單元融合、多樣性歸零,導致過早收斂、mode collapse、回音室;零耦合($\kappa\to0$)切斷重組與資訊流,導致脆裂與局部最優。
+本文把單元之間的**耦合強度 $\kappa$**(頻寬)確立為搜尋、學習與演化系統的**母控制變數**,並主張一條跨基底不變的原理:**最優耦合 $\kappa^*$ 是中間值——須結構化(模組化)、隨時間退火、隨環境波動性自適應——因為差異化(differentiation)即 optionality,而 optionality 是搜尋空間中對抗不確定性的價值本身。** 全耦合( $\kappa\to1$ )使單元融合、多樣性歸零,導致過早收斂、mode collapse、回音室;零耦合( $\kappa\to0$ )切斷重組與資訊流,導致脆裂與局部最優。
 
-本文誠實承認:此原理的每一個單項實例,皆已是成熟計算技術——島嶼模型遷移率、dropout、模擬退火、 $\varepsilon$ 衰減與 entropy regularization、novelty search 與 Quality-Diversity、ensemble 的去相關、federated learning 的有限通訊、regularization。本文認領的是兩項:(一)**把這些統一為同一顆旋鈕 $\kappa$ 的不同襯底實例**(溫和的框架貢獻);(二)**偽成功觸發自適應耦合控制器(PACC)**——一個閉環控制器,以「自信趨同卻無保真度提升」這個 $(P)$ 簽名($\rho$ 上升、 $\lambda$ 停滯或退化)為扳機,動態降耦合以注入差異化,而非依賴預設時程。
+本文誠實承認:此原理的每一個單項實例,皆已是成熟計算技術——島嶼模型遷移率、dropout、模擬退火、 $\varepsilon$ 衰減與 entropy regularization、novelty search 與 Quality-Diversity、ensemble 的去相關、federated learning 的有限通訊、regularization。本文認領的是兩項:(一)**把這些統一為同一顆旋鈕 $\kappa$ 的不同襯底實例**(溫和的框架貢獻);(二)**偽成功觸發自適應耦合控制器(PACC)**——一個閉環控制器,以「自信趨同卻無保真度提升」這個 $(P)$ 簽名( $\rho$ 上升、 $\lambda$ 停滯或退化)為扳機,動態降耦合以注入差異化,而非依賴預設時程。
 
-本文亦如實標出 PACC 的健全邊界:偵測 $(P)$ 需量測 $\lambda$,而 $\lambda$ 要求對真實目標 $L$ 的保真,現實中常無 ground truth 可用。故 PACC 以代理 $\hat\lambda$(held-out 驗證、disagreement 不確定性、新增正確資訊速率)運作;能偵測「趨同卻無可量測進展」(相對層),要偵測「趨同卻無真相」(絕對層)仍需驗證 oracle。此邊界與《相位交流猜想》§16 的本體論邊界為同一條線。
+本文亦如實標出 PACC 的健全邊界:偵測 $(P)$ 需量測 $\lambda$,而 $\lambda$ 要求對真實目標 $L$ 的保真,現實中常無 ground truth 可用。故 PACC 以代理 $\hat\lambda$ (held-out 驗證、disagreement 不確定性、新增正確資訊速率)運作;能偵測「趨同卻無可量測進展」(相對層),要偵測「趨同卻無真相」(絕對層)仍需驗證 oracle。此邊界與《相位交流猜想》§16 的本體論邊界為同一條線。
 
 **關鍵詞**:耦合控制、差異化、optionality、過早收斂、偽成功、explore/exploit、Quality-Diversity、自適應退火、PACC
 
@@ -30,7 +30,7 @@
 - 監督學習的 **overfitting**:模型與訓練資料過度耦合,失去泛化。
 - 多智慧體/社群的**回音室**:高度同步的共識,對外界新訊號失明。
 
-四者皆可寫成:**單元間耦合過強 → 差異化崩潰 → 系統自信地收斂到一個未必正確、且自己無法察覺其錯誤的狀態。** 這正是《相位交流猜想》中 $(P)$(偽成功)在計算尺度上的形態:高 $\rho$(趨同)、低或停滯的 $\lambda$(對目標的保真)。
+四者皆可寫成:**單元間耦合過強 → 差異化崩潰 → 系統自信地收斂到一個未必正確、且自己無法察覺其錯誤的狀態。** 這正是《相位交流猜想》中 $(P)$ (偽成功)在計算尺度上的形態:高 $\rho$ (趨同)、低或停滯的 $\lambda$ (對目標的保真)。
 
 本文主張:防止這個失敗的母旋鈕,是耦合 $ \kappa$ ;而最優的扭法,不是把它關小或關大,是讓它對 $ (P)$ 的簽名閉環反應。
 
@@ -52,7 +52,7 @@
 
 **本文認領,僅以下兩項:**
 1. 把上述全部統一為**同一顆旋鈕 $\kappa$** 的跨襯底實例(框架貢獻,溫和——explore/exploit 的普適性已被多人指出)。
-2. **PACC**(§9):以 $(P)$ 簽名為扳機的閉環耦合控制器。其與既有自適應退火/多樣性控制(如 CMA-ES 自適應重啟、diversity-controlled GA)的差異,在於**扳機是 $(P)$ 簽名($\rho{\uparrow}\wedge\lambda\text{-progress}{\downarrow}$)、而非時鐘/溫度/固定多樣性閾值**,且被框定在 optionality–$L$ 的統一語意下。
+2. **PACC**(§9):以 $(P)$ 簽名為扳機的閉環耦合控制器。其與既有自適應退火/多樣性控制(如 CMA-ES 自適應重啟、diversity-controlled GA)的差異,在於**扳機是 $(P)$ 簽名( $\rho{\uparrow}\wedge\lambda\text{-progress}{\downarrow}$ )、而非時鐘/溫度/固定多樣性閾值**,且被框定在 optionality– $L$ 的統一語意下。
 
 ---
 
@@ -64,7 +64,7 @@
 
 $$\phi_i \;\leftarrow\; (1-\kappa)\,f_i(\phi_i)\;+\;\kappa\,g\big(\{\phi_j\}_{j\in \mathcal{N}(i)}\big),\qquad \kappa\in[0,1].$$
 
-$\kappa=0$:單元全獨立(差異化最大、無共享);$\kappa=1$:全由鄰域聚合驅動(融合最大、mode collapse)。 $\mathcal{N}(i)$ 為耦合拓撲(結構化耦合即對 $\mathcal{N}$ 動刀,見 §6)。
+ $\kappa=0$:單元全獨立(差異化最大、無共享); $\kappa=1$:全由鄰域聚合驅動(融合最大、mode collapse)。 $\mathcal{N}(i)$ 為耦合拓撲(結構化耦合即對 $\mathcal{N}$ 動刀,見 §6)。
 
 **差異化** $ D=\mathrm{Div}(\{\phi_i\})$ (如平均成對距離、行為熵),隨 $ \kappa$ 遞減。
 **共識/載波鎖相** $\rho = 1 - D/D_{\max}$,隨 $\kappa$ 遞增。
@@ -75,7 +75,7 @@ $\kappa=0$:單元全獨立(差異化最大、無共享);$\kappa=1$:全由鄰域�
 
 ## 4. 有限耦合定理
 
-> **定理 4.1(有限耦合)**:在非平凡搜尋/學習/演化問題上,期望表現對 $\kappa$ 為**單峰**:存在中間 $\kappa^*\in(0,1)$ 使表現最大。 $\kappa\to1$ 因多樣性崩潰陷過早收斂;$\kappa\to0$ 因無重組陷脆裂與局部最優。
+> **定理 4.1(有限耦合)**:在非平凡搜尋/學習/演化問題上,期望表現對 $\kappa$ 為**單峰**:存在中間 $\kappa^*\in(0,1)$ 使表現最大。 $\kappa\to1$ 因多樣性崩潰陷過早收斂; $\kappa\to0$ 因無重組陷脆裂與局部最優。
 
 **論證(非形式)**:差異化是變異的載體;選擇/學習只能作用於差異。 $ D\to0$ (全耦合)消滅變異 → 無從改良,只能執行既有共識。 $ \kappa\to0$ 雖保 $D$ 最大,但單元間無資訊流 → 好解不傳播、無協同。二端皆退化,最優在中間。 $ \square$ (嚴格化需指定 $ f,g,L$ 的類,留待後續。)
 
@@ -89,7 +89,7 @@ $\kappa=0$:單元全獨立(差異化最大、無共享);$\kappa=1$:全由鄰域�
 
 > **命題 5.1**:在不確定/非平穩環境中,維持一組差異化候選的期望價值等於一個 real-option:其價值隨環境波動性 $v$ 上升、隨不確定性消解下降。
 
-故:$v$ 高(環境動盪、目標未知)→ 該降 $\kappa$ 、保多樣、廣探索(握住選擇權);$v$ 低(穩定、目標已知)→ 該升 $\kappa$ 、收斂、利用(兌現選擇權)。此為 explore/exploit 的 optionality 版,並與 EveMissLab 的 D-A-D' 經濟結構同形:差異化是 optionality,optionality 在不確定下才計價。novelty search 的反直覺成功,正是「在欺騙性地景上,持有的選擇權價值高過直奔目標」的經驗證據。
+故: $v$ 高(環境動盪、目標未知)→ 該降 $\kappa$ 、保多樣、廣探索(握住選擇權); $v$ 低(穩定、目標已知)→ 該升 $\kappa$ 、收斂、利用(兌現選擇權)。此為 explore/exploit 的 optionality 版,並與 EveMissLab 的 D-A-D' 經濟結構同形:差異化是 optionality,optionality 在不確定下才計價。novelty search 的反直覺成功,正是「在欺騙性地景上,持有的選擇權價值高過直奔目標」的經驗證據。
 
 ---
 
@@ -103,9 +103,9 @@ $\kappa=0$:單元全獨立(差異化最大、無共享);$\kappa=1$:全由鄰域�
 
 ---
 
-## 7. 退火與波動自適應:$\kappa$ 是時程,不是常數
+## 7. 退火與波動自適應: $\kappa$ 是時程,不是常數
 
-> **原理 7.1**:$\kappa$ 不應鎖死。早期高差異化(廣探索),後期收斂(鎖定),如退火。但時程不應預設,應隨**估計波動性 $\hat v$** 與**當前差異化 $D$** 調整。
+> **原理 7.1**: $\kappa$ 不應鎖死。早期高差異化(廣探索),後期收斂(鎖定),如退火。但時程不應預設,應隨**估計波動性 $\hat v$** 與**當前差異化 $D$** 調整。
 
 固定退火/固定遷移率是開環的:對著時鐘動作。本文主張閉環(§9):對著系統狀態與環境動作。當 $\hat v$ 突升(環境變了),即使在「後期」也該重新升高差異化——這是固定時程做不到、而 $(P)$ -觸發能做到的。
 
@@ -115,7 +115,7 @@ $\kappa=0$:單元全獨立(差異化最大、無共享);$\kappa=1$:全由鄰域�
 
 > **定義 8.1(計算偽成功)**:系統呈現高共識 $\rho$ 與停滯/退化的目標保真 $\lambda$ ——亦即單元自信地趨同到一個非由保真度改善所驅動的狀態。
 
-這把「過早收斂」「mode collapse」「回音室」統一為一個可監測的簽名:$\dot\rho>0 \wedge \dot\lambda\le0$ 。它是危險信號,因為內部沒有任何模組在計算 $\lambda$ 時,趨同會被誤讀為進展(共識的舒適感冒充了正確性)。偵測 $(P)$,就是偵測「集體在鎖相一個沒有投影到 $L$ 的真空」。
+這把「過早收斂」「mode collapse」「回音室」統一為一個可監測的簽名: $\dot\rho>0 \wedge \dot\lambda\le0$ 。它是危險信號,因為內部沒有任何模組在計算 $\lambda$ 時,趨同會被誤讀為進展(共識的舒適感冒充了正確性)。偵測 $(P)$,就是偵測「集體在鎖相一個沒有投影到 $L$ 的真空」。
 
 ---
 
@@ -154,9 +154,9 @@ for t in steps:
     κ = clamp_for_floor(κ, D, D_floor)       # 保證 51>49 多樣性地板
 ```
 
-要點:扳機是 $(P)$ 簽名,不是 $t$;`κ_of(v̂)` 把 optionality–波動性關係(§5)寫進目標;`clamp_for_floor` 把 51>49 地板硬寫進控制律,使系統永不全融合。
+要點:扳機是 $(P)$ 簽名,不是 $t$ ;`κ_of(v̂)` 把 optionality–波動性關係(§5)寫進目標;`clamp_for_floor` 把 51>49 地板硬寫進控制律,使系統永不全融合。
 
-> **命題 9.1(PACC 的設計斷言)**:在以**過早收斂為主要失敗模式**、且環境**非平穩或目標欺騙性**的問題上,$(P)$ -觸發的重新差異化,期望優於時鐘式(固定退火/固定遷移率)基線——因為它在共識虛假上升的當下動作,而非在預設的時刻。
+> **命題 9.1(PACC 的設計斷言)**:在以**過早收斂為主要失敗模式**、且環境**非平穩或目標欺騙性**的問題上, $(P)$ -觸發的重新差異化,期望優於時鐘式(固定退火/固定遷移率)基線——因為它在共識虛假上升的當下動作,而非在預設的時刻。
 
 ---
 
@@ -164,7 +164,7 @@ for t in steps:
 
 與《相位交流》§16 第三刀同形的限制跟過來了:
 
-偵測 $(P)$ 需量 $ \lambda$ ;$ \lambda$ 要求對真實目標 $L$ 的保真;但現實常**無 ground truth**(有的話就沒這問題)。故 PACC 以代理 $\hat\lambda$ 運作:
+偵測 $(P)$ 需量 $ \lambda$ ; $ \lambda$ 要求對真實目標 $L$ 的保真;但現實常**無 ground truth**(有的話就沒這問題)。故 PACC 以代理 $\hat\lambda$ 運作:
 
 - **held-out 驗證**:在保留集上的表現(監督/RL 可用)。
 - **disagreement 不確定性**:單元間預測分歧作為「尚未真正解決」的代理(分歧低但驗證不升 = 假收斂)。
@@ -178,7 +178,7 @@ for t in steps:
 
 - vs **固定退火 / 固定遷移率**:PACC 閉環、對狀態動作;前者開環、對時鐘動作。非平穩環境下前者失效,PACC 可再差異化。
 - vs **靜態 QD(MAP-Elites)**:QD 維持多樣性但不以「保真停滯」為動態扳機調耦合;PACC 把多樣性維持變成對 $(P)$ 的反饋控制。
-- vs **diversity-controlled GA / 自適應重啟(CMA-ES)**:概念相鄰;PACC 的特定主張是扳機=$(P)$ 簽名($\rho{\uparrow}\wedge\lambda{\text{-progress}}{\downarrow}$)+ optionality–波動性目標 + 跨襯底統一語意。
+- vs **diversity-controlled GA / 自適應重啟(CMA-ES)**:概念相鄰;PACC 的特定主張是扳機= $(P)$ 簽名( $\rho{\uparrow}\wedge\lambda{\text{-progress}}{\downarrow}$ )+ optionality–波動性目標 + 跨襯底統一語意。
 - vs **entropy regularization**:熵正則以固定/排程係數維持差異化;PACC 的係數是對 $(P)$ 的閉環函數。
 
 誠實定位:PACC 不是無中生有,是把分散在各領域的「維持差異化」機制,收斂到一個以偽成功為扳機的統一控制器。
@@ -235,4 +235,4 @@ PACC 不過是把這個被分散命名的智慧,接上一根神經:讓系統能�
 - Sutton, R. S., & Barto, A. G. (2018). *Reinforcement Learning: An Introduction* (explore/exploit, entropy methods).
 - Klyubin, A., et al. (2005). Empowerment: A universal agent-centric measure of control. *CEC*.
 - [演化計算島嶼模型 / 多樣性維持:Cantú-Paz 等並行 GA 文獻;niching / fitness sharing。]
-- EveMissLab:《相位交流猜想》($\rho,\lambda,L,(P)$ 同源)、 $L=\Omega$ / Cl 公理、D-A-D' optionality 結構、51>49 原則。
+- EveMissLab:《相位交流猜想》( $\rho,\lambda,L,(P)$ 同源)、 $L=\Omega$ / Cl 公理、D-A-D' optionality 結構、51>49 原則。

@@ -636,7 +636,7 @@ IncomeReceivedAbroad_t
 StatisticalRelocation_t
 $$
 
-$LDV$ 不是現有國民帳的替代，而是概念性的「本地可支配價值」接口。
+ $LDV$ 不是現有國民帳的替代，而是概念性的「本地可支配價值」接口。
 
 ---
 

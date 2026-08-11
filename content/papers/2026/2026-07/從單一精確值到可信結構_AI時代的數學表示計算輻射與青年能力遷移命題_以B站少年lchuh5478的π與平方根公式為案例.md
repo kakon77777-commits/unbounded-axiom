@@ -1293,7 +1293,7 @@ https://doi.org/10.1017/S096249291000005X
 [6] Omran Kouba, “Partial Fraction Expansions for Newton's and Halley's Iterations for Square Roots,” 2011.  
 https://arxiv.org/abs/1104.4175
 
-[7] Evan S. Gawlik, “Rational Minimax Iterations for Computing the Matrix $p$th Root,” 2019.  
+[7] Evan S. Gawlik, “Rational Minimax Iterations for Computing the Matrix $p$ th Root,” 2019.  
 https://arxiv.org/abs/1903.06268
 
 [8] International Labour Organization, *Generative AI and Jobs: A Refined Global Index of Occupational Exposure*, Working Paper 140, 2025.  

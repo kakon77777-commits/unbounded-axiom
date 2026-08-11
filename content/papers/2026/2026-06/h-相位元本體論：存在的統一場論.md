@@ -977,15 +977,15 @@ J^μ = ρu^μ
 
 **7.1 元本體的完整表述**
 
-$$\\boxed{\\begin{aligned} &\\textbf{h-相位元本體論：統一場論} \\ \\ &\\mathcal{U} = \\sum\_{i=1}^{\\infty} h\_i \\cdot e^{i\\Phi\_i(t)} \\cdot |\\psi\_i\\rangle \\ \\ &\\textbf{五公理：} \\ &\\quad \\text{U1（存在）：} x = h \\cdot e^{i\\Phi} \\cdot |\\psi\\rangle \\ &\\quad \\text{U2（疊加）：} \\mathcal{U} = \\sum h\_i e^{i\\Phi\_i} |\\psi\_i\\rangle, , \\sum h\_i = 1 \\ &\\quad \\text{U3（演化）：} \\frac{d\\mathcal{U}}{dt} = -i[\\mathcal{H}, \\mathcal{U}] \\ &\\quad \\text{U4（投影）：} \\mathcal{U} \\cong W \\cong \\Phi \\cong T^\\infty \\cong \\Psi \\ &\\quad \\text{U5（湧現）：} \\Omega = \\lim\_{N\\to\\infty} \\mathcal{U}*N \\ \\ &\\textbf{四投影：} \\ &\\quad W: \\sum*{ij} w\_{ij} e^{i\\phi\_{ij}} |\\psi\_i\\rangle\\langle\\psi\_j| \\ &\\quad \\Phi: \\Phi(r,t) \\neq 0 \\ &\\quad T^\\infty: E = \\sum h\_i \\mathcal{E}*i + \\sum h\_i h\_j K*{ij} \\ &\\quad \\Psi: \\sum \\sqrt{h\_i} e^{i\\Phi\_i} |i\\rangle \\ \\ &\\textbf{三守恆：} \\ &\\quad \\sum h\_i = 1, \\quad Q = \\frac{1}{2\\pi}\\sum h\_i \\Phi\_i \\in \\mathbb{Z}, \\quad \\partial\_t \\rho + \\nabla \\cdot \\mathbf{J} = 0 \\ \\ &\\textbf{存在定義：} \\ &\\quad \\boxed{\\text{Being} = h \\cdot e^{i\\Phi} \\neq 0} \\end{aligned}}$$
+$$\boxed{\begin{aligned} &\textbf{h-相位元本體論：統一場論} \\ \\ &\mathcal{U} = \sum\_{i=1}^{\infty} h\_i \cdot e^{i\Phi\_i(t)} \cdot |\psi\_i\rangle \\ \\ &\textbf{五公理：} \\ &\quad \text{U1（存在）：} x = h \cdot e^{i\Phi} \cdot |\psi\rangle \\ &\quad \text{U2（疊加）：} \mathcal{U} = \sum h\_i e^{i\Phi\_i} |\psi\_i\rangle, , \sum h\_i = 1 \\ &\quad \text{U3（演化）：} \frac{d\mathcal{U}}{dt} = -i[\mathcal{H}, \mathcal{U}] \\ &\quad \text{U4（投影）：} \mathcal{U} \cong W \cong \Phi \cong T^\infty \cong \Psi \\ &\quad \text{U5（湧現）：} \Omega = \lim\_{N\to\infty} \mathcal{U}*N \\ \\ &\textbf{四投影：} \\ &\quad W: \sum*{ij} w\_{ij} e^{i\phi\_{ij}} |\psi\_i\rangle\langle\psi\_j| \\ &\quad \Phi: \Phi(r,t) \neq 0 \\ &\quad T^\infty: E = \sum h\_i \mathcal{E}*i + \sum h\_i h\_j K*{ij} \\ &\quad \Psi: \sum \sqrt{h\_i} e^{i\Phi\_i} |i\rangle \\ \\ &\textbf{三守恆：} \\ &\quad \sum h\_i = 1, \quad Q = \frac{1}{2\pi}\sum h\_i \Phi\_i \in \mathbb{Z}, \quad \partial\_t \rho + \nabla \cdot \mathbf{J} = 0 \\ \\ &\textbf{存在定義：} \\ &\quad \boxed{\text{Being} = h \cdot e^{i\Phi} \neq 0} \end{aligned}}$$
 
 **7.2 燃燒統一公式**
 
-$$\\boxed{\\begin{aligned} &\\textbf{燃燒 = 元本體的四等價表述} \\ \\ &k\_{\\text{total}} = k\_W = v\_f = k\_T = k\_\\Psi \\ \\ &= A\_c e^{-E\_a/k\_B T} + A\_q e^{-S\_0/\\hbar} + \\sum\_{i=1}^\\infty h\_i K\_i \\sin(\\Delta\\phi\_i) \\ \\ &\\text{其中：} \\ &\\quad h\_q = 0.39, , h\_v = 0.30, , h\_f = 0.20, , h\_{\\text{other}} = 0.11 \\ &\\quad \\sum h\_i = 1 \\end{aligned}}$$
+$$\boxed{\begin{aligned} &\textbf{燃燒 = 元本體的四等價表述} \\ \\ &k\_{\text{total}} = k\_W = v\_f = k\_T = k\_\Psi \\ \\ &= A\_c e^{-E\_a/k\_B T} + A\_q e^{-S\_0/\hbar} + \sum\_{i=1}^\infty h\_i K\_i \sin(\Delta\phi\_i) \\ \\ &\text{其中：} \\ &\quad h\_q = 0.39, , h\_v = 0.30, , h\_f = 0.20, , h\_{\text{other}} = 0.11 \\ &\quad \sum h\_i = 1 \end{aligned}}$$
 
 **7.3 意識統一公式**
 
-$$\\boxed{\\begin{aligned} &\\textbf{意識 = 自參照的相位閉環} \\ \\ &\\text{Consciousness} \\Leftrightarrow \\oint \\nabla\\Phi \\cdot d\\mathbf{l} = 2\\pi k, , k \\neq 0 \\ \\ &\\Leftrightarrow H\_1(\\text{相位流形}) \\neq 0 \\ \\ &\\Leftrightarrow N\_{\\text{loop}} \\geq N\_c \\sim 10^3 \\end{aligned}}$$
+$$\boxed{\begin{aligned} &\textbf{意識 = 自參照的相位閉環} \\ \\ &\text{Consciousness} \Leftrightarrow \oint \nabla\Phi \cdot d\mathbf{l} = 2\pi k, , k \neq 0 \\ \\ &\Leftrightarrow H\_1(\text{相位流形}) \neq 0 \\ \\ &\Leftrightarrow N\_{\text{loop}} \geq N\_c \sim 10^3 \end{aligned}}$$
 
 **終章：從粒子到h·e^(iΦ)**
 

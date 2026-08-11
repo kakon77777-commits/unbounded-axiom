@@ -120,7 +120,7 @@ $$\mathbf{v}_i \leftarrow \gamma \mathbf{v}_i$$
 
 時間步 $t \leftarrow t + \Delta t$ 。
 
-$n$ 步後的狀態為 $\Phi_n = F^n(\Phi_0)$ ，其中 $F^n$ 是 $F$ 的 $n$ 次迭代複合。
+ $n$ 步後的狀態為 $\Phi_n = F^n(\Phi_0)$ ，其中 $F^n$ 是 $F$ 的 $n$ 次迭代複合。
 
 ### 2.4 解碼器
 
@@ -223,7 +223,7 @@ $$\mathbf{a}^{\text{visc}} = K^* \cdot \mathcal{L}_C \mathbf{V}$$
 其中 $\mathcal{L}_C$ 是由耦合矩陣 $C = (C_{ij})$ 定義的正規化圖拉普拉斯算子：
 $$(\mathcal{L}_C)_{ij} = \frac{C_{ij}}{\sum_k C_{ik}} - \delta_{ij}$$
 
-$\mathcal{L}_C$ 的特徵值 $\lambda \in [-1, 0]$ （對稱耦合時），特徵向量描述速度場的「集體模式」。
+ $\mathcal{L}_C$ 的特徵值 $\lambda \in [-1, 0]$ （對稱耦合時），特徵向量描述速度場的「集體模式」。
 
 **耦合對BER的影響：** 直觀地，耦合使相鄰粒子的速度趨於一致，從而：
 - 在振盪中使同群粒子同步（有序化效應），若同步方向是「回歸原位」，則降低BER
@@ -330,7 +330,7 @@ $$\frac{\partial\text{BER}}{\partial K}\bigg|_{K=K_c} = 0$$
 
 且 $K < K_c$ 時 $\partial\text{BER}/\partial K \leq 0$ （效應A主導）， $K > K_c$ 時 $\partial\text{BER}/\partial K \geq 0$ （效應B主導）。
 
-$K_c$ 是SRC的**最優耦合點**，對應最低BER。
+ $K_c$ 是SRC的**最優耦合點**，對應最低BER。
 
 ### 5.3 $K_c$ 的解析估計
 

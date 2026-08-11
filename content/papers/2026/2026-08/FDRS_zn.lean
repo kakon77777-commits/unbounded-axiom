@@ -246,7 +246,7 @@ theorem D_delta_spectral_correspondence (H : FDRSComplex) (k : Nat) :
   rfl                         -- 依據定義直接反射 (reflexivity) 成立
 
 /--
-### 定理 5.2：$\mathcal{R}$-$\Delta$ 非交換性定理
+### 定理 5.2： $\mathcal{R}$ - $\Delta$ 非交換性定理
 定義：在譜模式下，第一步邊界算子所產生的失真率，分母為總奇異值能量。
 -/
 def distortionSpec1 (H : FDRSComplex) : Rat :=

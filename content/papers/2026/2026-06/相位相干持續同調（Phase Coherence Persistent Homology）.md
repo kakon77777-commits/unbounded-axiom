@@ -80,7 +80,7 @@ $$d_\phi(p_i, p_j; t) = \Delta\phi_{ij}(t) = t \cdot |\omega_i - \omega_j| \bmod
 - 非負性： $d_\phi(p_i, p_j; t) \geq 0$
 - 自反性： $d_\phi(p_i, p_i; t) = 0$
 - 對稱性： $d_\phi(p_i, p_j; t) = d_\phi(p_j, p_i; t)$
-- 弱三角不等式： $d_\phi(p_i, p_k; t) \leq d_\phi(p_i, p_j; t) + d_\phi(p_j, p_k; t) + \lfloor\cdot\rfloor$（由於模運算，嚴格三角不等式一般不成立）
+- 弱三角不等式： $d_\phi(p_i, p_k; t) \leq d_\phi(p_i, p_j; t) + d_\phi(p_j, p_k; t) + \lfloor\cdot\rfloor$ （由於模運算，嚴格三角不等式一般不成立）
 
 **注記 2.3.** $d_\phi$ 不是嚴格度量（可以有 $d_\phi(p_i, p_j) = 0$ 而 $p_i \neq p_j$ ，當 $\omega_i = \omega_j$ ）。但這在持續同調框架中是可接受的（使用偽度量上的Vietoris-Rips複形）。
 
@@ -106,7 +106,7 @@ $$d_{\text{coh}}(p_i, p_j; t) = \alpha_\phi \cdot d_\phi(p_i, p_j; t) + \alpha_x
 - 頂點集： $V = \mathcal{P}$ （所有粒子）
 - 邊集： $E(t;\epsilon) = \{(i,j) \mid d_\phi(p_i, p_j; t) \leq \epsilon\}$
 
-$G(t;\epsilon)$ 是一個動態加權圖，其邊集隨時間和閾值演化。
+ $G(t;\epsilon)$ 是一個動態加權圖，其邊集隨時間和閾值演化。
 
 **定義 3.2（相位相干過濾子）。** 固定時刻 $t$ ，定義Vietoris-Rips複形族：
 
@@ -194,7 +194,7 @@ $$\beta_0(t; \epsilon; K) \approx \beta_0(t \cdot (1 - aK); \epsilon; K=0)$$
 
 ### 4.3 $\beta_1$ 的演化：相干環路的生滅
 
-$\beta_1 > 0$ 意味著相位相干圖中存在閉合環路，即存在三個或更多粒子 $p_i, p_j, p_k$ 使得 $d_\phi(p_i, p_j), d_\phi(p_j, p_k), d_\phi(p_k, p_i)$ 均不超過 $\epsilon$ ，但它們並不形成完全圖的一部分（否則是更高階的填充）。
+ $\beta_1 > 0$ 意味著相位相干圖中存在閉合環路，即存在三個或更多粒子 $p_i, p_j, p_k$ 使得 $d_\phi(p_i, p_j), d_\phi(p_j, p_k), d_\phi(p_k, p_i)$ 均不超過 $\epsilon$ ，但它們並不形成完全圖的一部分（否則是更高階的填充）。
 
 **命題 4.3（ $\beta_1$ 的出現條件）。** $\beta_1(\epsilon, t) > 0$ 要求存在三個頻率 $\omega_i, \omega_j, \omega_k$ 使得：
 $$t|\omega_i - \omega_j|, t|\omega_j - \omega_k|, t|\omega_k - \omega_i| \leq \epsilon \pmod{0.5}$$
@@ -221,7 +221,7 @@ $$\text{BER}(t) \approx f\!\left(\mathcal{H}(t;\epsilon^*)\right)$$
 
 ## 5. 拓撲相變
 
-### 5.1 $\epsilon$ -$K$ 相圖
+### 5.1 $\epsilon$ - $K$ 相圖
 
 固定 $t$ 和其他參數，在 $(\epsilon, K)$ 平面上分析 $\beta_0$ 的行為。
 
@@ -233,7 +233,7 @@ $$\text{BER}(t) \approx f\!\left(\mathcal{H}(t;\epsilon^*)\right)$$
 
 **定義 5.1（相干臨界線）。** 在 $(\epsilon, K)$ 平面上，連接 $\beta_0 = 1$ 相和 $\beta_0 > 1$ 相的邊界線稱為**相干臨界線** $\Gamma_c(t)$ 。
 
-$\Gamma_c(t)$ 的方程在平均場近似下可以估計。設所有粒子的頻率均勻分佈在 $[\omega_{\min}, \omega_{\max}]$ 上，每個粒子有 $\bar{n}$ 個空間鄰居。 $\beta_0 = 1$ （連通圖）要求的最小邊連接數：
+ $\Gamma_c(t)$ 的方程在平均場近似下可以估計。設所有粒子的頻率均勻分佈在 $[\omega_{\min}, \omega_{\max}]$ 上，每個粒子有 $\bar{n}$ 個空間鄰居。 $\beta_0 = 1$ （連通圖）要求的最小邊連接數：
 
 $$\frac{N}{2}\cdot P(d_\phi(i,j;t) \leq \epsilon) \geq \frac{N-1}{1} \approx N$$
 

@@ -328,7 +328,7 @@ z_t
 \mathsf{Interpret}(q_t,S_t).
 $$
 
-$z_t$ 至少包含：
+ $z_t$ 至少包含：
 
 $$
 z_t

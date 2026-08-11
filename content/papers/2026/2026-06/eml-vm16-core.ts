@@ -205,23 +205,23 @@ export function decode(op: u8, arg: u8, cts?: Partial<CTS>): string {
   const A = `0x${hex2(arg)}`;
   const sym = (addr: u8): string => {
     const entry = cts?.symbolTable?.get(addr);
-    return entry ? `${A}<${entry.name}>` : A;
+    return entry ? ` ${A}<$ {entry.name}>` : A;
   };
 
   switch (op) {
     case 0x00: return 'NOP';
     case 0x01: return 'HALT';
-    case 0x10: return `MOV ${REG_NAMES[d]}, ${REG_NAMES[s]}`;
-    case 0x11: return `MOVI ${REG_NAMES[d]}, #${s}`;
-    case 0x20: return `ADD ${REG_NAMES[d]}, ${REG_NAMES[s]}`;
-    case 0x21: return `ADDI ${REG_NAMES[d]}, #${s}`;
-    case 0x22: return `SUB ${REG_NAMES[d]}, ${REG_NAMES[s]}`;
-    case 0x23: return `SUBI ${REG_NAMES[d]}, #${s}`;
-    case 0x30: return `AND ${REG_NAMES[d]}, ${REG_NAMES[s]}`;
-    case 0x31: return `OR ${REG_NAMES[d]}, ${REG_NAMES[s]}`;
-    case 0x32: return `XOR ${REG_NAMES[d]}, ${REG_NAMES[s]}`;
+    case 0x10: return `MOV ${REG_NAMES[d]}, $ {REG_NAMES[s]}`;
+    case 0x11: return `MOVI ${REG_NAMES[d]}, #$ {s}`;
+    case 0x20: return `ADD ${REG_NAMES[d]}, $ {REG_NAMES[s]}`;
+    case 0x21: return `ADDI ${REG_NAMES[d]}, #$ {s}`;
+    case 0x22: return `SUB ${REG_NAMES[d]}, $ {REG_NAMES[s]}`;
+    case 0x23: return `SUBI ${REG_NAMES[d]}, #$ {s}`;
+    case 0x30: return `AND ${REG_NAMES[d]}, $ {REG_NAMES[s]}`;
+    case 0x31: return `OR ${REG_NAMES[d]}, $ {REG_NAMES[s]}`;
+    case 0x32: return `XOR ${REG_NAMES[d]}, $ {REG_NAMES[s]}`;
     case 0x33: return `NOT ${REG_NAMES[d]}`;
-    case 0x40: return `CMP ${REG_NAMES[d]}, ${REG_NAMES[s]}`;
+    case 0x40: return `CMP ${REG_NAMES[d]}, $ {REG_NAMES[s]}`;
     case 0x41: return `INC ${REG_NAMES[d]}`;
     case 0x42: return `DEC ${REG_NAMES[d]}`;
     case 0x50: return `JMP ${sym(arg)}`;
@@ -235,9 +235,9 @@ export function decode(op: u8, arg: u8, cts?: Partial<CTS>): string {
     case 0x61: return `POP  ${REG_NAMES[d]}`;
     case 0x70: return `CALL ${sym(arg)}`;
     case 0x71: return `RET`;
-    case 0x80: return `LD ${REG_NAMES[d]}, [${REG_NAMES[s]}]`;
-    case 0x81: return `ST [${REG_NAMES[d]}], ${REG_NAMES[s]}`;
-    default:   return `??? ${hex2(op)}:${hex2(arg)}`;
+    case 0x80: return `LD ${REG_NAMES[d]}, [$ {REG_NAMES[s]}]`;
+    case 0x81: return `ST [ ${REG_NAMES[d]}], $ {REG_NAMES[s]}`;
+    default:   return `??? ${hex2(op)}:$ {hex2(arg)}`;
   }
 }
 

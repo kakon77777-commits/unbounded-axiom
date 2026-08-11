@@ -511,7 +511,7 @@ $$
 }
 $$
 
-$\mathsf D$ 不被預設為數值變化率，也不被預設為 $\mathsf I$ 的無條件逆算子。
+ $\mathsf D$ 不被預設為數值變化率，也不被預設為 $\mathsf I$ 的無條件逆算子。
 
 ## 7.2 微分模式
 
@@ -1292,7 +1292,7 @@ X^\infty_\lambda
 }
 $$
 
-$\operatorname{Coh}_\lambda$ 至少保存：
+ $\operatorname{Coh}_\lambda$ 至少保存：
 
 - 過渡一致性；
 - 來源；
@@ -1491,9 +1491,9 @@ $$
 
 ## 18.3 為什麼不能合併為五值？
 
-$\uparrow$ 表示某個程序或證書鏈尚未閉合。
+ $\uparrow$ 表示某個程序或證書鏈尚未閉合。
 
-$\operatorname{BranchDependent}$ 表示某個理論的模型真值纖維已被證明分支。
+ $\operatorname{BranchDependent}$ 表示某個理論的模型真值纖維已被證明分支。
 
 因此：
 
@@ -1600,7 +1600,7 @@ $$
 
 ## 19.2 語義積分不是模型合併
 
-$\mathsf I_{\mathrm{sem}}$ 的作用是保存滿足同一理論的模型纖維，不是把不同模型物理合併成單一宇宙。
+ $\mathsf I_{\mathrm{sem}}$ 的作用是保存滿足同一理論的模型纖維，不是把不同模型物理合併成單一宇宙。
 
 模型纖維非坍縮要求：
 

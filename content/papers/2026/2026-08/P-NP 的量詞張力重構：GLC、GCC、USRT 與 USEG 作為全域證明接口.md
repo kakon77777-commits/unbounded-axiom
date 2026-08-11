@@ -170,7 +170,7 @@ $$
 \forall x\in\Sigma^\ast,
 $$
 
-$M$ 正確判定：
+ $M$ 正確判定：
 
 $$
 x\in L
@@ -1699,7 +1699,7 @@ $$
 \forall x,
 $$
 
-$G(x)$ 在 polynomial total time 中生成正確 decision-completing sequence。
+ $G(x)$ 在 polynomial total time 中生成正確 decision-completing sequence。
 
 那麼：
 

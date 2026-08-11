@@ -542,7 +542,7 @@ $$
 - $\Gamma_H$ ：跨時間歷史約束；
 - $\Gamma_M$ ：約束自身的元約束。
 
-$\Gamma_M$ 規定：
+ $\Gamma_M$ 規定：
 
 - 約束如何生效；
 - 約束何時衝突；
@@ -1651,7 +1651,7 @@ $$
 
 ## 10.5 四值語義尚未處理模糊性
 
-$\mathbf T,\mathbf F,\mathbf B,\mathbf N$ 處理支持與反對狀態，但未直接處理：
+ $\mathbf T,\mathbf F,\mathbf B,\mathbf N$ 處理支持與反對狀態，但未直接處理：
 
 - 連續真值；
 - 邊界模糊；

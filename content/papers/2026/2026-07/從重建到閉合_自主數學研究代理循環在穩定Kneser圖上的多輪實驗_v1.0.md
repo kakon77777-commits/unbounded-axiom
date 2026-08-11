@@ -664,7 +664,7 @@ $$
 \{\sigma^{(1)},\dots,\sigma^{(m)}\}.
 $$
 
-對若干 $s=3$ 小參數，兩至三個 carrier 可以覆蓋所有 degree-$d$ 可實現符號型。
+對若干 $s=3$ 小參數，兩至三個 carrier 可以覆蓋所有 degree- $d$ 可實現符號型。
 
 但新的問題是：在 $a$ 與 $ -a$ 兩個反足方向使用不同 carrier 時，兩個 witness stable sets 不再自動不交。
 

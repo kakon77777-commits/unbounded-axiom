@@ -290,7 +290,7 @@ F_\alpha
 }
 $$
 
-$F_\alpha$ 稱為第 $\alpha$ 層的可積分前沿。
+ $F_\alpha$ 稱為第 $\alpha$ 層的可積分前沿。
 
 ---
 

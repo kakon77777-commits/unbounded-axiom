@@ -210,7 +210,7 @@ $$J_{i,k}(\mathbf{s}) = \frac{\phi_i(\mathbf{s} \oplus_k \sigma_k) - \phi_i(\mat
 
 其中 $\mathbf{s} \oplus_k \sigma_k$ 表示將 $\mathbf{s}$ 的第 $k$ 個符號替換為 $\sigma_k$ 。
 
-$J$ 是一個 $N \times \ell$ 矩陣，描述了每個符號位置對每個粒子相位的影響。
+ $J$ 是一個 $N \times \ell$ 矩陣，描述了每個符號位置對每個粒子相位的影響。
 
 **命題 4.3（雪崩矩陣的近似性質）。** 在均勻性假設下， $J$ 的每一列（對應一個符號位置）中， $J_{i,k}$ 近似均勻分佈在 $[-\pi, \pi)$ 上，且不同行（不同粒子）近似獨立。
 
@@ -361,7 +361,7 @@ $$\Delta_{\text{geom}}(h) = \sup_{\mathbf{s}, \mathbf{s}'} |D_\Omega^h(\mathbf{s
 
 **猜想 7.1（幾何普適類）。** 所有滿足以下條件的哈希函數 $h$ 屬於同一普適類：
 1. 碰撞概率 $\leq O(2^{-64})$ （低碰撞）
-2. 輸出的統計矩 $|\mathbb{E}[H^k] - \mathbb{E}[\text{Uniform}^k]| \leq O(2^{-k \cdot \text{const}})$（低偶數矩偏差）
+2. 輸出的統計矩 $|\mathbb{E}[H^k] - \mathbb{E}[\text{Uniform}^k]| \leq O(2^{-k \cdot \text{const}})$ （低偶數矩偏差）
 
 對這類哈希函數，幾何偏差 $\Delta_{\text{geom}}(h) = O(N^{-1/2})$ （集中不等式估計），在 $N \to \infty$ 時趨向零。
 

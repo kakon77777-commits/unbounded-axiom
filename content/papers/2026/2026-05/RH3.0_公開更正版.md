@@ -37,7 +37,7 @@
 
 **第三章（核心）。** De Bruijn-Newman 函數 $H_\lambda(z)=\int_0^\infty e^{\lambda u^2}\Phi(u)\cos(zu)\,du$ ， $H_0=\Xi$ ； $\Lambda=\sup\{\lambda:H_\lambda\text{ 有複零點}\}$ ；RH $\Leftrightarrow\Lambda\leq 0$ ，結合 $\Lambda\geq 0$ 得 RH $\Leftrightarrow\Lambda=0$ 。宣稱熱核等價於對 Dirichlet 係數的對角乘子 $K_\lambda(n)=\exp(-\tfrac{\lambda}{4}(\log n)^2)$ ；主定理： $K_\lambda$ 對 $\lambda\neq 0$ 不乘法， $R_\lambda(p,q)=\exp(-\tfrac{\lambda}{2}\log p\log q)\neq 1$ ；故 $\Lambda>0$ 破壞歐拉乘積，矛盾，得 $\Lambda=0$ 。
 
-**第四章（瞬間形變）。** 算符 $D_{\text{inst}}F=\lim_{\epsilon\to 0}(\partial_t F+\delta(t)\Delta_{\text{top}}F)$；宣稱繞數只在臨界線上為整數，偏離則「連續化」。
+**第四章（瞬間形變）。** 算符 $D_{\text{inst}}F=\lim_{\epsilon\to 0}(\partial_t F+\delta(t)\Delta_{\text{top}}F)$ ；宣稱繞數只在臨界線上為整數，偏離則「連續化」。
 
 **第五章（歷史自洽性）。** 宣稱 $\Lambda>0$ 使歐拉乘積失效，進而 RSA、QED、哈希、弦論皆應崩潰；由它們精確運作貝葉斯地推出 $\Lambda=0$ 。
 
@@ -120,11 +120,11 @@ $$\Phi_B[\Gamma]=\oint_\Gamma\mathrm{Im}\frac{d\Xi}{\Xi}=\oint_\Gamma d(\arg\Xi)
 
 ## §2.5 第四章：未定義的算符
 
-$D_{\text{inst}}=\lim_{\epsilon\to 0}(\partial_t F+\delta(t)\Delta_{\text{top}}F)$ 不是良定義物件（Dirac $\delta$ 乘上從未定義的 $\Delta_{\text{top}}$ ）。定理 4.1（臨界線上繞數為整數）為真但平凡——避開零點的閉圍道繞數對任何 $t$ 皆為整數。定理 4.2（ $t\neq 0$ 繞數「連續化」）**假**：繞數對閉圍道恆為整數，「由對稱破缺 □」不是證明。本章無嚴格內容。
+ $D_{\text{inst}}=\lim_{\epsilon\to 0}(\partial_t F+\delta(t)\Delta_{\text{top}}F)$ 不是良定義物件（Dirac $\delta$ 乘上從未定義的 $\Delta_{\text{top}}$ ）。定理 4.1（臨界線上繞數為整數）為真但平凡——避開零點的閉圍道繞數對任何 $t$ 皆為整數。定理 4.2（ $t\neq 0$ 繞數「連續化」）**假**：繞數對閉圍道恆為整數，「由對稱破缺 □」不是證明。本章無嚴格內容。
 
 ## §2.6 數值方案：數值符合不是結構證據
 
-$\Delta_\lambda=|g_\lambda(pq)-g_\lambda(p)g_\lambda(q)|$ 測的只是「 $g_\lambda$ 不乘法」——對 $\zeta$ 或 $\Lambda$ 零信息。「若 $\Lambda=0.01$ 則 $\sum g_{0.01}(n)/n^2$ 應偏離 $\pi^2/6$ 」的論證把虛構的 $\zeta_\lambda$ 與真實 $\zeta(2)$ 等同；真實 $\zeta(2)$ 與 $\zeta_\lambda$ 無關，故觀測 $\zeta(2)$ 精確對 $\Lambda$ 不構成證據。
+ $\Delta_\lambda=|g_\lambda(pq)-g_\lambda(p)g_\lambda(q)|$ 測的只是「 $g_\lambda$ 不乘法」——對 $\zeta$ 或 $\Lambda$ 零信息。「若 $\Lambda=0.01$ 則 $\sum g_{0.01}(n)/n^2$ 應偏離 $\pi^2/6$ 」的論證把虛構的 $\zeta_\lambda$ 與真實 $\zeta(2)$ 等同；真實 $\zeta(2)$ 與 $\zeta_\lambda$ 無關，故觀測 $\zeta(2)$ 精確對 $\Lambda$ 不構成證據。
 
 一般原則：**在一個與目標物件無因果連結的數量上觀測到任意高的數值符合，對目標物件不提供證據。** 數值符合 $\neq$ 結構深度。
 
@@ -146,7 +146,7 @@ $\Delta_\lambda=|g_\lambda(pq)-g_\lambda(p)g_\lambda(q)|$ 測的只是「 $g_\la
 
 ## §3.2 De Bruijn-Newman 框架的正確陳述
 
-$H_\lambda=e^{-\lambda\partial_z^2}\Xi$ 是 $z$ 上的逆向熱流（取代錯誤的定理 3.1，推導見附錄 A.5）。 $\Lambda=\sup\{\lambda:H_\lambda\text{ 有複零點}\}$ 存在唯一。**Rodgers-Tao： $\Lambda\geq 0$**（2018 預印，2020 發表於 *Forum of Mathematics, Pi*）。**RH $\Leftrightarrow\Lambda\leq 0$**，結合下界得 **RH $\Leftrightarrow\Lambda=0$**——這一串等價完全正確。
+ $H_\lambda=e^{-\lambda\partial_z^2}\Xi$ 是 $z$ 上的逆向熱流（取代錯誤的定理 3.1，推導見附錄 A.5）。 $\Lambda=\sup\{\lambda:H_\lambda\text{ 有複零點}\}$ 存在唯一。**Rodgers-Tao： $\Lambda\geq 0$**（2018 預印，2020 發表於 *Forum of Mathematics, Pi*）。**RH $\Leftrightarrow\Lambda\leq 0$**，結合下界得 **RH $\Leftrightarrow\Lambda=0$**——這一串等價完全正確。
 
 本進路真正有價值的部分，是它正確地把 RH 翻譯成了 $\Lambda=0$ 。問題只在於它接著「證明」上界的方式是錯的。
 
@@ -158,7 +158,7 @@ $H_\lambda=e^{-\lambda\partial_z^2}\Xi$ 是 $z$ 上的逆向熱流（取代錯�
 
 $$\underbrace{\Lambda\geq 0}_{\text{已證}}\qquad\text{vs.}\qquad\underbrace{\Lambda\leq 0}_{\text{= RH，開放}}.$$
 
-$\Lambda\leq 0$ 與 RH **嚴格等價**——證出前者即證出後者。DBN 重述沒有讓問題變簡單，只是換了包裝。沒有任何已知方法（包括本進路）能合上這個上界。**這就是「當下數學無法解決」的誠實陳述：不是缺細節，是整個問題本身未解。**
+ $\Lambda\leq 0$ 與 RH **嚴格等價**——證出前者即證出後者。DBN 重述沒有讓問題變簡單，只是換了包裝。沒有任何已知方法（包括本進路）能合上這個上界。**這就是「當下數學無法解決」的誠實陳述：不是缺細節，是整個問題本身未解。**
 
 ## §4.2 一個會反噬原敘事的事實（但它是對的）
 
@@ -252,7 +252,7 @@ $$e^{\lambda u^2}\leftrightarrow\sum_{k\geq 0}\frac{\lambda^k}{k!}(-1)^k\partial
 
 ## A.6 輻角原理： $\oint d(\arg\Xi)=2\pi N$ （及對稱零點同號相加）
 
-$\Xi$ 整，圍道 $\Gamma$ 上無零點。在簡單零點 $\rho$ 附近 $\Xi(z)=c(z-\rho)+O((z-\rho)^2)$ ，故 $\dfrac{\Xi'}{\Xi}=\dfrac{1}{z-\rho}+\text{解析}$ ，留數為 $1$ 。由留數定理
+ $\Xi$ 整，圍道 $\Gamma$ 上無零點。在簡單零點 $\rho$ 附近 $\Xi(z)=c(z-\rho)+O((z-\rho)^2)$ ，故 $\dfrac{\Xi'}{\Xi}=\dfrac{1}{z-\rho}+\text{解析}$ ，留數為 $1$ 。由留數定理
 
 $$\oint_\Gamma\frac{\Xi'(z)}{\Xi(z)}dz=2\pi i\,N_\Gamma,\qquad N_\Gamma=\text{圍道內零點數（含重數）}.$$
 

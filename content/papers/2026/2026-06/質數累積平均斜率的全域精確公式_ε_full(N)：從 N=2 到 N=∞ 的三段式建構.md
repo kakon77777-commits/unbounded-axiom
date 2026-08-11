@@ -233,7 +233,7 @@ $$\hat{p}(N+1) = (N+1) \cdot \text{Avg}(N+1) - N \cdot \text{Avg}(N)$$
 
 **觀察 6.2（零點）：** ε 在 $N \approx 5$ 附近穿越零點。此點是「初始量子相」與「漸近幾何相」的轉換邊界。
 
-**觀察 6.3（峰值後單調遞減）：** ε 在 $ N \approx 10$ –$ 30$ 達到峰值（約 0.27–0.28），此後單調遞減趨向 0。峰值對應質數序列從「密集初始分布」向「稀疏漸近分布」轉換的臨界尺度。
+**觀察 6.3（峰值後單調遞減）：** ε 在 $ N \approx 10$ – $ 30$ 達到峰值（約 0.27–0.28），此後單調遞減趨向 0。峰值對應質數序列從「密集初始分布」向「稀疏漸近分布」轉換的臨界尺度。
 
 **觀察 6.4（全域一致性）：** 三段式公式的各段均從同一真實質數數據出發——第一段直接使用，第二段以其校準，第三段以 PNT 的解析結果（本身是真實質數行為的極限）。三段在銜接點（N=1000, N=5×10⁶）的誤差均在 0.4% 以內，顯示數學上的一致性。
 
@@ -361,8 +361,8 @@ function runExample() {
     let avg = cumSum / N;
 
     console.log("算法 6.1 v2.0 預測演示");
-    console.log(`初始：前 ${N} 個質數，Avg(${N}) = ${avg.toFixed(4)}`);
-    console.log(`ε(${N}) = ${epsilon_full(N).toFixed(5)}`);
+    console.log(`初始：前 ${N} 個質數，Avg($ {N}) = ${avg.toFixed(4)}`);
+    console.log(`ε( ${N}) = $ {epsilon_full(N).toFixed(5)}`);
     console.log();
 
     // 預測接下來 5 個質數
@@ -370,7 +370,7 @@ function runExample() {
     for (let i = 0; i < 5; i++) {
         const pred = predictNextPrime(N, avg);
         const err = Math.abs(pred - actual[i]) / actual[i];
-        console.log(`p(${N+1}) 預測: ${pred}  實際: ${actual[i]}  誤差: ${(err*100).toFixed(2)}%`);
+        console.log(`p( ${N+1}) 預測: $ {pred}  實際: ${actual[i]}  誤差: $ {(err*100).toFixed(2)}%`);
         // 更新狀態（使用實際值）
         avg = (N * avg + actual[i]) / (N + 1);
         N++;
@@ -431,7 +431,7 @@ function runExample() {
 
 $$M6^* = \{n \in \mathbb{N} : n > 1,\; n \equiv \pm 1 \pmod{6}\} = \{5, 7, 11, 13, 17, 19, 23, 25, 29, 31, 35, \ldots\}$$
 
-$M6^*$ 僅由模算術定義，不假設質數知識。
+ $M6^*$ 僅由模算術定義，不假設質數知識。
 
 **引理 C.1（整除封閉性）：** 若 $n \in M6^*$ 且 $d \mid n$ ， $d > 1$ ，則 $d \in M6^*$ 。
 
@@ -460,9 +460,9 @@ $$\mathrm{Fix}(T_{\text{top}}) = \mathbb{P} \cap M6^*$$
 
 **證明：**
 
-$(\supseteq)$ 設 $p \in \mathbb{P} \cap M6^*$ 。 $p$ 的正因數只有 $1$ 與 $p$ 。由 $1 \notin M6^*$ ， $p$ 的 $M6^*$ -因數集合為 $\{p\}$ ，故 $T_{\text{top}}(p) = p$ 。 $\square$
+ $(\supseteq)$ 設 $p \in \mathbb{P} \cap M6^*$ 。 $p$ 的正因數只有 $1$ 與 $p$ 。由 $1 \notin M6^*$ ， $p$ 的 $M6^*$ -因數集合為 $\{p\}$ ，故 $T_{\text{top}}(p) = p$ 。 $\square$
 
-$(\subseteq)$ 設 $T_{\text{top}}(n) = n$ ，即不存在 $d \in M6^*$ 使 $d \mid n$ 且 $d < n$ 。反設 $n$ 是合數，令 $q$ 為 $n$ 的最小質因數。由 $n \in M6^*$ 得 $\gcd(n, 6) = 1$ ，故 $\gcd(q, 6) = 1$ ，即 $q \in M6^*$ 。又 $n$ 是合數故 $q \leq \sqrt{n} < n$ 。於是 $q \in M6^*$ ， $q \mid n$ ， $q < n$ ，矛盾。故 $n$ 是質數。 $\square$
+ $(\subseteq)$ 設 $T_{\text{top}}(n) = n$ ，即不存在 $d \in M6^*$ 使 $d \mid n$ 且 $d < n$ 。反設 $n$ 是合數，令 $q$ 為 $n$ 的最小質因數。由 $n \in M6^*$ 得 $\gcd(n, 6) = 1$ ，故 $\gcd(q, 6) = 1$ ，即 $q \in M6^*$ 。又 $n$ 是合數故 $q \leq \sqrt{n} < n$ 。於是 $q \in M6^*$ ， $q \mid n$ ， $q < n$ ，矛盾。故 $n$ 是質數。 $\square$
 
 ### C.5 驗算
 
@@ -486,7 +486,7 @@ $$U \in \tau \iff \forall n \in U,\; \forall d \in M6^*: d \mid n \Rightarrow d 
 
 *證明：* $\{n\}$ 是開集 $\iff$ $\{n\}$ 向下封閉 $\iff$ $n$ 的所有 $M6^*$ -因數均在 $\{n\}$ 中 $\iff$ $n$ 的唯一 $M6^*$ -因數是 $n$ 自身 $\iff$ $n$ 是質數。 $\square$
 
-$T_{\text{top}}(n)$ 因此等於： $\tau$ 中包含於 $\{n\}$ 的最大開集的最小元素。**質數是 $\tau$ 中的開點，合數不是。**
+ $T_{\text{top}}(n)$ 因此等於： $\tau$ 中包含於 $\{n\}$ 的最大開集的最小元素。**質數是 $\tau$ 中的開點，合數不是。**
 
 ### C.7 與 ε\_full 的關係
 

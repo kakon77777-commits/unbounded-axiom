@@ -92,7 +92,7 @@ $$C_{ij} = w(\sigma_i, \sigma_j) \cdot K_{\text{spatial}}(\mathbf{x}_i, \mathbf{
 - 衰減性： $K_{\text{spatial}}(\mathbf{x}, \mathbf{y}) \to 0$ 當 $\|\mathbf{x} - \mathbf{y}\| \to \infty$
 
 本文主要考慮兩種具體形式：
-- **指示核**： $K^{\text{ind}}(\mathbf{x}, \mathbf{y}) = \mathbf{1}[\|\mathbf{r}_\mathbf{x} - \mathbf{r}_\mathbf{y}\|_{\ell^\infty} \leq 1]$（哈希格鄰域）
+- **指示核**： $K^{\text{ind}}(\mathbf{x}, \mathbf{y}) = \mathbf{1}[\|\mathbf{r}_\mathbf{x} - \mathbf{r}_\mathbf{y}\|_{\ell^\infty} \leq 1]$ （哈希格鄰域）
 - **高斯核**： $ K^{\text{Gauss}}(\mathbf{x}, \mathbf{y}) = \exp(-\|\mathbf{x} - \mathbf{y}\|^2 / 2\ell^2)$ （長度尺度 $ \ell$ ）
 
 **定義 3.3（廣義耦合張量）。** 給定粒子系統 $\mathcal{P} = \{(p_i, \mathbf{x}_i, \sigma_i)\}_{i=1}^N$ ，廣義耦合張量（GCT）是 $N \times N$ 矩陣：
@@ -139,7 +139,7 @@ $$\mathbf{v}(t) = e^{-K^*\tilde{\mathcal{L}}t}\mathbf{v}(0)$$
 
 由於 $\mathbf{C}$ 是正半定對稱矩陣（在上述假設下）， $\tilde{\mathcal{L}}$ 的特徵值 $\lambda \in [0, 1]$ （對規範化圖拉普拉斯）或 $\lambda \in [0, 2]$ （對非規範化版本）。
 
-$\tilde{\mathcal{L}}$ 的特徵值 $\lambda_k$ 和對應的特徵向量 $\mathbf{u}_k$ 描述了速度場在GCT意義下的「正則模式」（normal modes）。
+ $\tilde{\mathcal{L}}$ 的特徵值 $\lambda_k$ 和對應的特徵向量 $\mathbf{u}_k$ 描述了速度場在GCT意義下的「正則模式」（normal modes）。
 
 **命題 4.1（零特徵值的意義）。** $\tilde{\mathcal{L}}$ 的零特徵值的重數等於GCT圖的連通分量數 $c_0$ 。
 
@@ -235,7 +235,7 @@ $$\mathbb{D} = W \otimes (D_{\text{eff}} I_d)$$
 
 其中 $I_d$ 是 $d \times d$ 空間單位矩陣。 $\mathbb{D}$ 是一個 $(m \cdot d) \times (m \cdot d)$ 張量，控制語義-空間耦合流變場的擴散。
 
-$\mathbb{D}$ 的特徵值決定了SRF中所有模式的擴散速率。語義矩陣 $W$ 的特徵值直接調製空間擴散係數。
+ $\mathbb{D}$ 的特徵值決定了SRF中所有模式的擴散速率。語義矩陣 $W$ 的特徵值直接調製空間擴散係數。
 
 ---
 
@@ -312,7 +312,7 @@ $$\mathcal{W}_C(\mathbf{v}) = \tilde{\mathbf{C}}\mathbf{v}$$
 
 **定義 7.1（ $W$ -可編織性）。** 語義類型 $\sigma$ 和 $\sigma'$ 是 $W$ -可編織的（ $W$ -weavable），若 $w(\sigma, \sigma') > 0$ 。
 
-$W$ -可編織性定義了語義空間上的一個等價關係（的推廣）：若 $W = I_L$ ，則只有相同標籤的粒子可編織；若 $W = \mathbf{1}\mathbf{1}^T$ ，則所有粒子均可編織。
+ $W$ -可編織性定義了語義空間上的一個等價關係（的推廣）：若 $W = I_L$ ，則只有相同標籤的粒子可編織；若 $W = \mathbf{1}\mathbf{1}^T$ ，則所有粒子均可編織。
 
 ### 7.4 GCT的Weaving代數
 
@@ -322,7 +322,7 @@ $W$ -可編織性定義了語義空間上的一個等價關係（的推廣）：
 - $\alpha\mathbf{C}_1 + \beta\mathbf{C}_2 \in \mathfrak{C}$ （對應語義核 $\alpha w_1 + \beta w_2$ ）
 - $\mathbf{C}_1 \circ \mathbf{C}_2 \in \mathfrak{C}$ （Hadamard積，對應語義核 $w_1 \cdot w_2$ ）
 
-$\mathfrak{C}$ 在Hadamard積下構成一個**交換的Banach代數**（若在合適范數下完備），稱為**GCT代數**。
+ $\mathfrak{C}$ 在Hadamard積下構成一個**交換的Banach代數**（若在合適范數下完備），稱為**GCT代數**。
 
 GCT代數的乘法單位元是 $\mathbf{C}_{\mathbf{1}} = \mathbf{1}\mathbf{1}^T \circ \mathbf{K}_\mathcal{P}$ （語義全連接），零元是 $\mathbf{C}_0 = \mathbf{0}$ （完全解耦）。
 

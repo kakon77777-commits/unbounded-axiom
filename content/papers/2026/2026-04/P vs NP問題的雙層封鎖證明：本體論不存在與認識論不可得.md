@@ -592,7 +592,7 @@ return ASI.choose(𝒜_valid)  # 從等價演算法中選擇
 
 **7.3** **終極的諷刺**
 
-$$ \boxed{ \begin{aligned} &\text{證明 P≠NP 的同時，} \\ &\text{我們證明了這個證明對實踐無關緊要。} \end{aligned} }$$
+$$ \boxed{ \begin{aligned} &\text{證明 P}\neq\text{NP 的同時，} \\ &\text{我們證明了這個證明對實踐無關緊要。} \end{aligned} }$$
 
 因為：
 

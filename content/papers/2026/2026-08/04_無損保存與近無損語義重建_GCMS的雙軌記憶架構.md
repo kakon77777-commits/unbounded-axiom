@@ -310,7 +310,7 @@ $$
 D_s:\mathcal Z_s\rightarrow\mathcal X,
 $$
 
-$D_s(z)$ 只能輸出一個結果，因此不可能同時滿足：
+ $D_s(z)$ 只能輸出一個結果，因此不可能同時滿足：
 
 $$
 D_s(C_s(x_1))=x_1,

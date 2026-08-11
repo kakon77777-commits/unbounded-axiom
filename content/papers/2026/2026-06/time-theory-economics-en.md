@@ -582,7 +582,7 @@ Result: voters vote based on "impression" and "emotion"; politicians manipulate 
 
 **Lobbying = interest groups purchasing "politicians' policy-making time":**
 
-Case — pharmaceutical industry lobbies to extend patent protection: lobbying cost $100M (hypothetical) → expected return $10B (patent extension). Essence: using past accumulated time to purchase "the policymaker's attention and time," in exchange for future time monopoly rights.
+Case — pharmaceutical industry lobbies to extend patent protection: lobbying cost $100M (hypothetical) → expected return $ 10B (patent extension). Essence: using past accumulated time to purchase "the policymaker's attention and time," in exchange for future time monopoly rights.
 
 **Core of public choice theory:** politics is not "negotiation over the public interest," but "struggle for the power to allocate time." The "public interest" is merely an accidental by-product — if it exists at all.
 
@@ -851,9 +851,9 @@ Time Theory's core insight: the Fisher equation's essence = equilibrium conditio
 
 Case — inflation's temporal mechanism (simplified model with Alice and Bob):
 
-Initial equilibrium: M = $100, V = 2/day, T = 2 hours × 2 people, P = $50/hour → MV = PT = $200.
+Initial equilibrium: M = $100, V = 2/day, T = 2 hours × 2 people, P = $ 50/hour → MV = PT = $200.
 
-Government doubles M to $200 → MV = $400, T unchanged → P must rise to $100/hour → 100% inflation.
+Government doubles M to $200 → MV = $ 400, T unchanged → P must rise to $100/hour → 100% inflation.
 
 Inflation = dilution of temporal claims:
 - Before: $100 purchases Alice's 2 hours of labor
