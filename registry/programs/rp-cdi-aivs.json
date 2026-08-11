@@ -1,0 +1,140 @@
+{
+  "id": "rp-cdi-aivs",
+  "schema_version": "0.2",
+  "type": "ai_native_research_lineage",
+  "title": "計算域支配智能：AI 語義控制面與自適應多 X 計算",
+  "title_en": "Computational Domain Dominant Intelligence: AI Semantic Control Plane and Adaptive Multi-X Computing",
+  "short_title": "CDI/AIVS",
+  "status": "completed",
+  "open_ended": false,
+  "started_at": "2026-08-11",
+  "completed_at": "2026-08-11",
+  "reference_method": "6 篇論文的完整序列，篇序取自系列自身的檔名編號或內文自陳順序，非事後推斷。",
+  "canonical_route": "/ai/programs/cdi-aivs/",
+  "visibility": "public",
+  "languages": [
+    "zh-Hant"
+  ],
+  "agency": {
+    "initiative": "human",
+    "primary_authorship": "collaborative",
+    "research_direction": "negotiated",
+    "continuation_control": "human"
+  },
+  "contributors": [
+    {
+      "name": "Neo.K",
+      "type": "human",
+      "roles": [
+        "problem_proposer",
+        "continuation_decider",
+        "curator",
+        "co_author"
+      ]
+    },
+    {
+      "name": "Aletheia",
+      "type": "ai",
+      "model": "Aletheia",
+      "roles": [
+        "co_author",
+        "formalizer"
+      ]
+    }
+  ],
+  "foundation_artifacts": [],
+  "applied_artifacts": [],
+  "iterations": [
+    {
+      "sequence": 1,
+      "id": "lm-002443",
+      "title": "01_AI不必替代計算_從傳統執行平面到語義因果控制平面_v0.1",
+      "topic": "01_AI不必替代計算_從傳統執行平面到語義因果控制平面_v0.1",
+      "iteration_type": "foundation",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 2,
+      "id": "lm-002444",
+      "title": "02_AI垂直同步_分層中繼認知比例性與低成本因果一致_v0.1",
+      "topic": "02_AI垂直同步_分層中繼認知比例性與低成本因果一致_v0.1",
+      "iteration_type": "applied",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 3,
+      "id": "lm-002445",
+      "title": "03_候選不是提交_多X計算中的因果校正錯位檢測與可恢復執行_v0.1",
+      "topic": "03_候選不是提交_多X計算中的因果校正錯位檢測與可恢復執行_v0.1",
+      "iteration_type": "applied",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 4,
+      "id": "lm-002446",
+      "title": "04_從24_72計算範式到Runtime路由_AI如何選擇組合與切換計算形態_v0.1",
+      "topic": "04_從24_72計算範式到Runtime路由_AI如何選擇組合與切換計算形態_v0.1",
+      "iteration_type": "applied",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 5,
+      "id": "lm-002447",
+      "title": "05_舊應用與遊戲的AI加速_從實作串行化到必要串行化_v0.1",
+      "topic": "05_舊應用與遊戲的AI加速_從實作串行化到必要串行化_v0.1",
+      "iteration_type": "applied",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 6,
+      "id": "lm-002448",
+      "title": "06_CDI_Runtime_AIVS_工程架構協議與MVP_v0.1",
+      "topic": "06_CDI_Runtime_AIVS_工程架構協議與MVP_v0.1",
+      "iteration_type": "synthesis",
+      "is_checkpoint": true
+    }
+  ],
+  "current_state": {
+    "sequence": 6,
+    "artifact_id": "lm-002448",
+    "status": "completed",
+    "phase_status": "closed_by_design",
+    "declaration": "本系列提出 CDI（計算域支配智能）：AI 不取代傳統執行平面，而是接管語義—因果控制平面，依序建立垂直同步（Worker→RelayAI→GovernorAI）、候選—提交分離的因果校正錯位偵測、跨24/72 計算範式的 Runtime 路由，並將舊應用／遊戲的 AI 加速重新定義為「從實作串行化到必要串行化」的問題，最終在第六篇收束為完整工程架構協議，並附上可執行的 MVP（Python 原始碼、SQLite schema、範例、smoke test）。",
+    "stop_reason": "第六篇明確標示「THEORETICAL CLOSED (6/6) + ENGINEERING OPEN」——理論部分在此封頂，工程部分刻意保持開放，不預設下一篇理論文章。",
+    "unresolved_gaps": [
+      "六篇論文的參考文獻都重複引用「Neo.K/Aletheia《Adaptive Cognitive Runtime（ACR）工程白皮書》」與「Neo.K《從因果點到因果流：AI 視角計算的線性複雜度重構》」，但全語料庫（含其他待處理 ingest 資料夾）搜尋不到這兩篇文件——R0/R1/R2/Escalate 認知體制機制的論述明確建立在 ACR 白皮書之上，屬於系列的地基引用，不確定是尚未交付還是引註疏漏，未擅自處理，留待作者確認。"
+    ],
+    "next_actions": [],
+    "handoff_required_tasks": [],
+    "stewardship": "這是本語料庫至今第一個附帶真正可執行工程 MVP 的系列：src/cdi_runtime_mvp.py（僅用 Python 標準函式庫）、4 個 JSON schema、SQLite schema、2 個範例、smoke test 程式與其SQLite 執行結果資料庫，全部掛在第六篇下。原始資料夾另有 6 個 README.md、5 個 SERIES_INDEX_Nof6.md 與 1 個 SERIES_FINAL_INDEX_6of6.md——經核對均為專案進度追蹤／導覽文件，非理論內容，未發布為論文或附件。每篇原有的 0N_source_notes 研究筆記（記錄開寫前重新查核的 prior art：Windows Thread Pool、D3D12 Work Graphs、LLVM Polly 等）已掛為對應論文的附件而非獨立論文。原始 __pycache__ 編譯位元組碼（.pyc）與所有 .zip 重複打包已排除未發布。全部 6 篇 + 6 份筆記逐一核對零數學／LaTeX 損壞。",
+    "cross_references": [
+      {
+        "id": "lm-001708",
+        "relation": "cites",
+        "note": "計算的二十四重範式 v4.0，第四篇正確引用未重複主張"
+      },
+      {
+        "id": "lm-001687",
+        "relation": "cites",
+        "note": "七十二格計算動力學 v0.1"
+      },
+      {
+        "id": "lm-001822",
+        "relation": "independently_convergent",
+        "note": "元相位選擇器，select→combine→switch→route→certify 架構與第四篇的 Paradigm Routing Layer 高度相近，應用領域不同（AI 推理階段機 vs. 計算後端）"
+      },
+      {
+        "id": "lm-001036",
+        "relation": "independently_convergent",
+        "note": "路由即辨識，與第四篇§88-90 獨立重新推導出同一「重複路由收斂為快取式辨識」論證"
+      }
+    ]
+  },
+  "integrity": {
+    "files_seen": 6,
+    "files_imported": 6,
+    "missing_sequences": [],
+    "missing_note": "",
+    "duplicate_resolved": []
+  }
+}

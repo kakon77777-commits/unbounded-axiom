@@ -1,0 +1,32 @@
+{
+  "scenario": {
+    "id": "legacy-game-npc-shadow",
+    "visibility": "source",
+    "warmup_seconds": 30,
+    "capture_seconds": 120,
+    "rng_seed": 20260810,
+    "baseline_runs": 5,
+    "shadow_runs": 20
+  },
+  "region": {
+    "id": "npc.paths",
+    "baseline_route": "cpu_serial",
+    "candidate_route": "cpu_parallel",
+    "expected_profile": {
+      "substrate": "D",
+      "update": "P",
+      "observation": "D",
+      "transition_law": "F"
+    }
+  },
+  "gec": {
+    "state_fields": [
+      "npc_paths",
+      "npc_positions",
+      "rng_state"
+    ],
+    "rng_policy": "strict",
+    "event_policy": "causal_order",
+    "tolerance": 0.0
+  }
+}

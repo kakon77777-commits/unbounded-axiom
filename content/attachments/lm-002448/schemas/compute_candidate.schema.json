@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CDI Compute Candidate Object v0.1",
+  "type": "object",
+  "required": [
+    "candidate_id",
+    "run_id",
+    "task_id",
+    "region_id",
+    "flow_id",
+    "producer_id",
+    "input_state_version",
+    "epoch",
+    "read_keys",
+    "write_keys",
+    "idempotency_key"
+  ],
+  "properties": {
+    "candidate_id": {
+      "type": "string"
+    },
+    "run_id": {
+      "type": "string"
+    },
+    "task_id": {
+      "type": "string"
+    },
+    "region_id": {
+      "type": "string"
+    },
+    "flow_id": {
+      "type": "string"
+    },
+    "producer_id": {
+      "type": "string"
+    },
+    "input_state_version": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "epoch": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "read_keys": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "write_keys": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "speculative": {
+      "type": "boolean"
+    },
+    "side_effect_class": {
+      "enum": [
+        "Pure",
+        "Reversible",
+        "Compensatable",
+        "Irreversible"
+      ]
+    },
+    "authority_scope": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "fencing_token": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "idempotency_key": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "runtime": {
+    "db": "cdi_runtime.db",
+    "mode": "observer",
+    "ai_timeout_ms": 500,
+    "fallback": "keep_original",
+    "default_evidence_authority": {
+      "E0": "observe",
+      "E1": "advise",
+      "E2": "advise",
+      "E3": "shadow",
+      "E4": "promote_low_risk",
+      "E5": "promote_policy_bounded"
+    }
+  },
+  "aivs": {
+    "thresholds": {
+      "R0": 0.25,
+      "R1": 0.5,
+      "R2": 0.75
+    },
+    "dedupe_window_ms": 250,
+    "governor_max_queue": 128
+  },
+  "windows": {
+    "capture": "wpr",
+    "native_etw_parser": false,
+    "import_contract": "normalized JSONL or WPA Exporter CSV"
+  },
+  "game": {
+    "enabled": false,
+    "semantic_bridge": "mssp-game-computer-runtime-mvp",
+    "performance_bridge": "ETW/PIX"
+  }
+}

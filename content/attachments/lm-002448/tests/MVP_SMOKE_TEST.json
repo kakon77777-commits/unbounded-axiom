@@ -1,0 +1,42 @@
+{
+  "status": "PASS",
+  "result": {
+    "run_id": "run-demo",
+    "low_regime": "R0",
+    "high_regime": "ESCALATE",
+    "commit1_state": 1,
+    "nonconflicting_stale_version_commit": 2,
+    "idempotent_same_commit": true,
+    "relevant_conflict_rejected": true,
+    "stale_fencing_rejected": true,
+    "irreversible_speculation_rejected": true,
+    "fencing_token_advanced": true,
+    "shadow_route_equivalent": true,
+    "shadow_route_speedup": 2.2222222222222223,
+    "route_promoted": true,
+    "bad_route_rejected": true,
+    "serialization_gap_ms": 26.0,
+    "summary": {
+      "run": {
+        "run_id": "run-demo",
+        "name": "CDI synthetic demo",
+        "epoch": 1,
+        "topology_version": 1,
+        "policy_version": 1,
+        "current_state_version": 2,
+        "created_at": "2026-08-10T06:59:45.373220+00:00"
+      },
+      "counts": {
+        "events": 16,
+        "candidates": 5,
+        "commit_receipts": 2,
+        "sync_events": 2,
+        "paradigm_profiles": 1,
+        "route_candidates": 2,
+        "route_benchmarks": 2,
+        "route_receipts": 1,
+        "serialization_findings": 1
+      }
+    }
+  }
+}

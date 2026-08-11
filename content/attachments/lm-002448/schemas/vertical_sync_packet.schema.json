@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AIVS Vertical Sync Packet v0.1",
+  "type": "object",
+  "required": [
+    "protocol",
+    "identity",
+    "temporal",
+    "status",
+    "evidence_refs"
+  ],
+  "properties": {
+    "protocol": {
+      "const": "aivs/0.1"
+    },
+    "identity": {
+      "type": "object",
+      "required": [
+        "relay_id",
+        "worker_id",
+        "flow_id",
+        "region_id"
+      ],
+      "properties": {
+        "relay_id": {
+          "type": "string"
+        },
+        "worker_id": {
+          "type": "string"
+        },
+        "flow_id": {
+          "type": "string"
+        },
+        "region_id": {
+          "type": "string"
+        }
+      }
+    },
+    "temporal": {
+      "type": "object",
+      "required": [
+        "epoch",
+        "topology_version",
+        "policy_version",
+        "state_version"
+      ],
+      "properties": {
+        "epoch": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "topology_version": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "policy_version": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "state_version": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "created_at": {
+          "type": "string"
+        }
+      }
+    },
+    "status": {
+      "type": "object",
+      "required": [
+        "dependency",
+        "invariant",
+        "pressure",
+        "regime"
+      ],
+      "properties": {
+        "dependency": {
+          "type": "string"
+        },
+        "invariant": {
+          "type": "string"
+        },
+        "pressure": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "regime": {
+          "enum": [
+            "R0",
+            "R1",
+            "R2",
+            "ESCALATE"
+          ]
+        }
+      }
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

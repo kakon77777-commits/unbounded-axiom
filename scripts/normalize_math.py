@@ -21,10 +21,6 @@ from pathlib import Path
 
 MATH_SPAN = re.compile(r"\$\$.*?\$\$|\$[^$\n]+?\$", re.S)
 CJK = re.compile(r"[一-鿿぀-ヿ]")
-# CJK ideographs + kana + CJK/fullwidth punctuation + dashes/ellipsis/quotes: an inline
-# $ touching any of these is NOT recognized as a delimiter under nonStandard:false, so
-# we pad it with an ASCII space (the reliable fix short of flipping the global config).
-CJK_ADJ = re.compile(r"[　-〿㐀-鿿＀-￯—–…‘’“”]")
 
 
 def is_corrupted(t: str) -> bool:
@@ -32,10 +28,15 @@ def is_corrupted(t: str) -> bool:
     \\[…\\] download and not $$-native)."""
     if "\\[\\" in t or "*{" in t:                     # \[ + stray \  ;  }_{ -> }*{
         return True
-    lone_close = len(re.findall(r"(?m)^\s*\]\s*$", t))  # bare ] on its own line = mangled close
-    esc_close = len(re.findall(r"\\\]", t))
-    if lone_close >= 3 and lone_close > esc_close:      # closes with bare ] far more than \]
-        return True
+    # bare ] on its own line only signals a mangled \[...\] close if the file has an
+    # unescaped \[ opener to begin with — a $$-native file with one-token-per-line
+    # display math (e.g. \mathbb E[ / U(a) / ]) closes legitimate [...] notation on
+    # its own line too, and must not be misread as a corrupted \[ that lost its \].
+    if "\\[" in t:
+        lone_close = len(re.findall(r"(?m)^\s*\]\s*$", t))  # bare ] on its own line = mangled close
+        esc_close = len(re.findall(r"\\\]", t))
+        if lone_close >= 3 and lone_close > esc_close:      # closes with bare ] far more than \]
+            return True
     if len(re.findall(r"(?m)[^\\]\\\s*$", t)) >= 6:     # many <br>→ lone trailing \
         return True
     return False
@@ -82,21 +83,41 @@ def convert(t: str) -> str:
         return s
     t = MATH_SPAN.sub(fixmath, t)
 
-    # 5. space-pad inline $...$ hugging CJK (see pad_inline_cjk)
-    return pad_inline_cjk(t)
+    # 5. space-pad inline $...$ touching any non-whitespace (see pad_inline_math)
+    return pad_inline_math(t)
 
 
-def pad_inline_cjk(t: str) -> str:
-    """Space-pad inline $...$ that hug CJK/punct so nonStandard:false recognizes the
-    delimiters. No-op on a clean \\[…\\] download (it has \\(…\\), not $), so it is safe
-    to run on every paper and keeps faithful downloads byte-for-byte identical."""
+# The real marked-katex-extension rule (read from node_modules/marked-katex-extension/
+# src/index.js, then confirmed against the live renderer — see shell/_scratch_test5.mjs
+# through _scratch_test7.mjs) is NOT a simple whitespace-both-sides rule:
+#   right of closing $: whitespace, one of ?!.,:？！。，：, or end-of-line/string
+#   left of opening $:  a literal space, or start-of-line/string
+# But marked's own inline lexer stops bulk text-consumption at ITS built-in special
+# chars (*, _, ~, ...) independent of the katex extension, so a $ immediately after one
+# of those still gets a fair tokenizer retry and renders fine either way — UNPADDED.
+# Padding those anyway is not just unnecessary, it is actively harmful: inserting a
+# space just inside **bold**/*italic*/~~strike~~ breaks CommonMark's flanking-delimiter
+# rule and un-renders the wrapper (confirmed: '**$x$**' renders bold+math; '** $x$ **'
+# renders neither, just literal asterisks). So those are treated as safe, not padded.
+FLANK_SAFE = set("*_~")
+RIGHT_SAFE_PUNCT = re.compile(r"[\s?!.,:？！。，：]")
+
+
+def pad_inline_math(t: str) -> str:
+    """Space-pad inline $...$ next to a character the renderer won't accept as a
+    delimiter boundary. No-op on a clean \\[…\\] download (it has \\(…\\), not $), so
+    it is safe to run on every paper and keeps faithful downloads byte-for-byte
+    identical."""
     def pad_prose(seg):
         o, last = [], 0
         for mm in re.finditer(r"\$[^$\n]+?\$", seg):
             o.append(seg[last:mm.start()])
-            left = seg[mm.start() - 1] if mm.start() > 0 else " "
-            right = seg[mm.end()] if mm.end() < len(seg) else " "
-            o.append((" " if CJK_ADJ.match(left) else "") + mm.group(0) + (" " if CJK_ADJ.match(right) else ""))
+            left = seg[mm.start() - 1] if mm.start() > 0 else None
+            right = seg[mm.end()] if mm.end() < len(seg) else None
+            need_left = left is not None and left != " " and left not in FLANK_SAFE
+            need_right = (right is not None and not RIGHT_SAFE_PUNCT.match(right)
+                          and right not in FLANK_SAFE)
+            o.append((" " if need_left else "") + mm.group(0) + (" " if need_right else ""))
             last = mm.end()
         o.append(seg[last:])
         return "".join(o)
@@ -108,9 +129,9 @@ def pad_inline_cjk(t: str) -> str:
 
 
 def normalize(t: str) -> str:
-    """Repair copy-paste corruption (only if detected); otherwise just CJK-pad inline
-    $ (a no-op on clean \\[…\\] downloads). Faithful to clean downloads, fixes the rest."""
-    return convert(t) if is_corrupted(t) else pad_inline_cjk(t)
+    """Repair copy-paste corruption (only if detected); otherwise just pad inline $
+    (a no-op on clean \\[…\\] downloads). Faithful to clean downloads, fixes the rest."""
+    return convert(t) if is_corrupted(t) else pad_inline_math(t)
 
 
 if __name__ == "__main__":

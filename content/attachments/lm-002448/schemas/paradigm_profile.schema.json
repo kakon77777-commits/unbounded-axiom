@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CDI Paradigm Profile v0.1",
+  "type": "object",
+  "required": [
+    "region_id",
+    "context",
+    "morphology",
+    "dynamics",
+    "modifiers",
+    "confidence",
+    "evidence_refs"
+  ],
+  "properties": {
+    "region_id": {
+      "type": "string"
+    },
+    "context": {
+      "type": "object"
+    },
+    "morphology": {
+      "type": "object",
+      "required": [
+        "substrate",
+        "update",
+        "observation"
+      ],
+      "properties": {
+        "substrate": {
+          "enum": [
+            "C",
+            "D",
+            "UNKNOWN"
+          ]
+        },
+        "update": {
+          "enum": [
+            "S",
+            "J",
+            "P",
+            "R",
+            "UNKNOWN"
+          ]
+        },
+        "observation": {
+          "enum": [
+            "C",
+            "D",
+            "X",
+            "UNKNOWN"
+          ]
+        }
+      }
+    },
+    "dynamics": {
+      "type": "object",
+      "properties": {
+        "transition_law": {
+          "enum": [
+            "F",
+            "K",
+            "Q",
+            "HYBRID",
+            "UNKNOWN"
+          ]
+        }
+      }
+    },
+    "modifiers": {
+      "type": "object"
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

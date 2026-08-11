@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Game Equivalence Contract v0.1",
+  "type": "object",
+  "required": [
+    "contract_id",
+    "state_fields",
+    "rng_policy",
+    "event_policy",
+    "tolerance",
+    "promotion"
+  ],
+  "properties": {
+    "contract_id": {
+      "type": "string"
+    },
+    "state_fields": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "rng_policy": {
+      "enum": [
+        "strict",
+        "statistical",
+        "ignored"
+      ]
+    },
+    "event_policy": {
+      "enum": [
+        "causal_order",
+        "strict_order",
+        "ignored"
+      ]
+    },
+    "tolerance": {
+      "type": "number",
+      "minimum": 0
+    },
+    "promotion": {
+      "type": "object",
+      "required": [
+        "min_speedup",
+        "required_shadow_runs"
+      ],
+      "properties": {
+        "min_speedup": {
+          "type": "number",
+          "minimum": 1
+        },
+        "required_shadow_runs": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    }
+  }
+}
