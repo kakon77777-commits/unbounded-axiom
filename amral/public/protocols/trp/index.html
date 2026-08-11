@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TRP — Triadic Research Protocol · 研究協議 · AMRAL</title>
+<meta name="description" content="TRP 三 Agent 研究協議:Agent A 做 Aggressive Discovery(高發散、可提出大膽猜想式橋接,但未證步驟必須標示)、Agent B 做 Adversarial Proof Audit(專找第一個不合法步驟——量詞、domain、uniformity、error、tail、local-to-global、counterexample、proves-too-much、formal gap)、Agent C 做 Neutral Academic Assessment(只判 strongest defensible claim、completion level、novelty、QCI closure、publication readiness)。核心原則:Bold generation ≠ bold public claim。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../">AMRAL</a>
+  <a class="link" href="../../about/">關於</a>
+  <a class="link" href="../../methodology/">方法論</a>
+  <a class="link active" href="../">研究協議</a>
+  <a class="link" href="../../validation/">驗證</a>
+  <a class="link" href="../../research-modes/">自主模式</a>
+  <a class="link" href="../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../skew-field/">歪度場</a>
+  <a class="link" href="../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../glc-framework/">GLC 閉合框架</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb"><a href="../">← 研究協議</a></p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">研究協議</span>
+      <span class="tag">v0.1</span>
+      <span class="tag">2026-08-11</span>
+    </div>
+    <h1>TRP — Triadic Research Protocol</h1>
+    <p class="h1-sub">Bold Discovery · Hostile Verification · Neutral Assessment。三個角色依序接力:Agent A 負責高發散、高自信的主攻——可以提出大膽的猜想式橋接,不因為怕產生幻覺而停止研究,但每一個未證步驟都必須標示;Agent B 不負責生成,只負責找碴——專找第一個不合法步驟,檢查量詞順序、定義域、一致性、誤差項、尾端行為、局部到全域的跳躍、反例與 proves-too-much(論證強到連已知假的命題也能推出)這種警訊;Agent C 不生成也不挑戰,只做中立學術判斷——目前最強但仍站得住腳的主張是什麼、完成度到哪一層、有沒有新意、QCI 是否閉合、能不能投稿、審稿人最可能提出什麼反對意見。</p>
+    <div class="claim-box">
+      Bold generation ≠ bold public claim
+      <span class="note">— TRP 的核心原則:允許大膽生成,不允許大膽生成直接變成公開主張。</span>
+    </div>
+  </header>
+
+  <section id="agent-a">
+    <h2 class="doc-h2">Agent A — Aggressive Discovery</h2>
+    <div class="doc">
+      <ul>
+        <li>高發散;</li>
+        <li>高探索;</li>
+        <li>高自信主攻;</li>
+        <li>可提出大膽 conjectural bridge;</li>
+        <li>不因「怕 hallucination」而停止研究;</li>
+        <li>但未證步驟必須標示。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="agent-b">
+    <h2 class="doc-h2">Agent B — Adversarial Proof Audit</h2>
+    <p class="section-note">專找第一個不合法步驟,檢查項目至少包含:</p>
+    <div class="doc">
+      <ul>
+        <li>量詞(quantifier)順序是否被偷換;</li>
+        <li>定義域(domain)是否一致;</li>
+        <li>一致性(uniformity)是否成立;</li>
+        <li>誤差(error)項是否被忽略;</li>
+        <li>尾端(tail)行為是否處理;</li>
+        <li>local-to-global 跳躍是否合法;</li>
+        <li>counterexample 是否存在;</li>
+        <li>proves-too-much(是否連已知假命題也能推出);</li>
+        <li>formal gap(形式化缺口)。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="agent-c">
+    <h2 class="doc-h2">Agent C — Neutral Academic Assessment</h2>
+    <p class="section-note">只判:</p>
+    <div class="doc">
+      <ul>
+        <li>strongest defensible claim(目前最強但站得住腳的主張);</li>
+        <li>completion level(完成度層級);</li>
+        <li>novelty(新意);</li>
+        <li>QCI closure(QCI 是否閉合);</li>
+        <li>publication readiness(投稿準備度);</li>
+        <li>likely referee objections(審稿人最可能的反對意見)。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="round-ui">
+    <h2 class="doc-h2">TRP Round 顯示格式</h2>
+    <p class="section-note">若某 Case 使用 TRP,每一輪的呈現格式建議如下(尚未套用在任何現有 Case 上):</p>
+    <div class="doc">
+      <pre><code>Round 001
+
+Agent A — Candidate
+Status: COMPLETE
+
+Agent B — Audit
+Status: GAP_FOUND
+
+Agent C — Assessment
+Level: 2
+
+Next:
+Repair Lemma L3</code></pre>
+    </div>
+  </section>
+
+  <section id="future">
+    <h2 class="doc-h2">未來可能新增的協議</h2>
+    <div class="doc">
+      <p>Single-Agent Protocol、Swarm Protocol、Blind Re-Derivation Protocol、Human Referee Protocol、Multi-Lab Replication Protocol——目前僅為名稱,見<a href="../">研究協議總覽</a>。</p>
+    </div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../">← 研究協議</a>
+    <a href="../../about/files/AMRAL_Research_Lab_Website_Upgrade_Handoff_v0.1.md" download>下載交接文件原始 .md</a>
+  </footer>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../assets/render.js?v=2"></script>
+<script>amralRenderMath(document.body);</script>
+</body>
+</html>

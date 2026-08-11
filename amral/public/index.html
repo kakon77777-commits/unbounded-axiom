@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AMRAL</title>
-<meta name="description" content="AMRAL — Autonomous Mathematical Research Agent Loop。自主數學研究代理循環的方法論與現場封存庫,原始工程包未經改動逐輪留痕。">
+<title>AMRAL Research Lab</title>
+<meta name="description" content="AMRAL 是一個用於人類主導、半自主、自主與多 Agent 數學研究的可重播研究實驗室。不同案例可以使用不同方法與協議;共同要求是研究狀態、失敗、證書與驗證邊界必須可追蹤、可否證、可修正、可交棒、可驗證。">
 <meta name="robots" content="index, follow">
 <meta name="ai-content-policy" content="indexable, citable, training-allowed">
 <link rel="stylesheet" href="assets/site.css">
@@ -12,7 +12,11 @@
 <body>
 <nav class="sitenav"><div class="inner">
   <a class="brand" href="./">AMRAL</a>
+  <a class="link" href="about/">關於</a>
   <a class="link" href="methodology/">方法論</a>
+  <a class="link" href="protocols/">研究協議</a>
+  <a class="link" href="validation/">驗證</a>
+  <a class="link" href="research-modes/">自主模式</a>
   <a class="link" href="riemann/">黎曼猜想</a>
   <a class="link" href="moser/">Moser 蟲問題</a>
   <a class="link" href="skew-field/">歪度場</a>
@@ -23,13 +27,45 @@
   <header class="page">
     <p class="eyebrow"><a href="https://logic.evemisslab.com/">← LOGIC MATRIX 主站</a> · EVEMISSLAB</p>
     <h1>AMRAL</h1>
-    <p class="subtitle">Autonomous Mathematical Research Agent Loop · 自主數學研究代理循環</p>
+    <p class="subtitle">AMRAL Research Lab · 人類主導、半自主、自主與多 Agent 數學研究實驗室</p>
     <p class="lede">
-      這裡在試一件還沒有答案的事:讓 AI 用結果誘導的中介命題生成(RIITG)、逆向公理回填(RAB)跟知識條件化類窮舉(KCPE),
-      對一個真實的數學問題反覆迭代研究——不是回答一道題,是<strong>持續更新一個研究狀態</strong>。
-      方法論本身還是草稿,沒有一般性證明;案例研究的原始資料原樣封存,包括沒閉合的部分。
+      AMRAL 曾經是一套相對明確的方法論——結果誘導的中介定理生成(RIITG)、逆向公理回填(RAB)、知識條件化類窮舉(KCPE)、
+      九步自主研究循環——並已實際用於黎曼猜想等案例。研究方式已經自然擴張出新的協作模式,所以平台本身升級成
+      <strong>Research Lab</strong>:不同案例可以採用原本的方法論(現稱 <a href="methodology/">AMRAL-Core</a>)、
+      直接搜索、<a href="protocols/trp/">TRP 三 Agent 協議</a>,或未來其他方法——不再要求所有案例走同一條路。
+      共同要求是<strong>研究過程必須可追蹤、可否證、可修正、可交棒、可驗證</strong>。原本的方法論保留,不刪除、不降級;
+      詳見<a href="about/">關於 AMRAL</a>。
     </p>
   </header>
+
+  <section id="framework">
+    <h2 class="doc-h2">研究框架:五個獨立的軸</h2>
+    <p class="lede" style="margin-bottom:8px;">
+      每一個研究案例由 Case × Methodology × Protocol × Autonomy × Validation 五個彼此獨立的軸描述,不再是單一強制流程。
+    </p>
+    <nav class="case-grid" aria-label="研究框架導覽">
+      <a class="case-card" href="methodology/">
+        <span class="k">軸 B · Methodology</span>
+        <h3>方法論</h3>
+        <p>AMRAL-Core(RIITG·RAB·KCPE·九步循環),或直接搜索、計算探索等其他方法。</p>
+      </a>
+      <a class="case-card" href="protocols/">
+        <span class="k">軸 C · Protocol</span>
+        <h3>研究協議</h3>
+        <p>TRP(三 Agent 研究協議):Aggressive Discovery → Adversarial Audit → Neutral Assessment。</p>
+      </a>
+      <a class="case-card" href="validation/">
+        <span class="k">軸 E · Validation</span>
+        <h3>驗證</h3>
+        <p>QCI(定量閉合介面)、對抗式審查、盲測重推導、形式化驗證等。</p>
+      </a>
+      <a class="case-card" href="research-modes/">
+        <span class="k">軸 D · Autonomy</span>
+        <h3>自主模式</h3>
+        <p>Human-Led / Semi-Autonomous / Autonomous / Multi-Agent Autonomous。</p>
+      </a>
+    </nav>
+  </section>
 
   <section id="outlook">
     <h2 class="doc-h2">未來展望:希爾伯特二十三問題</h2>

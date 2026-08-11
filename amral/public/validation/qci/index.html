@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QCI — Quantitative Closure Interface · 驗證 · AMRAL</title>
+<meta name="description" content="QCI:一個主要依賴定性、拓樸、幾何、代數或組合結構的證明策略,在提升為全域解析／算術命題之前,必須經過的合法性、可容許性、估計精度、誤差控制與一致量化層。T →(Φ)→ A_admissible →(Q)→ R。QCI debt 由九個分量組成:definition、admissibility、quantitative bound、uniformity、error budget、tail、global、consistency、formalization。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../">AMRAL</a>
+  <a class="link" href="../../about/">關於</a>
+  <a class="link" href="../../methodology/">方法論</a>
+  <a class="link" href="../../protocols/">研究協議</a>
+  <a class="link active" href="../">驗證</a>
+  <a class="link" href="../../research-modes/">自主模式</a>
+  <a class="link" href="../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../skew-field/">歪度場</a>
+  <a class="link" href="../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../glc-framework/">GLC 閉合框架</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb"><a href="../">← 驗證</a></p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">驗證框架</span>
+      <span class="tag">v0.1</span>
+      <span class="tag">2026-08-11</span>
+    </div>
+    <h1>QCI — Quantitative Closure Interface</h1>
+    <p class="h1-sub">一個主要依賴定性、拓樸、幾何、代數或組合結構的證明策略,在提升為全域解析／算術命題之前,必須經過的合法性、可容許性、估計精度、誤差控制與一致量化層。定性論證常常在直覺上「感覺對」,但沒有交代常數是否一致、誤差是否可控、尾端是否被處理、局部結果能不能真的黏合成全域結果——QCI 就是把這些追問固定成一份必須逐項回答的清單,而不是留給讀者自行腦補。</p>
+    <div class="claim-box">
+      T → Φ → A_admissible → Q → R
+      <span class="note">— 定性論證 T 經 Φ 篩成可容許形式 A_admissible,再經 Q 定量化,得到結果 R。</span>
+    </div>
+  </header>
+
+  <section id="pipeline">
+    <h2 class="doc-h2">核心管線</h2>
+    <div class="doc">
+      <p>\[ \mathcal T \xrightarrow{\Phi} \mathcal A_{\mathrm{admissible}} \xrightarrow{Q} \mathcal R \]</p>
+      <p>其中 \(\mathcal T\) 是原始的定性/結構性論證,\(\Phi\) 是把它篩選、改寫成可容許形式的映射,\(\mathcal A_{\mathrm{admissible}}\) 是通過合法性檢查的中間形式,\(Q\) 是定量化算子,\(\mathcal R\) 是最終可被檢驗的定量結果。</p>
+    </div>
+  </section>
+
+  <section id="debt">
+    <h2 class="doc-h2">QCI Debt</h2>
+    <div class="doc">
+      <p>任何聲稱已完成 QCI 閉合的論證,都必須能交代以下九個分量各自的狀態:</p>
+      <p>\[
+      D^{\mathrm{QCI}} = (
+      D_{\mathrm{def}},
+      D_{\mathrm{adm}},
+      D_{\mathrm{quant}},
+      D_{\mathrm{uniform}},
+      D_{\mathrm{error}},
+      D_{\mathrm{tail}},
+      D_{\mathrm{global}},
+      D_{\mathrm{consistency}},
+      D_{\mathrm{formal}}
+      )
+      \]</p>
+      <ul>
+        <li><code>D_def</code> — 對象是否有明確定義(well-definedness);</li>
+        <li><code>D_adm</code> — 是否通過可容許性檢查(admissibility);</li>
+        <li><code>D_quant</code> — 是否有明確的定量界(quantitative bound);</li>
+        <li><code>D_uniform</code> — 界是否在相關參數範圍內一致(uniformity);</li>
+        <li><code>D_error</code> — 誤差項是否被估計、控制(error budget);</li>
+        <li><code>D_tail</code> — 尾端行為是否處理(tail);</li>
+        <li><code>D_global</code> — 局部結果是否真的能黏合成全域結論(local-to-global);</li>
+        <li><code>D_consistency</code> — 跟已知結果、特例是否一致(consistency);</li>
+        <li><code>D_formal</code> — 是否有(或需要)形式化驗證(formalization)。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="status-ui">
+    <h2 class="doc-h2">QCI Status 顯示格式</h2>
+    <p class="section-note">若某 Case 套用 QCI,建議的逐項狀態呈現(尚未套用在任何現有 Case 上):</p>
+    <div class="doc">
+      <pre><code>QCI
+✓ Well-definedness
+✓ Admissibility
+△ Quantitative bound
+✗ Uniformity
+△ Error budget
+N/A Tail
+✗ Local-to-global
+✓ Consistency
+○ Formalization</code></pre>
+      <p>整體狀態固定為以下五種之一:<code>CLOSED</code> / <code>PARTIAL</code> / <code>OPEN</code> / <code>FAILED</code> / <code>N/A</code>。</p>
+    </div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../">← 驗證</a>
+    <a href="../../about/files/AMRAL_Research_Lab_Website_Upgrade_Handoff_v0.1.md" download>下載交接文件原始 .md</a>
+  </footer>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../assets/render.js?v=2"></script>
+<script>amralRenderMath(document.body);</script>
+</body>
+</html>
