@@ -1410,6 +1410,188 @@
         "label": "MVP self-test 與 eager/lazy materialization 效能基準（5000 children，約 3879x 加速）",
         "kind": "data"
       }
+    ],
+    "lm-002638": [
+      {
+        "file": "on_rdss_normalization_checker.py",
+        "orig": "on_rdss_normalization_checker.py",
+        "label": "Certified Paracomposition normalization 驗證器",
+        "kind": "verify"
+      }
+    ],
+    "lm-002639": [
+      {
+        "file": "on_rdss_primitive_elimination_checker.py",
+        "orig": "on_rdss_primitive_elimination_checker.py",
+        "label": "Primitive-elimination 驗證器",
+        "kind": "verify"
+      },
+      {
+        "file": "on_rdss_primitive_elimination_results.json",
+        "orig": "on_rdss_primitive_elimination_results.json",
+        "label": "Primitive-elimination 驗證結果",
+        "kind": "data"
+      }
+    ],
+    "lm-002648": [
+      {
+        "file": "on_rdss_typed_effect_operator_checker.py",
+        "orig": "on_rdss_typed_effect_operator_checker.py",
+        "label": "Typed-effect universal operator 驗證器",
+        "kind": "verify"
+      },
+      {
+        "file": "on_rdss_typed_effect_operator_results.json",
+        "orig": "on_rdss_typed_effect_operator_results.json",
+        "label": "Typed-effect universal operator 驗證結果",
+        "kind": "data"
+      }
+    ],
+    "lm-002647": [
+      {
+        "file": "on_rdss_subject_reduction_checker.py",
+        "orig": "on_rdss_subject_reduction_checker.py",
+        "label": "Subject-reduction 驗證器",
+        "kind": "verify"
+      },
+      {
+        "file": "on_rdss_subject_reduction_results.json",
+        "orig": "on_rdss_subject_reduction_results.json",
+        "label": "Subject-reduction 驗證結果",
+        "kind": "data"
+      }
+    ],
+    "lm-002646": [
+      {
+        "file": "on_rdss_type_effect_exhaustive_checker.py",
+        "orig": "on_rdss_type_effect_exhaustive_checker.py",
+        "label": "窮舉型別/效果安全驗證器（324 well-typed words、1230 typed residual words、354 structural reductions、0 preservation failures）",
+        "kind": "verify"
+      },
+      {
+        "file": "on_rdss_type_effect_exhaustive_results.json",
+        "orig": "on_rdss_type_effect_exhaustive_results.json",
+        "label": "窮舉驗證結果",
+        "kind": "data"
+      }
+    ],
+    "lm-002649": [
+      {
+        "file": "on_rdss_wiring_subject_reduction_checker.py",
+        "orig": "on_rdss_wiring_subject_reduction_checker.py",
+        "label": "Wiring subject-reduction／effect pomset 驗證器（含 false-causality 反例）",
+        "kind": "verify"
+      },
+      {
+        "file": "on_rdss_wiring_subject_reduction_results.json",
+        "orig": "on_rdss_wiring_subject_reduction_results.json",
+        "label": "Wiring subject-reduction 驗證結果",
+        "kind": "data"
+      }
+    ],
+    "lm-002637": [
+      {
+        "file": "on_rdss_effect_event_structure_checker.py",
+        "orig": "on_rdss_effect_event_structure_checker.py",
+        "label": "Certified effect event structure 驗證器（conflict erasure、OR/AND cause 分離）",
+        "kind": "verify"
+      },
+      {
+        "file": "on_rdss_effect_event_structure_results.json",
+        "orig": "on_rdss_effect_event_structure_results.json",
+        "label": "驗證結果",
+        "kind": "data"
+      }
+    ],
+    "lm-002640": [
+      {
+        "file": "on_rdss_dynamic_cees_folding_checker.py",
+        "orig": "on_rdss_dynamic_cees_folding_checker.py",
+        "label": "Dynamic CEES branch-quotient folding 驗證器（no silent retroactivity）",
+        "kind": "verify"
+      },
+      {
+        "file": "on_rdss_dynamic_cees_folding_results.json",
+        "orig": "on_rdss_dynamic_cees_folding_results.json",
+        "label": "驗證結果",
+        "kind": "data"
+      }
+    ],
+    "lm-002642": [
+      {
+        "file": "on_rdss_hphp_checker.py",
+        "orig": "on_rdss_hphp_checker.py",
+        "label": "Plain HP branch-quotient 驗證器（greatest fixed point）",
+        "kind": "verify"
+      },
+      {
+        "file": "on_rdss_hphp_checker_results.json",
+        "orig": "on_rdss_hphp_checker_results.json",
+        "label": "驗證結果",
+        "kind": "data"
+      }
+    ],
+    "lm-002643": [
+      {
+        "file": "on_rdss_history_decorated_cees_checker.py",
+        "orig": "on_rdss_history_decorated_cees_checker.py",
+        "label": "History-decorated CEES／causal-realization 驗證器（same event set ≠ same causal history）",
+        "kind": "verify"
+      },
+      {
+        "file": "on_rdss_history_decorated_cees_results.json",
+        "orig": "on_rdss_history_decorated_cees_results.json",
+        "label": "驗證結果",
+        "kind": "data"
+      }
+    ],
+    "lm-002641": [
+      {
+        "file": "on_rdss_explicit_backward_hhp_checker.py",
+        "orig": "on_rdss_explicit_backward_hhp_checker.py",
+        "label": "Explicit backward HHP 驗證器",
+        "kind": "verify"
+      },
+      {
+        "file": "on_rdss_explicit_backward_hhp_results.json",
+        "orig": "on_rdss_explicit_backward_hhp_results.json",
+        "label": "驗證結果",
+        "kind": "data"
+      },
+      {
+        "file": "on_rdss_hp_not_hhp_regression_target.json",
+        "orig": "on_rdss_hp_not_hhp_regression_target.json",
+        "label": "經典 HP≠HHP 反例 fixture（§1 pop 型 net A/B，永久保留的 regression target）",
+        "kind": "data"
+      }
+    ],
+    "lm-002636": [
+      {
+        "file": "on_rdss_bounded_backtracking_checker.py",
+        "orig": "on_rdss_bounded_backtracking_checker.py",
+        "label": "Runtime bounded-backtracking（RBHHP_k）驗證器",
+        "kind": "verify"
+      },
+      {
+        "file": "on_rdss_bounded_backtracking_results.json",
+        "orig": "on_rdss_bounded_backtracking_results.json",
+        "label": "驗證結果（RBHHP_0=true, RBHHP_1=false）",
+        "kind": "data"
+      }
+    ],
+    "lm-002644": [
+      {
+        "file": "on_rdss_cause_sensitive_bhhp_checker.py",
+        "orig": "on_rdss_cause_sensitive_bhhp_checker.py",
+        "label": "Cause-sensitive bounded HHP（CBHHP_k）驗證器",
+        "kind": "verify"
+      },
+      {
+        "file": "on_rdss_cause_sensitive_bhhp_results.json",
+        "orig": "on_rdss_cause_sensitive_bhhp_results.json",
+        "label": "驗證結果（Surface equality=true 但 CauseSensitiveEquivalence=false）",
+        "kind": "data"
+      }
     ]
   }
 }

@@ -1,0 +1,80 @@
+{
+  "example_A_false_causality": {
+    "original_external_reach": [],
+    "naive_single_macro_external_reach": [
+      [
+        "p",
+        "q"
+      ]
+    ],
+    "boundary_summary_external_reach": [],
+    "boundary_pairs": [],
+    "naive_introduces_false_p_to_q": true,
+    "boundary_summary_preserves": true
+  },
+  "example_B_true_causality": {
+    "original_external_reach": [
+      [
+        "p",
+        "q"
+      ]
+    ],
+    "naive_single_macro_external_reach": [
+      [
+        "p",
+        "q"
+      ]
+    ],
+    "boundary_summary_external_reach": [
+      [
+        "p",
+        "q"
+      ]
+    ],
+    "boundary_pairs": [
+      [
+        0,
+        0
+      ]
+    ],
+    "preserved": true
+  },
+  "boundary_signatures": {
+    "disconnected_subgraph": {
+      "inputs": [
+        [
+          "a.i",
+          "X"
+        ]
+      ],
+      "outputs": [
+        [
+          "b.o",
+          "W"
+        ]
+      ]
+    },
+    "sequential_subgraph": {
+      "inputs": [
+        [
+          "a.i",
+          "X"
+        ]
+      ],
+      "outputs": [
+        [
+          "b.o",
+          "W"
+        ]
+      ]
+    }
+  },
+  "authority_summary": {
+    "internal_required_authorities": [
+      "audit.append",
+      "state.write"
+    ],
+    "principle": "encapsulation may hide implementation but must not erase authority obligations"
+  },
+  "finding": "A wiring macro cannot in general be represented as one causal event. Naive contraction may create false external causality. A sound macro must preserve a boundary causal reachability relation (or retain the internal effect pomset/event structure as an opaque witness)."
+}

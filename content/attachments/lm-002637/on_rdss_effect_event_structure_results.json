@@ -1,0 +1,115 @@
+{
+  "experiment_A_conflict_erasure": {
+    "reachable_internal_configurations": [
+      [],
+      [
+        "choose_a"
+      ],
+      [
+        "choose_a",
+        "oa"
+      ],
+      [
+        "choose_b"
+      ],
+      [
+        "choose_b",
+        "ob"
+      ]
+    ],
+    "allowed_boundary_configurations": [
+      [],
+      [
+        "oa"
+      ],
+      [
+        "ob"
+      ]
+    ],
+    "naive_extra_boundary_configurations": [
+      [
+        "oa",
+        "ob"
+      ]
+    ],
+    "conflict_erasure_detected": true,
+    "finding": "A macro that exports both outputs without boundary consistency/conflict semantics admits an impossible joint outcome."
+  },
+  "experiment_B_disjunctive_enabling": {
+    "general_event_structure_configs": [
+      [],
+      [
+        "a"
+      ],
+      [
+        "a",
+        "b"
+      ],
+      [
+        "a",
+        "b",
+        "c"
+      ],
+      [
+        "a",
+        "c"
+      ],
+      [
+        "b"
+      ],
+      [
+        "b",
+        "c"
+      ]
+    ],
+    "c_after_a": true,
+    "c_after_b": true,
+    "minimal_enabling_sets_for_c": [
+      [
+        "a"
+      ],
+      [
+        "b"
+      ]
+    ],
+    "and_approximation_loses_a_branch": true,
+    "and_approximation_loses_b_branch": true,
+    "finding": "Disjunctive enabling {a} |- c and {b} |- c cannot be faithfully replaced by the conjunctive dependency {a,b} |- c."
+  },
+  "experiment_C_same_observation_different_future": {
+    "config_A": [
+      "a",
+      "ra"
+    ],
+    "config_B": [
+      "b",
+      "rb"
+    ],
+    "observational_projection_same": true,
+    "enabled_future_A": [
+      "fa"
+    ],
+    "enabled_future_B": [
+      "fb"
+    ],
+    "future_capability_differs": true,
+    "finding": "Equal current observation does not justify quotienting histories when enabled futures differ."
+  },
+  "experiment_D_boundary_enabling_summary": {
+    "target": "c",
+    "visible_causes": [
+      "a",
+      "b"
+    ],
+    "minimal_enabling_sets": [
+      [
+        "a"
+      ],
+      [
+        "b"
+      ]
+    ],
+    "finding": "Boundary semantics needs a family of enabling alternatives, not only a single predecessor set."
+  },
+  "main_finding": "Boundary causal reachability is insufficient once conflict or disjunctive causation is present. A sound recursive macro needs boundary consistency/configuration semantics and boundary enabling alternatives; causal reachability can remain a derived fast index."
+}

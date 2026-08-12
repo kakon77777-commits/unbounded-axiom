@@ -1,0 +1,45 @@
+{
+  "experiment_A_symmetric_branch_fold": {
+    "same_current_projection": true,
+    "same_history_profile": true,
+    "same_future_signature": true,
+    "safe_toy": true,
+    "finding": "Symmetric branches with matching past profiles and bounded future branching are foldable under the toy criterion."
+  },
+  "experiment_B_same_observation_different_future": {
+    "same_current_projection": true,
+    "same_history_profile": true,
+    "same_future_signature": false,
+    "safe_toy": false,
+    "finding": "Same current projection is insufficient when future labels/authority obligations differ."
+  },
+  "experiment_C_meta_breaks_fold": {
+    "safe_before_meta": true,
+    "safe_after_meta": false,
+    "fold_stable_across_meta": false,
+    "finding": "A fold certificate is version-relative; Meta can invalidate a previously safe quotient."
+  },
+  "experiment_D_no_silent_retroactivity": {
+    "committed_config": [
+      "a",
+      "ra"
+    ],
+    "reachable_under_original_v1": true,
+    "reachable_under_new_v2": false,
+    "replay_under_pinned_v1_still_valid": true,
+    "prospectively_generable_under_v2": false,
+    "replay_rule": "Committed history is interpreted under its pinned EventSemanticsVersion unless an explicit migration/reinterpretation certificate is applied.",
+    "finding": "The new snapshot can remove future generability without silently rewriting the validity of the old committed history."
+  },
+  "semantic_fix": {
+    "missing_enabling_rule": "disabled/undefined",
+    "explicit_empty_enabling_set": "initially enabled",
+    "reason": "Missing is not equivalent to empty enabling conditions."
+  },
+  "candidate_rules": {
+    "branch_quotient": "Require history-preserving future equivalence plus type/effect/authority/residual/version compatibility.",
+    "fold_stability": "After Meta, revalidate quotient or derive a transported fold certificate.",
+    "retroactivity": "No silent reinterpretation of committed history across EventSemanticsVersion changes."
+  },
+  "warning": "Bounded structural-signature proxy only; not full hp/hhp-bisimulation."
+}

@@ -1,0 +1,110 @@
+{
+  "id": "rp-on-rdss",
+  "schema_version": "0.2",
+  "type": "ai_native_research_lineage",
+  "title": "Operator-Native RDSS：算子本體論形式化研究線",
+  "title_en": "Operator-Native RDSS: A Typed Partial-Operator Formalization Line",
+  "short_title": "ON-RDSS",
+  "status": "paused",
+  "open_ended": true,
+  "started_at": "2026-08-10",
+  "reference_method": "17 篇 Operator-Native RDSS（ON-RDSS）形式化文件，版本序取自各篇自身標示的 v0.1–v0.15，最終以 Research Handoff v1.0（交接文件）收束整條研究線；lm-id 因語料庫掃描順序與到件順序不同，不代表版本序，一律以文件自身版本號為準。",
+  "canonical_route": "/ai/programs/on-rdss/",
+  "visibility": "public",
+  "languages": ["zh-Hant"],
+  "agency": {
+    "initiative": "human",
+    "primary_authorship": "collaborative",
+    "research_direction": "negotiated",
+    "continuation_control": "human"
+  },
+  "contributors": [
+    {"name": "Neo.K", "type": "human", "roles": ["problem_proposer", "continuation_decider", "curator", "co_author"]}
+  ],
+  "foundation_artifacts": [
+    {"id": "lm-002652", "title": "RDSS 01–09 全公式算子化轉譯矩陣"}
+  ],
+  "applied_artifacts": [
+    {"id": "lm-002651", "title": "Operator-Native RDSS 原語代數與型別系統"},
+    {"id": "lm-002650", "title": "Operator-Native RDSS Deep Formal Backbone"},
+    {"id": "lm-002638", "title": "ON-RDSS Certified Paracomposition and Critical Pairs"},
+    {"id": "lm-002639", "title": "ON-RDSS Critical-Pair Calculus and Primitive Minimality"},
+    {"id": "lm-002648", "title": "ON-RDSS Typed Effect Universal Operator"},
+    {"id": "lm-002647", "title": "ON-RDSS Type-and-Effect Calculus"},
+    {"id": "lm-002646", "title": "ON-RDSS Type/Effect Safety Proof Skeleton"},
+    {"id": "lm-002649", "title": "ON-RDSS Wiring Subject Reduction and Effect Pomset"},
+    {"id": "lm-002637", "title": "ON-RDSS Certified Effect Event Structures"},
+    {"id": "lm-002640", "title": "ON-RDSS Dynamic CEES, Branch Quotient, and Folding"},
+    {"id": "lm-002642", "title": "ON-RDSS HP/HHP Branch Quotient Checker"},
+    {"id": "lm-002643", "title": "ON-RDSS History-Decorated CEES and Causal Realization"},
+    {"id": "lm-002641", "title": "ON-RDSS Explicit Backward HHP Regression"},
+    {"id": "lm-002636", "title": "ON-RDSS Bounded Backtracking and Cause-Sensitive Verification"},
+    {"id": "lm-002644", "title": "ON-RDSS Literature-Bounded HHP and Cause-Sensitive Verification Lattice"},
+    {"id": "lm-002645", "title": "Operator-Native RDSS 研究交接文件"}
+  ],
+  "iterations": [
+    {"sequence": 1, "id": "lm-002652", "title": "RDSS 01–09 全公式算子化轉譯矩陣", "topic": "v0.1｜將 RDSS 01–09 全部公式改寫為 operatorized form，含 Dom/Cod、admissibility、certificate obligation", "iteration_type": "foundation", "is_checkpoint": false},
+    {"sequence": 2, "id": "lm-002651", "title": "Operator-Native RDSS 原語代數與型別系統", "topic": "v0.1｜12 個 operator primitives、partiality、restriction-like 公理、Bridge、條件結合律、Meta safety", "iteration_type": "applied", "is_checkpoint": false},
+    {"sequence": 3, "id": "lm-002650", "title": "Operator-Native RDSS Deep Formal Backbone", "topic": "v0.2｜operator word、partial composition、rewriting、normal form、wiring、meta-evolution", "iteration_type": "applied", "is_checkpoint": false},
+    {"sequence": 4, "id": "lm-002638", "title": "ON-RDSS Certified Paracomposition and Critical Pairs", "topic": "v0.3｜certified paracomposition 與 semantic critical pairs，normalization checker 驗證", "iteration_type": "applied", "is_checkpoint": false},
+    {"sequence": 5, "id": "lm-002639", "title": "ON-RDSS Critical-Pair Calculus and Primitive Minimality", "topic": "v0.4｜critical-pair calculus 與 12→6 primitive 化約候選，primitive-elimination checker 驗證", "iteration_type": "applied", "is_checkpoint": false},
+    {"sequence": 6, "id": "lm-002648", "title": "ON-RDSS Typed Effect Universal Operator", "topic": "v0.5｜單一 typed operator schema：Op[σ⇒τ!χ@d]，typing judgment 與可執行性判定分離", "iteration_type": "applied", "is_checkpoint": false},
+    {"sequence": 7, "id": "lm-002647", "title": "ON-RDSS Type-and-Effect Calculus", "topic": "v0.6｜第一代型別—效果演算，sequential effect trace，subject-reduction checker 驗證", "iteration_type": "applied", "is_checkpoint": false},
+    {"sequence": 8, "id": "lm-002646", "title": "ON-RDSS Type/Effect Safety Proof Skeleton", "topic": "v0.7｜五分量 type safety 候選定理與 structural preservation proof skeleton，窮舉 checker 驗證 0 preservation failures（324 well-typed words）", "iteration_type": "applied", "is_checkpoint": false},
+    {"sequence": 9, "id": "lm-002649", "title": "ON-RDSS Wiring Subject Reduction and Effect Pomset", "topic": "v0.8｜typed wiring graph、effect pomset，關鍵反例：naive macro contraction 產生 false causality", "iteration_type": "applied", "is_checkpoint": false},
+    {"sequence": 10, "id": "lm-002637", "title": "ON-RDSS Certified Effect Event Structures", "topic": "v0.9｜certified effect event structures，conflict erasure 與 OR/AND cause 分離驗證", "iteration_type": "applied", "is_checkpoint": false},
+    {"sequence": 11, "id": "lm-002640", "title": "ON-RDSS Dynamic CEES, Branch Quotient, and Folding", "topic": "v0.10｜General CEES、version-relative fold/quotient，no-silent-retroactivity 治理原則", "iteration_type": "applied", "is_checkpoint": false},
+    {"sequence": 12, "id": "lm-002642", "title": "ON-RDSS HP/HHP Branch Quotient Checker", "topic": "v0.11｜finite prime-event-structure checker，greatest-fixed-point Plain HP 建立", "iteration_type": "applied", "is_checkpoint": false},
+    {"sequence": 13, "id": "lm-002643", "title": "ON-RDSS History-Decorated CEES and Causal Realization", "topic": "v0.12｜history-decorated configuration Ĉ=(C,π,≤π,v)，same-event-set≠same-causal-history 反例", "iteration_type": "applied", "is_checkpoint": false},
+    {"sequence": 14, "id": "lm-002641", "title": "ON-RDSS Explicit Backward HHP Regression", "topic": "v0.13｜explicit backward HHP，經典 HP≠HHP counterexample 成功翻譯（HP=true, HHP=false），永久保留 regression fixture", "iteration_type": "applied", "is_checkpoint": false},
+    {"sequence": 15, "id": "lm-002636", "title": "ON-RDSS Bounded Backtracking and Cause-Sensitive Verification", "topic": "v0.14｜Runtime-approximation RBHHP_k 階層，明確不宣稱等於文獻 LitHHP_k", "iteration_type": "applied", "is_checkpoint": false},
+    {"sequence": 16, "id": "lm-002644", "title": "ON-RDSS Literature-Bounded HHP and Cause-Sensitive Verification Lattice", "topic": "v0.15｜LitHHP_n 與 RBHHP_k 正式分離，CauseSensitive CBHHP 實作，Verification Grade 五軸多元序", "iteration_type": "applied", "is_checkpoint": false},
+    {"sequence": 17, "id": "lm-002645", "title": "Operator-Native RDSS 研究交接文件", "topic": "v1.0｜全系列收束：12 條核心結果 R1–R12、已驗證 vs 未證明明確分界、外部數學接口對照、下一階段優先順序 A–G、重啟用開場 prompt", "iteration_type": "synthesis", "is_checkpoint": true}
+  ],
+  "current_state": {
+    "sequence": 17,
+    "artifact_id": "lm-002645",
+    "status": "checkpoint_paused",
+    "phase_status": "checkpoint_not_final",
+    "declaration": "ON-RDSS 將 RDSS 09 篇封頂後唯一保留不算子化的最大合法域 𝔇_RDSS 內部，全面改寫為 typed partial operators：從全公式轉譯矩陣與原語代數出發，經 deep formal backbone、certified paracomposition／critical pairs、單一 typed-effect operator schema、type-and-effect calculus 與其安全性 proof skeleton、typed wiring／effect pomset，收斂到 certified effect event structures、history-decorated causal configuration、HP/HHP branch quotient、explicit backward HHP regression（成功複現文獻經典反例 HP=true∧HHP=false），最終在 Literature-Bounded／Cause-Sensitive Verification Lattice 建立五軸 Verification Grade，並以交接文件收束為 12 條核心結果（R1–R12，例如 Operatorhood≠Applicability≠Executability≠Realization、Termination≠Confluence、SameEventSet⇏SameCausalHistory）。",
+    "stop_reason": "交接文件 §60 自陳：核心數學骨架已成形、已有多個有限 checker、已建立真正外部 regression，問題性質已從「概念發散」轉為「形式證明、最小歷史、proof assistant、runtime verification」，此時同一對話內繼續追加的邊際效益已低於另開對話重新載入交接文件——狀態為研究線暫停（paused at v0.15），非理論永久關閉。",
+    "unresolved_gaps": [
+      "full Structural Preservation 尚未完成一般數學證明（僅 finite structural subject reduction + proof skeleton）",
+      "general Wiring Subject Reduction 尚未完成一般證明",
+      "general CEES Boundary Behaviour Preservation 尚未完成一般證明",
+      "12 primitives 的 completeness/minimality 尚未證明（僅 toy equivalence regime 下的 6-generator 候選）",
+      "restriction-category 與 paracategory 公理化尚未驗證，僅稱『restriction-like』『與既有框架有結構接口』",
+      "full CEES hp/hhp equivalence 尚未完成",
+      "RBHHP_k 與文獻 LitHHP_k 是否等價尚未確定",
+      "full CauseSensitive HHP 尚未完成一般形式",
+      "Fold Stability theorem 尚未證明",
+      "StateMerge / StateSplit soundness 尚未證明"
+    ],
+    "next_actions": [
+      "Priority A — Verification-Relative Minimal History M_VG(H)：相對指定 verification grade 的最小充分歷史表示，同時最小化其 cost",
+      "Priority B — CauseFrontier(C)：保存仍可能成為未來事件 maximal cause 或 bounded-backtracking target 的 history frontier",
+      "Priority C — General CEES Cause-Sensitive HHP：把 (C₁,f,C₂) 完全升級為 (Ĉ₁,f_r,Ĉ₂)，正式處理 disjunctive causes 與 causal realization",
+      "Priority D — 文獻 Strict-Hierarchy Fixture Family：把經典參數化網 N_n,N_n′ 轉成 machine-readable benchmark（至少 n=0,1,2,3）",
+      "Priority E — 研究 RBHHP_k 與 LitHHP_k 的關係（等價／單向包含／僅特定子域等價）",
+      "Priority F — 從 finite prime core 開始建立 Lean/Coq 形式證明助理骨架",
+      "Priority G — 工程化 Runtime State Registry（StateIdentity/ClassID/Scope/EventVersion/OperatorVersion/VerificationGrade/CertID/FoldStatus/QuotientStatus/HistoryRef）"
+    ],
+    "handoff_required_tasks": [
+      "重新開啟前先讀交接文件全文，依 §58 建議順序精讀 v0.15、v0.13、v0.12、v0.7、Translation Matrix v0.1",
+      "每篇新正式論文開始前重新做一次網路搜尋，對照 primary literature（使用者既有規則，見 §57）",
+      "明確標示每個論述屬於 established mathematics／ON-RDSS adaptation／original conjecture／finite experimental evidence 四類之一，不把 toy checker 說成 theorem proof",
+      "不重開原 RDSS Paper 10（原系列已封頂）；ON-RDSS 是獨立形式化研究線"
+    ],
+    "stewardship": "本系列與已發布的 RDSS 九篇系列（rp-rdss）同一 ingest 資料夾送達，但明確自陳為該系列封頂後的獨立算子化形式研究線，非第十篇（見交接文件 §1、§62 第12條）。觸發本次發布的契機：Neo 提及該資料夾內容複雜、不確定如何處理；逐檔比對後發現資料夾另含 9 篇與已發布 RDSS 系列標題完全相同的舊稿（純屬未清理的來源殘留，已封存，非本系列內容）與 2 個 RDSS 第九篇的 MVP 執行期／benchmark 檔案（已另行補為 lm-002631 的 companion，並回填 rp-rdss.json 原先記錄的缺件）。本系列 17 篇原始檔案僅有日期欄位（2026-08-10／交接文件 2026-08-11）、缺作者與機構欄位，發布前已統一補上「作者：Neo.K」「機構：EveMissLab／一言諾科技有限公司」，日期維持原稿寫作日期不變。17 篇經完整比對：0 個 PUA 殘留字元、0 個 katex 渲染錯誤，逐篇皆有版本號與前置版本聲明，內部引用一致。13 篇（v0.3–v0.15）各自附有限／toy checker（.py）與對應驗證結果（.json），共 26 個檔案已逐篇對應為 companion（1 篇僅 checker 無 results、1 篇額外附經典 HP≠HHP regression fixture，其餘 checker/results 成對），對應關係取自交接文件 §48 逐節自陳的『Checker：』標記。交接文件本身（v1.0）不預設未來正式論文一定拆成 7 篇（§56 明言『不要視為既定』），故本 Program 的 next_actions 保留交接文件 §55 原始優先順序 A–G，不預先假設最終論文結構。",
+    "cross_references": [
+      {"target": "rp-rdss", "relation": "extends", "note": "ON-RDSS 以 RDSS 09 篇為算子化對象（Translation Matrix v0.1 直接轉譯 RDSS 01–09 全部公式），但明確自陳為獨立研究線而非原系列第十篇；原 RDSS 系列保持封頂不變。"}
+    ]
+  },
+  "integrity": {
+    "files_seen": 17,
+    "files_imported": 17,
+    "missing_sequences": [],
+    "missing_note": "",
+    "duplicate_resolved": []
+  }
+}

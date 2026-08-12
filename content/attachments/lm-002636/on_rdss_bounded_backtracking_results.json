@@ -1,0 +1,53 @@
+{
+  "definition_note": {
+    "name": "ON-RDSS BHHP_k",
+    "k0": "plain HP greatest fixed point",
+    "k_plus_1": "adds one mapped backward obligation into BHHP_k, while forward matching remains at the current level",
+    "status": "runtime approximation inspired by bounded-backtracking literature; not yet claimed identical to Fröschle-Hildebrandt indexing"
+  },
+  "classical_fixture_levels": [
+    {
+      "k": 0,
+      "initial_related": true,
+      "relation_size": 17
+    },
+    {
+      "k": 1,
+      "initial_related": false,
+      "relation_size": 10
+    },
+    {
+      "k": 2,
+      "initial_related": false,
+      "relation_size": 4
+    },
+    {
+      "k": 3,
+      "initial_related": false,
+      "relation_size": 0
+    },
+    {
+      "k": 4,
+      "initial_related": false,
+      "relation_size": 0
+    },
+    {
+      "k": 5,
+      "initial_related": false,
+      "relation_size": 0
+    },
+    {
+      "k": 6,
+      "initial_related": false,
+      "relation_size": 0
+    }
+  ],
+  "first_level_that_separates_fixture": 1,
+  "monotone_relation_sizes": true,
+  "finding": "For this classical HP-not-HHP fixture, the ON-RDSS bounded checker already separates at the first added backtracking level.",
+  "runtime_interpretation": {
+    "BHHP_0": "forward history-preserving verification",
+    "BHHP_k": "finite rollback-sensitive certificate grade",
+    "Full_HHP": "unbounded hereditary/backward obligation"
+  }
+}

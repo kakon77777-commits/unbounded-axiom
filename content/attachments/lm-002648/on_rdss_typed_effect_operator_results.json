@@ -1,0 +1,120 @@
+{
+  "operator_schema": "OpSig(inputs, output, effects, meta_depth)",
+  "profiles": [
+    {
+      "name": "spawn_state",
+      "inputs": [],
+      "output": "State",
+      "effects": [
+        "realize"
+      ],
+      "meta_depth": 0,
+      "classified_roles": [
+        "Realize"
+      ]
+    },
+    {
+      "name": "tick_state",
+      "inputs": [
+        "State"
+      ],
+      "output": "State",
+      "effects": [
+        "mutate"
+      ],
+      "meta_depth": 0,
+      "classified_roles": [
+        "Transform"
+      ]
+    },
+    {
+      "name": "bind_relation",
+      "inputs": [
+        "State",
+        "State"
+      ],
+      "output": "Relation",
+      "effects": [
+        "relate"
+      ],
+      "meta_depth": 0,
+      "classified_roles": [
+        "Relate"
+      ]
+    },
+    {
+      "name": "choose_support",
+      "inputs": [
+        "Family<State>"
+      ],
+      "output": "Family<State>",
+      "effects": [
+        "select",
+        "support-nonincreasing"
+      ],
+      "meta_depth": 0,
+      "classified_roles": [
+        "Select"
+      ]
+    },
+    {
+      "name": "certify_candidate",
+      "inputs": [
+        "Candidate"
+      ],
+      "output": "Cert",
+      "effects": [
+        "judge",
+        "provenance",
+        "witness"
+      ],
+      "meta_depth": 0,
+      "classified_roles": [
+        "Certify"
+      ]
+    },
+    {
+      "name": "rewrite_algebra",
+      "inputs": [
+        "Algebra[0]",
+        "Evidence"
+      ],
+      "output": "Algebra[1]",
+      "effects": [
+        "meta",
+        "rewrite"
+      ],
+      "meta_depth": 1,
+      "classified_roles": [
+        "Meta"
+      ]
+    }
+  ],
+  "composition_tests": [
+    {
+      "left": "spawn_state",
+      "right": "tick_state",
+      "ok": true,
+      "reason": "ok"
+    },
+    {
+      "left": "spawn_state",
+      "right": "bind_relation",
+      "ok": true,
+      "reason": "ok"
+    },
+    {
+      "left": "certify_candidate",
+      "right": "rewrite_algebra",
+      "ok": false,
+      "reason": "type-mismatch:Cert!=Algebra[0]"
+    },
+    {
+      "left": "tick_state",
+      "right": "choose_support",
+      "ok": false,
+      "reason": "type-mismatch:State!=Family<State>"
+    }
+  ],
+  "finding": "A single universal operator schema does not collapse semantics if roles are enforced by multi-sorted arity/type signatures, effect obligations, and meta-depth. The six former primitives can be treated as certified operator profiles."
+}

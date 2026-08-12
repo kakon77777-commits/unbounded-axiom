@@ -1,0 +1,39 @@
+{
+  "cause_sensitive_definition": {
+    "state": "Ĉ=(C,π,≤π,v)",
+    "occurrence": "ẽ=(e,κ,v)",
+    "forward_matching": "event profile plus mapped enabling witness",
+    "backward_matching": "remove causal-maximal realization along the existing realization map"
+  },
+  "experiment_A_surface_vs_cause_sensitive": {
+    "same_surface_state": true,
+    "same_causal_order": false,
+    "cause_history_isomorphisms": [],
+    "CBHHP_0_related": false,
+    "CBHHP_1_related": false,
+    "CBHHP_2_related": false,
+    "finding": "Surface equality passes because the same events occurred, but governed cause-sensitive equivalence rejects the two different source histories."
+  },
+  "experiment_B_profile_relative_cause_quotient": {
+    "symmetric_profile_CBHHP_0_related": true,
+    "symmetric_profile_CBHHP_1_related": true,
+    "finding": "If the source events are deliberately placed in the same profile/equivalence class, the cause histories can be matched by swapping a and b."
+  },
+  "verification_axes": {
+    "history": [
+      "HP/BHHP_k/HHP"
+    ],
+    "cause": [
+      "Surface",
+      "CauseSensitive"
+    ],
+    "governance": [
+      "BehaviourOnly",
+      "Authority",
+      "Residual",
+      "FullGoverned"
+    ]
+  },
+  "main_result": "The CauseMode axis is non-redundant: two histories can be identical after surface-cause forgetting but fail cause-sensitive equivalence.",
+  "warning": "Finite General-CEES toy checker; not yet a theorem that CBHHP_k coincides with any standard named equivalence."
+}

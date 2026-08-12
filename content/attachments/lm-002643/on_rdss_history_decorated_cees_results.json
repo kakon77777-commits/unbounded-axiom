@@ -1,0 +1,119 @@
+{
+  "general_cees_state_upgrade": {
+    "old": "C = set of occurred events",
+    "new": "Ĉ = (C, π, ≤π, EventSemanticsVersion)",
+    "reason": "the same event set may admit multiple distinct enabling witnesses and therefore distinct causal histories"
+  },
+  "experiment_A_same_event_set_different_causal_history": {
+    "raw_event_set_equal": true,
+    "history_A_causal_order": [
+      [
+        "a",
+        "c"
+      ]
+    ],
+    "history_B_causal_order": [
+      [
+        "b",
+        "c"
+      ]
+    ],
+    "causal_orders_equal": false,
+    "history_A_realization_id": "01ad8c44335db391",
+    "history_B_realization_id": "65fa9f9458ed15b6",
+    "distinct_realization_ids": true,
+    "finding": "A raw configuration set is insufficient for disjunctive causation."
+  },
+  "experiment_B_backward_ready_distinguishes_histories": {
+    "history_A_maximal_events": [
+      "b",
+      "c"
+    ],
+    "history_B_maximal_events": [
+      "a",
+      "c"
+    ],
+    "history_A_backward_ready_profile": [
+      [
+        "B",
+        "Effect",
+        [
+          "source.B"
+        ],
+        []
+      ],
+      [
+        "C",
+        "Effect",
+        [],
+        []
+      ]
+    ],
+    "history_B_backward_ready_profile": [
+      [
+        "A",
+        "Effect",
+        [
+          "source.A"
+        ],
+        []
+      ],
+      [
+        "C",
+        "Effect",
+        [],
+        []
+      ]
+    ],
+    "different": true,
+    "finding": "The two causal realizations expose different removable/maximal histories even though the occurred event set is identical."
+  },
+  "experiment_C_history_isomorphism_is_profile_relative": {
+    "governed_profile_isomorphic": false,
+    "governed_mapping": null,
+    "symmetric_profile_isomorphic": true,
+    "symmetric_mapping": {
+      "a": "b",
+      "b": "a",
+      "c": "c"
+    },
+    "finding": "If a and b are semantically/governance-distinct, the histories are not quotientable; if their profiles are deliberately identified, a causal isomorphism can swap them."
+  },
+  "experiment_D_enumeration_finds_history_ambiguity": {
+    "number_of_decorated_histories": 13,
+    "histories_with_raw_set_abc": 6,
+    "distinct_causal_orders_for_raw_set_abc": [
+      [
+        [
+          "a",
+          "c"
+        ]
+      ],
+      [
+        [
+          "b",
+          "c"
+        ]
+      ]
+    ],
+    "number_of_distinct_causal_orders": 2
+  },
+  "experiment_E_version_pinned_causal_realization": {
+    "old_history_valid_under_v1": true,
+    "same_history_object_valid_under_v2": false,
+    "v2_cause_rule_for_c": [
+      [
+        "a",
+        "b"
+      ]
+    ],
+    "finding": "A committed causal realization is interpreted under its pinned semantics version; a Meta rewrite may change future causation without silently rewriting the old witness."
+  },
+  "new_identity_layer": {
+    "surface_event": "e",
+    "causal_realization": "ẽ = (e, κ, v)",
+    "projection": "q(ẽ) = e",
+    "interpretation": "surface semantic identity and concrete causal occurrence are separated"
+  },
+  "warning": "Finite toy semantics. It demonstrates history ambiguity under disjunctive enabling; it is not yet a full general-CEES hp/hhp implementation."
+}

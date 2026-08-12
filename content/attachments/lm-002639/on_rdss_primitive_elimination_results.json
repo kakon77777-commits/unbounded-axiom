@@ -1,0 +1,204 @@
+{
+  "primitive_elimination": {
+    "Realize": {
+      "derivable_after_removal": false,
+      "derivation": null
+    },
+    "Transform": {
+      "derivable_after_removal": false,
+      "derivation": null
+    },
+    "Relate": {
+      "derivable_after_removal": false,
+      "derivation": null
+    },
+    "Type": {
+      "derivable_after_removal": true,
+      "derivation": {
+        "requires": [
+          "Certify",
+          "Select",
+          "TYPE_SCHEMA"
+        ],
+        "note": "type profile = candidate selection + certified type schema"
+      }
+    },
+    "Select": {
+      "derivable_after_removal": false,
+      "derivation": null
+    },
+    "Gate": {
+      "derivable_after_removal": true,
+      "derivation": {
+        "requires": [
+          "Certify",
+          "POLICY",
+          "Select"
+        ],
+        "note": "gate = certified selection of allowed/rejected continuation"
+      }
+    },
+    "Bridge": {
+      "derivable_after_removal": true,
+      "derivation": {
+        "requires": [
+          "BRIDGE_SPEC",
+          "Certify",
+          "Transform",
+          "Type"
+        ],
+        "note": "bridge = typed cross-domain transform + bridge certificate"
+      }
+    },
+    "Project": {
+      "derivable_after_removal": true,
+      "derivation": {
+        "requires": [
+          "Certify",
+          "LOSS_SPEC",
+          "Transform"
+        ],
+        "note": "projection = transforming view + explicit loss certificate"
+      }
+    },
+    "Remember": {
+      "derivable_after_removal": true,
+      "derivation": {
+        "requires": [
+          "Certify",
+          "HISTORY_SPEC",
+          "Project",
+          "Transform"
+        ],
+        "note": "memory = history transform + task projection + provenance/certificate"
+      }
+    },
+    "Order": {
+      "derivable_after_removal": true,
+      "derivation": {
+        "requires": [
+          "Certify",
+          "ORDER_AXIOMS",
+          "Relate"
+        ],
+        "note": "ordering = typed relation + certified order axioms"
+      }
+    },
+    "Certify": {
+      "derivable_after_removal": false,
+      "derivation": null
+    },
+    "Meta": {
+      "derivable_after_removal": false,
+      "derivation": null
+    }
+  },
+  "equivalence_regimes": {
+    "E0_extensional_untyped": {
+      "basis_size": 1,
+      "basis": [
+        "Transform*"
+      ],
+      "warning": "Transform* is intentionally unconstrained across arity, stratum, judgment/effect and meta-depth. This collapse shows why extensional I/O equivalence is too weak for primitive ontology."
+    },
+    "E1_stratified_obligation_preserving": {
+      "basis_size": 6,
+      "bases": [
+        [
+          "Realize",
+          "Transform",
+          "Relate",
+          "Select",
+          "Certify",
+          "Meta"
+        ]
+      ],
+      "equivalence": "obligation-preserving, arity/stratum/meta-depth preserving"
+    },
+    "E2_role_preserving": {
+      "basis_size": 12,
+      "basis": [
+        "Realize",
+        "Transform",
+        "Relate",
+        "Type",
+        "Select",
+        "Gate",
+        "Bridge",
+        "Project",
+        "Remember",
+        "Order",
+        "Certify",
+        "Meta"
+      ],
+      "equivalence": "named semantic role is itself primitive and non-eliminable"
+    }
+  },
+  "free_specs": [
+    "BRIDGE_SPEC",
+    "HISTORY_SPEC",
+    "LOSS_SPEC",
+    "ORDER_AXIOMS",
+    "POLICY",
+    "TYPE_SCHEMA"
+  ],
+  "rules": [
+    {
+      "target": "Type",
+      "requires": [
+        "Certify",
+        "Select",
+        "TYPE_SCHEMA"
+      ],
+      "note": "type profile = candidate selection + certified type schema"
+    },
+    {
+      "target": "Gate",
+      "requires": [
+        "Certify",
+        "POLICY",
+        "Select"
+      ],
+      "note": "gate = certified selection of allowed/rejected continuation"
+    },
+    {
+      "target": "Project",
+      "requires": [
+        "Certify",
+        "LOSS_SPEC",
+        "Transform"
+      ],
+      "note": "projection = transforming view + explicit loss certificate"
+    },
+    {
+      "target": "Order",
+      "requires": [
+        "Certify",
+        "ORDER_AXIOMS",
+        "Relate"
+      ],
+      "note": "ordering = typed relation + certified order axioms"
+    },
+    {
+      "target": "Bridge",
+      "requires": [
+        "BRIDGE_SPEC",
+        "Certify",
+        "Transform",
+        "Type"
+      ],
+      "note": "bridge = typed cross-domain transform + bridge certificate"
+    },
+    {
+      "target": "Remember",
+      "requires": [
+        "Certify",
+        "HISTORY_SPEC",
+        "Project",
+        "Transform"
+      ],
+      "note": "memory = history transform + task projection + provenance/certificate"
+    }
+  ],
+  "interpretation": "Minimality is equivalence-relative. Under the chosen stratified obligation-preserving toy rules, six primitives are sufficient: Realize, Transform, Relate, Select, Certify, Meta. This is a hypothesis generated by the finite rule model, not a proof of mathematical minimality."
+}

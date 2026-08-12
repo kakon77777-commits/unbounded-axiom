@@ -1,0 +1,16 @@
+{
+  "name": "Classical HP-not-HHP regression target",
+  "source": "S. B. Fröschle and T. T. Hildebrandt, On Plain and Hereditary History-Preserving Bisimulation, BRICS RS-99-4, 1999.",
+  "expected": {
+    "HP": true,
+    "HHP": false
+  },
+  "mechanism": [
+    "parallel a/b actions can be forward-matched using an order-dependent mapping",
+    "a c-continuation forces one particular a-event matching",
+    "after backtracking the paired a-events, the remaining b-events would have to stay related",
+    "one side can then perform d while the other cannot",
+    "therefore hereditary/backtracking closure fails"
+  ],
+  "status": "literature-grounded regression specification; translation into the ON-RDSS decorated-history checker is the next implementation step"
+}

@@ -1,0 +1,29 @@
+{
+  "finite_model": {
+    "alphabet": [
+      "R",
+      "T",
+      "P",
+      "V",
+      "Q",
+      "Q2"
+    ],
+    "max_word_length": 4,
+    "typed_words": 324,
+    "residual_words": 1230,
+    "checked_structural_steps": 354
+  },
+  "structural_preservation": {
+    "failures": [],
+    "passed": true
+  },
+  "explicit_residual_shape": {
+    "failures": [],
+    "passed": true
+  },
+  "effect_accounting": {
+    "all_prefix_reconstructions_pass": true,
+    "cases_checked": 8
+  },
+  "interpretation": "Finite exhaustive toy-model validation only. It supports the proof skeleton for macro folding and certified independent-effect commutation over words up to length 4; it is not a general proof of ON-RDSS type soundness."
+}

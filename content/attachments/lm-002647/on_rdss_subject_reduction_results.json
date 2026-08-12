@@ -1,0 +1,89 @@
+{
+  "structural_subject_reduction": {
+    "before": {
+      "name": "<R;T;T>",
+      "inputs": [],
+      "output": "State",
+      "effects": [
+        "realize",
+        "mutate",
+        "mutate"
+      ],
+      "depth": 0
+    },
+    "after_TT_to_T2": {
+      "name": "<R;T2>",
+      "inputs": [],
+      "output": "State",
+      "effects": [
+        "realize",
+        "mutate",
+        "mutate"
+      ],
+      "depth": 0
+    },
+    "preserved": true,
+    "after_RT2_macro": {
+      "name": "<RT2>",
+      "inputs": [],
+      "output": "State",
+      "effects": [
+        "realize",
+        "mutate",
+        "mutate"
+      ],
+      "depth": 0
+    },
+    "preserved_again": true
+  },
+  "typed_residual": {
+    "input_word": [
+      "R",
+      "P",
+      "T"
+    ],
+    "residual": {
+      "left": "P",
+      "right": "T",
+      "actual": "View",
+      "expected": "State",
+      "obligation": "type-mismatch"
+    },
+    "result_is_ordinary_value": false
+  },
+  "effect_execution_accounting": {
+    "original_effect_trace": [
+      "realize",
+      "mutate",
+      "mutate"
+    ],
+    "consume_1": {
+      "executed": [
+        "realize"
+      ],
+      "remaining": [
+        "mutate",
+        "mutate"
+      ],
+      "reconstructs_original": true
+    },
+    "consume_2": {
+      "executed": [
+        "realize",
+        "mutate"
+      ],
+      "remaining": [
+        "mutate"
+      ],
+      "reconstructs_original": true
+    }
+  },
+  "certified_effect_commutation": {
+    "independent_read_swap": [
+      "read_b",
+      "read_a"
+    ],
+    "mutate_project_swap": null,
+    "finding": "effect order is preserved unless an explicit independence/commutation certificate exists"
+  }
+}

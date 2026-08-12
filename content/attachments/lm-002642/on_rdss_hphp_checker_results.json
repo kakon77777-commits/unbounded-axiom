@@ -1,0 +1,72 @@
+{
+  "algorithm": {
+    "triple": "(C1, f, C2), where f is a profile- and causal-order-preserving bijection",
+    "hp": "greatest fixed point under forward/backward event extension",
+    "hhp": "hp-style fixed point plus hereditary closure under matched subconfigurations",
+    "profile_fields": [
+      "label",
+      "type",
+      "authority",
+      "residual"
+    ],
+    "warning": "finite prime-event-structure checker; not a general CEES/GES hhp solver"
+  },
+  "experiment_A_symmetric_branches": {
+    "hp_related": true,
+    "hhp_related": true,
+    "hp_maps": [
+      [
+        [
+          "a",
+          "b"
+        ],
+        [
+          "ra",
+          "rb"
+        ]
+      ]
+    ],
+    "hhp_maps": [
+      [
+        [
+          "a",
+          "b"
+        ],
+        [
+          "ra",
+          "rb"
+        ]
+      ]
+    ],
+    "hp_relation_size": 13,
+    "hhp_relation_size": 13,
+    "finding": "Symmetric histories with matching future behaviour pass both finite hp and hhp checks."
+  },
+  "experiment_B_same_current_history_shape_but_different_future_profile": {
+    "hp_related": false,
+    "hhp_related": false,
+    "finding": "The branch quotient is rejected once the unmatched future has a different profile/authority."
+  },
+  "experiment_C_meta_adds_branch_specific_future": {
+    "hp_related_after_meta": false,
+    "hhp_related_after_meta": false,
+    "finding": "A Meta-added future on one branch invalidates the prior hp/hhp-like branch equivalence."
+  },
+  "experiment_D_structure_renaming": {
+    "hp_empty_related": true,
+    "hhp_empty_related": true,
+    "hp_relation_size": 3,
+    "hhp_relation_size": 3,
+    "finding": "Two isomorphic two-event causal structures are related from the empty configurations."
+  },
+  "candidate_BQCert_upgrade": {
+    "old": "bounded history/future signature proxy",
+    "new": "configuration triple relation with causal-history isomorphism + forward/back matching + hereditary closure",
+    "on_rdss_extensions": [
+      "authority profile",
+      "residual profile",
+      "version pin",
+      "certificate scope"
+    ]
+  }
+}

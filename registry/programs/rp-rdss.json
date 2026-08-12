@@ -155,12 +155,12 @@
     "declaration": "本系列建立「狀態、容器與存在」的總命題，依序展開開放維度狀態機、分類即狀態、遞歸容器、展開-連接-收斂三元本體論、非馬可夫歷史、生成狀態機的自我改寫、與既有 MSSP×RDR 架構的重組，第九篇以邊界、可證偽性與一個真實 MVP（rdss_mvp.py，6/6 自測通過，含具體 benchmark 數字）收束全系列。",
     "stop_reason": "第九篇 §63 回溯確認 01-09 全數到齊，構成完整、無缺口的九篇論證鏈。",
     "unresolved_gaps": [],
-    "next_actions": [
-      "確認 rdss_mvp.py / rdss_mvp_benchmark.json 是否存在，需要時作為第九篇的 companion 補件"
-    ],
+    "next_actions": [],
     "handoff_required_tasks": [],
-    "stewardship": "第八篇明確將既有 MSSP×RDR／RABCL／CAIR／Dynamic MSSP／CompilableWorld Runtime／創生矩陣重新定位為 RDSS 的工程實現層級之一，第九篇 §68 甚至將「RDSS 可能只是 MSSP×RDR+RABCL 改名」列為可證偽性檢驗項——RDSS 明確自陳為既有 MSSP 體系的一般化／上位框架而非平行獨立系列，故建議未來與 MSSP 相關 Program 建立強 cross_reference。第九篇具名提及 rdss_mvp.py 與 rdss_mvp_benchmark.json 兩個檔案並附具體效能數字（獨立驗算比例 ≈3879.49，與文中聲稱的 3879.489 相符），但兩檔案未隨本批次送達 ingest 資料夾，語料庫中亦未找到——已記錄為缺件，不影響九篇論文本身的獨立發布。九篇皆無重複、無 PUA/編碼損壞。所有九篇byline為「Neo.K（許筌崴）with Aletheia（GPT-5.6 Sol）」。",
-    "cross_references": []
+    "stewardship": "第八篇明確將既有 MSSP×RDR／RABCL／CAIR／Dynamic MSSP／CompilableWorld Runtime／創生矩陣重新定位為 RDSS 的工程實現層級之一，第九篇 §68 甚至將「RDSS 可能只是 MSSP×RDR+RABCL 改名」列為可證偽性檢驗項——RDSS 明確自陳為既有 MSSP 體系的一般化／上位框架而非平行獨立系列，故建議未來與 MSSP 相關 Program 建立強 cross_reference。第九篇具名提及 rdss_mvp.py 與 rdss_mvp_benchmark.json 兩個檔案並附具體效能數字（獨立驗算比例 ≈3879.49，與文中聲稱的 3879.489 相符），但兩檔案未隨本批次送達 ingest 資料夾，語料庫中亦未找到——已記錄為缺件，不影響九篇論文本身的獨立發布。九篇皆無重複、無 PUA/編碼損壞。所有九篇byline為「Neo.K（許筌崴）with Aletheia（GPT-5.6 Sol）」。2026-08-12 補記：在同一 ingest 資料夾找到 rdss_mvp.py／rdss_mvp_benchmark.json，確認效能數字相符後已補上為第九篇 companion，缺件解除。同資料夾另外找到 17 篇獨立的算子化形式研究文件（Operator-Native RDSS／ON-RDSS，含交接文件自陳「原 RDSS 系列已封頂，不建立 Paper 10」），已發布為獨立 Program rp-on-rdss，非本系列延伸。",
+    "cross_references": [
+      {"target": "rp-on-rdss", "relation": "formalized_by", "note": "ON-RDSS 是 RDSS 09 篇封頂後的獨立算子化形式研究線，由同一資料夾但晚於本系列的交接文件明確自陳為「新形式化／約化研究線，而不是原系列的第十篇」。"}
+    ]
   },
   "integrity": {
     "files_seen": 9,
