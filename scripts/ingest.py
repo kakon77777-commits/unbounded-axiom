@@ -33,6 +33,13 @@ import re
 import shutil
 import sys
 
+# Matches "readme.md", "00_系列目錄_README.md", "README_v2.md", etc. -- any
+# filename where "readme" appears as its own underscore/dash/space-delimited
+# token, not just an exact "readme.md" match (that gap let a series-index
+# README leak into the corpus as a fake paper twice: lm-002226, and again in
+# a staging dry-run caught before publish on 2026-08-12).
+_README_RE = re.compile(r"(?:^|[_\-\s])readme(?:[_\-\s]|$)", re.IGNORECASE)
+
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from datetime import datetime, timezone
 from pathlib import Path
@@ -105,7 +112,7 @@ def main(source: str | None = None, ctcl_instant_file: str | None = None):
     files = sorted(p for p in BEFORE.rglob("*")
                    if p.is_file() and p.suffix.lower() in FIRST_STAGE_EXTS
                    and p.suffix.lower() in SUPPORTED_EXTS
-                   and p.name.lower() != "readme.md")
+                   and not _README_RE.search(p.stem))
     ready, review = [], []
     for f in files:
         title, ext = f.stem, f.suffix.lower().lstrip(".")
