@@ -8,8 +8,8 @@
   "status": "completed",
   "open_ended": false,
   "started_at": "2026-08-11",
-  "completed_at": "2026-08-11",
-  "reference_method": "7 篇論文的完整序列，篇序取自系列自身的檔名編號或內文自陳順序，非事後推斷。",
+  "completed_at": "2026-08-12",
+  "reference_method": "8 篇論文的完整序列，篇序取自系列自身的檔名編號或內文自陳順序，非事後推斷。第 1-7 篇於 2026-08-11 到件，第 8 篇（系列自陳封頂篇）於 2026-08-12 補件到齊。",
   "canonical_route": "/ai/programs/digital-immunity/",
   "visibility": "public",
   "languages": [
@@ -89,25 +89,33 @@
       "id": "lm-002451",
       "title": "安全資料網路效應",
       "topic": "安全資料網路效應",
+      "iteration_type": "applied",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 8,
+      "id": "lm-002628",
+      "title": "資安即基礎設施",
+      "topic": "資安即基礎設施",
       "iteration_type": "synthesis",
       "is_checkpoint": true
     }
   ],
   "current_state": {
-    "sequence": 7,
-    "artifact_id": "lm-002451",
+    "sequence": 8,
+    "artifact_id": "lm-002628",
     "status": "completed",
     "phase_status": "closed_by_design",
-    "declaration": "本系列從密碼熵飽和出發（複雜度提升邊際效益消失），依序處理 AI 大幅壓低攻擊門檻後的防守方因應、既有安全能力的覆蓋缺口、攻擊者注意力不再稀缺後防禦假設的失效、常駐 AI 資安服務的架構，最後以資安資料的網路效應收束——安全資訊本身的價值隨參與節點數量非線性增長。",
-    "stop_reason": "第七篇（安全資料網路效應）完成從個體防禦到生態級資安基礎設施的論證收束。",
+    "declaration": "本系列從密碼熵飽和出發（複雜度提升邊際效益消失），依序處理 AI 大幅壓低攻擊門檻後的防守方因應、既有安全能力的覆蓋缺口、攻擊者注意力不再稀缺後防禦假設的失效、常駐 AI 資安服務的架構、資安資料的網路效應，最後第八篇明確自陳為系列封頂篇，將資安從單點防禦收束為國家/社會層級的基礎設施命題。",
+    "stop_reason": "第八篇（資安即基礎設施）自陳「第八篇／系列封頂篇」，完成從生態級資安服務到基礎設施層級的最終論證收束。",
     "unresolved_gaps": [],
     "next_actions": [],
     "handoff_required_tasks": [],
-    "stewardship": "七篇皆正確引用既有語料庫論文為基礎（不破解密碼_AI對解密能力執行流與系統因果結構的重構攻擊、終端機的右側、從算力攻擊者到認知攻擊主體、動態速率理論與PvsNP2.0），無重複、無損壞。「MSSP」一詞在本系列指 Managed Security Service Provider，與語料庫其餘母集與子集範式／CAIR-RDR 架構論文中的同名縮寫純屬巧合同形異義，內容互不相關。"
+    "stewardship": "七篇皆正確引用既有語料庫論文為基礎（不破解密碼_AI對解密能力執行流與系統因果結構的重構攻擊、終端機的右側、從算力攻擊者到認知攻擊主體、動態速率理論與PvsNP2.0），無重複、無損壞。「MSSP」一詞在本系列指 Managed Security Service Provider，與語料庫其餘母集與子集範式／CAIR-RDR 架構論文中的同名縮寫純屬巧合同形異義，內容互不相關。2026-08-11 首次發布時本 Program 於第七篇即標記 closed_by_design，但當時並不知道系列本身仍有第八篇；2026-08-12 晚間批次送達的《資安即基礎設施》一文內文明確自陳「《AI 時代的數位免疫與資安基礎設施》第八篇／系列封頂篇」，與本 Program 標題逐字相符，故收錄為序號 8 並取代原第七篇的 checkpoint 位置，前七篇內容未做任何改動。"
   },
   "integrity": {
-    "files_seen": 7,
-    "files_imported": 7,
+    "files_seen": 8,
+    "files_imported": 8,
     "missing_sequences": [],
     "missing_note": "",
     "duplicate_resolved": []

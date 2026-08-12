@@ -1,0 +1,124 @@
+{
+  "id": "rp-cross-conversation-collaboration-series-a",
+  "schema_version": "0.2",
+  "type": "ai_native_research_lineage",
+  "title": "跨對話智能協作與共享認知空間（Series A）",
+  "title_en": "Cross-Conversation Intelligent Collaboration and Shared Cognitive Space (Series A)",
+  "short_title": "跨對話智能協作",
+  "status": "completed",
+  "open_ended": false,
+  "started_at": "2026-08-09",
+  "completed_at": "2026-08-12",
+  "reference_method": "5 篇論文，篇序取自各文檔名/內文自陳的系列位置；終篇（Final Index）明確列出全 5 篇標題並宣告「不新增第六篇」。",
+  "canonical_route": "/ai/programs/cross-conversation-collaboration-series-a/",
+  "visibility": "public",
+  "languages": [
+    "zh-Hant"
+  ],
+  "agency": {
+    "initiative": "human",
+    "primary_authorship": "collaborative",
+    "research_direction": "negotiated",
+    "continuation_control": "human"
+  },
+  "contributors": [
+    {
+      "name": "Neo.K",
+      "type": "human",
+      "roles": [
+        "problem_proposer",
+        "continuation_decider",
+        "curator",
+        "co_author"
+      ]
+    }
+  ],
+  "foundation_artifacts": [
+    {
+      "id": "lm-002592",
+      "title": "共享對話與共享世界：兩種 Multi-Agent 協作拓撲"
+    }
+  ],
+  "applied_artifacts": [
+    {
+      "id": "lm-002629",
+      "title": "離散執行，連續協作：跨對話 Agent 的持續性、喚醒、交接與非連續推理"
+    },
+    {
+      "id": "lm-002619",
+      "title": "私有認知與公共世界：多 Agent 的雙層 Context、Memory 與選擇性認知共享"
+    },
+    {
+      "id": "lm-002598",
+      "title": "動態協作拓撲：從 Isolate、Share 到 Join"
+    },
+    {
+      "id": "lm-002574",
+      "title": "Persistent Multi-Agent Workspace：跨對話共享世界 Runtime、持久協作協定與 MVP"
+    }
+  ],
+  "iterations": [
+    {
+      "sequence": 1,
+      "id": "lm-002592",
+      "title": "共享對話與共享世界：兩種 Multi-Agent 協作拓撲",
+      "topic": "共享對話與共享世界：兩種 Multi-Agent 協作拓撲",
+      "iteration_type": "foundation",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 2,
+      "id": "lm-002629",
+      "title": "離散執行，連續協作：跨對話 Agent 的持續性、喚醒、交接與非連續推理",
+      "topic": "離散執行，連續協作：跨對話 Agent 的持續性、喚醒、交接與非連續推理",
+      "iteration_type": "applied",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 3,
+      "id": "lm-002619",
+      "title": "私有認知與公共世界：多 Agent 的雙層 Context、Memory 與選擇性認知共享",
+      "topic": "私有認知與公共世界：多 Agent 的雙層 Context、Memory 與選擇性認知共享",
+      "iteration_type": "applied",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 4,
+      "id": "lm-002598",
+      "title": "動態協作拓撲：從 Isolate、Share 到 Join",
+      "topic": "動態協作拓撲：從 Isolate、Share 到 Join",
+      "iteration_type": "applied",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 5,
+      "id": "lm-002574",
+      "title": "Persistent Multi-Agent Workspace：跨對話共享世界 Runtime、持久協作協定與 MVP",
+      "topic": "Persistent Multi-Agent Workspace：跨對話共享世界 Runtime、持久協作協定與 MVP",
+      "iteration_type": "synthesis",
+      "is_checkpoint": true
+    }
+  ],
+  "current_state": {
+    "sequence": 5,
+    "artifact_id": "lm-002574",
+    "status": "completed",
+    "phase_status": "closed_by_design",
+    "declaration": "本系列從空間層（共享對話 vs. 共享世界）出發，依序建立時間層（離散執行下的功能連續性）、資訊層（雙層 Context 與選擇性共享）、拓撲/控制層（Isolate-Share-Join 動態拓撲），第五篇以 Persistent Multi-Agent Workspace Runtime 整合為工程 MVP 並宣告系列理論封頂、工程線開放。",
+    "stop_reason": "終篇（Final Index）逐篇列出全部 5 篇標題與核心命題並明確宣告「不新增第六篇」，本 Program 依此標記為 completed（理論層封頂，工程延伸開放）。",
+    "unresolved_gaps": [],
+    "next_actions": [
+      "確認第二、四篇呼應的 ACR/APR 理論是否需要正式站內 cross_reference"
+    ],
+    "handoff_required_tasks": [],
+    "stewardship": "第二篇原始送達版本嚴重損壞——全文零 LaTeX 標記（相較其餘四篇各有數百個 $$/\\boxed{}），26 行含 PUA 私用碼位、201 行含零寬字元，判定為數學內容以「已渲染 Unicode」貼入而非 LaTeX 原始碼所致格式性損壞（非內容遺失，論證語意完整可讀）。已逐一比對上下文語意，將全部約 200 個獨立算式還原為正確 LaTeX（下標、\\boxed{} 結構、Unicode 運算符還原為對應指令），並以實際生產渲染器驗證零錯誤。第三篇（資安即基礎設施）經確認為完全獨立、不屬於本系列的另一篇章——已改列為既有《AI 時代的數位免疫與資安基礎設施》Program（rp-digital-immunity）的補件第八篇，不計入本系列 5 篇。第二、四篇內文明確與作者既有 ACR/APR 理論呼應（未附連結），建議未來補上站內連結。第五篇缺少作者/機構欄位，與 Series B 終篇同樣風格，判斷為整合篇刻意選擇。第五篇的 3 個 companion 檔案（pmw_mvp.py、MVP_SMOKE_TEST.txt、PMW_Runtime_MVP_spec_v0.1.md）已收錄於 lm-002574（/raw/lm-002574/）。5 篇無重複、無其他編碼損壞。",
+    "cross_references": []
+  },
+  "integrity": {
+    "files_seen": 5,
+    "files_imported": 5,
+    "missing_sequences": [],
+    "missing_note": "",
+    "duplicate_resolved": []
+  }
+}

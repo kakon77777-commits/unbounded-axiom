@@ -1,0 +1,124 @@
+{
+  "id": "rp-dual-tension-problem-formalization",
+  "schema_version": "0.2",
+  "type": "ai_native_research_lineage",
+  "title": "從數學問題形式化到雙重張力：形式收斂、語義擴張與問題空間治理",
+  "title_en": "From Mathematical Problem Formalization to Dual Tension: Formal Convergence, Semantic Expansion, and Problem-Space Governance",
+  "short_title": "雙重張力",
+  "status": "completed",
+  "open_ended": false,
+  "started_at": "2026-08-12",
+  "completed_at": "2026-08-12",
+  "reference_method": "1 篇主論文（錨點）+ 4 篇衛星工程論文；主論文檔名與系列標題逐字相同，衛星論文由主論文結尾預告的後續主題構成。",
+  "canonical_route": "/ai/programs/dual-tension-problem-formalization/",
+  "visibility": "public",
+  "languages": [
+    "zh-Hant"
+  ],
+  "agency": {
+    "initiative": "human",
+    "primary_authorship": "collaborative",
+    "research_direction": "negotiated",
+    "continuation_control": "human"
+  },
+  "contributors": [
+    {
+      "name": "Neo.K",
+      "type": "human",
+      "roles": [
+        "problem_proposer",
+        "continuation_decider",
+        "curator",
+        "co_author"
+      ]
+    }
+  ],
+  "foundation_artifacts": [
+    {
+      "id": "lm-002609",
+      "title": "從數學問題形式化到雙重張力：形式收斂、語義擴張與問題空間治理"
+    }
+  ],
+  "applied_artifacts": [
+    {
+      "id": "lm-002599",
+      "title": "可重播的數學 AI 問題治理 Benchmark：錯誤注入、盲測與 Runtime Telemetry"
+    },
+    {
+      "id": "lm-002616",
+      "title": "疑點驅動的推理資源配置：Freeze Controller、Value of Information 與自適應 Specialist Routing"
+    },
+    {
+      "id": "lm-002621",
+      "title": "自我校準與漂移感知的認知編排器：從推理路由到 Meta-Orchestration"
+    },
+    {
+      "id": "lm-002632",
+      "title": "錯誤目標、早熟收斂與定理凍結：數學 AI 的 Target-Fidelity Control"
+    }
+  ],
+  "iterations": [
+    {
+      "sequence": 1,
+      "id": "lm-002609",
+      "title": "從數學問題形式化到雙重張力：形式收斂、語義擴張與問題空間治理",
+      "topic": "從數學問題形式化到雙重張力：形式收斂、語義擴張與問題空間治理",
+      "iteration_type": "foundation",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 2,
+      "id": "lm-002599",
+      "title": "可重播的數學 AI 問題治理 Benchmark：錯誤注入、盲測與 Runtime Telemetry",
+      "topic": "可重播的數學 AI 問題治理 Benchmark：錯誤注入、盲測與 Runtime Telemetry",
+      "iteration_type": "applied",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 3,
+      "id": "lm-002616",
+      "title": "疑點驅動的推理資源配置：Freeze Controller、Value of Information 與自適應 Specialist Routing",
+      "topic": "疑點驅動的推理資源配置：Freeze Controller、Value of Information 與自適應 Specialist Routing",
+      "iteration_type": "applied",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 4,
+      "id": "lm-002621",
+      "title": "自我校準與漂移感知的認知編排器：從推理路由到 Meta-Orchestration",
+      "topic": "自我校準與漂移感知的認知編排器：從推理路由到 Meta-Orchestration",
+      "iteration_type": "applied",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 5,
+      "id": "lm-002632",
+      "title": "錯誤目標、早熟收斂與定理凍結：數學 AI 的 Target-Fidelity Control",
+      "topic": "錯誤目標、早熟收斂與定理凍結：數學 AI 的 Target-Fidelity Control",
+      "iteration_type": "synthesis",
+      "is_checkpoint": true
+    }
+  ],
+  "current_state": {
+    "sequence": 5,
+    "artifact_id": "lm-002632",
+    "status": "completed",
+    "phase_status": "closed_by_design",
+    "declaration": "主論文提出 MPF-NLU 雙重張力框架（形式收斂 vs. 語義擴張），四篇衛星工程論文依序給出可重播 Benchmark、疑點驅動的資源配置、自我校準的認知編排器，第五篇以 Target-Fidelity Control 收束整條治理鏈——如何避免數學 AI 錯誤目標下的早熟收斂與定理凍結。",
+    "stop_reason": "主論文明確預告的後續主題已由四篇衛星論文逐一兌現，論證鏈完整收束於 Target-Fidelity Control。",
+    "unresolved_gaps": [],
+    "next_actions": [
+      "確認「MCDM 類 difficulty router」是否對應既有語料庫論文並補上站內連結"
+    ],
+    "handoff_required_tasks": [],
+    "stewardship": "MAPG-Bench（第二篇）具體效能數字（48/26/24 module calls、57.7%/51.8%/11.2%/4.3%）明確、反覆自陳為手動標註/規則式/合成腳本產生，非真實 LLM 或 Lean prover 執行結果——非誤導性造假，但屬方法論假設，非既有系統實測。五篇均無公開程式庫連結，§42-43 讀作companion repo 的規格提案而非既有實作聲明。第二、三篇各清除 PUA citation-tool 洩漏（第二篇 29 處，含 18 處正文引用轉換為方括號引用 [N]、11 處參考文獻列表冗餘回聲刪除）。第二、三篇均提及作者群「先前提出的 MCDM 類 difficulty router」但未附連結，疑為既有語料庫論文，待未來確認後補上站內連結。五篇無重複、無其他編碼損壞。",
+    "cross_references": []
+  },
+  "integrity": {
+    "files_seen": 5,
+    "files_imported": 5,
+    "missing_sequences": [],
+    "missing_note": "",
+    "duplicate_resolved": []
+  }
+}

@@ -1,0 +1,160 @@
+{
+  "id": "rp-series-b-observer-relations",
+  "schema_version": "0.2",
+  "type": "ai_native_research_lineage",
+  "title": "觀察者、局部關係、非交換與全域守恆（Series B）",
+  "title_en": "Observer, Local Relations, Noncommutativity, and Global Conservation (Series B)",
+  "short_title": "Series B",
+  "status": "completed",
+  "open_ended": false,
+  "started_at": "2026-08-11",
+  "completed_at": "2026-08-12",
+  "reference_method": "7 篇理論論文（01-07）+ 1 篇終篇（Final Paper）；篇序取自各文「前篇/下一篇」交互引用鏈，終篇 §13 明確自陳對本系列理論與計算實驗作階段性收束。",
+  "canonical_route": "/ai/programs/series-b-observer-relations/",
+  "visibility": "public",
+  "languages": [
+    "zh-Hant"
+  ],
+  "agency": {
+    "initiative": "human",
+    "primary_authorship": "collaborative",
+    "research_direction": "negotiated",
+    "continuation_control": "human"
+  },
+  "contributors": [
+    {
+      "name": "Neo.K",
+      "type": "human",
+      "roles": [
+        "problem_proposer",
+        "continuation_decider",
+        "curator",
+        "co_author"
+      ]
+    }
+  ],
+  "foundation_artifacts": [
+    {
+      "id": "lm-002634",
+      "title": "非交換缺陷與關係順序"
+    }
+  ],
+  "applied_artifacts": [
+    {
+      "id": "lm-002604",
+      "title": "局部順序差到全域阻塞"
+    },
+    {
+      "id": "lm-002606",
+      "title": "嵌入觀察者與兩種不可全域性"
+    },
+    {
+      "id": "lm-002630",
+      "title": "路徑傳輸（Holonomy）與關係記憶"
+    },
+    {
+      "id": "lm-002625",
+      "title": "觀察者轉換與關係協變性"
+    },
+    {
+      "id": "lm-002624",
+      "title": "觀察者網路的局部全域黏合"
+    },
+    {
+      "id": "lm-002603",
+      "title": "守恆的階層理論"
+    },
+    {
+      "id": "lm-002590",
+      "title": "Series B / Final Paper：關係耦合、類全域狀態與觀察者網路——從局部關係數學到可工程化的 Derived Globality"
+    }
+  ],
+  "iterations": [
+    {
+      "sequence": 1,
+      "id": "lm-002634",
+      "title": "非交換缺陷與關係順序",
+      "topic": "非交換缺陷與關係順序",
+      "iteration_type": "foundation",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 2,
+      "id": "lm-002604",
+      "title": "局部順序差到全域阻塞",
+      "topic": "局部順序差到全域阻塞",
+      "iteration_type": "applied",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 3,
+      "id": "lm-002606",
+      "title": "嵌入觀察者與兩種不可全域性",
+      "topic": "嵌入觀察者與兩種不可全域性",
+      "iteration_type": "applied",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 4,
+      "id": "lm-002630",
+      "title": "路徑傳輸（Holonomy）與關係記憶",
+      "topic": "路徑傳輸（Holonomy）與關係記憶",
+      "iteration_type": "applied",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 5,
+      "id": "lm-002625",
+      "title": "觀察者轉換與關係協變性",
+      "topic": "觀察者轉換與關係協變性",
+      "iteration_type": "applied",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 6,
+      "id": "lm-002624",
+      "title": "觀察者網路的局部全域黏合",
+      "topic": "觀察者網路的局部全域黏合",
+      "iteration_type": "applied",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 7,
+      "id": "lm-002603",
+      "title": "守恆的階層理論",
+      "topic": "守恆的階層理論",
+      "iteration_type": "applied",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 8,
+      "id": "lm-002590",
+      "title": "Series B / Final Paper：關係耦合、類全域狀態與觀察者網路——從局部關係數學到可工程化的 Derived Globality",
+      "topic": "Series B / Final Paper：關係耦合、類全域狀態與觀察者網路——從局部關係數學到可工程化的 Derived Globality",
+      "iteration_type": "synthesis",
+      "is_checkpoint": true
+    }
+  ],
+  "current_state": {
+    "sequence": 8,
+    "artifact_id": "lm-002590",
+    "status": "completed",
+    "phase_status": "closed_by_design",
+    "declaration": "本系列從非交換缺陷與關係順序出發，依序建立局部-全域阻塞的 Čech H¹ 判準、嵌入觀察者的兩種不可全域性、路徑傳輸與 holonomy 記憶、觀察者轉換的協變性、觀察者網路的黏合條件、守恆量的 C0-C5 階層，終篇（Final Paper）將 01-07 的理論與 10 個獨立計算實驗（已作為終篇的 companion 附件收錄）共同收束為工程可用的 Derived Globality 框架：G_usable=(Ŝ,U,C,P)。",
+    "stop_reason": "終篇 §13 逐一比對 01-07 各篇並確認理論與 10 個計算實驗（SO(3)/球面/Lorentz-Wigner 壓力測試、Global-vs-Embedded AI 諧振子 MVP、噪聲同步、純觀察者湧現重建、非線性隨機重建、聯合狀態-定律-校準推斷、精確規範不變性、主動測量規範破缺、巢狀觀察者塔治理）之間零矛盾，本 Program 依此標記為 completed。",
+    "unresolved_gaps": [],
+    "next_actions": [
+      "若未來收到 Paper 07 §42 承諾的「第八篇」（Cl+ε/CONV 極限命題），續接為序號 9"
+    ],
+    "handoff_required_tasks": [],
+    "stewardship": "獨立逐篇手算驗證：Paper 02 的 Z/2 三情境極小反例（1+1+1=1 mod 2，非 coboundary，正確）、Paper 03 的 parity-contextuality 與 bit-projection 範例、Paper 04 的矩陣 holonomy 範例（K=ABA⁻¹B⁻¹）、Paper 05 的 holonomy-conjugation 定理、Paper 06 的三重相容性/規範共軛推導、Paper 07 的 Theorem 13.1 六步等式鏈，均獨立重算無誤。修復 Paper 04 一處高棉字母同形異義字混淆（$ប$ 應為 Latin $b$，與本次自動渲染檢查中「No character metrics for 'ប'」警告直接對應）。Paper 07 §42 承諾的「第八篇」（Cl+ε/CONV 極限命題）並非本終篇，終篇 §15 明確將其列為未解開放問題，留待未來研究——不影響本系列 01-07+終篇的完整性，僅為系列外的既定未來方向。終篇缺少作者/機構/前篇欄位，經比對與跨對話系列第五篇（PMW）同樣缺此欄位，判斷為終篇/整合篇的刻意風格選擇而非疏漏。8 篇無重複、無 PUA/編碼損壞。10 個計算實驗附件已作為 lm-002590 的 companion 收錄（/raw/lm-002590/）。",
+    "cross_references": []
+  },
+  "integrity": {
+    "files_seen": 8,
+    "files_imported": 8,
+    "missing_sequences": [],
+    "missing_note": "",
+    "duplicate_resolved": []
+  }
+}

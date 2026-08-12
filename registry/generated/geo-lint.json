@@ -2,9 +2,9 @@
   "version": "0.1",
   "phase": "warn-only",
   "convention": "docs/AI-Native 論文寫作規範.md",
-  "md_papers_scanned": 2557,
-  "papers_with_signals": 324,
-  "finding_count": 159,
+  "md_papers_scanned": 2622,
+  "papers_with_signals": 336,
+  "finding_count": 179,
   "findings": [
     {
       "id": "lm-000153",
@@ -958,6 +958,126 @@
       "type": "qa_answer_too_thin",
       "question": "1.1 Reachability：什麼狀態可以到達？",
       "estimated_tokens": 7
+    },
+    {
+      "id": "lm-002595",
+      "type": "qa_answer_too_thin",
+      "question": "34.1 分類元狀態是否降低強迫分類錯誤？",
+      "estimated_tokens": 2
+    },
+    {
+      "id": "lm-002595",
+      "type": "qa_answer_too_thin",
+      "question": "34.2 Limbo 是否只是拖延？",
+      "estimated_tokens": 2
+    },
+    {
+      "id": "lm-002605",
+      "type": "qa_answer_too_thin",
+      "question": "45.1 三元分解是否比一般操作序列更有壓縮價值？",
+      "estimated_tokens": 2
+    },
+    {
+      "id": "lm-002605",
+      "type": "qa_answer_too_thin",
+      "question": "45.2 三元 scheduler 是否真的降低成本？",
+      "estimated_tokens": 2
+    },
+    {
+      "id": "lm-002605",
+      "type": "qa_answer_too_thin",
+      "question": "45.3 收斂後能否保持父層契約？",
+      "estimated_tokens": 2
+    },
+    {
+      "id": "lm-002605",
+      "type": "qa_answer_too_thin",
+      "question": "45.4 展開是否提升任務品質？",
+      "estimated_tokens": 3
+    },
+    {
+      "id": "lm-002605",
+      "type": "qa_answer_too_thin",
+      "question": "45.5 連接是否產生可用結構，而不是 graph noise？",
+      "estimated_tokens": 4
+    },
+    {
+      "id": "lm-002610",
+      "type": "qa_answer_too_thin",
+      "question": "24.1 有效支撐是否真的降低成本？",
+      "estimated_tokens": 2
+    },
+    {
+      "id": "lm-002610",
+      "type": "qa_answer_too_thin",
+      "question": "24.2 支撐截斷是否增加錯誤？",
+      "estimated_tokens": 2
+    },
+    {
+      "id": "lm-002610",
+      "type": "qa_answer_too_thin",
+      "question": "24.3 動態維度是否比固定 schema 更有價值？",
+      "estimated_tokens": 2
+    },
+    {
+      "id": "lm-002610",
+      "type": "qa_answer_too_thin",
+      "question": "24.5 是否存在退役機制？",
+      "estimated_tokens": 1
+    },
+    {
+      "id": "lm-002612",
+      "type": "qa_answer_too_thin",
+      "question": "51.1 歷史增廣是否改善預測？",
+      "estimated_tokens": 2
+    },
+    {
+      "id": "lm-002612",
+      "type": "qa_answer_too_thin",
+      "question": "51.2 歷史壓縮是否真的節省成本？",
+      "estimated_tokens": 2
+    },
+    {
+      "id": "lm-002612",
+      "type": "qa_answer_too_thin",
+      "question": "51.3 近馬可夫化是否成立？",
+      "estimated_tokens": 2
+    },
+    {
+      "id": "lm-002612",
+      "type": "qa_answer_too_thin",
+      "question": "51.4 非同步局部時間是否優於全域 tick？",
+      "estimated_tokens": 2
+    },
+    {
+      "id": "lm-002612",
+      "type": "qa_answer_too_thin",
+      "question": "51.6 歷史是否真的改變可達域？",
+      "estimated_tokens": 4
+    },
+    {
+      "id": "lm-002614",
+      "type": "qa_answer_too_thin",
+      "question": "39.1 Scale Projection 是否保真？",
+      "estimated_tokens": 2
+    },
+    {
+      "id": "lm-002614",
+      "type": "qa_answer_too_thin",
+      "question": "39.2 Encapsulation 是否真的降低複雜度？",
+      "estimated_tokens": 2
+    },
+    {
+      "id": "lm-002614",
+      "type": "qa_answer_too_thin",
+      "question": "39.4 Expand / Collapse 是否可重播？",
+      "estimated_tokens": 2
+    },
+    {
+      "id": "lm-002633",
+      "type": "qa_answer_too_thin",
+      "question": "3. 為什麼近錯誤比隨機錯誤重要？",
+      "estimated_tokens": 2
     }
   ]
 }

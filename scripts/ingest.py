@@ -39,7 +39,7 @@ from pathlib import Path
 
 from scripts.config import ROOT, SUPPORTED_EXTS
 from scripts.helpers import lang_tag
-from scripts.registry import load_registry
+from scripts.registry import load_registry, _reserved_companion_ids
 from scripts.normalize_math import normalize as normalize_math
 
 INGEST = ROOT / "ingest"
@@ -92,6 +92,7 @@ def main(source: str | None = None, ctcl_instant_file: str | None = None):
     known_hashes = {it.get("hash") for it in reg.get("items", [])}
     known_titles = {it.get("title") for it in reg.get("items", [])}
     used_ids = {it["id"] for it in reg.get("items", [])}
+    used_ids |= _reserved_companion_ids()  # retired (demoted) ids stay reserved forever
 
     def next_candidate():
         n = 1

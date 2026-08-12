@@ -1,0 +1,172 @@
+{
+  "id": "rp-rdss",
+  "schema_version": "0.2",
+  "type": "ai_native_research_lineage",
+  "title": "RDSS：遞歸動態狀態系統",
+  "title_en": "Recursive Dynamic State Systems",
+  "short_title": "RDSS",
+  "status": "completed",
+  "open_ended": false,
+  "started_at": "2026-08-12",
+  "completed_at": "2026-08-12",
+  "reference_method": "9 篇論文，篇序取自論文 01 §17 自陳的路線圖與第九篇 §63 的回溯確認；lm-id 因語料庫掃描順序與到件順序不同，不代表篇序。",
+  "canonical_route": "/ai/programs/rdss/",
+  "visibility": "public",
+  "languages": [
+    "zh-Hant"
+  ],
+  "agency": {
+    "initiative": "human",
+    "primary_authorship": "collaborative",
+    "research_direction": "negotiated",
+    "continuation_control": "human"
+  },
+  "contributors": [
+    {
+      "name": "Neo.K",
+      "type": "human",
+      "roles": [
+        "problem_proposer",
+        "continuation_decider",
+        "curator",
+        "co_author"
+      ]
+    }
+  ],
+  "foundation_artifacts": [
+    {
+      "id": "lm-002613",
+      "title": "狀態、容器與存在：遞歸動態狀態系統的總命題"
+    }
+  ],
+  "applied_artifacts": [
+    {
+      "id": "lm-002610",
+      "title": "從有限狀態機到開放維度狀態系統"
+    },
+    {
+      "id": "lm-002595",
+      "title": "分類即狀態：從靜態類型到動態類型體制"
+    },
+    {
+      "id": "lm-002614",
+      "title": "狀態機作為遞歸動態容器"
+    },
+    {
+      "id": "lm-002605",
+      "title": "展開—連接—收斂：三元本體論的狀態系統實現"
+    },
+    {
+      "id": "lm-002612",
+      "title": "歷史、路徑與局部時間：非馬可夫遞歸狀態系統"
+    },
+    {
+      "id": "lm-002615",
+      "title": "生成狀態機：當規則、類型與狀態空間本身可以改寫"
+    },
+    {
+      "id": "lm-002607",
+      "title": "從 MSSP × RDR 到創生矩陣：遞歸狀態 Runtime 的工程架構"
+    },
+    {
+      "id": "lm-002631",
+      "title": "遞歸動態狀態系統的邊界、可證偽性與 MVP"
+    }
+  ],
+  "iterations": [
+    {
+      "sequence": 1,
+      "id": "lm-002613",
+      "title": "狀態、容器與存在：遞歸動態狀態系統的總命題",
+      "topic": "狀態、容器與存在：遞歸動態狀態系統的總命題",
+      "iteration_type": "foundation",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 2,
+      "id": "lm-002610",
+      "title": "從有限狀態機到開放維度狀態系統",
+      "topic": "從有限狀態機到開放維度狀態系統",
+      "iteration_type": "applied",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 3,
+      "id": "lm-002595",
+      "title": "分類即狀態：從靜態類型到動態類型體制",
+      "topic": "分類即狀態：從靜態類型到動態類型體制",
+      "iteration_type": "applied",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 4,
+      "id": "lm-002614",
+      "title": "狀態機作為遞歸動態容器",
+      "topic": "狀態機作為遞歸動態容器",
+      "iteration_type": "applied",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 5,
+      "id": "lm-002605",
+      "title": "展開—連接—收斂：三元本體論的狀態系統實現",
+      "topic": "展開—連接—收斂：三元本體論的狀態系統實現",
+      "iteration_type": "applied",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 6,
+      "id": "lm-002612",
+      "title": "歷史、路徑與局部時間：非馬可夫遞歸狀態系統",
+      "topic": "歷史、路徑與局部時間：非馬可夫遞歸狀態系統",
+      "iteration_type": "applied",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 7,
+      "id": "lm-002615",
+      "title": "生成狀態機：當規則、類型與狀態空間本身可以改寫",
+      "topic": "生成狀態機：當規則、類型與狀態空間本身可以改寫",
+      "iteration_type": "applied",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 8,
+      "id": "lm-002607",
+      "title": "從 MSSP × RDR 到創生矩陣：遞歸狀態 Runtime 的工程架構",
+      "topic": "從 MSSP × RDR 到創生矩陣：遞歸狀態 Runtime 的工程架構",
+      "iteration_type": "applied",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 9,
+      "id": "lm-002631",
+      "title": "遞歸動態狀態系統的邊界、可證偽性與 MVP",
+      "topic": "遞歸動態狀態系統的邊界、可證偽性與 MVP",
+      "iteration_type": "synthesis",
+      "is_checkpoint": true
+    }
+  ],
+  "current_state": {
+    "sequence": 9,
+    "artifact_id": "lm-002631",
+    "status": "completed",
+    "phase_status": "closed_by_design",
+    "declaration": "本系列建立「狀態、容器與存在」的總命題，依序展開開放維度狀態機、分類即狀態、遞歸容器、展開-連接-收斂三元本體論、非馬可夫歷史、生成狀態機的自我改寫、與既有 MSSP×RDR 架構的重組，第九篇以邊界、可證偽性與一個真實 MVP（rdss_mvp.py，6/6 自測通過，含具體 benchmark 數字）收束全系列。",
+    "stop_reason": "第九篇 §63 回溯確認 01-09 全數到齊，構成完整、無缺口的九篇論證鏈。",
+    "unresolved_gaps": [],
+    "next_actions": [
+      "確認 rdss_mvp.py / rdss_mvp_benchmark.json 是否存在，需要時作為第九篇的 companion 補件"
+    ],
+    "handoff_required_tasks": [],
+    "stewardship": "第八篇明確將既有 MSSP×RDR／RABCL／CAIR／Dynamic MSSP／CompilableWorld Runtime／創生矩陣重新定位為 RDSS 的工程實現層級之一，第九篇 §68 甚至將「RDSS 可能只是 MSSP×RDR+RABCL 改名」列為可證偽性檢驗項——RDSS 明確自陳為既有 MSSP 體系的一般化／上位框架而非平行獨立系列，故建議未來與 MSSP 相關 Program 建立強 cross_reference。第九篇具名提及 rdss_mvp.py 與 rdss_mvp_benchmark.json 兩個檔案並附具體效能數字（獨立驗算比例 ≈3879.49，與文中聲稱的 3879.489 相符），但兩檔案未隨本批次送達 ingest 資料夾，語料庫中亦未找到——已記錄為缺件，不影響九篇論文本身的獨立發布。九篇皆無重複、無 PUA/編碼損壞。所有九篇byline為「Neo.K（許筌崴）with Aletheia（GPT-5.6 Sol）」。",
+    "cross_references": []
+  },
+  "integrity": {
+    "files_seen": 9,
+    "files_imported": 9,
+    "missing_sequences": [],
+    "missing_note": "",
+    "duplicate_resolved": []
+  }
+}

@@ -1,0 +1,7 @@
+﻿observer,instantaneous_observation_rank,instantaneous_nullity,energy_error_or_span,angular_momentum_error_or_span,dynamics_residual_rms,relative_holonomy_deg,interpretation
+Global AI,4,0,9.14112778636594e-16,7.371539949788363e-16,0.0,0.0,full-state reference
+Embedded A: position only (instant),2,2,,,,,"E,L not identifiable from one snapshot"
+Embedded A: position + history,2,2,4.265511808262633e-07,4.1123346593773205e-07,,,history reconstructs hidden velocity approximately
+"Embedded B: x,vx only",2,2,,,,,"hidden y,vy leave E,L ambiguous"
+Embedded C: rotating frame naive,4,0,0.053271197601632285,,1.1330572610401588,133.2,"full information, wrong law if frame terms omitted"
+Embedded C: rotating frame covariant,4,0,1.0447003184418216e-15,1.1057309924682544e-15,5.414709738497701e-07,133.2,full information + correct observer transformation
