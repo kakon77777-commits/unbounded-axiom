@@ -1,7 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { getPapers, getRaw, extOf, getMedia, getCompanions } from '../../lib/engine';
-import { marked } from '../../lib/md';
+import { renderPaperMarkdown } from '../../lib/md';
 import { extractGeoSignals, geoJsonLdBlocks } from '../../lib/geo';
 import 'katex/dist/katex.min.css';
 
@@ -25,7 +25,7 @@ const ext = extOf(paper);
 const raw = getRaw(paper.raw_url);
 const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const body =
-  ext === 'md' ? (marked.parse(raw, { async: false }) as string) : `<pre><code>${esc(raw)}</code></pre>`;
+  ext === 'md' ? renderPaperMarkdown(raw) : `<pre><code>${esc(raw)}</code></pre>`;
 
 // from astro.config.mjs, so the domain lives in one place. A literal here
 // is how the 2026-08-07 move left 2074 pages on the old host while the

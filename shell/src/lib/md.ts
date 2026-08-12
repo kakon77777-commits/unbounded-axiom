@@ -60,4 +60,59 @@ marked.use({
   ],
 });
 
-export { marked };
+// marked-katex-extension's own $...$ boundary rule (read from its source, confirmed
+// against the live renderer — see scripts/normalize_math.py's identical Python port,
+// which this mirrors exactly): a closing $ needs whitespace/EOF/one of ?!.,:？！。，：
+// right after it, and an opening $ needs a literal space/start-of-string before it.
+// CJK enumeration punctuation like 、 and ； are NOT in that set, so "$X$、$Y$" written
+// with no space (routine in Chinese academic prose) either silently drops or — worse —
+// merges into one broken span containing a stray $ that KaTeX then rejects outright.
+// Ingest-time padding (normalize_math.py) fixes this for newly-published papers, but
+// that's a one-shot content mutation: it can't retroactively cover papers published
+// before the rule existed, or before it was later refined. Padding here instead, right
+// before every render, fixes ALL papers (old and new) permanently with no corpus sweep
+// ever required again — and is a no-op on already-padded content (idempotent).
+const FLANK_SAFE = new Set(['*', '_', '~']);
+const RIGHT_SAFE_PUNCT = /^[\s?!.,:？！。，：]/;
+const INLINE_MATH_SPAN = /\$(?:\\.|[^$\\\n])+?\$/g;
+const DISPLAY_MATH_SPAN = /\$\$[\s\S]*?\$\$/g;
+
+function padInlineMath(t: string): string {
+  function padProse(seg: string): string {
+    const out: string[] = [];
+    let last = 0;
+    let m: RegExpExecArray | null;
+    INLINE_MATH_SPAN.lastIndex = 0;
+    while ((m = INLINE_MATH_SPAN.exec(seg)) !== null) {
+      out.push(seg.slice(last, m.index));
+      const left = m.index > 0 ? seg[m.index - 1] : null;
+      const right = m.index + m[0].length < seg.length ? seg[m.index + m[0].length] : null;
+      const needLeft = left !== null && left !== ' ' && !FLANK_SAFE.has(left);
+      const needRight = right !== null && !RIGHT_SAFE_PUNCT.test(right) && !FLANK_SAFE.has(right);
+      out.push((needLeft ? ' ' : '') + m[0] + (needRight ? ' ' : ''));
+      last = m.index + m[0].length;
+    }
+    out.push(seg.slice(last));
+    return out.join('');
+  }
+  const res: string[] = [];
+  let last = 0;
+  let m: RegExpExecArray | null;
+  DISPLAY_MATH_SPAN.lastIndex = 0;
+  while ((m = DISPLAY_MATH_SPAN.exec(t)) !== null) {
+    res.push(padProse(t.slice(last, m.index)));
+    res.push(m[0]);
+    last = m.index + m[0].length;
+  }
+  res.push(padProse(t.slice(last)));
+  return res.join('');
+}
+
+// Render paper markdown: pad first (fixes $-boundary issues for every paper, old or
+// new), then parse. Callers rendering paper content should use this instead of calling
+// marked.parse directly; `marked` itself stays exported unwrapped for any other use.
+function renderPaperMarkdown(raw: string): string {
+  return marked.parse(padInlineMath(raw), { async: false }) as string;
+}
+
+export { marked, padInlineMath, renderPaperMarkdown };
