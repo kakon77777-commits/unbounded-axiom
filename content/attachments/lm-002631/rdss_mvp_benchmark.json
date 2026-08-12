@@ -1,0 +1,23 @@
+{
+  "self_test": {
+    "tests": 6,
+    "status": "passed",
+    "world_versions": [
+      1,
+      2,
+      3
+    ],
+    "trace_count": 3,
+    "materialized_child_count": 1
+  },
+  "benchmark": {
+    "n_children": 5000,
+    "repeats": 7,
+    "eager_seconds_median": 0.135479518000011,
+    "lazy_seconds_median": 3.492200016808056e-05,
+    "eager_materialized": 5000,
+    "lazy_materialized": 1,
+    "speed_ratio_eager_over_lazy": 3879.4890713001637,
+    "note": "Synthetic Python microbenchmark; demonstrates materialization scaling behavior only, not production performance."
+  }
+}
