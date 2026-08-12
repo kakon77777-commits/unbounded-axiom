@@ -15,9 +15,13 @@ marked.use(markedKatex({ throwOnError: false, nonStandard: false }));
 // (marked-katex only handles $/$$). This is a SEPARATE extension that never touches $
 // handling, so currency ($5000, NT$120) stays literal. Guards keep it from eating
 // non-math \[…\]: display must not cross a blank line (paragraph = code/prose, not a
-// single math block) and must contain a LaTeX command; inline must be single-line and
-// look like math (a command or ^ _ =).
+// single math block) and must look like math; inline must be single-line and look
+// like math too. "Looks like math" = a LaTeX command, OR a bare comparison/assignment
+// (^ _ = < > ≤ ≥ ≠) — terse proof-style content (e.g. "\[ A>D \]", "\[ S_i \]") has
+// neither prose nor a command, just the operator itself, and was silently falling
+// through to literal bracketed text before this second signal was added.
 const LATEX_CMD = /\\[a-zA-Z]/;
+const LOOKS_LIKE_MATH = /[\^_=<>≤≥≠]/;
 const BLANK_LINE = /\n[ \t]*\n/;
 marked.use({
   extensions: [
@@ -29,7 +33,7 @@ marked.use({
         const m = /^\\\[[ \t]*\r?\n?([\s\S]*?)\r?\n?[ \t]*\\\]/.exec(src);
         if (!m) return undefined;
         const body = m[1];
-        if (BLANK_LINE.test(body) || !LATEX_CMD.test(body)) return undefined;
+        if (BLANK_LINE.test(body) || (!LATEX_CMD.test(body) && !LOOKS_LIKE_MATH.test(body))) return undefined;
         return { type: 'displayMathBracket', raw: m[0], text: body } as const;
       },
       renderer(token: any) {
@@ -45,7 +49,7 @@ marked.use({
         const m = /^\\\(([^\n]{1,300}?)\\\)/.exec(src);
         if (!m) return undefined;
         const body = m[1];
-        if (!LATEX_CMD.test(body) && !/[\^_=]/.test(body)) return undefined;
+        if (!LATEX_CMD.test(body) && !LOOKS_LIKE_MATH.test(body)) return undefined;
         return { type: 'inlineMathParen', raw: m[0], text: body } as const;
       },
       renderer(token: any) {

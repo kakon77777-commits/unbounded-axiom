@@ -1,0 +1,148 @@
+{
+  "id": "rp-dtil",
+  "schema_version": "0.2",
+  "type": "ai_native_research_lineage",
+  "title": "判定域、符號與歷史狀態邏輯（Domain-Transition Information Logic, Series II）",
+  "title_en": "Domain-Transition Information Logic",
+  "short_title": "DTIL",
+  "status": "completed",
+  "open_ended": false,
+  "started_at": "2026-08-10",
+  "completed_at": "2026-08-10",
+  "reference_method": "7 篇論文，篇序取自各文版頭「Series: Domain-Transition Information Logic, Paper I-VII」自陳編號。",
+  "canonical_route": "/ai/programs/dtil/",
+  "visibility": "public",
+  "languages": [
+    "zh-Hant"
+  ],
+  "agency": {
+    "initiative": "human",
+    "primary_authorship": "collaborative",
+    "research_direction": "negotiated",
+    "continuation_control": "human"
+  },
+  "contributors": [
+    {
+      "name": "Neo.K",
+      "type": "human",
+      "roles": [
+        "problem_proposer",
+        "continuation_decider",
+        "curator",
+        "co_author"
+      ]
+    }
+  ],
+  "foundation_artifacts": [
+    {
+      "id": "lm-002537",
+      "title": "判定域轉移與歷史信息狀態：從局部四態到「是又不是／不是又是」的有向邏輯"
+    }
+  ],
+  "applied_artifacts": [
+    {
+      "id": "lm-002532",
+      "title": "「又」的邏輯：持續、曾經、離開、返回與歷史路徑算子"
+    },
+    {
+      "id": "lm-002569",
+      "title": "重分類與判定域移位身份：從「X 是 X」到「X 其實是 Y」的動態分類邏輯"
+    },
+    {
+      "id": "lm-002539",
+      "title": "判定摩擦與轉移邊界資訊：狀態改變瞬間的差異、事件與可重播歷史"
+    },
+    {
+      "id": "lm-002538",
+      "title": "判定域間的信息穿越：跨域映射、保真、分裂、合併與不可比性"
+    },
+    {
+      "id": "lm-002530",
+      "title": "MIF 歷史組合與潛在無界狀態配置：從有限四態到長程遞迴、LOOP 與歷史壓縮"
+    },
+    {
+      "id": "lm-002523",
+      "title": "DTIL Runtime 與統一歷史狀態架構：從局部判定到可重播的高語義研究世界狀態"
+    }
+  ],
+  "iterations": [
+    {
+      "sequence": 1,
+      "id": "lm-002537",
+      "title": "判定域轉移與歷史信息狀態：從局部四態到「是又不是／不是又是」的有向邏輯",
+      "topic": "判定域轉移與歷史信息狀態：從局部四態到「是又不是／不是又是」的有向邏輯",
+      "iteration_type": "foundation",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 2,
+      "id": "lm-002532",
+      "title": "「又」的邏輯：持續、曾經、離開、返回與歷史路徑算子",
+      "topic": "「又」的邏輯：持續、曾經、離開、返回與歷史路徑算子",
+      "iteration_type": "applied",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 3,
+      "id": "lm-002569",
+      "title": "重分類與判定域移位身份：從「X 是 X」到「X 其實是 Y」的動態分類邏輯",
+      "topic": "重分類與判定域移位身份：從「X 是 X」到「X 其實是 Y」的動態分類邏輯",
+      "iteration_type": "applied",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 4,
+      "id": "lm-002539",
+      "title": "判定摩擦與轉移邊界資訊：狀態改變瞬間的差異、事件與可重播歷史",
+      "topic": "判定摩擦與轉移邊界資訊：狀態改變瞬間的差異、事件與可重播歷史",
+      "iteration_type": "applied",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 5,
+      "id": "lm-002538",
+      "title": "判定域間的信息穿越：跨域映射、保真、分裂、合併與不可比性",
+      "topic": "判定域間的信息穿越：跨域映射、保真、分裂、合併與不可比性",
+      "iteration_type": "applied",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 6,
+      "id": "lm-002530",
+      "title": "MIF 歷史組合與潛在無界狀態配置：從有限四態到長程遞迴、LOOP 與歷史壓縮",
+      "topic": "MIF 歷史組合與潛在無界狀態配置：從有限四態到長程遞迴、LOOP 與歷史壓縮",
+      "iteration_type": "applied",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 7,
+      "id": "lm-002523",
+      "title": "DTIL Runtime 與統一歷史狀態架構：從局部判定到可重播的高語義研究世界狀態",
+      "topic": "DTIL Runtime 與統一歷史狀態架構：從局部判定到可重播的高語義研究世界狀態",
+      "iteration_type": "synthesis",
+      "is_checkpoint": true
+    }
+  ],
+  "current_state": {
+    "sequence": 7,
+    "artifact_id": "lm-002523",
+    "status": "completed",
+    "phase_status": "closed_by_design",
+    "declaration": "本系列（DTIL Series II）從局部四態與歷史狀態分離出發，依序建立路徑算子、重分類與判定域移位身份、Judgment Friction 與轉移邊界資訊、跨域 typed bridge、長程歷史組合，最終在第七篇收束為可實作、可驗證、可重播的 DTIL Runtime，並宣告與姊妹系列（Series I ANKER Runtime）對接。",
+    "stop_reason": "七篇構成局部判定→路徑算子→重分類→邊界資訊→跨域映射→長程歷史→統一Runtime的完整推進鏈，第七篇明確自我定位為 Series II 的整合封頂篇。",
+    "unresolved_gaps": [
+      "各文版頭提及的姊妹系列「Series I ANKER Runtime」尚未見於本語料庫，僅作為文內引用記錄，未建立跨系列連結。"
+    ],
+    "next_actions": [],
+    "handoff_required_tasks": [],
+    "stewardship": "",
+    "cross_references": []
+  },
+  "integrity": {
+    "files_seen": 7,
+    "files_imported": 7,
+    "missing_sequences": [],
+    "missing_note": "",
+    "duplicate_resolved": []
+  }
+}

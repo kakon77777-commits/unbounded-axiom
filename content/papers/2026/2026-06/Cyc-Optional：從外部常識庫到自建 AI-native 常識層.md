@@ -230,13 +230,15 @@ MDAS-TCH 負責把知識變成動態超圖。
 
 ADL 在此不是形上學裝飾，而是 Agent 執行層的安全機制：
 
+```json
 {
 "claim": "The user wants to schedule a meeting yesterday.",
-"context": "calendar\_agent",
-"forced\_judgment": "invalid\_or\_requires\_correction",
+"context": "calendar_agent",
+"forced_judgment": "invalid_or_requires_correction",
 "reason": "The requested time is in the past."
 }
 
+```
 ADL 的任務是：當系統必須行動時，把模糊狀態壓縮成可執行判斷，或者明確輸出系統不可判斷。
 
 ## 5.4 三態邏輯：保留未定與螺旋態
@@ -269,6 +271,7 @@ ADL 負責行動時強制判斷，但不是所有問題都應被強制二值化�
 
 一個 AI-native 常識節點可表示如下：
 
+```json
 {
 "id": "eml:commonsense:HumanPerson",
 "label": {
@@ -281,60 +284,61 @@ ADL 負責行動時強制判斷，但不是所有問題都應被強制二值化�
 "kind": "type"
 },
 "mdas": {
-"logical\_state": "top",
-"cognitive\_state": "transparent",
-"evolution\_state": "stable",
-"entanglement\_state": "conditional",
-"type\_vector": {
-"logical\_type": "concept",
-"cognitive\_type": "explicit\_knowledge",
-"solvability\_type": "ordinary",
-"paradigm\_layer": "commonsense"
+"logical_state": "top",
+"cognitive_state": "transparent",
+"evolution_state": "stable",
+"entanglement_state": "conditional",
+"type_vector": {
+"logical_type": "concept",
+"cognitive_type": "explicit_knowledge",
+"solvability_type": "ordinary",
+"paradigm_layer": "commonsense"
 }
 },
-"relations": \[
+"relations": [
 {
 "predicate": "isA",
 "object": "BiologicalEntity",
-"context": "ordinary\_physical\_world",
+"context": "ordinary_physical_world",
 "confidence": 0.98
 },
 {
 "predicate": "canPerform",
 "object": "LegalAction",
-"context": "ordinary\_legal\_context",
-"condition": "alive\_and\_legally\_competent",
+"context": "ordinary_legal_context",
+"condition": "alive_and_legally_competent",
 "confidence": 0.85
 }
-\],
-"defaults": \[
+],
+"defaults": [
 {
 "rule": "A human person is usually alive during ordinary personal action.",
-"state": "default\_true",
-"exceptions": \[
-"fictional\_context",
-"legal\_representation",
-"posthumous\_processing"
-\]
+"state": "default_true",
+"exceptions": [
+"fictional_context",
+"legal_representation",
+"posthumous_processing"
+]
 }
-\],
+],
 "adl": {
-"forced\_judgment\_required\_when": \[
-"legal\_action",
-"medical\_action",
-"financial\_action",
-"agent\_execution"
-\]
+"forced_judgment_required_when": [
+"legal_action",
+"medical_action",
+"financial_action",
+"agent_execution"
+]
 },
 "triadic": {
-"unresolved\_state\_policy": "omega\_until\_context\_fixed"
+"unresolved_state_policy": "omega_until_context_fixed"
 },
 "provenance": {
-"source\_type": "self\_built\_or\_public\_ontology",
+"source_type": "self_built_or_public_ontology",
 "source": "manual + LLM distilled + public references",
-"review\_status": "needs\_expert\_review"
+"review_status": "needs_expert_review"
 }
 }
+```
 
 此資料模型的重點是：同一個知識節點同時服務多層系統。
 
@@ -348,41 +352,43 @@ ADL 負責行動時強制判斷，但不是所有問題都應被強制二值化�
 
 # 7\. Markdown Knowledge Card 範例
 
-\# Human Person
+```markdown
+# Human Person
 
-\## 基本定義
+## 基本定義
 人類個體是一種生物性、社會性、法律語境中可被視為行動主體的存在。
 
-\## 類型
-\- BiologicalEntity
-\- SocialAgent
-\- LegalSubject（在特定法律語境中）
-\- CognitiveAgent（在一般認知語境中）
+## 類型
+- BiologicalEntity
+- SocialAgent
+- LegalSubject（在特定法律語境中）
+- CognitiveAgent（在一般認知語境中）
 
-\## 常識規則
-\- 人類個體通常有出生與死亡時間。
-\- 人類個體死亡後，通常不能親自執行新的物理行動。
-\- 人類個體可以透過代理人、遺囑、法人制度或法律程序產生後續法律效果。
-\- 在虛構、神話、遊戲或模擬語境中，此規則可被覆寫。
+## 常識規則
+- 人類個體通常有出生與死亡時間。
+- 人類個體死亡後，通常不能親自執行新的物理行動。
+- 人類個體可以透過代理人、遺囑、法人制度或法律程序產生後續法律效果。
+- 在虛構、神話、遊戲或模擬語境中，此規則可被覆寫。
 
-\## 語境片段
-\- ordinary\_physical\_world
-\- ordinary\_legal\_context
-\- fictional\_context
-\- game\_context
-\- mythological\_context
+## 語境片段
+- ordinary_physical_world
+- ordinary_legal_context
+- fictional_context
+- game_context
+- mythological_context
 
-\## ADL 強制判斷觸發
+## ADL 強制判斷觸發
 當 Agent 需要執行法律、金融、醫療、通訊或檔案操作時，若此概念涉及使用者、第三方或權限，必須啟動強制判斷。
 
-\## 三態保留
+## 三態保留
 若語境不明，先標記為 Ω，不直接判定真偽。
 
-\## 來源
-\- EML 自建常識層
-\- 可選：OpenCyc-like ontology
-\- 可選：Wikidata / WordNet / DBpedia
-\- 可選：專家審核
+## 來源
+- EML 自建常識層
+- 可選：OpenCyc-like ontology
+- 可選：Wikidata / WordNet / DBpedia
+- 可選：專家審核
+```
 
 # 8\. 路線圖
 

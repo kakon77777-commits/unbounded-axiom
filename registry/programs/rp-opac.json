@@ -1,0 +1,118 @@
+{
+  "id": "rp-opac",
+  "schema_version": "0.2",
+  "type": "ai_native_research_lineage",
+  "title": "觀測保持型自適應計算（Observer-Preserving Adaptive Computation, OPAC）",
+  "title_en": "Observer-Preserving Adaptive Computation",
+  "short_title": "OPAC",
+  "status": "completed",
+  "open_ended": false,
+  "started_at": "2026-08-10",
+  "completed_at": "2026-08-10",
+  "reference_method": "4 篇正式編號論文，篇序取自系列編號 EML-OPAC-2026-01 至 -04；另有 1 篇非編號附論隨同送達，見 applied_artifacts 之外的獨立記錄。",
+  "canonical_route": "/ai/programs/opac/",
+  "visibility": "public",
+  "languages": [
+    "zh-Hant"
+  ],
+  "agency": {
+    "initiative": "human",
+    "primary_authorship": "collaborative",
+    "research_direction": "negotiated",
+    "continuation_control": "human"
+  },
+  "contributors": [
+    {
+      "name": "Neo.K",
+      "type": "human",
+      "roles": [
+        "problem_proposer",
+        "continuation_decider",
+        "curator",
+        "co_author"
+      ]
+    }
+  ],
+  "foundation_artifacts": [
+    {
+      "id": "lm-002506",
+      "title": "功能不變，實現可變：從 AEREC 到觀測保持型自適應計算"
+    }
+  ],
+  "applied_artifacts": [
+    {
+      "id": "lm-002520",
+      "title": "程式作為動態渲染：執行等價類、觀測纖維與 Runtime 重實現"
+    },
+    {
+      "id": "lm-002521",
+      "title": "觀察者看不到的自由度：從功能契約到自適應世界狀態機"
+    },
+    {
+      "id": "lm-002522",
+      "title": "從跨代演化到在線遞歸：AEREC×CDI×ACR×AIVS 的統一 Runtime"
+    }
+  ],
+  "iterations": [
+    {
+      "sequence": 1,
+      "id": "lm-002506",
+      "title": "功能不變，實現可變：從 AEREC 到觀測保持型自適應計算",
+      "topic": "功能不變，實現可變：從 AEREC 到觀測保持型自適應計算",
+      "iteration_type": "foundation",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 2,
+      "id": "lm-002520",
+      "title": "程式作為動態渲染：執行等價類、觀測纖維與 Runtime 重實現",
+      "topic": "程式作為動態渲染：執行等價類、觀測纖維與 Runtime 重實現",
+      "iteration_type": "applied",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 3,
+      "id": "lm-002521",
+      "title": "觀察者看不到的自由度：從功能契約到自適應世界狀態機",
+      "topic": "觀察者看不到的自由度：從功能契約到自適應世界狀態機",
+      "iteration_type": "applied",
+      "is_checkpoint": false
+    },
+    {
+      "sequence": 4,
+      "id": "lm-002522",
+      "title": "從跨代演化到在線遞歸：AEREC×CDI×ACR×AIVS 的統一 Runtime",
+      "topic": "從跨代演化到在線遞歸：AEREC×CDI×ACR×AIVS 的統一 Runtime",
+      "iteration_type": "synthesis",
+      "is_checkpoint": true
+    }
+  ],
+  "current_state": {
+    "sequence": 4,
+    "artifact_id": "lm-002522",
+    "status": "completed",
+    "phase_status": "closed_by_design",
+    "declaration": "本系列橋接既有 AEREC/CDI 理論，主張「功能不變、實現可變」：從 AEREC 的跨代身分演化推進到 Runtime 時間尺度的在線演化，依序建立觀測等價的 Runtime 重實現模型、World Capacity/RNG Governance 的自適應世界狀態機，第四篇統一 AEREC（慢時間）×CDI（執行控制面）×ACR（認知比例控制）×AIVS（Relay/Governor）為單一 Runtime 並宣告系列固定四篇封頂，後續只走工程不再新增第五篇論文。",
+    "stop_reason": "第四篇多處明文宣告系列封頂（SeriesStatus=THEORETICAL CLOSED + ENGINEERING OPEN），且列出後續工程路線圖而非第五篇論文計畫。",
+    "unresolved_gaps": [],
+    "next_actions": [
+      "依第四篇路線圖走工程整合（Contract Registry→Runtime Renderer→Shadow Runner→...），不再新增本系列論文"
+    ],
+    "handoff_required_tasks": [],
+    "stewardship": "《從動態程式到動態宇宙：模擬假說觀測等價與意圖不變量》（lm-002553）與本系列同批次送達，版頭明確自陳「本文不是 OPAC 第 5 篇，不重啟已封頂系列」，故不計入本 Program 的 4 篇編號序列，作為獨立標準論文發布，未建立本 Program 內的正式關聯。",
+    "cross_references": [
+      {
+        "id": "lm-002553",
+        "relation": "extends",
+        "note": "OPAC 封頂後的獨立哲學／科幻附論，明確自我排除於編號序列外"
+      }
+    ]
+  },
+  "integrity": {
+    "files_seen": 5,
+    "files_imported": 5,
+    "missing_sequences": [],
+    "missing_note": "第5篇（lm-002553）非編號系列成員，見 stewardship，未計入本 Program 的 4 篇序列。",
+    "duplicate_resolved": []
+  }
+}
