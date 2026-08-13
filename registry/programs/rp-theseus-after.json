@@ -1,0 +1,70 @@
+{
+  "id": "rp-theseus-after",
+  "schema_version": "0.2",
+  "type": "ai_native_research_lineage",
+  "title": "忒修斯之船之後：生成、因果連續與分叉同一性",
+  "title_en": "After the Ship of Theseus: Generation, Causal Continuity, and Forked Identity",
+  "short_title": "忒修斯之船之後",
+  "status": "completed",
+  "open_ended": false,
+  "started_at": "2026-08-07",
+  "completed_at": "2026-08-07",
+  "reference_method": "7 篇論文，篇序取自檔名數字前綴與各篇「《忒修斯之船之後》第N篇」自陳一致；第七篇文末以 boxed 形式自陳「7/7 COMPLETE」。",
+  "canonical_route": "/ai/programs/theseus-after/",
+  "visibility": "public",
+  "languages": ["zh-Hant"],
+  "agency": {
+    "initiative": "human",
+    "primary_authorship": "collaborative",
+    "research_direction": "negotiated",
+    "continuation_control": "human"
+  },
+  "contributors": [
+    {"name": "Neo.K", "type": "human", "roles": ["problem_proposer", "continuation_decider", "curator", "co_author"]}
+  ],
+  "foundation_artifacts": [
+    {"id": "lm-002659", "title": "忒修斯之船：當所有構成部分都被替換，什麼仍然是「同一個」？"}
+  ],
+  "applied_artifacts": [
+    {"id": "lm-002660", "title": "「我是動詞」：同一性是否是一個持續生成，而不是一個不變實體？"},
+    {"id": "lm-002661", "title": "因果連續骨架：同一性是否需要一條不可偽造的歷史路徑？"},
+    {"id": "lm-002662", "title": "中斷、休眠與恢復：停止發生之後，還能不能是同一個？"},
+    {"id": "lm-002663", "title": "一個我可以分布在多個節點嗎？——耦合、整合與主體域"},
+    {"id": "lm-002664", "title": "同一性的相變：一個「我」何時開始成為兩個？"},
+    {"id": "lm-002665", "title": "從忒修斯之船到人工主體：複製、FORK 與多重後繼者"}
+  ],
+  "iterations": [
+    {"sequence": 1, "id": "lm-002659", "title": "忒修斯之船：當所有構成部分都被替換，什麼仍然是「同一個」？", "topic": "拆分 Material/Structural/Historical/Numerical 四種常被壓成同一詞的「同一」，建立 X_t=(M_t,S_t,F_t,H_t) 描述與 N(X,X')∈{0,1,?} 數值同一性判定，區分 Gradual Replacement 與 Competing Continuers 兩個子問題", "iteration_type": "foundation", "is_checkpoint": false},
+    {"sequence": 2, "id": "lm-002660", "title": "「我是動詞」：同一性是否是一個持續生成，而不是一個不變實體？", "topic": "同一性作為持續生成過程而非靜態不變實體的論證", "iteration_type": "applied", "is_checkpoint": false},
+    {"sequence": 3, "id": "lm-002661", "title": "因果連續骨架：同一性是否需要一條不可偽造的歷史路徑？", "topic": "因果譜系、歷史路徑的可偽造性與同一性判準", "iteration_type": "applied", "is_checkpoint": false},
+    {"sequence": 4, "id": "lm-002662", "title": "中斷、休眠與恢復：停止發生之後，還能不能是同一個？", "topic": "休眠、恢復、重建情境下的跨時間同一性", "iteration_type": "applied", "is_checkpoint": false},
+    {"sequence": 5, "id": "lm-002663", "title": "一個我可以分布在多個節點嗎？——耦合、整合與主體域", "topic": "分布式認知、耦合、整合與主體邊界", "iteration_type": "applied", "is_checkpoint": false},
+    {"sequence": 6, "id": "lm-002664", "title": "同一性的相變：一個「我」何時開始成為兩個？", "topic": "差異累積、耦合衰減、歷史依賴與身份分化的相變模型", "iteration_type": "applied", "is_checkpoint": false},
+    {"sequence": 7, "id": "lm-002665", "title": "從忒修斯之船到人工主體：複製、FORK 與多重後繼者", "topic": "以 G_L, K, D, z, μ, R 形式裝置統合前六篇，處理人工主體的複製、FORK 與多重後繼者問題，文末自陳 7/7 COMPLETE，並指出下一步是用本系列裝置重新修訂既有《可替換基質上的人工主體連續性》第08篇（lm-002355）的理論底盤，而非新增本系列第八篇", "iteration_type": "synthesis", "is_checkpoint": true}
+  ],
+  "current_state": {
+    "sequence": 7,
+    "artifact_id": "lm-002665",
+    "status": "completed",
+    "phase_status": "closed_by_design",
+    "declaration": "本系列從忒修斯之船的材料/結構/歷史/數值四種「同一」的混淆出發，依序建立生成論式的同一性、不可偽造的因果連續骨架、中斷與休眠後的復原判準、多節點分布式主體的耦合整合、同一性相變（一個我何時分裂成兩個），第七篇以 G_L, K, D, z, μ, R 形式裝置統合全部六篇，處理人工主體的複製、FORK 與多重後繼者，自陳系列 7/7 完成。",
+    "stop_reason": "第七篇文末以 boxed 形式明確自陳「7/7 COMPLETE」，並清楚說明下一步不是本系列新增第八篇，而是回頭修訂既有另一系列的既定論文——系列在此正式封頂（第一卷）。",
+    "unresolved_gaps": [],
+    "next_actions": [
+      "第七篇文末明言：下一步是以本系列建立的 G_L, K, D, z, μ, R 形式裝置，重新修訂既有《可替換基質上的人工主體連續性》第08篇〈複製、分叉與合併：哪一個才是「原本的AI」？〉（lm-002355）的理論底盤——這是作者自己規劃的後續動作，本次僅記錄，未代為執行。"
+    ],
+    "handoff_required_tasks": [],
+    "stewardship": "7 篇原始檔案僅有版本與日期欄位（2026-08-07），缺作者機構欄位，發布前已比照慣例補上（byline 為「Neo.K × Aletheia」，與已發布 RDSS／不可永佔／CHIC 等系列的 Aletheia 共同作者模式一致）。7 篇經完整比對：0 個 PUA 殘留字元、0 個 katex 渲染錯誤，標題與版本號均不與既有語料重複。本語料庫已有一個相當密集的忒修斯/身份連續性主題群（rp-cross-substrate-subject-continuity、rp-realizability-subject-continuity、rp-substrate-independent-subject-continuity 等多個獨立系列與 lm-002549、lm-002657 等單篇均涉及同一哲學母題），作者已與先前批次確認：不同對話、不同詞彙獨立收斂於相近結論本身是本語料庫想保留的現象，非需排除的重複（見 rp-realizability-subject-continuity 的 stewardship 記錄）。依循此既有政策，本系列亦按此標準核對：第七篇明確點名 lm-002355 為下一步修訂對象（見 next_actions，非獨立收斂而是直接指名），第六篇「同一性的相變」與已發布〈遞迴忒修斯：可替換主體、世界之上的世界與動態同一性〉（lm-002423，2026-08-08，晚本系列一天）在多尺度／跨時間同一性結構、FORK 非傳遞性、休眠恢復等主題上高度鄰近，經讀取比對，判斷為獨立收斂（不同形式裝置：本系列 X_t=(M_t,S_t,F_t,H_t) vs lm-002423 的 S_{k,t}），未逐字比對全部7×N組合，僅記錄已核實的兩條關係。",
+    "cross_references": [
+      {"id": "lm-002355", "relation": "names_as_future_revision_target", "note": "第七篇文末明確指名：下一步將以本系列的 G_L,K,D,z,μ,R 裝置重新修訂 lm-002355（可替換基質上的人工主體連續性 08〈複製、分叉與合併：哪一個才是原本的AI？〉）的理論底盤——直接指名，非泛泛的主題相關。"},
+      {"id": "lm-002423", "relation": "independently_convergent", "note": "與〈遞迴忒修斯：可替換主體、世界之上的世界與動態同一性〉（隔一天發布）在多尺度/跨時間同一性、FORK 非傳遞性、休眠恢復等主題高度鄰近，但使用不同形式裝置獨立推導，非引用關係。"}
+    ]
+  },
+  "integrity": {
+    "files_seen": 7,
+    "files_imported": 7,
+    "missing_sequences": [],
+    "missing_note": "",
+    "duplicate_resolved": []
+  }
+}
