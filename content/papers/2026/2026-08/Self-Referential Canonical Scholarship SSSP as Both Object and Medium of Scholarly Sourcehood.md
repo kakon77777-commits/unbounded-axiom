@@ -1,0 +1,110 @@
+# Self-Referential Canonical Scholarship: SSSP as Both Object and Medium of Scholarly Sourcehood
+
+**作者：** Neo.K  
+**機構：** EveMissLab／一言諾科技有限公司  
+**日期：** 2026-08-14  
+**版本：** SSSP revision 33（Portable Package v1.3）
+
+## Abstract
+
+This paper studies the Structured Scholarly Source Protocol (SSSP) through a deliberately self-referential construction: the paper is not merely about canonical scholarly source management; its own authoritative source is maintained as an SSSP document. We distinguish weak self-reference, in which a scholarly object truthfully refers to its own source-management substrate, from strong self-reference, in which the object attempts to contain an exact representation of its own final immutable identity, checksum, or snapshot. The former is straightforwardly realizable. The latter induces a fixed-point problem because inserting a final content-dependent identifier changes the content from which that identifier is derived. We formalize this distinction, propose a minimal model of canonical scholarly sourcehood, analyze revision and provenance as part of the object’s epistemic state, and use this very document as an operational demonstration. The central result is that canonical scholarship can be reflexive without paradox provided that object-level content, metadata-level identity, and version-level commitments are stratified. SSSP therefore offers not merely a storage convention but a candidate architecture for machine-actionable scholarly objects whose rendered views are derivative while their validated canonical sources remain primary.
+
+## 1. Introduction
+
+Scholarly communication ordinarily conflates at least three layers: the intellectual work, the editable source from which it is produced, and the rendered artifact through which readers encounter it. In conventional workflows, a PDF may function socially as the paper while TeX, Word, Markdown, database records, provenance logs, equations, and revision histories occupy secondary or fragmented roles. This paper considers the inverse architecture. Under SSSP, the canonical source is primary and typed; rendered Markdown is a derived view.
+
+The research question is therefore reflexive: what happens when a paper about canonical scholarly sourcehood is itself constituted as a canonical scholarly source under the protocol it analyzes? The answer requires distinguishing harmless reflexivity from content-sensitive self-identification. The former permits a document to describe its own substrate and operations. The latter asks whether a document can include its own final hash or immutable version identity without changing that identity in the act of inscription.
+
+## 2. A Minimal Model of Canonical Scholarly Sourcehood
+
+**Definition 1 (Canonical scholarly object).** Let a scholarly object be represented by a tuple $S=(N,O,P,V,R)$, where $N$ is a finite ordered set of typed canonical nodes, $O$ is their canonical order, $P$ is provenance and revision information, $V$ is the validation relation applied to the canonical state, and $R$ is a family of derived renderings. Canonicality means that semantic edits are operations on $N$, $O$, or $P$ rather than on $R$. A rendering $r\in R$ may display the work, but it does not supersede the canonical state from which it was compiled.
+
+$$
+S_t=(N_t,O_t,P_t,V_t),\qquad r_{t,k}=\mathcal{R}_k(S_t),\qquad r_{t,k}\not\equiv S_t.
+$$
+
+## 3. Weak and Strong Self-Reference
+
+**Definition 2 (Weak scholarly self-reference).** A canonical scholarly object $S$ is weakly self-referential if some node in $S$ makes a true claim about $S$, its protocol, its node structure, its provenance process, or its rendering relation, without requiring that the node contain a complete content-dependent identifier of the final state of $S$. This paper is weakly self-referential: the canonical object identified as `SSSP_Self_Referential_Canonical_Scholarship_v1` contains this definition while this definition is itself one of that object's canonical nodes.
+
+**Definition 3 (Strong content-sensitive self-reference).** Let $H$ be a deterministic content-dependent identity function, such as a cryptographic hash over a canonical serialization. A scholarly object $S$ exhibits strong content-sensitive self-reference with respect to $H$ when $S$ contains a literal value $x$ and asserts that $x=H(S)$, where the literal occurrence of $x$ is itself included in the input to $H$. Unlike weak self-reference, this construction demands equality between an identifier stored inside the object and an identifier computed over the object containing that very stored identifier.
+
+$$
+x = H\!\left(S[x]\right).
+$$
+
+**Claim 1 (No generic guarantee of internal final-hash self-description).** For a general cryptographic hash function $H$ and a document template $S[x]$ whose placeholder $x$ is included in the hashed canonical serialization, there is no protocol-level guarantee that a value $x$ satisfying $x=H(S[x])$ exists or can be feasibly found. Therefore a canonical scholarly system should not require a document to contain its own final content hash as ordinary hashed content. The stable design is stratified: compute content identity externally or at a higher metadata/version layer after the canonical content state is fixed.
+
+## 4. Stratification: Content, Identity, and Commitment
+
+The apparent paradox disappears when three levels are separated. Level 0 is scholarly content: propositions, equations, definitions, references, and notes. Level 1 is canonical identity: stable document identifiers, node identifiers, revisions, checksums, and provenance records describing a Level-0 state. Level 2 is commitment: an immutable snapshot or version record attesting that a particular validated Level-1 description refers to a fixed Level-0 state.
+
+A Level-0 statement may refer upward descriptively, but a content-dependent Level-1 checksum should not be required to occur as hashed Level-0 content. This resembles a general anti-collapse principle for reflexive information systems: a system may model itself safely when the representation of its current state is not forced to be identical to a component whose mutation changes that same state.
+
+## 5. Operational Self-Reference Experiment
+
+This document constitutes the experiment. Its stable document identifier is `SSSP_Self_Referential_Canonical_Scholarship_v1`. The definitions, claims, equations, and references in the present paper are appended as typed canonical nodes. Each append operation advances the canonical revision and triggers structural and MathJax validation. Thus the paper's assertion that it is a typed, revisioned, validated SSSP object is not merely descriptive: the assertion is itself stored inside the object whose state changes through the operation that stores it.
+
+The experiment succeeds at weak self-reference if (i) the canonical nodes can truthfully name and characterize the document's protocol-level state, (ii) validation passes after those self-descriptions are inserted, and (iii) an immutable version can be committed after validation. It does not attempt to solve the stronger equation $x=H(S[x])$.
+
+## 6. Relation to Provenance and FAIR Scholarly Objects
+
+SSSP's emphasis on explicit provenance and machine-actionable canonical structure sits naturally beside established work on provenance and reusable digital research objects. The W3C PROV family models provenance in terms of entities, activities, agents, derivations, and related structures, providing a general vocabulary for describing how informational objects came to be. The FAIR Guiding Principles emphasize that scholarly digital objects should be findable, accessible, interoperable, and reusable, with machine actionability and detailed provenance treated as central concerns.
+
+SSSP addresses a narrower but complementary problem: what is the authoritative editable scholarly source, how is it structurally validated, and how are derived human-facing renderings prevented from silently replacing that source? The self-referential experiment here highlights an additional point: provenance and identity are not merely annotations around scholarship; in a machine-actionable scholarly object they participate in the object's epistemic architecture.
+
+### References
+
+W3C. *PROV-DM: The PROV Data Model*. W3C Recommendation, 30 April 2013. https://www.w3.org/TR/prov-dm/
+
+Wilkinson, M. D. et al. “The FAIR Guiding Principles for scientific data management and stewardship.” *Scientific Data* 3, 160018 (2016). https://doi.org/10.1038/sdata.2016.18
+
+## 7. Reflexive Closure and Observer Verification
+
+Weak operational self-reference is not yet complete scholarly self-reference. A document may describe its own canonical state and even validate those descriptions internally, yet an external reader still needs an inspectable representation against which the claims can be checked.
+
+Let $O_r(S)$ denote a reader-accessible observation of a canonical scholarly object $S$, and let $C(S)$ denote its canonical state. A stronger operational criterion requires a comparison procedure $\Phi$ such that $\Phi(O_r(S),C(S))=\mathrm{true}$ for the relevant claims.
+
+$$
+C(S)\longrightarrow O_r(S)\longrightarrow \mathrm{Inspect}\longrightarrow C(S),\qquad
+\Phi\!\left(O_r(S),C(S)\right)=\mathrm{true}.
+$$
+
+The rendering remains derivative and does not become the canonical source, but it can be epistemically necessary as an observation interface. Hence canonical primacy does not imply rendering irrelevance.
+
+For interoperability among human and AI collaborators, the exported package should expose enough stable source identity, validation metadata, and machine-readable handoff information that another agent can verify what it received without reconstructing the scholarly object from chat or presentation text.
+
+## 8. Normalization Transparency and Handoff Integrity
+
+A downstream audit of the first portable package exposed an important failure mode: the readable Markdown artifact contained multiple non-semantic normalizations relative to the raw SSSP Markdown export, while the handoff note disclosed only a subset of them. The changes included removal of a duplicated title, insertion of inline math delimiters around mathematical expressions that had been exported as prose, replacement of an internal claim label with a human-readable claim title, paragraph splitting, reference formatting, identifier code formatting, display-math line wrapping, and footer presentation.
+
+Although these edits did not alter the intended scholarly meaning, incomplete disclosure violated the stronger architectural promise that transformations between provenance artifacts and portable readable artifacts should never be silent. Therefore handoff integrity requires machine-generated transformation evidence rather than a manually curated prose summary alone. At minimum, every package that contains a normalized readable artifact should include a mechanically generated diff against its declared upstream export, hashes of both inputs, and a manifest that classifies the transformation as derived rather than canonical.
+
+$$
+A_{\mathrm{read}}=T(A_{\mathrm{up}}),\qquad
+E_T=\mathrm{Diff}(A_{\mathrm{up}},A_{\mathrm{read}}),\qquad
+\mathrm{Verify}(E_T)=\mathrm{true}.
+$$
+
+**Claim 2 (No-silent-normalization requirement).** If a portable scholarly package contains a readable artifact $A_{\mathrm{read}}$ that differs from a declared upstream artifact $A_{\mathrm{up}}$ by a transformation $T$, then the package should include mechanically reproducible evidence $E_T$ of that transformation. A prose description may supplement $E_T$ but should not substitute for it. Otherwise downstream agents cannot distinguish an intentional normalization from an undisclosed mutation without independently reconstructing the comparison.
+
+## 9. Conclusion
+
+This paper shows that a scholarly object can be both an argument about canonical sourcehood and a live instance of the architecture it analyzes, provided that content, canonical identity, rendering, validation, provenance, observation, normalization evidence, and immutable commitment remain distinct but composable layers.
+
+Weak self-reference is realized when the document truthfully describes protocol operations performed on its own canonical nodes. Strong content-sensitive self-reference instead demands a fixed point $x=H(S[x])$ and should not be a protocol requirement. Observer closure requires that downstream readers or agents can inspect a stable representation and verify it against the declared source state.
+
+The package audit further shows that even non-semantic formatting changes must not be hidden: a normalized readable artifact must carry mechanically reproducible evidence of every difference from its declared upstream artifact. The preferred workflow is therefore one-click at the human interface and maximally explicit underneath:
+
+$$
+\mathrm{Write}\to\mathrm{Canonicalize}\to\mathrm{Validate}\to\mathrm{Commit}\to\mathrm{Export}\to\mathrm{Diff}\to\mathrm{Checksums}\to\mathrm{Bundle}.
+$$
+
+The human receives one portable archive; downstream agents receive enough machine-readable evidence to avoid reconstructing the work from chat, memory, or presentation layers.
+
+**Validation scope note.** A downstream audit of package v1.2 identified an ambiguity in the phrase `render_math_checked`: the SSSP value counted canonical `math_block` nodes, while the normalized portable paper contained five display-math blocks. In v1.3 the workflow formula above has been promoted into the canonical SSSP source, making the canonical display-math count five. More importantly, package metadata now separates canonical render validation from portable-artifact math inventory. Counts must always identify both the object being checked and the scope of the check.
+
+---
+Portable package derived from SSSP revision 35.  
+Upstream SSSP source hash: `sha256:8b160ab35b01378e4a2574b10f5e4b5a48ff7ad141aa2f9e5e8a267510ae30f1`  
+Immutable snapshot: `sssp://SSSP_Self_Referential_Canonical_Scholarship_v1/versions/r000035-8b160ab35b01`

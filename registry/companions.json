@@ -1592,6 +1592,160 @@
         "label": "驗證結果（Surface equality=true 但 CauseSensitiveEquivalence=false）",
         "kind": "data"
       }
+    ],
+    "lm-002666": [
+      {
+        "file": "provenance__normalization.diff",
+        "orig": "provenance/normalization.diff",
+        "label": "paper.md 對照原始 SSSP 匯出的機器產生逐位元組 diff",
+        "kind": "data"
+      },
+      {
+        "file": "provenance__normalization_manifest.json",
+        "orig": "provenance/normalization_manifest.json",
+        "label": "normalization diff 的雜湊清單與再生演算法宣告",
+        "kind": "data"
+      },
+      {
+        "file": "provenance__math_inventory.json",
+        "orig": "provenance/math_inventory.json",
+        "label": "全文每一條公式的逐條雜湊清單（原始版／可讀版對照）",
+        "kind": "data"
+      },
+      {
+        "file": "tools__verify_package.py",
+        "orig": "tools/verify_package.py",
+        "label": "獨立重新驗證 checksum／diff／math inventory 的腳本",
+        "kind": "verify"
+      }
+    ],
+    "lm-002667": [
+      {
+        "file": "provenance__diffs__02.diff",
+        "orig": "provenance/diffs/02.diff",
+        "label": "Paper 02 修訂逐位元組 diff（Ω_w 邊界定義修正）",
+        "kind": "data"
+      }
+    ],
+    "lm-002670": [
+      {
+        "file": "provenance__diffs__03.diff",
+        "orig": "provenance/diffs/03.diff",
+        "label": "Paper 03 修訂逐位元組 diff（r_w=0 歸納證明修正）",
+        "kind": "data"
+      }
+    ],
+    "lm-002673": [
+      {
+        "file": "provenance__diffs__07.diff",
+        "orig": "provenance/diffs/07.diff",
+        "label": "Paper 07 修訂逐位元組 diff（m=1 對數邊界修正＋分隔符正規化）",
+        "kind": "data"
+      }
+    ],
+    "lm-002672": [
+      {
+        "file": "provenance__diffs__08.diff",
+        "orig": "provenance/diffs/08.diff",
+        "label": "Paper 08 修訂逐位元組 diff（打字錯誤＋Möbius環域修正＋分隔符正規化）",
+        "kind": "data"
+      }
+    ],
+    "lm-002668": [
+      {
+        "file": "provenance__diffs__09.diff",
+        "orig": "provenance/diffs/09.diff",
+        "label": "Paper 09 修訂逐位元組 diff（語言用字修正＋分隔符正規化；含系列封頂篇補回）",
+        "kind": "data"
+      }
+    ],
+    "lm-002669": [
+      {
+        "file": "provenance__diffs__HZ.diff",
+        "orig": "provenance/diffs/HZ.diff",
+        "label": "Hard-Zeta 修訂逐位元組 diff（stopping-domain 整合＋invariant-measure 宣稱降級＋分隔符正規化）",
+        "kind": "data"
+      }
+    ],
+    "lm-002675": [
+      {
+        "file": "AUDIT_AND_CORRECTIONS.md",
+        "orig": "AUDIT_AND_CORRECTIONS.md",
+        "label": "系列全稿稽核報告：逐篇內容修正、正規化範圍與驗證結果總結",
+        "kind": "notes"
+      },
+      {
+        "file": "SERIES_INDEX.md",
+        "orig": "SERIES_INDEX.md",
+        "label": "修復後系列索引（9/9 篇狀態＋Hard-Zeta 後續研究計畫定位）",
+        "kind": "notes"
+      },
+      {
+        "file": "provenance__corrections.json",
+        "orig": "provenance/corrections.json",
+        "label": "結構化修正清單（機器可讀版本的稽核報告）",
+        "kind": "data"
+      },
+      {
+        "file": "provenance__theorem_regression.json",
+        "orig": "provenance/theorem_regression.json",
+        "label": "有限／代數層回歸驗證結果（4,079～11,325 組窮舉案例，含 k=16 直接benchmark）",
+        "kind": "verify"
+      },
+      {
+        "file": "provenance__math_inventory.json",
+        "orig": "provenance/math_inventory.json",
+        "label": "全系列每篇公式的逐條雜湊清單（原始版／修復版對照）",
+        "kind": "data"
+      },
+      {
+        "file": "provenance__source_hashes.json",
+        "orig": "provenance/source_hashes.json",
+        "label": "十份來源檔案的 SHA-256 清單",
+        "kind": "data"
+      },
+      {
+        "file": "provenance__repair.diff",
+        "orig": "provenance/repair.diff",
+        "label": "全系列彙總逐位元組修復 diff（十篇合併版）",
+        "kind": "data"
+      },
+      {
+        "file": "provenance__sssp_repair_audit_export.md",
+        "orig": "provenance/sssp_repair_audit_export.md",
+        "label": "SSSP 稽核錨定文件（revision 8，公開雜湊錨點）",
+        "kind": "notes"
+      },
+      {
+        "file": "provenance__EXTERNAL_REFERENCE_AUDIT.md",
+        "orig": "provenance/EXTERNAL_REFERENCE_AUDIT.md",
+        "label": "外部文獻引用查核記錄",
+        "kind": "notes"
+      },
+      {
+        "file": "tools__verify_series.py",
+        "orig": "tools/verify_series.py",
+        "label": "獨立重新驗證整個系列 checksum／diff／math inventory／回歸測試的腳本",
+        "kind": "verify"
+      },
+      {
+        "file": "tools__generate_math_inventory.py",
+        "orig": "tools/generate_math_inventory.py",
+        "label": "產生 math_inventory.json 的腳本（Windows 需設 PYTHONIOENCODING=utf-8）",
+        "kind": "verify"
+      },
+      {
+        "file": "tools__verify_math_claims.py",
+        "orig": "tools/verify_math_claims.py",
+        "label": "獨立重新執行有限／代數回歸驗證的腳本",
+        "kind": "verify"
+      },
+      {
+        "file": "tools__mathjax_validate.js",
+        "orig": "tools/mathjax_validate.js",
+        "label": "MathJax 渲染驗證腳本（3,027 條公式，0 錯誤）",
+        "kind": "verify"
+      }
     ]
   }
 }

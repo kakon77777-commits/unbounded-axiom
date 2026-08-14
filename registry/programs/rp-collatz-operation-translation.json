@@ -1,0 +1,71 @@
+{
+  "id": "rp-collatz-operation-translation",
+  "schema_version": "0.2",
+  "type": "ai_native_research_lineage",
+  "title": "Collatz Operation Translation Series",
+  "title_en": "Collatz Operation Translation Series",
+  "short_title": "Collatz OT Series",
+  "status": "completed",
+  "open_ended": false,
+  "started_at": "2026-08-10",
+  "completed_at": "2026-08-14",
+  "reference_method": "9 篇論文的封閉系列，篇序取自各篇「系列：Collatz Operation Translation Series — Paper NN」自陳欄位。原始 9 篇中 8 篇由作者直接提供，第 9 篇（Finite Certificate Frontier）在本輪送達時遺漏，經比對確認第 8 篇文末「下一篇」預告的篇名與大綱完全吻合後，由 SSSP 稽核流程從作者既有 Library 尋回，非新生成內容。全系列經 SSSP repair 稽核後以 SSSP_Repaired_v1.0 包發布，見 current_state.stewardship 與各篇 companion 附件的逐篇 diff。",
+  "canonical_route": "/ai/programs/collatz-operation-translation/",
+  "visibility": "public",
+  "languages": ["zh-Hant"],
+  "agency": {
+    "initiative": "human",
+    "primary_authorship": "collaborative",
+    "research_direction": "negotiated",
+    "continuation_control": "human"
+  },
+  "contributors": [
+    {"name": "Neo.K", "type": "human", "roles": ["problem_proposer", "continuation_decider", "curator", "co_author"]}
+  ],
+  "foundation_artifacts": [
+    {"id": "lm-002675", "title": "考拉茲猜想既有研究的重新分類與校正"}
+  ],
+  "applied_artifacts": [
+    {"id": "lm-002667", "title": "Collatz Local Affine Atlas：有限奇偶字的精確仿射化"},
+    {"id": "lm-002670", "title": "Parity Word、Residue Cylinder 與局部 Identity 化"},
+    {"id": "lm-002676", "title": "雙向殘餘類轉譯：$2^k$ Cylinder 與 $3^u$ Progression"},
+    {"id": "lm-002674", "title": "有限字收縮邊界與二項式 Cylinder Law"},
+    {"id": "lm-002671", "title": "Valuation Language 與 Accelerated Collatz"},
+    {"id": "lm-002673", "title": "廣義 $(mx+r)$ 系統與 Residue-Class Operation Translation"},
+    {"id": "lm-002672", "title": "代數判定域與結構斷裂定理"},
+    {"id": "lm-002668", "title": "Finite Certificate Frontier：Collatz 有限精確覆蓋與全域鴻溝"}
+  ],
+  "iterations": [
+    {"sequence": 1, "id": "lm-002675", "title": "考拉茲猜想既有研究的重新分類與校正", "topic": "既有 Collatz 研究文獻的重新分類與校正，建立系列共用術語基礎", "iteration_type": "foundation", "is_checkpoint": false},
+    {"sequence": 2, "id": "lm-002667", "title": "Collatz Local Affine Atlas：有限奇偶字的精確仿射化", "topic": "有限奇偶字（parity word）的精確仿射化，建立 local affine atlas；修復：Ω_w 在 canonical residue r_w=0 的邊界定義（改為 (r_w+2^k Z)∩Z_{>0}）", "iteration_type": "applied", "is_checkpoint": false},
+    {"sequence": 3, "id": "lm-002670", "title": "Parity Word、Residue Cylinder 與局部 Identity 化", "topic": "Parity word 與 residue cylinder 的局部 identity 化；修復：r_w=0 情形下歸納證明改用恆正代表元 r_w+2^k", "iteration_type": "applied", "is_checkpoint": false},
+    {"sequence": 4, "id": "lm-002676", "title": "雙向殘餘類轉譯：$2^k$ Cylinder 與 $3^u$ Progression", "topic": "從 local affine atlas 到 exact inverse fiber、odd skeleton 與雙螺旋重構（本輪內容未變更）", "iteration_type": "applied", "is_checkpoint": false},
+    {"sequence": 5, "id": "lm-002674", "title": "有限字收縮邊界與二項式 Cylinder Law", "topic": "有限字收縮邊界與二項式 cylinder law；k=16 直接 benchmark（1≤n<2^20，938,413 strict descents，2 equality cases，本輪內容未變更）", "iteration_type": "applied", "is_checkpoint": false},
+    {"sequence": 6, "id": "lm-002671", "title": "Valuation Language 與 Accelerated Collatz", "topic": "Valuation language 與 accelerated Collatz 公式（本輪內容未變更）", "iteration_type": "applied", "is_checkpoint": false},
+    {"sequence": 7, "id": "lm-002673", "title": "廣義 $(mx+r)$ 系統與 Residue-Class Operation Translation", "topic": "從 Collatz 特例推廣到一般 odd (m,r) 仿射系統；修復：最終定理摘要的 m=1 對數邊界（改為 odd m>1 專用公式，另記 P_k(1)=1）", "iteration_type": "applied", "is_checkpoint": false},
+    {"sequence": 8, "id": "lm-002672", "title": "代數判定域與結構斷裂定理", "topic": "商式係數的代數判定域與結構斷裂點；修復：A_wr+B_w 打字錯誤改 A_wx+B_w；Möbius/projective 係數的體 vs. 一般交換環可逆性條件（ad-bc∈R^×）明確分域", "iteration_type": "applied", "is_checkpoint": false},
+    {"sequence": 9, "id": "lm-002668", "title": "Finite Certificate Frontier：Collatz 有限精確覆蓋與全域鴻溝", "topic": "從 Local Affine Atlas、Descent Sieve 到 Integer-Anchored Hard Branch 的系列封頂；統合 finite chart certificate、exact coverage completeness、certificate frontier，收束為 itinerary well-foundedness 論證骨架；修復：語言用字（日文殘留「若さらに」改「若進一步」）；本輪 SSSP 稽核從作者 Library 尋回本篇（原資料夾遺漏），經比對第8篇「下一篇」預告確認非虛構內容", "iteration_type": "synthesis", "is_checkpoint": true}
+  ],
+  "current_state": {
+    "sequence": 9,
+    "artifact_id": "lm-002668",
+    "status": "completed",
+    "phase_status": "closed_by_design",
+    "declaration": "本系列將 Collatz 猜想重新表述為 parity word 與 residue cylinder 上的算子轉譯問題：從既有研究的重新分類出發，建立 local affine atlas、局部 identity 化、雙向殘餘類轉譯、有限字收縮邊界，導入 valuation language 與加速公式，推廣到一般 (m,r) 仿射系統並定位其代數判定域與結構斷裂點，最終在第九篇統合為 finite certificate frontier，建立 itinerary well-foundedness 的論證骨架，自陳系列 9/9 完成、封閉。",
+    "stop_reason": "第九篇明確以「系列封頂」為副標，統合前八篇全部裝置為單一 certificate frontier 論證骨架；SERIES_INDEX.md 明言此為「closed nine-paper series」，後續 Hard-Zeta 研究計畫不算第十篇。",
+    "unresolved_gaps": [],
+    "next_actions": [],
+    "handoff_required_tasks": [],
+    "stewardship": "本系列於 2026-08-14 經 SSSP repair 稽核發布（package: Collatz_Operation_Translation_Series_SSSP_Repaired_v1.0）。稽核流程：(1) 確認作者提供的原始檔案與稽核包聲稱的『原始版』逐位元組相同（9 份原稿全數核對通過，含1份跨提交比對）；(2) 第9篇原資料夾遺漏，經比對第8篇文末『下一篇』預告的篇名與9點大綱完全吻合，確認為作者自己 Library 中既有內容經尋回，非稽核流程生成；作者本人已確認此為提供資料時的遺漏。(3) 逐篇 diff 分類比對，區分『純分隔符正規化』與『真正內容變更』，確認稽核報告（AUDIT_AND_CORRECTIONS.md）揭露的修正項目與實際 diff 內容一致，僅有的落差是幾處未逐條列出的裝飾性章節分隔線（零語意影響）。(4) 六處內容修正逐一核對：Paper 02 的 Ω_w 邊界定義（r_w=0 時原式有歧義）、Paper 03 的歸納證明漏洞（原本使用 r_w∈Ω_w 在 r_w=0 時不成立，改用恆正代表元）、Paper 07 摘要與本文的 m=1 對數邊界不一致、Paper 08 一處變數打字錯誤與 Möbius 係數體/環可逆性條件的範圍澄清、Paper 09 語言用字修正、Hard-Zeta 的 stopping-domain 修正從附錄勘誤正式整合進正文並將一則過強宣稱（subsequential limit 必為 invariant object）改為附條件限定——全部屬於邊界情形、範圍澄清、typo 與一則主動弱化過強宣稱，無一屬於刪除或竄改既有結論。(5) 有限/代數回歸測試（4,079～11,325 組窮舉案例，Paper05 的 k=16 直接 benchmark 938,413 strict descents／2 equality cases）全數 PASS。(6) 另外發現並驗證：稽核包自帶的 tools/verify_series.py 在 Windows 預設編碼（cp950）下會因無法編碼一個帶重音符號字元（推測為 Paper08 的『Möbius』）而崩潰；設定 PYTHONIOENCODING=utf-8 後可完整重新產生且與稽核包內容逐位元組相同——純屬工具跨平台編碼設定問題，非資料損毀。(7) 全部10篇（含 Hard-Zeta）以站上實際渲染器測試，0 個 katex 錯誤；作者提供的原始版（未轉換分隔符前）則會有殘留的 \\\\( \\\\[ 等舊式 LaTeX 分隔符直接洩漏進渲染輸出，證實此次正規化在本站確有實際必要性，非純學術考量。",
+    "cross_references": [
+      {"id": "lm-002669", "relation": "follow_on_research_program", "note": "《Faithful Global Quantifier Compression / Collatz Hard-Zeta Frontier》是本系列封頂後的後續研究計畫，非本系列第十篇——SERIES_INDEX.md 明確排除此定位。發布為獨立論文，不插入本系列序列。"}
+    ]
+  },
+  "integrity": {
+    "files_seen": 9,
+    "files_imported": 9,
+    "missing_sequences": [],
+    "missing_note": "",
+    "duplicate_resolved": []
+  }
+}
