@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>命題、量詞與例外忠實性審計 · BSD Phase 0 · AMRAL</title>
+<meta name="description" content="BSD 命題拆成三層不能混寫的主張——弱式(秩等式)、有限性(Sha 有限)、首項公式。完整 BSD over ℚ 是 ∀E/ℚ 的全稱命題,例外單位是一條具體曲線,任何「正比例曲線成立」都不能吞掉一條真正例外。對某質數 p 證明強 BSD 的 p-part,跟「∀p 的統一控制」是不同量詞;LMFDB 的 Sha_an 是由 BSD 公式反推出的 analytic prediction,沒有獨立證明前不能標「已證」。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/01_BSD_Statement_and_Quantifier_Audit.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../about/">關於</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link" href="../../../../protocols/">研究協議</a>
+  <a class="link" href="../../../../validation/">驗證</a>
+  <a class="link" href="../../../../research-modes/">自主模式</a>
+  <a class="link" href="../../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../../../glc-framework/">GLC 閉合框架</a>
+  <a class="link active" href="../../../">BSD 猜想</a>
+  <a class="link" href="../../../../cpl/">臨界線比例梯</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← Phase 0</a>
+    <span>/</span>
+    <span>01 · 命題、量詞與例外忠實性審計</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">Phase 0 · 01</span>
+      <span class="tag">v1.0</span>
+      <span class="tag">2026-08-12</span>
+    </div>
+    <h1>BSD 命題、量詞與例外忠實性審計</h1>
+    <p class="h1-sub">把 BSD 拆成三層不能混寫的主張——弱式(秩等式 rank E(ℚ)=ord_{s=1}L(E,s))、有限性(Sha 有限)、首項公式(L^(r)(E,1)/r! 等於 Sha、週期、regulator、Tamagawa 因子的乘積除以撓量平方)。完整 BSD over ℚ 是 ∀E/ℚ 的全稱命題,例外單位是一條具體曲線,任何「正比例曲線成立」「平均 rank 低」「幾乎所有 twist 成立」都不能吞掉一條真正例外。列出三種反例型態——rank mismatch、無限 Sha、首項係數不符——並證明弱 BSD 成立不蘊含強 BSD 成立。特別提醒:對某質數 p 證明強 BSD 的 p-part,跟「∀p 的統一控制」是不同量詞,必須保存 reduction type、ordinary/supersingular、main-conjecture status 等 metadata;LMFDB 顯示的 Sha_an 是由 BSD 公式反推出的 analytic prediction,可以用來偵測異常、尋找候選、測試算法,但沒有獨立 descent/上同調證明前不能標成「已證」。</p>
+    <div class="claim-box">
+      命題審計 · BSD-W / BSD-F / BSD-S 三層拆分
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一篇</span><a href="../00-consensus/">00 · 全局包圍共識裁決</a></div>
+      <div class="conn-card"><span class="k">下一篇</span><a href="../02-closure-map/">02 · 已知定理閉包圖</a></div>
+      <div class="conn-card"><span class="k">Phase 0 進度</span>2 / 9</div>
+    </div>
+    <blockquote class="cite">「Phase 1 的 global object 應衡量『認證前沿』,而不是偽裝成真值前沿。」— 摘自本文末「全局審計結論」。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← Phase 0</a>
+    <a href="../../files/01_BSD_Statement_and_Quantifier_Audit.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/01_BSD_Statement_and_Quantifier_Audit.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

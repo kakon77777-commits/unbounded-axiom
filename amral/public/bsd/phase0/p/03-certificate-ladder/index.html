@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BSD Certificate Ladder · BSD Phase 0 · AMRAL</title>
+<meta name="description" content="核心原則:每條曲線不能只存一個布林值「BSD true/false」,而要存「哪一層已被什麼證書關閉」。C0(身分)到 C5(代數秩上下界)、C6(弱 BSD 證書)、C7(單一質數強 BSD)、C8(Sha 有限且精確)、C9(完整強 BSD)、C10(family 定理)。五條絕對禁止,最重要的是不能把 analytic_sha 寫成 proved_sha,不能把某個 p-part 成立就標成 full strong BSD。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/03_BSD_Certificate_Ladder.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../about/">關於</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link" href="../../../../protocols/">研究協議</a>
+  <a class="link" href="../../../../validation/">驗證</a>
+  <a class="link" href="../../../../research-modes/">自主模式</a>
+  <a class="link" href="../../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../../../glc-framework/">GLC 閉合框架</a>
+  <a class="link active" href="../../../">BSD 猜想</a>
+  <a class="link" href="../../../../cpl/">臨界線比例梯</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← Phase 0</a>
+    <span>/</span>
+    <span>03 · BSD Certificate Ladder</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">Phase 0 · 03</span>
+      <span class="tag">v1.0</span>
+      <span class="tag">2026-08-12</span>
+    </div>
+    <h1>BSD Certificate Ladder:C0 到 C10</h1>
+    <p class="h1-sub">核心原則:每條曲線不能只存一個布林值「BSD true/false」,而要存「哪一層已被什麼證書關閉」。從 C0(Identity,minimal Weierstrass model、conductor、CM status)、C1(局部算術,壞質數、reduction type、Tamagawa numbers)、C2(數值解析秩,僅 evidence,未必有 rigorous zero-order certificate)、C3(嚴格解析秩)、C4/C5(代數秩下界/上界,由 descent/Selmer 給出 r_alg=r)、C6(弱 BSD 證書,r_alg=r_an)、C7(單一質數強 BSD,指定 p 的 p-part)、C8(Sha 有限且精確,不能用 BSD 反推值當證明)、C9(完整強 BSD,所有 component 已閉合,含 convention、Manin constant、all prime parts、no unproved assumptions)、到 C10(family 定理,對無限 family 建立 uniform theorem)。並列出證書狀態字典——unknown、numerical、conditional、theorem_applicable、proved_component、proved_curve、proved_family、refuted_data——與五條絕對禁止:analytic_sha 寫成 proved_sha;rank()回傳整數就當完整 proof;某個 p-part 成立就標 full strong BSD;rank 0/1 theorem 套到 rank 2;LMFDB data completeness 當成 BSD completeness。</p>
+    <div class="claim-box">
+      分級架構 · C0(身分) → C9(完整強 BSD) → C10(family 定理)
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一篇</span><a href="../02-closure-map/">02 · 已知定理閉包圖</a></div>
+      <div class="conn-card"><span class="k">下一篇</span><a href="../04-route-matrix/">04 · 外部研究路線矩陣</a></div>
+      <div class="conn-card"><span class="k">Phase 0 進度</span>4 / 9</div>
+    </div>
+    <blockquote class="cite">「絕對禁止:analytic_sha 寫成 proved_sha;某個 p-part 成立就標 full strong BSD;rank 0/1 theorem 套到 rank 2;LMFDB data completeness 當成 BSD completeness。」— 摘自本文末「絕對禁止」清單。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← Phase 0</a>
+    <a href="../../files/03_BSD_Certificate_Ladder.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/03_BSD_Certificate_Ladder.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

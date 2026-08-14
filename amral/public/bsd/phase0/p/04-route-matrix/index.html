@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外部研究路線矩陣 · BSD Phase 0 · AMRAL</title>
+<meta name="description" content="十條可能路線的最強自然輸出、累積性、共同瓶頸與 Phase 1 裁決比較表。Strong-BSD twist families 是首選;p-adic Iwasawa、p-converse、exact computational BSD 是綠燈;Neo 自己的舊「格點秩收斂」路線是紅燈,瓶頸是隱藏 equality 與離散量不連續。高秩線的正確問法不是「證 rank 2 BSD」,而是先問哪個 higher Kato class 必須非零,輸出一張 dependency DAG。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/04_External_Route_Matrix.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../about/">關於</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link" href="../../../../protocols/">研究協議</a>
+  <a class="link" href="../../../../validation/">驗證</a>
+  <a class="link" href="../../../../research-modes/">自主模式</a>
+  <a class="link" href="../../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../../../glc-framework/">GLC 閉合框架</a>
+  <a class="link active" href="../../../">BSD 猜想</a>
+  <a class="link" href="../../../../cpl/">臨界線比例梯</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← Phase 0</a>
+    <span>/</span>
+    <span>04 · 外部研究路線矩陣</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">Phase 0 · 04</span>
+      <span class="tag">v1.0</span>
+      <span class="tag">2026-08-12</span>
+    </div>
+    <h1>外部研究路線矩陣</h1>
+    <p class="h1-sub">用一張表比較十條可能路線的最強自然輸出、累積性、共同瓶頸與 Phase 1 裁決。Gross–Zagier–Kolyvagin 是基線;p-adic zeta/Iwasawa、p-converse、exact computational BSD 都判綠燈;Strong-BSD twist families 是首選——2024 年外部定理已有、2026 年已有算法化論文、LMFDB conductor≤500,000 域完整、結果可逐條重播;generalized Kato/higher GZ 是黃燈;Selmer 算術統計是輔助路線;數值 BSD atlas 只作資料層(evidence/anomaly detection,不等於 proof);Neo.K 自己的舊「格點秩收斂」路線被判**紅燈**,瓶頸是隱藏 equality 與離散量不連續(詳細審計見下一批文件);Faithful certificate frontier 是控制層,提供全域研究控制但不提供 BSD 定理。對高秩線,本文主張正確問法不是「證 rank 2 BSD」,而是先問哪個 higher Kato class 必須非零、哪個 Selmer rank equality 已知、哪個 p-converse 可用——輸出一張 dependency DAG,而不是一篇假裝閉合的證明。文末給出 MCDM 初評,並強調這是研究路由評估,不是數學定理。</p>
+    <div class="claim-box">
+      路線評估 · 首選:Strong-BSD Twist-Family Reproduction
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一篇</span><a href="../03-certificate-ladder/">03 · BSD Certificate Ladder</a></div>
+      <div class="conn-card"><span class="k">下一篇</span><a href="../05-lattice-audit/">05 · 對 Neo.K 舊格點秩收斂路線的審計</a></div>
+      <div class="conn-card"><span class="k">Phase 0 進度</span>5 / 9</div>
+    </div>
+    <blockquote class="cite">「若某個『困難』只在單一表示中存在,不能稱全域瓶頸。」— 摘自本文「Representation Escape」一節。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← Phase 0</a>
+    <a href="../../files/04_External_Route_Matrix.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/04_External_Route_Matrix.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

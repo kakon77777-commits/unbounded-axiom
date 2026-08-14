@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>對 Neo.K 舊「格點秩收斂」路線的審計 · BSD Phase 0 · AMRAL</title>
+<meta name="description" content="逐項拆解 Neo.K 舊稿的邏輯鏈:格點化橢圓曲線、取 a→0、主張連續性保證等式成立。審計指出至少兩層循環風險——若格點 BSD 不等式的證明本身已用古典 BSD 型連結即為循環;rank 是整數值全域算術不變量,不會因 a→0 自動收斂;零點階數對微小擾動非連續;「兩邊都收斂」不推出「極限相等」。裁決:歸檔為探索性類比,不當 Phase 1 證明路線。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/05_Internal_Grid_Rank_Audit.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../about/">關於</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link" href="../../../../protocols/">研究協議</a>
+  <a class="link" href="../../../../validation/">驗證</a>
+  <a class="link" href="../../../../research-modes/">自主模式</a>
+  <a class="link" href="../../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../../../glc-framework/">GLC 閉合框架</a>
+  <a class="link active" href="../../../">BSD 猜想</a>
+  <a class="link" href="../../../../cpl/">臨界線比例梯</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← Phase 0</a>
+    <span>/</span>
+    <span>05 · 對 Neo.K 舊格點秩收斂路線的審計</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">Phase 0 · 05</span>
+      <span class="tag">v1.0</span>
+      <span class="tag">2026-08-12</span>
+      <span class="tag">自我審查</span>
+    </div>
+    <h1>對 Neo.K 舊「格點秩收斂」路線的審計</h1>
+    <p class="h1-sub">逐項拆解舊稿的邏輯鏈:格點化橢圓曲線、計算格點 L-函數、定義格點秩與零點階數、取 a→0、主張「連續性保證等式成立」。審計指出至少兩層循環風險:若格點 BSD 不等式(rank_a(E)≤ord_{s=1}L_a(E,s))的證明本身已用古典 BSD 型連結,即為循環。第二層是技術層面——rank 是整數值全域算術不變量,數值格點上的「近似點數」「矩陣秩」不會因 a→0 自動收斂成 Mordell-Weil rank,必須先建立「格點證書 ⟺ 有理點獨立性/Selmer 界」的等價;即使 L_a(E,s)→L(E,s) 在某區域收斂,也不自動推出消失階收斂,因為消失階對微小擾動非連續;「兩邊都收斂」不推出「極限相等」,除非每個 a 有合法關係 A_a=B_a——但若這正是格點 BSD,難題只是搬進格點層,沒有真正解決。挽救需要四個獨立定理:GR-1(忠實離散化,格點對象須保留 rational points/group law/torsion/height/local reduction)、GR-2(rank 證書等價,不是視覺/數值 rank)、GR-3(解析階穩定性,格點 L-函數零點階需被 rigorous analytic certificate 保存)、GR-4(非循環橋接,GR-2 與 GR-3 之間的等式不能預設 BSD)。目前四項皆未完成。</p>
+    <div class="claim-box">
+      內部審計 · 裁決:歸檔為探索性類比
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一篇</span><a href="../04-route-matrix/">04 · 外部研究路線矩陣</a></div>
+      <div class="conn-card"><span class="k">下一篇</span><a href="../06-agent-experiment/">06 · Phase 1 Agent 實驗規格</a></div>
+      <div class="conn-card"><span class="k">Phase 0 進度</span>6 / 9</div>
+    </div>
+    <blockquote class="cite">「Archive as exploratory analogy; do not use as Phase 1 proof route.」— 摘自本文末「裁決」。可保留工程思想(多尺度檢查、exact certificate、limit audit),不能保留「連續性保證 BSD equality」的定理宣稱。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← Phase 0</a>
+    <a href="../../files/05_Internal_Grid_Rank_Audit.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/05_Internal_Grid_Rank_Audit.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

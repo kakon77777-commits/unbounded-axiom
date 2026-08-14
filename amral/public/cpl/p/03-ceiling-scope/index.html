@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>67.25% 與 68.185% 的作用域 · CPL · AMRAL</title>
+<meta name="description" content="不能因為 67.25%<68.185% 就說「再最佳化一點就能到 68.185%」。67.25% 是 §7.1 window-optimisation 子框架的極值;68.185% 是 Remark 1.1 給出的更廣 bandwidth-one 類別上界,但主論文正文沒有展開成可重算的閉式公式,標記為 OPEN-RECONSTRUCTION-01。P_70 必須破壞至少一項假設才可能達成。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/03_Ceiling_Scope_67_25_vs_68_185.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../">AMRAL</a>
+  <a class="link" href="../../../about/">關於</a>
+  <a class="link" href="../../../methodology/">方法論</a>
+  <a class="link" href="../../../protocols/">研究協議</a>
+  <a class="link" href="../../../validation/">驗證</a>
+  <a class="link" href="../../../research-modes/">自主模式</a>
+  <a class="link" href="../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../../glc-framework/">GLC 閉合框架</a>
+  <a class="link" href="../../../bsd/">BSD 猜想</a>
+  <a class="link active" href="../../">臨界線比例梯</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← CPL</a>
+    <span>/</span>
+    <span>03 · 67.25% 與 68.185% 的作用域</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">v1 · 03</span>
+      <span class="tag">2026-08-11</span>
+      <span class="tag">v1 最後一篇</span>
+    </div>
+    <h1>67.25% 與 68.185%:兩個天花板的作用域</h1>
+    <p class="h1-sub">為什麼必須拆開:不能因為 67.25%&lt;68.185% 就說「Claude 的 window 再最佳化一點就能到 68.185%」。精確拆解兩者的作用域——67.25% 是 §7.1 window-optimisation/two-trace 子框架(block structure + two traces + primes up to T)的極值,由 CCLM17 Corollary 14 保證 Montgomery-Taylor kernel 在此子框架 extremal。68.185% 是 Remark 1.1 給出的更廣 bandwidth-one、configuration-by-configuration certificate class 的上界——只用 mean density、Fourier support (-1,1) 的 pair-correlation data、multiplicity integrality,且要求對每個 configuration 都成立——但主論文正文沒有把它像 c₁* 一樣展開成可直接重算的閉式公式,因此標記為 <strong>OPEN-RECONSTRUCTION-01</strong>:研究任務不是懷疑這個數字,而是找出該 extremal law 的完整定義、變數、約束、optimizer 與數值重現路徑。另外 §7.5 給出有限維 dimension cap(rank P≤d≈λN),並指出只靠 first/second trace 的 certificate 在 λ≤1/2 時甚至非正,而無條件 higher moments 又受 Rudnick-Sarnak range kλ&lt;2 限制,說明「只要一直算更多 moment」在無條件 bandwidth-one 區域也不是免費的。結論:P_70 已經在 70%&gt;68.185% 之外,若 Remark 1.1 的 certificate class 假設完全適用,P_70 必須至少破壞其中一個限制——更多 support、更多相關資訊,或更豐富的非 configuration-wise 全域結構。</p>
+    <div class="claim-box">
+      作用域拆分 · 67.25% window-optimisation 極值 ≠ 68.185% 更廣類別上界
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一篇</span><a href="../02-targets/">02 · 70%/80%/90%/99% 目標梯</a></div>
+      <div class="conn-card"><span class="k">v1 進度</span>4 / 4(本批最後一篇)</div>
+    </div>
+    <blockquote class="cite">「研究任務不是懷疑數字,而是:找出該 extremal law 的完整定義、變數、constraints、optimizer 與數值重現路徑。」— 摘自本文「3. 68.185% 的精確已知程度」。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← CPL</a>
+    <a href="../../files/03_Ceiling_Scope_67_25_vs_68_185.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/03_Ceiling_Scope_67_25_vs_68_185.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

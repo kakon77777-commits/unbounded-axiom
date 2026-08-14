@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BSD Certificate Globalizer · BSD Phase 0 · AMRAL</title>
+<meta name="description" content="建立一個不會因為「大多數曲線已認證」就吞掉單一未認證曲線的研究控制量。定義 Faithful Unresolved Mass,任何固定未認證 class 都留下正質量,但即使該質量趨近於零也只表示證書系統逐項覆蓋了枚舉域,不等於推出 BSD。Certificate Globalizer 不是 Truth Oracle。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/07_BSD_Certificate_Globalizer.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../about/">關於</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link" href="../../../../protocols/">研究協議</a>
+  <a class="link" href="../../../../validation/">驗證</a>
+  <a class="link" href="../../../../research-modes/">自主模式</a>
+  <a class="link" href="../../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../../../glc-framework/">GLC 閉合框架</a>
+  <a class="link active" href="../../../">BSD 猜想</a>
+  <a class="link" href="../../../../cpl/">臨界線比例梯</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← Phase 0</a>
+    <span>/</span>
+    <span>07 · BSD Certificate Globalizer</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">Phase 0 · 07</span>
+      <span class="tag">v1.0</span>
+      <span class="tag">2026-08-12</span>
+    </div>
+    <h1>BSD Certificate Globalizer</h1>
+    <p class="h1-sub">建立一個不會因為「大多數曲線已認證」就吞掉單一未認證曲線的研究控制量——它忠實於認證狀態,不是直接忠實於 BSD 真值。以 conductor、isogeny label 建立可計算枚舉 ℰ={E₁,E₂,…},固定目標證書層 ℓ*∈{C6,...,C10},第 k 輪後令 H_k(ℓ*) 為尚未達到 ℓ* 的曲線集合。定義 Faithful Unresolved Mass 𝔅_k(s;ℓ*)=Σ_{i∈H_k} i^(-s)(s>1):任何一個固定未認證 class 都留下正質量,對無限枚舉,若證書系統單調,𝔅_k→0 表示每個固定 class 最終離開未解前沿。但即使 𝔅_k→0,也只表示採用的證書系統逐項覆蓋了枚舉域,要真正推出 BSD 還需要五個額外條件:每個證書 sound、target claim 確實等於 BSD component、枚舉覆蓋所有 E/ℚ、證書生成不是拿 BSD 當 oracle、對所有曲線真正達到有限 stage。可分別定義弱 BSD backlog、Sha 有限性 backlog、強式公式 backlog 三個獨立維度,避免一個總分掩蓋「rank 已證,但 Sha 未閉合」這種情況。</p>
+    <div class="claim-box">
+      研究控制量 · 忠實於認證狀態,不是忠實於 BSD 真值
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一篇</span><a href="../06-agent-experiment/">06 · Phase 1 Agent 實驗規格</a></div>
+      <div class="conn-card"><span class="k">下一篇</span><a href="../08-handoff/">08 · 本地多 Agent 交接提示</a></div>
+      <div class="conn-card"><span class="k">Phase 0 進度</span>8 / 9</div>
+    </div>
+    <blockquote class="cite">「Certificate Globalizer ≠ Truth Oracle。」— 摘自本文「4. 它不是 BSD 證明」。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← Phase 0</a>
+    <a href="../../files/07_BSD_Certificate_Globalizer.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/07_BSD_Certificate_Globalizer.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

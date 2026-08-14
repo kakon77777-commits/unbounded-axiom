@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>70%/80%/90%/99% 目標梯 · CPL · AMRAL</title>
+<meta name="description" content="目標表:P_2/3 與 P_67.25 無條件已證,P_68.185 只是 certificate ceiling statement 不是已達比例。P_70/80/90 有粗略 support 需求估計,P_99 論文未給 finite support threshold,明文禁止線性外插:不猜 σ99。真正的研究平面是二維座標(σ,k),分 Support/Moment/Certificate enrichment 三軸。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/02_CPL_Targets_70_80_90_99.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../">AMRAL</a>
+  <a class="link" href="../../../about/">關於</a>
+  <a class="link" href="../../../methodology/">方法論</a>
+  <a class="link" href="../../../protocols/">研究協議</a>
+  <a class="link" href="../../../validation/">驗證</a>
+  <a class="link" href="../../../research-modes/">自主模式</a>
+  <a class="link" href="../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../../glc-framework/">GLC 閉合框架</a>
+  <a class="link" href="../../../bsd/">BSD 猜想</a>
+  <a class="link active" href="../../">臨界線比例梯</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← CPL</a>
+    <span>/</span>
+    <span>02 · 70%/80%/90%/99% 目標梯</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">v1 · 02</span>
+      <span class="tag">2026-08-11</span>
+    </div>
+    <h1>70%/80%/90%/99% 目標梯</h1>
+    <p class="h1-sub">建立目標表:P_2/3 與 P_67.25 無條件已證(Claude Theorem B/D);P_68.185 只是 certificate ceiling statement,不是「已達比例」;P_70/80/90 有粗略 support 需求估計(σ≈1.04/1.26/1.70);P_99 論文沒有給 finite support threshold,本文明文禁止用前三點線性外插。引入一個可比較不同 certificate 的座標:若相應 horizontal/symmetric-diagonal count 滿足 H(T)≤(C+o(1))N(T),則 simple-critical proportion 下界為 2-C,把目標換算成 C≤1.30/1.20/1.10/1.01(density 100% 對應 C→1)。提出真正的研究平面是二維座標 (σ,k)——σ 是可控制的 pair-correlation Fourier support/bandwidth,k 是可靠取得的 spectral moment 階數——並分成三軸:Axis A Support expansion、Axis B Moment expansion、Axis C Certificate enrichment(不增加 support/moments,而增加 zero-side block geometry 等額外約束,目前最未知的一軸)。P_70 是第一個真正突破點,列出三條路線(Support、Fourth Moment 可到 13/18≈72.22%、Broader bandwidth-one certificate)。P_99 訂下最嚴格研究紀律:不猜 σ_99,真正第一問應是「哪些資訊足以推出 P_99」,而不是曲線擬合。</p>
+    <div class="claim-box">
+      目標梯 · P_2/3, P_67.25 已證;P_70 起全部未證
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一篇</span><a href="../01-proof-graph/">01 · 證明鏈模組化重建</a></div>
+      <div class="conn-card"><span class="k">下一篇</span><a href="../03-ceiling-scope/">03 · 67.25% 與 68.185% 的作用域</a></div>
+      <div class="conn-card"><span class="k">v1 進度</span>3 / 4</div>
+    </div>
+    <blockquote class="cite">「不猜 σ₉₉。……真正第一問應是:inf{ℐ: ℐ 足以推出 P₉₉},而不是從 1.04,1.26,1.70 做曲線擬合。」— 摘自本文「7. P₉₉」。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← CPL</a>
+    <a href="../../files/02_CPL_Targets_70_80_90_99.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/02_CPL_Targets_70_80_90_99.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>臨界線比例梯 · AMRAL</title>
+<meta name="description" content="AMRAL 案例:Critical-Line Proportion Ladder(CPL)。建立在一篇真實、已發表的 Anthropic 論文上——Claude,《More Than Two Thirds of the Zeros of the Riemann Zeta Function Lie on the Critical Line》(2026-08-10),無條件把臨界線零點比例從 41.6% 推到 67.25%,明確不影響黎曼猜想本身。Neo.K 的後續研究:重建論文自己留白的 68.185% 天花板常數,並嚴謹審查現有文獻能否碰到 70% 門檻。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../">AMRAL</a>
+  <a class="link" href="../about/">關於</a>
+  <a class="link" href="../methodology/">方法論</a>
+  <a class="link" href="../protocols/">研究協議</a>
+  <a class="link" href="../validation/">驗證</a>
+  <a class="link" href="../research-modes/">自主模式</a>
+  <a class="link" href="../riemann/">黎曼猜想</a>
+  <a class="link" href="../moser/">Moser 蟲問題</a>
+  <a class="link" href="../skew-field/">歪度場</a>
+  <a class="link" href="../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../glc-framework/">GLC 閉合框架</a>
+  <a class="link" href="../bsd/">BSD 猜想</a>
+  <a class="link active" href="./">臨界線比例梯</a>
+</div></nav>
+<div class="wrap">
+  <header class="page">
+    <p class="eyebrow"><a href="../">← AMRAL</a> · PROGRAM-HILBERT-23 · H08 延伸線</p>
+    <h1>臨界線比例梯</h1>
+    <p class="subtitle">Critical-Line Proportion Ladder(CPL)</p>
+    <p class="lede">
+      這條線建立在一篇<strong>真實、已發表</strong>的 Anthropic 論文上——Claude,《More Than Two Thirds of the Zeros of
+      the Riemann Zeta Function Lie on the Critical Line》(2026-08-10,<a href="https://github.com/anthropics/zeta-23-lean">官方 Lean companion repo</a>)。
+      該論文無條件把臨界線零點比例的下界從 41.6%(Pratt–Robles–Zaharescu–Zeindler)推到 67.25%,是這個方向已知最大的單步跳躍——
+      但論文自己與後續報導都明確指出:<strong>這不解決黎曼猜想</strong>,對剩下 32.8% 的零點沒有任何主張,對 RH 本身沒有任何方向性的影響。
+    </p>
+    <p class="lede">
+      Neo.K 的 CPL 研究是後續探索:這篇論文本身留白的一個常數(68.185% certificate ceiling)有沒有辦法被獨立重建?
+      67.25% 能不能推進到 70%、80%、90%,乃至逼近 100%?每一步都嚴格區分「已證」「條件式可證」「開放」「禁止外推」,
+      不把工程進度偷換成數學定理。
+    </p>
+    <p class="notice">
+      跟 <a href="../riemann/">黎曼猜想</a> 案例是同一個數學物件(Riemann zeta function 的零點),但研究性質不同——不是嘗試證明或反證 RH,
+      而是延伸一個已經發表、已經驗證過的外部結果。
+    </p>
+  </header>
+
+  <section id="v1">
+    <h2 class="doc-h2">v1 · 從 67.25% 出發</h2>
+    <p class="section-note">2026-08-11 · 定義、證明鏈重建、目標梯、天花板作用域拆分</p>
+    <nav class="case-grid" aria-label="v1 文件">
+      <a class="case-card" href="./p/00-overview/">
+        <span class="k">00</span>
+        <h3>從 Claude 67.25% 出發</h3>
+        <p>語義鎖定:百分比不是 RH 完成度。P0-P6 優先研究清單。</p>
+      </a>
+      <a class="case-card" href="./p/01-proof-graph/">
+        <span class="k">01</span>
+        <h3>證明鏈模組化重建</h3>
+        <p>Z/L/P 三模組拆解,5 項 Proof Obligations 待獨立重證。</p>
+      </a>
+      <a class="case-card" href="./p/02-targets/">
+        <span class="k">02</span>
+        <h3>70%/80%/90%/99% 目標梯</h3>
+        <p>(σ,k) 二維研究平面,P99 明文禁止線性外插。</p>
+      </a>
+      <a class="case-card" href="./p/03-ceiling-scope/">
+        <span class="k">03</span>
+        <h3>67.25% 與 68.185% 的作用域</h3>
+        <p>兩個天花板不可混淆。OPEN-RECONSTRUCTION-01。</p>
+      </a>
+    </nav>
+  </section>
+
+  <section id="roadmap">
+    <h2 class="doc-h2">v2 → v11(尚待建頁)</h2>
+    <p class="section-note">單一主線接力,不是分支探索——先攻重建 68.185% 天花板,再攻 support 軸,最後把 support 需求翻譯成算術輸入需求並審計文獻。以下狀態摘要直接依據各版本自己的文件。</p>
+    <div class="case-grid">
+      <div class="case-card placeholder">
+        <span class="k">v2-v7</span>
+        <h3>重建 68.185% 天花板的鷹架</h3>
+        <p>從官方 Lean 原始碼找到精確值 0.681828687463832…;自建 toy LP 首次重現「open-band 對抗律」;N=4 exact-rational toy 下界 69.82110925%(自陳「不是 Riemann zeta theorem」)。完整 N=256 外部證書到最新版本仍未取得。</p>
+      </div>
+      <div class="case-card placeholder">
+        <span class="k">v8-v9</span>
+        <h3>Support 軸與算術輸入尺度</h3>
+        <p>重建 support ladder(1.04/1.26/1.70)背後的一般化算子,數值延伸出論文未列的 σ95≈2.26、σ99≈4.19(自陳「不是論文明列的新定理」)。把 support 需求換算成質數對位移尺度。</p>
+      </div>
+      <div class="case-card placeholder">
+        <span class="k">v10-v11</span>
+        <h3>弱化假設與文獻審計</h3>
+        <p>提出遠弱於完整 Hardy-Littlewood 的 test-specific 假設 WSPC/WPPH。親自審計 Zaccagnini、Matomäki–Radziwiłł–Shao–Tao–Teräväinen(2024)等現有無條件文獻,結論:range 都對不上,P70 目前無法由現有結果無條件推出。</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../">← AMRAL</a>
+    <span>SHA-256 逐篇核驗 · 原始位元組,不重新打包</span>
+  </footer>
+</div>
+</body>
+</html>

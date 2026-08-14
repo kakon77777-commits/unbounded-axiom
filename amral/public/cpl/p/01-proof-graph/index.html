@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>證明鏈模組化重建 · CPL · AMRAL</title>
+<meta name="description" content="把 Claude 67.25% 論文的證明拆成 Z(Zero Side)、L(Linear Algebra)、P(Prime Side)三個可獨立追蹤的模組,合起來在 λ=1 給出基準 2/3,window 最佳化後給出 67.25%。若知道到 4 階 moments,conditional HL*(4,λ) 假設下可到 13/18≈72.22%。文末列出 5 項 Proof Obligations,要求逐項獨立重證。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/01_Proof_Graph_Claude_67_25.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../">AMRAL</a>
+  <a class="link" href="../../../about/">關於</a>
+  <a class="link" href="../../../methodology/">方法論</a>
+  <a class="link" href="../../../protocols/">研究協議</a>
+  <a class="link" href="../../../validation/">驗證</a>
+  <a class="link" href="../../../research-modes/">自主模式</a>
+  <a class="link" href="../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../../glc-framework/">GLC 閉合框架</a>
+  <a class="link" href="../../../bsd/">BSD 猜想</a>
+  <a class="link active" href="../../">臨界線比例梯</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← CPL</a>
+    <span>/</span>
+    <span>01 · 證明鏈模組化重建</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">v1 · 01</span>
+      <span class="tag">2026-08-11</span>
+    </div>
+    <h1>證明鏈模組化重建:Z / L / P 三模組</h1>
+    <p class="h1-sub">把 Claude 論文的證明拆成三個可獨立追蹤的模組。<strong>模組 Z(Zero Side)</strong>:把 Weil Hermitian form 限制到有限維 test family,由 functional equation 對稱分解成 P⪰0 加上由 off-line pairs 控制的 hyperbolic block Q,兩者相加得 compression G̃=P+Q。<strong>模組 L(Linear Algebra)</strong>:Claude Lemma 3.2 用 von Neumann trace inequality,對 rank P≤r、n₊(Q)≤b 給出一條 rank 下界不等式,取 c=2 得到具體形式。<strong>模組 P(Prime Side)</strong>:用 explicit formula 把 compression 的 traces 化成 prime-power/archimedean integrals,無條件得到 tr G̃~N、tr G̃²~(1/λ+λ/3)N,關鍵結構邊界是 λ≤1。三者合起來在 λ=1 給出基準 flat window 2/3;§7.1 對 window density 最佳化(Euler 極值問題給出 v*_λ(s)=cos(√2λs))後,在 λ=1 得到 c₁*=0.753296…,對應 67.25%。並記錄:現有無條件主證明只真正用到低階 moments,若能知道到 4 階、在 conditional HL*(4,λ) 假設下,可以到 13/18≈72.22%,說明 P_70 存在一條非常具體的 conditional moment 路線。文末列出 5 項 Proof Obligations(PO-01 到 PO-05),要求逐項獨立重證,包括仍未在正文中定位完整推導的 0.68185 常數(PO-05)。</p>
+    <div class="claim-box">
+      證明重建 · 5 項 Proof Obligations 待逐項獨立重證
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一篇</span><a href="../00-overview/">00 · 從 Claude 67.25% 出發</a></div>
+      <div class="conn-card"><span class="k">下一篇</span><a href="../02-targets/">02 · 70%/80%/90%/99% 目標梯</a></div>
+      <div class="conn-card"><span class="k">v1 進度</span>2 / 4</div>
+    </div>
+    <blockquote class="cite">「CCLM17 的 one-delta extremal result 被 Claude 用來說明:在只使用 Montgomery F(α) 於 [-1,1] 的值、且保持 §7.1 這類 window extremisation 時,Montgomery–Taylor kernel 已是 extremal;因此此子框架不能只靠換 window 再提高。」— 摘自本文「6. Window optimisation」。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← CPL</a>
+    <a href="../../files/01_Proof_Graph_Claude_67_25.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/01_Proof_Graph_Claude_67_25.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

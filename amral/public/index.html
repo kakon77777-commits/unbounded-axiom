@@ -22,6 +22,8 @@
   <a class="link" href="skew-field/">歪度場</a>
   <a class="link" href="p-np-dual/">P/NP 對偶預演</a>
   <a class="link" href="glc-framework/">GLC 閉合框架</a>
+  <a class="link" href="bsd/">BSD 猜想</a>
+  <a class="link" href="cpl/">臨界線比例梯</a>
 </div></nav>
 <div class="wrap narrow">
   <header class="page">
@@ -77,6 +79,12 @@
     <p class="lede">
       這條計畫線往後每個新案例走同一套節奏——Batch、W 系列工程包、封卷、平台匯入包——AMRAL 這個名字不變,會變多的只是案例。
     </p>
+    <p class="lede">
+      同一個 H08 底下也長出一條延伸線:<a href="cpl/"><code>臨界線比例梯</code></a>(CPL)。它不是嘗試證明或反證 RH,
+      而是延伸一篇真實、已發表的 Anthropic 論文——Claude《More Than Two Thirds of the Zeros of the Riemann Zeta
+      Function Lie on the Critical Line》(2026-08-10),無條件把臨界線零點比例推到 67.25%,明確不影響 RH 本身。
+      Neo.K 的後續研究是重建論文自留白的一個常數、審查能否推進到 70% 以上。
+    </p>
   </section>
 
   <section id="outlook-covering">
@@ -97,6 +105,17 @@
       不急於宣布證明完成。<code>glc-framework/</code> 則是第 24 輪之後,研究者自己另外提出的「動態四層閉合框架」——
       把問題重新投影到 GCC／USRT／USEG／GLC 四層,核心表述「過程自由,最終帳本不自由」,附兩個執行順序互異的研究交接方案並陳。
       這條線目前只做到「把已完成的研究攤開展示」,還沒有繼續往下推進。
+    </p>
+  </section>
+
+  <section id="outlook-bsd">
+    <h2 class="doc-h2">第四條計畫線:BSD 猜想</h2>
+    <p class="lede">
+      <code>PROGRAM-BSD</code> 是第四個獨立問題族——Birch and Swinnerton-Dyer 猜想,另一個 Clay Millennium Prize 問題。
+      核心工具是曲線級證書階梯(C0 身分 → C9 完整強 BSD → C10 family 定理),精確分級每條曲線、每個質數究竟證到哪一層,
+      不是只存一個「BSD true/false」的布林值。目前只有 Phase 0(全局包圍框架)九篇文件上線,其中一篇是對研究者自己舊主張的正式否決。
+      Phase 1(重現 Banwait–Huang 2026 演算法化普查)、Phase 2(非半穩定曲線 696.e1 顯式 twist 家族)、
+      P5(rank-2 曲線 389.a1 於 p=11 的強 BSD 深度技術工作)都已有大量真實進展,尚待逐篇建頁。
     </p>
   </section>
 
@@ -131,9 +150,19 @@
       <h3>P/NP 動態四層閉合框架</h3>
       <p>24 輪對偶預演之後的重新表述:GCC／USRT／USEG／GLC 四層,「過程自由,最終帳本不自由」。兩個交接方案並陳,不替研究者選邊。</p>
     </a>
+    <a class="case-card" href="bsd/">
+      <span class="k">PROGRAM-BSD · 2026-08</span>
+      <h3>BSD 猜想</h3>
+      <p>曲線級證書階梯 C0-C10,精確分級每條曲線證到哪一層。Phase 0 框架已上線,含對研究者自己舊主張的正式否決。</p>
+    </a>
+    <a class="case-card" href="cpl/">
+      <span class="k">PROGRAM-HILBERT-23 · H08 延伸 · 2026-08</span>
+      <h3>臨界線比例梯</h3>
+      <p>延伸真實已發表的 Anthropic 論文(67.25% 無條件結果),研究能否推進到 70% 以上。明確不影響黎曼猜想本身。</p>
+    </a>
   </nav>
 
-  <p class="notice">三條計畫線各自獨立編號、獨立驗證。下一個希爾伯特問題會加進第一條線;下一個萬有覆蓋類問題會加進第二條線;下一個 P/NP 類問題會加進第三條線——都不重寫這頁,只加卡片。</p>
+  <p class="notice">四條計畫線各自獨立編號、獨立驗證。下一個希爾伯特問題會加進第一條線;下一個萬有覆蓋類問題會加進第二條線;下一個 P/NP 類問題會加進第三條線;下一個 BSD 類問題會加進第四條線——都不重寫這頁,只加卡片。</p>
 
   <footer class="sitefoot">
     <span>EveMissLab · Logic Matrix 系列</span>
