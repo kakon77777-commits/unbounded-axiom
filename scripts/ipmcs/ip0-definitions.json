@@ -1,0 +1,43 @@
+{
+  "purpose": "IPMCS Phase IP-0 -- Definition Freeze. Concrete, machine-checkable definitions grounded in real Logic Matrix identifiers, per IPMCS v0.1 (Neo.K, 2026-08-15) section 16's suggested structure. This does not reopen or modify DSRS-v1 (dsrs-v1.json) -- IPMCS is a layer ABOVE the retrieval channels, not a replacement for any of them.",
+  "frozen_2026-08-15": true,
+  "canonical_object": {
+    "definition": "The authoritative identity a search result folds back to. For this corpus: paper_id (lm-XXXXXX), the SAME id already used by registry/papers.json, dsrs-v1.json, and Vectorize document-namespace ids -- no new identity scheme invented.",
+    "source_of_truth": "registry/papers.json"
+  },
+  "view": {
+    "definition": "A (scheme, view_id) pair addressing one presentation-layer projection of a canonical_object, per 同一性微積分's d_I: O -> {(O,i) : i in I} -- the view is never a new object, always O-plus-an-index.",
+    "schemes_available_2026-08-15": {
+      "document": "whole-document projection (title+summary+headings), id = paper_id itself. Source: registry/generated/embeddings-manifest.json.",
+      "chunk-v1": "the existing DSRS \"Phase 5\" section-based chunker, id = {paper_id}#chunk-{n}. Source: registry/generated/chunk-embeddings-manifest.json. This IS what IPMCS's own document calls a multi-cut view -- already real, not new work.",
+      "changepoint-v1": "NOT YET AVAILABLE for this corpus. This is a real, tested ANLA segmentation scheme (measured on Neo's 6581-turn conversation archive, 61458 segments) -- but it has never been run against the Logic Matrix paper corpus. Deferred, not fabricated: IP-1 uses only {document, chunk-v1} and says so explicitly rather than simulating a view that doesn't exist yet."
+    }
+  },
+  "query_branch": {
+    "definition": "A divergent rephrasing of the original query, per IPMCS's D(q). IP-1 uses 3 of the 4 MVP branch types from IPMCS section 15 (original, terminology expansion, semantic paraphrase, counterexample) -- hand-authored for this small-scale first experiment rather than calling ai-web-research's diverge() (a real, working LLM-based divergence function -- deferred to a later phase, not because it doesn't exist, but to keep IP-1's first run minimal and inspectable).",
+    "types_used": ["original", "terminology_expansion", "semantic_paraphrase", "counterexample"]
+  },
+  "retriever": {
+    "definition": "A named retrieval channel. IP-1 uses 3, per IPMCS section 15's MVP retriever list (exact, lexical, DSRS semantic) -- reusing REAL production code, not reimplementations.",
+    "exact": "shell/public/semantic/semantic-core.js scoreDocument()'s exact-channel logic (title/heading/summary/keyword substring match) -- the actual code the live site runs.",
+    "lexical": "same scoreDocument() call, its lexical-channel logic (CJK bigram/trigram + token overlap).",
+    "semantic": "live Vectorize query (returnValues:true, both namespaces) via the SAME pinned Node q8 encoder verified in Phase C1/C2 -- deliberately the real, currently-recall-gapped index, not the exact-cosine oracle. The experiment's question is whether OTHER channels/branches rescue what THIS SPECIFIC real index misses, not whether a theoretically-perfect index would."
+  },
+  "hit": {
+    "definition": "h = (object_id, view_id, retriever, query_branch, raw_score) -- one (canonical_object, view) address found by one retriever for one query branch."
+  },
+  "identity_fold": {
+    "definition": "P_I(H) = GroupByIdentity({object_id : h in H}) -- per 同一性微積分's integral (forget the index, keep the object). An object counts as found if ANY hit across ANY branch/view/retriever names its object_id -- this IS the operationalization of Recall_I from IPMCS section 6."
+  },
+  "rescue_rate": {
+    "definition": "RescueRate = |{O in G_miss : O in P_I(H)}| / |G_miss|, per IPMCS section 13.4.",
+    "G_miss_source": "scripts/phase-c-encoder-compare/c2-recall-gap-analysis-2026-08-15.json -- the 12 real, independently-verified objects Vectorize's ANN index misses for the 6 original queries that had gaps. Not synthetic test data -- the actual measured Phase C2 failure set.",
+    "G_miss_count": 12
+  },
+  "explicit_non_goals_for_ip1": [
+    "Not re-testing whether Vectorize's ANN index itself can be improved (that's a separate, undecided design question already recorded in dsrs-v1.json).",
+    "Not calling ai-web-research's live web expansion (IP-1 is offline per IPMCS's own roadmap).",
+    "Not fabricating a changepoint-v1 view for this corpus.",
+    "Not modifying dsrs-v1.json's frozen retrieval profile -- IPMCS sits above it."
+  ]
+}
