@@ -7,9 +7,14 @@ validation + dry-run report.
 Creates ZERO Cloudflare resources. Reads only local, already-committed
 artifacts (registry/generated/*.f32.bin + manifests, registry/papers.json)
 and writes local files under registry/generated/vectorize-export/. The
-actual `wrangler vectorize create` / `wrangler vectorize insert` step is
+actual `wrangler vectorize create` / `wrangler vectorize upsert` step is
 deliberately NOT run here -- that is the real infrastructure-creation
-checkpoint and belongs in a separate, explicitly-confirmed step.
+checkpoint and belongs in a separate, explicitly-confirmed step. upsert,
+not insert: the upload is split across 5 shard files, any one of which
+may need a safe retry, and Cloudflare's insert silently keeps the FIRST
+vector on a duplicate id (no-ops on retry) while upsert converges to the
+LAST -- i.e. idempotent-by-vector-id, the only safe semantics for a
+retryable bulk load.
 
 Record shape and constraints follow Cloudflare's current documented
 Vectorize limits (id <=64 UTF-8 bytes; metadata <=10KiB/vector; metadata
@@ -45,13 +50,21 @@ PAPERS_PATH = ROOT / "registry" / "papers.json"
 
 MAX_PER_FILE = 5000  # Cloudflare-recommended max vectors per NDJSON upload file
                       # (not a hard limit; stated purpose is avoiding the Cloudflare
-                      # API's global rate limit during `wrangler vectorize insert`)
+                      # API's global rate limit during `wrangler vectorize upsert`)
 MAX_ID_BYTES = 64        # Vectorize platform limit, vector id (UTF-8 bytes)
 MAX_METADATA_BYTES = 10 * 1024  # Vectorize platform limit, metadata per vector
 MAX_SHARD_BYTES = 100 * 1024 * 1024  # Vectorize platform limit, max upload size
 INVALID_KEY_CHARS = (".", '"')
 PROFILE_ID = "dsrs-v1"
 INDEX_PROFILE_ID = "dsrs-index-v1"
+# What's physically baked into a Vectorize resource is embedding_space (fixes
+# dimensions/metric) + index_profile (the actual vectors/ids/namespaces
+# populated into it) -- encoder_execution/score_calibration/fusion_profile are
+# build-time or query-time-application concerns, never stored in the index
+# itself. Name encodes exactly that identity (E+I), not the full E+Q+I+C+F,
+# so a future index_profile bump (re-chunking, same model) gets an
+# unambiguous new resource name instead of overloading this one.
+VECTORIZE_INDEX_NAME = "logic-matrix-dsrs-v1-index-v1"
 
 
 def _load_json(path):
@@ -255,6 +268,14 @@ def main():
         "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "purpose": "Phase B step 1 (deterministic export) for Logic Matrix MCP x DSRS. Zero Cloudflare resources created -- local NDJSON only.",
         "source_profile": {"embedding_space": PROFILE_ID, "index_profile": INDEX_PROFILE_ID},
+        "vectorize_target": {
+            "index_name": VECTORIZE_INDEX_NAME,
+            "dimensions": 512,
+            "metric": "cosine",
+            "migration_write_mode": "upsert",
+            "retry_semantics": "idempotent-by-vector-id",
+            "why_upsert_not_insert": "the upload is split across 5 shard files; Cloudflare's insert silently keeps the FIRST vector on a duplicate id (a partial-failure retry would not fix a stale/incomplete prior attempt), while upsert converges to the LAST -- the only safe semantics for a retryable bulk load.",
+        },
         "profile_consistency": profile_consistency,
         "counts": {
             "documents_exported": len(doc_records),
@@ -298,7 +319,7 @@ def main():
             "metadata_indexes_note": "Deliberately zero for v1. Cloudflare requires a metadata index to exist BEFORE inserting vectors that need to be filtered by that property (vectors upserted earlier are not backfilled into an index created later -- would require re-upserting all 18291 vectors). Filtering by type is already covered by namespace at no cost. language/year/paper_id filters are deferred until an actual query need is confirmed, rather than speculatively indexed now.",
             "not_committed_to_git": "*.ndjson under this directory is gitignored (regenerable, ~tens of MB of JSON text); this report (dry_run_manifest.json) is committed as the durable evidence this step ran.",
         },
-        "next_step_not_taken": "wrangler vectorize create / wrangler vectorize insert -- deliberately not run by this script. Requires an explicit go-ahead (creates persistent, billable Cloudflare infrastructure).",
+        "next_step_not_taken": "wrangler vectorize create / wrangler vectorize upsert -- deliberately not run by this script. Requires an explicit go-ahead (creates persistent, billable Cloudflare infrastructure).",
     }
     (OUT_DIR / "dry_run_manifest.json").write_text(
         json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8"

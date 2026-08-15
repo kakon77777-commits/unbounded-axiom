@@ -1,9 +1,17 @@
 {
-  "generated_at": "2026-08-15T06:36:17Z",
+  "generated_at": "2026-08-15T08:14:13Z",
   "purpose": "Phase B step 1 (deterministic export) for Logic Matrix MCP x DSRS. Zero Cloudflare resources created -- local NDJSON only.",
   "source_profile": {
     "embedding_space": "dsrs-v1",
     "index_profile": "dsrs-index-v1"
+  },
+  "vectorize_target": {
+    "index_name": "logic-matrix-dsrs-v1-index-v1",
+    "dimensions": 512,
+    "metric": "cosine",
+    "migration_write_mode": "upsert",
+    "retry_semantics": "idempotent-by-vector-id",
+    "why_upsert_not_insert": "the upload is split across 5 shard files; Cloudflare's insert silently keeps the FIRST vector on a duplicate id (a partial-failure retry would not fix a stale/incomplete prior attempt), while upsert converges to the LAST -- the only safe semantics for a retryable bulk load."
   },
   "profile_consistency": {
     "document_vectors_profile_says": 2675,
@@ -98,5 +106,5 @@
     "metadata_indexes_note": "Deliberately zero for v1. Cloudflare requires a metadata index to exist BEFORE inserting vectors that need to be filtered by that property (vectors upserted earlier are not backfilled into an index created later -- would require re-upserting all 18291 vectors). Filtering by type is already covered by namespace at no cost. language/year/paper_id filters are deferred until an actual query need is confirmed, rather than speculatively indexed now.",
     "not_committed_to_git": "*.ndjson under this directory is gitignored (regenerable, ~tens of MB of JSON text); this report (dry_run_manifest.json) is committed as the durable evidence this step ran."
   },
-  "next_step_not_taken": "wrangler vectorize create / wrangler vectorize insert -- deliberately not run by this script. Requires an explicit go-ahead (creates persistent, billable Cloudflare infrastructure)."
+  "next_step_not_taken": "wrangler vectorize create / wrangler vectorize upsert -- deliberately not run by this script. Requires an explicit go-ahead (creates persistent, billable Cloudflare infrastructure)."
 }
