@@ -2,47 +2,64 @@
   "profile_id": "dsrs-v1",
   "status": "frozen",
   "frozen_at": "2026-08-15",
-  "frozen_by": "Logic Matrix MCP × DSRS Architecture Decision v0.1, Phase A",
-  "purpose": "Canonical, verified identity of the embedding space that ALL existing DSRS-v1 corpus vectors (document-level and chunk-level) live in. Any server-side query encoder built for the MCP must reproduce this exact space -- same model, same instruction, same normalization, same inference precision -- or cosine similarity against the existing Vectorize-migrated corpus vectors is meaningless (see architecture decision doc §1.2, §30 principle 2).",
+  "revised_at": "2026-08-15",
+  "revision_note": "Phase A.1 (Retrieval Profile Separation): the web-side AI collaborator reviewed Phase A's original flat schema and correctly identified that it conflated four independent axes. Restructured into embedding_space / encoder_execution / score_calibration / fusion_profile so each can version independently -- e.g. the MCP keeps embedding_space=dsrs-v1 unchanged while deliberately using a NEW fusion_profile (RRF) instead of reproducing the browser's current one. Also corrected two claims from the original version (see each section's own note) and fixed a document-count inconsistency (2675 vs 2676 -- see score_calibration.caveat).",
 
-  "model": "BAAI/bge-small-zh-v1.5",
-  "onnx_model": "Xenova/bge-small-zh-v1.5",
-  "inference_library_browser": "@huggingface/transformers@4.2.0 (jsDelivr +esm)",
-  "inference_dtype_browser": "q8",
-  "dimension": 512,
-  "metric": "cosine",
-  "normalized": true,
-  "document_prefix": "",
-  "query_prefix": "为这个句子生成表示以用于检索相关文章：",
+  "purpose": "Canonical, verified identity of the retrieval behavior that produces today's DSRS results. Split into four independently-versionable layers per DSRS = E + Q + C + F: Embedding Space, Encoder Execution, Score Calibration, Fusion Policy. A server-side MCP retriever must reproduce E to make cosine against existing corpus vectors valid at all; it may deliberately use a different Q, C, or F, as long as that's an explicit, named choice, not a silent drift.",
 
-  "score_postprocessing": {
-    "purpose": "Raw BGE cosine is NOT a fixed-threshold confidence value (BGE's own model card: >0.5 does not mean similar). The existing browser DSRS applies a corpus-CALIBRATED linear floor/ceiling rescale before the raw cosine is usable as a ranking signal. A server-side retriever that skips this and feeds raw cosine into rank fusion will rank differently than the browser does today.",
+  "embedding_space": {
+    "id": "dsrs-v1",
+    "model": "BAAI/bge-small-zh-v1.5",
+    "dimension": 512,
+    "metric": "cosine",
+    "pooling": "mean",
+    "normalized": true,
+    "document_prefix": "",
+    "query_prefix": "为这个句子生成表示以用于检索相关文章：",
+    "note": "This is the layer that actually determines whether cosine similarity against existing corpus vectors is meaningful at all. Different model / tokenizer / pooling / instruction = genuinely different coordinate system (E_A(x) ~ E_B(x) does not hold) = cosine is meaningless. This is the layer a server-side encoder MUST match exactly."
+  },
+
+  "encoder_execution": {
+    "id": "browser-q8-v1",
+    "runtime": "@huggingface/transformers@4.2.0 (jsDelivr +esm)",
+    "model_artifact": "Xenova/bge-small-zh-v1.5",
+    "dtype": "q8",
+    "note": "Correction from the original Phase A version: q8 vs fp32 is NOT a different embedding_space -- it's a different numerical realization of the SAME model, i.e. v_q8(x) ~= v_fp32(x), not two incommensurable spaces. A server-side fp32 encoder stays validly comparable against dsrs-v1 corpus vectors; it just isn't bit-for-bit reproducible. Recommend the server default to q8 anyway to minimize drift rather than rely on Phase C's golden-vector test to catch it after the fact -- but 'meaningless' (this profile's original wording) overstated the risk. Neither reviewer has yet actually MEASURED cos(v_browser_q8, v_server_fp32) for a real query; Phase C should report that number, not just confirm it's 'close to 1'."
+  },
+
+  "score_calibration": {
+    "id": "corpus-1881-v1",
     "method": "clamp then linear rescale to [0,1]",
     "raw_floor": 0.50,
     "raw_ceiling": 0.62,
     "formula": "score = 0 if raw<=floor; 1 if raw>=ceiling; else (raw-floor)/(ceiling-floor)",
+    "sub_floor_behavior": "results with raw<=floor are excluded from the semantic candidate map entirely (not merely assigned score 0 and left in) -- see semantic-vector.js: `if (norm > 0) scores.set(...)`",
     "calibrated_against": "1881-document corpus sample, spread of queries from clearly-unrelated (~0.47-0.48 best-match ceiling) to deeply-covered topic (~0.68 for genuinely on-topic Riemann Hypothesis hits)",
     "source": "shell/public/semantic/semantic-vector.js, RAW_FLOOR/RAW_CEILING constants",
-    "caveat": "Calibrated when the corpus had ~1881 documents; not re-validated at the current 2676-document scale. Worth re-checking before treating it as permanent."
+    "caveat": "Calibrated when the corpus had ~1881 documents. As of 2026-08-15 the corpus has 2676 total papers, of which 2675 have embeddable text and a real vector (one paper has no title/summary/headings text to embed and gets build_embeddings.py's documented all-zero vector -- an intentional edge case, not data loss). The floor/ceiling has not been re-validated at this larger scale. Earlier drafts of this profile inconsistently wrote '2675' in one place and '2676' in another; 2675 is the correct count of EMBEDDED documents, 2676 is the correct count of TOTAL corpus papers -- both numbers are real, they just measure different things."
+  },
+
+  "fusion_profile": {
+    "id": "browser-maxfusion-v1",
+    "method": "per-channel max fusion -- NOT Reciprocal Rank Fusion",
+    "mechanism": "scoreCorpus() (shell/public/semantic/semantic-core.js) scores each channel (exact/lexical/alias/related_term/semantic/relation) independently per document; the semantic channel contributes weights.semantic(0.55) * calibrated_score; the document's final score is the MAX across every channel that fired (`if (s > r.score) r.score = s`), never a sum or a rank-based combination.",
+    "note": "Correction from the original Phase A handoff: that document said feeding raw cosine into RRF would rank differently than the browser. That framing assumed the browser does something RRF-like; it verifiably does not (confirmed directly against semantic-core.js). Within (floor, ceiling) the linear rescale is strictly monotonic, so under a genuinely rank-based fusion it would not by itself change semantic-channel rank order. What actually matters for comparing fusion policies: (1) sub-floor candidates are excluded outright, (2) super-ceiling candidates tie at 1.0, and (3) most importantly, max-fusion (score-based, what the browser does today) and RRF (rank-based, what the architecture doc proposes for the MCP) are different algorithms that can produce different final orderings even given identical per-channel inputs. RRF is a deliberate NEW fusion_profile for the MCP, not a reproduction of browser-maxfusion-v1 -- that should be stated as a conscious design choice, not implied to be behavior-preserving."
   },
 
   "corpus_index_version": "1",
   "chunker_spec_ref": "content/papers/2026/2026-07/02_動態語義顯影_本地端實作技術白皮書_v0.1.md (lm-001862), §17.2/§17.3, implemented as \"Phase 5\" -- no separate machine-readable chunker_version field exists yet in chunk-embeddings-manifest.json; this profile is the first place that version is named explicitly.",
 
   "verified_2026-08-15": {
-    "method": "Direct empirical check against the real generated artifacts, not just trusting manifest claims or the architecture decision doc's prose.",
+    "method": "Direct empirical check against the real generated artifacts and real source files, by two independent reviewers (Claude Code with direct repo access; a second AI collaborator who independently re-read the same files) -- not just trusting manifest claims or the architecture decision doc's prose.",
     "checks": [
-      "scripts/build_embeddings.py: MODEL_NAME/ONNX_MODEL_NAME/DIM/QUERY_INSTRUCTION constants match this profile exactly",
+      "scripts/build_embeddings.py: MODEL_NAME/ONNX_MODEL_NAME/DIM/QUERY_INSTRUCTION constants match embedding_space exactly",
       "scripts/build_chunk_embeddings.py: same constants, confirmed identical to document-level",
-      "shell/public/semantic/semantic-vector.js: browser query encoder uses the same model name, same query_instruction (read dynamically from vectors.meta.query_instruction), q8 quantized inference",
+      "shell/public/semantic/semantic-vector.js: browser query encoder uses the same model name, same query_instruction (read dynamically from vectors.meta.query_instruction), q8 quantized inference, and the documented floor/ceiling rescale + sub-floor exclusion",
+      "shell/public/semantic/semantic-core.js: confirmed the actual fusion mechanism is per-channel max (`if (s > r.score) r.score = s`), weights.semantic=0.55 -- not RRF",
       "registry/generated/embeddings-manifest.json: dim=512, model/onnx_model match; 2675 documents",
       "registry/generated/embeddings.f32.bin: 5 randomly-sampled document vectors all measured L2 norm = 1.000000 (genuinely normalized, not just claimed)",
       "registry/generated/chunk-embeddings-manifest.json: dim=512, same model/query_instruction; 15616 chunk vectors",
       "registry/generated/chunk-embeddings.f32.bin: 3 randomly-sampled chunk vectors all measured L2 norm = 1.000000"
-    ],
-    "discrepancies_found_vs_architecture_doc": [
-      "inference_dtype_browser (q8 quantized) was not captured in the architecture decision doc's §7.2 schema -- added here. A server-side encoder using fp32 for the 'same' model may produce vectors that are close but not identical to the browser's; Phase C's golden-vector test (cos->1) should catch this, but the server implementation should default to q8 to minimize drift rather than relying on the test to catch it after the fact.",
-      "score_postprocessing (the floor/ceiling rescale) was not captured in the architecture doc at all. Reproducing only the embedding SPACE (model/dim/instruction) is necessary but not sufficient to reproduce the browser's actual RANKING behavior -- the rescale is part of what makes today's DSRS results look the way they do."
     ]
   },
 
@@ -50,9 +67,10 @@
     "scripts/build_embeddings.py",
     "scripts/build_chunk_embeddings.py",
     "shell/public/semantic/semantic-vector.js",
+    "shell/public/semantic/semantic-core.js",
     "registry/generated/embeddings-manifest.json",
     "registry/generated/chunk-embeddings-manifest.json"
   ],
 
-  "migration_note": "Any future profile (dsrs-v1.1, dsrs-v2, ...) that changes model, tokenizer, dimension, normalization, query instruction, document instruction, chunking policy, or score_postprocessing must get its own profile_id and its own file in this directory -- never overwrite this one. See architecture decision doc §7, §19-21 (DSRS-v2 must be a shadow index, benchmarked, never silently promoted)."
+  "migration_note": "Any future embedding_space (dsrs-v1.1, dsrs-v2, ...) that changes model, tokenizer, dimension, normalization, query instruction, document instruction, or chunking policy must get its own id and its own file in this directory -- never overwrite this one. encoder_execution / score_calibration / fusion_profile may each version independently of embedding_space and of each other (e.g. embedding_space=dsrs-v1 + encoder_execution=server-q8-v1 + score_calibration=corpus-2675-v2 + fusion_profile=mcp-rrf-v1 is a valid, expected combination for the MCP -- same coordinate space, deliberately different execution/calibration/fusion choices). See architecture decision doc §7, §19-21 (DSRS-v2 must be a shadow index, benchmarked, never silently promoted)."
 }
