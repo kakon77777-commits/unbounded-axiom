@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Small-N Toy LP 首次重現 · CPL · AMRAL</title>
+<meta name="description" content="第一次自行重現 bandwidth-one adversarial-law 機制,明確標示這不是 Anthropic N=256 exact-rational LP 的重現。N=4,M=24 的顯式 mixture 得到 simple fraction 70.18%,同時發現 boundary-row(S(256)≈211.43)相對 open-band 的巨大 spike,定義 Boundary-Spike Obstruction(BSO):只增加一個 boundary observable,就能顯著提高 adversarial simple-fraction floor。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/05_SmallN_Toy_LP_and_Boundary_Spike.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../">AMRAL</a>
+  <a class="link" href="../../../about/">關於</a>
+  <a class="link" href="../../../methodology/">方法論</a>
+  <a class="link" href="../../../protocols/">研究協議</a>
+  <a class="link" href="../../../validation/">驗證</a>
+  <a class="link" href="../../../research-modes/">自主模式</a>
+  <a class="link" href="../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../../glc-framework/">GLC 閉合框架</a>
+  <a class="link" href="../../../bsd/">BSD 猜想</a>
+  <a class="link active" href="../../">臨界線比例梯</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← CPL</a>
+    <span>/</span>
+    <span>05 · Small-N Toy LP 首次重現</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">v3</span>
+      <span class="tag">2026-08-11</span>
+      <span class="tag">exploratory / toy-model</span>
+    </div>
+    <h1>Small-$N$ Primal Toy LP 與 Boundary-Spike Escape</h1>
+    <p class="h1-sub">第一次自行重現 bandwidth-one adversarial-law 機制——文件開頭就明確限定:<strong>不是</strong> Anthropic $N=256$ exact-rational LP 的重現,positions 被限制在離散圓格點。對 $N=4,M=24$ 的顯式 mixture,混合後 $\bar S(1)=1/4,\bar S(2)=1/2,\bar S(3)=3/4$(完全匹配 open-band CUE 目標),但 $\bar p=70.18\%$——已經在遠比官方窄的 toy class 裡重現「open-band pair rows 完全匹配 CUE ⇏ simple fraction 接近 1」。同一組解也讓被限制的 $j<N$ rows 幾乎完美貼合 CUE,卻在未被觀察到的 boundary row($j=256$)出現巨大 spike($S(256)\approx211.43$,對照官方 kernel-checked 的 $|D(1)|\le0.82395317$ 吻合)——這被定義成 Boundary-Spike Obstruction(BSO)。文件接著做了兩組實驗驗證這個機制的可操作性:只加入一條 $\mathbb E[S(N)]\le B$ 的邊界約束,adversarial floor 就從 70.18%(無約束)一路推到 81.91%($B=1.0$);support extension 實驗也顯示同樣方向,但明確警告這些百分比不能與 Claude 真實 support thresholds $1.04,1.26,1.70$ 對號入座——toy grid 太窄,row sampling 過於粗糙。</p>
+    <div class="claim-box">
+      只增加一個 boundary observable,就能顯著提高 adversarial simple-fraction floor
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一篇</span><a href="../04-reconstructing-ceiling/">04 · 重建 68.185% 天花板</a></div>
+      <div class="conn-card"><span class="k">下一篇</span><a href="../06-column-generation/">06 · Column Generation 對接 PairCeiling</a></div>
+      <div class="conn-card"><span class="k">CPL 進度</span>6 / 15</div>
+    </div>
+    <blockquote class="cite">「在只固定 open-band pair-correlation observables 時,低 simple-fraction configuration law 可以將區分 multiplicity/collision structure 的大量訊息轉移到 α≈1 或更外側的未觀測頻帶。」— 摘自本文「7. Boundary-Spike Obstruction(BSO)」定義。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← CPL</a>
+    <a href="../../files/05_SmallN_Toy_LP_and_Boundary_Spike.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/05_SmallN_Toy_LP_and_Boundary_Spike.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

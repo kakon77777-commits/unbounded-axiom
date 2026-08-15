@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arithmetic Realizability Bridge · CPL · AMRAL</title>
+<meta name="description" content="從 Claude Proposition 5.6 的 exact off-diagonal 公式推出 support σ 對應的 prime-pair shift scale H_σ≍X^(1-1/σ),定義三層 Arithmetic Bridge Hypotheses(ABH-1/2/3)。發現 P70/P80/P90 的 σ 仍落在經典 Montgomery 強 Hardy-Littlewood 可處理的 α<2 範圍內,但 P95(σ≈2.26)已跨出這個範圍——這是比單純比例門檻更實質的算術 regime change。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/12_Arithmetic_Realizability_Bridge.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../">AMRAL</a>
+  <a class="link" href="../../../about/">關於</a>
+  <a class="link" href="../../../methodology/">方法論</a>
+  <a class="link" href="../../../protocols/">研究協議</a>
+  <a class="link" href="../../../validation/">驗證</a>
+  <a class="link" href="../../../research-modes/">自主模式</a>
+  <a class="link" href="../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../../glc-framework/">GLC 閉合框架</a>
+  <a class="link" href="../../../bsd/">BSD 猜想</a>
+  <a class="link active" href="../../">臨界線比例梯</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← CPL</a>
+    <span>/</span>
+    <span>12 · Arithmetic Realizability Bridge</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">v9</span>
+      <span class="tag">2026-08-11</span>
+      <span class="tag">source-grounded reconstruction</span>
+    </div>
+    <h1>Arithmetic Realizability Bridge:從 σ=1 的無條件 Prime Side 到 P70~P99 的算術需求</h1>
+    <p class="h1-sub">上一輪已知每個比例目標需要多少 support $\sigma$;這一輪問 arithmetic side 到底要提供什麼才能合法實現它。從 Claude Proposition 5.6 的 explicit off-diagonal $O_1$ 公式推出:不充分被壓掉的近對角區大致滿足 $T|\log(n/m)|\lesssim1$,換算成 prime scale 得到 shift scale $H_\sigma\asymp X^{1-1/\sigma}$——這段是本研究從公式推出的 scale inference,不是 Claude 原文直接列出的公式。代入前一輪重建的 $\sigma$ 值:$\sigma_{70}=1.042628\to X^{0.040885}$、$\sigma_{80}=1.257848\to X^{0.204991}$、$\sigma_{90}=1.701455\to X^{0.412268}$、$\sigma_{95}=2.260790\to X^{0.557677}$、$\sigma_{99}=4.187215\to X^{0.761178}$。文件定義三層 Arithmetic Bridge Hypotheses——ABH-1(最貼近 Claude proof pipeline 的 direct trace hypothesis)、ABH-2(zero/pair-statistics 語言的 partial Strong Pair Correlation)、ABH-3(prime-side sufficient conditions,如強 Hardy–Littlewood 或 short-interval variance)——並給出一個關鍵發現:$P_{70},P_{80},P_{90}$ 的 $\sigma$ 全部仍落在 Goldston 整理的 Montgomery 強 Hardy–Littlewood 框架能供應的 $\alpha<2$ 範圍內,但 $\sigma_{95}\approx2.26>2$、$\sigma_{99}\approx4.19>2$ 已經跨出這個標準區域——這是一個比單純「$90\%\to95\%$」更實質的算術 regime change,真正開始要求新算術體制的第一個 CPL 節點是 $P_{95}$,不是直覺上的 $P_{99}$。</p>
+    <div class="claim-box">
+      P70/P80/P90 落在經典 α&lt;2 強 HL 範圍內;P95(σ≈2.26)是第一個真正跨出該範圍的節點
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一篇</span><a href="../11-support-ladder/">11 · 重建 1.04/1.26/1.70 Support Ladder</a></div>
+      <div class="conn-card"><span class="k">下一篇</span><a href="../13-weighted-pair-hypothesis/">13 · Test-Specific Weighted Pair-Correlation Hypothesis</a></div>
+      <div class="conn-card"><span class="k">CPL 進度</span>13 / 15</div>
+    </div>
+    <blockquote class="cite">「這一點在『比例 ladder』裡非常不直觀,但在『support ladder』裡一眼可見。」— 摘自本文「4. 第一個重要分界:90% 與 95%」談 P95 的段落。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← CPL</a>
+    <a href="../../files/12_Arithmetic_Realizability_Bridge.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/12_Arithmetic_Realizability_Bridge.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exact O1 Kernel 與無條件審計 · CPL · AMRAL</title>
+<meta name="description" content="精確代數重組 Claude Proposition 5.6 的 off-diagonal O1,導出 near-diagonal universal kernel κ(u)=(sin2u-sinu)/u,證明 P70 真正需要的是一個 wedge(1≲h≲T^(σ-1)),不是單一 shift。親自審計 Zaccagnini 的無條件 Selberg integral 與 Matomäki-Radziwiłł-Shao-Tao-Teräväinen(2024)的 higher-uniformity 結果,兩者的 range 與所需 statistic 都對不上,結論:現有文獻尚不足以無條件證 P70。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/14_Exact_O1_Kernel_and_Unconditional_Barrier.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../">AMRAL</a>
+  <a class="link" href="../../../about/">關於</a>
+  <a class="link" href="../../../methodology/">方法論</a>
+  <a class="link" href="../../../protocols/">研究協議</a>
+  <a class="link" href="../../../validation/">驗證</a>
+  <a class="link" href="../../../research-modes/">自主模式</a>
+  <a class="link" href="../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../../glc-framework/">GLC 閉合框架</a>
+  <a class="link" href="../../../bsd/">BSD 猜想</a>
+  <a class="link active" href="../../">臨界線比例梯</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← CPL</a>
+    <span>/</span>
+    <span>14 · Exact O1 Kernel 與無條件審計</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">v11</span>
+      <span class="tag">2026-08-11</span>
+      <span class="tag">exact algebraic + 文獻審計</span>
+    </div>
+    <h1>Claude Proposition 5.6 的 Exact $O_1$ Kernel:Near-Diagonal Wedge、Selberg-Integral Barrier 與無條件結果審計</h1>
+    <p class="h1-sub">對 Claude 原始 off-diagonal 公式做 exact unordered-pair symmetrisation(共軛配對代數,不使用 prime-pair conjecture,並以 1000 組隨機資料檢查過浮點一致性),拆出 leading term $O_{1,g}$ 與必須另外證明的 remainder $O_{1,\mathrm{tail}}$、$O_{1,H}$。取 $n=m+h$ 後,在 near-diagonal 極限下得到一個 signed oscillatory universal kernel:$\kappa(u)=(\sin2u-\sin u)/u$。關鍵發現是 $P_{70}$ 的算術輸入不是單一 shift $h\sim X/T$,而是一整個 wedge:$1\lesssim h\lesssim T^{\sigma-1}$,$m\in[T,T^\sigma]$——且 flat taper 在 $\sigma_{70}\approx1.042628$ 下,落在 $m\ge T$ 的權重比例只有約 0.488%,與前一輪 Fourier mass 0.114% 互相呼應。文件接著親自審計兩組真實無條件文獻:Zaccagnini 的 Selberg integral 無條件可達 $H\ge X^{1/6-o(1)}$,但 $P_{70}$ wedge 的 shift scale 只有 $X^{0.040885}$,range 本身不相交($0.040885<1/6$),且該結果控制的是 $o(XH^2)$ 這種粗尺度,不是 WPPH 需要的 signed weighted second-correlation constant;Matomäki–Radziwiłł–Shao–Tao–Teräväinen(2024)的 higher-uniformity 結果雖強大,適用範圍 $H\ge X^{1/3+\varepsilon}$ 仍遠大於所需的 $0.040885$,且控制的 statistic 也不是 Claude $O_1$ 所需的 weighted prime-pair second-trace asymptotic。結論:目前查到的結果尚不足以由 Claude 的 $O_1$ pipeline 無條件證 $P_{70}$,原因是 range、statistic、constant/sign 三者必須同時匹配,不能只看到「short-averaged Hardy–Littlewood」就宣布已成立。</p>
+    <div class="claim-box">
+      Zaccagnini 與 MRSTT(2024)的 range 與 statistic 都與 P70 wedge 不匹配——現有無條件文獻尚不足以推出 P70
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一篇</span><a href="../13-weighted-pair-hypothesis/">13 · Test-Specific Weighted Pair-Correlation Hypothesis</a></div>
+      <div class="conn-card"><span class="k">下一篇</span><a href="../15-matrix-majorant-inertia/">15 · Matrix Majorant–Inertia Problem</a></div>
+      <div class="conn-card"><span class="k">CPL 進度</span>15 / 15</div>
+    </div>
+    <blockquote class="cite">「所以不能只看到『short-averaged Hardy–Littlewood』就宣布 WPPH 已成立。」— 摘自本文「7. 2026 higher-uniformity 結果是否幫忙?」。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← CPL</a>
+    <a href="../../files/14_Exact_O1_Kernel_and_Unconditional_Barrier.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/14_Exact_O1_Kernel_and_Unconditional_Barrier.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

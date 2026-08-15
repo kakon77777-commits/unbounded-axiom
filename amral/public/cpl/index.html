@@ -42,6 +42,9 @@
       不把工程進度偷換成數學定理。
     </p>
     <p class="notice">
+      單一主線接力研究,v1 → v11(15 篇文件)已全數建頁上線——先重建 68.185% 天花板,再攻 support 軸,最後把 support 需求翻譯成算術輸入需求並審計文獻。v11 的 MMIP 是尚未展開的研究提案,不是封閉結論;後續版本待 Neo.K 帶來新套件。
+    </p>
+    <p class="notice">
       跟 <a href="../riemann/">黎曼猜想</a> 案例是同一個數學物件(Riemann zeta function 的零點),但研究性質不同——不是嘗試證明或反證 RH,
       而是延伸一個已經發表、已經驗證過的外部結果。
     </p>
@@ -49,7 +52,7 @@
 
   <section id="v1">
     <h2 class="doc-h2">v1 · 從 67.25% 出發</h2>
-    <p class="section-note">2026-08-11 · 定義、證明鏈重建、目標梯、天花板作用域拆分</p>
+    <p class="section-note">2026-08-11 · 定義、證明鏈重建、目標梯、天花板作用域拆分 · v1-v11 全系列 15/15 篇已上線</p>
     <nav class="case-grid" aria-label="v1 文件">
       <a class="case-card" href="./p/00-overview/">
         <span class="k">00</span>
@@ -74,26 +77,85 @@
     </nav>
   </section>
 
-  <section id="roadmap">
-    <h2 class="doc-h2">v2 → v11(尚待建頁)</h2>
-    <p class="section-note">單一主線接力,不是分支探索——先攻重建 68.185% 天花板,再攻 support 軸,最後把 support 需求翻譯成算術輸入需求並審計文獻。以下狀態摘要直接依據各版本自己的文件。</p>
-    <div class="case-grid">
-      <div class="case-card placeholder">
-        <span class="k">v2-v7</span>
-        <h3>重建 68.185% 天花板的鷹架</h3>
-        <p>從官方 Lean 原始碼找到精確值 0.681828687463832…;自建 toy LP 首次重現「open-band 對抗律」;N=4 exact-rational toy 下界 69.82110925%(自陳「不是 Riemann zeta theorem」)。完整 N=256 外部證書到最新版本仍未取得。</p>
-      </div>
-      <div class="case-card placeholder">
-        <span class="k">v8-v9</span>
-        <h3>Support 軸與算術輸入尺度</h3>
-        <p>重建 support ladder(1.04/1.26/1.70)背後的一般化算子,數值延伸出論文未列的 σ95≈2.26、σ99≈4.19(自陳「不是論文明列的新定理」)。把 support 需求換算成質數對位移尺度。</p>
-      </div>
-      <div class="case-card placeholder">
-        <span class="k">v10-v11</span>
-        <h3>弱化假設與文獻審計</h3>
-        <p>提出遠弱於完整 Hardy-Littlewood 的 test-specific 假設 WSPC/WPPH。親自審計 Zaccagnini、Matomäki–Radziwiłł–Shao–Tao–Teräväinen(2024)等現有無條件文獻,結論:range 都對不上,P70 目前無法由現有結果無條件推出。</p>
-      </div>
-    </div>
+  <section id="v2-v7">
+    <h2 class="doc-h2">v2 → v7 · 重建 68.185% 天花板的鷹架</h2>
+    <p class="section-note">從官方 Lean 原始碼找到精確值 0.681828687463832…;自建 toy LP 首次重現「open-band 對抗律」;N=4 exact-rational toy 首次嚴格突破 70%。完整 N=256 外部證書到最新版本仍未取得。</p>
+    <nav class="case-grid" aria-label="v2-v7 文件">
+      <a class="case-card" href="./p/04-reconstructing-ceiling/">
+        <span class="k">04</span>
+        <h3>重建 68.185% 天花板</h3>
+        <p>官方 Lean 原始碼精確值 p0=68.182868746383%。外部 JSON 證書公開 repo 未包含。</p>
+      </a>
+      <a class="case-card" href="./p/05-smalln-toy-lp/">
+        <span class="k">05</span>
+        <h3>Small-N Toy LP 首次重現</h3>
+        <p>N=4,M=24 給 70.18% 對抗律;發現 Boundary-Spike Obstruction。</p>
+      </a>
+      <a class="case-card" href="./p/06-column-generation/">
+        <span class="k">06</span>
+        <h3>Column Generation 對接 PairCeiling</h3>
+        <p>toy LP 對偶 = Anthropic PairCeiling certificate,非比喻。</p>
+      </a>
+      <a class="case-card" href="./p/07-bernstein-certificate/">
+        <span class="k">07</span>
+        <h3>N=4 Exact-Rational Bernstein 證書</h3>
+        <p>首個嚴格證明:p_min ≥ 69.82110925%。</p>
+      </a>
+      <a class="case-card" href="./p/08-boundary-escape-frontier/">
+        <span class="k">08</span>
+        <h3>Toy P70 最小邊界逃逸前緣</h3>
+        <p>數值夾擠 3.65 &lt; B*_70 &lt; 3.67(非定理)。</p>
+      </a>
+      <a class="case-card" href="./p/09-exact-p70-certificate/">
+        <span class="k">09</span>
+        <h3>首次嚴格突破 70%</h3>
+        <p>B_cert≈3.667778,exact Bernstein 證書覆蓋全部三種 pattern。</p>
+      </a>
+      <a class="case-card" href="./p/10-refined-b70-certificate/">
+        <span class="k">10</span>
+        <h3>Refined Exact B70 證書</h3>
+        <p>Safety margin 壓到 8.0×10⁻⁸;記錄一個真實 QCI 案例。</p>
+      </a>
+    </nav>
+  </section>
+
+  <section id="v8-v9">
+    <h2 class="doc-h2">v8 → v9 · Support 軸與算術輸入尺度</h2>
+    <p class="section-note">重建 support ladder(1.04/1.26/1.70)背後的一般化算子,數值延伸出論文未列的 σ95≈2.26、σ99≈4.19(自陳「不是論文明列的新定理」)。把 support 需求換算成質數對位移尺度。</p>
+    <nav class="case-grid" aria-label="v8-v9 文件">
+      <a class="case-card" href="./p/11-support-ladder/">
+        <span class="k">11</span>
+        <h3>重建 1.04/1.26/1.70 Support Ladder</h3>
+        <p>q(σ) 閉式重建,數值幾乎逐一吻合論文,延伸出 σ95/σ99。</p>
+      </a>
+      <a class="case-card" href="./p/12-arithmetic-realizability/">
+        <span class="k">12</span>
+        <h3>Arithmetic Realizability Bridge</h3>
+        <p>P95(σ≈2.26)是第一個真正跨出經典強 HL 範圍的節點。</p>
+      </a>
+    </nav>
+  </section>
+
+  <section id="v10-v11">
+    <h2 class="doc-h2">v10 → v11 · 弱化假設與文獻審計</h2>
+    <p class="section-note">提出遠弱於完整 Hardy-Littlewood 的 test-specific 假設 WSPC/WPPH。親自審計 Zaccagnini、Matomäki–Radziwiłł–Shao–Tao–Teräväinen(2024)等現有無條件文獻,結論:range 都對不上,P70 目前無法由現有結果無條件推出。</p>
+    <nav class="case-grid" aria-label="v10-v11 文件">
+      <a class="case-card" href="./p/13-weighted-pair-hypothesis/">
+        <span class="k">13</span>
+        <h3>Test-Specific Weighted Pair Hypothesis</h3>
+        <p>P70 不需要完整 HL;未知 strip 的 Fourier mass 僅約 0.114%。</p>
+      </a>
+      <a class="case-card" href="./p/14-exact-kernel-barrier/">
+        <span class="k">14</span>
+        <h3>Exact O1 Kernel 與無條件審計</h3>
+        <p>P70 需要一個 wedge,不是單一 shift;現有無條件文獻 range 不匹配。</p>
+      </a>
+      <a class="case-card" href="./p/15-matrix-majorant-inertia/">
+        <span class="k">15</span>
+        <h3>Matrix Majorant–Inertia Problem</h3>
+        <p>新研究提案,非結果宣稱。v1-v11 系列現有文件全數上線。</p>
+      </a>
+    </nav>
   </section>
 
   <footer class="sitefoot">

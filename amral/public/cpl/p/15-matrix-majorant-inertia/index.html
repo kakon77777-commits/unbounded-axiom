@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matrix Majorant–Inertia Problem · CPL · AMRAL</title>
+<meta name="description" content="重新審視 CGdL 在 RH 下把 Montgomery-Taylor 常數從 1.3275 改進到 1.3208(67.25%→67.92%)的 tail-sign 技巧,搭配 2024 年新出現的無條件 prime-side 非負性結果,定義 Matrix Majorant-Inertia Problem(MMIP):能否結合 tail-sign prime control 與 Claude 的 off-axis block signature,在不依賴 RH 的情況下無條件改進 67.25%。明確聲明本文件沒有證明新的 zeta 零點比例,只定位一條研究路線。CPL v1-v11 系列在此暫告一段落。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/15_Matrix_Majorant_Inertia_Hybrid_Route.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../">AMRAL</a>
+  <a class="link" href="../../../about/">關於</a>
+  <a class="link" href="../../../methodology/">方法論</a>
+  <a class="link" href="../../../protocols/">研究協議</a>
+  <a class="link" href="../../../validation/">驗證</a>
+  <a class="link" href="../../../research-modes/">自主模式</a>
+  <a class="link" href="../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../../glc-framework/">GLC 閉合框架</a>
+  <a class="link" href="../../../bsd/">BSD 猜想</a>
+  <a class="link active" href="../../">臨界線比例梯</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← CPL</a>
+    <span>/</span>
+    <span>15 · Matrix Majorant–Inertia Problem</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">v11</span>
+      <span class="tag">2026-08-11</span>
+      <span class="tag">literature audit + 新研究提案</span>
+    </div>
+    <h1>Matrix Majorant–Inertia Problem(MMIP):用 CGdL Tail-Sign SDP 與 Claude Off-Axis Signature 尋找無條件改進</h1>
+    <p class="h1-sub">重新檢視 Chirre–Gonçalves–de Laat(CGdL)在 RH 下把 Montgomery–Taylor multiplicity constant 從 1.3275 改進到 1.3208(即 67.25%→67.92%)的技巧:放寬 bandlimited condition,只要求 $\widehat f(\alpha)\le0$($|\alpha|\ge1$),利用 $F(\alpha,T)\ge0$ 讓未知 band 的積分對上界只會有利——用「未知區域的符號,而不是數值」。文件指出 2024 年 Baluyot–Goldston–Suriajaya–Turnage-Butterbaugh 已把 prime-side 的非負性結果變成無條件,但這不能直接把 CGdL 的 67.92% 變無條件——缺口不在 prime side,在 zero side:CGdL 的 scalar 證明依賴 RH 下每個 zero ordinate 為 real 才能得到 termwise 非負,離開 RH 後這個 scalar 論證不再自動成立。文件觀察到 Claude 論文解決 zero side 的方式不同——用 block signature(critical-line zeros 貢獻 PSD 區塊,每個 off-axis functional-equation pair 貢獻 (1,1) 訊號的 indefinite block)搭配 inertia + rank–trace inequality,而不是 scalar termwise positivity。由此定義 MMIP:能否同時做到 tail-sign prime control(M1)、保留 Claude 的 off-axis block signature(M2)、並建立能把兩者轉成 $N_0^s/N$ 下界的 matrix certificate(M3)。文件給出明確的常數目標表(要贏過 68.185% ceiling 需 $C<1.31815$,CGdL 已知的 1.3208 還不夠;要達 70% 需 $C\le1.30$),並提出一個先在 toy world 測試 tail-sign 與 inertia 是否有協同增益的 MVP 路徑。<strong>文件明確聲明:本文件沒有證明新的 ζ 零點比例,只定位一條可能避開 α&gt;1 asymptotic 的混合研究路線。</strong></p>
+    <div class="claim-box">
+      Tail sign + Matrix inertia ⟹? 不依賴 RH 的無條件改進(研究提案,非結果)
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一篇</span><a href="../14-exact-kernel-barrier/">14 · Exact O1 Kernel 與無條件審計</a></div>
+      <div class="conn-card"><span class="k">CPL 進度</span>15 / 15(v1-v11 系列現有文件全數上線)</div>
+    </div>
+    <blockquote class="cite">「本文件沒有證明新的 ζ 零點比例,只定位一條可能避開 α&gt;1 asymptotic 的混合路線。」— 摘自本文開頭「不是結果宣稱」聲明。</blockquote>
+    <p class="notice">CPL v1 到 v11(共 15 篇文件)是單一主線接力研究,到 v11 為止是目前可取得的最新進度——MMIP 是一個尚未展開的研究提案,不是封閉的結論。後續版本(若有)待 Neo.K 帶來新的套件後再建頁。</p>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← CPL</a>
+    <a href="../../files/15_Matrix_Majorant_Inertia_Hybrid_Route.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/15_Matrix_Majorant_Inertia_Hybrid_Route.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

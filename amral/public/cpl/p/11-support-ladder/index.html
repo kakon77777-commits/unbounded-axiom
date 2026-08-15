@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>重建 1.04/1.26/1.70 Support Ladder · CPL · AMRAL</title>
+<meta name="description" content="重建 Claude Remark 1.1 的 support thresholds 1.04/1.26/1.70 出自 generalized one-delta extremal operator q(σ)=1-1/⟨1,A_σ^{-1}1⟩,數值重建幾乎逐一吻合論文的 rough 值(σ70≈1.04263、σ80≈1.25785、σ90≈1.70146),並延伸出論文未列的 σ95≈2.26、σ99≈4.19——明確標示這是數值重建,不是 Claude 論文明列的新定理。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/11_Reconstructing_Claude_Support_Ladder.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../">AMRAL</a>
+  <a class="link" href="../../../about/">關於</a>
+  <a class="link" href="../../../methodology/">方法論</a>
+  <a class="link" href="../../../protocols/">研究協議</a>
+  <a class="link" href="../../../validation/">驗證</a>
+  <a class="link" href="../../../research-modes/">自主模式</a>
+  <a class="link" href="../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../../glc-framework/">GLC 閉合框架</a>
+  <a class="link" href="../../../bsd/">BSD 猜想</a>
+  <a class="link active" href="../../">臨界線比例梯</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← CPL</a>
+    <span>/</span>
+    <span>11 · 重建 1.04/1.26/1.70 Support Ladder</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">v8</span>
+      <span class="tag">2026-08-11</span>
+      <span class="tag">數學結構重建 + 數值 operator solve</span>
+    </div>
+    <h1>重建 Claude 的 $1.04/1.26/1.70$ Support Ladder</h1>
+    <p class="h1-sub">Claude Remark 1.1 只寫「roughly」給出 $70\%\to\sigma\approx1.04$、$80\%\to\sigma\approx1.26$、$90\%\to\sigma\approx1.70$;本文件找出這三個數字的生成機制——把 Montgomery–Taylor/CCLM one-delta extremal problem 的 support 從 $\sigma=1$ 推廣到任意 $\sigma$,用 Lagrange multiplier / reproducing-kernel 論證得到閉式 $q(\sigma)=1-1/\langle\mathbf1,A_\sigma^{-1}\mathbf1\rangle$,其中 $\sigma\le1$ 時 kernel 不被截斷、退化成 Claude §7.1 的 cosine 閉式解;$\sigma>1$ 時 kernel 變成 truncated triangular-kernel Fredholm equation,不能把 $\sigma\le1$ 的公式盲目外推(這正是先前算 90% 時踩過的坑)。用 midpoint Nyström 數值重建:$\sigma_{70}\approx1.04263$、$\sigma_{80}\approx1.25785$、$\sigma_{90}\approx1.70146$,與論文 rough 值幾乎逐一吻合。文件同時明確劃出邊界:延伸出的 $\sigma_{95}\approx2.26079$、$\sigma_{99}\approx4.1872$ 是本研究依同一結構做的數值重建,<strong>不是 Claude 論文明列的新定理</strong>。最後把整個 ladder 重新定式為「比例 ↔ 資訊頻寬」映射,並拆出兩個完全不同的證明義務:extremal requirement($\sigma_q$ 本身,已可數值重建)與 arithmetic realizability(能否真的合法提供到 support $\sigma$,才是真正的數論牆)。</p>
+    <div class="claim-box">
+      q(σ) = 1 − 1/⟨1, A_σ⁻¹ 1⟩;σ70≈1.04263、σ80≈1.25785、σ90≈1.70146(吻合)、σ95≈2.26、σ99≈4.19(延伸,非論文定理)
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一篇</span><a href="../10-refined-b70-certificate/">10 · Refined Exact B70 證書</a></div>
+      <div class="conn-card"><span class="k">下一篇</span><a href="../12-arithmetic-realizability/">12 · Arithmetic Realizability Bridge</a></div>
+      <div class="conn-card"><span class="k">CPL 進度</span>12 / 15</div>
+    </div>
+    <blockquote class="cite">「σ70≈1.043 不等於『只差 4.3% 算力』。它代表必須跨過目前 arithmetic information 的結構邊界。」— 摘自本文「7. 重要:這不是無條件結果」。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← CPL</a>
+    <a href="../../files/11_Reconstructing_Claude_Support_Ladder.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/11_Reconstructing_Claude_Support_Ladder.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

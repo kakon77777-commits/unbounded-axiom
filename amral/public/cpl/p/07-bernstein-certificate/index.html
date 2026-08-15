@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>N=4 Exact-Rational Bernstein 證書 · CPL · AMRAL</title>
+<meta name="description" content="第一個嚴格證明的 small-N PairCeiling analogue:對 N=4 toy configuration class(mark∈{1,2}、continuous positions、僅觀察 j=1,2,3),exact-rational dual certificate 加上三種 multiplicity pattern 的 exact Bernstein subdivision,嚴格證明 p_min ≥ 0.6982110925 = 69.82110925%。這不是 numerical optimiser 給的下界。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/07_N4_Exact_Rational_Bernstein_Certificate.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../">AMRAL</a>
+  <a class="link" href="../../../about/">關於</a>
+  <a class="link" href="../../../methodology/">方法論</a>
+  <a class="link" href="../../../protocols/">研究協議</a>
+  <a class="link" href="../../../validation/">驗證</a>
+  <a class="link" href="../../../research-modes/">自主模式</a>
+  <a class="link" href="../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../../glc-framework/">GLC 閉合框架</a>
+  <a class="link" href="../../../bsd/">BSD 猜想</a>
+  <a class="link active" href="../../">臨界線比例梯</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← CPL</a>
+    <span>/</span>
+    <span>07 · N=4 Exact-Rational Bernstein 證書</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">v5</span>
+      <span class="tag">2026-08-11</span>
+      <span class="tag">exact-rational finite certificate</span>
+    </div>
+    <h1>N=4 Continuous Toy PairCeiling 的 Exact-Rational Bernstein Certificate</h1>
+    <p class="h1-sub">從 numerical candidate 提升到可機器重算的嚴格下界:在 $N=4$、$m_i\in\{1,2\}$、positions 任意位於 unit circle、僅約束 open-band $j=1,2,3$ 的 toy configuration class 裡,取 exact-rational dual $(c_0,y_1,y_2,y_3)$,對 $(1,1,1,1)$ pattern 直接由符號檢查、$(2,2)$ pattern 用 3 步 exact Bernstein subdivision(最小 terminal coefficient $\approx0.00481$)、$(2,1,1)$ pattern 用 77 個 internal box 的 exact bivariate Bernstein subdivision(最小 terminal coefficient $\approx5.7\times10^{-6}$)——三種 pattern 全部證正,得到嚴格下界 $p_{\min}\ge0.6982110925=69.82110925\%$。文件特別強調這不是 numerical optimiser 給的下界,而是弱對偶 + exact positivity 證明的結果;前一輪 numerical column generation 的候選 floor 約 69.82311%,與這個嚴格下界只差極窄的一段,右側仍是 numerical candidate 不是 rigorous upper bound。文件也把整條「numerical discovery → rationalize with margin → derive exact polynomial → Bernstein subdivision → exact positivity certificate」流程講清楚,作為後續同類 certificate 的固定模板。</p>
+    <div class="claim-box">
+      p_min ≥ 0.6982110925 = 69.82110925%
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一篇</span><a href="../06-column-generation/">06 · Column Generation 對接 PairCeiling</a></div>
+      <div class="conn-card"><span class="k">下一篇</span><a href="../08-boundary-escape-frontier/">08 · Toy P70 最小邊界逃逸前緣</a></div>
+      <div class="conn-card"><span class="k">CPL 進度</span>8 / 15</div>
+    </div>
+    <blockquote class="cite">「這是我們目前第一個 certified small-N PairCeiling analogue。」— 摘自本文「6. 這已經證明什麼?」。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← CPL</a>
+    <a href="../../files/07_N4_Exact_Rational_Bernstein_Certificate.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/07_N4_Exact_Rational_Bernstein_Certificate.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>
