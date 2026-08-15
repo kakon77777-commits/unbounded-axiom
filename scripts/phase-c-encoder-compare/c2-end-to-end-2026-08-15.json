@@ -1,0 +1,2115 @@
+{
+  "generated_at": "2026-08-15T13:00:05.808Z",
+  "purpose": "Phase C2: first true end-to-end server-side DSRS semantic path (text -> Node encoder -> live Vectorize -> calibration -> fold), compared against the browser-equivalent reconstruction from C1.2's exact ground truth. Semantic channel only, no lexical/dictionary/relations/RRF/MCP.",
+  "model_revision": "75c43b069aac4d136ba6bc1122f995fedcfd2781",
+  "index": "logic-matrix-dsrs-v1-index-v1",
+  "query_method": "direct Cloudflare Vectorize HTTP API (POST .../query, vector in request body) -- no CLI, no upsert/delete",
+  "calibration": {
+    "raw_floor": 0.5,
+    "raw_ceiling": 0.62
+  },
+  "query_count": 30,
+  "summary": {
+    "top1_match_rate": "28/30",
+    "both_empty_after_subfloor_count": 19
+  },
+  "per_query": [
+    {
+      "query": "動態不動點",
+      "server_result_full": [
+        {
+          "doc_id": "lm-001934",
+          "score": 0.11793024999999976,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001378",
+          "score": 0.11303500000000022,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-002613",
+          "score": 0.08946458333333371,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002540",
+          "score": 0.0688591666666664,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001390",
+          "score": 0.046515833333333576,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001382",
+          "score": 0.00917858333333299,
+          "source": "chunk"
+        }
+      ],
+      "browser_equivalent_result_full": [
+        {
+          "doc_id": "lm-002542",
+          "score": 0.127376916666667,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001934",
+          "score": 0.11793024999999976,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001378",
+          "score": 0.11303566666666653,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-002613",
+          "score": 0.08946408333333304,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002540",
+          "score": 0.06885841666666634,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001390",
+          "score": 0.04651541666666666,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001382",
+          "score": 0.009178666666666743,
+          "source": "chunk"
+        }
+      ],
+      "server_candidate_count": 6,
+      "browser_equivalent_candidate_count": 7,
+      "top1_match": false,
+      "overlap_at_10": 6,
+      "rank_correlation": 0.8285714285714285
+    },
+    {
+      "query": "全域量詞",
+      "server_result_full": [
+        {
+          "doc_id": "lm-002409",
+          "score": 0.8934683333333332,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-002669",
+          "score": 0.09168283333333324,
+          "source": "chunk"
+        }
+      ],
+      "browser_equivalent_result_full": [
+        {
+          "doc_id": "lm-002409",
+          "score": 0.8934683333333332,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-002669",
+          "score": 0.09168216666666693,
+          "source": "chunk"
+        }
+      ],
+      "server_candidate_count": 2,
+      "browser_equivalent_candidate_count": 2,
+      "top1_match": true,
+      "overlap_at_10": 2,
+      "rank_correlation": 1
+    },
+    {
+      "query": "AI 主體性",
+      "server_result_full": [
+        {
+          "doc_id": "lm-000545",
+          "score": 0.43103333333333327,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000547",
+          "score": 0.41232666666666623,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000546",
+          "score": 0.4120404166666666,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001011",
+          "score": 0.3744537499999997,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001222",
+          "score": 0.3059079166666664,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001879",
+          "score": 0.2802878333333333,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002414",
+          "score": 0.2704658333333332,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001919",
+          "score": 0.2522541666666665,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001093",
+          "score": 0.23393083333333362,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000245",
+          "score": 0.22059633333333292,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001633",
+          "score": 0.15846916666666655,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001420",
+          "score": 0.15376416666666634,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002069",
+          "score": 0.13538050000000043,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002359",
+          "score": 0.1199816666666668,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002006",
+          "score": 0.10763108333333346,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001417",
+          "score": 0.07197500000000005,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001690",
+          "score": 0.06254333333333326,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000550",
+          "score": 0.0607800000000001,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002314",
+          "score": 0.03490450000000016,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001920",
+          "score": 0.03263799999999965,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-002347",
+          "score": 0.01588666666666646,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001443",
+          "score": 0.00281033333333347,
+          "source": "doc"
+        }
+      ],
+      "browser_equivalent_result_full": [
+        {
+          "doc_id": "lm-000545",
+          "score": 0.431049,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000547",
+          "score": 0.4123411666666669,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000546",
+          "score": 0.41205583333333295,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001011",
+          "score": 0.37446725,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001222",
+          "score": 0.30591916666666646,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001879",
+          "score": 0.2802889166666665,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002414",
+          "score": 0.27046616666666634,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000030",
+          "score": 0.2598705833333335,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001919",
+          "score": 0.2522646666666665,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001093",
+          "score": 0.23393216666666625,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001420",
+          "score": 0.05574983333333321,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-000245",
+          "score": 0.03927833333333316,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001920",
+          "score": 0.0326399166666667,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-002347",
+          "score": 0.01589225000000009,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001690",
+          "score": 0.014651416666666695,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001443",
+          "score": 0.0028104166666662973,
+          "source": "doc"
+        }
+      ],
+      "server_candidate_count": 22,
+      "browser_equivalent_candidate_count": 16,
+      "top1_match": true,
+      "overlap_at_10": 9,
+      "rank_correlation": 0.7410714285714286
+    },
+    {
+      "query": "Navier-Stokes",
+      "server_result_full": [],
+      "browser_equivalent_result_full": [],
+      "server_candidate_count": 0,
+      "browser_equivalent_candidate_count": 0,
+      "top1_match": true,
+      "overlap_at_10": 0,
+      "rank_correlation": null
+    },
+    {
+      "query": "DSRS",
+      "server_result_full": [],
+      "browser_equivalent_result_full": [],
+      "server_candidate_count": 0,
+      "browser_equivalent_candidate_count": 0,
+      "top1_match": true,
+      "overlap_at_10": 0,
+      "rank_correlation": null
+    },
+    {
+      "query": "AICL",
+      "server_result_full": [],
+      "browser_equivalent_result_full": [],
+      "server_candidate_count": 0,
+      "browser_equivalent_candidate_count": 0,
+      "top1_match": true,
+      "overlap_at_10": 0,
+      "rank_correlation": null
+    },
+    {
+      "query": "lm-001862",
+      "server_result_full": [],
+      "browser_equivalent_result_full": [],
+      "server_candidate_count": 0,
+      "browser_equivalent_candidate_count": 0,
+      "top1_match": true,
+      "overlap_at_10": 0,
+      "rank_correlation": null
+    },
+    {
+      "query": "W-20",
+      "server_result_full": [],
+      "browser_equivalent_result_full": [],
+      "server_candidate_count": 0,
+      "browser_equivalent_candidate_count": 0,
+      "top1_match": true,
+      "overlap_at_10": 0,
+      "rank_correlation": null
+    },
+    {
+      "query": "CASP",
+      "server_result_full": [],
+      "browser_equivalent_result_full": [],
+      "server_candidate_count": 0,
+      "browser_equivalent_candidate_count": 0,
+      "top1_match": true,
+      "overlap_at_10": 0,
+      "rank_correlation": null
+    },
+    {
+      "query": "時間感知與主體邊界",
+      "server_result_full": [
+        {
+          "doc_id": "lm-001920",
+          "score": 0.5375750000000004,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001442",
+          "score": 0.5239041666666666,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001475",
+          "score": 0.4821149999999996,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000545",
+          "score": 0.45757441666666643,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000758",
+          "score": 0.4410902499999999,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000546",
+          "score": 0.43914166666666665,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002231",
+          "score": 0.39212558333333314,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002055",
+          "score": 0.38793833333333383,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000547",
+          "score": 0.3795429999999998,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002414",
+          "score": 0.3744316666666664,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002146",
+          "score": 0.3009533333333333,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001222",
+          "score": 0.2808808333333329,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002425",
+          "score": 0.27933116666666685,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002548",
+          "score": 0.27204058333333375,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-002374",
+          "score": 0.24767966666666696,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001945",
+          "score": 0.24479524999999985,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001320",
+          "score": 0.23149049999999968,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001998",
+          "score": 0.21149833333333296,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002420",
+          "score": 0.16664166666666702,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000548",
+          "score": 0.1573080833333333,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001443",
+          "score": 0.15528700000000026,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001826",
+          "score": 0.15140274999999964,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002504",
+          "score": 0.14850499999999972,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-002264",
+          "score": 0.14208583333333302,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001879",
+          "score": 0.1392270000000001,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001272",
+          "score": 0.12480333333333335,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001551",
+          "score": 0.10615999999999959,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002006",
+          "score": 0.10311750000000046,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001694",
+          "score": 0.07051275000000043,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-000250",
+          "score": 0.06551249999999972,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-002395",
+          "score": 0.06184333333333347,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-002435",
+          "score": 0.0542337499999999,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-002299",
+          "score": 0.03944833333333342,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001691",
+          "score": 0.00731833333333376,
+          "source": "doc"
+        }
+      ],
+      "browser_equivalent_result_full": [
+        {
+          "doc_id": "lm-001920",
+          "score": 0.5375295000000002,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001442",
+          "score": 0.5238624166666669,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001475",
+          "score": 0.4821312499999999,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000545",
+          "score": 0.45772691666666665,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000758",
+          "score": 0.4411550833333333,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000546",
+          "score": 0.43930725000000026,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002231",
+          "score": 0.39261450000000014,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002548",
+          "score": 0.2720615833333338,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-002374",
+          "score": 0.24760499999999983,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-000547",
+          "score": 0.23456558333333305,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-000548",
+          "score": 0.15747400000000006,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001443",
+          "score": 0.1552258333333334,
+          "source": "doc"
+        }
+      ],
+      "server_candidate_count": 34,
+      "browser_equivalent_candidate_count": 12,
+      "top1_match": true,
+      "overlap_at_10": 8,
+      "rank_correlation": 0.17832167832167833
+    },
+    {
+      "query": "Riemann Hypothesis",
+      "server_result_full": [],
+      "browser_equivalent_result_full": [],
+      "server_candidate_count": 0,
+      "browser_equivalent_candidate_count": 0,
+      "top1_match": true,
+      "overlap_at_10": 0,
+      "rank_correlation": null
+    },
+    {
+      "query": "quantum entanglement",
+      "server_result_full": [],
+      "browser_equivalent_result_full": [],
+      "server_candidate_count": 0,
+      "browser_equivalent_candidate_count": 0,
+      "top1_match": true,
+      "overlap_at_10": 0,
+      "rank_correlation": null
+    },
+    {
+      "query": "DSRS 的 hybrid retrieval 設計",
+      "server_result_full": [],
+      "browser_equivalent_result_full": [],
+      "server_candidate_count": 0,
+      "browser_equivalent_candidate_count": 0,
+      "top1_match": true,
+      "overlap_at_10": 0,
+      "rank_correlation": null
+    },
+    {
+      "query": "AICL rights framework 治理",
+      "server_result_full": [],
+      "browser_equivalent_result_full": [],
+      "server_candidate_count": 0,
+      "browser_equivalent_candidate_count": 0,
+      "top1_match": true,
+      "overlap_at_10": 0,
+      "rank_correlation": null
+    },
+    {
+      "query": "忒修斯之船",
+      "server_result_full": [
+        {
+          "doc_id": "lm-002659",
+          "score": 0.09669858333333319,
+          "source": "chunk"
+        }
+      ],
+      "browser_equivalent_result_full": [
+        {
+          "doc_id": "lm-002659",
+          "score": 0.09669866666666693,
+          "source": "chunk"
+        }
+      ],
+      "server_candidate_count": 1,
+      "browser_equivalent_candidate_count": 1,
+      "top1_match": true,
+      "overlap_at_10": 1,
+      "rank_correlation": null
+    },
+    {
+      "query": "考拉茲猜想",
+      "server_result_full": [
+        {
+          "doc_id": "lm-000901",
+          "score": 0.446344166666667,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002675",
+          "score": 0.3482883333333335,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000898",
+          "score": 0.22398999999999986,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000899",
+          "score": 0.05345666666666712,
+          "source": "doc"
+        }
+      ],
+      "browser_equivalent_result_full": [
+        {
+          "doc_id": "lm-000901",
+          "score": 0.4463434999999997,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002675",
+          "score": 0.3482885833333338,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000898",
+          "score": 0.22398916666666696,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000899",
+          "score": 0.05345533333333356,
+          "source": "doc"
+        }
+      ],
+      "server_candidate_count": 4,
+      "browser_equivalent_candidate_count": 4,
+      "top1_match": true,
+      "overlap_at_10": 4,
+      "rank_correlation": 1
+    },
+    {
+      "query": "$P = NP$",
+      "server_result_full": [],
+      "browser_equivalent_result_full": [],
+      "server_candidate_count": 0,
+      "browser_equivalent_candidate_count": 0,
+      "top1_match": true,
+      "overlap_at_10": 0,
+      "rank_correlation": null
+    },
+    {
+      "query": "∀x∃y",
+      "server_result_full": [],
+      "browser_equivalent_result_full": [],
+      "server_candidate_count": 0,
+      "browser_equivalent_candidate_count": 0,
+      "top1_match": true,
+      "overlap_at_10": 0,
+      "rank_correlation": null
+    },
+    {
+      "query": "如何煮一杯好咖啡",
+      "server_result_full": [],
+      "browser_equivalent_result_full": [],
+      "server_candidate_count": 0,
+      "browser_equivalent_candidate_count": 0,
+      "top1_match": true,
+      "overlap_at_10": 0,
+      "rank_correlation": null
+    },
+    {
+      "query": "台北天氣預報",
+      "server_result_full": [],
+      "browser_equivalent_result_full": [],
+      "server_candidate_count": 0,
+      "browser_equivalent_candidate_count": 0,
+      "top1_match": true,
+      "overlap_at_10": 0,
+      "rank_correlation": null
+    },
+    {
+      "query": "機器如何理解語言背後的意圖",
+      "server_result_full": [
+        {
+          "doc_id": "lm-001672",
+          "score": 0.6539741666666664,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001669",
+          "score": 0.653715833333333,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001486",
+          "score": 0.6269425000000005,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-000993",
+          "score": 0.5607754166666664,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001890",
+          "score": 0.5464578333333331,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001853",
+          "score": 0.5435966666666663,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000995",
+          "score": 0.5253975000000004,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001717",
+          "score": 0.5044003333333335,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001554",
+          "score": 0.4915650000000003,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002349",
+          "score": 0.4888749999999997,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-002411",
+          "score": 0.4664630000000003,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001344",
+          "score": 0.46098633333333344,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001794",
+          "score": 0.4392961666666667,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000024",
+          "score": 0.4244866666666671,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-000529",
+          "score": 0.42181608333333365,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-002249",
+          "score": 0.3944974999999999,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001664",
+          "score": 0.3895138333333335,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000743",
+          "score": 0.3893911666666666,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000846",
+          "score": 0.3778775000000003,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-002218",
+          "score": 0.3657812499999996,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000625",
+          "score": 0.3624183333333336,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001180",
+          "score": 0.3517158333333335,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001795",
+          "score": 0.3512238333333334,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001748",
+          "score": 0.3310362499999997,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001031",
+          "score": 0.31668916666666624,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001214",
+          "score": 0.29926583333333334,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000806",
+          "score": 0.2959455,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001730",
+          "score": 0.2750252500000004,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001733",
+          "score": 0.24635583333333377,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001799",
+          "score": 0.2445924999999997,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001259",
+          "score": 0.24457625000000038,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001844",
+          "score": 0.2398694166666669,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-000840",
+          "score": 0.220999583333333,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-000989",
+          "score": 0.19207750000000043,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001701",
+          "score": 0.18464916666666628,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001011",
+          "score": 0.17872749999999957,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000091",
+          "score": 0.12630724999999993,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-000971",
+          "score": 0.09538283333333324,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001007",
+          "score": 0.047876916666667046,
+          "source": "doc"
+        }
+      ],
+      "browser_equivalent_result_full": [
+        {
+          "doc_id": "lm-001669",
+          "score": 0.6065906666666667,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001672",
+          "score": 0.5840129166666671,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001486",
+          "score": 0.5743725833333334,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001853",
+          "score": 0.5242887499999997,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000995",
+          "score": 0.519226166666667,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001890",
+          "score": 0.5064494166666665,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000993",
+          "score": 0.5060563333333333,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002411",
+          "score": 0.49110749999999964,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-002349",
+          "score": 0.47150908333333336,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-000529",
+          "score": 0.4208615833333337,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001717",
+          "score": 0.4176545833333332,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-000024",
+          "score": 0.38674374999999966,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-000846",
+          "score": 0.35887899999999995,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-000625",
+          "score": 0.35168458333333374,
+          "source": "doc"
+        }
+      ],
+      "server_candidate_count": 39,
+      "browser_equivalent_candidate_count": 14,
+      "top1_match": false,
+      "overlap_at_10": 8,
+      "rank_correlation": 0.6637362637362637
+    },
+    {
+      "query": "兩個不同來源獨立得出相同結論的現象",
+      "server_result_full": [
+        {
+          "doc_id": "lm-000024",
+          "score": 0.8160316666666667,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000722",
+          "score": 0.810861666666667,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000549",
+          "score": 0.7064308333333335,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-000783",
+          "score": 0.7023016666666669,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001188",
+          "score": 0.6370872500000004,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002419",
+          "score": 0.6215428333333338,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-000515",
+          "score": 0.6151054999999999,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000127",
+          "score": 0.5629300000000004,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001045",
+          "score": 0.4891949999999997,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001094",
+          "score": 0.4697958333333335,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002660",
+          "score": 0.4426125000000003,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000871",
+          "score": 0.4362333333333329,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000371",
+          "score": 0.4346122500000003,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-000723",
+          "score": 0.4327150000000002,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000012",
+          "score": 0.4317353333333329,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001766",
+          "score": 0.41759358333333296,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-000232",
+          "score": 0.3991330833333334,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000719",
+          "score": 0.3921504166666664,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001715",
+          "score": 0.36894083333333294,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001729",
+          "score": 0.36333199999999954,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-000681",
+          "score": 0.3611778333333334,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001534",
+          "score": 0.3573741666666667,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-002010",
+          "score": 0.35637750000000007,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002326",
+          "score": 0.35322108333333363,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-002620",
+          "score": 0.34602916666666705,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-000999",
+          "score": 0.33360616666666676,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000782",
+          "score": 0.3242805833333334,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001338",
+          "score": 0.31003249999999966,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000247",
+          "score": 0.30739916666666645,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-002560",
+          "score": 0.2959589166666665,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000390",
+          "score": 0.2920250000000004,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001347",
+          "score": 0.2897729166666668,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-000357",
+          "score": 0.28774041666666716,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001110",
+          "score": 0.2813783333333329,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-000524",
+          "score": 0.26131866666666653,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001980",
+          "score": 0.24040541666666693,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-000612",
+          "score": 0.22684383333333355,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-000347",
+          "score": 0.20322999999999963,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-000747",
+          "score": 0.18350333333333377,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-000676",
+          "score": 0.16071800000000044,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-000445",
+          "score": 0.14414041666666694,
+          "source": "doc"
+        }
+      ],
+      "browser_equivalent_result_full": [
+        {
+          "doc_id": "lm-000024",
+          "score": 0.8127748333333333,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000722",
+          "score": 0.80492225,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000549",
+          "score": 0.7040458333333333,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-000783",
+          "score": 0.6995668333333335,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001188",
+          "score": 0.6342506666666664,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002419",
+          "score": 0.6194690833333332,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-000515",
+          "score": 0.6100146666666667,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001045",
+          "score": 0.48673949999999966,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001508",
+          "score": 0.4482009166666671,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-000371",
+          "score": 0.43323291666666675,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-000012",
+          "score": 0.42309350000000007,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001766",
+          "score": 0.4164365000000003,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-002386",
+          "score": 0.4114365833333337,
+          "source": "doc"
+        }
+      ],
+      "server_candidate_count": 41,
+      "browser_equivalent_candidate_count": 13,
+      "top1_match": true,
+      "overlap_at_10": 8,
+      "rank_correlation": 0.8090909090909091
+    },
+    {
+      "query": "SSSP",
+      "server_result_full": [],
+      "browser_equivalent_result_full": [],
+      "server_candidate_count": 0,
+      "browser_equivalent_candidate_count": 0,
+      "top1_match": true,
+      "overlap_at_10": 0,
+      "rank_correlation": null
+    },
+    {
+      "query": "personal identity over time",
+      "server_result_full": [],
+      "browser_equivalent_result_full": [],
+      "server_candidate_count": 0,
+      "browser_equivalent_candidate_count": 0,
+      "top1_match": true,
+      "overlap_at_10": 0,
+      "rank_correlation": null
+    },
+    {
+      "query": "研究計畫的檢查點機制",
+      "server_result_full": [
+        {
+          "doc_id": "lm-001353",
+          "score": 0.20702750000000011,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002241",
+          "score": 0.19944358333333356,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000973",
+          "score": 0.14402083333333315,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002382",
+          "score": 0.12077791666666635,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002299",
+          "score": 0.11839166666666642,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000602",
+          "score": 0.11804749999999957,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001689",
+          "score": 0.10018941666666652,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002576",
+          "score": 0.09536049999999963,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000911",
+          "score": 0.07382383333333353,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001605",
+          "score": 0.03495716666666686,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001719",
+          "score": 0.021681166666666828,
+          "source": "chunk"
+        }
+      ],
+      "browser_equivalent_result_full": [
+        {
+          "doc_id": "lm-001353",
+          "score": 0.2070047499999996,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002241",
+          "score": 0.19941650000000016,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000973",
+          "score": 0.14400216666666707,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002382",
+          "score": 0.12076649999999967,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002299",
+          "score": 0.11836175000000024,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000602",
+          "score": 0.11802666666666703,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001689",
+          "score": 0.10016041666666697,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002576",
+          "score": 0.09535233333333357,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000370",
+          "score": 0.08032258333333375,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000911",
+          "score": 0.07379099999999991,
+          "source": "chunk"
+        }
+      ],
+      "server_candidate_count": 11,
+      "browser_equivalent_candidate_count": 10,
+      "top1_match": true,
+      "overlap_at_10": 9,
+      "rank_correlation": 0.9916666666666667
+    },
+    {
+      "query": "lm-000001",
+      "server_result_full": [],
+      "browser_equivalent_result_full": [],
+      "server_candidate_count": 0,
+      "browser_equivalent_candidate_count": 0,
+      "top1_match": true,
+      "overlap_at_10": 0,
+      "rank_correlation": null
+    },
+    {
+      "query": "MCP",
+      "server_result_full": [],
+      "browser_equivalent_result_full": [],
+      "server_candidate_count": 0,
+      "browser_equivalent_candidate_count": 0,
+      "top1_match": true,
+      "overlap_at_10": 0,
+      "rank_correlation": null
+    },
+    {
+      "query": "自我指涉與遞迴結構",
+      "server_result_full": [
+        {
+          "doc_id": "lm-001619",
+          "score": 0.4216116666666668,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001882",
+          "score": 0.3794366666666669,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001487",
+          "score": 0.3624191666666665,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001505",
+          "score": 0.3498762500000002,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001725",
+          "score": 0.30111416666666707,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001690",
+          "score": 0.2922808333333332,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001056",
+          "score": 0.28204083333333296,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002077",
+          "score": 0.2780183333333334,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-002129",
+          "score": 0.27352125000000005,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001214",
+          "score": 0.24935208333333367,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000549",
+          "score": 0.24419333333333312,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001338",
+          "score": 0.20900716666666652,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001491",
+          "score": 0.20778624999999995,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001555",
+          "score": 0.19962750000000012,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001237",
+          "score": 0.19740249999999998,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002058",
+          "score": 0.1930641666666668,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000515",
+          "score": 0.1921137500000003,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001686",
+          "score": 0.16914500000000018,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001061",
+          "score": 0.1648927499999999,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001684",
+          "score": 0.14761783333333373,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000422",
+          "score": 0.13876499999999997,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000868",
+          "score": 0.12969416666666622,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000681",
+          "score": 0.12332950000000047,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002277",
+          "score": 0.1180872500000004,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002174",
+          "score": 0.11692691666666626,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001182",
+          "score": 0.11536625000000042,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001679",
+          "score": 0.08430874999999968,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000928",
+          "score": 0.07288708333333302,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001356",
+          "score": 0.06452583333333337,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-002023",
+          "score": 0.023279166666666705,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-002370",
+          "score": 0.014938333333333609,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-000991",
+          "score": 0.004663083333332948,
+          "source": "doc"
+        }
+      ],
+      "browser_equivalent_result_full": [
+        {
+          "doc_id": "lm-001619",
+          "score": 0.42160958333333315,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001882",
+          "score": 0.3794370000000001,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001487",
+          "score": 0.36241858333333304,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001505",
+          "score": 0.349875583333333,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001725",
+          "score": 0.30111399999999955,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001690",
+          "score": 0.2922799166666666,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001056",
+          "score": 0.2820414166666665,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000909",
+          "score": 0.27857900000000013,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002077",
+          "score": 0.27801816666666684,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-002129",
+          "score": 0.27352225000000047,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001214",
+          "score": 0.24935083333333294,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000549",
+          "score": 0.24419274999999963,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001338",
+          "score": 0.20900683333333336,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-002174",
+          "score": 0.11692666666666685,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001182",
+          "score": 0.11536591666666633,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001356",
+          "score": 0.06452599999999994,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-002653",
+          "score": 0.044099999999999695,
+          "source": "doc"
+        }
+      ],
+      "server_candidate_count": 32,
+      "browser_equivalent_candidate_count": 17,
+      "top1_match": true,
+      "overlap_at_10": 9,
+      "rank_correlation": 0.2571428571428571
+    },
+    {
+      "query": "best pizza recipe",
+      "server_result_full": [],
+      "browser_equivalent_result_full": [],
+      "server_candidate_count": 0,
+      "browser_equivalent_candidate_count": 0,
+      "top1_match": true,
+      "overlap_at_10": 0,
+      "rank_correlation": null
+    },
+    {
+      "query": "當一個系統的每個組成部分都被逐漸替換之後，它還是原來的那個系統嗎",
+      "server_result_full": [
+        {
+          "doc_id": "lm-000622",
+          "score": 0.8149961666666669,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002423",
+          "score": 0.6766016666666671,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-002041",
+          "score": 0.5772347499999997,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002257",
+          "score": 0.5503455833333337,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-002659",
+          "score": 0.5397979999999997,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-002557",
+          "score": 0.5195708333333336,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001336",
+          "score": 0.519502166666667,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001394",
+          "score": 0.506094583333333,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001014",
+          "score": 0.5004249999999998,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002513",
+          "score": 0.49457699999999977,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001725",
+          "score": 0.47630749999999966,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000976",
+          "score": 0.4761725000000004,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001747",
+          "score": 0.47536291666666713,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001965",
+          "score": 0.4705675000000002,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-000661",
+          "score": 0.4658758333333337,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000753",
+          "score": 0.45976583333333376,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001615",
+          "score": 0.45845916666666653,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002657",
+          "score": 0.45395333333333365,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001655",
+          "score": 0.45137083333333294,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002344",
+          "score": 0.4483308333333334,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002463",
+          "score": 0.441294166666667,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001508",
+          "score": 0.4392983333333332,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002613",
+          "score": 0.42869666666666695,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-002617",
+          "score": 0.4253561666666665,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002142",
+          "score": 0.4165580000000002,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001619",
+          "score": 0.41562250000000045,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002620",
+          "score": 0.4149486666666665,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002087",
+          "score": 0.4110583333333334,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001419",
+          "score": 0.4106164166666667,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002116",
+          "score": 0.4052664166666664,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001685",
+          "score": 0.400168333333333,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002660",
+          "score": 0.39477199999999973,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002376",
+          "score": 0.3728208333333335,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002079",
+          "score": 0.34960458333333316,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002577",
+          "score": 0.31860750000000015,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002595",
+          "score": 0.3079275000000002,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001362",
+          "score": 0.2978616666666665,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-000926",
+          "score": 0.2922520000000003,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001978",
+          "score": 0.28853466666666683,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-002594",
+          "score": 0.2821558333333335,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001901",
+          "score": 0.2768536666666664,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002558",
+          "score": 0.2649620000000001,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-000513",
+          "score": 0.23064083333333338,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-000968",
+          "score": 0.22880500000000045,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-002167",
+          "score": 0.18406666666666666,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-000676",
+          "score": 0.16159858333333332,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001715",
+          "score": 0.15091833333333304,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001264",
+          "score": 0.14472308333333314,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-000484",
+          "score": 0.1353944166666667,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-002504",
+          "score": 0.08030883333333314,
+          "source": "doc"
+        }
+      ],
+      "browser_equivalent_result_full": [
+        {
+          "doc_id": "lm-000622",
+          "score": 0.8149965833333338,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002423",
+          "score": 0.676600583333333,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-002041",
+          "score": 0.5772335,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-000024",
+          "score": 0.5676054166666666,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002257",
+          "score": 0.5503450833333331,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-002557",
+          "score": 0.548361,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002659",
+          "score": 0.5397979999999997,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001818",
+          "score": 0.5296580000000005,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002040",
+          "score": 0.5282674166666668,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001336",
+          "score": 0.519502916666667,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-001394",
+          "score": 0.5060929166666663,
+          "source": "chunk"
+        },
+        {
+          "doc_id": "lm-002513",
+          "score": 0.4945760000000003,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001965",
+          "score": 0.4705675000000002,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-002174",
+          "score": 0.46917866666666697,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-001566",
+          "score": 0.4569177500000003,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-002657",
+          "score": 0.4539539166666671,
+          "source": "doc"
+        },
+        {
+          "doc_id": "lm-002613",
+          "score": 0.42869650000000037,
+          "source": "doc"
+        }
+      ],
+      "server_candidate_count": 50,
+      "browser_equivalent_candidate_count": 17,
+      "top1_match": true,
+      "overlap_at_10": 7,
+      "rank_correlation": 0.7622377622377623
+    }
+  ]
+}

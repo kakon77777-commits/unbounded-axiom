@@ -1,0 +1,73 @@
+{
+  "purpose": "Phase C2 recall-gap analysis: for each oracle query, which browser-equivalent (exact cosine, C1.2 ground truth) candidates are completely absent from live Vectorize returnValues:true topK=30-per-namespace results -- not a ranking/ordering question, a presence/absence question.",
+  "method_note": "Only the missing-from-server direction is meaningful here. The reverse (extra candidates present in server but not in the browser-equivalent list) is NOT reported as a finding -- it is largely an artifact of comparison-depth asymmetry (server queried topK=30/namespace; the browser-equivalent baseline was reconstructed from C1.2, which only saved each namespace's top10). A genuinely missing id, by contrast, cannot be explained by that asymmetry: server's window (30) was 3x WIDER than what browser-equivalent was checked against (10), so if server had full recall, all of browser's top10-per-namespace candidates should trivially reappear.",
+  "decisive_verified_case": {
+    "query": "動態不動點",
+    "missing_id": "lm-002542",
+    "chunk": "lm-002542#chunk-0",
+    "exact_cosine_recomputed_from_freshly_fetched_vectorize_values": 0.515285,
+    "verification_chain": [
+      "1. C1.2 exact local sweep (registry/generated/*.f32.bin, zero Vectorize) ranks this chunk #1 for this query, cosine=0.515285, calibrated=0.1274",
+      "2. Phase C2 live Vectorize query (topK=30, returnValues:true, chunk namespace) does not return it",
+      "3. Direct probe: re-queried Vectorize with topK=50 (the max) -- still absent",
+      "4. Direct probe: fetched lm-002542#chunk-0..3 from Vectorize via get_by_ids -- vectors genuinely exist, 512-dim, real values (rules out a missing-upload explanation)",
+      "5. Recomputed cosine locally from the JUST-FETCHED Vectorize values (not reusing any earlier script/data) -- 0.515285, matches step 1 exactly"
+    ]
+  },
+  "aggregate": {
+    "real_nondegenerate_queries": 11,
+    "total_browser_equivalent_candidates_checked": 113,
+    "total_missing_from_server": 12,
+    "approx_miss_rate": 0.1062
+  },
+  "per_query_with_gaps": [
+    {
+      "query": "動態不動點",
+      "browser_candidate_count": 7,
+      "missing_from_server_topK30": [
+        "lm-002542"
+      ]
+    },
+    {
+      "query": "AI 主體性",
+      "browser_candidate_count": 16,
+      "missing_from_server_topK30": [
+        "lm-000030"
+      ]
+    },
+    {
+      "query": "兩個不同來源獨立得出相同結論的現象",
+      "browser_candidate_count": 13,
+      "missing_from_server_topK30": [
+        "lm-001508",
+        "lm-002386"
+      ]
+    },
+    {
+      "query": "研究計畫的檢查點機制",
+      "browser_candidate_count": 10,
+      "missing_from_server_topK30": [
+        "lm-000370"
+      ]
+    },
+    {
+      "query": "自我指涉與遞迴結構",
+      "browser_candidate_count": 17,
+      "missing_from_server_topK30": [
+        "lm-000909",
+        "lm-002653"
+      ]
+    },
+    {
+      "query": "當一個系統的每個組成部分都被逐漸替換之後，它還是原來的那個系統嗎",
+      "browser_candidate_count": 17,
+      "missing_from_server_topK30": [
+        "lm-000024",
+        "lm-001566",
+        "lm-001818",
+        "lm-002040",
+        "lm-002174"
+      ]
+    }
+  ]
+}
