@@ -72,6 +72,23 @@
     ]
   },
 
+  "vectorize_deployments": [
+    {
+      "index_name": "logic-matrix-dsrs-v1-index-v1",
+      "embedding_space": "dsrs-v1",
+      "index_profile": "dsrs-index-v1",
+      "dimensions": 512,
+      "metric": "cosine",
+      "created_2026-08-15": true,
+      "created_via": "scripts/export_vectorize.py output, uploaded with `wrangler vectorize create` + `wrangler vectorize upsert` x 5 shards (docs-000, chunks-000..003)",
+      "vector_count_confirmed": 18291,
+      "namespaces": {"document": 2675, "chunk": 15616},
+      "metadata_indexes": [],
+      "smoke_test": "queried both namespaces by an existing vector's own --vector-id: document namespace top-1 = the queried id itself (self-match score 0.877, next two results topically coherent); chunk namespace top-1 = the queried id itself (self-match score 0.858, next two results were other chunks of the SAME source document). Self-match score is well below 1.0 in both cases -- expected for an ANN index with internal quantization, not evidence of upload data loss (the exporter's own full-corpus bitwise round-trip check, run before upload, already confirmed 0 mismatches against the source float32 vectors).",
+      "note": "First real Vectorize resource for this corpus. Name deliberately encodes embedding_space+index_profile (E+I), not the full E+Q+I+C+F -- see index_profile.note and migration_note. A future index_profile bump gets its own index name, e.g. logic-matrix-dsrs-v1-index-v2, rather than overwriting this one."
+    }
+  ],
+
   "source_files": [
     "scripts/build_embeddings.py",
     "scripts/build_chunk_embeddings.py",
