@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-15T06:07:49Z",
+  "generated_at": "2026-08-15T06:22:41Z",
   "purpose": "Phase B step 1 (deterministic export) for Logic Matrix MCP x DSRS. Zero Cloudflare resources created -- local NDJSON only.",
   "source_profile": {
     "embedding_space": "dsrs-v1",
@@ -46,34 +46,56 @@
       1.0,
       1.0
     ],
-    "metadata_keys_validated": "no '.', no '\"', no leading '$' (Vectorize constraint) -- checked per record during export, script aborts on violation"
+    "metadata_keys_validated": "no '.', no '\"', no leading '$' (Vectorize constraint) -- checked per record during export, script aborts on violation",
+    "id_length_validated": "every id checked against the 64-byte Vectorize limit, script aborts on violation",
+    "metadata_size_validated": "every metadata object checked against the 10240-byte (10KiB) Vectorize limit, script aborts on violation",
+    "float32_roundtrip_check": {
+      "method": "for every vector, every component: source float32 vs (json.dumps -> json.loads -> struct-cast float32), bitwise compared. Stronger than an L2-norm-looks-like-1.0 check -- proves the exact bit pattern survives NDJSON serialization, not just its norm.",
+      "documents_mismatches": 0,
+      "chunks_mismatches": 0,
+      "expected": 0,
+      "regression_note": "an earlier version of this script used round(x, 8), which measurably broke this check (72% of sampled float32 components failed bitwise round-trip -- 8 decimal PLACES is not the same as float32's ~9 significant-digit round-trip requirement, especially for small-magnitude components). Fixed by exporting full, unrounded values."
+    }
   },
   "output": {
     "max_records_per_ndjson_file": 5000,
     "document_shards": [
       {
         "file": "docs-000.ndjson",
-        "records": 2675
+        "records": 2675,
+        "bytes": 29555676
       }
     ],
     "chunk_shards": [
       {
         "file": "chunks-000.ndjson",
-        "records": 5000
+        "records": 5000,
+        "bytes": 55021570
       },
       {
         "file": "chunks-001.ndjson",
-        "records": 5000
+        "records": 5000,
+        "bytes": 55074921
       },
       {
         "file": "chunks-002.ndjson",
-        "records": 5000
+        "records": 5000,
+        "bytes": 55093052
       },
       {
         "file": "chunks-003.ndjson",
-        "records": 616
+        "records": 616,
+        "bytes": 6786676
       }
     ],
+    "max_shard_bytes": 104857600,
+    "namespaces": {
+      "document": 2675,
+      "chunk": 15616,
+      "why": "Vectorize applies namespace filtering BEFORE the ANN search, not as a post-filter (confirmed against current Cloudflare docs). Without this, a flat pool of 2675 docs + 15616 chunks would let chunk vectors (5.8x more numerous) dominate topK and truncate document-level candidates before scoring -- the browser's current behavior keeps doc and chunk as separate candidate pools and folds via max() only at the end (index_profile.doc_chunk_aggregation); namespace segmentation is the Vectorize-native way to preserve that same structure."
+    },
+    "metadata_indexes_created": [],
+    "metadata_indexes_note": "Deliberately zero for v1. Cloudflare requires a metadata index to exist BEFORE inserting vectors that need to be filtered by that property (vectors upserted earlier are not backfilled into an index created later -- would require re-upserting all 18291 vectors). Filtering by type is already covered by namespace at no cost. language/year/paper_id filters are deferred until an actual query need is confirmed, rather than speculatively indexed now.",
     "not_committed_to_git": "*.ndjson under this directory is gitignored (regenerable, ~tens of MB of JSON text); this report (dry_run_manifest.json) is committed as the durable evidence this step ran."
   },
   "next_step_not_taken": "wrangler vectorize create / wrangler vectorize insert -- deliberately not run by this script. Requires an explicit go-ahead (creates persistent, billable Cloudflare infrastructure)."

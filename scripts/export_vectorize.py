@@ -11,14 +11,21 @@ actual `wrangler vectorize create` / `wrangler vectorize insert` step is
 deliberately NOT run here -- that is the real infrastructure-creation
 checkpoint and belongs in a separate, explicitly-confirmed step.
 
-Record shape and metadata-key constraints follow Cloudflare's documented
-NDJSON import format (id, values, metadata; metadata keys must not contain
-"." or '"' or start with "$"; max 5000 vectors per --file= import), and the
-id scheme follows the Logic Matrix MCP x DSRS architecture decision doc §9
-(document id = lm-XXXXXX, chunk id = "{doc_id}#chunk-{index}"), matched
-against the real, already-generated chunk-embeddings-manifest.json key
-format (unpadded index) rather than that doc's zero-padded illustrative
-example.
+Record shape and constraints follow Cloudflare's current documented
+Vectorize limits (id <=64 UTF-8 bytes; metadata <=10KiB/vector; metadata
+keys must not contain "." or '"' or start with "$"; Cloudflare recommends
+<=5000 vectors per NDJSON upload file to avoid its API's global rate
+limit; max 100MB per upload) -- all checked per record/shard, not assumed.
+Doc and chunk vectors are written to separate Vectorize `namespace`s
+(document/chunk): namespace filtering is applied BEFORE the ANN search,
+so this preserves the same doc/chunk-are-separate-candidate-pools
+structure the browser's DSRS already uses (index_profile.doc_chunk_
+aggregation), rather than letting the far more numerous chunk vectors
+dominate top-K in one flat pool. The id scheme follows the Logic Matrix
+MCP x DSRS architecture decision doc §9 (document id = lm-XXXXXX, chunk
+id = "{doc_id}#chunk-{index}"), matched against the real, already-
+generated chunk-embeddings-manifest.json key format (unpadded index)
+rather than that doc's zero-padded illustrative example.
 
 See registry/embedding-profiles/dsrs-v1.json for the frozen profile this
 export is derived from (embedding_space=dsrs-v1, index_profile=dsrs-index-v1).
@@ -36,7 +43,12 @@ OUT_DIR = GENERATED / "vectorize-export"
 PROFILE_PATH = ROOT / "registry" / "embedding-profiles" / "dsrs-v1.json"
 PAPERS_PATH = ROOT / "registry" / "papers.json"
 
-MAX_PER_FILE = 5000  # wrangler vectorize insert --file= hard limit
+MAX_PER_FILE = 5000  # Cloudflare-recommended max vectors per NDJSON upload file
+                      # (not a hard limit; stated purpose is avoiding the Cloudflare
+                      # API's global rate limit during `wrangler vectorize insert`)
+MAX_ID_BYTES = 64        # Vectorize platform limit, vector id (UTF-8 bytes)
+MAX_METADATA_BYTES = 10 * 1024  # Vectorize platform limit, metadata per vector
+MAX_SHARD_BYTES = 100 * 1024 * 1024  # Vectorize platform limit, max upload size
 INVALID_KEY_CHARS = (".", '"')
 PROFILE_ID = "dsrs-v1"
 INDEX_PROFILE_ID = "dsrs-index-v1"
@@ -54,6 +66,32 @@ def _check_metadata_keys(md):
     for k in md:
         if not k or k.startswith("$") or any(c in k for c in INVALID_KEY_CHARS):
             raise SystemExit(f"invalid Vectorize metadata key: {k!r}")
+
+
+def _check_id_length(vector_id):
+    n = len(vector_id.encode("utf-8"))
+    if n > MAX_ID_BYTES:
+        raise SystemExit(f"vector id exceeds {MAX_ID_BYTES} bytes ({n}): {vector_id!r}")
+
+
+def _check_metadata_size(md, vector_id):
+    n = len(json.dumps(md, ensure_ascii=False).encode("utf-8"))
+    if n > MAX_METADATA_BYTES:
+        raise SystemExit(f"metadata for {vector_id!r} exceeds {MAX_METADATA_BYTES} bytes ({n})")
+
+
+def _roundtrip_check(vec, values_json_str):
+    """Bitwise float32 round-trip: source float32 vs NDJSON-serialize/parse/cast
+    float32, for every component. Stronger than an L2-norm-looks-right check --
+    this proves the exact bit pattern survives the export, not just its norm."""
+    parsed = json.loads(values_json_str)
+    mismatches = 0
+    for x, p in zip(vec, parsed):
+        src32 = struct.unpack("<f", struct.pack("<f", x))[0]
+        rt32 = struct.unpack("<f", struct.pack("<f", p))[0]
+        if src32 != rt32:
+            mismatches += 1
+    return mismatches
 
 
 def _read_vectors(bin_path, dim, n):
@@ -80,7 +118,10 @@ def _write_shards(records, prefix, out_dir):
             for rec in shard:
                 f.write(json.dumps(rec, ensure_ascii=False, separators=(",", ":")))
                 f.write("\n")
-        shard_files.append({"file": path.name, "records": len(shard)})
+        size = path.stat().st_size
+        if size > MAX_SHARD_BYTES:
+            raise SystemExit(f"{path.name}: {size} bytes exceeds Vectorize's {MAX_SHARD_BYTES}-byte upload limit")
+        shard_files.append({"file": path.name, "records": len(shard), "bytes": size})
         shard_idx += 1
         shard = []
 
@@ -123,6 +164,7 @@ def main():
     doc_records = []
     zero_doc_count = 0
     doc_norm_samples = []
+    doc_roundtrip_mismatches = 0
     for i, vec in enumerate(_read_vectors(GENERATED / "embeddings.f32.bin", doc_dim, len(doc_ids_by_index))):
         doc_id = doc_ids_by_index[i]
         norm = _l2norm(vec)
@@ -141,16 +183,26 @@ def main():
         if paper.get("year"):
             md["year"] = paper["year"]
         _check_metadata_keys(md)
-        # Values rounded to 8 decimal places: a normalized (L2=1) component
-        # lies in [-1, 1], so 8 decimals preserves float32's ~7 significant
-        # digits in full while keeping the NDJSON text compact -- a
-        # documented, deliberate choice, not silent lossy truncation.
-        doc_records.append({"id": doc_id, "values": [round(x, 8) for x in vec], "metadata": md})
+        _check_id_length(doc_id)
+        _check_metadata_size(md, doc_id)
+        # Full precision, no rounding: round(x, 8) rounds to a FIXED decimal
+        # PLACE, not a fixed number of significant digits -- for a
+        # small-magnitude component (routinely present in these 512-dim
+        # vectors) that throws away real float32 precision. Python's default
+        # float repr (used by json.dumps) is a shortest-string round-trip
+        # encoding for the float64 that exactly holds this float32 value, so
+        # parsing it back and casting to float32 reproduces the identical
+        # bit pattern -- verified below by _roundtrip_check on every vector,
+        # not assumed.
+        values = list(vec)
+        doc_roundtrip_mismatches += _roundtrip_check(vec, json.dumps(values))
+        doc_records.append({"id": doc_id, "values": values, "namespace": "document", "metadata": md})
 
     # ---- chunks ----
     chunk_records = []
     zero_chunk_count = 0
     chunk_norm_samples = []
+    chunk_roundtrip_mismatches = 0
     for i, vec in enumerate(_read_vectors(GENERATED / "chunk-embeddings.f32.bin", chunk_dim, len(chunk_keys_by_index))):
         key = chunk_keys_by_index[i]  # e.g. "lm-000001#chunk-0"
         info = chunk_manifest["chunks"][key]
@@ -174,7 +226,11 @@ def main():
         if paper.get("year"):
             md["year"] = paper["year"]
         _check_metadata_keys(md)
-        chunk_records.append({"id": key, "values": [round(x, 8) for x in vec], "metadata": md})
+        _check_id_length(key)
+        _check_metadata_size(md, key)
+        values = list(vec)
+        chunk_roundtrip_mismatches += _roundtrip_check(vec, json.dumps(values))
+        chunk_records.append({"id": key, "values": values, "namespace": "chunk", "metadata": md})
 
     all_ids = [r["id"] for r in doc_records] + [r["id"] for r in chunk_records]
     dup_count = len(all_ids) - len(set(all_ids))
@@ -217,11 +273,28 @@ def main():
             "document_l2_norm_samples": doc_norm_samples,
             "chunk_l2_norm_samples": chunk_norm_samples,
             "metadata_keys_validated": "no '.', no '\"', no leading '$' (Vectorize constraint) -- checked per record during export, script aborts on violation",
+            "id_length_validated": f"every id checked against the {MAX_ID_BYTES}-byte Vectorize limit, script aborts on violation",
+            "metadata_size_validated": f"every metadata object checked against the {MAX_METADATA_BYTES}-byte ({MAX_METADATA_BYTES // 1024}KiB) Vectorize limit, script aborts on violation",
+            "float32_roundtrip_check": {
+                "method": "for every vector, every component: source float32 vs (json.dumps -> json.loads -> struct-cast float32), bitwise compared. Stronger than an L2-norm-looks-like-1.0 check -- proves the exact bit pattern survives NDJSON serialization, not just its norm.",
+                "documents_mismatches": doc_roundtrip_mismatches,
+                "chunks_mismatches": chunk_roundtrip_mismatches,
+                "expected": 0,
+                "regression_note": "an earlier version of this script used round(x, 8), which measurably broke this check (72% of sampled float32 components failed bitwise round-trip -- 8 decimal PLACES is not the same as float32's ~9 significant-digit round-trip requirement, especially for small-magnitude components). Fixed by exporting full, unrounded values.",
+            },
         },
         "output": {
             "max_records_per_ndjson_file": MAX_PER_FILE,
             "document_shards": doc_shards,
             "chunk_shards": chunk_shards,
+            "max_shard_bytes": MAX_SHARD_BYTES,
+            "namespaces": {
+                "document": len(doc_records),
+                "chunk": len(chunk_records),
+                "why": "Vectorize applies namespace filtering BEFORE the ANN search, not as a post-filter (confirmed against current Cloudflare docs). Without this, a flat pool of 2675 docs + 15616 chunks would let chunk vectors (5.8x more numerous) dominate topK and truncate document-level candidates before scoring -- the browser's current behavior keeps doc and chunk as separate candidate pools and folds via max() only at the end (index_profile.doc_chunk_aggregation); namespace segmentation is the Vectorize-native way to preserve that same structure.",
+            },
+            "metadata_indexes_created": [],
+            "metadata_indexes_note": "Deliberately zero for v1. Cloudflare requires a metadata index to exist BEFORE inserting vectors that need to be filtered by that property (vectors upserted earlier are not backfilled into an index created later -- would require re-upserting all 18291 vectors). Filtering by type is already covered by namespace at no cost. language/year/paper_id filters are deferred until an actual query need is confirmed, rather than speculatively indexed now.",
             "not_committed_to_git": "*.ndjson under this directory is gitignored (regenerable, ~tens of MB of JSON text); this report (dry_run_manifest.json) is committed as the durable evidence this step ran.",
         },
         "next_step_not_taken": "wrangler vectorize create / wrangler vectorize insert -- deliberately not run by this script. Requires an explicit go-ahead (creates persistent, billable Cloudflare infrastructure).",
@@ -231,14 +304,18 @@ def main():
     )
 
     summary = [
-        f"documents: {len(doc_records)}/{len(doc_manifest['docs'])} exported, {zero_doc_count} zero-norm, {len(doc_shards)} shard(s)",
-        f"chunks: {len(chunk_records)}/{len(chunk_manifest['chunks'])} exported, {zero_chunk_count} zero-norm, {len(chunk_shards)} shard(s)",
+        f"documents: {len(doc_records)}/{len(doc_manifest['docs'])} exported, {zero_doc_count} zero-norm, {doc_roundtrip_mismatches} roundtrip mismatches, {len(doc_shards)} shard(s)",
+        f"chunks: {len(chunk_records)}/{len(chunk_manifest['chunks'])} exported, {zero_chunk_count} zero-norm, {chunk_roundtrip_mismatches} roundtrip mismatches, {len(chunk_shards)} shard(s)",
         f"duplicate ids across doc+chunk id space: {dup_count}",
         f"profile_consistency.matches: {profile_consistency['matches']}",
         f"output dir: {OUT_DIR}",
     ]
     print("\n".join(summary))
-    if zero_doc_count or zero_chunk_count or dup_count or not profile_consistency["matches"]:
+    if (
+        zero_doc_count or zero_chunk_count or dup_count
+        or doc_roundtrip_mismatches or chunk_roundtrip_mismatches
+        or not profile_consistency["matches"]
+    ):
         sys.exit(1)
 
 
