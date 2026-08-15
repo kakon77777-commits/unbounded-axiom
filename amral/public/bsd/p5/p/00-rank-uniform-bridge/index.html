@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rank-Uniform Zeta-Primitivity Bridge · BSD P5 · AMRAL</title>
+<meta name="description" content="P5 全條線的架構起點:把 BSD 拆成 BSD-W(秩相等)/BSD-F(Sha 有限)/BSD-S(首項公式)三層不可偷換的命題,建立曲線級證書階梯 C0-C10,證明兩個方法論 no-go(全域量詞壓縮不是證明機制;格點/函數極限不保零點重數),定義 Rank-Uniform Global Zeta-Primitivity Bridge(RUGZPB)並證明條件式定理:若 RUGZPB 成立則完整 BSD 成立。不宣稱已證明或否證 BSD。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/BSD_Rank_Uniform_Zeta_Primitivity_Reduction_v0.1.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../about/">關於</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link" href="../../../../protocols/">研究協議</a>
+  <a class="link" href="../../../../validation/">驗證</a>
+  <a class="link" href="../../../../research-modes/">自主模式</a>
+  <a class="link" href="../../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../../../glc-framework/">GLC 閉合框架</a>
+  <a class="link active" href="../../../">BSD 猜想</a>
+  <a class="link" href="../../../../cpl/">臨界線比例梯</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← P5</a>
+    <span>/</span>
+    <span>00 · Rank-Uniform Zeta-Primitivity Bridge</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">P5 · 00</span>
+      <span class="tag">v0.1</span>
+      <span class="tag">2026-08-14</span>
+      <span class="tag">奠基文件</span>
+    </div>
+    <h1>BSD 的全域壓縮與高秩不可約前線:Rank-Uniform Zeta Primitivity Reduction</h1>
+    <p class="h1-sub">整條 P5(乃至後續 BSD 高秩研究)的架構起點。文件先把 BSD 拆成三層不可偷換的命題:BSD-W(秩相等 r_alg=r_an)、BSD-F(Sha 有限)、BSD-S(首項係數公式)。接著證明兩個方法論 no-go:第一,把「BSD 對所有曲線成立」寫成單一非負全域量(faithful positive atomic compression)雖然邏輯上等價,但「缺陷量為零」本身仍需要全新的算術消失機制,量詞壓縮不是證明複雜度崩塌;第二,格點化或函數列極限不保零點重數(給出顯式反例 f_a(z)=z(z+a)→z²,序方重數從 1 跳到 2),因此任何從格點/離散 L-function 直接取極限推出 BSD 的路線,都必須另證 multiplicity stabilization theorem——這正是文件稍後(見 05 篇)否決 Neo.K 舊「格點秩收斂」主張的理論依據來源。正向部分,文件定義證書階梯 C0(身分)到 C10(family 定理),並提出 Rank-Uniform Global Zeta-Primitivity Bridge(RUGZPB,R1-R8 八個條件),證明條件式定理 13.1:若 RUGZPB 對某曲線成立,則該曲線的完整 BSD(BSD-W+BSD-F+BSD-S)同時成立。文件明確聲明這不是 BSD 證明——RUGZPB 本身仍是 open 的 candidate theorem target,定理 13.1 只是把散落的高秩義務壓縮成一個可逐條攻擊、可形式化、可失敗的介面。文件最後選定 389.a1(rank 2)為 wall probe,並留下 P1-P7 七項後續證明義務,其中 P4(單一質數 rank-2 closure)正是後續 v0.2 RUGZPB 更新與整條 P5 v0.3-v1.3 系列的直接起點。</p>
+    <div class="claim-box">
+      定理 13.1:∀E/ℚ, RUGZPB(E) ⟹ BSD(E)——條件式歸約,不是 BSD 證明
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">下一篇</span><a href="../01-sha-closure-p4/">01 · P4 一質數 Sha 有限性閉合</a></div>
+      <div class="conn-card"><span class="k">P5 進度</span>1 / 10</div>
+    </div>
+    <blockquote class="cite">「本文的最終裁決不是:BSD solved。而是:BSD 的當前高秩全域前線,可被壓縮為 rank-uniform analytic-to-integral zeta-primitivity bridge。」— 摘自本文「26. 結論」。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← P5</a>
+    <a href="../../files/BSD_Rank_Uniform_Zeta_Primitivity_Reduction_v0.1.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/BSD_Rank_Uniform_Zeta_Primitivity_Reduction_v0.1.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

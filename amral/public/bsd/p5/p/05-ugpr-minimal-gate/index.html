@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>uGPR 最小閘門 · BSD P5 · AMRAL</title>
+<meta name="description" content="用 Mazur-Stein-Tate 已發表的 389A 11-adic regulator 計算(R_11≡4 mod 11,非零)關閉 Bockstein 非零側條件。證明完整 rank-2 Generalized Perrin-Riou 對單一質數目標而言強度過剩,定義較弱的 unit-level GPR 閘門 uGPR_11,並證明 P5-LAT11 ⟺ uGPR11 ⟺ P5-INT11 ∧ P5-PRIM11——把剩餘障礙精確壓成「整性 + 一個 mod-11 非零剩餘類」兩個位元。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/BSD_P5_uGPR_Minimal_Gate_389a1_p11_v0.6.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../about/">關於</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link" href="../../../../protocols/">研究協議</a>
+  <a class="link" href="../../../../validation/">驗證</a>
+  <a class="link" href="../../../../research-modes/">自主模式</a>
+  <a class="link" href="../../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../../../glc-framework/">GLC 閉合框架</a>
+  <a class="link active" href="../../../">BSD 猜想</a>
+  <a class="link" href="../../../../cpl/">臨界線比例梯</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← P5</a>
+    <span>/</span>
+    <span>05 · uGPR 最小閘門</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">P5 · 05</span>
+      <span class="tag">v0.6</span>
+      <span class="tag">2026-08-14</span>
+      <span class="tag">theorem/reduction</span>
+    </div>
+    <h1>Unit-Level Generalized Perrin–Riou Minimal Gate for $389.a1$ at $p=11$</h1>
+    <p class="h1-sub">承接 04 篇留下的兩個障礙(Bockstein 非零 P5-BOC-NZ11、rank-2 GPR 比較 P5-GPR11),本篇先用外部已發表數據關閉第一個:Mazur-Stein-Tate 對第一條 rank-2 曲線 389A 計算過 cyclotomic 11-adic regulator,表中 R₁₁≡4(mod 11)非零——這個非零性在任何非零正規化縮放下都不變,因此文件只使用非零性本身(不使用具體數值),把 P5-BOC-NZ11 提升為 CLOSED_BY_PUBLISHED_COMPUTATION。第二個更根本:文件證明完整 rank-2 GPR 相等式對單一質數的賦值命題而言強度過剩,定義較弱的 unit-level 閘門 uGPR₁₁:b_BSD∈ℤ₁₁×κ_∞(只要求兩個向量生成同一個整格,不要求知道確切的單位倍數)。定理 5.1 嚴格證明 P5-LAT₁₁⟺uGPR₁₁。因為 Λ₁₁ 是離散賦值環 ℤ₁₁ 上的自由一秩模組,Proposition 6.2 進一步把 uGPR₁₁ 分解成兩個位元:P5-INT11(b_BSD 落在格內)與 P5-PRIM11(b_BSD 不落在 11 倍的格內,即 mod-11 非零剩餘)。文件也親自審計三條表面捷徑——Fouquet 2025 的 Hecke-代數 ETNC(僅涵蓋非零特殊值,不含 rank-2 中心點)、Bullach-Honnor 的精細 Mazur-Tate(明確聲明精細同餘仍需 BSD 或 GPR 或高度比較延伸)、古典高秩 p-adic BSD(控制的是 p-adic L-function 首項,不是複數導數 L''(E,1)/2!)——全部不能替代缺失的兩個位元。</p>
+    <div class="claim-box">
+      P5-LAT11 ⟺ uGPR11 ⟺ P5-INT11 ∧ P5-PRIM11——剩餘障礙 = 整性 + 一個 mod-11 非零位元
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一篇</span><a href="../04-imc-closure-gpr-bridge/">04 · IMC 閉合與 GPR 橋接</a></div>
+      <div class="conn-card"><span class="k">下一篇</span><a href="../06-local-unit-cancellation/">06 · 顯式局部單位消去</a></div>
+      <div class="conn-card"><span class="k">P5 進度</span>6 / 10</div>
+    </div>
+    <blockquote class="cite">「the hard part is constructing the correct comparison map that assigns a canonical integral meaning to the complex leading coefficient inside the 11-adic determinant line。」— 摘自本文「6. DVR decomposition」結尾。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← P5</a>
+    <a href="../../files/BSD_P5_uGPR_Minimal_Gate_389a1_p11_v0.6.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/BSD_P5_uGPR_Minimal_Gate_389a1_p11_v0.6.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Norm-Selmer 核心頂點 · BSD P5 · AMRAL</title>
+<meta name="description" content="用 07 篇的局域化行列式,結合 Sha(E/Q)[11]=0,精確證明 mod-11 Selmer 群同構於 F_11^2,兩個 norm 局部條件各自砍掉一維、聯合砍到零維——391、991 兩個異常質數合起來構成 mod-11 Selmer 群的完整秩-2 消滅集。維度序列 121→11→1(以基數計)。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/BSD_P5_Norm_Selmer_Core_Vertex_389a1_p11_v1.2.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../about/">關於</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link" href="../../../../protocols/">研究協議</a>
+  <a class="link" href="../../../../validation/">驗證</a>
+  <a class="link" href="../../../../research-modes/">自主模式</a>
+  <a class="link" href="../../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../../../glc-framework/">GLC 閉合框架</a>
+  <a class="link active" href="../../../">BSD 猜想</a>
+  <a class="link" href="../../../../cpl/">臨界線比例梯</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← P5</a>
+    <span>/</span>
+    <span>08 · Norm-Selmer 核心頂點</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">P5 · 08</span>
+      <span class="tag">v1.2</span>
+      <span class="tag">2026-08-14</span>
+      <span class="tag">exact finite Selmer-structure theorem</span>
+    </div>
+    <h1>Norm-Selmer Core-Vertex Certificate for $389.a1$ at $p=11$</h1>
+    <p class="h1-sub">承接 07 篇的局域化矩陣 M_loc=[[1,2],[1,4]],本篇正式把它接上 Selmer 群結構。用 Kummer 正合序列與已閉合的 Sha(E/ℚ)[11]=0,先得到 Sel₁₁(E/ℚ)≅E(ℚ)/11E(ℚ)≅F₁₁²——每一個 mod-11 Selmer 類都由一個整體 Mordell-Weil 點代表。對每個輔助質數 ℓ 定義 norm 局部條件映射 λ_ℓ,relative 到基底 P,Q 精確算出 λ₃₉₇(aP+bQ)=a+2b、λ₉₉₁(aP+bQ)=a+4b。單獨施加 397 的條件砍掉一維(留下 F₁₁(Q-2P)),單獨施加 991 的條件也砍掉一維(留下 F₁₁(Q-4P)),聯合施加兩個條件時,由於矩陣行列式 2≠0,交集恰好是零——維度序列精確走 2→1、2→1、1∩1→0,以基數計是 121→11→1。定理 4.1 因此證明合併映射 λ₃₉₇⊕λ₉₉₁ 是同構,即兩個異常方向合起來構成 mod-11 Selmer 群的完整秩-2 消滅集(complete rank-2 killing set)——這正是 07 篇的局域化行列式在偵測的有限 Selmer 骨架。文件也算出兩個秩-1 面的橫截性(楔積係數 2,非零),並把這一步正式記為 P5-NORM-COREVERTEX₁₁=CLOSED_EXACT。文件誠實劃出邊界:剩下要做的不再是「兩個異常方向是否偵測到秩-2 算術空間」(已證,而且是同構),而是構造正確的異常 Bockstein/延伸高度比較映射,把這個純 Selmer 行列式運到有限 Mazur-Tate 初始式所在的 I²/I³。</p>
+    <div class="claim-box">
+      Sel₁₁(E/ℚ) ⟶ E(ℚ_397)/NE(L_397) ⊕ E(ℚ_991)/NE(L_991)(同構,Theorem 4.1)
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一篇</span><a href="../07-anomalous-norm-localization/">07 · 異常質數 Norm 局域化</a></div>
+      <div class="conn-card"><span class="k">下一篇</span><a href="../09-determinantal-kurihara-semilocal/">09 · 行列式 Kurihara 半局部閉合</a></div>
+      <div class="conn-card"><span class="k">P5 進度</span>9 / 10</div>
+    </div>
+    <blockquote class="cite">「no equality between the scalars 6 and 2 is asserted. A comparison map is still required to place the two determinants in the same canonical line。」— 摘自本文「6. Relation to the v1.0 finite Mazur-Tate class」。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← P5</a>
+    <a href="../../files/BSD_P5_Norm_Selmer_Core_Vertex_389a1_p11_v1.2.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/BSD_P5_Norm_Selmer_Core_Vertex_389a1_p11_v1.2.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

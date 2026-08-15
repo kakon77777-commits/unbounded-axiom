@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>顯式局部單位消去 · BSD P5 · AMRAL</title>
+<meta name="description" content="精確計算 389.a1 在 p=11 的每個可顯式算出的局部因子(好質數截斷因子 16/11、壞質數 389 的截斷因子 388/389、11-adic 對數的賦值),證明三者組合後恰好是一個 11-adic 單位、殘值 4 mod 11。結論:沒有隱藏的 11-局部分母需要解釋,剩餘障礙純粹是正規化複數純量本身的降階/單位性質。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/BSD_P5_Explicit_Local_Unit_Cancellation_389a1_p11_v0.8.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../about/">關於</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link" href="../../../../protocols/">研究協議</a>
+  <a class="link" href="../../../../validation/">驗證</a>
+  <a class="link" href="../../../../research-modes/">自主模式</a>
+  <a class="link" href="../../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../../../glc-framework/">GLC 閉合框架</a>
+  <a class="link active" href="../../../">BSD 猜想</a>
+  <a class="link" href="../../../../cpl/">臨界線比例梯</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← P5</a>
+    <span>/</span>
+    <span>06 · 顯式局部單位消去</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">P5 · 06</span>
+      <span class="tag">v0.8</span>
+      <span class="tag">2026-08-14</span>
+      <span class="tag">exact local-arithmetic reduction</span>
+    </div>
+    <h1>Explicit Local-Unit Cancellation for $389.a1$ at $p=11$</h1>
+    <p class="h1-sub">承接 v0.7(未獨立成套件,本篇文件自己交代其前緣)把問題壓到局部降階閘門 P5-DESC11 與 P5-VAL011,本篇的目標是把 Burns-Kurihara-Sano rank-2 元素中每一個顯式可算的 11-局部因子單獨隔離出來,看是否還藏著看不見的分母。用極小模型精確算出 #E(F₁₁)=16、a₁₁=-4,好質數截斷因子 L₁₁(E,1)⁻¹=16/11(賦值 -1);壞質數 389 的分裂乘法截斷因子 388/389(賦值 0)。真正的技術核心是精確算 11-adic 對數的賦值:用形式群的標準參數,精確算出 16P' 落在形式群裡且 v₁₁(t(16P'))=1,配合 formal logarithm 在 t∈11ℤ₁₁ 上與 t 本身模 11² 一致的性質,反推出 v₁₁(log_ω(P))=1、殘值 4 mod 11。把三個因子相乘:v₁₁(u_loc)=(-1)+0+1=0,且 u_loc≡4(mod 11)——恰好是一個 11-adic 單位。這意味著在已固定的正規化下,乘上 u_loc 既不改變定義域關卡也不改變賦值,因此 β_ξ·u_loc∈ℚ₁₁ ⟺ β_ξ∈ℚ₁₁,且兩者賦值相等。文件明確聲明:這不證明 β_ξ∈ℚ₁₁ 也不證明其賦值為零,唯一確定的正面結果是「沒有隱藏的 11-局部分母需要解釋」——排除了一整條原本可能耗費研究時間的錯誤方向。</p>
+    <div class="claim-box">
+      u_loc = (16/11)(388/389)log_ω(P) ∈ ℤ₁₁×,殘值 4 mod 11——沒有隱藏的 11-局部分母
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一篇</span><a href="../05-ugpr-minimal-gate/">05 · uGPR 最小閘門</a></div>
+      <div class="conn-card"><span class="k">下一篇</span><a href="../07-anomalous-norm-localization/">07 · 異常質數 Norm 局域化</a></div>
+      <div class="conn-card"><span class="k">P5 進度</span>7 / 10</div>
+    </div>
+    <blockquote class="cite">「there is no hidden 11-local denominator left to explain. The remaining wall is genuinely the descent/unit property of the normalized complex rank-2 leading scalar。」— 摘自本文「7. 精煉 P5 前緣」。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← P5</a>
+    <a href="../../files/BSD_P5_Explicit_Local_Unit_Cancellation_389a1_p11_v0.8.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/BSD_P5_Explicit_Local_Unit_Cancellation_389a1_p11_v0.8.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

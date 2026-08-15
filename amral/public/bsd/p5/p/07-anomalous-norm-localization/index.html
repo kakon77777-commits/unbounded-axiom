@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>異常質數 Norm 局域化 · BSD P5 · AMRAL</title>
+<meta name="description" content="發現 389.a1 在 397 與 991(用來構造 Kurihara witness 的兩個輔助質數)恰好也是 11|#E(F_ℓ) 的異常質數,使古典非異常 Mazur-Tate 高度理論不能直接套用。改用度數-11 馴順完全分歧局部擴張的 norm 商定理,精確算出局域化矩陣 M_loc、行列式 2∈F₁₁×,證明兩個秩-1 norm 障礙面橫截(transverse),嚴格建立 E(Q)/11E(Q) 與局部 norm 商的同構,同時算出精確指數 [E(Q):E^S(Q)]=390830。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/BSD_P5_Anomalous_Norm_Localization_389a1_p11_v1.1.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../about/">關於</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link" href="../../../../protocols/">研究協議</a>
+  <a class="link" href="../../../../validation/">驗證</a>
+  <a class="link" href="../../../../research-modes/">自主模式</a>
+  <a class="link" href="../../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../../../glc-framework/">GLC 閉合框架</a>
+  <a class="link active" href="../../../">BSD 猜想</a>
+  <a class="link" href="../../../../cpl/">臨界線比例梯</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← P5</a>
+    <span>/</span>
+    <span>07 · 異常質數 Norm 局域化</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">P5 · 07</span>
+      <span class="tag">v1.1</span>
+      <span class="tag">2026-08-14</span>
+      <span class="tag">exact theorem/certificate</span>
+    </div>
+    <h1>Anomalous Norm Localization for $389.a1$ at $p=11$</h1>
+    <p class="h1-sub">研究路線在此轉向:不再攻正面的複數-p進比較,改回頭審視構造 Kurihara witness 用的兩個輔助質數 397、991 本身的算術性質。精確點數給出 #E(F₃₉₇)=374=34·11、#E(F₉₉₁)=1045=95·11——這不是巧合,Kurihara/Kolyvagin 條件 a_ℓ-ℓ-1≡0(mod 11) 等價於 11|#E(F_ℓ),所以能提供離散導數證書的質數同時自動是古典非異常 Mazur-Tate 高度理論的異常質數。文件明確標記 NO_GO:Burns-Kurihara-Sano 的非異常配對公式要求所選質數不整除相關約化階數,這裡的兩個質數都違反,Bley-Macias Castillo 的計算框架也僅限 p=3、無法直接套用。文件轉而用一條新引理(Proposition 4.1)——馴順完全分歧度數-p擴張下,好約化曲線的 norm 商同構於約化曲線 mod-p 商群——精確算出兩個一維局域化商,組成局域化矩陣 M_loc=[[1,2],[1,4]],行列式 2∈F₁₁×非零。這證明兩個秩-1 norm 障礙面橫截((Q-2P)∧(Q-4P)=2(P∧Q)),嚴格建立 E(ℚ)/11E(ℚ)≅⊕E(ℚ_ℓ)/NE(L_ℓ) 的同構(Theorem 6.1),與任何複數首項比較無關。文件額外算出精確指數 [E(ℚ):E^S(ℚ)]=390830 且證明同時約化滿射(J_S=1)。文件把左手邊(模形式初始式係數 6)與右手邊(局域化行列式 2)明確分開,只說兩者商為 3∈F₁₁×,不宣稱這個 3 是 Mazur-Tate 比較常數——留下的正式缺口是 P5-ANOM-BocCOMP₁₁⁽²⁾(異常 Bockstein 比較),即 08 篇的起點。</p>
+    <div class="claim-box">
+      det M_loc = 2 ≠ 0(rank-2 local norm localization theorem,獨立於任何複數首項比較)
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一篇</span><a href="../06-local-unit-cancellation/">06 · 顯式局部單位消去</a></div>
+      <div class="conn-card"><span class="k">下一篇</span><a href="../08-norm-selmer-core-vertex/">08 · Norm-Selmer 核心頂點</a></div>
+      <div class="conn-card"><span class="k">P5 進度</span>8 / 10</div>
+    </div>
+    <blockquote class="cite">「The project has therefore isolated a very specific phenomenon: double Kolyvagin anomaly + nondegenerate rank-2 norm localization + nonzero mixed Mazur-Tate derivative。」— 摘自本文「10. Gate state after v1.1」結尾。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← P5</a>
+    <a href="../../files/BSD_P5_Anomalous_Norm_Localization_389a1_p11_v1.1.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/BSD_P5_Anomalous_Norm_Localization_389a1_p11_v1.1.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

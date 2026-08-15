@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BSD 猜想 · AMRAL</title>
-<meta name="description" content="AMRAL 案例:Birch and Swinnerton-Dyer 猜想(Clay Millennium Prize 問題之一)。不宣稱證明 BSD——建立曲線級證書階梯(C0-C10),精確分級每條曲線、每個質數究竟證到哪一層。四條子線:Phase 0 全局包圍框架(已上線)、Phase 1 重現 Banwait-Huang 2026 演算法化普查、Phase 2 建構非半穩定曲線 696.e1 的顯式 twist 家族、P5 針對 rank-2 曲線 389.a1 在質數 p=11 的強 BSD 深度技術工作。">
+<meta name="description" content="AMRAL 案例:Birch and Swinnerton-Dyer 猜想(Clay Millennium Prize 問題之一)。不宣稱證明 BSD——建立曲線級證書階梯(C0-C10),精確分級每條曲線、每個質數究竟證到哪一層。四條子線:Phase 0 全局包圍框架(已上線)、P5 針對 rank-2 曲線 389.a1 在質數 p=11 的強 BSD 深度技術工作(已上線,核心比較仍 OPEN)、Phase 1 重現 Banwait-Huang 2026 演算法化普查、Phase 2 建構非半穩定曲線 696.e1 的顯式 twist 家族。">
 <meta name="robots" content="index, follow">
 <meta name="ai-content-policy" content="indexable, citable, training-allowed">
 <link rel="stylesheet" href="../assets/site.css">
@@ -37,7 +37,7 @@
       做了正式審計並否決,是這條線紀律最高的地方。
     </p>
     <p class="notice">
-      四條子線熟度不同:Phase 0 是框架,已完整上線;Phase 1、Phase 2、P5 是後續技術工作,已有大量真實進展但尚未在這裡逐篇建頁——下方先列出各自目前的真實狀態,不預先宣稱完成度。
+      四條子線熟度不同:Phase 0 與 P5 已上線;Phase 1、Phase 2 是後續技術工作,已有大量真實進展但尚未在這裡逐篇建頁——下方先列出目前的真實狀態,不預先宣稱完成度。
     </p>
   </header>
 
@@ -53,8 +53,20 @@
     </nav>
   </section>
 
+  <section id="p5">
+    <h2 class="doc-h2">P5 · 389.a1 於 $p=11$</h2>
+    <p class="section-note">2026-08-14 · 十篇文件已全數上線 · 核心比較(P5-CANON-BocID、P5-CPLX-GPR)仍 OPEN</p>
+    <nav class="case-grid" aria-label="P5">
+      <a class="case-card" href="./p5/">
+        <span class="k">單一質數強 BSD · 10 篇</span>
+        <h3>Rank-2 曲線 389.a1 的單一質數 leading-term 公式</h3>
+        <p>從 Rank-Uniform Zeta-Primitivity Bridge 架構出發,閉合 Sha[11^∞]=0,壓成 uGPR11 兩個位元,異常質數局域化建立 Selmer 骨架,最新到行列式 Kurihara 半局部閉合——複數首項比較仍未閉合。</p>
+      </a>
+    </nav>
+  </section>
+
   <section id="roadmap">
-    <h2 class="doc-h2">後續三條子線(尚待建頁)</h2>
+    <h2 class="doc-h2">Phase 1、Phase 2(尚待建頁)</h2>
     <p class="section-note">下面的狀態描述直接來自各批次自己的文件,不是我方推論或美化。</p>
     <div class="case-grid">
       <div class="case-card placeholder">
@@ -66,11 +78,6 @@
         <span class="k">Phase 2 · 非半穩定家族</span>
         <h3>曲線 696.e1 顯式 Twist 家族</h3>
         <p>為 Banwait–Huang 方法不覆蓋的非半穩定曲線構造顯式無窮 twist 家族(密度 1/24)。經內部對抗式審查(6 個子 referee)抓到並修正一個引用錯誤,目前狀態:「DERIVED THEOREM CANDIDATE」,尚未升格為新定理,待獨立外部覆核。</p>
-      </div>
-      <div class="case-card placeholder">
-        <span class="k">P5 · 389.a1 於 p=11</span>
-        <h3>Rank-2 曲線的單一質數強 BSD</h3>
-        <p>七個套件圍攻同一目標:389.a1(rank 2)在 p=11 的強 BSD leading-term 公式。Sha[11^∞]=0 已閉合,多個子引理已閉合,但核心目標——解析首項與代數 regulator 在 p=11 的橋接——在全部套件中仍是 OPEN。</p>
       </div>
     </div>
   </section>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>P5 · 389.a1 於 p=11 · BSD 猜想 · AMRAL</title>
+<meta name="description" content="BSD P5:rank-2 曲線 389.a1 在單一質數 p=11 的強 BSD 首項公式研究。從 Rank-Uniform Zeta-Primitivity Bridge 的架構定義,經精確有限體計算閉合 Sha[11^∞]=0,逐步把問題壓縮成 uGPR11 = P5-INT11 ∧ P5-PRIM11 兩個位元,再從異常質數局域化角度切入,目前進度到行列式 Kurihara 半局部閉合——核心的複數首項/正則子比較(P5-CPLX-GPR)仍是 OPEN。不宣稱證明 BSD。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../">AMRAL</a>
+  <a class="link" href="../../about/">關於</a>
+  <a class="link" href="../../methodology/">方法論</a>
+  <a class="link" href="../../protocols/">研究協議</a>
+  <a class="link" href="../../validation/">驗證</a>
+  <a class="link" href="../../research-modes/">自主模式</a>
+  <a class="link" href="../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../skew-field/">歪度場</a>
+  <a class="link" href="../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../glc-framework/">GLC 閉合框架</a>
+  <a class="link active" href="../">BSD 猜想</a>
+  <a class="link" href="../../cpl/">臨界線比例梯</a>
+</div></nav>
+<div class="wrap">
+  <header class="page">
+    <p class="eyebrow"><a href="../">← BSD 猜想</a> · P5</p>
+    <h1>P5:389.a1 於 $p=11$</h1>
+    <p class="subtitle">單一質數強 BSD 首項公式 · 2026-08-14 · 進度到行列式 Kurihara 半局部閉合,核心比較仍 OPEN</p>
+    <p class="lede">
+      Rank-2 曲線 389.a1 在單一質數 p=11 的強 BSD 首項公式研究。不宣稱證明 BSD,也不把數值吻合當證明。
+      這條子線從 <a href="./p/00-rank-uniform-bridge/">Rank-Uniform Zeta-Primitivity Bridge</a> 的架構定義出發,
+      經精確有限體計算(Manin symbols、Hecke 本徵空間、Kurihara witness)閉合 Sha(E/ℚ)[11^∞]=0,
+      逐步把「證明強 BSD」壓縮成「證明 uGPR11 = P5-INT11 ∧ P5-PRIM11 兩個位元」,
+      再從 397、991 兩個異常質數的局域化角度切入,目前進度到行列式 Kurihara 半局部閉合——
+      核心的複數首項/正則子比較(P5-CANON-BocID、P5-CPLX-GPR)仍是 OPEN。
+    </p>
+    <p class="notice">
+      十篇文件依序而讀——每一篇是下一篇的前提,建議照順序看。編號延用文件內部的版本號跳躍
+      (v0.6 之後直接接 v0.8,是套件本身沒有獨立打包 v0.7,原文引用可在 06 篇正文找到)。
+    </p>
+  </header>
+
+  <section id="docs">
+    <h2 class="doc-h2">十篇文件</h2>
+    <nav class="case-grid" aria-label="P5 文件">
+      <a class="case-card" href="./p/00-rank-uniform-bridge/">
+        <span class="k">00</span>
+        <h3>Rank-Uniform Zeta-Primitivity Bridge</h3>
+        <p>三層命題拆分、兩個 no-go 引理、證書階梯 C0-C10、RUGZPB 條件式定理。</p>
+      </a>
+      <a class="case-card" href="./p/01-sha-closure-p4/">
+        <span class="k">01</span>
+        <h3>P4 一質數 Sha 有限性閉合</h3>
+        <p>精確有限體計算,Sha(E/ℚ)[11^∞]=0,非循環論證。</p>
+      </a>
+      <a class="case-card" href="./p/02-rank2-scalar-collapse/">
+        <span class="k">02</span>
+        <h3>Rank-2 Scalar Collapse</h3>
+        <p>壓成一個實數量 B_∞(E),拆成 P5-RAT + P5-VAL11。</p>
+      </a>
+      <a class="case-card" href="./p/03-etnc-escape-audit/">
+        <span class="k">03</span>
+        <h3>ETNC 逃逸稽核</h3>
+        <p>NO_DIRECT_ETNC_ESCAPE。P5-RAT 精煉成 P5-DERPER。</p>
+      </a>
+      <a class="case-card" href="./p/04-imc-closure-gpr-bridge/">
+        <span class="k">04</span>
+        <h3>IMC 閉合與 GPR 橋接</h3>
+        <p>完整 cyclotomic Iwasawa 主猜想閉合,P5-GPR11 為主要障礙。</p>
+      </a>
+      <a class="case-card" href="./p/05-ugpr-minimal-gate/">
+        <span class="k">05</span>
+        <h3>uGPR 最小閘門</h3>
+        <p>P5-LAT11 ⟺ 整性 + 一個 mod-11 非零位元。</p>
+      </a>
+      <a class="case-card" href="./p/06-local-unit-cancellation/">
+        <span class="k">06</span>
+        <h3>顯式局部單位消去</h3>
+        <p>沒有隱藏的 11-局部分母;u_loc 恰為 11-adic 單位。</p>
+      </a>
+      <a class="case-card" href="./p/07-anomalous-norm-localization/">
+        <span class="k">07</span>
+        <h3>異常質數 Norm 局域化</h3>
+        <p>397、991 同時是 Kurihara witness 與異常質數;局域化矩陣行列式 2≠0。</p>
+      </a>
+      <a class="case-card" href="./p/08-norm-selmer-core-vertex/">
+        <span class="k">08</span>
+        <h3>Norm-Selmer 核心頂點</h3>
+        <p>Sel₁₁(E/ℚ) 同構於兩個局部商的直和(Theorem 4.1)。</p>
+      </a>
+      <a class="case-card" href="./p/09-determinantal-kurihara-semilocal/">
+        <span class="k">09</span>
+        <h3>行列式 Kurihara 半局部閉合</h3>
+        <p>目前最新進度。三項有限秩-2 事實關閉,核心比較仍 OPEN。</p>
+      </a>
+    </nav>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../">← BSD 猜想</a>
+    <span>SHA-256 逐篇核驗 · 原始位元組,不重新打包</span>
+  </footer>
+</div>
+</body>
+</html>
