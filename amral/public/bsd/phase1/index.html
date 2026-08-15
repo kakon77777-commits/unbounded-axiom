@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phase 1 · Banwait–Huang 重現 · BSD 猜想 · AMRAL</title>
+<meta name="description" content="BSD Phase 1:重現 Banwait-Huang 2026(arXiv:2601.16044)的演算法化 rank-0 twist-family 普查。建置中——24 篇文件逐篇上線,目前 9/24。裁決 PASS(路線可工程化),第一批小範圍重現與官方 fixture 完全一致,審計官方程式相對論文加入的防過度宣稱閘門,獨立重現 Algorithm 2 branch logic,誠實記錄 Algorithm 1 尚缺環境,定位路線天花板為 uniform infinite-family theorem 不是 ∀E/Q,v0.2 發現正式 fixture 從 25 條曲線回歸到 12 條。不宣稱證明 BSD。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../">AMRAL</a>
+  <a class="link" href="../../about/">關於</a>
+  <a class="link" href="../../methodology/">方法論</a>
+  <a class="link" href="../../protocols/">研究協議</a>
+  <a class="link" href="../../validation/">驗證</a>
+  <a class="link" href="../../research-modes/">自主模式</a>
+  <a class="link" href="../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../skew-field/">歪度場</a>
+  <a class="link" href="../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../glc-framework/">GLC 閉合框架</a>
+  <a class="link active" href="../">BSD 猜想</a>
+  <a class="link" href="../../cpl/">臨界線比例梯</a>
+</div></nav>
+<div class="wrap">
+  <header class="page">
+    <p class="eyebrow"><a href="../">← BSD 猜想</a> · Phase 1</p>
+    <h1>Phase 1:Banwait–Huang 重現</h1>
+    <p class="subtitle">Strong-BSD Twist-Family Reproduction · 建置中 · 9 / 24 篇已上線</p>
+    <p class="lede">
+      重現 Banwait–Huang 2026(arXiv:2601.16044)把 strong-BSD twist criteria 編譯成明確算法、對 conductor&lt;500,000 的
+      LMFDB 橢圓曲線做系統辨識的工作。不宣稱證明 BSD——每一篇都只回答「哪些曲線與 twist 滿足已知定理的可驗證條件」,
+      不是「BSD 對這些曲線成立」。
+    </p>
+    <p class="notice">
+      建置中,逐篇上線,依原始文件順序閱讀。目前完成今日三輪(v0.1 全部 7 篇 + v0.2 前 2 篇),後續依「一天 3 輪、一次 3 個」的步調繼續。
+    </p>
+  </header>
+
+  <section id="docs">
+    <h2 class="doc-h2">已上線文件</h2>
+    <nav class="case-grid" aria-label="Phase 1 文件">
+      <a class="case-card" href="./p/00-consensus/">
+        <span class="k">00</span>
+        <h3>Phase 1 共識裁決</h3>
+        <p>PASS,路線可工程化。CLZ20/Zha16 分支小範圍重現與官方 fixture 完全一致。</p>
+      </a>
+      <a class="case-card" href="./p/01-condition-map/">
+        <span class="k">01</span>
+        <h3>Theorem 2.18 條件圖</h3>
+        <p>Base curve 七條件、兩個 2-撓點分支、twist 條件。admissible ⟹ BSD,單向。</p>
+      </a>
+      <a class="case-card" href="./p/02-paper-vs-code-audit/">
+        <span class="k">02</span>
+        <h3>論文與官方程式審計</h3>
+        <p>官方程式比論文多了防過度宣稱閘門:區分 Sha[2] 維度與 ord_2(Sha)。</p>
+      </a>
+      <a class="case-card" href="./p/03-algorithm2-reproduction/">
+        <span class="k">03</span>
+        <h3>Algorithm 2 獨立重現</h3>
+        <p>純 Python 標準庫 mirror,46a1/106d1 兩分支 exact list match。</p>
+      </a>
+      <a class="case-card" href="./p/04-environment-and-gaps/">
+        <span class="k">04</span>
+        <h3>Algorithm 1 執行環境與尚缺項</h3>
+        <p>誠實列出本輪沒做的六件事,給出小樣本先行的 v0.2 計畫。</p>
+      </a>
+      <a class="case-card" href="./p/05-enclosure-and-stop-rules/">
+        <span class="k">05</span>
+        <h3>全局包圍與停止規則</h3>
+        <p>路線天花板是 uniform infinite-family theorem,不是 ∀E/ℚ。定義停止規則。</p>
+      </a>
+      <a class="case-card" href="./p/06-local-agent-handoff/">
+        <span class="k">06</span>
+        <h3>本地 Agent 交接</h3>
+        <p>六角色交接,銜接停止規則的實際執行。</p>
+      </a>
+      <a class="case-card" href="./p/07-v02-consensus/">
+        <span class="k">07</span>
+        <h3>Phase 1 v0.2 收斂裁決</h3>
+        <p>從結果重現升級為版本化證書回歸。發現正式 fixture 25 條 → 12 條。</p>
+      </a>
+      <a class="case-card" href="./p/08-fixture-regression/">
+        <span class="k">08</span>
+        <h3>小樣本版本回歸:25 → 12</h3>
+        <p>被移除的 13 條曲線標籤逐一列出,reason = OPEN,不猜測理由。</p>
+      </a>
+    </nav>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../">← BSD 猜想</a>
+    <span>SHA-256 逐篇核驗 · 原始位元組,不重新打包</span>
+  </footer>
+</div>
+</body>
+</html>

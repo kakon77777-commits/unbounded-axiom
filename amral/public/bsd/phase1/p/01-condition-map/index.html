@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Theorem 2.18 條件圖 · BSD Phase 1 · AMRAL</title>
+<meta name="description" content="逐條列出 base curve 七個資格條件(E1-E7:半穩定、小質數 trace、無有理 isogeny、分歧、optimality、解析秩為零、BSD(E,2))、兩個 2-撓點分支(8a/8b)各自條件、twist d 的共同條件與分支專屬條件。明確聲明輸出語義是單向蘊含:admissible ⟹ BSD 由已引用定理推出,not admissible 不蘊含 BSD 為假。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/01_Theorem_2_18_Condition_Map.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../about/">關於</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link" href="../../../../protocols/">研究協議</a>
+  <a class="link" href="../../../../validation/">驗證</a>
+  <a class="link" href="../../../../research-modes/">自主模式</a>
+  <a class="link" href="../../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../../../glc-framework/">GLC 閉合框架</a>
+  <a class="link active" href="../../../">BSD 猜想</a>
+  <a class="link" href="../../../../cpl/">臨界線比例梯</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← Phase 1</a>
+    <span>/</span>
+    <span>01 · Theorem 2.18 條件圖</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">Phase 1 · 01</span>
+      <span class="tag">v0.1</span>
+      <span class="tag">2026-08-12</span>
+    </div>
+    <h1>Theorem 2.18 條件圖</h1>
+    <p class="h1-sub">把 Banwait–Huang Theorem 2.18 的資格條件完整攤開成可逐項稽核的清單。Base curve $E$ 需要同時滿足七個條件(E1 半穩定、E2 小質數 trace $a_3(E)\in\{-2,\ldots,2\}$、E3 排除 $p\in\{3,5,7\}$ 有理 isogeny、E4 乘法質數處的分歧條件、E5 $\Gamma_0(N)$-optimal representative、E6 解析秩為零、E7 $\operatorname{BSD}(E,2)$ 已無條件驗證)。曲線接著按 2-撓點結構分兩支:分支 8a(無有理 2-撓點,由 Zhai 類結果處理)與分支 8b(恰有一個有理 2-撓點,需要 $E'=E/E(\mathbb Q)[2]$ 滿足 $\Sha(E')[2]=0$ 且 $E'(\mathbb Q)[2]\cong\mathbb Z/2\mathbb Z$)。Twist $d$ 除了平方無因子、與 $3N$ 互質、$d\equiv1\pmod4$ 等共同條件外,Zha16 分支與 CLZ20 分支各自還有質數在特定體中 inert/split 的條件。文件最後明確定住輸出語義的方向性:Algorithm 2 回傳的不是「所有滿足 BSD 的 twists」,而是一個 theorem-guaranteed subfamily——admissible 蘊含 BSD 由已引用定理推出,但 not admissible 不蘊含 BSD 為假,這個單向性是整條 Phase 1 管線的核心紀律。</p>
+    <div class="claim-box">
+      admissible ⟹ BSD follows from cited theorems;not admissible ⇏ BSD false(單向蘊含)
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一篇</span><a href="../00-consensus/">00 · Phase 1 共識裁決</a></div>
+      <div class="conn-card"><span class="k">下一篇</span><a href="../02-paper-vs-code-audit/">02 · 論文與官方程式審計</a></div>
+      <div class="conn-card"><span class="k">Phase 1 進度</span>3 / 24</div>
+    </div>
+    <blockquote class="cite">「admissible ⟹ BSD follows from cited theorems。反方向不成立:not admissible ⇏ BSD false。」— 摘自本文「G. 輸出語義」。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← Phase 1</a>
+    <a href="../../files/01_Theorem_2_18_Condition_Map.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/01_Theorem_2_18_Condition_Map.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

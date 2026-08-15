@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phase 1 共識裁決 · BSD Phase 1 · AMRAL</title>
+<meta name="description" content="裁決:PASS,Banwait-Huang 路線可工程化。把 theorem hypotheses 拆成 base curve 資格、twist parameter 資格、BSD(E,2) 獨立驗證、branch-specific Chebotarev 條件四層。第一次最小重現:CLZ20 與 Zha16 兩條分支在小範圍內與官方 fixture 完全一致。明確聲明這不是 BSD 證明,只是 admissible according to theorem criteria。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/00_Phase1_Consensus.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../about/">關於</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link" href="../../../../protocols/">研究協議</a>
+  <a class="link" href="../../../../validation/">驗證</a>
+  <a class="link" href="../../../../research-modes/">自主模式</a>
+  <a class="link" href="../../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../../../glc-framework/">GLC 閉合框架</a>
+  <a class="link active" href="../../../">BSD 猜想</a>
+  <a class="link" href="../../../../cpl/">臨界線比例梯</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← Phase 1</a>
+    <span>/</span>
+    <span>00 · Phase 1 共識裁決</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">Phase 1 · 00</span>
+      <span class="tag">v0.1</span>
+      <span class="tag">2026-08-12</span>
+      <span class="tag">PASS</span>
+    </div>
+    <h1>Phase 1 共識裁決:PASS,Banwait–Huang 路線可工程化</h1>
+    <p class="h1-sub">裁決不是空泛的「存在無限多 twists」宣稱,而是把 theorem hypotheses 拆成四層可分別稽核的模組:base curve $E$ 的資格、twist parameter $d$ 的資格、$\operatorname{BSD}(E,2)$ 的獨立驗證、branch-specific Chebotarev/splitting 條件——恰好對應 Theorem → Predicate → Evidence source → Certificate → Pass/Fail/Open 這條工程化管線。文件同時完成本輪最小重現:在缺少 SageMath/LMFDB backend 的環境裡,沒有假裝重跑 500K 條曲線,而是先隔離 Algorithm 2 最容易獨立驗證的兩條分支——CLZ20 分支(曲線 46a1,$1\le d\le1000$)得到 7 個 admissible twists,Zha16 分支(曲線 106d1,$-1000\le d\le1000$)得到 21 個,兩者都與官方 repository fixture 完全一致。文件把這個結果的真實強度說得很清楚:純 Python mirror 只驗證「在 base curve 已通過 Algorithm 1 的前提下,d 是否滿足 Theorem 2.18 的顯式算術條件」,真正的 theorem strength 仍來自 Cai–Li–Zhai、Zhai、Banwait–Huang 的組合定理與 $\operatorname{BSD}(E,2)$ 的 descent certificate——輸出應讀作「admissible according to theorem criteria」,不是「BSD independently proved from elementary computation」。</p>
+    <div class="claim-box">
+      PASS:Banwait–Huang 路線可工程化;CLZ20/Zha16 兩分支小範圍重現與官方 fixture 完全一致
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">下一篇</span><a href="../01-condition-map/">01 · Theorem 2.18 條件圖</a></div>
+      <div class="conn-card"><span class="k">Phase 1 進度</span>3 / 24</div>
+    </div>
+    <blockquote class="cite">「輸出應讀作:admissible according to theorem criteria。而不是:BSD independently proved from elementary computation。」— 摘自本文「為什麼這不是 BSD 證明?」。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← Phase 1</a>
+    <a href="../../files/00_Phase1_Consensus.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/00_Phase1_Consensus.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

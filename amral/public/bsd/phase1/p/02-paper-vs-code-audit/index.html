@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>論文與官方程式審計 · BSD Phase 1 · AMRAL</title>
+<meta name="description" content="審計官方 GitHub 實作與論文 pseudocode 的落差,結論:官方程式不是照抄論文,而是加入了防過度宣稱的證書強度修正——區分 Sha[2] 維度與 ord_2(Sha) 的差異、把 analytic Sha 值只當 descent gate 輸入不冒充實際群階、把 testing-only flags 明確標記、要求鎖定 paper version/repository commit/Sage version/LMFDB release 等完整可重現性中繼資料。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/02_Paper_vs_Current_Code_Audit.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../about/">關於</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link" href="../../../../protocols/">研究協議</a>
+  <a class="link" href="../../../../validation/">驗證</a>
+  <a class="link" href="../../../../research-modes/">自主模式</a>
+  <a class="link" href="../../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../../../glc-framework/">GLC 閉合框架</a>
+  <a class="link active" href="../../../">BSD 猜想</a>
+  <a class="link" href="../../../../cpl/">臨界線比例梯</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← Phase 1</a>
+    <span>/</span>
+    <span>02 · 論文與官方程式審計</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">Phase 1 · 02</span>
+      <span class="tag">v0.1</span>
+      <span class="tag">2026-08-12</span>
+    </div>
+    <h1>論文 Pseudocode 與目前官方程式審計</h1>
+    <p class="h1-sub">結論先講在前面:目前 GitHub 實作不是單純照抄論文 pseudocode,而是加入了數個重要的證書強度修正,核心是一道「防過度宣稱 $\operatorname{BSD}(E,2)$」的閘門。關鍵區分是 2-descent 直接控制的是 $\dim_{\mathbb F_2}\Sha(E)[2]$,不是 $\operatorname{ord}_2\#\Sha(E)$——即使 $\Sha[2]$ 維度算出來是 2,仍可能有 $\Sha[2^\infty]\cong(\mathbb Z/4\mathbb Z)^2$ 使 $\operatorname{ord}_2\#\Sha=4$,所以官方程式的 <code>check_BSD_at_2</code> 只有在 $\operatorname{ord}_2\#\Sha_{\mathrm{an}}=0$ 且 descent 嚴格得到 $\Sha[2]=0$ 兩者同時成立時才接受——這與論文 Remark 2.19 對正 analytic 2-adic valuation 需要更高 2-power descent 的警告一致。同樣的紀律也套用在 $E'$ 的條件上:程式會讀 $\Sha_{\mathrm{an}}(E')$,但只當作 descent gate 的輸入,不直接冒充實際群階。文件也記錄了工程層的重要細節:descent backend 依序嘗試 PARI、mwrank、Sage native,mwrank 因可能卡住而被放進有 wall-clock timeout 的獨立行程;$\mathcal S\ne\varnothing$ 的判準改用論文 Proposition 2.16 的 deterministic filter,不再只用 bounded prime search 當主證書;<code>skip_filter_S</code>、<code>skip_BSD_at_2_check</code> 這類 testing-only flags 一旦啟用,輸出就不能再稱作完整 theorem-qualified curves,必須寫進 metadata。最後指出一個仍待 Phase 1 v0.2 審計的缺口:Algorithm 1 初始用 LMFDB 的 <code>rank</code> 欄位,再透過 special value 條件排除中心消失來實際判定解析秩——完整重現時應顯式分開保存 algebraic rank 欄位、analytic rank 欄位與 special value nonvanishing,避免兩種 rank 被靜默混為一談。</p>
+    <div class="claim-box">
+      官方程式已加入防過度宣稱閘門:區分 Sha[2] 維度與 ord_2(Sha),analytic 值不冒充實際群階
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一篇</span><a href="../01-condition-map/">01 · Theorem 2.18 條件圖</a></div>
+      <div class="conn-card"><span class="k">Phase 1 進度</span>3 / 24(今日第一輪最後一篇)</div>
+    </div>
+    <blockquote class="cite">「本地 Agent 必須把這些 flags 寫入 metadata,不能只保存結果清單。」— 摘自本文「5. Soundness-sensitive flags」。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← Phase 1</a>
+    <a href="../../files/02_Paper_vs_Current_Code_Audit.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/02_Paper_vs_Current_Code_Audit.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

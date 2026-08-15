@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Algorithm 1 執行環境與尚缺項 · BSD Phase 1 · AMRAL</title>
+<meta name="description" content="誠實記錄完整重跑 Algorithm 1 需要的環境(SageMath、本地 LMFDB PostgreSQL、PARI 2-descent、mwrank 等)以及本輪明確沒有完成的項目——不能連線本地 LMFDB、沒有跑 Sage、沒有跑 2-descent、沒有獨立證明官方 36,687 curve count。列出已完成的替代工作,並給出 Phase 1 v0.2 的最低環境測試計畫:先在 conductor<150 做小樣本 sanity check,一致後才允許進 500K。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/04_Algorithm1_Environment_and_Gaps.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../about/">關於</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link" href="../../../../protocols/">研究協議</a>
+  <a class="link" href="../../../../validation/">驗證</a>
+  <a class="link" href="../../../../research-modes/">自主模式</a>
+  <a class="link" href="../../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../../../glc-framework/">GLC 閉合框架</a>
+  <a class="link active" href="../../../">BSD 猜想</a>
+  <a class="link" href="../../../../cpl/">臨界線比例梯</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← Phase 1</a>
+    <span>/</span>
+    <span>04 · Algorithm 1 執行環境與尚缺項</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">Phase 1 · 04</span>
+      <span class="tag">v0.1</span>
+      <span class="tag">2026-08-12</span>
+      <span class="tag">誠實邊界</span>
+    </div>
+    <h1>Algorithm 1 的執行環境與尚缺項</h1>
+    <p class="h1-sub">完整重跑 Algorithm 1 需要 SageMath、本地 LMFDB PostgreSQL 資料庫、<code>lmfdb</code> Python package、pandas/numpy、PARI 2-descent、mwrank、Sage native 2-isogeny descent,以及足夠的記憶體與本地資料——本輪環境不具備這些條件。文件直接列出本輪「沒有做」的項目:沒有連線本地 LMFDB PostgreSQL、沒有執行 Sage、沒有執行 2-descent、沒有重掃 conductor&lt;500000、沒有獨立證明官方的 36,687 curve count,因此明確聲明不能寫「Full Algorithm 1 independently reproduced」。取而代之,本輪完成的是六項替代工作:逐條拆解 theorem conditions、讀取目前官方 implementation、審計證書強度、取得官方小樣本 fixtures、獨立重現 Algorithm 2、建立下一輪的 Sage execution plan。文件給出 Phase 1 v0.2 的最低環境測試計畫:先在 <code>conductor&lt;150</code> 跑 Algorithm1.py,預期輸出 12 條 base curves,再用這批曲線跑 Algorithm2.py,比較 curve labels、來源 branch、twists、檔案 SHA、pass/fail metadata 是否與官方完全一致——只有在這個小樣本完全吻合之後,才允許進入 500K 全規模重跑。</p>
+    <div class="claim-box">
+      本輪不能寫「Full Algorithm 1 independently reproduced」——完整列出六項尚缺工作與小樣本先行計畫
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一篇</span><a href="../03-algorithm2-reproduction/">03 · Algorithm 2 獨立重現</a></div>
+      <div class="conn-card"><span class="k">下一篇</span><a href="../05-enclosure-and-stop-rules/">05 · 全局包圍與停止規則</a></div>
+      <div class="conn-card"><span class="k">Phase 1 進度</span>6 / 24</div>
+    </div>
+    <blockquote class="cite">「在小樣本完全一致後,才允許進入 500K。」— 摘自本文「Phase 1 v0.2 的最低環境測試」。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← Phase 1</a>
+    <a href="../../files/04_Algorithm1_Environment_and_Gaps.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/04_Algorithm1_Environment_and_Gaps.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

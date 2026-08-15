@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Algorithm 2 獨立重現 · BSD Phase 1 · AMRAL</title>
+<meta name="description" content="建立一個只依賴 Python 標準庫的 mirror,重播 squarefree/gcd/a_p/有限體點數/2-adic 賦值/quadratic splitting/cubic 2-division inertness/sign condition。46a1 得到與官方完全相同的 7 個 twists,106d1 得到與官方完全相同的 21 個 twists,exact list match。明確標示 inertness 判定用 cubic reduction mod p 的簡化,正式證書應以 Sage number-field backend 為權威。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/03_Algorithm2_Independent_Reproduction.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../about/">關於</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link" href="../../../../protocols/">研究協議</a>
+  <a class="link" href="../../../../validation/">驗證</a>
+  <a class="link" href="../../../../research-modes/">自主模式</a>
+  <a class="link" href="../../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../../../glc-framework/">GLC 閉合框架</a>
+  <a class="link active" href="../../../">BSD 猜想</a>
+  <a class="link" href="../../../../cpl/">臨界線比例梯</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← Phase 1</a>
+    <span>/</span>
+    <span>03 · Algorithm 2 獨立重現</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">Phase 1 · 03</span>
+      <span class="tag">v0.1</span>
+      <span class="tag">2026-08-12</span>
+    </div>
+    <h1>Algorithm 2 獨立重現</h1>
+    <p class="h1-sub">建立一個只依賴 Python 標準庫的 mirror,重播 squarefree、gcd、$a_p$、有限體點數、2-adic 賦值、quadratic splitting、cubic 2-division inertness、sign condition——刻意不實作 Algorithm 1 的 descent/isogeny/optimality/L-value 部分,範圍精確鎖定在 Algorithm 2 的 branch logic。有限體點數用判別式 $D_x=(a_1x+a_3)^2+4(x^3+a_2x^2+a_4x+a_6)$ 配 Legendre symbol 直接算,ordinary test 檢查 $p\nmid a_p(E)$。CLZ branch 對 46a1 得到與官方完全相同的 7 個 twists($1,185,265,305,745,785,905$),Zhai branch 對 106d1 用 2-撓點 $x$-座標的 cubic 判 inert prime,得到與官方完全相同的 21 個 twists——兩者都是 exact list match,不是數量吻合。文件誠實標出這個 mirror 的技術限制:cubic reduction modulo $p$ 只是 inertness 的簡化判定,正式數體計算應該用完整的 $p\mathcal O_F$ 分解或 Sage 的 <code>is_prime()</code>,本測試之所以能用簡化版本,是因為 theorem 本身的 $(d,3N)=1$ 條件已經排除了相關的 ramified bad primes——但 full production 版本仍應以 Sage number-field backend 為權威,不是這個簡化 mirror。</p>
+    <div class="claim-box">
+      46a1:7 個 twists exact match;106d1:21 個 twists exact match——Algorithm 2 branch logic 可被獨立重播
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一篇</span><a href="../02-paper-vs-code-audit/">02 · 論文與官方程式審計</a></div>
+      <div class="conn-card"><span class="k">下一篇</span><a href="../04-environment-and-gaps/">04 · Algorithm 1 執行環境與尚缺項</a></div>
+      <div class="conn-card"><span class="k">Phase 1 進度</span>6 / 24</div>
+    </div>
+    <blockquote class="cite">「full production 仍應以 Sage number-field backend 為權威。」— 摘自本文「5. 限制」。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← Phase 1</a>
+    <a href="../../files/03_Algorithm2_Independent_Reproduction.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/03_Algorithm2_Independent_Reproduction.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>
