@@ -121,10 +121,29 @@ def build_registry(entries) -> dict:
     stable ids. Existing ids are preserved (keyed by source_file); new files are
     assigned the next free lm-NNNNNN in sorted source order for determinism."""
     prev = load_registry()
-    # Key identity by BASENAME so ids survive the chronological folder move
-    # (papers/ -> content/papers/YYYY/YYYY-MM/): the path changes, the name does not.
-    by_base = {Path(it["source_file"]).name: it for it in prev.get("items", [])}
-    used_ids = {it["id"] for it in prev.get("items", [])}
+    prev_items = prev.get("items", [])
+    # Identity is keyed by exact path first (unambiguous: two files can never
+    # share a path). Basename is only a FALLBACK, for the case ids need to
+    # survive the chronological folder move (papers/ -> content/papers/
+    # YYYY/YYYY-MM/) -- same file, same content, new path, old path gone.
+    #
+    # An earlier version of this function keyed by basename ALONE, via a
+    # single `{basename: item}` dict built from prev_items. That silently
+    # broke the moment two DIFFERENT files ever shared a basename (e.g. a
+    # revised draft of 《貨幣的時間本質...》 re-ingested into a later month
+    # folder without renaming -- found as a real defect, both files resolving
+    # to lm-000199, different content_hash). Worse: once that collision was
+    # baked into a saved registry, the basename dict comprehension collapsed
+    # the two prior entries into whichever iterated last, so a naive
+    # path-independent fix made ids CHURN on every rebuild instead of
+    # settling -- caught by re-running the pipeline twice and diffing, not by
+    # reasoning about the code alone.
+    prev_by_path = {it["source_file"]: it["id"] for it in prev_items}
+    prev_by_base = {}
+    for it in prev_items:
+        prev_by_base.setdefault(Path(it["source_file"]).name, []).append((it["source_file"], it["id"]))
+
+    used_ids = {it["id"] for it in prev_items}
     used_ids |= _reserved_companion_ids()  # retired (demoted) ids stay reserved forever
 
     def next_id():
@@ -141,31 +160,44 @@ def build_registry(entries) -> dict:
     for slug, display, ext, src in entries:
         rel = src.relative_to(ROOT).as_posix()
         cur.append((src.name, rel, slug, display, ext, src))
+    cur_paths = {rel for _, rel, *_ in cur}
 
-    # New files (by basename) get the next free id, in deterministic basename order.
-    for base in sorted(b for (b, *_) in cur if b not in by_base):
-        nid = next_id()
-        used_ids.add(nid)
-        by_base[base] = {"id": nid}
+    path_to_id = {}
+    for base, rel, *_ in cur:
+        if rel in prev_by_path:
+            path_to_id[rel] = prev_by_path[rel]  # unambiguous: this exact path already has an id
+            continue
+        candidates = prev_by_base.get(base, [])
+        # A real move/rename: exactly one prior entry had this basename, and
+        # its old exact path is gone now (not still present under some OTHER
+        # current path -- that would mean two files sharing a name, not one
+        # file moving).
+        if len(candidates) == 1 and candidates[0][0] not in cur_paths:
+            path_to_id[rel] = candidates[0][1]
 
-    # A basename can legitimately occur at more than one path in the SAME run --
-    # not the move/rename case `by_base` above exists for, but a genuinely
-    # different file (e.g. a revised draft re-ingested into a later month
-    # folder without renaming). Keying purely by basename silently gave both
-    # paths the same id -- found as a real defect: lm-000199 was shared by two
-    # files with different content_hash in different months. Only the first
-    # path (deterministic, sorted) may inherit a basename's id; every other
-    # path sharing that basename gets its own fresh id, keyed by its exact
-    # source_file so it can never collide again.
-    path_id_override = {}
-    seen_base_paths = {}
+    # New files (including "moved" candidates that didn't resolve above) get
+    # the next free id, in deterministic path order.
     for base, rel, *_ in sorted(cur, key=lambda t: t[1]):
-        if base in seen_base_paths and rel != seen_base_paths[base]:
+        if rel not in path_to_id:
             nid = next_id()
             used_ids.add(nid)
-            path_id_override[rel] = nid
-        else:
-            seen_base_paths.setdefault(base, rel)
+            path_to_id[rel] = nid
+
+    # Safety net: an id must resolve to exactly one path. Catches a collision
+    # already baked into a PRIOR registry (the lm-000199 class) -- without
+    # this, the exact-path lookup above would silently perpetuate it forever
+    # instead of ever repairing it. Keeps the first path (sorted,
+    # deterministic); every other path claiming the same id gets a fresh one.
+    id_to_paths = {}
+    for rel, eid in path_to_id.items():
+        id_to_paths.setdefault(eid, []).append(rel)
+    for eid, paths in id_to_paths.items():
+        if len(paths) < 2:
+            continue
+        for rel in sorted(paths)[1:]:
+            nid = next_id()
+            used_ids.add(nid)
+            path_to_id[rel] = nid
 
     def _month_from_path(relp):
         m = re.search(r"papers/(\d{4})/(\d{4}-\d{2})/", relp)
@@ -173,7 +205,7 @@ def build_registry(entries) -> dict:
 
     items = []
     for base, rel, slug, display, ext, src in cur:
-        eid = path_id_override.get(rel, by_base[base]["id"])
+        eid = path_to_id[rel]
         ctcl = ctcl_dates.get(base)             # CTCL instant record, if this paper is CTCL-era
         d = ctcl["date"] if ctcl else dates.get(base)  # 'YYYY-MM-DD' or None
         mp = _month_from_path(rel)             # folder-path month 'YYYY-MM' (authoritative §5)
