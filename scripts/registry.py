@@ -148,13 +148,32 @@ def build_registry(entries) -> dict:
         used_ids.add(nid)
         by_base[base] = {"id": nid}
 
+    # A basename can legitimately occur at more than one path in the SAME run --
+    # not the move/rename case `by_base` above exists for, but a genuinely
+    # different file (e.g. a revised draft re-ingested into a later month
+    # folder without renaming). Keying purely by basename silently gave both
+    # paths the same id -- found as a real defect: lm-000199 was shared by two
+    # files with different content_hash in different months. Only the first
+    # path (deterministic, sorted) may inherit a basename's id; every other
+    # path sharing that basename gets its own fresh id, keyed by its exact
+    # source_file so it can never collide again.
+    path_id_override = {}
+    seen_base_paths = {}
+    for base, rel, *_ in sorted(cur, key=lambda t: t[1]):
+        if base in seen_base_paths and rel != seen_base_paths[base]:
+            nid = next_id()
+            used_ids.add(nid)
+            path_id_override[rel] = nid
+        else:
+            seen_base_paths.setdefault(base, rel)
+
     def _month_from_path(relp):
         m = re.search(r"papers/(\d{4})/(\d{4}-\d{2})/", relp)
         return m.group(2) if m else None
 
     items = []
     for base, rel, slug, display, ext, src in cur:
-        eid = by_base[base]["id"]
+        eid = path_id_override.get(rel, by_base[base]["id"])
         ctcl = ctcl_dates.get(base)             # CTCL instant record, if this paper is CTCL-era
         d = ctcl["date"] if ctcl else dates.get(base)  # 'YYYY-MM-DD' or None
         mp = _month_from_path(rel)             # folder-path month 'YYYY-MM' (authoritative §5)
