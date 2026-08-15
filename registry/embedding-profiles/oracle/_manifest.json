@@ -1,0 +1,28 @@
+{
+  "purpose": "Phase C0 (Browser Oracle Freeze) for Logic Matrix MCP x DSRS. A fixed golden query set, captured by running the REAL production browser query-encoder code path (same CDN URL, same model call, same pooling/normalize, same live-fetched query_instruction as shell/public/semantic/semantic-vector.js), not a reimplementation. This is the reference every future server-side encoder gets compared against in Phase C1.",
+  "captured_2026-08-15": true,
+  "files": {
+    "browser-q8-oracle-2026-08-15.json": "full capture: 30 queries, each with the complete 512-dim float32 vector, L2 norm, and SHA-256 of the raw vector bytes. ~484KB, committed (not regenerable in the same sense as scripts/export_vectorize.py's output -- this is a snapshot of what the LIVE CDN-served model actually produced at this moment, not a deterministic function of already-committed source data, so it can't just be regenerated later and trusted to match).",
+    "browser-q8-oracle-2026-08-15.summary.json": "same metadata + per-query {query, dim, l2_norm, sha256} WITHOUT the 512-dim vectors themselves -- for quick human/AI reading without pulling ~450KB of floats into context."
+  },
+  "capture_method": "Browser pane (mcp__Claude_Browser__javascript_tool) executed on the LIVE site https://unboundedaxiom.org, dynamic-importing the exact same jsDelivr URL (@huggingface/transformers@4.2.0/+esm) and calling pipeline(\"feature-extraction\", \"Xenova/bge-small-zh-v1.5\", {dtype:\"q8\"}) then model(query_instruction + query, {pooling:\"mean\", normalize:true}) -- byte-for-byte the same call shell/public/semantic/semantic-vector.js's semanticScores() makes, not a hand-written approximation. query_instruction was live-fetched from /ai/semantic-vectors-meta.json rather than hardcoded, matching production.",
+  "validation": {
+    "query_count": 30,
+    "unique_query_count": 30,
+    "all_l2_norms_approx_1": true,
+    "dims_seen": [512],
+    "model_load_ms": 4995.1
+  },
+  "golden_set_design": "30 queries covering every category the Phase C handoff specified: exact corpus terms (動態不動點/全域量詞/AICL/DSRS), a direct paper-id lookup (lm-001862, lm-000001), rare-but-real corpus terms confirmed present via grep before inclusion (W-20: 3 files, CASP: 1 file), English (Navier-Stokes/Riemann Hypothesis/quantum entanglement/personal identity over time/MCP/best pizza recipe), zh-en mixed (DSRS 的 hybrid retrieval 設計), math symbols ($P=NP$, quantifier notation), deliberately off-topic controls (coffee, Taipei weather, pizza -- expected near-floor scores), and zero-lexical-overlap natural-language paraphrases (a full-sentence Ship-of-Theseus question using none of the corpus's own terminology, and a paraphrase of 'independently_convergent' avoiding that exact phrase).",
+  "model_revision_status": {
+    "pinned": false,
+    "browser_call": "pipeline() has no `revision` option -- tracks Xenova/bge-small-zh-v1.5's `main`, confirmed by reading shell/public/semantic/semantic-vector.js's loadModel() directly.",
+    "hf_api_check_this_session": {
+      "sha": "75c43b069aac4d136ba6bc1122f995fedcfd2781",
+      "last_modified": "2025-07-22T16:45:56.000Z",
+      "checked_via": "https://huggingface.co/api/models/Xenova/bge-small-zh-v1.5, independently fetched this same session"
+    },
+    "honest_caveat": "Could NOT directly observe the resolved commit SHA on the actual network request(s) this browser capture made -- mcp__Claude_Browser__read_network_requests recorded no huggingface.co/jsdelivr entries for this capture (the dynamic-import + WASM/ONNX model fetch appears invisible to this tool, only a blob: URL and the unrelated page-load requests showed up). So 'this capture used commit 75c43b0...' is an INFERENCE (same session, repo untouched since 2025-07-22, no revision pin to have drifted) -- not a directly-observed fact paired to this specific capture. If bit-exact revision provenance ever matters (e.g. investigating an unexplained drift), this gap is the first thing to close -- e.g. by intercepting the request at the Service Worker/CDP network level rather than this tool's request log.",
+    "next_step": "This capture is usable as the Phase C1 comparison baseline as-is (repo hasn't changed since 2025-07-22, so the inference is strong in practice) -- but do not describe model_revision as 'confirmed' in any downstream document, only 'inferred, session-contemporaneous, repo stable since 2025-07-22.'"
+  }
+}
