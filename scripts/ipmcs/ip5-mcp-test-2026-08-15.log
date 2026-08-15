@@ -1,0 +1,163 @@
+logic-matrix-ipmcs MCP server ready (stdio)
+connected.
+server capabilities.tools present: true
+listTools -> 5 tools: search_identity, expand_query, search_views, get_object, expand_address
+
+--- get_object(lm-002549) ---
+{
+  "object_id": "lm-002549",
+  "title": "多尺度同一性與忒修斯主體：每一個都是我，每一個也都不是我",
+  "headings": [
+    "Multiscale Identity and the Theseus Subject: Each Is Me, and",
+    "摘要",
+    "關鍵詞",
+    "物質尺度",
+    "生物尺度",
+    "心理尺度"
+  ]
+}
+
+--- expand_address(lm-002549) ---
+{
+  "digest_verified": true,
+  "object_id": "66f585dd64032ea7a82b143bb2b437371ad8cbfec7b7f211ca8c6f40363f686c",
+  "content_hash": "ef4bccd8f2e6889dce673aae0105673b6fbc7bf3ed6e8133fbaa125bf3da86a8",
+  "size": 29092,
+  "path": "2026/2026-08/多尺度同一性與忒修斯主體：每一個都是我，每一個也都不是我.md",
+  "archive": "logic-matrix-corpus.anla",
+  "hash_algorithm": "blake3-256"
+}
+
+--- expand_address(lm-999999, should not exist) ---
+{
+  "digest_verified": false,
+  "reason": "no ANLA address for this paper_id"
+}
+
+--- search_identity(動態不動點, expandAddress:true, topK:3) ---
+{
+  "query": "動態不動點",
+  "branches": [
+    "original"
+  ],
+  "objects": [
+    {
+      "object_id": "lm-000341",
+      "title": "動態不動點的認知錯覺：風暴眼「怎麼還在」的現象學觀察",
+      "has_exact": true,
+      "max_score": 1,
+      "paths": [
+        {
+          "object_id": "lm-000341",
+          "view": "document",
+          "retriever": "exact",
+          "score": 1,
+          "branch_type": "original",
+          "branch_text": "動態不動點"
+        },
+        {
+          "object_id": "lm-000341",
+          "view": "document",
+          "retriever": "lexical",
+          "score": 1,
+          "branch_type": "original",
+          "branch_text": "動態不動點"
+        }
+      ],
+      "provenance": {
+        "digest_verified": true,
+        "object_id": "1799f2eaa0981af985410df568cca9dfd823e15e8424cb5be857106106f964ce",
+        "content_hash": "1f472ee47a6888e54bbe1834c4d82e3f0e7be9b42b4ba6e1b1c3b7d7f3300c38",
+        "size": 6517,
+        "path": "2026/2026-06/動態不動點的認知錯覺：風暴眼「怎麼還在」的現象學觀察.md",
+        "archive": "logic-matrix-corpus.anla",
+        "hash_algorithm": "blake3-256"
+      }
+    },
+    {
+      "object_id": "lm-000417",
+      "title": "子 Agent 分支同一性論：從工程認識論到動態不動點倫理",
+      "has_exact": true,
+      "max_score
+...[truncated]
+
+--- search_views(動態不動點, chunk-v1) ---
+{
+  "query": "動態不動點",
+  "view": "chunk-v1",
+  "objects": [
+    {
+      "object_id": "lm-001382",
+      "title": "統一認知—行動動力學：選擇、觀察、記憶、更新、轉移與環境回饋的整合框架",
+      "has_exact": false,
+      "max_score": 0.36733,
+      "paths": [
+        {
+          "object_id": "lm-001382",
+          "view": "chunk-v1",
+          "retriever": "semantic",
+          "score": 0.36733,
+          "branch_type": "original",
+          "branch_text": "動態不動點"
+        }
+      ]
+    },
+    {
+      "object_id": "lm-002012",
+      "title": "生成修正與重新閉合_動態不動點數學的演化循環_v0.1",
+      "has_exact": false,
+      "max_score": 0.3654144,
+      "paths": [
+        {
+          "object_id": "lm-002012",
+          "view": "chunk-v1",
+          "retriever": "semantic",
+          "score": 0.3654144,
+          "branch_type": "original",
+          "branch_text": "動態不動點"
+        }
+      ]
+    },
+    {
+      "object_id": "lm-001905",
+      "title": "PU-1-03_資料狀態事件行動_程式系統的四元動力結構_v0.1",
+      "has_exact": false,
+      "max_score": 0.36415398,
+      "paths": [
+        {
+          "object_id": "lm-001905",
+          "view": "chunk-v1",
+          "retriever": "semantic",
+          "score": 0.36415398,
+          "branch_type": "original",
+        
+...[truncated]
+
+--- expand_query(忒修斯之船, maxBranches:4) ---
+{
+  "query": "忒修斯之船",
+  "branches": [
+    {
+      "type": "original",
+      "text": "忒修斯之船"
+    },
+    {
+      "type": "semantic",
+      "text": "忒修斯之船 悖论"
+    },
+    {
+      "type": "semantic",
+      "text": "同一性哲学"
+    },
+    {
+      "type": "semantic",
+      "text": "身份的连续性"
+    },
+    {
+      "type": "task",
+      "text": "忒修斯之船 哲学讨论"
+    }
+  ]
+}
+
+all tool calls completed through the real MCP protocol.

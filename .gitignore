@@ -18,6 +18,11 @@ __pycache__/
 /scripts/phase-c-encoder-compare/node_modules/
 /scripts/ipmcs/node_modules/
 
+# IP-4: the real ANLA archive of content/papers/ (~88MB, regenerable via
+# anla_address/build_archive.py). The sidecar manifest it also produces
+# (paper-addresses-*.json, small) IS tracked -- that's the committed evidence.
+/scripts/ipmcs/anla_address/*.anla
+
 # wrangler files
 .wrangler
 .dev.vars*
