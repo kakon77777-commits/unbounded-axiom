@@ -1,4 +1,4 @@
-// IPMCS Phase IP-2 -- Runtime Integration.
+// IPMCS Phase IP-2 -- Runtime Integration -- + IP-3 -- External Expansion.
 //
 // Generalizes IP-1's one-off experiment (hardcoded to the 6 known G_miss
 // queries) into a real, reusable retriever: ipmcsSearch(query, opts) works
@@ -10,16 +10,58 @@
 //     (returnValues:true, both namespaces) -- the SAME real, recall-gapped
 //     index, not a synthetic stand-in.
 //
-// Query branching here defaults to just the original query -- IP-2's job is
-// wiring the retriever + identity fold into reusable runtime code, not
-// improving divergence (that's ai-web-research's diverge(), IP-3's job).
-// Callers MAY pass their own opts.branches to layer divergence on top.
+// Query branching defaults to just the original query. Pass opts.diverge:true
+// to layer IP-3's real LLM-based divergence on top (divergeBranches() below,
+// a thin subprocess call into ai-web-research's actual diverge() -- 5 DRC
+// categories, real Vertex AI calls, not reimplemented or simulated). Callers
+// may instead pass their own opts.branches directly (as IP-1 did by hand).
 import { pipeline } from "@huggingface/transformers";
 import { readFileSync } from "node:fs";
 import path from "node:path";
+import { execFile } from "node:child_process";
+import { promisify } from "node:util";
 import {
   normalizeQuery, tokenize, trigrams, prepareIndex, scoreDocument,
 } from "../../shell/public/semantic/semantic-core.js";
+
+const execFileAsync = promisify(execFile);
+
+// IPMCS Phase IP-3: real LLM-based query divergence, via a thin CLI wrapper
+// around ai-web-research's actual diverge() (D:\Ai\work together\ai-web-research
+// -- a separate Python repo, real crawler.research.diverge(), 5 DRC categories:
+// semantic/task/source/language/perspective). Each call is a real LLM request
+// (Vertex, per that repo's .env) with a real, small cost -- not simulated.
+const AI_WEB_RESEARCH_DIR = "D:\\Ai\\work together\\ai-web-research";
+const AI_WEB_RESEARCH_PYTHON = path.join(AI_WEB_RESEARCH_DIR, ".venv", "Scripts", "python.exe");
+const DIVERGE_CLI = path.join(AI_WEB_RESEARCH_DIR, "diverge_cli.py");
+
+/** Calls the REAL diverge() (subprocess, not reimplemented). Returns
+ * [{type: "original", text: query}, {type: "semantic", text: ...}, ...] --
+ * flattens diverge()'s 5 categories into IPMCS branches, original first,
+ * capped at maxBranches beyond the original to bound LLM-call fan-out cost
+ * on the downstream retrievers (each branch triggers its own Vectorize query). */
+export async function divergeBranches(query, { maxBranches = 6 } = {}) {
+  const branches = [{ type: "original", text: query }];
+  try {
+    const { stdout } = await execFileAsync(AI_WEB_RESEARCH_PYTHON, [DIVERGE_CLI, query], {
+      cwd: AI_WEB_RESEARCH_DIR, timeout: 30000, encoding: "utf-8",
+      env: { ...process.env, PYTHONIOENCODING: "utf-8" },
+    });
+    const result = JSON.parse(stdout.trim().split("\n").pop());
+    const seen = new Set([query]);
+    outer: for (const [category, queries] of Object.entries(result.branches || {})) {
+      for (const text of queries) {
+        if (seen.has(text)) continue;
+        seen.add(text);
+        branches.push({ type: category, text });
+        if (branches.length - 1 >= maxBranches) break outer;
+      }
+    }
+  } catch (e) {
+    console.error(`divergeBranches: diverge() call failed, falling back to original-only: ${e.message}`);
+  }
+  return branches;
+}
 
 process.loadEnvFile(new URL("../phase-c-encoder-compare/.env", import.meta.url));
 
@@ -73,7 +115,7 @@ async function vectorizeQuery(namespace, vector, topK = 30) {
  * this cross-retriever identity layer.
  */
 export async function ipmcsSearch(query, opts = {}) {
-  const branches = opts.branches || [{ type: "original", text: query }];
+  const branches = opts.branches || (opts.diverge ? await divergeBranches(query, opts.divergeOpts) : [{ type: "original", text: query }]);
   const topK = opts.topK ?? 10;
   const { documents, docById } = loadDocuments();
   const model = await loadModel();
@@ -129,11 +171,12 @@ export async function ipmcsSearch(query, opts = {}) {
 // CLI smoke-test entry point: node ipmcs_search.mjs "<query>"
 if (import.meta.url === `file://${process.argv[1]}`.replace(/\\/g, "/") || process.argv[1]?.endsWith("ipmcs_search.mjs")) {
   const query = process.argv[2];
+  const useDiverge = process.argv.includes("--diverge");
   if (!query) {
-    console.error("usage: node ipmcs_search.mjs \"<query>\"");
+    console.error("usage: node ipmcs_search.mjs \"<query>\" [--diverge]");
     process.exit(1);
   }
-  const result = await ipmcsSearch(query);
+  const result = await ipmcsSearch(query, { diverge: useDiverge });
   console.error(`query=${JSON.stringify(query)} -> ${result.objects.length} objects`);
   for (const o of result.objects) {
     console.error(`  ${o.object_id}  has_exact=${o.has_exact}  max_score=${o.max_score.toFixed(4)}  channels=${[...new Set(o.paths.map(p => p.retriever))].join(",")}`);
