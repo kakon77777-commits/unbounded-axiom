@@ -1,0 +1,9 @@
+{
+  "name": "phase-c-encoder-compare",
+  "private": true,
+  "type": "module",
+  "description": "Phase C1: Node.js reference query encoder for Logic Matrix MCP x DSRS, compared against the browser-q8 oracle (registry/embedding-profiles/oracle/). Deliberately the SAME library as the browser (@huggingface/transformers), same model, same dtype -- only the runtime (Node vs browser) varies, per the Phase C handoff's instruction not to change runtime+artifact+dtype simultaneously in the first comparison.",
+  "dependencies": {
+    "@huggingface/transformers": "4.2.0"
+  }
+}

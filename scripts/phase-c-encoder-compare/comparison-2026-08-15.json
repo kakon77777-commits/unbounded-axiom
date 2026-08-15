@@ -1,0 +1,489 @@
+{
+  "generated_at": "2026-08-15T09:25:43.273Z",
+  "node_version": "v24.16.0",
+  "model_artifact": "Xenova/bge-small-zh-v1.5",
+  "oracle_source": "registry\\embedding-profiles\\oracle\\browser-q8-oracle-2026-08-15.json",
+  "query_count": 30,
+  "comparisons": [
+    {
+      "query": "動態不動點",
+      "browser_q8_norm": 1.000000099666167,
+      "node_q8": {
+        "norm": 1.0000001455897192,
+        "cosine_vs_browser": 0.99999999999999,
+        "max_abs_diff_vs_browser": 8.940696716308594e-8,
+        "mean_abs_diff_vs_browser": 4.467469949531733e-9
+      },
+      "node_fp32": {
+        "norm": 1.000000106754534,
+        "cosine_vs_browser": 0.9852713176216632,
+        "max_abs_diff_vs_browser": 0.024556949734687805,
+        "mean_abs_diff_vs_browser": 0.005968826504851421
+      }
+    },
+    {
+      "query": "全域量詞",
+      "browser_q8_norm": 1.000000146621182,
+      "node_q8": {
+        "norm": 1.0000000413915258,
+        "cosine_vs_browser": 0.999999999999996,
+        "max_abs_diff_vs_browser": 2.9802322387695312e-8,
+        "mean_abs_diff_vs_browser": 4.688644139605458e-9
+      },
+      "node_fp32": {
+        "norm": 0.9999998490945684,
+        "cosine_vs_browser": 0.9874909883411441,
+        "max_abs_diff_vs_browser": 0.022386718541383743,
+        "mean_abs_diff_vs_browser": 0.0055579378532399915
+      }
+    },
+    {
+      "query": "AI 主體性",
+      "browser_q8_norm": 1.0000000670682496,
+      "node_q8": {
+        "norm": 0.9999998343901945,
+        "cosine_vs_browser": 0.9999999996159249,
+        "max_abs_diff_vs_browser": 0.000003829598426818848,
+        "mean_abs_diff_vs_browser": 9.787408021821875e-7
+      },
+      "node_fp32": {
+        "norm": 0.9999999950746816,
+        "cosine_vs_browser": 0.9878268152810636,
+        "max_abs_diff_vs_browser": 0.025292566046118736,
+        "mean_abs_diff_vs_browser": 0.005404901965972542
+      }
+    },
+    {
+      "query": "Navier-Stokes",
+      "browser_q8_norm": 1.000000109751208,
+      "node_q8": {
+        "norm": 1.0000000856630031,
+        "cosine_vs_browser": 0.9999834377246991,
+        "max_abs_diff_vs_browser": 0.0007767770439386368,
+        "mean_abs_diff_vs_browser": 0.00020352667799272695
+      },
+      "node_fp32": {
+        "norm": 1.0000002018009122,
+        "cosine_vs_browser": 0.988164521000359,
+        "max_abs_diff_vs_browser": 0.02255927585065365,
+        "mean_abs_diff_vs_browser": 0.005366347095222768
+      }
+    },
+    {
+      "query": "DSRS",
+      "browser_q8_norm": 0.9999998252170637,
+      "node_q8": {
+        "norm": 1.0000001143990407,
+        "cosine_vs_browser": 0.9999988671454427,
+        "max_abs_diff_vs_browser": 0.0002174675464630127,
+        "mean_abs_diff_vs_browser": 0.00005386192277967439
+      },
+      "node_fp32": {
+        "norm": 1.0000001807084322,
+        "cosine_vs_browser": 0.9875290359015299,
+        "max_abs_diff_vs_browser": 0.02193399053066969,
+        "mean_abs_diff_vs_browser": 0.005620289832521053
+      }
+    },
+    {
+      "query": "AICL",
+      "browser_q8_norm": 0.9999998252170637,
+      "node_q8": {
+        "norm": 1.0000001143990407,
+        "cosine_vs_browser": 0.9999988671454427,
+        "max_abs_diff_vs_browser": 0.0002174675464630127,
+        "mean_abs_diff_vs_browser": 0.00005386192277967439
+      },
+      "node_fp32": {
+        "norm": 1.0000001807084322,
+        "cosine_vs_browser": 0.9875290359015299,
+        "max_abs_diff_vs_browser": 0.02193399053066969,
+        "mean_abs_diff_vs_browser": 0.005620289832521053
+      }
+    },
+    {
+      "query": "lm-001862",
+      "browser_q8_norm": 1.0000001165827233,
+      "node_q8": {
+        "norm": 1.000000048317286,
+        "cosine_vs_browser": 0.9999999999999925,
+        "max_abs_diff_vs_browser": 2.421438694000244e-8,
+        "mean_abs_diff_vs_browser": 5.00889996146725e-9
+      },
+      "node_fp32": {
+        "norm": 0.999999926812706,
+        "cosine_vs_browser": 0.9855444168424005,
+        "max_abs_diff_vs_browser": 0.02159014344215393,
+        "mean_abs_diff_vs_browser": 0.006070849829750813
+      }
+    },
+    {
+      "query": "W-20",
+      "browser_q8_norm": 0.9999999191225516,
+      "node_q8": {
+        "norm": 0.9999998823490979,
+        "cosine_vs_browser": 0.999999870557481,
+        "max_abs_diff_vs_browser": 0.00007947534322738647,
+        "mean_abs_diff_vs_browser": 0.00001791849867771589
+      },
+      "node_fp32": {
+        "norm": 0.9999998311493759,
+        "cosine_vs_browser": 0.987499392485516,
+        "max_abs_diff_vs_browser": 0.02210124395787716,
+        "mean_abs_diff_vs_browser": 0.005602782473744128
+      }
+    },
+    {
+      "query": "CASP",
+      "browser_q8_norm": 0.9999998252170637,
+      "node_q8": {
+        "norm": 1.0000001143990407,
+        "cosine_vs_browser": 0.9999988671454427,
+        "max_abs_diff_vs_browser": 0.0002174675464630127,
+        "mean_abs_diff_vs_browser": 0.00005386192277967439
+      },
+      "node_fp32": {
+        "norm": 1.0000001807084322,
+        "cosine_vs_browser": 0.9875290359015299,
+        "max_abs_diff_vs_browser": 0.02193399053066969,
+        "mean_abs_diff_vs_browser": 0.005620289832521053
+      }
+    },
+    {
+      "query": "時間感知與主體邊界",
+      "browser_q8_norm": 1.0000002264825862,
+      "node_q8": {
+        "norm": 0.99999973672112,
+        "cosine_vs_browser": 0.9999998039657007,
+        "max_abs_diff_vs_browser": 0.00008252449333667755,
+        "mean_abs_diff_vs_browser": 0.000022154747488123405
+      },
+      "node_fp32": {
+        "norm": 1.000000321736618,
+        "cosine_vs_browser": 0.9870494331816821,
+        "max_abs_diff_vs_browser": 0.022617068141698837,
+        "mean_abs_diff_vs_browser": 0.005789635152065209
+      }
+    },
+    {
+      "query": "Riemann Hypothesis",
+      "browser_q8_norm": 1.0000002388849323,
+      "node_q8": {
+        "norm": 1.0000002283126996,
+        "cosine_vs_browser": 0.9999999999999942,
+        "max_abs_diff_vs_browser": 2.9802322387695312e-8,
+        "mean_abs_diff_vs_browser": 3.3942626487259986e-9
+      },
+      "node_fp32": {
+        "norm": 1.000000046054656,
+        "cosine_vs_browser": 0.9860080707694243,
+        "max_abs_diff_vs_browser": 0.021287888288497925,
+        "mean_abs_diff_vs_browser": 0.005943736190388904
+      }
+    },
+    {
+      "query": "quantum entanglement",
+      "browser_q8_norm": 1.0000001633928017,
+      "node_q8": {
+        "norm": 1.000000026487769,
+        "cosine_vs_browser": 0.9999999999999962,
+        "max_abs_diff_vs_browser": 2.2351741790771484e-8,
+        "mean_abs_diff_vs_browser": 6.1857292621425586e-9
+      },
+      "node_fp32": {
+        "norm": 0.9999997258691089,
+        "cosine_vs_browser": 0.9853035984689739,
+        "max_abs_diff_vs_browser": 0.022714540362358093,
+        "mean_abs_diff_vs_browser": 0.006155430551839647
+      }
+    },
+    {
+      "query": "DSRS 的 hybrid retrieval 設計",
+      "browser_q8_norm": 1.0000000347349522,
+      "node_q8": {
+        "norm": 1.0000000921275627,
+        "cosine_vs_browser": 0.9999999991275678,
+        "max_abs_diff_vs_browser": 0.000005448237061500549,
+        "mean_abs_diff_vs_browser": 0.0000014930492397979833
+      },
+      "node_fp32": {
+        "norm": 0.9999997168163877,
+        "cosine_vs_browser": 0.9827983953953053,
+        "max_abs_diff_vs_browser": 0.025874345563352108,
+        "mean_abs_diff_vs_browser": 0.006524374084960982
+      }
+    },
+    {
+      "query": "AICL rights framework 治理",
+      "browser_q8_norm": 1.0000003059547806,
+      "node_q8": {
+        "norm": 1.000000317125109,
+        "cosine_vs_browser": 0.9999999999999956,
+        "max_abs_diff_vs_browser": 2.9802322387695312e-8,
+        "mean_abs_diff_vs_browser": 3.180764096555322e-9
+      },
+      "node_fp32": {
+        "norm": 1.0000001229309419,
+        "cosine_vs_browser": 0.9876323693911867,
+        "max_abs_diff_vs_browser": 0.022408481687307358,
+        "mean_abs_diff_vs_browser": 0.005563246215098516
+      }
+    },
+    {
+      "query": "忒修斯之船",
+      "browser_q8_norm": 1.0000000647602398,
+      "node_q8": {
+        "norm": 1.000000070392662,
+        "cosine_vs_browser": 0.9999999999999942,
+        "max_abs_diff_vs_browser": 1.4901161193847656e-8,
+        "mean_abs_diff_vs_browser": 3.047226471153408e-9
+      },
+      "node_fp32": {
+        "norm": 1.0000000176232027,
+        "cosine_vs_browser": 0.9866048792477305,
+        "max_abs_diff_vs_browser": 0.022247149609029293,
+        "mean_abs_diff_vs_browser": 0.005686241844401252
+      }
+    },
+    {
+      "query": "考拉茲猜想",
+      "browser_q8_norm": 1.0000000629537245,
+      "node_q8": {
+        "norm": 1.0000000603849277,
+        "cosine_vs_browser": 0.9999999999999969,
+        "max_abs_diff_vs_browser": 2.9802322387695312e-8,
+        "mean_abs_diff_vs_browser": 2.055401182587957e-9
+      },
+      "node_fp32": {
+        "norm": 0.9999999290628147,
+        "cosine_vs_browser": 0.986723343463925,
+        "max_abs_diff_vs_browser": 0.024678172543644905,
+        "mean_abs_diff_vs_browser": 0.005762115037768467
+      }
+    },
+    {
+      "query": "$P = NP$",
+      "browser_q8_norm": 0.9999992847221956,
+      "node_q8": {
+        "norm": 0.9999993546880827,
+        "cosine_vs_browser": 0.9999999999999971,
+        "max_abs_diff_vs_browser": 2.9802322387695312e-8,
+        "mean_abs_diff_vs_browser": 3.482064414583874e-9
+      },
+      "node_fp32": {
+        "norm": 1.000000013004443,
+        "cosine_vs_browser": 0.9872112372802301,
+        "max_abs_diff_vs_browser": 0.020928580313920975,
+        "mean_abs_diff_vs_browser": 0.005747014951591467
+      }
+    },
+    {
+      "query": "∀x∃y",
+      "browser_q8_norm": 0.9999998252170637,
+      "node_q8": {
+        "norm": 1.0000001143990407,
+        "cosine_vs_browser": 0.9999988671454427,
+        "max_abs_diff_vs_browser": 0.0002174675464630127,
+        "mean_abs_diff_vs_browser": 0.00005386192277967439
+      },
+      "node_fp32": {
+        "norm": 1.0000001807084322,
+        "cosine_vs_browser": 0.9875290359015299,
+        "max_abs_diff_vs_browser": 0.02193399053066969,
+        "mean_abs_diff_vs_browser": 0.005620289832521053
+      }
+    },
+    {
+      "query": "如何煮一杯好咖啡",
+      "browser_q8_norm": 1.0000002342028214,
+      "node_q8": {
+        "norm": 1.0000001912808276,
+        "cosine_vs_browser": 0.9999999999999909,
+        "max_abs_diff_vs_browser": 2.2351741790771484e-8,
+        "mean_abs_diff_vs_browser": 4.799090902452008e-9
+      },
+      "node_fp32": {
+        "norm": 1.0000000107151672,
+        "cosine_vs_browser": 0.9853554673559607,
+        "max_abs_diff_vs_browser": 0.02168675698339939,
+        "mean_abs_diff_vs_browser": 0.006020714617505973
+      }
+    },
+    {
+      "query": "台北天氣預報",
+      "browser_q8_norm": 1.0000000235706408,
+      "node_q8": {
+        "norm": 1.0000000595089602,
+        "cosine_vs_browser": 0.9999999999999927,
+        "max_abs_diff_vs_browser": 2.9802322387695312e-8,
+        "mean_abs_diff_vs_browser": 4.017689292368232e-9
+      },
+      "node_fp32": {
+        "norm": 1.0000001246125407,
+        "cosine_vs_browser": 0.9856694658365803,
+        "max_abs_diff_vs_browser": 0.025089735572692007,
+        "mean_abs_diff_vs_browser": 0.005980648134066513
+      }
+    },
+    {
+      "query": "機器如何理解語言背後的意圖",
+      "browser_q8_norm": 1.000000259195513,
+      "node_q8": {
+        "norm": 0.9999999304470919,
+        "cosine_vs_browser": 0.9968075567133675,
+        "max_abs_diff_vs_browser": 0.011217758059501648,
+        "mean_abs_diff_vs_browser": 0.0028229812064068938
+      },
+      "node_fp32": {
+        "norm": 1.0000000403066776,
+        "cosine_vs_browser": 0.9854423301080032,
+        "max_abs_diff_vs_browser": 0.025708604604005814,
+        "mean_abs_diff_vs_browser": 0.006028094212190638
+      }
+    },
+    {
+      "query": "兩個不同來源獨立得出相同結論的現象",
+      "browser_q8_norm": 1.0000001029088725,
+      "node_q8": {
+        "norm": 0.999999849338397,
+        "cosine_vs_browser": 0.9999741167094592,
+        "max_abs_diff_vs_browser": 0.0008992180228233337,
+        "mean_abs_diff_vs_browser": 0.00025509339690188426
+      },
+      "node_fp32": {
+        "norm": 0.9999997410669177,
+        "cosine_vs_browser": 0.9879259739015905,
+        "max_abs_diff_vs_browser": 0.021817415952682495,
+        "mean_abs_diff_vs_browser": 0.005478649806299529
+      }
+    },
+    {
+      "query": "SSSP",
+      "browser_q8_norm": 0.9999998252170637,
+      "node_q8": {
+        "norm": 1.0000001143990407,
+        "cosine_vs_browser": 0.9999988671454427,
+        "max_abs_diff_vs_browser": 0.0002174675464630127,
+        "mean_abs_diff_vs_browser": 0.00005386192277967439
+      },
+      "node_fp32": {
+        "norm": 1.0000001807084322,
+        "cosine_vs_browser": 0.9875290359015299,
+        "max_abs_diff_vs_browser": 0.02193399053066969,
+        "mean_abs_diff_vs_browser": 0.005620289832521053
+      }
+    },
+    {
+      "query": "personal identity over time",
+      "browser_q8_norm": 0.9999999343984924,
+      "node_q8": {
+        "norm": 1.000000192289617,
+        "cosine_vs_browser": 0.9999901588884971,
+        "max_abs_diff_vs_browser": 0.0010438859462738037,
+        "mean_abs_diff_vs_browser": 0.000150796865437286
+      },
+      "node_fp32": {
+        "norm": 1.0000001306452735,
+        "cosine_vs_browser": 0.986836877548346,
+        "max_abs_diff_vs_browser": 0.02502132346853614,
+        "mean_abs_diff_vs_browser": 0.005678828250399448
+      }
+    },
+    {
+      "query": "研究計畫的檢查點機制",
+      "browser_q8_norm": 0.9999998926394457,
+      "node_q8": {
+        "norm": 1.0000005489842807,
+        "cosine_vs_browser": 0.9999999992191196,
+        "max_abs_diff_vs_browser": 0.000005405396223068237,
+        "mean_abs_diff_vs_browser": 0.0000013960865885565
+      },
+      "node_fp32": {
+        "norm": 0.9999999329839225,
+        "cosine_vs_browser": 0.9835194367594573,
+        "max_abs_diff_vs_browser": 0.022142660338431597,
+        "mean_abs_diff_vs_browser": 0.006469102554532924
+      }
+    },
+    {
+      "query": "lm-000001",
+      "browser_q8_norm": 0.9999999384518063,
+      "node_q8": {
+        "norm": 0.9999999144177366,
+        "cosine_vs_browser": 0.9999999999999913,
+        "max_abs_diff_vs_browser": 2.9802322387695312e-8,
+        "mean_abs_diff_vs_browser": 4.471019110496854e-9
+      },
+      "node_fp32": {
+        "norm": 0.9999998117301655,
+        "cosine_vs_browser": 0.9864807642642858,
+        "max_abs_diff_vs_browser": 0.032426148653030396,
+        "mean_abs_diff_vs_browser": 0.00570485358298356
+      }
+    },
+    {
+      "query": "MCP",
+      "browser_q8_norm": 0.9999998252170637,
+      "node_q8": {
+        "norm": 1.0000001143990407,
+        "cosine_vs_browser": 0.9999988671454427,
+        "max_abs_diff_vs_browser": 0.0002174675464630127,
+        "mean_abs_diff_vs_browser": 0.00005386192277967439
+      },
+      "node_fp32": {
+        "norm": 1.0000001807084322,
+        "cosine_vs_browser": 0.9875290359015299,
+        "max_abs_diff_vs_browser": 0.02193399053066969,
+        "mean_abs_diff_vs_browser": 0.005620289832521053
+      }
+    },
+    {
+      "query": "自我指涉與遞迴結構",
+      "browser_q8_norm": 1.000000314410328,
+      "node_q8": {
+        "norm": 1.000000343951276,
+        "cosine_vs_browser": 0.9999999999999956,
+        "max_abs_diff_vs_browser": 2.2351741790771484e-8,
+        "mean_abs_diff_vs_browser": 2.9764102293938777e-9
+      },
+      "node_fp32": {
+        "norm": 1.0000001829712417,
+        "cosine_vs_browser": 0.9832982107273346,
+        "max_abs_diff_vs_browser": 0.02551589533686638,
+        "mean_abs_diff_vs_browser": 0.006449448987940087
+      }
+    },
+    {
+      "query": "best pizza recipe",
+      "browser_q8_norm": 1.0000002590836563,
+      "node_q8": {
+        "norm": 1.0000003149115544,
+        "cosine_vs_browser": 0.9999926861408026,
+        "max_abs_diff_vs_browser": 0.0006566653028130531,
+        "mean_abs_diff_vs_browser": 0.00013164366040996356
+      },
+      "node_fp32": {
+        "norm": 0.9999999388443537,
+        "cosine_vs_browser": 0.9870808913646714,
+        "max_abs_diff_vs_browser": 0.02175291022285819,
+        "mean_abs_diff_vs_browser": 0.00567501887720212
+      }
+    },
+    {
+      "query": "當一個系統的每個組成部分都被逐漸替換之後，它還是原來的那個系統嗎",
+      "browser_q8_norm": 0.9999999949335451,
+      "node_q8": {
+        "norm": 0.9999999487042939,
+        "cosine_vs_browser": 0.9999999999999862,
+        "max_abs_diff_vs_browser": 5.960464477539063e-8,
+        "mean_abs_diff_vs_browser": 5.91693805063187e-9
+      },
+      "node_fp32": {
+        "norm": 0.9999997870945776,
+        "cosine_vs_browser": 0.9840762261623637,
+        "max_abs_diff_vs_browser": 0.022858330979943275,
+        "mean_abs_diff_vs_browser": 0.006311220398863782
+      }
+    }
+  ]
+}
