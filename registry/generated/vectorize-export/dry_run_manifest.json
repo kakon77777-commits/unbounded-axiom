@@ -1,0 +1,80 @@
+{
+  "generated_at": "2026-08-15T06:07:49Z",
+  "purpose": "Phase B step 1 (deterministic export) for Logic Matrix MCP x DSRS. Zero Cloudflare resources created -- local NDJSON only.",
+  "source_profile": {
+    "embedding_space": "dsrs-v1",
+    "index_profile": "dsrs-index-v1"
+  },
+  "profile_consistency": {
+    "document_vectors_profile_says": 2675,
+    "document_vectors_actual": 2675,
+    "chunk_vectors_profile_says": 15616,
+    "chunk_vectors_actual": 15616,
+    "matches": true
+  },
+  "counts": {
+    "documents_exported": 2675,
+    "documents_expected_from_manifest": 2675,
+    "chunks_exported": 15616,
+    "chunks_expected_from_manifest": 15616
+  },
+  "validation": {
+    "dimension": 512,
+    "documents_count_matches_manifest": true,
+    "chunks_count_matches_manifest": true,
+    "zero_norm_documents": 0,
+    "zero_norm_chunks": 0,
+    "zero_norm_expected": 0,
+    "zero_norm_note": "0 expected -- registry/generated/*.f32.bin never contains the dist/-only zero-padding vector (see dsrs-v1.json index_profile.zero_vector_policy). A nonzero count here means the wrong source file was read.",
+    "duplicate_id_count_across_doc_and_chunk_namespace": 0,
+    "document_l2_norm_samples": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "chunk_l2_norm_samples": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "metadata_keys_validated": "no '.', no '\"', no leading '$' (Vectorize constraint) -- checked per record during export, script aborts on violation"
+  },
+  "output": {
+    "max_records_per_ndjson_file": 5000,
+    "document_shards": [
+      {
+        "file": "docs-000.ndjson",
+        "records": 2675
+      }
+    ],
+    "chunk_shards": [
+      {
+        "file": "chunks-000.ndjson",
+        "records": 5000
+      },
+      {
+        "file": "chunks-001.ndjson",
+        "records": 5000
+      },
+      {
+        "file": "chunks-002.ndjson",
+        "records": 5000
+      },
+      {
+        "file": "chunks-003.ndjson",
+        "records": 616
+      }
+    ],
+    "not_committed_to_git": "*.ndjson under this directory is gitignored (regenerable, ~tens of MB of JSON text); this report (dry_run_manifest.json) is committed as the durable evidence this step ran."
+  },
+  "next_step_not_taken": "wrangler vectorize create / wrangler vectorize insert -- deliberately not run by this script. Requires an explicit go-ahead (creates persistent, billable Cloudflare infrastructure)."
+}
