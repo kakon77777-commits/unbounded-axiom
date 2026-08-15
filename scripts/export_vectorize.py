@@ -81,15 +81,16 @@ def _check_metadata_size(md, vector_id):
 
 
 def _roundtrip_check(vec, values_json_str):
-    """Bitwise float32 round-trip: source float32 vs NDJSON-serialize/parse/cast
-    float32, for every component. Stronger than an L2-norm-looks-right check --
-    this proves the exact bit pattern survives the export, not just its norm."""
+    """True bitwise float32 round-trip: source float32 vs NDJSON-serialize/parse/
+    cast float32, for every component, compared as raw bytes -- not value equality.
+    Value equality (`==`/`!=` on the unpacked floats) is NOT the same check: it
+    silently misses a +0.0-vs--0.0 bit-pattern flip (0.0 == -0.0 is True) and
+    false-positives on an identical-bit-pattern NaN (nan != nan is True even for
+    the same bits). Comparing struct.pack(...) output directly avoids both."""
     parsed = json.loads(values_json_str)
     mismatches = 0
     for x, p in zip(vec, parsed):
-        src32 = struct.unpack("<f", struct.pack("<f", x))[0]
-        rt32 = struct.unpack("<f", struct.pack("<f", p))[0]
-        if src32 != rt32:
+        if struct.pack("<f", x) != struct.pack("<f", p):
             mismatches += 1
     return mismatches
 
@@ -276,11 +277,11 @@ def main():
             "id_length_validated": f"every id checked against the {MAX_ID_BYTES}-byte Vectorize limit, script aborts on violation",
             "metadata_size_validated": f"every metadata object checked against the {MAX_METADATA_BYTES}-byte ({MAX_METADATA_BYTES // 1024}KiB) Vectorize limit, script aborts on violation",
             "float32_roundtrip_check": {
-                "method": "for every vector, every component: source float32 vs (json.dumps -> json.loads -> struct-cast float32), bitwise compared. Stronger than an L2-norm-looks-like-1.0 check -- proves the exact bit pattern survives NDJSON serialization, not just its norm.",
+                "method": "for every vector, every component: source float32 vs (json.dumps -> json.loads -> struct-cast float32), compared as raw struct.pack(...) bytes -- not `==`/`!=` on the unpacked float values. Value equality would silently miss a +0.0/-0.0 bit-pattern flip (0.0 == -0.0 is True) and false-positive on an identical-bit-pattern NaN (nan != nan is True even for the same bits); this dataset has neither in practice, but the check now genuinely tests what it claims to test.",
                 "documents_mismatches": doc_roundtrip_mismatches,
                 "chunks_mismatches": chunk_roundtrip_mismatches,
                 "expected": 0,
-                "regression_note": "an earlier version of this script used round(x, 8), which measurably broke this check (72% of sampled float32 components failed bitwise round-trip -- 8 decimal PLACES is not the same as float32's ~9 significant-digit round-trip requirement, especially for small-magnitude components). Fixed by exporting full, unrounded values.",
+                "regression_note": "two fixes landed here. (1) An earlier version used round(x, 8), which measurably broke round-trip (72% of sampled float32 components failed -- 8 decimal PLACES is not the same as float32's ~9 significant-digit requirement). Fixed by exporting full, unrounded values. (2) The validator itself then compared unpacked float VALUES (`!=`), not bit patterns -- caught in a later review round; fixed to compare struct.pack(...) bytes directly (Step 1.1.1).",
             },
         },
         "output": {

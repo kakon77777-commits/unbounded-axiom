@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-15T06:22:41Z",
+  "generated_at": "2026-08-15T06:36:17Z",
   "purpose": "Phase B step 1 (deterministic export) for Logic Matrix MCP x DSRS. Zero Cloudflare resources created -- local NDJSON only.",
   "source_profile": {
     "embedding_space": "dsrs-v1",
@@ -50,11 +50,11 @@
     "id_length_validated": "every id checked against the 64-byte Vectorize limit, script aborts on violation",
     "metadata_size_validated": "every metadata object checked against the 10240-byte (10KiB) Vectorize limit, script aborts on violation",
     "float32_roundtrip_check": {
-      "method": "for every vector, every component: source float32 vs (json.dumps -> json.loads -> struct-cast float32), bitwise compared. Stronger than an L2-norm-looks-like-1.0 check -- proves the exact bit pattern survives NDJSON serialization, not just its norm.",
+      "method": "for every vector, every component: source float32 vs (json.dumps -> json.loads -> struct-cast float32), compared as raw struct.pack(...) bytes -- not `==`/`!=` on the unpacked float values. Value equality would silently miss a +0.0/-0.0 bit-pattern flip (0.0 == -0.0 is True) and false-positive on an identical-bit-pattern NaN (nan != nan is True even for the same bits); this dataset has neither in practice, but the check now genuinely tests what it claims to test.",
       "documents_mismatches": 0,
       "chunks_mismatches": 0,
       "expected": 0,
-      "regression_note": "an earlier version of this script used round(x, 8), which measurably broke this check (72% of sampled float32 components failed bitwise round-trip -- 8 decimal PLACES is not the same as float32's ~9 significant-digit round-trip requirement, especially for small-magnitude components). Fixed by exporting full, unrounded values."
+      "regression_note": "two fixes landed here. (1) An earlier version used round(x, 8), which measurably broke round-trip (72% of sampled float32 components failed -- 8 decimal PLACES is not the same as float32's ~9 significant-digit requirement). Fixed by exporting full, unrounded values. (2) The validator itself then compared unpacked float VALUES (`!=`), not bit patterns -- caught in a later review round; fixed to compare struct.pack(...) bytes directly (Step 1.1.1)."
     }
   },
   "output": {
