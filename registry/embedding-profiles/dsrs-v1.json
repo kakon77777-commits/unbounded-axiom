@@ -1,0 +1,58 @@
+{
+  "profile_id": "dsrs-v1",
+  "status": "frozen",
+  "frozen_at": "2026-08-15",
+  "frozen_by": "Logic Matrix MCP × DSRS Architecture Decision v0.1, Phase A",
+  "purpose": "Canonical, verified identity of the embedding space that ALL existing DSRS-v1 corpus vectors (document-level and chunk-level) live in. Any server-side query encoder built for the MCP must reproduce this exact space -- same model, same instruction, same normalization, same inference precision -- or cosine similarity against the existing Vectorize-migrated corpus vectors is meaningless (see architecture decision doc §1.2, §30 principle 2).",
+
+  "model": "BAAI/bge-small-zh-v1.5",
+  "onnx_model": "Xenova/bge-small-zh-v1.5",
+  "inference_library_browser": "@huggingface/transformers@4.2.0 (jsDelivr +esm)",
+  "inference_dtype_browser": "q8",
+  "dimension": 512,
+  "metric": "cosine",
+  "normalized": true,
+  "document_prefix": "",
+  "query_prefix": "为这个句子生成表示以用于检索相关文章：",
+
+  "score_postprocessing": {
+    "purpose": "Raw BGE cosine is NOT a fixed-threshold confidence value (BGE's own model card: >0.5 does not mean similar). The existing browser DSRS applies a corpus-CALIBRATED linear floor/ceiling rescale before the raw cosine is usable as a ranking signal. A server-side retriever that skips this and feeds raw cosine into rank fusion will rank differently than the browser does today.",
+    "method": "clamp then linear rescale to [0,1]",
+    "raw_floor": 0.50,
+    "raw_ceiling": 0.62,
+    "formula": "score = 0 if raw<=floor; 1 if raw>=ceiling; else (raw-floor)/(ceiling-floor)",
+    "calibrated_against": "1881-document corpus sample, spread of queries from clearly-unrelated (~0.47-0.48 best-match ceiling) to deeply-covered topic (~0.68 for genuinely on-topic Riemann Hypothesis hits)",
+    "source": "shell/public/semantic/semantic-vector.js, RAW_FLOOR/RAW_CEILING constants",
+    "caveat": "Calibrated when the corpus had ~1881 documents; not re-validated at the current 2676-document scale. Worth re-checking before treating it as permanent."
+  },
+
+  "corpus_index_version": "1",
+  "chunker_spec_ref": "content/papers/2026/2026-07/02_動態語義顯影_本地端實作技術白皮書_v0.1.md (lm-001862), §17.2/§17.3, implemented as \"Phase 5\" -- no separate machine-readable chunker_version field exists yet in chunk-embeddings-manifest.json; this profile is the first place that version is named explicitly.",
+
+  "verified_2026-08-15": {
+    "method": "Direct empirical check against the real generated artifacts, not just trusting manifest claims or the architecture decision doc's prose.",
+    "checks": [
+      "scripts/build_embeddings.py: MODEL_NAME/ONNX_MODEL_NAME/DIM/QUERY_INSTRUCTION constants match this profile exactly",
+      "scripts/build_chunk_embeddings.py: same constants, confirmed identical to document-level",
+      "shell/public/semantic/semantic-vector.js: browser query encoder uses the same model name, same query_instruction (read dynamically from vectors.meta.query_instruction), q8 quantized inference",
+      "registry/generated/embeddings-manifest.json: dim=512, model/onnx_model match; 2675 documents",
+      "registry/generated/embeddings.f32.bin: 5 randomly-sampled document vectors all measured L2 norm = 1.000000 (genuinely normalized, not just claimed)",
+      "registry/generated/chunk-embeddings-manifest.json: dim=512, same model/query_instruction; 15616 chunk vectors",
+      "registry/generated/chunk-embeddings.f32.bin: 3 randomly-sampled chunk vectors all measured L2 norm = 1.000000"
+    ],
+    "discrepancies_found_vs_architecture_doc": [
+      "inference_dtype_browser (q8 quantized) was not captured in the architecture decision doc's §7.2 schema -- added here. A server-side encoder using fp32 for the 'same' model may produce vectors that are close but not identical to the browser's; Phase C's golden-vector test (cos->1) should catch this, but the server implementation should default to q8 to minimize drift rather than relying on the test to catch it after the fact.",
+      "score_postprocessing (the floor/ceiling rescale) was not captured in the architecture doc at all. Reproducing only the embedding SPACE (model/dim/instruction) is necessary but not sufficient to reproduce the browser's actual RANKING behavior -- the rescale is part of what makes today's DSRS results look the way they do."
+    ]
+  },
+
+  "source_files": [
+    "scripts/build_embeddings.py",
+    "scripts/build_chunk_embeddings.py",
+    "shell/public/semantic/semantic-vector.js",
+    "registry/generated/embeddings-manifest.json",
+    "registry/generated/chunk-embeddings-manifest.json"
+  ],
+
+  "migration_note": "Any future profile (dsrs-v1.1, dsrs-v2, ...) that changes model, tokenizer, dimension, normalization, query instruction, document instruction, chunking policy, or score_postprocessing must get its own profile_id and its own file in this directory -- never overwrite this one. See architecture decision doc §7, §19-21 (DSRS-v2 must be a shadow index, benchmarked, never silently promoted)."
+}
