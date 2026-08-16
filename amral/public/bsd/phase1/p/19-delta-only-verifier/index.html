@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Delta-Only Algorithm1 Verifier · BSD Phase 1 · AMRAL</title>
+<meta name="description" content="工程效率策略:既然 old→current 只有一個 commit、Algorithm 1 的 theorem predicate 差分沒有其他 loosen/tighten gate,就不需要重跑 L-value merge、2-descent、E' descent、S 集合等全部舊 filters——只需對舊 accepted set 逐條檢查新的 strict isogeny gate 與 a3 gate,是一次增量證明重播。定義成功 gate:輸入 40,749 條,預期 PASS=36,687、FAIL=4,062,並輸出全量 failure histogram。同樣重要的是失敗意義段落:若 delta-only verifier 無法重建官方 current 集合,代表存在漏掉的語義差異等五種可能之一,此時應停,不應直接進 full replay。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/12_Delta_Only_Algorithm1_Verifier.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../about/">關於</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link" href="../../../../protocols/">研究協議</a>
+  <a class="link" href="../../../../validation/">驗證</a>
+  <a class="link" href="../../../../research-modes/">自主模式</a>
+  <a class="link" href="../../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../../../glc-framework/">GLC 閉合框架</a>
+  <a class="link active" href="../../../">BSD 猜想</a>
+  <a class="link" href="../../../../cpl/">臨界線比例梯</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← Phase 1</a>
+    <span>/</span>
+    <span>19 · Delta-Only Algorithm1 Verifier</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">Phase 1 · 19</span>
+      <span class="tag">v0.4 · 12</span>
+      <span class="tag">2026-08-12</span>
+    </div>
+    <h1>Delta-Only Algorithm1 Verifier</h1>
+    <p class="h1-sub">一份工程效率策略文件:不需要一開始就重跑 L-value merge、2-descent、$E'$ descent、$\mathcal S$ 等全部舊 filters,因為舊 output 中每一條曲線已經通過 old Algorithm 1。既然 old→current 只有一個 commit、Algorithm 1 的 theorem predicate 差分沒有其他 loosen/tighten gate,對已知 old PASS rows,新的 membership 就精確等於「strict-isogeny gate ∧ $a_3$ gate」的交集——這是一次增量證明重播(delta-only proof replay),不必重做未改變的 proof obligations。輸入欄位最小化到只需 <code>cremona_label</code>、<code>a3</code>、<code>isogeny_degrees</code> 三項。成功 gate 明確定義:輸入舊版 40,749 條,預期 PASS=36,687、FAIL=4,062,並要求輸出全量 failure histogram(P_ISOGENY_3/5/7、A3_ABS_3、multi-failure),稱為「第一份 500K semantic-cause census」。文件同樣重視失敗時該怎麼做:若 delta-only verifier 得不到官方 current 集合,至少代表五件事之一(漏掉語義差異、LMFDB release 不同、新舊輸出非同一資料快照、metadata mapping 錯、implementation 有未記錄 side effect)成立,此時應該停下來,不應直接進入 full replay。</p>
+    <div class="claim-box">
+      增量證明重播:new membership = strict-isogeny gate ∧ a3 gate;預期 PASS=36,687/FAIL=4,062;若不吻合應停,不應直接進 full replay
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一篇</span><a href="../18-500k-one-commit-impact/">18 · 500K One-Commit Global Impact</a></div>
+      <div class="conn-card"><span class="k">下一篇</span><a href="../20-500k-twist-nonmonotonicity/">20 · 500K Twist Output Non-Monotonicity</a></div>
+      <div class="conn-card"><span class="k">Phase 1 進度</span>19 / 25</div>
+    </div>
+    <blockquote class="cite">「此時應停,不應直接進 full replay。」— 摘自本文「失敗意義」段落結尾。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← Phase 1</a>
+    <a href="../../files/12_Delta_Only_Algorithm1_Verifier.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/12_Delta_Only_Algorithm1_Verifier.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

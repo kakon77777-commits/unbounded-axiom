@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>v0.5 Exact Census Report · BSD Phase 1 · AMRAL</title>
+<meta name="description" content="21 篇三段式策略的 Gate A + Gate B 全部執行完成的精確報告。先發現一個 provenance 細節:OLD 的 twist JSON 其實比 OLD 的 base file 舊,1355 條曲線沒有對應 twist 條目。核心結果:base curves old=40749/new=36687/removed=4062/added=0;Algorithm1 失敗分類 ISOGENY_ONLY=1353、A3_ONLY=2707、BOTH=2、UNEXPLAINED=0;stable-domain Algorithm2 是 removed=21306/added=0 的純縮減;curve-level UNCHANGED=31250、SHRINK_ONLY=5437、EXPAND_ONLY=0、MIXED=0;全域 twist accounting identity 46091=46091 exact PASS。26 項 completion gate 全部 true。結語:這是理論產生計算的精確歸檔輸出普查,不是對每條 OLD 曲線的重新端到端執行,也不是對所有橢圓曲線 BSD 猜想的證明。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/V0_5_EXACT_CENSUS_REPORT.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../about/">關於</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link" href="../../../../protocols/">研究協議</a>
+  <a class="link" href="../../../../validation/">驗證</a>
+  <a class="link" href="../../../../research-modes/">自主模式</a>
+  <a class="link" href="../../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../../../glc-framework/">GLC 閉合框架</a>
+  <a class="link active" href="../../../">BSD 猜想</a>
+  <a class="link" href="../../../../cpl/">臨界線比例梯</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← Phase 1</a>
+    <span>/</span>
+    <span>22 · v0.5 Exact Census Report</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">Phase 1 · 22</span>
+      <span class="tag">v0.5 · 結果報告</span>
+      <span class="tag">2026-08-12</span>
+      <span class="tag">results/,非 docs/ 編號文件</span>
+    </div>
+    <h1>v0.5 Exact Census Report</h1>
+    <p class="h1-sub">21 篇定義的三段式策略中,Gate A(delta-only base verifier)與 Gate B(twist JSON parser diff)在這裡被真正執行、產出精確數字——本頁內容位於套件的 <code>results/</code> 而非 <code>docs/</code> 目錄,是本系列中少數不帶 <code>docs/NN</code> 編號、但屬於真正研究產出而非中介 scaffolding 的文件,故仍單獨收錄。文件先揭露一個 provenance 細節:OLD 的 twist JSON 其實在 OLD base file 之前就已凍結(源自更早的 generator commit),導致有 1355 條 OLD base curves 沒有對應的 twist 條目;文件明確指出這是一個「archived output artifact」,不是對 OLD source tree 的新鮮端到端執行。核心精確結果:base curves 為 old=40,749、new=36,687、removed=4,062、added=0;Algorithm 1 失敗分類 ISOGENY_ONLY=1,353、A3_ONLY=2,707、BOTH=2、UNEXPLAINED=0(個別:3-isogeny 1,233、5-isogeny 115、7-isogeny 7);stable-domain 的 Algorithm 2 精確變化是 removed=21,306、added=0 的純縮減,curve-level 分類 UNCHANGED=31,250、SHRINK_ONLY=5,437、EXPAND_ONLY=0、MIXED=0;全域 twist accounting identity 46,091=46,091 exact PASS。26 項 completion gate checklist 全部為 true。</p>
+    <div class="claim-box">
+      old=40749→new=36687(removed=4062, added=0);Algorithm1 UNEXPLAINED=0;stable-domain Algorithm2 removed=21306/added=0 純縮減;accounting identity 46091=46091 PASS;26/26 completion checks true
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一篇</span><a href="../21-phase1-next-low-cost-gate/">21 · Phase 1 下一個最低成本 Gate</a></div>
+      <div class="conn-card"><span class="k">下一篇</span><a href="../23-fresh-algorithm2-semantic-replay/">23 · Fresh Algorithm2 Semantic Replay</a></div>
+      <div class="conn-card"><span class="k">Phase 1 進度</span>22 / 25</div>
+    </div>
+    <blockquote class="cite">「This is an exact archived-output census of a theorem-producing computation. It is not a fresh end-to-end rerun of every OLD curve, and it is not a proof of the Birch–Swinnerton-Dyer conjecture for all elliptic curves.」— 摘自本文結語。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← Phase 1</a>
+    <a href="../../files/V0_5_EXACT_CENSUS_REPORT.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/V0_5_EXACT_CENSUS_REPORT.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>500K Twist Output Non-Monotonicity · BSD Phase 1 · AMRAL</title>
+<meta name="description" content="把 16 篇的 Algorithm2 語義分裂放大到 500K 規模量測:同一 commit 使 twists_of_ec_labels_500k.json 產生 +1899/-53404 行 diff,遠超過純粹因 base curve 被刪除所能解釋的規模,證明 Algorithm2 語義變動在大規模資料域確實被啟動。但文件同時嚴謹指出:git diff 行數不等於已證明的 unique twist count(JSON 含 key/括號/逗號等結構行),完整 entry-level census 需要物化 old/current JSON 後 parse set difference。對現行 <150 的 12 條曲線,small fixture 觀察到 0 個 output deltas——這正是為什麼 v0.3 要加 synthetic tests、v0.4 要求 full-file entry census 的原因。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/13_500K_Twist_Output_NonMonotonicity.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../about/">關於</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link" href="../../../../protocols/">研究協議</a>
+  <a class="link" href="../../../../validation/">驗證</a>
+  <a class="link" href="../../../../research-modes/">自主模式</a>
+  <a class="link" href="../../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../../../glc-framework/">GLC 閉合框架</a>
+  <a class="link active" href="../../../">BSD 猜想</a>
+  <a class="link" href="../../../../cpl/">臨界線比例梯</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← Phase 1</a>
+    <span>/</span>
+    <span>20 · 500K Twist Output Non-Monotonicity</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">Phase 1 · 20</span>
+      <span class="tag">v0.4 · 13</span>
+      <span class="tag">2026-08-12</span>
+    </div>
+    <h1>500K Twist Output Non-Monotonicity</h1>
+    <p class="h1-sub">把 16 篇在小樣本發現的 Algorithm 2 收緊/放寬並存效應,放大到 500K 規模觀察。同一個 commit 使 <code>twists_of_ec_labels_500k.json</code> 產生 <code>+1899/-53404</code> 行 diff——而 Algorithm 1 的 base-curve set 只會縮小,如果 twist JSON 只因 base curve 被刪除而改變,新增行數理應趨近於零,不該有 1899 行新增,所以全量輸出證明 Algorithm 2 的語義變動確實在大規模資料域被啟動。文件同時展現這個研究線一貫的嚴謹自我克制:git diff 統計的是「行」,JSON 裡同時包含 key lines、bracket/comma 結構行、twist 整數行、以及整個被刪除的 base block,所以 1899 只是 added diff lines,不是已證明的 unique new twist count——完整的 entry-level census 需要真正物化 old/current JSON 之後做 parse set difference。文件也誠實記錄小樣本 fixture 的覆蓋率失敗:對現行 <code>&lt;150</code> 的 12 條 surviving 曲線,$T_{\rm old}(E)=T_{\rm new}(E)$ 逐條成立,也就是 small positive fixture 對這次 Algorithm 2 語義差異的分支覆蓋是 0 個 observed deltas——這正是 v0.3 要另外新增 synthetic semantic tests、而 v0.4 要求 full-file entry census 的直接原因。</p>
+    <div class="claim-box">
+      +1899/-53404 行證明 Algorithm2 語義變動在 500K 規模確實啟動,但行數≠已證明的 unique twist count;<150 小樣本覆蓋率為 0,故需 full-file entry census
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一篇</span><a href="../19-delta-only-verifier/">19 · Delta-Only Algorithm1 Verifier</a></div>
+      <div class="conn-card"><span class="k">下一篇</span><a href="../21-phase1-next-low-cost-gate/">21 · Phase 1 下一個最低成本 Gate</a></div>
+      <div class="conn-card"><span class="k">Phase 1 進度</span>20 / 25</div>
+    </div>
+    <blockquote class="cite">「這就是為什麼 v0.3 加 synthetic semantic tests,而 v0.4 要求 full-file entry census。」— 摘自本文結尾。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← Phase 1</a>
+    <a href="../../files/13_500K_Twist_Output_NonMonotonicity.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/13_500K_Twist_Output_NonMonotonicity.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

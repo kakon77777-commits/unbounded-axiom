@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Phase 1 · Banwait–Huang 重現 · BSD 猜想 · AMRAL</title>
-<meta name="description" content="BSD Phase 1:重現 Banwait-Huang 2026(arXiv:2601.16044)的演算法化 rank-0 twist-family 普查。建置中——24 篇文件逐篇上線,目前 18/24。裁決 PASS(路線可工程化),第一批小範圍重現與官方 fixture 完全一致,審計官方程式相對論文加入的防過度宣稱閘門,獨立重現 Algorithm 2 branch logic,v0.2 發現正式 fixture 從 25 條曲線回歸到 12 條,v0.3 用精確 one-commit diff 完成 13 條 removed curves 的 first-failure closure,並把 <150 regression 收斂成 A+B+C+D 四層閘門,定義 REPRODUCTION-QUALIFIED 與 OUTPUT-MATCHED 兩個不可混用的標籤。不宣稱證明 BSD。">
+<meta name="description" content="BSD Phase 1:重現 Banwait-Huang 2026(arXiv:2601.16044)的演算法化 rank-0 twist-family 普查。25/25 COMPLETE。裁決 PASS(路線可工程化),第一批小範圍重現與官方 fixture 完全一致,v0.3 用精確 one-commit diff 完成 13 條 removed curves 的 first-failure closure,v0.4 把效應放大到 500K 全量規模量測(4062/40749 curves 被移除),v0.5 exact census 全域 accounting identity 精確 PASS,v0.6 用 exact replay 修正早先猜測——Algorithm2 的 expand mechanism 在真實資料域從未啟動,stable domain 是純單調縮減——正式封頂,宣告 Banwait–Huang Reproduction = COMPLETE,並為 Phase 2 提出三條具體路線。不宣稱證明 BSD。">
 <meta name="robots" content="index, follow">
 <meta name="ai-content-policy" content="indexable, citable, training-allowed">
 <link rel="stylesheet" href="../../assets/site.css">
@@ -29,14 +29,16 @@
   <header class="page">
     <p class="eyebrow"><a href="../">← BSD 猜想</a> · Phase 1</p>
     <h1>Phase 1:Banwait–Huang 重現</h1>
-    <p class="subtitle">Strong-BSD Twist-Family Reproduction · 建置中 · 18 / 24 篇已上線</p>
+    <p class="subtitle">Strong-BSD Twist-Family Reproduction · <strong>25 / 25 COMPLETE</strong></p>
     <p class="lede">
       重現 Banwait–Huang 2026(arXiv:2601.16044)把 strong-BSD twist criteria 編譯成明確算法、對 conductor&lt;500,000 的
       LMFDB 橢圓曲線做系統辨識的工作。不宣稱證明 BSD——每一篇都只回答「哪些曲線與 twist 滿足已知定理的可驗證條件」,
       不是「BSD 對這些曲線成立」。
     </p>
     <p class="notice">
-      建置中,逐篇上線,依原始文件順序閱讀。v0.1(7 篇)+ v0.2(7 篇)+ v0.3(4 篇)已全數上線,依「一天 3 輪、一次 3 個」的步調繼續往 v0.4 推進。
+      v0.1(7 篇)+ v0.2(7 篇)+ v0.3(4 篇)+ v0.4(4 篇)+ v0.5(1 篇 exact census report,位於 <code>results/</code> 而非
+      <code>docs/</code>,不在原始 24 篇估計內,發現後補齊)+ v0.6(2 篇)全數上線,25/25。v0.6 末篇正式宣告
+      <strong>Banwait–Huang Reproduction = COMPLETE</strong>,並為 Phase 2 提出三條具體路線。
     </p>
   </header>
 
@@ -132,6 +134,41 @@
         <span class="k">17</span>
         <h3>Phase 1 Gate v0.3</h3>
         <p>A+B+C+D 四層全通過 → REPRODUCTION-QUALIFIED;否則至多 OUTPUT-MATCHED。v0.3 完結。</p>
+      </a>
+      <a class="case-card" href="./p/18-500k-one-commit-impact/">
+        <span class="k">18</span>
+        <h3>500K One-Commit Global Impact</h3>
+        <p>同一 commit 在全量 500K 規模移除 4062/40749 條曲線。Semantic versioning 是數學 soundness 的一部分。</p>
+      </a>
+      <a class="case-card" href="./p/19-delta-only-verifier/">
+        <span class="k">19</span>
+        <h3>Delta-Only Algorithm1 Verifier</h3>
+        <p>增量證明重播,不必重跑未變 filters。若不吻合官方輸出,應停,不應直接進 full replay。</p>
+      </a>
+      <a class="case-card" href="./p/20-500k-twist-nonmonotonicity/">
+        <span class="k">20</span>
+        <h3>500K Twist Output Non-Monotonicity</h3>
+        <p>+1899/-53404 行證明 Algorithm2 語義變動在大規模資料域確實啟動,但行數≠已證明的 twist count。</p>
+      </a>
+      <a class="case-card" href="./p/21-phase1-next-low-cost-gate/">
+        <span class="k">21</span>
+        <h3>Phase 1 下一個最低成本 Gate</h3>
+        <p>Gate A→B→C 三段式策略。真正昂貴的是研究語義錯誤的返工,不是 runtime。v0.4 完結。</p>
+      </a>
+      <a class="case-card" href="./p/22-exact-census-report/">
+        <span class="k">22</span>
+        <h3>v0.5 Exact Census Report</h3>
+        <p>Gate A+B 精確執行結果。全域 twist accounting identity 46091=46091 exact PASS,26/26 completion checks。</p>
+      </a>
+      <a class="case-card" href="./p/23-fresh-algorithm2-semantic-replay/">
+        <span class="k">23</span>
+        <h3>Fresh Algorithm2 Semantic Replay</h3>
+        <p>關鍵修正:exact replay 證明 expand mechanism 在真實資料域從未啟動,stable domain 是純單調縮減。</p>
+      </a>
+      <a class="case-card" href="./p/24-phase1-closure-phase2-interface/">
+        <span class="k">24</span>
+        <h3>Phase 1 封頂與 Phase 2 接口</h3>
+        <p>Banwait–Huang Reproduction = COMPLETE。Phase 2 三路線:高秩 wall atlas、strong-BSD 覆蓋擴張、2-primary 前沿。</p>
       </a>
     </nav>
   </section>

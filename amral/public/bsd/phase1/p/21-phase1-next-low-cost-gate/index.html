@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phase 1 下一個最低成本 Gate · BSD Phase 1 · AMRAL</title>
+<meta name="description" content="v0.4 收尾文件,定義三段式最低成本策略:Gate A(delta-only base verifier,40,749→36,687)、Gate B(twist JSON parser diff,物化 old/current 全量 JSON,分類 removed base keys/stable keys/gcd-only removed/disc-gate-only added/both-effect 六類)、Gate C(只有 A、B 都與官方輸出一致,才重跑全部昂貴的 Sage descent)。核心理由:完整 Algorithm 1 官方 runtime 本身只需十幾分鐘不算昂貴,真正昂貴的是研究語義錯誤的返工——delta-first 策略先確認理解的是同一個 theorem version,再投入 full proof-engineering。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/14_Phase1_Next_Low_Cost_Gate.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../about/">關於</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link" href="../../../../protocols/">研究協議</a>
+  <a class="link" href="../../../../validation/">驗證</a>
+  <a class="link" href="../../../../research-modes/">自主模式</a>
+  <a class="link" href="../../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../../../glc-framework/">GLC 閉合框架</a>
+  <a class="link active" href="../../../">BSD 猜想</a>
+  <a class="link" href="../../../../cpl/">臨界線比例梯</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← Phase 1</a>
+    <span>/</span>
+    <span>21 · Phase 1 下一個最低成本 Gate</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">Phase 1 · 21</span>
+      <span class="tag">v0.4 · 14</span>
+      <span class="tag">2026-08-12</span>
+      <span class="tag">v0.4 最後一篇</span>
+    </div>
+    <h1>Phase 1 下一個最低成本 Gate</h1>
+    <p class="h1-sub">v0.4 系列的收尾文件,把 18-20 篇累積的 500K 規模觀察收斂成一份三段式最低成本執行策略。Gate A 是 delta-only base verifier:輸入舊 accepted list 加上 <code>a3</code>/<code>isogeny_degrees</code> 兩個便宜欄位,目標精確重現 $40{,}749\to36{,}687$。Gate B 是 twist JSON parser diff:直接物化 old/current 兩份 <code>twists_of_ec_labels_500k.json</code>,計算 removed base keys、stable base keys、有 twist 變化的 stable curves、僅因 $\gcd(\cdot,3N)$ 而移除的 twists、僅因刪除舊 disc gate 而新增的 twists、以及同時受兩種效應影響的曲線,共六類。Gate C 則是只有當 A、B 都與官方 repository 目前輸出完全一致時,才重跑全部昂貴的 Sage descent。文件把整個策略的理由收成一句可直接引用的箴言:完整 Algorithm 1 官方 paper runtime 本身約十幾分鐘,其實不算昂貴,真正昂貴的是研究語義錯誤的返工——delta-first 策略可以先確認「我們理解的是同一個 theorem version」,再投入 full proof-engineering,而不是反過來。</p>
+    <div class="claim-box">
+      三段式策略:Gate A(delta-only,cheap)→ Gate B(twist JSON parser diff,六分類)→ Gate C(僅兩者吻合才 full Sage replay);真正昂貴的是語義錯誤的返工,不是 runtime
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一篇</span><a href="../20-500k-twist-nonmonotonicity/">20 · 500K Twist Output Non-Monotonicity</a></div>
+      <div class="conn-card"><span class="k">下一篇</span><a href="../22-exact-census-report/">22 · v0.5 Exact Census Report</a></div>
+      <div class="conn-card"><span class="k">Phase 1 進度</span>21 / 25(v0.4 完結)</div>
+    </div>
+    <blockquote class="cite">「完整 Algorithm1 current paper runtime 約十幾分鐘本身其實不算昂貴。真正昂貴的是研究語義錯誤的返工。」— 摘自本文「為什麼?」段落。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← Phase 1</a>
+    <a href="../../files/14_Phase1_Next_Low_Cost_Gate.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/14_Phase1_Next_Low_Cost_Gate.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

@@ -37,7 +37,7 @@
       做了正式審計並否決,是這條線紀律最高的地方。
     </p>
     <p class="notice">
-      四條子線熟度不同:Phase 0 與 P5 已上線;Phase 1 正逐篇建頁中(18/24);Phase 2 已有大量真實進展但尚未在這裡逐篇建頁——下方先列出目前的真實狀態,不預先宣稱完成度。
+      四條子線熟度不同:Phase 0、P5、Phase 1 已全數上線;Phase 2 已有大量真實進展但尚未在這裡逐篇建頁——下方先列出目前的真實狀態,不預先宣稱完成度。
     </p>
   </header>
 
@@ -65,15 +65,22 @@
     </nav>
   </section>
 
-  <section id="roadmap">
-    <h2 class="doc-h2">Phase 1(建置中)、Phase 2(尚待建頁)</h2>
-    <p class="section-note">下面的狀態描述直接來自各批次自己的文件,不是我方推論或美化。</p>
-    <div class="case-grid">
+  <section id="phase1">
+    <h2 class="doc-h2">Phase 1 · Banwait–Huang 重現</h2>
+    <p class="section-note">2026-08-12 · 25 篇文件已全數上線,25/25 COMPLETE · Reproduction = COMPLETE</p>
+    <nav class="case-grid" aria-label="Phase 1">
       <a class="case-card" href="./phase1/">
-        <span class="k">Phase 1 · Banwait–Huang 重現 · 18/24 建置中</span>
-        <h3>Strong-BSD Twist-Family Reproduction</h3>
-        <p>重現 arXiv:2601.16044 的演算法化普查(conductor&lt;500,000)。v0.3 用精確 one-commit diff 完成 13 條 removed curves 的 first-failure closure,並把 &lt;150 regression 收斂成 A+B+C+D 四層閘門。最新狀態:36,687 條 base curves 通過,247,391 組 admissible twist pairs——但此數字取自官方輸出並做完整一致性稽核(0 mismatch),不是從頭獨立重算;獨立重算的只有 2 條曲線、28 個 twist。</p>
+        <span class="k">Strong-BSD Twist-Family Reproduction · 25 篇</span>
+        <h3>arXiv:2601.16044 全量 500K 演算法化普查</h3>
+        <p>36,687 條 base curves、247,391 組 admissible twist pairs,全域 twist accounting identity 46,091=46,091 exact PASS。v0.3-v0.6 逐層修正:精確 one-commit diff 找出 13 條 removed curves 的 first-failure、把小樣本效應放大到 500K 全量規模量測、最後用 exact replay 證明 Algorithm2 的 expand mechanism 在真實資料域從未啟動——stable domain 是純單調縮減,修正了早先從 source diff 做的猜測。已為 Phase 2 提出三條具體路線(高秩 wall atlas / strong-BSD 覆蓋擴張 / 2-primary 前沿)。</p>
       </a>
+    </nav>
+  </section>
+
+  <section id="roadmap">
+    <h2 class="doc-h2">Phase 2(尚待建頁)</h2>
+    <p class="section-note">下面的狀態描述直接來自批次自己的文件,不是我方推論或美化。</p>
+    <div class="case-grid">
       <div class="case-card placeholder">
         <span class="k">Phase 2 · 非半穩定家族</span>
         <h3>曲線 696.e1 顯式 Twist 家族</h3>
