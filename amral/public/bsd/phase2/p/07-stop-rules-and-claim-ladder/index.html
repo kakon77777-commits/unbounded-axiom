@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>停止規則與 Claim Ladder · BSD Phase 2 · AMRAL</title>
+<meta name="description" content="v0.1 收尾文件,定義 Phase 2 自己的七級證書階梯:C0 文獻地圖、C1 假設編譯器、C2 固定(E,p)證書、C3 twist-uniform 固定p、C4 有限例外質數化約、C5 全部奇質數、C6 完整 strong-BSD twist family。禁止升級清單:測 p<1000 不等於 C4/C5;99.9% 質數不等於 C5;residual image「看起來 generic」不等於定理;non-semistable 樣本成功不等於所有 non-semistable 曲線;Fouquet-Wan 定理存在不等於它已被算法化。三輪停止規則:若連續三輪只增加已檢查質數/曲線而 H2/H3 exact meaning 沒有進展,就凍結資料庫擴張,回到 local Galois lemma——避免「資料越跑越多,但全域量詞完全沒縮」。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/07_Stop_Rules_and_Claim_Ladder.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../about/">關於</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link" href="../../../../protocols/">研究協議</a>
+  <a class="link" href="../../../../validation/">驗證</a>
+  <a class="link" href="../../../../research-modes/">自主模式</a>
+  <a class="link" href="../../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../../../glc-framework/">GLC 閉合框架</a>
+  <a class="link active" href="../../../">BSD 猜想</a>
+  <a class="link" href="../../../../cpl/">臨界線比例梯</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← Phase 2</a>
+    <span>/</span>
+    <span>07 · 停止規則與 Claim Ladder</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">Phase 2 · 07</span>
+      <span class="tag">v0.1 · 07</span>
+      <span class="tag">2026-08-12</span>
+      <span class="tag">v0.1 最後一篇</span>
+    </div>
+    <h1>停止規則與 Claim Ladder</h1>
+    <p class="h1-sub">v0.1 系列的收尾文件,把整個 Phase 2 odd-$p$ 問題收進一把自己的七級證書階梯,角色對應 Phase 0 為整個 BSD 研究線定義的 C0-C10 階梯,但精確縮放到 Phase 2 這一個子問題:C0(文獻地圖,只知道哪些定理可能相關)→ C1(假設編譯器,每條 FW hypothesis 有 exact executable meaning)→ C2(固定 $(E,p)$ 嚴格證出 $\mathrm{FW}(E,p)$)→ C3(twist-uniform 固定 $p$,證 $\forall d\in\mathcal D(E),\ \mathrm{FW}(E_d,p)$)→ C4(有限例外質數化約,證 $p\notin P_E\Rightarrow\mathrm{FW}(E,p)$ 且 $P_E$ 有限可計算)→ C5(逐項關閉 $p\in P_E$ 後得到 $\forall p>2$)→ C6(與 Banwait 的 2-part/nonvanishing 拼接,得到完整 $\forall d,\ \operatorname{BSD}(E_d)$)。文件把最容易犯的五種偷換概念直接列成「禁止升級」清單:測 $p&lt;1000$ 不等於 C4/C5;99.9% 質數不等於 C5;residual image「看起來 generic」不等於定理;non-semistable 樣本成功不等於所有 non-semistable 曲線;Fouquet–Wan 定理存在不等於它已經被算法化。最後一條「三輪停止規則」是全篇最實用的研究流程設計:若連續三輪只是增加已檢查的質數、增加曲線數量,而 H2/H3 的 exact meaning 沒有進展、finite exceptional set 沒有被定理化,就要凍結資料庫規模擴張,退回 local Galois lemma 工作——文件明確點名這是為了避免重演「資料越跑越多,但全域量詞完全沒縮」的失敗模式。</p>
+    <div class="claim-box">
+      C0-C6 七級 claim ladder;五條禁止升級規則;三輪停止規則——避免「資料越跑越多,但全域量詞完全沒縮」
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一篇</span><a href="../06-phase2-agent-experiment/">06 · Phase 2 第一個 Agent 實驗</a></div>
+      <div class="conn-card"><span class="k">下一篇</span><a href="../08-fw-weight2-exact-translation/">08 · FW Theorem 1.7:Weight-2 Exact Translation</a></div>
+      <div class="conn-card"><span class="k">Phase 2 進度</span>07 / ?(v0.1 完結)</div>
+    </div>
+    <blockquote class="cite">「這避免重演『資料越跑越多,但全域量詞完全沒縮』。」— 摘自本文「三輪停止規則」。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← Phase 2</a>
+    <a href="../../files/07_Stop_Rules_and_Claim_Ladder.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/07_Stop_Rules_and_Claim_Ladder.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

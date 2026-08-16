@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phase 2 第一個 Agent 實驗 · BSD Phase 2 · AMRAL</title>
+<meta name="description" content="七步驟實驗設計 FW-Hypothesis-Compiler/Weight-2 Elliptic Curves。Step 1 只挑 60 條曲線(20 半穩定已知通過+20 非半穩定rank-0+20刻意的壞/控制組),只為 compiler 正確性,不為統計。Step 3/4 分別指派獨立 Agent 對 H2、H3 做符號推導,H3 明確要求輸出 exact equivalence/strict implication/not equivalent 三選一,不得默認與 Banwait 判準相同。Step 7 才輪到掃 895,988 條資料庫曲線,且 UNKNOWN 不可吞掉。成功 Gate 明確聲明 v0.1 不需要找到新曲線,只要 H2/H3 exact specialisation + twist-invariance lemmas + 至少一個 nontrivial curve class 的 finite-prime reduction 完成即可。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/06_Phase2_Agent_Experiment.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../about/">關於</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link" href="../../../../protocols/">研究協議</a>
+  <a class="link" href="../../../../validation/">驗證</a>
+  <a class="link" href="../../../../research-modes/">自主模式</a>
+  <a class="link" href="../../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../../../glc-framework/">GLC 閉合框架</a>
+  <a class="link active" href="../../../">BSD 猜想</a>
+  <a class="link" href="../../../../cpl/">臨界線比例梯</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← Phase 2</a>
+    <span>/</span>
+    <span>06 · Phase 2 第一個 Agent 實驗</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">Phase 2 · 06</span>
+      <span class="tag">v0.1 · 06</span>
+      <span class="tag">2026-08-12</span>
+      <span class="tag">今日第三輪第一篇</span>
+    </div>
+    <h1>Phase 2 第一個 Agent 實驗</h1>
+    <p class="h1-sub">把 02、04 篇的 compiler 目標變成一份七步驟實驗設計,取名 <code>FW-Hypothesis-Compiler / Weight-2 Elliptic Curves</code>。Step 1 刻意不掃全庫,只挑 60 條曲線(20 條 semistable 已知通過、20 條 non-semistable analytic-rank-0、20 條刻意選的壞/控制組),文件明確聲明這只為 compiler correctness,不為統計。Step 2 為每條曲線在一組固定小質數加上 rational isogeny primes、bad reduction primes 建立 local prime table。Step 3、Step 4 是全篇的核心:分別指派獨立 Agent 對 H2、H3 做符號推導——H2 的任務是把 Fouquet–Wan 的 local semisimplification prohibition specialise 到 weight-2 橢圓曲線,依 good ordinary/supersingular/multiplicative/additive 四種 reduction 分類推成可計算的 local criteria,且要求輸出 lemma、proof、allowed assumptions、counterexamples、Sage predicate,不是先寫 code;H3 的任務是比較 Fouquet–Wan 的 auxiliary $\ell$ 條件與 Banwait 既有的 $p\nmid v_\ell(\Delta_E)$ 判準,目標三選一——exact equivalence、strict implication、或 not equivalent——文件明確禁止默認兩者相同。Step 5 把三個 bridge lemmas 形式化,建議 Lean/theorem-style prose 雙輸出。Step 6 搜索 finite exceptional prime theorem,但若無 theorem 保證完整,不得標 complete。Step 7 才輪到掃約 895,988 條 non-semistable analytic-rank-0 搜索池,第一個資料庫輸出必須是 <code>FW_COMPILER_PASS/FAIL/UNKNOWN</code> 三態,UNKNOWN 不可吞掉。文件最後明確放寬 v0.1 的成功 Gate:不需要找到新曲線,只要 H2/H3 exact specialisation 完成、twist-invariance lemmas 完成、finite-prime reduction 至少在一個 nontrivial curve class 上成立,就已經是新的標準語言數學結果。</p>
+    <div class="claim-box">
+      七步驟實驗;H2/H3 各指派獨立 Agent 做符號推導,H3 不得默認與 Banwait 判準相同;895,988 條資料庫只在 compiler 通過後才掃,UNKNOWN 不可吞掉
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一篇</span><a href="../05-nonsemistable-family-theorem-schema/">05 · Non-Semistable Family Theorem Schema</a></div>
+      <div class="conn-card"><span class="k">下一篇</span><a href="../07-stop-rules-and-claim-ladder/">07 · 停止規則與 Claim Ladder</a></div>
+      <div class="conn-card"><span class="k">Phase 2 進度</span>06 / ?</div>
+    </div>
+    <blockquote class="cite">「Phase 2 v0.1 成功不需要找到新 curve……這已經是新的標準語言數學結果。」— 摘自本文「成功 Gate」。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← Phase 2</a>
+    <a href="../../files/06_Phase2_Agent_Experiment.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/06_Phase2_Agent_Experiment.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finite Exceptional Prime Problem · BSD Phase 2 · AMRAL</title>
+<meta name="description" content="正面拆解「mother problem」∀p>2, FW(E,p) 如何變成 finite certificate。H1 是有限的:absolute reducibility 等價於存在 rational p-isogeny,只在有限質數發生,可由 LMFDB/Sage 產生 finite set P_red(E)。H3 有一個 finite-exception heuristic:P_ram(E) 是多個 witness prime ℓ 的交集,但文件警告 FW-H3 比純 ramification 更細,此式只能當 compiler heuristic,不能直接當 theorem。H2 是目前最不清楚的部分,是 Phase 2 第一個真正的 algebraic task。成功標準:三個障礙集合都 finite/effectively computable/certificate-producing。失敗標準同樣明確給出:若需要對無限多 p 做不可壓縮的 local Galois computation,route 只能降級成「per-prime theorem」,不得用「tested up to B」替代全稱量詞。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/04_Finite_Exceptional_Prime_Problem.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../about/">關於</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link" href="../../../../protocols/">研究協議</a>
+  <a class="link" href="../../../../validation/">驗證</a>
+  <a class="link" href="../../../../research-modes/">自主模式</a>
+  <a class="link" href="../../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../../../glc-framework/">GLC 閉合框架</a>
+  <a class="link active" href="../../../">BSD 猜想</a>
+  <a class="link" href="../../../../cpl/">臨界線比例梯</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← Phase 2</a>
+    <span>/</span>
+    <span>04 · Finite Exceptional Prime Problem</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">Phase 2 · 04</span>
+      <span class="tag">v0.1 · 04</span>
+      <span class="tag">2026-08-12</span>
+    </div>
+    <h1>Finite Exceptional Prime Problem</h1>
+    <p class="h1-sub">正面拆解 00 篇留下的 mother problem:$\forall p>2,\ \mathrm{FW}(E,p)$ 如何變成 finite certificate?文件逐條檢視三個假設各自的「有限性」。H1 是好消息:absolute reducibility(即 $\bar\rho_{E,p}$ 可約)等價於存在 rational $p$-isogeny 類型的 residual stable line,這在給定 $E/\mathbb Q$ 上只會發生在有限質數,可直接由 LMFDB isogeny/Galois-image metadata、Sage isogeny class、已知 rational isogeny theorem 產生 finite set $P_{\rm red}(E)$。H3 有一個 finite-exception heuristic:若固定 multiplicative $\ell\parallel N$ 可作 witness,則 residual ramification 常與 $p\nmid v_\ell(\Delta_E)$ 相關,多個 witness candidates 可交集出 $P_{\rm ram}(E)$——但文件明確警告 Fouquet–Wan 的精確 H3 條件比純 ramification 更細,此式只能作 compiler heuristic,不能直接當 theorem。H2 被文件直接點名是目前最不清楚的部分,能否化成 $a_p$ 同餘式、local reduction type 或 finite exceptional set 需要正式推導——這正是 Phase 2 第一個真正的 algebraic task。文件給出精確的成功標準:找到一個定理使 $p\notin P_{\rm red}(E)\cup P_{\rm loc}(E)\cup P_{\rm ram}(E)\Rightarrow\mathrm{FW}(E,p)$,且右側三集合都 finite、effectively computable、certificate-producing。同樣精確的是失敗標準:若 H2/H3 的精確條件需要對無限多 $p$ 做不可壓縮的 local Galois computation,且無 generic-large-$p$ theorem,route 就只能降級成「per-prime theorem,不是 full-BSD family closure」——文件明確禁止用「tested up to $B$」替代全稱量詞。</p>
+    <div class="claim-box">
+      H1 有限(P_red 可由 LMFDB 直接算);H3 有 heuristic 但比純 ramification 更細;H2 最不清楚,是 Phase2 第一個真正 algebraic task;失敗標準明確禁止「tested up to B」替代全稱量詞
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一篇</span><a href="../03-quadratic-twist-invariance-bridge/">03 · Quadratic-Twist Invariance Bridge</a></div>
+      <div class="conn-card"><span class="k">下一篇</span><a href="../05-nonsemistable-family-theorem-schema/">05 · Non-Semistable Family Theorem Schema</a></div>
+      <div class="conn-card"><span class="k">Phase 2 進度</span>04 / ?</div>
+    </div>
+    <blockquote class="cite">「route remains a per-prime theorem, not full-BSD family closure。此時必須降級,不得用『tested up to B』替代全稱量詞。」— 摘自本文「失敗標準」。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← Phase 2</a>
+    <a href="../../files/04_Finite_Exceptional_Prime_Problem.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/04_Finite_Exceptional_Prime_Problem.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quadratic-Twist Invariance Bridge · BSD Phase 2 · AMRAL</title>
+<meta name="description" content="Fouquet-Wan 定理是對單一 (E_d,p) 說的,Banwait-Huang 需要的是「一個 base E ⟹ 無限多 d」,所以必須把 FW hypotheses 從 twist 層降回 base 層。三個候選引理:Lemma A(絕對不可約性在 twist 下不變,tensor by 1-dim character 是 category auto-equivalence)、Lemma B(local semisimplification degeneracy 型態在 twist 下保持,需逐 theorem version 核對)、Lemma C(若 conductor prime 在 K_d 中 split,twist 後 local representation 完全不變,FW-H3 witness 可沿整個 admissible twist family 保留)。若 A/B/C 全部形式化,則 FW(E,p) ⟹ FW(E_d,p),不必對無限多 d 重跑計算。但文件明確標注:這只解決 ∀d 的部分,沒有解決 ∀p>2。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/03_Quadratic_Twist_Invariance_Bridge.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../about/">關於</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link" href="../../../../protocols/">研究協議</a>
+  <a class="link" href="../../../../validation/">驗證</a>
+  <a class="link" href="../../../../research-modes/">自主模式</a>
+  <a class="link" href="../../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../../../glc-framework/">GLC 閉合框架</a>
+  <a class="link active" href="../../../">BSD 猜想</a>
+  <a class="link" href="../../../../cpl/">臨界線比例梯</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← Phase 2</a>
+    <span>/</span>
+    <span>03 · Quadratic-Twist Invariance Bridge</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">Phase 2 · 03</span>
+      <span class="tag">v0.1 · 03</span>
+      <span class="tag">2026-08-12</span>
+    </div>
+    <h1>Quadratic-Twist Invariance Bridge</h1>
+    <p class="h1-sub">Fouquet–Wan 定理是對單一 $(E_d,p)$ 說的,但 Banwait–Huang 需要的是「一個 base $E$ ⟹ 無限多 $d$」,所以必須把 FW hypotheses 從 twist 層降回 base 層——這正是 02 篇 Level 2「量詞壓縮」目標的其中一半。文件從 $\bar\rho_{E_d,p}\cong\bar\rho_{E,p}\otimes\chi_d$ 出發,提出三個候選引理:Lemma A 證明絕對不可約性在 twist 下完全不變(tensor by 1-dimensional character 是 category auto-equivalence,這一項可完全 base-curve 化);Lemma B 處理 local semisimplification degeneracy 型態在 twist 下如何保持,文件誠實標注狀態是「標準表示論推導候選,正式文件需逐 theorem version 核對」;Lemma C 證明若 conductor prime $\ell\mid N$ 在 $K_d=\mathbb Q(\sqrt d)$ 中 split,twist 後 local representation 在 $G_{\mathbb Q_\ell}$ 上完全不變,因此任何以該 $\ell$ 作 witness 的 FW-H3 local certificate 可以沿整個 admissible twist family 保留。若 A/B/C 全部形式化,則對固定 $p$ 有 $\mathrm{FW}(E,p)\Rightarrow\mathrm{FW}(E_d,p)$ 對所有滿足 splitting conditions 的 admissible twists 成立——意義重大:不必對無限多 $d$ 重跑 residual representation theorem,只需對 base curve 建立一次 FW certificate。但文件在結尾明確劃出邊界:這個 bridge 只解決了 $\forall d$ 這一半,$\forall p>2$ 完全沒有觸碰。</p>
+    <div class="claim-box">
+      若 Lemma A/B/C 成立:FW(E,p) ⟹ FW(E_d,p),不必對無限多 d 重跑計算;但只解決 ∀d,∀p&gt;2 未觸碰
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一篇</span><a href="../02-fouquet-wan-hypothesis-compiler/">02 · Fouquet–Wan Hypothesis Compiler</a></div>
+      <div class="conn-card"><span class="k">下一篇</span><a href="../04-finite-exceptional-prime-problem/">04 · Finite Exceptional Prime Problem</a></div>
+      <div class="conn-card"><span class="k">Phase 2 進度</span>03 / ?(今日第二輪第一篇)</div>
+    </div>
+    <blockquote class="cite">「即使把 d 量詞壓掉,仍有 ∀p&gt;2。所以這個 bridge 只解決了 ∀d 的一部分,沒有解決全部 prime quantifier。」— 摘自本文結尾。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← Phase 2</a>
+    <a href="../../files/03_Quadratic_Twist_Invariance_Bridge.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/03_Quadratic_Twist_Invariance_Bridge.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

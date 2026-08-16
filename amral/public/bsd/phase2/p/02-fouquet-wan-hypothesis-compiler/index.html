@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fouquet–Wan Hypothesis Compiler · BSD Phase 2 · AMRAL</title>
+<meta name="description" content="把 Fouquet-Wan「不清楚如何算法驗證」的條件正式變成 compiler 問題。Level 0 定義三個 per-odd-prime 假設:FW-H1 絕對不可約(狀態 EXACT/THEOREM,直接用 Sage/LMFDB metadata)、FW-H2 p 處的 local residual non-degeneracy(第一輪不得自行猜等價條件,必須從 theorem/local representation formalism 推導)、FW-H3 輔助 multiplicative prime(比 Banwait 的 p∤ord_ℓ(Δ_E) 判準更細)。Level 1 定義 base curve→prime certificate 的 JSON schema。Level 2 是量詞壓縮目標:∃P_E finite: p∉P_E ⟹ FW(E,p),核心結論是「infinite prime quantifier → finite certificate」才是真正的 Phase 2 數學推進,不是曲線計數。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/02_Fouquet_Wan_Hypothesis_Compiler.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../about/">關於</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link" href="../../../../protocols/">研究協議</a>
+  <a class="link" href="../../../../validation/">驗證</a>
+  <a class="link" href="../../../../research-modes/">自主模式</a>
+  <a class="link" href="../../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../../../glc-framework/">GLC 閉合框架</a>
+  <a class="link active" href="../../../">BSD 猜想</a>
+  <a class="link" href="../../../../cpl/">臨界線比例梯</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← Phase 2</a>
+    <span>/</span>
+    <span>02 · Fouquet–Wan Hypothesis Compiler</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">Phase 2 · 02</span>
+      <span class="tag">v0.1 · 02</span>
+      <span class="tag">2026-08-12</span>
+      <span class="tag">v0.1 最後一篇</span>
+    </div>
+    <h1>Fouquet–Wan Hypothesis Compiler</h1>
+    <p class="h1-sub">Fouquet–Wan 對 modular motives 證明了 arbitrary-reduction 的 Iwasawa Main Conjecture,在 weight 2/橢圓曲線情形給出 $p$-part BSD corollary,但論文自己承認「it is not immediately apparent how to algorithmically verify these conditions」——本文件把這句話正式變成 compiler 問題。Level 0 選擇先編譯較強但較易實作的 sufficient hypothesis package,定義三個對每個 odd prime $p$ 都要保存的條件:FW-H1(絕對不可約 $\bar\rho_{E,p}$,狀態直接是 <code>EXACT/THEOREM</code>,用 Sage/LMFDB 的 Galois-image/isogeny metadata,不用少量 Frobenius traces 亂猜)、FW-H2($p$ 處 local residual non-degeneracy,文件明確禁止第一輪就自行猜 <code>a_p != something</code> 這種等價條件,必須先從 theorem/local representation formalism 推導再編譯成 predicate——這正是後續整個 <code>FW_H2_Local_Isogeny_Compiler</code> 子系列存在的原因)、FW-H3(輔助 multiplicative prime $\ell\ne p,\ \ell\parallel N$,文件特別提醒 Fouquet–Wan 的精確 local condition 比 Banwait 的 $p\nmid\operatorname{ord}_\ell(\Delta_E)$ 判準更細,不能直接借用)。Level 1 定義每個 $(E,p)$ 輸出的 JSON schema,claim 欄位是三態 <code>FW_APPLICABLE / FW_NOT_APPLICABLE / UNKNOWN</code>。Level 2 是真正的數學目標:不是掃 $p&lt;1000$ 然後宣稱完成,而是要建立 $\exists P_E\text{ finite}: p\notin P_E\Rightarrow\mathrm{FW}(E,p)$ 這種「generic large prime theorem + finite exceptional prime list」形式,做不到就只能誠實輸出「FW verified for tested primes」,不能升級成 full BSD。文件把整篇的真正目標收成一句話:infinite prime quantifier → finite certificate,才是真正的 Phase 2 數學推進,不是一百萬條曲線的 count。</p>
+    <div class="claim-box">
+      FW-H1(EXACT)/ FW-H2(需從理論推導,禁止亂猜)/ FW-H3 三假設;真正目標是 infinite prime quantifier → finite certificate,不是曲線計數
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一篇</span><a href="../01-route-matrix/">01 · Phase 2 路線矩陣</a></div>
+      <div class="conn-card"><span class="k">下一篇</span><a href="../03-quadratic-twist-invariance-bridge/">03 · Quadratic-Twist Invariance Bridge</a></div>
+      <div class="conn-card"><span class="k">Phase 2 進度</span>02 / ?(今日第一輪最後一篇)</div>
+    </div>
+    <blockquote class="cite">「理想成果不是一百萬曲線 count,而是一個標準語言 lemma……infinite prime quantifier → finite certificate。這才是真正的 Phase 2 數學推進。」— 摘自本文結尾。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← Phase 2</a>
+    <a href="../../files/02_Fouquet_Wan_Hypothesis_Compiler.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/02_Fouquet_Wan_Hypothesis_Compiler.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

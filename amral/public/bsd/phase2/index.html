@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phase 2 · 非半穩定家族 · BSD 猜想 · AMRAL</title>
+<meta name="description" content="BSD Phase 2:為 Banwait-Huang 方法不覆蓋的非半穩定(non-semistable)曲線,構造顯式的 strong-BSD twist family。核心工具是把 Fouquet-Wan 的 arbitrary-reduction odd-p hypotheses 編譯成有限、可重播的 predicates。建置中,逐篇上線,目前 3/40。真正總數 40(29 篇主線 + 11 篇 Witness-Network/FW_H2 輔助支線),修正自原先估計的 33。不宣稱證明 BSD。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../">AMRAL</a>
+  <a class="link" href="../../about/">關於</a>
+  <a class="link" href="../../methodology/">方法論</a>
+  <a class="link" href="../../protocols/">研究協議</a>
+  <a class="link" href="../../validation/">驗證</a>
+  <a class="link" href="../../research-modes/">自主模式</a>
+  <a class="link" href="../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../skew-field/">歪度場</a>
+  <a class="link" href="../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../glc-framework/">GLC 閉合框架</a>
+  <a class="link active" href="../">BSD 猜想</a>
+  <a class="link" href="../../cpl/">臨界線比例梯</a>
+</div></nav>
+<div class="wrap">
+  <header class="page">
+    <p class="eyebrow"><a href="../">← BSD 猜想</a> · Phase 2</p>
+    <h1>Phase 2:非半穩定家族</h1>
+    <p class="subtitle">曲線 696.e1 顯式 Twist 家族 · 建置中 · 9 / 40 篇已上線</p>
+    <p class="lede">
+      Banwait–Huang 方法本身需要 semistability 這個結構性限制。Phase 2 的目標是為它不覆蓋的非半穩定
+      (non-semistable)曲線,用 Fouquet–Wan 的 arbitrary-reduction Iwasawa Main Conjecture 構造顯式的
+      strong-BSD twist family。核心難題是把「$\forall p>2$ 都要驗證」這個無窮量詞,壓縮成有限、可重播的
+      exceptional-prime certificate——不宣稱證明 BSD,每一篇都只回答已編譯清楚的條件對哪些曲線/質數成立。
+    </p>
+    <p class="notice">
+      建置中,逐篇上線,依原始文件順序閱讀。真實總數是 40 篇(修正自原先估計的 33):主線 29 篇(v0.1
+      NonSemistable Bridge → v0.2 FW Compiler → v0.3 First NonSemistable Family → v0.4 696e1 Referee Audit,
+      連續編號 00-28),加上一條獨立的「Witness-Network / FW_H2」輔助支線 11 篇(三篇 Neo.K 具名 theorem-note
+      論文 + FW-H2 條件的 local isogeny compiler)——這條支線在最初估計時完全被漏算,發現後補齊。依「一天 3 輪、
+      一次 3 個」的步調繼續。
+    </p>
+  </header>
+
+  <section id="docs">
+    <h2 class="doc-h2">已上線文件 · 主線</h2>
+    <nav class="case-grid" aria-label="Phase 2 主線文件">
+      <a class="case-card" href="./p/00-global-enclosure-consensus/">
+        <span class="k">00</span>
+        <h3>Phase 2 全局包圍共識</h3>
+        <p>砍掉 higher 2-descent/full 2-torsion/rank 1 三條主線,GO 進 Fouquet-Wan Hypothesis Compiler。</p>
+      </a>
+      <a class="case-card" href="./p/01-route-matrix/">
+        <span class="k">01</span>
+        <h3>Phase 2 路線矩陣</h3>
+        <p>八路線完整比較表。排序是「可擴張性」排序,不是數學難度排序。</p>
+      </a>
+      <a class="case-card" href="./p/02-fouquet-wan-hypothesis-compiler/">
+        <span class="k">02</span>
+        <h3>Fouquet–Wan Hypothesis Compiler</h3>
+        <p>FW-H1/H2/H3 三假設。真正目標:infinite prime quantifier → finite certificate。</p>
+      </a>
+      <a class="case-card" href="./p/03-quadratic-twist-invariance-bridge/">
+        <span class="k">03</span>
+        <h3>Quadratic-Twist Invariance Bridge</h3>
+        <p>三候選引理證明 FW(E,p) ⟹ FW(E_d,p)。只解決 ∀d,∀p&gt;2 未觸碰。</p>
+      </a>
+      <a class="case-card" href="./p/04-finite-exceptional-prime-problem/">
+        <span class="k">04</span>
+        <h3>Finite Exceptional Prime Problem</h3>
+        <p>H1 有限、H3 有 heuristic、H2 最不清楚。失敗標準:不得用「tested up to B」代替全稱量詞。</p>
+      </a>
+      <a class="case-card" href="./p/05-nonsemistable-family-theorem-schema/">
+        <span class="k">05</span>
+        <h3>Non-Semistable Family Theorem Schema</h3>
+        <p>候選定理完整 proof obligations。兩大 gap:∀p&gt;2 未閉合、period/Manin constant 拼接。</p>
+      </a>
+      <a class="case-card" href="./p/06-phase2-agent-experiment/">
+        <span class="k">06</span>
+        <h3>Phase 2 第一個 Agent 實驗</h3>
+        <p>七步驟實驗設計。H2/H3 各指派獨立 Agent 符號推導,不得默認與 Banwait 判準相同。</p>
+      </a>
+      <a class="case-card" href="./p/07-stop-rules-and-claim-ladder/">
+        <span class="k">07</span>
+        <h3>停止規則與 Claim Ladder</h3>
+        <p>Phase 2 自己的 C0-C6 七級證書階梯。三輪停止規則:避免資料越跑越多但量詞沒縮。v0.1 完結。</p>
+      </a>
+      <a class="case-card" href="./p/08-fw-weight2-exact-translation/">
+        <span class="k">08</span>
+        <h3>FW Theorem 1.7:Weight-2 Exact Translation</h3>
+        <p>H2 真正被推導出來:H2 FAIL ⟺ αβ⁻¹∈{χ_cyc,χ_cyc⁻¹}。H3 也精確 specialise。v0.2 開篇。</p>
+      </a>
+    </nav>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../">← BSD 猜想</a>
+    <span>SHA-256 逐篇核驗 · 原始位元組,不重新打包</span>
+  </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phase 2 全局包圍共識 · BSD Phase 2 · AMRAL</title>
+<meta name="description" content="Phase 2 的開篇裁決文件。先砍掉三條候選主線:higher 2-power descent(HOLD/TOOLBOX ONLY,frontier 中沒有 positive v2(Sha) 的曲線)、full rational 2-torsion(HOLD,缺一般 strong-BSD family theorem)、analytic rank 1(YELLOW,(Im) 條件難以算法判定)。裁定 GO 的是 Fouquet-Wan Hypothesis Compiler:能否把 FW 的 odd-p hypotheses 編譯成有限、可重播的 base-curve-level predicates,讓 Banwait-Huang 的 2-part twist family 與 odd-p full-BSD closure 重新拼起來。最大未閉合量詞是 ∀p>2,不能因為多數 p 好或 p≤B 好就偷換成完整 BSD,必須找到 finite exceptional-prime reduction。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/00_Phase2_Global_Enclosure_Consensus.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../about/">關於</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link" href="../../../../protocols/">研究協議</a>
+  <a class="link" href="../../../../validation/">驗證</a>
+  <a class="link" href="../../../../research-modes/">自主模式</a>
+  <a class="link" href="../../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../../../glc-framework/">GLC 閉合框架</a>
+  <a class="link active" href="../../../">BSD 猜想</a>
+  <a class="link" href="../../../../cpl/">臨界線比例梯</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← Phase 2</a>
+    <span>/</span>
+    <span>00 · Phase 2 全局包圍共識</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">Phase 2 · 00</span>
+      <span class="tag">v0.1 · 00</span>
+      <span class="tag">2026-08-12</span>
+      <span class="tag">開篇裁決</span>
+    </div>
+    <h1>Phase 2 全局包圍共識</h1>
+    <p class="h1-sub">Phase 2 的開篇裁決文件,角色對應 Phase 0 的 Global Enclosure,但範圍收窄到「非半穩定曲線」這個 Banwait–Huang 方法本身不覆蓋的區域。文件先砍掉三條候選主線:higher $2$-power descent 雖然一般重要,但 Banwait–Huang Remark 2.19 已指出所有真正走到 Algorithm 1 最後 <code>check_BSD_at_2</code> 的 LMFDB curves 都有 $\operatorname{ord}_2(\#\Sha_{\rm an})=0$,positive $v_2(\Sha_{\rm an})$ 根本沒在現行 500K frontier 出現過,裁決 HOLD / TOOLBOX ONLY;full rational $2$-torsion($E(\mathbb Q)[2]\cong(\mathbb Z/2)^2$)有價值但缺一般 strong-BSD family theorem 對應版本,裁決 HOLD;analytic rank 1 因為 Banwait–Huang 自己承認 <code>(Im)</code> 類 residual-image 條件難以算法判定,裁決 YELLOW,不是第一個工程。真正的結構性限制是 semistability 本身——Banwait–Huang Remark 2.10 直接稱其為「a strong restriction」,而 Fouquet–Wan 恰好能處理 arbitrary reduction type at $p$,只是 residual hypotheses 尚未算法化。文件把 Phase 2 主問題寫成一條精確蘊含式:$\mathrm{BH2}(E,d)+\forall p>2\,\mathrm{FW}(E_d,p)\Longrightarrow\mathrm{BSD}(E_d)$,並誠實點名真正的難題不是「大多數 $p$ 好」或「所有 $p\le B$ 好」,而是量詞本身——$\forall p>2$——必須找到 finite exceptional-prime reduction,否則只能承認這條路線只給「固定 finite prime set 的 $p$-part theorem」。最終裁決:GO 進 Fouquet–Wan Hypothesis Compiler,STOP 直接攻 higher 2-descent 主線,HOLD full 2-torsion 與 rank 1。</p>
+    <div class="claim-box">
+      GO:Fouquet-Wan Hypothesis Compiler(odd-p 路線);STOP:higher 2-descent 主線;HOLD:full 2-torsion / rank 1;核心難題是 ∀p&gt;2 量詞
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">下一篇</span><a href="../01-route-matrix/">01 · Phase 2 路線矩陣</a></div>
+      <div class="conn-card"><span class="k">Phase 2 進度</span>00 / ?(建置中,今日第一輪第一篇)</div>
+    </div>
+    <blockquote class="cite">「不能因為大多數 p 好、所有 p≤B 好、residual representation generically surjective,就偷偷換成完整 BSD。」— 摘自本文「最大的未閉合量詞」段落。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← Phase 2</a>
+    <a href="../../files/00_Phase2_Global_Enclosure_Consensus.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/00_Phase2_Global_Enclosure_Consensus.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>
