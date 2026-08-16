@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>500K Preflight · BSD Phase 1 · AMRAL</title>
+<meta name="description" content="放大到 conductor<500000 全規模重跑前的五步驟檢查清單:鎖定 Sage/LMFDB/Git SHA/descent backend、conductor<150 精確重播、13條舊版曲線 first-failure 重播、四條 discrepancy 曲線精確拒絕重播,才能跑 500K。500K run 必須輸出七項機器可讀 artifact,unknown.csv 不能丟棄。成功判定不是「最後 count 很接近」,而是四項同時成立。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/04_500K_Preflight.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../about/">關於</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link" href="../../../../protocols/">研究協議</a>
+  <a class="link" href="../../../../validation/">驗證</a>
+  <a class="link" href="../../../../research-modes/">自主模式</a>
+  <a class="link" href="../../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../../../glc-framework/">GLC 閉合框架</a>
+  <a class="link active" href="../../../">BSD 猜想</a>
+  <a class="link" href="../../../../cpl/">臨界線比例梯</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← Phase 1</a>
+    <span>/</span>
+    <span>11 · 500K Preflight</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">Phase 1 · 11</span>
+      <span class="tag">v0.2 · 04</span>
+      <span class="tag">2026-08-12</span>
+      <span class="tag">今日第一輪最後一篇</span>
+    </div>
+    <h1>500K Preflight</h1>
+    <p class="h1-sub">文件開頭就聲明本 runtime 沒有獨立重算官方 500K 輸出。放大規模前必須依序完成五步:鎖定 Sage/LMFDB/Git SHA/descent backend 這些環境變數;在 <code>conductor&lt;150</code> 做精確重播;對舊版才有的 13 條曲線做 first-failure 重播;對 07 篇(即將上線)四條 discrepancy 曲線做精確拒絕重播;最後才能跑 <code>conductor&lt;500000</code>。500K run 完成後必須輸出七項機器可讀 artifact:<code>passed.csv</code>、<code>failed.csv</code>、<code>unknown.csv</code>、<code>predicate_trace.jsonl</code>、<code>descent_certificates/</code>、<code>run_manifest.json</code>、<code>hashes.txt</code>——文件特別強調 <code>unknown.csv</code> 不能丟掉,否則 timeout 或 backend failure 會被誤讀成數學拒絕,這正是 10 篇 S3 條款的具體實作要求。最後定義「成功」的精確標準,明確不是「最後 count 很接近」這種模糊判定,而是四件事同時成立:final set exact(最終集合精確,不是約略)、stage counts reproducible(每個 filter 階段的數量可重現)、adversarial corpus stable(09 篇的對抗式語料庫結果穩定)、certificate semantics stable(證書語義穩定,不隨版本漂移)。</p>
+    <div class="claim-box">
+      成功 = final set exact + stage counts reproducible + adversarial corpus stable + certificate semantics stable(四者同時)
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一篇</span><a href="../10-soundness-gates/">10 · Algorithm 1 Soundness Gates</a></div>
+      <div class="conn-card"><span class="k">Phase 1 進度</span>11 / 24(今日第一輪最後一篇)</div>
+    </div>
+    <blockquote class="cite">「unknown.csv 不能丟掉,否則 timeout / backend failure 會被誤讀成數學拒絕。」— 摘自本文。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← Phase 1</a>
+    <a href="../../files/04_500K_Preflight.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/04_500K_Preflight.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

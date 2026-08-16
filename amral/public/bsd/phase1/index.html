@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Phase 1 · Banwait–Huang 重現 · BSD 猜想 · AMRAL</title>
-<meta name="description" content="BSD Phase 1:重現 Banwait-Huang 2026(arXiv:2601.16044)的演算法化 rank-0 twist-family 普查。建置中——24 篇文件逐篇上線,目前 9/24。裁決 PASS(路線可工程化),第一批小範圍重現與官方 fixture 完全一致,審計官方程式相對論文加入的防過度宣稱閘門,獨立重現 Algorithm 2 branch logic,誠實記錄 Algorithm 1 尚缺環境,定位路線天花板為 uniform infinite-family theorem 不是 ∀E/Q,v0.2 發現正式 fixture 從 25 條曲線回歸到 12 條。不宣稱證明 BSD。">
+<meta name="description" content="BSD Phase 1:重現 Banwait-Huang 2026(arXiv:2601.16044)的演算法化 rank-0 twist-family 普查。建置中——24 篇文件逐篇上線,目前 18/24。裁決 PASS(路線可工程化),第一批小範圍重現與官方 fixture 完全一致,審計官方程式相對論文加入的防過度宣稱閘門,獨立重現 Algorithm 2 branch logic,v0.2 發現正式 fixture 從 25 條曲線回歸到 12 條,v0.3 用精確 one-commit diff 完成 13 條 removed curves 的 first-failure closure,並把 <150 regression 收斂成 A+B+C+D 四層閘門,定義 REPRODUCTION-QUALIFIED 與 OUTPUT-MATCHED 兩個不可混用的標籤。不宣稱證明 BSD。">
 <meta name="robots" content="index, follow">
 <meta name="ai-content-policy" content="indexable, citable, training-allowed">
 <link rel="stylesheet" href="../../assets/site.css">
@@ -29,14 +29,14 @@
   <header class="page">
     <p class="eyebrow"><a href="../">← BSD 猜想</a> · Phase 1</p>
     <h1>Phase 1:Banwait–Huang 重現</h1>
-    <p class="subtitle">Strong-BSD Twist-Family Reproduction · 建置中 · 9 / 24 篇已上線</p>
+    <p class="subtitle">Strong-BSD Twist-Family Reproduction · 建置中 · 18 / 24 篇已上線</p>
     <p class="lede">
       重現 Banwait–Huang 2026(arXiv:2601.16044)把 strong-BSD twist criteria 編譯成明確算法、對 conductor&lt;500,000 的
       LMFDB 橢圓曲線做系統辨識的工作。不宣稱證明 BSD——每一篇都只回答「哪些曲線與 twist 滿足已知定理的可驗證條件」,
       不是「BSD 對這些曲線成立」。
     </p>
     <p class="notice">
-      建置中,逐篇上線,依原始文件順序閱讀。目前完成今日三輪(v0.1 全部 7 篇 + v0.2 前 2 篇),後續依「一天 3 輪、一次 3 個」的步調繼續。
+      建置中,逐篇上線,依原始文件順序閱讀。v0.1(7 篇)+ v0.2(7 篇)+ v0.3(4 篇)已全數上線,依「一天 3 輪、一次 3 個」的步調繼續往 v0.4 推進。
     </p>
   </header>
 
@@ -87,6 +87,51 @@
         <span class="k">08</span>
         <h3>小樣本版本回歸:25 → 12</h3>
         <p>被移除的 13 條曲線標籤逐一列出,reason = OPEN,不猜測理由。</p>
+      </a>
+      <a class="case-card" href="./p/09-discrepancy-corpus/">
+        <span class="k">09</span>
+        <h3>官方 Discrepancy Corpus</h3>
+        <p>62a1/66b1/105a1/141c1 精確拒絕 predicate。意外通過 ⟹ 先標 REGRESSION?,不是 BREAKTHROUGH。</p>
+      </a>
+      <a class="case-card" href="./p/10-soundness-gates/">
+        <span class="k">10</span>
+        <h3>Algorithm 1 Soundness Gates</h3>
+        <p>S1-S6 六條 gate:analytic≠actual Sha、timeout=UNKNOWN、deterministic gate、完整 provenance。</p>
+      </a>
+      <a class="case-card" href="./p/11-500k-preflight/">
+        <span class="k">11</span>
+        <h3>500K Preflight</h3>
+        <p>放大到 conductor&lt;500000 前的五步檢查清單。成功 = 四項同時成立,不是數字接近。</p>
+      </a>
+      <a class="case-card" href="./p/12-agent-regression-protocol/">
+        <span class="k">12</span>
+        <h3>Agent Regression Protocol</h3>
+        <p>三層回歸測試 + 四道認知防火牆。純工程改動標 ENGINEERING ONLY,不計數學進展。</p>
+      </a>
+      <a class="case-card" href="./p/13-semantic-version-changelog/">
+        <span class="k">13</span>
+        <h3>Semantic Version Changelog</h3>
+        <p>核心原則:code version ≠ theorem semantics version。八項語義漂移監控項目。</p>
+      </a>
+      <a class="case-card" href="./p/14-one-commit-autopsy/">
+        <span class="k">14</span>
+        <h3>One-Commit Semantic Autopsy</h3>
+        <p>恰好一個 commit 之差。Algorithm 1 實質收緊,Algorithm 2 同時 shrink 與 expand。</p>
+      </a>
+      <a class="case-card" href="./p/15-removed-13-closure/">
+        <span class="k">15</span>
+        <h3>Removed 13 First-Failure Closure</h3>
+        <p>13 條 removed curves 全數由新 Algorithm1 判準解釋,不再是黑箱版本漂移。</p>
+      </a>
+      <a class="case-card" href="./p/16-algorithm2-twist-diff/">
+        <span class="k">16</span>
+        <h3>Algorithm 2 Twist Semantic Diff</h3>
+        <p>新增 2 個 synthetic case 直接區分新舊語義分支,僅 predicate-level,不宣稱對應實際 twist。</p>
+      </a>
+      <a class="case-card" href="./p/17-phase1-gate-v03/">
+        <span class="k">17</span>
+        <h3>Phase 1 Gate v0.3</h3>
+        <p>A+B+C+D 四層全通過 → REPRODUCTION-QUALIFIED;否則至多 OUTPUT-MATCHED。v0.3 完結。</p>
       </a>
     </nav>
   </section>

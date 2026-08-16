@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent Regression Protocol · BSD Phase 1 · AMRAL</title>
+<meta name="description" content="每個 Agent 修改 theorem router 前必須跑三層測試(current 12 正向 fixture、13 條歷史回歸、4 條官方 discrepancy),定義統一 JSON 輸出格式。四道認知防火牆:analytic Sha=1 不等於 Sha trivial;rank=0 不自動等於 rigorous analytic rank 0;2-descent 維度與 analytic valuation 數值相同不自動等於 BSD(E,2) 已證;timeout 必須是 UNKNOWN。純工程改動(runtime/cache/batching/格式)標 ENGINEERING ONLY,不計為 BSD 數學進展。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/05_Agent_Regression_Protocol.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../about/">關於</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link" href="../../../../protocols/">研究協議</a>
+  <a class="link" href="../../../../validation/">驗證</a>
+  <a class="link" href="../../../../research-modes/">自主模式</a>
+  <a class="link" href="../../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../../../glc-framework/">GLC 閉合框架</a>
+  <a class="link active" href="../../../">BSD 猜想</a>
+  <a class="link" href="../../../../cpl/">臨界線比例梯</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← Phase 1</a>
+    <span>/</span>
+    <span>12 · Agent Regression Protocol</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">Phase 1 · 12</span>
+      <span class="tag">v0.2 · 05</span>
+      <span class="tag">2026-08-12</span>
+    </div>
+    <h1>Agent Regression Protocol</h1>
+    <p class="h1-sub">規定每個 Agent 在修改 theorem router 之前,必須跑三層測試:Layer A(目前 12 條正向 fixture)、Layer B(僅舊版才有的 13 條歷史回歸曲線)、Layer C(官方 discrepancy 四條曲線)——這三層剛好對應 08、09 兩篇已建立的語料庫。輸出格式統一成一份 JSON,包含 curve、decision(PASS/FAIL/UNKNOWN 三態,不是二元)、first_failure、all_failures、evidence、code_version、semantic_version 欄位。文件核心是四道「認知防火牆」,直接點名四個最容易犯的偷換概念:<code>analytic Sha = 1</code> 不等於 <code>Sha is trivial</code>;<code>rank = 0</code> 不自動等於 rigorous analytic rank 0;2-descent 維度與 analytic valuation 數值相同,不自動等於 $\operatorname{BSD}(E,2)$ 已證;timeout 必須標 <code>UNKNOWN</code>。最後一條紀律同樣重要:若新版本只改善 runtime、cache、batching 或 output formatting,標記 <code>ENGINEERING ONLY</code>,不計為 BSD 數學進展——這條規則正是為了防止把純粹的效能優化包裝成研究突破。</p>
+    <div class="claim-box">
+      三層回歸測試(12正向+13歷史+4discrepancy);四道認知防火牆;純工程改動標 ENGINEERING ONLY
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一篇</span><a href="../11-500k-preflight/">11 · 500K Preflight</a></div>
+      <div class="conn-card"><span class="k">下一篇</span><a href="../13-semantic-version-changelog/">13 · Semantic Version Changelog</a></div>
+      <div class="conn-card"><span class="k">Phase 1 進度</span>12 / 24</div>
+    </div>
+    <blockquote class="cite">「若新版本只改善 runtime/cache/batching/output formatting,標 ENGINEERING ONLY,不計為 BSD 數學進展。」— 摘自本文結尾。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← Phase 1</a>
+    <a href="../../files/05_Agent_Regression_Protocol.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/05_Agent_Regression_Protocol.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Semantic Version Changelog · BSD Phase 1 · AMRAL</title>
+<meta name="description" content="theorem-producing code 必須額外保存「數學語義版本」,不能只看 Git commit。列出八項要監控的語義漂移來源:p-isogeny 與 a3 gate、gcd(d,3N)=1、BSD(E,2) 是必要條件還是完整證書、E' 的 Sha[2] 驗證、S 是 deterministic criterion 還是 bounded search、testing flags、timeout 是 FAIL 還是 UNKNOWN、algebraic rank 與 analytic rank 是否分欄。核心原則:code version ≠ theorem semantics version。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/06_Semantic_Version_Changelog.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../about/">關於</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link" href="../../../../protocols/">研究協議</a>
+  <a class="link" href="../../../../validation/">驗證</a>
+  <a class="link" href="../../../../research-modes/">自主模式</a>
+  <a class="link" href="../../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../../../glc-framework/">GLC 閉合框架</a>
+  <a class="link active" href="../../../">BSD 猜想</a>
+  <a class="link" href="../../../../cpl/">臨界線比例梯</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← Phase 1</a>
+    <span>/</span>
+    <span>13 · Semantic Version Changelog</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">Phase 1 · 13</span>
+      <span class="tag">v0.2 · 06</span>
+      <span class="tag">2026-08-12</span>
+      <span class="tag">v0.2 最後一篇</span>
+    </div>
+    <h1>Semantic Version Changelog</h1>
+    <p class="h1-sub">文件用一句話定住整個 v0.2 系列的核心動機:theorem-producing code 必須額外保存「數學語義版本」,不能只看 Git commit——兩個 commit 之間即使只差一次提交,數學意義上的證書強度也可能整個改變(這正是 14 篇即將展示的具體案例)。文件列出八項需要監控語義漂移的具體項目:$p$-isogeny 與 $a_3$ gate 的定義是否改變、$\gcd(d,3N)=1$ 這條 twist 條件是否還在、$\operatorname{BSD}(E,2)$ 目前被當成必要條件還是完整證書、$E'$ 的 $\Sha[2]$ 驗證方式、$\mathcal S$ 非空性判準是 deterministic criterion 還是退回 bounded search、testing flags 的狀態、timeout 目前是標 FAIL 還是 UNKNOWN、algebraic rank 與 analytic rank 是否仍然分開存欄。文件把整篇的核心原則收成一句可以直接引用的箴言:code version ≠ theorem semantics version——版本號可以完全沒變,但底下的數學語義已經漂移;也可能只差一個 commit,數學語義卻已經整個不同。</p>
+    <div class="claim-box">
+      code version ≠ theorem semantics version(核心原則)
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一篇</span><a href="../12-agent-regression-protocol/">12 · Agent Regression Protocol</a></div>
+      <div class="conn-card"><span class="k">下一篇</span><a href="../14-one-commit-autopsy/">14 · One-Commit Semantic Autopsy</a></div>
+      <div class="conn-card"><span class="k">Phase 1 進度</span>13 / 24</div>
+    </div>
+    <blockquote class="cite">「code version ≠ theorem semantics version。」— 摘自本文核心原則。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← Phase 1</a>
+    <a href="../../files/06_Semantic_Version_Changelog.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/06_Semantic_Version_Changelog.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Algorithm 2 Twist Semantic Diff · BSD Phase 1 · AMRAL</title>
+<meta name="description" content="14 篇發現 Algorithm 2 同一個 commit 裡收緊 gcd(M,N)=1→gcd(M,3N)=1、卻移除舊的 twist-side disc-valuation 條件。這篇證明現有 12 條 base curves 的 fixture(old/current twists_of_ec_labels_150.json)完全 exact match,代表它只驗證了「目前結果沒變」,不能驗證兩個新語義分支真的被觸發。文件新增兩個 synthetic semantic case(N=46,M=3 的 coprimality 反例;p=3,v_2(Δ)=3,v_5(Δ)=6 的 valuation 反例)來直接區分,並明確自陳:這只是 predicate-level regression fixture,不宣稱對應實際 theorem-eligible twist。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/09_Algorithm2_Twist_Semantic_Diff.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../about/">關於</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link" href="../../../../protocols/">研究協議</a>
+  <a class="link" href="../../../../validation/">驗證</a>
+  <a class="link" href="../../../../research-modes/">自主模式</a>
+  <a class="link" href="../../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../../../glc-framework/">GLC 閉合框架</a>
+  <a class="link active" href="../../../">BSD 猜想</a>
+  <a class="link" href="../../../../cpl/">臨界線比例梯</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← Phase 1</a>
+    <span>/</span>
+    <span>16 · Algorithm 2 Twist Semantic Diff</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">Phase 1 · 16</span>
+      <span class="tag">v0.3 · 09</span>
+      <span class="tag">2026-08-12</span>
+    </div>
+    <h1>Algorithm 2 Twist Semantic Diff</h1>
+    <p class="h1-sub">承接 14 篇的發現:同一個 commit 裡,Algorithm 2 一邊收緊 $\gcd(M,N)=1\to\gcd(M,3N)=1$(當 $3\nmid N$ 時,任何 $3\mid M$ 的舊候選會被新 gate 剔除),一邊移除了舊版額外要求的 twist-side discriminant-valuation ramification-style 條件——所以存在候選:舊版被此 gate 剔除,新版不再因此被剔除。這篇文件誠實指出一個 fixture 盲點:對現有 12 條 surviving base curves,old/current 版本的 <code>twists_of_ec_labels_150.json</code> 完全 exact match,代表這份 fixture 只能驗證「目前結果沒變」,不能驗證兩個新語義分支真的被 exercise 到。解法是新增兩個 synthetic semantic case:Case A 取 $N=46,\,M=3$,則 $\gcd(3,46)=1$ 但 $\gcd(3,138)=3$,可直接區分 old/new coprimality gate;Case B 用抽象設定 $p=3,\,q\in\{2,5\}$ 且 $v_2(\Delta)=3,\,v_5(\Delta)=6$,舊版 <code>disc_valuation_condition</code> 對 $p=3$ 找不到 valuation 非 3 倍數的 witness 因而 reject,現行程式已無此 gate。文件最後明確自我設限:這只是 predicate-level regression fixture,不宣稱對應實際 theorem-eligible twist。</p>
+    <div class="claim-box">
+      12 條 base curves fixture exact match,但不能證明新語義分支被 exercise;新增 2 個 synthetic case 直接區分——僅 predicate-level,不宣稱對應實際 theorem-eligible twist
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一篇</span><a href="../15-removed-13-closure/">15 · Removed 13 First-Failure Closure</a></div>
+      <div class="conn-card"><span class="k">下一篇</span><a href="../17-phase1-gate-v03/">17 · Phase 1 Gate v0.3</a></div>
+      <div class="conn-card"><span class="k">Phase 1 進度</span>16 / 24</div>
+    </div>
+    <blockquote class="cite">「這只是 predicate-level regression fixture,不宣稱對應實際 theorem-eligible twist。」— 摘自本文末段。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← Phase 1</a>
+    <a href="../../files/09_Algorithm2_Twist_Semantic_Diff.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/09_Algorithm2_Twist_Semantic_Diff.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>
