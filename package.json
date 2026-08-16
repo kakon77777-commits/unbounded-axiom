@@ -1,0 +1,13 @@
+{
+  "name": "unbounded-axiom",
+  "private": true,
+  "type": "module",
+  "description": "Logic Matrix / Unbounded Axiom Worker dependencies (src/worker.js, bundled by wrangler at deploy time). The Astro human shell (shell/) and the IPMCS experiment scripts (scripts/ipmcs/) each keep their own separate package.json -- this one is only what src/worker.js itself imports.",
+  "dependencies": {
+    "@modelcontextprotocol/server": "2.0.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/client": "2.0.0"
+  }
+}

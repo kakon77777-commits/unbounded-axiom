@@ -10,8 +10,13 @@
  *   GET  /api/tcf-queue          demand-driven TCF queue: hottest un-mapped (hollow)
  *                                nodes by ~48h crawler attention (lazy instantiation)
  *   GET  /papers/<slug>(.html)   301 -> canonical /p/{id}/ or /raw/{id}.{ext}
+ *   *    /mcp                    remote IPMCS MCP server (src/mcp.js) -- exact+lexical
+ *                                search + ANLA address lookup, no auth. See src/mcp.js's
+ *                                own module docstring for exactly what's NOT included
+ *                                and why (semantic search, query divergence).
  *   *                            static asset (env.ASSETS)
  */
+import { createIpmcsRemoteHandler } from "./mcp.js";
 
 const CORS = {
   "Access-Control-Allow-Origin": "*",
@@ -91,6 +96,7 @@ export default {
       if (p === "/api/base-space") return await baseSpace(request, env);
       if (p === "/api/log-crawler") return await logCrawler(request, env, ctx);
       if (p === "/api/tcf-queue") return await tcfQueue(request, env);
+      if (p === "/mcp") return await createIpmcsRemoteHandler(env).fetch(request);
       if (p.startsWith("/papers/")) return await papersRedirect(request, env);
       // machine-layer JSON is cross-origin readable (spectral.evemisslab.com + agents)
       if ((p.startsWith("/ai/") && p.endsWith(".json")) || p === "/papers-metadata.json") {

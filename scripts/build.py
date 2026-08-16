@@ -50,6 +50,22 @@ def _copy_quality_report():
     return True
 
 
+def _copy_anla_addresses():
+    """IP-4/IP-5: copy scripts/ipmcs/anla_address/paper-addresses-*.json (written by
+    that dir's build_archive.py, run separately -- packing content/papers/ through
+    ANLA is a multi-second, ~90MB-archive step, not something to redo on every site
+    build) into dist/ai/anla-addresses.json, so the remote MCP Worker can read it as
+    a normal static asset. Same "copy the last known-good state, best-effort, silent
+    if absent" idiom as _copy_quality_report(). Picks the lexicographically LAST
+    matching file if more than one dated sidecar exists."""
+    matches = sorted((ROOT / "scripts" / "ipmcs" / "anla_address").glob("paper-addresses-*.json"))
+    if not matches:
+        return False
+    (DIST_DIR / "ai" / "anla-addresses.json").write_text(
+        matches[-1].read_text(encoding="utf-8"), encoding="utf-8")
+    return True
+
+
 def _write_build_id_file(registry, build_id):
     items = registry["items"]
 
@@ -143,6 +159,7 @@ def main() -> None:
     embedding_stats = build_embeddings(registry, build_id)  # Phase 3 doc-level vectors -> /ai/semantic-vectors.bin (+meta)
     chunk_stats = build_chunk_embeddings(registry, build_id)  # Phase 5 chunk-level vectors -> /ai/semantic-chunks.bin (+meta)
     quality_report_copied = _copy_quality_report()  # Phase 5 quality dashboard data -> /ai/quality-report.json
+    anla_addresses_copied = _copy_anla_addresses()  # IP-4/5: ANLA sidecar -> /ai/anla-addresses.json (remote MCP expand_address)
     graph_stats = write_graph_layer(registry)  # Phase A: registry/tcf/ -> /ai/graph.json (real topology)
     write_sitemap_canonical(registry)          # §26.6.6 canonical-only sitemap (replaces legacy)
     route_issues = validate_routes(registry)   # §26.7 route consistency report
@@ -178,6 +195,7 @@ def main() -> None:
           f"({chunk_stats['embedded_now']} newly embedded this run) -> {chunk_stats['shard_count']} shard(s) "
           f"({chunk_stats['bytes']/1024:.0f} KB total)")
     print(f"[diag] quality report: {'copied -> /ai/quality-report.json' if quality_report_copied else 'none yet (no test run has happened)'}")
+    print(f"[diag] ANLA addresses: {'copied -> /ai/anla-addresses.json' if anla_addresses_copied else 'none yet (build_archive.py not run)'}")
     if graph_stats["mapped"]:
         print(f"[diag] graph: /ai/graph.json — {graph_stats['mapped']} nodes / {graph_stats['edges']} verified edges "
               f"(candidates: {graph_stats.get('candidates', 0)}, rejected: {graph_stats.get('rejected', 0)}, "
