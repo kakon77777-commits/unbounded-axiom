@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Derived Supersingular FW Bridge · BSD Phase 2 · AMRAL</title>
+<meta name="description" content="v0.2 的階段性高點,標明「由現有外部定理拼接出的 derived proposition,不是原論文命名定理」。組合 09、10 篇的結果:對 good supersingular 質數 p,若存在合適的 witness ℓ(非分裂乘法約化、p∤v_ℓ(Δ_min)),則 FW-H1、FW-H2、FW-H3 全部自動成立。若再有 g_-(E)=2^a,則所有奇的 good supersingular primes 可由一個有限 base certificate 一次關閉——這是本系列第一次真正把 ∀p>2 在一整個 reduction-type 分支上閉合。誠實標出剩餘缺口:period normalization/Manin constant 需另外處理,第一版候選定理建議直接要求 c_E=1 以避開模形式週期與 Néron 週期拼接的歧義。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/11_Derived_Supersingular_FW_Bridge.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../about/">關於</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link" href="../../../../protocols/">研究協議</a>
+  <a class="link" href="../../../../validation/">驗證</a>
+  <a class="link" href="../../../../research-modes/">自主模式</a>
+  <a class="link" href="../../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../../../glc-framework/">GLC 閉合框架</a>
+  <a class="link active" href="../../../">BSD 猜想</a>
+  <a class="link" href="../../../../cpl/">臨界線比例梯</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← Phase 2</a>
+    <span>/</span>
+    <span>11 · Derived Supersingular FW Bridge</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">Phase 2 · 11</span>
+      <span class="tag">v0.2 · 11</span>
+      <span class="tag">2026-08-13</span>
+      <span class="tag">今日第一輪最後一篇 · ∀p&gt;2 首次在一整個分支閉合</span>
+    </div>
+    <h1>Derived Supersingular FW Bridge</h1>
+    <p class="h1-sub">文件開頭就先自我定位:「由現有外部定理拼接出的 derived proposition;不是原論文命名定理」——這種誠實的歸屬標註貫穿整個 BSD 研究線。內容把 09、10 篇的結果組合起來:對 $E/\mathbf Q$、good supersingular 質數 $p>2$,若存在 $\ell\parallel N_E$ 使 $E$ 在 $\ell$ nonsplit multiplicative 且 $p\nmid v_\ell(\Delta_{\min})$,則 good supersingular 的 local irreducibility 給出 FW-H1,同一個 irreducibility 排除 FW-H2 禁型,nonsplit Steinberg 加上 residual ramification 給出 FW-H3——三個假設一次全部成立,$E[p]$ 滿足 Fouquet–Wan residual hypotheses。若再有 $L(E,1)\ne0$,即可套用其 rank-zero $p$-part BSD corollary,只是 period normalization/Manin constant 需要另外閉合。文件接著給出 Uniform form,直接呼應 09 篇的發現:若 $g_-(E)=2^a$,則**所有** odd good supersingular primes 可由一個有限 base certificate 一次關閉——這是全系列第一次真正把 $\forall p>2$ 在一整個 reduction-type 分支(good supersingular)上完全閉合,不再只是「finite exceptional set」的可能性,而是具體做到。文件最後給出一條務實的 Safe period condition:候選定理第一版直接要求 $c_E=1$,徹底避開 modular period 與 Néron period 拼接的歧義,把 05 篇點名的 Gap B 用最簡單的方式暫時繞過。</p>
+    <div class="claim-box">
+      Good supersingular 分支:g_-(E)=2^a ⟹ 所有奇質數一次由單一有限證書關閉——∀p&gt;2 首次真正在一整個分支上閉合;剩餘缺口(period/Manin constant)第一版直接要求 c_E=1 繞過
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一篇</span><a href="../10-fw-h2-and-ordinary-obstruction/">10 · FW-H2 Compiler 與 Ordinary Obstruction</a></div>
+      <div class="conn-card"><span class="k">下一篇</span><a href="../12-hybrid-odd-prime-router/">12 · Hybrid Odd-Prime Router</a></div>
+      <div class="conn-card"><span class="k">Phase 2 進度</span>11 / 40(今日第一輪最後一篇)</div>
+    </div>
+    <blockquote class="cite">「狀態:由現有外部定理拼接出的 derived proposition;不是原論文命名定理。」— 摘自本文開頭。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← Phase 2</a>
+    <a href="../../files/11_Derived_Supersingular_FW_Bridge.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/11_Derived_Supersingular_FW_Bridge.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

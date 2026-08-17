@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hybrid Odd-Prime Router · BSD Phase 2 · AMRAL</title>
+<meta name="description" content="v0.2 的整合文件:完整 strong-BSD family 不要求單一 theorem 涵蓋所有 p。把奇質數拆成 P0(p=2,Theorem 2.14)到 P5(good supersingular,derived FW bridge)六類路由,每類指派既有最合適的工具——P2 good ordinary 明確不用 FW,P4 fixed additive、P5 good supersingular 才用 FW。結果:∀p>2 被拆成 finite bad-prime table + support-prime restrictions + ordinary theorem + supersingular uniform certificate 四塊,文件稱這才是可行的 global quantifier compression。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/12_Hybrid_Odd_Prime_Router.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../about/">關於</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link" href="../../../../protocols/">研究協議</a>
+  <a class="link" href="../../../../validation/">驗證</a>
+  <a class="link" href="../../../../research-modes/">自主模式</a>
+  <a class="link" href="../../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../../../glc-framework/">GLC 閉合框架</a>
+  <a class="link active" href="../../../">BSD 猜想</a>
+  <a class="link" href="../../../../cpl/">臨界線比例梯</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← Phase 2</a>
+    <span>/</span>
+    <span>12 · Hybrid Odd-Prime Router</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">Phase 2 · 12</span>
+      <span class="tag">v0.2 · 12</span>
+      <span class="tag">2026-08-13</span>
+      <span class="tag">整合文件</span>
+    </div>
+    <h1>Hybrid Odd-Prime Router</h1>
+    <p class="h1-sub">開篇第一句就定調全篇:完整 strong-BSD family 不要求單一 theorem 涵蓋所有 $p$。文件把 00-11 篇累積的所有工具正式收攏成一張六類路由表:P0($p=2$,直接用 Banwait–Huang Theorem 2.14)、P1($p\mid d$ 的 support primes,要求 $p\ge5$、good ordinary、residual irreducibility、有 multiplicative residual-ramification witness,用既有 additive-twist ordinary theorem)、P2(good ordinary 且 $p\nmid d$,依 residual reducible/irreducible 分別走 reducible/Eisenstein ordinary theorem 或 ordinary Iwasawa theorem/BCS,**明確不使用 FW**)、P3(fixed multiplicative $p\mid N$,有限集合逐質數檢查)、P4(fixed additive $p\mid N$,有限集合,這裡才真正用上 FW 的 H1/H2/H3 加 Manin compatibility)、P5(good supersingular,套用 11 篇的 derived FW bridge,H1/H2 automatic、H3 由 $g_-(E)$ uniform 給出)。文件最後把整個路由策略的效果收成一句話:原本的 $\forall p>2$ 被拆成 finite bad-prime table、support-prime restrictions、ordinary theorem、supersingular uniform certificate 四塊——文件直接點名這才是可行的 global quantifier compression,而不是硬要一個框架處理所有情況。</p>
+    <div class="claim-box">
+      P0-P5 六類路由表,每類分派既有最合適的工具;∀p&gt;2 拆成四塊有限/既有理論的組合,才是可行的 quantifier compression
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一篇</span><a href="../11-derived-supersingular-fw-bridge/">11 · Derived Supersingular FW Bridge</a></div>
+      <div class="conn-card"><span class="k">下一篇</span><a href="../13-candidate-nonsemistable-strong-bsd-family/">13 · Candidate Non-Semistable Strong-BSD Family Schema</a></div>
+      <div class="conn-card"><span class="k">Phase 2 進度</span>12 / 40</div>
+    </div>
+    <blockquote class="cite">「這才是可行的 global quantifier compression。」— 摘自本文結尾。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← Phase 2</a>
+    <a href="../../files/12_Hybrid_Odd_Prime_Router.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/12_Hybrid_Odd_Prime_Router.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

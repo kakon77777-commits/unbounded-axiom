@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>696.e1 Chebotarev Support Family · BSD Phase 2 · AMRAL</title>
+<meta name="description" content="定義質數族 P={q: q≡1(mod24), (q/29)=1, f_2 mod q irreducible},證明這組同餘條件精確讓 conductor 全部質數 2、3、29 在 Q(√q) 中 split。用 fiber-product Galois group 算出精確 Chebotarev density 2/48=1/24。證明 q∈P 的曲線自動 good ordinary(非 supersingular,否則與 Hasse bound 矛盾)。給出第一個具體驗證的 twist parameter d=241,含直接 point count a_241(E)=-7。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/16_696e1_Chebotarev_Support.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../about/">關於</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link" href="../../../../protocols/">研究協議</a>
+  <a class="link" href="../../../../validation/">驗證</a>
+  <a class="link" href="../../../../research-modes/">自主模式</a>
+  <a class="link" href="../../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../../../glc-framework/">GLC 閉合框架</a>
+  <a class="link active" href="../../../">BSD 猜想</a>
+  <a class="link" href="../../../../cpl/">臨界線比例梯</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← Phase 2</a>
+    <span>/</span>
+    <span>16 · 696.e1 Chebotarev Support Family</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">Phase 2 · 16</span>
+      <span class="tag">v0.3 · 16</span>
+      <span class="tag">2026-08-13</span>
+      <span class="tag">真正的解析數論計算</span>
+    </div>
+    <h1>696.e1 Chebotarev Support Family</h1>
+    <p class="h1-sub">定義質數族 $\mathcal P=\{q\text{ prime}: q\equiv1\pmod{24},\ (\frac q{29})=1,\ f_2\bmod q\text{ irreducible}\}$。文件先證明這組同餘條件為什麼有效:$q\equiv1\pmod{24}$ 給出 $q\equiv1\pmod8$ 與 $q\equiv1\pmod3$,使 $2,3$ 在 $\mathbb Q(\sqrt q)$ 中 split;再加 $(\frac q{29})=1$ 使 $29$ 也 split——conductor 的三個質數 $2,3,29$ 全部 split。接著做真正的 Chebotarev 計算:令 $L$ 為 $f_2$ 的 Galois closure($\mathrm{Gal}(L/\mathbb Q)=S_3$,resolvent $F_0=\mathbb Q(\sqrt{-174})$),$K=\mathbb Q(\zeta_{24},\sqrt{29})$。因為 $\sqrt{-174}=\sqrt{-6}\sqrt{29}$ 且 $\mathbb Q(\sqrt{-6})\subset\mathbb Q(\zeta_{24})$,可證 $L\cap K=F_0$,故 $[LK:\mathbb Q]=48$;取 $S_3$ 的 3-cycle 元素(在 $F_0$ 上 trivial,是 fiber-product Galois group 的合法元素),其 conjugacy class 大小為 $2$,得到精確密度 $\frac2{48}=\frac1{24}$。文件再證明一個很俐落的推論——「Automatic ordinary」:$q$ 在 cubic field 中 inert 等價於 $\mathrm{Frob}_q$ 是 $S_3\simeq GL_2(\mathbb F_2)$ 的 order-3 元素,其特徵多項式 $X^2+X+1$ 給出 trace $\equiv1\pmod2$,即 $a_q$ 為奇數;若 $q\ge5$ 且 supersingular,則 $q\mid a_q$ 加 Hasse bound 會迫使 $a_q=0$,矛盾——所以 $q\in\mathcal P\Rightarrow q$ 對 $E$ 是 good ordinary。文件最後給出第一個具體驗證的例子:$q=241$($241\equiv1\pmod{24}$,$241\bmod29=9$ 為 quadratic residue,$f_2\bmod241$ 無根故 irreducible),直接 point count 得 $a_{241}(E)=-7$,因此第一個 explicit twist parameter 是 $d=241$。</p>
+    <div class="claim-box">
+      精確 Chebotarev density 1/24;q∈P ⟹ q 自動 good ordinary for E;第一個具體驗證的 twist parameter d=241,a_241(E)=-7
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一篇</span><a href="../15-696e1-base-certificate/">15 · 696.e1 Base Certificate</a></div>
+      <div class="conn-card"><span class="k">下一篇</span><a href="../17-696e1-all-prime-router/">17 · 696.e1 All-Prime Router</a></div>
+      <div class="conn-card"><span class="k">Phase 2 進度</span>16 / 40</div>
+    </div>
+    <blockquote class="cite">「q∈P ⟹ q 對 E 是 good ordinary。」— 摘自本文「Automatic ordinary」段落。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← Phase 2</a>
+    <a href="../../files/16_696e1_Chebotarev_Support.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/16_696e1_Chebotarev_Support.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

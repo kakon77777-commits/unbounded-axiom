@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FW-H2 Compiler 與 Ordinary Obstruction · BSD Phase 2 · AMRAL</title>
+<meta name="description" content="逐 reduction type 檢查 FW-H2。Good supersingular:residual local representation 由 niveau-2 fundamental characters 控制,自動 irreducible,FW-H1/H2 自動 PASS,FW 只剩 H3 要處理。Good ordinary:推出 cheap exact criterion,H2 failure 恰好等價於 a_p(E)²≡1(mod p);但文件做出關鍵策略決定——因為沒有乾淨的 finite-exception theorem 可以排除所有滿足此同餘式的質數,ordinary primes 不應該走 FW 路線,應繼續用既有的 ordinary theorem,FW 留給 additive + supersingular。Potentially multiplicative 的 local semisimplification 本來就落入 FW-H2 禁型,同樣不走 FW。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/10_FW_H2_and_Ordinary_Obstruction.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../about/">關於</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link" href="../../../../protocols/">研究協議</a>
+  <a class="link" href="../../../../validation/">驗證</a>
+  <a class="link" href="../../../../research-modes/">自主模式</a>
+  <a class="link" href="../../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../../../glc-framework/">GLC 閉合框架</a>
+  <a class="link active" href="../../../">BSD 猜想</a>
+  <a class="link" href="../../../../cpl/">臨界線比例梯</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← Phase 2</a>
+    <span>/</span>
+    <span>10 · FW-H2 Compiler 與 Ordinary Obstruction</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">Phase 2 · 10</span>
+      <span class="tag">v0.2 · 10</span>
+      <span class="tag">2026-08-13</span>
+    </div>
+    <h1>FW-H2 Compiler 與 Ordinary Obstruction</h1>
+    <p class="h1-sub">逐 reduction type 把 FW-H2 檢查一遍,是全篇最重要的策略轉折點。Good supersingular:residual local representation 由 niveau-2 fundamental characters 控制,local residual type 自動 irreducible,所以 $\mathrm{FW\text{-}H1=PASS,\ FW\text{-}H2=PASS}$ 直接成立——這正是 09、11 篇能專注在 H3 上的原因。Good ordinary:標準 ordinary semisimplification 是 $\bar\rho^{ss}\simeq\bar\alpha\oplus\bar\chi_{\rm cyc}\bar\alpha^{-1}$,推出 H2 failure 恰好等價於 $\bar\alpha^2=1$,轉成 curve 語言就是一條 cheap exact criterion:$a_p(E)^2\equiv1\pmod p$。但文件立刻指出這條路走不通:要用 FW 涵蓋所有 ordinary primes,必須排除所有滿足這條同餘式的質數,而一般沒有乾淨的 finite-exception theorem 可用——於是文件做出關鍵的策略決定:ordinary primes 繼續用既有的 ordinary theorem(呼應 00 篇路線矩陣裡的 BCS supporting route),FW 只留給 additive 與 supersingular 這兩種 Banwait–Huang 既有理論覆蓋不到的 reduction type。Potentially multiplicative 也被排除:它的 local semisimplification 本來就呈 quadratic Tate twist $\psi\oplus\psi\bar\chi_{\rm cyc}$ 型態,直接落入 FW-H2 的禁型,同樣不走 FW。這篇文件把 Fouquet–Wan Compiler 的適用範圍從「試圖涵蓋所有 odd prime」正式收窄成「只負責 additive + supersingular」,是很誠實的範圍收縮,而不是勉強擴大涵蓋率。</p>
+    <div class="claim-box">
+      Good supersingular:H1/H2 自動 PASS。Good ordinary:H2 FAIL ⟺ a_p²≡1(mod p),但無乾淨 finite-exception theorem,故 ordinary 不走 FW。FW 範圍收窄為 additive+supersingular
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一篇</span><a href="../09-fw-h3-exact-compiler/">09 · FW-H3 Exact Elliptic-Curve Compiler</a></div>
+      <div class="conn-card"><span class="k">下一篇</span><a href="../11-derived-supersingular-fw-bridge/">11 · Derived Supersingular FW Bridge</a></div>
+      <div class="conn-card"><span class="k">Phase 2 進度</span>10 / 40</div>
+    </div>
+    <blockquote class="cite">「ordinary primes 繼續用 ordinary theorem;FW 留給 additive + supersingular。」— 摘自本文「為什麼 ordinary 不應走 FW?」段落。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← Phase 2</a>
+    <a href="../../files/10_FW_H2_and_Ordinary_Obstruction.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/10_FW_H2_and_Ordinary_Obstruction.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

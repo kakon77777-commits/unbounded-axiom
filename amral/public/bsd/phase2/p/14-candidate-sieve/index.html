@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Candidate Sieve:為什麼 696.e1 冒出來? · BSD Phase 2 · AMRAL</title>
+<meta name="description" content="v0.3 開篇,曲線 696.e1=[0,1,0,8,-16] 第一次出現。改用先便宜後昂貴的篩選順序,不先對每條曲線做昂貴的 local Galois analysis。696.e1:rank 0、torsion trivial、optimal、Manin 1、conductor 696、Sha_an=1、Tamagawa 1,L^alg(E,1)=1 精確成立,落入 Theorem 2.14 分支;奇質數壞約化在 3(split mult)、29(nonsplit mult),W_mult^odd={3,29}、W_-={29},所有相關 gcd 都是 1;LMFDB 記錄全部質數 maximal image,乾淨到極點。同時給出一條關鍵的控制組:116.b1 各項條件都漂亮,卻因為只有一個 odd multiplicative reservoir(29)、沒有第二個 witness,在 fixed multiplicative 檢查被淘汰——精確點出 696.e1 真正的關鍵不是「有 nonsplit prime」,而是「至少兩個 odd multiplicative reservoirs,其中至少一個 nonsplit」。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/14_Candidate_Sieve.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../about/">關於</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link" href="../../../../protocols/">研究協議</a>
+  <a class="link" href="../../../../validation/">驗證</a>
+  <a class="link" href="../../../../research-modes/">自主模式</a>
+  <a class="link" href="../../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../../../glc-framework/">GLC 閉合框架</a>
+  <a class="link active" href="../../../">BSD 猜想</a>
+  <a class="link" href="../../../../cpl/">臨界線比例梯</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← Phase 2</a>
+    <span>/</span>
+    <span>14 · Candidate Sieve:為什麼 696.e1 冒出來?</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">Phase 2 · 14</span>
+      <span class="tag">v0.3 · 14</span>
+      <span class="tag">2026-08-13</span>
+      <span class="tag">今日第二輪最後一篇 · 696.e1 首次登場</span>
+    </div>
+    <h1>Candidate Sieve:為什麼 696.e1 冒出來?</h1>
+    <p class="h1-sub">v0.3 開篇,也是整條 Phase 2 標題曲線 696.e1 第一次真正出現的地方。文件先改變篩選順序:改用「rank/optimal/Manin → 2-part $L^{alg}$ valuation → base $\operatorname{BSD}(E,2)$ → odd multiplicative reservoirs → fixed additive primes → residual images → 最後才做 local Iwasawa/FW」的便宜到昂貴順序,而不是先對每條曲線做昂貴的 local Galois analysis。$E=696.\mathrm{e}1=[0,1,0,8,-16]$ 的 base 資料極度乾淨:rank $0$、torsion trivial、optimal、Manin 常數 $1$、conductor $696&lt;5000$、$\Sha_{\rm an}=1$、Tamagawa product $1$,精確給出 $L^{alg}(E,1)=1,\ v_2(L^{alg})=0$,正好落入 Theorem 2.14 的「無理性 2-撓點、負判別式」分支。奇質數的局部結構:$2$ 是 additive $\mathrm{II}^*$($v_\Delta=11$)、$3$ 是 split multiplicative $\mathrm I_1$、$29$ 是 nonsplit multiplicative $\mathrm I_1$,因此 $W_{\rm mult}^{\rm odd}=\{3,29\}$、$W_-=\{29\}$,所有相關 gcd 都恰好是 $1$。LMFDB 記錄全部質數都是 maximal residual image,support prime irreducibility、fixed multiplicative irreducibility、no rational isogeny、twist irreducibility preservation 全部極度乾淨。文件接著給出一個真正有價值的控制組:$116.\mathrm b1$ 同樣 rank $0$、2-part anchor 漂亮、也有 nonsplit multiplicative $29$,但它的 odd bad structure 只有 $29$ 這一個 multiplicative reservoir,fixed multiplicative 檢查在 $p=29$ 處找不到另一個 $q\ne29,\ q\parallel N$ 作 residual-ramification witness,因此被 <code>FAIL_FIXED_MULTIPLICATIVE_WITNESS</code> 淘汰。這個對照精確點出 696.e1 真正的關鍵不是單純「有一個 nonsplit prime」,而是「至少兩個 odd multiplicative reservoirs,其中至少一個 nonsplit」。</p>
+    <div class="claim-box">
+      696.e1=[0,1,0,8,-16] 首次登場,base 資料與奇質數結構極度乾淨;控制組 116.b1 因缺第二個 witness 被淘汰,精確定位真正必要條件:至少兩個 odd multiplicative reservoirs,至少一個 nonsplit
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一篇</span><a href="../13-candidate-nonsemistable-strong-bsd-family/">13 · Candidate Non-Semistable Strong-BSD Family Schema</a></div>
+      <div class="conn-card"><span class="k">下一篇</span><a href="../15-696e1-base-certificate/">15 · 696.e1 Base Certificate</a></div>
+      <div class="conn-card"><span class="k">Phase 2 進度</span>14 / 40(今日第二輪最後一篇;v0.3 開篇)</div>
+    </div>
+    <blockquote class="cite">「696.e1 的關鍵不是單純『有 nonsplit prime』,而是至少兩個 odd multiplicative reservoirs,其中至少一個 nonsplit。」— 摘自本文結尾。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← Phase 2</a>
+    <a href="../../files/14_Candidate_Sieve.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/14_Candidate_Sieve.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>
