@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Independent Referee / Local Agent Handoff · BSD Phase 2 · AMRAL</title>
+<meta name="description" content="v0.3 最終篇,目標明確寫成「先嘗試推翻 696.e1 family theorem」而不是尋找更多曲線。設計六位獨立 referee:A 逐項重驗 Theorem 2.14 條件、B 只用 Banwait Remark 2.10 明確允許的 non-semistable替代方案重驗 odd 分支、C 優先用 FW 較簡單的 Theorem 1.1 而非自行改寫的 Theorem 1.7、D 優先引用已發表的 Manin-constant 結果而非未發表的 Edixhoven remark、E 獨立重算整個 Chebotarev 計算、F 對 q<10^7 做數值掃描找反例(明確聲明數值掃描不是定理證明,只找 bug)。停止規則:A-E 全通過才能升級為 DERIVED THEOREM/PREPRINT CANDIDATE,任何一項失敗就凍結擴張,退回失敗的確切引理。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/19_Independent_Referee_Handoff.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../about/">關於</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link" href="../../../../protocols/">研究協議</a>
+  <a class="link" href="../../../../validation/">驗證</a>
+  <a class="link" href="../../../../research-modes/">自主模式</a>
+  <a class="link" href="../../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../../../glc-framework/">GLC 閉合框架</a>
+  <a class="link active" href="../../../">BSD 猜想</a>
+  <a class="link" href="../../../../cpl/">臨界線比例梯</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← Phase 2</a>
+    <span>/</span>
+    <span>19 · Independent Referee / Local Agent Handoff</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">Phase 2 · 19</span>
+      <span class="tag">v0.3 · 19</span>
+      <span class="tag">2026-08-13</span>
+      <span class="tag">v0.3 最後一篇 · 六位對抗式 referee</span>
+    </div>
+    <h1>Independent Referee / Local Agent Handoff</h1>
+    <p class="h1-sub">v0.3 系列的收尾文件,目標寫得極為明確:不要再搜尋更多 curves,先嘗試推翻 <code>696.e1 family theorem</code>。設計六位獨立 referee,每位針對論證的不同環節,姿態是「找漏洞」而不是「確認」:Referee A 逐項重驗 Theorem 2.14 的 base 條件與 symbolic $q\in\mathcal P$ 的分裂條件,輸出 PASS/FAIL;Referee B 只使用 Banwait–Huang Remark 2.10 明確允許的 non-semistable 替代方案重驗 odd ordinary/additive 分支;Referee C 優先使用 FW Theorem 1.1 較強但較簡單的 sufficient hypotheses,而不是自行改寫最一般的 Theorem 1.7,避免「自己批改自己的作業」;Referee D 證明 period 不整除 Manin-period discrepancy,且明確要求優先引用已發表的 Manin-constant 結果,不依賴未發表的 Edixhoven remark;Referee E 獨立從頭重算整個 Chebotarev 計算(判別式、Galois group、resolvent、fiber product 次數、conjugacy class 大小、密度);Referee F 寫程式對 $q&lt;10^7$ 掃描所有 $\mathcal P$ 質數找反例,但文件明確自我提醒:數值 sweep 不是 theorem proof,只是找 implementation/case bug。文件最後給出清楚的停止規則:若 Referee A-E 全部 PASS,升級為 <code>DERIVED THEOREM / PREPRINT CANDIDATE</code>;若任何一項 FAIL,凍結擴張,退回那個確切失敗的引理。</p>
+    <div class="claim-box">
+      六位對抗式 referee,姿態是「先嘗試推翻」;C/D 兩位特別要求優先用較弱但已發表/較簡單的來源,避免自我批改;F 明確聲明數值掃描不是證明;A-E 全過才升級,一項失敗就退回確切引理
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一篇</span><a href="../18-provisional-derived-theorem/">18 · Provisional Derived Family Theorem</a></div>
+      <div class="conn-card"><span class="k">下一篇</span><a href="../20-adversarial-referee-verdict/">20 · Adversarial Referee Verdict</a></div>
+      <div class="conn-card"><span class="k">Phase 2 進度</span>19 / 40(v0.3 完結)</div>
+    </div>
+    <blockquote class="cite">「數值 sweep不是 theorem proof,只是找 implementation/case bug。」— 摘自本文 Referee F 段落。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← Phase 2</a>
+    <a href="../../files/19_Independent_Referee_Handoff.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/19_Independent_Referee_Handoff.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

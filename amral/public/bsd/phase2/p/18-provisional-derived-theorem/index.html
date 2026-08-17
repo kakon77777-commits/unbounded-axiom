@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Provisional Derived Family Theorem · BSD Phase 2 · AMRAL</title>
+<meta name="description" content="v0.3 收尾,第一次正式寫出候選定理陳述:對質數族 P(自然密度 1/24),∀q∈P,BSD(E_q) 成立,E_q 是 696.e1 的 quadratic twist。列出 11 項已 CLOSED 的環節(密度、分裂條件、2-division inertness、各質數分支、窮盡分割),與 5 項 NEEDS INDEPENDENT REFEREE AUDIT 的項目(FW 表示與橢圓曲線 E[p] 的 convention 對應、period normalization、isogeny/optimality 措辭、引用鏈精確性、novelty search)。明確聲明目前應稱 Provisional Derived Theorem,不是 Established New Theorem——原因不是還看到明顯數學缺口,而是已進入需要獨立 referee 逐行核對引用與 convention 的階段。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/18_Provisional_Derived_Theorem.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../about/">關於</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link" href="../../../../protocols/">研究協議</a>
+  <a class="link" href="../../../../validation/">驗證</a>
+  <a class="link" href="../../../../research-modes/">自主模式</a>
+  <a class="link" href="../../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../../../glc-framework/">GLC 閉合框架</a>
+  <a class="link active" href="../../../">BSD 猜想</a>
+  <a class="link" href="../../../../cpl/">臨界線比例梯</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← Phase 2</a>
+    <span>/</span>
+    <span>18 · Provisional Derived Family Theorem</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">Phase 2 · 18</span>
+      <span class="tag">v0.3 · 18</span>
+      <span class="tag">2026-08-13</span>
+      <span class="tag">候選定理首次成文</span>
+    </div>
+    <h1>Provisional Derived Family Theorem</h1>
+    <p class="h1-sub">整條 Phase 2 線第一次把候選定理正式寫成陳述:令 $E:y^2=x^3+x^2+8x-16$,$\mathcal P$ 為 15、16 篇定義的質數族($q\equiv1\pmod{24}$、$(\frac q{29})=1$、$f_2$ mod $q$ 不可約,自然密度 $\frac1{24}$),候選結論是 $\forall q\in\mathcal P,\ \operatorname{BSD}(E_q)$,其中 $E_q$ 是 $E$ by $q$ 的 quadratic twist。文件把目前的證明狀態切成兩塊:CLOSED 的部分列出 11 項(質數族無限/正密度、所有 conductor-prime 分裂條件、2-division inertness、support-prime ordinarity、base $\operatorname{BSD}(E,2)$、Theorem 2.14 的 2-part/nonvanishing、support-prime additive 分支、good ordinary 分支、fixed multiplicative $3/29$ 分支、FW supersingular residual 條件、窮盡質數分割);NEEDS INDEPENDENT REFEREE AUDIT 的部分列出 5 項(FW modular representation 與橢圓曲線 $E[p]$ 在 nonsplit multiplicative witness 處的 convention 精確對應、每個 twist $E_q$ 的 period normalization 陳述、period comparison 用到的 isogeny/optimality 精確措辭、所有 ordinary/additive/multiplicative $p$-part 結果的精確引用鏈、novelty search)。文件對 claim level 的判斷極為精確:目前應稱 <code>Provisional Derived Theorem</code>,不是 <code>Established New Theorem</code>——原因不是仍看到明顯的數學缺口,而是已經進入「需要獨立 referee 逐行核對引用與 conventions」的階段,這是兩件不同的事。</p>
+    <div class="claim-box">
+      候選定理:∀q∈P, BSD(E_q)。11 項已 CLOSED,5 項待獨立 referee 核對;稱 Provisional Derived Theorem,原因是需要獨立核對,不是仍有數學缺口
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一篇</span><a href="../17-696e1-all-prime-router/">17 · 696.e1 All-Prime Router</a></div>
+      <div class="conn-card"><span class="k">下一篇</span><a href="../19-independent-referee-handoff/">19 · Independent Referee / Local Agent Handoff</a></div>
+      <div class="conn-card"><span class="k">Phase 2 進度</span>18 / 40</div>
+    </div>
+    <blockquote class="cite">「原因不是我們仍看到明顯數學缺口,而是這已經進入『需要獨立 referee 逐行核對引用與 conventions』的階段。」— 摘自本文「Claim level」段落。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← Phase 2</a>
+    <a href="../../files/18_Provisional_Derived_Theorem.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/18_Provisional_Derived_Theorem.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>
