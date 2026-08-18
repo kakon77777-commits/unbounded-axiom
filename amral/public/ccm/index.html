@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>計算複合方法論(CCM) · AMRAL</title>
+<meta name="description" content="AMRAL 案例:計算複合方法論(Computational Composite Methodology, CCM)。這不是攻打某一個猜想,而是一套關於「怎麼組織數學研究」本身的方法論理論——把真理、方法覆蓋、搜尋成功、驗證四個常被混為一談的概念正式拆開,核心防火牆定理:啟發式搜尋可以不嚴謹,但終局判斷必須由驗證器把關。用 13 個橫跨極值圖論、數論半群、SAT、矩陣代數、線性規劃對偶、凸性、多項式非負性的校準基準測試框架,並對希爾伯特第三問題(剪刀全等)做了 18 輪深入應用。建置中,逐篇上線。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../">AMRAL</a>
+  <a class="link" href="../about/">關於</a>
+  <a class="link" href="../methodology/">方法論</a>
+  <a class="link" href="../protocols/">研究協議</a>
+  <a class="link" href="../validation/">驗證</a>
+  <a class="link" href="../research-modes/">自主模式</a>
+  <a class="link" href="../riemann/">黎曼猜想</a>
+  <a class="link" href="../moser/">Moser 蟲問題</a>
+  <a class="link" href="../skew-field/">歪度場</a>
+  <a class="link" href="../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../glc-framework/">GLC 閉合框架</a>
+  <a class="link" href="../bsd/">BSD 猜想</a>
+  <a class="link" href="../cpl/">臨界線比例梯</a>
+  <a class="link active" href="./">CCM 計算複合方法論</a>
+</div></nav>
+<div class="wrap">
+  <header class="page">
+    <p class="eyebrow"><a href="../">← AMRAL</a> · PROGRAM-CCM</p>
+    <h1>計算複合方法論</h1>
+    <p class="subtitle">Computational Composite Methodology · 建置中</p>
+    <p class="lede">
+      跟這裡其他案例不同,CCM 不是攻打某一個具體猜想,而是一套關於「數學研究過程本身該怎麼組織」的方法論理論。
+      核心主張是方法論而非本體論的:數學研究可以表示成一個不斷變化的狀態,裡面有多種表示法、搜尋算子、證書語言、
+      障礙、成本模型、路徑歷史彼此互動。CCM 把常被混為一談的四個概念正式拆開——
+      <strong>真理、方法覆蓋、搜尋成功、驗證</strong>——並證明一條核心防火牆定理:只要終局的正/反判斷都經過健全的
+      驗證器把關、且每一次表示轉換都保持證書語義,路由過程可以是完全啟發式甚至 AI 生成的,結論依然嚴謹。
+    </p>
+    <p class="notice">
+      13 個「校準基準測試」(Benchmark 01-13)橫跨極值圖論、數論半群、遞迴、SAT/組合、矩陣代數、線性規劃對偶、
+      Farkas 引理、凸性、多項式非負性、複合路由、證書庫擴張、成本感知路由、線上自適應路由——文件明確聲明這些是
+      「理論的經驗見證,不是理論本身」。另有一條獨立的 18 輪深入應用系列,把 CCM 用在現代希爾伯特第三問題
+      (剪刀全等 / Dehn 不變量)上。
+    </p>
+  </header>
+
+  <section id="foundational">
+    <h2 class="doc-h2">基礎理論 · Foundational Theory v1.0</h2>
+    <p class="section-note">先讀這三篇,再讀底下任何一個 benchmark 或 Hilbert03 輪次——benchmark 是理論的「經驗見證」,不是理論本身。</p>
+    <nav class="case-grid" aria-label="CCM 基礎理論">
+      <a class="case-card" href="./p/00-foundational-theory/">
+        <span class="k">00</span>
+        <h3>Computational Composite Methodology</h3>
+        <p>完整基礎論文,38 節。真理≠覆蓋≠搜尋成功≠驗證。核心防火牆定理:證書把關的路由,無論怎麼搜尋都嚴謹。</p>
+      </a>
+      <a class="case-card" href="./p/01-formal-core/">
+        <span class="k">01</span>
+        <h3>CCM Formal Core</h3>
+        <p>從長論文萃取出的最小形式核心:20 個定義 + 6 個編號定理/命題/推論,作為速查參考。</p>
+      </a>
+      <a class="case-card" href="./p/02-benchmarks-theory-map/">
+        <span class="k">02</span>
+        <h3>Benchmarks 01-13 Theory Extraction Map</h3>
+        <p>每個 benchmark 對理論的具體貢獻對照表。Phase I(01-09)校準證書生態,Phase II(10-13)轉向路由本身。</p>
+      </a>
+    </nav>
+  </section>
+
+  <section id="benchmarks">
+    <h2 class="doc-h2">13 個校準基準測試 · Calibration Benchmarks</h2>
+    <p class="section-note">建置中,逐輪上線。</p>
+    <div class="case-grid">
+      <div class="case-card placeholder">
+        <span class="k">Round 01-13</span>
+        <h3>Mantel → Online Adaptive Routing</h3>
+        <p>從極值圖論到線上自適應路由,13 個橫跨不同數學生態的獨立校準案例。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="hilbert03">
+    <h2 class="doc-h2">現代希爾伯特第三問題 · 18 輪深入應用</h2>
+    <p class="section-note">建置中,逐輪上線。</p>
+    <div class="case-grid">
+      <div class="case-card placeholder">
+        <span class="k">v0.1 → v1.7 · 18 篇</span>
+        <h3>Scissors Certificates → Primitive Gaussian Support</h3>
+        <p>把 CCM 證書路由框架用在剪刀全等 / Dehn 不變量問題上,18 輪逐步深入。</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../">← AMRAL</a>
+    <span>SHA-256 逐篇核驗 · 原始位元組,不重新打包</span>
+  </footer>
+</div>
+</body>
+</html>

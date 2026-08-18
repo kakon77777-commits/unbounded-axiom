@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CCM Benchmarks 01-13 Theory Extraction Map · AMRAL</title>
+<meta name="description" content="逐一記錄 13 個 benchmark 對基礎理論各貢獻了什麼,文件開頭即聲明「benchmark 是證據與校準文物,不是 CCM 的定義」。附完整對照表(每個 benchmark 的數學生態+主要方法論貢獻)。分兩階段:Phase I(01-09)校準證書生態,重複結構是「受控表示→壓縮/耦合/分離/分解→承載證明的證書→一般化提升」;Phase II(10-13)把研究焦點從個別證書語言轉移到「挑選證書語言的政策」本身。列出被超過一個 benchmark 共同觀察到的理論元素(缺陷分解、不存在性正證書、表示路由、障礙保存、成本感知重疊)。明確劃出 benchmark 主張邊界:只支持 CCM workflow 骨架的存在性與可重現性,不建立普遍優越性、完備性,或未解區收斂到零。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/CCM_Benchmarks_01_13_Theory_Map_v1.0.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../">AMRAL</a>
+  <a class="link" href="../../../about/">關於</a>
+  <a class="link" href="../../../methodology/">方法論</a>
+  <a class="link" href="../../../protocols/">研究協議</a>
+  <a class="link" href="../../../validation/">驗證</a>
+  <a class="link" href="../../../research-modes/">自主模式</a>
+  <a class="link" href="../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../../glc-framework/">GLC 閉合框架</a>
+  <a class="link" href="../../../bsd/">BSD 猜想</a>
+  <a class="link" href="../../../cpl/">臨界線比例梯</a>
+  <a class="link active" href="../../">CCM 計算複合方法論</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← CCM</a>
+    <span>/</span>
+    <span>02 · Benchmarks 01-13 Theory Extraction Map</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">CCM · 02</span>
+      <span class="tag">v1.0 · benchmark 對照表</span>
+      <span class="tag">基礎理論最後一篇</span>
+    </div>
+    <h1>Benchmarks 01-13 Theory Extraction Map</h1>
+    <p class="h1-sub">文件開頭立刻自我定位:「記錄每個 benchmark 對基礎理論貢獻了什麼。benchmark 是證據與校準文物,不是 CCM 的定義。」附完整對照表,13 個 benchmark 各自的數學生態與主要方法論貢獻一字排開:01 Mantel(極值圖論,有限證據→結構壓縮→全域提升)、02 Frobenius(數論半群,精確符號重建與剩餘閾值)、03 Zeckendorf(遞迴/貪婪,遞迴分割與突變必要性測試)、04 Ramsey(SAT/組合,證偽即約束、不可能性模式)、05 Cayley–Hamilton(矩陣代數,通用/最小證書之別)、06 Primal–Dual LP(最佳化,跨表示耦合與證書層級)、07 Farkas(凸錐,不存在性的正證書)、08 Jensen(非線性凸性,缺陷分解與符號域)、09 SOS/Motzkin(多項式非負性,覆蓋對真理、方法障礙證書)、10 複合路由(混合多項式目標,三態語意)、11 證書擴張(固定目標集,庫覆蓋單調性與保守擴張)、12 成本感知路由(重疊證書,向量成本與路由後悔)、13 線上路由(非平穩串流,動態狀態與切換延遲)。文件把 13 篇分成兩階段:Phase I(01-09)是「證書生態校準」,重複出現的結構是「受控表示 → 壓縮/耦合/分離/分解 → 承載證明的證書 → 一般化提升」,文件強調:「領域特定的承載證明物件會變,控制架構會持續存在」;Phase II(10-13)把研究焦點從個別證書語言正式轉移到「挑選證書語言的政策」本身。文件也列出被超過一個 benchmark 共同觀察到的理論元素(缺陷分解同時見於 LP 對偶/Jensen-方差/SOS;不存在性正證書同時見於 SAT-UNSAT/Farkas 分離;障礙保存見於失敗的 Ramsey 刪除假設與 Motzkin 非-SOS 障礙)。結尾明確劃出「benchmark 主張邊界」:這個計畫只支持 CCM workflow 骨架的存在性與可重現性,不建立普遍優越性、完備性,或未解區收斂到零。</p>
+    <div class="claim-box">
+      13 benchmark = 證據,不是定義。Phase I(01-09)校準生態,Phase II(10-13)轉向路由政策本身。明確劃出主張邊界:不建立普遍優越性或完備性
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一篇</span><a href="../01-formal-core/">01 · CCM Formal Core</a></div>
+      <div class="conn-card"><span class="k">CCM 進度</span>02 / ?(基礎理論完結)</div>
+    </div>
+    <blockquote class="cite">「領域特定的承載證明物件會變。控制架構會持續存在。」— 摘自本文「Phase I」段落。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← CCM</a>
+    <a href="../../files/CCM_Benchmarks_01_13_Theory_Map_v1.0.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/CCM_Benchmarks_01_13_Theory_Map_v1.0.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

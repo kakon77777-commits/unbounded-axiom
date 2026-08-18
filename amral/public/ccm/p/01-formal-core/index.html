@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CCM Formal Core · AMRAL</title>
+<meta name="description" content="從 38 節長論文萃取出的最小形式核心:20 個編號定義(目標、證書語言、正/負覆蓋、未解區、方法障礙、表示態射、終局路由語意、研究狀態、成本向量、路由後悔等)加 6 個編號定理/命題/推論(覆蓋單調性、未解區反單調性、方法失敗不等於為假、表示態射組合封閉、驗證防火牆、非負缺陷分解)。收尾兩條方框金句:真理≠覆蓋≠搜尋成功≠驗證≠成本;啟發式搜尋可以提議,已驗證的證書才能封頂。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/CCM_Formal_Core_v1.0.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../">AMRAL</a>
+  <a class="link" href="../../../about/">關於</a>
+  <a class="link" href="../../../methodology/">方法論</a>
+  <a class="link" href="../../../protocols/">研究協議</a>
+  <a class="link" href="../../../validation/">驗證</a>
+  <a class="link" href="../../../research-modes/">自主模式</a>
+  <a class="link" href="../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../../glc-framework/">GLC 閉合框架</a>
+  <a class="link" href="../../../bsd/">BSD 猜想</a>
+  <a class="link" href="../../../cpl/">臨界線比例梯</a>
+  <a class="link active" href="../../">CCM 計算複合方法論</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← CCM</a>
+    <span>/</span>
+    <span>01 · CCM Formal Core</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">CCM · 01</span>
+      <span class="tag">v1.0 · 速查核心</span>
+      <span class="tag">20 定義 + 6 定理</span>
+    </div>
+    <h1>CCM Formal Core</h1>
+    <p class="h1-sub">文件開頭自陳定位:「從較長的基礎論文萃取出 Computational Composite Methodology 的最小形式核心。」20 個編號定義依序建立:目標與外部真理語意 $\tau$、證書語言六元組 $\mathcal C=(D,\Gamma,A,V,\sigma,K)$、正/負/總覆蓋、未解區 $U(\mathfrak C;\Omega)$、方法障礙(不直接判定 $P$ 或 $\neg P$)、證書保持的表示態射、終局路由三態語意($\mathrm{PROVED}/\mathrm{DISPROVED}/\mathrm{UNRESOLVED}$)、研究狀態十二元組 $\mathcal S_t$、狀態算子、成本向量、邊際覆蓋增益、路由增益、路由後悔、線上路由與線上更新、動態後悔、切換延遲、CCM 表現狀態六元組 $\mathcal G_t$。對應的 6 個編號定理/命題/推論把長論文的核心結果壓縮成最精簡的陳述:Theorem 1(覆蓋單調性)、Corollary 1(未解區反單調性)、Proposition 2(方法失敗不等於為假)、Theorem 3(表示態射組合封閉)、Theorem 4(驗證防火牆——只要終局驗證器健全且表示轉換保持證書語義,路由無論怎麼選都嚴謹)、Proposition 5(非負缺陷分解:$G=\sum_\alpha\lambda_\alpha D_\alpha$ 且 $\lambda_\alpha,D_\alpha\ge0$ 則 $G\ge0$)、Proposition 6(覆蓋與成本是獨立座標軸)。文件收尾用兩個方框把整套理論壓成兩句話:「真理≠覆蓋≠搜尋成功≠驗證≠成本」,以及「啟發式搜尋可以提議;已驗證的證書才能封頂」。</p>
+    <div class="claim-box">
+      20 定義 + 6 定理的最小形式核心,速查版。收尾金句:真理≠覆蓋≠搜尋成功≠驗證≠成本;啟發式搜尋可以提議,已驗證的證書才能封頂
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一篇</span><a href="../00-foundational-theory/">00 · Computational Composite Methodology</a></div>
+      <div class="conn-card"><span class="k">下一篇</span><a href="../02-benchmarks-theory-map/">02 · Benchmarks 01-13 Theory Map</a></div>
+      <div class="conn-card"><span class="k">CCM 進度</span>01 / ?</div>
+    </div>
+    <blockquote class="cite">「heuristic search may propose; verified certificates close。」— 摘自本文「Canonical Closure Rule」。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← CCM</a>
+    <a href="../../files/CCM_Formal_Core_v1.0.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/CCM_Formal_Core_v1.0.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

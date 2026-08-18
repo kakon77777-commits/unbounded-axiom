@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Computational Composite Methodology · CCM · AMRAL</title>
+<meta name="description" content="CCM 完整基礎論文,38 節。核心主張是方法論而非本體論:數學研究可表示成一個變化的狀態,裡面有多種表示法、搜尋算子、證書語言、障礙、成本模型互動。把真理、方法覆蓋、搜尋成功、驗證四個概念正式拆開。核心結構性結果:證書庫覆蓋單調性、未解區反單調性、覆蓋失敗不蘊含為假(以 Motzkin 非負非 SOS 為具體見證)、NOT_FOUND≠METHOD_BLOCKED≠DISPROVED 三態區分、證書把關路由的健全性防火牆定理。文件明確列出九項「理論與 benchmark 支持的主張」與十項「尚未確立的主張」,並附九筆真實文獻引用(Cook-Reckhow、CEGAR、SATzilla、Parrilo SOS 等)。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/CCM_Foundational_Theory_v1.0.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../">AMRAL</a>
+  <a class="link" href="../../../about/">關於</a>
+  <a class="link" href="../../../methodology/">方法論</a>
+  <a class="link" href="../../../protocols/">研究協議</a>
+  <a class="link" href="../../../validation/">驗證</a>
+  <a class="link" href="../../../research-modes/">自主模式</a>
+  <a class="link" href="../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../../glc-framework/">GLC 閉合框架</a>
+  <a class="link" href="../../../bsd/">BSD 猜想</a>
+  <a class="link" href="../../../cpl/">臨界線比例梯</a>
+  <a class="link active" href="../../">CCM 計算複合方法論</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← CCM</a>
+    <span>/</span>
+    <span>00 · Computational Composite Methodology</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">CCM · 00</span>
+      <span class="tag">v1.0 · 基礎論文</span>
+      <span class="tag">Status: Foundational theory draft</span>
+      <span class="tag">38 節</span>
+    </div>
+    <h1>Computational Composite Methodology</h1>
+    <p class="h1-sub">CCM 的完整基礎論文,摘要開宗明義:「其核心主張是方法論而非本體論的——數學研究過程可以表示成一個變化的狀態,裡面有多種表示法、搜尋算子、證書語言、障礙、成本模型、路徑歷史彼此互動。」第 3-10 節建立正式骨架:目標 $P\in\mathcal P$ 有外部真理語意 $\tau(P)\in\{0,1\}$,但 CCM 不假設可以直接存取 $\tau$;證書語言 $\mathcal C_i=(D_i,\Gamma_i,A_i,V_i,\sigma_i,K_i)$ 把搜尋(可以啟發式、不完備)與驗證(語意把關者)明確分離;Definition 5.3 定義「方法障礙證書」,其 meta-語意是「路徑被擋 ⇏ 目標為假」;第 6 節證明覆蓋單調性(Theorem 6.3:$\mathfrak C_1\subseteq\mathfrak C_2\Rightarrow\operatorname{Cov}(\mathfrak C_1)\subseteq\operatorname{Cov}(\mathfrak C_2)$)與未解區反單調性(Corollary 6.5);第 7 節的 Proposition 7.1 證明「覆蓋失敗不蘊含為假」,並指出 Motzkin 多項式(非負但非 SOS)是這條邏輯的具體見證;第 10 節的 Theorem 10.1 是全篇的核心防火牆——只要終局驗證器健全、每次表示轉換都保持證書語義,路由過程無論多麼啟發式或 AI 生成,終局判斷依然嚴謹。第 33 節把 13 個 benchmark 明確定位為「理論的經驗見證,不是理論本身」;第 34 節收成十條核心原則;第 35、36 節是全文最重要的誠實邊界——明確列出九項「理論與現有 benchmark 支持的主張」,與十項「CCM v1.0 尚未確立的主張」(包括不主張 CCM 普遍優於專家單線數學、不主張每個數學目標都有有限證書、不主張 AI 能自主發現所有相關表示法)。文末附九筆真實文獻引用,包含 Cook–Reckhow 1979 證明系統效率經典論文、Clarke 等人 CEGAR、SATzilla、Parrilo 的 SOS 半正定規劃奠基文獻。</p>
+    <div class="claim-box">
+      核心防火牆定理:證書把關的路由,無論啟發式搜尋多麼不嚴謹,終局判斷依然健全。真理≠覆蓋≠搜尋成功≠驗證≠成本。九項主張成立,十項明確尚未確立。
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">下一篇</span><a href="../01-formal-core/">01 · CCM Formal Core</a></div>
+      <div class="conn-card"><span class="k">CCM 進度</span>00 / ?(基礎理論首篇)</div>
+    </div>
+    <blockquote class="cite">「CCM v1.0 should therefore be read as a general mathematical methodology and research-control theory, not as a solver for one conjecture and not as a claim of universal automation.」— 摘自本文第 38 節結論。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← CCM</a>
+    <a href="../../files/CCM_Foundational_Theory_v1.0.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/CCM_Foundational_Theory_v1.0.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>
