@@ -1,0 +1,41 @@
+{
+  "schema": "JDPSP-LEGACY-MIGRATION-0.1",
+  "paper_id": "JDPSP-07",
+  "legacy_sources": [
+    "綜合概率論：開放系統中的超因果測度理論",
+    "綜合測度論：關係的量化與動態積分",
+    "超因果與概率破缺：論開放系統中的維度干涉與絕對確定性的物理邊界"
+  ],
+  "migrations": [
+    {
+      "legacy_claim": "P(Omega)=1 implies a physically closed system",
+      "status": "retired",
+      "replacement": "Normalization means total probability on the declared outcome domain is 1; openness is represented through dynamics, boundary flow, environment coupling, memory, or partial observation."
+    },
+    {
+      "legacy_claim": "P>1 is open-system probability overflow",
+      "status": "retyped",
+      "replacement": "Use finite nonnegative measure/intensity mu with total mass mu(X)>1; normalized probability is P=mu/mu(X)."
+    },
+    {
+      "legacy_claim": "P<0 is negative event probability / probability erasure",
+      "status": "retyped",
+      "replacement": "Use signed measure or quasiprobability, and do not call it ordinary probability."
+    },
+    {
+      "legacy_claim": "Omega(t), F(t), P(t) may evolve",
+      "status": "retained_and_formalized",
+      "replacement": "Dynamic judgment domain D_t=(X_t,Sigma_t;r_t,s_t,c_t) with time transport K_{s,t} and event/judgment translations."
+    },
+    {
+      "legacy_claim": "source/sink breaks probability conservation",
+      "status": "refined",
+      "replacement": "Source/sink changes total mass M_t; normalized conditional law P_t may remain a probability measure."
+    },
+    {
+      "legacy_claim": "relation measures require rejection of ordinary measure theory",
+      "status": "narrowed",
+      "replacement": "Relations can be encoded in the judgment domain, graph/path spaces, random measures, signed/complex measures, or other established measure constructions."
+    }
+  ]
+}

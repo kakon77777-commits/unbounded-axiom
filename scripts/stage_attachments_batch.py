@@ -35,7 +35,25 @@ def safe_title(title, fallback):
 
 
 def extract_title(md_path):
+    """Some source packages open with a generic "<series> Paper NN"-style H1
+    immediately followed by the paper's real descriptive H1 (blank lines
+    allowed between them, no other content) -- e.g. "# XYZ Series Paper 01"
+    then "# 造物之後：為什麼要創造一個世界？". Prefer the LAST H1 in that
+    leading run, since it's consistently the real title; a normal single-H1
+    file is unaffected (falls through to the same H1 either way)."""
     text = md_path.read_text(encoding="utf-8", errors="replace")
+    last_leading_h1 = None
+    for line in text.splitlines()[:40]:
+        line = line.strip()
+        if line.startswith("# "):
+            last_leading_h1 = line[2:].strip()
+            continue
+        if line == "":
+            continue
+        break  # first non-blank, non-H1 line ends the leading run
+    if last_leading_h1:
+        return last_leading_h1
+    # Fallback: no leading run (H1 appears deeper in the file) -- first H1 anywhere.
     for line in text.splitlines()[:40]:
         line = line.strip()
         if line.startswith("# "):

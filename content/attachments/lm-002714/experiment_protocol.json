@@ -1,0 +1,27 @@
+{
+  "schema": "JDPSP-AIPF-PROTOCOL-0.1",
+  "required_locked_fields": [
+    "task_set",
+    "model_identifier",
+    "prompt_bundle",
+    "sampling_policy",
+    "run_count",
+    "scale_ontologies",
+    "evaluators",
+    "analysis_metrics",
+    "reproducibility_tolerances"
+  ],
+  "scale_layers": {
+    "surface": "complete generated output",
+    "semantic": "semantic equivalence or similarity classes",
+    "strategy": "declared reasoning/action strategy classes",
+    "task": "task-level outcome classes",
+    "success": "scalar/binary task success projection"
+  },
+  "recommended_experiments": [
+    "temperature_sweep",
+    "memory_reshaping",
+    "prompt_or_intention_strength",
+    "repeated_run_capability"
+  ]
+}
