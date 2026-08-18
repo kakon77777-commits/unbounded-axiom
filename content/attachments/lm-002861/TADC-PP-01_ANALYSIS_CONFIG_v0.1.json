@@ -1,0 +1,65 @@
+{
+  "protocol": "TADC-PP-01",
+  "version": "0.1",
+  "date": "2026-08-17",
+  "status": "exploratory_pilot",
+  "design": {
+    "factors": {
+      "external_domain": [
+        "same",
+        "cross"
+      ],
+      "relational_structure": [
+        "near",
+        "far"
+      ]
+    },
+    "conditions": [
+      "SN",
+      "SF",
+      "CN",
+      "CF"
+    ],
+    "primary_directional_contrast": "K_CN - K_SF < 0"
+  },
+  "sample_targets": {
+    "stage_A_calibration": 48,
+    "stage_B_transition_pilot": 32,
+    "note": "Feasibility targets only; not confirmatory power justification."
+  },
+  "stage_B": {
+    "scored_trials_per_participant": 64,
+    "trials_per_condition": 16,
+    "practice_trials": 8,
+    "counterbalance_lists": 4
+  },
+  "primary_outcomes": [
+    "log_target_rt",
+    "baseline_adjusted_transition_cost"
+  ],
+  "secondary_outcomes": [
+    "target_accuracy",
+    "transfer_probe_accuracy"
+  ],
+  "baseline_adjusted_cost": "K_ij = log(target_rt_ij) - median_stageA_log_solo_rt_target_j",
+  "pilot_models": {
+    "M0": "external_distance + surface_similarity + familiarity + target_baseline + source_accuracy + trial_index + random effects",
+    "M1": "M0 + relational_distance"
+  },
+  "heldout_evaluation": [
+    "participant-held-out",
+    "target-held-out"
+  ],
+  "provisional_gates": {
+    "domain_agreement_final_item": 0.8,
+    "relation_icc_min": 0.6,
+    "target_solo_accuracy_min": 0.7,
+    "target_solo_accuracy_max": 0.95,
+    "timeout_fraction_max": 0.15
+  },
+  "decision_states": [
+    "GO",
+    "REVISE",
+    "KILL_CURRENT_OPERATIONALIZATION"
+  ]
+}

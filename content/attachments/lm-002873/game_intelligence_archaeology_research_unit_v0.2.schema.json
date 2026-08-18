@@ -1,0 +1,748 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://evemisslab.example/schemas/game-intelligence-archaeology-research-unit-v0.2.schema.json",
+  "title": "Game Intelligence Archaeology Research Unit",
+  "description": "Machine-readable research unit for Game Intelligence Archaeology. One record corresponds to one Game × Version × Platform × Subsystem × Behavior research unit.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "record_id",
+    "identity",
+    "research_target",
+    "intelligence_branch",
+    "mechanism",
+    "evidence",
+    "research_economics",
+    "value",
+    "status",
+    "publication"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.2"
+    },
+    "record_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9._:-]+$",
+      "description": "Stable unique ID. Recommended: game-slug:version:platform:subsystem:behavior."
+    },
+    "parent_record_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "default": []
+    },
+    "identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "game",
+        "version",
+        "platform",
+        "genre",
+        "release_era"
+      ],
+      "properties": {
+        "game": {
+          "type": "string",
+          "minLength": 1
+        },
+        "series": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "platform": {
+          "type": "string",
+          "minLength": 1
+        },
+        "release_era": {
+          "type": "string",
+          "minLength": 1
+        },
+        "release_year": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1970,
+          "maximum": 2100
+        },
+        "genre": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "developer": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "publisher": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "open_source": {
+          "type": "boolean",
+          "default": false
+        },
+        "commercial_status": {
+          "type": "string",
+          "enum": [
+            "commercial",
+            "freeware",
+            "open_source",
+            "research_environment",
+            "unknown"
+          ]
+        }
+      }
+    },
+    "research_target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "subsystem",
+        "behavior",
+        "research_question"
+      ],
+      "properties": {
+        "subsystem": {
+          "type": "string",
+          "minLength": 1
+        },
+        "behavior": {
+          "type": "string",
+          "minLength": 1
+        },
+        "research_question": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope_notes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "comparison_targets": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true,
+          "default": []
+        }
+      }
+    },
+    "intelligence_branch": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "primary",
+        "secondary"
+      ],
+      "properties": {
+        "primary": {
+          "$ref": "#/$defs/intelligenceBranch"
+        },
+        "secondary": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/intelligenceBranch"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "mechanism": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "primitive_candidates",
+        "functional_types",
+        "composition_edges",
+        "shared_state",
+        "scheduler",
+        "timing",
+        "priority",
+        "interrupt",
+        "fallback",
+        "persistence",
+        "simulation_lod"
+      ],
+      "properties": {
+        "primitive_candidates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/hypothesisItem"
+          },
+          "default": []
+        },
+        "functional_types": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true,
+          "default": []
+        },
+        "composition_edges": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/compositionEdge"
+          },
+          "default": []
+        },
+        "shared_state": {
+          "$ref": "#/$defs/mechanismField"
+        },
+        "scheduler": {
+          "$ref": "#/$defs/mechanismField"
+        },
+        "timing": {
+          "$ref": "#/$defs/mechanismField"
+        },
+        "priority": {
+          "$ref": "#/$defs/mechanismField"
+        },
+        "interrupt": {
+          "$ref": "#/$defs/mechanismField"
+        },
+        "fallback": {
+          "$ref": "#/$defs/mechanismField"
+        },
+        "persistence": {
+          "$ref": "#/$defs/mechanismField"
+        },
+        "simulation_lod": {
+          "$ref": "#/$defs/mechanismField"
+        },
+        "control_ownership": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "controller",
+              "scope",
+              "confidence"
+            ],
+            "properties": {
+              "controller": {
+                "type": "string"
+              },
+              "scope": {
+                "type": "string"
+              },
+              "confidence": {
+                "$ref": "#/$defs/confidence"
+              }
+            }
+          },
+          "default": []
+        },
+        "invariants": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/hypothesisItem"
+          },
+          "default": []
+        },
+        "replaceable_freedoms": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/hypothesisItem"
+          },
+          "default": []
+        }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "items",
+        "overall_confidence",
+        "unknowns",
+        "competing_hypotheses"
+      ],
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidenceItem"
+          },
+          "default": []
+        },
+        "overall_confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "unknowns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        },
+        "competing_hypotheses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/hypothesisItem"
+          },
+          "default": []
+        }
+      }
+    },
+    "research_economics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "acquisition_cost",
+        "setup_cost",
+        "time_to_trigger_hours",
+        "observability",
+        "reproducibility",
+        "tooling_friction",
+        "version_entropy"
+      ],
+      "properties": {
+        "currency": {
+          "type": "string",
+          "default": "USD"
+        },
+        "acquisition_cost": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "setup_cost": {
+          "$ref": "#/$defs/score01"
+        },
+        "time_to_trigger_hours": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "observability": {
+          "$ref": "#/$defs/score01"
+        },
+        "state_accessibility": {
+          "$ref": "#/$defs/score01"
+        },
+        "reproducibility": {
+          "$ref": "#/$defs/score01"
+        },
+        "tooling_friction": {
+          "$ref": "#/$defs/score01"
+        },
+        "version_entropy": {
+          "$ref": "#/$defs/score01"
+        },
+        "estimated_ai_compute_cost": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "estimated_human_review_hours": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        }
+      }
+    },
+    "value": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "direct_project_relevance",
+        "novelty_gain",
+        "coverage_gain",
+        "generalization_value",
+        "reconstruction_value"
+      ],
+      "properties": {
+        "direct_project_relevance": {
+          "$ref": "#/$defs/score01"
+        },
+        "novelty_gain": {
+          "$ref": "#/$defs/score01"
+        },
+        "coverage_gain": {
+          "$ref": "#/$defs/score01"
+        },
+        "generalization_value": {
+          "$ref": "#/$defs/score01"
+        },
+        "reconstruction_value": {
+          "$ref": "#/$defs/score01"
+        },
+        "historical_value": {
+          "$ref": "#/$defs/score01"
+        },
+        "priority_score": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        }
+      }
+    },
+    "status": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "research_depth",
+        "state",
+        "next_experiment"
+      ],
+      "properties": {
+        "research_depth": {
+          "type": "string",
+          "enum": [
+            "L0",
+            "L1",
+            "L2",
+            "L3",
+            "L4"
+          ]
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "queued",
+            "screening",
+            "active",
+            "paused",
+            "validated",
+            "archived"
+          ]
+        },
+        "next_experiment": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "stop_reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "revisit_triggers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        },
+        "last_updated": {
+          "type": "string",
+          "format": "date"
+        }
+      }
+    },
+    "publication": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "internal_raw",
+        "derived_public_safe",
+        "legal_notes"
+      ],
+      "properties": {
+        "internal_raw": {
+          "type": "boolean"
+        },
+        "derived_public_safe": {
+          "type": "boolean"
+        },
+        "legal_notes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "public_derivative_path": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "created_by": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "created_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "source_bundle": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        },
+        "agent_run_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "notes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  },
+  "$defs": {
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "score01": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "intelligenceBranch": {
+      "type": "string",
+      "enum": [
+        "artificial_life",
+        "generative_morphology",
+        "indirect_control",
+        "autonomy_needs",
+        "persistent_world",
+        "job_scheduler",
+        "social_character_ai",
+        "tactical_combat",
+        "strategic_ai",
+        "player_programmable_ai",
+        "director_pacing",
+        "companion_ai",
+        "adaptive_ai",
+        "generative_world",
+        "crowd_lod",
+        "open_ended_ecology",
+        "stealth_perception",
+        "navigation",
+        "economy_simulation",
+        "narrative_ai",
+        "other"
+      ]
+    },
+    "hypothesisItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "statement",
+        "status",
+        "confidence"
+      ],
+      "properties": {
+        "statement": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "documented",
+            "observed",
+            "inferred",
+            "reconstructed",
+            "validated",
+            "contested",
+            "unknown"
+          ]
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        }
+      }
+    },
+    "compositionEdge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source",
+        "relation",
+        "target",
+        "confidence"
+      ],
+      "properties": {
+        "source": {
+          "type": "string"
+        },
+        "relation": {
+          "type": "string",
+          "enum": [
+            "reads",
+            "writes",
+            "triggers",
+            "interrupts",
+            "blocks",
+            "schedules",
+            "queries",
+            "reserves",
+            "commits",
+            "invalidates",
+            "fallback_to",
+            "shares_state_with",
+            "constrains",
+            "observes",
+            "updates"
+          ]
+        },
+        "target": {
+          "type": "string"
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        }
+      }
+    },
+    "mechanismField": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "description",
+        "confidence"
+      ],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "documented",
+            "observed",
+            "inferred",
+            "reconstructed",
+            "validated",
+            "unknown",
+            "not_applicable"
+          ]
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        }
+      }
+    },
+    "evidenceItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evidence_id",
+        "type",
+        "claim",
+        "source",
+        "confidence"
+      ],
+      "properties": {
+        "evidence_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9._:-]+$"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "OBSERVED",
+            "DOCUMENTED",
+            "SOURCE_PUBLIC",
+            "MOD_API",
+            "DEVELOPER_STATEMENT",
+            "PLAYER_EXPERIMENT",
+            "SAVE_DIFF",
+            "VERSION_DIFF",
+            "BLACK_BOX_TEST",
+            "OPEN_SOURCE_ANALOG",
+            "INFERRED",
+            "RECONSTRUCTED",
+            "VALIDATED_RECONSTRUCTION",
+            "CONTESTED",
+            "UNKNOWN"
+          ]
+        },
+        "claim": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source_date": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "notes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  }
+}

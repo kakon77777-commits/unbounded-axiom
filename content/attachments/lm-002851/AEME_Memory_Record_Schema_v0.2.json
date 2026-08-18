@@ -1,0 +1,340 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ANLA vNext AEME Memory Record",
+  "version": "0.2",
+  "type": "object",
+  "required": [
+    "memory_id",
+    "workspace_id",
+    "memory_type",
+    "epistemic_status",
+    "access_state",
+    "provenance",
+    "policy"
+  ],
+  "properties": {
+    "memory_id": {
+      "type": "string"
+    },
+    "workspace_id": {
+      "type": "string"
+    },
+    "branch_id": {
+      "type": "string"
+    },
+    "raw_content_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "canonical_state_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "memory_type": {
+      "enum": [
+        "IDENTITY",
+        "RELATIONSHIP",
+        "TASK_STATE",
+        "KNOWLEDGE",
+        "EVIDENCE"
+      ]
+    },
+    "epistemic_status": {
+      "enum": [
+        "observed",
+        "quoted",
+        "measured",
+        "imported",
+        "inferred",
+        "summarized",
+        "schema",
+        "reconstructed",
+        "simulated",
+        "externally_refetched",
+        "verified",
+        "disputed",
+        "invalidated"
+      ]
+    },
+    "access_state": {
+      "enum": [
+        "NEW",
+        "ACTIVE",
+        "RETRIEVABLE",
+        "ARCHIVED",
+        "SUPPRESSED",
+        "QUARANTINED",
+        "FORGOTTEN",
+        "ERASED"
+      ]
+    },
+    "gpr": {
+      "type": "object",
+      "properties": {
+        "generation_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "process_pivots": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "result_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "fidelity": {
+      "type": "object",
+      "properties": {
+        "functional": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "causal": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "historical": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "verbatim": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "identity": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "evidentiary": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    },
+    "reconstructability": {
+      "type": "object",
+      "properties": {
+        "internal": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "external": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "procedural": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    },
+    "freshness": {
+      "type": "object",
+      "properties": {
+        "class": {
+          "enum": [
+            "STATIC",
+            "SLOW",
+            "MEDIUM",
+            "FAST",
+            "REALTIME",
+            "HISTORICAL_VERSIONED"
+          ]
+        },
+        "valid_as_of": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "recheck_after": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        }
+      }
+    },
+    "attention": {
+      "type": "object",
+      "properties": {
+        "retrieval_probability": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "interference_cost": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    },
+    "relations": {
+      "type": "object",
+      "properties": {
+        "depends_on": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "supersedes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "contradicts": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "corrects": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "branches_from": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "route": {
+      "type": "object",
+      "properties": {
+        "schema": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "address": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "query_strategy": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "verification_policy": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "freshness_requirement": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "policy": {
+      "type": "object",
+      "required": [
+        "compression_allowed",
+        "archive_allowed",
+        "forget_allowed",
+        "erase_allowed"
+      ],
+      "properties": {
+        "compression_allowed": {
+          "type": "boolean"
+        },
+        "archive_allowed": {
+          "type": "boolean"
+        },
+        "forget_allowed": {
+          "type": "boolean"
+        },
+        "erase_allowed": {
+          "type": "boolean"
+        },
+        "user_locked": {
+          "type": "boolean"
+        },
+        "system_locked": {
+          "type": "boolean"
+        },
+        "verification_required": {
+          "type": "boolean"
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "required": [
+        "source",
+        "hash"
+      ],
+      "properties": {
+        "source": {
+          "type": "string"
+        },
+        "hash": {
+          "type": "string"
+        },
+        "source_timestamp": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "retrieved_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "model_version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "policy_version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  },
+  "additionalProperties": true
+}

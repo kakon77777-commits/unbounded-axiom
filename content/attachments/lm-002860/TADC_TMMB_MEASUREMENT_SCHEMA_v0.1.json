@@ -1,0 +1,102 @@
+{
+  "schema_name": "TADC Minimal Measurement Battery",
+  "version": "0.1",
+  "date": "2026-08-17",
+  "layers": {
+    "events": [
+      "event_id",
+      "timestamp",
+      "actor_type",
+      "session_id",
+      "project_id",
+      "task_id",
+      "subtask_id",
+      "goal_id",
+      "action_type",
+      "parent_event",
+      "previous_human_event",
+      "external_label",
+      "artifact_ref",
+      "outcome",
+      "confidence"
+    ],
+    "relations": [
+      "source_event",
+      "target_event",
+      "semantic",
+      "causal",
+      "analogical",
+      "procedural",
+      "temporal",
+      "goal",
+      "constraint",
+      "confidence",
+      "annotator",
+      "ontology_version"
+    ],
+    "checkpoints": [
+      "checkpoint_id",
+      "branch_id",
+      "timestamp",
+      "goal",
+      "current_state",
+      "dependencies",
+      "open_questions",
+      "next_action",
+      "provenance",
+      "verification_state"
+    ]
+  },
+  "core_variables": {
+    "d_rel": "goal-conditioned relational distance",
+    "L_D": "domain retention",
+    "nu_I": "intra-domain switching rate",
+    "nu_E": "domain-exit switching rate",
+    "G_C": "goal continuity",
+    "K_R": "re-indexing / scale-switch cost",
+    "K_RE": "re-entry cost"
+  },
+  "secondary_variables": {
+    "H_I": "within-domain entropy",
+    "S_C": "structural continuity",
+    "E_C": "exit controllability",
+    "R_C": "re-entry controllability",
+    "Gamma_R": "hybrid reachability gain",
+    "P_R": "reachability precision",
+    "Delta_cross": "external-minus-relational distance gap"
+  },
+  "actor_types": [
+    "human",
+    "system",
+    "artifact"
+  ],
+  "relation_levels": {
+    "0": "none_or_very_weak",
+    "1": "possible_or_partial",
+    "2": "strong_or_explicit"
+  },
+  "operator_level_1": [
+    "move",
+    "structure_change",
+    "scale_change",
+    "unknown"
+  ],
+  "operator_level_2": [
+    "within_domain_traversal",
+    "across_domain_traversal",
+    "expansion",
+    "contraction",
+    "gluing",
+    "detachment",
+    "coarsen",
+    "refine",
+    "unknown"
+  ],
+  "gates": {
+    "relation": "If relational distance is unreliable or gives no held-out increment, stop escalation to dynamic-domain claims.",
+    "domain": "If relational domains do not predict behavior beyond external labels, stop THF/CDCC escalation.",
+    "scale": "If scale manipulation produces no reproducible behavioral/representational effect, treat re-indexing as analyst-only.",
+    "reentry": "If structured state does not reduce re-entry cost, reject RTC without rejecting all TADC.",
+    "topology": "If topology-sensitive measures add no prediction beyond geometry, rename Topological Attention to Dynamic Relational Attention."
+  }
+}
