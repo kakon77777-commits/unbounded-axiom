@@ -34,6 +34,19 @@ def safe_title(title, fallback):
     return t if t else fallback
 
 
+def _strip_frontmatter(lines):
+    """Some source packages carry a long YAML frontmatter block (dozens of
+    lines of internal_artifacts/canonical_keywords/etc.) before the real H1
+    -- a fixed line-count scan window can run out before ever reaching it.
+    Skip a leading '---' ... '---' block entirely so the H1 scan always
+    starts counting from the real body."""
+    if lines and lines[0].strip() == "---":
+        for i in range(1, len(lines)):
+            if lines[i].strip() == "---":
+                return lines[i + 1:]
+    return lines
+
+
 def extract_title(md_path):
     """Some source packages open with a generic "<series> Paper NN"-style H1
     immediately followed by the paper's real descriptive H1 (blank lines
@@ -42,8 +55,9 @@ def extract_title(md_path):
     leading run, since it's consistently the real title; a normal single-H1
     file is unaffected (falls through to the same H1 either way)."""
     text = md_path.read_text(encoding="utf-8", errors="replace")
+    body_lines = _strip_frontmatter(text.splitlines())
     last_leading_h1 = None
-    for line in text.splitlines()[:40]:
+    for line in body_lines[:40]:
         line = line.strip()
         if line.startswith("# "):
             last_leading_h1 = line[2:].strip()
@@ -54,7 +68,7 @@ def extract_title(md_path):
     if last_leading_h1:
         return last_leading_h1
     # Fallback: no leading run (H1 appears deeper in the file) -- first H1 anywhere.
-    for line in text.splitlines()[:40]:
+    for line in body_lines[:40]:
         line = line.strip()
         if line.startswith("# "):
             return line[2:].strip()
@@ -99,6 +113,18 @@ def main(series_names):
                 continue
             dest_name = safe_title(title, md.stem) + ".md"
             dest_path = DEST / dest_name
+            # A same-named file already staged with byte-identical content is
+            # this exact source being re-copied (e.g. the script re-run after
+            # an earlier partial batch) -- overwrite in place rather than
+            # minting a "-1" duplicate. Only genuinely different content
+            # collides and gets a numbered suffix.
+            if dest_path.exists() and dest_path.read_bytes() == md.read_bytes():
+                shutil.copy2(md, dest_path)
+                manifest["staged_papers"].append({
+                    "series": series, "original_filename": md.name,
+                    "staged_as": dest_path.name, "title": title,
+                })
+                continue
             n = 1
             while dest_path.exists():
                 dest_path = DEST / f"{safe_title(title, md.stem)}-{n}.md"
