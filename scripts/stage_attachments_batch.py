@@ -24,11 +24,18 @@ SRC = ROOT / "ingest" / "attachments-pending"
 DEST = ROOT / "ingest" / "01-before"
 SCRATCH_ZIP = ROOT / "ingest" / "_zip-extract-scratch"
 
-ILLEGAL_WIN = re.compile(r'[<>"/\\|?*\x00-\x1f]')
+ILLEGAL_WIN = re.compile(r'[<>"/|?*\x00-\x1f]')
 
 
 def safe_title(title, fallback):
+    """Titles sometimes carry inline LaTeX (e.g. "$O\\sim\\Omega$") -- drop
+    backslashes outright rather than replacing them with the generic
+    illegal-character underscore, or "$O\\sim\\Omega$" becomes the
+    confusing "$O_sim_Omega$" instead of the intended "$OsimΩ$"-ish
+    plain-text rendering. Backslash carries no meaning of its own in a
+    plain filename, unlike the other illegal characters below."""
     t = title.strip()
+    t = t.replace("\\", "")
     t = ILLEGAL_WIN.sub("_", t)
     t = t.rstrip(". ")
     return t if t else fallback

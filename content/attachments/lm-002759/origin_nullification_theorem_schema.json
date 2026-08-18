@@ -1,0 +1,37 @@
+{
+  "schema": "SEHTS-ORIGIN-NULLIFICATION-0.1",
+  "paper_id": "SEHTS-03",
+  "objects": {
+    "information_universe": "I_t",
+    "provenance_graph": "G_t=(V_t,E_t)",
+    "direct_ai_indicator": "A_t(x)",
+    "ancestral_ai_indicator": "A_t*(x)",
+    "epistemic_admissibility": "V_t(x)",
+    "pure_domain": "I_t^pure",
+    "new_information_measure": "nu_t",
+    "ai_ancestry_penetration": "u_t",
+    "pure_information_mass": "m_t^pure"
+  },
+  "axiom": {
+    "name": "Origin-Nullification Axiom",
+    "statement": "A_t*(x)=1 => V_t(x)=0",
+    "status": "assumed_for_conditional_analysis_not_endorsed"
+  },
+  "theorems": [
+    {
+      "name": "Purity-Domain Monotone Contraction",
+      "premise": "A_t*(x) <= A_{t+1}*(x) on existing artifacts",
+      "conclusion": "I_{t+1}^pure ∩ I_t subseteq I_t^pure"
+    },
+    {
+      "name": "Epistemic Self-Nullification",
+      "premise": "u_t -> 1",
+      "conclusion": "m_t^pure=1-u_t -> 0"
+    },
+    {
+      "name": "Verification Escape",
+      "premise": "exists x with A*(x)=1 and verified admissibility V(x)>0",
+      "conclusion": "AI ancestry is not sufficient for epistemic nullification"
+    }
+  ]
+}
