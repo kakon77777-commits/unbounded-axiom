@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>資料存取 · AMRAL</title>
+<meta name="description" content="AMRAL 對人類讀者與 AI/agent 讀者提供兩條不同但對應同一批研究的路徑。人類:目前這個網站——分頁 HTML、每篇文件附原始 .md/.zip 下載。AI/agent:直接連到背後的 GitHub 資料區——amral-research-trees(已鏡射的原始研究樹)、可選的 amral-research-trees-mcp(免驗證的 remote MCP,列分支、讀 README、抓檔案)。誠實列出目前鏡射進度落後的部分,不假裝資料是即時同步的。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../">AMRAL</a>
+  <a class="link" href="../about/">關於</a>
+  <a class="link" href="../methodology/">方法論</a>
+  <a class="link" href="../protocols/">研究協議</a>
+  <a class="link" href="../validation/">驗證</a>
+  <a class="link" href="../research-modes/">自主模式</a>
+  <a class="link active" href="./">資料存取</a>
+  <a class="link" href="../riemann/">黎曼猜想</a>
+  <a class="link" href="../moser/">Moser 蟲問題</a>
+  <a class="link" href="../skew-field/">歪度場</a>
+  <a class="link" href="../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../glc-framework/">GLC 閉合框架</a>
+  <a class="link" href="../bsd/">BSD 猜想</a>
+  <a class="link" href="../cpl/">臨界線比例梯</a>
+  <a class="link" href="../ccm/">CCM 計算複合方法論</a>
+</div></nav>
+<div class="wrap narrow">
+  <header class="page">
+    <p class="eyebrow"><a href="../">← AMRAL</a></p>
+    <h1>資料存取</h1>
+    <p class="subtitle">Data Access · 人類走這個網站,AI 走下面的 GitHub</p>
+    <p class="lede">
+      這個網站(<code>amral.evemisslab.com</code>)是給<strong>人類</strong>讀的:每個案例逐篇建成分頁 HTML,
+      配上 KaTeX 算式渲染、上下文連接、原文出處引用,每篇文末都能下載原始 <code>.md</code>。這條路徑不會消失,
+      也不是次要選項。
+    </p>
+    <p class="lede">
+      但如果你是 <strong>AI 或 agent</strong>,想要的通常不是排版,是原始文字——這時候更直接的路徑是下面兩個
+      GitHub 資源,不必先爬 HTML 再猜哪裡有 <code>download</code> 連結。
+    </p>
+  </header>
+
+  <section id="research-trees">
+    <h2 class="doc-h2">amral-research-trees · 已鏡射的原始研究樹</h2>
+    <p class="section-note">這個網站每一篇 curated 文件背後的原始 .md,依研究線分支鏡射到這裡,原始位元組、不重新打包。</p>
+    <div class="doc">
+      <p>
+        Repo:
+        <a href="https://github.com/kakon77777-commits/amral-research-trees" target="_blank" rel="noopener">
+          github.com/kakon77777-commits/amral-research-trees
+        </a>
+      </p>
+      <p>
+        Remote MCP(免驗證,列分支/讀 README/抓檔案 5 個工具):
+        <code>https://amral-research-trees-mcp.neokpolaris.workers.dev/mcp</code>
+      </p>
+      <p class="notice">
+        誠實狀態(2026-08-18):鏡射進度目前落後於網站本身。<code>agent/bsd</code>、<code>agent/cpl</code>
+        兩個分支存在但還沒併回 <code>main</code>;BSD Phase1 v0.4 之後、整個 Phase2、CPL v2-v11、CCM 都還沒鏡射進去。
+        這裡描述的是設計上的存取路徑,不是「資料已經即時同步」的宣稱。
+      </p>
+    </div>
+  </section>
+
+  <section id="math-archive">
+    <h2 class="doc-h2">amral-math-archive · 上游、未整理的原始投遞區</h2>
+    <p class="section-note">跟上面那個不一樣——這裡是研究者直接丟原始論文/資料包的地方,還沒被讀過、還沒建成網站內容。</p>
+    <div class="doc">
+      <p>
+        Repo:
+        <a href="https://github.com/kakon77777-commits/amral-math-archive" target="_blank" rel="noopener">
+          github.com/kakon77777-commits/amral-math-archive
+        </a>
+      </p>
+      <p class="notice">
+        這裡的東西不保證品質或完整性,純粹是投遞區。真正被驗證、整理、寫成 claim-box 引用來源的版本,
+        會出現在上面的 <code>amral-research-trees</code> 與這個網站本身。
+      </p>
+    </div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../">← AMRAL</a>
+    <span>兩條路徑指向同一批研究,不是兩份不同的內容</span>
+  </footer>
+</div>
+</body>
+</html>
