@@ -44,6 +44,8 @@ ingest/reports/*
 !ingest/reports/.gitkeep
 # processed batches are moved here after publish (local record; canon is content/papers/)
 ingest/_archive/
+# scratch zip-extraction dir used by scripts/stage_attachments_batch.py — wiped/recreated per batch
+ingest/_zip-extract-scratch/
 # held-back papers pending Neo's publish/skip decision
 ingest/_hold/
 # pre-id companion staging — Neo groups code/images by his own naming BEFORE the

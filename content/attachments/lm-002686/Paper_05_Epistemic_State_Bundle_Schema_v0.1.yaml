@@ -1,0 +1,62 @@
+# Epistemic State Bundle Schema v0.1
+epistemic_state_bundle:
+  schema_version: "0.1"
+
+  target:
+    id: ""
+    build: ""
+    source_hashes: []
+
+  canonical_claims:
+    - id: ""
+      statement: ""
+      scope:
+        version: ""
+        build: ""
+        environment: ""
+        protocol: ""
+      status: unknown
+      confidence: null
+      evidence_for: []
+      evidence_against: []
+      historical_priors: []
+      dependencies: []
+      stale_if: []
+
+  excluded_runs:
+    - id: ""
+      reason: ""
+      protocol_hash: ""
+      raw_evidence: []
+
+  frontier:
+    unresolved: []
+    next_experiments: []
+    blocked_by: []
+
+  provenance_index:
+    entities: []
+    activities: []
+    agents: []
+    relations:
+      generated_by: []
+      derived_from: []
+      supports: []
+      contradicts: []
+
+  storage_tiers:
+    hot:
+      canonical_state: ""
+    warm:
+      index: ""
+      dependency_graph: ""
+    cold:
+      raw_evidence_store: ""
+
+  handoff:
+    goal: ""
+    latest_verified: []
+    latest_invalidated: []
+    current_unknowns: []
+    next_best_experiment: ""
+    canonical_state_hash: ""
