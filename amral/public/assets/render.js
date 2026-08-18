@@ -62,3 +62,21 @@ async function amralFetchText(path) {
   if (!r.ok) throw new Error(path + ": HTTP " + r.status);
   return r.text();
 }
+
+// Every page's own inline script only calls amralRenderMath() on the
+// dynamically-fetched #doc content. But page headers (.h1-sub synthesis
+// prose, .claim-box, the .cite blockquote) are static HTML already sitting
+// in the DOM by the time this script runs (it's the last <script> before the
+// page's own inline block, at the bottom of <body>) — nothing was ever
+// rendering math delimiters written into THAT text, so pages using $...$ in
+// their header prose were shipping raw, unrendered LaTeX source to readers.
+// Run once here, synchronously, scoped to .wrap (excludes the sitenav links,
+// harmless no-op on #doc since it's still just the "載入中…" placeholder at
+// this point — the later per-page amralRenderMath(el) call handles #doc for
+// real once its content arrives).
+(function () {
+  const scope = document.querySelector(".wrap");
+  if (scope && typeof renderMathInElement === "function") {
+    amralRenderMath(scope);
+  }
+})();
