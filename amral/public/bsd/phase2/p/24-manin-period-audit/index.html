@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manin / Period Audit · BSD Phase 2 · AMRAL</title>
+<meta name="description" content="Referee D 的實際稽核,解決 23 篇留下的 period issue。引用現代結果:optimal parametrization 的 Manin constant 只可能由 additive reduction primes 支撐。對 E_q,additive primes 恰好是 2 與 twist prime q,而 FW 只用在 good supersingular p,所以 p∉{2,q} 且 p∤c_{E_q}——modular period 與 Néron period 在 p-adic valuation 上相同。附帶處理 optimality:base 696.e1 對所有 ℓ 的 mod-ℓ image 都 maximal,twist 保持 irreducibility,故 E_q 沒有 rational prime-degree isogeny,其 Q-isogeny class 沒有另一條非同構曲線,E_q 本身就是 optimal representative,period argument 不依賴任意挑選 isogenous model。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/24_Manin_Period_Audit.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../about/">關於</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link" href="../../../../protocols/">研究協議</a>
+  <a class="link" href="../../../../validation/">驗證</a>
+  <a class="link" href="../../../../research-modes/">自主模式</a>
+  <a class="link" href="../../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../../../glc-framework/">GLC 閉合框架</a>
+  <a class="link active" href="../../../">BSD 猜想</a>
+  <a class="link" href="../../../../cpl/">臨界線比例梯</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← Phase 2</a>
+    <span>/</span>
+    <span>24 · Manin / Period Audit</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">Phase 2 · 24</span>
+      <span class="tag">v0.4 · 24</span>
+      <span class="tag">2026-08-13</span>
+      <span class="tag">Referee D 稽核結果 · 今日(2026-08-18)第一輪</span>
+    </div>
+    <h1>Manin / Period Audit</h1>
+    <p class="h1-sub">Referee D 的實際稽核結果,正面解決 23 篇結尾留下的 period issue。FW Corollary 1.10 的公式使用 modular-form period,而橢圓曲線的 Néron period 與其相差一個 Manin constant——文件引用現代結果:optimal parametrization 的 Manin constant 只可能由 additive reduction primes 支撐。對 $E_q$ 而言,additive primes 恰好只有兩個:base curve 本身的 $2$,以及 twist prime $q$。而 FW 只被用在 **good supersingular $p$** 這個分支,所以這類 $p$ 自動滿足 $p\notin\{2,q\}$,因此 $p\nmid c_{E_q}$——modular period 與 Néron period 在 $p$-adic valuation 上完全相同,period issue 就此閉合。文件接著處理一個附帶的 optimality 問題:因為 base curve <code>696.e1</code> 對所有 $\ell$ 的 mod-$\ell$ image 都是 maximal,quadratic twisting 保持 residual irreducibility,所以 $E_q$ 沒有 rational prime-degree isogeny——它的 $\mathbb Q$-isogeny class 裡沒有另一條非同構的曲線,$E_q$ 本身就自動是 optimal representative,不需要在多個 isogenous model 之間任意挑選,這個 period argument 因此站得住腳。</p>
+    <div class="claim-box">
+      good supersingular p 自動滿足 p∉{2,q},故 p∤c_{E_q},period issue 閉合;E_q 的 isogeny class 是單元素,本身即 optimal representative
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一篇</span><a href="../23-fw-supersingular-source-audit/">23 · Fouquet–Wan Supersingular Source Audit</a></div>
+      <div class="conn-card"><span class="k">下一篇</span><a href="../25-chebotarev-referee-audit/">25 · Chebotarev Referee Audit</a></div>
+      <div class="conn-card"><span class="k">Phase 2 進度</span>24 / 40</div>
+    </div>
+    <blockquote class="cite">「E_q 本身就是 optimal representative,所以此 period argument 不依賴任意挑選 isogenous model。」— 摘自本文「Optimality」段落結尾。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← Phase 2</a>
+    <a href="../../files/24_Manin_Period_Audit.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/24_Manin_Period_Audit.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Next Compiler Targets · BSD Phase 2 · AMRAL</title>
+<meta name="description" content="Witness-Network v0.2 收尾,直接交棒給下一個套件 FW_H2_Local_Isogeny_Compiler。列出四項優先順序:1. Additive FW-H2 compiler(輸入 p/Kodaira type/potential reduction/local residual representation,輸出 PASS/FAIL/UNKNOWN 三態,資料庫擴張前必須先做到 exact);2. Period compiler(輸出 PERIOD_SAFE/UNKNOWN);3. Ordinary finite exception compiler(對 p|g_mult 逐一嘗試 BCS Corollary 1.3.1、reducible ordinary theorem、直接 Skinner witness);4. 才做資料庫普查,且明確要求 UNKNOWN 那一列必須保持可見,不可吞掉。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/02_Next_Compiler_Targets.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../about/">關於</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link" href="../../../../protocols/">研究協議</a>
+  <a class="link" href="../../../../validation/">驗證</a>
+  <a class="link" href="../../../../research-modes/">自主模式</a>
+  <a class="link" href="../../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../../../glc-framework/">GLC 閉合框架</a>
+  <a class="link active" href="../../../">BSD 猜想</a>
+  <a class="link" href="../../../../cpl/">臨界線比例梯</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← Phase 2</a>
+    <span>/</span>
+    <span>34 · Next Compiler Targets</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">Phase 2 · 34</span>
+      <span class="tag">側線 · Witness-Network · 02</span>
+      <span class="tag">2026-08-13</span>
+      <span class="tag">Witness-Network 完結 · 今日(2026-08-18)第三輪第一篇</span>
+    </div>
+    <h1>Next Compiler Targets</h1>
+    <p class="h1-sub">Witness-Network v0.2 的收尾文件,直接交棒給下一個套件 <code>FW_H2_Local_Isogeny_Compiler</code>,列出四項優先順序,精準對應 31 篇 Section 11 的 F1-F3。第一項 Additive FW-H2 compiler:輸入 $p$、Kodaira type、potential reduction type、local residual representation,輸出 <code>FW_H2_PASS/FAIL/UNKNOWN</code> 三態,並明確要求在這一項做到 exact 之前,不做資料庫規模擴張。第二項 Period compiler:輸入 $p$、Kodaira type、optimality、modular degree/Manin evidence,輸出 <code>PERIOD_SAFE/UNKNOWN</code>。第三項 Ordinary finite exception compiler:對每個整除 $g_{\rm mult}$ 的質數 $p$,依序嘗試 BCS Corollary 1.3.1、reducible ordinary theorem、或另一個 local source 提供的直接 Skinner witness。第四項才是資料庫普查,而且第一個資料庫輸出必須包含五種狀態:<code>GENERIC_PASS</code>、<code>FINITE_EXCEPTION_PASS</code>、<code>ADDITIVE_LOCAL_UNKNOWN</code>、<code>PERIOD_UNKNOWN</code>、<code>TRUE_REJECT</code>——文件明確要求 UNKNOWN 那些列必須保持可見,不可以被吞掉或省略。</p>
+    <div class="claim-box">
+      四項優先順序,對應 31 篇 F1-F3;明確禁止在 Additive FW-H2 compiler 做到 exact 之前擴張資料庫規模;要求輸出五態,UNKNOWN 必須保持可見
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一篇</span><a href="../33-odd-additive-period-barrier/">33 · Odd Additive Period Barrier</a></div>
+      <div class="conn-card"><span class="k">下一篇</span><a href="../35-fw-h2-jordan-holder-lemma/">35 · FW-H2 Jordan–Hölder Lemma</a></div>
+      <div class="conn-card"><span class="k">Phase 2 進度</span>34 / 40(Witness-Network 完結)</div>
+    </div>
+    <blockquote class="cite">「The UNKNOWN rows must remain visible.」— 摘自本文結尾。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← Phase 2</a>
+    <a href="../../files/02_Next_Compiler_Targets.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/02_Next_Compiler_Targets.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

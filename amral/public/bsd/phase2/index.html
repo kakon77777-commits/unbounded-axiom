@@ -29,7 +29,7 @@
   <header class="page">
     <p class="eyebrow"><a href="../">← BSD 猜想</a> · Phase 2</p>
     <h1>Phase 2:非半穩定家族</h1>
-    <p class="subtitle">曲線 696.e1 顯式 Twist 家族 · 建置中 · 24 / 40 篇已上線</p>
+    <p class="subtitle">曲線 696.e1 顯式 Twist 家族 · 建置中 · 38 / 40 篇已上線 · 主線 00-28 完結</p>
     <p class="lede">
       Banwait–Huang 方法本身需要 semistability 這個結構性限制。Phase 2 的目標是為它不覆蓋的非半穩定
       (non-semistable)曲線,用 Fouquet–Wan 的 arbitrary-reduction Iwasawa Main Conjecture 構造顯式的
@@ -167,6 +167,91 @@
         <span class="k">23</span>
         <h3>Fouquet–Wan Supersingular Source Audit</h3>
         <p>對照 FW 論文原文 normalization 重驗 H1/H2/H3,全部 PASS。period issue 留待下一份稽核。</p>
+      </a>
+      <a class="case-card" href="./p/24-manin-period-audit/">
+        <span class="k">24</span>
+        <h3>Manin / Period Audit</h3>
+        <p>good supersingular p 自動 p∤c_{E_q},period issue 閉合。E_q 的 isogeny class 是單元素,自動 optimal。</p>
+      </a>
+      <a class="case-card" href="./p/25-chebotarev-referee-audit/">
+        <span class="k">25</span>
+        <h3>Chebotarev Referee Audit</h3>
+        <p>獨立重算整個 Chebotarev 論證,密度同樣是 1/24,兩次計算互相印證。</p>
+      </a>
+      <a class="case-card" href="./p/26-novelty-search-log/">
+        <span class="k">26</span>
+        <h3>Novelty Search Log</h3>
+        <p>arXiv 搜尋未找到直接對應結果,但明確聲明 NO HIT ≠ NOVELTY PROOF。</p>
+      </a>
+      <a class="case-card" href="./p/27-revised-derived-theorem-candidate/">
+        <span class="k">27</span>
+        <h3>Revised Derived Theorem Candidate</h3>
+        <p>最終 proof router:六類質數各對應具名定理,窮盡覆蓋。Claim label = DERIVED THEOREM CANDIDATE。</p>
+      </a>
+      <a class="case-card" href="./p/28-submission-gate/">
+        <span class="k">28</span>
+        <h3>Submission / Publication Gate</h3>
+        <p>發表前五項功課;建議措辭明確迴避「全新定理」宣稱。<strong>主線 00-28 完結,29/29。</strong></p>
+      </a>
+    </nav>
+  </section>
+
+  <section id="witness-network">
+    <h2 class="doc-h2">已上線文件 · Witness-Network / FW_H2 側線</h2>
+    <p class="section-note">
+      跟主線平行的另一條線,同一個 696.e1 結果,但寫成 Neo.K 具名、帶編號 Lemma/Proposition 與真實文獻引用的正式論文,
+      逐版把單一曲線的證明抽象成可重用的一般判準。11 篇,連續編號。
+    </p>
+    <nav class="case-grid" aria-label="Phase 2 Witness-Network 側線文件">
+      <a class="case-card" href="./p/29-theorem-note-696e1/">
+        <span class="k">29</span>
+        <h3>696.e1 Theorem Note v1.0</h3>
+        <p>Neo.K 具名完整論文。Theorem 1.1 + 六條引理 + 真實數值 sanity check(27667/664579 vs 1/24)。</p>
+      </a>
+      <a class="case-card" href="./p/30-two-witness-criterion/">
+        <span class="k">30</span>
+        <h3>A Two-Witness Criterion</h3>
+        <p>把單一曲線證明抽象成 T1-T7 七條件的可重用判準。696.e1 降格為具體 Corollary。</p>
+      </a>
+      <a class="case-card" href="./p/31-witness-network-criterion/">
+        <span class="k">31</span>
+        <h3>A Finite-Exception Witness-Network Criterion</h3>
+        <p>側線最重要一篇:gcd 取代 valuation-1、首次允許固定奇 additive 質數。「瓶頸從無窮量詞變成有限 compiler」。</p>
+      </a>
+      <a class="case-card" href="./p/32-gcd-witness-lemmas/">
+        <span class="k">00</span>
+        <h3>GCD Witness Lemmas</h3>
+        <p>31 篇 Section 2 的精簡速查版:三條引理都歸結到同一個 gcd 引理。</p>
+      </a>
+      <a class="case-card" href="./p/33-odd-additive-period-barrier/">
+        <span class="k">01</span>
+        <h3>Odd Additive Period Barrier</h3>
+        <p>為什麼固定 additive 質數比 good supersingular 難:period normalization,不是 Iwasawa 定理本身。</p>
+      </a>
+      <a class="case-card" href="./p/34-next-compiler-targets/">
+        <span class="k">02</span>
+        <h3>Next Compiler Targets</h3>
+        <p>四項優先順序交棒下一套件。要求輸出五態,UNKNOWN 必須可見。<strong>Witness-Network 完結。</strong></p>
+      </a>
+      <a class="case-card" href="./p/35-fw-h2-jordan-holder-lemma/">
+        <span class="k">03</span>
+        <h3>FW-H2 Jordan–Hölder Lemma</h3>
+        <p>精確引理:FW17-H2 FAIL ⟺ 某 Jordan-Hölder character 是 quadratic 或 trivial。首個正式證明。</p>
+      </a>
+      <a class="case-card" href="./p/36-local-p-isogeny-kernel-criterion/">
+        <span class="k">04</span>
+        <h3>Local p-Isogeny Kernel Criterion</h3>
+        <p>抽象判準翻譯成可計算的 isogeny kernel 條件。只需一條 isogeny + dual,不必列舉全部。</p>
+      </a>
+      <a class="case-card" href="./p/37-kodaira-prefilters-and-nogo/">
+        <span class="k">05</span>
+        <h3>Kodaira Prefilters and No-Go Results</h3>
+        <p>三個免算捷徑 + 正式禁止未經證明的 Kodaira-only 推論表。</p>
+      </a>
+      <a class="case-card" href="./p/38-witness-network-v03-integration/">
+        <span class="k">06</span>
+        <h3>Witness-Network v0.3 Integration</h3>
+        <p>組裝成完整 FW_PROFILE 偽代碼。A2 H2 UNKNOWN → exact finite local isogeny test。<strong>38/40。</strong></p>
       </a>
     </nav>
   </section>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GCD Witness Lemmas · BSD Phase 2 · AMRAL</title>
+<meta name="description" content="31 篇 Section 2 的精簡工作稿版本,把 gcd witness 的代數核心壓縮成三條速查引理:generic witness(奇質數 p 若不整除 multiplicative witness 集合的 gcd,則存在有效 witness)、fixed multiplicative prime(p 本身是 multiplicative 時,witness 必須是相異質數,屬於有限的 leave-one-out 檢查)、nonsplit FW witness(同一個 gcd 引理限制在 nonsplit multiplicative primes 上同樣成立)。結尾一句話點出整個機制的代數本質:這正是全質數 witness 問題有限化的確切代數原因。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/00_GCD_Witness_Lemmas.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../about/">關於</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link" href="../../../../protocols/">研究協議</a>
+  <a class="link" href="../../../../validation/">驗證</a>
+  <a class="link" href="../../../../research-modes/">自主模式</a>
+  <a class="link" href="../../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../../../glc-framework/">GLC 閉合框架</a>
+  <a class="link active" href="../../../">BSD 猜想</a>
+  <a class="link" href="../../../../cpl/">臨界線比例梯</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← Phase 2</a>
+    <span>/</span>
+    <span>32 · GCD Witness Lemmas</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">Phase 2 · 32</span>
+      <span class="tag">側線 · Witness-Network · 00</span>
+      <span class="tag">2026-08-13</span>
+      <span class="tag">31 篇 Section 2 的精簡速查版</span>
+    </div>
+    <h1>GCD Witness Lemmas</h1>
+    <p class="h1-sub">31 篇 Section 2 完整證明的精簡工作稿版本,把 gcd witness 的代數核心壓縮成三條速查引理。Generic witness:對一個不在 multiplicative witness 集合裡的奇質數 $p$,存在有效 witness $\ell$ 使 $p\nmid n_\ell$,若且唯若 $p$ 不整除整個集合的 $\gcd_\ell n_\ell$——因此唯一可能失敗的,只有這個 gcd 的有限奇質因子。Fixed multiplicative prime:若 $p$ 本身就是 multiplicative 質數,witness 必須取一個相異的 $\ell\ne p$,這是一個有限的 leave-one-out 檢查。Nonsplit FW witness:同一條 gcd 引理,限制在 nonsplit multiplicative primes 這個子集合上同樣成立,其奇 gcd 因子正是唯一可能讓標準 FW-H3 witness 失敗的質數。文件用一句話收尾整個機制的代數本質:這正是全質數 witness 問題能夠有限化的確切代數原因。</p>
+    <div class="claim-box">
+      三條速查引理:generic witness、fixed multiplicative leave-one-out、nonsplit FW witness,都歸結到同一個 gcd 引理——這是全質數 witness 問題有限化的確切代數原因
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一篇</span><a href="../31-witness-network-criterion/">31 · A Finite-Exception Witness-Network Criterion</a></div>
+      <div class="conn-card"><span class="k">下一篇</span><a href="../33-odd-additive-period-barrier/">33 · Odd Additive Period Barrier</a></div>
+      <div class="conn-card"><span class="k">Phase 2 進度</span>32 / 40</div>
+    </div>
+    <blockquote class="cite">「This is the exact algebraic reason the all-prime witness problem is finite.」— 摘自本文結尾。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← Phase 2</a>
+    <a href="../../files/00_GCD_Witness_Lemmas.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/00_GCD_Witness_Lemmas.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

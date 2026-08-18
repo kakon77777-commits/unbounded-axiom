@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>696.e1 Theorem Note v1.0 · BSD Phase 2 · AMRAL</title>
+<meta name="description" content="Neo.K 具名的完整正式論文草稿,把 00-28 篇累積的整個論證寫成一份帶編號 Lemma/Proposition/完整證明、真實引用文獻的定理筆記。Theorem 1.1:對密度 1/24 的質數族 P,∀q∈P,BSD(E^(q)) 成立。六條引理逐一處理支持質數性質、密度、2-part、加法扭轉質數、good ordinary、fixed multiplicative、good supersingular。附錄給出可獨立在 SageMath/Magma 重現的精確有限證書。第 8 節報告真實數值檢查:q<10^7 內找到 27,667 個支持質數,對照 π(10^7)=664,579,實測比例 0.041631 對照理論密度 1/24≈0.041667——明確聲明只是 sanity check,不是證明的一部分。結尾提出一個明確未處理的演算法延伸問題。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/29_Theorem_Note_v1.0.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../about/">關於</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link" href="../../../../protocols/">研究協議</a>
+  <a class="link" href="../../../../validation/">驗證</a>
+  <a class="link" href="../../../../research-modes/">自主模式</a>
+  <a class="link" href="../../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../../../glc-framework/">GLC 閉合框架</a>
+  <a class="link active" href="../../../">BSD 猜想</a>
+  <a class="link" href="../../../../cpl/">臨界線比例梯</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← Phase 2</a>
+    <span>/</span>
+    <span>29 · 696.e1 Theorem Note v1.0</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">Phase 2 · 29</span>
+      <span class="tag">側線 · Theorem Note v1.0</span>
+      <span class="tag">2026-08-13</span>
+      <span class="tag">Neo.K 具名 · 今日(2026-08-18)第二輪第一篇</span>
+    </div>
+    <h1>An Explicit Non-Semistable Quadratic-Twist Family Satisfying the Strong BSD Conjecture</h1>
+    <p class="h1-sub">主線 00-28 篇一路建立的整個論證,在這裡被寫成一份完整、帶編號 Lemma/Proposition 與真實文獻引用的正式定理筆記,作者具名 Neo.K,狀態欄自陳「記錄一個引用定理的顯式衍生結論,不宣稱優先權,提交前應獨立覆核」。Theorem 1.1 陳述:對質數族 $\mathcal P=\{q: q\equiv1\pmod{24},\ (\frac q{29})=1,\ f_2\bmod q\text{ irreducible}\}$,密度 $\delta(\mathcal P)=\frac1{24}$,且 $\forall q\in\mathcal P$,$\operatorname{BSD}(E^{(q)})$ 成立。第 3-6 節用六條編號引理逐一封閉每個環節:Lemma 3.1/3.2(支持質數的分裂與 good ordinary 性質)、Proposition 4.1(Chebotarev 密度,附 Remark 4.2 列出前十個具體質數 241, 313, 457, 673, 937, 1009, 1153, 1753, 2017, 2089)、Proposition 5.1(2-part)、Lemma 6.1-6.5(irreducibility、加法扭轉質數 witness $\ell=29$、good ordinary、fixed multiplicative $3/29$ 互為 witness、good supersingular 用 FW Theorem 1.7+Corollary 1.10 並由 Česnavičius–Neururer–Saha 的 Manin constant 結果閉合 period 問題)、Proposition 6.6(四類窮盡)。第 8 節報告了全系列少見的真實數值檢查結果:掃描 $q&lt;10^7$ 找到 $27{,}667$ 個支持質數,對照 $\pi(10^7)=664{,}579$,實測比例 $\approx0.041630867$,對照理論密度 $\frac1{24}\approx0.041666667$,兩者高度吻合——文件明確聲明這只是 sanity check,不是證明的一部分。結尾的 Concluding remarks 把整個結果的結構講成一句話:$2$-part + additive twist prime + ordinary/multiplicative parts + supersingular part,並提出一個明確未處理的延伸問題:尋找擁有兩個奇 multiplicative ramification reservoir(至少一個 nonsplit)且有相容 2-primary twist family 的其他非半穩定 rank-zero 曲線。附錄 A 給出完整的有限資料清單,供 SageMath/Magma 獨立重現,並特別設計成任何一項輸入若有誤,錯誤會被定位到單一引理,而不是隱藏在整體論證裡。</p>
+    <div class="claim-box">
+      Theorem 1.1:∀q∈P(密度1/24), BSD(E^(q))。六條引理窮盡四類奇質數 + 2-part;數值 sanity check(27667/664579≈0.04163 vs 1/24≈0.04167)吻合;附錄給出可獨立重現的精確有限證書
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">主線對照</span><a href="../27-revised-derived-theorem-candidate/">27 · Revised Derived Theorem Candidate</a>(同一結果的內部工作稿版本)</div>
+      <div class="conn-card"><span class="k">下一篇</span><a href="../30-two-witness-criterion/">30 · A Two-Witness Criterion</a></div>
+      <div class="conn-card"><span class="k">Phase 2 進度</span>29 / 40(側線首篇)</div>
+    </div>
+    <blockquote class="cite">「The novelty question is logically separate from the validity of the derivation.」— 摘自本文 Remark 1.2。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← Phase 2</a>
+    <a href="../../files/29_Theorem_Note_v1.0.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/29_Theorem_Note_v1.0.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

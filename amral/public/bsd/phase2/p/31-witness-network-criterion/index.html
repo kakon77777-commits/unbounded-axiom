@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Finite-Exception Witness-Network Criterion · BSD Phase 2 · AMRAL</title>
+<meta name="description" content="把 30 篇結尾指出的兩個推廣方向一次做完。用 gcd(g_mult、g_-)取代 valuation-one witness,證明奇質因子不會拒絕整條曲線,只會產生一個有限例外質數表 R_mult∪R_-。明確聲明這嚴格強於「兩個 gcd 都是 2 的冪」的舊條件。從單一質數 twist 推廣到任意 squarefree 乘積 d。第7-8節是最大突破:允許固定的奇 additive 質數,引用 Edixhoven/Česnavičius-Neururer-Saha 的已發表結果給出 period-safe 子類(p≥11 且非特定 Kodaira type)。Theorem Schema 9.1 是完整六條件的一般定理。結尾把整條研究線的處境濃縮成一句話:數學瓶頸不再是無窮質數量詞,而是一個有限的 local-certificate compiler。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/31_Witness_Network_Criterion_v0.2.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../about/">關於</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link" href="../../../../protocols/">研究協議</a>
+  <a class="link" href="../../../../validation/">驗證</a>
+  <a class="link" href="../../../../research-modes/">自主模式</a>
+  <a class="link" href="../../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../../../glc-framework/">GLC 閉合框架</a>
+  <a class="link active" href="../../../">BSD 猜想</a>
+  <a class="link" href="../../../../cpl/">臨界線比例梯</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← Phase 2</a>
+    <span>/</span>
+    <span>31 · A Finite-Exception Witness-Network Criterion</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">Phase 2 · 31</span>
+      <span class="tag">側線 · Witness-Network v0.2</span>
+      <span class="tag">2026-08-13</span>
+      <span class="tag">Neo.K 具名 · 側線最重要的一篇</span>
+    </div>
+    <h1>A Finite-Exception Witness-Network Criterion for Strong BSD in Non-Semistable Quadratic-Twist Families</h1>
+    <p class="h1-sub">把 30 篇結尾點名的兩個推廣方向一次做完,是整條側線數學密度最高的一篇。第一個推廣:用 $g_{\mathrm{mult}}=\gcd_{\ell\in\mathcal M}n_\ell$ 與 $g_-=\gcd_{\ell\in\mathcal M^-}n_\ell$ 取代舊版的 valuation-one witness,Lemma 2.1、2.2 證明奇質因子不會拒絕整條曲線,只會產生一個有限例外質數集合 $R_{\mathrm{mult}}\cup R_-$——文件明確聲明這嚴格強於舊條件「兩個 gcd 都是 2 的冪」。第二個推廣:從單一質數 twist 擴大到支持在精煉後質數集 $\mathcal P_E^\circ$ 上的任意 squarefree 乘積 $d$,且有限刪除不改變 Chebotarev 密度。第 6 節给出完整的 Route Q/O/M/S 質數路由,Route O 特別引入 Burungale–Castella–Skinner 的 good-ordinary 定理處理例外質數,用其 <code>(im)</code> residual-image 條件取代舊的 multiplicative-ramification 假設。第 7-8 節是全文最大突破,也是整個側線第一次真正超越「唯一 additive 質數是 2」的限制:允許固定的奇 additive 質數,給出 (A1)-(A4) 四條局部證書,並引用 Edixhoven 定理(經 Česnavičius–Neururer–Saha 整理)的已發表結果——$p\ge11$ 且局部化簡不是 potentially ordinary Kodaira type II/III/IV 時,$p$ 自動不整除 Manin constant——同時誠實提醒:additive 質數 $3,5,7$ 或被排除的 Kodaira type,period compatibility 仍需要明確的有限證書,「不可默默假設成立」。Theorem Schema 9.1 是全篇的最終一般定理,六條件涵蓋所有前述機制。第 10 節用一張三階遞進圖收束整個進展:valuation-one witnesses ⇓ power-of-two gcd witnesses ⇓ arbitrary witness gcds + finite exceptional-prime routing——並明確標註最後一步是最強的一步:一個奇質因子不再意味著「拒絕這條曲線」,只意味著「把這個質數放進有限例外表」。結尾第 11 節把整條研究線的處境濃縮成一句話:數學瓶頸不再是一個無窮質數量詞,而是一個有限的 local-certificate compiler。</p>
+    <div class="claim-box">
+      gcd 取代 valuation-1(嚴格更強);squarefree 乘積取代單一質數;首次允許固定奇 additive 質數(引用 Edixhoven 已發表結果);Theorem Schema 9.1 一般定理;結語:瓶頸從無窮量詞變成有限 compiler
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一篇</span><a href="../30-two-witness-criterion/">30 · A Two-Witness Criterion</a></div>
+      <div class="conn-card"><span class="k">下一篇</span><a href="../32-gcd-witness-lemmas/">32 · GCD Witness Lemmas</a></div>
+      <div class="conn-card"><span class="k">Phase 2 進度</span>31 / 40</div>
+    </div>
+    <blockquote class="cite">「The mathematical bottleneck is no longer an infinite prime quantifier. It is a finite local-certificate compiler.」— 摘自本文第 11 節結尾。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← Phase 2</a>
+    <a href="../../files/31_Witness_Network_Criterion_v0.2.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/31_Witness_Network_Criterion_v0.2.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

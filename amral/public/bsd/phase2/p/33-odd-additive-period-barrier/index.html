@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Odd Additive Period Barrier · BSD Phase 2 · AMRAL</title>
+<meta name="description" content="精簡解釋為什麼「固定奇 additive 質數」比 good supersingular 分支更難閉合。Fouquet-Wan 本身允許任意 reduction type,真正的額外障礙是 period normalization:FW Corollary 1.10 用 modular-form period,橢圓曲線的 Néron period 相差一個 Manin constant。在 good supersingular 質數,這無傷大雅,因為 Manin constant 質因子只出現在 additive reduction primes——但固定 additive 質數 p 本身就是 additive 質數,這個論證用不上。給出已發表的充分條件(p≥11、非特定 Kodaira type、twist optimal)使 p∤c。結論:odd-additive extension 部分仍是開放的,但障礙精確被定位、且是有限的。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/01_Odd_Additive_Period_Barrier.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../about/">關於</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link" href="../../../../protocols/">研究協議</a>
+  <a class="link" href="../../../../validation/">驗證</a>
+  <a class="link" href="../../../../research-modes/">自主模式</a>
+  <a class="link" href="../../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../../../glc-framework/">GLC 閉合框架</a>
+  <a class="link active" href="../../../">BSD 猜想</a>
+  <a class="link" href="../../../../cpl/">臨界線比例梯</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← Phase 2</a>
+    <span>/</span>
+    <span>33 · Odd Additive Period Barrier</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">Phase 2 · 33</span>
+      <span class="tag">側線 · Witness-Network · 01</span>
+      <span class="tag">2026-08-13</span>
+      <span class="tag">今日(2026-08-18)第二輪最後一篇</span>
+    </div>
+    <h1>Odd Additive Period Barrier</h1>
+    <p class="h1-sub">精簡解釋為什麼「固定奇 additive 質數」比 good supersingular 分支難閉合,是 31 篇 Section 7-8 的核心洞見濃縮版。Fouquet–Wan 本身允許 $p$ 處任意 reduction type,所以固定的奇 additive 壞質數在 Iwasawa 定理層級並不被排除。真正的額外障礙是 period normalization:FW Corollary 1.10 用的是 modular-form period,橢圓曲線的 Néron period 與其相差一個 Manin constant。在 good supersingular 質數,這個問題無傷大雅,因為 Manin constant 的質因子只支撐在 additive reduction primes——但在固定的 additive 質數 $p$ 處,這個論證完全用不上,因為 $p$ 本身正好就是一個 additive 質數。因此每一個 odd-additive extension 都需要一份明確的 period 證書。文件給出一個已發表的充分條件:$p\ge11$;局部化簡不是 additive potentially ordinary 的 Kodaira type II、III 或 IV;twist 是 optimal——滿足這三條,已知的 Manin-constant 結果就給出 $p\nmid c$。文件用一句精確的話收尾:odd-additive extension 部分仍是開放的,但它的障礙是有限的,而且被精確定位出來了。</p>
+    <div class="claim-box">
+      固定 additive 質數的真正障礙是 period normalization,不是 Iwasawa 定理本身;good supersingular 可以「白得」period 安全性,固定 additive 質數不行;odd-additive extension 部分開放,但障礙有限且精確定位
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一篇</span><a href="../32-gcd-witness-lemmas/">32 · GCD Witness Lemmas</a></div>
+      <div class="conn-card"><span class="k">下一篇</span><a href="../34-next-compiler-targets/">34 · Next Compiler Targets</a></div>
+      <div class="conn-card"><span class="k">Phase 2 進度</span>33 / 40(今日第二輪最後一篇)</div>
+    </div>
+    <blockquote class="cite">「the odd-additive extension is partially open, but its obstruction is finite and precisely identified。」— 摘自本文結尾。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← Phase 2</a>
+    <a href="../../files/01_Odd_Additive_Period_Barrier.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/01_Odd_Additive_Period_Barrier.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

@@ -39,7 +39,7 @@
       <span class="tag">Phase 2 · 23</span>
       <span class="tag">v0.4 · 23</span>
       <span class="tag">2026-08-13</span>
-      <span class="tag">今日(2026-08-17)最後一篇 · Referee C 稽核結果</span>
+      <span class="tag">Referee C 稽核結果</span>
     </div>
     <h1>Fouquet–Wan Supersingular Source Audit</h1>
     <p class="h1-sub">Referee C 的實際稽核結果,對 $E_q$ 任意 odd good supersingular 質數 $p$ 重驗 FW-H1、FW-H2、FW-H3,這次的做法是直接對照 Fouquet–Wan 論文原文的 normalization,而不是信任先前自行推導的版本。H1:FW 要求 global residual representation absolutely irreducible,base <code>696.e1</code> 的 mod-$p$ image maximal,quadratic twist 保持 absolute irreducibility,PASS。H2:FW Theorem 1.7 排除 $\bar\rho|_{G_{\mathbf Q_p}}^{ss}=\chi\oplus\chi_{\rm cyc}\chi$ 這個型態,good supersingular local residual representation 是不可約的 niveau-2 type,不可能是 character direct sum,PASS。H3 的稽核最細緻,也是全篇的重點:不自行猜 representation normalization,而是直接找到 FW Theorem 1.1 附近原文對 Assumption 3 的明確定義——local automorphic representation 為 special Steinberg,twist by unramified character 把 $\ell$ 送到 $(-1)\ell^{k/2-1}$,residual representation ramified。代入 weight $k=2$:$(-1)\ell^0=-1$,對橢圓曲線 newform 而言就是 $a_\ell=-1$,也就是 nonsplit multiplicative——取 $\ell=29$,<code>696.e1</code> 在 $29$ 恰好是 nonsplit multiplicative,且 admissible $q$ 使 $29$ 在 $\mathbf Q(\sqrt q)$ split,local quadratic twist trivial;又 $v_{29}(\Delta)=1$,任意奇質數 $p\ne29$ residual 仍 ramified,PASS。文件最後把 BSD conclusion 串起來:Theorem 2.14 先給 $L(E_q,1)\ne0$,Fouquet–Wan Corollary 1.10 因此給出對應的 $p$-part BSD,period issue 明確留給下一份稽核處理。</p>
@@ -54,7 +54,8 @@
     <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
     <div class="connections">
       <div class="conn-card"><span class="k">上一篇</span><a href="../22-odd-prime-source-audit/">22 · Odd Prime Source Audit</a></div>
-      <div class="conn-card"><span class="k">Phase 2 進度</span>23 / 40(今日(2026-08-17)最後一篇)</div>
+      <div class="conn-card"><span class="k">下一篇</span><a href="../24-manin-period-audit/">24 · Manin / Period Audit</a></div>
+      <div class="conn-card"><span class="k">Phase 2 進度</span>23 / 40</div>
     </div>
     <blockquote class="cite">「不用自行猜 representation normalization。FW Theorem 1.1 附近原文明確說 Assumption 3 等價於……」— 摘自本文 H3 段落開頭。</blockquote>
   </section>

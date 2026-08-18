@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Local p-Isogeny Kernel Criterion · BSD Phase 2 · AMRAL</title>
+<meta name="description" content="把 35 篇抽象的 Jordan-Hölder 判準,翻譯成具體可算的 isogeny kernel 條件。若 E[p]|_{G_Qp} reducible,選一條 stable cyclic subgroup 得局部 isogeny φ:E→E'。證明 λ²=1 若且唯若 φ 的 kernel polynomial 在 Q_p 有 linear factor。另一個 Jordan-Hölder character 對應 dual isogeny 的 kernel。因此 FW17-H2 FAIL 若且唯若 φ 或其 dual 的 kernel polynomial 在 Q_p 有 linear factor——只需檢查一條 isogeny 加其 dual,不必列舉所有 local p-isogenies。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/04_Local_p_Isogeny_Kernel_Criterion.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../about/">關於</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link" href="../../../../protocols/">研究協議</a>
+  <a class="link" href="../../../../validation/">驗證</a>
+  <a class="link" href="../../../../research-modes/">自主模式</a>
+  <a class="link" href="../../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../../../glc-framework/">GLC 閉合框架</a>
+  <a class="link active" href="../../../">BSD 猜想</a>
+  <a class="link" href="../../../../cpl/">臨界線比例梯</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← Phase 2</a>
+    <span>/</span>
+    <span>36 · Local p-Isogeny Kernel Criterion</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">Phase 2 · 36</span>
+      <span class="tag">側線 · FW_H2 · 04</span>
+      <span class="tag">2026-08-13</span>
+    </div>
+    <h1>Local p-Isogeny Kernel Criterion</h1>
+    <p class="h1-sub">把 35 篇抽象的 Jordan–Hölder 判準,翻譯成一個具體、可直接計算的 isogeny kernel 條件。假設 $E[p]|_{G_{\mathbf Q_p}}$ reducible,選一條 stable cyclic subgroup $C\simeq\mathbf Z/p$,得到局部 isogeny $\phi:E\to E'$,令 $\sigma(P)=\lambda(\sigma)P$。文件證明一條精確等價鏈:因 $x(P)=x(-P)$ 且 $p$ 為奇數,$x(P)\in\mathbf Q_p$ 若且唯若 $\sigma(P)=\pm P$ 對所有 $\sigma$ 成立,若且唯若 $\lambda(G_{\mathbf Q_p})\subset\{\pm1\}$,若且唯若 $\lambda^2=1$——因此 $\lambda^2=1$ 若且唯若 $\ker\phi$ 的 kernel polynomial 在 $\mathbf Q_p$ 有 linear factor,這是一個可以直接用 Tate 演算法或局部體計算檢驗的具體條件。另一個 Jordan–Hölder character $\mu=\omega\lambda^{-1}$ 對應 dual isogeny $\widehat\phi:E'\to E$ 的 kernel character。因此 $\mathrm{FW17\text{-}H2\ FAIL}$ 若且唯若 $\phi$ 或其 dual 的 kernel polynomial 在 $\mathbf Q_p$ 有 linear factor。文件最後解釋為什麼只需檢查一條 isogeny 加其 dual 就足夠,不必列舉所有 local $p$-isogenies:nonsplit reducible extension 時,原本的 $E[p]$ 只有一條 stable line,quotient constituent 會出現在 dual kernel 裡;split representation 時,兩個 constituent 直接由 $\phi,\widehat\phi$ 各自捕捉。</p>
+    <div class="claim-box">
+      λ²=1 ⟺ φ 的 kernel polynomial 在 Q_p 有 linear factor(可直接計算);FW17-H2 FAIL ⟺ φ 或其 dual 滿足此條件;只需一條 isogeny + dual,不必列舉全部
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一篇</span><a href="../35-fw-h2-jordan-holder-lemma/">35 · FW-H2 Jordan–Hölder Lemma</a></div>
+      <div class="conn-card"><span class="k">下一篇</span><a href="../37-kodaira-prefilters-and-nogo/">37 · Kodaira Prefilters and No-Go Results</a></div>
+      <div class="conn-card"><span class="k">Phase 2 進度</span>36 / 40</div>
+    </div>
+    <blockquote class="cite">「不必 enumerate 所有 local p-isogenies。」— 摘自本文結尾。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← Phase 2</a>
+    <a href="../../files/04_Local_p_Isogeny_Kernel_Criterion.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/04_Local_p_Isogeny_Kernel_Criterion.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

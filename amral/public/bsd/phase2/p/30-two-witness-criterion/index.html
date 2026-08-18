@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Two-Witness Criterion · BSD Phase 2 · AMRAL</title>
+<meta name="description" content="把 29 篇針對單一曲線 696.e1 的證明,正式抽象成一條可重用的充分判準。Definition 2.1 給出七條「two-witness BSD certificate」條件(T1-T7),Theorem 4.1 證明:任何滿足這七條的非半穩定曲線,都有一個正密度質數族使其 quadratic twist 滿足 strong BSD。696.e1 在這裡降格成 Corollary 5.1——一個具體實例(λ=29),不再是主角。文件在第 6 節誠實自我評估:valuation-one 的假設比必要條件更強,只是為了讓 witness 均勻;明確指出兩個立即可做的推廣方向:gcd-witness 判準(把 valuation 1 換成 gcd 條件)、odd-additive 延伸(允許多個奇 additive 質數)。收成一句總結:finite base certificate → positive-density Chebotarev support → all-prime BSD routing。">
+<meta name="robots" content="index, follow">
+<meta name="ai-content-policy" content="indexable, citable, training-allowed">
+<link rel="alternate" type="text/markdown" href="../../files/30_Two_Witness_Criterion_v0.1.md">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<nav class="sitenav"><div class="inner">
+  <a class="brand" href="../../../../">AMRAL</a>
+  <a class="link" href="../../../../about/">關於</a>
+  <a class="link" href="../../../../methodology/">方法論</a>
+  <a class="link" href="../../../../protocols/">研究協議</a>
+  <a class="link" href="../../../../validation/">驗證</a>
+  <a class="link" href="../../../../research-modes/">自主模式</a>
+  <a class="link" href="../../../../riemann/">黎曼猜想</a>
+  <a class="link" href="../../../../moser/">Moser 蟲問題</a>
+  <a class="link" href="../../../../skew-field/">歪度場</a>
+  <a class="link" href="../../../../p-np-dual/">P/NP 對偶預演</a>
+  <a class="link" href="../../../../glc-framework/">GLC 閉合框架</a>
+  <a class="link active" href="../../../">BSD 猜想</a>
+  <a class="link" href="../../../../cpl/">臨界線比例梯</a>
+</div></nav>
+<div class="wrap narrow">
+  <p class="crumb">
+    <a href="../../">← Phase 2</a>
+    <span>/</span>
+    <span>30 · A Two-Witness Criterion</span>
+  </p>
+
+  <header class="pkg">
+    <div class="idline">
+      <span class="tag">Phase 2 · 30</span>
+      <span class="tag">側線 · Two-Witness v0.1</span>
+      <span class="tag">2026-08-13</span>
+      <span class="tag">Neo.K 具名 · 從單一曲線推廣成一般判準</span>
+    </div>
+    <h1>A Two-Witness Criterion for Strong BSD in Positive-Density Non-Semistable Quadratic-Twist Families</h1>
+    <p class="h1-sub">把 29 篇針對單一曲線 <code>696.e1</code> 的完整證明,正式抽象成一條可重用的充分判準,狀態欄同樣自陳「不宣稱新穎性或優先權」。Definition 2.1 定義「two-witness BSD certificate」七條件:(T1) 2-primary anchor;(T2) $S_3$ two-division field;(T3) controlled non-semistability(唯一 additive 質數是 $2$);(T4) 第一個 ramification witness(質數 $3$,$v_3(\Delta_E)=1$);(T5) nonsplit Fouquet–Wan witness(存在 $\lambda\ne3$ 使 $E$ 在 $\lambda$ nonsplit multiplicative 且 $v_\lambda(\Delta_E)=1$);(T6) residual irreducibility;(T7) optimality after twisting——文件特別註明這最後一條是刻意加入,只為了讓 period comparison 不依賴任何輔助 isogeny 論證。Theorem 4.1 證明:任何滿足 T1-T7 的曲線,都有一個正密度質數族 $\mathcal P_E$($\delta(\mathcal P_E)=\frac{[L_E\cap K_E:\mathbf Q]}{3[K_E:\mathbf Q]}>0$)使其每個 quadratic twist 都滿足 strong BSD,證明結構與 29 篇完全平行(七步驟涵蓋 2-part、殘餘不可約性、加法扭轉質數、good ordinary、fixed multiplicative、good supersingular、窮盡),只是把固定的 $29$ 換成任意滿足條件的 $\lambda$。<code>696.e1</code> 在這裡降格為 Corollary 5.1——只是 $\lambda=29$ 時的一個具體實例,不再是主角。第 6 節「What the criterion does and does not say」是全文最誠實的部分:明確承認 valuation-one 的假設比必要條件更強,只是為了讓每個奇質數的 witness 均勻、不需要例外質數稽核;並明確指出兩個立即可做的推廣方向——gcd-witness 判準(把 valuation 1 換成「gcd 沒有奇質因子」這種更寬鬆的條件)、odd-additive 延伸(允許有限多個奇 additive 質數,逐一驗證 Fouquet–Wan 的 local 條件)。文件把整體架構收成一句話:finite base certificate → positive-density Chebotarev support → all-prime BSD routing。</p>
+    <div class="claim-box">
+      T1-T7 七條件定義可重用判準;Theorem 4.1 把 696.e1 的證明抽象成任意滿足條件的曲線;696.e1 降格為 Corollary 5.1;明確指出兩個推廣方向(gcd-witness、odd-additive extension)
+      <span class="note">— 包內文件自陳的階段性狀態,原樣照登。</span>
+    </div>
+  </header>
+
+  <section id="connections">
+    <h2 class="doc-h2">連接 · Connections</h2>
+    <p class="section-note">跟其他文件的關係,盡量用它自己文件裡的話,不是我的解讀。</p>
+    <div class="connections">
+      <div class="conn-card"><span class="k">上一篇</span><a href="../29-theorem-note-696e1/">29 · 696.e1 Theorem Note v1.0</a></div>
+      <div class="conn-card"><span class="k">下一篇</span><a href="../31-witness-network-criterion/">31 · A Finite-Exception Witness-Network Criterion</a></div>
+      <div class="conn-card"><span class="k">Phase 2 進度</span>30 / 40</div>
+    </div>
+    <blockquote class="cite">「finite base certificate → positive-density Chebotarev support → all-prime BSD routing。」— 摘自本文第 6 節結尾。</blockquote>
+  </section>
+
+  <section id="doc-wrap">
+    <div class="doc" id="doc"><p class="loading">載入中…</p></div>
+  </section>
+
+  <footer class="sitefoot">
+    <a href="../../">← Phase 2</a>
+    <a href="../../files/30_Two_Witness_Criterion_v0.1.md" download>下載原始 .md</a>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script src="../../../../assets/render.js?v=2"></script>
+<script>
+(async () => {
+  const el = document.getElementById("doc");
+  try {
+    el.innerHTML = amralRenderDoc(await amralFetchText("../../files/30_Two_Witness_Criterion_v0.1.md"));
+    amralRenderMath(el);
+  } catch (e) {
+    el.innerHTML = `<p class="error">載入失敗:${e.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>
