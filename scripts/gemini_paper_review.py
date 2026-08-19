@@ -1,14 +1,16 @@
-"""Content-review a staged paper via Vertex AI Gemini 3.7 Flash instead of a
-Claude Agent-tool sub-agent, to conserve Claude usage. Encodes the same
-checklist this project's Claude review agents have used across 10 batches.
+"""Content-review a staged paper via Gemini 3.7 Flash (Vertex AI backend)
+instead of a Claude Agent-tool sub-agent, to conserve Claude usage. Encodes
+the same checklist this project's Claude review agents have used across 10
+batches.
 
 Usage:
     python3 scripts/gemini_paper_review.py "ingest/01-before/<file>.md"
     python3 scripts/gemini_paper_review.py "ingest/01-before/<file>.md" --apply
 
 Credentials: reuses the existing service account key at
-D:\\Ai\\work together\\Google_Vertex AI\\gcp-key.json (already provisioned,
-already tested working against gemini-3.7-flash).
+D:\\Ai\\work together\\google-genai\\gcp-key.json (already provisioned; that
+folder was "Google_Vertex AI" until 2026-08-19, renamed to match Google's
+own SDK rebrand from google-cloud-aiplatform to google-genai).
 """
 import argparse
 import json
@@ -16,16 +18,15 @@ import os
 import sys
 from pathlib import Path
 
-import google.auth
-import httpx
-from google.auth.transport.requests import Request
+from google import genai
+from google.genai import types
 
-VERTEX_DIR = Path(r"D:\Ai\work together\Google_Vertex AI")
+VERTEX_DIR = Path(r"D:\Ai\work together\google-genai")
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = str(VERTEX_DIR / "gcp-key.json")
 
 PROJECT_ID = "tidy-arcade-498907-s5"
+LOCATION = "global"
 MODEL_ID = "gemini-3.7-flash"
-URL = f"https://aiplatform.googleapis.com/v1/projects/{PROJECT_ID}/locations/global/publishers/google/models/{MODEL_ID}:generateContent"
 
 SYSTEM_PROMPT = """You are doing careful MECHANICAL/STRUCTURAL content review of one academic \
 theory paper (Traditional Chinese, with inline LaTeX math) for a corpus site. You are NOT a peer \
@@ -107,41 +108,36 @@ RESPONSE_SCHEMA = {
 }
 
 
-def get_token():
-    credentials, _ = google.auth.default(scopes=["https://www.googleapis.com/auth/cloud-platform"])
-    credentials.refresh(Request())
-    return credentials.token
+_client = None
 
 
-def review_paper(filepath: Path, max_output_tokens: int = 32768) -> dict:
+def get_client():
+    global _client
+    if _client is None:
+        _client = genai.Client(vertexai=True, project=PROJECT_ID, location=LOCATION)
+    return _client
+
+
+def review_paper(filepath: Path, max_output_tokens: int = 65535) -> dict:
+    # Free Vertex AI credits (~NT$30k+), not metered against Claude usage --
+    # generous budgets are the default, not a cost corner to cut.
     text = filepath.read_text(encoding="utf-8")
-    payload = {
-        "contents": [{
-            "role": "user",
-            "parts": [{"text": SYSTEM_PROMPT + "\n\n--- DOCUMENT (" + filepath.name + ") ---\n\n" + text}],
-        }],
-        "generationConfig": {
-            "maxOutputTokens": max_output_tokens,
-            "responseMimeType": "application/json",
-            "responseSchema": RESPONSE_SCHEMA,
-            "thinkingConfig": {"thinkingBudget": 4096},
-        },
-    }
-    resp = httpx.post(
-        URL,
-        headers={"Authorization": f"Bearer {get_token()}", "Content-Type": "application/json"},
-        json=payload,
-        timeout=180,
+    response = get_client().models.generate_content(
+        model=MODEL_ID,
+        contents=SYSTEM_PROMPT + "\n\n--- DOCUMENT (" + filepath.name + ") ---\n\n" + text,
+        config=types.GenerateContentConfig(
+            max_output_tokens=max_output_tokens,
+            response_mime_type="application/json",
+            response_json_schema=RESPONSE_SCHEMA,
+            thinking_config=types.ThinkingConfig(thinking_budget=8192),
+        ),
     )
-    resp.raise_for_status()
-    data = resp.json()
-    cand = data["candidates"][0]
-    finish_reason = cand.get("finishReason")
-    parts = cand.get("content", {}).get("parts", [])
-    text_out = "".join(p.get("text", "") for p in parts)
-    usage = data.get("usageMetadata", {})
+    cand = response.candidates[0]
+    finish_reason = str(cand.finish_reason) if cand.finish_reason else None
+    usage = response.usage_metadata.model_dump(exclude_none=True) if response.usage_metadata else {}
+    text_out = response.text or ""
     if not text_out:
-        return {"error": "empty_response", "finishReason": finish_reason, "usage": usage, "raw": data}
+        return {"error": "empty_response", "finishReason": finish_reason, "usage": usage}
     try:
         parsed = json.loads(text_out)
     except json.JSONDecodeError as e:
