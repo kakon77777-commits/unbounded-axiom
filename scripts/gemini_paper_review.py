@@ -18,7 +18,10 @@ import os
 import sys
 from pathlib import Path
 
+import google.auth
+import httpx
 from google import genai
+from google.auth.transport.requests import Request
 from google.genai import types
 
 VERTEX_DIR = Path(r"D:\Ai\work together\google-genai")
@@ -27,6 +30,19 @@ os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = str(VERTEX_DIR / "gcp-key.json")
 PROJECT_ID = "tidy-arcade-498907-s5"
 LOCATION = "global"
 MODEL_ID = "gemini-3.7-flash"
+
+# Preference order per Neo 2026-08-25: try Grok first (free Vertex credit,
+# not metered against Claude usage), fall back through Gemini models on
+# quota/availability failure. Grok is a third-party Model Garden partner
+# model, called via Vertex's OpenAI-compatible endpoint (see
+# "D:\Ai\work together\google-genai\README.md" section 5) rather than the
+# google.genai SDK's native generate_content path Gemini uses.
+GROK_MODEL_ID = "xai/grok-4.6"
+GEMINI_FALLBACK_IDS = ["gemini-3.1-pro-preview", "gemini-3.7-flash"]
+OPENAI_COMPAT_URL = (
+    f"https://aiplatform.googleapis.com/v1/projects/{PROJECT_ID}"
+    f"/locations/global/endpoints/openapi/chat/completions"
+)
 
 SYSTEM_PROMPT = """You are doing careful MECHANICAL/STRUCTURAL content review of one academic \
 theory paper (Traditional Chinese, with inline LaTeX math) for a corpus site. You are NOT a peer \
@@ -108,6 +124,35 @@ RESPONSE_SCHEMA = {
 }
 
 
+# Same schema as RESPONSE_SCHEMA, in standard JSON Schema shape (lowercase
+# types, "properties"/"required" nesting) for OpenAI-style structured output,
+# rather than Gemini's uppercase-type Schema dialect.
+RESPONSE_JSON_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "substantive": {"type": "boolean"},
+        "summary": {"type": "string"},
+        "findings": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "category": {"type": "string"},
+                    "anchor": {"type": "string"},
+                    "original_text": {"type": "string"},
+                    "corrected_text": {"type": "string"},
+                    "explanation": {"type": "string"},
+                },
+                "required": ["category", "anchor", "original_text", "corrected_text", "explanation"],
+                "additionalProperties": False,
+            },
+        },
+    },
+    "required": ["substantive", "summary", "findings"],
+    "additionalProperties": False,
+}
+
+
 _client = None
 
 
@@ -116,6 +161,90 @@ def get_client():
     if _client is None:
         _client = genai.Client(vertexai=True, project=PROJECT_ID, location=LOCATION)
     return _client
+
+
+def _bearer_token() -> str:
+    credentials, _ = google.auth.default(scopes=["https://www.googleapis.com/auth/cloud-platform"])
+    credentials.refresh(Request())
+    return credentials.token
+
+
+def review_paper_grok(filepath: Path, model_id: str = GROK_MODEL_ID, timeout: float = 180.0) -> dict:
+    """Review via Grok on Vertex Model Garden's OpenAI-compatible endpoint.
+    Raises on any failure (HTTP error, malformed response) so the caller can
+    fall back to Gemini -- does not itself fall back."""
+    text = filepath.read_text(encoding="utf-8")
+    payload = {
+        "model": model_id,
+        "messages": [
+            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "user", "content": "--- DOCUMENT (" + filepath.name + ") ---\n\n" + text},
+        ],
+        "response_format": {
+            "type": "json_schema",
+            "json_schema": {"name": "paper_review", "schema": RESPONSE_JSON_SCHEMA, "strict": True},
+        },
+    }
+    resp = httpx.post(
+        OPENAI_COMPAT_URL,
+        headers={"Authorization": f"Bearer {_bearer_token()}", "Content-Type": "application/json"},
+        json=payload,
+        timeout=timeout,
+    )
+    if resp.status_code != 200:
+        raise RuntimeError(f"grok http {resp.status_code}: {resp.text[:2000]}")
+    data = resp.json()
+    choice = data["choices"][0]
+    content = choice["message"]["content"]
+    parsed = json.loads(content)
+    parsed["_usage"] = data.get("usage", {})
+    parsed["_finishReason"] = choice.get("finish_reason")
+    parsed["_backend"] = model_id
+    return parsed
+
+
+def review_paper_gemini(filepath: Path, model_id: str = MODEL_ID, max_output_tokens: int = 65535) -> dict:
+    text = filepath.read_text(encoding="utf-8")
+    response = get_client().models.generate_content(
+        model=model_id,
+        contents=SYSTEM_PROMPT + "\n\n--- DOCUMENT (" + filepath.name + ") ---\n\n" + text,
+        config=types.GenerateContentConfig(
+            max_output_tokens=max_output_tokens,
+            response_mime_type="application/json",
+            response_json_schema=RESPONSE_SCHEMA,
+            thinking_config=types.ThinkingConfig(thinking_budget=8192),
+        ),
+    )
+    cand = response.candidates[0]
+    finish_reason = str(cand.finish_reason) if cand.finish_reason else None
+    usage = response.usage_metadata.model_dump(exclude_none=True) if response.usage_metadata else {}
+    text_out = response.text or ""
+    if not text_out:
+        raise RuntimeError(f"empty_response from {model_id}, finishReason={finish_reason}, usage={usage}")
+    parsed = json.loads(text_out)
+    parsed["_usage"] = usage
+    parsed["_finishReason"] = finish_reason
+    parsed["_backend"] = model_id
+    return parsed
+
+
+def review_paper_with_fallback(filepath: Path) -> dict:
+    """Grok 4.6 first (free Vertex credit); on any failure (quota, HTTP
+    error, malformed response) fall through Gemini 3.1 Pro then 3.7 Flash.
+    Per Neo 2026-08-25: prefer Grok, Gemini tier doesn't matter as fallback."""
+    errors = []
+    try:
+        return review_paper_grok(filepath)
+    except Exception as e:
+        errors.append(f"grok({GROK_MODEL_ID}): {e}")
+
+    for model_id in GEMINI_FALLBACK_IDS:
+        try:
+            return review_paper_gemini(filepath, model_id=model_id)
+        except Exception as e:
+            errors.append(f"gemini({model_id}): {e}")
+
+    return {"error": "all_backends_failed", "attempts": errors}
 
 
 def review_paper(filepath: Path, max_output_tokens: int = 65535) -> dict:
