@@ -152,6 +152,14 @@ def build_registry(entries) -> dict:
             n += 1
         return f"lm-{n:06d}"
 
+    # What the last committed registry knew, keyed both ways for the same reason
+    # ids are: an exact path is unambiguous, a basename survives a move.
+    prev_created = {it["source_file"]: it["created"] for it in prev_items if it.get("created")}
+    prev_created_by_base = {}
+    for it in prev_items:
+        if it.get("created"):
+            prev_created_by_base.setdefault(Path(it["source_file"]).name, it["created"])
+
     dates = _git_first_add_dates()  # basename -> 'YYYY-MM-DD'
     ctcl_dates = _ctcl_dates()      # basename -> CTCL instant record (CTCL-era papers only)
     ai_set = _ai_authored_set()     # ids/basenames that are AI-autonomous (default: none)
@@ -208,6 +216,22 @@ def build_registry(entries) -> dict:
         eid = path_to_id[rel]
         ctcl = ctcl_dates.get(base)             # CTCL instant record, if this paper is CTCL-era
         d = ctcl["date"] if ctcl else dates.get(base)  # 'YYYY-MM-DD' or None
+        # Carry a previously recorded date forward when THIS environment cannot
+        # compute one. `_git_first_add_dates()` needs the commit that first added
+        # the file to be present in the checkout, and the Cloudflare Pages build
+        # clones shallowly: measured on 2026-08-29, the deployed sitemap carried
+        # the build date for 2822 of 3189 papers while a full local checkout
+        # produced 93 distinct dates for the same corpus. The 367 that survived
+        # were exactly the CTCL-dated ones — they are STORED rather than derived,
+        # which is the property being borrowed here.
+        #
+        # Same shape as the id stability above: the committed registry is the
+        # memory that makes a build reproducible in an environment that has less
+        # information than the one that wrote it. A CTCL date still wins, and a
+        # freshly computed git date still wins over a carried one; this only
+        # fills the case where the answer would otherwise be nothing.
+        if not d:
+            d = prev_created.get(rel) or prev_created_by_base.get(base)
         mp = _month_from_path(rel)             # folder-path month 'YYYY-MM' (authoritative §5)
         if mp:
             year, month, conf = int(mp[:4]), mp, "explicit"
