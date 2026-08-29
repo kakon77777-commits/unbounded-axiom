@@ -218,13 +218,47 @@ def write_sitemap_canonical(registry) -> None:
     # Extensionless: the three root pages 307 to that form, so listing the
     # .html spelling pointed crawlers at three redirects. (/papers/*.html are
     # real files and are excluded from this sitemap anyway, per the docstring.)
+    #
+    # The six hub pages are regenerated from the whole corpus on every build and
+    # genuinely do change with it, so the build time is the honest value here.
     fixed = ["/", "/cosmomind", "/base-space", "/deconstruction",
              "/llms.txt", "/llms-full.txt"]
     urls = [f"  <url><loc>{SITE_URL}{u}</loc><lastmod>{now_iso}</lastmod></url>" for u in fixed]
+
+    # A paper's `lastmod` is its own date, not the build clock.
+    #
+    # Every paper URL used to carry `now_iso`, so each deploy told crawlers that
+    # all 3195 pages had changed — at the same second, to the second. The
+    # repository already argues against this in its own words: see
+    # content/papers/2026/2026-07/持續可發現性廣播器_概念與技術設計_v0.1.md, which
+    # says a sitemap should move only the `<lastmod>` of what actually changed
+    # and prints `<lastmod>每天都改成今天</lastmod>` as the anti-pattern.
+    #
+    # It matters because `lastmod` is honoured only while it stays accurate.
+    # Claiming everything changed today, every day, teaches a crawler to
+    # discard the field for the whole site — which costs exactly the pages that
+    # did change.
+    #
+    # Nothing new has to be computed: the registry already carries `created`
+    # per item, with `date_confidence: explicit` on all 3189 and a `date_basis`
+    # that is either git-first-add (2822) or a CTCL Ed25519-signed instant
+    # (367). That is a better date than anything this function could derive,
+    # and it was already sitting in the argument.
+    missing = 0
     for it in registry["items"]:
+        stamp = it.get("created")
+        if not stamp:
+            missing += 1
+            stamp = now_iso
         urls.append(
-            f"  <url><loc>{SITE_URL}{it['canonical_url']}</loc><lastmod>{now_iso}</lastmod></url>"
+            f"  <url><loc>{SITE_URL}{it['canonical_url']}</loc><lastmod>{stamp}</lastmod></url>"
         )
+    if missing:
+        # Reported rather than absorbed: falling back to the build time is the
+        # exact claim this change removes, so a registry entry that loses its
+        # date must not slip back into it silently.
+        print(f"[sitemap] WARNING: {missing} of {len(registry['items'])} papers carry no "
+              f"`created` in the registry and were stamped with the build time")
     body = ('<?xml version="1.0" encoding="UTF-8"?>\n'
             '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
             + "\n".join(urls) + "\n</urlset>\n")
