@@ -215,23 +215,31 @@ def build_registry(entries) -> dict:
     for base, rel, slug, display, ext, src in cur:
         eid = path_to_id[rel]
         ctcl = ctcl_dates.get(base)             # CTCL instant record, if this paper is CTCL-era
-        d = ctcl["date"] if ctcl else dates.get(base)  # 'YYYY-MM-DD' or None
-        # Carry a previously recorded date forward when THIS environment cannot
-        # compute one. `_git_first_add_dates()` needs the commit that first added
-        # the file to be present in the checkout, and the Cloudflare Pages build
-        # clones shallowly: measured on 2026-08-29, the deployed sitemap carried
-        # the build date for 2822 of 3189 papers while a full local checkout
-        # produced 93 distinct dates for the same corpus. The 367 that survived
-        # were exactly the CTCL-dated ones — they are STORED rather than derived,
-        # which is the property being borrowed here.
+        # A recorded `created` outranks a recomputed one. Precedence:
+        #   CTCL instant  >  what the registry already recorded  >  git-first-add
         #
-        # Same shape as the id stability above: the committed registry is the
-        # memory that makes a build reproducible in an environment that has less
-        # information than the one that wrote it. A CTCL date still wins, and a
-        # freshly computed git date still wins over a carried one; this only
-        # fills the case where the answer would otherwise be nothing.
-        if not d:
-            d = prev_created.get(rel) or prev_created_by_base.get(base)
+        # `created` is a creation date: once known it does not change, so a
+        # later build recomputing a DIFFERENT value is always the later build
+        # being wrong. That is not hypothetical here. `_git_first_add_dates()`
+        # needs the commit that first added each file to be in the checkout, and
+        # the Cloudflare Pages build clones shallowly — measured against a real
+        # `--depth 1` clone of this repository on 2026-08-29, it returns 5693
+        # entries all carrying the single date of that one commit. It does not
+        # return nothing, which is why guarding on "no date" catches none of it:
+        # every paper gets a confident, uniform, wrong answer.
+        #
+        # The 367 CTCL-dated papers were the only ones whose dates survived
+        # deployment, because they are STORED rather than derived. This gives
+        # the other 2822 the same property using the memory the build already
+        # keeps: the committed registry, which is also what makes ids stable
+        # across builds for exactly the same reason.
+        #
+        # A consequence worth stating: a date that is wrong in the registry now
+        # stays wrong through rebuilds, and is corrected by editing the registry
+        # or the CTCL sidecar — the places the value actually lives — rather
+        # than by hoping the next build recomputes it differently.
+        recorded = prev_created.get(rel) or prev_created_by_base.get(base)
+        d = ctcl["date"] if ctcl else (recorded or dates.get(base))  # 'YYYY-MM-DD' or None
         mp = _month_from_path(rel)             # folder-path month 'YYYY-MM' (authoritative §5)
         if mp:
             year, month, conf = int(mp[:4]), mp, "explicit"
