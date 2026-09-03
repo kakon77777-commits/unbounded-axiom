@@ -29,7 +29,7 @@ os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = str(VERTEX_DIR / "gcp-key.json")
 
 PROJECT_ID = "tidy-arcade-498907-s5"
 LOCATION = "global"
-MODEL_ID = "gemini-3.7-flash"
+MODEL_ID = "gemini-3.8-flash"
 
 # Preference order per Neo 2026-08-25: try Grok first (free Vertex credit,
 # not metered against Claude usage), fall back through Gemini models on
@@ -37,8 +37,17 @@ MODEL_ID = "gemini-3.7-flash"
 # model, called via Vertex's OpenAI-compatible endpoint (see
 # "D:\Ai\work together\google-genai\README.md" section 5) rather than the
 # google.genai SDK's native generate_content path Gemini uses.
+#
+# 2026-09-03: gemini-3.1-pro-preview demonstrated a systematic JSON-
+# transcription defect on this task (findings' original_text silently
+# collapsing real newlines inside LaTeX blocks, plus outright hallucinated
+# findings) - ~51% of its findings failed exact-match application on one
+# 66-file batch. Reordered behind 3.7-flash, which was clean on the same
+# re-review. gemini-3.8-flash (GA per Neo 2026-09-03) is untested at batch
+# scale but passed a small smoke test cleanly; tried first as the newest
+# candidate, with 3.7-flash as the proven fallback.
 GROK_MODEL_ID = "xai/grok-4.6"
-GEMINI_FALLBACK_IDS = ["gemini-3.1-pro-preview", "gemini-3.7-flash"]
+GEMINI_FALLBACK_IDS = ["gemini-3.8-flash", "gemini-3.7-flash", "gemini-3.1-pro-preview"]
 OPENAI_COMPAT_URL = (
     f"https://aiplatform.googleapis.com/v1/projects/{PROJECT_ID}"
     f"/locations/global/endpoints/openapi/chat/completions"
