@@ -15,6 +15,7 @@ own SDK rebrand from google-cloud-aiplatform to google-genai).
 import argparse
 import json
 import os
+import re
 import sys
 from pathlib import Path
 
@@ -52,6 +53,20 @@ OPENAI_COMPAT_URL = (
     f"https://aiplatform.googleapis.com/v1/projects/{PROJECT_ID}"
     f"/locations/global/endpoints/openapi/chat/completions"
 )
+
+# 2026-09-05: Neo pointed out GLM 5.3 Flash (Zhipu/Z.ai) as another very
+# cheap option worth trying, alongside the existing free-Vertex-credit Grok
+# route. Same direct-HTTP pattern as review_paper_grok, but against Z.ai's
+# own OpenAI-compatible endpoint with its own Bearer key (not a Vertex
+# Model Garden partner model, so no _bearer_token() reuse). Key custody
+# matches MACR's own glm_flash_worker provider
+# (D:\Ai\work together\MACR\src\macr_runtime\providers\glm.py): fixed file
+# at D:\KEY\GLM.txt, "hash.suffix" shape. Not yet in review_paper_with_
+# fallback's chain pending a smoke test -- same rollout discipline used for
+# gemini-3.8-flash.
+GLM_MODEL_ID = "glm-5.3-flash"
+GLM_KEY_PATH = Path(r"D:\KEY\GLM.txt")
+GLM_CHAT_URL = "https://api.z.ai/api/paas/v4/chat/completions"
 
 SYSTEM_PROMPT = """You are doing careful MECHANICAL/STRUCTURAL content review of one academic \
 theory paper (Traditional Chinese, with inline LaTeX math) for a corpus site. You are NOT a peer \
@@ -178,6 +193,10 @@ def _bearer_token() -> str:
     return credentials.token
 
 
+def _glm_api_key() -> str:
+    return GLM_KEY_PATH.read_text(encoding="utf-8").strip()
+
+
 def review_paper_grok(filepath: Path, model_id: str = GROK_MODEL_ID, timeout: float = 180.0) -> dict:
     """Review via Grok on Vertex Model Garden's OpenAI-compatible endpoint.
     Raises on any failure (HTTP error, malformed response) so the caller can
@@ -206,6 +225,69 @@ def review_paper_grok(filepath: Path, model_id: str = GROK_MODEL_ID, timeout: fl
     choice = data["choices"][0]
     content = choice["message"]["content"]
     parsed = json.loads(content)
+    parsed["_usage"] = data.get("usage", {})
+    parsed["_finishReason"] = choice.get("finish_reason")
+    parsed["_backend"] = model_id
+    return parsed
+
+
+def review_paper_glm(filepath: Path, model_id: str = GLM_MODEL_ID, timeout: float = 600.0) -> dict:
+    """Review via GLM 5.3 Flash on Z.ai's OpenAI-compatible endpoint. Raises
+    on any failure so the caller can fall back elsewhere -- does not itself
+    fall back. Tries strict json_schema mode (same shape as review_paper_grok)
+    first; 2026-09-05 smoke test showed plain json_object mode lets the model
+    invent its own field names (original/corrected instead of original_text/
+    corrected_text, substantive as prose instead of bool) since nothing told
+    it the exact shape."""
+    text = filepath.read_text(encoding="utf-8")
+    payload = {
+        "model": model_id,
+        "messages": [
+            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "user", "content": "--- DOCUMENT (" + filepath.name + ") ---\n\n" + text},
+        ],
+        "response_format": {
+            "type": "json_schema",
+            "json_schema": {"name": "paper_review", "schema": RESPONSE_JSON_SCHEMA, "strict": True},
+        },
+    }
+    resp = httpx.post(
+        GLM_CHAT_URL,
+        headers={"Authorization": f"Bearer {_glm_api_key()}", "Content-Type": "application/json"},
+        json=payload,
+        timeout=timeout,
+    )
+    if resp.status_code != 200:
+        raise RuntimeError(f"glm http {resp.status_code}: {resp.text[:2000]}")
+    data = resp.json()
+    choice = data["choices"][0]
+    content = choice["message"]["content"].strip()
+    # 2026-09-05: unlike Grok/Gemini, Z.ai's "strict" json_schema mode still
+    # wraps the answer in a ```json ... ``` markdown fence -- strip it before
+    # parsing. (It also doesn't hard-enforce every schema field: "explanation"
+    # is sometimes dropped per-finding. Harmless here since only category/
+    # anchor/original_text/corrected_text are actually consumed downstream.)
+    if content.startswith("```"):
+        content = re.sub(r"^```(?:json)?\s*\n?", "", content)
+        content = re.sub(r"\n?```\s*$", "", content).strip()
+    parsed = json.loads(content)
+    # 2026-09-05: three otherwise-identical smoke-test calls (same strict
+    # json_schema request) came back in two different shapes -- GLM's schema
+    # adherence on Z.ai is inconsistent run-to-run, unlike Grok/Gemini.
+    # Normalize the two observed variants rather than trust either one.
+    for f in parsed.get("findings", []):
+        if "original_text" not in f and "original" in f:
+            f["original_text"] = f.pop("original")
+        if "corrected_text" not in f and "corrected" in f:
+            f["corrected_text"] = f.pop("corrected")
+        f.setdefault("explanation", "")
+    if "substantive" not in parsed:
+        status = parsed.pop("paper_status", None)
+        parsed["substantive"] = (
+            str(status).strip().lower() not in {"stub", "non-paper", "stub/non-paper", "false", "no"}
+            if status is not None
+            else True
+        )
     parsed["_usage"] = data.get("usage", {})
     parsed["_finishReason"] = choice.get("finish_reason")
     parsed["_backend"] = model_id
