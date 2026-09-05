@@ -1,0 +1,135 @@
+{
+  "schema": "fcao-apr-actual-status/v1",
+  "date": "2026-08-24",
+  "status": "verified_operational_experiment",
+  "summary": "FCAO plus APR completed the MRMIC/NVCL workspace consolidation under Single topology with zero subagents, replayable evidence, deterministic Twin challenges, and a superseding valid closure.",
+  "fcao_runtime": {
+    "name": "FCAO_OpenHarness_MVP",
+    "version": "0.1.0",
+    "source_commit": "7d25e2a568f44b2dfa65c94b5b77c60b0e6e773f",
+    "archive_sha256": "aa43791c8889849e46349fa04dfb819fabaf0c9920a1ebdeaf484f8bd2b25824",
+    "internal_manifest": {
+      "verified_entries": 28,
+      "status": "pass"
+    },
+    "tests": {
+      "passed": 19,
+      "total": 19
+    },
+    "compile_check": "pass",
+    "deterministic_demo": "pass",
+    "live_openharness_child_execution": false
+  },
+  "integration": {
+    "mode": "operational_composition",
+    "productized_adapter": false,
+    "fcao_responsibility": [
+      "canonical_world",
+      "task_topology",
+      "event_ledger",
+      "twin_decisions",
+      "local_closure_certificates",
+      "global_closure",
+      "reopen_and_supersession"
+    ],
+    "apr_responsibility": [
+      "evidence_sufficiency",
+      "no_observation_for_verified_facts",
+      "targeted_observation_for_unknown_facts",
+      "merge_evidence_gate"
+    ]
+  },
+  "world": {
+    "world_id": "fcao-apr-mrmic-consolidation-v1",
+    "database_path": "D:\\Ai\\work together\\FCAO\\runs\\mrmic-nvcl-fcao-apr-v1.db",
+    "topology": "single",
+    "subagents_started": 0,
+    "event_count": 32,
+    "task_states": {
+      "fcao-apr-policy-bootstrap": "COMPLETED",
+      "fcao-runtime-validation": "COMPLETED",
+      "mrmic-github-synchronization": "COMPLETED",
+      "mrmic-workspace-consolidation": "COMPLETED"
+    },
+    "twin_decisions": [
+      {
+        "action": "IDLE",
+        "reason": "no-actionable-risk"
+      },
+      {
+        "action": "CHALLENGE",
+        "reason": "unicode-path-audit-false-positive-required-audit-fix"
+      },
+      {
+        "action": "CONCUR",
+        "reason": "all-mandatory-evidence-satisfied"
+      },
+      {
+        "action": "CHALLENGE",
+        "reason": "candidate-closure-omitted-github-sync-mandatory-node"
+      },
+      {
+        "action": "CONCUR",
+        "reason": "reopened-world-all-mandatory-nodes-satisfied"
+      }
+    ],
+    "closures": {
+      "count": 2,
+      "first_superseded": true,
+      "final": {
+        "eligible": true,
+        "coverage": 1.0,
+        "blocking_tasks": [],
+        "topology_version": 1,
+        "scope_includes": "github-sync-and-formal-local-main",
+        "replay_valid": true
+      }
+    }
+  },
+  "mrmic_nvcl": {
+    "repository": "https://github.com/kakon77777-commits/MRMIC_NVCL",
+    "pull_request": "https://github.com/kakon77777-commits/MRMIC_NVCL/pull/14",
+    "pull_request_state": "MERGED",
+    "local_main": "da1ec4fcc32e9c2e01ff727492e1a9fd35a174a9",
+    "origin_main": "da1ec4fcc32e9c2e01ff727492e1a9fd35a174a9",
+    "git_status": "clean",
+    "ci": {
+      "passed": 2,
+      "total": 2
+    },
+    "tests": {
+      "passed": 76,
+      "total": 76
+    },
+    "phase12_offline_demo": "pass",
+    "release_manifest": {
+      "verified": 269,
+      "total": 269
+    },
+    "canonical_theory_bodies": 5,
+    "mojibake_aliases_removed": 4,
+    "theory_root_markdown": [
+      "README.md"
+    ]
+  },
+  "archive_sha256": {
+    "FCAO_OpenHarness_MVP_v0.1_2026-08-24.zip": "aa43791c8889849e46349fa04dfb819fabaf0c9920a1ebdeaf484f8bd2b25824",
+    "FCAO_Twin_Agent_Governance_Paper_v0.1_2026-08-24.zip": "b3792310aa8d6cae1f23107421ac93ea9f9f9ed888210664f0af0ab1dd612076",
+    "FCAO_Temporal_Topological_Computation_Paper_v0.1_2026-08-24.zip": "2ec247cc56acff13b74a050eb13ae3d278f6ce1df88e25eb9f7bf0991b99b5a2",
+    "FCAO_Twin_Core_Reference_Architecture_v0.1_2026-08-24.zip": "e27b7126bf3b32159ce0fe856a7a3815dc7ab801415529ce94a0e041793b5954",
+    "FCAO_x_OpenHarness_Integration_Architecture_MVP_v0.1_2026-08-24.zip": "ace042b3d553369ed7b3f00d7cf3a2bea6e0c01d096ec20b62d16409e12bd683"
+  },
+  "excluded": [
+    "real_provider_calls",
+    "paid_inference",
+    "production_fcao_apr_adapter",
+    "live_openharness_recursive_children",
+    "production_sedb_adapter",
+    "production_ctcl_itr_adapter",
+    "token_savings_percentage_claim"
+  ],
+  "identity": {
+    "primary_binding": "unresolved",
+    "reason": "host did not provide an exact task-local native identity binding"
+  }
+}
