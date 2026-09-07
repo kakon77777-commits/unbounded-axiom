@@ -1,0 +1,984 @@
+# CSM_RH Paper 15
+## Off-Diagonal Chowla Lift, Diagonal-Scale Precision, and Parity-Bridge Authority Correction
+
+**Project:** `CSM_RH`  
+**Paper:** `15`  
+**Version:** `v0.1`  
+**Date:** `2026-09-05`  
+**Parent state:** `CSM_RH v1.5 / Paper 14`  
+**Campaign:** `14 — EMDQO_OFF_DIAGONAL_CORRELATION_AUDIT`  
+**Status:** off-diagonal reduction / bridge-authority audit; not a proof or disproof of RH
+
+---
+
+# 0. Trust boundary
+
+This paper does not prove or disprove the Riemann Hypothesis.
+
+Canonical root state:
+
+```text
+RH_PROVED = FALSE
+RH_DISPROVED = FALSE
+GLOBAL_RH_CERTIFICATE = FALSE
+CSM_RH_ROOT_STATUS = OPEN
+```
+
+This paper performs two corrections.
+
+First, it expands the EMDQO off-diagonal exactly and identifies its $C=1$ slice as an endogenous weighted binary Chowla problem.
+
+Second, it corrects the promotion semantics of EMDQO:
+
+> EMDQO at diagonal scale gives a fixed-power estimate for the auxiliary parity-breaking bilinear condition EMBF, but EMBF alone is not a certified bridge to PESC. A power-accurate coupled sieve assembly is still required.
+
+No live GLM-5.3-Flash run is claimed.
+
+---
+
+# 1. EMDQO setup
+
+Let
+
+$$
+B(x)=\vartheta(x)-x.
+$$
+
+Let
+
+$$
+a_C(n)=\mu(n)\gamma(n,C),
+$$
+
+and for squarefree $m$ define
+
+$$
+a_{C,m}(n)
+=
+a_C(n)\mathbf1_{(m,n)=1}.
+$$
+
+Let
+
+$$
+F_m(n)
+=
+w_N(mn)B(mn-1).
+$$
+
+For a bilinear window
+
+$$
+L<n\le2L,
+\qquad
+mn<2N,
+$$
+
+define
+
+$$
+S_m
+=
+\sum_n
+a_{C,m}(n)F_m(n).
+$$
+
+Then
+
+$$
+\boxed{
+\mathcal Q_{N,L,C}
+=
+\sum_{\mu^2(m)=1}
+|S_m|^2.
+}
+$$
+
+The balanced EMDQO target from Paper 14 is
+
+$$
+\boxed{
+\mathcal Q_{N,L,C}
+\ll
+N^{5+o(1)},
+\qquad
+L=N^{1/2+o(1)}.
+}
+$$
+
+---
+
+# 2. Exact diagonal / off-diagonal split
+
+Expanding the square gives
+
+$$
+\mathcal Q
+=
+\mathcal Q_{\rm diag}
++
+\mathcal Q_{\rm off},
+$$
+
+where
+
+$$
+\boxed{
+\mathcal Q_{\rm diag}
+=
+\sum_m
+\sum_n
+|a_{C,m}(n)|^2
+|F_m(n)|^2
+}
+$$
+
+and
+
+$$
+\boxed{
+\mathcal Q_{\rm off}
+=
+\sum_m
+\sum_{\substack{
+n_1,n_2\\
+n_1\neq n_2
+}}
+a_{C,m}(n_1)
+a_{C,m}(n_2)
+F_m(n_1)
+F_m(n_2).
+}
+$$
+
+At balanced scale, the generic diagonal estimate is
+
+$$
+\boxed{
+\mathcal Q_{\rm diag}
+\ll
+N^{5+o(1)}.
+}
+$$
+
+Therefore EMDQO is precisely an off-diagonal problem.
+
+---
+
+# 3. Kernel representation
+
+For $n_1,n_2$ in the bilinear window define
+
+$$
+\boxed{
+K_{N,L,C}(n_1,n_2)
+=
+\sum_{\substack{
+m\\
+\mu^2(m)=1\\
+(m,n_1n_2)=1\\
+m\max(n_1,n_2)<2N
+}}
+w_N(mn_1)
+w_N(mn_2)
+B(mn_1-1)
+B(mn_2-1).
+}
+$$
+
+Then:
+
+## Theorem 3.1 — Exact Off-Diagonal Kernel Form
+
+$$
+\boxed{
+\mathcal Q_{\rm off}
+=
+\sum_{\substack{
+n_1,n_2\\
+n_1\neq n_2
+}}
+a_C(n_1)a_C(n_2)
+K_{N,L,C}(n_1,n_2).
+}
+$$
+
+This is an exact identity.
+
+The kernel is endogenous because it contains the prime-generated error $B$.
+
+---
+
+# 4. Shift form
+
+Write
+
+$$
+n_2=n+h,
+\qquad
+h\ge1.
+$$
+
+Define
+
+$$
+K_{N,L,C}(n,h)
+=
+K_{N,L,C}(n,n+h).
+$$
+
+Then, because the quantities are real,
+
+## Theorem 4.1 — Weighted Shift Correlation Form
+
+$$
+\boxed{
+\mathcal Q_{\rm off}
+=
+2
+\sum_{h\ge1}
+\sum_n
+a_C(n)a_C(n+h)
+K_{N,L,C}(n,h),
+}
+$$
+
+with the natural restrictions
+
+$$
+L<n,n+h\le2L.
+$$
+
+Thus the off-diagonal is an average of two-point correlations of the parity coefficient $a_C$, but against a highly structured endogenous kernel.
+
+---
+
+# 5. Minimal parity slice $C=1$
+
+For
+
+$$
+C=1,
+$$
+
+we have
+
+$$
+\gamma(n,1)=1,
+$$
+
+so
+
+$$
+a_1(n)=\mu(n).
+$$
+
+Hence:
+
+## Corollary 5.1 — Endogenous Weighted Binary Chowla Slice
+
+$$
+\boxed{
+\mathcal Q_{\rm off}^{(C=1)}
+=
+2
+\sum_{h\ge1}
+\sum_n
+\mu(n)\mu(n+h)
+K_{N,L,1}(n,h).
+}
+$$
+
+The coefficient structure is exactly binary Möbius correlation.
+
+The weight is not external.
+
+It is built from multiplicative dilates of the prime-counting error.
+
+This is the cleanest strength diagnostic for the EMDQO off-diagonal.
+
+---
+
+# 6. Precision budget at balanced scale
+
+Take
+
+$$
+L=N^{1/2+o(1)}.
+$$
+
+Then the number of outer $m$ values is
+
+$$
+M=N^{1/2+o(1)}.
+$$
+
+The number of $(m,n)$ diagonal pairs is
+
+$$
+ML
+=
+N^{1+o(1)}.
+$$
+
+Since
+
+$$
+|F_m(n)|
+\ll
+N^2,
+$$
+
+the diagonal scale is
+
+$$
+N^{1+o(1)}N^4
+=
+N^{5+o(1)}.
+$$
+
+The number of off-diagonal triples $(m,n_1,n_2)$ is
+
+$$
+ML^2
+=
+N^{3/2+o(1)}.
+$$
+
+The coefficient-blind scale is therefore
+
+$$
+N^{11/2+o(1)}.
+$$
+
+Thus EMDQO requires a net gain of
+
+$$
+\boxed{
+N^{-1/2+o(1)}
+}
+$$
+
+over coefficient-blind off-diagonal treatment.
+
+Equivalently, one needs square-root-in-window cancellation at the global second-moment level.
+
+---
+
+# 7. Existing averaged Chowla strength calibration
+
+For ordinary Liouville or Möbius correlations, modern results establish:
+
+```text
+logarithmically averaged fixed-shift cancellation;
+averaged-shift Cesaro cancellation;
+higher short-interval uniformity on average;
+quantitative logarithmic improvements.
+```
+
+But the ordinary fixed-shift Cesaro two-point Chowla conjecture remains open.
+
+More importantly for EMDQO, the known averaged-shift estimates do not provide the required fixed $L^{-1/2}$ power at this precision level.
+
+They also do not come with uniformity for kernels of the form
+
+$$
+K_{N,L,1}(n,h),
+$$
+
+which are generated by the prime-error process itself.
+
+Therefore current Chowla technology does not close EMDQO.
+
+This is a literature-strength statement, not a no-go theorem.
+
+---
+
+# 8. Endogenous-kernel transfer debt
+
+An estimate such as
+
+$$
+\sum_{h\le H}
+\left|
+\sum_{n\le X}
+\mu(n)\mu(n+h)
+\right|
+=
+o(HX)
+$$
+
+does not automatically imply cancellation in
+
+$$
+\sum_h
+\sum_n
+\mu(n)\mu(n+h)
+K(n,h).
+$$
+
+To transfer it one needs quantitative control on the kernel class.
+
+The EMDQO kernel depends on
+
+$$
+B(mn-1)B(m(n+h)-1),
+$$
+
+so its complexity is itself tied to prime distribution.
+
+Create:
+
+```text
+O-RH-033
+ENDOGENOUS_WEIGHTED_CHOWLA_TRANSFER_DEBT
+status:
+  CERTIFIED
+```
+
+Statement:
+
+> Unweighted or externally weighted Chowla estimates cannot be promoted to EMDQO without a uniform theorem for the endogenous prime-error kernel class.
+
+---
+
+# 9. Near-diagonal region
+
+For small $h$, the two prime-error arguments are
+
+$$
+mn-1
+$$
+
+and
+
+$$
+m(n+h)-1,
+$$
+
+whose separation is
+
+$$
+mh.
+$$
+
+At balanced scale,
+
+$$
+m=N^{1/2+o(1)}.
+$$
+
+Therefore even the first nonzero shift produces prime-error samples separated by roughly $N^{1/2}$.
+
+This is not an infinitesimal perturbation on the prime scale.
+
+At the same time, the two samples are strongly geometrically related through a common multiplier $m$.
+
+No current theorem identified in this audit gives fixed-power quasi-orthogonality for these two endogenous dilates uniformly across the required range.
+
+The near-diagonal cannot simply be discarded.
+
+---
+
+# 10. Large-sieve / dispersion audit
+
+A standard large-sieve gain normally comes from an explicit family of separated additive or multiplicative phases.
+
+The kernel form in Theorem 4.1 has no such free phase parameter.
+
+Any dispersion step must first manufacture a transform of
+
+$$
+B(mn-1)
+$$
+
+and then control the resulting transformed coefficients.
+
+If the transform estimate is closed by Cauchy using the prime-error energy itself, Paper 14's generic energy fallback returns.
+
+Thus:
+
+```text
+GENERIC DISPERSION
+  does not yet create independent EMDQO authority
+
+GENERIC LARGE SIEVE
+  lacks a canonical separated phase family
+
+MELLIN / DIRICHLET DIAGONALIZATION
+  risks reintroducing inverse-zeta zero sensitivity
+```
+
+No fixed-power theorem is obtained.
+
+---
+
+# 11. Möbius-uniformity audit
+
+Modern Möbius-uniformity theory gives strong cancellation against many structured external sequences.
+
+The EMDQO weight is different.
+
+For fixed $m$,
+
+$$
+n
+\mapsto
+w_N(mn)B(mn-1)
+$$
+
+is generated by the prime sequence itself.
+
+It is neither a fixed smooth phase nor a fixed nilsequence independent of the Möbius function.
+
+Therefore existing external-test uniformity theorems do not directly apply.
+
+The known quantitative savings relevant to Chowla-type problems are also logarithmic or qualitative at the needed level, not a fixed $N$ -power for this endogenous kernel.
+
+---
+
+# 12. Bridge-authority correction
+
+Paper 14 proved that EMDQO at diagonal scale implies
+
+$$
+\mathfrak B_{N,L,C}
+\ll
+N^{11/4+o(1)}
+$$
+
+in the balanced window.
+
+This is a genuine fixed-power improvement for the auxiliary parity-breaking bilinear condition EMBF.
+
+However Paper 13 had already proved:
+
+```text
+STANDARD ASYMPTOTIC SIEVE
+  does not convert EMBF to PESC at fixed-power precision.
+
+POSITIVITY LIFT
+  incurs an exponent-3 baseline.
+
+SEPARATE NONNEGATIVE SIEVE ERRORS
+  do not have coupled cancellation authority.
+```
+
+Therefore:
+
+## Theorem 12.1 — EMDQO Bridge-Authority Boundary
+
+At the present certified state,
+
+$$
+\boxed{
+\operatorname{EMDQO}
+\Longrightarrow
+\text{fixed-power EMBF}
+}
+$$
+
+is certified, but
+
+$$
+\boxed{
+\operatorname{EMDQO}
+\Longrightarrow
+\operatorname{PESC}
+}
+$$
+
+is not certified.
+
+A separate power-accurate coupled sieve assembly theorem is required.
+
+This corrects any earlier wording which treated the EMDQO $\kappa=1/4$ gain as a direct RH-branch power gain.
+
+---
+
+# 13. New bridge frontier
+
+Create:
+
+```text
+F-RH-014
+POWER_ACCURATE_COUPLED_PARITY_SIEVE_ASSEMBLY
+abbrev:
+  PACPSA
+status:
+  OPEN
+```
+
+A valid PACPSA theorem must combine:
+
+```text
+power-accurate divisor-distribution control;
+parity-breaking bilinear input;
+coupled signed treatment of the positivity lifts;
+fixed-power final prime-detection error;
+target fidelity to PESC.
+```
+
+EMDQO may supply the parity-breaking sublemma.
+
+It does not supply the assembly.
+
+---
+
+# 14. EMDQO status
+
+Paper 14 promoted EMDQO as the canonical parity-sensitive second-moment mechanism frontier.
+
+After the current audit:
+
+```text
+F-RH-013
+EMDQO
+
+status:
+  OPEN / AUXILIARY PARITY SUBFRONTIER
+
+standalone PESC authority:
+  NO
+
+fixed-power EMBF authority:
+  YES
+```
+
+This is a demotion in theorem authority, not a rejection of the estimate.
+
+---
+
+# 15. Direct PESC shift interface
+
+The canonical PESC target itself has an exact all-shift form.
+
+Recall
+
+$$
+c_n
+=
+\log n\mathbf1_{\mathbb P}(n)-1.
+$$
+
+Then
+
+$$
+\mathcal C_N^\vartheta
+=
+\sum_{m<n<2N}
+w_N(n)c_mc_n.
+$$
+
+Writing
+
+$$
+n=m+h,
+$$
+
+we obtain:
+
+## Theorem 15.1 — Prime-Only All-Shift Interface
+
+$$
+\boxed{
+\mathcal C_N^\vartheta
+=
+\sum_{h=1}^{2N-2}
+\sum_{m<2N-h}
+w_N(m+h)c_mc_{m+h}.
+}
+$$
+
+This is the direct all-shift centered prime-pair aggregate.
+
+It contains no auxiliary Möbius layer.
+
+It remains exponent-equivalent to PODEE.
+
+---
+
+# 16. Why return to the direct target after Campaign 14
+
+The EMDQO route now requires two new theorems:
+
+1. endogenous weighted binary Chowla / off-diagonal quasi-orthogonality;
+2. PACPSA to transfer the parity input back to PESC.
+
+The direct PESC route requires one new fixed-power prime-pair aggregate theorem.
+
+Therefore CSM_RH should not claim that EMDQO is a shorter route merely because its second moment has a clean diagonal scale.
+
+The closure graph now contains a genuine path-length comparison.
+
+---
+
+# 17. Campaign 14 verdict
+
+```text
+EMDQO OFF-DIAGONAL
+  EXACTLY REDUCED TO ENDOGENOUS WEIGHTED TWO-POINT PARITY CORRELATION
+
+C=1 SLICE
+  BINARY MOBIUS / CHOWLA-TYPE COEFFICIENTS
+
+EXISTING AVERAGED CHOWLA
+  INSUFFICIENT PRECISION / INSUFFICIENT ENDOGENOUS KERNEL UNIFORMITY
+
+GENERIC DISPERSION / LARGE SIEVE
+  NO INDEPENDENT FIXED POWER FOUND
+
+EMDQO -> EMBF
+  CERTIFIED
+
+EMDQO -> PESC
+  NOT CERTIFIED
+
+PACPSA
+  NEW OPEN BRIDGE FRONTIER
+
+DIRECT PESC
+  STILL SHORTEST CERTIFIED TARGET PATH
+```
+
+No fixed-power theorem is proved.
+
+---
+
+# 18. New obstruction: parity-sublemma bridge debt
+
+Create:
+
+```text
+O-RH-034
+PARITY_SUBLEMMA_BRIDGE_DEBT
+status:
+  CERTIFIED
+```
+
+Statement:
+
+> A fixed-power parity-breaking bilinear estimate is not automatically a fixed-power prime-detection theorem for the signed endogenous target. The coupled sieve assembly must be proved at the same exponent resolution.
+
+---
+
+# 19. New survivor
+
+Create:
+
+```text
+S-RH-024
+ENDOGENOUS_WEIGHTED_BINARY_CHOWLA
+status:
+  OPEN
+```
+
+Canonical $C=1$ prototype:
+
+$$
+\boxed{
+\sum_{h}
+\sum_n
+\mu(n)\mu(n+h)
+K_{N,L,1}(n,h)
+\ll
+N^{5+o(1)}
+}
+$$
+
+after the diagonal normalization appropriate to EMDQO.
+
+This is not ordinary Chowla.
+
+It is a prime-error-weighted all-shift version.
+
+---
+
+# 20. Campaign 15
+
+The next campaign is:
+
+```text
+CSM_RH Campaign 15
+DIRECT_ALL_SHIFT_PRIME_CORRELATION_AUDIT
+```
+
+The campaign returns to the shortest certified target path:
+
+```text
+PESC
+```
+
+using Theorem 15.1.
+
+Its task is to compare the all-shift prime-only aggregate against:
+
+```text
+average Hardy-Littlewood prime-pair theorems;
+Selberg-integral / correlation identities;
+Barban-Davenport-Halberstam-type mean squares;
+dispersion identities;
+known averaged-shift prime-correlation estimates.
+```
+
+The goal is to determine whether any existing average-prime-pair technology reaches a fixed $N$ -power for the complete signed aggregate.
+
+---
+
+# 21. Campaign 15 required questions
+
+```text
+Q1
+What is the exact weighted shift correlation R_N(h)?
+
+Q2
+Which shift ranges dominate the PESC aggregate?
+
+Q3
+Can known average prime-pair results control the signed sum before absolute values?
+
+Q4
+Does singular-series subtraction reappear automatically or is it unnecessary?
+
+Q5
+Does a Selberg-integral identity reduce the target or only restate the same energy?
+
+Q6
+What fixed-power error would an averaged Hardy-Littlewood theorem need?
+
+Q7
+What is the first new prime-pair theorem if known results fall short?
+```
+
+---
+
+# 22. Campaign 15 rejection filters
+
+Reject a candidate if:
+
+## R1. It takes absolute values in every shift before using signed aggregation.
+
+## R2. It inserts the Hardy-Littlewood singular series and counts the model as a proof.
+
+## R3. It uses PODEE/PESC itself to control the average correlation.
+
+## R4. It proves only logarithmic improvement.
+
+## R5. It assumes uniform fixed-shift Hardy-Littlewood asymptotics.
+
+## R6. It confuses an average over shifts with the exact endpoint-weighted signed aggregate.
+
+---
+
+# 23. External calibration
+
+Current literature provides the following calibration.
+
+1. Matomäki–Radziwiłł–Tao proved averaged forms of Chowla's conjecture with qualitative cancellation and quantitative decay of logarithmic type.
+
+2. Matomäki–Radziwiłł–Tao–Teräväinen–Ziegler proved higher short-interval uniformity on average and new averaged Chowla consequences.
+
+3. The ordinary fixed-shift two-point Chowla conjecture remains open; recent quantitative advances are predominantly logarithmically averaged or averaged over shifts.
+
+4. Banks–Shparlinski (2026) obtain nontrivial estimates for several multi-variable Möbius sums while explicitly noting that binary analogues remain difficult in their setting.
+
+These results show that the EMDQO off-diagonal sits beyond standard currently available binary Möbius-correlation technology at the required precision.
+
+None proves EMDQO or PESC.
+
+---
+
+# 24. State transition
+
+The canonical transition is:
+
+```text
+CSM_RH v1.5
+  ->
+CSM_RH v1.6
+```
+
+with:
+
+```text
+Campaign 14
+  CLOSED_AS_OFF_DIAGONAL_AND_BRIDGE_AUTHORITY_AUDIT
+
+O-RH-033
+  ENDOGENOUS_WEIGHTED_CHOWLA_TRANSFER_DEBT
+  CREATED / CERTIFIED
+
+O-RH-034
+  PARITY_SUBLEMMA_BRIDGE_DEBT
+  CREATED / CERTIFIED
+
+F-RH-013
+  EMDQO
+  DEMOTED TO AUXILIARY PARITY SUBFRONTIER
+
+F-RH-014
+  PACPSA
+  CREATED / OPEN
+
+S-RH-024
+  ENDOGENOUS_WEIGHTED_BINARY_CHOWLA
+  CREATED / OPEN
+
+F-RH-010
+  PESC
+  REMAINS OPEN / SHORTEST CERTIFIED TARGET PATH
+
+Campaign 15
+  DIRECT_ALL_SHIFT_PRIME_CORRELATION_AUDIT
+  READY
+```
+
+---
+
+# 25. Final status
+
+```text
+RH = OPEN
+
+PESC = OPEN
+
+EMDQO = OPEN / AUXILIARY
+
+EMDQO OFF-DIAGONAL = WEIGHTED BINARY CHOWLA-TYPE
+
+CURRENT CHOWLA TECHNOLOGY = INSUFFICIENT FOR REQUIRED FIXED POWER
+
+EMDQO -> EMBF = CERTIFIED
+
+EMDQO -> PESC = NOT CERTIFIED
+
+PACPSA = OPEN
+
+DIRECT PESC PATH = SHORTER
+
+NEXT CAMPAIGN = 15
+```
+
+The direct canonical target remains
+
+$$
+\boxed{
+\left|
+\sum_{h=1}^{2N-2}
+\sum_{m<2N-h}
+w_N(m+h)
+c_m
+c_{m+h}
+\right|
+\ll
+N^{3-\kappa+o(1)}
+}
+$$
+
+for one fixed
+
+$$
+0<\kappa<\frac12.
+$$
+
+The next task is to audit this all-shift prime-pair aggregate directly against the strongest available average-correlation technology.
