@@ -1,0 +1,2500 @@
+# 自然語言、圖像與創意如何被量？：高歧義成果的結構化品質空間
+
+## How Can Natural Language, Images, and Creative Outputs Be Measured? A Structured Quality Space for High-Ambiguity Artifacts
+
+**系列：**《智能的物理計量：從最小語意執行到成果品質與計算時空》  
+**英文系列：** *Physical Metrology of Intelligence: From Minimal Semantic Execution to Quality and Computational Spacetime*  
+**系列編號：** EML-IPM  
+**篇次：** Paper 08 / 10  
+**文件編號：** EML-IPM-08  
+**作者：** Neo.K with Aletheia（GPT-5.6 Sol）  
+**機構：** EveMissLab／一言諾科技有限公司  
+**版本：** v0.1  
+**日期：** 2026-09-02  
+**文件性質：** 公開純理論論文／跨模態品質計量方法論  
+**工程狀態：** 無 MVP；本文建立高歧義成果的 typed quality-space 架構，供 Paper 07 的 IBQF／BRQM 進行後續測量
+
+---
+
+## 摘要
+
+IPM Paper 06 已提出：
+
+$$
+\boxed{
+\text{Objectifiable First,\ Human Residual Last}.
+}
+$$
+
+Paper 07 則進一步提出：
+
+$$
+\boxed{
+\text{many low-load binary / pairwise judgments}
+\rightarrow
+\text{latent quality reconstruction}.
+}
+$$
+
+但此時仍有一個更根本的問題：
+
+$$
+\boxed{
+\textbf{
+我們究竟應該問哪些問題？
+}
+}
+$$
+
+如果「品質維度」本身定義錯誤，那麼再精密的 Bradley–Terry、IRT、Bayesian posterior 或 adaptive questionnaire，也只會更精確地測量錯的東西。
+
+因此本文主張，高歧義成果不能直接被投影成：
+
+$$
+Q\in[0,1].
+$$
+
+它們首先應被表示成一個 **Typed Structured Quality Space**：
+
+$$
+\boxed{
+\mathcal Q[d,\tau,c,a]
+}
+$$
+
+其中：
+
+- $d$：domain / modality，領域與模態；
+- $\tau$：task，任務；
+- $c$：context，情境；
+- $a$：audience / evaluator population，受眾或評估群體。
+
+品質因此不是：
+
+$$
+\boxed{
+Q(Y)
+}
+$$
+
+而是：
+
+$$
+\boxed{
+Q(
+Y
+\mid
+d,\tau,c,a
+).
+}
+$$
+
+本文進一步把品質空間拆成三層：
+
+$$
+\boxed{
+\mathcal Q
+=
+\mathcal Q_{\mathrm{core}}
+\oplus
+\mathcal Q_{\mathrm{domain}}
+\oplus
+\mathcal Q_{\mathrm{task}}.
+}
+$$
+
+第一層 **Cross-Domain Core Quality** 包含可跨多模態共用的品質型別：
+
+$$
+\boxed{
+\mathbf Q_{\mathrm{core}}
+=
+(
+F,
+C,
+K,
+R,
+U,
+V
+)
+}
+$$
+
+其中：
+
+- $F$：Fidelity / Alignment，是否忠實完成目標；
+- $C$：Coherence，一致性與內部連貫；
+- $K$：Completeness / Coverage，重要結構是否完整；
+- $R$：Robustness，對合理擾動是否穩定；
+- $U$：Usefulness / Functional Effectiveness，是否實際有用；
+- $V$：Verifiability / Traceability，能否被核查或追溯。
+
+第二層為 **Domain-Specific Quality**。例如：
+
+### 自然語言
+
+$$
+\boxed{
+\mathbf Q_{\mathrm{text}}
+=
+(
+Factuality,
+Relevance,
+Coherence,
+Completeness,
+Clarity,
+PragmaticFit,
+StyleFit,
+EvidenceAdequacy
+).
+}
+$$
+
+### 圖像
+
+$$
+\boxed{
+\mathbf Q_{\mathrm{image}}
+=
+(
+PromptAlignment,
+StructuralIntegrity,
+Composition,
+TechnicalQuality,
+AestheticFit,
+SemanticLegibility,
+ArtifactFreedom,
+ContextFit
+).
+}
+$$
+
+### 音樂
+
+$$
+\boxed{
+\mathbf Q_{\mathrm{music}}
+=
+(
+TemporalCoherence,
+RhythmicIntegrity,
+HarmonicFit,
+TimbreQuality,
+Expressiveness,
+Novelty,
+StyleFit,
+FunctionalFit
+).
+}
+$$
+
+### 故事
+
+$$
+\boxed{
+\mathbf Q_{\mathrm{story}}
+=
+(
+PlotCausality,
+CharacterConsistency,
+WorldConsistency,
+Pacing,
+Voice,
+EmotionalImpact,
+Novelty,
+ThematicIntegrity
+).
+}
+$$
+
+第三層是 **Task-Specific Quality**。例如同一張圖：
+
+- 作為廣告；
+- 作為醫療示意圖；
+- 作為遊戲概念圖；
+- 作為純藝術作品；
+
+其 success conditions 不同。
+
+因此：
+
+$$
+\boxed{
+ImageQuality
+\neq
+UniversalImageBeauty.
+}
+$$
+
+本文特別提出 **Quality Construct Graph（品質構念圖）**：
+
+$$
+\boxed{
+G_Q
+=
+(
+V_Q,E_Q
+)
+}
+$$
+
+其中 $V_Q$ 是品質構念， $E_Q$ 表示構念之間的依賴、包含、衝突或條件關係。
+
+例如：
+
+$$
+Factuality
+\rightarrow
+Trustworthiness,
+$$
+
+$$
+Composition
+\rightarrow
+VisualHierarchy,
+$$
+
+$$
+Novelty
+\not\Rightarrow
+Usefulness.
+$$
+
+這使品質維度不再只是扁平 checklist。
+
+本文再定義從抽象構念到可問問題的 **Measurement Itemization Pipeline**：
+
+$$
+\boxed{
+\text{Task}
+\rightarrow
+\text{Quality Construct}
+\rightarrow
+\text{Observable Indicator}
+\rightarrow
+\text{Binary/Pairwise Item}
+\rightarrow
+\text{Latent Estimate}.
+}
+$$
+
+例如抽象構念：
+
+$$
+Clarity
+$$
+
+不能直接問：
+
+> 清晰度幾分？
+
+而應先拆成 observable indicators：
+
+- 是否需要重讀？
+- 是否能辨識主要結論？
+- 是否知道下一步操作？
+- 是否存在未定義關鍵詞？
+
+再變成 Paper 07 的低負擔二元／成對問題。
+
+因此：
+
+$$
+\boxed{
+Construct
+\neq
+Item.
+}
+$$
+
+以及：
+
+$$
+\boxed{
+Metric
+\neq
+Construct.
+}
+$$
+
+本文並提出 **Construct Validity Gate**：
+
+$$
+\boxed{
+G_C
+=
+G(
+Coverage,
+DiscriminantValidity,
+ConvergentEvidence,
+ContextStability
+).
+}
+$$
+
+若一個 measurement dimension 並沒有真正對應任務所需品質，則即使測量 reliability 很高：
+
+$$
+Rel\uparrow
+$$
+
+仍可能：
+
+$$
+Validity\downarrow.
+$$
+
+因此：
+
+$$
+\boxed{
+Reliability
+\neq
+Validity.
+}
+$$
+
+高歧義成果還存在一個重要問題：品質空間本身可能是開放的。
+
+若大量 residual errors、rater disagreement 或新型 failure 無法被現有維度解釋，系統不應硬塞進舊維度，而應允許：
+
+$$
+\boxed{
+\mathcal Q_t
+\rightarrow
+\mathcal Q_{t+1}
+=
+\mathcal Q_t
+\cup
+\{\text{new construct}\}.
+}
+$$
+
+本文稱此為 **Open Quality Ontology**。
+
+因此品質 schema 必須：
+
+- versioned；
+- extensible；
+- context-aware；
+- falsifiable。
+
+本文對創造力特別提出：
+
+$$
+\boxed{
+Novelty
+\neq
+Creativity.
+}
+$$
+
+創造性成果至少需要同時考慮：
+
+$$
+\boxed{
+Novelty
+\oplus
+Appropriateness/Usefulness.
+}
+$$
+
+一個完全新奇但毫無用途、完全不符任務的答案，不應僅因「新」而獲得高創造力品質。
+
+同理：
+
+$$
+\boxed{
+AestheticPreference
+\neq
+TechnicalQuality,
+}
+$$
+
+$$
+\boxed{
+Fluency
+\neq
+Factuality,
+}
+$$
+
+$$
+\boxed{
+PromptSimilarity
+\neq
+ImageQuality.
+}
+$$
+
+因此任何單一 proxy metric 都只能是：
+
+$$
+\boxed{
+\pi_j(\mathcal Q)
+}
+$$
+
+——品質空間的一個投影，而不是品質本體。
+
+本文最終建立 **High-Ambiguity Quality Object**：
+
+$$
+\boxed{
+\mathfrak Q_{HA}
+=
+(
+\mathcal Q_{\mathrm{schema}},
+G_Q,
+\mathbf Q_F,
+\mathbf Q_S,
+\widehat{\boldsymbol{\theta}}_H,
+\Sigma_H,
+B_Q,
+Version_Q
+).
+}
+$$
+
+其中：
+
+- $\mathcal Q_{\mathrm{schema}}$：typed quality schema；
+- $G_Q$：construct graph；
+- $\mathbf Q_F$：formal/objective layer；
+- $\mathbf Q_S$：structured semi-objective layer；
+- $\widehat{\boldsymbol{\theta}}_H$：IBQF latent human residual；
+- $\Sigma_H$：人類 residual uncertainty；
+- $B_Q$：evaluation boundary；
+- $Version_Q$：品質本體版本。
+
+如此，IPM 的品質端可以從數學／程式一路延伸到：
+
+- natural language；
+- image；
+- audio/music；
+- story；
+- interface/design；
+- multimodal artifacts；
+
+而不需要假裝所有模態共享同一個「8.6/10」。
+
+本文終端命題為：
+
+$$
+\boxed{
+\textbf{
+高歧義不是不可測；
+它只是不能在尚未建立品質空間之前，
+被過早壓縮成一個數字。
+}
+}
+$$
+
+---
+
+# 1. 「主觀」不等於「沒有結構」
+
+一篇小說是否感人，
+
+一張圖是否協調，
+
+一段文字是否自然，
+
+確實包含主觀成分。
+
+---
+
+# 2. 但主觀不等於任意
+
+如果大量讀者都能辨識：
+
+- 角色前後矛盾；
+- 圖中手指結構異常；
+- 段落缺少主題；
+- 音樂節拍突然斷裂；
+
+表示其中很多品質仍具有可結構化部分。
+
+---
+
+# 3. 所以：
+
+$$
+\boxed{
+Subjective
+\neq
+Unstructured.
+}
+$$
+
+---
+
+# 4. 高歧義應先分解，再測量
+
+Paper 07 解決的是：
+
+> 怎麼問人？
+
+Paper 08 解決：
+
+> 問什麼？
+
+---
+
+# 5. 最危險的錯誤不是 measurement noise
+
+而是：
+
+$$
+\boxed{
+\text{construct misspecification}.
+}
+$$
+
+也就是你測得很準，
+
+但測的根本不是你想知道的品質。
+
+---
+
+# 6. Typed Quality Space
+
+本文定義：
+
+$$
+\boxed{
+\mathcal Q[d,\tau,c,a].
+}
+$$
+
+品質至少受：
+
+- domain；
+- task；
+- context；
+- audience；
+
+共同條件化。
+
+---
+
+# 7. 為什麼需要 domain？
+
+因為文字的 grammar，
+
+不是圖片的 composition。
+
+---
+
+# 8. 為什麼需要 task？
+
+一篇摘要要求：
+
+- compression；
+- fidelity。
+
+一篇小說則可以要求：
+
+- voice；
+- emotional impact。
+
+---
+
+# 9. 為什麼需要 context？
+
+同一 UI：
+
+- desktop；
+- mobile；
+- accessibility mode；
+
+會產生不同使用品質。
+
+---
+
+# 10. 為什麼需要 audience？
+
+專家眼中的：
+
+$$
+Clarity
+$$
+
+與 novice 眼中的：
+
+$$
+Clarity
+$$
+
+可以不同。
+
+---
+
+# 11. 因此：
+
+$$
+\boxed{
+Quality
+=
+Relation,
+\quad
+not\ intrinsic\ decoration.
+}
+$$
+
+---
+
+# 12. 三層品質空間
+
+$$
+\boxed{
+\mathcal Q
+=
+\mathcal Q_{\mathrm{core}}
+\oplus
+\mathcal Q_{\mathrm{domain}}
+\oplus
+\mathcal Q_{\mathrm{task}}.
+}
+$$
+
+---
+
+# 13. Cross-Domain Core
+
+本文暫定六個核心型別：
+
+$$
+\boxed{
+\mathbf Q_{\mathrm{core}}
+=
+(
+F,C,K,R,U,V
+).
+}
+$$
+
+---
+
+# 14. Fidelity / Alignment
+
+$$
+F
+$$
+
+問：
+
+> 有沒有做使用者真正要求的事情？
+
+---
+
+# 15. Coherence
+
+$$
+C
+$$
+
+問：
+
+> 輸出的部分彼此能否共存？
+
+---
+
+# 16. Completeness
+
+$$
+K
+$$
+
+問：
+
+> 必要結構是否缺失？
+
+---
+
+# 17. Robustness
+
+$$
+R
+$$
+
+問：
+
+> 合理的小擾動會不會讓成果崩潰？
+
+---
+
+# 18. Usefulness / Functional Effectiveness
+
+$$
+U
+$$
+
+問：
+
+> 這個成果是否真的完成使用目的？
+
+---
+
+# 19. Verifiability / Traceability
+
+$$
+V
+$$
+
+問：
+
+> 若需要核查，能否知道它為何成立／從何而來？
+
+---
+
+# 20. Core 不代表 universal weights
+
+不同 task：
+
+$$
+w_F,w_C,w_K,w_R,w_U,w_V
+$$
+
+可以不同。
+
+---
+
+# 21. 甚至某些維度可以不適用
+
+純藝術作品不一定需要：
+
+$$
+EvidenceAdequacy.
+$$
+
+---
+
+# 22. 因此：
+
+$$
+\boxed{
+CoreType
+\neq
+MandatoryEqualWeight.
+}
+$$
+
+---
+
+# 23. 自然語言品質空間
+
+$$
+\boxed{
+\mathbf Q_{\mathrm{text}}
+=
+(
+Factuality,
+Relevance,
+Coherence,
+Completeness,
+Clarity,
+PragmaticFit,
+StyleFit,
+EvidenceAdequacy
+).
+}
+$$
+
+---
+
+# 24. Factuality 與 Fluency 必須分開
+
+一段話可以：
+
+$$
+Fluency\uparrow
+$$
+
+但：
+
+$$
+Factuality\downarrow.
+$$
+
+---
+
+# 25. 所以：
+
+$$
+\boxed{
+Fluency
+\neq
+Truth.
+}
+$$
+
+---
+
+# 26. Relevance 與 Completeness 也不同
+
+回答可以每句都相關，
+
+但漏掉一半要求。
+
+---
+
+# 27. 因此：
+
+$$
+\boxed{
+Relevant
+\neq
+Complete.
+}
+$$
+
+---
+
+# 28. Coherence 與 Correctness 也不同
+
+錯誤理論可以極度自洽。
+
+所以：
+
+$$
+\boxed{
+Coherence
+\neq
+Correctness.
+}
+$$
+
+---
+
+# 29. Pragmatic Fit
+
+同一句話對：
+
+- beginner；
+- expert；
+- emergency；
+- academic setting；
+
+適切度不同。
+
+---
+
+# 30. 圖像品質空間
+
+$$
+\boxed{
+\mathbf Q_{\mathrm{image}}
+=
+(
+PromptAlignment,
+StructuralIntegrity,
+Composition,
+TechnicalQuality,
+AestheticFit,
+SemanticLegibility,
+ArtifactFreedom,
+ContextFit
+).
+}
+$$
+
+---
+
+# 31. Prompt Alignment
+
+圖像是否真的符合要求：
+
+- 物體；
+- 關係；
+- 動作；
+- 風格；
+- 場景。
+
+---
+
+# 32. Structural Integrity
+
+例如：
+
+- anatomy；
+- perspective；
+- object topology；
+- geometry。
+
+---
+
+# 33. Technical Quality
+
+例如：
+
+- noise；
+- blur；
+- compression；
+- resolution；
+- rendering artifacts。
+
+---
+
+# 34. Aesthetic Fit
+
+則是：
+
+- visual balance；
+- style harmony；
+- appeal；
+- intentionality。
+
+---
+
+# 35. Technical Quality 與 Aesthetic Quality 不同
+
+一張極度清晰的圖，
+
+仍可以：
+
+$$
+AestheticFit\downarrow.
+$$
+
+---
+
+# 36. 反過來
+
+低解析、粗糙的藝術作品，
+
+仍可能：
+
+$$
+AestheticImpact\uparrow.
+$$
+
+---
+
+# 37. 所以：
+
+$$
+\boxed{
+TechnicalQuality
+\neq
+AestheticQuality.
+}
+$$
+
+---
+
+# 38. NIMA 等 image-aesthetic work 的啟示
+
+影像評估研究會刻意建模人類 rating distribution，而不只預測單一平均分。
+
+這提醒我們：
+
+$$
+\boxed{
+AestheticDistribution
+}
+$$
+
+本身就可能是 measurement object。
+
+---
+
+# 39. 圖像相似度也不是品質
+
+若 generated image 與 prompt embedding 高相似：
+
+$$
+Similarity\uparrow
+$$
+
+不表示：
+
+- anatomy 正確；
+- composition 好；
+- artifacts 少。
+
+---
+
+# 40. 所以：
+
+$$
+\boxed{
+PromptSimilarity
+\neq
+ImageQuality.
+}
+$$
+
+---
+
+# 41. 音樂品質空間
+
+$$
+\boxed{
+\mathbf Q_{\mathrm{music}}
+=
+(
+TemporalCoherence,
+RhythmicIntegrity,
+HarmonicFit,
+TimbreQuality,
+Expressiveness,
+Novelty,
+StyleFit,
+FunctionalFit
+).
+}
+$$
+
+---
+
+# 42. 音樂不是只測 waveform quality
+
+技術無雜訊：
+
+$$
+AudioClean=1
+$$
+
+不代表：
+
+$$
+MusicQuality=1.
+$$
+
+---
+
+# 43. Temporal Coherence
+
+旋律／節奏是否形成可理解的時間結構。
+
+---
+
+# 44. Functional Fit
+
+背景音樂、舞曲、電影配樂、實驗音樂的 success condition 不同。
+
+---
+
+# 45. 故事品質空間
+
+$$
+\boxed{
+\mathbf Q_{\mathrm{story}}
+=
+(
+PlotCausality,
+CharacterConsistency,
+WorldConsistency,
+Pacing,
+Voice,
+EmotionalImpact,
+Novelty,
+ThematicIntegrity
+).
+}
+$$
+
+---
+
+# 46. Plot Causality
+
+事件不是只「接在一起」，
+
+而應存在可理解關係。
+
+---
+
+# 47. Character Consistency
+
+角色變化可以很大，
+
+但需要：
+
+$$
+\boxed{
+\text{motivated transition}.
+}
+$$
+
+---
+
+# 48. 所以 consistency 不等於不准變
+
+真正測的是：
+
+$$
+\boxed{
+ChangeWithoutSufficientCause?
+}
+$$
+
+---
+
+# 49. UI / Design 品質空間
+
+$$
+\boxed{
+\mathbf Q_{\mathrm{design}}
+=
+(
+TaskSuccess,
+Affordance,
+Hierarchy,
+Consistency,
+Accessibility,
+ErrorTolerance,
+VisualCoherence,
+AudienceFit
+).
+}
+$$
+
+---
+
+# 50. 美觀不等於可用
+
+$$
+\boxed{
+AestheticAppeal
+\neq
+Usability.
+}
+$$
+
+---
+
+# 51. 可用也不等於適合所有人
+
+所以：
+
+$$
+Accessibility
+$$
+
+必須單獨存在。
+
+---
+
+# 52. 創造力品質
+
+創造力研究長期有一個常見核心：
+
+$$
+\boxed{
+Novelty
++
+Usefulness/Appropriateness.
+}
+$$
+
+---
+
+# 53. Novelty alone 不夠
+
+亂碼非常新。
+
+但：
+
+$$
+Usefulness=0.
+$$
+
+---
+
+# 54. 因此：
+
+$$
+\boxed{
+Novelty
+\neq
+Creativity.
+}
+$$
+
+---
+
+# 55. 反過來
+
+非常有用但完全常規，
+
+也可能：
+
+$$
+Novelty\approx0.
+$$
+
+---
+
+# 56. 所以 creativity 更像一個多軸區域
+
+$$
+\boxed{
+\mathcal C_{\mathrm{creative}}
+=
+(
+Novelty,
+Appropriateness,
+Value,
+Surprise,
+Coherence
+).
+}
+$$
+
+---
+
+# 57. 不要過早寫成
+
+$$
+Creativity
+=
+Novelty\times Usefulness.
+$$
+
+除非研究場景明確需要這種 projection。
+
+---
+
+# 58. 因為 multiplicative scalar 會偷偷加入 trade-off 規則
+
+---
+
+# 59. Quality Construct Graph
+
+扁平 vector 還不夠。
+
+有些品質是依賴的。
+
+---
+
+# 60. 定義：
+
+$$
+\boxed{
+G_Q=(V_Q,E_Q).
+}
+$$
+
+---
+
+# 61. 節點
+
+是 construct：
+
+- factuality；
+- clarity；
+- composition；
+- novelty。
+
+---
+
+# 62. 邊
+
+可以表示：
+
+- prerequisite；
+- causal support；
+- overlap；
+- conflict；
+- conditional dependency。
+
+---
+
+# 63. 例如
+
+$$
+EvidenceAdequacy
+\rightarrow
+FactualConfidence.
+$$
+
+---
+
+# 64. 又例如
+
+$$
+Novelty
+\not\Rightarrow
+Usefulness.
+$$
+
+---
+
+# 65. Visual hierarchy 可以影響：
+
+$$
+Readability,
+TaskNavigation.
+$$
+
+---
+
+# 66. 這使品質 schema 變成結構
+
+而不是 checklist。
+
+---
+
+# 67. Construct 與 Indicator 不同
+
+例如：
+
+$$
+Clarity
+$$
+
+是 latent construct。
+
+---
+
+# 68. 不能直接把它當 item
+
+應先尋找 observable indicator。
+
+---
+
+# 69. Clarity indicators 可能是
+
+- 是否需要重讀？
+- 能否指出主結論？
+- 能否預測下一步？
+- 是否存在未定義術語？
+
+---
+
+# 70. 所以：
+
+$$
+\boxed{
+Construct
+\neq
+ObservableIndicator.
+}
+$$
+
+---
+
+# 71. Indicator 再變成 Paper 07 item
+
+例如：
+
+> 你第一次讀完是否能指出作者的核心結論？
+
+$$
+Yes/No.
+$$
+
+---
+
+# 72. 或 pairwise
+
+> A 與 B 哪個更容易讓你找出核心結論？
+
+$$
+A/B.
+$$
+
+---
+
+# 73. Measurement Itemization Pipeline
+
+$$
+\boxed{
+Task
+\rightarrow
+Construct
+\rightarrow
+Indicator
+\rightarrow
+Item
+\rightarrow
+Observation
+\rightarrow
+LatentEstimate.
+}
+$$
+
+---
+
+# 74. 這條鏈每一步都可能出錯
+
+所以每一步都要能被檢查。
+
+---
+
+# 75. Metric 不等於 Construct
+
+例如 BLEU、embedding similarity、CLIPScore、aesthetic model score 等，
+
+都只是：
+
+$$
+\boxed{
+Metric_j
+=
+\pi_j(
+\mathcal Q
+).
+}
+$$
+
+---
+
+# 76. 一個 metric 只能看 quality space 的某個投影
+
+---
+
+# 77. Metric Correlation 不等於 Construct Validity
+
+如果 metric 與 human score 相關，
+
+仍不代表：
+
+> 它已經捕捉完整品質。
+
+---
+
+# 78. 因為 human score 本身也可能是錯的 projection
+
+---
+
+# 79. 所以需要 Construct Validity Gate
+
+$$
+\boxed{
+G_C
+=
+G(
+Coverage,
+DiscriminantValidity,
+ConvergentEvidence,
+ContextStability
+).
+}
+$$
+
+---
+
+# 80. Coverage
+
+這套 dimensions 是否漏掉重要品質？
+
+---
+
+# 81. Discriminant Validity
+
+兩個宣稱不同的 dimensions 是否其實測同一件事？
+
+---
+
+# 82. Convergent Evidence
+
+不同方法是否對同一 construct 有合理收斂？
+
+---
+
+# 83. Context Stability
+
+換情境後，construct 是否仍保留原意？
+
+---
+
+# 84. Reliability 仍不等於 Validity
+
+一個錯誤量尺可以每次都非常穩定。
+
+所以：
+
+$$
+\boxed{
+Reliability
+\neq
+Validity.
+}
+$$
+
+---
+
+# 85. Open Quality Ontology
+
+品質空間不應被假定永遠固定。
+
+---
+
+# 86. 如果大量 failure 無法解釋
+
+例如 AI 圖像出現一種新的 artifact，
+
+現有 dimensions 沒有位置放。
+
+---
+
+# 87. 不應硬塞
+
+而應允許：
+
+$$
+\boxed{
+\mathcal Q_{t+1}
+=
+\mathcal Q_t
+\cup
+\{q_{\mathrm{new}}\}.
+}
+$$
+
+---
+
+# 88. Trigger
+
+新 construct 的候選來源可以是：
+
+- residual error；
+- clustered rater comments；
+- unexplained disagreement；
+- adversarial failure；
+- new task class。
+
+---
+
+# 89. 這叫 Quality Ontology Expansion
+
+---
+
+# 90. 但不能每次看到一個怪例子就加一維
+
+需要：
+
+- reproducibility；
+- discriminant value；
+- explanatory gain。
+
+---
+
+# 91. Quality Schema 必須 versioned
+
+$$
+\boxed{
+\mathcal Q^{v_1}
+\neq
+\mathcal Q^{v_2}.
+}
+$$
+
+---
+
+# 92. 否則跨時間 benchmark 會偷偷改量尺
+
+---
+
+# 93. Quality Schema Drift
+
+如果 2026 和 2028 的「圖像品質」用不同 dimensions，
+
+分數不可直接縱向比較。
+
+---
+
+# 94. 所以：
+
+$$
+\boxed{
+BenchmarkVersion
+\Rightarrow
+QualityOntologyVersion.
+}
+$$
+
+---
+
+# 95. Measurement Invariance
+
+跨群體比較前，
+
+要問：
+
+> 這些 items 對不同群體是否仍在測同一 construct？
+
+---
+
+# 96. 例如 novice 的「清晰」
+
+可能受背景知識影響。
+
+---
+
+# 97. 所以：
+
+$$
+\boxed{
+SameItem
+\neq
+SameMeasurementFunction
+}
+$$
+
+across populations。
+
+---
+
+# 98. 這延續 Paper 07 的 context/rater modeling
+
+---
+
+# 99. Multi-Modal Quality
+
+一個 artifact 可能同時有：
+
+- text；
+- image；
+- audio；
+- interaction。
+
+---
+
+# 100. 不能只把各 modality score 平均
+
+$$
+\boxed{
+Q_{\mathrm{multi}}
+\neq
+\frac{Q_T+Q_I+Q_A}{3}.
+}
+$$
+
+---
+
+# 101. 因為跨模態存在 coupling
+
+例如：
+
+文字說：
+
+> 按紅色按鈕。
+
+圖片卻只有藍色按鈕。
+
+---
+
+# 102. 各自單獨可能合法
+
+但：
+
+$$
+\boxed{
+CrossModalConsistency=0.
+}
+$$
+
+---
+
+# 103. 所以 multimodal schema 需要 coupling dimensions
+
+$$
+\boxed{
+\mathbf Q_{\mathrm{couple}}
+=
+(
+CrossModalConsistency,
+ReferenceAlignment,
+TemporalSync,
+Redundancy,
+Complementarity
+).
+}
+$$
+
+---
+
+# 104. Redundancy 不一定是壞事
+
+Accessibility 可能故意讓 text + icon 重複。
+
+---
+
+# 105. 因此要看 task function
+
+---
+
+# 106. Complementarity
+
+不同模態是否各自提供新的有用資訊。
+
+---
+
+# 107. Quality Fiber View
+
+本文可更抽象表示：
+
+對每個 task/context point：
+
+$$
+x=(d,\tau,c,a),
+$$
+
+都有一個 quality fiber：
+
+$$
+\boxed{
+\mathcal Q_x.
+}
+$$
+
+---
+
+# 108. 整體不是單一固定向量空間
+
+而是：
+
+$$
+\boxed{
+\mathcal Q
+=
+\bigcup_x
+\mathcal Q_x.
+}
+$$
+
+---
+
+# 109. 這比 universal score 更符合高歧義成果
+
+---
+
+# 110. Cross-Task Projection
+
+如果要比較不同 task，
+
+需建立：
+
+$$
+\boxed{
+\Pi_{x\rightarrow y}:
+\mathcal Q_x
+\rightarrow
+\mathcal Q_y.
+}
+$$
+
+---
+
+# 111. 但不是所有維度都可投影
+
+例如：
+
+$$
+PlotCausality
+$$
+
+沒有直接對應到圖片 technical noise。
+
+---
+
+# 112. 所以跨模態比較應只比較 shared constructs
+
+---
+
+# 113. 這對 IPM 很重要
+
+若比較：
+
+> 文字模型和圖像模型誰更聰明？
+
+不能直接拿兩種 domain score 相除。
+
+---
+
+# 114. 必須找到共同 task-level achievement
+
+例如：
+
+> 是否成功傳達指定空間關係？
+
+---
+
+# 115. 然後比較同一 task construct 下的：
+
+$$
+\mathfrak P_{\mathrm{compute}}
+\rightarrow
+Q.
+$$
+
+---
+
+# 116. 否則：
+
+$$
+\boxed{
+CrossDomainScoreComparison
+}
+$$
+
+沒有共同 measurement basis。
+
+---
+
+# 117. 這是跨基質與跨模態智能計量的一個大限制
+
+---
+
+# 118. 高歧義成果的三層測量流程
+
+### Stage 1 — Formal / Structural Extraction
+
+先自動抽：
+
+- hard constraints；
+- detectable errors；
+- explicit requirements；
+- provenance。
+
+---
+
+# 119. Stage 2 — Quality Schema Mapping
+
+選：
+
+$$
+\mathcal Q[d,\tau,c,a].
+$$
+
+---
+
+# 120. Stage 3 — Human Residual Itemization
+
+把尚未解決的 constructs 轉成：
+
+- binary；
+- pairwise；
+- adaptive items。
+
+---
+
+# 121. Stage 4 — Latent Reconstruction
+
+$$
+\{b_i\}
+\rightarrow
+\widehat{\boldsymbol{\theta}}.
+$$
+
+---
+
+# 122. Stage 5 — Residual Analysis
+
+看：
+
+- unexplained disagreement；
+- residual errors；
+- new failure clusters。
+
+---
+
+# 123. Stage 6 — Ontology Revision
+
+必要時：
+
+$$
+\mathcal Q^{v_n}
+\rightarrow
+\mathcal Q^{v_{n+1}}.
+$$
+
+---
+
+# 124. 這使品質測量本身變成可學習系統
+
+但：
+
+$$
+\boxed{
+MeasurementSystemLearning
+\neq
+MovingGoalpostsWithoutVersioning.
+}
+$$
+
+---
+
+# 125. 必須保留 canonical historical versions
+
+才能做 longitudinal comparison。
+
+---
+
+# 126. High-Ambiguity Quality Object
+
+本文正式定義：
+
+$$
+\boxed{
+\mathfrak Q_{HA}
+=
+(
+\mathcal Q_{\mathrm{schema}},
+G_Q,
+\mathbf Q_F,
+\mathbf Q_S,
+\widehat{\boldsymbol{\theta}}_H,
+\Sigma_H,
+\mathcal D_R,
+B_Q,
+Version_Q
+).
+}
+$$
+
+---
+
+# 127. $\mathcal Q_{\mathrm{schema}}$
+
+目前採用哪些 constructs。
+
+---
+
+# 128. $G_Q$
+
+construct 之間的關係。
+
+---
+
+# 129. $\mathbf Q_F$
+
+formal/objective evidence。
+
+---
+
+# 130. $\mathbf Q_S$
+
+structured semi-objective evidence。
+
+---
+
+# 131. $\widehat{\boldsymbol{\theta}}_H$
+
+Paper 07 產生的人類 latent residual。
+
+---
+
+# 132. $\Sigma_H$
+
+不確定性。
+
+---
+
+# 133. $\mathcal D_R$
+
+群體 disagreement structure。
+
+---
+
+# 134. $B_Q$
+
+domain/task/context/audience boundary。
+
+---
+
+# 135. $Version_Q$
+
+quality ontology version。
+
+---
+
+# 136. Scalar 仍然只是 Projection
+
+如果某 leaderboard 必須一個數字：
+
+$$
+\boxed{
+Q^*
+=
+\Pi(
+\mathfrak Q_{HA}
+\mid
+Policy
+).
+}
+$$
+
+---
+
+# 137. Policy 要公開
+
+例如：
+
+- correctness hard gate；
+- task alignment 40%；
+- usability 30%；
+- aesthetics 30%。
+
+---
+
+# 138. 但原始 quality object 必須保留
+
+否則 leaderboard 抹掉 trade-off。
+
+---
+
+# 139. Pareto Quality Frontier
+
+甚至品質本身也可能需要 Pareto。
+
+一張圖：
+
+A：
+
+- technical quality 高；
+- novelty 普通。
+
+B：
+
+- technical defects 多；
+- creative impact 極高。
+
+---
+
+# 140. 若 task 沒指定 preference，
+
+不應硬說誰「品質總體更高」。
+
+---
+
+# 141. 所以：
+
+$$
+\boxed{
+QualityDominance
+}
+$$
+
+只有在所有 relevant dimensions 都不差時才自然成立。
+
+---
+
+# 142. 十八個 Canonical Invariants
+
+**Invariant 1**
+
+$$
+\boxed{
+Subjective
+\neq
+Unstructured.
+}
+$$
+
+**Invariant 2**
+
+$$
+\boxed{
+HighAmbiguity
+\neq
+Unmeasurable.
+}
+$$
+
+**Invariant 3**
+
+$$
+\boxed{
+Quality
+\neq
+UniversalScalar.
+}
+$$
+
+**Invariant 4**
+
+$$
+\boxed{
+Construct
+\neq
+Indicator.
+}
+$$
+
+**Invariant 5**
+
+$$
+\boxed{
+Indicator
+\neq
+Item.
+}
+$$
+
+**Invariant 6**
+
+$$
+\boxed{
+Metric
+\neq
+Construct.
+}
+$$
+
+**Invariant 7**
+
+$$
+\boxed{
+Reliability
+\neq
+Validity.
+}
+$$
+
+**Invariant 8**
+
+$$
+\boxed{
+Fluency
+\neq
+Factuality.
+}
+$$
+
+**Invariant 9**
+
+$$
+\boxed{
+Coherence
+\neq
+Correctness.
+}
+$$
+
+**Invariant 10**
+
+$$
+\boxed{
+TechnicalQuality
+\neq
+AestheticQuality.
+}
+$$
+
+**Invariant 11**
+
+$$
+\boxed{
+PromptSimilarity
+\neq
+ImageQuality.
+}
+$$
+
+**Invariant 12**
+
+$$
+\boxed{
+Novelty
+\neq
+Creativity.
+}
+$$
+
+**Invariant 13**
+
+$$
+\boxed{
+AestheticAppeal
+\neq
+Usability.
+}
+$$
+
+**Invariant 14**
+
+$$
+\boxed{
+SameItem
+\neq
+SameMeasurementFunction
+}
+$$
+
+across populations without invariance evidence.
+
+**Invariant 15**
+
+$$
+\boxed{
+MultimodalQuality
+\neq
+Mean(ModalityScores).
+}
+$$
+
+**Invariant 16**
+
+$$
+\boxed{
+CrossDomainComparison
+\Rightarrow
+SharedConstructBasis.
+}
+$$
+
+**Invariant 17**
+
+$$
+\boxed{
+OntologyRevision
+\Rightarrow
+Versioning.
+}
+$$
+
+**Invariant 18**
+
+$$
+\boxed{
+PreciseMeasurement
+\neq
+CorrectConstructSelection.
+}
+$$
+
+---
+
+# 143. 對 IPM 品質端的完成
+
+Paper 06 建立：
+
+$$
+\mathfrak Q_F
+\oplus
+\mathfrak Q_S.
+$$
+
+---
+
+# 144. Paper 07 建立：
+
+$$
+\mathfrak Q_H^{IBQF}.
+$$
+
+---
+
+# 145. Paper 08 現在補上：
+
+$$
+\boxed{
+\mathcal Q_{\mathrm{schema}}
+}
+$$
+
+——也就是究竟有哪些品質需要被量。
+
+---
+
+# 146. 因此完整品質端
+
+$$
+\boxed{
+\mathfrak Q_{\mathrm{IPM}}
+=
+(
+\mathcal Q_{\mathrm{schema}},
+\mathfrak Q_F,
+\mathfrak Q_S,
+\mathfrak Q_H^{IBQF},
+Version_Q
+).
+}
+$$
+
+---
+
+# 147. 這讓品質側真正閉合
+
+不是：
+
+> 先決定一個總分，再找方法算。
+
+而是：
+
+$$
+\boxed{
+\text{Task}
+\rightarrow
+\text{Quality Ontology}
+\rightarrow
+\text{Evidence}
+\rightarrow
+\text{Latent Measurement}
+\rightarrow
+\text{Optional Projection}.
+}
+$$
+
+---
+
+# 148. 結論：高歧義不是不能量，而是不能太早壓縮
+
+自然語言、圖像、音樂、故事、設計與創意，
+
+之所以難量，
+
+不是因為它們完全沒有結構。
+
+而是因為：
+
+$$
+\boxed{
+\textbf{
+它們的品質本體本身就是多維、情境化、任務化，
+而且部分維度仍需人類感知才能完成測量。
+}
+}
+$$
+
+如果我們太早問：
+
+> 這張圖 0–10 幾分？
+
+其實做了兩次壓縮。
+
+第一次：
+
+$$
+\boxed{
+\mathcal Q[d,\tau,c,a]
+\rightarrow
+\text{observer internal impression}.
+}
+$$
+
+第二次：
+
+$$
+\boxed{
+\text{internal impression}
+\rightarrow
+0\sim10.
+}
+$$
+
+大量資訊在過程中消失。
+
+Paper 07 已經移除了第二次不必要壓縮：
+
+$$
+\boxed{
+\text{local binary/pairwise}
+\rightarrow
+\text{latent reconstruction}.
+}
+$$
+
+Paper 08 則移除第一次概念混亂：
+
+我們先明確建立：
+
+$$
+\boxed{
+\mathcal Q_{\mathrm{schema}}
+}
+$$
+
+再問：
+
+> 哪些部分可形式驗證？
+
+> 哪些可結構核查？
+
+> 哪些真的只能靠人類感知？
+
+> 人類感知又應拆成哪些局部 observables？
+
+因此：
+
+$$
+\boxed{
+\textbf{
+高歧義不是不可測；
+它只是不能在尚未建立品質空間之前，
+被過早壓縮成一個數字。
+}
+}
+$$
+
+到這一步，IPM 的「分子側」基本完成。
+
+我們現在已有：
+
+$$
+\boxed{
+\mathfrak Q_{\mathrm{IPM}}
+}
+$$
+
+作為成果品質，
+
+以及：
+
+$$
+\boxed{
+\mathfrak P_{\mathrm{compute}}
+}
+$$
+
+作為物理成本。
+
+剩下最後兩篇要重新回到整個系列最初的問題。
+
+Paper 09 將問：
+
+$$
+\boxed{
+\textbf{
+如果把 tools、retry、verifier、best-of-N、
+外部 LOOP 與大量隱藏鷹架一層層拿掉，
+一個模型自己到底還剩多少智能？
+}
+}
+$$
+
+也就是：
+
+**《拿掉 LOOP 還剩多少智能？：單次智能、鷹架依賴與隱藏計算成本》**。
+
+---
+
+## 文獻基礎
+
+[1] Gatt, A., & Krahmer, E. (2018). Survey of the State of the Art in Natural Language Generation: Core Tasks, Applications and Evaluation. *Journal of Artificial Intelligence Research*, 61, 65–170. DOI: 10.1613/jair.5477.  
+
+[2] Liu, Y., Iter, D., Xu, Y., Wang, S., Xu, R., & Zhu, C. (2023). G-Eval: NLG Evaluation using GPT-4 with Better Human Alignment. *EMNLP 2023*, 2511–2522.  
+
+[3] Hessel, J., Holtzman, A., Forbes, M., Le Bras, R., & Choi, Y. (2021). CLIPScore: A Reference-free Evaluation Metric for Image Captioning. *EMNLP 2021*.  
+
+[4] Talebi, H., & Milanfar, P. (2018). NIMA: Neural Image Assessment. *IEEE Transactions on Image Processing*, 27(8), 3998–4011. DOI: 10.1109/TIP.2018.2831899.  
+
+[5] Brachmann, A., & Redies, C. (2017). Computational and Experimental Approaches to Visual Aesthetics. *Frontiers in Computational Neuroscience*, 11, 102. DOI: 10.3389/fncom.2017.00102.  
+
+[6] Silvia, P. J., Winterstein, B. P., Willse, J. T., et al. (2008). Assessing Creativity with Divergent Thinking Tasks: Exploring the Reliability and Validity of New Subjective Scoring Methods. *Psychology of Aesthetics, Creativity, and the Arts*, 2(2), 68–85.  
+
+[7] Said-Metwaly, S., Van den Noortgate, W., & Kyndt, E. (2017). Approaches to Measuring Creativity: A Systematic Literature Review. *Creativity. Theories – Research – Applications*, 4(2), 238–275.  
+
+[8] Harvey, S., & Berry, J. W. (2023). Toward a Meta-Theory of Creativity Forms: How Novelty and Usefulness Shape Creativity. *Academy of Management Review*.  
+
+[9] Beaty, R. E., & Johnson, D. R. (2021). Automating Creativity Assessment with SemDis: An Open Platform for Computing Semantic Distance. *Behavior Research Methods*, 53, 757–780. DOI: 10.3758/s13428-020-01453-w.  
+
+---
+
+## 系列路徑
+
+1. **Paper 01｜一輪到底是一輪什麼？：使用者回合、隱藏 LOOP 與單次智能的重新定義**  
+2. **Paper 02｜智能到底算了一次什麼？：最小智能語意執行單位的候選理論**  
+3. **Paper 03｜從認知到神經元：人腦如何跨層測量智能計算**  
+4. **Paper 04｜從神經元到焦耳：智能計算的能量、熱力學與物理下界**  
+5. **Paper 05｜計算不是只有 FLOPs：記憶體、互連、硬體占用與計算時空體積**  
+6. **Paper 06｜成果品質到底怎麼量？：從形式化正確性到結構化智能品質**  
+7. **Paper 07｜不要叫人類替自己的感覺打分數：IBQF 二元測量與低負擔品質評估**  
+8. **Paper 08｜自然語言、圖像與創意如何被量？：高歧義成果的結構化品質空間**  
+9. **Paper 09｜拿掉 LOOP 還剩多少智能？：單次智能、鷹架依賴與隱藏計算成本**  
+10. **Paper 10｜一個答案值多少物理世界？：智能產率的統一計量框架**

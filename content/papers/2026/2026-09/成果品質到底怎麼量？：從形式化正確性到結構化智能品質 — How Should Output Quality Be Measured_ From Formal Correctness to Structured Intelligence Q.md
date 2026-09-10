@@ -1,0 +1,2707 @@
+# 成果品質到底怎麼量？：從形式化正確性到結構化智能品質
+
+## How Should Output Quality Be Measured? From Formal Correctness to Structured Intelligence Quality
+
+**系列：**《智能的物理計量：從最小語意執行到成果品質與計算時空》  
+**英文系列：** *Physical Metrology of Intelligence: From Minimal Semantic Execution to Quality and Computational Spacetime*  
+**系列編號：** EML-IPM  
+**篇次：** Paper 06 / 10  
+**文件編號：** EML-IPM-06  
+**作者：** Neo.K with Aletheia（GPT-5.6 Sol）  
+**機構：** EveMissLab／一言諾科技有限公司  
+**版本：** v0.1  
+**日期：** 2026-09-02  
+**文件性質：** 公開純理論論文／智能品質計量方法論  
+**工程狀態：** 無 MVP；本文建立品質分子側的客觀與結構化測量框架，主觀殘餘交由 Paper 07–08
+
+---
+
+## 摘要
+
+IPM Paper 01–05 已逐步建立智能成果的「分母側」：
+
+$$
+\boxed{
+\text{Physical Resources}
+\rightarrow
+\text{Semantic Work}
+\rightarrow
+Q.
+}
+$$
+
+其中 Paper 05 已將物理成本展開為：
+
+$$
+\boxed{
+\mathfrak P_{\mathrm{compute}}
+=
+(
+\mathbf C_P,
+\mathbf V_{CST},
+\Theta_{CST},
+H_{\mathrm{peak}},
+\mathcal E,
+Boundary_P,
+\mathcal G_M
+).
+}
+$$
+
+但所有智能效率公式都還存在一個尚未解決的分子：
+
+$$
+\boxed{
+Q.
+}
+$$
+
+若 $Q$ 本身只是：
+
+> 評審覺得這個答案有 8.7 分，
+
+那麼前五篇再精確的 Joule、memory traffic、 $\mu_I$ 、computational spacetime 都會被一個高度任意的分子破壞。
+
+因此本文首先提出：
+
+$$
+\boxed{
+\textbf{
+Quality is not an intrinsic scalar of an artifact.
+}
+}
+$$
+
+品質不是作品自身攜帶的一個絕對數值，而是輸出 $Y$ 相對於任務 $X$ 、規格 $\mathcal S$ 、環境 $W$ 與評估邊界 $B_Q$ 的關係：
+
+$$
+\boxed{
+Q
+=
+Q(
+Y
+\mid
+X,\mathcal S,W,B_Q
+).
+}
+$$
+
+同一份程式、證明、計畫或文章，在不同目標下可以具有完全不同品質。
+
+本文因此拒絕一開始定義：
+
+$$
+Q\in[0,1]
+$$
+
+的唯一總分，而先建立 **Structured Quality Vector**：
+
+$$
+\boxed{
+\mathbf Q_S
+=
+(
+Q_C,
+Q_A,
+Q_K,
+Q_R,
+Q_B,
+Q_V,
+Q_P
+)
+}
+$$
+
+其中：
+
+- $Q_C$：Correctness，正確性；
+- $Q_A$：Alignment，與任務／規格的對齊；
+- $Q_K$：Completeness / Coverage，完成度與覆蓋度；
+- $Q_R$：Internal Consistency，一致性；
+- $Q_B$：Robustness，對擾動、邊界案例與替代條件的穩健性；
+- $Q_V$：Verifiability / Reproducibility，可驗證與可重現性；
+- $Q_P$：Provenance / Evidence Adequacy，證據與來源充分性。
+
+不同領域可以增加或刪除 typed dimensions：
+
+$$
+\boxed{
+\mathbf Q_S[d].
+}
+$$
+
+本文將可測品質分成三個主要層級：
+
+$$
+\boxed{
+\mathcal Q_L
+=
+(
+Q_F,
+Q_S,
+Q_H
+)
+}
+$$
+
+其中：
+
+- $Q_F$：Formal Objective Quality，可由形式系統直接判定；
+- $Q_S$：Structured Objective / Semi-Objective Quality，可拆成明確可核查條件；
+- $Q_H$：Human Residual Quality，仍需人類感知／偏好／價值判斷的殘餘品質。
+
+Paper 06 主要處理前兩者； $Q_H$ 留給 Paper 07–08。
+
+在程式領域，形式化程度可以從：
+
+$$
+\boxed{
+\text{Parse}
+\rightarrow
+\text{Type Check}
+\rightarrow
+\text{Compile}
+\rightarrow
+\text{Tests}
+\rightarrow
+\text{Property Tests}
+\rightarrow
+\text{Model Checking}
+\rightarrow
+\text{Formal Proof}
+}
+$$
+
+逐步提高。
+
+然而：
+
+$$
+\boxed{
+CompileSuccess
+\neq
+CorrectProgram.
+}
+$$
+
+$$
+\boxed{
+AllTestsPassed
+\neq
+UniversalCorrectness.
+}
+$$
+
+$$
+\boxed{
+HighCoverage
+\neq
+CompleteSpecification.
+}
+$$
+
+$$
+\boxed{
+FormalProof
+\neq
+CorrectRealWorldGoal.
+}
+$$
+
+形式證明通常能建立：
+
+$$
+\boxed{
+Implementation
+\models
+FormalSpecification
+}
+$$
+
+但若 specification 本身漏掉重要世界條件，proof 並不會自動修復錯誤問題定義。
+
+因此本文提出 **Specification–Verification Separation**：
+
+$$
+\boxed{
+Q_{\mathrm{verified}}
+=
+Q_{\mathrm{verification}}
+\otimes
+Q_{\mathrm{specification}}.
+}
+$$
+
+其中：
+
+$$
+Q_{\mathrm{verification}}
+$$
+
+問：
+
+> 是否真的符合已寫出的規格？
+
+而：
+
+$$
+Q_{\mathrm{specification}}
+$$
+
+問：
+
+> 這個規格是否真的代表我們想要的任務？
+
+在數學領域，同樣必須區分：
+
+$$
+\boxed{
+\text{Proof Validity}
+\neq
+\text{Goal Equivalence}.
+}
+$$
+
+一個完全形式正確的 theorem 可能只證明原問題的弱化版本、局部版本或不同命題。因此數學品質至少需同時量：
+
+$$
+\boxed{
+\mathbf Q_{math}
+=
+(
+Q_{\mathrm{wellformed}},
+Q_{\mathrm{derivation}},
+Q_{\mathrm{goal}},
+Q_{\mathrm{scope}},
+Q_{\mathrm{axiom}},
+Q_{\mathrm{counterexample}}
+).
+}
+$$
+
+本文進一步提出 **Hard Gate / Soft Quality Separation**。
+
+令必要條件集合：
+
+$$
+\mathcal H
+=
+\{h_1,\ldots,h_m\},
+$$
+
+軟品質集合：
+
+$$
+\mathcal O
+=
+\{o_1,\ldots,o_n\}.
+$$
+
+Hard Gate：
+
+$$
+\boxed{
+G_H(Y)
+=
+\bigwedge_{i=1}^{m}
+h_i(Y).
+}
+$$
+
+若任務要求「證明定理」而 proof invalid，
+
+或要求「可執行程式」而程式無法 parse，
+
+則：
+
+$$
+\boxed{
+G_H=0.
+}
+$$
+
+此時漂亮文風、短程式碼或優雅架構不能補償基本任務失敗。
+
+因此：
+
+$$
+\boxed{
+FatalConstraintFailure
+\not\sim
+SoftQualityTradeoff.
+}
+$$
+
+本文再提出 **Coverage 不等於 Correctness** 的三層拆分：
+
+$$
+\boxed{
+Coverage
+=
+(
+C_{\mathrm{spec}},
+C_{\mathrm{test}},
+C_{\mathrm{state}}
+)
+}
+$$
+
+其中：
+
+- $C_{\mathrm{spec}}$：已知需求被規格表示的程度；
+- $C_{\mathrm{test}}$：規格／行為被測試探測的程度；
+- $C_{\mathrm{state}}$：實際可能狀態空間被探索的程度。
+
+即使：
+
+$$
+C_{\mathrm{test}}=1
+$$
+
+相對某個有限 test suite 成立，
+
+仍可能：
+
+$$
+C_{\mathrm{spec}}<1
+$$
+
+或：
+
+$$
+C_{\mathrm{state}}\ll1.
+$$
+
+因此：
+
+$$
+\boxed{
+100\%\ TestPass
+\neq
+100\%\ TaskTruth.
+}
+$$
+
+為了量 test suite 本身是否有辨識力，本文借入 mutation-testing 思想：故意引入小型錯誤變異體 $M_j$，若測試能抓出，表示 suite 具有較高 fault sensitivity。
+
+可定義：
+
+$$
+\boxed{
+MS
+=
+\frac{
+N_{\mathrm{killed}}
+}{
+N_{\mathrm{non-equivalent\ mutants}}
+}.
+}
+$$
+
+這不使測試變成 proof，但能避免：
+
+> 測試全部通過，因為測試根本沒測到東西。
+
+本文接著提出 **Quality Evidence Ladder**：
+
+### Q-Grade E — Surface Validity
+格式正確、可 parse、可開啟。
+
+### Q-Grade D — Example Validity
+通過有限範例／公開 benchmark cases。
+
+### Q-Grade C — Structured Verification
+通過系統化 tests、property checks、constraint coverage 與 adversarial cases。
+
+### Q-Grade B — Independent Verification
+存在獨立 verifier、第二實作、交叉工具或重現。
+
+### Q-Grade A — Formal Verification
+相對形式規格存在 machine-checkable proof / exhaustive finite verification。
+
+### Q-Grade A+ — Formal + Goal Alignment
+除形式驗證外，還有充分證據表明 formal specification 與原始任務目標對齊。
+
+因此：
+
+$$
+\boxed{
+ProofGrade
+\neq
+GoalAlignmentGrade.
+}
+$$
+
+本文亦主張，**效率不應預先混入品質分數**。
+
+若任務只是：
+
+> 求出正確答案，
+
+則：
+
+$$
+Q
+$$
+
+應先描述成果品質，
+
+而時間、能源與計算時空保留在：
+
+$$
+\mathfrak P_{\mathrm{compute}}.
+$$
+
+只有當任務規格本身明示：
+
+> 必須在 100 ms 內完成，
+
+那麼 latency 才成為：
+
+$$
+\mathcal S
+$$
+
+的一部分，進而成為 correctness/alignment constraint。
+
+所以：
+
+$$
+\boxed{
+Cost
+\neq
+Quality
+}
+$$
+
+但：
+
+$$
+\boxed{
+CostConstraint
+\subseteq
+Specification
+\Rightarrow
+CostCompliance
+\subseteq
+Quality.
+}
+$$
+
+本文最後提出 IPM 品質測量的總結形式：
+
+$$
+\boxed{
+\mathfrak Q
+=
+(
+\mathbf Q_S,
+G_H,
+\mathcal C_Q,
+Grade_Q,
+U_Q,
+Boundary_Q
+)
+}
+$$
+
+其中：
+
+- $\mathbf Q_S$：結構化品質向量；
+- $G_H$：Hard Gate 狀態；
+- $\mathcal C_Q$：Coverage profile；
+- $Grade_Q$：品質證據等級；
+- $U_Q$：測量不確定性；
+- $Boundary_Q$：品質評估邊界。
+
+這使 IPM 的完整鏈第一次變成：
+
+$$
+\boxed{
+\mathfrak P_{\mathrm{compute}}
+\rightarrow
+\mathbf N_{\mu}
+\rightarrow
+\mathfrak Q.
+}
+$$
+
+而不是：
+
+$$
+\boxed{
+\text{Compute}
+\rightarrow
+\text{一個隨手打的 8/10}.
+}
+$$
+
+本文終端命題為：
+
+$$
+\boxed{
+\textbf{
+能形式化的品質，先形式化；
+能結構化的品質，先結構化；
+只有無法被更客觀表示的殘餘，
+才交給人類主觀判斷。
+}
+}
+$$
+
+---
+
+# 1. 品質不是作品自身的一顆數字
+
+一個答案：
+
+$$
+Y
+$$
+
+沒有脫離任務的絕對品質。
+
+---
+
+# 2. 同一輸出在不同任務中品質不同
+
+若任務 A 要：
+
+> 寫一首詩。
+
+任務 B 要：
+
+> 證明一個定理。
+
+同一段華麗文字可能：
+
+$$
+Q_A\uparrow
+$$
+
+但：
+
+$$
+Q_B=0.
+$$
+
+---
+
+# 3. 所以品質是關係量
+
+$$
+\boxed{
+Q
+=
+Q(Y\mid X,\mathcal S,W,B_Q).
+}
+$$
+
+---
+
+# 4. $X$ 是 Task
+
+原始問題／目標。
+
+---
+
+# 5. $\mathcal S$ 是 Specification
+
+已被明確表示的：
+
+- requirements；
+- constraints；
+- success conditions。
+
+---
+
+# 6. $W$ 是 World / Evaluation Environment
+
+例如：
+
+- compiler version；
+- theorem axioms；
+- operating system；
+- data distribution；
+- execution environment。
+
+---
+
+# 7. $B_Q$ 是 Quality Boundary
+
+例如：
+
+- 只驗核心函數；
+- 驗完整服務；
+- 驗 deployment；
+- 驗現實世界。
+
+---
+
+# 8. 同一 artifact 在不同 boundary 下可得不同結果
+
+程式 unit tests 通過，
+
+不代表：
+
+$$
+Q_{\mathrm{deployment}}=1.
+$$
+
+---
+
+# 9. 第一個品質型別：Formal Objective Quality
+
+若可以建立 predicate：
+
+$$
+P(Y)\in\{0,1\},
+$$
+
+則可以直接驗證。
+
+---
+
+# 10. 例如數學
+
+$$
+ProofChecker(\pi,\phi)=1.
+$$
+
+---
+
+# 11. 程式
+
+$$
+Compile(Y)=1.
+$$
+
+---
+
+# 12. Schema
+
+$$
+SchemaValid(Y)=1.
+$$
+
+---
+
+# 13. Constraint Satisfaction
+
+$$
+\bigwedge_i c_i(Y)=1.
+$$
+
+---
+
+# 14. 這是最強的客觀性來源
+
+因為 evaluator 不必回答：
+
+> 我覺得它大概 8 分。
+
+---
+
+# 15. 但 formal objective 不是全部品質
+
+一個程式 compile：
+
+$$
+Compile=1
+$$
+
+仍可以完全做錯事。
+
+---
+
+# 16. 所以：
+
+$$
+\boxed{
+SyntacticValidity
+\neq
+SemanticCorrectness.
+}
+$$
+
+---
+
+# 17. Parse / Type / Compile 是逐層門檻
+
+可以建立：
+
+$$
+\boxed{
+V_{\mathrm{surface}}
+=
+(
+V_{parse},
+V_{type},
+V_{compile}
+).
+}
+$$
+
+---
+
+# 18. 每一層只能證明一部分
+
+Parse 成功：
+
+> 語法符合 grammar。
+
+---
+
+# 19. Type check 成功：
+
+> 某些型別關係合法。
+
+---
+
+# 20. Compile 成功：
+
+> 可以被某 compiler translation 接受。
+
+---
+
+# 21. 不能推出：
+
+$$
+\boxed{
+ProgramMeetsIntent=1.
+}
+$$
+
+---
+
+# 22. Test 是下一層
+
+令 test suite：
+
+$$
+\mathcal T=
+\{t_1,\ldots,t_n\}.
+$$
+
+---
+
+# 23. Pass Rate
+
+$$
+\boxed{
+P_T
+=
+\frac{
+\sum_i \mathbf 1[t_i(Y)=\text{pass}]
+}{
+n
+}.
+}
+$$
+
+---
+
+# 24. 若：
+
+$$
+P_T=1,
+$$
+
+只代表：
+
+> 對這些 test，全通過。
+
+---
+
+# 25. 不代表未測輸入全正確
+
+因此：
+
+$$
+\boxed{
+AllTestsPassed
+\neq
+UniversalCorrectness.
+}
+$$
+
+---
+
+# 26. 測試本質上是 sampling / probing
+
+它從巨大行為空間中取樣。
+
+---
+
+# 27. 若 state space：
+
+$$
+|\Omega|\gg n,
+$$
+
+測試只看：
+
+$$
+\Omega_T\subset\Omega.
+$$
+
+---
+
+# 28. Test Coverage 也不是只有 code coverage
+
+常見 coverage 可能包括：
+
+- statement；
+- branch；
+- path；
+- condition。
+
+---
+
+# 29. 但執行過一行程式
+
+不代表驗證了那一行的所有語意。
+
+所以：
+
+$$
+\boxed{
+CodeCoverage
+\neq
+SemanticCoverage.
+}
+$$
+
+---
+
+# 30. 三層 Coverage
+
+本文定義：
+
+$$
+\boxed{
+\mathcal C_Q
+=
+(
+C_{\mathrm{spec}},
+C_{\mathrm{test}},
+C_{\mathrm{state}}
+).
+}
+$$
+
+---
+
+# 31. Specification Coverage
+
+$$
+C_{\mathrm{spec}}
+$$
+
+問：
+
+> 我們知道的重要需求，有多少真的被寫進可檢查規格？
+
+---
+
+# 32. Test Coverage
+
+$$
+C_{\mathrm{test}}
+$$
+
+問：
+
+> 已寫出的規格與行為，有多少真的被 test probing？
+
+---
+
+# 33. State Coverage
+
+$$
+C_{\mathrm{state}}
+$$
+
+問：
+
+> 實際可能世界／輸入／狀態空間，有多少被探索？
+
+---
+
+# 34. 三者可以完全不同
+
+例如：
+
+$$
+C_{\mathrm{test}}=1
+$$
+
+相對一個小 test suite，
+
+但：
+
+$$
+C_{\mathrm{state}}\ll1.
+$$
+
+---
+
+# 35. 因此：
+
+$$
+\boxed{
+100\%\ TestPass
+\neq
+100\%\ TaskTruth.
+}
+$$
+
+---
+
+# 36. Mutation Testing 的意義
+
+如果 test suite 太弱，
+
+即使程式被故意改壞，也可能照樣全過。
+
+---
+
+# 37. 建立 mutants
+
+$$
+M_1,\ldots,M_k.
+$$
+
+每個包含小型 fault。
+
+---
+
+# 38. 若 tests 能 detect：
+
+$$
+M_j\rightarrow \mathrm{killed}.
+$$
+
+---
+
+# 39. Mutation Score
+
+$$
+\boxed{
+MS
+=
+\frac{
+N_{\mathrm{killed}}
+}{
+N_{\mathrm{non-equivalent}}
+}.
+}
+$$
+
+---
+
+# 40. Mutation Score 不是 proof
+
+但它可以衡量：
+
+$$
+\boxed{
+\text{test suite fault sensitivity}.
+}
+$$
+
+---
+
+# 41. Property-Based Testing
+
+不是只寫：
+
+> input 1 應輸出 2。
+
+而是寫 property：
+
+$$
+P(x)
+$$
+
+並在大量 generated inputs 上測。
+
+---
+
+# 42. 它提高 state probing
+
+但仍不是 exhaustive proof，
+
+除非 domain 有限且全部走過。
+
+---
+
+# 43. Model Checking
+
+若系統 state space 可形式化且有限／可抽象，
+
+可以驗證 temporal / safety properties。
+
+---
+
+# 44. 形式證明更進一步
+
+目標是建立：
+
+$$
+\boxed{
+Implementation\models Specification.
+}
+$$
+
+---
+
+# 45. Hoare-style reasoning
+
+例如：
+
+$$
+\boxed{
+\{P\}\ C\ \{Q\}.
+}
+$$
+
+若 precondition $P$ 成立，
+
+執行 command $C$ 後，
+
+postcondition $Q$ 成立。
+
+---
+
+# 46. 這是非常強的 correctness statement
+
+但只相對：
+
+$$
+P,Q
+$$
+
+有效。
+
+---
+
+# 47. Specification Problem
+
+若 postcondition 寫錯：
+
+$$
+Q_{\mathrm{wrong}},
+$$
+
+proof 可以完美證明：
+
+$$
+C\models Q_{\mathrm{wrong}}.
+$$
+
+---
+
+# 48. 但真實需求仍然失敗
+
+因此：
+
+$$
+\boxed{
+FormalVerification
+\neq
+RealWorldGoalCorrectness.
+}
+$$
+
+---
+
+# 49. Specification–Verification Separation
+
+本文定義兩軸：
+
+$$
+\boxed{
+Q_{\mathrm{verification}}
+}
+$$
+
+以及：
+
+$$
+\boxed{
+Q_{\mathrm{specification}}.
+}
+$$
+
+---
+
+# 50. 第一軸問
+
+> 是否正確符合已寫出的規格？
+
+---
+
+# 51. 第二軸問
+
+> 已寫出的規格是否捕捉真正想要的事情？
+
+---
+
+# 52. 兩者都高才真正強
+
+$$
+\boxed{
+Q_{\mathrm{verified}}
+=
+Q_{\mathrm{verification}}
+\otimes
+Q_{\mathrm{specification}}.
+}
+$$
+
+---
+
+# 53. 不宜直接乘法當唯一數字
+
+ $\otimes$ 表示組合，
+
+不是預設普通乘法。
+
+---
+
+# 54. 數學也有完全同構問題
+
+Proof checker 可以驗：
+
+$$
+\pi\vdash\phi.
+$$
+
+---
+
+# 55. 但原始目標可能是：
+
+$$
+\psi.
+$$
+
+---
+
+# 56. 如果：
+
+$$
+\phi\not\equiv\psi,
+$$
+
+即使：
+
+$$
+\pi\vdash\phi
+$$
+
+完全正確，
+
+也沒完成原任務。
+
+---
+
+# 57. 所以：
+
+$$
+\boxed{
+ProofValidity
+\neq
+GoalEquivalence.
+}
+$$
+
+---
+
+# 58. 數學品質向量
+
+本文提出：
+
+$$
+\boxed{
+\mathbf Q_{math}
+=
+(
+Q_W,
+Q_D,
+Q_G,
+Q_S,
+Q_A,
+Q_X
+).
+}
+$$
+
+---
+
+# 59. $Q_W$ — Well-Formedness
+
+符號、定義、語法合法。
+
+---
+
+# 60. $Q_D$ — Derivation Validity
+
+推導每一步合法。
+
+---
+
+# 61. $Q_G$ — Goal Alignment
+
+最後 theorem 是否真的是原始目標。
+
+---
+
+# 62. $Q_S$ — Scope Fidelity
+
+局部版本、特殊情況、弱化命題是否被誤寫成全域結果。
+
+---
+
+# 63. $Q_A$ — Axiom / Assumption Transparency
+
+用了哪些假設？
+
+是否偷偷加入等價於結論的假設？
+
+---
+
+# 64. $Q_X$ — Counterexample Resistance
+
+對可能反例與 edge case 是否存活。
+
+---
+
+# 65. 這比只問「有 proof 嗎」更完整
+
+因為：
+
+$$
+\boxed{
+ProofExists
+\neq
+ResearchProblemSolved.
+}
+$$
+
+---
+
+# 66. Hard Gate / Soft Quality
+
+有些品質維度不能互相補償。
+
+---
+
+# 67. 必要條件
+
+$$
+\mathcal H
+=
+\{h_1,\ldots,h_m\}.
+$$
+
+---
+
+# 68. Hard Gate
+
+$$
+\boxed{
+G_H(Y)
+=
+\bigwedge_i h_i(Y).
+}
+$$
+
+---
+
+# 69. 例如程式任務要求可執行
+
+若：
+
+$$
+Compile=0,
+$$
+
+則：
+
+$$
+G_H=0.
+$$
+
+---
+
+# 70. 即使 code 很優雅
+
+也不能抵消：
+
+$$
+\boxed{
+\text{not executable}.
+}
+$$
+
+---
+
+# 71. 數學 proof task
+
+若存在 fatal invalid step：
+
+$$
+ProofValid=0.
+$$
+
+---
+
+# 72. 文風漂亮不能補回 theorem validity
+
+---
+
+# 73. 所以：
+
+$$
+\boxed{
+FatalConstraintFailure
+\not\sim
+SoftQualityTradeoff.
+}
+$$
+
+---
+
+# 74. Soft Objectives
+
+若 hard gate 通過，
+
+才比較：
+
+- elegance；
+- brevity；
+- maintainability；
+- explanatory clarity。
+
+---
+
+# 75. 這形成 lexicographic quality
+
+先：
+
+$$
+G_H.
+$$
+
+再：
+
+$$
+\mathbf Q_{soft}.
+$$
+
+---
+
+# 76. 不一定要硬乘成：
+
+$$
+Q=G_H\times \mathrm{score}.
+$$
+
+因為保留結構更安全。
+
+---
+
+# 77. Structured Quality Vector
+
+跨領域先建立：
+
+$$
+\boxed{
+\mathbf Q_S
+=
+(
+Q_C,
+Q_A,
+Q_K,
+Q_R,
+Q_B,
+Q_V,
+Q_P
+).
+}
+$$
+
+---
+
+# 78. Correctness $Q_C$
+
+是否符合已知真值／形式條件。
+
+---
+
+# 79. Alignment $Q_A$
+
+是否真正回答所問問題。
+
+---
+
+# 80. Completeness $Q_K$
+
+是否漏掉關鍵需求、分支、條件。
+
+---
+
+# 81. Consistency $Q_R$
+
+前後是否衝突。
+
+---
+
+# 82. Robustness $Q_B$
+
+輸入稍微改變是否崩壞？
+
+edge cases 是否存活？
+
+---
+
+# 83. Verifiability $Q_V$
+
+第三方是否能重現、驗證。
+
+---
+
+# 84. Provenance / Evidence $Q_P$
+
+需要外部事實時，證據是否充分。
+
+---
+
+# 85. 不同領域可以 typed
+
+$$
+\boxed{
+\mathbf Q_S[d].
+}
+$$
+
+---
+
+# 86. Code Quality
+
+可以：
+
+$$
+\mathbf Q_{code}
+=
+(
+Correctness,
+SpecAlignment,
+TestStrength,
+Robustness,
+Security,
+Reproducibility,
+Maintainability
+).
+$$
+
+---
+
+# 87. 但 maintainability 是否屬核心品質取決於 task
+
+如果題目只是一次性函數，
+
+它可能權重低。
+
+---
+
+# 88. 所以沒有 universal fixed weights
+
+$$
+\boxed{
+Weights
+=
+Weights(Task).
+}
+$$
+
+---
+
+# 89. Planning Quality
+
+可以拆：
+
+- feasibility；
+- constraint satisfaction；
+- coverage；
+- ordering；
+- contingency；
+- goal reachability。
+
+---
+
+# 90. Structured Data Quality
+
+可以拆：
+
+- schema validity；
+- missingness；
+- consistency；
+- referential integrity；
+- duplication；
+- provenance。
+
+---
+
+# 91. 科學回答
+
+可以拆：
+
+- factual correctness；
+- evidence match；
+- uncertainty calibration；
+- citation adequacy；
+- causal restraint；
+- reproducibility。
+
+---
+
+# 92. 這些很多都能先結構化
+
+不必先問人：
+
+> 你覺得好不好？
+
+---
+
+# 93. Objective / Semi-Objective / Residual
+
+本文因此分三層：
+
+$$
+\boxed{
+Q_F
+}
+$$
+
+Formal Objective。
+
+---
+
+# 94. $Q_S$
+
+Structured Objective / Semi-Objective。
+
+---
+
+# 95. $Q_H$
+
+Human Residual。
+
+---
+
+# 96. Formal Objective 例子
+
+- proof checker；
+- compiler；
+- exact constraint solver；
+- schema validator。
+
+---
+
+# 97. Structured Objective
+
+例如：
+
+> 有沒有漏掉 prompt 明寫的 12 個要求？
+
+這可以拆成 12 個 binary checks。
+
+---
+
+# 98. 或：
+
+> 引用了不存在的文獻嗎？
+
+也可以核查。
+
+---
+
+# 99. Human Residual
+
+例如：
+
+- 這個畫面美嗎？
+- 這個比喻自然嗎？
+- 這篇小說有感染力嗎？
+
+---
+
+# 100. Paper 07 的核心原則已經出現
+
+不是立刻叫人打：
+
+$$
+8.2/10.
+$$
+
+而是把 $Q_H$ 繼續拆成低負擔判斷。
+
+---
+
+# 101. 但 Paper 06 先做最大客觀化
+
+因此：
+
+$$
+\boxed{
+Q_H
+=
+Q_{\mathrm{total}}
+-
+Q_{\mathrm{objectifiable}}
+}
+$$
+
+只是概念式，
+
+不是數值減法。
+
+---
+
+# 102. Evaluation Oracle
+
+任何自動評估都依賴 oracle：
+
+$$
+\mathcal O(Y).
+$$
+
+---
+
+# 103. Oracle 可能是
+
+- test；
+- proof checker；
+- judge model；
+- human；
+- environment outcome。
+
+---
+
+# 104. 但 oracle 自身也會錯
+
+所以：
+
+$$
+\boxed{
+EvaluatorCorrectness
+}
+$$
+
+也必須被考慮。
+
+---
+
+# 105. Weak Oracle Problem
+
+如果 evaluator 很弱：
+
+高品質輸出可能被判錯，
+
+低品質也可能漏過。
+
+---
+
+# 106. 所以：
+
+$$
+\boxed{
+ObservedQuality
+=
+F(
+TrueQuality,
+EvaluatorPower,
+Coverage
+).
+}
+$$
+
+---
+
+# 107. 這與 Paper 03 的 proxy epistemology 完全一致
+
+評分器本身不是神。
+
+---
+
+# 108. Independent Verification
+
+若兩個不同 verifier：
+
+$$
+V_1,V_2
+$$
+
+獨立實現，
+
+且：
+
+$$
+V_1(Y)=V_2(Y),
+$$
+
+可信度增加。
+
+---
+
+# 109. 但兩者若共享同一 bug
+
+仍可能一起錯。
+
+所以：
+
+$$
+\boxed{
+Agreement
+\neq
+Truth.
+}
+$$
+
+---
+
+# 110. Diversity of Verification
+
+更強的是不同方法：
+
+- execution；
+- proof；
+- static analysis；
+- independent implementation。
+
+---
+
+# 111. Evidence Triangulation for Quality
+
+本文提出：
+
+$$
+\boxed{
+\mathcal E_Q
+=
+(
+E_F,
+E_T,
+E_P,
+E_I,
+E_H
+)
+}
+$$
+
+其中：
+
+- $E_F$：formal evidence；
+- $E_T$：test evidence；
+- $E_P$：property / adversarial evidence；
+- $E_I$：independent verification；
+- $E_H$：human/world evidence。
+
+---
+
+# 112. Quality Confidence
+
+$$
+\boxed{
+Conf_Q
+=
+F(
+\mathcal E_Q,
+Coverage,
+OracleQuality
+).
+}
+$$
+
+---
+
+# 113. Quality Evidence Grade
+
+### Q-Grade E — Surface Validity
+
+格式／語法層。
+
+---
+
+# 114. Q-Grade D — Example Validity
+
+有限 benchmark examples。
+
+---
+
+# 115. Q-Grade C — Structured Verification
+
+系統化 tests、properties、adversarial cases。
+
+---
+
+# 116. Q-Grade B — Independent Verification
+
+獨立 verifier / reimplementation / cross-tool。
+
+---
+
+# 117. Q-Grade A — Formal Verification
+
+machine-checkable proof 或 exhaustive finite verification。
+
+---
+
+# 118. Q-Grade A+ — Formal + Goal Alignment
+
+形式證明之外，
+
+有強證據 formal spec 真的是原始任務。
+
+---
+
+# 119. 所以：
+
+$$
+\boxed{
+ProofGrade
+\neq
+GoalAlignmentGrade.
+}
+$$
+
+---
+
+# 120. Reproducibility
+
+一個結果如果只能：
+
+> 這次剛好成功，
+
+品質可信度不同。
+
+---
+
+# 121. 所以要區分：
+
+$$
+\boxed{
+Q_{\mathrm{episode}}
+}
+$$
+
+與：
+
+$$
+\boxed{
+Q_{\mathrm{distribution}}.
+}
+$$
+
+---
+
+# 122. Single-pass 研究尤其重要
+
+某次一次答對：
+
+$$
+Q_{\mathrm{episode}}=1.
+$$
+
+---
+
+# 123. 但重跑 100 次只對 20 次
+
+可靠度低。
+
+所以：
+
+$$
+\boxed{
+PeakEpisode
+\neq
+ReliableQuality.
+}
+$$
+
+---
+
+# 124. 因此品質也有 distribution
+
+$$
+\boxed{
+Q
+\sim
+P(Q\mid Task,Model,Config).
+}
+$$
+
+---
+
+# 125. Paper 09 會把這與 Pass@1 / scaffolding 重新接起來
+
+---
+
+# 126. Robustness 不是額外裝飾
+
+如果輸入做微小語意保持變換：
+
+$$
+x\rightarrow x',
+$$
+
+理想輸出品質不應崩潰。
+
+---
+
+# 127. 定義 robustness sensitivity
+
+$$
+\boxed{
+S_R
+=
+\frac{
+\Delta Q
+}{
+d(x,x')
+}.
+}
+$$
+
+---
+
+# 128. 若 $d$ 很小但 $\Delta Q$ 很大
+
+表示 brittle。
+
+---
+
+# 129. Metamorphic-style evaluation
+
+有時不知道 exact answer，
+
+但知道變換後輸出應保持某 relation。
+
+---
+
+# 130. 例如排序函數
+
+若輸入 permutation 改變，
+
+排序後結果應一致。
+
+---
+
+# 131. 這提供沒有完整 oracle 時的 structured verification
+
+---
+
+# 132. Completeness 也不能只看篇幅
+
+長答案：
+
+$$
+Length\uparrow
+$$
+
+不代表：
+
+$$
+Completeness\uparrow.
+$$
+
+---
+
+# 133. 更合理是 requirement coverage
+
+若需求集合：
+
+$$
+\mathcal R=
+\{r_1,\ldots,r_n\},
+$$
+
+則：
+
+$$
+\boxed{
+C_R
+=
+\frac{
+|\{r_i:\ \mathrm{satisfied}\}|
+}{
+n
+}.
+}
+$$
+
+---
+
+# 134. 但 requirement importance 不一定相同
+
+因此可以 typed：
+
+- fatal；
+- major；
+- minor。
+
+---
+
+# 135. Weighted coverage 只有在權重來源透明時才能使用
+
+否則又回到任意打分。
+
+---
+
+# 136. Consistency
+
+可以建立 contradiction graph。
+
+若答案內命題集合：
+
+$$
+\Phi=\{\phi_1,\ldots,\phi_n\},
+$$
+
+找：
+
+$$
+\phi_i\land\phi_j\Rightarrow\bot.
+$$
+
+---
+
+# 137. 這比問：
+
+> 你覺得前後一致嗎？
+
+更可結構化。
+
+---
+
+# 138. Evidence adequacy
+
+若 output 含可外部核查 claims：
+
+$$
+c_1,\ldots,c_m,
+$$
+
+可以測：
+
+- cited？
+- source exists？
+- source supports claim？
+- source freshness？
+- source authority？
+
+---
+
+# 139. 因此：
+
+$$
+Q_P
+$$
+
+也能大量結構化。
+
+---
+
+# 140. Efficiency 不要先塞進品質
+
+這點必須再次固定。
+
+如果 A、B 都：
+
+$$
+Q=1,
+$$
+
+但 A 花 1 J，
+
+B 花 1000 J，
+
+這是 efficiency 差異，
+
+不是成果 correctness 差異。
+
+---
+
+# 141. 所以：
+
+$$
+\boxed{
+Cost
+\neq
+Quality.
+}
+$$
+
+---
+
+# 142. 但如果規格說：
+
+> 必須在 100 ms 內回答，
+
+那：
+
+$$
+T\le100ms
+$$
+
+就是 hard requirement。
+
+---
+
+# 143. 因此：
+
+$$
+\boxed{
+CostConstraint
+\subseteq
+Specification
+\Rightarrow
+CostCompliance
+\subseteq
+Quality.
+}
+$$
+
+---
+
+# 144. 這避免 double counting
+
+否則 latency 一次算品質，
+
+又一次算效率，
+
+會重複計分。
+
+---
+
+# 145. Quality Boundary
+
+像能源 boundary 一樣，
+
+品質也要寫：
+
+$$
+\boxed{
+Boundary_Q.
+}
+$$
+
+---
+
+# 146. 例如 code
+
+- function；
+- module；
+- service；
+- production deployment。
+
+---
+
+# 147. function 正確
+
+不代表 service 正確。
+
+---
+
+# 148. service 正確
+
+不代表 socio-technical deployment 正確。
+
+---
+
+# 149. 所以：
+
+$$
+\boxed{
+QualityComparison
+\Rightarrow
+SameBoundary_Q.
+}
+$$
+
+---
+
+# 150. Measurement Uncertainty
+
+即使 Formal predicate 可精確，
+
+其 coverage 與 specification mapping 仍可能不確定。
+
+---
+
+# 151. 所以品質報告應含：
+
+$$
+\boxed{
+U_Q.
+}
+$$
+
+---
+
+# 152. $U_Q$ 可以來自
+
+- unknown requirements；
+- incomplete oracle；
+- judge disagreement；
+- environmental uncertainty。
+
+---
+
+# 153. 最終品質物件
+
+本文定義：
+
+$$
+\boxed{
+\mathfrak Q
+=
+(
+\mathbf Q_S,
+G_H,
+\mathcal C_Q,
+\mathcal E_Q,
+Grade_Q,
+Conf_Q,
+U_Q,
+Boundary_Q
+).
+}
+$$
+
+---
+
+# 154. 這不是一個 score
+
+而是一個品質測量物件。
+
+---
+
+# 155. 若應用真的需要 scalar
+
+可在明示：
+
+$$
+Task,\ Weights,\ Gates,\ Boundary
+$$
+
+後投影：
+
+$$
+\boxed{
+Q^*
+=
+\Pi_Q(\mathfrak Q).
+}
+$$
+
+---
+
+# 156. 所以：
+
+$$
+\boxed{
+Q^*
+=
+Q^*(Task,ProjectionRule).
+}
+$$
+
+---
+
+# 157. 不存在無條件 universal quality scalar
+
+---
+
+# 158. 對 IPM 的完整接合
+
+現在：
+
+$$
+\boxed{
+\mathfrak P_{\mathrm{compute}}
+\rightarrow
+\mathbf N_{\mu}
+\rightarrow
+\mathfrak Q.
+}
+$$
+
+---
+
+# 159. 若需要效率比較
+
+可以使用：
+
+$$
+\boxed{
+\eta_{Q/E}
+=
+\frac{
+\Pi_Q(\mathfrak Q)
+}{
+E_{\mathrm{marg}}
+}
+}
+$$
+
+---
+
+# 160. 但 projection rule 必須公開
+
+否則：
+
+$$
+\eta_{Q/E}
+$$
+
+不可重現。
+
+---
+
+# 161. 更推薦 Pareto 表示
+
+直接比較：
+
+$$
+\boxed{
+(
+\mathfrak Q,
+\mathfrak P_{\mathrm{compute}}
+).
+}
+$$
+
+---
+
+# 162. 直到決策場景確實需要 scalar 才投影
+
+---
+
+# 163. 十六個 Canonical Invariants
+
+**Invariant 1**
+
+$$
+\boxed{
+Quality
+\neq
+IntrinsicScalar.
+}
+$$
+
+**Invariant 2**
+
+$$
+\boxed{
+SyntacticValidity
+\neq
+SemanticCorrectness.
+}
+$$
+
+**Invariant 3**
+
+$$
+\boxed{
+CompileSuccess
+\neq
+CorrectProgram.
+}
+$$
+
+**Invariant 4**
+
+$$
+\boxed{
+AllTestsPassed
+\neq
+UniversalCorrectness.
+}
+$$
+
+**Invariant 5**
+
+$$
+\boxed{
+CodeCoverage
+\neq
+SemanticCoverage.
+}
+$$
+
+**Invariant 6**
+
+$$
+\boxed{
+FormalVerification
+\neq
+RealWorldGoalCorrectness.
+}
+$$
+
+**Invariant 7**
+
+$$
+\boxed{
+ProofValidity
+\neq
+GoalEquivalence.
+}
+$$
+
+**Invariant 8**
+
+$$
+\boxed{
+FatalConstraintFailure
+\not\sim
+SoftQualityTradeoff.
+}
+$$
+
+**Invariant 9**
+
+$$
+\boxed{
+EvaluatorAgreement
+\neq
+Truth.
+}
+$$
+
+**Invariant 10**
+
+$$
+\boxed{
+PeakEpisode
+\neq
+ReliableQuality.
+}
+$$
+
+**Invariant 11**
+
+$$
+\boxed{
+Length
+\neq
+Completeness.
+}
+$$
+
+**Invariant 12**
+
+$$
+\boxed{
+Cost
+\neq
+Quality.
+}
+$$
+
+**Invariant 13**
+
+$$
+\boxed{
+QualityComparison
+\Rightarrow
+SameBoundary_Q.
+}
+$$
+
+**Invariant 14**
+
+$$
+\boxed{
+ScalarQuality
+\Rightarrow
+DeclaredProjectionRule.
+}
+$$
+
+**Invariant 15**
+
+$$
+\boxed{
+ProofGrade
+\neq
+GoalAlignmentGrade.
+}
+$$
+
+**Invariant 16**
+
+$$
+\boxed{
+ObjectifiableFirst,
+HumanResidualLast.
+}
+$$
+
+---
+
+# 164. 結論：品質測量應先把「可以不用問人」的部分拿掉
+
+如果一個 theorem proof 可以用 proof assistant 驗，
+
+就不應先問：
+
+> 你覺得這個 proof 有幾分？
+
+如果程式能跑 tests、properties、model checker，
+
+就不應把所有 correctness 壓給人工評審。
+
+如果 prompt 有 20 個明確要求，
+
+就應先逐項核查：
+
+$$
+r_i\in\{\mathrm{satisfied},\mathrm{unsatisfied}\}.
+$$
+
+而不是直接問：
+
+> 整體來說你給幾分？
+
+因此本文的核心順序是：
+
+$$
+\boxed{
+\text{Formalize what can be formalized}
+}
+$$
+
+$$
+\boxed{
+\downarrow
+}
+$$
+
+$$
+\boxed{
+\text{Structure what can be structured}
+}
+$$
+
+$$
+\boxed{
+\downarrow
+}
+$$
+
+$$
+\boxed{
+\text{Leave only genuine residual ambiguity to humans}.
+}
+$$
+
+這樣做不是因為人類主觀判斷沒有價值。
+
+恰恰相反。
+
+是因為人的注意力與認知資源非常昂貴。
+
+如果機器可以客觀確認：
+
+> 程式 compile 失敗，
+
+就沒有理由叫 100 個人評：
+
+> 這個程式看起來是否可用？
+
+如果 proof checker 已經找到 invalid derivation，
+
+也沒有理由讓評審用文風補回 correctness。
+
+所以：
+
+$$
+\boxed{
+\textbf{
+人類評審應該被保留給機器真正無法可靠決定的品質維度。
+}
+}
+$$
+
+而且即使需要人類，
+
+下一步也不應立刻使用：
+
+$$
+0\sim10
+$$
+
+的 arbitrary rating。
+
+我們已經在 FDCS／IBQF 中有另一條路：
+
+$$
+\boxed{
+\text{many low-load binary judgments}
+\rightarrow
+\text{latent quality reconstruction}.
+}
+$$
+
+這就是 Paper 07：
+
+**《不要叫人類替自己的感覺打分數：IBQF 二元測量與低負擔品質評估》**。
+
+到那一篇，我們會把這次對「成果品質」剩下的主觀殘餘正式接回：
+
+$$
+\{0,1\}^{n}
+\rightarrow
+\widehat{\mathbf Q}_H.
+$$
+
+如此，IPM 的品質端才真正完整。
+
+---
+
+## 文獻基礎
+
+[1] Hoare, C. A. R. (1969). An Axiomatic Basis for Computer Programming. *Communications of the ACM*, 12(10), 576–580. DOI: 10.1145/363235.363259.  
+
+[2] Dijkstra, E. W. (1972). The Humble Programmer. *Communications of the ACM*, 15(10), 859–866. DOI: 10.1145/355604.361591.  
+
+[3] DeMillo, R. A., Lipton, R. J., & Sayward, F. G. (1978). Hints on Test Data Selection: Help for the Practicing Programmer. *Computer*, 11(4), 34–41. DOI: 10.1109/C-M.1978.218136.  
+
+[4] Jia, Y., & Harman, M. (2011). An Analysis and Survey of the Development of Mutation Testing. *IEEE Transactions on Software Engineering*, 37(5), 649–678. DOI: 10.1109/TSE.2010.62.  
+
+[5] Claessen, K., & Hughes, J. (2000). QuickCheck: A Lightweight Tool for Random Testing of Haskell Programs. *ICFP 2000*, 268–279. DOI: 10.1145/351240.351266.  
+
+[6] Clarke, E. M., Emerson, E. A., & Sistla, A. P. (1986). Automatic Verification of Finite-State Concurrent Systems Using Temporal Logic Specifications. *ACM Transactions on Programming Languages and Systems*, 8(2), 244–263. DOI: 10.1145/5397.5399.  
+
+[7] Avizienis, A., Laprie, J.-C., Randell, B., & Landwehr, C. (2004). Basic Concepts and Taxonomy of Dependable and Secure Computing. *IEEE Transactions on Dependable and Secure Computing*, 1(1), 11–33. DOI: 10.1109/TDSC.2004.2.  
+
+[8] Weyuker, E. J. (1982). On Testing Non-Testable Programs. *The Computer Journal*, 25(4), 465–470. DOI: 10.1093/comjnl/25.4.465.  
+
+---
+
+## 系列路徑
+
+1. **Paper 01｜一輪到底是一輪什麼？：使用者回合、隱藏 LOOP 與單次智能的重新定義**  
+2. **Paper 02｜智能到底算了一次什麼？：最小智能語意執行單位的候選理論**  
+3. **Paper 03｜從認知到神經元：人腦如何跨層測量智能計算**  
+4. **Paper 04｜從神經元到焦耳：智能計算的能量、熱力學與物理下界**  
+5. **Paper 05｜計算不是只有 FLOPs：記憶體、互連、硬體占用與計算時空體積**  
+6. **Paper 06｜成果品質到底怎麼量？：從形式化正確性到結構化智能品質**  
+7. **Paper 07｜不要叫人類替自己的感覺打分數：IBQF 二元測量與低負擔品質評估**  
+8. **Paper 08｜自然語言、圖像與創意如何被量？：高歧義成果的結構化品質空間**  
+9. **Paper 09｜拿掉 LOOP 還剩多少智能？：單次智能、鷹架依賴與隱藏計算成本**  
+10. **Paper 10｜一個答案值多少物理世界？：智能產率的統一計量框架**

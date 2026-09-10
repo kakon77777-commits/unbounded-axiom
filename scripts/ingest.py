@@ -93,6 +93,14 @@ def main(source: str | None = None, ctcl_instant_file: str | None = None):
     BEFORE = _resolve_source(source)
     for d in (BEFORE, STAGING, AFTER, REPORTS):
         d.mkdir(parents=True, exist_ok=True)
+    # AFTER must reflect only THIS run's ready set. A stale file left over from
+    # a prior run (e.g. one that was "ready" then, but is "needs_review" now
+    # after edits) would otherwise sit here forever and get silently promoted
+    # by publish_ingested.py, which blindly moves everything it finds in
+    # AFTER — this caused a real accidental duplicate-publish, 2026-09-10.
+    for stale in AFTER.rglob("*"):
+        if stale.is_file() and stale.name != ".gitkeep":
+            stale.unlink()
     ctcl_instant = _load_ctcl_instant(ctcl_instant_file)
     ctcl_new = {}
     reg = load_registry()
